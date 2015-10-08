@@ -18,6 +18,8 @@ if __name__ == '__main__':
             word = line.strip()
             stop_words.add(word)
 
+    stop_words.remove('first')
+
     text_lines = []
 
     for name in args.input:
