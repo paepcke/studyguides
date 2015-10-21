@@ -1,0 +1,60 @@
+00:00:00
+slide
+Compilers 1 Types
+00:00:15
+slide
+Types What is a type The notion varies from language to language Consensus A set of values A set of operations on those values Classes are one instantiation of the modern notion of type Alex mm
+00:00:20
+writing
+
+00:02:25
+slide
+Types Consider the assembly language fragment add r1 r2 r3 What are the types of r1 r2 r3 ex Aiken
+00:02:30
+writing
+
+00:03:20
+slide
+Types Certain operations are legal for values of each type It make sense to add a function pointer and an integer in C It does make sense to add two integers But both have the same assembly language implementation rm mm
+00:03:30
+writing
+
+00:04:35
+slide
+A type system specifies which operations are valid for which types The goal of type checking is to ensure that operations are used with the correct types Enforces intended interpretation of values because nothing else will Types
+00:04:40
+writing
+
+00:05:30
+slide
+Types Three kinds of languages Statica ly typed All or almost all checking of types is done as part of compilation C Java Cool Dynamically typed Almost all checking of types is done as part of program execution Scheme Untyped No type checking machine code Alex Amen
+00:06:35
+slide
+Types Competing views on static vs dynamic typing Static typing proponents say Static checking catches many programming errors at compile time Avoids overhead of runtime type checks 0 Dynamic typing proponents say Static type systems are restrictive Rapid prototyping difficult within a static type system Alex mm
+00:06:45
+writing
+
+00:08:25
+slide
+Types A lot of code is written in statically typed languages with an escape mechanism Unsafe casts in C Java People retrofit static typing to dynamically typed languages For optimization debugging debatable whether either compromise represents the best or worst of both worlds
+00:08:30
+slide
+Types A lot of code is written in statically typed languages with an mechanism Unsafe casts in C Java People retrofit static typing to dynamically typed languages For optimization debugging debatable whether either compromise represents the best or worst of both worlds
+00:08:40
+writing
+
+00:10:05
+slide
+Types The types in Cool are Class Names SELF TYPE The user declares types for identifiers The compiler infers types for expressions Infers a type for every expression ex Nken
+00:10:10
+writing
+
+00:10:55
+slide
+Types Type Checking is the process of verifying fully typed programs Type Inference is the process of filling in missing type information The two are different but the terms are often used interchangeably
+00:11:00
+slide
+Types Type Checking is the process of verifying fully typed programs Type Inference is the process of filling in missing type information The two are different but the terms are often used interchangeably
+00:11:05
+writing
+

@@ -1,0 +1,27 @@
+00:00:00
+slide
+Compilers 1 Managing Caches
+00:00:20
+slide
+Managing Caches Regisfer s 1 cycle bytes Cache 3 cycles 256k 1M Main memory 20 100 cycles 32M46 Disk 0 5 5M cycles 4G 1T My Alex mun
+00:00:25
+writing
+
+00:03:45
+slide
+Managing Caches Compilers are very good at managing registers Much better than a programmer could be Compilers are not good at managing caches This problem is still left to programmers It is still an open question how much a compiler can do to improve cache performance Compilers can and a few do perform some cache optimizations
+00:03:50
+slide
+Managing Caches Compilers are very good at managing registers Much better than a programmer could be Compilers are not good at managing caches This problem is still left to programmers It is still an open question how much a compiler can do to improve cache performance Compilers can and a few do perform some cache optimizations Alex mm
+00:04:50
+slide
+Consider the loop f0r j 1 j 10 J f0r i 1 i 1000000 i 3U NH Managing Caches ex Nken
+00:04:55
+writing
+
+00:09:25
+slide
+Managing Caches Consider the program for i 1 i 1000000 i for j 1 10 j a i b i Computes the same thing But with much better cache behavior Might be more than 10x faster A compiler can perform this loop interchange optimization
+00:09:35
+writing
+

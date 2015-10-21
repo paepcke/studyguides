@@ -1,0 +1,39 @@
+00:00:00
+slide
+Compilers 1 Java Interfaces
+00:00:10
+slide
+Specify relationships between classes without inheritance interface Pointlnterface void move int dx inttdy class Point implements Pointlnterface void move int dx int dy Java Interfaces ex Aiken
+00:00:15
+writing
+
+00:01:20
+slide
+u Java programs can use interfaces to ma Java Interfaces e it unnecessary for related classes to share a common abstract superclass or to add methods to Object In other words interfaces play the same role as multiple inheritance in C because classes can implement multiple interfaces class X implements A B C Alex um
+00:01:25
+writing
+
+00:02:30
+slide
+Java Interfaces A graduate student may be both an University employee and a student class GraduateStudent implements Employee Student No good way to incorporate Employee Student methods for grad students with single inheritance
+00:02:35
+slide
+Java Interfaces A graduate student may be both an University employee and a student class GraduateStudent implements Employee Student No good way to incorporate Employee Student methods for with single inheritance
+00:02:45
+writing
+
+00:04:45
+slide
+Java Interfaces Methods in classes implementing interfaces need not be at fixed offsets interface Pointlnterface void move int dx int dy class Point implements Pointlnterfacel void move int dx int dy class Point2 implements Pointlnterface void dummy void move int dx int dy Alex um
+00:04:50
+slide
+Java Interfaces Methods in classes implementing interfaces need not be at fixed offsets interface Pointlnterface void move int dx int dy class Point implements Pointlnterfacel void move int dx int dy class PointZ implements Pointlnterface void dummy void move int dx int dy Alex um
+00:05:10
+writing
+
+00:07:40
+slide
+Java Interfaces Dispatches e f where e has an interface type are more complex than usual Because methods live at fixed offsets One approach Each class implementing an interface has a lookup table method names a methods Hash method names for faster lookup hashes computed at compile time Alex mm
+00:07:45
+writing
+

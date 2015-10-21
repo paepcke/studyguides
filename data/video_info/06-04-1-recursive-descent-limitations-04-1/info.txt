@@ -1,0 +1,21 @@
+00:00:10
+slide
+RDA Limitation E T T E int int T E bool term TOKEN tok return next tok boul EJ return T0 boul E20 return T term PLUS E buul E TOKEN save next return next save EU next save E20 bool T10 return term NT bool T20 return term NT term T MES T buul T3 return term OPEN E term CLOSE bool T TOKEN save next return next save T10 next save T2 J next save T30 Alex Aiken
+00:00:15
+slide
+RDA Limitation T T E int int T E bool term TOKEN tok return next tok buul E10 return T buol E2 return T term PLUS E bool E TOKEN save next return next save E next save E20 bool T return term NT bool T2 return term NT term T MES T buol T30 return term OPEN E term CLOSE boo T J TOKEN save next return next save T10 next save T20 next save T30 Alex Aiken
+00:00:20
+writing
+
+00:05:10
+slide
+RDA Limitation If a production for non terminal X succeeds Cannot backtrack to try a different production for X later General recursive descent algorithms support such full backtracking Can implement any grammar AlexAiken
+00:05:15
+slide
+RDA Limitation If a production for non terminal X succeeds Cannot backtrack to try a different production for X later General recursive descent algorithms support such backtracking Can implement any grammar AlexAiken
+00:05:55
+slide
+RDA Limitations Presented recursive descent algorithm is not general But is easy to implement by hand Sufficient for grammars where for any non terminal at most one production can succeed The example grammar can be rewritten to work with the presented algorithm By leftfactoring the topic of a future video AlexAiken
+00:06:00
+slide
+RDA Limitations Presented recursive descent algorithm is not general But is easy to implement by hand Sufficient for grammars where for any non terminal at most one production can succeed The example grammar can be rewritten to work with the presented algorithm By leftfactoring the topic of a future video AlexAiken

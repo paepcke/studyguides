@@ -1,0 +1,45 @@
+00:00:00
+slide
+Compilers 1 Globals Heap
+00:00:20
+slide
+Globals Heap All references to a global variable point to the same object store a global in an activation record Globals are assigned a fixed address once Variables with fixed address are allocated Depending on the language there may be other statically allocated values
+00:00:25
+slide
+Globals Heap All references to a global variable point to the same object store a global in an activation record Globals are assigned a fixed address once Variables with fixed address are allocated Depending on the language there may be other statically allocated values
+00:00:45
+writing
+
+00:01:20
+slide
+Globals Heap Low Address Memory Code High Address Am
+00:01:30
+slide
+Globals Heap Low Address Memory High Address Am
+00:01:50
+slide
+Globals Heap A value that outlives the procedure that creates it cannot be kept in the AR method foo new Bar The Bar value must survive deallocation of AR Languages with dynamically allocated data use a heap to store dynamic data
+00:02:00
+writing
+
+00:02:55
+slide
+Globals Heap The code area contains object code For most languages fixed size and read only The static area containsxdata not code with fixed addresses e g global data Fixed size may be readable or writable The stack contains an AR for each currently active procedure Each AR usually fixed size contains locals Heap contains all other data In C heap is managed by malloc and free
+00:03:00
+slide
+Globals Heap The code area contains object code For most languages fixed size and read only The static area containsxdata not code with fixed addresses e g global data Fixed size may be readable or writable The stack contains an AR for each currently active procedure Each AR usually fixed size contains locals Heap contains all other data In C heap is managed by malloc and free
+00:03:10
+writing
+
+00:04:50
+slide
+Globals Heap Both the heap and the stack grow Must take care that they grow into each other Solution start heap and stack at opposite ends of memory and let them grow towards each other
+00:05:15
+slide
+Globals Heap Low Address Memory High Address Am
+00:05:25
+slide
+Globals Heap Low Address Code Memory Static Data High Address rm Am
+00:05:30
+writing
+

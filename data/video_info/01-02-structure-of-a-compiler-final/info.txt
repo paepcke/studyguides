@@ -1,0 +1,114 @@
+00:00:00
+slide
+Compilers
+
+1 ) Structure of a Compiler
+00:00:05
+slide
+Compilers
+
+1 ) Structure of a Compiler
+00:00:10
+slide
+Compilers
+
+1 ) Structure of a Compiler
+00:00:15
+slide
+919.04%»?
+
+Lexical Analysis
+Parsing
+
+Semantic Analysis
+Optimization
+Code Generation
+
+ 
+
+Intro to Compilers
+00:00:20
+writing
+
+00:05:45
+slide
+Intro to Compilers
+
+' Once sentence structure is understood, we can try to
+understand “meaning”
+
+—This is hard!
+
+' Compilers perform limited semantic analysis to catch
+inconsistencies
+
+Alex Aiken
+00:06:50
+slide
+Intro to Compilers
+° Example:
+
+Jack said Jerry left his assignment at home.
+
+- Even worse:
+Jack said Jack left his assignment at home?
+00:07:10
+writing
+
+00:08:20
+slide
+Intro to Compilers
+
+ 
+
+- Programming languages {
+define strict rules to ini Jock = 3;
+avoid such ambiguities {
+MtJock=4;
+
+COUT<<JOCK
+00:09:10
+slide
+Intro to Compilers
+
+° Compilers perform many semantic checks besides
+variable bindings
+
+° Example:
+Jack left her homework at home.
+
+' A "type mismatch” between her and Jack; we know
+they are different people
+00:09:15
+slide
+Intro to Compilers
+
+° Compilers perform many semantic checks besides
+variable bindings
+
+° Example:
+Jack left her homework at home.
+
+' A "type mismatch" between her and Jack; we know
+they are different people
+00:09:45
+slide
+Intro to Compilers
+
+- Optimization has no strong counterpart in English
+— But a little bit like editing
+
+° Automatically modify programs so that they
+— Run faster
+— Use less memory
+00:10:05
+writing
+
+00:11:05
+slide
+Intro to Compilers
+
+X=Y*O isthesomeos X=O
+00:11:10
+writing
+

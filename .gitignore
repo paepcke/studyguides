@@ -56,5 +56,10 @@ docs/_build/
 # PyBuilder
 target/
 
-# datasets
-data/
+# certain datasets
+data/video_lectures
+data/video_frames
+data/closed_captions
+data/compilers
+data/databases
+data/nlp

@@ -1,0 +1,45 @@
+00:00:00
+slide
+Compilers 1 Operational Semantics
+00:00:15
+slide
+Operational Semantics Once again we introduce a formal notation Logical rules of inference as in type checking Alex Aiken
+00:00:40
+slide
+Operational Semantics Recall the typing judgment Context e C In the given context expression e has type C We use something similar for evaluation Context F e v In the given context expression e evaluates to value v
+00:00:45
+writing
+
+00:04:55
+slide
+Operational Semantics A variable environment maps variables to locations Keeps track of which variables are in scope Tells us where those variables are E a l b 2 Alex mm
+00:05:00
+writing
+
+00:07:10
+slide
+Operational Semantics Cool values are objects All objects are instances of some class Alex Am
+00:07:15
+slide
+Operational Semantics Cool values are objects All objects are instances of some class Alex mm
+00:07:25
+writing
+
+00:08:15
+slide
+Operational Semantics Special cases classes without attributes nt 5 the integer 5 Bool true the boolean true String 4 the string Cool of length 4
+00:08:25
+writing
+
+00:09:15
+slide
+Operational Semantics The evaluation judgment is so E Ske v Given so the current value of self And E the current variable environment And 5 the current store If the evaluation of e terminates then The value of e is v And the new store is Alex mm
+00:09:20
+writing
+
+00:11:55
+slide
+Operational Semantics of evaluation is a value and a store New store models the side effects Alex mm
+00:12:00
+writing
+

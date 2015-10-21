@@ -1,0 +1,33 @@
+00:00:00
+slide
+Compilers 1 Orderings
+00:00:25
+slide
+Orderings We can simplify the presentation of the analysis by ordering the values J c T 0 Drawing a picture with values drawn lower we get Alex Aiken
+00:00:30
+slide
+Orderings We can simplify the presentation of the analysis by ordering the values i C T Drawing a picture with values drawn lower we get Alex Aiken
+00:00:35
+writing
+
+00:02:20
+slide
+Orderings T is the greatest value J is the least All constants are in between and incomparable Let lub be the least upper bound in this ordering Rules 1 4 can be written using lub C s x in lub C p x out p is a predecessor ofs
+00:02:25
+slide
+Orderings T is the greatest value J is the least All constants are in between and incomparable Let Iub be the least upper bound in this ordering Rules 1 4 can be written using lub C s x in lub C p x out p is a predecessor ofs
+00:02:30
+writing
+
+00:04:45
+slide
+Orderings Simply saying until nothing changes guarantee that eventually nothing changes The use of lub explains why the algorithm terminates Values start as J and only increase J can change to a constant and a constant to T Thus C s x can change at most twice
+00:04:50
+slide
+Orderings Simply saying until nothing guarantee that eventually nothing changes The use of lub explains why the algorithm terminates Values start as J and only increase J can change to a constant and a constant to T Thus C s x can change at most twice
+00:05:00
+writing
+
+00:06:30
+slide
+Orderings Thus the constant propagation algorithm is linear in program size Number of steps Number of C values computed 2 Number of program statements 4 ex um

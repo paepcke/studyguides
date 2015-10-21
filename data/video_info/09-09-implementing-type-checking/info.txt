@@ -1,0 +1,30 @@
+00:00:00
+slide
+Compilers 1 Implementing Type Checking
+00:00:05
+slide
+Compilers 1 Implementing Type Checking
+00:00:15
+slide
+Compilers 1 Implementing Type Checking
+00:00:20
+slide
+Implementing TC COOLtype checking can be implemented in a single traversal over the AST Type environment is passed down the tree From parent to child Types are passed up the tree From child to parent ex Nken
+00:00:25
+writing
+
+00:01:00
+slide
+O M C e nt O M C Implementing TC F e2 Int O M C F e1 e2 nt Add ex Nken
+00:01:05
+slide
+Implementing TC O M C F e Int O M C e2 Int Add O M CF e1 e2 nt l
+00:01:15
+writing
+
+00:04:30
+slide
+Implementing TC o M C 161 e0 To O T x M C M I 631le Let Init QMCR F let sz in el T1 ex Nken
+00:04:35
+writing
+

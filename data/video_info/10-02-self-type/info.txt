@@ -1,0 +1,30 @@
+00:00:00
+slide
+Compilers 1 Self Type
+00:00:20
+slide
+Compilers 1 Self Type
+00:00:25
+slide
+dass Count i int e 0 inc 1 Count i e x 1 self Self Type ex Nken
+00:01:25
+slide
+Self Type Consider a subclass Stock of Count Ciass Stock inherits Count name String name of item 0 And the following use of Stock ciass Main Stock 3 new Stockhnc 0 avname Alex Nken
+00:01:30
+writing
+
+00:06:15
+slide
+Self Type SELF TYPE allows the return type of inc to change when inc is inherited Modify the declaration of inc to read inc SELF TYPE The type checker can now prove O M C F new Count inc Count O M C F new Stock inc Stock The program from before is now Alex um
+00:06:20
+slide
+Self Type SELF TYPE allows the return type of inc to change when inc is inherited Modify the declaration of inc to read inc SELF TYPE The type checker can now prove O M C r new Count inc Count O M C F new Stock inc Stock The program from before is now Alex um
+00:06:25
+writing
+
+00:07:30
+slide
+Self Type SELF TYPE is not a dynamic type It is a static type It helps the type checker to keep better track of types It enables the type checker to accept more correct programs rm Aiken
+00:07:35
+writing
+

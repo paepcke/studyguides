@@ -1,0 +1,18 @@
+00:00:00
+slide
+Compilers 1 Alignment
+00:00:20
+slide
+Alignment Most modern machines are 32 or bit 8 bits in a byte 4 or 8 bytes in a word Machines are either byte or word addressable Mex mm
+00:00:30
+writing
+
+00:03:25
+slide
+Alignment Example Astring Hello Takes 5 characters without a terminating 0 To word align next word add 3 characters to the string The padding is not part of the string just unused memory
+00:03:30
+slide
+Alignment Example A string Hello Takes 5 characters without a terminating 0 To word align next word add 3 padding characters to the string The padding is not part of the string just unused memory
+00:03:40
+writing
+

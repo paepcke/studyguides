@@ -1,0 +1,69 @@
+00:00:00
+slide
+Compilers 1 Local Optimization
+00:00:15
+slide
+Local Optimization The simplest form of optimization Optimize one basic block No need to analyze the whole procedure body
+00:00:20
+writing
+
+00:04:50
+slide
+Local Optimization Operations on constants can be computed at compile time If there is a statement x y Op 2 And y and z are constants Then y Op 2 can be computed at compile time Mex mm
+00:05:05
+writing
+
+00:06:35
+slide
+Local Optimization Constant folding can be dangerous
+00:07:05
+writing
+
+00:11:00
+slide
+Local Optimization Eliminate unreachable basic blocks Code that is unreachable from the initial block E g basic blocks that are not the target ofanyjump or through from a conditional Alex mm
+00:11:05
+writing
+
+00:12:15
+slide
+Local Optimization Why would unreachable basic blocks occur
+00:12:20
+writing
+
+00:15:05
+slide
+Local Optimization Some optimizations are simplified if each register occurs only once on the side of an assignment Rewrite intermediate code in single assignment form x z y b z y a2 x 2 az b x 2 x x 2 b b is afresh register More complicated in general due to loops Alex Nken
+00:15:10
+slide
+Local Optimization Some optimizations are simplified if each register occurs only once on the side of an assignment 0 Rewrite intermediate code in single assignmentform x z y b z y a2 x 2 a2 b x 2 x x 2 b b is a fresh register More complicated in general due to loops Alex Nken
+00:15:25
+writing
+
+00:16:10
+slide
+Local Optimization If Basic block is in single assignment form A definition x is the first use of x in a block Max mm
+00:16:15
+writing
+
+00:18:25
+slide
+Local Optimization lfw x appears in a block replace subsequent uses of w with uses ofx Assumes single assignment form Mex mm
+00:18:30
+writing
+
+00:19:35
+slide
+Example a 5 x 2 a y2 x 6 t x y H m Ii lin I 0 Am Local Optimization
+00:19:45
+writing
+
+00:23:25
+slide
+Local Optimization Each local optimization does little by itself
+00:24:35
+slide
+Initial code a x 2 bz 3 x d c c e b 2 f a d g e f Local Optimization
+00:24:50
+writing
+

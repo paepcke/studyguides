@@ -1,0 +1,72 @@
+00:00:00
+slide
+Compilers 1 Recognizing Handles
+00:00:20
+slide
+Recognizing Handles Bad News There are no known efficient algorithms to recognize handles Good News There are good heuristics for guessing handles On some CFGs the heuristics always guess correctly Alex Amen
+00:00:50
+slide
+Recognizing Handles Amen
+00:00:55
+slide
+Recognizing Handles All CFGS Unambiguous CFGs
+00:01:00
+slide
+Recognizing Handles Unambiguous CFGs Alex Aiken
+00:01:05
+writing
+
+00:02:05
+slide
+Recognizing Handles It is not obvious how to detect handles At each step the parser sees only the stack not the entire input start with that x is a viable prefix if there is an m such that alm is a state of a shift reduce parser
+00:02:10
+writing
+
+00:03:05
+slide
+Recognizing Handles What does this mean A few things A viable prefix does not extend past the right end of the handle a viable prefix because it is a prefix of the handle As long as a parser has viable prefixes on the stack no parsing error has been detected Alex Aiken
+00:03:10
+slide
+Recognizing Handles What does this mean A few things A viable prefix does not extend past the right end of the handle a viable prefix because it is a prefix of the handle As long as a parser has viable prefixes on the stack no parsing error has been detected Alex Amen
+00:03:55
+slide
+Recognizing Handles Important Fact 3 about bottom up parsing
+00:04:00
+writing
+
+00:05:45
+slide
+Recognizing Handles The problem in recognizing viable prefixes is that the stack has only bits and pieces of the rhs of productions If it had a complete rhs we could reduce These bits and pieces are always prefixes of rhs of productions
+00:06:30
+slide
+Recognizing Handles Consider the input int EaT E T Taint T intl E Then El is a state of a parse E is a prefix of the rhs ofT a E Will be reduced after the next shift Item T a E says that so far we have seen E of this production and hope to see Alex Allan
+00:06:35
+writing
+
+00:08:25
+slide
+Recognizing Handles The stack may have many prefixes of Prefix1 Prefix2 PrefianlPrefixn Let Prefix be a prefix of rhs 0in or Prefixi will eventually reduce to Xi The missing part of am starts with XI i e there is a Xi 1 Prefixl 1 Xi 3 for some 13 Recursively Prefikarl Prefi n eventually reduces to the missing part of ock
+00:08:30
+slide
+Recognizing Handles The stack may have many prefixes of Prefix1 Prefix2 PrefianlPrefixn Let Prefixi be a prefix of rhs 0in ori Prefixi will eventually reduce to Xi The missing part of am starts with Xi i e there is a Xi 1 Prefixi 1 Xi B for some 13 Recursively Prefixn eventually reduces to the missing part of ock
+00:08:40
+writing
+
+00:10:45
+slide
+Recognizing Handles Consider the string int int int lint is a state of a shift reduce parse is a prefix of the rhs of T E a is a prefix of the rhs of E T is a prefix of the rhs of T int T
+00:10:50
+writing
+
+00:12:45
+slide
+Recognizing Handles The stack of items T E E T T a int T Says seen of T E seen 3 of E T We ve seen int ofT int T
+00:12:50
+slide
+Recognizing Handles The stack of items T E E T T int T Says seen of T E seen 2 of E T We ve seen int ofT int T
+00:12:55
+writing
+
+00:13:40
+slide
+Recognizing Handles Idea To recognize viable prefixes we must Recognize a sequence of partial of productions where Each partial rhs can eventually reduce to part of the missing suffix of its predecessor rm Aiken

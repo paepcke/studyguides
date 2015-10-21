@@ -1,0 +1,24 @@
+00:00:00
+slide
+Compilers 1 Intermediate Code
+00:00:15
+slide
+Intermediate Code A language between the source and the target Provides an intermediate level of abstraction More details than the source Fewer details than the target
+00:00:25
+writing
+
+00:03:10
+slide
+Intermediate Code Intermediate language high level assembly Uses register names but has an unlimited number Uses control structures like assembly language Uses opcodes but some are higher level E g push translates to several assembly instructions Most opcodes correspond directly to assembly opcodes Alex Aiken
+00:03:15
+writing
+
+00:06:40
+slide
+Intermediate Code Similar to assembly code generation But use any number of IL registers to hold intermediate results
+00:07:05
+writing
+
+00:08:55
+slide
+Intermediate Code You should be able to use intermediate code At the level discussed in lectures You are not expected to know how to generate intermediate code Because we discuss it further But really just a variation on code generation

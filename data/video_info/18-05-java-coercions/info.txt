@@ -1,0 +1,24 @@
+00:00:00
+slide
+Compilers 1 Java Coercions
+00:00:20
+slide
+Java Coercions Java allows primitive types to be coerced in certain contexts In 1 2 0 the int 1 is widened to afloat 1 0 A coercion is reallyjust a primitive function the compiler inserts for you Most languages have extensive coercions between base numeric types
+00:00:25
+writing
+
+00:02:30
+slide
+Java Coercions Java distinguishes two kinds of coercions casts Widening always succeed int a float Narrowing may fail if data be converted to desired type float int downcasts Narrowing casts must be explicit Widening casts coercions can be implicit
+00:02:35
+slide
+Java Coercions Java distinguishes two kinds of coercions casts Widening always succeed int float Narrowing may fail if data be converted to desired type float int downcasts Narrowing casts must be explicit Widening casts coercions can be implicit
+00:02:40
+writing
+
+00:05:10
+slide
+Java Coercions What is the only type in Java for which there are no coercions casts defined ex Aiken
+00:05:15
+writing
+

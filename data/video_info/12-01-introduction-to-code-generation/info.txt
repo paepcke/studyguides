@@ -1,0 +1,33 @@
+00:00:00
+slide
+Compilers Introduction to Code Generation
+00:00:15
+slide
+Code Generation We focus on generating code for a stack machine with accumulator We want to run the resulting code on a real machine e g the MIPS processor or simulator We simulate stack machine instructions using MIPS instructions and registers
+00:00:20
+slide
+Code Generation We focus on generating code for a stack machine with accumulator We want to run the resulting code on a real machine e g the MIPS processor or simulator We simulate stack machine instructions using MIPS instructions and registers
+00:01:00
+slide
+Code Generation The accumulator is kept in MIPS register SaO ex Nken
+00:01:05
+writing
+
+00:02:45
+slide
+Code Generation MIPS architecture Prototypical Reduced Instruction Set Computer RISC Most operations use registers for operands results Use load store instructionsto use values in memory 32 general purpose registers 32 bits each We use 55p 30 and Stl a temporary register Read the SPIM documentation for details Alex Amen
+00:03:10
+writing
+
+00:04:00
+slide
+Code Generation w reg1 offset reg2 Load 32 bit word from address regZ offset into regl add reg1 regZ reg3 reg1 e reg2 reg3 sw reg1 offset reg2 Store word in reg1 at address reg2 offset addiu reg1 regZ imm regl e reg2 imm means overflow is not checked Ii reg imm rege imm Alex Nken
+00:04:20
+writing
+
+00:05:55
+slide
+Code Generation The code for 7 Sin MIPS acc 7 push acc acc e 5 acc e ucc Top of P0P Alex Aiken
+00:06:00
+writing
+

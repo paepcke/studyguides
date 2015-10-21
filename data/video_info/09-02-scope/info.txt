@@ -1,0 +1,36 @@
+00:00:00
+slide
+Compilers 1 Scope
+00:00:15
+slide
+Scope Matching identifier declarations with uses Important static analysis step in most languages nduwngCOOL Mex mm
+00:00:20
+writing
+
+00:01:40
+slide
+Scope The scope of an identifier is the portion of a program in which that identifier is accessible The same identifier may refer to different things in different parts of the program Different scopes for same name overlap An identifier may have restricted scope
+00:02:15
+slide
+Scope Most languages have static scope Scope depends only on the program text not behavior Cool has static scope A few languages are dynamically scoped Lisp SNOBOL Lisp has changed to mostly static scoping Scope depends on execution of the program Alex Mk
+00:02:20
+writing
+
+00:05:00
+slide
+Scope A dynamically scoped variable refers to the closest enclosing binding in the execution of the program Example g y let a 4 in f 3 f x a More about dynamic scope later ex um
+00:05:15
+writing
+
+00:06:05
+slide
+Scope Cool identifier bindings are introduced by Method definitions introduce method names Let expressions introduce object Formal parameters introduce object Attribute definitions introduce object Case expressions introduce object Aicx m
+00:06:35
+slide
+Scope Not all identifiers follow the most closely nested rule For example class definitions in Cool Cannot be nested Are global y visible throughout the program A class name can be used before it is defined
+00:06:55
+writing
+
+00:08:15
+slide
+Scope Method names have complex rules A method need not be defined in the class in which it is used but in some parent class Methods may also be redefined overridden
