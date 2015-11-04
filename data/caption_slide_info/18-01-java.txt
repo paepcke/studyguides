@@ -1,0 +1,45 @@
+4.089
+slide
+Compilers 1 Java
+In the next several videos we&#39;re going to apply what we&#39;ve learned in the class to analysis of various features of Java. This will give us a chance to both look at a real programming language and how it&#39;s designed and been done. And also to talk about some features that art in Cool that we haven&#39;t been able to cover thus far in the course. For the perspective of this class, Java is a kind of Cool on steroids. 
+
+29.27
+slide
+Java COOL on steroids History Arrays Interfaces Coercions Threads Dynamic Loading Initialization Summary Java or um
+It&#39;s Cool plus more features, many more features. At, at their core Java and Cool 
+
+35.539
+writing
+
+are very similar. Java and Cool are both typed object oriented garbage collected languages. They were both designed in the early 1990s and so they share a common culture there with the ideas that were current at that time. So in this video, I&#39;m just going to give a little bit of history of Java so that will be the focus really of this rather short video. And then in the subsequent videos, we&#39;ll talk about all the features or some of the features of Java that are not in Cool. And we&#39;ll use the ideas of course that we&#39;ve been discussing all along through the class, to explain a little bit about those ideas. But I think these are all important language constructs that are unfortunately were too time consuming or too complicated to add to the course project. So I think it&#39;s useful to use a language like [inaudible] to illustrate how these ideas work and what some of the issues are. So Java began as a project called Oak at SUN Microsystems and it was originally 
+
+97.939
+slide
+Java Began as Oak at SUN Originally targeted at set top devices Initial development took several years Retargeted as the Internet language 95 Every new language needs a killer Alernatives such as TCL Python Alex Amen
+targeted at set top devices. And so what was a set top device? This was a little box that was gonna sit on top of your TV So you had your TV screen, and then there 
+
+107.719
+writing
+
+was going to be this little thing up here that was going to sit on top of the TV that was going to control all your cable programming. So this would essentially would connect to some kind of network and it would help you to do, you know to make your TV more interactive. Okay, so this was back in the days before every TV was really a computer by itself. The initial develo pment of, of Oak took several years. I believe the project ran from about 91 to 94 and what happened, at least as I understand it, is that this set top device market just never took off. So this never became a popular never, never became a popular idea with consumers and, and so there really was a kind of limited up side or a limited potential for, for Oak at the time. And then something happened, the Internet happened. So also in the early 90s the Internet revolution was really gathering steam. Everybody was getting on the Internet and it became obvious sometime 93, 94 that there was going to be a need for programming languages that really addressed these specific issues on the Internet. And in particular people were very concerned about security. And, they didn&#39;t want to be downloading lots of binaries that were programs written in C and passing those around on the Internet because it was just really no guarantee that those programs would work as intended and not crash your machine. So you know, they needed to be able to share code over the Internet from other people that you didn&#39;t necessarily trust completely meant that we needed safer languages than languages like C and C++ and so there was an opportunity there for a, a new language and there were several candidates actually. Besides Java, Tickle and Python were very serious candidates to become the Internet programming language eventually the backing of SUN Microsystems, the backing of SUN gave to Java helped it to really gain a very, very strong presence on the Internet. But you know, the point of this story is that every new language needs a killer app. Every programming language rides into the world on the back of some application. So there has to be some kind of new application that people want to write that the existing languages don&#39;t serve very well and that provides the opportunity and therefore makes it worthwhile for people to learn a new programming language. And so the fact that Ja va was a very safe language, it had the garbage collection. It had the type system that made it well suited at the time to the, the needs of the emerging needs of internet programming. And it became very popular I think primarily because of that reason. And if you if you recall there was a lecture or a video early on, on the economy of programming languages. And I would recommend actually that if you haven&#39;t watched that one, then you go back and take a look because there I discuss some of these ideas about how languages are adopted in more detail. So Java also came into existence in a particular technical environment and it&#39;s very 
+
+309.0
+slide
+Java Modula 3 types Eiffel Objective C C Object orientation interfaces Lisp dynamic flavor lots of features Alex mm
+common. In fact, it&#39;s normal for new programming languages to borrow heavily 
+
+313.389
+writing
+
+from their predecessors and new languages are often mostly recombinations of ideas from previous languages in a new design perhaps with some innovations thrown in. And the particular influences on Java. Again this is at least so far as I understand it so the type system in Java, or its, its commitment to types probably is traceable to Modula-3 and the ideas there where people try to build a sort of programming language that would scale in a realistic way to large systems but also be strongly typed. The object orientation of Java is traceable to languages like Objective C and C++ and, and also Eiffel which also had the idea of interfaces which is a prominent feature in Java. And finally Java is quite a dynamic language meaning that there many things that are not done staticly. They&#39;re done dynamically so features like reflection would be one example of that. And there are actually quite a few other features and there is some history there. There&#39;s some shared culture there with Lisp. This was a or is a functional family language but is also a very, very dynamic language. As I said at the beginning this video is 
+
+395.15
+slide
+Java From our perspective COOL plus Exceptions Interfaces Threads Dynamic Loading Other less important ones Java is a BIG language Lots of features Lots of feature interactions Mex mm
+just an introduction and overview and in the next few videos, we&#39;ll be looking at specific features of Java and how they work. And that will includes things like 
+
+403.22
+writing
+
+exceptions, interfaces, and threads. As well as a bunch of other features that we&#39;ll discuss at least, briefly. One thing to realize is that Java is a big language. It is not simple. The language manual for Java runs to hundreds and hundreds of pages. It has lots of features. And perhaps more importantly, lots of feature interactions. So. The hard part of designing a language of course is getting all the feature interactions right. All the combinations of the features and, you know making sure there are no surprising interactions between them. 
+

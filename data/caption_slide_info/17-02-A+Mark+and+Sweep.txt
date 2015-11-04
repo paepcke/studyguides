@@ -1,0 +1,35 @@
+4.23
+slide
+Compilers 1 Mark and Sweep
+In this video, we&#39;re going to talk about the first of three garbage collection techniques that we&#39;re going to look at in detail. First one is mark-and-sweep. 
+
+10.87
+slide
+Mark and Sweep When memory runs out GC executes two phases the mark phase traces reachable objects the sweep phase collects garbage objects Every object has an extra bit the m bit reserved for memory management initially the mark bit is 0 set to 1 for the reachable objects in the mark phase Alex Aiken
+Mark-and-sweep works in two phases. And it&#39;s called, not surprisingly, mark and sweep. So, the mark phase is going to trace all the reachable objects. So, when memory runs out and we stop to do the garbage collection, the first thing we&#39;re going to do is go and trace out all the reachable objects. And then the Sweep 
+
+29.71
+slide
+Mark and Sweep mark phase let todo al gets while todo 2 Q do pick v e todo todo todo V if mark v 0 then mark v 1 let V1 Vn be the pointers contained in v todo todo u v1 vn fi 0d v is unmarked yet ex Aiken
+phase is going to collect all the garbage objects. And to support this, every object is going to have an extra bit somewhere in it called the mark bit. And, this is reserved from memory management and it&#39;s not going to be used by anything except the garbage collector. And initially, before we start a garbage collection, the mark bit of every object will always be zero. And that&#39;s going to be set to one, 
+
+50.94
+slide
+The sweep phase scans the heap loo ing for objects with mark bit 0 these objects were not visited in the mark phase they are garbage Any such object is added to the free list Objects with a mark bit 1 have their mark bit reset to 0 Mark and Sweep
+for the reachable objects in the mark phase. So, when we mark an object, we mark it with a And that indicates that the object is reachable. So, here is the mark phase. It&#39;s going to be a work list based algorithm and so initially our work list 
+
+64.36
+slide
+sweep phase sizeoflg is the size of block starting at p p bottom of heap while p top of heap do if mark p 1 then mark p 0 else add block p p sizeof p 1 to freelist fi p p sizeof p od Mark and Sweep ex Aiken
+consists of all the roots so all the initial pointers held in registers and then while the work list, the to-do list is not empty, we&#39;re going to do the following. We pick some element v out of the to-do list we&#39;ll remove it from the to-do list, okay. And then, this is the crux of the algorithm. If the object v is not already marked then we mark it, okay. So, we say, mark bit to one and then we 
+
+90.39
+slide
+and Sweep roof OB 0C OD OE OF After mark Fee ob 1E 0F w free Aftersweep A 03 OC OD 0E OF w free Am
+find all the pointers inside of it, alright. And we add those to our work list. So, everything, every point gets added to work list. Now, if v is already marked, well then we have already processed it and we&#39;ve already add all the things it points to, to the work list. And so we just need to do nothing there is no 
+
+106.34
+slide
+Mark and Sweep ESQ 10 After mark rooT A After sweep AOA roof rm Am
+else branch and we just drop it from the to-do list. So, once we&#39;ve completed the mark phase and every reachable object has been marked, then the sweep phase is going to scan th rough the heap looking for objects that have mark bit zero. And the sweep phase is just going to march through all of memory. It&#39;s going to start at the bottom of the heap and walk over every object in the heap and check its mark bit. And so, any of the objects that it finds that have mark bit zero, they were not visited in mark phase and they&#39;re clearly not reachable. S, all those objects will be added to a free list. And as we go through the memory is one other detail that&#39;s important. Any object that has its mark bit set is gonna have its mark bit reset to zero. So, that way it&#39;s ready for the next garbage collection. So, here is the pseudo-code for the sweep phase and this will function, size of p is going to size of block, the size of the object that starts at pointer p, alright. And as you&#39;ll see this is actually, the reason that we have the size of objects encoded in the object in COOL. So, remember in the header for COOL objects there is a size field that is, so that the garbage collector as it&#39;s walking through memory can figure out how big the objects are. Anyway, we start at the bottom of the heap. And while we haven&#39;t reached the top of the heap, we do the following. We look at where we&#39;re pointing and then we&#39;ll always be pointing to the beginning of an object. So, we check to see if the mark bit of that object is one. And if it is, well then it was a reachable object. So, we just reset its mark bit to zero. Otherwise, if its mark bit was zero, then we&#39;re going to add that block of memory, okay, which is the size of the object to the free list. And finally, in either case, okay, we&#39;re going to increment p by the size of the object that it points to so we point to the next object. Then we&#39;ll just repeat that loop over and over again resetting the mark bits of things that were reached and adding things that were not reached for the free list until we&#39;ve touched every object in the heap. Here&#39;s a little example. So, we&#39;re starting out here with a, a heap and we&#39;re gonna assume there&#39;s just one root for simplicity. And here are all the objects and initially their marked bits are zero and we do have a free list, an initial free list over here. Notice that, you know, there&#39;s a little bit of memory that is on the free list. Okay. So, after the mark phase, what has happened? Well, we&#39;ve gone through, and touched all the reachable objects. So, we started with A and, of course, we set its mark bit to one. And then we followed pointers reachable from A, set the mark bit there. Follow the pointer reachable from C, set the mark bit there. And so we wind up A, C, and E being marked, nothing else is marked, okay. And now the sweep phase will go through memory, it&#39;s going to reset all the marked bits to zero. And as it finds unreachable objects, in this case B and D, it&#39;s going to add them to the free list and so what we&#39;ll wind up the free list will wind up being a linked list of, of, of blocks of memory that are available for future allocations. 
+

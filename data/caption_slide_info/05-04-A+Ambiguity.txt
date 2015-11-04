@@ -1,0 +1,25 @@
+3.78
+slide
+Compilers 1 Ambiguity i1
+In this video we&#39;re going to talk about ambiguous context free grammars in programming languages and what to do about them. We&#39;ll begin by looking at our 
+
+16.12
+slide
+This string has two parse trees E Em id id Ambiguity idiid 1 E E E id E E id id
+favorite grammar for expressions over + and and identifiers and we&#39;ll just look at the string id id + id. Now it turns out that this particular string and let&#39;s 
+
+29.23
+slide
+Ambiguity This string has two parse trees isz ioi 4 E E E F at Eu 65 id id 5
+
+
+29.23
+slide
+This string has two parse trees E Eu 64 idatiolnd Ambiguity E E Mas dud
+write it down one more time, id id + id. This string has two parse tree using this 
+
+38.429
+slide
+Ambiguity A grammar is ambiguous if it has more than one meme for some string Equivalently there is more than one right most or left most derivation for some string
+grammar. Let&#39;s do the Parse tree on the left first. We begin with the start symbol e and the first production in this derivation that gives us this Parse tree must be that e goes to e + e. E + e And then we replace the left most e by e e. We use the production e goes to e e and we still have the plus e left over and at this point you can see that we&#39;re going to get this parse tree. We&#39;ve done with those two productions. We have done this much. The construction of the parse tree and the rest of productions are just generating these id&#39;s. So that&#39;s a three more productions and we can see that, you know if we do those we&#39;ll get id id + id no problem, alright. So now let&#39;s switch and do the derivation on the right or excuse me, the parse tree on the right so this begins also with e. But this time we use the production e goes to e e first, all right? And now we&#39;re gonna replace the right most e. By e goes to e + e so we have e e + e and now we&#39;ve, with those two productions we&#39;ve done this portion of the parse tree and once again with three more productions we can get to id id + id so there you can see we&#39;ve got two derivations. That produced two distinct Parse trees. And just to be completely clear about this, in this case we&#39;re getting two different Parse trees. Each of these derivation, each of these Parse trees has many derivations. Each Parse tree has a left most derivation, a right most derivation and many other derivations. This situation is something different. Here we have two derivations that yield completely different Parse trees and that is the sign or the definition of an ambiguous grammar. So a grammar is ambiguous if it has more than one Parse tree for some string. And another way of saying the same thing is that there is more than one right most or left most derivation for some string. So if some string has two right most derivations or more or two left derivations or more then the, that string will have two distinct parse trees and that grammar will be ambiguous. Ambiguity is bad. If you have multiple parse trees for some program then that essentially means that you&#39;re leaving it up to the compiler to pick which of those two possible interpretations of the program you want it to generate code for and that&#39;s not a good idea. We don&#39;t like to have ambiguity in our programming languages and leave decisions about what the program means up to the compiler. 
+

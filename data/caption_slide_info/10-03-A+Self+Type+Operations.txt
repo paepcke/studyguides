@@ -1,0 +1,75 @@
+4.019
+slide
+Compilers 1 Self Type Operations
+In this video we&#39;re gonna continue our discussion on self-type, by talking about the type-level operations that are available on self-type. And this will help to clarify what self-type actually is, and it&#39;s role in the type system. Let&#39;s begin 
+
+20.63
+slide
+Self Type Operations What can be the dynamic type of the object returned by inc Answer whatever could be the type of classA inherits Count inherits Count class C inherits Count inc could be invoked through any of these classes Mex m
+by thinking about the example that we discussed last time and if you&#39;ve 
+
+23.69
+writing
+
+forgotten what that is, let me just write it down quickly. We had a class called count, and count had one. Field an integer I that was initialized to zero and it had one method called INC that returned something itself type and all it did was to increment the counter field and return the self-objects. And I&#39;ve probably made some syntax errors here but that&#39;s not really important. That&#39;s basic code for the CAL class. And the question is what can be the dynamic type of the object that&#39;s actually returned by INC. And the answer here is it could be whatever is the type of this self-object. Whatever is the dynamic type of the self-object. And if we think about a big program where there is multiple classes that inherit from count. Then the answer is that INC could return count. Or any subclass of count. So it&#39;s going to return something that&#39;s at least, at most count, and, but it could return 
+
+97.969
+slide
+Self Type Operations In general if SELF TYPE appears textually in the class C as the declared type of E then dynamic type E S C Note The meaning of SELF TYPE depends on where it appears SELF TYPEC to refers to an occurrence of SELF TYPE in the body of C This suggests a typing rule SELF TYPEC S C Alex Aiken
+something more specific. The dynamic type, could be something more specific, it 
+
+100.74
+writing
+
+could be a sub classic count, or a sub class of a sub class of count. Anything that inherits directly or indirectly from count is a possibility. So what&#39;s the general case? Well, let&#39;s think about a class c. And in this class C, there&#39;s some expression buried somewhere inside of it that has the type self-type. It doesn&#39;t really matter how that expression got the type, self-type or what it is. Let&#39;s just say that it has that type somehow. Well, what are the possible dynamic types of the expression e. And from our discussion on the previous slide, it seems clear the dynamic type of e, when you run e, you&#39;re going to get back something that&#39;s a subtype of the class c, the enclosing class in which the self-type appears. And that&#39;s interestin g because it shows us that the, the meaning of self-type actually depends on the context. So, what this self-type means, this self-type means a subtype of the class C. If I&#39;d written self-type in a class D, in the de, somewhere in the definition of class D, there it would mean a subtype of the class D. And so to remind ourselves, what class we&#39;re talking about, what enclosing class we&#39;re talking about, we&#39;re gonna subscript occurrences of self-type with a class name. So self-types of c here is going to refer to a syntactic occurrence of the keyword self-type in the body of the class c. And this also suggests a very simple typing rule. And really the first useful fact about self-type, which is that self-types of c is a sub type of c. And this is really a key idea here that a 
+
+202.85
+slide
+Self Type Operations Rule has an important consequence In type checking it is always safe to replace SELF TYPEC by C My Man
+self-typing class C is some sub-type of the class C, because it also helps illustrate what self-type really is. The best way to think of an occurrence of self-type is that it&#39;s a type variable that ranges over all the sub-classes of the class in which it appears. So self-types of C you should think of as a type variable, it&#39;s something that doesn&#39;t have a fixed type, but is guaranteed to be 
+
+225.8
+slide
+Self Type Operations Rule has an important consequence In type checking it is always safe to replace SELF TYPEC by This suggests one way to handle SELF TYPE Replace all occurrences of SELF TYPEC by C Alex mm
+some type founded by C, so it&#39;s gonna be only one of the class. That inherits directly or indirectly from the class c. Now that rule that self-types of c is a sub type of the class c has an important consequence. It means that when we&#39;re 
+
+243.75
+slide
+Self Type Operations Recall the operations on types T1 S T2 T1 is a subtype of T2 lub T1 T2 the least upper bound of T1 and T2 Extend these operations to handle SELF TYPE
+doing type checking with self-type, it is always safe, always safe to replace self-types of c by c. So I say, it&#39;s okay to promote any self-types of c, which could be c or a sub type of c, to just say, okay, we&#39;re just going to say it&#39;s c. And that suggests one way to handle self-type which is just to replace all the occurrences of self-type sub C by C. Now unfortunately that turns out not to be 
+
+269.789
+slide
+Self Type Operations Let T and be any types but SELF TYPE
+very useful. Its sound, it&#39;s correct to do that, but that&#39;s really just like not 
+
+273.77
+writing
+
+having self-type at all. That&#39;s as if we went back to the example we did in the last video where we started out without self-type and we found out we couldn&#39;t use inheritance in the way we expected. So to do better than just throwing all the self-types away, we need to incorporate self-type into the type system. And the way we&#39;re going to do that is by looking at the operations that work on types in the type system, and there are two of them. There&#39;s the sub-type relationship that we&#39;ve talked about before, so when one type is a sub-type of another, and there&#39;s the least upper bound operation that tells us what the smallest type is that&#39;s bigger than both of two argument types. And, all we have to do and what we&#39;re going to do now is extend these operations to handle the type self-type. So let&#39;s begin with a sub-type relationship and in our definition here we&#39;re going to use sub-types T and T&#39;, and these are just normal class names. They are class names but not self-types. So one possibility is that we have self on both sides of. Convince yourself of this. Think of self-type again, as a variable. And we 
+
+349.99
+slide
+Self Type Operations Let T and be any types but SELFATYPE 1 SELF TYPEC S SELF TYPEC In Cool we never compare SELF TYPEs coming from different classes 2 SELF TYPECS T ifCST SELF TYPEc can be any subtype of C This includes C itself Thus this is the most flexible rule we can allow
+
+
+349.99
+writing
+
+can plug in, for that variable, any sub-type of C. But, just like variables in algebra, if we plug in one particular class for an occurrence of this variable, we have to pick the same one for every occurrence of the variable. So in particular, now if we pick some sub-class A of C, then we wind up with A. Is the sub type of A. If we plug in A for both sides we can see if their relationship holds similarly C is the sub type of C and for any sub type we might pick, if we bind the variable to that sub type we can see that this relationship will be true. Now 
+
+382.589
+slide
+Self Type Operations 3 S SELF TYPEC always false Note SELF TYPEC can denote any subtype of C Alex mm
+another thing you might think is what if the self-type sub-C is compared with 
+
+386.949
+writing
+
+self-type from another class? Say self-type sub-D. And it turns out in the cool type rules this will just never come up. The cool type rules are written in such a way that we never need to compare self-types from different classes. And I haven&#39;t shown you that, that&#39;s the case yet. But when we actually go through the type rules for self-type you&#39;ll see that is true. Now another possibility is that we have self-type on one side and the n a regular type on the other side. So when is self-types of c a type of t? Well, we&#39;re going to say if that&#39;s true if C is the subtype of T. And here we&#39;re using our rule that it&#39;s always safe to replace self-type by the class that, that index is in. So in this case C is a super-type of anything that self-type C could be. Clearly if C is a sub-type of T if T is at least C or possibly something higher in the class higher key, then T would be a super-type of anything that self-types of C could stand for. Another case is when we have a regular class name on the left hand side of the sub typing relationship and self-type on the right hand side. And in this case it turns out we have to say that this relationship is false. That so T is never, a regular class name is never. A sub type of self-type sub C. And to see this just think about the possibilities. So where can C and T be in the type hierarchy? So, if T and C are unrelated. You know, if they are inherent from object and they have nothing to do with each other. Well, than clearly T can&#39;t be a sub type of self-type sub C. They are just two unregulated classes. So, the only way that this could possibility work out is if they are related somehow. Now if. If T is a sub type of C well then you might think that could work out. But it turns out that we can&#39;t allow it even in that case. And here&#39;s the reason why, think about a hierarchy where T has some subclass, let&#39;s just say that it has a subclass A. And now because self-types of C ranges over all the possible subtypes of C, we could plug in A here and T is not a subtype of A, they&#39;re in the wrong relationship. And so it doesn&#39;t work for all the possible values of subtypes of C we can&#39;t say that this is true we have to say that it is false. Now there is one very special case. Where one could argue that we should allow this to be true. And that is in the case where T is actually a leaf of the class hierarchy. And let me actually draw this a 
+
+552.87
+slide
+r c Self Type Operations a T 3 I S SELF always false Note SELF TYPEC can denote any subtype of C 4 T S according to the rules from before
+little bit differently just to emphasize this. Let&#39;s say t hat C. Is a class up here and then T you know, is through some chain of inheritance relationships is a subtype of C. So it&#39;s not immediate but there might be other classes in between. Just emphasize, this isn&#39;t, doesn&#39;t, this relationship doesn&#39;t have to be immediate inheritance. It could be transitive inheritance. And now if T is a leaf. Of the hierarchy. If n is the only leaf of c, if c has no other sub classes then in fact T is a subtype of SELF_TYPE sub C. Because it is the unique minimal type that is in the subtype hierarchy of C. But the problem is that this is extremely fragile, and doesn&#39;t work, if you modify the program. In particular, a programmer might come along, and add some class A over here that&#39;s unrelated to T, but is also a subclass of C. And now this would no longer work. Because if I plug in A for SELF_TYPE sub C, then I see that T is not a subtype of A. Right, so, we can allow it, at a very special K. That C had only a chain of inheritance. Not a general tree under it. And, that T was the least of that chain. But that is so fragile. To future program extensions. And we, you know, if you, if you broke it by adding another class over here, all of sudden you would get type errors and pieces of codes that had previously been typed check to work and hadn&#39;t changed at all. It just wouldn&#39;t be a very nice language design. So, summarize, T, is never a sub type of self-types of C. And finally if we&#39;re comparing two normal types with not self-type then we just use the rules that we gave before. So the self-typing rules we had for normal class names haven&#39;t changed at all. And that covers all four cases, we can have self-type on both sides, we can have self-type just on the left side or just on the right side, and finally we can have a subtyping relationship with no self-type at all. 
+

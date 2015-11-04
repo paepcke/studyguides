@@ -1,0 +1,40 @@
+3.08
+slide
+Compilers 1 Orderings
+In the last several videos, we&#39;ve been talking about doing a kind of abstract computation. Computing with elements like Bottom the Constants and Top. And, in this video, we&#39;re going to start to generalize those ideas a little bit. And the first thing we&#39;re going to talk about, the first step towards that generalization, is to talk about orderings of those values. First, I&#39;d like to introduce a technical term. These values that we compute within program analysis, things like Bottom, the 
+
+28.66
+slide
+Orderings We can simplify the presentation of the analysis by ordering the values J C T 0 Drawing a picture with values drawn lower we get Alex um
+Constants and Top, these are called Abstract Values. And that&#39;s just to 
+
+34.59
+writing
+
+distinguish them from the Concrete Values, so the Concrete Values are the actual run-time values that a program computes with. Things like actual objects, and numbers and things like that. And the Abstract Values here the program analysis uses are in general, more abstract. Some particular Abstract Values can stand for a set of possible Concrete Values. And in a particular set of Abstract Values we&#39;re using for concept propagation, there&#39;s only one very Abstract Value and that&#39;s the Top and it stands for any possible run time value. So it stands for the entire set of run time values. Anyway, it turns out that there is a way to simplify the presentation of, of the analysis that we have been discussing by ordering the Abstract Values. So we&#39;re going to say is that Bottom is less than all the constants and that, and all the Constants are less than Top. And so if we draw a picture with the lower values drawn towards at the bottom picture and the higher values drawn at the top. And, and edges between values where there&#39;s a relationship, we get this diagram here. So you have bottom down here, underneath all the other values, Bottom is less than every Constant. Okay. So notice that all the constants are here on the middle level, alright? And also notice that the constants are not comparable to each other, alright? So this ordering is different than the numeric ordering. So zero is not less than one for example. Zero and one are inco mparable, as are every other pair of Constants. So you have, you know, Bottom at the Bottom. You have all the Constants in the middle and they&#39;re incomparable, And then, bigger than everything else is Top. Now with the ordering defined, there&#39;s a useful operation we can define on collections of elements and that is the Least Upper 
+
+139.18
+slide
+Orderings T is the greatest value J is the least All constants are in between and incomparable Let Iub be the least upper bound in this ordering Rules 1 4 can be written using lub C s x in lub C p x out p is a predecessor ofs
+Bound, or LUB, alright? And, and this means is taking the smallest element that 
+
+146.87
+writing
+
+is bigger than everything in the Least Upper Bound. So, for example, if I have the Least Upper Bound of Bottom and one, that is equal to one, okay? If I had the Least Upper Bound of Top and Bottom, that is equal to Top. And perhaps more interesting one, the Least Upper Bound of one and two, so two incomparable Constants here. And remember, the meaning of the Least Upper Bound, it&#39;s the smallest element in the ordering that&#39;s bigger than everything over which we&#39;re taking the Least Upper Bound. So we just have two things here in our Least Upper Bound. But the Least Upper Bound of one and two, the smallest thing that&#39;s bigger than both of them, or greater than or equal I should say, both of them is Top, okay? And so, the Least Upper Bound then, if you think about it, if you draw, draw our picture again. So we had Bottom and we had Top, and if you pick out some points here, let&#39;s say we want to take the Least Upper Bound of Bottom and two, you&#39;re just picking the smallest thing that&#39;s bigger than both. Well, that&#39;s going to be two itself, similarly two on Top, you will get Top. And then if have anything that&#39;s incomparable, then you have to pick something that&#39;s bigger than both of them and in this case that will always end up being Top for this very simple ordering, alright? Then given this idea of the Least Upper Bound, it turns out that rules one through four, all they&#39;re doing is computing the Least Upper Bound. So the in of a statement is just equal to the Least Upper Bound of the out of all the predecessors. Alright, and that&#39;s all that rules one through four we&#39;re saying. And if you remember what we had there, we had, you know, we had a bunch of predecessors and then there&#39;s some kind of statement s, and all we&#39;re doing is whatever the information is on these predecessors, we&#39;re just taking the Least Upper Bound over it, all right? And that is the information on entry to, to s. The ordering on the Abstract Values also helps to clarify another important aspect of our 
+
+269.49
+slide
+Orderings Simply saying until nothing changes guarantee that eventually nothing changes The use of lub explains why the algorithm terminates Values start as J and only increase J can change to a constant and a constant to T Thus C s x can change at most twice
+analysis algorithm which is why it terminates. So remember the algorithm&#39;s 
+
+274.419
+writing
+
+termination condition is to repeat to repeatedly apply the rules until nothing changes, until there are no more inconsistencies in the control flow graph and there&#39;s no information left to update. Well, just because we say we&#39;re going to repeat until nothing changes, that doesn&#39;t guarantee that eventually nothing changes. It could be that, that goes on forever, that we always introduce new inconsistencies with every update and we never actually get to the point where all the information is consistent. So, the ordering actually shows why that can&#39;t happen and the algorithm is guaranteed to terminate. So remember that in every program point except the entry point, the values start as Bottom. So, they start at the lowest place in the ordering. And then if you look carefully at the rules, it&#39;s easy to see that the rules can only make the values increase at a program point. So Bottom can be promoted, can be changed at a given program point up to some Constant and, and, and another update could raise that Constant to Top but of course, once we get the Top, there&#39;s no greater element. And if the rules can only make the elements increase, then eventually we have to run out of elements that could be increased, okay? So what that says is that each piece of information we&#39;re computing, for every statement, for every variable, and for either in or out, it can change at most twice, okay? So it can go from a Bottom to a Constant, and from Constant to a Top but after that, it will never be updated again. And what this means is that 
+
+366.939
+slide
+Orderings Thus the constant propagation algorithm is linear in program size Number of steps Number of C values computed 2 Number of program statements 4 ex um
+the constant propagation algorithm that we&#39;ve described is actually linear in program size. So the number of steps is gonna be bounded by the number of c values that we&#39;re trying to compute times two, cuz each one of those could change two times. And since there&#39;s one value for the entry and exit over the in and out of every statement, the total number of steps that the algorithm can possibly take is the number of program statements times four. 
+

@@ -1,0 +1,95 @@
+3.97
+slide
+Compilers 1 Stack Machines
+In this video, we are going to move beyond our discussion of Run-time Organization and begin talking about code generation And in this first you know, it was probably quite a long series of videos on code generation, we are gonna talk about the simplest model for code generation which is called a stack machine. So, in a 
+
+25.869
+slide
+Stack Machines Max men
+stack machine, you might guess that the primary storage is some kind of a stack 
+
+30.199
+writing
+
+and you would be right. In fact, the only storage that the stack machine has is the stack And the way the stack machine works is that it executed an instruction, and all instruction have the form. There&#39;s some function of some arguments and they produce one result. And what that does is it&#39;ll pop in upper hands for the stack so the arguments a1 through an are stored at the top of the stack. It will then compute the function f using those operands and it will push the result r back on top of the stack. Okay, So, let&#39;s take a look at a simple example. Let&#39;s see how we would compute seven plus five using a stack machine. So, we would have our stack And initially the stack might have, already have some stuff on it but we don&#39;t care what that stuff is and so it will execute seven plus five. What we would do, well first we will have to get the seven and the five out of the stack so as we get pushed on stack and we&#39;ll see more about how that happens in a minute. And let&#39;s say that seven and five were both on the stack. And so now we wanted to compute the addition on seven and five so, addition takes two arguments so we would pop the two arguments off the stack. And we wined up with the five and the seven Pop-up the stack. We will perform the operation plus and then the result will get push back under the stack. So this would be good to twelve and then twelve will get push back on to our stack. Okay. And I noticed that I did indicate that there might be some other stuff on this stack already. Let me give that stuff a name. And let me talk about one very important property of the stack machine. So, those we have evaluated seve n+5, we round up in the situation where the results of that operation was on top of the stop of the stack. Okay, and the initial stack contents was unchanged. This stack, the stack that was below the arguments that we are interested in didn&#39;t get modified. Okay. So, we have survived through all the operations unchanged. And 
+
+161.51
+slide
+Stack Machines 3 3 E x 1 a Us 5 s
+this is an important property of the stack machine. That we will exploit and the general to say what the general property is when you evaluate an expression the result of the expression will be on top of the stack and the contents of the stack prior to the beginning evaluation of the expression will be preserved. So, now let&#39;s take by how we could program a stack machine. So, let&#39;s have a language with 
+
+189.52
+slide
+Stack Machines Consider two instructions push i push integer i on the stack add add two integers A program push 7 push 5 add Mex mm
+just two instructions in it. We can push an engine run to the stack and then we 
+
+195.11
+writing
+
+have the operation add which will add the two integers on the top of the stack. And now, let&#39;s take a look at this program which pushes seven and then pushes five and then does an add. So, let&#39;s think about how this program would work. Okay, so we have our stack contents and now, and the first instruction is to push seven. So wined up with the seven on the stack, added to the stack and now we push five. Okay. And so the next step, we&#39;ll have five and seven on top of the stack then we&#39;ll perform the add and then we&#39;ll pop these two elements off the stack and add them and push the result back on. And we&#39;ll wind up with twelve on the stack and again the original stack contents are preserved. Now, what interesting property of stack machine code is that the location of the upper hands and result is not 
+
+253.84
+slide
+Stack Machines Location of the operands result is not explicitly stated Always the top of the stack
+exquisitely stated in the instruction. And that&#39;s because these instructions always 
+
+257.879
+writing
+
+refer to the top of the stack. And this is in contrast were register machine or register instructions that explicitly name where they take their upper hands from and where they put the results. So for example you might be familiar from seeing some machine code or assembly code in the past or and add instruction by typically take three registers, two for the arguments, two for the registered arguments are gonna be added together and one for the destination for the result where in the stack machine we just have. A single word add and no explicit naming of the arguments because it&#39;s fixed, where the arguments will come from. The arguments will always be popped from the stack and the result will always be placed back on top of the stack. And. The interesting property here is that it leads to more compact programs because we have to say less in the instructions the programs themselves are actually quite a bit smaller than register machine programs. And this is one of the reason, reasons that Java bytecode uses a stack evaluation model because it leads to more compact programs and especially in the early days of Java when it was very expensive to ship these programs around the Internet to download them, having very small compact code was a good property. And by we might wonder why would we prefer register machine and the answer is that 
+
+343.43
+slide
+Stack Machines There is an intermediate point between a pure stack machine and a pure register machine An n register stack machine Conceptually keep the top H locations of the pure stack stack in registers Consider a 1 register stack machine The register is called the accumulator
+register machine code is generally faster because we can place the data exactly 
+
+348.0
+writing
+
+where we wanted to be. We will generally have fewer, you know, immediate operations and less manipulation of the stack, pushing and popping stuff to get to the data that we want. And then it turns out that there isn&#39;t inter-media point between a pure stack machine and a pure register machine, that&#39;s interesting. This is called an N register stack machine. And conceptually, the idea of the N register stack machine is to keep the. Top end locations of the stack in registers. And the particular variant of the un-resourced stack machine that we particularly interested in is the one register stack machine because the terms that you get widely benefit by even having a single register that&#39;s dedicated to the top of the stack. This register is called the accumulator so the dedicated registry here is called the accumulator. It&#39;s called that because intuitively it accumulates the results of operations and then all the other data lives on the stack. So, what is 
+
+406.61
+slide
+Stack Machines Max m
+the advantage of a one register stack machine? Well, let&#39;s think about the add 
+
+410.83
+writing
+
+instruction and how it works in a pure stack machine? So, in the pure stack machine, what is the add instruction going to do it&#39;s going to pop two arguments from the stacks, a five and seven. And it&#39;s going to add them and then it&#39;s gonna put the result back onto the stack. And let&#39;s just name the rest of the stack contents there. And that requires three memory operations. After load, two arguments and then store one result. But in the one razor stack machine, the add operation actually does a lot of its work out of the one register. So, the one of the arguments is already stored in the register because that&#39;s the conceptually the top of the, of the stack. And, the result will be pushed back on the top of the stack which again is just the accumulated register. So here, one of the arguments in the right are both taking from registers and there&#39;s only one memory reference to get the second argument from the portion of the stack that&#39;s stored in the memory. So in 
+
+476.069
+slide
+Stack Machines Consider an expression op e1 en Note e1 en are subexpressions For each ei O i n Compute ei Push result on the stack Pop n l values from the stack compute op Store result in the accumulator Mex mm
+general, let&#39;s think about how we would evaluate and arbitrary expression using a 
+
+480.61
+writing
+
+stack machine. So now this isn&#39;t I should say, you know, just stack machine called like we&#39;re looking at it before. This is not just a sequence of bytecode level operations, this is actually a full expression as you might find in Kuhl so there are other complex expressions nested inside of some operation. All right. And so, forget the operation that takes N arguments and those arguments are expression that themselves needs to be evaluated so here&#39;s a general strategy for doing that with the stack machines. So, for each of the sub-expression, each of the arguments in order we&#39;re going to evaluate it recursively using the same stack machine strategy and that will end up putting the result when we evaluate EI, recursively the results will be in the accumulator. And so the results is in the accumulator, alright. And then we&#39;re going to push that results onto the memory stack. So we&#39;r e going to take that results and we&#39;re gonna free up the accumulator and save it on the stack, the portion of stack that&#39;s in memory, okay. So we do this evaluating the sub-expressions for the first and -one arguments. So everything except the last one, okay. We&#39;re gonna use the same strategy, for the last one, for en. We just evaluate. We don&#39;t push the result on the stack. That just means that the result is left in the accumulator okay so now we have one of the arguments of the accumulator. The last one we evaluated and the other in line as one are o the top of the portion of the stack that&#39;s in memory. So that what we all have to do is we pop in -one values from the stack and combine any compute up using the -one values plus the value of the accumulator and we store the result back into the accumulator, okay. So that&#39;s the general strategy for evaluating an expression using a stack machine. So let&#39;s do this now for a simple 
+
+595.639
+slide
+Stack Machines Max m
+example. Let&#39;s take our same example that we&#39;ve been using and let&#39;s evaluate the expression seven plus five. So, how we&#39;re gonna do that? Well, we&#39;re evaluating a 
+
+604.85
+writing
+
+plus expression and that takes two arguments, two expression as the way to evaluate each of those. So first we evaluate the expression seven. Let me actually, let me draw our stack here. Okay, so we have our initial content to the stack, we have our initial accumulator. And so now we&#39;re evaluating seven, okay? And of course a constant loose evaluate to itself and the result is toward the accumulator, okay? So that&#39;s the first step after evaluating seven. And now because that&#39;s the first argument to plus, it has to get pushed on to the stack, the portion of the stack in main memory. So. Now, we have a situation that looks like this. All right, in the course to seven is still in the accumulator but we&#39;re now about to override it, we&#39;re not gonna use that value again. Because the next thing we&#39;re gonna do is evaluate the second argument to plus and that happens to be in this case also a constant expression five and so that will get evaluated and then stored in the accumulator. Okay, so I will override the seven. This will be five there, all right? And now, we have evaluated both arguments. Okay, remember in the case of just having two arguments. The first argument gets evaluated and saved on the stack so it doesn&#39;t, so we don&#39;t lose the value when we evaluate the second argument. And the second argument we uses is the last one we can just leave in the accumulator And that way actually evaluates the plus. Okay, so we do the accumulator gets the accumulator plus the top of the memory stack. So in this case, that results in adding seven and five. And we line up and of course we pop the argument from the memory stack, right. So we have just the original contents there and now the value twelve in the accumulator. So, as I think you would see from the example, the invariant that we&#39;re gonna maintain with the stack 
+
+730.429
+slide
+Stack Machines After evaluating an expression e the accumulator holds the value of e and the stack is unchanged
+machine is that after we evaluate an expression e, the accumulator holds the value of e so the result of evaluating e winds up in the accumulator and the stack is unchanged. And so the stack, the memory portion of the stack is whatever it was before we start of evaluating e. And this is a very, very important property, expression evaluation preserves the stack. So, now let&#39;s look at a more elaborated 
+
+761.549
+slide
+Stack Machines Code Acc Stack Mex mm
+example, just slightly more elaborate, three+7+5. And the interesting thing about 
+
+768.689
+writing
+
+this example. Is that now one of the arguments to the other plus is itself a compound expression. So it would have to be, that would have to be evaluated recursively as part of evaluating the entire expression so let&#39;s see how this works. So the first thing that&#39;s going to happen or evaluating the outer plus, we&#39;re gonna evaluate the first argument to that plus that&#39;s just the constant three so we&#39;re gonna load it into the accumulator. And that&#39;s the result of evaluating three. And now because it&#39;s the first argument to the plus, we have to save it before we can get around to evaluating the addition itself. So that result is pushed on to the stack. And now we&#39;re g onna evaluate the second argument to the outer plus and that itself has two arguments. And the first argument to that, to the inner plus is seven. And so that winds up getting stored in the accumulator, that&#39;s the result of evaluating seven. And then because the inner plus has two arguments, we have to evaluate the second, evaluate the second argument to the inner plus, the seven has to get saved to the stack. So now, the stack has seven three and whenever it had before we start it. Next, we&#39;re gonna evaluate the second argument to the inner plus And so evaluating a constant five will result in five being loaded in the accumulator and now, we have evaluated all the arguments to the inner plus, okay. And so we know from our stack discipline that the last arguments is in the accumulator and the first argument will be on top of the stack. So the next thing that will happen is that we&#39;ll pop that second argument from the stack added to the accumulator and store back into the accumulator and so now we have the results of the inner plus in the accumulator. We also have the pop, the seven from the stack, okay and finally now we&#39;ve evaluated the second argument to the outer plus. So now we can perform the outer edition. And what is that involve that takes the stack contents then adds it to the value that is currently on the top of the stack which is the value three which is what we saved a long time ago now to, to remember it from what it was to do the other addition and we wind up. After we pop the stack with fifteen in the accumulator, that&#39;s the results of the entire expression, and notice it&#39;s the same stack that we started with. Okay? So evaluating this entire expression, resulted in the, result in any accumulator and the stack being unchanged And if you looked at that the sub-expression, you can see that the same things happened. So let&#39;s take a look at the evaluation of seven plus five. So where that take place that started here. Okay. Started at this instruction. And, it lasted down to here and you can see that the evaluation of seven + five which encompasses these five expressions resulted in twelve being put on top of the stack, that&#39;s the result of seven + five and it didn&#39;t affect the contents I&#39;m sorry. It resulted in twelve being placed in the accumulator and it will left the stack unchanged to where it was when the evaluation of seven plus five began. So here is where it began and the value we had saved three was on the top of the stack and when we&#39;re done evaluating seven plus five indeed again the value three and. All the other stuff that was there before are still on the stack. 
+

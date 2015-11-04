@@ -1,0 +1,45 @@
+4.029
+slide
+Compilers Typing Methods
+In this video, we&#39;re going to continue our discussion of type checking and cool with the rules for type checking methods and method calls. So here&#39;s the situation, we 
+
+15.69
+slide
+OF eozT0 OF e1 Tl O I en Tn O F e0 f e1 Dispatch en Typing Methods ex um
+want to type check a method call, let&#39;s say that we have a dispatch on some expression easier, and we&#39;re calling some method named F, and we have some arguments E one through E N. Well, so clearly we&#39;re gonna type check E zero, it&#39;s gonna have some type E zero, and similarly we&#39;re gonna type check all of the arguments and 
+
+32.34
+slide
+In Cool method and object identifiers live in different name spaces A method fooand an object foo can coexist in the same scope In the type rules this is reflected by a separate mapping M for method signatures M C f T1 Tn Tn 1 means in class C there is a method f f x1 T1 xn Tn Tn 1 Typing Methods
+they&#39;re gonna have some types, and then the question is, what is the return type 
+
+36.71
+writing
+
+of this method call, what value, what kind of value do we get back after we call this method? And as you can probably see we&#39;re in a very similar situation here that we were in before when we were typing check the variable reference. We have this name F and we don&#39;t know anything about what it does, we don&#39;t know the behavior of F is unless we have some information about F&#39;s behavior, we can&#39;t really say what kind of value it is going to return. An added wrinkle in cool is that method object identifiers live in different name spaces. That is, it is possible in the same scope 
+
+72.439
+slide
+O M eozT0 QMFWR M T0 f Tr TiSTiJorlSiSn O M F eo f e1 1 Dispatch ren Tn 1 Typing Methods ex um
+to have a method called foo and also an object called foo and we won&#39;t get them confused. They are different enough and used differently enough in the language 
+
+81.659
+slide
+O M e0 T0 O MF3 T1 M F 93 Tn M T0 f T19 an Tn 1 TiSTiJorlSiSn Dispatch O M F g0 f e1 en Tn 1 Typing Methods
+that we can always tell when we&#39;re talking about the object foo and when we&#39;re talking about the method foo. But what this means in effect is that there&#39;s two different environments. One for objects and one for methods and so in the type 
+
+94.74
+slide
+WM T O M 3 T0 O T 1 MF gp Tn Ti for 1 S i S n en L19 Tn Tn 1 Dispatch Tn 1 Typing Methods ex um
+rules, this is going to be reflected by having a separate mapping a separate method environment that&#39;s going to record the signature of each of the methods. And 
+
+104.13
+slide
+O M 3 T0 O MFe1 T1 M F 23 TL a MQ Qf T 1 Tn Tn 1 e a T Dispatch O M F e0 f e1 en Tn 1 Typing Methods ex um
+a signature, as is a standard name that you&#39;ll probably hear used in other contexts, but the signature of a function is just its input and output types. And so 
+
+114.259
+slide
+O MF e0 TD O MF e1 T1 O M I en Tn TOS T M T1 r 1 Ti S Ti for 1 S i S n Static Dispatch O M F e0 T f e1 en Tn 1
+this table, m, is gonna take the name of a class. It&#39;s gonna take the name of a method in that class and is just gonna tell us what are the argument types of the methods. So all but the last type in the list here is one of the arguing types of the method and then the last type is the result type. That&#39;s the type of the return value. So the way we are going to write the method signature is just as a tutor or a list of types, the first, all but the last one taken together are the, are the types of the arguments in order. And then the very last one is the type of the result And so an entry like this in our method, environment just means that f has a signature that looks like this. It takes in arguments, with the respective types and it returns something of type t n plus one. So with the method environment added to our rules, now we can write a rule for dispatch. So notice, first of all, that we have these two mappings, one for object identifiers and one for method names on the left hand side of the turnstile. We have to propagate that method environment through all the typing for the sub expressions and for the case of method dispatch, we just type The, type of the expression we&#39;re dispatching to e zero, and all of the arguments and get types t one through t n, and then we look up the type of f in the class t zero. So, what class are we dispatching to? Well, that&#39;s gonna be to the class of e zero And so where do we look up m in our environment. Where there better be a method called F to find in class T0, and it must have some signature with the right number of arguments. And then, the actual arguments that we&#39;re passing, the E1 through E-N, they&#39;re types have to be sub-types of the declared formal parameter. So here, the signature of F. Says that, for example, the first argument of f has type t one prime, and so we&#39;re going to require that the type of e one be some type t one such that t one is a sub type of t one prime. And similarly for all the other arguments of the method call. And if all of that checks out, if that has a signature like this, and all the sub type requirements on the actual arguments and the formal arguments match, then we&#39;re going to say that the entire expression. [inaudible] Return something of type t n plus one the return type of the method. The typing rule for static dispatch is very similar to the rule for regular dispatch. So recall that, syntactically, the only thing that&#39;s different is that the programmer writes the name of the class at which they wish to run the, the method. So instead of running the method F as defined in the class E0, whatever that class happens to be, we&#39;re going to run whatever that method F happens to be in some ancestor class of the class of E0. And how is that expressed in the type rules? Well once again, we type E0 and all of the arguments. And now we require that, whatever the type was we discovered for E0, it has to be a sub-type of T. So T has to be an ancestor type in the class hierarchy of the type of E0. And moreover, that class T had better have a method called F. That has the right number of our units, with the right kind of types, such that all the type constraints work out, that the, actual argument types are sub types of the corresponding formal argument types, and then if all of that is true, we&#39;ll be able to conclude that the entire dispatch expression has a type t n plus one which is the return type of the method. 
+

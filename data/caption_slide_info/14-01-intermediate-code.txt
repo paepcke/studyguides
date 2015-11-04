@@ -1,0 +1,55 @@
+4.21
+slide
+Compilers 1 Intermediate Code
+In this video I&#39;m going to give a very brief introduction to Intermediate Code and its use in compilers. So the first question to address is, what is 
+
+15.73
+slide
+Intermediate Code A language between the source and the target Provides an intermediate level of abstraction More details than the source Fewer details than the target
+Intermediate Code or an Intermediate Language? And as the name suggests, an Intermediate Language is just that, it&#39;s a language that&#39;s intermediate between the source language and the target language. So, keep in mind what a compiler does. So 
+
+29.86
+writing
+
+a compiler takes a program written in some source language. And, it provides a translation of that program into some target language And so in this class, for example, where often our source language is cool and our target language is mixed assembly code. Now, an Intermediate Language actually lives in between these two and a compiler that uses an Intermediate Language will first translate its source language into the Intermediate Language and then later translate the intermediate the code in the Intermediate Language into the target language. And you might wonder, well why make life so difficult? Why when, why do something in two steps if you can do in one step? And it turns out that for many purposes this intermediate level here is actually quite useful precisely because it provides an intermediate level of abstraction. So, in particular, the intermediate level may have more details in it than the source language. So for example, if we want to optimize register usage you know, a source language like Cool has no notion of registers at the source level, and so there&#39;s no way to even express the kinds of optimizations you might want to do with registers. So an Intermediate Language that exposes that at that amount of detail, at least have registers in it will allow you to talk about and, and write algorithms that could try to improve the use of registers in the program. On the other hand, the Intermediate Language which will also have fewer details than the target. And so it might be for example, if the Intermediate Language is a little bit above the level of the parti cular instruction set of a particular machine, and therefore it&#39;s easier to retarget that, that intermediate level of code to lots of different kinds of machines. Precisely because doesn&#39;t have all the grubby details in a, of a particular machine. And, experience has shown, that this is actually a pretty good idea to have Intermediate Language. And, almost all compilers have an Intermediate Language. I, In fact, in their implementation and some compilers have more than one. Some compilers actually translate through an entire the series of Intermediate Languages between the source and target language. Now we&#39;re only going to consider one Intermediate Language for the rest of this course. The kind of 
+
+176.01
+slide
+Intermediate Code Intermediate language high level assembly Uses register names but has an unlimited number Uses control structures like assembly language Uses opcodes but some are higher level E g push translates to several assembly instructions Most opcodes correspond directly to assembly opcodes Alex Aiken
+Intermediate Language which we&#39;re going to look at is going to be a high level assembly. And so, as I suggested on the previous slide, this language is going to 
+
+184.1
+writing
+
+use register names but it will have an unlimited number, so we can use any number of registers that we like. We&#39;re not bound to 32 or 64 registers. The control structures will look a lot like assembly language. In particular, there will be explicit jumps and labels on instructions. And the language will also have op codes in it so it&#39;ll look like assembly language level op codes. But some of these op codes will be higher level. So for example, we might have an op code called Push. And Push would end up translating into several concrete assembly language instructions for a particular target machine. In the intermediate code that we&#39;ll be looking at, every instruction will have one of two forms. It will either be a binary 
+
+228.18
+slide
+Intermediate Code Each instruction is of the form
+operation, or it will be a unary operation. And always the arguments on the 
+
+233.93
+writing
+
+right hand side, in this case the y and the z, will be either registers or constants. They could also be immediate values. And this is a very, very common form of Intermediate Code, so widely used, and so widely used it actually has a name. It&#39;s called Three Address Code because every instruction has at most three addresses in it. Two arguments, at most two arguments and then a destination. Now, to see that this code is actually low level notice that you know, higher level expressions that involve multiple operations will have to be translated into a sequence of instructions that do only one operation at a time. So, for example, if I have the expression, x = sorry, x + y z, and let me put in parens here to show the association. So the times binds more tightly than the plus, we&#39;re going to have to, this can&#39;t be written directly in an intermediate , language of this form. Instead, we would have to write it something like the following. We have to first compute y z and assign that to a new register or a temporary or you know, a new register t1 to hold the intermediate value. And then we would have to use t1 to compute x + t1, which of course is the value of the entire expression and that would end up getting stored in another register. I noticed that one effect of forcing you to use only one operation at a time. You see, you do one primitive operation at time and then the result of that has to be restored in a register. One effect of that is to give every subexpression of the program a name. So, if I look back at this expression here, I see you know, like y z is anonymous. That in this expression x + y &lt;i&gt;z the expression y &lt;/i&gt; z itself doesn&#39;t have a name. And by rewriting it like this, I actually name that intermediate result. So again just to summarize this point, one consequence of having to write out compound expressions as a sequence of instructions that do a single operation in time is that every intermediate value will be given its own name. Generating Intermediate Code is very similar to generating assembly code and we&#39;re not 
+
+376.749
+slide
+Intermediate Code Similar to assembly code generation But use any number of IL registers to hold intermediate results
+going to go into this in any detail because it is so similar. But I will sketch it for you, you know, briefly. The main difference between generating assembly code and generating intermediate code is that we can use any number of registers in the Intermediate Language to hold intermediate results. To generate intermediate code, we could write a function called IGEN for Intermediate Code 
+
+401.99
+slide
+Intermediate Code igen e t code to compute the value of e in register t rm mm
+Generation that takes two arguments. It takes the expression for which we&#39;re generating code and it takes the register into which the results of that expression 
+
+410.09
+writing
+
+should be stored. And to give you just one example, and this is the only example that I&#39;ll do. Let&#39;s take a look at generating intermediate code for a+ expressions. I wanna generate code for e1 + e2 and I want the results of that to be stored in the register t, okay? So the first thing I&#39;m going to do is I&#39;m going to generate code for the subexpressions and I need some place to store the results of the sub expressions so I&#39;m just going to make up new register names for those results. So I&#39;ll generate code for e1 and store that in some register, t1 and I&#39;ll generate code for e2 and I&#39;ll store the results of that in some register t2. And then, we can just compute the sum. So t = t1 + t2 and notice that this is a Three Address Instruction. So we&#39;re sticking to the rules here and only using three Address Instructions In our Intermediate Code Generator. And also notice that because we have an unlimited number of registers, this actually leads to very simple code generation of intermediate code. In fact, it&#39;s even a little bit simpler than generating code for a stack machine. Recall that, in a stack machine, we had to save the intermediate results here of e1 on the stack. And that involved, you know, more than one instruction to actually push the result and adjust the stack pointer and things like that. And here we can just save it in a register, and, and then just use that register name later on. So, that is actually all I have to say about 
+
+501.389
+slide
+Intermediate Code You should be able to use intermediate code At the level discussed in lectures You are not expected to know how to generate intermediate code Because we discuss it further But really just a variation on code generation
+Intermediate Code for this course. You should be able to use Intermediate Code at the level in which we are going to be using it in, in lectures. The, in the future videos we&#39;ll actually be looking at Intermediate Code quite a bit and using it especially to express certain kinds of optimizations. You should also be able to write simple Intermediate Code programs and you should be able to write algorithms that work on Intermediate Code. But I&#39;m not going to expect you to know how to generate Intermediate Code because we&#39;re not going to discuss it any further. And quite frankly, it doesn&#39;t introduce any new any idea. That&#39;s really just a variation on the cogeneration ideas that we&#39;ve already discussed in quite a bit of detail. 
+

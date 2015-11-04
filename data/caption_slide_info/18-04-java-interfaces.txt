@@ -1,0 +1,55 @@
+3.62
+slide
+Compilers 1 Java Interfaces
+In this short video, we&#39;re gonna take a look at interfaces in Java. Interfaces 
+
+10.45
+slide
+Specify relationships between classes without inheritance interface Pointlnterface void move int dx intAdy class Point implements Pointlnterface void move int dx int dy Java Interfaces ex um
+specify relationships between classes without using inheritance. So, here is an 
+
+15.96
+writing
+
+example: uh, we have an interface here called the point interface. And a point interface can have a, a bunch of methods in it, and, and we just declare the, the signature of those methods. You can also have other things besides methods, but uh, the main thing that uh, they&#39;re used for usually is for a, a method interface. So uh, here&#39;s an example of a particular method, the move method, and it takes some arguments and has a particular return type. Now any other class, or any class, excuse me, that&#39;s going to implement the point interface has to provide a method uh, with the same signature. So, if this, see because the point interface has a move method, the. A class will have to have a move method with the same signature, as the move method in the declared interface. And if the point interface had other methods ah, then the point class would also have to implement those methods by, you know having a method of the same name ah, with the appropriate types of arguments and result. Now it says in the Java language manual that Java programs can use interfaces to make it unnecessary for related classes to share a common 
+
+79.05
+slide
+n V Java programs can use Interfaces to ma Java Interfaces e it unnecessary for related classes to share a common abstract superclass or to add methods to Object In other words interfaces play the same role as multiple inheritance in C because classes can implement multiple interfaces class X implements A B C Alex um
+abstract super class or to add methods to objects. And the translation of that is 
+
+84.64
+writing
+
+that interfaces play the same role as multiple inheritance in c plus, plus. So interfaces uh, are really analogous uh, to, to multiple inheritance. And the reason for that, is that, a, a class can implement multiple interfaces. So, if I have a class x and it implements a three interfaces a, b, and c. This means an extra object can be treated as an A object or B object or a C object in the appropriate context. So it&#39;s like or almost as if X has three superclasses A, B and C. Now uh, there are some important differences uh, but there is the effect, and so if I wanted to have a class that gets functionality or implements a functionality uh, several uh, uh, interfaces that&#39;s, I mean we do very directly in java just by saying if the classes going to implement all those interfaces. &gt;&gt; Now here is an example of an application of that, so think about a 
+
+143.879
+slide
+Java Interfaces A graduate student may be both an University employee and a student class GraduateStudent implements Employee Student No good way to incorporate Employee Student methods for with single inheritance
+graduate student ah, working at Stanford or some other university, so ah, typically 
+
+149.079
+writing
+
+graduate students are students, okay they take classes and have property&#39;s that students ah, have they get degrees and grades and things like that. &gt;&gt; Graduate students also work for the University? &gt;&gt; They are often teaching assistants in classes or research assistant [inaudible] so there [inaudible] another role which is university employee, and if I have gone to ah, trouble ah, in my. I, university personnel management software to implement functionality to deal with students and to implement functionality to deal with employees. Well, then I would like to make use of that when I get around to thinking about how I&#39;m going to implement uh, the functionality for graduate students and one way to do that. Would be if I had a class with implement, if I had, excuse me, an interface for employees and interface for student, and I would say that graduate student could be both, okay. So a graduate student can implement both the employee interface and student interface. And, and the reason that&#39;s this is a good idea, is it is actually hard to do this if ah, you only have single inheritance. If you think about it, if I had set things up so that I had some employee classes and some student classes and now I want to make graduate students. Well now what am I going to do? Well if I have my employee class. I can make grad students a subclass of that but now how do I get the student functionality and similarly. If I have a student class, I can make graduate student a subclass of that. But now, how do I get the employee functionality? So in single inheritance, you&#39;re forced to choose a single class to inherit from. And the advantage of interfaces is that it will let you get functionality or implement functionality, or express the relationship, at least, of functionality to multiple kinds of things. And so I can have one, uh, graduate student class that implements both the employee and the student functionality. So how are interfaces different from 
+
+266.18
+slide
+Java Interfaces Methods in classes implementing interfaces need not be at fixed offsets interface Pointlnterface void move int dx int dy class Point implements Pointlnterfacel void move int dx int dy class PointZ implements Pointlnterface void dummy void move int dx int dy Alex um
+inheritance? Well, probably the biggest difference is that it&#39;s not possible to 
+
+270.9
+writing
+
+implement interfaces as efficiently as inheritance. And that&#39;s why you have both. So you&#39;d prefer to use inheritance, uh, if you can, because it&#39;s going to be more efficient than interfaces. And what makes interfaces less efficient? Well, the primary thing. Is that if the class is implementing interfaces need not be at fixed offsets. In fact, we will not be able, in general, uh, to assign methods in interfaces to fixed offsets inside of a class implementation or an object implementation. So let&#39;s take a look at an example. Here&#39;s our point interface again. Now say we have one class point when we saw this one before [inaudible]. And it implements the move method has to implement the move method. And then we have another class that also points to point interface but it also implements some other stuff. Okay so, it might implement some other methods that aren&#39;t part of that interface. So now how would we decide you know, where to put the move method. Well the natural thing, that, that we&#39;ve discussed. [inaudible] Say of course [inaudible] is that the methods ah, would be laid out in the order in which they are declared, so if we did that clearly the move method will not be ah, in the first position in both of these classes. Now. We could imagine, uh, a separate compiler pass, that we&#39;re trying to sort the methods. So that, say, all the methods of the point interface always appeared in the same position and in the same order in any class, implements the point interface. But that doesn&#39;t work as soon as we have, um, multiple interfaces being implemented. So let&#39;s say that the point two class here implemented another interface A. So, how can we then implement interfaces? Well, 
+
+430.159
+slide
+Java Interfaces Dispatches e f where e has an interface type are more complex than usual Because methods live at fixed offsets One approach Each class implementing an interface has a lookup table method names methods Hash method names for faster lookup hashes computed at compile time Alex mm
+so, it&#39;s going to be a little more complex than usual to implement in this batch, say 
+
+435.189
+writing
+
+to a method f, where e has some interface type. So if e is typed as having some interface and now we&#39;re calling it the f method of that interface, then we&#39;re going to have to do a little bit more work. And so here&#39;s one approach, this approach is actually quite inefficient, but you will see that it will work. And there are other approaches that are more efficient, but that&#39;s not particularly important, so here&#39;s one way that can work. So each class of implements interface is going to have a look-up table associated with it that maps method names, the string names of methods, to those methods themselves. And then. Uh, we can hash the method names for faster look-up and we can actually compute. Uh, those hashes at compile time. And so the idea would be that if when we have an object. Ah, somewhere in the object, probably at the dispatch pointer. The dispatch pointer you know will point off to a list of methods, sort of the normal methods of the class. But somewhere say maybe at the end of the dispatch table there will be another pointer to some kind of look up table that maps names. Two, two methods to quote. Okay. So, somehow associated with every object of every class ah, we will have this look up table that will map ah, the, the names of interface methods to the actual codes for those methods that influence them. All right and we&#39;d already decided uh, that the, for the point interface that the move method should go first. It should be the first method in the class. Well, if we had made a similar decision for the a interface, some method in that interface that should always be listed first in the give to all the methods and all the interfaces so that they can be maintained across all of the uh, classes that implement those interfaces. At least classes that are declared and all the interfaces that are declared. And that&#39;s kind of un-Java. And that we don&#39;t want to uh, force people to declare all the classes and the interfaces once and not be able to extend them in the future. Alright so the bottom line is that methods in interfaces do not live at fixed process in 
+

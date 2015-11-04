@@ -1,0 +1,40 @@
+3.899
+slide
+Compilers 1 Analysis of Loops
+In this video, we&#39;re gonna continue our discussion of analysis of controlled flow graphs by focusing on what is undoubtedly the most interesting aspect of the whole problem, the analysis of loops. Here&#39;s an example of control flow graph with a loop in it. And it turns out that the need for the special element bottom in our analysis 
+
+25.849
+slide
+Analysis of Loops To understand why we need J ook at a loop X 3 B 0 Y Z W
+
+
+25.849
+writing
+
+is intimately tied to the analysis of loops. And so, let&#39;s just think about how we would do our constant propagation example analysis with this particular control flow graph, all right. So, what do we know about x? Okay. So, initially, we don&#39;t know anything so before we enter the control flow graph, its value, its top and, and after the assignment of three, we&#39;ll know that x has the value three. The conditional branch here, the predicate won&#39;t affect the value of x. So, it&#39;ll be three on both branches. The assignment to y won&#39;t affect it so it&#39;ll be three here as well. And now we come here okay, and let&#39;s focus on this statement right here. So, the rule is that the analysis of x at y equals zero. Okay, So with a value of x right here before, before the assignment to y. Is a function of all the predecessors. So, we need to know what the value of x is on both of the incoming edges. Okay. Well, we don&#39;t have a value down here yet. So, the question is, you know, what is the value of x here on this edge? And in order to figure that out, we&#39;d have to look at its predecessors. Okay, what are its predecessors? Well, there&#39;s this point here after the predicate there&#39;s this point here between the two statements, and then there&#39;s this point here after the execution of y. We&#39;re just following the edges backwards here. Looking at, you know, where we need to know information for x. We need to know it here, we need to know it here, and we know it here, alright? And then because of this edge, that means we again need to know it at both of the predecessors of y = zero. So, now we&#39;re in the loop and this isn&#39;t too surprising. I mean, if you have, if information about x depends on t he predecessors of a statement and you do follow that recursively then you&#39;re gonna wind up going around loops like this. And, and there&#39;s no good way at least there&#39;s no, no particularly immediately obvious way to solve this problem. So, how do we I get information about the predecessor the predecessors of y = zero when they depend on themselves? So, to be more precise looking at that particular statement again 
+
+160.019
+slide
+Analysis of Loops Consider the statement Y O To compute whether X is constant at this point we need to know whether X is constant at the two predecessors 3 2 X ex Aiken
+in order to compute whether x is constant at the point right before the statement y = zero, we need to know whether x is constant as the two predecessor and that information depends on his predecessors, which include y = zero. Okay, so this is the conundrum. So, how are we to solve this recursive problem. And there&#39;s a standard solution that, that is actually used in many areas of Mathematics and not 
+
+190.629
+slide
+Analysis of Loops Because of cycles all points must have values at all times Intuitively assigning some initial value allows the analysis to break cycles The initial value J means So far as we know control never Alex um
+
+
+190.629
+writing
+
+just in the analysis of, of loops. When you have these kinds of recurrence relationships or recursive equations. And the standard solution is to break the cycle by starting with some initial guess. So, you have some initial approximation that is really not perhaps even expected to be the final result but allows you to get going. So, and so, what we&#39;re going to do is that because of the cycles, all of the points, all the program points have to have values at all times. And so we&#39;re going to assign an initial value and that is what bottom is for. And the initial value bottom means, so far as we know, control never reaches this point. Remember this, we&#39;ve said this quite a while ago on several videos ago. And this will allow us to make progress. And to see that let&#39;s go ahead and analyze this control flow graph 
+
+243.37
+slide
+Analysis of Loops Mex mm
+now where we assume that all points, and at all points, initially, x has the value bottom except at the entry point. So, the entry point is special. Here, we assume that we don&#39;t know anything about x because we know the control reaches the 
+
+256.779
+writing
+
+initial point. But, initially, we&#39;re going to just say, well, x is bottom everywhere else. Okay, so, [inaudible] the bottom there, [inaudible] bottom there, okay, I&#39;m gonna just fill in all the values. And I&#39;m just writing it everywhere here. And there&#39;s really another one right here after the merge of these two paths. So, I indicate that. All right, so there, now we have our initial setup and now remember what the procedure is, we go and look where the information is inconsistent and we update it. So where is the place where the information is inconsistent? Well, clearly it&#39;s not correct here, all right, because we know that after if, if control reaches the point before x = three, then after the assignment, x will be equal to three. Again the predicate will not change the value of x, so we have to update the results of the two branches after the predicate, and after it&#39;s assignment, that doesn&#39;t affect x to make that information consistent that we have that. Now, let&#39;s go back to our interesting case. Here we know that x = three on this branch coming in to y = zero. And, so far as we know, control never reaches the other predecessor. So, we&#39;re gonna start out by assuming that, that, that part, that path is never taken. And if that path is never taken, then it won&#39;t contribute anything. And s, at this point in the program, we will know that x = three. So, assuming that all this information is correct we will be able to conclude that x = three at this point. And notice how we&#39;ve been able to break the cycle here and get started. So, we just assume that the, you know, this last edge in the cycle never executes and if that&#39;s not correct, we&#39;ll find out later and this value down here will become something other than bottom and then we&#39;ll update the assignment again. Alright, so let&#39;s continue on. So, we have x = three before y is assigned zero. So the assignment of y will not affect the value of x. So, make the information afterward consistent we&#39;ll have to make x=3 there. Now, we have a merge of two paths. Okay. So, the, at this point here before the execution of this assignment we will also know that x = three. The assignment a will not affect x. We&#39;ll update that point there and the predicate will not affect the value of x. So, we&#39;ll know that x = three on the back edge. And now this information has changed. We now know the control can reach this edge cuz we followed the control path all the way here. We have some new information about x and so now we have to double check that everything is still okay. So, here we have x = three on this edge, x = three on this edge and our previous conclusion that x = three on the entry to the statement y = zero. Well, that is also consistent. There are no places left in the control flow graph that are inconsistent. So, all the information is consistent with all the rules And so we&#39;re done, and this is the final analysis. We&#39;re able to conclude that all, at all of these points here, like I say, every point except the entry point, that x is in fact, the constant three. 
+

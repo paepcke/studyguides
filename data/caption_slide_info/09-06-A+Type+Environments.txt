@@ -1,0 +1,75 @@
+2.79
+slide
+Compilers Type Environments AAAAAA an
+In this video, we&#39;re gonna continue our development of Cool type checking with a discussion of type environments. Let&#39;s begin by doing some more type rules. So 
+
+14.34
+slide
+Type Environments i false Bool False sis a string literal F 5 String String
+here&#39;s one for the constant false. So it&#39;s provable that the constant false has the 
+
+19.57
+slide
+Type Environments new T produces an object of type T Ignore SELF TYPE for now New I newT T
+type [inaudible] and that&#39;s not surprising. If I have a string literal S, then it&#39;s provable that, that has type string. And that&#39;s also not very 
+
+27.7
+slide
+Type Environments F g Bool e Bool mm el Bool ezzT Loop I while e1 loop e2 pool 0bject
+surprising. The expression new T produces an object of type T. And the type rule for 
+
+35.89
+writing
+
+that is very straightforward. New T has type T. And we&#39;re just going to ignore self type for now. As I mentioned in an earlier video, we&#39;ll deal with self type later in a video all on its own. Here are a couple of more rules. If it&#39;s provable that an expression e has type bool then an e Boolean complement of e not e also has type bool. And finally perhaps our most complex rule so far, the rule for a while loop, and we call that the e-1 here is the predicate of the loop, this is what determines if we keep executing the loop or not, and e2 is the body of the loop. And so type one is required to have type bool. It needs to be provable that e one 
+
+76.64
+slide
+Type Environments What is the type of a variable reference x is a variable F X 1 Var The local structural rule does not carry enough information to give x a type
+had type bool, and we allow e two, the body of the loop, to have an arbitrary type. It can have any type t. It has to have some type, so it has to be type able under some. Rules, but we don&#39;t care what the type is because the type of the entire expression is just object. We don&#39;t actually return the, this expression doesn&#39;t return an interesting value, doesn&#39;t produce an interesting value, and to discourage people from trying to rely on it, we just type the whole thing as object. And this is a little bit of a design decision. Now we could have 
+
+105.45
+slide
+Type Environments Put more information in the rules A type environmentgives types forfree variables A type environment is a function from Objectldentifiers to Types A variable is free in an expression if it is not defined within the expression my mm
+designed a language, for example, where the type of a while loop is, was type t. 
+
+110.5
+writing
+
+And that you would get the last value of the loop that was that was executed but the problems is that if E one the protocol loop is false and reaches the loop the first time Then you never evaluate e two, and no value is produced, and in that case you would get a, a void value. Which if so mebody tried to dereference, it would result in a run time error. That&#39;s so to discourage programmers from lying On the loop, producing a meaningful value. We could just type it, as object. So far, it&#39;s been pretty straight forward to define reasonable type rules for every construct that we&#39;ve looked at. But now we actually come to a problem. Let&#39;s say we have an expression which consists just of a single variable name, and that&#39;s a perfectly valid, cool expression, and the question is, what is the type of that 
+
+159.779
+slide
+Type Environments Let 0 be a function from Objectldentifiers to Types The sentence 0 i e T is read Under the assumption that variables have the types given by 0 it is provable that the expression e has the type T
+variable, call it X And as you can see. When we&#39;re just looking at X by itself we don&#39;t have enough information to give X a type. This local structural rule does not carry any information about the type of X And stepping back one level, inference rules have the property that all the information needs to be local. Everything we need to know. To carry out the function of the rule has to be present in the rule 
+
+187.669
+slide
+Type Environments The type environment is added to the earlier rules i is an integer literal Int 0 l i int 0 l e1 Int 0 l ez Int Add e2 nt l l
+
+
+187.669
+writing
+
+itself. There are no external data structures. There&#39;s nothing we&#39;re passing around here that&#39;s on the side. Everything has to be encoded in this rule and, so far at least, we just don&#39;t know Enough to say what the type of a variable should be. So the solution to this problem is just to put more information in the rules, and that&#39;s what we&#39;re going to do, so a type environment gives types for free variables. So what is a free variable, a variable is free in an expression if it is 
+
+218.169
+slide
+Type Environments And we can write new rules 0 x T V F x T 3r
+not defined within that expression. So for example, in the expression X, X is free. 
+
+227.529
+writing
+
+In the expression x plus y (x+y), well, here this expression uses both x and y, and there&#39;s no definition of either x or y in that expression, so x and y are free And that expression. If I have, let Y... So I&#39;m declaring a variable Y in X + Y. Well what&#39;s free in this expression, well this expression uses X and Y but the use of Y is governed by a definition of Y that occurs within the expression itself. So we say here that Y is bound, Y is a bound variable in this expression but X is still free, so only X is free in that expression. And the ide a here is, that if 
+
+273.51
+slide
+Type Environments x r T DEV IQ DUO x F 3 T1 0 F let sz0 in e1 T1
+
+
+273.51
+writing
+
+I have an expression with three variables, and you want me to type check it, you have to tell me what the types of those variables are. So I can type check X if you tell me what the type of X is. I can type check X plus Y if you tell me the types of X and Y. And I can type check this expression, this line expression, if you tell me the type of its one free variable X, the type of Y. We will be given a declaration by the let, but we still have to tell me what the type X is. So the free variables are just those variables where you have to give me the information and then I can carry out the type checking. The type environment encodes this information so a type environment is a function from object identifiers from variable names to types So let O be a type environment. One of these functions from object identifier names types. And now we&#39;re going to extend the kinds of logical statements that we prove to look like this. And the way that this going to be read is that under the assumptions that variables have the types given by O. So the assumptions go over here on the left side of the turnstile. These are the assumptions that we&#39;re making about the free variables in E. So the assumption that, excuse me, three variables. Have the types given by o is provable, that&#39;s this turn style here, that the expression e has type t. And, so this notation very nicely, separates what we&#39;re assuming. This is input to our, process of figuring out what the type is from what we&#39;re proving. So if you tell me the types of the free variables as given by o, then I can tell you, the type e. The type environment has to be added to all the rules that we&#39;ve gone through so far. So for example, for intergal literals if I have some set of assumptions of all the types of variables, that doesn&#39;t really change, it doesn&#39;t, in fact it doesn&#39;t change, what the type is an intergal literal. Any intergal literal will still have type int. And so in this case, for this particular kind of expression, I we don&#39;t use any of our assumptio ns about the types of variables. Now, it&#39;s a little bit different with the case of sum expressions. So if I have the expression E one plus E two, and I have some assumptions, zero, about the types of variables, well, then I want to prove that E one has type int, and I&#39;m gonna do that using the types of the variables given by zero, so E one might contain free variables and I&#39;ll need to look in zero to figure out what the types of those variables are. And similarly for E two, I will type E two under the same set of assumptions. And if E1 has type int under the assumptions O and E2 has type int under the assumptions O. Well, then I can conclude that E1 plus E2 has type int under the same set of assumptions O. And we can also write new rules, so now our big problem with free variables becomes a very easy problem. If I want to know what the type of X is, and there&#39;s a missing O here, if I want to know what the type of X is, I simply look it up in my object environment. So under the assumption that the variables have the types given by O, what is the type of x? Well, I look up in O what the type of X is assumed to be, and I then can prove that X has that type T. So now let&#39;s take a look at a rule that actually does something interesting with the variables from the point of view of the environments. So here is a [inaudible] expression. And let&#39;s remind ourselves what this does. This is a [inaudible] expression that has no initialization. So it says that X is going to be a new variable. It&#39;s going to have type T0, and that variable is going to be visible in the sub expression E1. And so, now, how am I going to type check that? Well, I&#39;m going to type check E1 in some kind of environment. And this is a new notation here, so let me define what it means. So remember O is a function, it maps a, variable names to types and OT/X this notation here is also a function. And what this is, is the function O modified at the single point X to return T. So in particular a, this function, this whole thing here is one function, this wh ole thing I&#39;m underlining here is a function, that applied to X is Returns t So that says that this sort of assumptions says that x has type t and for any other variable. So I apply it to some other variable y, where x is different from y. Well then, I just get whatever type y has in [inaudible]. Okay? So what this rule then says is that I&#39;m going to type check E1 in the same environment O, except that at point X, it&#39;s going to have the type T0. So we&#39;re gonna change just the type of X that have type T0, because that&#39;s the type of the new identifier that&#39;s bound at E1. And all the other types will be the same. And using those assumptions, I&#39;ll try to prove that E1 has some type. I will get a type for E1. And then that will be the type of the entire let expression. Now notice something about the type environment. What this says is that before we type check E1, we need to modify Our set of assumption. Modify our type environment to include a new assumption about x, then we type check e one, and then of course when we leave, type checking e one, we&#39;re going to remove that assumption about x, that new assumption, because outside of the let, we just have the original set of assumptions, though. And so, I hope that, that, terminology and that description reminds you of something that we talked about earlier, because this type environment is really implemented by the simple table. So, in our rules, The type environment that carries around the information that will be stored or is typically stored in the symbol table of a compiler. 
+

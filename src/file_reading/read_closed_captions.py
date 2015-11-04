@@ -47,18 +47,18 @@ def read_lines_in_file(filename):
         freqs = Counter([token.lower().strip() for token in line.split(' ')])
         fileFreqs += freqs
         intervalFreqs += freqs
-      else:
-        matches = re.findall(CC_DIGITS_REGEX, line)
-        if 3 <= len(matches):
-          # this is the start time for the phrase
-          # matches [hrs, min, sec]
-          timestamp = hms_to_seconds(matches[0:3])
-          if (prevTimestamp + CC_SEC_PER_INTERVAL) <= timestamp:
-            # start a new bucket
-            prune_stopwords_from_dict(intervalFreqs)
-            fileIntervalFreqs.append([prevTimestamp, intervalFreqs])
-            intervalFreqs = Counter()
-            prevTimestamp += CC_SEC_PER_INTERVAL
+####      else:
+####        matches = re.findall(CC_DIGITS_REGEX, line)
+####        if 3 <= len(matches):
+####          # this is the start time for the phrase
+####          # matches [hrs, min, sec]
+####          timestamp = hms_to_seconds(matches[0:3])
+####          if (prevTimestamp + CC_SEC_PER_INTERVAL) <= timestamp:
+####            # start a new bucket
+####            prune_stopwords_from_dict(intervalFreqs)
+####            fileIntervalFreqs.append([prevTimestamp, intervalFreqs])
+####            intervalFreqs = Counter()
+####            prevTimestamp += CC_SEC_PER_INTERVAL
 
     # pick up leftover bucket
     if timestamp < (prevTimestamp + CC_SEC_PER_INTERVAL):

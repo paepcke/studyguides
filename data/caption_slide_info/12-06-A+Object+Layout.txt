@@ -1,0 +1,85 @@
+4.049
+slide
+Compilers 1 Object Layout
+In the last several videos, we have discussed code generation for a various simple programming language. In this video, we are going to take a look at code 
+
+11.099
+slide
+Object Layout 00 implementation Basic code generation More stuff 00 Slogan If B is a subclass of A than an object of class B can be used wherever an object of class A is expected This means that code in class A works unmodified for an object of class B
+generation for more advanced feature objects. Fortunately, this dated code 
+
+17.849
+writing
+
+generation strategy for objects is really just an extension of what we&#39;ve already learned. So, everything that you learn before we&#39;re going to be using and then there&#39;s going to be some additional things that we do specifically for objects And, the important thing to know about objects is slogan that you hear. When people talked about object oriented programming is this one. So if b is a subclass of a then an object of class b can be used wherever an object of class a as expected. 
+
+46.84
+slide
+Object Layout How are objects represented in memory How is dynamic dispatch implemented ex Aiken
+So there&#39;s a substitutability property. If I have a piece of code that can work on a&#39;s then it could also work on b&#39;s and any other subclass of a. What this means for 
+
+58.719
+slide
+ClassA a Int 0 d Int 7 1 f Int a 7a d Class BinheritsA b Int 2 f lnt a g0 Int a a b Class C inherits A c Int 3 h lnt a Aa c Object Layout Alex um
+the, for the case of code generation is that the code that we generate for class a. So, the code that we produced for method in class a, has to work unmodified for an object to class b And to see this, keep in mind that when we compile a, when we compile class a, I, we may not even know all the subclasses of a. So, those maybe not even have been defined yet. So, in the future some programs may come 
+
+86.46
+slide
+ClassA a Int 0 d Int 7 1 f lnt a a d l Class BinheritsA b Int 2 f lnt a g Int a a b Object Layout Class C inheritsA c Int 3 hl lnt a Aa c For A methods to work correctly in A B and C objects attribute a must be in the same in each object Alex um
+along. To find a subclass of a then our compiled version of a will have to work with that new subclass. So, there really only two questions that we have to answer to give a complete description of how to generate code for objects. The first one 
+
+107.55
+slide
+Object Layout Objects are laid o nti uous memo 1 Each attribute stored at a fixed offset in the object The attribute is in the same place in every object of that class When a method is invoked the object is self and the fields are the attributes
+is how our object represented in memory. So, we need to decide a layout and 
+
+112.63
+writing
+
+representation for objects And the second one is how is dynamic dispatch implemented so that&#39;s the characteristic feature of using objects just so we can dispatch in the method of an object and we need an implementation of that. So, to be concrete, we&#39;re going to use this little example throughout this video and I&#39;ll just take a moment here to, to point out some features of it. So, we have three classes, classes am b, and c And notice that a, is a base class and b and c both 
+
+146.09
+slide
+Object Layout The first 3 words of Cool objects contain header information Class Tag Object Size Dispatch Ptr Attribute 1 Attribute 2 Offset 12 16 Alex Nken
+inherit from a, And all three classes define some attributes, some fields and 
+
+153.87
+slide
+Class tag is an integer Identifies class of the object Object size is an integer Size of the object in words Dispatch ptr is a pointer to a table of methods More later Attributes in subsequent slots Lay out in contiguous memory Object Layout ex mm
+also some methods. Now, a couple of important features here is that notice that because b inherits from a, and c inherits from a, they all, they both inherit, both of those classes inherit the attributes a, and d from class a. So these two attributes that are defined in class a are available in class b and in class c So even though there&#39;s no mention Of a, and d in the definition say of class b. The 
+
+186.069
+slide
+Object Layout Observation Given a layout for class A a layout for subclass B can be defined by extending the layout of A with additional slots for the additional attributes of B Leaves the layout of A unchanged B is an extension
+methods in class b can still refer to those attributes. They are part of the attributes of class b. They are just copied over or inherited from a. Another feature of this example that I like to point out is that all of the methods refer 
+
+202.18
+slide
+Object Layout Offset 0 4 8 12 16 20 Class A Atag S a d B Btag 6 a d b C Ctag 6 a d c Am
+to the attribute a so actually referred into this method and this one referred twice in this method and also in this method. And the significance of this is 
+
+214.79
+slide
+Object Layout Offset 0 12 16 20 Class A Atag a d B Btag a d b C Ctag a d c A g f B N14254 5 b i C ikkn b A S 3 Mex mm
+just what we discussed a couple of slides ago. For all of these methods to work attribute a, is going to have to live in some place and some place where all of them can find it they generate a code run. Some particular less considered the method 
+
+233.49
+slide
+Object Layout fr 5 a 12 16 20 Offset 9 4 8 Class A A ta g 5 1 a g 8 Janis if 3 b B Btag 6 a d b C ikhn b A S C C Ctag 6 a d c 3 Mex Am
+f. So the method f exists in all three classes. All three classes when it runs, 
+
+241.68
+writing
+
+it will refer to attribute a, and even though the objects would be different. In one case it might be running on an object and in another case on a c object. It would need to be able to find the attribute a, and so therefore the attribute a, has to be in the same place in each object And so, how do we accomplish that? Well, the first principle is the objects are laid out to in contiguous memory. So, an object is just a block of memory. Okay with no gaps and all the data for the object is stored in the words of that lock of memory. And each attribute is stored at a fixed off set in the objects. So for example, there may be a place in this object for attribute a On this case it&#39;s at in the middle of the object is in the, in the fourth position And, no matter what kind of object it is, 
+
+297.18
+slide
+Object Layout The offset for an attribute is the same in a class and all of its subclasses Any method for an A1 can be used on a subclass A2 Consider layout for An A3 A2 A1 Header A1 object A1 attrs AZ object A2 attrs A3 object A3 attrs Alex mm
+whether it&#39;s an a. B or c objects and are example as with a we always live with that 
+
+303.259
+writing
+
+position so that any piece of code that refers to a, any method that refers a can find can find the a attribute. Now the other thing that&#39;s important to understand and this is you know slight digression from what we&#39;re talking about but it&#39;s a key aspect of code generation for object is that when a method is invoked, the object itself is the self parameter. So the self parameter is the entire object so self. When a function is involved, it will refer to the entire object so you think itself is going to be appointed to the entire object. Remember that self is like that this variable or this name in Java. And then the fields we refer to particular or the attributes of the object will refer to particular position within the objects. So, for example, the attributes, we decided to leave it there. So here is the particular object layout used in Kuhl. So the first three words of a Kuhl object contain header information and every Kuhl object always has these three entries. The first position is a class tag and also at zero then the next word it also four is the size of the object and then something called the dispatch pointer and then all of the attributes. Now the class tag is an integer which just identifies the class of the object. So the compiler will number all of the classes. So in our example we have three classes a, b, and c and the compiler for example might assign them the numbers one, two, and three. It doesn&#39;t matter what these numbers are As long as they are different from each other. So, it doesn&#39;t have these numbers consecutively or anything like that The important thing is of the class tag is a unique identifier for a class, each class has its own unique bit pattern that tells you what kind of class the object is And the other fields here the object size is also an integer which is just a size of the object in words and the dispatch pointer. Is a pointer to a table of methods so the methods are stored off to the side and the dispatch pointer is a pointer to that table and we&#39;ll talk about this more later and then all the attributes are laid out in the sub-sequence slots in some order that&#39;s determined by the compiler so the compiler will fix and order for the attributes in the class and then all the objects of that class will have the attributes of that class in the same order. And again all of this is laid out in the continuous chunk of memory. Now, I&#39;m ready to talk about how inheritance works. So, the basic ideas like given a layout for class a, a layout for a subclass b, so this is a subclass of a can be defined by extending the layout of a. So, we don&#39;t need to move any of the attribute of a, we can just add more fields onto the end of a&#39;s layout. And so, that&#39;s going to leave the layout of a unchanged which is a great property because this is how the position of an attribute in the a object will always be the same for all the subclasses. So essentially, we will never, once we decide where an attribute lives in a class it will never change for any of the subclasses of that object. So b is just going to be an extension of the layout of a. So, let&#39;s take a look at our example here and see how that, that works. Let me just write down here a little bit about these classes because we don&#39;t have the example on the screen. So we have a class a, and class a, had two attributes, a, and d, okay? And it doesn&#39;t matter what their types are or what the methods were here. We&#39;re just looking at the class names and the names of the attributes that are defined in the class. And then we have b. Which inherits from a and b added a attribute b and then we had c which also inherits from a but has no relationship to b. And class c define an attribute little c. Alright. So, that&#39;s the structure of our example is relevant to the layout of the objects. Okay. So Let&#39;s talk about the layout of class a. So, in position zero at all sub zero, there&#39;ll be a tag for a that will be some small integer at the compiler picks. There&#39;ll be a size of a, we&#39;ll come back to that in just a se cond. There will be a dispatch pointer again, which we&#39;re going to talk about later. And then come the attributes of a, and it just laid out the compiler, the way it&#39;s done in the, the Kuhl c implementations is that they are laid out in the order in which they appear textually in the class. So, in this case, first the attribute a, And then the attribute d all sets twelve and sixteen And now since the object, there are two attributes and three header words that means the size of the object is five words and so it&#39;s a five that goes in the size field for a objects. Now, let&#39;s take a look at b. Okay? So b is going to have a different tag, b objects will have a different tag so they to distinguish them from a objects. There&#39;s going to be extra fields so the size will be one bigger But now the layout preserves the layout of a. So the attributes of a appears in the same position. So you can think of there being an a object Actually embedded inside of the b object. If I were to strip off the end here that were just you know cover up this last bit here b I would say that this object here has the same size and the same attributes as an a object so any piece of code that could work on an a object will also make sense running on a b object. Now Of course, the tag is different because it actually is a subclass and you know, and there is an extra field so the, the size is different but the point is that any code that it refer is just to the fields here will still work just fine. So any a method that was compiled that refer to the methods of an a object will still find those attributes in the same place at the b object and afterwards, there is also one more field here. Which is the new attribute b It just gets laid out after all of a&#39;s fields. So after all of a&#39;s fields come all of b&#39;s fields in the same order which they appear textually in the class because there&#39;s just only one, there&#39;s just one new field there. And now looking with class c or the story with class c is very similar so c has its own distinct tag and also has one more attribute than a so it has size six. And now again the a attributes were on the same position and now the c attribute just comes after the a attribute. And so notice here that a methods again will work just fine on c objects because the attributes are on the same places and so the methods will find the attributes where they expect to. You cannot however call a method of class b on an object to class c. Okay because they have different attributes in the third position. We may have completely different types. It may not make sense to invoke a b method on c object but that&#39;s just fine because if we look at our inheritance hierarchy over here we&#39;ll see that b and c are actually unrelated. They are both subclasses of a but they have no relationship to each other. B is not a subclass of c and c is not a subclass of b and so anything beyond their shared ancestry with a can be completely different in the layout. So, more generally, if we have a chain of inheritance relationship, so let&#39;s say, we have a base class a1 and a1 inherits some a1 and a3 inherits some a2 and so on with some class a and inheriting at the bottom of this of this chain after some long sequence of, of other intermediate. Some classes, you know, what is the layout of all these classes going to look like. Well, there&#39;s going to be a header. Okay, the three word header and that will be followed by a1&#39;s attributes. And then followed by a2&#39;s attributes followed by a3&#39;s attributes and so on all the way down to an&#39;s attributes down here. Okay. And if you look again so what we talked about before each prefix. Of this header is essentially a valid object a valid one of these objects. If I look at the first set of attributes, everything up to the end of a1 and attributes, that forms a valid layout for one object is I stop with the a2 attributes. I have a, I have a, I have a valid layout for a2 object going all the way from the header down to you know, including the a1 and a2 objects. And then a3 includes all a1, a2 and a3&#39;s attributes and so on. Okay? So, each prefix Of, of this object, Of this a and object has a correct layout for some for some super class of A n. 
+

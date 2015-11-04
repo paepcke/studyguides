@@ -1,0 +1,35 @@
+4.35
+slide
+Compilers 1 Self Type Usage
+Now that we&#39;ve seen some of the operations on self type, in this video we&#39;re going to talk about where self type can be used in Cool. The parser checks if self type 
+
+15.709
+slide
+Self Type Usage The parser checks SELF TYPE appears on y where a type is expected ex Nken
+appears only where types are permitted, but that&#39;s in fact a little bit too permissive. There are places where some other types can appear but self type 
+
+24.13
+writing
+
+cannot, and so the purpose of this particular video is to go over the various rules for the usage of self type. So let&#39;s begin with, a very simple rule. So, self type is not a class name so it can&#39;t appear in a class definition, can neither be the name of the class nor the class that is inherited from. In attribute declarations the type of attribute in this case we have an attribute x and is declared to have type t, it is okay for t to be self type so it&#39;s fine to have attributes that are declared to be the self type of the class. Similarly, it&#39;s 
+
+62.6
+slide
+Self Type Usage 3 let x T in E T can be SELF TYPE Mex mm
+fine to have local let down variables that have type self type. And it&#39;s fine to 
+
+68.799
+writing
+
+allocate a new object of type self type. And what this actually does is that it allocates an object that has the same dynamic type as the self object. So, whatever the type of the self object happens to be, which is not necessarily the type of the enclosing class at run time, the u t operation will create a new object of that dynamic type. The type named in aesthetic dispatch cannot be self type, again because it has to be an actual class name. Finally let&#39;s consider method definitions. So, here&#39;s a very simple method definition. It has one formal parameter X of type T and the method returns something of type T prime. And it turns out that only T prime, only the return type can be of type self-type. No argument type can be of type self-type. And to see why let&#39;s, I can show it actually two different ways. Why, why this has to be the case. And we&#39;ll do both because this is actually important. So, let&#39;s think about a dispatch to this a method, so let&#39;s say we have some expression e, and we call method m, and we have some argument e prime. And now, let&#39;s say the argument e prime As the type t zero. So if you recall the rule for method calls, t zero is gonna have to be a sub type of the type of the fall parameter. We&#39;re gonna be passing this in, so whatever type x is declared to have here has to be a super type of the type of the actual argument. So that means that t zero is going to have to be a sub type of, now let&#39;s assume that the argument can be of type self type. Some view that t zero has to be a subtype of self type this is in some class c wherever this is defined, and remember that we said This was always false that you couldn&#39;t have self type on the right hand side and a regular type on the left hand side. Because that would lead to problems that would, that we would never be able to prove that in general for a, that, that a type is actually a sub type of self type because self type can vary over all the sub types of the class C. So that&#39;s one way to see that we can&#39;t allow method parameters, to be typed self type, but it&#39;s also helpful to just think about executing the code or some example code and see what can go wrong. So here&#39;s an example. And let me just walk you through what happens if we allow a 
+
+226.26
+slide
+Self Type Usage 2 7V saawm l 2 lo 6 m x T can be SELF TYPE What cou d wrong if T were SELF TYPE class A comp x SELF TYPE Bool class B inherits A b int comp x SELFATYPE Bool x b let X A new B in x comp new A Alex um
+parameter to have type self type in this example. So there are two class definitions. Class A has a method comp for comparison, and it takes one argument of 
+
+238.76
+writing
+
+type self-type. And it returns a bull. So the idea here is that the comparison operation probably compares the, this parameter with the argument and returns true or false. Then, there&#39;s a second class B, and B is a sub-type of A, it inherits from A. And it has one new field B little b here of type int. And now the comparison function in class B is overridden has the same signature as the comparison function or the comp function in class A. But, the, the method body here accesses the field B. And now let&#39;s take a look at what happens with a piece of code that uses these two classes. So, here X is going to be declared to be of type A. But we&#39;re going to assign it something of type B. And here we&#39;re notice that there&#39;s a gap between the static type, which will be A, and the dynamic type, which will be B. And that&#39;s actually key to the problem. And now, we Invoke the cup method on X and we pass it a new A object. And so what happens, well this type checks just fine because X is in class A. X is of type A and this argument is also of type A. So if self-type if having an argument type self-type is ever going to work it has to work for this example where the two static types of the, of the dispatched of this parameter and the former parameter are exactly the same. So that clearly has to be allowed if we allow self type as the type of the argument. And now let&#39;s think about what happens when it actually executes Is going to invoke the comp method in the b class okay, Because X is of dynamic type B. And then it&#39;s going to take the arguments and it&#39;s going to access its B field. But the argument is of dynamic type A and it has no B field. And so, this is actually going to cause a runtime crash. So, and just to go over that one more time, Just to make sure that it is clear. Here X has type A ut dynamic type B. The argument has static type A and dynamic type A and when this method gets invoked the argument That which is of dynamic type A, does not have the operations, all the fields and methods, of the class B And results in a run time, undefined behavior at run time. 
+

@@ -1,0 +1,80 @@
+3.59
+slide
+Compilers 1 Scope
+Welcome back. In this video we&#39;re gonna begin our discussion of semantic analysis with the topic of scope. The motivating problem for talking about scope is that we 
+
+16.289
+slide
+Scope Matching identifier declarations with uses Important static analysis step in most languages Including COOL Mex mm
+want to be able to match identifier declarations with the uses of those identifiers. We need to know which variable we&#39;re talking about when we see variable X if variable X might have more than one definition in the program. And this is an important aesthetic analysis step in most programming languages, including, [inaudible]. So here are a couple of examples taken from cool. This definition Y, this declaration Y that it&#39;s a string will be matched with this used 
+
+44.57
+slide
+Example 1 Example 2 Scope let 1 String abc in y 3 letyzlntinx 3 ex Aiken
+and so we&#39;ll know at this point here that Y is supposed to be a string and you&#39;ll 
+
+48.899
+writing
+
+get some kind of an air for a compiler because you&#39;re trying to add a string and a number. In the second example Here&#39;s a declaration of Y And then in the body of the [inaudible] we, we don&#39;t see any use of Y And that, by itself is not an error. It&#39;s perfectly fine to declare a variable that you don&#39;t use. Although you could imagine generating a warning for that, that doesn&#39;t actually cause the program to behave badly, But instead what we see here is a use of X and there&#39;s no matching definitions. So the question is where is the definition of X? We can&#39;t see it And if there is no outer definition of X then we&#39;ll get and undefined or undeclared variable error here at this point. So these two examples illustrate the idea of 
+
+92.74
+slide
+Scope The scope of an identifier is the portion of a program in which that identifier is accessible The same identifier may refer to different things in different parts of the program Different scopes for same name overlap An identifier may have restricted scope
+scope. The scope of an identifier is that portion of a program in which the identifier is accessible. And just know that the same identifier may refer to different things and different parts of the program. And different scopes for the same name can&#39;t overlap. So whenever the variable x, for example, means, it can only refer to one thing in an given part of the program. And identifiers can have restricted scope. There are lots of examples, I&#39;m sure you&#39;re familiar with them, of identifiers whose scope is less than the entire program. Most programming 
+
+125.38
+slide
+Scope Most languages have static scope Scope depends only on the program text not behavior Cool has static scope A few languages are dynamically scoped Lisp SNOBOL Lisp has changed to mostly static scoping Scope depends on execution of the program Alex Mk
+languages today have what is called static s cope. And cool is an example of a statically scoped language. The characteristic of static scoping is that 
+
+133.439
+writing
+
+the scope of the variable depends only on the program text, not on any kind of runtime behavior. So what the program actually does at runtime doesn&#39;t matter. The scope is defined purely syntactically from the way you wrote the program. Now it may come as a surprise that there is any alternative to static scoping. In fact, probably every language that you have used up to now has had static scoping But there are a few languages that are, what are called, dynamically scoped. And for a long time actually there was an argument about whether static scoping was better than dynamic scoping. Although today, I think, it is pretty clear that static scoping camp has, has won this discussion But historically, at least, LISP was an example of a dynamically scoped language. And it has switched, in the meantime. This is actually a long time ago now that it changed, to static scoping. Another language which is now mostly of historical interest, it isn&#39;t really used anymore, called Snowball, also had, dynamic scoping. And the characteristic of dynamic scoping is that the scope of a variable depends on the execution behavior of the program. So let&#39;s take a look at an example of [inaudible]. So, here we have 
+
+207.239
+slide
+etx nt 0in X etx nt 1in X X Scope ex um
+some [inaudible] code, and, a couple of different declarations of X, and also, 
+
+213.53
+writing
+
+some different uses of X. Let me erase these. [inaudible] underline so I can use the color to indicate, binding. So, let&#39;s take a look at this definition. The question is which of these uses of x, we have three uses of x, actually refer to that definition. So, it is, in fact, these two, the ones that are outside of the inner let. These actually refer to this definition. So, here if you refer to x, you get the value zero But, this other definition here. The inner definition of x, is, is used by this use of x. So this use of x, gets this va-, this meaning of x, which in this case, returns the value one. And what&#39;s going on here is that we&#39;re using the most closely, what&#39;s called the most closely nested rule. So a variable binds to the definition that is most closely enclosing it of the same name. So this x the closest enclosing definition of x is this one, but for these two x&#39;s, the closest and only enclosing definition of x is this outer one. So in dynamically scoped language, a variable would refer to the closest binding in the 
+
+284.41
+slide
+Scope A dynamically scoped variable refers to the closest enclosing binding in the execution of the program Example g y let a 4 in f 3 f x a More about dynamic scope later ex um
+execution of the program, meaning the most recent binding of the variables, so here&#39;s an example, let&#39;s say we have a function G, and G defines a variable A, and here&#39;s 
+
+293.31
+writing
+
+it initialized say to four, and then it calls another function Another function that isn&#39;t in the same syntactic scope. So here I&#39;ve written F right next to G but actually F could be in some completely other part of the code and F refers to A. And the question is, what is the value of A here? Well. If it&#39;s if we dynamically scoped then it&#39;s going to be the value that was defined in G and here F of X will actually return four, that will be the result of this call because this reference to A. We&#39;ll refer to this binding or this definition of A and G. And, we can&#39;t say much more about how dynamics, how dynamics scope works until we talk in a little more detail about how languages are implemented. So we&#39;ll talk about dynamic scope again a little later on in the course. In Cool, identifier bindings are 
+
+342.66
+slide
+Scope Cool identifier bindings are introduced by Class declarations introduce class names Method definitions introduce method names Let expressions introduce object Formal parameters introduce object Attribute definitions introduce object Case expressions introduce object Alex m
+introduced by a variety of mechanisms. Now there are class declarations, which introduce class names. Method definitions, which introduce method names, And then there is several different ways to introduce object, object identifiers. And these are the [inaudible] expressions, [inaudible] parameters of functions, attribute definitions in classes, and finally in the branches of case expressions. It&#39;s important to understand that not all identifiers follow the most 
+
+370.11
+slide
+Scope Not all identifiers follow the most closely nested rule For example class definitions in Cool Cannot be nested Are global y visible throughout the program A class name can be used before it is defined
+closely nested rule that we outlined before. So for example a rather, rather large exception to this rule is class definitions in Cool. So class definitions cannot be nested. And in fact they are globally visibl e throughout the program. And what does that mean? That means that a class name is defined everywhere If it&#39;s defined anywhere in the program, that class name is available for use anywhere in the program or everywhere in the program. And in particular, a class name can be used before it is defined. So as an example, take a look at this fragment of 
+
+401.139
+slide
+Class Foo ety Barin Class Bar Scope ex um
+cool code here. And here we see that in class foo, we declare y to be of type var and then later on we declare class var. This is perfectly fine cool code. The fact 
+
+412.199
+writing
+
+that var is used before it is defined has no effect on whether the program is correct. This is a completely legal cool code Similarly with attribute names. Attribute names are global within the class in which they are defined, so, I, that means they can be used again before they are defined. So for example, I can define a class foo, and I can define a method that uses attribute a, and then later on, only later on, do I define what attribute a is, and that is perfectly legal. So normally The list attribute definitions before method definitions, but that&#39;s not required. A actually the method and attributory definitions can come in any order we like, within a class, and in-particular an attribute can be used before it is defined. Finally method names have quite complex rules. For example, a 
+
+465.139
+slide
+Scope Method names have complex rules A method need not be defined in the class in which it is used but in some parent class Methods may also be redefined overridden
+method doesn&#39;t have to be defined in the class in which it is used. It could just be defined in some pairing class. And also methods can be redefined. So it&#39;s possible to what&#39;s called overwriting of a method and give a method a new definition Even though it has been defined before. We don&#39;t actually have the language yet to talk about these rules with any precision but we&#39;ll be going into this in future videos. 
+

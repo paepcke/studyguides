@@ -1,0 +1,40 @@
+4.04
+slide
+Compilers 1 Java Coercions
+In this video, we&#39;re going to talk about Coercions which is a feature of type systems that appears in many languages and we will be looking specifically how coercions are done in Java. Java allows primitive types to be coerced in certain 
+
+22.02
+slide
+Java Coercions Java allows primitive types to be coerced in certain contexts In 1 2 0 the int 1 is widened to a float 1 0 A coercion is reallyjust a primitive function the compiler inserts for you Most languages have extensive coercions between base numeric types
+context. And, coerced means converted from one type to another. So here&#39;s an example, 
+
+26.68
+writing
+
+lets take the expression one + 2.0 and the difficulty with this expression is that the, the one here is, is an integer and the 2.0 is a floating point number. And there is no way to add an int to a float directly. We either have to convert the integer to a float and then do the add as floating point numbers or convert the floating point number to an integer and then do the addition as integer addition. So they have to be converted to a common representation, before we can actually do the operation. And the normal thing to do, and the thing that Java does, is to convert the integer to the floating point number 1.0. Now, a coercion the right way I think, to think of coercions is they&#39;re really just primitive functions that the compiler inserts for you. So it&#39;s like, you left out a function call and the compiler notices that and puts it in. So, in this particular example, what would be the function call? Well, there, we can think of there being a primitive function that converts integers to floating point numbers in the obvious way. And so really this expression here gets converted to the expression into float applied to the number one plus 2.0. All right. So coercions are probably best thought of as a convenience for you, the programmer to let you avoid having to write some function calls. And, so where it is obvious that a type conversion is going on the compiler can insert the function that performs that type conversion for you. And most languages really have extensive coercions so the conversions are very, very common particularly between numeric types and so this is not just Java. This is really many different programming languages of all styles that have lots of differe nt kinds of coercions. Now, Java in particular distinguishes two kinds of 
+
+142.769
+slide
+Java Coercions Java distinguishes two kinds of coercions casts Widening always succeed int a float Narrowing may fail if data be converted to desired type float int downcasts Narrowing casts must be explicit Widening casts coercions can be implicit
+coercions and casts. You have widening coercions and these will always succeed. 
+
+147.43
+writing
+
+Alright, so that means that Java will always put them in and there will never be any complaining from the compiler or the runtime system about them and we already saw one of those, so the conversion from int to float is an example of a widening cast. Now, narrowing casts may fail if the data can&#39;t be converted to the desired type. So in particular, float to int well, this will work fine. Something like 2.0 can be converted in obvious way to two but if you&#39;re converting something that doesn&#39;t have an integer representation something say like 2.5 you know, there&#39;s a question of what we should do here. Okay, and for such narrowing casts, where there isn&#39;t a, a clear mapping, whether we should go or, you know or whether we should try here or round up, or whatever then Java will actually complain and not let you do it. Okay perhaps for better example of the kind of narrowing cast that&#39;s that Java will complain about is something like a down cast. So if I have two classes A and B. And B is a subtype of A and then I have something of type A. Well, I can cast it to B. I can say, let&#39;s say I have X which is a type A and then I can have an expression where I try to convert x to a B object. So here I have a cast, I&#39;ve indicated that I want to treat this expression x as a B object and this will type check, okay. So the, the compiler will let this through since B is subtype of A. But at run time, it&#39;s actually going to check whether x is actually a B object and if it&#39;s not you&#39;re going to get an exception. So this can fail at run time if the object thatt x actually holds at the point of the cast is not a B object. So the rule in Java is that narrowing cast must be explicit. You have to put the function in yourself. You have to put in the typecase in the code so that it&#39;s obvious that you really want to do it, but widening casts in coercions can be implicit, so it&#39;s alright. If you&#39;re widening, if you&#39;re either promoting to a super type or you are converting between initial type where it&#39;s clear that the, one type embeds in the other then those can be filled in for you by the compiler. And here&#39;s a little Java trivia question. So it turns out that there is one type in 
+
+291.19
+slide
+Java Coercions What is the only type in Java for which there are no coercions casts defined ex Aiken
+Java for which there are no coercions or casts defined. Okay so there are no implicit conversions or even explicit conversions from that type to any other type. And the answer to the question, which is the only one, is bool. Okay so only the type boolean has no conercions or casts to another type. Now personally, I&#39;m 
+
+317.8
+slide
+Java Coercions Coercions can lead to surprising behavior Consider an example from PL I Let A B C be strings of 3 characters B C A B C What is A
+not a big fan of coercions. I think that it&#39;s clearly a convenience for 
+
+324.1
+writing
+
+programmers, it&#39;s clearly something that is widely accepted as being necessary in programming languages because casts, implicit casts and conversions are so ubiquitous but I do think that it tends to lead to programs that have behavior that&#39;s different from what the programmer probably expected. And, here&#39;s a good example from the language PL/1, which recalls stood for Programming Language one designed by IBM in the 1960s. And had many, many features in it so we&#39;ve talked about PL/1 a few times in this class. And one thing that PL/1 had was very extensive cast and coercions and this could lead us to some surprising behaviors. So here&#39;s an example we have a, A, B, and C are strings of three characters so it&#39;s important to know here that the length three is part of the type. So B is string &#39;123&#39; C is &#39;456&#39; and then A is going to be B + c and the question is what is A? And, and you probably won&#39;t guess, so let me show you what I think is the right answer. So first of all the question is what happens with this + operation here? Well, so that is going to be interpreted as an integer + so B and C are both going to be cast to integers and the, and this will be done as a integer arithmetic. So B will get converted to the number 123. C will get conver ted to the number 456, okay? And then we&#39;ll add them and we&#39;ll get out the number 579. Okay, so the result of this expression is 579 but A is also a string of three characters so this has to be cast back to a string. Now, it turns out that this cast happens in two steps. First this, this number here is cast to a string of the default length, okay. And the default length happens to be six so this is cast to a string looks like this. There&#39;s three blanks followed by 579. And then that string of six characters is converted to a string of three characters. And we just take the first three characters and so we get out that, and so the answer is that this program stores a string of three blanks in A. Which is probably not what was expected. 
+

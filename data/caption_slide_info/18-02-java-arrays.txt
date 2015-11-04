@@ -1,0 +1,55 @@
+4.42
+slide
+Compilers 1 Java Arrays
+In this video, we&#39;re going to take a look at Java Arrays. Let&#39;s say we have two 
+
+11.03
+slide
+Assume B A What happens in the following B b new B 10 Al 8 b a 0 new A b 0 aMethodNotDeclaredlnAO Java Arrays ex um
+classes, a and b, and that b is a sub class of a. And let&#39;s think about what 
+
+15.82
+writing
+
+happens when we execute the following piece of code. So, the first thing we&#39;re going to do is we&#39;re going to allocate an array of b&#39;s. So, this is an array that&#39;s supposed to hold B&#39;s, okay? And, we&#39;re going to have an array variable b here that points to it. And then, we&#39;re going to have another variable, array variable A, that also points to the same array as B. But notice the type of a. So a is an array of A&#39;s, little a here is an array of A&#39;s, and b is typed as an array of B&#39;s. And now what we&#39;re going to do is we&#39;re going to assign into a sub zero, okay, into the first position of a, a new a object. And that should be fine, right? Because a is an array of A&#39;s and that seems like that should work out alright. Alright, so here there will be an a sitting in the first position. And then, we&#39;re going to access b sub zero which, because A and B point to the same array, is the same element as a sub zero. And we&#39;re going to call some method that is not declared in A. Now remember, B is a sub-type of A, alright? So B has all the methods of A. A but B might have more methods. And since this is an array of B&#39;s, we should be able to call all the B methods on it and yet here, when we call some methods that&#39;s declared in B but not in A, we are going to get a run-time error because the object stored in the array is actually an A object at the first position. To understand what&#39;s going on in this example, we have to take a look at 
+
+113.009
+slide
+B A if B inherits from A Java Arrays as in Cool ex Nken
+the sub typing rules in Java. So, if we use a subtype of A if B inherits from A, 
+
+119.17
+writing
+
+that&#39;s one case. So if B and B inherits from A, then B is a subtype of A. And that&#39;s just like in Cool and, and most other object oriented languages. And we&#39;re, we&#39;re very familiar with that from our lectures in type checking. Further more, type, sub typing is transitive. So if C is a subtype of B, and B is a subtype of A then C is also a subtype of A. Okay, a nd that&#39;s also completely standard. But then there&#39;s this other rule that&#39;s not quite standard or is definitely nonstandard. And that&#39;s that, an array of B&#39;s is a sub-type of an array of A&#39;s if the element types are in a sub-type relationship. So if B is a sub-type of A, then array of B is a sub-type of array of A. And Cool doesn&#39;t have anything like that, Cool doesn&#39;t have arrays so it wouldn&#39;t even have the opportunity to have something like that. But this is also not the way it&#39;s done in other languages that have objects and sub-typing. So let&#39;s take a look at our little example again and let 
+
+172.709
+slide
+B b new B 10 All a b a O new A0 b 0 aMethodNotDeclaredlnA Java Arrays ex um
+me explain it in a slightly different way. So, the issue here is that we have a, area 
+
+179.12
+writing
+
+of memory, and it actually doesn&#39;t matter here. It&#39;s not essential that this be an array. What&#39;s important is that&#39;s an updatable part of memory so that we have pointers to it. We have two pointers to it, a and b and we can, they can both read and write this part of memory. So this could be just a single cell, it doesn&#39;t have to be an array of multiple cells. But what&#39;s important is that there is some memory location that both of these point to, that they can both read and write, okay? And the trouble comes and by the way, that there&#39;s a name that, that&#39;s called Aliasing, okay? So when you have two names, two program names for the same part of memory that is called aliasing, and here you know, we have the, the two arrays, A and B, that point to the same area of memory, okay? Now, aliasing is very common in real programs since not bad by itself but the problem in this example is that A and B have different types, okay? And in general, if you have aliasing updatable references, okay? Meaning if two names for the same location, that location is both readable and writable, so it can be updated through the two names. And those two names have different types then that is going to be unsound, okay? We&#39;re not going to have a sound type system and to see the problem, let&#39;s say here in this case what was it? We had that B, type B was sub type of A, okay? And what did that mean? Well that meant is we could do a wright through this pointer, okay? And write an A object into this location and then we could read that out through this point over here as a B object. But now, it doesn&#39;t have all the methods and, and fields of A and treating it as the object, we could potentially use an operation on it that&#39;s undefined. And you can see that it doesn&#39;t help if we swap the roles of, of A and B, alright? So in particular, if we reverse the, if we reverse the sub-typing relationship so that A was a sub type of B, we can do exactly the same problem because aliasing is symmetric. We just do the write through the B pointer and the read out of the A pointer swapping the roles of the recent right here and we have exactly the same problem. So in general, multiple aliases do updatable locations with different types is unsound, okay? And this problem actually has come up in many different programming languages. Java is not the only programming language to have had this issue. It&#39;s a fairly subtle aspect of type systems and in many languages have done things similar to Java where they&#39;ve created a problem really for the static type system by wanting to have a sub-typing work through arrays. Now, the standard solution or the solution that&#39;s 
+
+352.75
+slide
+Standard solution Disallow subtyping through arrays B A ifBinherits fromA C A ifC BandB A B A ifB A Java Arrays ex mm
+used in, I should say, in many languages and is probably most widely accepted in 
+
+357.66
+writing
+
+the programming languages research community is that you need a different sub-typing rule for arrays. So we would say, you know, the rule that is commonly used the standard solution to this problem at the type level is that to do the following things. So you only allows sub-typing on arrays. So, you know, an array of B&#39;s is a sub-type in array of A&#39;s only if B and A are the same type. If B = A. And if you think about that for a second, if we have an array and now we have our two pointers to it, A and B and we know the type of A the subtype or the type of B. Well, that only h appens if the element types are, are equal. And so we can&#39;t create two references to an updateable location with different types. Okay, and that will guarantee soundness of, of the type, of the type system. So Java fixes the problem differently. So instead of statically checking that array 
+
+416.15
+slide
+Java Arrays Java fixes the problem by checking each array assignment at runtime for type correctness Is the type of the object being assigned compatible with the type of the array
+accesses will all be type correct, Java does this at run time. And so whenever an assignment is done into an array at runtime, Java checks whether the type of the object being assigned in compatible with the type of the array. So when you 
+
+432.61
+writing
+
+say new B sub ten in Java, Java will remember inside the array that this was supposed to be an array of Bs. And then whatever you assign into the array, it will check that the thing you&#39;re assigning is either a B or a sub type of B. Now, this obviously adds an overhead on array computations so every assignment to an array is going to have, have a type check on it at run time. And fortunately though, the most kinds of arrays are arrays of primitive types, in particular arrays of ints and arrays of floating point numbers and these are not affected because the primitive types are not classes. There&#39;s no subtyping on them and so you can never create an array, say, of floating point numbers, with any kind of subtyping relationship that would result in this problem. So, so, that we&#39;re saved, or in better shape, for the primitive types, and they don&#39;t need these extra checks. But if you have arrays of objects, then we do assignments into those arrays in Java, there&#39;s additional run time overhead. 
+

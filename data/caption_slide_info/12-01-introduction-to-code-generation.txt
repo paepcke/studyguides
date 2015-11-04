@@ -1,0 +1,50 @@
+4.22
+slide
+Compilers Introduction to Code Generation
+After numerous videos on run time organization and stack machines, we are finally ready to begin our discussion of code generation. So as I mentioned in the 
+
+16.51
+slide
+Code Generation We focus on generating code for a stack machine with accumulator We want to run the resulting code on a real machine e g the MIPS processor or simulator We simulate stack machine instructions using MIPS instructions and registers
+previous video we&#39;re going to focus on generating code for stack machines. This is probably the simplest code generation strategy. It doesn&#39;t generally yield extremely efficient code. It&#39;s an interesting strategy and certainly not, totally not an unrealistic one. It&#39;s more than complex enough for our purposes. We want to run a real machine and we&#39;re going to the mix processor. In particular we&#39;re going to use a simulator from it which runs on about any kind of hardware so that will be very convenient for the course project And the basic idea, the basic strategy, is going to be to simulate a stack machine using Mipp&#39;s instructions and registers. So the first decision in, designing our simulation, is deciding 
+
+59.01
+slide
+Code Generation The accumulator is kept in MIPS register a0 ex mm
+where to put the accumulator in. We&#39;ll keep that, in this register, A0. Any 
+
+63.329
+writing
+
+register would have done but we&#39;ll just use A0 always for the accumulator And then the stack is going to be kept in memory And I should point out here that when we talk about a one register stack machine nominally that register in this case A0, is the top of the logical stack of the stack machine But just to avoid confusion in the terminology, I&#39;m going to refer to A0 as the accumulator and the stack as all of the other data that&#39;s kept in a memory stack on the MISC processor, so we&#39;ll just consider A0 the accumulator to be distinct from the stack, which lives in memory And the stack on the MIPS will grow towards the lower addresses which is the standard convention on MIPS. The address of the next location on the stack is going to be kept in the MIPS register $sp and this register actually has a mnemonic name that stand for stack pointer. So, normally on the MIPS machine, compilers use SP to, point to, their stack, and the top of the stack will always be at the address, SP plus four. So, remember the stack is growing towards low addresses, and the address, in the stack pointer is the ne xt unallocated location on the stack. So the stack pointer actually points to unused memory, and the top of the stack, therefore, is at the next higher word address which would be SP plus four, Now the MIPS architecture is quite an old architecture. It was designed in the 1980&#39;s and it was, or is, the prototypical reduced instruction set computer, or risk 
+
+160.55
+slide
+Code Generation MIPS architecture Prototypical Reduced Instruction Set Computer RISC Most operations use registers for operands results Use load store instructionsto use values in memory 32 general purpose registers 32 bits each We use Ssp 30 and Stl a temporary register Read the SPIM documentation for details Alex Amen
+machine. And the idea behind RISC machines was to have a relatively simple instruction set. Most of the operations used registers for operands and results. 
+
+169.88
+writing
+
+And then load and store instructions are used to move values to and from memory. So primarily all the computation takes place in registers, and the memory operations are primarily are just loading and storing data. There are 32 purp-, there are 32 general-purpose registers on the MITS, it&#39;s a 32 bit machine. We&#39;re only going to use three of those registers. We already talked about SP, the stack pointer. A0 the accumulator, and we&#39;ll need one more register for temporary values. So some operations that take two arguments like plus and times will have to have two registers to hold the arguments to the operation. So we&#39;ll use the accumulator for one of those and a temporary register for the other. And there is a lot more information on the MIPS architecture in the SPIM documentation. Spim is the simulator that we, we&#39;ll use to execute MIPS code. Now of course, to, generate code for the mix. We&#39;ll also need some mix instructions. And we&#39;ll be able to get 
+
+229.099
+slide
+Code Generation w reg1 offset reg2 Load 32 bit word from address reg2 offset into regl add reg1 regZ reg3 reg1 e reg2 reg3 sw reg1 offset reg2 Store word in reg1 at address reg2 offset addiu reg1 regZ imm regl e reg2 imm means overflow is not checked Ii reg imm rege imm Alex Nken
+away, with just a very small number of instructions. Five in fact, for our first example And here they are. So the first instruction we need, is load, or load word And the way this works is it takes the value of register two, takes the contents 
+
+243.22
+writing
+
+that are in register two Adds a fixed offset. So this is a number that&#39;s, directly in the code Adds a fixed offset to that to the contents of register two. That&#39;s a memory address. It loads the value of that memory address into register one. The add instruction adds the contents of register two and register three together and stores the results in register one again. The store operation, or store word operation takes the value in register one and stores it into memory. So that&#39;s stored at a memory address, and with the memory address is the contents of register two, plus a fixed offset that&#39;s in the code. And an add immediate unsigned, takes, is an unsigned add, and it takes a value in register two, an immediate value. So, this is just a number, that&#39;s a constant that&#39;s directly embedded in the code. It adds that to the value register two and stores the result in register one. And the unsigned aspect here just means that the overflow is not checked, we&#39;re not, we&#39;re not checking whether we generate a number that&#39;s beyond, beyond what we could represent if we had sine numbers. Finally, load immediate just takes a constant that&#39;s in the code, and puts it into, the register that&#39;s named as the first argument Alright? So those are the five instructions that we need, to do a, one very simple example. So now we&#39;re ready to do our first program, and not surprisingly it&#39;s the same program that we looked at in 
+
+337.66
+slide
+Code Generation The code for 7 Sin MIPS acc 7 push acc acc e 5 acc e acc top of sfack P0P Alex Nken
+previous videos when we were talking about stack machine code. So let&#39;s look, here&#39;s the program for adding seven plus five, written out in our little abstract stack 
+
+346.07
+writing
+
+machine language. Now our goal is to implement this program using MIPS instructions. So over here on the right, I&#39;m going to layout the instructions we would use to simulate this program or implement this program on the MIPS machine Alright? So the first instruction is to load seven into the accumulator. And we can do that with a load immediate. We&#39;re going to load immediate the value seven. A0 is our accumulator register, and so this instruction puts seven in the accumulator. Next instruction, we want to push the value of the accumulator onto the stack. How do we do that? Well we have to store the value onto the stack, and remember the stack pointer points to the next unused memory location. And so we&#39;re just storing directly at what the stack pointer points to, so that&#39;s at zero offset from the stack pointer. The value of the accumulator pushes the value onto the stack, and now to restore the invariant. That the stack pointer points to the next unused location, we have to subtract four from the stack pointer. Okay. So, these two instructions together, implement a push, they push the data value onto the stack, and they move the stack pointer to the next unused address. Alright, now I&#39;m ready to do the next instruction, loading five into the accumulator. Well, we already know how to do that. We&#39;ll be a load immediate into the accumulator register A0, the immediate value five Are now ready to do the add And how does that work? Well, first, we have to load the value of that&#39;s on the top of the stack, alright. Because it&#39;s like an argument is taken from the top of the stack. And since MIPS can only do operations out of registers, that value has to go somewhere into a register. And this is where we use our temporary register. So now, this value is now at offset four from the stack pointer, because we subtracted four from the stack pointer And we load it into register T1. Okay, And then we can actually perform the add. And so we add the accumulator to the value of T1 and we store the result back into the accumulator And finally we&#39;re going to pop the stack so we&#39;re done with the value that&#39;s on the stack, And how do we pop? Well, we just add four to the stack pointer, and that moves the stack pointer back popping that value off of the stack. 
+

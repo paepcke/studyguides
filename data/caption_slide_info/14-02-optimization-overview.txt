@@ -1,0 +1,115 @@
+3.73
+slide
+Compilers 1 Optimization Overview
+We are now ready to begin our next major topic, Program Optimization. In this video, we&#39;re just going to give overview discussing why we want to perform optimization and what the trade-offs are for compilers and deciding what kind of optimizations to implement. Optimization is the last compiler phase that we&#39;re going to discuss. Let&#39;s just very briefly review the compiler phases. First there is 
+
+29.38
+slide
+Optimization Overview Optimization is our last compiler phase Most complexity in modern compilers is in the optimizer Also by far the largest phase
+lexical analysis and then that&#39;s followed by parsing. Then we have semantic 
+
+35.05
+writing
+
+analysis. And after that we talked about code generation. And now we&#39;re going to talk about optimization, okay? So optimization actually comes before code generation because we want to improve the program before we commit it to machine code but it is of course the last one that we&#39;ve discussed. But, just point out here, optimization fits in between generally semantic analysis and code generation and in modern compilers this is where most of the action is. It&#39;s usually has by far the most code, and it&#39;s also the most complex part of the compiler. Now, a very basic question is, when we should perform optimizations? And we actually have some 
+
+81.55
+slide
+Optimization Overview When should we perform optimizations Mex mm
+choices. We could perform them on the abstract syntax tree and, a big advantage 
+
+86.31
+writing
+
+of that is that it&#39;s machine independent but for many optimizations we want to do, this, it turns out that the abstract syntax tree will be too high level that we can&#39;t actually even express the optimizations we want to perform because those optimizations depend on lower level details of the machine or of the kind of machine that we&#39;re generating code for that aren&#39;t present in the abstract syntax tree. Another possibility would be to perform optimizations directly on assembly language and the advantage here that all the details of the machine are exposed. We can see everything that the machine is doing. We can talk about all the resources of the machine and so, in principle, any optimization we want to perform can be expressed at the assembly language level. Now a disadvantage of doing optimizations on assembly language is that they are machine-dependent. And then we would have to potentially re-implement our optimizations for each new kind of architecture. And so, as we mentioned in the previous video, another option is to use an intermediate language And the intermediate language has the advantage potentially, if it&#39;s designed well, of still being machine independent. Meaning it can, it can be a little bit above the level of the concrete details of very, very specific architectures. I mean, it can still represent a large family of machines but while, at the same time, exposing enough optimization opportunities that the compiler can do a good job of improving the program&#39;s performance. So, 
+
+180.969
+slide
+Optimization Overview P P 5 are register names Id dop d I id 2 op id Constantscan replace id 5 I id 2 id Typical operators push id id 2 pop ifid relop id goto L L I jump L
+we will be looking at optimizations that work on intermediate language that has 
+
+186.98
+writing
+
+operations given by this grammar. So, in this case, a program is a sequence of statements and a statement consists of either, an assignment Which could be a simple copy, or a unary, or binary operation. We can push and pop things from a stack and then we have a couple of different kinds of jumps. We have a comparison in jump where we compare the value of two registers and then conditionally jump to a label. We have unconditional jumps and finally there are labels, the targets of jumps. And the identifiers here are the register names, and we could also use immediate values on the right hand side of operations instead of registers and the typical operators, we&#39;re just going to assume some typical family of operators like +,,, -,,, &lt;i&gt;, etcetera. Now, optimizations typically&lt;/i&gt; 
+
+240.73
+slide
+Optimization Overview A basic block is a maximal sequence of instructions with no labels except at the first instruction and no jumps except in the last instruction Alex mm
+work on groups of statements and one of the most important and useful statement 
+
+245.68
+writing
+
+groupings is the basic block. So a basic block is a sequence of instructions and typically we want it to be the longest possible sequence of instructions. So we want it to be maximal and this sequence has two properties. First of all there are no labels except possibly for the very first instruction. And there are no jumps anywhere in this sequence of instructions except, possibly for the last instruction. And a basic block the ide a behind a basic block, and the reason we require these two properties is that it&#39;s guaranteed to flow, the execution is guaranteed to 
+
+280.34
+slide
+Optimization Overview A basic block is a maximal sequence of instructions with no labels except at the fir and no jumps except in the last instruction Idea Cannot jump into a basic block except at beginning Cannot jump out of a basic block except at end A basic block is a code segment rm Amen
+proceed from the first statement in the block to the last statement in the block. So the flow of control within a basic block is completely predictable. Once we enter the block, once we begin at the first statement of the block which might have a label, there will be a sequence of statements. That must all execute before 
+
+300.15
+writing
+
+we reach the last statement which could potentially be a jump to some other part of the code. But once we get here, once we get to this very first statement, then we&#39;re guaranteed to execute the entire block without jumping out And furthermore, there&#39;s no way to jump into the block. You couldn&#39;t just come from some other random part of the program and begin execution, say, at the second or third instruction. The only way into the block is through the first statement, and the only way out is through the last statement. Say here&#39;s a example basic block and just to show you 
+
+334.32
+slide
+Optimization Overview Consider the basic block 1 L 2 t 2 x 3 w t x 4 ifw 0goto L
+why basic blocks are useful. Let&#39;s observ that we can actually optimize this piece 
+
+339.62
+writing
+
+of code. Okay because three always executes after two. This instruction here always execute after this instruction. We could change that third instruction to be w = three x. Okay because we can see here that t is getting two x + x or two x and here we&#39;re adding in another x and so w is actually always equal to three x. And a question then, so that, that is certainly a correct optimization and, and it&#39;s correct exactly because statement two is always guaranteed to execute before statement three. Another question we might be is whether we can eliminate this statement so once we replace this by three x, you know maybe we don&#39;t need this assignment anymore if this was the only place that t was used if t was a temporary value that was computed only to compute the, the value w. And then we can delete this statement and this depends on the rest of the program. We have to know whether t has any other uses someplace else in the program w hich we can&#39;t see just by looking at the single basic block. The next important grouping of statements 
+
+413.17
+slide
+Optimization Overview A control flow graph is a directed graph with Basic blocks as nodes An edge from block A to block B if the execution can pass from the last instruction in A to the first instruction in B E g the last instructionin Aisjump LB E g execution can fall through from blockA to block B Max Amen
+is a control flow graph. And a control flow graph is a, just a graph of basic blocks. And so there&#39;s an edge from block a to block b. If execution could pass from the last instruction in a to the first instruction of b. So essentially the control flow graph just shows how control flow can pass between the blocks and there isn&#39;t of course no interesting control flow within the block. We know that the basic block will just execute from the first instruction to the last instruction. So, the control flow graph is a way of summarizing the interesting decision points in a, in a procedure or a other piece of code showing where some interesting control flow decision is actually made. So here&#39;s a simple control 
+
+457.2
+slide
+i i 1 ifi 10gotoL Optimization Overview Max Mk2
+flow graph consists of two basic blocks. The first basic block is outside of the loop, and consists of some initialization code. And then we have one basic block here in the loop. The basic block consists of these three instructions. And at the bottom of the block is a branch, a testing branch where either we, exit and go someplace else or we loop around and execute the loop body again, okay? And the body of a method can always be represented as a control flow graph. The convention 
+
+489.1
+slide
+L x x x i i 1 ifi 10goto l Optimization Overview The body of a method or procedure can be represented as a control flow graph There is one initial node All nodes are terminal
+that we&#39;ll use is always a distinguished entry node so a distinguished start node of the control flow graph and typically it&#39;ll just be obvious it&#39;ll be the one listed at the top. And then there will be some return nodes or one or some nodes of which you can return from and you know you have a return statements in the procedure. And return nodes or places where you exit the procedure will always be terminal. Meaning there will be no edges out of those blocks. Now, the purpose of 
+
+517.529
+slide
+Optimization Overview Optimization seeks to improve a resource utilization Execution time most often Code size Network messages sent etc
+optimization is to improve a program&#39;s resource utilization. And for the purposes 
+
+522.749
+writing
+
+of this classroom, when we talk about optimization in, in our examples and in the videos we&#39;re gonna be talking about execution time. And we&#39;re gonna be talking about, we&#39;re g onna be talking about making the program run faster. And this is mostly what people are interested in. So most compilers do spent quite a bit of effort on making programs run faster but it&#39;s important to realize that there are many other resources that we could optimize for. And, actually for any resource that you can imagine there probably is a compiler out there that spend some effort optimizing for an insert domain domains of application. So for example there are compilers we might care about code size. We might care about the number of network messages sent, other things that are commonly optimized for our memory usage, disk accesses so, so databases, for example. Try to minimize the number of times you access the disk and, and power for battery powered devices. And the important thing about optimization is that it should not alter what the program computes. The answer still must be the same, okay? So we&#39;re allowed to improve, the program&#39;s resource utilization, but we can&#39;t change what the program will produce. Now, for languages like C and Cool, and all of the languages 
+
+603.37
+slide
+Optimization Overview For languages like C and Cool there are three granularities of optimizations
+that you&#39;re probably familiar with, there are three granularities of optimization 
+
+607.37
+writing
+
+that people typically talk about. One is called local optimization, and those are optimizations that apply to a basic block in isolation. So these are optimizations that occur within a single basic block. Then there are what are called global optimizations and this is really misnamed because it&#39;s not global across the entire program. What people mean by global optimization is that implies to a control flow graph. It&#39;s global across an entire function alright so, so global optimizations would apply to a single function and optimizer across all the basic blocks of that function. And finally there are inter-procedural optimizations these are optimizations that work across method boundaries. They take multiple functions and move things around to try to optimize the collection of functions as a whole. Many compilers do one, in fact almost all compilers do one. Many, many compilers today do two, but not very many actually do three, okay? So you see decreasing numbers of compilers doing, these optimizations as you move up in the granularity, and partly that&#39;s because the optimization&#39;s are more difficult to implement so it&#39;s just more work to implement the inter-procedural optimization&#39;s but also because a lot of the payoff is in the more local optimizations. So, expanding on that last point a little bit more. It turns out 
+
+695.379
+slide
+Optimization Overview In practice often a conscious decision is made not to implement the fanciest optimization known Alex Aiken
+that, in practice, while we know how to do many, many optimizations. Often a conscious decision is made not to implement the fanciest optimization that is known in the research literature. And that&#39;s kind of an unfortunate thing from my point of view being somebody who&#39;s really likes compilers and spent a lot of time thinking about optimization. And maybe it&#39;s a little bit hard to accept for the professional compiler researchers that, that people don&#39;t always want to implement the latest and greatest optimization. But it&#39;s worth understanding why that might not be the case and it boils down essentially to software engineering. Some of these optimizations are really hard to implement, I mean 
+
+737.17
+slide
+Optimization Overview In practice often a conscious decision is made not to implement the fanCIest optimization known Why Some optimizations are hard to implement Some optimizations are costly in compilation time Some optimizations have low payoff Many fancy optimizations are all three Alex mm
+they&#39;re just complicated to implement. Some of the optimizations are costly in compilation time. So even though the compiling happens offline, it is not part of the running of the program, you know the programmer still has to wait while the optimizing compiler compiles, does its compilation and if it takes hours or in some cases days, to optimize a program, you know, that&#39;s not necessarily great. And, some of these optimizations have low pay off. They might, always improve the program, but they might only do it by a very small amount and unfortunately, many of the fanciest optimizations in the literature have all three of these 
+
+777.379
+writing
+
+properties. They&#39;re complicated, they take a long time to run, and they don&#39;t do very much. And so it&#39;s not so surprising That and not all of these to get implemented in production compilers. And this actually, you kn ow points out what the real goal is in optimization. What we really want is maximum benefit for minimum cost. We&#39;re really talking about a cost benefit ratio. So, like optimization costs a certain amount, in code complexity, complexity of the compiler In programmer time I mean waiting for the compiler to run and, and the benefit, the amount that it improves the program has to be sufficient to justify those costs. 
+

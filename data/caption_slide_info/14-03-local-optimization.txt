@@ -1,0 +1,135 @@
+4.22
+slide
+Compilers Local Optimization
+Now we are ready to begin talking about actual program optimizations and we begin with local optimizations. Local optimization is the simplest form of 
+
+15.359
+slide
+Local Optimization The simplest form of optimization Optimize one basic block No need to analyze the whole procedure body
+program optimization because it focuses on optimizing just a single basic block, so just one basic block and, in particular, there is no need worry about complicated control flow, we are not going to be looking at the entire method or procedure body. Let&#39;s dive right in and take a look at a couple of simple local optimizations. 
+
+36.34
+slide
+Some statements can be deleted x x 0 x x 1 Local Optimization
+If x is an integer valued variable And from here on, we&#39;ll assume that x has 
+
+40.66
+writing
+
+type-ins. So let me just write that down. We&#39;re going to assume that x has type-ins in all of our examples on this slide. Then the statement x=x+0, well that doesn&#39;t change the value of x. Zero is the additive identity for +. We&#39;re just going to assign x the value it currently has. And so this statement is actually useless. It can just be deleted from the program. Similarly, for x=x&lt;i&gt;1. Multiplying by one&lt;/i&gt; will not change the value of X, and so that statement can also be removed. And in this case these are great optimizations because we actually save an entire instruction. Now, some statements can&#39;t be deleted, but they can be simplified. A simple example of that is if we have x=x&lt;i&gt;0. So that can be replaced by the&lt;/i&gt; assignment, x=0, And again, we have, we still have a statement here. We still have to execute a statement. But This statement may execute more quickly because it doesn&#39;t involve actually running the, the, the times operator. It doesn&#39;t involve referencing the value of X. Presumably X is registered, that doesn&#39;t really cost anything. But you know, it&#39;s possible that this instruction over here will execute faster than this instruction over here. Now, on many machines that&#39;s not the case. In fact, this assignment of this, this assignment on the right will take the same amount of time as the multiplication on the left, but as we will see. Having a assignment of a constant to a variable will actually enable other optimization, so this is still a very worthwhile transformation to do. An example that&#39;s almost certainly an optimization is replacing, the exponentiation operator, Raising a value to the power of two by an explicit multiply. So here, we&#39;re computing y^2, And over here, we just replace that by y&lt;i&gt;y. Why is this a good&lt;/i&gt; idea? Well this explanation operator here is almost certain not a built in machine instructions. Probably this is gonna wind in our generated code being a call into to some built in math library. And there will involve a functioning call overhead. And then there will be some kind of general loop in there to do the right number of multiplies. Depending on what the exponent is. So in the special case where we know that the exponent is two. It&#39;s much, much more efficient. To just replace that, call to exponentiation by an explicit multiply. Another example of, substituting one kind of operation for another, In a in a special situation, Is if we have, a multiplication by a power of two. We can replace that by a left bit shift, So here, multiplying by eight. That&#39;s the same as shifting the, binary representation of x over by three bits, And, I and, That will, you know, in fact compute the same thing. And it doesn&#39;t even have to be a power of two. If we have a [inaudible] location by some other number that is not a power of two, that can be replaced by some combination of shifting and, and subtractions. Okay? So we can replace the multiply by some combination of shifts and, and arithmetic operations, Simpler arithmetic operations. Now these last two here I should point out, you know, these are interesting transformations. On modern machines generally this will not result in any kind of speed-up because on modern machines the integer multiply operation is just as fast as any other single instruction. Now, on historical machines these were actually significant optimizations. So all of these, instructions together are examples of algebraic simplifications. So, that just means exploiting properties of the mathematical operators, to replace more complex, instruc tions or more complex operations by simpler ones. One of the most important and useful local optimizations is to compute the results of 
+
+273.71
+slide
+Local Optimization Operations on constants can be computed at compile time If there is a statement x y Op 2 And y and z are constants Then y Op 2 can be computed at compile time Mex mm
+operations at compile time rather than at run time if the arguments are known at 
+
+278.47
+writing
+
+compile time. So for example, let&#39;s say we have a three-address instruction x=y op z. And it happens that y and z are both constants. These are both immediate values. These are, you know, literals in the instruction. Then we can actually compute the results of the right hand side at compile time, and replace this by an assignment to a constant. So, for example, if we have the instruction x=2+2, that can be replaced by the assignment x=4, And another example which is a very common and important one, is if the predicate of a conditional consists only of immediate values. Then we can pre-compute the result of that conditional, And, and decide what the target of the conditional will be. What the next instruction will be at compile time. So, in this case, we have a predicate, which is going to be false, because two is not less than zero And so we will not take the jump And so this instruction can just be deleted from the program. If we had the, Otherwise if two is greater than zero, so if this is some predicate to valuate true Then we would replace this conditional by the jump. Okay, this would become an unconditional jump. Alright, And this class of optimization&#39;s is called constant folding, And as I said this is one of the most common and most important optimizations that compilers perform. Now, there is one situation that you should be aware of and 
+
+368.77
+slide
+Local Optimization Constant folding can be dangerous
+which can be very dangerous, and this situation is actually very instructive as 
+
+373.85
+writing
+
+well. And so while it isn&#39;t that common, I, I wanted to mention it, because it really illustrates some of the subtleties of program optimization and programming language semantics. So what is this dangerous situation? So let&#39;s consider the scenario where we have two machines. We have a machine X And we have a machine. Why? Okay and now the compiler is being run on machine X. And the compiler is producing code. Generated code this is the generated code produced as the output of the compiler over here. That&#39;s gonna be run on machine Y. So this is a cross compiler. Okay, So you are running the compiler On one machine, but you&#39;re generating code for a different machine, and why would you want to do that? Well. The, the common situation in which you want to do this is that this machine Y over here is a very weak machine. So weak in the sense that it&#39;s very slow and has very limited memory. Maybe very limited power then it&#39;s beneficial to develop your program and even compile it on a much more powerful machine. So many embedded Systems codes are developed in exactly this way. Code is developed on some powerful workstations that are actually compiling it for some small embedded device that well, executes the code. Now, the problem comes If x and y are different. So consider the situation where x and y are different machines, different architectures. Alright, And I&#39;ve been implying that they are, but they don&#39;t have to be. I mean, I mean, you could compile on, one kind of architecture and run the same code on the same architecture. But the interesting situation is when x and y are different architectures. And so let&#39;s consider something like, you know, in, in, you know, machine X, let&#39;s say we have the instruction, A=1.5+3.7. Mm-kay, And you would like to constant fold that down to 
+
+503.69
+slide
+Local Optimization Constant folding can be dangerous 3 Cbe Ea Comp i X and V are Add A qr l
+a=5.2 Alright? Now the problem is that if you simply execute this as a floating 
+
+512.068
+writing
+
+point operation, on, architecture x, the round off and you know the floating point semantics in architecture x maybe slightly different, from these semantics on architecture y. It could be that if you do that in architecture y, directly, that you might get something like a.5, you know, a=5.19. There might be a small difference in the floating point result, depending on whether you execute the instruction here or here. And this becomes significant in the case of constant folding and, and cross compilation. Because some al gorithms really depend on the floating point numbers being treated very, very consistently. So if you&#39;re going to round off the operation one way, you need to do it that way for every time you do that particular operation, And by shifting the computation from comp, from run time when it would have executed an architecture y, back into the compiler winds of executing architecture x. You can change the results of the program. So how do cross compilers actually deal with this? So, so compilers that want to be careful about this kind of thing, what they will do is, they will represent the floating point numbers as strings inside the compiler and they will, do the obvious, long form addition, and multiplication, division operations are the floating operations directly on the strings. Keep the full precision Inside the compiler And then, in the generated code, produced the literal, that is the full precision flowing point number And then let the architecture, of the architecture y decide how it wants to round that off, okay? So that&#39;s the really careful way to do constant folding of floating point numbers if you&#39;re worried about cross compilation. Continuing on with local optimizations, another important one is to eliminate unreachable 
+
+617.339
+slide
+Local Optimization Code that is unreachable from the initial block E g basic blocks that are not the target ofanyjump or through from a conditional Eliminate unreachable basic blocks Alex Mk
+basic blocks. So what&#39;s an unreachable basic block? That is one that is not the 
+
+621.299
+writing
+
+target of any jump or fall through. So if I have a piece of code, that can never execute, and it might never execute because there&#39;s no jump that jumps to the beginning of that piece of code and it&#39;s not, it doesn&#39;t follow after another instruction that can fall through to it. Well than that piece of code, that basic block is just not gonna be used, it&#39;s unreachable and it can be deleted from the program. This has the advantage of making the code smaller. So obviously, since the basic block is unreachable, it&#39;s not contributing to the execution costs of the program in terms of the instruction count. So the code is never executed. So it&#39;s not really slowing down the code because, you know, extra instructions are being executed, But making the program smaller can actually make it run faster because of cache effects. So the instructions have to fit into memory just like, just like the data. And if you make the program smaller, it makes it easier to fit the program in memory, and you may increase the spacial locality of the program. Instructions that are used together may now be closer to each other. And that can make the program run more quickly. Before continuing on I want to say a word or two about why 
+
+691.559
+slide
+Local Optimization Why would unreachable basic blocks occur
+unreachable basic blocks occur. So why would a programmer, in their right mind, 
+
+696.149
+writing
+
+ever write a program that had code in it that wasn&#39;t going to be executed? And there&#39;s several actually ways in which unreachable code can arise, and it&#39;s actually quite common. So this is an important optimization, getting rid of the unreachable code is actually fairly important. Perhaps the most common situation Is that the code is actually parameterized with, code that is only compiled and used in certain situations. So, for example, in C, It would be sorta typical to see some code that looks like this. If debug, then, you know, executes something, where debug is a pound defying constant. So in C, you can define names for literals. So you say something like this. You might define debug. To be zero, and so you might see a program that had this piece of code in it, and what this literally means is that this piece of code is equivalent to if zero, then blah, blah, blah. Alright, so, so when you&#39;re compiling without debugging, you have debug to find the zero, when you&#39;re compiling with debugging, you would change this line to define debug to be some non zero constant. So in this case we are compiling without debugging. What will happen? Well we&#39;ll see that this predicate is guaranteed to be zero the constant folding will take care of that. And that will result in an unreachable basic block on the ven branch and then that code can be deleted And so essentially the compiler is able to go through using the optimizer and strip out all  of the debugging code. That isn&#39;t going to be used since your compiler without debugging. Another case where unreachable code comes up is with libraries. So, very frequently, programs are written, to use generic libraries. But the program might only use a very small part of the interface. So, the library might supply 100 methods, to cover all the situations that various programmers are interested in. But for your program, you might only be using three of those methods. And the rest of those methods could potentially be removed, from the final binary, to make the code smaller. And, finally another way that unreachable basic blocks occur, is as the results of other optimizations. So as we will see optimizations frequently lead to other to more optimizations. And it could be that just through other rearrangements of the code that the compiler makes some basic block redundant and, and able to be deleted. Now some optimizations are simpler to express if each register occurs only once on the 
+
+849.559
+slide
+Local Optimization Some optimizations are simplified if each register occurs only once on the side of an assignment Rewrite intermediate code in single assignment form x z y b z y a x 2 a2 b x 2 x x 2 b b is a fresh register More complicated in general due to loops Alex Aiken
+left-hand side of an assignment. So that means if each register is assigned, at 
+
+853.149
+writing
+
+most, once then some of these optimizations are easier to talk about. So we&#39;re gonna rewrite our intermediate code, always to so that it&#39;s in single assignment form. So this is called single assignment form. And all that means is that if we see a register being reused, like over here, we have two assignments to the register X. Okay. We&#39;re just going to introduce another register name, for one of those assignments. So in this case I&#39;m just gonna rename the first, use of X here, definition of X here to be some new register B. I&#39;ll replace the uses of that X, by the name B, and now I have an equivalent piece of code that satisfies single assignment form. Every register is assigned at most, once. Let&#39;s take a look at an optimization that depends on single assignment form. So we&#39;re going to assume 
+
+907.249
+slide
+Local Optimization If Basic block is in single assignment form A definition x is the first use of x in a block Max mm
+the basic blocks are in single assignment form, and if they are, then we&#39;re going to 
+
+910.829
+writing
+
+know That a definition of a register is the first use of that register in th e block, And so, in particular, we&#39;re also ruling out things like this. So there could be something like this, where X is read. And then later on, X is used. Okay. Sorry, X is read and then later on, X is defined. So we&#39;re not going to allow this. This register here would have to be renamed to something else, say Y, And then uses of X later on here, are renamed to Y. Alright, so we&#39;re going to insist that whenever we have a definition Of a register in a basic block. That is the first use of that register in the block. Alright, and if, if that&#39;s true, if we main, if we put things in that form, and that&#39;s, that&#39;s easy to do as we&#39;ve seen. Then when two assignments have the same right hand side, they&#39;re guaranteed to compute the same value. So, take a look here, This example. So let&#39;s say we have an assignment, x=y+z. And then later on we have another assignment, w=y+z. And we said that there could only be one assignment to x in any basic blocks. So, all of these instructions that are alighted here, they can&#39;t be assigning to X. And they also can&#39;t be assigning to y and z. Y and z already have their definitions. So, y and z can&#39;t be changed. And that means that x and w here actually compute the same value. And so we can replace the second computation Y plus C by just the name that we already have for it X. Okay, and this saves us having to recompute values. Alright so this is called common sub expression elimination. Common it&#39;s a rather long name. Sub expression. The elimination. And this is another one of the, more important compiler optimizations. This is actually something that comes up surprisingly often. And saves quite a bit of work if, if you perform this optimization. So, another use of single assignment form is 
+
+1031.689
+slide
+Local Optimization lfw x appears in a block replace subsequent uses of w with uses ofx Assumes single assignment form Mex mm
+that if we see the assignment w equals x in a block. So here, the register w is 
+
+1038.039
+writing
+
+being just copied from the register x. Then all subsequent uses of w can be replaced by uses of x. So, for example, Here we have an assignment to b And then we have a copy, a, is=to b. And then, down here, w e have a use of a in the last instruction. Well, that use of a in the last instruction can be replaced by a use of B. And this is called copy propagation, okay? Propagating copies through the code And by itself, notice, that this makes absolute no improvement in the code it&#39;s only useful in conjunction with some of the other optimizations. So, for example, in this case after we do the copy propagation, it might be the case that this instruction can be deleted. If A is not used any place else in the code, then this instruction can be removed. Now let&#39;s do a little more complex example and use 
+
+1095.44
+slide
+Example a X 2 a y x 6 t y H m Ii IiII O A01 Local Optimization
+some of the optimizations that we&#39;ve discussed so far On a slightly bigger piece of code. So we are starting with this piece of code here on the left and we 
+
+1103.139
+writing
+
+are going to wind up with this piece of code here on the right. And how does that work? Well, first we have a copy propagation, so we have A is assigned the value five. And, so we can propagate that value forward. And replace the use of a later on by five, and I should say. That when the value is propagated is a constant rather than a registered name is called Constant propagation instead of Copy propagation, but it&#39;s exactly the same thing. We, we, we have a single value assigned on the right hand side, either a register name or constant and we are replacing uses of that in later instructions by that register name or constant. Okay? So once we have replaced a here by five now we can do constant folding, and now we have two constant arguments for this instruction. So this two times five can be replaced by the constant ten. Now notice we have another assignment of a constant to a register and so we can propagate that constant forward. We can replace the subsequent uses of X by the number ten. And now we have more opportunities for constant folding ten plus six can be replaced by the value sixteen. Alright now we have another, another value here which is a, a constant assignment so another instruction here which is just an assignment of a constant to a register so we can p ropagate that constant forward. Alright then we wind up down here with ten times sixteen And I see over here in my final example here I didn&#39;t bother to propagate the ten to x. But we can do that, and this So we can either do this optimization. So x times sixteen if we didn&#39;t do the propagation, would be equivalent to x left shift four. Or we can just replace this by ten times sixteen. That&#39;d be even better. We wind up achieving the value 160. Returning to an idea I mentioned a couple of slides ago. Let&#39;s say there is an assignment in a 
+
+1216.639
+slide
+If Local Optimization rhs appears in a basic block w does not appear anywhere else in the program Aicx Aiken
+basic block. Some registered W is assigned some value that&#39;s computed on the right 
+
+1220.46
+writing
+
+hand side. Let&#39;s say that W, the registered name is not used anywhere else in the program. It doesn&#39;t appear anywhere, not only in this basic block but in any other part of the procedure in which this statement appears. Well then, the statement is dead and can be just deleted from the program And dead here means it does not contribute to the programs result. Since the value that we write into W is never referenced anywhere, W is never used, doing the computation, of W in the first place was a waste of time, so we can just delete that computation. Here&#39;s a simple example. Let&#39;s assume that the register a is not used any place else, in the program. And, the first thing we have to do, so here&#39;s our initial piece of code. The first thing we do is we put it in single assignment form. And so I&#39;ve renamed here, this register x, to be, register b. Okay, and once we do that, let me do that, so we&#39;ll say that B=Z+Y and A=B, and then we propagate this forward. Alright, so we&#39;ve now replaced this use of A by B, so this takes us to this state where we have this piece of code. Now we can see that we have an assignment to A. A is not used in the subsequent instruction. We already said that A is not used anywhere outside of the basic block, and so the assignment a=b can be deleted, and we wind up with this shorter basic block. Now each local optimization actually does 
+
+1312.37
+slide
+Local Optimization Each local optimization does little by itself
+very little by itself. And some of these optim izations, some of these transformations that are presented actually don&#39;t make the program run faster at all. They don&#39;t make it run slower either but by themselves they don&#39;t actually make any improvement to the program. But, Typically, the optimizations will interact. So performing one optimization will enable another. And we saw this in the little example that I did, a few slides ago. So the way to think about an optimizing compiler is that it has a big bag of tricks. It has a lot of. Individual program transformations that it knows And what it is going to do when faced with a program&#39;s optimize, it&#39;s going to rummage around in its bag looking for an optimization, that applies to some part of the code. If it finds one, it will do the optimization, it will do the transformation and then it will repeat. It&#39;ll go back and look at the program again, and see if there&#39;s another optimization that reapplies. Then it will just keep doing this until it reaches a point where none of the optimization&#39;s it knows about can be applied to the programming. Next, we&#39;ll take a look at a bigger example and try applying some of 
+
+1378.7
+slide
+Initial code a x 2 b 3 c x d c c e b 2 f a d g e f Local Optimization
+the optimizations that we&#39;ve discussed, to it, and see how far we get. And of course 
+
+1383.07
+writing
+
+this example has been constructed to illustrate, many of the optimizations that we discussed. So, the first thing we can do. There are a couple of opportunities for algebraic simplifications. So, we can replace the squaring up here, by a multiply. And down here we had a multiply by two, which we can replace by a left shift of one. Next we can observe that we have some copies and constants. So we have a constant assignment to b and a copy assignment to c And those can be propagated forward to the uses of b and c. Once we&#39;ve done that, we can do constant folding. So here, the assignment to e, The opera-, the arguments to the shift are all constants, And so that can be replaced by an assignment, that e gets the value six. Next we could observe that we have a common sub expression that we could eliminate that both a and d have the value x times x. So the assignment to d could be replaced by a copy that d now gets the value of a. Now we have two opportunities again for copying constant propagation the assignment to D and the assignment to E can be propagated forward. And finally we can do a bunch of dead code elimination. So, assuming that, none of these values, B, C, D, or E is used anyplace else in the program, all four of these statements can be deleted. And this is where we actually get some real performance improvement. So here we actually are now saving entire instructions, and that&#39;s the best kind of savings that we can have And so we wind up with this as our final form. So notice that a is assigned the value x&lt;i&gt;x. F is&lt;/i&gt; then assigned, the value a+a, And then g is assigned the value six&lt;i&gt;f. Now, this is&lt;/i&gt; not quite as fast as it could be, alright? There&#39;s actually one more algebraic optimization that could be done. We can notice here that f is actually=to two&lt;i&gt;a,&lt;/i&gt; And then we could do some rearrangement here to discover that g=12&lt;i&gt;f. Sorry, sorry&lt;/i&gt; twelve x a. Alright, And then this statement assignment to F might become dead code, and we could delete it from the program. I think some compilers would actually find this, but I believe that even current state of the art compilers, many of them, would not discover this last rearrangement to the program. 
+

@@ -1,0 +1,25 @@
+4.43
+slide
+Compilers Introduction to Semantic Analysis Mex mm
+Welcome back. In this video, we&#39;re going to give a very brief introduction, an overview, of what we&#39;re going to be talking about in semantic analysis. Let&#39;s 
+
+15.469
+slide
+Semantic Analysis Lexical analysis Detects inputs with illegal tokens Parsing Detects inputs with ill formed parse trees Semantic analysis Last front phase Catches all remaining errors Alex Mk
+take a moment to review where we are in our discussion with compilers. So we talked about lexical analysis, and from the point of view of enforcing the 
+
+23.72
+writing
+
+language definition the main job that lexical analyses does is detect input [inaudible] preemptive symbols that aren&#39;t part of our language. The next step is parsing. We finished talking about that too. And, again, from the point of view of trying to determine whether a program is well-formed or not, or whether it&#39;s a valid program, the job of parsing is to detect all the sentences in the language that are ill-formed, or that don&#39;t have a parse string. And finally What we&#39;re going to talk about now, what&#39;s going to occupy us for a while is semantic analysis. And this is the last of what are called the front end phases. So if you think of lexical analysis, parsing, and semantic analysis as filters that progressively reject more and more input strings until finally you&#39;re left after all three phases have run with only valid programs to compile, well semantic analysis is the last line of defense. It&#39;s the last one in that pipeline and its job is to catch all potential remaining errors in a program. Now you might ask yourself, why do we even 
+
+90.43
+slide
+Semantic Analysis Parsing cannot catch some errors Some language constructs not context free Alex Aiken
+need a separate semantic analysis phase? And the answer to that&#39;s very simple, There are, there are some features of programming languages, some kinds of mistakes you can make that parsings simply can&#39;t catch. Parsing we&#39;ll use in context free grammars is not expressive enough to describe everything that we&#39;re interested in, in a language definition. So, some of these language constructs are not context free. And the situation here is very, very similar to what it was when we switched from lexical analysis to parsing. Just like not everything could be done with a finite [inaudible]. And we wanted to have something more. Our context free grammar to describe additional features of our programming languages [inaudible] Grammars by themselves are also not enough, and there some additional features beyond those that can&#39;t be easily expressed using context free constructs. So what does semantic analysis actually do? In a case of cool C, it does checks of many 
+
+142.959
+slide
+Semantic Analysis of many kinds coolc checks All identifiers are declared Types Inheritance relationships Classes defined only once Methods in a class defined only once Reserved identifiers are not misused And others The requirements depend on the language Alex mm
+different kinds, and that&#39;s pretty typical. So here&#39;s a list of six classes of checks that are done by Cool C, and let&#39;s just run through them quickly. First we want to check that all identifiers are declared, and we also have to check that any scope restrictions on those identifiers are observed. Cool C compiler has to do type checking, and this is actually a major function of the semantic analyzer in Cool. There are a number of restrictions that come from the object oriented nature of Cool. We have to check that the inheritance relationships between classes make sense. We don&#39;t want classes to be redefined; we only want one class definition per class. Similarly methods should only be defined once within a class. Cool has a number of reserved identifiers and we have to be careful that those aren&#39;t misused. And this is pretty typical; lots of languages have some reserved identifiers with special rules that have to be followed for those identifiers. And, actually this list is not even complete. There are a number of other restrictions. And we&#39;ll be talking about all of those in future videos. The main message here is that its medic analyzer needs to do quite a few different kinds of checks. These checks will vary with the language. The kinds of checks that cool C does are pretty typical of statically typed checked object oriented languages. But other families of languages will have different kinds of checks. 
+

@@ -1,0 +1,35 @@
+3.449
+slide
+Compilers 1 Graph Coloring AAAAAA an
+In this video we are going to continue our discussion of register interference graphs and talk about how to use RIGS to come up with register assignments for procedures. And we&#39;re going to look at one particular technique that&#39;s popular called graph coloring. So first, a couple of definitions. A graph coloring is an 
+
+24.14
+slide
+Graph Coloring A coloring of a gragh is an assignment of colors to nodes such that nodes connected by an edge have different colors A graph is k colorable if it has a coloring with k colors
+
+
+24.14
+writing
+
+assignment of colors to nodes such that the nodes connected by an edge have different colors. So if I have a graph let&#39;s say with, with three nodes and it&#39;s fully connected so every node connect to every other node. And then, and then a coloring of this graph would be an assignment of colors such that every pair of nodes are connected by an edge have a different color. So for example I could color this node blue and I could color this node green and I could color this 
+
+54.78
+slide
+Graph Coloring In our problem colors registers We need to assign colors registers to graph nodes temporaries Alex mm
+node black, okay. And then that would be a valid coloring of the graph because each pair of neighbours has a different color. And then the graph is k-colorable if it 
+
+65.43
+slide
+Graph Coloring In our problem colors registers We need to assign colors registers to graph nodes temporaries Let k number of machine registers Ifthe RIG is k colorable then there is a register assignmentthat uses no more than k registers
+has a coloring that uses k or fewer colors. In our problem, the colors corresponds to registers so we want to do is to assign colors or registers to the 
+
+77.969
+slide
+Graph Coloring Consider the example RIG 0 f d There is no coloring with less than 4 colors Am
+graph nodes. And we&#39;re going to let k, the number, the maximum number of colors we&#39;re allowed to use be the number of machine register. So the actual number of registers present on the architecture for which we&#39;re generating code. And then if, if a RIG, if a registered interference graph is k-colorable, then there&#39;s going to be a register assignment that uses no more than k registers. So let&#39;s take a 
+
+101.24
+slide
+Graph Coloring Alex um
+look at an example rig and for this particular graph, there is no coloring. It turns out that it uses fewer than four colors. But there is at least one for coloring of this graph. And then here it is so I&#39;ve used colored labels but also register names so that you can see what registers we might assign to each of the nodes. And just notice that although there are many more than four temporaries or four nodes in this graph, we do manage to color it with only four colors and some of the nodes have the same color. So for example, d and b are allocated the same color, as are e and a. Just to remind ourselves where this register interference graph came from, here is the original control flow graph again. And, once we have the coloring of the graph, now we can do the register assignment. We can replace the temporaries by their corresponding register names, and then we get this control flow graph. So, here we&#39;ve just renamed each of the variables of the program with its register that it was assigned to. And now we&#39;re very close, as you can see, to having code that we can emit and execute on the target architecture. 
+

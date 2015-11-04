@@ -1,0 +1,25 @@
+3.34
+slide
+Compilers 1 Conservative Collection
+In this very short video, I&#39;m going to say a few words about a technique called Conservative Garbage Collection that can be used for languages like C and C++. To review, Automatic Memory Management relies on being able to find all the reachable 
+
+18.519
+slide
+Conservative Collection Garbage collection relies on being able to find all reachable objects and it needs to find all pointers in an object In C or C it is impossible to identify the contents of objects in memory E g a sequence of two memory words might be A list cell with data and next fields A binary tree node with left and right fields Thus we cannot tell where all the pointers are Alex mm
+objects. And it also needs to be able to find all the pointers in an object. Now, 
+
+23.66
+writing
+
+the difficultly with doing garbage collection for a language like C or C++ is that it&#39;s very difficult or even impossible to identify the contents of objects in memory with 100 percent reliability. So if we see, two words in memory, you know, it might be a list cell that has, a data and next field. So we see just two words here. And there are some bit patterns in here, 0&#39;s and 1&#39;s. Okay how do we know whether these are both pointers? It could be that one is a pointer and the, the other is not in the case of a list cell. So one of these fields is just data like an injure and another one is a pointer. Or it could be something like a binary tree node where both of these words are pointers. And because of this weakness really in the C and C++ type systems, we just can&#39;t guarantee that we know where all the pointers are. Now it turns out that it is 
+
+75.24
+slide
+Conservative Collection But it is Ok to be conservative if a memoryword looks like a pointer it is considered a pointer it must be aligned it must point to a valid address in the data segment all such pointers are followed and we overestimatethe set of reachable objects But we still cannot move objects because we cannot update pointers to them what if what we thoughtto be a pointer is actually an account number Alex mm
+possible to extend garbage collection techniques to work with languages like C and C++. And the basic idea, or insight, is that it&#39;s always okay to be 
+
+86.259
+writing
+
+conservative. And if we&#39;re not sure whether something might be used in the future, then we will just keep it around. And remember that graph reachability is already a conservative technique. What we really want is to keep around the objects that will just be used in the future, but the reachability in the object graph is an approximation to that, so because reachable objects might be used. And now, the problem with C and C++ is that we don&#39;t know where the pointers are. We don&#39;t have a guarantee from the type system about where the pointers are. And so the basic trick is that, if something looks like a pointer, then we will treat it as a pointer. All we have to do is be conservative, and if we are not sure wh ether a given word of memory is a pointer. Then we can just treat it as a pointer, and keep whatever it points to around. If we, and as long as we are not going to move it or change it, that would be okay. And so, how, how do we decide whether a particular word of memory is a pointer? Well, it should be a line, meaning, you know, it should end in some zeros to indicate that it was pointing, if it was a pointer it was pointing to a word boundary. And then, whatever pattern it is, if we interpret it as an address, it has to be a valid address. So, it should point to the data segment. And Noah said, you know, these two conditions will rule out all kinds of data and memory. So for example, any small integer is probably not going to be interpretable as a valid address in the data segment. So, you know, most likely, only things that are pointers, or very few things that are not pointers will be treated as pointers. And what we&#39;re going to do then, is, if it looks like a pointer, we&#39;re going to consider it to be a pointer. We&#39;ll follow it, and then we&#39;ll end up overestimating the set of reachable objects. We may keep around some stuff, that isn&#39;t reachable at all. But that&#39;s alright, it&#39;s always okay to keep around more stuff than necessary. Now, we still can&#39;t move the object, alright? Because we can&#39;t update the pointers to them. If we don&#39;t know that something is a pointer, we certainly don&#39;t want to change it, okay? And, you know, for example, if we thought something was a pointer, and it was actually an account number, and then we updated the pointer, when we move the object, we would just completely change what the program does. So, this only really works when you mark this way. 
+
