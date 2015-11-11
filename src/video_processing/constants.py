@@ -1,4 +1,4 @@
-
+CAPTIONS_REL_PATH = "../../data/closed_captions/CompilersSelfPacedCS1/"
 VIDEO_REL_PATH = "../../data/video_lectures/"
 FRAME_REL_PATH = "../../data/video_frames/"
 VID_EXT = ".mp4"

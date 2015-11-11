@@ -10,25 +10,33 @@ from collections import OrderedDict, Counter
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 def get_documents(directory, stopwords):
-  documents = dict()
+  captionDocuments = dict()
+  videoDocuments = dict()
   for root, directories, _ in os.walk(directory):
     for directory in directories:
-      filename = root + directory + "/unique_slide_info.txt"
+      filename = root + directory + "/both_cleaned.txt"
       with open(filename) as f:
         time = f.readline().strip()
         while time != "":
           event = f.readline().strip()
-          text  = [token for token in f.readline().strip().split(" ") \
-            if token not in stopwords]
+          slideText = ' '.join([token for token in f.readline().strip().lower().split(" ") \
+            if token not in stopwords])
+          captionText = ' '.join([token for token in f.readline().strip().lower().split(" ") \
+            if token not in stopwords])
           f.readline()
           if event == "slide":
-            documents[directory + "-" + time] = text
+            videoDocuments[directory + "-" + time] = slideText
+            captionDocuments[directory + "-" + time] = captionText
           time  = f.readline().strip()
-  keys = documents.keys()
+  keys = videoDocuments.keys()
   for key in keys:
-    if documents[key] == "":
-      del documents[key]
-  return documents
+    if videoDocuments[key] == "":
+      del videoDocuments[key]
+  keys = captionDocuments.keys()
+  for key in keys:
+    if captionDocuments[key] == "":
+      del captionDocuments[key]
+  return (captionDocuments, videoDocuments)
 
 def get_stopwords():
   stopwords = list()
@@ -44,6 +52,7 @@ def get_stopwords():
   return stopwords
 
 def get_pos_tokens(documents):
+  print "here"
   sentences = [nltk.word_tokenize(sent) \
     for sent in nltk.sent_tokenize(' '.join(documents.values()))]
   tags = []
@@ -86,7 +95,7 @@ def get_vocabulary(tfidf):
 
   return filtered_vocabulary
 
-def get_filtered_vocabulary(pos_to_tokens, tfidf):
+def get_old_filtered_vocabulary(pos_to_tokens, tfidf):
   VALID_TAGS = [
     'NNP',
     'NNPS',
@@ -106,23 +115,75 @@ def get_filtered_vocabulary(pos_to_tokens, tfidf):
       filtered_vocabulary[key] = value
 
   return filtered_vocabulary
+def get_filtered_vocabulary(pos_to_tokens, tfidf):
+  VALID_TAGS = [
+    'NN',
+    'NNS'
+    'NNP',
+    'NNPS',
+  ]
+  valid_tokens = set()
+  for pos in VALID_TAGS:
+    if pos in pos_to_tokens:
+      valid_tokens = valid_tokens.union(pos_to_tokens[pos])
+    else:
+      print "josehdz: key not found: ", pos
 
-#stopwords = get_stopwords()
-#documents = get_documents("../../data/video_frames/", stopwords)
-# ## print "processing pos_to_tokens"
-# ## pos_to_tokens = get_pos_tokens(documents)
-# ## print "processing lemmatized_docs"
-# ## lemmatized_docs = get_lemmatized_docs(documents, stopwords)
-# ## 
-#tfidf = TfidfVectorizer(
-#    stop_words=stopwords,
-#    ngram_range=(1,4),
-#    max_features=1000,
-#    max_df=30
-#)
-#X = tfidf.fit_transform(documents.values())
-# ## X = tfidf.fit_transform(lemmatized_docs.values())
-#print "processing vocabulary"
-# ## vocabulary = get_filtered_vocabulary(pos_to_tokens, tfidf)
-#vocabulary = get_vocabulary(tfidf)
-#pprint(vocabulary
+  filtered_vocabulary = dict()
+  for key, value in tfidf.vocabulary_.items():
+    if len(set(key.split()).intersection(valid_tokens)) > 0 and \
+        Counter(key.split()).most_common()[0][1] == 1 and \
+        not any([key in other and key != other for other in filtered_vocabulary]):
+      filtered_vocabulary[key] = value
+
+  return filtered_vocabulary
+
+stopwords = get_stopwords()
+
+def createOldIndexList(documents, filename):
+  print "processing pos_to_tokens"
+  pos_to_tokens = get_pos_tokens(documents)
+  print "processing lemmatized_docs"
+  lemmatized_docs = get_lemmatized_docs(documents, stopwords)
+  tfidf = TfidfVectorizer(
+    stop_words=stopwords,
+    ngram_range=(1,4),
+    max_features=1000,
+    max_df=30
+  )
+  X = tfidf.fit_transform(lemmatized_docs.values())
+  print "processing vocabulary"
+  vocabulary = get_old_filtered_vocabulary(pos_to_tokens, tfidf)
+  if len(vocabulary) < 100:
+    vocabulary = get_vocabulary(tfidf)
+  os.system("rm -f " + filename)
+  with open(filename, "w+") as tgt:
+    for word in vocabulary:
+      tgt.write(word + "\n")
+def createIndexList(documents, filename):
+  print "processing pos_to_tokens"
+  pos_to_tokens = get_pos_tokens(documents)
+  print "processing lemmatized_docs"
+  lemmatized_docs = get_lemmatized_docs(documents, stopwords)
+  tfidf = TfidfVectorizer(
+    stop_words=stopwords,
+    ngram_range=(1,4),
+    max_features=1000,
+    max_df=30
+  )
+  X = tfidf.fit_transform(lemmatized_docs.values())
+  print "processing vocabulary"
+  vocabulary = get_filtered_vocabulary(pos_to_tokens, tfidf)
+  if len(vocabulary) < 200:
+    vocabulary = get_vocabulary(tfidf)
+  os.system("rm -f " + filename)
+  with open(filename, "w+") as tgt:
+    for word in vocabulary:
+      tgt.write(word + "\n")
+
+captionDocuments, videoDocuments = get_documents("../../data/video_frames/", stopwords)
+createIndexList(captionDocuments, "caption-index.txt")
+createIndexList(videoDocuments, "video-index.txt")
+
+createOldIndexList(captionDocuments, "old-caption-index.txt")
+createOldIndexList(videoDocuments, "old-video-index.txt")

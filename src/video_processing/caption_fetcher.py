@@ -1,10 +1,13 @@
 import constants
+import edit_distance as ed
 import os, os.path
 import re
+import string
 import sys
 
 CC_DIGITS_REGEX = "\d+"
-CAPTIONS_REL_PATH = "../../data/closed_captions/CompilersSelfPacedCS1/"
+
+trantab = string.maketrans(string.punctuation, ''.join([" " for _ in string.punctuation]))
 
 # [hrs, min, sec, millisec] => total seconds
 def hms_to_seconds(line):
@@ -32,17 +35,45 @@ def get_lecture_name(directory):
     #print "josehdz: ", name
     return (name, float(0))
 
+def create_clean_merge(lecturedir):
+  # File follows structure:
+  ##  1) caption time
+  ##  2) event
+  ##  3) slide text
+  ##  4) caption text
+  ##  5) blank line
+  with open(lecturedir + "both.txt") as src:
+    with open(lecturedir + "both_cleaned.txt", "w+") as tgt:
+      time = src.readline().strip()
+      while 0 < len(time):
+        event = src.readline().strip()
+        slideText = src.readline().strip()
+        captionText = src.readline().strip()
+        src.readline().strip() # blank line
+
+        slideTokens = slideText.split(" ")
+        for i in range(len(slideTokens)):
+          slideTokens[i] = ed.getSpelling(slideTokens[i])
+        slideText = ' '.join(slideTokens)        
+        tgt.write(time + "\n")
+        tgt.write(event + "\n")
+        tgt.write(slideText + "\n")
+        tgt.write(captionText + "\n")
+        tgt.write("\n")
+
+        time = src.readline().strip()
+
 def process_captions(lecturedir):
   lecture, offset = get_lecture_name(lecturedir)
-  captionfile = CAPTIONS_REL_PATH + lecture + ".srt"
+  captionfile = constants.CAPTIONS_REL_PATH + lecture + ".srt"
   framefile = lecturedir + "unique_slide_info.txt"
   bothfile = lecturedir + "both.txt"
-  bothfileCopy = "files/" + lecture + ".txt"
-  os.system("rm -f " + bothfile + " " + bothfileCopy)
-  print "josehdz: lecture: ", lecture
-  print "josehdz: offset:  ", offset
-  print "josehdz: bothfile: ", bothfile
-  print "josehdz: framefile: ", framefile
+##  bothfileCopy = lecturedir + lecture + ".txt"
+  os.system("rm -f " + bothfile) ## + " " + bothfileCopy)
+##  print "josehdz: lecture: ", lecture
+##  print "josehdz: offset:  ", offset
+##  print "josehdz: bothfile: ", bothfile
+##  print "josehdz: framefile: ", framefile
 
   try:
     f = open(framefile)
@@ -57,7 +88,7 @@ def process_captions(lecturedir):
     print "          captionfile:", captionfile
     return None
 
-  cpy = open(bothfileCopy, "w+")
+##  cpy = open(bothfileCopy, "w+")
   with open(framefile) as infosrc:
     with open(captionfile) as captsrc:
       with open(bothfile, 'w+') as tgt:
@@ -84,26 +115,25 @@ def process_captions(lecturedir):
             captsrc.readline()
             captionIndex = captsrc.readline().strip()
             captionTime = hms_to_seconds(captsrc.readline().strip())
+          captionText = captionText.replace("&#39;", " '")
+          captionText = ''.join([ch for ch in captionText if (ch.isalnum() or ch.isspace())])
 
           tgt.write(str(prevCaptionTime) + '\n')
           tgt.write(infoEvent + '\n')
-          tgt.write(infoText + '\n')
-          tgt.write(captionText + '\n')
+          tgt.write(infoText.lower() + '\n')
+          tgt.write(captionText.lower() + '\n')
           tgt.write('\n')
 
-          cpy.write(str(prevCaptionTime) + '\n')
-          cpy.write(infoEvent + '\n')
-          cpy.write(infoText + '\n')
-          cpy.write(captionText + '\n')
-          cpy.write('\n')
-##          print "josehdz: infoTime: ", infoTime
-##          print "josehdz: captionTime: ", captionTime
-##          print "josehdz: captionText: ", captionText 
-##          print ""
+##          cpy.write(str(prevCaptionTime) + '\n')
+##          cpy.write(infoEvent + '\n')
+##          cpy.write(infoText + '\n')
+##          cpy.write(captionText + '\n')
+##          cpy.write('\n')
+
           captionText = ''
           prevCaptionTime = captionTime
-  cpy.close()
-          
+##  cpy.close()
+  create_clean_merge(lecturedir) 
           
 
 parentDir = constants.FRAME_REL_PATH
