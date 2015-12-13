@@ -1,0 +1,4564 @@
+1
+00:00:05,694 --> 00:00:06,590
+[BLANK_AUDIO]
+So, I've been thinking that
+
+2
+00:00:06,590 --> 00:00:11,310
+it would be really useful, to walk you
+through a real data analysis experience,
+
+3
+00:00:11,310 --> 00:00:16,574
+to show you how I would approach real data
+from start to finish.
+
+4
+00:00:16,574 --> 00:00:18,130
+What are the steps you need to take?
+
+5
+00:00:18,130 --> 00:00:21,730
+What are things you need to think about
+while looking at real data?
+
+6
+00:00:21,730 --> 00:00:23,820
+This module will obviously be, a
+condensed.
+
+7
+00:00:23,820 --> 00:00:27,690
+The version of a real data analysis which
+would take you a lot longer in real time.
+
+8
+00:00:27,690 --> 00:00:31,490
+And I thought it would be fun, to use as
+the basis of this exercise,
+
+9
+00:00:31,490 --> 00:00:35,230
+the midterm dataset because you've all
+just finished grappling with that data.
+
+10
+00:00:37,750 --> 00:00:40,750
+So, I've tried to layout all the steps
+that you should take.
+
+11
+00:00:40,750 --> 00:00:44,130
+When approaching a real, data analysis.
+
+12
+00:00:44,130 --> 00:00:46,890
+I'm going to go through each of these
+steps in turn as applied,
+
+13
+00:00:46,890 --> 00:00:50,780
+to the Academy Award winners data set that
+you had for your midterm.
+
+14
+00:00:50,780 --> 00:00:53,010
+One thing that's really important to keep
+in mind,
+
+15
+00:00:53,010 --> 00:00:55,910
+is that you need to document all of these
+steps.
+
+16
+00:00:55,910 --> 00:00:59,590
+You need to document any changes you make
+to the variables, any new variables you
+
+17
+00:00:59,590 --> 00:01:03,610
+create, any participants that you exclude,
+even when you reformat variables.
+
+18
+00:01:03,610 --> 00:01:07,950
+What we're striving for here, is what's
+called reproducible research.
+
+19
+00:01:07,950 --> 00:01:11,720
+This is the idea that, you should be able
+to hand me the data set that you used,
+
+20
+00:01:11,720 --> 00:01:16,650
+to produce your paper as well as a piece
+of code, and somebody else.
+
+21
+00:01:16,650 --> 00:01:18,830
+Should be able to run that code on that
+data set and
+
+22
+00:01:18,830 --> 00:01:22,720
+come up with the, same numbers that you
+have in your tables and figures.
+
+23
+00:01:22,720 --> 00:01:24,930
+And that's, kind of sounds like it should
+be trivial, right?
+
+24
+00:01:24,930 --> 00:01:28,140
+If you have the data set it should be easy
+to reproduce those numbers, but
+
+25
+00:01:28,140 --> 00:01:30,560
+in fact there are so many small decision
+points and
+
+26
+00:01:30,560 --> 00:01:35,140
+steps that go into a data analysis it
+turns out that that's not trivial at all.
+
+27
+00:01:35,140 --> 00:01:37,800
+You really need to precisely document that
+step, so
+
+28
+00:01:37,800 --> 00:01:39,629
+that somebody could reproduce those
+numbers.
+
+29
+00:01:41,190 --> 00:01:44,310
+So, I'm going to go again through, each of
+these steps in turn.
+
+30
+00:01:44,310 --> 00:01:49,370
+I just want to point out that, [SOUND] the
+analysis for the Academy Award winner data
+
+31
+00:01:49,370 --> 00:01:55,690
+set is an explanatory analysis, our goal
+is to answer questions about etiology.
+
+32
+00:01:55,690 --> 00:01:59,900
+Does being a winner, have an effect on,
+mortality rates.
+
+33
+00:01:59,900 --> 00:02:02,930
+Does winning an Academy Award have an
+effect, on mortality rates.
+
+34
+00:02:02,930 --> 00:02:05,320
+This is not a predictive goal.
+
+35
+00:02:05,320 --> 00:02:09,570
+And, so, all of the steps that I have laid
+out here, are specific to, when you
+
+36
+00:02:09,570 --> 00:02:14,840
+have explanatory [INAUDIBLE] analysis, if
+you are doing a predictive analyses
+
+37
+00:02:14,840 --> 00:02:18,710
+trying to build a predictive model, a lot
+of the steps would be the same.
+
+38
+00:02:18,710 --> 00:02:22,110
+But I will just point out that, the way
+that you would build the final model
+
+39
+00:02:22,110 --> 00:02:25,710
+would be different, because the goal would
+be to kind of find the model that was,
+
+40
+00:02:25,710 --> 00:02:27,710
+the most predictive so you wouldn't be
+worrying.
+
+41
+00:02:27,710 --> 00:02:29,960
+So much about confounders and things like
+that.
+
+42
+00:02:29,960 --> 00:02:32,990
+You would also be, performing some kind of
+validation.
+
+43
+00:02:32,990 --> 00:02:35,440
+And we don't have to do that for an
+explanatory model.
+
+44
+00:02:35,440 --> 00:02:37,070
+So, step 7, 8, and 9 would be different.
+
+45
+00:02:37,070 --> 00:02:38,810
+I just want to point that out.
+
+46
+00:02:38,810 --> 00:02:42,870
+[SOUND] The other thing I want to point
+out is that I'm not going to spend so
+
+47
+00:02:42,870 --> 00:02:46,560
+much time, on steps 4, 9, or 10 in this
+module.
+
+48
+00:02:46,560 --> 00:02:50,350
+That's because the midterm dataset didnt
+have any missing data, as we'll see.
+
+49
+00:02:50,350 --> 00:02:52,560
+So you don't really have to do anything to
+deal with it.
+
+50
+00:02:52,560 --> 00:02:56,640
+And you, therefore, it did not, it also
+didn't have any outliers to speak of so,
+
+51
+00:02:56,640 --> 00:02:59,530
+we didn't need to do any sensitivity
+analyses.
+
+52
+00:02:59,530 --> 00:03:04,650
+I also did not ask you, for the midterm to
+create any professional looking graphics.
+
+53
+00:03:04,650 --> 00:03:07,510
+Which is because it's pretty hard to,
+
+54
+00:03:07,510 --> 00:03:11,040
+graphically display the time changing
+groups.
+
+55
+00:03:11,040 --> 00:03:14,190
+[SOUND] So I will, not do much on 4, 9,
+and 10 here.
+
+56
+00:03:14,190 --> 00:03:17,490
+But I'll just let you know that, for your
+final exam, I will make sure to
+
+57
+00:03:17,490 --> 00:03:21,550
+have a data set that has missing data, and
+I will be, sure to be sure asking you for
+
+58
+00:03:21,550 --> 00:03:24,920
+informative graphics, so that you will get
+experience with those steps as well.
+
+59
+00:03:24,920 --> 00:03:26,790
+[BLANK_AUDIO]
+
+60
+00:03:26,790 --> 00:03:28,800
+So the first thing you need to do when you
+get a real data set,
+
+61
+00:03:28,800 --> 00:03:31,060
+is just to get the data set ready for
+analysis.
+
+62
+00:03:31,060 --> 00:03:32,610
+And this is very basic.
+
+63
+00:03:32,610 --> 00:03:36,590
+You need to, make sure everything is
+formatted and named appropriately.
+
+64
+00:03:36,590 --> 00:03:40,950
+You need to import the dataset into your
+com, statistical analysis program.
+
+65
+00:03:40,950 --> 00:03:44,610
+Create any new variables that are just
+basic derivations of other variables.
+
+66
+00:03:45,820 --> 00:03:48,670
+So, I gave you the dataset for, for this.
+
+67
+00:03:48,670 --> 00:03:52,890
+Exercise, as I just downloaded it right
+from, the website.
+
+68
+00:03:52,890 --> 00:03:56,300
+The authors, who published the real
+analysis of this data,
+
+69
+00:03:56,300 --> 00:03:59,920
+had provided the data all as in, in the
+appendix of their paper, and
+
+70
+00:03:59,920 --> 00:04:01,580
+I just downloaded it and handed it to you.
+
+71
+00:04:01,580 --> 00:04:03,600
+I didn't, clean it up at all for you.
+
+72
+00:04:03,600 --> 00:04:07,920
+So this, represents kind of the thing that
+you might get from somebody.
+
+73
+00:04:07,920 --> 00:04:12,990
+The, data dictionary, is very condensed
+but, you know, the variables are mostly.
+
+74
+00:04:12,990 --> 00:04:14,410
+Self explanatory but,
+
+75
+00:04:14,410 --> 00:04:17,280
+they've stuck it in the dictionary right
+at the top of this Excel file.
+
+76
+00:04:17,280 --> 00:04:18,570
+So, one of things you're going to have to
+do,
+
+77
+00:04:18,570 --> 00:04:21,460
+is you're going to have to delete all of
+this, before you load it
+
+78
+00:04:21,460 --> 00:04:25,610
+into your statistical analysis program or
+you'll end up with all this garbage.
+
+79
+00:04:25,610 --> 00:04:28,530
+Also, notice that the way that they've
+named variables, they have a lot of.
+
+80
+00:04:28,530 --> 00:04:30,530
+Question marks and equal signs.
+
+81
+00:04:30,530 --> 00:04:33,550
+I don't like those in my variable names
+so, I'm going to get rid of those.
+
+82
+00:04:33,550 --> 00:04:37,830
+I'm just going to rename them in the Excel
+file before I load, things into SAS.
+
+83
+00:04:37,830 --> 00:04:42,060
+And, so a little bit of clean up needs to
+be done before I even input the data.
+
+84
+00:04:42,060 --> 00:04:45,660
+So, before I imported the data I, my file
+looked like this.
+
+85
+00:04:45,660 --> 00:04:49,220
+I, didn't do anything other than, delete
+that garbage at the top,
+
+86
+00:04:49,220 --> 00:04:50,580
+the data dictionary.
+
+87
+00:04:50,580 --> 00:04:54,150
+And, I changed a few of the variable names
+to get rid of things like, equal signs and
+
+88
+00:04:54,150 --> 00:04:57,618
+question marks, so you'll notice that some
+of the names here are different from
+
+89
+00:04:57,618 --> 00:05:01,510
+what we started with, tried to make the
+data a little more informative.
+
+90
+00:05:01,510 --> 00:05:04,480
+I then imported, the data into SAS and
+
+91
+00:05:04,480 --> 00:05:07,980
+of course, you would import into whatever,
+statistical package you were working in.
+
+92
+00:05:10,020 --> 00:05:13,630
+Once I had things in SASS I did a few
+other steps.
+
+93
+00:05:13,630 --> 00:05:16,460
+A few other basic steps to get ready for
+my analysis.
+
+94
+00:05:16,460 --> 00:05:19,160
+So, one of the things is that there were
+four variables.
+
+95
+00:05:19,160 --> 00:05:21,530
+Born in the USA, born white, name change
+and
+
+96
+00:05:21,530 --> 00:05:27,360
+genre drama, that were, originally coded
+as yes, no variables.
+
+97
+00:05:27,360 --> 00:05:28,380
+They're character variables.
+
+98
+00:05:28,380 --> 00:05:32,250
+And that's perfectly fine to leave them as
+yes, no character variables.
+
+99
+00:05:32,250 --> 00:05:35,460
+I just happen to prefer, when I deal with
+binary variables,
+
+100
+00:05:35,460 --> 00:05:37,040
+I prefer them to be coded as 1,
+
+101
+00:05:37,040 --> 00:05:41,050
+0 so that I can treat them as numbers,
+rather than as character variables.
+
+102
+00:05:41,050 --> 00:05:42,710
+I find that a little bit easier.
+
+103
+00:05:42,710 --> 00:05:47,910
+So, what I went ahead and did with code,
+was to re-code all the yeses to 1s and
+
+104
+00:05:47,910 --> 00:05:50,850
+all the nos to 0s for these four
+variables.
+
+105
+00:05:50,850 --> 00:05:52,970
+And also to change it from a character.
+
+106
+00:05:52,970 --> 00:05:54,710
+To a numeric variable.
+
+107
+00:05:54,710 --> 00:05:58,070
+I also, as I was, bothering to do that
+with code.
+
+108
+00:05:58,070 --> 00:06:00,130
+I thought, well, I might as well change
+the variable names.
+
+109
+00:06:00,130 --> 00:06:01,050
+I got rid of the underscores.
+
+110
+00:06:01,050 --> 00:06:03,050
+I don't really like, underscores in my
+variable name.
+
+111
+00:06:03,050 --> 00:06:04,210
+So, they're slightly renamed.
+
+112
+00:06:06,150 --> 00:06:09,730
+I then had to think about, since we're
+doing a survival analysis.
+
+113
+00:06:09,730 --> 00:06:13,030
+What am I going to do, in terms of the
+time variable?
+
+114
+00:06:13,030 --> 00:06:15,340
+How am I going to treat dates, and things
+like that?
+
+115
+00:06:15,340 --> 00:06:17,020
+So, what I decided, for
+
+116
+00:06:17,020 --> 00:06:21,100
+the time variable for this data set, was,
+everything was given in years.
+
+117
+00:06:21,100 --> 00:06:25,440
+And so, I decided to keep it in years, and
+treat the years as numbers.
+
+118
+00:06:25,440 --> 00:06:29,880
+It was, would have been harder to treat
+the year variable as a date/time variable.
+
+119
+00:06:29,880 --> 00:06:32,850
+Because we don't, w, date time variables
+are in days, and
+
+120
+00:06:32,850 --> 00:06:35,290
+we don't really want things in days, we
+can just keep it in years.
+
+121
+00:06:35,290 --> 00:06:39,410
+It's perfectly fine to subtract 1960,
+subtract 1900 and
+
+122
+00:06:39,410 --> 00:06:42,500
+get that somebody was 60 years old and
+just keep everything in, in numbers.
+
+123
+00:06:42,500 --> 00:06:43,990
+So, I've just kept the years in numbers.
+
+124
+00:06:45,380 --> 00:06:50,490
+I then, realized that I'm going to need to
+use age since birth, as my time scale, so
+
+125
+00:06:50,490 --> 00:06:51,580
+this is looking at.
+
+126
+00:06:51,580 --> 00:06:53,280
+You know, total life time.
+
+127
+00:06:53,280 --> 00:06:56,740
+So, I'm going to be using age since birth
+as the time-scale here.
+
+128
+00:06:56,740 --> 00:07:00,330
+And, that's actually an easy variable to
+create, because time,
+
+129
+00:07:00,330 --> 00:07:03,460
+what I'm going to be calling my time
+variable here,
+
+130
+00:07:03,460 --> 00:07:06,470
+is just going to be the age at either
+censoring or at death.
+
+131
+00:07:07,470 --> 00:07:09,970
+So to create the time variable, I'm
+calling it time,
+
+132
+00:07:09,970 --> 00:07:13,230
+because in survival analysis I'm thinking
+of this as my time variable.
+
+133
+00:07:13,230 --> 00:07:16,500
+You could have named the variable age,
+because it's equivalent to age.
+
+134
+00:07:16,500 --> 00:07:20,320
+So, to get this new time variable, all I
+did was I subtracted the final year,
+
+135
+00:07:20,320 --> 00:07:22,440
+which was the year they were censored or
+died.
+
+136
+00:07:22,440 --> 00:07:25,750
+I subtracted the, from that the birth
+year, the year they were born.
+
+137
+00:07:25,750 --> 00:07:28,920
+That's going to give me their age in
+years, and that is my time scale.
+
+138
+00:07:28,920 --> 00:07:30,850
+So, I just have to call that variable
+time.
+
+139
+00:07:30,850 --> 00:07:31,870
+You could have also called it a.
+
+140
+00:07:31,870 --> 00:07:33,320
+Age.
+
+141
+00:07:33,320 --> 00:07:36,430
+I also, decided to create some other new
+variables that I knew I was
+
+142
+00:07:36,430 --> 00:07:38,090
+going to need for this analysis.
+
+143
+00:07:38,090 --> 00:07:41,720
+So, the point of this analysis was to
+compare people who won academy awards,
+
+144
+00:07:41,720 --> 00:07:45,940
+to people who were only ever nominated, to
+people who were never even nominated.
+
+145
+00:07:45,940 --> 00:07:49,680
+So we call those groups the winner group,
+the nominee group and the control group.
+
+146
+00:07:49,680 --> 00:07:51,830
+So, I thought right from the onset I knew
+I was going to have,
+
+147
+00:07:51,830 --> 00:07:54,580
+to have a variable that denoted those
+groups.
+
+148
+00:07:54,580 --> 00:07:56,240
+In the original data set.
+
+149
+00:07:56,240 --> 00:08:00,510
+The, authors had recorded the number of
+wins.
+
+150
+00:08:00,510 --> 00:08:02,780
+I don't really care how many times you
+won,
+
+151
+00:08:02,780 --> 00:08:06,240
+that wasn't, important to this particular
+question that we were asking.
+
+152
+00:08:06,240 --> 00:08:08,970
+I really just need to know if you were a
+winner at all, or not.
+
+153
+00:08:08,970 --> 00:08:11,770
+So, I just changed, I made new variable,
+winner.
+
+154
+00:08:11,770 --> 00:08:15,060
+And I said if your wins, if your number of
+wins are greater than 0,
+
+155
+00:08:15,060 --> 00:08:17,170
+then you are a winner, you won an Academy
+Award.
+
+156
+00:08:17,170 --> 00:08:20,950
+If you number of wins was 0, then you are
+not in the winner category.
+
+157
+00:08:20,950 --> 00:08:22,840
+I created another variable with that
+whether or
+
+158
+00:08:22,840 --> 00:08:25,020
+not you were ever nominated at all.
+
+159
+00:08:25,020 --> 00:08:27,790
+And so, I said, if your nominations,
+again, was more than 1.
+
+160
+00:08:27,790 --> 00:08:29,730
+1 or more, more than 0.
+
+161
+00:08:29,730 --> 00:08:31,420
+Then you're a nominee.
+
+162
+00:08:31,420 --> 00:08:34,130
+If it's, if you were never nominated, then
+you're not a nominee.
+
+163
+00:08:34,130 --> 00:08:37,120
+I made another category that was, only
+nominated,
+
+164
+00:08:37,120 --> 00:08:41,790
+which separates, the winners out of those
+who were nominated, but never won.
+
+165
+00:08:41,790 --> 00:08:44,490
+So, if your nominations was greater than 0
+but,
+
+166
+00:08:44,490 --> 00:08:48,310
+your wins was equal to 0, then you're in
+that nomination only category.
+
+167
+00:08:48,310 --> 00:08:50,880
+I know I'm going to need that group
+separated as well.
+
+168
+00:08:51,880 --> 00:08:56,114
+And, then finally I, defined a control
+group which is if you're not a nominee and
+
+169
+00:08:56,114 --> 00:08:57,280
+you were not a winner.
+
+170
+00:08:57,280 --> 00:09:00,180
+If you never were a nominee, you never
+won, then you're in the control group.
+
+171
+00:09:00,180 --> 00:09:03,210
+So, I made those new variables because I
+knew I was going to need those for
+
+172
+00:09:03,210 --> 00:09:03,970
+a lot of the analysis.
+
+173
+00:09:06,250 --> 00:09:09,070
+So, once you've prepped you data set got
+it ready for analyses, then you are going
+
+174
+00:09:09,070 --> 00:09:12,670
+to go through and check the data set,
+check all of your variables to check for
+
+175
+00:09:12,670 --> 00:09:16,290
+errors, outliers, extreme values and for
+missing data.
+
+176
+00:09:18,240 --> 00:09:21,410
+So, I just did a simple thing for this one
+I used the proc,
+
+177
+00:09:21,410 --> 00:09:27,030
+means option which just asks for summary
+statistics, I specifically, wanted to see
+
+178
+00:09:27,030 --> 00:09:30,570
+the sample size for each variable, because
+that will tell me about missing data.
+
+179
+00:09:30,570 --> 00:09:33,600
+As well as the minimum and the maximum to
+make sure, to see whether or
+
+180
+00:09:33,600 --> 00:09:35,250
+not I have any outliers.
+
+181
+00:09:35,250 --> 00:09:40,370
+By the way, in SAS, if you do variable
+_all_ SAS, will just do this for
+
+182
+00:09:40,370 --> 00:09:43,570
+all your variables and you don't need to
+write them out separately.
+
+183
+00:09:43,570 --> 00:09:45,020
+So, this was a pretty small dataset.
+
+184
+00:09:45,020 --> 00:09:46,080
+There's not so many variables.
+
+185
+00:09:46,080 --> 00:09:47,440
+So, I just used that all command.
+
+186
+00:09:48,450 --> 00:09:51,270
+So, here is all of my variables, in this
+dataset.
+
+187
+00:09:51,270 --> 00:09:53,620
+It's going to give me statistics on the ID
+number because I asked for
+
+188
+00:09:53,620 --> 00:09:56,560
+all the variables, that's not really very
+important.
+
+189
+00:09:56,560 --> 00:09:59,630
+But, we can kind of go through each one of
+these variables, and
+
+190
+00:09:59,630 --> 00:10:02,610
+first thing you notice is that, there's no
+missing data in this dataset.
+
+191
+00:10:02,610 --> 00:10:06,480
+So the, authors who prepared the dataset
+filled in all of the values.
+
+192
+00:10:06,480 --> 00:10:09,170
+So, for example, you see that for every
+variable there's 1670,
+
+193
+00:10:09,170 --> 00:10:12,760
+so that means that, that none of those
+variables are missing anything.
+
+194
+00:10:12,760 --> 00:10:17,770
+There's two variables that have, 239 and
+768, those are the ones that
+
+195
+00:10:17,770 --> 00:10:22,040
+only apply to the winners or to the
+nominees, so that's why those have fewer.
+
+196
+00:10:22,040 --> 00:10:23,420
+That's not missing data.
+
+197
+00:10:23,420 --> 00:10:25,320
+But, you see that, there's no missing data
+on it.
+
+198
+00:10:25,320 --> 00:10:26,150
+Any of the variables.
+
+199
+00:10:26,150 --> 00:10:27,120
+So, that's nice to know.
+
+200
+00:10:27,120 --> 00:10:29,510
+That means we're not going to have to work
+too hard in terms of missing data.
+
+201
+00:10:30,880 --> 00:10:33,060
+I then went through and looked at all the
+minimums and the maximums.
+
+202
+00:10:33,060 --> 00:10:34,920
+So, I'll just point out a few here.
+
+203
+00:10:34,920 --> 00:10:37,670
+So, the birth year, the earliest birth
+year was 1858.
+
+204
+00:10:37,670 --> 00:10:39,670
+The latest birth year is 1988.
+
+205
+00:10:39,670 --> 00:10:42,900
+That's very important to know, and
+understanding these data.
+
+206
+00:10:42,900 --> 00:10:46,750
+The, final, the last possible time to
+event was 2001.
+
+207
+00:10:46,750 --> 00:10:51,068
+That's because these data were collected,
+in 2001.
+
+208
+00:10:51,068 --> 00:10:53,980
+They were collected or at least updated in
+2001,
+
+209
+00:10:53,980 --> 00:10:56,690
+that's the last year we have information
+for.
+
+210
+00:10:56,690 --> 00:11:01,210
+It's probably great for somebody, time for
+somebody to update this data set again.
+
+211
+00:11:01,210 --> 00:11:05,050
+So we can reanalyze these, but that was
+the last data set that we have available.
+
+212
+00:11:05,050 --> 00:11:06,340
+So that everything ends at 2001 and
+
+213
+00:11:06,340 --> 00:11:08,660
+you are censored there if you haven't died
+by then.
+
+214
+00:11:09,740 --> 00:11:12,940
+You can see that all the binary variables
+go from 0 to 1 there's no weird,
+
+215
+00:11:12,940 --> 00:11:13,980
+values in here.
+
+216
+00:11:13,980 --> 00:11:18,420
+If you go down to time, this is, their
+ages at death or
+
+217
+00:11:18,420 --> 00:11:23,130
+censoring, and they range from 13 to 104
+those are reasonable ages.
+
+218
+00:11:23,130 --> 00:11:26,710
+We can also look at the, years in which
+people were nominated and
+
+219
+00:11:26,710 --> 00:11:29,050
+won Academy awards, those ranges look
+reasonable.
+
+220
+00:11:29,050 --> 00:11:30,270
+All of these look, reasonable.
+
+221
+00:11:30,270 --> 00:11:33,210
+Somebody ac, actually was in 290 films.
+
+222
+00:11:33,210 --> 00:11:34,920
+That's not unreasonable over a career.
+
+223
+00:11:34,920 --> 00:11:36,220
+You could be in 290 films.
+
+224
+00:11:36,220 --> 00:11:38,030
+So, everything looks pretty good there.
+
+225
+00:11:39,690 --> 00:11:43,360
+I then, went through and checked, the
+variables for consistencies.
+
+226
+00:11:43,360 --> 00:11:46,340
+This is checking one variable against
+another.
+
+227
+00:11:46,340 --> 00:11:49,890
+To see if there are things that are, that
+just don't make sense.
+
+228
+00:11:49,890 --> 00:11:53,610
+And so, for example, there's a lot of
+years here.
+
+229
+00:11:53,610 --> 00:11:55,650
+If somebody was you know,
+
+230
+00:11:55,650 --> 00:11:59,260
+died before they were born, that would be
+an example of an inconsistency.
+
+231
+00:11:59,260 --> 00:12:01,800
+I went through and found [INAUDIBLE]
+inconsistencies I could think of and
+
+232
+00:12:01,800 --> 00:12:05,090
+went through and flag, any person who had.
+
+233
+00:12:05,090 --> 00:12:07,100
+A yes on any of these if statements.
+
+234
+00:12:07,100 --> 00:12:10,635
+So, for example, if there's a variable
+fourstar films, if you made more fourstar
+
+235
+00:12:10,635 --> 00:12:15,960
+fil-, more fourstar films, than you made
+films overall, that would be impossible.
+
+236
+00:12:15,960 --> 00:12:18,060
+If you were born after you died or
+
+237
+00:12:18,060 --> 00:12:20,290
+after you were censored, that would be
+impossible.
+
+238
+00:12:20,290 --> 00:12:24,980
+If you, had won an Academy Award but never
+been nominated, that would be impossible.
+
+239
+00:12:24,980 --> 00:12:27,400
+I, I'll kind of go through just some of
+these.
+
+240
+00:12:27,400 --> 00:12:32,300
+If you were a control, but you have a year
+for your no, first nomination or
+
+241
+00:12:32,300 --> 00:12:34,200
+first win, that would be impossible.
+
+242
+00:12:34,200 --> 00:12:37,820
+If you, made your first film after you
+won,
+
+243
+00:12:37,820 --> 00:12:41,520
+after you won your first Academy Award,
+that would be impossible.
+
+244
+00:12:41,520 --> 00:12:43,450
+If you made your first film after the
+first you,
+
+245
+00:12:43,450 --> 00:12:46,820
+after you were, you were nominated, that
+would be impossible.
+
+246
+00:12:46,820 --> 00:12:52,150
+If you were nominated after your first win
+that would be impossible.
+
+247
+00:12:52,150 --> 00:12:54,610
+So, all of these are the sort of things
+that would make, not make sense.
+
+248
+00:12:54,610 --> 00:12:57,700
+If something's going wrong, there's at
+least some error in the data, for
+
+249
+00:12:57,700 --> 00:12:58,880
+all of these, if these, if these are
+flagged.
+
+250
+00:12:58,880 --> 00:13:02,100
+If you have more wins than you have
+nominations,
+
+251
+00:13:02,100 --> 00:13:04,100
+all of these kind of inconsistencies.
+
+252
+00:13:04,100 --> 00:13:06,860
+So, I just made one variable called a flag
+variable.
+
+253
+00:13:06,860 --> 00:13:09,740
+I set it equal to 1 if any of these came
+out true for for
+
+254
+00:13:09,740 --> 00:13:11,060
+an observation in the data set.
+
+255
+00:13:11,060 --> 00:13:15,040
+And then, I printed out everybody who had
+[SOUND] flag equals 1.
+
+256
+00:13:15,040 --> 00:13:16,090
+So, when I did this,
+
+257
+00:13:16,090 --> 00:13:20,740
+I came out with six people, where the flag
+variable was equal to 1.
+
+258
+00:13:20,740 --> 00:13:21,720
+[SOUND] And I just printed these out.
+
+259
+00:13:21,720 --> 00:13:25,640
+These are the ones that meet, any of those
+inconsistencies on the previous slide.
+
+260
+00:13:25,640 --> 00:13:27,750
+I came out with six.
+
+261
+00:13:27,750 --> 00:13:34,600
+Great example, person with ID 908 if you
+look, their first film was made in 1989.
+
+262
+00:13:34,600 --> 00:13:38,120
+But they were first nominated, for an
+Academy Award in 1985.
+
+263
+00:13:38,120 --> 00:13:40,060
+Well obviously, one of those dates is
+wrong.
+
+264
+00:13:41,770 --> 00:13:45,180
+If we were, doing a real data analysis, we
+might go back and
+
+265
+00:13:45,180 --> 00:13:49,680
+try to figure out, for 908, where the
+error lies, and to fix the error.
+
+266
+00:13:49,680 --> 00:13:51,800
+We can go back and do that.
+
+267
+00:13:51,800 --> 00:13:53,580
+I don't know who person 908 is, so for
+
+268
+00:13:53,580 --> 00:13:58,630
+the purposes of the midterm, I just said
+to exclude these kinds of inconsistencies.
+
+269
+00:13:58,630 --> 00:14:03,060
+1192 was again, the first film occurred
+after they were first nominated.
+
+270
+00:14:03,060 --> 00:14:05,104
+There's some error in there.
+
+271
+00:14:05,104 --> 00:14:05,930
+1430.
+
+272
+00:14:05,930 --> 00:14:11,332
+Let's see, there were, they, their first
+win year was in 1952, so they first one
+
+273
+00:14:11,332 --> 00:14:16,588
+an Academy Award in 1952, but they weren't
+first nominated until 1960, so
+
+274
+00:14:16,588 --> 00:14:22,939
+that's an inconsistency, and 1521 they had
+their first, film was made, in 1988,
+
+275
+00:14:22,939 --> 00:14:28,355
+but they were nominated first way back in
+1971, so those are all inconsistencies.
+
+276
+00:14:28,355 --> 00:14:33,319
+Now one of them, one of the instances,
+inconsistency, that came up 1075,
+
+277
+00:14:33,319 --> 00:14:38,137
+if you look in the fine print of, the
+paper that was published in 2006 where
+
+278
+00:14:38,137 --> 00:14:43,028
+the authors reanalysed, this data set,
+they actually said they excluded this
+
+279
+00:14:43,028 --> 00:14:48,138
+person and the reason is if you look at
+the date of death they died in 1994 but
+
+280
+00:14:48,138 --> 00:14:51,350
+they were first nominated for an Oscar in
+1995,
+
+281
+00:14:51,350 --> 00:14:56,447
+when I found that inconsistency i thought
+to myself that it might be possible.
+
+282
+00:14:56,447 --> 00:14:59,711
+For somebody to die between the time that
+a film is made and
+
+283
+00:14:59,711 --> 00:15:05,370
+before they are nominated because you can
+be nominated posthumously after you die.
+
+284
+00:15:05,370 --> 00:15:09,818
+So I went and googled it just for fun, I
+actually googled you know,
+
+285
+00:15:09,818 --> 00:15:12,740
+deaths after being nominated for an Oscar
+after death, and you
+
+286
+00:15:12,740 --> 00:15:16,970
+can find a Wikipedia page which lists the
+people who were nominated after they died.
+
+287
+00:15:16,970 --> 00:15:18,270
+There aren't that many, and
+
+288
+00:15:18,270 --> 00:15:22,620
+I was actually able to find that there
+indeed was a person who died in 1994 and
+
+289
+00:15:22,620 --> 00:15:27,180
+was nominated in 1995 after they died and
+who had been born in 1953.
+
+290
+00:15:27,180 --> 00:15:33,220
+So I am pretty certain, that this
+represents Massimo Troisi who was in
+
+291
+00:15:33,220 --> 00:15:38,070
+Il Postino, and therefore that that's a
+real data, that all that data is real, and
+
+292
+00:15:38,070 --> 00:15:39,220
+there's nothing wrong with it and
+
+293
+00:15:39,220 --> 00:15:41,229
+therefore, I did not exclude that, that
+person.
+
+294
+00:15:44,180 --> 00:15:46,190
+All right, the next thing you're going to
+want to do,
+
+295
+00:15:46,190 --> 00:15:49,910
+in your data analysis is to spend a lot of
+thing studying your variables.
+
+296
+00:15:49,910 --> 00:15:51,720
+And you can see that in this whole
+process,
+
+297
+00:15:51,720 --> 00:15:55,290
+we are spending a lot of time on very
+basic things about the data.
+
+298
+00:15:55,290 --> 00:15:56,647
+I haven't gotten at all yet
+
+299
+00:15:56,647 --> 00:16:00,880
+to the question of you know, do winners
+live longer than nominees.
+
+300
+00:16:00,880 --> 00:16:02,820
+So I'm going to ask for univariate
+statistics and
+
+301
+00:16:02,820 --> 00:16:06,160
+histogram and explore those for all the
+variables in my dataset so
+
+302
+00:16:06,160 --> 00:16:09,150
+that I have a firm understanding of what
+these variables look like.
+
+303
+00:16:11,080 --> 00:16:14,340
+again, you can insass, you can do
+histograms and
+
+304
+00:16:14,340 --> 00:16:18,780
+basic statistics with proc univariate if
+you ask for underscore all underscore,
+
+305
+00:16:18,780 --> 00:16:21,630
+you get all the variables, and since there
+aren't that many here.
+
+306
+00:16:21,630 --> 00:16:23,690
+I went ahead and got all of the
+histograms.
+
+307
+00:16:23,690 --> 00:16:24,970
+This is the histogram for ID.
+
+308
+00:16:24,970 --> 00:16:27,160
+It automatically comes up, because I've
+asked for all.
+
+309
+00:16:27,160 --> 00:16:31,559
+But it is interesting to just note that
+the ID numbers get restarted at 2,000 and
+
+310
+00:16:31,559 --> 00:16:32,155
+at 3,000.
+
+311
+00:16:32,155 --> 00:16:34,970
+That probably has something to do with the
+fact that this data set was
+
+312
+00:16:34,970 --> 00:16:36,860
+updated at one point.
+
+313
+00:16:36,860 --> 00:16:38,000
+Those may be the, the updates.
+
+314
+00:16:38,000 --> 00:16:40,060
+So, even there there's something
+interesting.
+
+315
+00:16:41,060 --> 00:16:43,980
+Here are some histograms for those binary
+variables.
+
+316
+00:16:43,980 --> 00:16:48,400
+This was country of birth, whether or not
+you where born in the U.S.A or not.
+
+317
+00:16:48,400 --> 00:16:51,250
+And what you can see is that,
+interestingly, I mean a,
+
+318
+00:16:51,250 --> 00:16:54,968
+about 70% of people where born in the
+coun, in the U.S.A, but there
+
+319
+00:16:54,968 --> 00:16:58,400
+are almost 30% of actors and actresses who
+where born in another country.
+
+320
+00:16:58,400 --> 00:17:01,430
+We're tracing, you know, Back to the 1800s
+and things.
+
+321
+00:17:01,430 --> 00:17:02,400
+So that's very interesting.
+
+322
+00:17:02,400 --> 00:17:03,920
+And that might affect the mortality.
+
+323
+00:17:05,290 --> 00:17:07,660
+In terms of race however.
+
+324
+00:17:07,660 --> 00:17:10,210
+That they're almost all were white.
+
+325
+00:17:10,210 --> 00:17:14,740
+There's only a very small percentage of
+people who were races other than whites,
+
+326
+00:17:14,740 --> 00:17:18,370
+who were nominated or actors and actresses
+in that time.
+
+327
+00:17:18,370 --> 00:17:20,780
+So, the variable, born white.
+
+328
+00:17:20,780 --> 00:17:23,500
+Whether or not you were, of white race.
+
+329
+00:17:23,500 --> 00:17:24,630
+It might be interesting.
+
+330
+00:17:24,630 --> 00:17:26,570
+It might be related to longevity.
+
+331
+00:17:26,570 --> 00:17:30,130
+But, you have to keep in mind that the non
+white group is very small here.
+
+332
+00:17:31,270 --> 00:17:32,390
+gender.
+
+333
+00:17:32,390 --> 00:17:35,890
+So this is the males, and this is the
+females.
+
+334
+00:17:35,890 --> 00:17:37,500
+You'll notice it's fairly well balanced.
+
+335
+00:17:37,500 --> 00:17:39,860
+But there were, in general more men in
+films.
+
+336
+00:17:39,860 --> 00:17:42,300
+Especially, in the early days.
+
+337
+00:17:42,300 --> 00:17:45,020
+And then we have this variable, name
+change.
+
+338
+00:17:45,020 --> 00:17:47,040
+Actors and actresses sometimes change
+their names.
+
+339
+00:17:47,040 --> 00:17:48,630
+I didn't do a heck of a lot with this
+variable.
+
+340
+00:17:48,630 --> 00:17:51,620
+There was a fair number of people who
+changed their names.
+
+341
+00:17:51,620 --> 00:17:54,390
+I don't think that that would be related
+to mortality, however.
+
+342
+00:17:57,350 --> 00:18:00,300
+Then this is, these are the, this is the
+distribution of the birth years.
+
+343
+00:18:00,300 --> 00:18:04,280
+So, again, we went from 1858 to 1988,
+where the birth years,.
+
+344
+00:18:04,280 --> 00:18:06,470
+And everything in between.
+
+345
+00:18:06,470 --> 00:18:11,290
+Final is the year of death or censoring,
+and since censoring ha,
+
+346
+00:18:11,290 --> 00:18:15,070
+the last time we updated the data was in
+2001, we have a huge bar at 2001,
+
+347
+00:18:15,070 --> 00:18:19,360
+just, that's just the last date of
+censoring from, for most people.
+
+348
+00:18:19,360 --> 00:18:20,420
+How many people died or
+
+349
+00:18:20,420 --> 00:18:26,440
+were alive, this is died or alive, so this
+is the alive bar.
+
+350
+00:18:26,440 --> 00:18:30,620
+And this is the died bar, died here is the
+outcome of interest.
+
+351
+00:18:30,620 --> 00:18:34,685
+And what's nice is that it's pretty well
+balanced with survival analysis you
+
+352
+00:18:34,685 --> 00:18:37,640
+want to make sure you have enough events
+and enough censored so
+
+353
+00:18:37,640 --> 00:18:41,020
+you now, one category sin too small and we
+have a reasonable balance here.
+
+354
+00:18:43,030 --> 00:18:46,760
+This variable films, this was the number
+of films that an actor or
+
+355
+00:18:46,760 --> 00:18:49,500
+actress has made in their career at least
+up until 2001.
+
+356
+00:18:49,500 --> 00:18:52,880
+And you'll notice that that's a highly
+right skewed variable.
+
+357
+00:18:52,880 --> 00:18:54,780
+This is the number of four star films.
+
+358
+00:18:56,020 --> 00:18:59,010
+And also highly right skewed, which makes
+total sense because some people make
+
+359
+00:18:59,010 --> 00:19:02,330
+only a few films and there might be people
+who make upwards of you know 290 films.
+
+360
+00:19:03,844 --> 00:19:05,750
+Just keep in mind it's a right skewed
+variable.
+
+361
+00:19:08,470 --> 00:19:12,220
+The variable weins which the author has
+had originally coded gave you
+
+362
+00:19:12,220 --> 00:19:14,360
+the number of times people had won, well.
+
+363
+00:19:14,360 --> 00:19:15,890
+You know, there are some people who have
+won two or
+
+364
+00:19:15,890 --> 00:19:18,550
+three Academy Awards, but that wasn't,
+that's very small person.
+
+365
+00:19:18,550 --> 00:19:21,380
+That wasn't really important for the
+analysis that we were doing.
+
+366
+00:19:21,380 --> 00:19:24,200
+So, I just collapsed it, you either won or
+you didn't won.
+
+367
+00:19:24,200 --> 00:19:26,730
+I already showed you how I made that new
+variable.
+
+368
+00:19:26,730 --> 00:19:27,600
+Same with nominations then.
+
+369
+00:19:27,600 --> 00:19:30,460
+Nominations is pretty interesting that
+some people have won, you know, 11 or
+
+370
+00:19:30,460 --> 00:19:32,010
+12 nominations.
+
+371
+00:19:32,010 --> 00:19:35,000
+But again for the purposes of this
+analysis I just col,
+
+372
+00:19:35,000 --> 00:19:40,020
+collapsed into, you were nominated, or
+your weren't nominated.
+
+373
+00:19:43,560 --> 00:19:47,800
+For first film year, this is the year that
+somebody fist made a film,
+
+374
+00:19:47,800 --> 00:19:49,150
+it ranged from 1908 to 1998.
+
+375
+00:19:49,150 --> 00:19:51,070
+1998.
+
+376
+00:19:51,070 --> 00:19:53,310
+First win year was from 1928 to 2000.
+
+377
+00:19:53,310 --> 00:19:55,650
+First nomination year was from 1929 to
+2001,
+
+378
+00:19:55,650 --> 00:19:59,160
+just good to keep in mind those dates.
+
+379
+00:19:59,160 --> 00:20:01,380
+Time here is, also, I could call age.
+
+380
+00:20:01,380 --> 00:20:03,110
+So, just make sure that the ages are
+reasonable.
+
+381
+00:20:03,110 --> 00:20:06,730
+They range from about 13 to 104, and looks
+fairly reasonable.
+
+382
+00:20:06,730 --> 00:20:10,090
+So, that just gives you a sense of all of
+the different variables in your data set.
+
+383
+00:20:12,020 --> 00:20:13,480
+You would next want to deal with missing
+data.
+
+384
+00:20:13,480 --> 00:20:14,730
+We don't have any missing data here.
+
+385
+00:20:14,730 --> 00:20:17,642
+So, you get out of that step for the
+purposes of the mentor.
+
+386
+00:20:19,710 --> 00:20:22,560
+Your next one going to want to understand
+you've looked now at the univariate
+
+387
+00:20:22,560 --> 00:20:24,860
+distribution, one variable at a time.
+
+388
+00:20:24,860 --> 00:20:26,570
+But you're next going to want to
+understand,
+
+389
+00:20:26,570 --> 00:20:29,710
+how different variables related to one
+another in your data set.
+
+390
+00:20:29,710 --> 00:20:32,848
+So, you want to explore simple
+relationships.
+
+391
+00:20:32,848 --> 00:20:37,390
+And you might want to explore the basic
+assumptions, kind of building towards
+
+392
+00:20:37,390 --> 00:20:39,970
+the fact that we're going to be doing Cox
+regression here, for example.
+
+393
+00:20:39,970 --> 00:20:43,080
+So we can test some of the basic
+assumptions of Cox regression.
+
+394
+00:20:43,080 --> 00:20:46,830
+So in this step, I'm going to look at just
+what variables are related to each other.
+
+395
+00:20:46,830 --> 00:20:50,400
+You need to kind of understand which
+variables are highly correlated.
+
+396
+00:20:50,400 --> 00:20:52,710
+Which variables go together.
+
+397
+00:20:52,710 --> 00:20:55,080
+I would do, just doing some basic
+bivariate analyses.
+
+398
+00:20:55,080 --> 00:20:59,180
+And I'm also going to test here in just
+one, kind of, one variable at a time.
+
+399
+00:20:59,180 --> 00:21:01,520
+Do we need proportional hazards and
+linearity assumptions?
+
+400
+00:21:03,780 --> 00:21:07,430
+To explore what variables are related to
+one another, a very simple, quick, and
+
+401
+00:21:07,430 --> 00:21:11,610
+dirty thing you can do is just to run a
+correlation matrix on all of
+
+402
+00:21:11,610 --> 00:21:12,780
+the variables.
+
+403
+00:21:12,780 --> 00:21:17,110
+And to contain that a little bit what I
+did in CAS was to say, to give me for
+
+404
+00:21:17,110 --> 00:21:20,470
+each variable in my data set the top three
+variables that
+
+405
+00:21:20,470 --> 00:21:22,850
+are most correlated with that variable.
+
+406
+00:21:22,850 --> 00:21:25,050
+So, I asked for example, for gender.
+
+407
+00:21:25,050 --> 00:21:27,510
+What variables are most highly correlated
+with gender?
+
+408
+00:21:27,510 --> 00:21:31,180
+And what my computer spit out was, the
+number of four star films you have made,
+
+409
+00:21:31,180 --> 00:21:33,350
+the number of films you had made, and your
+birth year.
+
+410
+00:21:34,355 --> 00:21:37,530
+Well I could get this for all of the
+variables in the dataset.
+
+411
+00:21:37,530 --> 00:21:41,700
+Asking for just the top correlations keeps
+the matrix a little bit more readable.
+
+412
+00:21:42,740 --> 00:21:46,000
+And we can study this, and get a sense of.
+
+413
+00:21:46,000 --> 00:21:48,760
+What potential confounders, what things go
+with what,
+
+414
+00:21:48,760 --> 00:21:51,100
+what things are highly overlapping.
+
+415
+00:21:51,100 --> 00:21:51,910
+So for
+
+416
+00:21:51,910 --> 00:21:55,940
+example it's interesting to note that the
+men in this status that made more films.
+
+417
+00:21:55,940 --> 00:21:59,460
+That's probably because there were more
+men in film early on.
+
+418
+00:21:59,460 --> 00:22:01,740
+They are getting more jobs than the women.
+
+419
+00:22:01,740 --> 00:22:05,140
+And remember, this data set traces back
+you know, quite far.
+
+420
+00:22:06,350 --> 00:22:12,080
+And, other things that in-, int-,
+interesting is that the men tend to have
+
+421
+00:22:12,080 --> 00:22:15,950
+earlier birth years, again that probably
+has to do with the fact that early on,
+
+422
+00:22:15,950 --> 00:22:18,980
+there were probably were only mostly men
+in film, so
+
+423
+00:22:18,980 --> 00:22:21,390
+their birth years tend to be earlier than
+for the women.
+
+424
+00:22:22,440 --> 00:22:24,862
+So, just keep that in the back of your
+mind.
+
+425
+00:22:24,862 --> 00:22:30,550
+Birth year, is very highly correlated with
+your year, the year of first film,
+
+426
+00:22:30,550 --> 00:22:33,440
+and the year of first nomination and the
+year of first win.
+
+427
+00:22:33,440 --> 00:22:34,640
+Well that makes total sense.
+
+428
+00:22:34,640 --> 00:22:35,190
+Right?
+
+429
+00:22:35,190 --> 00:22:40,520
+If you were born in 1858, your first film
+year is going to be much earlier,
+
+430
+00:22:40,520 --> 00:22:45,100
+than if you were born in 1980, because of
+course you are hitting 20 or
+
+431
+00:22:45,100 --> 00:22:49,370
+30 years of age if you were born in 1858,
+you're hitting, 20 or 30 years of
+
+432
+00:22:49,370 --> 00:22:53,570
+age in the, you know, the late 1800s and
+even before there were films available.
+
+433
+00:22:53,570 --> 00:22:55,230
+But these are highly, highly correlated.
+
+434
+00:22:55,230 --> 00:22:59,410
+So you notice that first film year and
+birth year have a correlation of 0.93.
+
+435
+00:22:59,410 --> 00:23:00,300
+Essentially.
+
+436
+00:23:00,300 --> 00:23:03,670
+Those variables are the s, are measuring
+the same thing.
+
+437
+00:23:03,670 --> 00:23:07,080
+What that's going to tell me, is that I am
+not going to bother putting first film
+
+438
+00:23:07,080 --> 00:23:10,670
+year, first nomination year, or first win
+year as predictors in my model.
+
+439
+00:23:10,670 --> 00:23:12,980
+Because they're just, there so correlated
+with birth year.
+
+440
+00:23:12,980 --> 00:23:17,010
+And birth year obviously is going to be a
+good predictor of mortality and so
+
+441
+00:23:17,010 --> 00:23:18,230
+I'm just going to stick with birth year.
+
+442
+00:23:18,230 --> 00:23:19,780
+I'm pretty much going to ignore there,
+
+443
+00:23:19,780 --> 00:23:22,259
+these other variables for the rest of the
+analysis.
+
+444
+00:23:23,670 --> 00:23:26,490
+We keep, the setting the more films you
+make the more four
+
+445
+00:23:26,490 --> 00:23:27,690
+star films you're likely to make.
+
+446
+00:23:27,690 --> 00:23:29,070
+That makes sense.
+
+447
+00:23:29,070 --> 00:23:31,860
+The more films you make the, the earlier
+you start in making films.
+
+448
+00:23:31,860 --> 00:23:35,010
+The correlation there is negative, that
+makes sense.
+
+449
+00:23:35,010 --> 00:23:38,340
+The films you make the older you are
+because the older you
+
+450
+00:23:38,340 --> 00:23:40,350
+are the longer time you've had to make
+films.
+
+451
+00:23:40,350 --> 00:23:43,360
+A lot of these makes sense, but you can
+look through these carefully and kind of
+
+452
+00:23:43,360 --> 00:23:46,830
+come up with things, you might not have
+expected or might not have thought of.
+
+453
+00:23:46,830 --> 00:23:47,800
+I won't go through all of them.
+
+454
+00:23:49,060 --> 00:23:52,860
+I then went and did simple Kaplan Meyer
+statistics on all of my predictors,
+
+455
+00:23:52,860 --> 00:23:55,120
+to see what variables are related to
+death.
+
+456
+00:23:55,120 --> 00:23:58,930
+So starting with birth year, I'm expecting
+birth year to be related to death and
+
+457
+00:23:58,930 --> 00:24:01,060
+indeed it looks pretty related to death.
+
+458
+00:24:01,060 --> 00:24:04,900
+So I broke birth year up into the lowest
+26th percentile, the midi,
+
+459
+00:24:04,900 --> 00:24:08,540
+the middle 50th percent, and the highest
+75th percentile.
+
+460
+00:24:08,540 --> 00:24:10,980
+Just to have something to plot on the
+Kaplan-Meier curve.
+
+461
+00:24:10,980 --> 00:24:14,054
+However you break it up, it's going to
+look pretty predictive.
+
+462
+00:24:14,054 --> 00:24:16,690
+The p-value from the log-rank test is
+highly significant, and you
+
+463
+00:24:16,690 --> 00:24:20,300
+can see that indeed, if you were born in
+later that's the gre, later years that's
+
+464
+00:24:20,300 --> 00:24:24,340
+the green line, versus if you were born in
+the earliest years, that's the red line.
+
+465
+00:24:24,340 --> 00:24:28,580
+You definitely had worse you had better
+survival if you were born later and
+
+466
+00:24:28,580 --> 00:24:31,620
+you have much more survival, if you're
+born in the late 1800s.
+
+467
+00:24:31,620 --> 00:24:35,240
+That makes terrible sense, medicine has
+changed of course.
+
+468
+00:24:35,240 --> 00:24:36,800
+Longevity has change.
+
+469
+00:24:36,800 --> 00:24:40,500
+also, gender is another one we would
+expect to be a good predictor.
+
+470
+00:24:40,500 --> 00:24:46,860
+And men obviously, generally live less.
+
+471
+00:24:46,860 --> 00:24:49,920
+They have a less shorter expected lifespan
+than women.
+
+472
+00:24:49,920 --> 00:24:52,280
+So in, I mean, that bears out in that
+dataset.
+
+473
+00:24:52,280 --> 00:24:54,450
+If for some reason you did this analysis
+and
+
+474
+00:24:54,450 --> 00:24:58,830
+that didn't bear out, that should be a
+clue to you, that's somethings gone wrong.
+
+475
+00:24:58,830 --> 00:25:01,180
+Because women, we know, do live longer
+than men.
+
+476
+00:25:01,180 --> 00:25:02,340
+And, indeed that bears out here.
+
+477
+00:25:02,340 --> 00:25:03,690
+That p value is highly significant.
+
+478
+00:25:03,690 --> 00:25:07,760
+So I know that probably, any final models
+I build are going to include these two
+
+479
+00:25:07,760 --> 00:25:11,365
+predictors, because they're just at face
+value, obviously related to mortality.
+
+480
+00:25:11,365 --> 00:25:14,370
+[INAUDIBLE] explain some of the other
+variables.
+
+481
+00:25:14,370 --> 00:25:17,230
+So if you were born in the USA versus born
+somewhere else.
+
+482
+00:25:17,230 --> 00:25:19,960
+That also, if you're born in the US,
+
+483
+00:25:19,960 --> 00:25:22,220
+you do have a little bit of a survival
+advantage.
+
+484
+00:25:24,330 --> 00:25:27,140
+It didn't quite reach statistical
+significance in the log-rank test but
+
+485
+00:25:27,140 --> 00:25:29,060
+it does look like there's some difference
+there.
+
+486
+00:25:29,060 --> 00:25:30,039
+Especially in the early years.
+
+487
+00:25:31,270 --> 00:25:32,380
+White race have,
+
+488
+00:25:32,380 --> 00:25:36,340
+there was only a very small few number of
+people who were not white.
+
+489
+00:25:36,340 --> 00:25:40,590
+So you can see that the red line here, is
+very, represents very few people.
+
+490
+00:25:40,590 --> 00:25:43,750
+But you can see there is some [INAUDIBLE]
+survival advantages you might expect for,
+
+491
+00:25:43,750 --> 00:25:45,398
+for white, versus non white.
+
+492
+00:25:45,398 --> 00:25:48,060
+Again, the log-rank test doesn't quite
+reach statistical significance,
+
+493
+00:25:48,060 --> 00:25:49,470
+because of the small sample size here.
+
+494
+00:25:51,430 --> 00:25:56,170
+They have this variable whether or not you
+were in drama, the genre of drama or not.
+
+495
+00:25:56,170 --> 00:25:58,216
+Do you're actor in drama films?
+
+496
+00:25:58,216 --> 00:26:00,910
+It did, you know, almost reach statistical
+significance, but
+
+497
+00:26:00,910 --> 00:26:02,820
+you can see that the curves, the people
+in,
+
+498
+00:26:02,820 --> 00:26:06,660
+in drama did slightly better in survival
+than the people in other films.
+
+499
+00:26:06,660 --> 00:26:08,500
+There's a slight difference between those
+two curves.
+
+500
+00:26:08,500 --> 00:26:09,765
+The drama being here.
+
+501
+00:26:09,765 --> 00:26:11,884
+Non-drama.
+
+502
+00:26:11,884 --> 00:26:15,240
+The difference between those curses are
+pretty small though so
+
+503
+00:26:15,240 --> 00:26:17,980
+at most it will only have a small effect
+on mortality.
+
+504
+00:26:19,750 --> 00:26:23,560
+Now very interestingly if you dump the
+number of films and
+
+505
+00:26:23,560 --> 00:26:26,078
+the number of four star films, which of
+course are related,
+
+506
+00:26:26,078 --> 00:26:29,780
+into [INAUDIBLE] statistics, you see a
+huge effect.
+
+507
+00:26:29,780 --> 00:26:34,970
+So I again, I just divided things for the
+purposes of [UNKNOWN] into the lowest
+
+508
+00:26:34,970 --> 00:26:38,380
+26th percentile, the middle 50 percent,
+and the highest 75th percent.
+
+509
+00:26:38,380 --> 00:26:40,730
+It doesn't really matter how you chop
+those up,
+
+510
+00:26:40,730 --> 00:26:42,440
+as long as you have big enough categories.
+
+511
+00:26:43,650 --> 00:26:45,849
+So here are the people who made lots of
+films.
+
+512
+00:26:48,090 --> 00:26:49,420
+The top 75th percentile.
+
+513
+00:26:49,420 --> 00:26:53,940
+These are the less films, the lowest 25th
+percentile.
+
+514
+00:26:53,940 --> 00:26:57,010
+Well wow, you have a huge survival
+advantage if you made a lot of films,
+
+515
+00:26:57,010 --> 00:26:58,310
+especially early on!
+
+516
+00:26:58,310 --> 00:27:00,750
+You were much more likely to live longer
+right, so
+
+517
+00:27:00,750 --> 00:27:02,190
+those curves are really separated.
+
+518
+00:27:03,440 --> 00:27:04,270
+But what's going on there?
+
+519
+00:27:04,270 --> 00:27:06,160
+You have to think carefully about this
+one.
+
+520
+00:27:06,160 --> 00:27:10,330
+So is it the fact that, if you make a lot
+of films that somehow,
+
+521
+00:27:10,330 --> 00:27:14,360
+increases your longevity in that the films
+cause you to live longer?
+
+522
+00:27:14,360 --> 00:27:17,310
+Of course, that's not the case, if you
+think about this one carefully.
+
+523
+00:27:17,310 --> 00:27:18,010
+Right?
+
+524
+00:27:18,010 --> 00:27:24,060
+So what's happening here, is that in order
+to be able to make 290 films or make
+
+525
+00:27:24,060 --> 00:27:28,490
+a lot of films over a career, you have to
+live long enough to make that many films.
+
+526
+00:27:28,490 --> 00:27:31,300
+So we have an instance here of reverse
+causality.
+
+527
+00:27:31,300 --> 00:27:33,400
+The longer you live, the more films you
+can make.
+
+528
+00:27:33,400 --> 00:27:36,880
+So it's not that the films make you live
+longer, it's the other way around.
+
+529
+00:27:36,880 --> 00:27:37,940
+Same with the four star films.
+
+530
+00:27:37,940 --> 00:27:41,180
+Both of those came out to be significant
+in the log-rank test.
+
+531
+00:27:41,180 --> 00:27:46,190
+So we have to keep that in mind that, this
+is,
+
+532
+00:27:46,190 --> 00:27:48,880
+most likely this artifact of reverse
+causality.
+
+533
+00:27:48,880 --> 00:27:51,670
+I am not going to use these variables as a
+result of,
+
+534
+00:27:51,670 --> 00:27:54,310
+as predictors in my model of mortality.
+
+535
+00:27:54,310 --> 00:27:56,850
+They're too confounded by this reverse
+causality.
+
+536
+00:27:56,850 --> 00:27:59,929
+So I didn't do anything further with these
+variables because of that.
+
+537
+00:28:02,640 --> 00:28:07,380
+And when I did the log-log plots, what you
+see is kind of interesting patterns, and
+
+538
+00:28:07,380 --> 00:28:08,950
+a pattern that can tell you something.
+
+539
+00:28:08,950 --> 00:28:10,670
+So I did the log-log plots, for
+
+540
+00:28:10,670 --> 00:28:13,950
+this is the number of films, and this is
+the number of four-star films.
+
+541
+00:28:15,050 --> 00:28:17,080
+And you get this kind of tell-tale
+pattern.
+
+542
+00:28:17,080 --> 00:28:19,170
+So what you see is that the curves.
+
+543
+00:28:19,170 --> 00:28:22,350
+Start, at the beginning are far apart and
+
+544
+00:28:22,350 --> 00:28:27,410
+then they come closer and closer together
+until they merge at the end of the plot.
+
+545
+00:28:27,410 --> 00:28:29,560
+The the end of the time.
+
+546
+00:28:29,560 --> 00:28:30,960
+Now remember, time here is age.
+
+547
+00:28:30,960 --> 00:28:33,720
+So, we're talking about ages on the x
+axis.
+
+548
+00:28:33,720 --> 00:28:35,680
+So, what's happening here is.
+
+549
+00:28:35,680 --> 00:28:38,160
+This is a pattern that reflects reverse
+causality.
+
+550
+00:28:38,160 --> 00:28:44,170
+What's happening here is that the people
+who went on to make the most films they
+
+551
+00:28:44,170 --> 00:28:48,860
+have, they have a huge survival advantage
+early on because it's like somehow ahead
+
+552
+00:28:48,860 --> 00:28:52,040
+of time, you know that they're going to go
+on and make all of these films.
+
+553
+00:28:52,040 --> 00:28:54,290
+They have to survive long enough to do so.
+
+554
+00:28:54,290 --> 00:28:55,670
+So their not going to die.
+
+555
+00:28:55,670 --> 00:28:58,880
+Somebody who made 120 films probably
+couldn't die when they
+
+556
+00:28:58,880 --> 00:29:01,010
+were 30 because they wouldn't have had
+enough time.
+
+557
+00:29:01,010 --> 00:29:05,130
+So early on it look like they have a huge
+survival advantage but later on,
+
+558
+00:29:05,130 --> 00:29:06,660
+they have very little survival advantage.
+
+559
+00:29:06,660 --> 00:29:10,530
+Because you now, once, even if you made 10
+films but you made it to 70.
+
+560
+00:29:10,530 --> 00:29:14,560
+There's, you know, you've gotten rid of
+that reverse causality at the later ages.
+
+561
+00:29:14,560 --> 00:29:17,480
+Everybody's made it that far, everybody's
+lived that long.
+
+562
+00:29:17,480 --> 00:29:20,960
+So you see this kind of narrowing and
+funneling, the plots all come together.
+
+563
+00:29:20,960 --> 00:29:23,770
+That's sort of a tell-tale sign that might
+indicate reverse causality.
+
+564
+00:29:25,930 --> 00:29:30,780
+I then looked among the other variables
+for violations of proportional hazards.
+
+565
+00:29:30,780 --> 00:29:33,010
+Now all of the variables so far that I've
+been talking about,
+
+566
+00:29:33,010 --> 00:29:37,078
+are the ones that we're going to be
+considering as potential con-founders.
+
+567
+00:29:37,078 --> 00:29:39,314
+But if there's any con-founders that
+really do,
+
+568
+00:29:39,314 --> 00:29:42,637
+highly violate proportional hazard we're
+going to want to consider that.
+
+569
+00:29:42,637 --> 00:29:47,260
+So, I look for violations of proportional
+hazard, so this is the birth year, and
+
+570
+00:29:47,260 --> 00:29:51,234
+I do see some violation of proportional
+hazards with the birth year.
+
+571
+00:29:51,234 --> 00:29:52,991
+So this is Schonfeld residual plot.
+
+572
+00:29:52,991 --> 00:29:54,873
+You can see that there does seem to be-.
+
+573
+00:29:54,873 --> 00:29:57,143
+It kind of starts up here and then it
+comes down.
+
+574
+00:29:57,143 --> 00:29:59,790
+And it does seem to have some kind of
+pattern over time.
+
+575
+00:29:59,790 --> 00:30:03,710
+The log log plots also sort of cross over
+time.
+
+576
+00:30:03,710 --> 00:30:05,880
+There is, they don't look nice and
+parallel and
+
+577
+00:30:05,880 --> 00:30:07,940
+birth year is a good predictor here.
+
+578
+00:30:07,940 --> 00:30:11,010
+So there does seem to be a violation of
+proportional hazards with birth year.
+
+579
+00:30:11,010 --> 00:30:16,020
+That might make sense, because the
+increase in your risk of your mortality,
+
+580
+00:30:16,020 --> 00:30:20,160
+going from, say, 1950 to 1951, in birth
+year.
+
+581
+00:30:20,160 --> 00:30:22,850
+Might be very different than going from
+1980 to 1981.
+
+582
+00:30:22,850 --> 00:30:27,850
+It's kind of, it would be kind of
+surprising if that survival advantage.
+
+583
+00:30:27,850 --> 00:30:31,810
+For increasing your birth year was kind of
+totally proportional and
+
+584
+00:30:31,810 --> 00:30:33,390
+totally constant over time.
+
+585
+00:30:35,130 --> 00:30:41,550
+Also for for born in the USA, the country
+of birth, variable.
+
+586
+00:30:41,550 --> 00:30:45,080
+When I tested this one I saw evidence of
+violation of proportional hazards.
+
+587
+00:30:45,080 --> 00:30:46,130
+So here's the Schoenfeld residual plot.
+
+588
+00:30:46,130 --> 00:30:48,880
+There's just a huge violation of
+proportional hazards here.
+
+589
+00:30:48,880 --> 00:30:51,450
+It's clearly going down over time.
+
+590
+00:30:51,450 --> 00:30:57,000
+The log log plot is narrowing over time so
+the two curves are coming together.
+
+591
+00:30:57,000 --> 00:31:00,290
+So there's pretty good indication of a
+violation of
+
+592
+00:31:00,290 --> 00:31:02,270
+proportional hazards with this one.
+
+593
+00:31:02,270 --> 00:31:05,440
+This might have something to do with the
+fact that if you were
+
+594
+00:31:05,440 --> 00:31:08,739
+born in a different country.
+
+595
+00:31:10,240 --> 00:31:11,080
+You know your, that,
+
+596
+00:31:11,080 --> 00:31:15,020
+that might have the most effect on your
+survival early in your life.
+
+597
+00:31:15,020 --> 00:31:17,920
+And then eventually, if you're living in
+the US, making films in the US for
+
+598
+00:31:17,920 --> 00:31:22,830
+a long time any differences due to your
+birth country might wash out over time.
+
+599
+00:31:22,830 --> 00:31:26,090
+So, there's less of a difference as you
+get older in, in your mortality risk.
+
+600
+00:31:28,370 --> 00:31:30,740
+But those are, I, I tested proportional
+hazards for
+
+601
+00:31:30,740 --> 00:31:34,059
+all of the other variables and except the
+main variables of interest.
+
+602
+00:31:35,080 --> 00:31:38,530
+And none of the other ones seem to have a
+major violation of proportional hazards.
+
+603
+00:31:38,530 --> 00:31:41,960
+But birth year and born in the USA are
+important enough,
+
+604
+00:31:41,960 --> 00:31:46,230
+that we're going to want to kind of
+consider that violation later on.
+
+605
+00:31:47,550 --> 00:31:50,880
+There was only one continuous predictor
+that I'm going to be really looking at,
+
+606
+00:31:50,880 --> 00:31:52,550
+at my data set, which is birth year.
+
+607
+00:31:52,550 --> 00:31:55,780
+That's the only one that I decided was I
+need to move forward.
+
+608
+00:31:55,780 --> 00:31:57,120
+To further analysis.
+
+609
+00:31:57,120 --> 00:32:00,260
+So since I'm going to be doing Cox
+proportional hazards regression,
+
+610
+00:32:00,260 --> 00:32:01,160
+I need to check whether or
+
+611
+00:32:01,160 --> 00:32:05,278
+not we are linear in the law of hazard
+with this variable birth year.
+
+612
+00:32:05,278 --> 00:32:07,800
+So I did a Martingale plot on the left
+here and
+
+613
+00:32:07,800 --> 00:32:09,640
+it looks like the line is nice and
+straight.
+
+614
+00:32:09,640 --> 00:32:12,930
+Now, what's interesting is you'll notice
+the scatter of dots down here,
+
+615
+00:32:12,930 --> 00:32:15,058
+you might wonder what that has to do with.
+
+616
+00:32:15,058 --> 00:32:16,850
+So this dot here represents for
+
+617
+00:32:16,850 --> 00:32:21,980
+example somebody who was born in 1899, and
+they are still alive in 2001.
+
+618
+00:32:21,980 --> 00:32:26,775
+So there are 102 and still kicking and
+they got huge
+
+619
+00:32:26,775 --> 00:32:30,290
+Martingale residual because you'd expect
+them to be dead by now given their age.
+
+620
+00:32:30,290 --> 00:32:33,480
+All of these other people also represent
+people who were born,
+
+621
+00:32:33,480 --> 00:32:36,260
+this is their birth here on the x-axis, so
+these are the people.
+
+622
+00:32:36,260 --> 00:32:40,650
+Here who were born in very early years in
+this study,
+
+623
+00:32:40,650 --> 00:32:45,470
+you know, close to the 1900s and have
+managed to live a long life.
+
+624
+00:32:46,930 --> 00:32:51,410
+They're, they've, given their law, their
+high age, they're expected to have.
+
+625
+00:32:51,410 --> 00:32:55,270
+And their early birth years, they're
+expected to have died by now but they're,
+
+626
+00:32:55,270 --> 00:32:58,170
+unexpectedly, they've had an unexpectedly
+long life.
+
+627
+00:32:58,170 --> 00:33:01,460
+You get this pattern here because you had
+to have been born,
+
+628
+00:33:01,460 --> 00:33:05,070
+this dataset ends in 2001, so you couldn't
+have lived a whole century unless you
+
+629
+00:33:05,070 --> 00:33:08,170
+were born in say 1901 or earlier.
+
+630
+00:33:08,170 --> 00:33:10,430
+And so there aren't, there, some people
+born in later years.
+
+631
+00:33:10,430 --> 00:33:13,680
+Haven't had the opportunity to live that,
+so you get this kind of funny pattern.
+
+632
+00:33:13,680 --> 00:33:17,060
+But the, the general line fit to these
+data points looks nice and
+
+633
+00:33:17,060 --> 00:33:21,860
+flat I also did a dummy plot where I
+divided into this is
+
+634
+00:33:22,980 --> 00:33:25,830
+birth year again, I divided into decades
+of birth.
+
+635
+00:33:25,830 --> 00:33:29,440
+Ad I fit a cor a Cox regression model.
+
+636
+00:33:29,440 --> 00:33:31,000
+With mortality as my outcome, and
+
+637
+00:33:31,000 --> 00:33:36,150
+I took the betas from the dummy-coded
+decade, birth decades.
+
+638
+00:33:36,150 --> 00:33:40,160
+And then it looks like indeed it's a
+reasonably straight line over time.
+
+639
+00:33:40,160 --> 00:33:43,000
+It's not perfectly straight, but it's
+pretty good as real data go.
+
+640
+00:33:43,000 --> 00:33:45,785
+As you go up in birth years your mortality
+goes down and down.
+
+641
+00:33:45,785 --> 00:33:49,237
+If, you get better longevity obviously if
+you were born later.
+
+642
+00:33:49,237 --> 00:33:54,119
+Looks nice and linear.
+
+643
+00:33:54,119 --> 00:33:58,955
+So I'm not going to worry about,
+
+644
+00:33:58,955 --> 00:34:04,931
+I can model this birth year as linear.
+
+645
+00:34:04,931 --> 00:34:05,907
+I then got to looking at some basic
+descriptive statistics about the main
+
+646
+00:34:05,907 --> 00:34:06,771
+variables we care about here which is the
+winners, nominees and
+
+647
+00:34:06,771 --> 00:34:07,329
+controls, comparing those groups.
+
+648
+00:34:07,329 --> 00:34:09,054
+This analysis in no way accounts.
+
+649
+00:34:09,054 --> 00:34:17,111
+For the fact that people are changing
+groups.
+
+650
+00:34:17,111 --> 00:34:19,899
+So, this is very close to the original
+analysis that the authors who published on
+
+651
+00:34:19,899 --> 00:34:22,108
+this paper in 2001, presented in their
+original paper.
+
+652
+00:34:22,108 --> 00:34:24,030
+And, so what you'll notice is that indeed,
+these are the people who won.
+
+653
+00:34:24,030 --> 00:34:26,042
+These are the winners.
+
+654
+00:34:26,042 --> 00:34:29,390
+These are the nominated-only group.
+
+655
+00:34:29,390 --> 00:34:31,343
+And it does indeed, look like there's a
+survival advantage.
+
+656
+00:34:31,343 --> 00:34:34,429
+The p-value is statistically significant.
+
+657
+00:34:34,429 --> 00:34:39,323
+This is exactly what the authors published
+in that original 2001 paper.
+
+658
+00:34:39,323 --> 00:34:45,738
+You have to think carefully, though, as
+we've.
+
+659
+00:34:45,738 --> 00:34:46,478
+Talked about the,
+
+660
+00:34:46,478 --> 00:34:48,861
+if you live longer that gives you more
+opportunity to win an academy award.
+
+661
+00:34:48,861 --> 00:34:50,511
+If you die when you're 30,
+
+662
+00:34:50,511 --> 00:34:54,202
+you're probably not going to have a chance
+to win an academy award.
+
+663
+00:34:54,202 --> 00:34:55,462
+So we have another instance of reversed
+causality and
+
+664
+00:34:55,462 --> 00:34:56,594
+you see that reflected in the log, log
+plot.
+
+665
+00:34:56,594 --> 00:35:02,208
+So here's the log, log plot on the
+right-hand side.
+
+666
+00:35:02,208 --> 00:35:08,578
+You can see that the curves look very
+different early on and
+
+667
+00:35:08,578 --> 00:35:13,430
+then they kind of merge together by the
+end.
+
+668
+00:35:13,430 --> 00:35:15,228
+Somehow we know where basically we're
+grouping people by whether or
+
+669
+00:35:15,228 --> 00:35:17,305
+not they win from the day they are born,
+and so we're, we essentially know that
+
+670
+00:35:17,305 --> 00:35:19,503
+they're going to survive longer because
+they had to survive long enough to win.
+
+671
+00:35:19,503 --> 00:35:24,178
+And that's reflected in the log log quad,
+this tells us we need to
+
+672
+00:35:24,178 --> 00:35:29,918
+model this as a time changing predictor as
+I've talked about in other modules.
+
+673
+00:35:29,918 --> 00:35:31,871
+Oh, we get the same basic pattern when we
+look at winners versus controls,
+
+674
+00:35:31,871 --> 00:35:32,863
+people who are never even nominated,
+
+675
+00:35:32,863 --> 00:35:34,412
+highly significant, same problem, same
+issue.
+
+676
+00:35:34,412 --> 00:35:36,733
+interestingly, the nominees, those who
+were only ever nominated.
+
+677
+00:35:36,733 --> 00:35:43,007
+Versus controls, we don't see much
+difference.
+
+678
+00:35:43,007 --> 00:35:46,541
+So you don't, maybe there's not as much
+reverse class because you can be
+
+679
+00:35:46,541 --> 00:35:48,879
+nominated as much kind of earlier in your
+life.
+
+680
+00:35:48,879 --> 00:35:51,084
+A little bit of that same pattern in the
+log log plot but
+
+681
+00:35:51,084 --> 00:35:53,965
+not a statistically significant difference
+between those groups.
+
+682
+00:35:53,965 --> 00:35:57,040
+All right, so now I kind of understand
+some basic relationships.
+
+683
+00:35:57,040 --> 00:36:01,465
+Basic assumptions that I'm going to need
+to worry about when building my
+
+684
+00:36:01,465 --> 00:36:02,435
+final model.
+
+685
+00:36:02,435 --> 00:36:07,554
+Basic things that might be confounders and
+that need to be included in that model.
+
+686
+00:36:07,554 --> 00:36:09,489
+Before I start building a final model and
+testing the main hypotheses of my study.
+
+687
+00:36:09,489 --> 00:36:12,423
+I'm going to make a descriptive table.
+
+688
+00:36:12,423 --> 00:36:17,896
+You're always going to need a table one in
+your medical papers.
+
+689
+00:36:17,896 --> 00:36:19,259
+So you might as well make that descriptive
+table put it in
+
+690
+00:36:19,259 --> 00:36:21,302
+nice professional looking form with your
+basic simple descriptive statistics.
+
+691
+00:36:21,302 --> 00:36:24,712
+That can also help you to inform your
+final model building.
+
+692
+00:36:24,712 --> 00:36:28,356
+So here's the final descriptive table that
+I came up with.
+
+693
+00:36:28,356 --> 00:36:30,977
+The one that you got for your midterm
+might look slightly different.
+
+694
+00:36:30,977 --> 00:36:33,265
+But basically we're comparing.
+
+695
+00:36:33,265 --> 00:36:37,892
+We want to compare winners, nominees, and
+controls.
+
+696
+00:36:37,892 --> 00:36:40,237
+For the purpose of this descriptive table
+we're going to have to compare groups,
+
+697
+00:36:40,237 --> 00:36:40,848
+the static groups.
+
+698
+00:36:40,848 --> 00:36:43,262
+There's not going to be anyway to account
+for people changing groups.
+
+699
+00:36:43,262 --> 00:36:46,689
+We're going to get our basic n's.
+
+700
+00:36:46,689 --> 00:36:52,643
+Make sure to always include your n's in
+your descriptive table.
+
+701
+00:36:52,643 --> 00:36:53,976
+And then I decided to present the data as
+medians and
+
+702
+00:36:53,976 --> 00:36:55,752
+interquartile ranges rather than means and
+standard deviations.
+
+703
+00:36:55,752 --> 00:36:57,664
+Primarily because I had a lot of right
+skewed variables.
+
+704
+00:36:57,664 --> 00:37:00,005
+And it seemed to me to just be more
+informative.
+
+705
+00:37:00,005 --> 00:37:05,280
+To use the median in their quartile range
+here.
+
+706
+00:37:05,280 --> 00:37:06,468
+For categorical variables, I obviously
+used ns and
+
+707
+00:37:06,468 --> 00:37:07,586
+percents, as we would usually do.
+
+708
+00:37:07,586 --> 00:37:08,538
+so, you know?
+
+709
+00:37:08,538 --> 00:37:10,357
+There's some interesting things.
+
+710
+00:37:10,357 --> 00:37:13,121
+So male gender, for example.
+
+711
+00:37:13,121 --> 00:37:19,428
+Winners and nominees is pretty close to
+50/50.
+
+712
+00:37:19,428 --> 00:37:24,748
+That's because there's a category where
+actresses get to win and
+
+713
+00:37:24,748 --> 00:37:29,587
+there's a category for men so it is
+reasonably even there.
+
+714
+00:37:29,587 --> 00:37:31,646
+However for controls there are a few bit
+more men there, 56% men vs 44% women so
+
+715
+00:37:31,646 --> 00:37:33,814
+that's a little bit of a difference
+between those two groups to keep in mind.
+
+716
+00:37:33,814 --> 00:37:37,555
+Interestingly the controls were more
+likely to be born in the US.
+
+717
+00:37:37,555 --> 00:37:40,557
+A few more foreign actors and actresses
+were in the winners and nominees.
+
+718
+00:37:40,557 --> 00:37:44,669
+Perhaps, that is because there is a
+category for Foreign Films.
+
+719
+00:37:44,669 --> 00:37:49,278
+Most of everybody is white, as we already
+noticed.
+
+720
+00:37:49,278 --> 00:37:51,192
+People, actors and actresses that were in
+dramas were actually more likely to
+
+721
+00:37:51,192 --> 00:37:52,068
+both be nominated.
+
+722
+00:37:52,068 --> 00:37:54,307
+And more likely to win.
+
+723
+00:37:54,307 --> 00:37:57,281
+So dramas, I guess, are.
+
+724
+00:37:57,281 --> 00:38:01,071
+Dram, will get you a, a best actor or
+actress nomination.
+
+725
+00:38:01,071 --> 00:38:03,570
+And win better than, you know, comedies,
+and other types of films.
+
+726
+00:38:03,570 --> 00:38:05,693
+The birth years.
+
+727
+00:38:05,693 --> 00:38:07,462
+The percentages still living.
+
+728
+00:38:07,462 --> 00:38:08,842
+Well, more of the nominees and winners are
+still living.
+
+729
+00:38:08,842 --> 00:38:12,618
+Potentially that reverse causality again.
+
+730
+00:38:12,618 --> 00:38:15,185
+Nominees and winners made more films than
+controls.
+
+731
+00:38:15,185 --> 00:38:17,608
+The more films you make, the higher chance
+you have of winning and getting nominated.
+
+732
+00:38:19,152 --> 00:38:26,486
+Winners made more four
+
+733
+00:38:26,486 --> 00:38:33,064
+star films as well.
+
+734
+00:38:33,064 --> 00:38:34,064
+For the year of first film, the year of
+first nomination and
+
+735
+00:38:34,064 --> 00:38:35,304
+the year of first win for the purposes of
+the descriptive table I thought it
+
+736
+00:38:35,304 --> 00:38:36,564
+would be easier to understand if I put
+those in people's ages at first win,
+
+737
+00:38:36,564 --> 00:38:37,413
+age at first nomination and age at first
+film.
+
+738
+00:38:37,413 --> 00:38:39,327
+As opposed to the years there, I thought
+that was more informative so
+
+739
+00:38:39,327 --> 00:38:40,083
+I changed those to years.
+
+740
+00:38:40,083 --> 00:38:42,846
+So the winners had an average.
+
+741
+00:38:42,846 --> 00:38:44,533
+Age of first film of 25, same with
+nominees.
+
+742
+00:38:44,533 --> 00:38:48,846
+It was a little bit later for the
+controls.
+
+743
+00:38:48,846 --> 00:38:51,114
+They got into the game a little bit later,
+and
+
+744
+00:38:51,114 --> 00:38:52,987
+only the winners got an age at first win.
+
+745
+00:38:52,987 --> 00:39:00,712
+So you see, you, you, you weren't winning
+until you're about 40, in your 40s.
+
+746
+00:39:00,712 --> 00:39:05,576
+Where as you were nominated earlier in
+life so
+
+747
+00:39:05,576 --> 00:39:10,440
+there's that difference and that you have
+to
+
+748
+00:39:10,440 --> 00:39:15,972
+live longer in order to get to win an
+academy award.
+
+749
+00:39:15,972 --> 00:39:16,902
+Notice though, I didn't bother to put p
+values in my descriptive value,
+
+750
+00:39:16,902 --> 00:39:17,607
+one could argue that you could put the p
+values in there,
+
+751
+00:39:17,607 --> 00:39:18,567
+I thought you could interpret this data
+table without needing the p values,
+
+752
+00:39:18,567 --> 00:39:19,504
+if you put them in, it's fine, I just
+decided I didn't need them there.
+
+753
+00:39:19,504 --> 00:39:20,526
+The next thing we are going to do is we're
+going to test the main hypotheses.
+
+754
+00:39:20,526 --> 00:39:27,733
+Do the winners.
+
+755
+00:39:27,733 --> 00:39:30,901
+Live longer than the nominees, do the
+winners live longer than the controls,
+
+756
+00:39:30,901 --> 00:39:33,830
+do the controls do the nominees only live
+longer than the controls?
+
+757
+00:39:33,830 --> 00:39:36,904
+We're going to use simple models and
+graphics to start with, and
+
+758
+00:39:36,904 --> 00:39:39,402
+just decide on how to model those main
+predictors.
+
+759
+00:39:39,402 --> 00:39:40,302
+I'm not even going to worry about building
+a final model yet,
+
+760
+00:39:40,302 --> 00:39:41,325
+just kind of start with the very simple
+comparing those groups.
+
+761
+00:39:41,325 --> 00:39:44,160
+Now I already showed you that we clearly
+violate proportional hazards with
+
+762
+00:39:44,160 --> 00:39:45,334
+these variables, therein.
+
+763
+00:39:45,334 --> 00:39:49,145
+We can, if we just think about the
+problem,
+
+764
+00:39:49,145 --> 00:39:53,754
+there's gotta be reverse causality going
+on here.
+
+765
+00:39:53,754 --> 00:39:58,110
+So it's not correct to just model those as
+static groups.
+
+766
+00:39:58,110 --> 00:39:59,164
+Somebody is not a winner from birth,
+
+767
+00:39:59,164 --> 00:40:00,900
+they're a winner from the time at which
+they win that award.
+
+768
+00:40:00,900 --> 00:40:07,632
+So we know already that we're going to
+need time changing.
+
+769
+00:40:07,632 --> 00:40:08,516
+Variables here, so
+
+770
+00:40:08,516 --> 00:40:12,118
+I'm going to need to model the winners and
+the nominees as time changing variables.
+
+771
+00:40:12,118 --> 00:40:15,126
+You're in the control group until you're
+nominated,
+
+772
+00:40:15,126 --> 00:40:18,350
+then you're in the nominee group until
+you're a winner.
+
+773
+00:40:18,350 --> 00:40:21,294
+So for the first comparison that I wanted
+to do just comparing winners versus
+
+774
+00:40:21,294 --> 00:40:22,846
+nominees, and not the controls.
+
+775
+00:40:22,846 --> 00:40:26,267
+What we're going to do is we're actually
+exclude anybody who's in control.
+
+776
+00:40:26,267 --> 00:40:29,253
+So, we're going to exclude individuals
+until their age of first nomination.
+
+777
+00:40:29,253 --> 00:40:31,737
+We only want to compare nominees to
+winners.
+
+778
+00:40:31,737 --> 00:40:33,230
+So, if you haven't yet been nominated,
+you're out of this analysis.
+
+779
+00:40:33,230 --> 00:40:36,423
+So, you're not included in the likelihood.
+
+780
+00:40:36,423 --> 00:40:40,719
+So, I'm going to exclude people until
+their age of first nomination.
+
+781
+00:40:40,719 --> 00:40:43,298
+And then, I'm going to treat people as
+nominees until they win.
+
+782
+00:40:43,298 --> 00:40:45,772
+So, some people will be nominated and
+never go on to win.
+
+783
+00:40:45,772 --> 00:40:50,890
+Some people will be nominated and go on to
+win.
+
+784
+00:40:50,890 --> 00:40:51,618
+You're a nominee until you win,
+
+785
+00:40:51,618 --> 00:40:52,818
+if you never win you just stay a nominee
+the whole time.
+
+786
+00:40:52,818 --> 00:40:55,399
+If you then win, you're treated as a
+winner.
+
+787
+00:40:55,399 --> 00:40:57,136
+So, we're getting, we're going to put this
+time changing predictors in.
+
+788
+00:40:57,136 --> 00:41:02,076
+I've shown you the code here in sass.
+
+789
+00:41:02,076 --> 00:41:04,386
+So basically I'm saying if.
+
+790
+00:41:04,386 --> 00:41:08,577
+I made a new variable on your age at first
+nomination.
+
+791
+00:41:08,577 --> 00:41:09,333
+Your age at first win.
+
+792
+00:41:09,333 --> 00:41:12,103
+So age FN is your age at first nomination.
+
+793
+00:41:12,103 --> 00:41:14,047
+Age at first win is your age as age FW.
+
+794
+00:41:14,047 --> 00:41:16,298
+So if the.
+
+795
+00:41:16,298 --> 00:41:17,467
+My, I call the time variable.
+
+796
+00:41:17,467 --> 00:41:25,646
+That's your age here that, I called it
+time.
+
+797
+00:41:25,646 --> 00:41:26,229
+So if the time is before you're first
+nominated, then for
+
+798
+00:41:26,229 --> 00:41:26,917
+the, this new, this variable I'm naming is
+winner, you get a dot.
+
+799
+00:41:26,917 --> 00:41:32,562
+That means missing data.
+
+800
+00:41:32,562 --> 00:41:35,208
+You're not included, cause you're in the
+control group, and
+
+801
+00:41:35,208 --> 00:41:38,622
+we only want to compare winners and
+nominees, so we're excluded up until then.
+
+802
+00:41:38,622 --> 00:41:39,966
+Otherwise, if time is greater than or
+equal to the age of first nomination,
+
+803
+00:41:39,966 --> 00:41:41,287
+you've now been nominated, but you don't
+have an age at first win.
+
+804
+00:41:41,287 --> 00:41:43,820
+That means you were never won.
+
+805
+00:41:43,820 --> 00:41:46,391
+Then of course, you, your, iswinner is 0.
+
+806
+00:41:46,391 --> 00:41:47,551
+So if you were only ever nominated, you
+never won.
+
+807
+00:41:47,551 --> 00:41:50,256
+You wouldn't have an age of first win.
+
+808
+00:41:50,256 --> 00:41:53,423
+Then you are not a winner.
+
+809
+00:41:54,463 --> 00:42:00,726
+otherwise, if your age at.
+
+810
+00:42:00,726 --> 00:42:01,855
+If your, the current event time is after
+you were nominated, but before you won.
+
+811
+00:42:01,855 --> 00:42:04,133
+Before your age of win.
+
+812
+00:42:04,133 --> 00:42:13,661
+Then you're still not in the winning
+group.
+
+813
+00:42:13,661 --> 00:42:14,919
+However, if you have been nominated and
+
+814
+00:42:14,919 --> 00:42:17,324
+you also have won the time the current
+event time is past your age of first win,
+
+815
+00:42:17,324 --> 00:42:19,120
+now, now you're in the winners crap,
+group.
+
+816
+00:42:19,120 --> 00:42:22,194
+And I also added in here, I'm only looking
+at people who were ever nominated.
+
+817
+00:42:22,194 --> 00:42:24,487
+So I excluded anybody who was only ever in
+the control group.
+
+818
+00:42:24,487 --> 00:42:25,518
+Obviously if you were only ever in the
+control group.
+
+819
+00:42:25,518 --> 00:42:26,586
+You never were nominated.
+
+820
+00:42:26,586 --> 00:42:30,471
+You never won.
+
+821
+00:42:30,471 --> 00:42:36,394
+So I just said where you were a nominee.
+
+822
+00:42:36,394 --> 00:42:37,455
+This is only includes people who were ever
+nominated.
+
+823
+00:42:37,455 --> 00:42:39,043
+When I ran this out my hazard ratio that I
+get is 0.803.
+
+824
+00:42:39,043 --> 00:42:40,847
+It doesn't quite make statistical
+significance,
+
+825
+00:42:40,847 --> 00:42:42,664
+although there is a little protective
+factor here.
+
+826
+00:42:42,664 --> 00:42:46,254
+Where winners seem to do a little bit
+better.
+
+827
+00:42:46,254 --> 00:42:51,245
+I use then the same logic to compare
+winners versus controls.
+
+828
+00:42:51,245 --> 00:42:52,922
+The difference here is that nominees are
+treated as
+
+829
+00:42:52,922 --> 00:42:54,971
+controls until they are nominated, then
+they are excluded.
+
+830
+00:42:54,971 --> 00:42:58,886
+So I, I, I will actually want to exclude
+the nominated group only.
+
+831
+00:42:58,886 --> 00:43:03,220
+So you're, a control, up until the time
+you're nominated.
+
+832
+00:43:03,220 --> 00:43:07,987
+If you're nominated but haven't yet won,
+you're excluded from the analysis.
+
+833
+00:43:07,987 --> 00:43:09,142
+However, if you then go on to be a winner,
+
+834
+00:43:09,142 --> 00:43:10,431
+then you're brought back into the
+analysis.
+
+835
+00:43:10,431 --> 00:43:12,254
+Winners also are treated as controls until
+they are nominated, they're.
+
+836
+00:43:12,254 --> 00:43:13,904
+Excluded until they win and then they are
+treated as winners after they win.
+
+837
+00:43:13,904 --> 00:43:22,844
+So I'm totally moving out the nomination
+only category.
+
+838
+00:43:22,844 --> 00:43:26,159
+And that code is accomplished with the
+same kind of logic here.
+
+839
+00:43:26,159 --> 00:43:30,408
+So now I am comparing winners only, only
+winners to controls.
+
+840
+00:43:30,408 --> 00:43:31,962
+I get a hazard ratio of 0.84, p-value is
+about 0.12.
+
+841
+00:43:31,962 --> 00:43:33,219
+Notice, I haven't adjusted for anything.
+
+842
+00:43:33,219 --> 00:43:34,738
+These are just my basic models.
+
+843
+00:43:34,738 --> 00:43:36,906
+Then I compare the nominees to the
+control.
+
+844
+00:43:36,906 --> 00:43:39,419
+So this is, excluding anybody who is a
+winner.
+
+845
+00:43:39,419 --> 00:43:41,903
+So nominees are treated as controls until
+they're nominated,
+
+846
+00:43:41,903 --> 00:43:44,299
+then they switch groups and they're
+treated as a nominees.
+
+847
+00:43:44,299 --> 00:43:48,134
+The winners can be in the control group up
+until the time they're nominated,
+
+848
+00:43:48,134 --> 00:43:52,146
+then they're treated as nominees, but the
+moment they win they're excluded,
+
+849
+00:43:52,146 --> 00:43:54,864
+because I want to take the winners out of
+this analysis.
+
+850
+00:43:54,864 --> 00:43:56,378
+So, this could, accomplishes that.
+
+851
+00:43:56,378 --> 00:44:01,548
+For this one, interestingly.
+
+852
+00:44:01,548 --> 00:44:06,960
+The nominees versus the controls did a
+little bit
+
+853
+00:44:06,960 --> 00:44:12,523
+worse in mortality just slightly above
+one.
+
+854
+00:44:12,523 --> 00:44:13,139
+Alright, so now I kind of have established
+the basic
+
+855
+00:44:13,139 --> 00:44:13,755
+relationships, this is an explanatory
+analysis so
+
+856
+00:44:13,755 --> 00:44:14,652
+everything is around my mean hypothesis
+that I'm trying to test.
+
+857
+00:44:14,652 --> 00:44:17,151
+I now need to build a final model
+considering potential confounders.
+
+858
+00:44:17,151 --> 00:44:21,051
+So I want to identify confounders,
+possibly interacting variables.
+
+859
+00:44:21,051 --> 00:44:24,777
+And some of the variables even if their
+not clearly confounders, I'm still going
+
+860
+00:44:24,777 --> 00:44:28,179
+to include them in the final model just
+for face validity like birth year and
+
+861
+00:44:28,179 --> 00:44:31,219
+gender probably no matter what those are
+going in final model.
+
+862
+00:44:31,219 --> 00:44:32,983
+I'm going to put these together in a final
+model,
+
+863
+00:44:32,983 --> 00:44:34,500
+I'm going to compare different models and.
+
+864
+00:44:34,500 --> 00:44:39,868
+See what effect that has on the point
+estimate, the hazard ratio for
+
+865
+00:44:39,868 --> 00:44:41,908
+winning verses nominees.
+
+866
+00:44:41,908 --> 00:44:45,998
+So I will just kind of walk you through
+what I did for winners verses nominees.
+
+867
+00:44:45,998 --> 00:44:51,070
+I the process was the same for the other
+two comparisons.
+
+868
+00:44:51,070 --> 00:44:54,230
+But, basically we started when there were
+no covariates in the model, but
+
+869
+00:44:54,230 --> 00:44:57,500
+I modeled winners versus nominees as this
+time-changing variable.
+
+870
+00:44:57,500 --> 00:44:59,700
+I got a hazard ratio of 0.80.
+
+871
+00:44:59,700 --> 00:45:02,300
+When I then added gender and
+
+872
+00:45:02,300 --> 00:45:05,490
+birth year to the model, because those are
+such strong predictors.
+
+873
+00:45:05,490 --> 00:45:07,130
+I know that those are going to be in the
+model.
+
+874
+00:45:07,130 --> 00:45:10,180
+They're also potentially confounders as
+well.
+
+875
+00:45:10,180 --> 00:45:15,130
+When I, added them to the model it didn't
+really budge my hazard ratio much.
+
+876
+00:45:15,130 --> 00:45:17,710
+It went up, it attenuated the effect just
+a little bit.
+
+877
+00:45:17,710 --> 00:45:19,980
+So, now we're at a hazard ratio of 0.82.
+
+878
+00:45:19,980 --> 00:45:23,580
+Not a huge effect, I'm still going to keep
+those in the model just for face validity.
+
+879
+00:45:23,580 --> 00:45:25,470
+And they do change the point estimate
+slightly.
+
+880
+00:45:27,370 --> 00:45:30,528
+now, I then considered all of the other
+predictors.
+
+881
+00:45:30,528 --> 00:45:34,778
+Again, I'm not going to put the number of
+films in or the number of four star films.
+
+882
+00:45:34,778 --> 00:45:38,730
+Because those are confounded by reverse
+causality, I didn't bother with those.
+
+883
+00:45:38,730 --> 00:45:40,340
+I didn't put the year of first film,
+
+884
+00:45:40,340 --> 00:45:43,120
+because that's so closely tied to birth
+year.
+
+885
+00:45:43,120 --> 00:45:46,960
+I tried all the other variables and so, so
+things like whether or
+
+886
+00:45:46,960 --> 00:45:50,470
+not you were born in the U.S.A., whether
+or not you're of white race.
+
+887
+00:45:50,470 --> 00:45:53,510
+White race didn't seem to be predictive,
+it didn't budge the hazard ratio at all.
+
+888
+00:45:53,510 --> 00:45:56,080
+So I didn't end up in, including that in
+the end.
+
+889
+00:45:58,200 --> 00:46:03,040
+I remember the fact that birth year and
+born in the USA both showed violations of
+
+890
+00:46:03,040 --> 00:46:05,500
+proportional hazards in my earlier
+analysis.
+
+891
+00:46:05,500 --> 00:46:07,280
+So I tried a couple of things to see
+whether or
+
+892
+00:46:07,280 --> 00:46:10,910
+not accounting for that violation of
+proportional hazards would have much of
+
+893
+00:46:10,910 --> 00:46:14,690
+an effect on the hazard ratio for winners
+versus nominees.
+
+894
+00:46:14,690 --> 00:46:20,660
+So for example, I included born in the USA
+birth year times time.
+
+895
+00:46:20,660 --> 00:46:22,650
+The interaction of birth year with time
+and
+
+896
+00:46:22,650 --> 00:46:25,680
+the interaction of born in the USA times
+time.
+
+897
+00:46:25,680 --> 00:46:29,230
+Those would account for the violation of
+proportional hazard.
+
+898
+00:46:29,230 --> 00:46:31,570
+However, putting that in the model didn't
+do a heck of a lot.
+
+899
+00:46:31,570 --> 00:46:34,150
+Now my hazard ratio is up to 0.83.
+
+900
+00:46:34,150 --> 00:46:35,590
+But it's still around the same.
+
+901
+00:46:37,270 --> 00:46:39,370
+Another way to account for the violation
+of proportional hazards,
+
+902
+00:46:39,370 --> 00:46:44,250
+rather than putting a time by covariate
+interaction in the model.
+
+903
+00:46:44,250 --> 00:46:46,910
+Would be to stratify on those variables.
+
+904
+00:46:46,910 --> 00:46:50,590
+Born in the USA is a pretty small
+variable, so
+
+905
+00:46:50,590 --> 00:46:55,270
+I did try stratifying on that, it didn't
+change the, anything too much.
+
+906
+00:46:55,270 --> 00:46:58,150
+When I stratified on birth decade I did
+decades of birth,
+
+907
+00:46:58,150 --> 00:47:00,999
+you don't want to stratify necessarily on
+each year.
+
+908
+00:47:00,999 --> 00:47:03,180
+Because there won't be too many people on
+each year.
+
+909
+00:47:03,180 --> 00:47:05,840
+So I stratified on birth decade.
+
+910
+00:47:05,840 --> 00:47:07,720
+Rather than putting it in the model.
+
+911
+00:47:07,720 --> 00:47:11,740
+And then I included your gender, whether
+or not you were born in the USA.
+
+912
+00:47:11,740 --> 00:47:15,170
+And this born in the USA times time, I did
+a couple of different versions of this.
+
+913
+00:47:15,170 --> 00:47:17,760
+And it really didn't matter whether I
+stratified that born in the USA.
+
+914
+00:47:17,760 --> 00:47:19,550
+Whether I stratified on birth.
+
+915
+00:47:19,550 --> 00:47:20,710
+Whether I included them in the model.
+
+916
+00:47:20,710 --> 00:47:22,480
+Whether, whether I put the time
+interaction.
+
+917
+00:47:22,480 --> 00:47:24,960
+Really none of this changed the point
+estimate much.
+
+918
+00:47:24,960 --> 00:47:28,170
+Stratifying on birth decade, I got a
+hazard ratio of 0.81.
+
+919
+00:47:28,170 --> 00:47:31,850
+So basically we're bouncing around
+basically the same point estimate.
+
+920
+00:47:31,850 --> 00:47:34,770
+That's nice because it really doesn't
+matter too much what you include in
+
+921
+00:47:34,770 --> 00:47:36,364
+that final model.
+
+922
+00:47:36,364 --> 00:47:39,430
+the, the hazard ratio really doesn't
+budge.
+
+923
+00:47:40,730 --> 00:47:44,315
+So then I ended up putting this together
+in a final table where I
+
+924
+00:47:44,315 --> 00:47:45,700
+show this process a little bit.
+
+925
+00:47:45,700 --> 00:47:49,369
+I show an unadjusted, a minimally adjusted
+and a fully adjusted hazard ratio.
+
+926
+00:47:50,370 --> 00:47:53,250
+And I did this for the other two
+comparisons, as well.
+
+927
+00:47:53,250 --> 00:47:57,390
+So here's what I came up with for my final
+table of hazard ratios.
+
+928
+00:47:57,390 --> 00:48:01,250
+In the unadjusted model for winners versus
+nominees, it was 0.8.
+
+929
+00:48:01,250 --> 00:48:03,430
+For winners versus controls, it was 0.84.
+
+930
+00:48:03,430 --> 00:48:07,390
+For nominees versus controls, it was 1.07,
+as we already saw.
+
+931
+00:48:07,390 --> 00:48:11,264
+When I adjusted just for gender and birth
+year I get 0.82, 0.87 and 1.09.
+
+932
+00:48:11,264 --> 00:48:12,990
+Again, not changing much.
+
+933
+00:48:12,990 --> 00:48:15,220
+None of these are statistically
+significant.
+
+934
+00:48:15,220 --> 00:48:17,700
+When I did a fully adjusted model where I
+counted, I counted for
+
+935
+00:48:17,700 --> 00:48:21,010
+these violations of proportional hazards
+for birth year.
+
+936
+00:48:21,010 --> 00:48:23,190
+And included born in the USA and
+
+937
+00:48:23,190 --> 00:48:26,610
+the violation of proportional hazards
+there it attenuated things.
+
+938
+00:48:26,610 --> 00:48:27,820
+Well they're pretty similar they're,
+
+939
+00:48:27,820 --> 00:48:30,440
+they're about the same, just a little bit
+different.
+
+940
+00:48:30,440 --> 00:48:34,820
+So all of this is saying that basically
+there does seem to be a slight
+
+941
+00:48:34,820 --> 00:48:39,524
+advantage for winners versus nominee being
+those who are only nominated.
+
+942
+00:48:39,524 --> 00:48:44,270
+But it's not statistically significant and
+if it's there it's very small.
+
+943
+00:48:44,270 --> 00:48:47,250
+For winners versus controls it was even a
+smaller advantage.
+
+944
+00:48:47,250 --> 00:48:48,530
+And interestingly for
+
+945
+00:48:48,530 --> 00:48:50,890
+nominees versus controls, it looked like
+there was no advantage.
+
+946
+00:48:50,890 --> 00:48:53,610
+And again, none of these are statistically
+significant.
+
+947
+00:48:53,610 --> 00:48:59,480
+So that was my sort of final model that I
+presented as I mentioned there,
+
+948
+00:48:59,480 --> 00:49:02,010
+you probably will want, would want to for.
+
+949
+00:49:02,010 --> 00:49:04,470
+Most analysis do some sensitivity
+analysis,
+
+950
+00:49:04,470 --> 00:49:06,730
+we might want to do some checks on this
+model.
+
+951
+00:49:06,730 --> 00:49:08,230
+We can't check proportional hazards,
+
+952
+00:49:08,230 --> 00:49:10,146
+once we have a time changing variable in
+the model.
+
+953
+00:49:10,146 --> 00:49:13,830
+So we've kind of already done that
+proportion hazards checks ahead of time.
+
+954
+00:49:15,880 --> 00:49:19,650
+the, there's no graphics that we can come
+up with that really model this well.
+
+955
+00:49:19,650 --> 00:49:22,890
+Because of the changing in groups of the
+Kaplan–Meier curves don't really reflect
+
+956
+00:49:22,890 --> 00:49:24,100
+the changing groups.
+
+957
+00:49:24,100 --> 00:49:26,020
+So I didn't ask you to come up with any
+final graphics, so
+
+958
+00:49:26,020 --> 00:49:28,650
+I, I, I had you kind of stop the midterm
+at the final table.
+
+959
+00:49:28,650 --> 00:49:32,560
+And for the final example we'll, add some
+of those steps such as
+
+960
+00:49:32,560 --> 00:49:35,840
+creating graphics that, that'll be part of
+the final exam.
+
+961
+00:49:35,840 --> 00:49:38,610
+But that's a basic data analysis, sort of,
+you can see a lot of
+
+962
+00:49:38,610 --> 00:49:42,380
+time gets spent on just basic data
+cleaning and understanding the data.

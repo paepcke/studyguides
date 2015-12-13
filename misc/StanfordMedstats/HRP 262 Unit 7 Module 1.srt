@@ -1,0 +1,386 @@
+1
+00:00:00,000 --> 00:00:06,160
+[BLANK_AUDIO].
+
+2
+00:00:06,160 --> 00:00:07,530
+In this next module,
+
+3
+00:00:07,530 --> 00:00:11,340
+I'm going to give you a brief overview of
+the various statistical tests and
+
+4
+00:00:11,340 --> 00:00:16,200
+strategies that are available for
+analyzing repeated measures outcomes.
+
+5
+00:00:16,200 --> 00:00:19,719
+So there's a number of ways that you can
+handle repeated measures outcomes.
+
+6
+00:00:21,040 --> 00:00:24,640
+The simplest thing you can do, is
+essentially to not handle the repeated
+
+7
+00:00:24,640 --> 00:00:28,870
+outcome by simplifying it, collapsing it,
+or ignoring it.
+
+8
+00:00:28,870 --> 00:00:32,590
+And you'll see that this actually fairly
+widely done in the literature.
+
+9
+00:00:32,590 --> 00:00:36,190
+Probably because these tests have been
+around longer, and they're simpler, so
+
+10
+00:00:36,190 --> 00:00:38,610
+people tend to feel more comfortable with
+it.
+
+11
+00:00:38,610 --> 00:00:41,410
+So, for example, one strategy is you could
+collapse that
+
+12
+00:00:41,410 --> 00:00:43,940
+repeated outcome measurement into a single
+value.
+
+13
+00:00:43,940 --> 00:00:48,330
+So that each subject only has one value,
+say by calculating a slope, or
+
+14
+00:00:48,330 --> 00:00:51,490
+a percent change or an average for every
+person.
+
+15
+00:00:51,490 --> 00:00:53,730
+You can also just focus on one
+measurement.
+
+16
+00:00:53,730 --> 00:00:56,530
+Usually we focus on the final measurement
+because, you know,
+
+17
+00:00:56,530 --> 00:00:59,080
+often we care about what happens at the
+end of the day.
+
+18
+00:00:59,080 --> 00:01:02,360
+So only compare the final measurement
+between subjects.
+
+19
+00:01:02,360 --> 00:01:04,730
+Running say an ANCOVA, adjusting for
+
+20
+00:01:04,730 --> 00:01:07,110
+baseline differences, that's called an
+end-point analysis.
+
+21
+00:01:07,110 --> 00:01:10,220
+So there's a number of ways you could
+simplify the picture.
+
+22
+00:01:10,220 --> 00:01:15,000
+These methods of course, lose some
+information because you
+
+23
+00:01:15,000 --> 00:01:19,170
+were kind of again simplifying or ignoring
+the repeated outcome.
+
+24
+00:01:19,170 --> 00:01:22,830
+A second strategy which is also been
+around for a long time, and
+
+25
+00:01:22,830 --> 00:01:26,190
+you'll see in the literature, is to use
+some kind of repeated measures ANOVA.
+
+26
+00:01:26,190 --> 00:01:29,510
+And I'll review how to do a repeated
+measures ANOVA this week.
+
+27
+00:01:29,510 --> 00:01:31,890
+Repeated measures ANOVA is somewhat
+limited.
+
+28
+00:01:31,890 --> 00:01:36,580
+It's an ANOVA, so you have to have a
+categorical predictor in there.
+
+29
+00:01:36,580 --> 00:01:39,290
+There's also some fairly restrictive
+assumptions.
+
+30
+00:01:39,290 --> 00:01:42,370
+And you have to fill in missing data, and
+things like that, but again,
+
+31
+00:01:42,370 --> 00:01:46,070
+sometimes a simple method is easy to get
+your head around, so, and
+
+32
+00:01:46,070 --> 00:01:49,580
+you'll see these a lot in the literature,
+so I'll show you that, those this week.
+
+33
+00:01:49,580 --> 00:01:53,220
+The more sophisticated methods, we're
+going to go over in the next two weeks,
+
+34
+00:01:53,220 --> 00:01:57,060
+and those are the generalized estimating
+equations in the mixed models.
+
+35
+00:01:57,060 --> 00:02:01,470
+These are more sophisticated ways of
+handling repeated measures outcome.
+
+36
+00:02:01,470 --> 00:02:03,390
+They're going to have, they're, they're a
+lot more powerful.
+
+37
+00:02:03,390 --> 00:02:04,880
+There's a lot more you can do with them.
+
+38
+00:02:04,880 --> 00:02:08,150
+They're going to have a lot of advantages
+over the other strategies.
+
+39
+00:02:08,150 --> 00:02:12,930
+The advantages of what I'd call the
+old-fashioned method,
+
+40
+00:02:12,930 --> 00:02:15,960
+sort of the simplifying or, or ignoring
+repeated measures or
+
+41
+00:02:15,960 --> 00:02:19,236
+even, I would lump in there, the repeated
+measures ANOVA or
+
+42
+00:02:19,236 --> 00:02:23,320
+the old methods, their, their advantage
+really is that they're simple.
+
+43
+00:02:23,320 --> 00:02:27,310
+It's easy to kind of see what's happening,
+get your head around those.
+
+44
+00:02:27,310 --> 00:02:28,460
+They're easier to understand and
+
+45
+00:02:28,460 --> 00:02:31,330
+implement, people tend to be more familiar
+with these methods, and
+
+46
+00:02:31,330 --> 00:02:34,210
+so, again, that's why you might see them
+widely in the literature.
+
+47
+00:02:34,210 --> 00:02:35,970
+Simplicity can be a good thing.
+
+48
+00:02:35,970 --> 00:02:39,420
+So if you're doing a more fancy model like
+a mixed model, and
+
+49
+00:02:39,420 --> 00:02:42,610
+you're not quite sure that you've modeled
+everything correctly,
+
+50
+00:02:42,610 --> 00:02:47,530
+it's perfectly fine to run a simple model
+as well to kind of just serve as a check.
+
+51
+00:02:47,530 --> 00:02:50,070
+You shouldn't get wildly different answers
+in the simple model.
+
+52
+00:02:52,040 --> 00:02:56,080
+GEE and mixed models, however, have many,
+many advantages that we're going to see,
+
+53
+00:02:56,080 --> 00:02:58,670
+as, as we start talking about them, in the
+next two weeks.
+
+54
+00:02:58,670 --> 00:03:01,430
+So, one of the advantages is that if
+you're doing most of
+
+55
+00:03:01,430 --> 00:03:04,780
+the simple strategies, including repeated
+measures in ANOVA,
+
+56
+00:03:04,780 --> 00:03:07,410
+you need to have complete data on each
+subject.
+
+57
+00:03:07,410 --> 00:03:10,930
+For example in the repeated measures in
+ANOVA, if a subject is missing data from
+
+58
+00:03:10,930 --> 00:03:14,870
+just one time frame, they're going to be
+completely omitted from the analysis,
+
+59
+00:03:14,870 --> 00:03:17,860
+unless, you do something to impute their
+missing data.
+
+60
+00:03:17,860 --> 00:03:21,180
+So you need to fill in the missing data,
+or at least grapple with it.
+
+61
+00:03:21,180 --> 00:03:24,820
+GEE and mixed models have a way of
+handling missing data
+
+62
+00:03:24,820 --> 00:03:28,600
+that doesn't require you to necessarily
+impute.
+
+63
+00:03:28,600 --> 00:03:29,790
+The other thing about GEE and
+
+64
+00:03:29,790 --> 00:03:33,390
+mixed models, another thing, is that they
+treat time as continuous.
+
+65
+00:03:33,390 --> 00:03:35,900
+So you'll see this week when we talk about
+repeated measures ANOVA,
+
+66
+00:03:35,900 --> 00:03:37,850
+we're essentially treating time as
+categorical.
+
+67
+00:03:37,850 --> 00:03:41,450
+Everybody has to be measured at the same
+time points, and we are not allowing for
+
+68
+00:03:41,450 --> 00:03:44,470
+uneven spacing in when people were
+measured.
+
+69
+00:03:44,470 --> 00:03:47,190
+So that's a limitation of, of the simple
+methods.
+
+70
+00:03:47,190 --> 00:03:51,180
+GEE and its models are great because you
+just treat time as a continuous variable.
+
+71
+00:03:51,180 --> 00:03:53,910
+GEE and mixed models can handle
+time-changing predictors,
+
+72
+00:03:53,910 --> 00:03:56,370
+which none of the simpler methods can.
+
+73
+00:03:56,370 --> 00:03:58,770
+They also tend to have less restrictive
+assumptions,
+
+74
+00:03:58,770 --> 00:04:01,830
+because they're more sophisticated you can
+build in some complexities.
+
+75
+00:04:01,830 --> 00:04:05,600
+So for example, repeated-measures ANOVA,
+as we'll see this week, requires
+
+76
+00:04:05,600 --> 00:04:09,350
+a particular correlation structure, an
+exchangeable correlation structure.
+
+77
+00:04:09,350 --> 00:04:11,990
+GEE and mixed models don't necessarily
+require that.
+
+78
+00:04:11,990 --> 00:04:15,250
+So, there's, there's huge number of
+advantages that you'll see as I
+
+79
+00:04:15,250 --> 00:04:18,170
+introduce these more sophisticated models
+in the next few weeks.

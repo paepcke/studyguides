@@ -1,0 +1,307 @@
+1
+00:00:05,180 --> 00:00:08,690
+So before I show you how to analyze time
+changing predictors with
+
+2
+00:00:08,690 --> 00:00:12,200
+generalized estimating equations, I'm
+first going to show you how to graph them.
+
+3
+00:00:14,320 --> 00:00:18,680
+So I made up a little data set just for us
+to have some data to work with.
+
+4
+00:00:18,680 --> 00:00:20,880
+For time changing predictors.
+
+5
+00:00:20,880 --> 00:00:25,600
+So in this data set I've got just six
+patients and they're all depressed and
+
+6
+00:00:25,600 --> 00:00:27,590
+they're all given the same drug.
+
+7
+00:00:27,590 --> 00:00:32,693
+Our time changing predictor here is levels
+of some kind of happy chemical in
+
+8
+00:00:32,693 --> 00:00:38,420
+the brain and our outcome here is scores
+on a depression questionnaire.
+
+9
+00:00:38,420 --> 00:00:42,330
+So for example, subject number one they
+had a score of 20 at their,
+
+10
+00:00:42,330 --> 00:00:45,570
+on depression score at base line that went
+down to 18 and
+
+11
+00:00:45,570 --> 00:00:48,420
+then down to 15 and then popped back up to
+20.
+
+12
+00:00:48,420 --> 00:00:52,550
+Meanwhile their ca, their levels of happy
+chemical in their brain starting at
+
+13
+00:00:52,550 --> 00:00:55,067
+a thousand and increased throughout the
+study.
+
+14
+00:00:55,067 --> 00:00:58,371
+And everybody was given a drug that's
+supposed to increase that,
+
+15
+00:00:58,371 --> 00:01:00,520
+their happy chemical levels in the brain.
+
+16
+00:01:01,840 --> 00:01:05,830
+So that's the data in the broad form and
+of course we'll also be putting the data
+
+17
+00:01:05,830 --> 00:01:08,510
+into the long form and you can see that
+here.
+
+18
+00:01:08,510 --> 00:01:11,070
+In fact the time periods were not even.
+
+19
+00:01:11,070 --> 00:01:14,680
+So subjects were measured at base line and
+then two months into the study.
+
+20
+00:01:14,680 --> 00:01:15,580
+And then at three months.
+
+21
+00:01:15,580 --> 00:01:16,580
+And then at six months.
+
+22
+00:01:16,580 --> 00:01:20,400
+So time is actually not one, two, three,
+four, here it's zero two three six.
+
+23
+00:01:23,360 --> 00:01:25,240
+So how are we actually going to graph
+these data.
+
+24
+00:01:25,240 --> 00:01:30,840
+So if you've got a continuous time change
+predictor and a continuous time changing
+
+25
+00:01:30,840 --> 00:01:36,120
+outcome, you can actually put both of
+those on the same graphic, by having one
+
+26
+00:01:36,120 --> 00:01:42,130
+on you know, one Y axis and one on a
+second Y axis, as I'm showing you here.
+
+27
+00:01:42,130 --> 00:01:45,020
+So, the, I'm going to graph, both of these
+against time, and
+
+28
+00:01:45,020 --> 00:01:47,580
+I want to say does the change in
+depression scores,
+
+29
+00:01:47,580 --> 00:01:51,230
+does that relate to the change in chemical
+levels over time.
+
+30
+00:01:51,230 --> 00:01:54,120
+And I graphed this, I only have 6
+subjects, so I just graphed this to start
+
+31
+00:01:54,120 --> 00:01:57,140
+with, separately by subject, so here is
+the first subject.
+
+32
+00:01:57,140 --> 00:02:01,143
+So, I already showed you that that
+subject's depression scores started at 20.
+
+33
+00:02:01,143 --> 00:02:03,430
+They went down, and they went back up to
+20.
+
+34
+00:02:03,430 --> 00:02:07,020
+Meanwhile, their chemical levels kind of
+had a steady increase over time.
+
+35
+00:02:07,020 --> 00:02:09,400
+The chemical levels here are in red.
+
+36
+00:02:09,400 --> 00:02:13,085
+I made up these data, so I tried to make
+up these data in a way that,
+
+37
+00:02:13,085 --> 00:02:17,640
+in general, as the chemical levels go up
+the depression score tends to go down.
+
+38
+00:02:20,820 --> 00:02:22,860
+I then graphed subjects two and three.
+
+39
+00:02:22,860 --> 00:02:24,300
+You can see same idea.
+
+40
+00:02:24,300 --> 00:02:28,062
+So for example subject number two, the
+chemical level's kind of flat and
+
+41
+00:02:28,062 --> 00:02:29,000
+then it goes down.
+
+42
+00:02:29,000 --> 00:02:32,790
+While the chemical level's going down the
+depression score is going up.
+
+43
+00:02:32,790 --> 00:02:35,580
+The chemical level goes up in subject
+number three at the same time
+
+44
+00:02:35,580 --> 00:02:36,870
+the depression scores goes down.
+
+45
+00:02:36,870 --> 00:02:38,440
+So these are inversely.
+
+46
+00:02:38,440 --> 00:02:42,110
+They're kind of going together inversely
+in each of these individual subjects.
+
+47
+00:02:43,390 --> 00:02:44,670
+That's subject four and subject five.
+
+48
+00:02:44,670 --> 00:02:47,390
+Subject four you can see this nice
+progression where as chemical level goes
+
+49
+00:02:47,390 --> 00:02:48,580
+up, the depression goes down.
+
+50
+00:02:48,580 --> 00:02:51,210
+As the chemical level goes down, the
+depression goes up, and so on.
+
+51
+00:02:51,210 --> 00:02:52,486
+I mean I've made up these data, so
+
+52
+00:02:52,486 --> 00:02:55,090
+I sort of built in that there's an
+association here.
+
+53
+00:02:55,090 --> 00:02:56,510
+And finally subject number six.
+
+54
+00:02:56,510 --> 00:02:59,870
+Clearer association as the chemical level
+goes up, the, in the brain,
+
+55
+00:02:59,870 --> 00:03:02,390
+the happy chemical goes up in the brain,
+the depression score goes down.
+
+56
+00:03:03,520 --> 00:03:06,922
+And then we can plot these all together in
+a single mean plot, and
+
+57
+00:03:06,922 --> 00:03:09,883
+you can see that yeah, in general, over
+time, as the,
+
+58
+00:03:09,883 --> 00:03:12,767
+the chemical level seems to drift upwards
+over time.
+
+59
+00:03:12,767 --> 00:03:16,680
+It's not totally perfect, but it's seeming
+to go upwards over time.
+
+60
+00:03:16,680 --> 00:03:20,360
+Meanwhile, the depression score is seeming
+to go downwards over time.
+
+61
+00:03:20,360 --> 00:03:23,930
+So they seem to be doing something
+together inversely.
+
+62
+00:03:23,930 --> 00:03:26,394
+Anyway, this is just to make the point
+that you can,
+
+63
+00:03:26,394 --> 00:03:29,530
+if you have a time changing predictor, put
+it on the same graphic as
+
+64
+00:03:29,530 --> 00:03:33,400
+the time changing outcome as long as those
+are both continuous variables.
+
+65
+00:03:33,400 --> 00:03:38,499
+[BLANK_AUDIO]

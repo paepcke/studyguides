@@ -1,0 +1,410 @@
+1
+00:00:00,190 --> 00:00:00,940
+Welcome back.
+
+2
+00:00:00,940 --> 00:00:03,950
+In the last module, we reviewed how to
+check your data dictionary,
+
+3
+00:00:03,950 --> 00:00:06,430
+point to a permanent library and import
+your data set.
+
+4
+00:00:06,430 --> 00:00:08,220
+We are now going to about data cleaning.
+
+5
+00:00:08,220 --> 00:00:09,450
+Let's open up our data set and
+
+6
+00:00:09,450 --> 00:00:11,540
+double check to see if our variables are
+in the right format.
+
+7
+00:00:11,540 --> 00:00:13,100
+It looks like everything is all right.
+
+8
+00:00:13,100 --> 00:00:18,990
+We have isDiabetic, isFemale, isSmoker and
+race as string variables and
+
+9
+00:00:18,990 --> 00:00:22,390
+age, weight and height as continuous
+numeric variables.
+
+10
+00:00:23,430 --> 00:00:25,240
+>> You can tell which type of variables
+they are.
+
+11
+00:00:25,240 --> 00:00:27,440
+Based on the icon next to the variable
+name.
+
+12
+00:00:27,440 --> 00:00:29,760
+String variables have this red triangle.
+
+13
+00:00:29,760 --> 00:00:32,210
+Whereas numeric variables have this blue
+circle.
+
+14
+00:00:32,210 --> 00:00:33,280
+Also notice that, for
+
+15
+00:00:33,280 --> 00:00:37,010
+the numeric variables, missing values are
+represented by the period.
+
+16
+00:00:37,010 --> 00:00:40,040
+Whereas for string variables, a missing
+value is represented by a blank.
+
+17
+00:00:41,220 --> 00:00:43,400
+SAS has different ways of representing
+missing values,
+
+18
+00:00:43,400 --> 00:00:45,890
+based on the type of variable that you're
+using.
+
+19
+00:00:45,890 --> 00:00:48,610
+>> It's important for us to get a sense
+about the amount of missing data we have
+
+20
+00:00:48,610 --> 00:00:49,889
+before writing a certain analysis.
+
+21
+00:00:50,900 --> 00:00:52,040
+Let's use Proc Freq and
+
+22
+00:00:52,040 --> 00:00:54,810
+Proc Univariate to determine whether we
+have a problem with missing data.
+
+23
+00:00:54,810 --> 00:00:57,820
+I'm going to open up a program and let's
+take a look at some code.
+
+24
+00:00:59,390 --> 00:01:00,660
+>> Here we have Proc Freq, for
+
+25
+00:01:00,660 --> 00:01:05,090
+the categorical variable, and Proc
+Univariate for the numeric variables.
+
+26
+00:01:05,090 --> 00:01:07,570
+These procedure will tell us the number of
+missing values for
+
+27
+00:01:07,570 --> 00:01:08,290
+each of these variables.
+
+28
+00:01:08,290 --> 00:01:11,620
+[BLANK_AUDIO]
+
+29
+00:01:11,620 --> 00:01:13,770
+As you can see, the disease outcome
+variable and
+
+30
+00:01:13,770 --> 00:01:15,460
+the gender variable have no missing value.
+
+31
+00:01:16,850 --> 00:01:18,880
+The smoker variable, has 101 missing
+values.
+
+32
+00:01:20,180 --> 00:01:21,530
+Race, has 93 missing values.
+
+33
+00:01:25,850 --> 00:01:26,760
+Age, had 114 missing values.
+
+34
+00:01:26,760 --> 00:01:32,140
+Height, has 99 missing values.
+
+35
+00:01:34,010 --> 00:01:36,660
+And weight has 92 missing values.
+
+36
+00:01:38,200 --> 00:01:42,030
+Since for each of these variables the
+number of missing values is around 10% or
+
+37
+00:01:42,030 --> 00:01:45,630
+less, we don't really need to use any
+amputation methods, so we should be fine.
+
+38
+00:01:45,630 --> 00:01:49,300
+Now that we have a feel for how much
+missing values we have,
+
+39
+00:01:49,300 --> 00:01:52,940
+let's take a look at our data to make sure
+we don't have any miscoded entries.
+
+40
+00:01:53,940 --> 00:01:55,140
+>> We can do this using a data step.
+
+41
+00:01:55,140 --> 00:01:59,630
+We'll start by creating a new data set in
+the work library called flag.
+
+42
+00:01:59,630 --> 00:02:03,000
+And fill in the data from our original
+diabetes data set.
+
+43
+00:02:03,000 --> 00:02:05,730
+We'll then create a new flag variable
+called flag.
+
+44
+00:02:05,730 --> 00:02:09,410
+For now, we'll give missing values to all
+records by default.
+
+45
+00:02:09,410 --> 00:02:12,060
+Let's think about the conditions that
+would need to be flagged.
+
+46
+00:02:13,100 --> 00:02:17,450
+Age, Weight, and Height are all continuous
+variables which all should be positive.
+
+47
+00:02:17,450 --> 00:02:19,884
+If any of these are negative we'll give
+them a flag value of one.
+
+48
+00:02:21,090 --> 00:02:24,320
+These variables also have certain ranges
+that we expect.
+
+49
+00:02:24,320 --> 00:02:28,280
+We wouldn't expect anyone to have an age
+greater than 120 years, so
+
+50
+00:02:28,280 --> 00:02:30,220
+we'll flag anyone that is older than that.
+
+51
+00:02:30,220 --> 00:02:33,390
+We also wouldn't expect anyone to weigh
+more than 500 pounds.
+
+52
+00:02:33,390 --> 00:02:36,150
+So, we'll flag anyone heavier than that as
+well.
+
+53
+00:02:36,150 --> 00:02:40,330
+It would also be unreasonable based on our
+data set to have anyone over 250
+
+54
+00:02:40,330 --> 00:02:42,580
+centimeters tall which is around eight
+feet.
+
+55
+00:02:42,580 --> 00:02:43,700
+We'll flag those subjects.
+
+56
+00:02:44,730 --> 00:02:48,050
+We can flag all erroneous values with
+simple if then statements.
+
+57
+00:02:49,440 --> 00:02:53,490
+>> In this first if then, we flag everyone
+who has a negative value for
+
+58
+00:02:53,490 --> 00:02:55,630
+age, weight or height.
+
+59
+00:02:55,630 --> 00:02:58,740
+Remember, when SAS encodes a missing value
+for
+
+60
+00:02:58,740 --> 00:03:02,158
+a numeric variable, missing is encoded as
+negative infinity.
+
+61
+00:03:02,158 --> 00:03:05,260
+So, if we just have just negatives for
+age, weight and
+
+62
+00:03:05,260 --> 00:03:07,330
+height, it'll also flag any missing
+values.
+
+63
+00:03:08,520 --> 00:03:12,640
+So to correct for this, we have to say if
+age is less than zero and
+
+64
+00:03:12,640 --> 00:03:14,920
+if it's not missing, then we'll flag it.
+
+65
+00:03:14,920 --> 00:03:17,520
+And then the same for weight and height.
+
+66
+00:03:17,520 --> 00:03:20,540
+This way, it'll only flag the negative
+values and not the missing values.
+
+67
+00:03:22,130 --> 00:03:25,279
+In the next if then statement, we flag
+anyone over 120 years old.
+
+68
+00:03:26,410 --> 00:03:31,730
+We also flag anyone over 500 pounds and
+anyone that's over 250 centimeters tall.
+
+69
+00:03:31,730 --> 00:03:33,890
+As you can see we now have a new variable
+called flag, which
+
+70
+00:03:35,050 --> 00:03:38,690
+will have a non missing value for any of
+the erroneous records in our dataset.
+
+71
+00:03:38,690 --> 00:03:43,170
+Now that we've flagged all these erroneous
+records.
+
+72
+00:03:43,170 --> 00:03:45,880
+Let's create a new data set that only has
+these flag records, so
+
+73
+00:03:45,880 --> 00:03:47,520
+we can see what's going on.
+
+74
+00:03:47,520 --> 00:03:50,400
+>> This code will create a new data set
+called flag only, fill in
+
+75
+00:03:50,400 --> 00:03:53,700
+the data from the flag data set, but only
+include records that have been flagged.
+
+76
+00:03:54,720 --> 00:03:58,170
+Now we can see exactly what has been
+flagged in our data set.
+
+77
+00:03:58,170 --> 00:04:01,440
+>> As we can see we have five records
+which were flagged.
+
+78
+00:04:01,440 --> 00:04:02,870
+One of them had a negative value for
+
+79
+00:04:02,870 --> 00:04:06,900
+weight, and the rest had ages that were
+over 120 years old.
+
+80
+00:04:06,900 --> 00:04:08,570
+Clearly these must be erroneous in some
+way,
+
+81
+00:04:08,570 --> 00:04:12,400
+and we shouldn't include them in our data
+when we do the analysis.
+
+82
+00:04:12,400 --> 00:04:16,440
+>> Let's create a new clean data set
+without the flag variables.
+
+83
+00:04:16,440 --> 00:04:21,090
+For a code we'll create the new clean
+diabetes data set, fill in the information
+
+84
+00:04:21,090 --> 00:04:25,800
+from the flagged, and focus only on those
+with flag value of period or missing.
+
+85
+00:04:26,900 --> 00:04:30,510
+>> This will keep anyone that wasn't
+flagged in our data set.
+
+86
+00:04:30,510 --> 00:04:34,140
+Now we have a clean data set that doesn't
+have any of the flagged records.
+
+87
+00:04:34,140 --> 00:04:36,890
+Now that the data is all cleaned up, we're
+ready to prepare for the analysis.

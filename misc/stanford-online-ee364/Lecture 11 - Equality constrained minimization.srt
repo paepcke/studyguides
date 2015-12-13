@@ -1,0 +1,4027 @@
+1
+00:00:00,120 --> 00:00:02,990
+What we're going to do now is look at a
+quality constraint minimization and
+
+2
+00:00:04,820 --> 00:00:09,380
+you know, we are stepping slowly towards
+solving general context
+
+3
+00:00:09,380 --> 00:00:10,170
+optimization problem.
+
+4
+00:00:10,170 --> 00:00:14,790
+Right, [COUGH] So, so we're going to add
+constraints but
+
+5
+00:00:14,790 --> 00:00:17,380
+the easiest to handle are equality
+constraints which are linear.
+
+6
+00:00:17,380 --> 00:00:22,800
+Okay, so, it's going to turn out actually,
+there is few interesting things here but
+
+7
+00:00:22,800 --> 00:00:26,220
+some of it is actually, it turns out to be
+quite simple.
+
+8
+00:00:26,220 --> 00:00:27,730
+We just reduce it to the other one.
+
+9
+00:00:27,730 --> 00:00:28,430
+Okay.
+
+10
+00:00:28,430 --> 00:00:30,820
+So, we want to minimize f.
+
+11
+00:00:30,820 --> 00:00:32,650
+F is smooth, subject to ax equals b.
+
+12
+00:00:34,850 --> 00:00:36,600
+And we're, we're going to assume that a is
+full rank.
+
+13
+00:00:36,600 --> 00:00:37,820
+It's wide in full rank.
+
+14
+00:00:39,220 --> 00:00:42,840
+And we'll assume the optimum is attained,
+right?
+
+15
+00:00:42,840 --> 00:00:44,750
+And so b-, basically, it says you simply
+want,
+
+16
+00:00:44,750 --> 00:00:47,270
+these are the necessary insufficient
+optimality conditions, right?
+
+17
+00:00:47,270 --> 00:00:53,970
+It, the, it's the kk key conditions New
+star is an optimal dual variable here.
+
+18
+00:00:55,410 --> 00:00:57,520
+That's the, you know, or Lagrange
+multiplier.
+
+19
+00:00:57,520 --> 00:00:59,080
+And so you want to solve these two
+equations, and
+
+20
+00:00:59,080 --> 00:01:00,600
+let's stare at the two equations for a
+minute.
+
+21
+00:01:02,150 --> 00:01:06,970
+interestingly, these equations are affine
+in new star, right?
+
+22
+00:01:06,970 --> 00:01:09,240
+It, they do not, they're not non-linear in
+new star, they're affine.
+
+23
+00:01:10,400 --> 00:01:12,940
+Now what are they in x?
+
+24
+00:01:12,940 --> 00:01:15,330
+Well, that's linear, right?
+
+25
+00:01:15,330 --> 00:01:16,690
+It depends on that.
+
+26
+00:01:16,690 --> 00:01:18,670
+Oh, except for one case.
+
+27
+00:01:18,670 --> 00:01:21,470
+When is the gradient of a function an
+affine function?
+
+28
+00:01:22,750 --> 00:01:23,880
+When it's quadratic, right?
+
+29
+00:01:23,880 --> 00:01:29,060
+So if the function is quadratic, these are
+a set of linear equations, okay.
+
+30
+00:01:29,060 --> 00:01:33,370
+And that, so that says that solving
+linearly constrained quadratic
+
+31
+00:01:33,370 --> 00:01:36,620
+optimization problems is, is pure linear
+algebra, right?
+
+32
+00:01:36,620 --> 00:01:38,660
+That's it.
+You just set up a linear algebra and you,
+
+33
+00:01:38,660 --> 00:01:40,090
+and you do it, and you solve it.
+
+34
+00:01:40,090 --> 00:01:42,530
+Okay?
+So, but in general, this thing,
+
+35
+00:01:42,530 --> 00:01:48,050
+if f is non-quadratic, this is non-affine,
+and that's a set of non-linear equations.
+
+36
+00:01:48,050 --> 00:01:50,670
+By the way, people have names for the
+residuals, right?
+
+37
+00:01:50,670 --> 00:01:54,720
+The name for the residual in this equation
+is called the primal residual.
+
+38
+00:01:54,720 --> 00:01:55,890
+And sometimes denoted RP.
+
+39
+00:01:57,890 --> 00:02:01,470
+And the condition of course, the
+optimality condition is RP equals zero.
+
+40
+00:02:01,470 --> 00:02:05,620
+This one, that expression on the left is
+called the dual residual, and
+
+41
+00:02:05,620 --> 00:02:07,140
+it's denoted RD.
+
+42
+00:02:07,140 --> 00:02:09,980
+And of course, the optimality condition is
+that RD equals zero.
+
+43
+00:02:09,980 --> 00:02:15,850
+So, you're looking to find x and nu that
+make RP and RD zero.
+
+44
+00:02:15,850 --> 00:02:16,570
+Okay?
+And by the way,
+
+45
+00:02:16,570 --> 00:02:18,110
+the number of equations is about right.
+
+46
+00:02:18,110 --> 00:02:23,580
+You have m plus p, you have m plus p
+variables, right?
+
+47
+00:02:23,580 --> 00:02:27,010
+N plus p variables and you have n plus p
+equations.
+
+48
+00:02:27,010 --> 00:02:30,143
+So, but they're possibly non-linear.
+
+49
+00:02:30,143 --> 00:02:30,873
+Okay.
+
+50
+00:02:30,873 --> 00:02:33,090
+So well, we already talked about this,
+right?
+
+51
+00:02:33,090 --> 00:02:35,710
+If, if you, if you want to do equality
+constrained quadratic minimization,
+
+52
+00:02:35,710 --> 00:02:39,130
+it's linear algebra, and so you get
+something like this.
+
+53
+00:02:39,130 --> 00:02:39,630
+Right?
+
+54
+00:02:41,110 --> 00:02:44,450
+You write the optimality conditions this
+way and you are actually
+
+55
+00:02:44,450 --> 00:02:49,620
+computing both x star and nu star which is
+not the optimal Lagrange multiplier.
+
+56
+00:02:49,620 --> 00:02:51,660
+You compute both of them,.
+
+57
+00:02:51,660 --> 00:02:53,210
+By the way there's some structure here.
+
+58
+00:02:53,210 --> 00:02:56,310
+There's a block of zeros and your eyes
+should be looking at it or
+
+59
+00:02:56,310 --> 00:02:57,580
+something already.
+
+60
+00:02:57,580 --> 00:02:58,560
+Without my saying.
+
+61
+00:02:58,560 --> 00:02:59,170
+I mean there's not a lot.
+
+62
+00:02:59,170 --> 00:03:02,504
+You could have more structure but, but
+that's that.
+
+63
+00:03:02,504 --> 00:03:06,250
+And it turns out, I mean you can work out
+a lot about this KKT matrix.
+
+64
+00:03:06,250 --> 00:03:07,040
+For example.
+
+65
+00:03:07,040 --> 00:03:13,020
+It's nonsingular if and only if if you're
+in the null space of a,
+
+66
+00:03:13,020 --> 00:03:15,640
+p is positive definite, or something like
+that.
+
+67
+00:03:15,640 --> 00:03:17,200
+So, another way to say that roughly,
+
+68
+00:03:17,200 --> 00:03:21,020
+is p is positive definite on the null
+space of a, right?
+
+69
+00:03:21,020 --> 00:03:25,660
+So p has to have positive curvature, kind
+of on the feasible set.
+
+70
+00:03:25,660 --> 00:03:28,750
+That's the right way to say it, okay?
+
+71
+00:03:28,750 --> 00:03:31,580
+That wasn't quite right, but, that's the
+spirit.
+
+72
+00:03:31,580 --> 00:03:33,260
+Okay.
+That's the set of linear equations.
+
+73
+00:03:35,390 --> 00:03:37,680
+There's a very general method for handling
+equality constraints.
+
+74
+00:03:37,680 --> 00:03:38,880
+It's used to eliminate them.
+
+75
+00:03:38,880 --> 00:03:41,508
+Right?
+So, you would do the following.
+
+76
+00:03:41,508 --> 00:03:46,051
+I would, this is my constrained
+representation of an affine set, but
+
+77
+00:03:46,051 --> 00:03:50,320
+I will write it instead as a
+free-parameter representation.
+
+78
+00:03:50,320 --> 00:03:55,360
+And so what I'll do is, you compute nx hat
+that satisfies ax equals b.
+
+79
+00:03:55,360 --> 00:03:56,460
+That's this one.
+
+80
+00:03:56,460 --> 00:03:57,680
+Lots of names for this.
+
+81
+00:03:57,680 --> 00:04:02,460
+Tradi-, by the way, a traditional name for
+this is x sub p for a particular solution.
+
+82
+00:04:02,460 --> 00:04:05,840
+That's the 19th century name, is you have
+a particular solution.
+
+83
+00:04:05,840 --> 00:04:07,600
+I think the other one's like a homoge-, I
+don't know.
+
+84
+00:04:07,600 --> 00:04:08,150
+Anyway.
+
+85
+00:04:08,150 --> 00:04:11,140
+So, that's a partic-, a partuc-, a
+particular solution,
+
+86
+00:04:11,140 --> 00:04:16,980
+sorry, and then f is a matrix whose range
+is exactly the null space of a, right?
+
+87
+00:04:16,980 --> 00:04:18,280
+Lots of ways to compute that.
+
+88
+00:04:18,280 --> 00:04:20,550
+That's just linear algebra, right?
+
+89
+00:04:20,550 --> 00:04:21,990
+So, lo, tons of ways to do this.
+
+90
+00:04:21,990 --> 00:04:23,510
+You could use a qr factorization,
+
+91
+00:04:23,510 --> 00:04:25,950
+all sorts of things, all sorts of ways to
+do this.
+
+92
+00:04:25,950 --> 00:04:26,450
+Okay.
+
+93
+00:04:28,340 --> 00:04:31,620
+So what you do now is we'll change
+variables in
+
+94
+00:04:31,620 --> 00:04:36,205
+our optimzation problem instead of X we'll
+go with Z and you end up with this.
+
+95
+00:04:36,205 --> 00:04:41,060
+And now its totally unconstrained, still a
+convex problem because you know F is
+
+96
+00:04:41,060 --> 00:04:46,770
+simply applied to a, applied to a affine
+transformation here.
+
+97
+00:04:46,770 --> 00:04:50,110
+By the way, if the original f was
+self-concordant, it still is, right?
+
+98
+00:04:51,720 --> 00:04:54,370
+so, that's it, and we know how to do that.
+
+99
+00:04:54,370 --> 00:04:55,480
+I mean we can blend Newton's method,
+
+100
+00:04:55,480 --> 00:04:57,790
+gradients, steepest descent, whatever you
+like.
+
+101
+00:04:57,790 --> 00:05:01,020
+Okay?
+So, that's, that's the idea.
+
+102
+00:05:01,020 --> 00:05:02,540
+Okay.
+And, if you want,
+
+103
+00:05:02,540 --> 00:05:04,870
+after solving this problem, you can
+reconstruct x.
+
+104
+00:05:04,870 --> 00:05:06,510
+I mean that's x, but
+
+105
+00:05:06,510 --> 00:05:10,090
+you can also reconstruct the optimal,
+Legrange multiplier.
+
+106
+00:05:10,090 --> 00:05:12,690
+And it's got, just a particular formula
+like that.
+
+107
+00:05:12,690 --> 00:05:15,295
+That's if you wanted it in the original
+one.
+
+108
+00:05:15,295 --> 00:05:15,890
+Mm-kay?
+
+109
+00:05:15,890 --> 00:05:19,260
+So, oh, I should something mention about
+the interpretation.
+
+110
+00:05:19,260 --> 00:05:20,510
+Sometimes it's useful.
+
+111
+00:05:20,510 --> 00:05:22,390
+Sometimes you want to know this.
+
+112
+00:05:22,390 --> 00:05:27,490
+Because the interpretation of new star, is
+actually something like, eh, I'll be very,
+
+113
+00:05:27,490 --> 00:05:31,710
+it's something like the prices, for, if
+these,
+
+114
+00:05:31,710 --> 00:05:35,810
+if every row of this is interpreted at
+some sort of clearing constraint.
+
+115
+00:05:35,810 --> 00:05:36,850
+Right?
+That, sort of,
+
+116
+00:05:36,850 --> 00:05:40,530
+the amount produced balances the amount
+consumed, or something like that.
+
+117
+00:05:40,530 --> 00:05:43,220
+So it, that would be the economic
+interpretation.
+
+118
+00:05:43,220 --> 00:05:46,990
+Then, in fact, nu is a vector of the
+optimal prices of each of
+
+119
+00:05:46,990 --> 00:05:47,790
+those commodities.
+
+120
+00:05:47,790 --> 00:05:51,590
+It said, basically, as you know, the
+interpretation of nu star is,
+
+121
+00:05:51,590 --> 00:05:54,930
+you know what, what if you allowed me to
+change b a little bit?
+
+122
+00:05:54,930 --> 00:05:56,075
+What would happen?
+
+123
+00:05:56,075 --> 00:05:59,170
+Nu star tells you, how the optimal value
+would change.
+
+124
+00:05:59,170 --> 00:05:59,860
+Okay, so.
+
+125
+00:05:59,860 --> 00:06:00,830
+I, I mean I just mentioned this.
+
+126
+00:06:02,250 --> 00:06:03,080
+Okay.
+
+127
+00:06:03,080 --> 00:06:04,960
+So, so that's that.
+
+128
+00:06:04,960 --> 00:06:08,720
+So what this kind of says is at this
+point, you don't need to know any more,
+
+129
+00:06:08,720 --> 00:06:09,940
+and, and from some point of view,
+
+130
+00:06:09,940 --> 00:06:13,660
+you don't need to know any theory, about,
+equality constraint problems,
+
+131
+00:06:13,660 --> 00:06:16,200
+because you just reduce it to an
+unconstrained problem and it's done.
+
+132
+00:06:16,200 --> 00:06:19,820
+Okay, so quick example of that.
+
+133
+00:06:19,820 --> 00:06:23,330
+Let's solve here's an optimal allocation
+with a resource constraint.
+
+134
+00:06:23,330 --> 00:06:29,130
+So, I minimize a bunch of individual costs
+subject to all these things add up to b.
+
+135
+00:06:29,130 --> 00:06:29,990
+Right?
+And so, so
+
+136
+00:06:29,990 --> 00:06:31,560
+this is an allocation problem, right?
+
+137
+00:06:31,560 --> 00:06:35,860
+I have, I have b is sort of an amount of
+resource I have and, I'm, I'm,
+
+138
+00:06:35,860 --> 00:06:39,240
+I'm dividing it up among a bunch of
+agents, right?
+
+139
+00:06:39,240 --> 00:06:40,090
+N agents.
+
+140
+00:06:40,090 --> 00:06:40,820
+And I want to do that.
+
+141
+00:06:40,820 --> 00:06:45,080
+Sometimes this is called the social cost
+in that context, right?
+
+142
+00:06:45,080 --> 00:06:48,880
+And here, by the way, the optimal Lagrange
+multiplier, which is scalar,
+
+143
+00:06:48,880 --> 00:06:54,010
+is actually tells you the optimal price
+for the commodity, that we are allocating.
+
+144
+00:06:54,010 --> 00:06:55,150
+Okay?
+So just, I mean,
+
+145
+00:06:55,150 --> 00:06:56,480
+it's kind of obvious, but.
+
+146
+00:06:56,480 --> 00:06:57,440
+Okay.
+
+147
+00:06:57,440 --> 00:06:59,340
+So that's a constraint problem.
+
+148
+00:06:59,340 --> 00:07:00,470
+How would you solve it?
+
+149
+00:07:00,470 --> 00:07:01,830
+Well what we can do is just this.
+
+150
+00:07:01,830 --> 00:07:09,030
+We'll do the following obvious
+elimination, I could take X hat to be BEN.
+
+151
+00:07:09,030 --> 00:07:11,530
+Here's another X hat, right?
+
+152
+00:07:11,530 --> 00:07:14,610
+It's B over N times the vector of ones.
+
+153
+00:07:14,610 --> 00:07:15,900
+Right?
+That's a uniform allocation.
+
+154
+00:07:15,900 --> 00:07:16,560
+But it doesn't matter.
+
+155
+00:07:16,560 --> 00:07:18,760
+So I'll take it to be BEN.
+
+156
+00:07:18,760 --> 00:07:21,420
+That means I give everything to agent N.
+
+157
+00:07:21,420 --> 00:07:22,030
+Okay?
+
+158
+00:07:22,030 --> 00:07:24,840
+And here's a matrix who's,.
+
+159
+00:07:24,840 --> 00:07:28,595
+Whose range is exactly the null space of
+A.
+
+160
+00:07:28,595 --> 00:07:33,220
+A is the, is the vector, it is the row
+vector 1,1,1,1, or 1 in the null space of
+
+161
+00:07:33,220 --> 00:07:38,420
+that is all things which sum to zero,
+right, so, that's this and you know, look,
+
+162
+00:07:38,420 --> 00:07:43,620
+it just says, that this transforms to that
+and that's on constraint, by the way, so
+
+163
+00:07:43,620 --> 00:07:48,740
+that says Whatever you can say about this
+problem, you can solve it, super-fast.
+
+164
+00:07:48,740 --> 00:07:49,880
+Okay?
+
+165
+00:07:49,880 --> 00:07:53,210
+Actually we'll get to that, because, we're
+going to see, that there's a way to,
+
+166
+00:07:53,210 --> 00:07:55,590
+to get the structure to exploit the
+structure directly.
+
+167
+00:07:58,030 --> 00:08:00,940
+Newton's step, for a, equality-constrained
+problem.
+
+168
+00:08:00,940 --> 00:08:02,120
+And it looks like this.
+
+169
+00:08:04,450 --> 00:08:07,130
+It says, you formed this 2 by 2 matrix.
+
+170
+00:08:07,130 --> 00:08:09,390
+Right?
+2 by 2 block matrix here.
+
+171
+00:08:09,390 --> 00:08:10,110
+You have V and
+
+172
+00:08:10,110 --> 00:08:15,430
+W and you solve, and on the right-hand
+side you have the gradient and zero.
+
+173
+00:08:15,430 --> 00:08:17,310
+Right?
+And look, if you read the first one,
+
+174
+00:08:17,310 --> 00:08:18,760
+this says AV equals zero.
+
+175
+00:08:18,760 --> 00:08:20,310
+That means V's in the null space.
+
+176
+00:08:20,310 --> 00:08:21,690
+If you're in the null space, by the way,
+
+177
+00:08:21,690 --> 00:08:25,680
+that says that you can freely add it to a
+feasible point x,
+
+178
+00:08:25,680 --> 00:08:31,360
+because if ax equals b and av equals zero,
+I can add any multiple of v to x and
+
+179
+00:08:31,360 --> 00:08:36,550
+it still satisfies ax plus you know, hv
+equals b, right?
+
+180
+00:08:36,550 --> 00:08:41,930
+So, that's the second, and the top one
+basically tells you something it, it's
+
+181
+00:08:41,930 --> 00:08:45,770
+actually has to do with that dual residual
+which we'll talk about in a minute.
+
+182
+00:08:45,770 --> 00:08:47,958
+So, couple of interpretations of this.
+
+183
+00:08:47,958 --> 00:08:51,420
+oh, and notice that it reverts to the
+Newton step when there
+
+184
+00:08:51,420 --> 00:08:52,632
+are no equality constraints.
+
+185
+00:08:52,632 --> 00:08:55,220
+'Cause then there's no equality
+constraints, that's just a one by one and
+
+186
+00:08:55,220 --> 00:09:01,550
+it's, it's hessian times v equals minus
+gradient that gives you the Newton step.
+
+187
+00:09:01,550 --> 00:09:04,910
+So, where does this come from, lots of
+interpretations.
+
+188
+00:09:04,910 --> 00:09:05,410
+Here's one.
+
+189
+00:09:06,790 --> 00:09:11,210
+Form the quadratic approximation of f, at
+x.
+
+190
+00:09:11,210 --> 00:09:12,870
+That's this thing here.
+
+191
+00:09:12,870 --> 00:09:15,218
+And notice, v is like a stepper of
+perturbation.
+
+192
+00:09:15,218 --> 00:09:16,766
+Okay?
+
+193
+00:09:16,766 --> 00:09:21,390
+Then there's, you, there's the equality
+constraints or, they're equality
+
+194
+00:09:21,390 --> 00:09:24,080
+constraints, you don't need to approximate
+any, you don't need to linearize.
+
+195
+00:09:24,080 --> 00:09:25,250
+Or, you could, even, right?
+
+196
+00:09:25,250 --> 00:09:29,950
+You could implement a method, which is
+the, the linearized method.
+
+197
+00:09:29,950 --> 00:09:32,050
+And you would call it on an affine
+function, and
+
+198
+00:09:32,050 --> 00:09:33,190
+that would simply return itself.
+
+199
+00:09:34,230 --> 00:09:35,800
+Right?
+So this would be just fine.
+
+200
+00:09:35,800 --> 00:09:38,010
+And so, how do you linearize the equality
+constraints?
+
+201
+00:09:38,010 --> 00:09:39,326
+They're just the same.
+
+202
+00:09:39,326 --> 00:09:39,993
+'Kay?
+
+203
+00:09:39,993 --> 00:09:41,900
+Now, this we know how to do.
+
+204
+00:09:41,900 --> 00:09:42,660
+Right?
+Because this is
+
+205
+00:09:42,660 --> 00:09:44,860
+minimizing a convex quadratic in v.
+
+206
+00:09:44,860 --> 00:09:46,070
+Subject to quality constraints.
+
+207
+00:09:46,070 --> 00:09:47,350
+We know how to do that.
+
+208
+00:09:47,350 --> 00:09:48,380
+And guess what?
+
+209
+00:09:48,380 --> 00:09:50,820
+All you do is you solve this equation
+here.
+
+210
+00:09:50,820 --> 00:09:53,300
+And that gives you v and w.
+
+211
+00:09:53,300 --> 00:09:54,540
+So that's, that's another way to say it.
+
+212
+00:09:54,540 --> 00:09:58,530
+And notice that that preserves the spirit
+of Newton's method for,
+
+213
+00:09:58,530 --> 00:10:00,810
+without equality constraints.
+
+214
+00:10:00,810 --> 00:10:04,638
+I mean, so instead of being explicit you
+should say Newton's method really,
+
+215
+00:10:04,638 --> 00:10:06,500
+the idea behind it, is this.
+
+216
+00:10:06,500 --> 00:10:10,960
+Is you implement a method that says, you
+know, get quadratic appro-, you know,
+
+217
+00:10:10,960 --> 00:10:15,020
+get quadratic approximation or something
+like that, and so then you call it on.
+
+218
+00:10:15,020 --> 00:10:19,310
+You do F dot quad, approx at X and
+
+219
+00:10:19,310 --> 00:10:23,380
+it returns a quadratic model valid near
+that point.
+
+220
+00:10:23,380 --> 00:10:24,320
+And then you minimize it.
+
+221
+00:10:24,320 --> 00:10:26,030
+That's Newton's Method, right?
+
+222
+00:10:26,030 --> 00:10:27,310
+This is the same thing.
+
+223
+00:10:27,310 --> 00:10:29,620
+It says you call the same method on F.
+
+224
+00:10:29,620 --> 00:10:31,810
+And now you minimize it, but subject to
+the equality constraints.
+
+225
+00:10:31,810 --> 00:10:34,430
+But you know we know how to minimize
+quadratics subject to
+
+226
+00:10:34,430 --> 00:10:35,950
+equality constraints, 'cause that's linear
+algebra.
+
+227
+00:10:37,010 --> 00:10:38,990
+Okay?
+So, so I think it's, it's natural.
+
+228
+00:10:40,650 --> 00:10:42,570
+Another way to say it is this.
+
+229
+00:10:42,570 --> 00:10:44,010
+Here's what you really want.
+
+230
+00:10:44,010 --> 00:10:48,626
+What you really want, is you want when you
+take a step here, ,you want,
+
+231
+00:10:48,626 --> 00:10:52,451
+you would like this thing to be zero
+[COUGH].
+
+232
+00:10:52,451 --> 00:10:55,150
+That's what you'd like, right?
+
+233
+00:10:55,150 --> 00:10:56,390
+that, that's which you really want,
+
+234
+00:10:56,390 --> 00:11:01,187
+that, that's driving R, RD, the dual
+residual to zero.
+
+235
+00:11:01,187 --> 00:11:05,350
+And so, what we do is we simply take an
+approximation of this that's,
+
+236
+00:11:05,350 --> 00:11:08,570
+that's in general non-affine, in fact is a
+quadratic it's affine, but if
+
+237
+00:11:08,570 --> 00:11:10,810
+the f is non-quadratic its affine, but if
+the f is non-quadratic that's affine and
+
+238
+00:11:10,810 --> 00:11:14,810
+then the approximation of the gradient at
+x plus v is very simple.
+
+239
+00:11:14,810 --> 00:11:16,900
+If the gradient at x plus the hessian,
+
+240
+00:11:16,900 --> 00:11:22,050
+which is after all the derivative of the
+gradient multiplied by the step.
+
+241
+00:11:22,050 --> 00:11:25,580
+And if you solve these two equations,
+that's this.
+
+242
+00:11:25,580 --> 00:11:26,320
+Okay?
+
+243
+00:11:26,320 --> 00:11:31,130
+So, so you can either call the linearized
+method on the optimality conditions and
+
+244
+00:11:31,130 --> 00:11:32,330
+solve the linear equations.
+
+245
+00:11:32,330 --> 00:11:39,110
+Or you can call the quadratic method on
+the original problem and then solve that.
+
+246
+00:11:39,110 --> 00:11:39,990
+Right?
+Either way.
+
+247
+00:11:39,990 --> 00:11:40,700
+And they're the same thing.
+
+248
+00:11:41,810 --> 00:11:42,310
+Okay.
+
+249
+00:11:43,800 --> 00:11:50,190
+So the Newton decrement is, can be written
+several ways, this is one of them.
+
+250
+00:11:50,190 --> 00:11:50,850
+And it, it's that.
+
+251
+00:11:50,850 --> 00:11:52,690
+By the way, there are some other formulas
+for
+
+252
+00:11:52,690 --> 00:11:57,110
+the Newton decrement which are completely
+false, in the equality constraint case.
+
+253
+00:11:57,110 --> 00:12:03,050
+One, is I think, Delta x Newton transpose,
+times the inverse of this, times that.
+
+254
+00:12:03,050 --> 00:12:06,720
+Right, there's, one of the formulas looks
+like that, and it's wrong.
+
+255
+00:12:06,720 --> 00:12:07,240
+Okay?
+
+256
+00:12:07,240 --> 00:12:09,000
+But so, you have to be careful.
+
+257
+00:12:09,000 --> 00:12:10,270
+Couple of the formulas you know for
+
+258
+00:12:10,270 --> 00:12:14,450
+Newton decrement are correct, others are,
+are, are wrong.
+
+259
+00:12:14,450 --> 00:12:15,010
+Okay.
+
+260
+00:12:15,010 --> 00:12:15,960
+And it's the same thing.
+
+261
+00:12:15,960 --> 00:12:18,100
+It simply gives you an estimate.
+
+262
+00:12:18,100 --> 00:12:22,350
+It's the difference between it says that,
+if you form the quadratic model,
+
+263
+00:12:22,350 --> 00:12:25,440
+solve the constraint problem, how much
+would the objective go down?
+
+264
+00:12:25,440 --> 00:12:28,270
+And that's, that's Lambda squared over 2,
+is, is what that is,
+
+265
+00:12:28,270 --> 00:12:30,220
+so, makes perfect, perfect sense.
+
+266
+00:12:30,220 --> 00:12:32,880
+It's also the directional derivative in
+the Newton direction so
+
+267
+00:12:32,880 --> 00:12:34,060
+that also was preserved.
+
+268
+00:12:36,220 --> 00:12:38,120
+But it is not equal to that.
+
+269
+00:12:38,120 --> 00:12:42,890
+That's an example of one of the formulas
+that's just wrong for equality constraint.
+
+270
+00:12:42,890 --> 00:12:43,880
+Okay.
+
+271
+00:12:43,880 --> 00:12:46,050
+Now here's Newton's method with equality
+constraints.
+
+272
+00:12:46,050 --> 00:12:48,230
+So, here's the algorithm.
+
+273
+00:12:48,230 --> 00:12:50,450
+You know, you compute the Newton step and
+the decrement.
+
+274
+00:12:50,450 --> 00:12:53,750
+You quit if the decrement is squared over
+2 which is your expected decrease is
+
+275
+00:12:53,750 --> 00:12:54,560
+less than epsilon.
+
+276
+00:12:55,730 --> 00:12:57,130
+Then you do a line search and you update.
+
+277
+00:12:57,130 --> 00:12:57,810
+So guess what?
+
+278
+00:12:57,810 --> 00:13:00,680
+That algorithm is identical to Newton's
+method for unconstrained.
+
+279
+00:13:00,680 --> 00:13:01,790
+It's exactly the same.
+
+280
+00:13:02,840 --> 00:13:06,370
+The difference is, we have now kind of
+overloaded a few things here.
+
+281
+00:13:06,370 --> 00:13:09,450
+Newton's step has been overloaded to
+handle equality constraints.
+
+282
+00:13:09,450 --> 00:13:13,230
+It, doesn't mean hessian inverse, minus
+hessian inverse radiant,
+
+283
+00:13:13,230 --> 00:13:15,360
+it means solve this big KKT system.
+
+284
+00:13:15,360 --> 00:13:15,940
+Right?
+
+285
+00:13:15,940 --> 00:13:20,040
+And, we also overloaded the Newton
+decrement.
+
+286
+00:13:20,040 --> 00:13:23,610
+To mean something appropriate in that
+case, okay?
+
+287
+00:13:23,610 --> 00:13:26,298
+Otherwise, it's identical, the algorithm.
+
+288
+00:13:26,298 --> 00:13:31,930
+And it's a feasible descent method,
+meaning every step x is feasible and
+
+289
+00:13:31,930 --> 00:13:34,800
+your objective goes down unless you're at
+the optimum point.
+
+290
+00:13:34,800 --> 00:13:36,100
+And it's affine invariant.
+
+291
+00:13:36,100 --> 00:13:39,540
+You change coordinates, it's, it's,
+doesn't matter.
+
+292
+00:13:39,540 --> 00:13:40,140
+Okay?
+
+293
+00:13:40,140 --> 00:13:42,120
+I mean, you, you get, a commutative
+diagram.
+
+294
+00:13:42,120 --> 00:13:43,580
+You get exactly the same algorithm.
+
+295
+00:13:44,900 --> 00:13:46,130
+Okay.
+
+296
+00:13:46,130 --> 00:13:51,140
+By the way, what that, means, is that
+scaling is sort of a second-order issue,
+
+297
+00:13:51,140 --> 00:13:52,970
+for Newton, methods.
+
+298
+00:13:52,970 --> 00:13:53,470
+Right?
+
+299
+00:13:55,000 --> 00:13:58,130
+meaning, yeah, if you scale things by 10
+to the 38,
+
+300
+00:13:58,130 --> 00:14:01,360
+and 10 to the minus 38 You're going to
+have underflow, and overflow, and
+
+301
+00:14:01,360 --> 00:14:03,690
+numerical issues, and things like that,
+sure, okay?
+
+302
+00:14:03,690 --> 00:14:07,900
+But you can scale things very happily by a
+thousand, ten thousand, and
+
+303
+00:14:07,900 --> 00:14:09,660
+it will work fine.
+
+304
+00:14:09,660 --> 00:14:14,710
+And the reason for that is, to a numerical
+analyst, a condition number of a system of
+
+305
+00:14:14,710 --> 00:14:17,990
+linear equations of 10^3 or 10^4 is not
+that big a deal.
+
+306
+00:14:17,990 --> 00:14:18,730
+Right?
+
+307
+00:14:18,730 --> 00:14:23,700
+Whereas, for any first order method
+Condition number is a first-order effect.
+
+308
+00:14:23,700 --> 00:14:27,666
+If the first, if the condition number is
+like ten, it's going to work super well.
+
+309
+00:14:27,666 --> 00:14:31,290
+If it's 100,000, just forget it.
+
+310
+00:14:31,290 --> 00:14:32,690
+It, for all practical purposes, it doesn't
+work.
+
+311
+00:14:32,690 --> 00:14:35,480
+If it's 1,000, it may not work, okay?
+
+312
+00:14:35,480 --> 00:14:36,670
+So, that's the idea.
+
+313
+00:14:36,670 --> 00:14:38,320
+Another way to say it is,
+
+314
+00:14:38,320 --> 00:14:42,220
+If your method is working with a gradient
+method I can break it by scaling.
+
+315
+00:14:42,220 --> 00:14:43,225
+Scaling even modest,
+
+316
+00:14:43,225 --> 00:14:48,020
+by modest scaling, Newton's method, I
+won't break, it will work perfectly.
+
+317
+00:14:48,020 --> 00:14:48,550
+Okay?
+
+318
+00:14:48,550 --> 00:14:49,380
+So, okay.
+
+319
+00:14:51,220 --> 00:14:55,240
+Now it turns out, there's a, we don't have
+to do any analysis of this, and
+
+320
+00:14:55,240 --> 00:14:56,680
+the reason is the following.
+
+321
+00:14:56,680 --> 00:14:59,540
+There's a commutative, you get a perfect
+commutative diagram here.
+
+322
+00:14:59,540 --> 00:15:02,720
+If you take a problem.
+
+323
+00:15:02,720 --> 00:15:04,790
+You take an original problem with equality
+constraints.
+
+324
+00:15:04,790 --> 00:15:06,710
+Then you eliminate the variables.
+
+325
+00:15:06,710 --> 00:15:08,180
+You do variable elimination.
+
+326
+00:15:08,180 --> 00:15:10,010
+Then you apply Newton's method.
+
+327
+00:15:10,010 --> 00:15:12,620
+You get a commutative diagram with
+applying Newton's method with
+
+328
+00:15:12,620 --> 00:15:13,450
+equality constraints.
+
+329
+00:15:13,450 --> 00:15:14,900
+It's identical.
+
+330
+00:15:14,900 --> 00:15:16,720
+And that means we don't have to do any
+analysis at all.
+
+331
+00:15:16,720 --> 00:15:17,640
+Because we already know it all.
+
+332
+00:15:17,640 --> 00:15:18,320
+We know everything.
+
+333
+00:15:18,320 --> 00:15:20,320
+Including for self-concordance, I might
+add.
+
+334
+00:15:20,320 --> 00:15:21,650
+We know everything.
+
+335
+00:15:21,650 --> 00:15:22,790
+Nothing to do.
+
+336
+00:15:22,790 --> 00:15:25,160
+So you don't need any convergence
+analysis.
+
+337
+00:15:25,160 --> 00:15:25,660
+That's good.
+
+338
+00:15:27,830 --> 00:15:30,380
+Now we're going to talk about something
+that's different.
+
+339
+00:15:30,380 --> 00:15:32,780
+And, honestly, this is maybe the more
+useful one.
+
+340
+00:15:32,780 --> 00:15:34,890
+And this is actually the more modern one.
+
+341
+00:15:34,890 --> 00:15:39,120
+And it's actually Probably more useful so
+here it is.
+
+342
+00:15:40,410 --> 00:15:43,680
+It's the idea of a Newton step at an
+infeasible point.
+
+343
+00:15:43,680 --> 00:15:50,290
+And so the basic idea is that you really
+say that what you want to do is you,
+
+344
+00:15:50,290 --> 00:15:52,620
+you, you write down the residual, right?
+
+345
+00:15:52,620 --> 00:15:56,800
+And that's in n plus, rn plus p, and it's
+the following.
+
+346
+00:15:56,800 --> 00:16:00,170
+It's, it's the dual residual and then the
+primal residual.
+
+347
+00:16:00,170 --> 00:16:01,870
+And what you want to solve,
+
+348
+00:16:01,870 --> 00:16:07,130
+is a set of non-linear equations in n plus
+p variables, right?
+
+349
+00:16:08,270 --> 00:16:12,170
+Of which, one of which and the number of
+equations you have is n plus p, okay?
+
+350
+00:16:12,170 --> 00:16:15,600
+So that's, that's what you want to do so
+that's one view of it.
+
+351
+00:16:15,600 --> 00:16:16,800
+Now, by the way,
+
+352
+00:16:16,800 --> 00:16:22,095
+equate solving non-linear equations in r n
+plus b with n plus b equations,
+
+353
+00:16:22,095 --> 00:16:27,090
+is super complicated like, you don't even
+know that there exists a solution.
+
+354
+00:16:27,090 --> 00:16:30,020
+Right, I mean, here you know there is a
+solution because well it's
+
+355
+00:16:30,020 --> 00:16:32,440
+a convex problem and so on and so forth.
+
+356
+00:16:32,440 --> 00:16:36,450
+So that's the nice part is that there is
+some regularity up to this.
+
+357
+00:16:36,450 --> 00:16:39,360
+But Newton's method simply says I want to
+solve that equation.
+
+358
+00:16:39,360 --> 00:16:41,400
+Here is what we going to do.
+
+359
+00:16:41,400 --> 00:16:45,200
+I'm going to, y is going to be actually a
+primal-dual variable.
+
+360
+00:16:45,200 --> 00:16:50,040
+It's going to be a pair consisting of a
+primal variable and a dual variable, and
+
+361
+00:16:50,040 --> 00:16:51,510
+what we're going to do is this.
+
+362
+00:16:51,510 --> 00:16:52,740
+I want r of y is zero, so
+
+363
+00:16:52,740 --> 00:16:57,840
+I'll imagine that I'm going to to go y
+plus delta y, that's going to be my step.
+
+364
+00:16:57,840 --> 00:17:01,840
+And what I would like is I want that to be
+zero, but that's equal to r,
+
+365
+00:17:01,840 --> 00:17:06,650
+I mean the, the linear approximation of r
+is affline, but people call it linear,
+
+366
+00:17:06,650 --> 00:17:12,670
+is r of y plus dr, that's the derivative
+or Jacobian, multiplied by delta 1.
+
+367
+00:17:12,670 --> 00:17:14,430
+Dr is exactly that.
+
+368
+00:17:14,430 --> 00:17:17,008
+You get a similar set of equations, here's
+what you get you get this.
+
+369
+00:17:17,008 --> 00:17:21,780
+Actually the right-hand side is is, is, is
+is a little bit different here.
+
+370
+00:17:21,780 --> 00:17:24,330
+Actually it turns out, these are
+completely the same.
+
+371
+00:17:24,330 --> 00:17:26,210
+Right?
+If, if here we're actually
+
+372
+00:17:26,210 --> 00:17:30,830
+calculating the, that's the full Newton
+thing, sorry, the full dual variable.
+
+373
+00:17:30,830 --> 00:17:34,410
+And here we're calculating an update to a
+dual variable.
+
+374
+00:17:34,410 --> 00:17:35,440
+Okay?
+
+375
+00:17:35,440 --> 00:17:36,520
+So, this is a, a,
+
+376
+00:17:36,520 --> 00:17:41,090
+a very nice form of Newton's method, and
+it is to be interpreted this way.
+
+377
+00:17:41,090 --> 00:17:44,980
+It says, and you should think of it as a
+primal-dual method, because every step,
+
+378
+00:17:44,980 --> 00:17:48,150
+you're updating a primal and a dual
+variable.
+
+379
+00:17:48,150 --> 00:17:48,670
+Right?
+
+380
+00:17:48,670 --> 00:17:51,830
+And the idea is to drive both the primal
+and dual residuals to zero.
+
+381
+00:17:51,830 --> 00:17:53,230
+And, so you solve this.
+
+382
+00:17:53,230 --> 00:17:54,510
+This is the same KKT system.
+
+383
+00:17:54,510 --> 00:17:56,652
+And on the right hand side are the
+residuals of both.
+
+384
+00:17:56,652 --> 00:17:58,610
+Right, so.
+
+385
+00:17:58,610 --> 00:18:02,500
+By the way, it generalizes the Newton step
+for a feasible point.
+
+386
+00:18:02,500 --> 00:18:06,370
+Because if, if x is feasible, that's zero,
+and guess what?
+
+387
+00:18:06,370 --> 00:18:09,240
+You get the Newton step that we had before
+for feasible points, so
+
+388
+00:18:09,240 --> 00:18:11,940
+it's a generalization, but you have to be
+kind of careful.
+
+389
+00:18:13,510 --> 00:18:15,280
+Let me tell you why you have to kind of be
+careful.
+
+390
+00:18:15,280 --> 00:18:17,020
+What's kind of cool about this is,
+
+391
+00:18:17,020 --> 00:18:20,070
+this defines a Newton step even when
+you're infeasible.
+
+392
+00:18:20,070 --> 00:18:21,870
+Notice you don't satisfy ax equals b.
+
+393
+00:18:21,870 --> 00:18:23,340
+It says there's a direction to go in.
+
+394
+00:18:23,340 --> 00:18:25,360
+Now, you have to be very careful.
+
+395
+00:18:25,360 --> 00:18:28,700
+Because that direction to go in is a
+combination of two things.
+
+396
+00:18:28,700 --> 00:18:32,640
+There's one is you want to make f small.
+
+397
+00:18:32,640 --> 00:18:35,370
+So you're going to kind of be going in the
+direction minus gradient f.
+
+398
+00:18:35,370 --> 00:18:37,800
+I mean that is after all what we're trying
+to do.
+
+399
+00:18:37,800 --> 00:18:40,170
+But if you don't satisfy ax equals b,
+
+400
+00:18:40,170 --> 00:18:44,920
+you're also going to be going in a
+direction towards which ax equals b.
+
+401
+00:18:44,920 --> 00:18:46,080
+Right?
+So you're going to have, kind of,
+
+402
+00:18:46,080 --> 00:18:47,946
+these two directions.
+
+403
+00:18:47,946 --> 00:18:49,480
+And you also have to be very careful.
+
+404
+00:18:49,480 --> 00:18:52,250
+Because in a problem like this, you could
+end up.
+
+405
+00:18:52,250 --> 00:18:55,310
+I mean, it's, it's not a dissent method,
+for obvious reasons.
+
+406
+00:18:55,310 --> 00:18:55,840
+Right?
+
+407
+00:18:55,840 --> 00:18:59,770
+If that's my equality constraint, right?
+
+408
+00:18:59,770 --> 00:19:03,650
+And here's my, my function I'm minimizing,
+right?
+
+409
+00:19:03,650 --> 00:19:06,050
+You know, I don't know, maybe the, it's
+the solution would be right there.
+
+410
+00:19:06,050 --> 00:19:07,880
+It's, it's whenever the tangent touches
+this down.
+
+411
+00:19:07,880 --> 00:19:08,760
+That's the solution, right?
+
+412
+00:19:08,760 --> 00:19:11,590
+Now, suppose I started right here.
+
+413
+00:19:11,590 --> 00:19:14,030
+That, that's my initial point, okay?
+
+414
+00:19:14,030 --> 00:19:17,760
+So at that point, what's the gradient of
+f?
+
+415
+00:19:17,760 --> 00:19:20,080
+It's zero, right?
+
+416
+00:19:20,080 --> 00:19:20,580
+So.
+
+417
+00:19:21,640 --> 00:19:23,910
+The only minor problem is you're not
+feasible, right?
+
+418
+00:19:23,910 --> 00:19:26,750
+So, the Newton step, in this case,
+
+419
+00:19:26,750 --> 00:19:30,030
+is going to point you to somewhere on the
+line here, right?
+
+420
+00:19:30,030 --> 00:19:32,380
+because if you take one, if you take a
+full Newton step,
+
+421
+00:19:32,380 --> 00:19:34,470
+the equality constraint becomes feasible,
+okay?
+
+422
+00:19:34,470 --> 00:19:35,480
+So that, that's, that's the idea.
+
+423
+00:19:35,480 --> 00:19:38,250
+And by the way, what will happen to f from
+your first iteration?
+
+424
+00:19:40,610 --> 00:19:41,150
+It will go up?
+
+425
+00:19:42,240 --> 00:19:45,170
+Has to go up, because, you started at the
+minimum of f, right?
+
+426
+00:19:45,170 --> 00:19:46,890
+So, clearly not a descend method.
+
+427
+00:19:46,890 --> 00:19:48,150
+Now, when you see f go up,
+
+428
+00:19:48,150 --> 00:19:52,220
+someone says, hey, that's a, crappy job
+you did on that optimization.
+
+429
+00:19:52,220 --> 00:19:53,610
+I gave you an initial point, and
+
+430
+00:19:53,610 --> 00:19:56,280
+the first thing you do, is your function
+value goes up.
+
+431
+00:19:56,280 --> 00:19:58,120
+And, what, what do you say to that?
+
+432
+00:19:59,940 --> 00:20:02,245
+What, what would be your, what's your
+comeback?
+
+433
+00:20:02,245 --> 00:20:03,831
+[INAUDIBLE]
+
+434
+00:20:03,831 --> 00:20:06,930
+>> Yeah, it's like, well dude, your point
+wasn't feasible.
+
+435
+00:20:06,930 --> 00:20:11,900
+So, it had excellent objective, but it
+didn't satisfy the constraints.
+
+436
+00:20:11,900 --> 00:20:12,600
+So, that's all.
+
+437
+00:20:12,600 --> 00:20:13,130
+Okay.
+
+438
+00:20:13,130 --> 00:20:16,700
+I just mention this because things like
+this come up and,
+
+439
+00:20:16,700 --> 00:20:18,890
+you'd be surprised, actually.
+
+440
+00:20:18,890 --> 00:20:19,760
+So.
+Okay.
+
+441
+00:20:19,760 --> 00:20:21,250
+So, it says the line search is different.
+
+442
+00:20:22,600 --> 00:20:26,870
+So you don't, you don't measure progress
+by the function value, obviously, although
+
+443
+00:20:26,870 --> 00:20:30,720
+you should measure val-, you should
+measure two things the primal and dual
+
+444
+00:20:30,720 --> 00:20:34,810
+residual norms, or some people lump them
+together into one and either, either way.
+
+445
+00:20:34,810 --> 00:20:39,100
+By the way, this will tell you something
+if you look at things like SeDuMi or
+
+446
+00:20:39,100 --> 00:20:42,130
+STPT3 output, I don't know if you do, but
+
+447
+00:20:42,130 --> 00:20:47,400
+when you run CVX a few of the columns are
+now going to be demystified.
+
+448
+00:20:47,400 --> 00:20:51,700
+They'll be fully demystified by next week,
+but you will see things that say rp and
+
+449
+00:20:51,700 --> 00:20:53,700
+rd, or it'll be obscure.
+
+450
+00:20:53,700 --> 00:20:56,200
+It'll say dnorm and pnorm, and these will,
+
+451
+00:20:56,200 --> 00:20:59,510
+these literally mean the primal residual
+and the dual residual norm.
+
+452
+00:20:59,510 --> 00:21:00,800
+So, okay.
+
+453
+00:21:00,800 --> 00:21:02,546
+Okay, so here it is.
+
+454
+00:21:02,546 --> 00:21:07,504
+What you do is, you compute these ,Newton,
+the Newton, the primal and
+
+455
+00:21:07,504 --> 00:21:09,430
+dual Newton steps.
+
+456
+00:21:09,430 --> 00:21:12,560
+And then you do a backtracking line search
+on the, on the norm of r.
+
+457
+00:21:13,790 --> 00:21:14,760
+So, on the total residual.
+
+458
+00:21:16,126 --> 00:21:17,392
+That's easy enough.
+
+459
+00:21:17,392 --> 00:21:21,810
+And it turns out the directional
+derivative is simply minus the residual.
+
+460
+00:21:21,810 --> 00:21:23,300
+That's a, a quick calculation.
+
+461
+00:21:23,300 --> 00:21:25,310
+And so you get a very simple code that
+looks like this.
+
+462
+00:21:25,310 --> 00:21:27,764
+And then you update x and you keep going.
+
+463
+00:21:27,764 --> 00:21:28,760
+It's not a dissent method.
+
+464
+00:21:28,760 --> 00:21:31,320
+But I'll tell you what does go down is,
+the norm of the residual.
+
+465
+00:21:31,320 --> 00:21:34,950
+So whenever you have an algorithm and
+people analyse it, there is,
+
+466
+00:21:34,950 --> 00:21:39,080
+the basis of a proof or something, is that
+some function that goes down.
+
+467
+00:21:39,080 --> 00:21:41,120
+Right, in the Newton method, the gradient
+descend,
+
+468
+00:21:41,120 --> 00:21:43,432
+the things we focused on the function
+value going down.
+
+469
+00:21:43,432 --> 00:21:44,590
+I mean, what can be more natural?
+
+470
+00:21:44,590 --> 00:21:46,060
+You want to minimize f.
+
+471
+00:21:46,060 --> 00:21:46,840
+So it's kind of cool,
+
+472
+00:21:46,840 --> 00:21:51,050
+that, the thing you want to happen,
+happens, actually locally at every step.
+
+473
+00:21:51,050 --> 00:21:52,370
+Greedily, it happens, right?
+
+474
+00:21:53,720 --> 00:21:56,150
+here, it turns out that, that, by the way,
+
+475
+00:21:56,150 --> 00:22:02,270
+it's got all sorts of names, I think one
+name, one method is the Lyapunov function.
+
+476
+00:22:02,270 --> 00:22:04,040
+And there's another one, I forget,
+
+477
+00:22:04,040 --> 00:22:06,170
+there's all sorts of names in optimization
+too for that.
+
+478
+00:22:07,476 --> 00:22:07,990
+I forgot the name.
+And
+
+479
+00:22:07,990 --> 00:22:09,670
+in computer science they have yet another
+name.
+
+480
+00:22:09,670 --> 00:22:11,180
+Which I also can't remember right now.
+
+481
+00:22:11,180 --> 00:22:12,340
+But anyway.
+
+482
+00:22:12,340 --> 00:22:14,200
+So, but the concept is very simple.
+
+483
+00:22:14,200 --> 00:22:16,440
+There's a, you have an iterative method
+and
+
+484
+00:22:16,440 --> 00:22:18,590
+you have a function that goes down every
+step.
+
+485
+00:22:18,590 --> 00:22:23,040
+And that's the base, the basis of your
+proof, that it works, right?
+
+486
+00:22:23,040 --> 00:22:24,610
+So.
+By the way, there's a huge practical,
+
+487
+00:22:26,510 --> 00:22:30,500
+advantage of having such a function if
+it's, if it's explicit.
+
+488
+00:22:30,500 --> 00:22:33,790
+Because it basically says, you can do
+anything you want on that algorithm, any
+
+489
+00:22:33,790 --> 00:22:38,800
+modification you want, at all, as long as
+you make sure that function, does go down.
+
+490
+00:22:38,800 --> 00:22:39,750
+Right?
+So for example,
+
+491
+00:22:39,750 --> 00:22:42,960
+you can insert weird steps in your
+algorithm that does some kind of
+
+492
+00:22:42,960 --> 00:22:45,430
+weird local optimization, okay?
+
+493
+00:22:45,430 --> 00:22:46,710
+But, you better make sure,
+
+494
+00:22:46,710 --> 00:22:50,930
+that local optimization better ensure that
+that Lyapunov function goes down.
+
+495
+00:22:50,930 --> 00:22:53,050
+I just remembered one of the names, merit
+function.
+
+496
+00:22:53,050 --> 00:22:53,800
+That's one of them.
+
+497
+00:22:53,800 --> 00:22:57,390
+But there's like five of them, and anyway,
+you'll, you, the concept is clear.
+
+498
+00:22:57,390 --> 00:22:58,090
+Okay.
+So here,
+
+499
+00:22:58,090 --> 00:23:00,199
+it turns out the merit function is the
+norm of the residual.
+
+500
+00:23:02,660 --> 00:23:06,130
+So, let's talk about solving KKT systems.
+
+501
+00:23:06,130 --> 00:23:07,870
+How do you solve something like that?
+
+502
+00:23:07,870 --> 00:23:10,200
+Well there's lots of ways,.
+
+503
+00:23:10,200 --> 00:23:12,660
+So, one is you just use LDL transpose,
+
+504
+00:23:12,660 --> 00:23:15,200
+because that's a symmetric indefinite
+system, right?
+
+505
+00:23:15,200 --> 00:23:17,820
+It's indefinite because you look at the
+zeros down there, and in fact it
+
+506
+00:23:17,820 --> 00:23:22,950
+has exactly n, well, if h is positive,
+definite, it has exactly n actually,
+
+507
+00:23:22,950 --> 00:23:27,230
+if it's solvable, it has n positive
+[INAUDIBLE] values, and exactly m, or p,
+
+508
+00:23:27,230 --> 00:23:30,900
+I think it's p, is, the size of equality
+constraints, p negative ones.
+
+509
+00:23:30,900 --> 00:23:32,310
+Okay?
+
+510
+00:23:32,310 --> 00:23:34,450
+So, that's, very simple.
+
+511
+00:23:34,450 --> 00:23:38,400
+You just plug in this stuff, and, and,
+and, use LDL transverse factorization.
+
+512
+00:23:40,520 --> 00:23:42,410
+You can also do elimination.
+
+513
+00:23:42,410 --> 00:23:43,230
+What you do is, you know,
+
+514
+00:23:43,230 --> 00:23:48,860
+in many applications H will be diagonal,
+block diagonal, something simple.
+
+515
+00:23:48,860 --> 00:23:49,650
+There we go.
+
+516
+00:23:49,650 --> 00:23:51,090
+And so, H'll be, and
+
+517
+00:23:51,090 --> 00:23:54,550
+then, and then H would then be a natural
+target for elimination.
+
+518
+00:23:54,550 --> 00:23:56,940
+I mean, for sure if you saw that system
+and
+
+519
+00:23:56,940 --> 00:24:00,570
+H was diagonal, I'm hoping every single
+one of
+
+520
+00:24:00,570 --> 00:24:05,080
+you would have an overwhelming urge to
+eliminate the one one block.
+
+521
+00:24:05,080 --> 00:24:05,970
+You should.
+
+522
+00:24:05,970 --> 00:24:09,000
+It'll, and we're going to train you until
+that's the case, okay?
+
+523
+00:24:09,000 --> 00:24:13,820
+So that if, if h, but, doesn't, I mean,
+the math doesn't matter either way.
+
+524
+00:24:13,820 --> 00:24:17,400
+So if you eliminate the, the v, here.
+
+525
+00:24:17,400 --> 00:24:20,850
+You end up with a system that looks like
+this.
+
+526
+00:24:20,850 --> 00:24:24,980
+By the way, that is the negative Schur
+complement of that matrix, right?
+
+527
+00:24:24,980 --> 00:24:28,800
+Because the Schur complement is 0 minus a,
+h inverse a transpose,
+
+528
+00:24:28,800 --> 00:24:30,320
+that's the Schur complement.
+
+529
+00:24:30,320 --> 00:24:32,878
+Well with a minus sign, okay?
+
+530
+00:24:32,878 --> 00:24:34,410
+so, that's a sure compliment.
+
+531
+00:24:34,410 --> 00:24:38,106
+And by the way I think this called people
+refer to this system as
+
+532
+00:24:38,106 --> 00:24:39,440
+the reduced system.
+
+533
+00:24:39,440 --> 00:24:41,020
+That's standard notation.
+
+534
+00:24:41,020 --> 00:24:44,200
+So people would say oh, you'd say, oh,
+Newton, and blah, blah, blah.
+
+535
+00:24:44,200 --> 00:24:46,310
+And say oh how are you solving it?
+
+536
+00:24:46,310 --> 00:24:47,910
+And they'd say, reduced system.
+
+537
+00:24:47,910 --> 00:24:50,690
+By the way, they would then call this the
+augmented system.
+
+538
+00:24:50,690 --> 00:24:51,400
+Don't ask me why.
+
+539
+00:24:51,400 --> 00:24:52,253
+It's the KKT system.
+
+540
+00:24:52,253 --> 00:24:54,350
+That's augmented and reduced.
+
+541
+00:24:54,350 --> 00:24:55,960
+Okay?
+So you could do this.
+
+542
+00:24:57,360 --> 00:25:01,660
+Now, if H is singular, there's lots of
+interesting things you can do.
+
+543
+00:25:01,660 --> 00:25:08,210
+One is that, in fact, any solution of this
+is identical to a solution to that.
+
+544
+00:25:08,210 --> 00:25:11,190
+You can just check, but the point is that,
+what this allows you to
+
+545
+00:25:11,190 --> 00:25:16,440
+do is to make sure that this 1, 1 block is
+non-singular, right?
+
+546
+00:25:16,440 --> 00:25:17,990
+Then you can apply elmination.
+
+547
+00:25:17,990 --> 00:25:18,940
+So, okay.
+
+548
+00:25:20,640 --> 00:25:23,100
+Now we're going to, we're going to finish
+with an example and
+
+549
+00:25:23,100 --> 00:25:25,590
+it's going to tie a whole bunch of stuff
+together.
+
+550
+00:25:25,590 --> 00:25:29,890
+And actually, it's going to, y-, you're
+going to see something really interesting,
+
+551
+00:25:29,890 --> 00:25:33,880
+which is to say that all these, there's
+lots of methods to solve a single problem.
+
+552
+00:25:33,880 --> 00:25:36,480
+If they relate, they go through duality
+and stuff like that.
+
+553
+00:25:38,230 --> 00:25:40,820
+And what I'll you'll, you'll the but I'll,
+I'll,
+
+554
+00:25:40,820 --> 00:25:43,108
+I'll get to the punch line right now.
+
+555
+00:25:43,108 --> 00:25:46,820
+That you're, we're going to look at a
+problem and you can solve it many ways.
+
+556
+00:25:46,820 --> 00:25:50,980
+You could solve the problem, you could
+solve the dual, you could do this and
+
+557
+00:25:50,980 --> 00:25:53,890
+that and in each case if you use Newton's
+method,
+
+558
+00:25:53,890 --> 00:25:56,280
+this is going to be the critical part.
+
+559
+00:25:56,280 --> 00:26:00,030
+If you use Newton's method, the system of
+equations you're going to come down to
+
+560
+00:26:00,030 --> 00:26:03,900
+solving, and each step of each of those,
+is not exactly the same.
+
+561
+00:26:03,900 --> 00:26:06,560
+But it has exactly the same structure.
+
+562
+00:26:06,560 --> 00:26:09,600
+And that structure will be such that if
+you know what you're doing you can
+
+563
+00:26:09,600 --> 00:26:10,770
+solve it efficiently.
+
+564
+00:26:10,770 --> 00:26:11,400
+Right?
+And so,
+
+565
+00:26:11,400 --> 00:26:14,290
+what's kind of interesting about that is
+that a lot of times
+
+566
+00:26:14,290 --> 00:26:18,682
+you will actually hear people who don't
+know any better say things like, oh,
+
+567
+00:26:18,682 --> 00:26:19,920
+I'm solving the dual, right?
+
+568
+00:26:19,920 --> 00:26:22,280
+And they might say that because it sounds
+cool, right?
+
+569
+00:26:22,280 --> 00:26:23,180
+To solve the dual.
+
+570
+00:26:23,180 --> 00:26:24,270
+Doesn't it?
+
+571
+00:26:24,270 --> 00:26:26,500
+I mean, people don't know, you say I'm
+solving the dual.
+
+572
+00:26:26,500 --> 00:26:28,504
+Anyway, it sounds sophisticated.
+
+573
+00:26:28,504 --> 00:26:29,430
+And you say, why is that.
+
+574
+00:26:29,430 --> 00:26:30,990
+You go, well, I get efficiency or
+something.
+
+575
+00:26:30,990 --> 00:26:34,300
+I mean, there are reasons to solve duals
+like you can distribute stuff, and
+
+576
+00:26:34,300 --> 00:26:35,700
+parallel things.
+
+577
+00:26:35,700 --> 00:26:36,740
+That's another story.
+
+578
+00:26:36,740 --> 00:26:37,870
+But if you're doing, like,
+
+579
+00:26:37,870 --> 00:26:40,300
+a Newton method, there's absolutely no
+reason to do it.
+
+580
+00:26:40,300 --> 00:26:43,710
+If you know linear algebra, if you know
+numerical algebra,
+
+581
+00:26:43,710 --> 00:26:45,000
+there's absolutely no reason to do that.
+
+582
+00:26:45,000 --> 00:26:45,500
+We'll see that.
+
+583
+00:26:46,690 --> 00:26:48,570
+What is different actually is the
+initilizations.
+
+584
+00:26:48,570 --> 00:26:50,940
+So alright let's, let's jump into it.
+
+585
+00:26:50,940 --> 00:26:55,700
+We want to calculate the analytic center
+of
+
+586
+00:26:55,700 --> 00:27:00,020
+Ax equals b and x non negative.
+
+587
+00:27:00,020 --> 00:27:03,260
+And that's the feasible set for a classic
+linear program.
+
+588
+00:27:03,260 --> 00:27:04,520
+Right?
+Minimize transpose x,
+
+589
+00:27:04,520 --> 00:27:07,000
+subject Ax equals b, x bigger than or
+equal to zero.
+
+590
+00:27:07,000 --> 00:27:07,830
+Of the feasible set.
+
+591
+00:27:07,830 --> 00:27:11,130
+It's the intersection if you like, of an
+affine set,
+
+592
+00:27:11,130 --> 00:27:13,860
+with a nonnegative orthant, is what it is.
+
+593
+00:27:13,860 --> 00:27:18,850
+And we want to write down, I mean, so the
+analytic center is this, right?
+
+594
+00:27:18,850 --> 00:27:23,340
+That we want to minimize some of the logs,
+
+595
+00:27:23,340 --> 00:27:27,090
+that's the barrier associated with that,
+subject to x equals b.
+
+596
+00:27:27,090 --> 00:27:28,040
+Okay?
+
+597
+00:27:28,040 --> 00:27:29,110
+So.
+
+598
+00:27:29,110 --> 00:27:31,180
+Now the dual of that problem, you can work
+it out.
+
+599
+00:27:31,180 --> 00:27:31,860
+Is this.
+
+600
+00:27:31,860 --> 00:27:33,126
+You maximize this.
+
+601
+00:27:33,126 --> 00:27:38,290
+And here it turns out, this thing is
+strictly the original function is
+
+602
+00:27:38,290 --> 00:27:41,660
+strictly convex, and that says, that, if
+we know the,
+
+603
+00:27:41,660 --> 00:27:44,950
+if we solve the dual, we can recover, the
+primal solution.
+
+604
+00:27:44,950 --> 00:27:48,030
+And there's a silly, simple formula,
+right, it's really dumb formula for it,
+
+605
+00:27:48,030 --> 00:27:50,260
+it's like it doesn't even matter what it
+is, let's.
+
+606
+00:27:50,260 --> 00:27:51,280
+If it's there.
+
+607
+00:27:51,280 --> 00:27:52,120
+Right?
+And you can,
+
+608
+00:27:52,120 --> 00:27:54,200
+by solving the dual, you get the primal.
+
+609
+00:27:54,200 --> 00:27:55,380
+Okay.
+
+610
+00:27:55,380 --> 00:27:57,330
+And they're kind of interesting, let's
+take a look at them.
+
+611
+00:27:57,330 --> 00:27:59,510
+The dual is unconstrained.
+
+612
+00:27:59,510 --> 00:28:01,030
+Well, not quite.
+
+613
+00:28:01,030 --> 00:28:04,910
+There's an implicit constraint, that A
+transpose new is positive.
+
+614
+00:28:04,910 --> 00:28:05,460
+Okay?
+So
+
+615
+00:28:05,460 --> 00:28:07,410
+the domain of the dual is a bit
+complicated.
+
+616
+00:28:07,410 --> 00:28:11,090
+It's the set of vectors nu for which a
+transpose nu is positive.
+
+617
+00:28:11,090 --> 00:28:15,040
+That's actually a open polyhedron, right?
+
+618
+00:28:15,040 --> 00:28:18,640
+So the domain of the primal is simple.
+
+619
+00:28:18,640 --> 00:28:20,620
+It's r plus to the n.
+
+620
+00:28:20,620 --> 00:28:22,220
+R plus plus to the n, right?
+
+621
+00:28:22,220 --> 00:28:24,870
+It's all positive vectors, right?
+
+622
+00:28:24,870 --> 00:28:28,010
+Sorry, intersect with ax equals b.
+
+623
+00:28:28,010 --> 00:28:29,410
+My, my mistake, so okay.
+
+624
+00:28:29,410 --> 00:28:30,600
+So, they're different.
+
+625
+00:28:30,600 --> 00:28:31,570
+Okay, so let's look at some things.
+
+626
+00:28:31,570 --> 00:28:32,149
+Here's what we can do.
+
+627
+00:28:33,390 --> 00:28:35,470
+Let's just take Newton method with
+equality constraint.
+
+628
+00:28:35,470 --> 00:28:38,700
+So we have a problem with 500 variables,
+100 equality constraints.
+
+629
+00:28:38,700 --> 00:28:42,020
+And if you run Newton's method, you get
+something like this.
+
+630
+00:28:42,020 --> 00:28:43,220
+And, what we're doing,
+
+631
+00:28:43,220 --> 00:28:48,790
+here, is, these four traces show you just
+four different starting points, right?
+
+632
+00:28:48,790 --> 00:28:50,390
+And, you know that looks very Newtonish.
+
+633
+00:28:50,390 --> 00:28:54,540
+This is what you should, this is what you
+should see and you will see.
+
+634
+00:28:54,540 --> 00:28:55,360
+Presumably.
+
+635
+00:28:55,360 --> 00:28:56,100
+Later.
+This week?
+
+636
+00:28:56,100 --> 00:28:57,080
+Are they.
+They're doing it this week.
+
+637
+00:28:57,080 --> 00:28:58,750
+Okay.
+So you'll see things that look like this.
+
+638
+00:28:58,750 --> 00:29:00,930
+We, this is what you're shooting for,
+right?
+
+639
+00:29:00,930 --> 00:29:02,030
+And the idea is, look,
+
+640
+00:29:02,030 --> 00:29:05,180
+that's a ridiculous, that's a 10 to the 15
+range there.
+
+641
+00:29:05,180 --> 00:29:09,720
+So, this, this may be actually, quite,
+perfectly good, respectable convergence,
+
+642
+00:29:09,720 --> 00:29:15,310
+but on a plot, whose range goes covers ten
+to the 15, you're not seeing it, okay?
+
+643
+00:29:15,310 --> 00:29:17,910
+But the key thing you should see is
+something like that, right?
+
+644
+00:29:17,910 --> 00:29:20,670
+That's, that, that's your basic Newton
+behavior, right?
+
+645
+00:29:20,670 --> 00:29:24,410
+By the way, that should also correspond to
+the place where you do undamped steps, so
+
+646
+00:29:24,410 --> 00:29:26,870
+the step size should be one in that
+region.
+
+647
+00:29:26,870 --> 00:29:27,390
+Fine.
+
+648
+00:29:27,390 --> 00:29:28,730
+And this is what you expect.
+
+649
+00:29:28,730 --> 00:29:29,800
+Okay.
+
+650
+00:29:29,800 --> 00:29:32,090
+Oh, the initialization was interesting.
+
+651
+00:29:32,090 --> 00:29:37,800
+We needed to know a positive vector with a
+x equals b, right?
+
+652
+00:29:37,800 --> 00:29:40,350
+I mean if this is just a general problem
+you don't know such a thing so
+
+653
+00:29:40,350 --> 00:29:41,450
+that would be kind of a pain.
+
+654
+00:29:44,040 --> 00:29:47,670
+Let's apply Newton method to the dual
+problem, okay?
+
+655
+00:29:47,670 --> 00:29:49,360
+So here, if you applied,
+
+656
+00:29:49,360 --> 00:29:54,390
+that means what we do is we need a vector
+nu zero that starts in the domain and
+
+657
+00:29:54,390 --> 00:29:57,450
+we apply Newton's method, and then here it
+is for four different things.
+
+658
+00:29:57,450 --> 00:30:02,220
+And by the way, you might be tempted to
+say, in fact, I will give you the entire
+
+659
+00:30:02,220 --> 00:30:06,570
+fallacious argument, because I promise you
+will hear this from someone you know.
+
+660
+00:30:06,570 --> 00:30:08,810
+In which case you can correct their
+misunderstanding.
+
+661
+00:30:09,840 --> 00:30:14,360
+They would say, I have a fantastic method
+for solving this problem.
+
+662
+00:30:14,360 --> 00:30:15,430
+I'm going to solve the dual.
+
+663
+00:30:16,460 --> 00:30:18,510
+Someone says, why would you do that?
+
+664
+00:30:18,510 --> 00:30:19,790
+And they would say the following.
+
+665
+00:30:19,790 --> 00:30:24,230
+Number one, that original problem has 500
+variables.
+
+666
+00:30:24,230 --> 00:30:25,720
+The dual has a 100.
+
+667
+00:30:25,720 --> 00:30:27,600
+Last time I checked 100 is smaller than
+500.
+
+668
+00:30:27,600 --> 00:30:31,280
+A person says, I' m solving, you're
+solving a problem with 500 variables,
+
+669
+00:30:31,280 --> 00:30:33,760
+I'm solving one with 100.
+
+670
+00:30:33,760 --> 00:30:35,460
+That's fewer.
+
+671
+00:30:35,460 --> 00:30:38,350
+That means it's 125 times faster, number
+one.
+
+672
+00:30:38,350 --> 00:30:44,410
+Number two, to add sort of, just a bonus,
+you're taking fifteen, twenty steps.
+
+673
+00:30:44,410 --> 00:30:45,250
+Look at this.
+
+674
+00:30:45,250 --> 00:30:48,090
+This thing typically converges in eight or
+nine steps.
+
+675
+00:30:48,090 --> 00:30:49,830
+I'm half the number of steps.
+
+676
+00:30:49,830 --> 00:30:52,790
+My advantage over you is 250x.
+
+677
+00:30:54,110 --> 00:30:57,210
+Plus you get the added bonus that it
+sounds cool if you say,
+
+678
+00:30:57,210 --> 00:30:57,890
+I'm solving the dual.
+
+679
+00:30:57,890 --> 00:31:00,050
+Because it sounds more sophisticated, you
+know what I'm saying?
+
+680
+00:31:00,050 --> 00:31:02,530
+RIght?
+Everyone getting this argument?
+
+681
+00:31:02,530 --> 00:31:06,470
+We will see that it is totally and
+completely wrong.
+
+682
+00:31:06,470 --> 00:31:07,730
+Okay?
+But that's the argument.
+
+683
+00:31:07,730 --> 00:31:09,300
+You will hear it from people.
+
+684
+00:31:09,300 --> 00:31:09,800
+Okay.
+
+685
+00:31:11,690 --> 00:31:12,660
+Now let's look at another one.
+
+686
+00:31:13,750 --> 00:31:16,110
+Let's look at infeasible start Newton
+Method.
+
+687
+00:31:16,110 --> 00:31:19,360
+Now, this is its huge advantage and
+
+688
+00:31:19,360 --> 00:31:22,380
+this is probably why this is more useful
+than, than, than a lot of others.
+
+689
+00:31:22,380 --> 00:31:24,270
+Although, it depends on the situation.
+
+690
+00:31:24,270 --> 00:31:27,210
+The initialization is very modest.
+
+691
+00:31:27,210 --> 00:31:30,580
+The only thing you need, it does not have
+to satisfy ax equals b,
+
+692
+00:31:30,580 --> 00:31:32,030
+it only has been in the domain.
+
+693
+00:31:32,030 --> 00:31:35,190
+The domain is the sum of the logs, right?
+
+694
+00:31:35,190 --> 00:31:38,950
+So, could some one, want to suggest a
+starting point.
+
+695
+00:31:41,880 --> 00:31:43,020
+All ones, thank you,
+
+696
+00:31:43,020 --> 00:31:47,230
+all ones, that is an excellent starting
+point and you start from there.
+
+697
+00:31:47,230 --> 00:31:48,820
+And then, it's actually kind of cool
+right?
+
+698
+00:31:48,820 --> 00:31:50,890
+Because the first couple of, you know,
+
+699
+00:31:50,890 --> 00:31:55,900
+the first couple of steps you'll see two
+things happening, right?
+
+700
+00:31:55,900 --> 00:31:56,480
+The function may or
+
+701
+00:31:56,480 --> 00:32:01,850
+may not be going down but, you'll be
+moving towards ax equals b, right?
+
+702
+00:32:01,850 --> 00:32:02,840
+So, okay.
+
+703
+00:32:02,840 --> 00:32:05,590
+And if you do that, you know here, here
+you go you get between 10 and
+
+704
+00:32:05,590 --> 00:32:06,510
+20 steps or something.
+
+705
+00:32:06,510 --> 00:32:08,000
+That's the infeasable start method.
+
+706
+00:32:08,000 --> 00:32:12,660
+But the first one that actually puts
+Approximately zero actual burden on you.
+
+707
+00:32:12,660 --> 00:32:15,050
+You know, you could write this code right
+now, right?
+
+708
+00:32:15,050 --> 00:32:16,970
+Because it doesn't need some weird thing.
+
+709
+00:32:16,970 --> 00:32:20,690
+Okay, but now let's, let's go back and
+look at these three methods.
+
+710
+00:32:22,240 --> 00:32:25,490
+And if you look at them, here's what's
+going to come up.
+
+711
+00:32:25,490 --> 00:32:26,620
+It's really quite cool.
+
+712
+00:32:28,170 --> 00:32:32,850
+If you look at the original one, you end
+up solving
+
+713
+00:32:32,850 --> 00:32:37,440
+this system of equations to determine to
+get a Newton step, okay?
+
+714
+00:32:37,440 --> 00:32:38,380
+And look what it is.
+
+715
+00:32:38,380 --> 00:32:42,470
+It's diagonal a, a transpose, right?
+
+716
+00:32:42,470 --> 00:32:46,820
+That should induce in you an immediate
+urge to eliminate eh,
+
+717
+00:32:46,820 --> 00:32:49,490
+to eliminate the first top ec-, delta x
+block, and
+
+718
+00:32:49,490 --> 00:32:53,090
+you will get the following: You will get a
+times, you,
+
+719
+00:32:53,090 --> 00:32:56,400
+you'll get this reduced system times a
+transpose w equals b, right?
+
+720
+00:32:56,400 --> 00:32:58,560
+So that's what you'll get, and you'll
+solve that.
+
+721
+00:32:58,560 --> 00:32:59,060
+Right?
+
+722
+00:33:00,370 --> 00:33:01,040
+okay.
+
+723
+00:33:01,040 --> 00:33:03,760
+Now if you solve the Newton system for
+
+724
+00:33:03,760 --> 00:33:09,140
+the dual, well you end up solving
+something that looks like this, okay?
+
+725
+00:33:09,140 --> 00:33:10,570
+But if you look at that carefully you
+realize,
+
+726
+00:33:10,570 --> 00:33:14,380
+I mean, it's a totally different system
+from this, right?
+
+727
+00:33:14,380 --> 00:33:19,440
+But the structure is the same, it's a
+diagonal a transpose.
+
+728
+00:33:19,440 --> 00:33:23,070
+It's a system of that form, that's the
+coefficient equation.
+
+729
+00:33:23,070 --> 00:33:25,680
+That's what you have to solve, right?
+
+730
+00:33:27,070 --> 00:33:29,960
+In the third one, you, the Newton system
+looks like that.
+
+731
+00:33:29,960 --> 00:33:32,890
+I mean the only thing different here is,
+instead of the dual variable you
+
+732
+00:33:32,890 --> 00:33:37,010
+now have a, a delta dual variable, and
+instead of a 0, you have a residual here.
+
+733
+00:33:37,010 --> 00:33:37,670
+And you get this,
+
+734
+00:33:37,670 --> 00:33:40,980
+so it's the same, actually, as the first
+one and you get the same, same thing.
+
+735
+00:33:40,980 --> 00:33:43,120
+The right-hand side is different, but that
+doesn't matter.
+
+736
+00:33:43,120 --> 00:33:49,410
+So in each case, you end up solving a, d,
+a transpose w equals h.
+
+737
+00:33:49,410 --> 00:33:55,350
+What that says is, the cost of the three
+methods is identical despite
+
+738
+00:33:55,350 --> 00:34:00,710
+this one appearing to have 100 variables,
+whereas this one has, well,
+
+739
+00:34:00,710 --> 00:34:05,910
+this one has 500 variables, and this one,
+down here, has 600,
+
+740
+00:34:05,910 --> 00:34:09,720
+because you're up, you would say, well I'm
+updating the primal and the dual, right?
+
+741
+00:34:09,720 --> 00:34:15,490
+So, so all of this says, don't be fooled
+by when somebody walks up to you and
+
+742
+00:34:15,490 --> 00:34:17,590
+tells you about the complexity of Newton's
+method.
+
+743
+00:34:17,590 --> 00:34:20,950
+Ask a few questions to probe if they know
+numerical linear algebra, and
+
+744
+00:34:20,950 --> 00:34:23,740
+if they don't, ignore everything they have
+to say about what's hard and
+
+745
+00:34:23,740 --> 00:34:26,410
+what's easy 'cause they're probably
+completely wrong.
+
+746
+00:34:26,410 --> 00:34:28,240
+Okay?
+So that's, that, that's the idea.
+
+747
+00:34:28,240 --> 00:34:31,040
+By the way, I want to finish with just one
+comment.
+
+748
+00:34:31,040 --> 00:34:35,420
+If a has sparsity, ADA transpose, that
+comes up all the time.
+
+749
+00:34:37,570 --> 00:34:41,950
+And in fact, you can get the sparsity
+pattern of ADA transpose, right,
+
+750
+00:34:41,950 --> 00:34:44,280
+which is what you'd have to solve,
+directly.
+
+751
+00:34:44,280 --> 00:34:48,800
+And in this case it's going to depend,
+exactly on this.
+
+752
+00:34:48,800 --> 00:34:52,640
+This will have a non-zero, in the I, J,
+position.
+
+753
+00:34:52,640 --> 00:34:56,990
+If and only if, a if you write, if you
+make a like a,
+
+754
+00:34:56,990 --> 00:35:00,780
+if you make a graph out of a, or actually
+if you take the matrix a.
+
+755
+00:35:00,780 --> 00:35:05,720
+Only if there is a, I guess it's a row if,
+if i and
+
+756
+00:35:05,720 --> 00:35:10,250
+j share a non-zero in that row that,
+that's the condition.
+
+757
+00:35:10,250 --> 00:35:13,470
+So, in a lot of practical applications
+this would make it
+
+758
+00:35:13,470 --> 00:35:16,330
+very clear what the sparsity pattern is.
+
+759
+00:35:16,330 --> 00:35:18,480
+Okay, so anyway.
+
+760
+00:35:18,480 --> 00:35:21,490
+So the bottom line is that for a lot of
+these problems it's,
+
+761
+00:35:21,490 --> 00:35:26,070
+it's smart that things that would appear
+to be quite different in,
+
+762
+00:35:26,070 --> 00:35:30,230
+in complexity right, numbers of variables
+things like that, actually aren't.
+
+763
+00:35:30,230 --> 00:35:34,200
+But that's assuming you are applying smart
+linear algebra right?
+
+764
+00:35:34,200 --> 00:35:37,310
+If you just, if you just made these and
+did back slash on each one and
+
+765
+00:35:37,310 --> 00:35:40,560
+they weren't sparse, you'd get, you, it
+would,
+
+766
+00:35:40,560 --> 00:35:42,690
+it would come up with the same conclusion
+you'd want.
+
+767
+00:35:42,690 --> 00:35:44,120
+This would be way better.
+
+768
+00:35:44,120 --> 00:35:46,390
+Because it's 100 variables, way better
+than that.
+
+769
+00:35:46,390 --> 00:35:47,940
+And that's better than that.
+
+770
+00:35:47,940 --> 00:35:52,770
+Alright, the next example, is network flow
+optimization.
+
+771
+00:35:52,770 --> 00:35:57,140
+So, the idea is this; we have a network.
+
+772
+00:35:57,140 --> 00:35:58,090
+We have flows.
+
+773
+00:35:58,090 --> 00:36:01,320
+So xi is the flow along arc.
+
+774
+00:36:01,320 --> 00:36:03,020
+Or edge i, here.
+
+775
+00:36:04,490 --> 00:36:07,530
+Phi i is a cost function for flow along
+that arc.
+
+776
+00:36:07,530 --> 00:36:12,210
+And ax equals b, I'll say what a is, a is
+the node incidence matrix.
+
+777
+00:36:13,610 --> 00:36:17,070
+so, the node incidence matrix is the
+following.
+
+778
+00:36:17,070 --> 00:36:21,010
+It tells you whether there is, looks like
+this, right?
+
+779
+00:36:21,010 --> 00:36:23,030
+So, you start with this.
+
+780
+00:36:23,030 --> 00:36:25,530
+And you put a plus 1 and a minus 1.
+
+781
+00:36:25,530 --> 00:36:31,270
+In each so, each of these, these are the
+nodes, here and these are the arcs and
+
+782
+00:36:31,270 --> 00:36:37,510
+you put a plus 1 and minus 1 in each
+column to tell you which way the,
+
+783
+00:36:37,510 --> 00:36:40,250
+that arc where it goes from and where it
+goes to.
+
+784
+00:36:40,250 --> 00:36:43,570
+Where it's head and tail is is incident.
+
+785
+00:36:43,570 --> 00:36:49,590
+And and then this matrix here is rank
+deficient of well for
+
+786
+00:36:49,590 --> 00:36:53,780
+example if you have one transpose on the
+left times this matrix you get zero.
+
+787
+00:36:55,790 --> 00:36:57,930
+That would actually be perfectly okay to
+leave it here.
+
+788
+00:36:57,930 --> 00:37:03,280
+But instead, it's conventional to simply
+remove one row and
+
+789
+00:37:03,280 --> 00:37:07,790
+that gives you a reduced node incidence
+matrix at tilde.
+
+790
+00:37:07,790 --> 00:37:10,170
+And if the graph is otherwise connected,
+
+791
+00:37:10,170 --> 00:37:13,010
+then that matrix is not ranked efficient,
+that's standard.
+
+792
+00:37:14,270 --> 00:37:16,860
+We could say lots of things about that but
+
+793
+00:37:16,860 --> 00:37:18,800
+this is the same this is done in
+electrical engineering.
+
+794
+00:37:18,800 --> 00:37:24,540
+This means you choose one node as the
+ground reference or datum node, okay?
+
+795
+00:37:24,540 --> 00:37:27,140
+So that's, that's all that matters there.
+
+796
+00:37:27,140 --> 00:37:31,530
+And Ax equals b is flow conservation, so
+
+797
+00:37:31,530 --> 00:37:36,810
+that says that if I at every point, every
+node here,
+
+798
+00:37:36,810 --> 00:37:42,350
+I might, if I have some arcs flowing in
+and some arcs going out like this.
+
+799
+00:37:42,350 --> 00:37:50,690
+It says, for example, if that's x3, that's
+x5, that's x, x10, and that's x12.
+
+800
+00:37:50,690 --> 00:37:55,880
+That says the following that x3 plus x5
+that's flowing in that has to
+
+801
+00:37:55,880 --> 00:37:59,730
+equal x10 plus x12, that's the outflow.
+
+802
+00:37:59,730 --> 00:38:03,790
+So, basically, ax equals b is flow
+conservation.
+
+803
+00:38:05,130 --> 00:38:07,010
+And I should say what b is.
+
+804
+00:38:07,010 --> 00:38:10,680
+b, most, if b on the right hand side over
+here,
+
+805
+00:38:10,680 --> 00:38:14,150
+the right hand side of this equation, that
+is an external sourcer sync.
+
+806
+00:38:14,150 --> 00:38:16,730
+So, it looks like that, right?
+
+807
+00:38:16,730 --> 00:38:21,450
+So, if, if there is nothing else connected
+to that node.
+
+808
+00:38:21,450 --> 00:38:24,640
+Then, that the associated b sub i is zero.
+
+809
+00:38:25,730 --> 00:38:28,550
+otherwise, that's a source or sink.
+
+810
+00:38:28,550 --> 00:38:29,540
+Right.
+So.
+
+811
+00:38:29,540 --> 00:38:31,420
+Okay.
+So, this says,
+
+812
+00:38:31,420 --> 00:38:34,900
+among all flows, please find the one that
+minimizes the cost.
+
+813
+00:38:34,900 --> 00:38:36,780
+These are, that's, that's the cost.
+
+814
+00:38:36,780 --> 00:38:37,670
+Okay.
+
+815
+00:38:37,670 --> 00:38:39,230
+So we're going to take a look at that.
+
+816
+00:38:40,740 --> 00:38:44,300
+And we're going to figure out, how to, how
+to solve this problem.
+
+817
+00:38:44,300 --> 00:38:48,790
+More interestingly we'll see how structure
+comes in.
+
+818
+00:38:48,790 --> 00:38:51,130
+Well the KKT matrix looks like this.
+
+819
+00:38:51,130 --> 00:38:56,050
+We, minimize a sum of functions, of the
+individual variables.
+
+820
+00:38:56,050 --> 00:38:58,510
+But I know at the hession, what such a
+thing looks like.
+
+821
+00:38:58,510 --> 00:39:02,270
+The hession is the diagonal of the second
+derivatives, right?
+
+822
+00:39:02,270 --> 00:39:05,610
+So, the hessian, is here, it's diagonal.
+
+823
+00:39:05,610 --> 00:39:06,460
+It's like that.
+
+824
+00:39:06,460 --> 00:39:07,940
+And that's up here.
+
+825
+00:39:07,940 --> 00:39:13,060
+Then I put A, over here, because I have ax
+equals b, as the constraint.
+
+826
+00:39:13,060 --> 00:39:16,570
+I have, this is my Newton, my KKT system
+is, has, involves A and
+
+827
+00:39:16,570 --> 00:39:19,620
+A transpose, here, like that.
+
+828
+00:39:19,620 --> 00:39:21,250
+And I have to solve that equation.
+
+829
+00:39:21,250 --> 00:39:27,660
+And you know, you're staring a at it and
+you see a, a, a diagonal matrix here.
+
+830
+00:39:27,660 --> 00:39:32,260
+And by now you should have a very strong
+urge to eliminate that block.
+
+831
+00:39:32,260 --> 00:39:35,470
+And if you do eliminate that block you're
+going to get this thing that is
+
+832
+00:39:35,470 --> 00:39:40,780
+the negative Schur complement of this
+matrix with respect to H.
+
+833
+00:39:40,780 --> 00:39:41,820
+So you get this thing.
+
+834
+00:39:41,820 --> 00:39:43,690
+Now by the way H inverse shouldn't scare
+you,
+
+835
+00:39:43,690 --> 00:39:46,230
+even though if H is big because H is
+diagonal.
+
+836
+00:39:46,230 --> 00:39:49,350
+So, that was the whole point after all;
+it's easy to invert.
+
+837
+00:39:50,410 --> 00:39:53,420
+So you end up solving a system that looks
+like that, okay?
+
+838
+00:39:54,740 --> 00:40:00,260
+But we can actually say more, because this
+is A times, h inverse,
+
+839
+00:40:00,260 --> 00:40:02,100
+that's diagonal, times A transpose.
+
+840
+00:40:02,100 --> 00:40:05,620
+And the sparcity pattern, what, it's the
+same as the sparsity pattern of a,
+
+841
+00:40:05,620 --> 00:40:07,110
+a transposed.
+
+842
+00:40:07,110 --> 00:40:09,370
+Now a is here.
+
+843
+00:40:09,370 --> 00:40:11,190
+Of that matrix like this.
+
+844
+00:40:11,190 --> 00:40:14,330
+So a a transposed, is the small one.
+
+845
+00:40:14,330 --> 00:40:16,740
+Diagonal one doesn't affect the sparsity
+pattern.
+
+846
+00:40:16,740 --> 00:40:17,570
+Okay?
+
+847
+00:40:17,570 --> 00:40:19,450
+And this is nodes, here.
+
+848
+00:40:19,450 --> 00:40:20,100
+Right?
+
+849
+00:40:20,100 --> 00:40:22,060
+So this is a nodes-by-nodes matrix.
+
+850
+00:40:22,060 --> 00:40:26,240
+And we can say exactly what its sparsity
+pattern, is.
+
+851
+00:40:26,240 --> 00:40:26,830
+Okay?
+
+852
+00:40:26,830 --> 00:40:29,580
+This sparsity pattern is the following.
+
+853
+00:40:29,580 --> 00:40:34,540
+An entry is nonzero here if and only if
+nodes i and j are connected by an arc.
+
+854
+00:40:35,620 --> 00:40:36,250
+Okay?
+
+855
+00:40:36,250 --> 00:40:40,180
+So that suggests Well it depends on the
+network of course, right?
+
+856
+00:40:40,180 --> 00:40:43,200
+So, that suggests something like this.
+
+857
+00:40:43,200 --> 00:40:47,820
+Well I can, I don't know, I can ask you a,
+a, a question about it.
+
+858
+00:40:47,820 --> 00:40:51,330
+This says that if the degree, right?
+
+859
+00:40:51,330 --> 00:40:57,000
+If, if each node has a maximum degree d,
+say, that's the number of connected edges.
+
+860
+00:40:58,630 --> 00:41:04,170
+Then that tells you that every row of this
+matrix, and column by the way,
+
+861
+00:41:04,170 --> 00:41:08,915
+has a maximum number of three, entries.
+
+862
+00:41:08,915 --> 00:41:10,440
+Non-zero entries in it, right?
+
+863
+00:41:10,440 --> 00:41:12,500
+And that tells you that this matrix is
+probably sparse,
+
+864
+00:41:12,500 --> 00:41:17,970
+too, and that suggests that you could do a
+sparse Cholesky on this matrix, right?
+
+865
+00:41:17,970 --> 00:41:21,120
+And in fact, it, if the graph is sparse
+enough and
+
+866
+00:41:21,120 --> 00:41:26,490
+if the gods who control the heuristics
+used to order
+
+867
+00:41:27,500 --> 00:41:32,750
+Cholesky factorizations for sparse
+matrices are smiling on you,
+
+868
+00:41:32,750 --> 00:41:37,560
+Then there will be very little, if you're
+lucky, there'll be not much fill-in, and
+
+869
+00:41:37,560 --> 00:41:42,270
+that says basically that you can solve,
+you can com, you can solve this system and
+
+870
+00:41:42,270 --> 00:41:48,230
+do one Newton step in something that's not
+much more time than the number of flows.
+
+871
+00:41:48,230 --> 00:41:49,655
+Yeah, we're, so, n.
+
+872
+00:41:49,655 --> 00:41:51,200
+So, of n.
+
+873
+00:41:51,200 --> 00:41:54,650
+And if you're lucky you can solve a pretty
+big flow system pretty quickly.
+
+874
+00:41:54,650 --> 00:42:00,170
+And Newton's steps would only cost you
+something that's really kind of only,
+
+875
+00:42:00,170 --> 00:42:03,310
+well it's going to have a not totally
+small multiplier in front.
+
+876
+00:42:03,310 --> 00:42:06,300
+But it's going to be something that would
+have not many,
+
+877
+00:42:06,300 --> 00:42:08,955
+it wouldn't be much more than just walking
+over the graph once.
+
+878
+00:42:08,955 --> 00:42:13,330
+So, and this would allow you to solve this
+very, very fast.
+
+879
+00:42:13,330 --> 00:42:15,350
+Again that requires the sparsity here.
+

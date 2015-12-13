@@ -1,0 +1,196 @@
+1
+00:00:00,360 --> 00:00:02,940
+In proc freq, you can specify multiple
+tables at once.
+
+2
+00:00:04,670 --> 00:00:05,590
+In this first chunk of code,
+
+3
+00:00:05,590 --> 00:00:09,160
+you can get three separate one way
+frequency distribution tables.
+
+4
+00:00:09,160 --> 00:00:11,170
+You'll have one for the gender variable,
+one for
+
+5
+00:00:11,170 --> 00:00:13,900
+the marital status variable, and a third
+one for the race variable.
+
+6
+00:00:18,360 --> 00:00:20,190
+Here we have three tables from that one
+chunk of code.
+
+7
+00:00:20,190 --> 00:00:26,740
+The second chunk of code will give us two
+separate two by two contingency tables.
+
+8
+00:00:26,740 --> 00:00:30,230
+One for gender by marital status, and a
+second one for gender by race.
+
+9
+00:00:30,230 --> 00:00:35,070
+We have two tables now.
+
+10
+00:00:39,070 --> 00:00:41,900
+Here's an easier way to code multiple
+tables at once.
+
+11
+00:00:41,900 --> 00:00:44,800
+This will automatically make two tables,
+just like we specified before,
+
+12
+00:00:44,800 --> 00:00:47,820
+but you don't have to type out gender
+asterisk each time.
+
+13
+00:00:49,020 --> 00:00:51,510
+This trick will come in handy when you
+need to make a frequency table
+
+14
+00:00:51,510 --> 00:00:54,220
+like a table one where you might have to
+make a separate table for
+
+15
+00:00:54,220 --> 00:00:55,200
+over a dozen covariants.
+
+16
+00:00:56,950 --> 00:00:58,660
+As you can see, it has the same output as
+before.
+
+17
+00:01:00,800 --> 00:01:05,470
+So far the data that you have been using
+has had a separate row for each subject.
+
+18
+00:01:05,470 --> 00:01:08,460
+Sometimes you might receive data in a
+different format.
+
+19
+00:01:08,460 --> 00:01:09,360
+Take a look at this data set.
+
+20
+00:01:11,260 --> 00:01:14,690
+We have a binary variable for getting
+treatment and another one for being cured.
+
+21
+00:01:14,690 --> 00:01:16,950
+We have a third variable called count.
+
+22
+00:01:18,250 --> 00:01:19,770
+>> Instead of having a different row for
+
+23
+00:01:19,770 --> 00:01:23,610
+each individual subject, we now have a
+different row for each type of subject.
+
+24
+00:01:24,610 --> 00:01:26,000
+Let's go to our data lines and look at it.
+
+25
+00:01:27,540 --> 00:01:29,420
+As you can see, we have a total count of
+56,
+
+26
+00:01:29,420 --> 00:01:33,680
+which represents all of those who were not
+treated and not cured.
+
+27
+00:01:33,680 --> 00:01:37,910
+The next line we have 34 which represents
+the total count for
+
+28
+00:01:37,910 --> 00:01:39,890
+those who were not treated and cured.
+
+29
+00:01:41,330 --> 00:01:43,550
+In the third line we have those who were
+treated but
+
+30
+00:01:43,550 --> 00:01:45,480
+not cured with the total count of 23.
+
+31
+00:01:45,480 --> 00:01:47,630
+In the final line,
+
+32
+00:01:47,630 --> 00:01:51,470
+we have 90 which represents all of those
+who were treated and cured.
+
+33
+00:01:53,220 --> 00:01:56,250
+If we try to enter this into proc freq
+like we did before,
+
+34
+00:01:56,250 --> 00:01:58,050
+we are not going to get the right output.
+
+35
+00:01:59,100 --> 00:02:00,770
+When we run a simple code like this,
+
+36
+00:02:02,220 --> 00:02:04,929
+you will see that the cells in our table
+do not actually mean anything.
+
+37
+00:02:06,040 --> 00:02:08,670
+What we need to do to fix this is include
+a weight statement.
+
+38
+00:02:10,260 --> 00:02:11,820
+Check out this code.
+
+39
+00:02:11,820 --> 00:02:14,320
+In the third line we've included weight
+count.
+
+40
+00:02:15,550 --> 00:02:19,920
+What we are doing is telling SAS that our
+variables only specify the rows and
+
+41
+00:02:19,920 --> 00:02:23,920
+columns, and that a third variable is
+needed to actually populate the cells.
+
+42
+00:02:24,920 --> 00:02:28,060
+When we run this, we'll get a correct
+frequency table.

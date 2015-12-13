@@ -1,0 +1,914 @@
+1
+00:00:08,810 --> 00:00:11,610
+In this next module, I'm going to talk
+about an important,
+
+2
+00:00:11,610 --> 00:00:15,130
+discrete probability distribution called
+the binomial distribution.
+
+3
+00:00:15,130 --> 00:00:17,870
+It has widespread applications in
+statistics .
+
+4
+00:00:18,980 --> 00:00:23,500
+So the binomial probability comes up in
+lots of different scenarios.
+
+5
+00:00:23,500 --> 00:00:27,420
+It's a particular situation where you have
+a fixed number of trials and
+
+6
+00:00:27,420 --> 00:00:29,250
+we'll call that n trials.
+
+7
+00:00:29,250 --> 00:00:31,056
+So like 15 tosses of a coin or
+
+8
+00:00:31,056 --> 00:00:35,030
+20 patients or 1000 people surveyed, but
+there's a fixed number.
+
+9
+00:00:35,030 --> 00:00:37,120
+You're also dealing with a binary outcome.
+
+10
+00:00:37,120 --> 00:00:40,370
+So in each of those trials there are only
+two possible outcomes.
+
+11
+00:00:40,370 --> 00:00:42,555
+Such as heads or tails, or disease or no
+disease.
+
+12
+00:00:42,555 --> 00:00:46,530
+And we're going to call the probability of
+one of those outcomes p,
+
+13
+00:00:46,530 --> 00:00:50,810
+and the probability of the other outcome 1
+minus p.
+
+14
+00:00:50,810 --> 00:00:52,870
+The other thing that has to be true for
+
+15
+00:00:52,870 --> 00:00:58,110
+the binomial probability distribution to
+apply is each trial, each coin toss, or
+
+16
+00:00:58,110 --> 00:01:02,310
+patient, or person surveyed, has to have
+the same probability.
+
+17
+00:01:02,310 --> 00:01:05,540
+Of getting a success or failure as
+everybody else.
+
+18
+00:01:05,540 --> 00:01:09,460
+So there's a -- every single trial had the
+exact same probabilities, like when you
+
+19
+00:01:09,460 --> 00:01:14,090
+toss a coin, every time you toss a coin
+you have a .5 chance of getting a heads.
+
+20
+00:01:14,090 --> 00:01:16,930
+So that's the scenario we're talking about
+when we're talking about
+
+21
+00:01:16,930 --> 00:01:18,179
+the binomial distribution.
+
+22
+00:01:19,380 --> 00:01:24,300
+Now some of you may have encountered the
+binomial probability distribution before,
+
+23
+00:01:24,300 --> 00:01:27,290
+and you may have been given a formula and
+
+24
+00:01:27,290 --> 00:01:31,110
+told how to plug into this formula to
+calculate binomial probabilities.
+
+25
+00:01:31,110 --> 00:01:34,910
+Well, I hate to just give you a formula
+without any reasoning behind it.
+
+26
+00:01:34,910 --> 00:01:37,840
+So what I want to do now is kind of walk
+you through the logic,
+
+27
+00:01:37,840 --> 00:01:41,490
+build up to that formula, so that you have
+some sense of where it comes from.
+
+28
+00:01:41,490 --> 00:01:45,008
+So that hopefully if you ever forgot the
+formula you could just derive it yourself.
+
+29
+00:01:45,008 --> 00:01:48,470
+So we're going to start with a simple
+example to build towards figuring out
+
+30
+00:01:48,470 --> 00:01:50,610
+the binomial probability formula.
+
+31
+00:01:50,610 --> 00:01:53,340
+Take the example of five coin tosses.
+
+32
+00:01:53,340 --> 00:01:55,420
+If I ask you, in five coin tosses,
+
+33
+00:01:55,420 --> 00:02:00,838
+what's the probability that you flip
+exactly three heads in five coin tosses.
+
+34
+00:02:00,838 --> 00:02:03,210
+Calculate that probability.
+
+35
+00:02:03,210 --> 00:02:05,590
+Well, this is an example of a binomial
+distribution.
+
+36
+00:02:05,590 --> 00:02:06,750
+We have 5 coin tosses.
+
+37
+00:02:06,750 --> 00:02:08,980
+So our n, in this case, is 5.
+
+38
+00:02:08,980 --> 00:02:11,470
+Each coin toss is an independent trial.
+
+39
+00:02:11,470 --> 00:02:15,050
+Each coin toss has the some probability of
+success of a heads, .5.
+
+40
+00:02:15,050 --> 00:02:19,200
+And the same probability of a failure, a
+tails.
+
+41
+00:02:20,280 --> 00:02:21,950
+So this is a binomial distribution.
+
+42
+00:02:21,950 --> 00:02:24,620
+But how would you calculate that
+probability using some of
+
+43
+00:02:24,620 --> 00:02:25,950
+the tools that we learned last week?
+
+44
+00:02:25,950 --> 00:02:28,460
+What's the probability that you flip
+exactly three heads?
+
+45
+00:02:28,460 --> 00:02:31,480
+And I want to know the probability of
+exactly three heads.
+
+46
+00:02:31,480 --> 00:02:33,330
+So, not two, not one, not four.
+
+47
+00:02:33,330 --> 00:02:34,550
+But exactly three.
+
+48
+00:02:34,550 --> 00:02:35,640
+So how could we solve this?
+
+49
+00:02:35,640 --> 00:02:37,770
+So let's just kind of walk through how we
+could solve this.
+
+50
+00:02:37,770 --> 00:02:38,920
+How we could approach this problem.
+
+51
+00:02:41,270 --> 00:02:43,300
+So, first of all you could just think
+about okay,
+
+52
+00:02:43,300 --> 00:02:46,170
+here's one way to get exactly 3 heads.
+
+53
+00:02:46,170 --> 00:02:47,770
+You might flip a heads, and
+
+54
+00:02:47,770 --> 00:02:50,190
+another heads, and another heads, and then
+a tails and a tails.
+
+55
+00:02:50,190 --> 00:02:52,140
+That's one way to get exactly three heads.
+
+56
+00:02:52,140 --> 00:02:55,310
+Well, what's the probability of that
+particular outcome?
+
+57
+00:02:55,310 --> 00:02:56,920
+We can calculate that, right?
+
+58
+00:02:56,920 --> 00:02:59,180
+What's the probability that you get a
+heads on the first toss,
+
+59
+00:02:59,180 --> 00:03:02,760
+a heads on the second toss, a heads on the
+third, and then two tails?
+
+60
+00:03:02,760 --> 00:03:07,520
+Well, it's going to be 0.5 times 0.5 times
+0.5,
+
+61
+00:03:07,520 --> 00:03:09,390
+those are the probabilities of getting
+three heads in a row.
+
+62
+00:03:09,390 --> 00:03:13,000
+And then you have to get two tails in a
+row, so that's another 0.5 times 0.5.
+
+63
+00:03:13,000 --> 00:03:17,430
+So it ends up being 0.5 raised to the
+fifth.
+
+64
+00:03:17,430 --> 00:03:21,750
+That's the probability of getting exactly
+3 heads in that particular arrangement,
+
+65
+00:03:21,750 --> 00:03:22,885
+where we're considering order.
+
+66
+00:03:22,885 --> 00:03:24,880
+3 heads first, and then 2 tails.
+
+67
+00:03:24,880 --> 00:03:26,695
+Now's the probability of that exact
+arrangement.
+
+68
+00:03:26,695 --> 00:03:30,790
+All right, well, what if we think about
+another possible arrangement?
+
+69
+00:03:30,790 --> 00:03:34,000
+Another way we can get 3 heads in 5 coin
+tosses.
+
+70
+00:03:34,000 --> 00:03:35,080
+There's another way we could get it.
+
+71
+00:03:35,080 --> 00:03:37,850
+We could get tails, and then 3 heads, and
+then a tails.
+
+72
+00:03:37,850 --> 00:03:41,030
+Well what's the probability of that exact
+arrangement?
+
+73
+00:03:41,030 --> 00:03:44,320
+Well it's going to be again, the
+probability of tails,
+
+74
+00:03:44,320 --> 00:03:46,300
+times the probability of heads, times the
+probability of heads,
+
+75
+00:03:46,300 --> 00:03:48,190
+times the probability of heads, times the
+probability of tails.
+
+76
+00:03:48,190 --> 00:03:53,090
+Again, it's going to be 0.05 times 5
+raised the the 5th.
+
+77
+00:03:53,090 --> 00:03:58,100
+In fact, if you write out any exact
+arrangement where you've got two tails and
+
+78
+00:03:58,100 --> 00:04:01,980
+three heads in a particular order, the
+probability of any particular order is
+
+79
+00:04:01,980 --> 00:04:06,650
+going to be 0.5 raised to the third times
+0.5 raised to the second.
+
+80
+00:04:06,650 --> 00:04:09,880
+In other words, the probability of a heads
+raised to the third, because we're
+
+81
+00:04:09,880 --> 00:04:13,420
+getting three heads, times the probability
+of a tails, raised to the second.
+
+82
+00:04:14,520 --> 00:04:17,910
+Well that solves the probability of any
+particular exact arrangement and
+
+83
+00:04:17,910 --> 00:04:20,990
+then all we have to answer is how many
+possible arrangements are there.
+
+84
+00:04:20,990 --> 00:04:26,429
+How many possible ways can we arrange 3
+heads in a string of 5 letters,
+
+85
+00:04:26,429 --> 00:04:29,799
+3 each is in a string of 5 letters.
+
+86
+00:04:29,799 --> 00:04:30,320
+So.
+
+87
+00:04:30,320 --> 00:04:35,828
+Overall the probability of 3 heads and
+tails is 1 half raised to the fifth.
+
+88
+00:04:35,828 --> 00:04:39,390
+For every unique arrangement how many
+unique arrangements are there?
+
+89
+00:04:39,390 --> 00:04:43,220
+Well one way to solve this would actually
+just be to write them out in this case.
+
+90
+00:04:43,220 --> 00:04:46,360
+There's not that many in this case so we
+could write them out systemically.
+
+91
+00:04:46,360 --> 00:04:48,810
+So I actually went through and did that.
+
+92
+00:04:48,810 --> 00:04:52,520
+So one way to get 3 heads is tails, heads,
+heads, heads, tails.
+
+93
+00:04:52,520 --> 00:04:53,930
+Another way is heads, heads.
+
+94
+00:04:53,930 --> 00:04:56,720
+Heads tails tails another way's tails
+tails heads heads heads and
+
+95
+00:04:56,720 --> 00:05:00,920
+I just I systematically sat there and
+wrote them all out each one of
+
+96
+00:05:00,920 --> 00:05:04,420
+those exact arrangements has the
+probability 1 half raised to the 3rd
+
+97
+00:05:04,420 --> 00:05:08,440
+times 1 half raised to the second or the
+probability of heads raised to the 3rd.
+
+98
+00:05:08,440 --> 00:05:10,960
+And the probability of tails raised to the
+second.
+
+99
+00:05:10,960 --> 00:05:14,950
+Now, wouldn't it be nice, though, if there
+were a neat and tidy way to come up
+
+100
+00:05:14,950 --> 00:05:20,460
+with the number of arrangements, other
+than just writing them out systematically.
+
+101
+00:05:20,460 --> 00:05:22,120
+In fact, it turns out there is.
+
+102
+00:05:22,120 --> 00:05:26,770
+You can view this problem as a
+combinations problem, a choosing problem.
+
+103
+00:05:26,770 --> 00:05:28,640
+And we can apply the choosing function
+here.
+
+104
+00:05:28,640 --> 00:05:31,200
+So the way you need to think about it, is,
+you think.
+
+105
+00:05:31,200 --> 00:05:31,956
+Okay, I've got 5 [UNKNOWN], 5 tosses and I
+have to give any 3 of them to heads.
+
+106
+00:05:31,956 --> 00:05:33,005
+By default the other 2 will be tails.
+So I have to choose
+
+107
+00:05:33,005 --> 00:05:43,620
+3
+
+108
+00:05:43,620 --> 00:05:47,770
+spots out of 5 to give to heads, the other
+2 spots will be tails.
+
+109
+00:05:47,770 --> 00:05:50,512
+So it's actually a 5 choose 3.
+
+110
+00:05:50,512 --> 00:05:56,270
+There are 5 choose 3 ways to arrange 3
+heads in 5 trials.
+
+111
+00:05:56,270 --> 00:05:59,530
+So we can just apply the choosing
+function, the combinations function here.
+
+112
+00:05:59,530 --> 00:06:02,390
+If you apply that here, it comes out to
+give us a value of 10,
+
+113
+00:06:02,390 --> 00:06:05,440
+exactly the number that I dealt when I
+wrote them out systematically.
+
+114
+00:06:07,030 --> 00:06:10,990
+So that turns out the probability of
+getting exactly three heads turns out to
+
+115
+00:06:10,990 --> 00:06:17,390
+be 10 times one half 3 to to the 5th or
+31.25%.
+
+116
+00:06:17,390 --> 00:06:22,760
+We can actually calculate all possible
+outcomes when you toss a coin five times.
+
+117
+00:06:22,760 --> 00:06:24,630
+What are all possible outcomes?
+
+118
+00:06:24,630 --> 00:06:28,540
+Well you can get 0 heads, 1 head, 2, 3, 4
+or 5 and
+
+119
+00:06:28,540 --> 00:06:31,460
+we can calculate the probability of all of
+those.
+
+120
+00:06:31,460 --> 00:06:34,900
+And that's what I've done here using the
+same logic in that
+
+121
+00:06:34,900 --> 00:06:38,890
+probability distribution looks like this,
+although those areas, if you add them up,
+
+122
+00:06:38,890 --> 00:06:39,902
+will add up to 1.
+
+123
+00:06:39,902 --> 00:06:44,740
+Now, let's extent the problem just a
+little bit.
+
+124
+00:06:44,740 --> 00:06:49,830
+Let's extend the problem to the ase where
+it's a little bit less simple because we
+
+125
+00:06:49,830 --> 00:06:53,530
+now have uneven probability, so
+probability of a success and
+
+126
+00:06:53,530 --> 00:06:55,620
+failure are no longer equal.
+
+127
+00:06:55,620 --> 00:06:57,850
+So here's a particular example.
+
+128
+00:06:57,850 --> 00:07:02,680
+As voters exit the polls, you ask a very
+small but representative random sample of
+
+129
+00:07:02,680 --> 00:07:05,660
+six voters if they voted for a particular
+proporsition.
+
+130
+00:07:05,660 --> 00:07:09,285
+Let's say that the true percentage of
+voters who voted for that proposition is
+
+131
+00:07:09,285 --> 00:07:15,940
+55.1%, so the probability that any random
+person has voted for it is 55.1%.
+
+132
+00:07:15,940 --> 00:07:19,580
+What's the probability that in your sample
+of six exactly two voted for
+
+133
+00:07:19,580 --> 00:07:22,060
+the proposition and four did not?
+
+134
+00:07:22,060 --> 00:07:25,730
+So let's use the same logic to solve for
+this probability.
+
+135
+00:07:27,760 --> 00:07:31,040
+Well, we can write out all the possible
+outcomes.
+
+136
+00:07:31,040 --> 00:07:32,800
+We could get two yes votes.
+
+137
+00:07:32,800 --> 00:07:36,110
+The first two people we talk to could say
+that they voted yes on the proposition,
+
+138
+00:07:36,110 --> 00:07:37,270
+and the next four could say no.
+
+139
+00:07:37,270 --> 00:07:39,523
+That's one way to get exactly two yes
+votes.
+
+140
+00:07:39,523 --> 00:07:48,190
+The probability of a yes is now .551, the
+probability of a no is .449, 1 minus .551.
+
+141
+00:07:48,190 --> 00:07:51,340
+We have to get 2 yeses in a row and then 4
+nos in a row, so
+
+142
+00:07:51,340 --> 00:07:56,950
+that's .551 raised to the 2, 2nd times
+.449 raised to the 4th.
+
+143
+00:07:56,950 --> 00:07:59,920
+Well, what's another way to get exactly 2
+yeses?
+
+144
+00:07:59,920 --> 00:08:02,050
+Well I could get no and then yes, yes.
+
+145
+00:08:02,050 --> 00:08:03,400
+And then no, no, no.
+
+146
+00:08:03,400 --> 00:08:05,200
+And again, that's, you're going to see
+that,
+
+147
+00:08:05,200 --> 00:08:10,070
+that comes out to just 0.551 raised to the
+second, 0.449 raised to the fourth.
+
+148
+00:08:10,070 --> 00:08:12,710
+No matter what particular outcome I write
+out,
+
+149
+00:08:12,710 --> 00:08:15,180
+they all have the exact same probability.
+
+150
+00:08:15,180 --> 00:08:18,190
+How many possible outcomes are there?
+
+151
+00:08:18,190 --> 00:08:23,740
+How many possible ways is there to arrange
+two yes votes in six trials?
+
+152
+00:08:23,740 --> 00:08:26,890
+Well, that's a six choose two problem
+again.
+
+153
+00:08:26,890 --> 00:08:31,160
+There are six choose two ways to arrange
+two yes votes among the six voters.
+
+154
+00:08:31,160 --> 00:08:36,120
+So six choose two, if we calculated it
+out, turns out to be 15.
+
+155
+00:08:36,120 --> 00:08:39,537
+And how did I get that, again, to apply
+the choosing function?
+
+156
+00:08:39,537 --> 00:08:41,870
+Six choose two.
+
+157
+00:08:41,870 --> 00:08:46,822
+Is just equal to 6 factorial divided by 2
+factorial divided by 6
+
+158
+00:08:46,822 --> 00:08:49,490
+minus 2 factorial or 4 factorial.
+
+159
+00:08:49,490 --> 00:08:55,140
+If you do that out that's going to be 6
+times 5 times 4 factorial.
+
+160
+00:08:55,140 --> 00:08:57,930
+I'm writing it this way because I know I
+can cancel the 4 factorial in
+
+161
+00:08:57,930 --> 00:08:58,636
+the denominator.
+
+162
+00:08:58,636 --> 00:09:00,100
+2 factorial's just 2.
+
+163
+00:09:00,100 --> 00:09:01,050
+So these cancel.
+
+164
+00:09:01,050 --> 00:09:04,180
+That turns out to be 30 divided by 2 or
+15.
+
+165
+00:09:04,180 --> 00:09:10,030
+So there are 15 ways To get exactly two
+yes votes and four no, no votes.
+
+166
+00:09:10,030 --> 00:09:15,400
+There's cer, there's 15 arrangements and
+the probability of each arrangement we've,
+
+167
+00:09:15,400 --> 00:09:19,920
+we've calculated here so we're just
+going to multiply that probability by 15.
+
+168
+00:09:19,920 --> 00:09:25,110
+Now you might start to notice a general
+pattern emerging here, right?
+
+169
+00:09:25,110 --> 00:09:27,150
+We have a choosing function in the front.
+
+170
+00:09:27,150 --> 00:09:29,610
+And then we've got the probability of
+success,
+
+171
+00:09:29,610 --> 00:09:31,990
+raised to the number of successes, and
+
+172
+00:09:31,990 --> 00:09:35,200
+the probability of failures, raised to the
+number of failures.
+
+173
+00:09:35,200 --> 00:09:39,650
+So this is now going to generalize into
+our general formula for
+
+174
+00:09:39,650 --> 00:09:41,920
+calculating binomial probabilities.
+
+175
+00:09:43,940 --> 00:09:47,610
+This, by the way comes out to be 18.5%, if
+you calculated it all out.
+
+176
+00:09:47,610 --> 00:09:48,680
+If you want the final answer.
+
+177
+00:09:49,740 --> 00:09:53,340
+So here's our general binomial formula.
+
+178
+00:09:53,340 --> 00:09:59,030
+If you've got a binomial distribution that
+is n trial, independent trials,
+
+179
+00:09:59,030 --> 00:10:03,760
+each trial has a probability of success p
+and a probability of failure 1 minus p,
+
+180
+00:10:03,760 --> 00:10:09,480
+then the probability of getting exactly X
+successes, like exactly Three heads or
+
+181
+00:10:09,480 --> 00:10:13,710
+exactly two yes voters is the following: n
+choose X,
+
+182
+00:10:13,710 --> 00:10:18,530
+the probability of success raised to the
+number of successes, raised to X, times
+
+183
+00:10:18,530 --> 00:10:23,340
+times probability of failure raised to n
+minus X, that is, the number of failures.
+
+184
+00:10:23,340 --> 00:10:25,055
+So again, n is the number of trials.
+
+185
+00:10:25,055 --> 00:10:28,020
+That defines that binomial distribution.
+
+186
+00:10:28,020 --> 00:10:31,000
+X is the particular probability that
+you're trying to calculate.
+
+187
+00:10:31,000 --> 00:10:34,415
+What is the probability of getting exactly
+x successes out of those n trials?
+
+188
+00:10:34,415 --> 00:10:36,930
+1 minus p is the probability of failure.
+
+189
+00:10:36,930 --> 00:10:40,460
+p is the probability of success.
+
+190
+00:10:40,460 --> 00:10:43,100
+So if you can reason through and
+
+191
+00:10:43,100 --> 00:10:47,500
+understand where this formula comes from,
+I think it makes sense.
+
+192
+00:10:47,500 --> 00:10:51,800
+And then you can, once you know where this
+formula comes from then you can apply this
+
+193
+00:10:51,800 --> 00:10:55,900
+formula to calculate probabilities
+whenever you have a binomial distribution.
+
+194
+00:10:56,910 --> 00:10:59,380
+And you'll get good at these if you
+practice a lot of them.
+
+195
+00:10:59,380 --> 00:11:01,419
+Let's do some practice problems.

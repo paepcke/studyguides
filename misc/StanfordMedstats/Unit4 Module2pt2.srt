@@ -1,0 +1,276 @@
+1
+00:00:00,460 --> 00:00:02,110
+Now, we know how to set up a simple macro.
+
+2
+00:00:03,190 --> 00:00:05,310
+We want to set up our macro so that
+whenever we invoke it,
+
+3
+00:00:05,310 --> 00:00:07,360
+it will tweak the code each time.
+
+4
+00:00:07,360 --> 00:00:09,300
+Like we mainly did when we copy and pasted
+the code.
+
+5
+00:00:09,300 --> 00:00:12,710
+We're going to continue from the example
+in the last video.
+
+6
+00:00:14,040 --> 00:00:17,940
+We want to be able to change the input
+Dataset that we start out with,
+
+7
+00:00:17,940 --> 00:00:20,230
+as well as the output Dataset that we save
+everything into.
+
+8
+00:00:21,930 --> 00:00:24,110
+Whenever there's a variable in our code
+that we wish to tweak,
+
+9
+00:00:24,110 --> 00:00:27,625
+every time we run the macro, we use a
+placeholder variable like this.
+
+10
+00:00:27,625 --> 00:00:34,789
+[SOUND] Here, we made a placeholder
+
+11
+00:00:34,789 --> 00:00:41,710
+variable called inputDataset.
+
+12
+00:00:42,810 --> 00:00:47,370
+Now, whenever we run this macro, what ever
+we type inside these parenthesis will get
+
+13
+00:00:47,370 --> 00:00:51,110
+inserted right here, where I have the
+placeholder variable.
+
+14
+00:00:51,110 --> 00:00:54,480
+It is important to note that when you're
+specifying the placeholder variable
+
+15
+00:00:54,480 --> 00:01:00,270
+inside of your code, it must always begin
+with an ampersand and end with a period.
+
+16
+00:01:00,270 --> 00:01:02,505
+Let's run this macro and see what happens
+when we invoke it.
+
+17
+00:01:02,505 --> 00:01:06,018
+[NOISE] Here I
+
+18
+00:01:06,018 --> 00:01:13,750
+invoked the macro twice.
+
+19
+00:01:14,980 --> 00:01:17,570
+The first time, I told it to use group1
+for
+
+20
+00:01:17,570 --> 00:01:20,448
+the placeholder variable called
+inputDataset.
+
+21
+00:01:22,760 --> 00:01:25,759
+So, behind the scenes, Sass ran this first
+line of code.
+
+22
+00:01:27,170 --> 00:01:28,990
+Next, it ran this line of code.
+
+23
+00:01:28,990 --> 00:01:32,170
+But, when it reached this place order
+variable, it filled in exactly what I
+
+24
+00:01:32,170 --> 00:01:34,440
+typed in within the parentheses when I
+invoked the macro.
+
+25
+00:01:35,740 --> 00:01:39,920
+In the parentheses, I typed out group1, so
+Sass filled that in, right here.
+
+26
+00:01:41,140 --> 00:01:44,515
+Basically, Sass ran a line of code that
+said set, group1.
+
+27
+00:01:45,630 --> 00:01:47,890
+Then Sass ran the rest of the code exactly
+the way it is.
+
+28
+00:01:48,900 --> 00:01:53,225
+What this did was create a new Dataset
+called work.group1_BMI.
+
+29
+00:01:54,420 --> 00:01:57,850
+Filled in the data from group1 like I
+specified.
+
+30
+00:01:57,850 --> 00:02:00,140
+And, then specified a new variable for
+BMI.
+
+31
+00:02:03,425 --> 00:02:07,190
+Sass then repeated this process the second
+time I invoked the code.
+
+32
+00:02:07,190 --> 00:02:10,970
+Except this time, when Sass reran this
+entire chunk of code,
+
+33
+00:02:10,970 --> 00:02:15,220
+it changed the input Dataset to
+work.group2.
+
+34
+00:02:15,220 --> 00:02:20,310
+It still saved everything in the output
+Dataset called work.group1_ BMI.
+
+35
+00:02:20,310 --> 00:02:22,870
+But, it tweaked the input Dataset just
+like we told it to.
+
+36
+00:02:24,020 --> 00:02:26,170
+>> Now, let's add in a second placeholder
+variable, so
+
+37
+00:02:26,170 --> 00:02:27,850
+we can also tweak the output Dataset.
+
+38
+00:02:31,830 --> 00:02:35,180
+>> Whenever you have multiple placeholder
+variables in your macro statement,
+
+39
+00:02:35,180 --> 00:02:37,929
+they must be separated by commas, just
+like this.
+
+40
+00:02:37,929 --> 00:02:41,700
+>> [SOUND]
+Now, whatever you
+
+41
+00:02:41,700 --> 00:02:45,780
+type right after the parenthesis will get
+filled in for the input Dataset.
+
+42
+00:02:45,780 --> 00:02:47,780
+And, whatever you type following the
+comma,
+
+43
+00:02:47,780 --> 00:02:50,670
+will get filled in for the output Dataset.
+
+44
+00:02:50,670 --> 00:02:52,040
+Let's run this macro and invoke it.
+
+45
+00:03:02,270 --> 00:03:05,730
+When you invoke the macro, make sure you
+specify the placeholder variables in
+
+46
+00:03:05,730 --> 00:03:09,280
+the correct order, just like you made in
+your original macro code.
+
+47
+00:03:09,280 --> 00:03:13,520
+First, we have the input Dataset, and then
+the output Dataset.
+
+48
+00:03:13,520 --> 00:03:16,400
+So, now I've invoked the macro five times.
+
+49
+00:03:16,400 --> 00:03:18,800
+When Sass invokes the macro for the first
+time,
+
+50
+00:03:18,800 --> 00:03:23,000
+it'll use group1 as the input Dataset, and
+group1_BMI as the output Dataset.
+
+51
+00:03:23,000 --> 00:03:26,230
+And, the rest of the code will be the
+same.
+
+52
+00:03:26,230 --> 00:03:28,700
+When it invokes the macro for the second
+time,
+
+53
+00:03:28,700 --> 00:03:34,230
+it'll use group2 as the input Dataset and
+group2_BMI as the output Dataset.
+
+54
+00:03:34,230 --> 00:03:35,690
+Each time I invoke the macro,
+
+55
+00:03:35,690 --> 00:03:37,990
+it tricks the code slightly to use the
+variables that I specify.
+
+56
+00:03:37,990 --> 00:03:40,210
+This is just like we did when we copy and
+
+57
+00:03:40,210 --> 00:03:43,250
+pasted the clip by hand, except now Sass
+is doing it automatically.
+
+58
+00:03:44,610 --> 00:03:47,650
+And, now we have five output Datasets,
+just like we wanted

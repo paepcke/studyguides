@@ -1,0 +1,944 @@
+1
+00:00:08,770 --> 00:00:13,180
+In this next module, I'm going to show you
+how to calculate some basic probability.
+
+2
+00:00:14,870 --> 00:00:16,720
+So first of all, what is probability?
+
+3
+00:00:16,720 --> 00:00:20,795
+So, probability is the chance that an
+uncertain event will occur.
+
+4
+00:00:20,795 --> 00:00:23,960
+And it's always a number between 0 and 1.
+
+5
+00:00:23,960 --> 00:00:26,390
+You can't have anything lower than a 0%
+chance,
+
+6
+00:00:26,390 --> 00:00:29,530
+you can't have anything higher than a 100%
+chance.
+
+7
+00:00:29,530 --> 00:00:32,170
+I am going to be using a few symbols this
+week.
+
+8
+00:00:32,170 --> 00:00:34,860
+They're really just a shorthand to make it
+faster to write things.
+
+9
+00:00:34,860 --> 00:00:37,070
+So, let me just review these symbols now.
+
+10
+00:00:37,070 --> 00:00:40,130
+So, when I want to write the probability
+of something happening,
+
+11
+00:00:40,130 --> 00:00:42,360
+like the probability that event A will
+occur.
+
+12
+00:00:42,360 --> 00:00:45,220
+I'm going to shorthand that by writing a
+P, and
+
+13
+00:00:45,220 --> 00:00:47,260
+then I'm going to write a parenthesis.
+
+14
+00:00:47,260 --> 00:00:50,140
+And put in the parenthesis whatever I want
+to know the probability of.
+
+15
+00:00:50,140 --> 00:00:55,040
+So, like P(A), you would read that as the
+probability that event A will occur.
+
+16
+00:00:55,040 --> 00:00:56,945
+And again, this is just a shorthand.
+
+17
+00:00:56,945 --> 00:00:58,460
+It just makes it faster for
+
+18
+00:00:58,460 --> 00:01:03,600
+me to write these things down and do some
+calculations.
+
+19
+00:01:03,600 --> 00:01:08,030
+An example would be if I put P (red card),
+I would be asking for
+
+20
+00:01:08,030 --> 00:01:09,720
+the probability of a red card.
+
+21
+00:01:09,720 --> 00:01:11,810
+Say when you're pulling cards out of a
+deck,
+
+22
+00:01:11,810 --> 00:01:13,778
+what's the probability of getting a red
+card.
+
+23
+00:01:13,778 --> 00:01:18,710
+I'm going to use the little symbol tilde
+to represent not,
+
+24
+00:01:18,710 --> 00:01:20,730
+the probability of something not
+happening.
+
+25
+00:01:20,730 --> 00:01:23,530
+We also will sometimes call this the
+complement.
+
+26
+00:01:23,530 --> 00:01:27,760
+So, if I put probability P tilde A,
+
+27
+00:01:27,760 --> 00:01:31,910
+that's the probability of not getting a
+event event A.
+
+28
+00:01:31,910 --> 00:01:32,850
+And here's an example.
+
+29
+00:01:32,850 --> 00:01:37,870
+Like if I put P tilde red A card, that's
+the probability of not getting a red card.
+
+30
+00:01:37,870 --> 00:01:39,030
+Again, it's just a short hand.
+
+31
+00:01:40,830 --> 00:01:43,840
+Also show you what are called some joint
+probabilities,
+
+32
+00:01:43,840 --> 00:01:46,250
+like the probability of A and the B.
+
+33
+00:01:46,250 --> 00:01:49,410
+That's the probability that both things
+will occur together.
+
+34
+00:01:49,410 --> 00:01:52,620
+So, this will be something like the
+probability of getting a red
+
+35
+00:01:52,620 --> 00:01:53,460
+card and an ace.
+
+36
+00:01:53,460 --> 00:01:55,520
+In other words, the probability of getting
+a red ace,
+
+37
+00:01:55,520 --> 00:01:58,390
+both of those things happening at the same
+time.
+
+38
+00:01:58,390 --> 00:02:03,400
+That's called the joint probability, and I
+represent that with an ampersand.
+
+39
+00:02:03,400 --> 00:02:05,780
+So, let's do a couple of examples.
+
+40
+00:02:05,780 --> 00:02:08,780
+So, let's say you draw one card from a
+standard deck of cards.
+
+41
+00:02:08,780 --> 00:02:11,600
+Let's say that the deck of cards doesn't
+have any jokers.
+
+42
+00:02:11,600 --> 00:02:15,240
+For all the problems this week you can
+assume that there's no jokers involved,
+
+43
+00:02:15,240 --> 00:02:17,480
+just a standard deck of 52 cards.
+
+44
+00:02:17,480 --> 00:02:19,910
+What's the probability that you draw an
+ace?
+
+45
+00:02:19,910 --> 00:02:21,065
+So, how would you solve that?
+
+46
+00:02:21,065 --> 00:02:23,920
+So, you have to think about the way cards
+work.
+
+47
+00:02:23,920 --> 00:02:27,380
+So if you've got a standard deck, there's
+52 cards.
+
+48
+00:02:27,380 --> 00:02:29,150
+There are four aces in a deck, so
+
+49
+00:02:29,150 --> 00:02:33,220
+the probability that you would draw an ace
+would be 4 out of 52.
+
+50
+00:02:33,220 --> 00:02:36,470
+You then, the denominator is the total
+number of cards.
+
+51
+00:02:36,470 --> 00:02:41,620
+There's 4 that are aces, so 4 out of 52,
+that's probably about 7.7%.
+
+52
+00:02:41,620 --> 00:02:46,280
+Again, I've used the P parenthesis to
+shorthand the probability of
+
+53
+00:02:46,280 --> 00:02:46,820
+drawing an ace.
+
+54
+00:02:49,390 --> 00:02:50,490
+Let's do a few more examples.
+
+55
+00:02:50,490 --> 00:02:55,890
+So, let's say that event A is drawing a
+red card and event B is drawing an ace.
+
+56
+00:02:55,890 --> 00:02:56,980
+So what is, for
+
+57
+00:02:56,980 --> 00:03:00,820
+example, the probability of A, what's the
+probability of drawing a red card?
+
+58
+00:03:00,820 --> 00:03:04,130
+So, if I have a standard deck of cards
+with 52 cards,
+
+59
+00:03:04,130 --> 00:03:06,310
+half of the cards are red and half are
+black.
+
+60
+00:03:06,310 --> 00:03:11,620
+So, there's 26 red cards out of a total of
+52 cards.
+
+61
+00:03:11,620 --> 00:03:16,687
+So, the probability of A, the probability
+of drawing a red card, would be 1 half, or
+
+62
+00:03:16,687 --> 00:03:18,740
+26 out of 52.
+
+63
+00:03:18,740 --> 00:03:20,330
+What's the probability of drawing an ace?
+
+64
+00:03:20,330 --> 00:03:23,713
+Well, we just actually calculated that.
+
+65
+00:03:23,713 --> 00:03:26,550
+That's 4 out of 52.
+
+66
+00:03:26,550 --> 00:03:30,240
+And we can simplify that down to 1 out of
+13.
+
+67
+00:03:30,240 --> 00:03:34,313
+One out of 13 cards in a deck is an ace.
+
+68
+00:03:34,313 --> 00:03:40,195
+What's the probability of not drawing a
+red card?
+
+69
+00:03:40,195 --> 00:03:42,951
+So, the probability of not drawing of
+drawing a red card would be
+
+70
+00:03:42,951 --> 00:03:44,965
+the probability of drawing a black card,
+right?
+
+71
+00:03:44,965 --> 00:03:46,820
+So, there's 26 black cards in the deck.
+
+72
+00:03:46,820 --> 00:03:48,800
+In other words, half of the deck is black
+cards.
+
+73
+00:03:48,800 --> 00:03:52,300
+So, the probability of not getting a red
+card is also 1 half.
+
+74
+00:03:53,420 --> 00:03:56,930
+What's the probability of not drawing an
+ace?
+
+75
+00:03:56,930 --> 00:03:59,400
+So, for this one, there's a couple of
+different ways to solve it,
+
+76
+00:03:59,400 --> 00:04:01,120
+but here's the easiest way to solve it.
+
+77
+00:04:01,120 --> 00:04:04,590
+We've already calculated the probability
+of drawing an ace.
+
+78
+00:04:04,590 --> 00:04:09,820
+The probability of not drawing an ace is
+going to be 1 minus the probability of
+
+79
+00:04:09,820 --> 00:04:10,670
+drawing an ace.
+
+80
+00:04:12,300 --> 00:04:15,290
+In other words, you either draw an ace or
+you don't draw an ace.
+
+81
+00:04:15,290 --> 00:04:18,340
+The probability of drawing an ace is 1 out
+of 13.
+
+82
+00:04:18,340 --> 00:04:21,381
+And the probability of not drawing an ace
+is 12 out of 13.
+
+83
+00:04:21,381 --> 00:04:25,250
+There's a little rule embedded in here,
+which I'm just going to write out.
+
+84
+00:04:25,250 --> 00:04:32,910
+The probability of A happening or A not
+happening has to be equal to 1, right?
+
+85
+00:04:32,910 --> 00:04:35,130
+Because either A happens or it doesn't
+happen.
+
+86
+00:04:35,130 --> 00:04:38,930
+One of those things has to happen, so the
+sum of their probabilities has to equal 1.
+
+87
+00:04:38,930 --> 00:04:41,100
+So, I've used that little rule to solve
+for
+
+88
+00:04:41,100 --> 00:04:43,520
+the probability of not drawing an ace
+here.
+
+89
+00:04:44,620 --> 00:04:47,110
+Finally, what's the probability of getting
+a red ace?
+
+90
+00:04:47,110 --> 00:04:49,240
+Of both getting a red card and an ace
+card?
+
+91
+00:04:49,240 --> 00:04:51,550
+So, what's the joint probability?
+
+92
+00:04:51,550 --> 00:04:53,860
+What's the probability of getting a red
+ace?
+
+93
+00:04:53,860 --> 00:04:56,490
+Well again, we have 52 cards in the deck.
+
+94
+00:04:56,490 --> 00:04:57,960
+How many red aces are there?
+
+95
+00:04:57,960 --> 00:05:01,380
+Well, there's the, the ace of diamonds and
+the ace of hearts, so there's two.
+
+96
+00:05:01,380 --> 00:05:05,900
+So, that probability is 2 out of 52.
+
+97
+00:05:05,900 --> 00:05:08,540
+Now notice, with a lot of probability
+problems,
+
+98
+00:05:09,610 --> 00:05:12,570
+all we're doing to solve them is just
+reasoning things out.
+
+99
+00:05:12,570 --> 00:05:15,710
+That's a lot of why probability is hard
+because it's a lot of just thinking
+
+100
+00:05:15,710 --> 00:05:17,070
+things out.
+
+101
+00:05:17,070 --> 00:05:19,480
+All the probability problems you can think
+of, there are.
+
+102
+00:05:19,480 --> 00:05:22,630
+All the sorts of different probability
+problems have different ways of
+
+103
+00:05:22,630 --> 00:05:23,400
+getting at the answer.
+
+104
+00:05:23,400 --> 00:05:24,920
+And that's what makes it really
+challenging.
+
+105
+00:05:24,920 --> 00:05:28,200
+There isn't one formula I can give you
+that works for all probability problems.
+
+106
+00:05:28,200 --> 00:05:29,550
+You really just have to think.
+
+107
+00:05:29,550 --> 00:05:31,110
+That's why I love probability problems,
+too.
+
+108
+00:05:32,360 --> 00:05:35,750
+So, this slide just summarizes the answers
+I had on the last slide.
+
+109
+00:05:35,750 --> 00:05:39,460
+Again, there's a rule that the probability
+of A plus the probability of
+
+110
+00:05:39,460 --> 00:05:41,710
+not A always has to sum up to 1.
+
+111
+00:05:41,710 --> 00:05:43,280
+One of those things has to happen.
+
+112
+00:05:43,280 --> 00:05:45,340
+Either A happens or A doesn't happen.
+
+113
+00:05:45,340 --> 00:05:48,190
+Those two probabilities have to sum up to
+1.
+
+114
+00:05:48,190 --> 00:05:51,670
+You can use that rule as we're going to
+see later this week.
+
+115
+00:05:51,670 --> 00:05:54,630
+That's a very helpful rule in calculating
+probability.
+
+116
+00:05:54,630 --> 00:05:57,890
+I just want to mention a little bit of
+philosophical here.
+
+117
+00:05:57,890 --> 00:06:03,620
+The type of probability that I'm talking
+about this week,
+
+118
+00:06:03,620 --> 00:06:06,650
+we're taking what's called a Frequentist
+View of Probability.
+
+119
+00:06:06,650 --> 00:06:09,660
+So, you can think of probability as the
+frequency with which
+
+120
+00:06:09,660 --> 00:06:12,080
+an event occurs over the long run.
+
+121
+00:06:12,080 --> 00:06:15,800
+So if I keep playing many, many hands of
+cards.
+
+122
+00:06:15,800 --> 00:06:20,640
+Eventually, over many, many times of
+drawing cards out of a deck.
+
+123
+00:06:20,640 --> 00:06:24,300
+It would be the case that I would be
+getting 1 in 13 times I'd
+
+124
+00:06:24,300 --> 00:06:26,070
+be drawing an ace, for example.
+
+125
+00:06:26,070 --> 00:06:29,260
+That's conceptually how we're viewing
+probability.
+
+126
+00:06:29,260 --> 00:06:31,439
+This is the, this is not the only way to
+view probability.
+
+127
+00:06:31,439 --> 00:06:33,730
+But, this is conceptually how we're
+viewing it this week and
+
+128
+00:06:33,730 --> 00:06:34,738
+for a lot of this course.
+
+129
+00:06:34,738 --> 00:06:38,790
+The frequency with which an event occurs,
+over the long run.
+
+130
+00:06:38,790 --> 00:06:42,810
+When we talk about what's a P value and we
+talk about statistical inference.
+
+131
+00:06:42,810 --> 00:06:46,260
+I'm going to be saying a lot of if you
+could repeat this experiment over and
+
+132
+00:06:46,260 --> 00:06:46,810
+over again.
+
+133
+00:06:46,810 --> 00:06:48,790
+This is the same view of how,
+
+134
+00:06:48,790 --> 00:06:52,930
+how frequent do you expect something to
+occur over the long run.
+
+135
+00:06:52,930 --> 00:06:54,320
+So, just tuck that in the back of your
+head,
+
+136
+00:06:54,320 --> 00:06:57,502
+that that's kind of the basis of a lot of
+the calculations we're doing this week.
+
+137
+00:06:57,502 --> 00:06:59,908
+I want to make one little distinction for
+you.
+
+138
+00:06:59,908 --> 00:07:01,900
+because there are two types of
+probabilities that we're going to
+
+139
+00:07:01,900 --> 00:07:03,379
+deal with in this course.
+
+140
+00:07:03,379 --> 00:07:05,960
+There are what are call Theoretical
+Probabilities.
+
+141
+00:07:05,960 --> 00:07:06,900
+A lot of what we're going to
+
+142
+00:07:06,900 --> 00:07:09,440
+calculate this week are just theoretical
+probabilities.
+
+143
+00:07:09,440 --> 00:07:11,030
+So, these are based on theory.
+
+144
+00:07:11,030 --> 00:07:13,480
+That as we understand how a deck of cards
+works or
+
+145
+00:07:13,480 --> 00:07:18,570
+we understand how a die works, or better
+understand how coins work.
+
+146
+00:07:18,570 --> 00:07:20,520
+By the way, because we're doing
+probability this week,
+
+147
+00:07:20,520 --> 00:07:24,130
+there's going to be a a lot of dice, and
+coins, and cards.
+
+148
+00:07:24,130 --> 00:07:27,270
+And that's simply because everybody
+understands how those work.
+
+149
+00:07:27,270 --> 00:07:30,530
+They make good examples for calculating
+probabilities.
+
+150
+00:07:30,530 --> 00:07:32,920
+So, those are theoretical probabilities
+though, because I don't have to go out.
+
+151
+00:07:32,920 --> 00:07:35,820
+And collect data in order to be able to
+tell you what the probability of
+
+152
+00:07:35,820 --> 00:07:39,710
+drawing an ace is, or the probability of
+rolling a two on the die is.
+
+153
+00:07:39,710 --> 00:07:43,450
+I just know those from understanding how a
+die works.
+
+154
+00:07:43,450 --> 00:07:45,990
+That's in contrast to what are called
+Empirical Probabilities.
+
+155
+00:07:45,990 --> 00:07:49,760
+A lot of what we're going to deal with in
+medicine are empirical probabilities.
+
+156
+00:07:49,760 --> 00:07:54,980
+We use the theoretical probabilities to,
+to build up the theory of statistics.
+
+157
+00:07:54,980 --> 00:07:56,500
+But in fact, when we go out and
+
+158
+00:07:56,500 --> 00:07:59,120
+measure things, we're measuring empirical
+probabilities.
+
+159
+00:07:59,120 --> 00:08:00,152
+These are based on data.
+
+160
+00:08:00,152 --> 00:08:05,100
+So for example, some geologists have
+collected a bunch of
+
+161
+00:08:05,100 --> 00:08:07,810
+historical data about earthquakes in the
+Bay area.
+
+162
+00:08:07,810 --> 00:08:12,400
+And using that data, they said that the
+probability of
+
+163
+00:08:12,400 --> 00:08:16,970
+a major earthquake happening in the Bay
+Area by 2032 is 62%.
+
+164
+00:08:16,970 --> 00:08:20,380
+Well, they didn't figure that out by
+understanding how earthquakes work.
+
+165
+00:08:20,380 --> 00:08:22,796
+They figured that out based on some data.
+
+166
+00:08:22,796 --> 00:08:27,330
+Similarly, if you ask about say the
+probability that somebody who
+
+167
+00:08:27,330 --> 00:08:30,620
+smokes over their lifetime will develop
+lung cancer.
+
+168
+00:08:30,620 --> 00:08:32,760
+It's something like 15%.
+
+169
+00:08:32,760 --> 00:08:38,740
+We didn't arrive at that, but I understand
+how smoking interacts with the lungs.
+
+170
+00:08:38,740 --> 00:08:41,350
+That's from looking at lots and lots of
+people over time.
+
+171
+00:08:41,350 --> 00:08:45,410
+And seeing what percent of smokers
+actually develop lung cancer, so
+
+172
+00:08:45,410 --> 00:08:46,960
+that's based again on empirical data.
+
+173
+00:08:46,960 --> 00:08:50,560
+So, we'll be doing some calculations of
+probability from both empirical data and
+
+174
+00:08:50,560 --> 00:08:52,040
+just from a theoretical standpoint.
+
+175
+00:08:53,450 --> 00:08:56,760
+So, here's an example of probability using
+empirical data.
+
+176
+00:08:56,760 --> 00:08:59,700
+So, here's some data on blood type.
+
+177
+00:08:59,700 --> 00:09:03,450
+Somebody nicely organized this chart so
+that there is,
+
+178
+00:09:03,450 --> 00:09:04,915
+it's easy to read the chart.
+
+179
+00:09:04,915 --> 00:09:07,970
+So, if you have 100 donors,
+
+180
+00:09:07,970 --> 00:09:12,310
+somebody's figured out the prevalence of
+different blood types in the population.
+
+181
+00:09:12,310 --> 00:09:16,968
+And out of 100 people, you'd expect 84 of
+them to be RH positive and
+
+182
+00:09:16,968 --> 00:09:18,740
+16 to be RH negative.
+
+183
+00:09:18,740 --> 00:09:22,340
+And then within those, we get a breakdown
+of type O,
+
+184
+00:09:22,340 --> 00:09:25,310
+versus Type A, versus Type B, versus Type
+A and B.
+
+185
+00:09:25,310 --> 00:09:27,260
+And so, it's a very easy chart to read.
+
+186
+00:09:27,260 --> 00:09:31,130
+Because rather than giving percentages or
+decimals, the person who put this chart
+
+187
+00:09:31,130 --> 00:09:36,200
+together made the denominator a nice even
+hundred so it's easy to read this chart.
+
+188
+00:09:36,200 --> 00:09:41,150
+So, for example, what's the probability
+that a random donor will be AB Positive?
+
+189
+00:09:41,150 --> 00:09:45,130
+Well, as we see in the chart, 3 out of 100
+donors are AB positive, so
+
+190
+00:09:45,130 --> 00:09:47,810
+that answer will simply just be 3%.
+
+191
+00:09:47,810 --> 00:09:51,260
+You can see this is quite easy to
+calculate when you set up the charts so
+
+192
+00:09:51,260 --> 00:09:52,600
+nicely like this.
+
+193
+00:09:52,600 --> 00:09:56,580
+What's the probability that a random donor
+will have a blood type of O?
+
+194
+00:09:56,580 --> 00:09:58,280
+This one is just slightly harder to
+calculate.
+
+195
+00:09:58,280 --> 00:10:01,110
+Because you have to recognize that there
+are O positives and
+
+196
+00:10:01,110 --> 00:10:03,123
+there are O negatives, and we have to add
+those up.
+
+197
+00:10:03,123 --> 00:10:06,080
+So, 38 O positives and 7 O negatives.
+
+198
+00:10:06,080 --> 00:10:09,830
+In other words, there are 45 people total
+who have an O blood type.
+
+199
+00:10:09,830 --> 00:10:12,120
+So, out of a hundred, 45 out of 100.
+
+200
+00:10:12,120 --> 00:10:17,000
+That means that there's a 45% chance of
+the donor having an O blood type.
+
+201
+00:10:17,000 --> 00:10:20,380
+So again, those are empirical data
+probabilities.

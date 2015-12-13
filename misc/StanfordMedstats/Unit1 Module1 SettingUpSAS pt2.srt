@@ -1,0 +1,105 @@
+1
+00:00:01,070 --> 00:00:02,870
+Welcome back.
+Now that you have Sas set up,
+
+2
+00:00:02,870 --> 00:00:05,610
+there are a few things that you need to do
+to customize it.
+
+3
+00:00:05,610 --> 00:00:08,760
+Let's start by clicking on tools, and
+selecting options.
+
+4
+00:00:10,240 --> 00:00:15,860
+>> Under general, go to recent files menu
+and set the number of items to 15.
+
+5
+00:00:15,860 --> 00:00:18,900
+>> Then go to project view.
+
+6
+00:00:20,010 --> 00:00:22,040
+Make sure the last three are selected.
+
+7
+00:00:22,040 --> 00:00:26,160
+In particular, make sure to select the
+display full path of data and
+
+8
+00:00:26,160 --> 00:00:27,140
+reference files.
+
+9
+00:00:29,710 --> 00:00:33,240
+>> Go to project recovery and change the
+save interval to 5 minutes.
+
+10
+00:00:34,460 --> 00:00:37,140
+That way, if SAS accidentally crashes,
+
+11
+00:00:37,140 --> 00:00:40,880
+you'll have something saved from five
+minutes ago automatically.
+
+12
+00:00:40,880 --> 00:00:42,400
+>> Then go to custom code under tasks.
+
+13
+00:00:42,400 --> 00:00:47,100
+>> Where it says insert custom code before
+task,
+
+14
+00:00:47,100 --> 00:00:51,830
+click edit and add ODS Graphics On.
+
+15
+00:00:51,830 --> 00:00:53,610
+Just click here and type it in.
+
+16
+00:00:53,610 --> 00:00:56,640
+Make sure to include a semi-colon at the
+end and then click save.
+
+17
+00:00:58,460 --> 00:01:01,550
+Where it says insert custom code after
+task,
+
+18
+00:01:01,550 --> 00:01:06,670
+do the same thing except type ODS Graphics
+Auth and then a semicolon.
+
+19
+00:01:07,910 --> 00:01:09,230
+Click save.
+
+20
+00:01:09,230 --> 00:01:10,720
+Make sure that these two boxes are
+checked.
+
+21
+00:01:12,040 --> 00:01:15,760
+What this will do, is it’ll add nicer
+graphics whenever you add.
+
+22
+00:01:15,760 --> 00:01:18,390
+Then click OK.
+
+23
+00:01:18,390 --> 00:01:21,360
+These settings should be saved every time
+you open up SAS.

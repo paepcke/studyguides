@@ -1,0 +1,1231 @@
+1
+00:00:00,960 --> 00:00:03,420
+So now, I'm going to review the
+Kaplan-Meier statistics.
+
+2
+00:00:03,420 --> 00:00:07,090
+So the Kaplan-Meier curve is
+
+3
+00:00:07,090 --> 00:00:09,720
+a non-parametric estimate of the survival
+function.
+
+4
+00:00:09,720 --> 00:00:11,950
+All that means is that we're not trying to
+say, oh,
+
+5
+00:00:11,950 --> 00:00:14,850
+this survival function follows an
+exponential distribution.
+
+6
+00:00:14,850 --> 00:00:17,960
+Or a specific distribution, a specific
+shape.
+
+7
+00:00:17,960 --> 00:00:19,730
+We're just defining the survival function.
+
+8
+00:00:19,730 --> 00:00:22,340
+Whenever events occur, we define the
+survival function.
+
+9
+00:00:22,340 --> 00:00:25,550
+So, it's an empirical estimate of the
+survival function.
+
+10
+00:00:25,550 --> 00:00:29,640
+It's just what is the probability of
+surviving past certain times in
+
+11
+00:00:29,640 --> 00:00:31,820
+the sample taking into account censoring.
+
+12
+00:00:31,820 --> 00:00:32,890
+If there was no censoring.
+
+13
+00:00:32,890 --> 00:00:36,790
+If people didn't drop out of the study at
+different times.
+
+14
+00:00:36,790 --> 00:00:40,110
+In fact, this would be a very easy thing
+to estimate.
+
+15
+00:00:40,110 --> 00:00:44,050
+But the, the trick to Kaplan-Meier is that
+it's accommodating that censoring.
+
+16
+00:00:44,050 --> 00:00:50,300
+And the Kaplan-Meier curves, we're going
+to draw some Kaplan-Meier curves.
+
+17
+00:00:50,300 --> 00:00:54,542
+Those can be compared statistically to get
+a P value with a log-rank and
+
+18
+00:00:54,542 --> 00:00:58,020
+a log-rank test is just a type of
+chi-square test.
+
+19
+00:00:58,020 --> 00:01:01,860
+So, let me just show you how this works
+very briefly with a simple example.
+
+20
+00:01:01,860 --> 00:01:04,295
+You have five subjects who start a study.
+
+21
+00:01:04,295 --> 00:01:07,630
+And let's say that the first event that
+happens in
+
+22
+00:01:07,630 --> 00:01:10,598
+the study is that subject E dies four
+months into the study.
+
+23
+00:01:10,598 --> 00:01:15,850
+We're going to define the survival curve
+here right at four months,
+
+24
+00:01:15,850 --> 00:01:17,320
+whenever events occur.
+
+25
+00:01:17,320 --> 00:01:18,840
+So, we're going to go to our curve.
+
+26
+00:01:18,840 --> 00:01:22,620
+Our curve starts at 100%, but at four
+months Subject E dies.
+
+27
+00:01:22,620 --> 00:01:24,220
+So, we drop our curve.
+
+28
+00:01:24,220 --> 00:01:27,124
+The survival probability now goes down to
+80%.
+
+29
+00:01:27,124 --> 00:01:29,742
+4 out of 5 survived that event time.
+
+30
+00:01:29,742 --> 00:01:31,840
+4 out of 5 survive past four months, so
+
+31
+00:01:31,840 --> 00:01:36,900
+our survival probability here is 80%, we
+drop the curve down to 80%.
+
+32
+00:01:36,900 --> 00:01:40,490
+Let's say the next thing that happens is
+that subject A drops out after six months.
+
+33
+00:01:40,490 --> 00:01:41,940
+They are censored at six months.
+
+34
+00:01:41,940 --> 00:01:44,510
+We don't know if they went on to die in
+the last six months of the study.
+
+35
+00:01:44,510 --> 00:01:48,160
+But, we know that they were alive through
+the first six months of the study.
+
+36
+00:01:48,160 --> 00:01:51,240
+We're not going to change the curve
+because we
+
+37
+00:01:51,240 --> 00:01:52,506
+don't know that anybody died there.
+
+38
+00:01:52,506 --> 00:01:55,880
+But we're going to indicate that on the
+curve with a little mark.
+
+39
+00:01:55,880 --> 00:01:58,990
+Then, the the next thing that happens is
+that subjects see dies at seven
+
+40
+00:01:58,990 --> 00:01:59,670
+months at those sites.
+
+41
+00:01:59,670 --> 00:02:01,380
+So, that's another event we're going to
+change the curve.
+
+42
+00:02:01,380 --> 00:02:04,270
+We're going to drop the survival curve the
+probabilities down seven months.
+
+43
+00:02:04,270 --> 00:02:08,120
+Notice that I'm indicating at six months,
+
+44
+00:02:08,120 --> 00:02:10,980
+where subject A dropped out of the study
+with a little bar here.
+
+45
+00:02:10,980 --> 00:02:15,500
+This indicates the censoring that somebody
+was dropped out of the study.
+
+46
+00:02:15,500 --> 00:02:22,074
+We drop our curve down at seven months
+when subject C died.
+
+47
+00:02:22,074 --> 00:02:27,740
+Now, the way that these censoring gets
+incorporated here.
+
+48
+00:02:27,740 --> 00:02:31,760
+Is that right before seven months at that
+time point,
+
+49
+00:02:31,760 --> 00:02:35,540
+there were actually only three people at
+risk of dying.
+
+50
+00:02:35,540 --> 00:02:39,550
+You're not going to count subject A in the
+denominator here because they
+
+51
+00:02:39,550 --> 00:02:40,106
+were censored.
+
+52
+00:02:40,106 --> 00:02:43,578
+So, we'll weigh that subject A is getting
+incorporated here the way that we're,
+
+53
+00:02:43,578 --> 00:02:45,500
+how they in fact that they were censored.
+
+54
+00:02:45,500 --> 00:02:48,510
+Is that our denominator now is just 3
+rather than 4.
+
+55
+00:02:48,510 --> 00:02:53,390
+So, we say that 2 out of 3 survived this
+second interval from four to seven months.
+
+56
+00:02:53,390 --> 00:02:59,260
+The survival probability for this second
+interval was 2 3rd, 2 out of 3.
+
+57
+00:02:59,260 --> 00:03:00,560
+And then, on say subject B and D,
+
+58
+00:03:00,560 --> 00:03:04,160
+survive all the way to the end of the
+study period and the study ends.
+
+59
+00:03:04,160 --> 00:03:06,970
+So, we just draw the curve over we don't
+have anything else happen.
+
+60
+00:03:06,970 --> 00:03:11,470
+Now the Kaplan-Meier curve gives us a
+cumulative probability of survival.
+
+61
+00:03:11,470 --> 00:03:14,658
+So we have, we drop the curve down here
+at, to 80%.
+
+62
+00:03:14,658 --> 00:03:16,490
+80% of the people were surviving.
+
+63
+00:03:16,490 --> 00:03:17,930
+Where did I drop the curve?
+
+64
+00:03:17,930 --> 00:03:19,970
+I didn't tell you yet where I dropped the
+curve down here.
+
+65
+00:03:19,970 --> 00:03:23,130
+So what, where, what percent, what was my
+chance of survival?
+
+66
+00:03:23,130 --> 00:03:25,050
+Where did I drop the curve down here?
+
+67
+00:03:25,050 --> 00:03:28,290
+I mean, to do that, we have to multiply
+together the probability of
+
+68
+00:03:28,290 --> 00:03:31,080
+surviving the first interval, which was 4
+5th.
+
+69
+00:03:31,080 --> 00:03:32,710
+You have to survive the first interval and
+
+70
+00:03:32,710 --> 00:03:35,140
+the second interval to get the cumulative
+probability.
+
+71
+00:03:35,140 --> 00:03:38,190
+The probability of surviving the second
+interval remember was 2 out of 3.
+
+72
+00:03:38,190 --> 00:03:42,020
+So, to get the cumulative probability of
+surviving the past seven months,
+
+73
+00:03:42,020 --> 00:03:46,630
+we multiply 4 5th times 2 3rd, that's s
+survival probability of 53%.
+
+74
+00:03:46,630 --> 00:03:49,060
+So, this curve is now at 53%.
+
+75
+00:03:49,060 --> 00:03:54,110
+So, our curve here is defined at just 2
+times points when events occurred.
+
+76
+00:03:54,110 --> 00:03:56,370
+There was an 80% probability of surviving
+past four months,
+
+77
+00:03:56,370 --> 00:04:00,560
+and a 53% probability of surviving past
+seven months.
+
+78
+00:04:00,560 --> 00:04:02,674
+And through to the end of the study,
+
+79
+00:04:02,674 --> 00:04:06,210
+we just multiply those intervals together
+assuming we have independence here to
+
+80
+00:04:06,210 --> 00:04:10,950
+get the total probability of surviving the
+whole time.
+
+81
+00:04:10,950 --> 00:04:15,319
+Notice that this Kaplan-Meier estimate of
+survival takes into account censoring.
+
+82
+00:04:15,319 --> 00:04:20,600
+The 53% that we've estimated the
+probability of surviving
+
+83
+00:04:20,600 --> 00:04:24,383
+past the year is kind of a compromise
+between two other possibilities.
+
+84
+00:04:24,383 --> 00:04:26,440
+We started the study with five people.
+
+85
+00:04:26,440 --> 00:04:28,830
+We know that two people died.
+
+86
+00:04:28,830 --> 00:04:33,070
+So, if you were not accounting for
+censoring you could just say well there
+
+87
+00:04:33,070 --> 00:04:35,980
+was 3 out of 5 people who survived the
+study.
+
+88
+00:04:35,980 --> 00:04:40,590
+So, maybe a rough guess at the survival
+probability would be 60%.
+
+89
+00:04:40,590 --> 00:04:46,640
+On the other hand, you might look at it
+with the sort of glass half empty.
+
+90
+00:04:46,640 --> 00:04:49,530
+And you might say, well you know,
+
+91
+00:04:49,530 --> 00:04:52,660
+actually I only know that two survived in
+past the year.
+
+92
+00:04:52,660 --> 00:04:54,300
+I don't know what happened to the third
+one.
+
+93
+00:04:54,300 --> 00:04:57,640
+So, I'm going to say that the survival
+probability is only 40%.
+
+94
+00:04:57,640 --> 00:05:01,580
+And maybe it's a little higher than 40%,
+but I might make a guess of 40%.
+
+95
+00:05:01,580 --> 00:05:05,280
+So, my bounds here is, I could either
+estimate.
+
+96
+00:05:05,280 --> 00:05:08,605
+If I wasn't accounting for censoring, I
+could either estimate the probability of
+
+97
+00:05:08,605 --> 00:05:14,520
+survival for a year to be 40%, because I
+only say two survive the year.
+
+98
+00:05:14,520 --> 00:05:19,410
+Or I could estimate it to be 60% because I
+only saw two die.
+
+99
+00:05:19,410 --> 00:05:21,280
+It's going to be somewhere in between
+there.
+
+100
+00:05:21,280 --> 00:05:24,240
+So, notice that the 53% from the
+Kaplan-Meier estimate is
+
+101
+00:05:24,240 --> 00:05:26,081
+a good compromise between those two.
+
+102
+00:05:26,081 --> 00:05:33,380
+Let me do go through a real example of
+doing a Kaplan-Meier curve.
+
+103
+00:05:33,380 --> 00:05:35,930
+This is, we're going to just look at a
+single curve for one group of women.
+
+104
+00:05:35,930 --> 00:05:37,390
+I'm going to make a happy route here.
+
+105
+00:05:37,390 --> 00:05:40,240
+Come here rather than death, we're going
+to talk about time to conception for
+
+106
+00:05:40,240 --> 00:05:43,020
+people who are trying to get pregnant or
+having trouble.
+
+107
+00:05:43,020 --> 00:05:45,960
+The failure therefore is a good thing, the
+event is a good thing.
+
+108
+00:05:45,960 --> 00:05:50,100
+So there were 38 women who were treated
+with infertility with a certain treatment.
+
+109
+00:05:50,100 --> 00:05:54,480
+And we are trying to track their time to
+pregnancy.
+
+110
+00:05:54,480 --> 00:05:55,770
+All the women were followed for
+
+111
+00:05:55,770 --> 00:06:00,290
+up to two years to describe time to
+conception and the event is conception.
+
+112
+00:06:00,290 --> 00:06:04,890
+So, we're starting with 100% of women not
+being pregnant, [COUGH] and
+
+113
+00:06:04,890 --> 00:06:07,060
+women survive until they conceive.
+
+114
+00:06:07,060 --> 00:06:10,310
+As to the event here is conception is a,
+is a positive outcome.
+
+115
+00:06:10,310 --> 00:06:11,120
+So, here's all the data.
+
+116
+00:06:11,120 --> 00:06:14,490
+It's a nice data set because it just
+writes out all, we can see all the data.
+
+117
+00:06:14,490 --> 00:06:15,780
+These are the women who had the event.
+
+118
+00:06:15,780 --> 00:06:18,566
+These are the women who did not have the
+event and this is the timing of it.
+
+119
+00:06:18,566 --> 00:06:23,710
+So, here's the Kaplan-Meier curve that
+corresponds to these data.
+
+120
+00:06:23,710 --> 00:06:26,258
+And everywhere you see a little star,
+that's just where a woman was censored.
+
+121
+00:06:26,258 --> 00:06:29,910
+She dropped out of the study before she
+became pregnant.
+
+122
+00:06:29,910 --> 00:06:32,290
+So, we start at a 100% and it drops down
+from there.
+
+123
+00:06:32,290 --> 00:06:33,620
+Remember, we want the curve to drop here.
+
+124
+00:06:33,620 --> 00:06:35,760
+We want, when the woman are trying to get
+pregnant,
+
+125
+00:06:35,760 --> 00:06:39,560
+the survival function is a step wise
+function with nine event times.
+
+126
+00:06:39,560 --> 00:06:44,350
+There's nine unique steps on this curve
+that defines the survival probabilities.
+
+127
+00:06:44,350 --> 00:06:47,290
+Again, we only find the survival
+probabilities where we actually see event.
+
+128
+00:06:48,950 --> 00:06:52,060
+So, let me just show you walk through how
+this is calculated.
+
+129
+00:06:52,060 --> 00:06:53,400
+Again, a computer will do this for you but
+
+130
+00:06:53,400 --> 00:06:55,490
+its nice to have some concept of what's
+going on.
+
+131
+00:06:55,490 --> 00:06:57,840
+So, the first thing the first month and
+
+132
+00:06:57,840 --> 00:06:59,430
+women can only get pregnant once a month,
+right?
+
+133
+00:06:59,430 --> 00:07:04,520
+So, the first month, the first cycle,
+there were six women who conceived.
+
+134
+00:07:04,520 --> 00:07:06,440
+So, they all had events in the first
+cycle.
+
+135
+00:07:06,440 --> 00:07:10,120
+So, we can represent them on the curve six
+women conceived in
+
+136
+00:07:10,120 --> 00:07:11,270
+the first menstrual cycle.
+
+137
+00:07:11,270 --> 00:07:15,939
+Therefore, 32 out of 38 survived
+pregnancy-free past the first month.
+
+138
+00:07:15,939 --> 00:07:17,725
+So, we drop the curve down here.
+
+139
+00:07:17,725 --> 00:07:22,770
+A the survival probability of not getting
+pregnant is 84%, so
+
+140
+00:07:22,770 --> 00:07:24,182
+we dropped the curve down to 84%.
+
+141
+00:07:24,182 --> 00:07:29,680
+That's the survival probability of making
+it past one moth without getting pregnant.
+
+142
+00:07:29,680 --> 00:07:34,270
+Second thing that happens is in the second
+month, we had five women who conceived.
+
+143
+00:07:34,270 --> 00:07:36,830
+Now, there is one woman who was censored
+after two months.
+
+144
+00:07:36,830 --> 00:07:40,630
+I'll just, I'm going to call her 2.1 so we
+don't get confused.
+
+145
+00:07:40,630 --> 00:07:41,690
+So, there were,
+
+146
+00:07:41,690 --> 00:07:44,590
+I had written down that a woman conc, that
+was censored at two months.
+
+147
+00:07:44,590 --> 00:07:46,020
+That means she made it through two months,
+
+148
+00:07:46,020 --> 00:07:47,710
+we know she didn't get pregnant the second
+month.
+
+149
+00:07:47,710 --> 00:07:52,590
+So, her censoring is going to happen after
+the second month.
+
+150
+00:07:52,590 --> 00:07:54,360
+How do I represent this on the curve?
+
+151
+00:07:54,360 --> 00:07:55,650
+Well, I'm going to drop down the curve.
+
+152
+00:07:55,650 --> 00:07:57,820
+Five women conceived in the second month.
+
+153
+00:07:57,820 --> 00:07:58,870
+What was the risk set?
+
+154
+00:07:58,870 --> 00:08:02,600
+How many women were at risk of conceiving
+in the second month?
+
+155
+00:08:02,600 --> 00:08:04,060
+There were 32 women.
+
+156
+00:08:04,060 --> 00:08:07,425
+We started with 38, six got pregnant in
+the first month, 32 are left.
+
+157
+00:08:07,425 --> 00:08:10,009
+Therefore, 27 out of 32.
+
+158
+00:08:10,009 --> 00:08:14,390
+About 84% again survived the second month
+pregnancy free.
+
+159
+00:08:14,390 --> 00:08:16,300
+To get the cumulative probability of
+survival,
+
+160
+00:08:16,300 --> 00:08:18,960
+we have to we have to multiply together
+the probability of
+
+161
+00:08:18,960 --> 00:08:22,300
+surviving the first month times the
+probability of surviving the second month.
+
+162
+00:08:22,300 --> 00:08:24,130
+We multiply those two probabilities
+together.
+
+163
+00:08:24,130 --> 00:08:28,360
+I get a total probability, a cumulative
+probability of surviving pregnancy free,
+
+164
+00:08:28,360 --> 00:08:31,230
+free, past the second month of 71%.
+
+165
+00:08:31,230 --> 00:08:34,110
+So, I dropped the curve down to 71%.
+
+166
+00:08:34,110 --> 00:08:37,680
+Next thing, in the third month, we have
+three women who conceived.
+
+167
+00:08:37,680 --> 00:08:40,360
+One woman is censored in between the
+second and the third month.
+
+168
+00:08:40,360 --> 00:08:43,830
+So, we have to she is not going to be
+included in the risk set.
+
+169
+00:08:43,830 --> 00:08:46,470
+She was not at risk of getting pregnant in
+the third month because she
+
+170
+00:08:46,470 --> 00:08:47,190
+was dropped out.
+
+171
+00:08:47,190 --> 00:08:51,990
+So, there were only 26 women who were at
+risk of getting pregnant in month three.
+
+172
+00:08:51,990 --> 00:08:54,630
+Out of those, three got pregnant, 23 did
+not.
+
+173
+00:08:54,630 --> 00:08:59,380
+So the survival probability is 23 out of
+26 or 88.5%.
+
+174
+00:08:59,380 --> 00:09:02,050
+Again, we have to multiply that with the
+other ones to get
+
+175
+00:09:02,050 --> 00:09:06,140
+the total probability of surviving past
+three months pregnancy for eight week.
+
+176
+00:09:06,140 --> 00:09:11,990
+Drop our curve down now to 62.8% in the
+fourth month.
+
+177
+00:09:11,990 --> 00:09:13,850
+We had one person who had censored at 1
+3rd,
+
+178
+00:09:13,850 --> 00:09:17,393
+so the at the fourth month, our risk set
+was down to 22 women.
+
+179
+00:09:17,393 --> 00:09:19,768
+3 get pregnant, 19 did no get pregnant.
+
+180
+00:09:19,768 --> 00:09:22,510
+We're going to do the same thing.
+
+181
+00:09:22,510 --> 00:09:26,790
+Now, our probability of is down to 54%,
+and we can keep going with this.
+
+182
+00:09:26,790 --> 00:09:27,690
+You get the idea.
+
+183
+00:09:27,690 --> 00:09:33,699
+[COUGH] At six months, there risk set of
+18 women.
+
+184
+00:09:33,699 --> 00:09:39,060
+So, 88.8% survived this next interval
+pregnancy free.
+
+185
+00:09:39,060 --> 00:09:41,772
+We're going to drop the curve now down to
+42.9%.
+
+186
+00:09:41,772 --> 00:09:47,551
+That's your probability of surviving past
+six months, pregnancy free in this study.
+
+187
+00:09:47,551 --> 00:09:49,514
+And I got bored here and
+
+188
+00:09:49,514 --> 00:09:54,700
+decided to just scroll ahead when you get
+down to 13 months.
+
+189
+00:09:54,700 --> 00:09:57,040
+The probability now is down to 22%, and
+
+190
+00:09:57,040 --> 00:09:59,820
+I just want to point out what happens at
+the end of a Kaplan-Meier curve.
+
+191
+00:09:59,820 --> 00:10:07,210
+So, at 13 months, the probability was 22%
+that dropped rapidly down to 15%.
+
+192
+00:10:07,210 --> 00:10:10,850
+So, there was kind of a big drop off here
+at 16 months.
+
+193
+00:10:10,850 --> 00:10:15,000
+But that drop just represents that there
+were three women left in the study.
+
+194
+00:10:15,000 --> 00:10:18,690
+And one got pregnant, and you get a big
+drop in the curve just from three women.
+
+195
+00:10:18,690 --> 00:10:20,490
+So, as you get to the end of Kaplan-Meier
+curves,
+
+196
+00:10:20,490 --> 00:10:22,781
+you're often down to a very small number
+of women.
+
+197
+00:10:22,781 --> 00:10:25,480
+We have to be little bit careful about
+interpreting the end of
+
+198
+00:10:25,480 --> 00:10:27,450
+the Kaplan-Meier curve things getting
+legally.
+
+199
+00:10:27,450 --> 00:10:30,182
+So, two women did not conceive.
+
+200
+00:10:30,182 --> 00:10:33,000
+The tail of that curve here represents
+that there
+
+201
+00:10:33,000 --> 00:10:36,800
+are just two women who remain
+pregnancy-free for the rest of the study.
+
+202
+00:10:36,800 --> 00:10:39,502
+And it's not a represental lock, it's only
+two women.
+
+203
+00:10:39,502 --> 00:10:45,100
+So again, at the end of the study that the
+last of them are going to 16 months.
+
+204
+00:10:45,100 --> 00:10:47,080
+And then, they are at that point,
+
+205
+00:10:47,080 --> 00:10:51,640
+there was only 3 women left, 2 didn't get
+pregnant, 1 did.
+
+206
+00:10:51,640 --> 00:10:54,980
+So this is, you can imagine our estimates
+are getting very wiggly.
+
+207
+00:10:54,980 --> 00:10:57,662
+There's a lot of uncertainty when you get
+down to such small numbers.
+
+208
+00:10:57,662 --> 00:11:02,870
+So, just keep that in mind with the end of
+Kaplan-Meier curves.
+
+209
+00:11:02,870 --> 00:11:07,520
+Finally we can also compare Kaplan-Meier
+curves between two or more groups.
+
+210
+00:11:07,520 --> 00:11:09,910
+And here's an example of two groups.
+
+211
+00:11:09,910 --> 00:11:14,580
+Researchers randomized 44 patients with
+hepatitis to receive either a steroid or
+
+212
+00:11:14,580 --> 00:11:15,300
+no treatment.
+
+213
+00:11:15,300 --> 00:11:17,790
+And then, they compared the survival
+curve.
+
+214
+00:11:17,790 --> 00:11:19,090
+And here's the raw data.
+
+215
+00:11:19,090 --> 00:11:20,940
+In this case, I've got two groups.
+
+216
+00:11:20,940 --> 00:11:23,576
+So, I'm indicating censoring with a little
+red star.
+
+217
+00:11:23,576 --> 00:11:25,980
+So somebody who has a little red star
+means that they were
+
+218
+00:11:25,980 --> 00:11:26,960
+censored at that time.
+
+219
+00:11:26,960 --> 00:11:29,540
+People who don't have the star had the
+event at that time.
+
+220
+00:11:29,540 --> 00:11:31,470
+I'm not going to go through the drawing of
+these two curves, but
+
+221
+00:11:31,470 --> 00:11:34,510
+it would be the same way that I just
+showed you.
+
+222
+00:11:34,510 --> 00:11:37,080
+And here's the resulting Kaplan-Meier
+curve.
+
+223
+00:11:37,080 --> 00:11:39,950
+So, the red is the control group, they're
+dying off faster.
+
+224
+00:11:39,950 --> 00:11:44,570
+The outcome here is death, and the steroid
+group is doing a lot better.
+
+225
+00:11:46,280 --> 00:11:48,730
+Are those two curves statistically
+different?
+
+226
+00:11:48,730 --> 00:11:52,110
+That's one question we're going to want to
+answer when we're comparing groups.
+
+227
+00:11:53,450 --> 00:11:54,900
+It's a little misleading to the eye.
+
+228
+00:11:54,900 --> 00:11:58,052
+Because if you look at these two curves,
+you might think, oh well,
+
+229
+00:11:58,052 --> 00:12:00,630
+the two curves are converging at the end,
+right?
+
+230
+00:12:00,630 --> 00:12:02,751
+The two curves seem to join back together
+at the end.
+
+231
+00:12:02,751 --> 00:12:05,389
+There seems to be a big divergence, and
+then they seem to, to come back in.
+
+232
+00:12:05,389 --> 00:12:09,710
+But remember at the end of a Kaplan-Meier
+curve, there's a lot of,
+
+233
+00:12:09,710 --> 00:12:11,460
+there's very few people left.
+
+234
+00:12:11,460 --> 00:12:14,000
+And so, there's a lot of uncertainty if
+you were to drag,
+
+235
+00:12:14,000 --> 00:12:16,960
+draw confidence in amongst those estimates
+would be very wide.
+
+236
+00:12:16,960 --> 00:12:19,390
+So, at this little jump here,
+
+237
+00:12:19,390 --> 00:12:23,530
+this drop, this big drop you're seeing in
+the steroid curve at the end.
+
+238
+00:12:23,530 --> 00:12:26,360
+That just represents there were only three
+people left.
+
+239
+00:12:26,360 --> 00:12:29,310
+And one of them died and two of them
+remained.
+
+240
+00:12:29,310 --> 00:12:30,530
+So, the survival probability,
+
+241
+00:12:30,530 --> 00:12:33,660
+you're multiplying the curve by 2 3rd
+which is a big fraction.
+
+242
+00:12:33,660 --> 00:12:36,220
+You're, you're really dropping the curve
+quite a bit here,
+
+243
+00:12:36,220 --> 00:12:38,110
+just due to one person dying.
+
+244
+00:12:38,110 --> 00:12:43,960
+Also, there's only just six people left in
+the placebo control group.
+
+245
+00:12:43,960 --> 00:12:46,410
+That just happened to survive the rest of
+the study.
+
+246
+00:12:46,410 --> 00:12:49,710
+So, that represents that long curve at the
+end just represents six people.
+
+247
+00:12:49,710 --> 00:12:53,215
+So, you have to be a little careful about
+over-interpreting the ends of
+
+248
+00:12:53,215 --> 00:12:54,260
+Kaplan-Meier curves.
+
+249
+00:12:54,260 --> 00:12:56,280
+They can get pretty wiggly with such small
+numbers.
+
+250
+00:12:56,280 --> 00:13:02,040
+So, I ran a log-rank test on these data in
+a, a computer package.
+
+251
+00:13:02,040 --> 00:13:05,530
+Actually, doing the log-rank test by hand
+is pretty tedious.
+
+252
+00:13:05,530 --> 00:13:08,700
+But a log-rank test compares those two
+curves.
+
+253
+00:13:08,700 --> 00:13:12,210
+It compares them across all the time
+points at once.
+
+254
+00:13:12,210 --> 00:13:13,185
+It's a chi-square test.
+
+255
+00:13:13,185 --> 00:13:15,378
+It's a chi-square test with one degree of
+freedom.
+
+256
+00:13:15,378 --> 00:13:17,877
+Again, I'm not going to go into the exact
+details of the test.
+
+257
+00:13:17,877 --> 00:13:19,990
+But it's a chi-square test with one degree
+of freedom.
+
+258
+00:13:19,990 --> 00:13:23,040
+It did come out to be statistically
+significant here.
+
+259
+00:13:23,040 --> 00:13:26,550
+Saying that the overall those time points
+there is
+
+260
+00:13:26,550 --> 00:13:33,081
+a significant difference between the two
+groups.

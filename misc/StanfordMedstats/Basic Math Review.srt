@@ -1,0 +1,914 @@
+1
+00:00:00,000 --> 00:00:04,360
+This module will briefly review some of
+the mathematical concepts that
+
+2
+00:00:04,360 --> 00:00:10,985
+will help you understand the topics
+covered in this statistics course.
+
+3
+00:00:10,985 --> 00:00:14,560
+In this video, we'll be focusing on five
+concepts, factorials and
+
+4
+00:00:14,560 --> 00:00:16,705
+summations, the equation of a line, and
+
+5
+00:00:16,705 --> 00:00:21,820
+the exponential function, as well as the
+natural logarithm.
+
+6
+00:00:21,820 --> 00:00:23,320
+So, jumping right into factorials.
+
+7
+00:00:23,320 --> 00:00:27,510
+Factorials are denoted with an exclamation
+point as shown here.
+
+8
+00:00:27,510 --> 00:00:31,360
+The formal definition for a factorial, and
+I'll repeat this,
+
+9
+00:00:31,360 --> 00:00:36,704
+is that it's the product of all positive
+integers less than or equal to the number.
+
+10
+00:00:36,704 --> 00:00:42,500
+Again, it's the product of all positive
+integers less than or
+
+11
+00:00:42,500 --> 00:00:45,240
+equal to this number.
+
+12
+00:00:45,240 --> 00:00:49,630
+Now, if I say that in another way that's
+like saying that when you
+
+13
+00:00:49,630 --> 00:00:54,900
+take the factorial of a number, you're
+multiplying all the positive whole
+
+14
+00:00:54,900 --> 00:00:58,030
+numbers between that number and the number
+1.
+
+15
+00:00:58,030 --> 00:01:00,082
+So, let me illustrate that with an
+example.
+
+16
+00:01:00,082 --> 00:01:03,305
+3 factorial, whats 3 factorial?
+
+17
+00:01:03,305 --> 00:01:07,630
+It's 3 times 2 times 1, and that's equal
+to 6.
+
+18
+00:01:07,630 --> 00:01:12,802
+Okay, the key takeaway here is that 3
+factorial is simply a number,
+
+19
+00:01:12,802 --> 00:01:15,812
+3 factorial is equal to 6.
+
+20
+00:01:15,812 --> 00:01:18,777
+Let's go over another example.
+
+21
+00:01:18,777 --> 00:01:20,520
+What's 6 factorial?
+
+22
+00:01:20,520 --> 00:01:23,920
+So, we're going to be multiplying all the
+numbers between 6 and 1.
+
+23
+00:01:23,920 --> 00:01:28,162
+So, that means 6 factorial is going to
+equal 6 times 5
+
+24
+00:01:28,162 --> 00:01:32,580
+times 4 times 3 times 2 times 1.
+
+25
+00:01:32,580 --> 00:01:37,180
+And we're going to do a little bit of Math
+here.
+
+26
+00:01:37,180 --> 00:01:42,190
+And we're going to figure out that 6
+factorial is equal to 720.
+
+27
+00:01:42,190 --> 00:01:46,760
+Again, the big takeaway here, being that 6
+factorial is simply a number.
+
+28
+00:01:46,760 --> 00:01:48,980
+It's equal to 720.
+
+29
+00:01:48,980 --> 00:01:54,720
+It's you can think about it as if it's
+another way of writing 720.
+
+30
+00:01:54,720 --> 00:01:57,420
+One thing to know about factorials is that
+you
+
+31
+00:01:57,420 --> 00:02:01,770
+can only take the factorial of a positive
+integer.
+
+32
+00:02:01,770 --> 00:02:07,950
+You can't take factorials of negative
+numbers and get a real solution.
+
+33
+00:02:07,950 --> 00:02:14,562
+One thing you'll have to remember about
+factorials is what 0 factorial equals.
+
+34
+00:02:14,562 --> 00:02:16,982
+0 factorial equals 1.
+
+35
+00:02:16,982 --> 00:02:22,510
+Again 0 factorial is defined as 1.
+
+36
+00:02:22,510 --> 00:02:25,360
+Before I move on to summations one last
+thing I
+
+37
+00:02:25,360 --> 00:02:30,365
+want to go over with factorials is a trick
+for how to simplify them.
+
+38
+00:02:30,365 --> 00:02:37,340
+Let's say you come across a problem 13
+factorial divided by 10 factorial.
+
+39
+00:02:37,340 --> 00:02:38,910
+Because you know the definition of the
+factorial,
+
+40
+00:02:38,910 --> 00:02:42,440
+you're thinking to yourself, gosh these
+are going to be really large numbers.
+
+41
+00:02:42,440 --> 00:02:47,181
+I'm going to have to multiply 13 times 12
+times 11 times 10, all the way down to 1.
+
+42
+00:02:47,181 --> 00:02:50,030
+Do that again on the bottom.
+
+43
+00:02:50,030 --> 00:02:52,960
+Well, you can also rewrite this top part.
+
+44
+00:02:54,100 --> 00:02:58,215
+But instead of going all the way down to
+1, you can stop here and
+
+45
+00:02:58,215 --> 00:03:01,380
+finish off this expression with 10
+factorial.
+
+46
+00:03:01,380 --> 00:03:03,135
+And the reason I'm going to do that is so
+
+47
+00:03:03,135 --> 00:03:07,850
+that I can cancel out the same expression
+on the top and bottom of this fraction.
+
+48
+00:03:07,850 --> 00:03:11,400
+Remember, I can do this because 10
+factorial is a number.
+
+49
+00:03:11,400 --> 00:03:13,590
+I don't know what number it is, off the
+top of my head.
+
+50
+00:03:13,590 --> 00:03:16,640
+It's a very large number, but I can cancel
+that.
+
+51
+00:03:16,640 --> 00:03:19,255
+And that leaves me with something very
+manageable.
+
+52
+00:03:19,255 --> 00:03:22,630
+13 time 12 times 11, which happens to
+equal 1716.
+
+53
+00:03:22,630 --> 00:03:29,400
+So, this is just a trick for simplifying
+factorials
+
+54
+00:03:29,400 --> 00:03:32,420
+if you ever come across a problem like
+this.
+
+55
+00:03:32,420 --> 00:03:36,340
+Summations are expressed with the capital
+Greek letter sigma, okay?
+
+56
+00:03:36,340 --> 00:03:38,180
+And whenever you see a summation symbol,
+
+57
+00:03:38,180 --> 00:03:41,070
+I want you to focus on these three areas,
+okay?
+
+58
+00:03:41,070 --> 00:03:43,635
+This first part on the bottom of the
+sigma,
+
+59
+00:03:43,635 --> 00:03:46,480
+it represents the lower bound of the
+summation.
+
+60
+00:03:46,480 --> 00:03:53,679
+This top part, number 2 represents the
+upper bound, very intuitive.
+
+61
+00:03:53,679 --> 00:03:55,460
+And then this third part,
+
+62
+00:03:55,460 --> 00:03:59,430
+on the side is the expression that you're
+going to be summing over.
+
+63
+00:03:59,430 --> 00:04:02,959
+And let me illustrate what I mean by that
+with an example.
+
+64
+00:04:02,959 --> 00:04:03,470
+Okay?
+
+65
+00:04:03,470 --> 00:04:06,785
+So lets say your index variable right
+here.
+
+66
+00:04:06,785 --> 00:04:08,920
+Your lower bound is going to be one.
+
+67
+00:04:08,920 --> 00:04:14,090
+You're going to be going all the way to 6
+,and we're going to be iterating over i.
+
+68
+00:04:14,090 --> 00:04:14,670
+What does that mean?
+
+69
+00:04:14,670 --> 00:04:16,160
+Well, it means we're going to start at 1.
+
+70
+00:04:16,160 --> 00:04:19,460
+And every time we add a term to this
+expression,
+
+71
+00:04:19,460 --> 00:04:23,590
+we're going to iterate i by 1 until we
+reach 6.
+
+72
+00:04:23,590 --> 00:04:29,534
+So, that means 1 plus 2 plus 3 plus 4 plus
+5 plus 6.
+
+73
+00:04:29,534 --> 00:04:30,230
+Okay?
+
+74
+00:04:30,230 --> 00:04:32,030
+And that equals 21.
+
+75
+00:04:32,030 --> 00:04:34,510
+Okay?
+Just like with factorials,
+
+76
+00:04:34,510 --> 00:04:37,980
+this complicated looking expression is
+just a number.
+
+77
+00:04:37,980 --> 00:04:43,060
+It's another way of writing 21.
+
+78
+00:04:43,060 --> 00:04:48,040
+Another key point here is to realize that
+I'm adding all of
+
+79
+00:04:48,040 --> 00:04:50,590
+these because these are all equal to i.
+
+80
+00:04:50,590 --> 00:04:53,100
+And that's the expression that we're
+summing over.
+
+81
+00:04:53,100 --> 00:04:58,010
+Okay, let me illustrate this with another
+example.
+
+82
+00:04:58,010 --> 00:05:01,680
+So, very similar to the last one, except
+we're going to be summing over 7 i.
+
+83
+00:05:01,680 --> 00:05:04,033
+Okay, so this is going to look like this.
+
+84
+00:05:04,033 --> 00:05:09,529
+We're going to start at the lower bound,
+
+85
+00:05:09,529 --> 00:05:13,030
+okay, and end when we reach the upper
+bound.
+
+86
+00:05:13,030 --> 00:05:14,760
+Whatever that definition is.
+
+87
+00:05:14,760 --> 00:05:16,640
+In this case, it's still 1 and 6.
+
+88
+00:05:16,640 --> 00:05:22,438
+So, what we're going to do here is
+multiply 7 times 1.
+
+89
+00:05:22,438 --> 00:05:24,340
+7 times 2.
+
+90
+00:05:24,340 --> 00:05:29,900
+Okay.
+All the way until we reach 7 times 6.
+
+91
+00:05:29,900 --> 00:05:36,190
+And you might realize that you can take
+out the 7 from this expression, okay?
+
+92
+00:05:36,190 --> 00:05:38,275
+To give yourself something that looks like
+this.
+
+93
+00:05:38,275 --> 00:05:44,640
+7 times the quantity 1 plus 2 plus 3 plus
+4 plus 5 plus 6.
+
+94
+00:05:44,640 --> 00:05:49,060
+Of course, and because we did this last
+problem, we know that, that's 21.
+
+95
+00:05:49,060 --> 00:05:58,630
+So, this expression right here results in
+7 times 21, okay.
+
+96
+00:05:58,630 --> 00:06:00,860
+So, let me rate, rewrite that in another
+way.
+
+97
+00:06:00,860 --> 00:06:07,510
+So, that results in 7 times this
+summation.
+
+98
+00:06:07,510 --> 00:06:09,620
+If you'll look at these two carefully,
+
+99
+00:06:09,620 --> 00:06:16,250
+what you'll realize is that all I did was
+move this 7 to the outside.
+
+100
+00:06:16,250 --> 00:06:18,210
+Okay?
+This illustrates one property of
+
+101
+00:06:18,210 --> 00:06:20,060
+summations, there are multiple properties.
+
+102
+00:06:20,060 --> 00:06:21,920
+I won't go into them in this video.
+
+103
+00:06:21,920 --> 00:06:28,610
+But I just wanted to give you a taste of
+what knowing these properties can do and
+
+104
+00:06:28,610 --> 00:06:33,042
+how they can help you simplify much more
+complicated expressions.
+
+105
+00:06:33,042 --> 00:06:35,730
+One more example with summations.
+
+106
+00:06:35,730 --> 00:06:39,090
+Now, let's imagine that you have some
+data.
+
+107
+00:06:39,090 --> 00:06:44,946
+Okay, let's imagine that you have five
+data points labeled x 1 to x 5, okay?
+
+108
+00:06:44,946 --> 00:06:52,096
+And let's imagine that these values are 2,
+4, 6, 8, and 10.
+
+109
+00:06:52,096 --> 00:06:57,290
+Okay, we call this we say that these data,
+this data is indexed.
+
+110
+00:06:57,290 --> 00:07:02,020
+And what that means is that this first
+point, okay, corresponds to x sub 1.
+
+111
+00:07:02,020 --> 00:07:05,274
+Second point corresponds to x sub 2, etc.
+
+112
+00:07:05,274 --> 00:07:11,270
+And each of these points corresponds to an
+actual value in the data set.
+
+113
+00:07:11,270 --> 00:07:16,430
+So, I can use the summation to sum either
+part or this whole set of numbers.
+
+114
+00:07:17,600 --> 00:07:20,350
+Okay, and let me illustrate that.
+
+115
+00:07:20,350 --> 00:07:21,702
+Lets say with something like this.
+
+116
+00:07:21,702 --> 00:07:24,650
+Okay, so what is this expression going to
+equal?
+
+117
+00:07:24,650 --> 00:07:31,370
+Well, if I write it out, this is going to
+be x sub 3 plus x sub 4 plus x sub 5,
+
+118
+00:07:31,370 --> 00:07:39,179
+which corresponds to 6 plus 8 plus 10,
+which is 24, okay?
+
+119
+00:07:39,179 --> 00:07:43,550
+So, this real illustrates a more practical
+example of
+
+120
+00:07:43,550 --> 00:07:45,740
+how you can think about summations.
+
+121
+00:07:45,740 --> 00:07:48,525
+And how they can be helpful to you.
+
+122
+00:07:48,525 --> 00:07:51,265
+When thing about large sets of data.
+
+123
+00:07:51,265 --> 00:07:56,240
+Probably the most common form that you'll
+encounter when you're looking at
+
+124
+00:07:56,240 --> 00:08:02,570
+the equation of a line will be slope
+intercept form,
+
+125
+00:08:02,570 --> 00:08:04,650
+and that will work like this.
+
+126
+00:08:04,650 --> 00:08:07,380
+y equals mx plus b.
+
+127
+00:08:07,380 --> 00:08:08,810
+You've probably seen this before.
+
+128
+00:08:08,810 --> 00:08:14,870
+So, m represents the slope, b represents
+the y intercept.
+
+129
+00:08:14,870 --> 00:08:19,880
+Okay, that's the point at which this line
+intersects the y axis.
+
+130
+00:08:19,880 --> 00:08:24,260
+And y and x are, of course, the y
+coordinate.
+
+131
+00:08:24,260 --> 00:08:30,220
+The corresponding y and x coordinates for
+points that lie on this line.
+
+132
+00:08:30,220 --> 00:08:37,330
+Now, let's illustrate what we just went
+over, again, with an example.
+
+133
+00:08:37,330 --> 00:08:40,660
+Lets say y equals 2x plus 6.
+
+134
+00:08:40,660 --> 00:08:42,850
+Now, if I ask you what the slope is,
+
+135
+00:08:42,850 --> 00:08:45,442
+you're going to tell me that the slope is
+2.
+
+136
+00:08:45,442 --> 00:08:49,565
+Because this 2 corresponds to this m.
+
+137
+00:08:49,565 --> 00:08:51,020
+Okay?
+
+138
+00:08:51,020 --> 00:08:53,604
+And similarly, if I ask you what the y
+intercept is.
+
+139
+00:08:53,604 --> 00:08:58,045
+You're going to tell me that it's 6,
+because it corresponds to b.
+
+140
+00:08:58,045 --> 00:09:03,130
+More accurately, the y intercept in this
+
+141
+00:09:03,130 --> 00:09:08,788
+case is going to be 0 comma 6.
+
+142
+00:09:08,788 --> 00:09:18,420
+Now, let me talk a little bit more about
+the slope.
+
+143
+00:09:18,420 --> 00:09:23,550
+So, slope is defined as the change in y
+over change in x.
+
+144
+00:09:23,550 --> 00:09:31,350
+And another way of remembering that is by
+remembering this phrase rise over run.
+
+145
+00:09:31,350 --> 00:09:39,840
+And again, I want to illustrate all these
+concepts with the example from before.
+
+146
+00:09:39,840 --> 00:09:41,960
+And this time I'm going to graph this.
+
+147
+00:09:41,960 --> 00:09:44,600
+So, this is your y axis and this is your x
+axis.
+
+148
+00:09:44,600 --> 00:09:48,290
+So, we know that the y intercept is 6.
+
+149
+00:09:48,290 --> 00:09:51,480
+So, I'm going to pick this point to be the
+y intercept.
+
+150
+00:09:51,480 --> 00:09:53,992
+And I know that the slope is 2.
+
+151
+00:09:53,992 --> 00:09:57,990
+So, I'm going to go up two points for
+every one point that I go over.
+
+152
+00:09:57,990 --> 00:10:00,858
+Or do the, and also do the opposite.
+
+153
+00:10:00,858 --> 00:10:01,746
+Go down two for
+
+154
+00:10:01,746 --> 00:10:07,328
+every one point that I moved to the left,
+one unit I moved to the left.
+
+155
+00:10:07,328 --> 00:10:12,284
+And connecting these dots, gives me the
+graph of this line.
+
+156
+00:10:12,284 --> 00:10:15,697
+Moving onto the exponential function.
+
+157
+00:10:15,697 --> 00:10:21,495
+The exponential function is denoted like
+this with the letter e.
+
+158
+00:10:21,495 --> 00:10:24,671
+Sometimes you might see it written like
+this.
+
+159
+00:10:24,671 --> 00:10:27,237
+Don't get confused, these are the same
+things.
+
+160
+00:10:27,237 --> 00:10:31,710
+It's important to note that e is a number.
+
+161
+00:10:31,710 --> 00:10:37,779
+e is equal to 2.71828, etcetera, etcetera,
+etcetera.
+
+162
+00:10:37,779 --> 00:10:43,479
+And so if you find yourself forgetting
+this it might be useful
+
+163
+00:10:43,479 --> 00:10:51,645
+to remember e to the x as approximately
+equal 2.72 raised to the x.
+
+164
+00:10:51,645 --> 00:10:56,520
+Now, if you want to check to make sure
+you're doing this right.
+
+165
+00:10:56,520 --> 00:11:02,275
+e to the 3 will equal 20.085, and you can
+use
+
+166
+00:11:02,275 --> 00:11:07,353
+that in Google or your calculator to check
+that you're doing this the right way.
+
+167
+00:11:07,353 --> 00:11:14,787
+All the normal rules of exponents also
+apply to the exponential function.
+
+168
+00:11:14,787 --> 00:11:19,389
+And what I mean by that let's say e to the
+0.
+
+169
+00:11:19,389 --> 00:11:24,817
+Any number raised to the power to zero
+will equal 1.
+
+170
+00:11:24,817 --> 00:11:28,960
+also, any number raised to a negative
+exponent will be
+
+171
+00:11:28,960 --> 00:11:32,842
+one over that number raised to the
+positive exponent.
+
+172
+00:11:32,842 --> 00:11:37,708
+And that's where I want to leave the
+exponential function.
+
+173
+00:11:37,708 --> 00:11:42,490
+Please do note that the exponential
+function is used very commonly in
+
+174
+00:11:42,490 --> 00:11:43,160
+the sciences.
+
+175
+00:11:43,160 --> 00:11:46,740
+And that's because it has some appealing
+Mathematical properties that
+
+176
+00:11:46,740 --> 00:11:51,780
+allow scientists to model a behavior they
+see in nature very, very well.
+
+177
+00:11:51,780 --> 00:12:00,240
+Moving on to the natural log you can write
+the natural logarithm like this,
+
+178
+00:12:00,240 --> 00:12:06,280
+log base e of x or more commonly as ln of
+x.
+
+179
+00:12:06,280 --> 00:12:12,070
+And the main idea that I want you to take
+away with regard to this course is
+
+180
+00:12:12,070 --> 00:12:15,670
+that the natural log and the exponential
+function are inverses of each other.
+
+181
+00:12:15,670 --> 00:12:18,225
+And what that means is that they undo each
+other.
+
+182
+00:12:18,225 --> 00:12:24,550
+So, the natural log of e to the x will
+just be x.
+
+183
+00:12:24,550 --> 00:12:29,350
+And some other like e, to the natural log
+of x will also be x.
+
+184
+00:12:29,350 --> 00:12:36,117
+And this is important because when we're
+doing certain statistical regressions,
+
+185
+00:12:36,117 --> 00:12:39,710
+we're going to have an expression that
+looks like this, and
+
+186
+00:12:39,710 --> 00:12:40,580
+we're going to want to know.
+
+187
+00:12:40,580 --> 00:12:44,380
+We're going to just want to isolate what's
+inside the natural log.
+
+188
+00:12:44,380 --> 00:12:50,660
+And so, we're going to raise this to the e
+to get that middle part.
+
+189
+00:12:50,660 --> 00:12:55,099
+All the rules about logarithms also apply
+to natural log.
+
+190
+00:12:56,180 --> 00:12:57,910
+And I'll illustrate a few of those here.
+
+191
+00:12:57,910 --> 00:13:02,900
+So, the log of 1 will always equal 0.
+
+192
+00:13:02,900 --> 00:13:06,990
+The log of 0 will always be undefined.
+
+193
+00:13:06,990 --> 00:13:12,050
+And you can't really take the natural log
+of a negative number.
+
+194
+00:13:12,050 --> 00:13:20,480
+At least you won't that won't result in a
+real solution.
+
+195
+00:13:20,480 --> 00:13:29,909
+So, that concludes this Math review and I
+hope you found it useful.

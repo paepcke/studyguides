@@ -1,0 +1,321 @@
+1
+00:00:00,000 --> 00:00:05,230
+[BLANK_AUDIO].
+
+2
+00:00:05,230 --> 00:00:08,260
+In this next module I'm going to talk
+about time-changing predictors in
+
+3
+00:00:08,260 --> 00:00:09,420
+mixed models.
+
+4
+00:00:09,420 --> 00:00:12,390
+And the interpretation is actually
+going to be very similar to when we
+
+5
+00:00:12,390 --> 00:00:15,470
+had time-changing predictors in
+generalized estimating equations.
+
+6
+00:00:15,470 --> 00:00:17,119
+So, this module should be largely review.
+
+7
+00:00:18,920 --> 00:00:21,760
+So we're going to use this same old data
+set that I used last week.
+
+8
+00:00:21,760 --> 00:00:23,900
+This had six subjects.
+
+9
+00:00:23,900 --> 00:00:28,657
+And they all were given a drug that's
+supposed to make a happy chemical in,
+
+10
+00:00:28,657 --> 00:00:29,970
+in their brain go up.
+
+11
+00:00:29,970 --> 00:00:32,090
+And you can see that's what's happening.
+
+12
+00:00:32,090 --> 00:00:35,510
+And then they had their depression scores
+measured over time.
+
+13
+00:00:35,510 --> 00:00:37,870
+They were all depressed subjects.
+
+14
+00:00:37,870 --> 00:00:40,140
+I graphed this data for you last week.
+
+15
+00:00:40,140 --> 00:00:41,640
+The overall graphic look like this.
+
+16
+00:00:41,640 --> 00:00:45,840
+Indeed, it look like on average, people's
+happy chemical level was indeed going up,
+
+17
+00:00:45,840 --> 00:00:48,549
+and on average, the depression scores were
+going down somewhat.
+
+18
+00:00:50,970 --> 00:00:53,710
+So I'll show you here the SAS code.
+
+19
+00:00:53,710 --> 00:00:58,790
+So, this was I fit first a model with just
+a random intercept in it.
+
+20
+00:01:01,230 --> 00:01:04,160
+And here is the results from that model in
+SAS.
+
+21
+00:01:04,160 --> 00:01:05,330
+So just to go through the output,
+
+22
+00:01:05,330 --> 00:01:09,230
+you can see that I got my variants for the
+intercepts.
+
+23
+00:01:09,230 --> 00:01:09,940
+That's 35.3.
+
+24
+00:01:09,940 --> 00:01:13,870
+That's my between subject variability at
+baseline, my residual variance.
+
+25
+00:01:13,870 --> 00:01:17,230
+My AIC here is 147.2, just keep that in
+mind.
+
+26
+00:01:17,230 --> 00:01:21,010
+And then you get down to the actual model,
+the parameter estimates.
+
+27
+00:01:21,010 --> 00:01:23,830
+And you'll see that it's very similar to
+what we got when we
+
+28
+00:01:23,830 --> 00:01:26,550
+did this with a generalized estimating
+equation.
+
+29
+00:01:26,550 --> 00:01:30,300
+So the time effect is not statistically
+significant.
+
+30
+00:01:30,300 --> 00:01:34,020
+The chemical effect is highly
+statistically significant, and
+
+31
+00:01:34,020 --> 00:01:37,960
+as before, since chemical is a time
+changing predictor,
+
+32
+00:01:37,960 --> 00:01:42,280
+we do not put in a chemical by time
+interaction.
+
+33
+00:01:42,280 --> 00:01:45,680
+Time is already inherent in chemical
+because it's a time changing predictor.
+
+34
+00:01:47,898 --> 00:01:52,385
+The beta coefficient for chemical is
+negative 0.129.
+
+35
+00:01:52,385 --> 00:01:54,050
+So almost exactly the same a what we got
+out of
+
+36
+00:01:54,050 --> 00:01:55,580
+the generalized estimating equation.
+
+37
+00:01:55,580 --> 00:01:57,990
+It's highly statistically significant.
+
+38
+00:01:57,990 --> 00:02:00,726
+The interpretation of that beta
+coefficient is tricky,
+
+39
+00:02:00,726 --> 00:02:04,944
+as we talked about last week, because it
+encompasses both within subject's effects,
+
+40
+00:02:04,944 --> 00:02:06,820
+and between subjects effects.
+
+41
+00:02:06,820 --> 00:02:10,010
+So I can't tell you just by looking at
+that beta coefficient whether or
+
+42
+00:02:10,010 --> 00:02:14,470
+not any two people who differ in their
+chemical level will also be predicted to
+
+43
+00:02:14,470 --> 00:02:16,450
+differ in the depression level.
+
+44
+00:02:16,450 --> 00:02:19,674
+Or, whether a person whose individual
+chemical level goes up
+
+45
+00:02:19,674 --> 00:02:22,278
+whether that will correlate to their, you
+know,
+
+46
+00:02:22,278 --> 00:02:26,850
+whether they will be predicted to have
+their individual depression score go down.
+
+47
+00:02:26,850 --> 00:02:29,430
+It could be both of those or some
+combination of those.
+
+48
+00:02:29,430 --> 00:02:32,675
+We saw last week that with this particular
+data set, which is made up,
+
+49
+00:02:32,675 --> 00:02:36,020
+that mostly this was within, due to within
+subjects' effects.
+
+50
+00:02:37,880 --> 00:02:42,350
+But, again, the interpretation than no
+different than, than we did last week.
+
+51
+00:02:42,350 --> 00:02:46,040
+I'll also note that the estimates here of
+the beta coefficient and the P-values
+
+52
+00:02:46,040 --> 00:02:49,120
+are really similar to what we got out of
+the generalized estimating equation.
+
+53
+00:02:49,120 --> 00:02:52,332
+I also ran this model with both a random
+intercept and
+
+54
+00:02:52,332 --> 00:02:57,820
+a random time slope just to see if there
+is if one model was better than the other.
+
+55
+00:02:57,820 --> 00:02:59,490
+So here's the output from that model.
+
+56
+00:02:59,490 --> 00:03:01,803
+You'll see that the AIC is 149.5.
+
+57
+00:03:01,803 --> 00:03:05,890
+So a, we actually did a little worse by
+including the random time slope here.
+
+58
+00:03:05,890 --> 00:03:09,670
+So we would probably just choose the model
+that had the random intercept only.
+
+59
+00:03:09,670 --> 00:03:14,290
+And we've seen that that often is a good
+fit for these types of data.
+
+60
+00:03:14,290 --> 00:03:17,460
+I do want to point out one thing here that
+I haven't mentioned.
+
+61
+00:03:17,460 --> 00:03:23,598
+Which is that if you're running a mixed
+model with a random intercept
+
+62
+00:03:23,598 --> 00:03:30,330
+only [SOUND] that is sort of conceptually
+equivalent to running a marginal model,
+
+63
+00:03:30,330 --> 00:03:36,666
+either a GE model or, a mixed model with a
+repeated statement a marginal
+
+64
+00:03:36,666 --> 00:03:41,913
+model where you choose the exchangeable
+correlation matrix or
+
+65
+00:03:41,913 --> 00:03:45,873
+the compound symmetry covariance
+structure,
+
+66
+00:03:45,873 --> 00:03:51,260
+[SOUND] as your correlation structure for
+the residuals.
+
+67
+00:03:51,260 --> 00:03:54,400
+So those are actually, those actually
+converge on one another.
+
+68
+00:03:54,400 --> 00:03:57,320
+You should get very similar results if you
+run those two models.

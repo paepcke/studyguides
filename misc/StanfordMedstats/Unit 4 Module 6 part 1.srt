@@ -1,0 +1,363 @@
+1
+00:00:00,000 --> 00:00:05,584
+In this next module, I'm going to to talk
+about
+
+2
+00:00:05,584 --> 00:00:14,096
+the normal approximation to the binomial.
+
+3
+00:00:14,096 --> 00:00:16,046
+So whenever you have a binomial
+distribution,
+
+4
+00:00:16,046 --> 00:00:18,996
+you might have noticed in the earlier
+modules that a lot of the binomial
+
+5
+00:00:18,996 --> 00:00:21,346
+distributions when you do out all the
+probabilities and
+
+6
+00:00:21,346 --> 00:00:26,114
+you plot them, they look an awful lot like
+a normal distribution.
+
+7
+00:00:26,114 --> 00:00:28,340
+So it turns out that as long as you're on
+a binomial,
+
+8
+00:00:28,340 --> 00:00:31,785
+where n times p is greater than 5, that
+is, the expected value is greater than 5,
+
+9
+00:00:31,785 --> 00:00:35,725
+it usually looks an awful lot like a
+normal.
+
+10
+00:00:35,725 --> 00:00:37,650
+And we can approximate that binomial,
+
+11
+00:00:37,650 --> 00:00:40,030
+those binomial probabilities, with a
+normal distribution.
+
+12
+00:00:40,030 --> 00:00:42,400
+Let me just remind you of some of the
+examples that we saw.
+
+13
+00:00:42,400 --> 00:00:46,260
+So for example, we saw this one in the
+upper left hand
+
+14
+00:00:46,260 --> 00:00:51,210
+right corner was the wrinkle study, n here
+was 10 patients, P was 0.5.
+
+15
+00:00:51,210 --> 00:00:53,910
+That, get, exactly gives us an np of five.
+
+16
+00:00:53,910 --> 00:00:55,880
+And p times p is equal to five, hey,
+
+17
+00:00:55,880 --> 00:00:58,000
+that looks pretty much like a normal curve
+to me.
+
+18
+00:00:58,000 --> 00:00:59,080
+Right?
+That's very close to
+
+19
+00:00:59,080 --> 00:01:03,120
+a normal curve of course with jagged
+edges, but still very close, and,
+
+20
+00:01:03,120 --> 00:01:04,750
+and n times p is justified there.
+
+21
+00:01:04,750 --> 00:01:12,240
+When we flipped a coin a 100 times, n
+times p [SOUND] was equal to 50.
+
+22
+00:01:12,240 --> 00:01:14,760
+And that one very much looks like a normal
+curve.
+
+23
+00:01:14,760 --> 00:01:19,110
+When we flipped a coin just 5 times, n was
+just 5 and p was just 0.5, so
+
+24
+00:01:19,110 --> 00:01:21,090
+this one is n times p is less than 5.
+
+25
+00:01:21,090 --> 00:01:24,470
+But it still looks kind of like a normal
+curve, and this one over here,
+
+26
+00:01:24,470 --> 00:01:30,290
+we had eight cases, and n equals 8, nrp
+was 0.6.
+
+27
+00:01:30,290 --> 00:01:35,110
+So n times p was 4.8, is a little less
+than 5, but it still looks kind of close
+
+28
+00:01:35,110 --> 00:01:39,420
+to a normal, so we're able to pretend,
+essentially, that we're on a normal curve,
+
+29
+00:01:39,420 --> 00:01:42,620
+and calculate probabilities as if we're on
+a normal curve.
+
+30
+00:01:42,620 --> 00:01:45,710
+What's the mean and the variance of that
+normal curve going to be?
+
+31
+00:01:45,710 --> 00:01:48,680
+Well, it's just going to be the mean and
+the variance of the binomial.
+
+32
+00:01:48,680 --> 00:01:51,900
+So the, it's going to be n times p will be
+the mean of the normal curve,
+
+33
+00:01:51,900 --> 00:01:55,180
+n times p times 1 minus p will be the
+variance.
+
+34
+00:01:55,180 --> 00:01:58,790
+So we can literally just view it as a
+normal curve, that normal curve will have
+
+35
+00:01:58,790 --> 00:02:03,430
+a mean of n times p and a variance of n
+time p times 1 minus p.
+
+36
+00:02:03,430 --> 00:02:05,350
+So let's just do a little practice problem
+to illustrate this.
+
+37
+00:02:05,350 --> 00:02:07,190
+So let's say you're doing a cohort study
+and
+
+38
+00:02:07,190 --> 00:02:11,890
+the probability of developing disease in
+the exposed group is 25%.
+
+39
+00:02:11,890 --> 00:02:14,940
+Let's say you sample 500 exposed people,
+and you want to make sure that
+
+40
+00:02:14,940 --> 00:02:17,370
+you're going to get enough people that
+develop the disease.
+
+41
+00:02:17,370 --> 00:02:20,600
+So you might want to know things, like,
+what's the probability that I'm going to
+
+42
+00:02:20,600 --> 00:02:23,420
+get at most 120 people developing the
+disease?
+
+43
+00:02:23,420 --> 00:02:26,150
+Well, we're on a binomial, this is a
+binomial.
+
+44
+00:02:26,150 --> 00:02:28,550
+Each person, there's 500 people,
+
+45
+00:02:28,550 --> 00:02:31,210
+each person has a 25% chance of developing
+the disease.
+
+46
+00:02:31,210 --> 00:02:32,790
+Am I going to get enough cases of disease,
+or
+
+47
+00:02:32,790 --> 00:02:37,460
+could it be, could that I get 100, less
+than 120 or 120 or less?
+
+48
+00:02:37,460 --> 00:02:40,720
+Well, the way to solve this, once you
+recognize it's another binomial,
+
+49
+00:02:40,720 --> 00:02:43,730
+would be to calculate the exact binomial
+probabilities of
+
+50
+00:02:43,730 --> 00:02:46,570
+getting all the way up to 120.
+
+51
+00:02:46,570 --> 00:02:51,350
+That would mean the probability of getting
+zero cases of disease, one or
+
+52
+00:02:51,350 --> 00:02:53,570
+two or three, you have to go through,
+
+53
+00:02:53,570 --> 00:02:59,230
+and by hand, calculate each one of those
+individual binomial probabilities.
+
+54
+00:02:59,230 --> 00:03:01,870
+Well, that's extremely tedious and
+
+55
+00:03:01,870 --> 00:03:03,320
+of course you're never going to want to do
+that by hand.
+
+56
+00:03:03,320 --> 00:03:06,470
+Of course, a computer could also do it for
+you nowadays.
+
+57
+00:03:06,470 --> 00:03:09,610
+But in general we, we're just going to
+avoid that and
+
+58
+00:03:09,610 --> 00:03:13,100
+instead we're going to say well hey I'm
+close enough to a normal curve.
+
+59
+00:03:13,100 --> 00:03:17,384
+So, let's just pretend we're on a normal
+curve with a mean of 125.
+
+60
+00:03:17,384 --> 00:03:20,640
+That's 500 times a quarter.
+
+61
+00:03:20,640 --> 00:03:24,400
+And a standard deviation of the square
+root of n times p times 1
+
+62
+00:03:24,400 --> 00:03:25,613
+minus p here is 9.68.
+
+63
+00:03:25,613 --> 00:03:28,910
+[SOUND] So, I take the standard deviation
+and
+
+64
+00:03:28,910 --> 00:03:31,100
+the mean from the binomial, and I pretend
+I'm on a normal.
+
+65
+00:03:31,100 --> 00:03:34,740
+And now, if I want to know what's the
+chance of getting 120 or
+
+66
+00:03:34,740 --> 00:03:40,810
+less, well that's the, the area to the
+left on the normal curve, of 120.
+
+67
+00:03:40,810 --> 00:03:45,610
+Now that's below the mean, so we know that
+that area's going to be less than 50%.
+
+68
+00:03:45,610 --> 00:03:46,690
+I calculate my z score.
+
+69
+00:03:46,690 --> 00:03:48,220
+It turns out to be negative 0.52.
+
+70
+00:03:48,220 --> 00:03:52,792
+I go to my chart, I look up the
+probability to the left of negative 0.52.
+
+71
+00:03:52,792 --> 00:03:53,710
+It's about 30%.
+
+72
+00:03:53,710 --> 00:03:58,270
+So I have a 30% chance of getting 120
+cases more or less.
+
+73
+00:03:58,270 --> 00:04:01,380
+So rather than having to calculate all of
+those individual binomial probabilities,
+
+74
+00:04:01,380 --> 00:04:03,080
+I can just look at it as normal.
+
+75
+00:04:03,080 --> 00:04:06,800
+And it turns out that that normal
+approximation underlies a lot of
+
+76
+00:04:06,800 --> 00:04:09,139
+the statistics that we're going to be
+talking about later in the course.

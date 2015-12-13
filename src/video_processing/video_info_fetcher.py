@@ -44,8 +44,10 @@ def get_framedir_info(framedir):
 def extract_text_info(framedir):
   os.system('find ' + framedir + ' -empty -type f -delete')
   frameInfoFilename = framedir + "slide_text.txt"
-  os.system("rm -f " + frameInfoFilename)
+  rawFrameInfoFilename = framedir + "raw_slide_text.txt"
+  os.system("rm -f " + frameInfoFilename + " " + rawFrameInfoFilename)
   trantab = string.maketrans(string.punctuation, ''.join([" " for _ in string.punctuation]))
+  fraw = open(rawFrameInfoFilename, "w")
   with open(frameInfoFilename, "w") as fout:
     numConsecWritingFrames = 0
     detectedWriting = False
@@ -57,13 +59,19 @@ def extract_text_info(framedir):
           time, dpix, dreg = get_frame_info(f)
           image = PIL.Image.open(framedir + f)
           slideText = pytesseract.image_to_string(image)
+          fraw.write(str(time) + '\n')
+          fraw.write(str(dpix) + '\n')
+          fraw.write(str(dreg) + '\n')
+          fraw.write(slideText + '\n')
           slideText = slideText.replace("\n", " ")
           slideText = slideText.translate(trantab)
           slideText = ' '.join([tok.strip() for tok in slideText.split(" ") if tok.isalnum()])
           fout.write(str(time) + '\n')
           fout.write(str(dpix) + '\n')
           fout.write(str(dreg) + '\n')
-          fout.write(slideText + '\n') 
+          fout.write(slideText + '\n')
+
+  fraw.close() 
 
 def extract_event_info(framedir):
   textInfoFilename = framedir + "slide_text.txt"

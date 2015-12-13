@@ -1,0 +1,803 @@
+1
+00:00:00,840 --> 00:00:01,470
+Hello, students.
+
+2
+00:00:01,470 --> 00:00:04,890
+Today we will learn how to analyze gene
+expression data sets when the data
+
+3
+00:00:04,890 --> 00:00:06,080
+sets are very large.
+
+4
+00:00:06,080 --> 00:00:10,220
+In fact, we want to analyze gene
+expression across the entire genome.
+
+5
+00:00:12,590 --> 00:00:14,680
+On approach is unsupervised analysis.
+
+6
+00:00:14,680 --> 00:00:18,090
+You may already know something about your
+samples.
+
+7
+00:00:18,090 --> 00:00:21,180
+But unsupervised analysis doesn't use the
+information.
+
+8
+00:00:21,180 --> 00:00:24,739
+Instead, it simply looks at the data
+without any preconceptions.
+
+9
+00:00:25,900 --> 00:00:30,140
+One example of unsupervised analysis is
+called hierarchical clustering.
+
+10
+00:00:31,540 --> 00:00:35,540
+Imagine they chopped data from two
+samples, X and Y.
+
+11
+00:00:35,540 --> 00:00:38,440
+The data are the levels of expression for
+four genes.
+
+12
+00:00:38,440 --> 00:00:43,053
+And suppose the level of expression for
+
+13
+00:00:43,053 --> 00:00:48,221
+gene one in sample one in sample X is X1,
+and
+
+14
+00:00:48,221 --> 00:00:53,270
+its level of expression in sample Y is Y1.
+
+15
+00:00:54,670 --> 00:01:00,150
+Similarly for gene two, it's X2 in
+
+16
+00:01:00,150 --> 00:01:04,710
+sample X and Y2 in sample Y.
+
+17
+00:01:04,710 --> 00:01:10,780
+And so on and so forth for this toy
+example for genes three and four.
+
+18
+00:01:10,780 --> 00:01:13,910
+Now, it looks like something is going on
+here, and in fact, that there is.
+
+19
+00:01:14,920 --> 00:01:16,040
+And that's something can
+
+20
+00:01:16,040 --> 00:01:19,880
+be measured by what's called the Pearson
+Correlation Coefficient.
+
+21
+00:01:21,110 --> 00:01:25,110
+R [INAUDIBLE]
+of X and Y.
+
+22
+00:01:25,110 --> 00:01:28,410
+And it's given by this formula.
+
+23
+00:01:28,410 --> 00:01:31,270
+And what the Pearson correlation
+coefficient will do is give you
+
+24
+00:01:31,270 --> 00:01:34,830
+a value between plus one and minus one.
+
+25
+00:01:34,830 --> 00:01:38,245
+So, for perfect correlation R is 1.0.
+
+26
+00:01:38,245 --> 00:01:42,270
+For absolutely now correction is zero.
+
+27
+00:01:42,270 --> 00:01:48,100
+And, for anti correlation, where say the
+level of expression if it's low
+
+28
+00:01:48,100 --> 00:01:53,160
+in sample X, it's always high in sample Y
+and, and so on.
+
+29
+00:01:53,160 --> 00:01:55,246
+The R value is minus one.
+
+30
+00:01:55,246 --> 00:02:00,774
+Now, I've given you some examples here of
+R values for examples with
+
+31
+00:02:00,774 --> 00:02:07,081
+many more data points, and these R values
+go from plus one, down to minus one.
+
+32
+00:02:07,081 --> 00:02:12,298
+And you can see the R values of 0.8 and
+0.4 show correlation that gets
+
+33
+00:02:12,298 --> 00:02:15,833
+progressively weaker down to R value of
+zero, and
+
+34
+00:02:15,833 --> 00:02:20,991
+then anti-correlation from minus 0.4 to
+minus 0.8 to minus one.
+
+35
+00:02:20,991 --> 00:02:21,610
+'Kay.
+
+36
+00:02:21,610 --> 00:02:23,290
+How does this play out?
+
+37
+00:02:23,290 --> 00:02:24,113
+Well.
+
+38
+00:02:24,113 --> 00:02:29,620
+Suppose now, you have three samples X, Y,
+and Z,
+
+39
+00:02:29,620 --> 00:02:34,380
+and you calculate the Pearson correlation
+coefficient between each pair of samples.
+
+40
+00:02:34,380 --> 00:02:37,770
+So you get values between X and Y of 0.2,
+X and
+
+41
+00:02:37,770 --> 00:02:41,380
+Z of 0.8, and between Y and Z of -0.6.
+
+42
+00:02:41,380 --> 00:02:47,470
+The most highly correlated samples here
+are X and Z.
+
+43
+00:02:47,470 --> 00:02:51,390
+So, I've put them together here in this
+example and
+
+44
+00:02:51,390 --> 00:02:53,600
+to express that you want to draw.
+
+45
+00:02:53,600 --> 00:02:59,317
+You can draw a diagram that will allow you
+to show graphically
+
+46
+00:02:59,317 --> 00:03:04,080
+what's happening, and you can see that X
+and
+
+47
+00:03:04,080 --> 00:03:10,140
+Z are linked by two short branches on a
+tree, and the branches go up to .8.
+
+48
+00:03:10,140 --> 00:03:13,560
+What about sample Y?
+
+49
+00:03:13,560 --> 00:03:17,200
+Well, you really want to know the
+correlation between sample Y and
+
+50
+00:03:17,200 --> 00:03:18,690
+the mini cluster of X and Z.
+
+51
+00:03:18,690 --> 00:03:24,020
+One way of doing that is by using the
+already calculated values
+
+52
+00:03:24,020 --> 00:03:30,210
+of the correlation between Y and Z which
+is minus 0.6 and
+
+53
+00:03:30,210 --> 00:03:34,550
+between Y and X which is 0.2, and
+
+54
+00:03:34,550 --> 00:03:40,050
+take the average of those two numbers, to
+give you minus 0.2.
+
+55
+00:03:40,050 --> 00:03:48,740
+And then, you can take that number and
+draw a tree,
+
+56
+00:03:48,740 --> 00:03:54,640
+extend the tree diagram [SOUND]
+
+57
+00:03:54,640 --> 00:03:59,016
+to show the relationship between sample Y
+and
+
+58
+00:03:59,016 --> 00:04:02,750
+the mini-cluster X and Z.
+
+59
+00:04:02,750 --> 00:04:06,530
+And, you can do the same thing with
+additional samples, say, for
+
+60
+00:04:06,530 --> 00:04:08,430
+X prime and so on.
+
+61
+00:04:08,430 --> 00:04:09,130
+Okay.
+
+62
+00:04:09,130 --> 00:04:11,650
+So here's an example of real data.
+
+63
+00:04:11,650 --> 00:04:14,140
+[COUGH]
+
+64
+00:04:14,140 --> 00:04:18,180
+This shows samples going across the top
+and genes going across the bottom.
+
+65
+00:04:18,180 --> 00:04:21,439
+And you can see a tree diagram showing
+decreasing correlation.
+
+66
+00:04:22,930 --> 00:04:29,880
+In addition, I have to let you know that
+the genes are also clustered.
+
+67
+00:04:29,880 --> 00:04:30,800
+Okay.
+
+68
+00:04:30,800 --> 00:04:33,400
+So now let's take a look at these samples.
+
+69
+00:04:33,400 --> 00:04:35,480
+We've kept track of what they are,
+
+70
+00:04:35,480 --> 00:04:40,280
+we've just allowed hierarchical clustering
+to do its thing without any supervision.
+
+71
+00:04:40,280 --> 00:04:46,500
+So in yellow here are a bunch of samples,
+for example from chronic lymphocytic
+
+72
+00:04:46,500 --> 00:04:53,108
+leukemia, and green here are a bunch of
+sample from follicular lymphoma.
+
+73
+00:04:53,108 --> 00:04:59,800
+In a addition, the largest group of
+samples [SOUND]
+
+74
+00:04:59,800 --> 00:05:03,560
+In blue here come from
+
+75
+00:05:03,560 --> 00:05:09,265
+an entity called diffuse large B cell
+lymphoma.
+
+76
+00:05:12,240 --> 00:05:16,270
+And you can see that the clustering isn't
+perfect, but it's pretty darn good.
+
+77
+00:05:16,270 --> 00:05:22,240
+All the samples that we know biologically
+should be similar [UNKNOWN] are together.
+
+78
+00:05:22,240 --> 00:05:25,670
+Although it's not perfect, there are few
+samples of
+
+79
+00:05:25,670 --> 00:05:31,410
+diffuse large B-cell lymphoma that have
+gone elsewhere in the tree diagram.
+
+80
+00:05:31,410 --> 00:05:37,390
+Now, in conversely, the diffuse large
+B-cell
+
+81
+00:05:37,390 --> 00:05:42,810
+lymphoma samples are mixed with samples
+that came
+
+82
+00:05:42,810 --> 00:05:50,685
+from germinal center, GC, B-cells.
+
+83
+00:05:50,685 --> 00:05:51,971
+Okay.
+
+84
+00:05:51,971 --> 00:05:57,265
+And indeed, a few of the samples among the
+diffuse large
+
+85
+00:05:57,265 --> 00:06:00,470
+B-cell lymphomas look like germinal center
+B-cells.
+
+86
+00:06:00,470 --> 00:06:06,180
+And you can see that not all of them do,
+so that what this heirchical clustering
+
+87
+00:06:06,180 --> 00:06:11,310
+has done is discovered that diffuse large
+B-cell lymphomas are heterogeneous,
+
+88
+00:06:11,310 --> 00:06:15,650
+that some of them are germinal center
+type,
+
+89
+00:06:15,650 --> 00:06:20,212
+and some of them are non-germinal center
+type.
+
+90
+00:06:20,212 --> 00:06:24,650
+And then you can begin to do things that
+are medically relevant.
+
+91
+00:06:24,650 --> 00:06:25,300
+So let's move on.
+
+92
+00:06:27,440 --> 00:06:31,940
+A second approach is to use supervised
+analysis.
+
+93
+00:06:31,940 --> 00:06:35,050
+Supervised analysis looks at the data with
+supervision.
+
+94
+00:06:35,050 --> 00:06:37,740
+You have information about your samples,
+
+95
+00:06:37,740 --> 00:06:41,550
+and supervised analysis uses that
+information.
+
+96
+00:06:41,550 --> 00:06:43,950
+Suppose you have two classes of samples.
+
+97
+00:06:43,950 --> 00:06:45,520
+Thing one and thing two.
+
+98
+00:06:46,580 --> 00:06:50,710
+Supervised analysis will find the genes
+with expression profiles that
+
+99
+00:06:50,710 --> 00:06:52,690
+differ between thing one and thing two.
+
+100
+00:06:52,690 --> 00:06:56,260
+An example of how this is done is the
+method known as
+
+101
+00:06:56,260 --> 00:06:59,450
+Significant Analysis of Microarray or SAM.
+
+102
+00:07:00,880 --> 00:07:04,640
+Now, thing 1 and thing 2 could be samples
+from Diffuse Large B-Cell Lymphoma and
+
+103
+00:07:04,640 --> 00:07:08,250
+Follicular Lymphoma, or they could be
+samples from cells before and
+
+104
+00:07:08,250 --> 00:07:12,110
+after exposure to ionizing radiation, etc.
+
+105
+00:07:12,110 --> 00:07:14,613
+And you're going to look for
+
+106
+00:07:14,613 --> 00:07:20,210
+genes,specifically, that are specifically
+different between Thing 1 and Thing 2.
+
+107
+00:07:20,210 --> 00:07:26,450
+And here you see such a gene.
+
+108
+00:07:26,450 --> 00:07:28,800
+And then you find another one down here.
+
+109
+00:07:28,800 --> 00:07:31,780
+That's interesting, that's one such gene.
+
+110
+00:07:31,780 --> 00:07:33,450
+That's green, green, green, red, red, red.
+
+111
+00:07:33,450 --> 00:07:36,170
+The other one was red, red, red, green,
+green, green.
+
+112
+00:07:37,240 --> 00:07:39,310
+And you look some more and oh, low and
+
+113
+00:07:39,310 --> 00:07:42,970
+behold here's another one green, green,
+green, red, red, red.
+
+114
+00:07:42,970 --> 00:07:44,126
+And you get really excited.
+
+115
+00:07:44,126 --> 00:07:50,616
+You've discovered
+
+116
+00:07:50,616 --> 00:07:57,360
+three genes, but how reliable is that
+discovery?
+
+117
+00:07:57,360 --> 00:07:58,910
+You could do the experiment over and over
+again and
+
+118
+00:07:58,910 --> 00:08:00,170
+see if you keep getting the same answer.
+
+119
+00:08:00,170 --> 00:08:02,320
+But that's very expensive.
+
+120
+00:08:02,320 --> 00:08:06,240
+Instead you can do something called
+permutation analysis.
+
+121
+00:08:06,240 --> 00:08:10,130
+And that is to make nonsensical
+categories.
+
+122
+00:08:10,130 --> 00:08:17,090
+You'll call one set of genes T one and T
+two, for example.
+
+123
+00:08:18,600 --> 00:08:24,120
+And of course the way you do this is you
+take one of the samples from
+
+124
+00:08:25,360 --> 00:08:34,050
+Thing 2, say this one, and you move it
+over to Thing 1, over here.
+
+125
+00:08:37,300 --> 00:08:44,940
+And you take one of the samples from thing
+one and
+
+126
+00:08:44,940 --> 00:08:51,230
+you move it over here and call it T two.
+
+127
+00:08:51,230 --> 00:08:53,450
+So these are nonsensical categories.
+
+128
+00:08:55,200 --> 00:08:59,840
+And then you look for genes that might be
+doing something between nonsensical
+
+129
+00:08:59,840 --> 00:09:04,500
+categories, and you see, look at that,
+green, green, green, red, red, red.
+
+130
+00:09:04,500 --> 00:09:08,680
+And you can do this again, and call,
+
+131
+00:09:08,680 --> 00:09:12,455
+make some more nonsensical categories, say
+top one and
+
+132
+00:09:12,455 --> 00:09:18,700
+top two and look for genes, and there's
+one, green, green, green, red, red, red.
+
+133
+00:09:18,700 --> 00:09:23,170
+Now this allows you to calculate what's
+called the false discovery rate.
+
+134
+00:09:24,370 --> 00:09:30,070
+If you get an average, say, of one gene
+from nonsensical categories and
+
+135
+00:09:30,070 --> 00:09:33,080
+three discovered genes from the real
+experiment.
+
+136
+00:09:33,080 --> 00:09:37,787
+So the false discovery rate is one out of
+three.
+
+137
+00:09:37,787 --> 00:09:42,960
+[SOUND]
+Or 33%.
+
+138
+00:09:42,960 --> 00:09:45,950
+In practice, we set our cutoffs to
+
+139
+00:09:45,950 --> 00:09:51,150
+achieve false subscribery rates much lower
+than this, say 5%, 2%, or 1%.
+
+140
+00:09:51,150 --> 00:09:52,740
+So how does this play out in real life?
+
+141
+00:09:54,040 --> 00:09:55,670
+Well, here's some real data.
+
+142
+00:09:56,730 --> 00:09:59,610
+This is data from small, blue, round-cell
+tumors,
+
+143
+00:09:59,610 --> 00:10:02,590
+which pretty much look the same under the
+microscope.
+
+144
+00:10:02,590 --> 00:10:07,020
+And, the supervised analysis was done to
+find a set of
+
+145
+00:10:07,020 --> 00:10:10,710
+genes that distinguish these tumors from
+each other.
+
+146
+00:10:10,710 --> 00:10:15,368
+The tumors that are shown here are all
+small, round, blue-celled tumors.
+
+147
+00:10:16,550 --> 00:10:22,380
+But they're Burkitt's Lymphoma in this
+category, and Ewing's Sarcoma
+
+148
+00:10:23,460 --> 00:10:29,598
+in this category, and neuroblastoma in
+this category, and
+
+149
+00:10:29,598 --> 00:10:36,500
+rhabdomyosarcoma in this category.
+
+150
+00:10:36,500 --> 00:10:41,680
+And there are a total of 43 genes that are
+differentially expressed and
+
+151
+00:10:41,680 --> 00:10:45,430
+actually distinguish these categories from
+each other.
+
+152
+00:10:45,430 --> 00:10:49,140
+Now, within each category, the data has
+been organized by hierarchical clustering,
+
+153
+00:10:49,140 --> 00:10:53,420
+so that you can see whether there's any
+variation among the tumors.
+
+154
+00:10:56,150 --> 00:11:01,320
+So there you have it, how to analyze gene
+expression across the entire genome.
+
+155
+00:11:02,670 --> 00:11:07,220
+We've talked about two types of methods,
+unsupervised methods,
+
+156
+00:11:11,500 --> 00:11:14,450
+example of which is hierarchical
+clustering.
+
+157
+00:11:14,450 --> 00:11:18,110
+That's an exploration without fore
+knowledge that seeks out
+
+158
+00:11:18,110 --> 00:11:23,410
+new hypotheses somewhat akin to Captain
+Kirk.
+
+159
+00:11:23,410 --> 00:11:26,650
+These are the voyages of the Starship
+Enterprise.
+
+160
+00:11:26,650 --> 00:11:30,310
+Its five year mission to explore strange
+new worlds.
+
+161
+00:11:30,310 --> 00:11:33,490
+To seek out new life and new
+civilizations.
+
+162
+00:11:33,490 --> 00:11:36,850
+To boldly go where no man has gone before.
+
+163
+00:11:38,840 --> 00:11:44,350
+The second type of method that we've
+studied are the supervised methods.
+
+164
+00:11:44,350 --> 00:11:48,530
+One example of which is significance
+analysis of microarrays.
+
+165
+00:11:49,650 --> 00:11:54,390
+That's a study with foreknowledge that
+identifies differences between
+
+166
+00:11:54,390 --> 00:11:56,280
+sample classes.
+
+167
+00:11:56,280 --> 00:12:00,370
+It's the diametric opposite, as Dr. McCoy
+said to Spock.
+
+168
+00:12:00,370 --> 00:12:04,660
+Your pulse is 242, your blood pressure is
+practically non existent.
+
+169
+00:12:04,660 --> 00:12:09,260
+Spock replies, the readings are perfectly
+normal for me doctor.
+
+170
+00:12:09,260 --> 00:12:10,670
+Thank you.
+And as for
+
+171
+00:12:10,670 --> 00:12:15,795
+my anatomy being different from yours, I
+am delighted.
+
+172
+00:12:15,795 --> 00:12:17,698
+Thank you
+
+173
+00:12:17,698 --> 00:12:21,509
+[BLANK_AUDIO]

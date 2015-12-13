@@ -1,0 +1,417 @@
+1
+00:00:00,012 --> 00:00:07,030
+The final example that I wanted to review
+is what's called a combination.
+
+2
+00:00:07,030 --> 00:00:11,130
+So this is where we are going to stop
+considering order,
+
+3
+00:00:11,130 --> 00:00:14,370
+formally stop considering order, that's
+called a combination.
+
+4
+00:00:14,370 --> 00:00:17,560
+And combinations are really good for
+things like solving,
+
+5
+00:00:17,560 --> 00:00:20,350
+what's your probability of winning the
+lottery?
+
+6
+00:00:20,350 --> 00:00:23,330
+The lottery is one of my favorite things
+to talk about in statistics because
+
+7
+00:00:23,330 --> 00:00:28,530
+it's a little counter-intuitive and a
+lottery, so, a typical lottery,
+
+8
+00:00:28,530 --> 00:00:32,770
+here's one type of lottery, and one of the
+common lotteries works by picking,
+
+9
+00:00:32,770 --> 00:00:36,060
+you pick six numbers from 1 to 49.
+
+10
+00:00:36,060 --> 00:00:38,850
+So you can imagine you've got a little
+punch card and they,
+
+11
+00:00:38,850 --> 00:00:42,160
+it has all the numbers from 1 to 49, and
+you get to punch any six of them.
+
+12
+00:00:42,160 --> 00:00:44,720
+So there is no replacement here.
+
+13
+00:00:44,720 --> 00:00:46,480
+You can't pick the same number twice.
+
+14
+00:00:46,480 --> 00:00:52,070
+So you're picking six numbers from 1 to 49
+without replacement.
+
+15
+00:00:52,070 --> 00:00:53,410
+And order doesn't matter.
+
+16
+00:00:53,410 --> 00:00:55,930
+It doesn't matter if you pick them in any
+particular order.
+
+17
+00:00:55,930 --> 00:00:59,279
+You're you just want to get the right set
+of six.
+
+18
+00:00:59,279 --> 00:01:02,560
+You want to match the set of six
+[INAUDIBLE] the lottery authorities get.
+
+19
+00:01:02,560 --> 00:01:05,580
+So what's your probability of winning that
+particular lottery?
+
+20
+00:01:05,580 --> 00:01:08,370
+So for the numerator, we're going to say
+how many ways you can win?
+
+21
+00:01:08,370 --> 00:01:09,640
+Well, there's only one way you can win.
+
+22
+00:01:09,640 --> 00:01:13,860
+You have to match all six numbers, so
+there's only one way you can win.
+
+23
+00:01:13,860 --> 00:01:18,700
+In the denominator, we have to count out
+how many different sets of six
+
+24
+00:01:18,700 --> 00:01:24,310
+numbers can you get when you're
+considering the integers from 1 to 49.
+
+25
+00:01:24,310 --> 00:01:28,126
+And it feels like, most people feel sort
+of intuitively like, well,
+
+26
+00:01:28,126 --> 00:01:32,800
+there's 49 numbers, 1 to 49, and you get
+to pick six of them.
+
+27
+00:01:32,800 --> 00:01:35,566
+You kind of feel like you're, you're
+covering a lot of the space, right,
+
+28
+00:01:35,566 --> 00:01:37,490
+6 out of 49 doesn't seem that small.
+
+29
+00:01:37,490 --> 00:01:38,790
+You're picking six numbers out of 49.
+
+30
+00:01:38,790 --> 00:01:41,980
+But, in fact, how many combinations,
+
+31
+00:01:41,980 --> 00:01:44,740
+how many sets of six numbers are possible
+here?
+
+32
+00:01:44,740 --> 00:01:46,700
+The answer is rather surprising.
+
+33
+00:01:46,700 --> 00:01:49,460
+In order to be able to calculate that
+answer,
+
+34
+00:01:49,460 --> 00:01:52,476
+we actually need to know something called
+the combinations formula.
+
+35
+00:01:52,476 --> 00:01:57,054
+If you want to know more about where this
+formula comes from, and
+
+36
+00:01:57,054 --> 00:01:58,430
+you want to see the derivation in is,
+
+37
+00:01:58,430 --> 00:02:02,130
+you're going to have to watch the optional
+module that goes into that in detail.
+
+38
+00:02:02,130 --> 00:02:05,720
+But, there's a function out there called
+the choosing function.
+
+39
+00:02:05,720 --> 00:02:08,550
+And, what the choosing function does is it
+says,
+
+40
+00:02:08,550 --> 00:02:13,220
+if you've got a situation where you have a
+set of n objects, you want to
+
+41
+00:02:13,220 --> 00:02:18,595
+say how many different possible sets of r
+of them can you form?
+
+42
+00:02:18,595 --> 00:02:22,530
+That is a choosing function, it's n choose
+r.
+
+43
+00:02:22,530 --> 00:02:25,752
+And we write it with this parentheses with
+the, the n,
+
+44
+00:02:25,752 --> 00:02:30,210
+the, the total set, at the top and the r,
+the smaller set on the bottom.
+
+45
+00:02:30,210 --> 00:02:34,560
+So if I have r objects taken from a set of
+n objects without replacement and
+
+46
+00:02:34,560 --> 00:02:37,030
+ignoring order, this is a combination.
+
+47
+00:02:37,030 --> 00:02:38,930
+If I want to know how many different
+samples,
+
+48
+00:02:38,930 --> 00:02:42,800
+how many different sets are possible,
+that's an n choose r function.
+
+49
+00:02:42,800 --> 00:02:44,720
+And you have an n choose r function.
+
+50
+00:02:44,720 --> 00:02:48,080
+It's just a mathematical function, so what
+you do, is you apply this formula.
+
+51
+00:02:48,080 --> 00:02:49,550
+It's n factorial.
+
+52
+00:02:49,550 --> 00:02:53,620
+Divided by n minus r factorial times r
+factorial.
+
+53
+00:02:53,620 --> 00:02:55,510
+So that answers the question.
+
+54
+00:02:55,510 --> 00:03:00,990
+If I've got 49 numbers to choose from and
+I want to say how many different
+
+55
+00:03:00,990 --> 00:03:05,780
+set of six numbers are, are, I can draw,
+from within those 49 numbers.
+
+56
+00:03:05,780 --> 00:03:07,870
+I can just apply the choosing function.
+
+57
+00:03:07,870 --> 00:03:11,260
+So this will work for solving this lottery
+question, and
+
+58
+00:03:11,260 --> 00:03:16,240
+it works generally, anytime I've got this
+same situation, n choose r.
+
+59
+00:03:17,720 --> 00:03:19,870
+So, let's actually apply it to the lottery
+question.
+
+60
+00:03:19,870 --> 00:03:23,040
+So this take 49 choose 6, function.
+
+61
+00:03:23,040 --> 00:03:25,760
+How many different combinations of 6
+numbers can be formed from those 49
+
+62
+00:03:25,760 --> 00:03:28,260
+integers, it's a 49 choose 6.
+
+63
+00:03:28,260 --> 00:03:33,505
+So I just apply the combinations formula,
+49 factorial divided by 49-6 or
+
+64
+00:03:33,505 --> 00:03:36,750
+43 factorial, then divided by 6 factorial.
+
+65
+00:03:36,750 --> 00:03:39,720
+And we can just do out the factorials
+here.
+
+66
+00:03:39,720 --> 00:03:43,110
+We can do out the numbers and
+surprisingly, it turns out,
+
+67
+00:03:43,110 --> 00:03:47,480
+that 49 choose 6 is almost 14 million.
+
+68
+00:03:47,480 --> 00:03:53,509
+In other words, there are almost
+14,000,000 different
+
+69
+00:03:53,509 --> 00:03:58,384
+sets of 6 numbers that you can derive from
+just the 49 integers.
+
+70
+00:03:58,384 --> 00:04:03,300
+There's 14 million different combinations
+that can come out in the lottery.
+
+71
+00:04:03,300 --> 00:04:07,100
+So, of course, that means that your
+probability of winning the lottery
+
+72
+00:04:07,100 --> 00:04:10,770
+is one out of almost 14 million.
+
+73
+00:04:10,770 --> 00:04:15,230
+This is a good argument for not bothering
+to play the lottery.
+
+74
+00:04:15,230 --> 00:04:18,990
+We're going to talk more about the lottery
+as well, next week.
+
+75
+00:04:18,990 --> 00:04:23,534
+But your probability is really, really
+surprisingly small.
+
+76
+00:04:23,534 --> 00:04:28,520
+I'm actually very happy that the
+probability that my probability of
+
+77
+00:04:28,520 --> 00:04:31,129
+winning the lottery is extremely small
+like this.
+
+78
+00:04:31,129 --> 00:04:35,630
+My philosophy on it is, I'm glad there are
+really great things in life that
+
+79
+00:04:35,630 --> 00:04:39,050
+are attached to a very, very small
+probability because it turns out there
+
+80
+00:04:39,050 --> 00:04:42,390
+are also some really horrible, horrible
+things in life that are also attached to
+
+81
+00:04:42,390 --> 00:04:44,440
+extremely, extremely small probabilities.
+
+82
+00:04:44,440 --> 00:04:47,900
+For example, your probability of dying in
+
+83
+00:04:47,900 --> 00:04:52,990
+a commercial airline crash is about one in
+14 million as well.
+
+84
+00:04:52,990 --> 00:04:57,890
+So I'm really extremely glad that I'm not
+going to win the lottery because that's
+
+85
+00:04:57,890 --> 00:05:01,940
+the only that I can be confident enough to
+get on an airplane is that I know my,
+
+86
+00:05:01,940 --> 00:05:03,990
+I'm very confident and I'm not going to
+win the lottery,
+
+87
+00:05:03,990 --> 00:05:06,890
+so I can be confident that my airplane is
+not going to crash.
+
+88
+00:05:06,890 --> 00:05:10,190
+So I'm glad for very very very small
+probabilities like this.

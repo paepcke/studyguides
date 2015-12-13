@@ -1,0 +1,734 @@
+1
+00:00:01,930 --> 00:00:03,590
+The correct answer here is D.
+
+2
+00:00:03,590 --> 00:00:07,287
+The correlation coefficient is going to be
+somewhere around negative five.
+
+3
+00:00:07,287 --> 00:00:08,380
+How do you know that?
+
+4
+00:00:08,380 --> 00:00:10,726
+Well, a lot of these choices are obviously
+incorrect so
+
+5
+00:00:10,726 --> 00:00:15,205
+negative one and positive one, clearly all
+the dots don't lie on the line.
+
+6
+00:00:15,205 --> 00:00:19,214
+The correlation is also not zero, because
+you can see that the line has some slope.
+
+7
+00:00:19,214 --> 00:00:22,438
+And E would be incorrect because you can
+see that the line has some amount of
+
+8
+00:00:22,438 --> 00:00:24,578
+modest correlation here.
+
+9
+00:00:24,578 --> 00:00:28,686
+It's certainly not strong but it's
+negative, because our slope is negative.
+
+10
+00:00:28,686 --> 00:00:32,067
+And it's 0.5 here, although as the line is
+going down as 0.5,
+
+11
+00:00:32,067 --> 00:00:35,650
+because it's kind of a modest correlation.
+
+12
+00:00:35,650 --> 00:00:40,782
+The correct answer here is B, a covariance
+of zero indicates no correlation.
+
+13
+00:00:40,782 --> 00:00:43,483
+A covariance is a standardized covariance,
+
+14
+00:00:43,483 --> 00:00:48,206
+not correlation coefficient, that's why A
+is incorrect.
+
+15
+00:00:48,206 --> 00:00:51,638
+A correlation C is incorrect, because a
+correlation coefficient with a highly
+
+16
+00:00:51,638 --> 00:00:55,330
+significant P-value does not necessarily
+indicate a strong correlation in terms of
+
+17
+00:00:55,330 --> 00:00:58,870
+the magnitude of the correlation.
+
+18
+00:00:58,870 --> 00:01:01,761
+You can have an R of 0.001 that was highly
+statistically significant if
+
+19
+00:01:01,761 --> 00:01:04,131
+your sample size was big enough.
+
+20
+00:01:04,131 --> 00:01:06,639
+And D is incorrect because it's the
+correlation coefficient that's unitless,
+
+21
+00:01:06,639 --> 00:01:08,115
+the covariance has units.
+
+22
+00:01:08,115 --> 00:01:12,777
+So, in this, question we're given an
+outcome of cholesterol that's,
+
+23
+00:01:12,777 --> 00:01:15,750
+linear regression equation.
+
+24
+00:01:15,750 --> 00:01:22,097
+Which has an intercept of 150 plus two
+times, our age past, 42 is our slope here.
+
+25
+00:01:22,097 --> 00:01:27,865
+Notice the units are in age past 40, so
+you have to be careful about that.
+
+26
+00:01:27,865 --> 00:01:32,065
+If we wanted to get the predicted
+cholesterol for a 60 year old his or
+
+27
+00:01:32,065 --> 00:01:35,599
+her age past at 40 is only 20.
+
+28
+00:01:35,599 --> 00:01:38,750
+So we would plug 20 in to the model here.
+
+29
+00:01:38,750 --> 00:01:41,044
+So our yi hat, our predicted value for
+
+30
+00:01:41,044 --> 00:01:46,589
+this person would be 150 plus two times
+20, which is equal to 190.
+
+31
+00:01:49,930 --> 00:01:52,870
+In this question, you have to pick out the
+regression equation from the output like I
+
+32
+00:01:52,870 --> 00:01:54,710
+did in some of the videos.
+
+33
+00:01:54,710 --> 00:01:56,180
+So what is our model here?
+
+34
+00:01:56,180 --> 00:02:01,556
+Our model is that our outcome, our
+optimism score,
+
+35
+00:02:01,556 --> 00:02:11,112
+is equal to the intercepted 77.97, I'm
+finding that right here.
+
+36
+00:02:11,112 --> 00:02:19,099
+Plus our Beta is 0.276 and our exercise is
+in units of hours per week.
+
+37
+00:02:19,099 --> 00:02:23,580
+So, which of the following is true?
+
+38
+00:02:23,580 --> 00:02:27,320
+So, A is actually correct, because it says
+a person who exercises 0 hours per week,
+
+39
+00:02:27,320 --> 00:02:30,940
+is predicted to have an optimism score of
+77.97.
+
+40
+00:02:30,940 --> 00:02:33,610
+Well that's indeed true, you can just plug
+in zero here.
+
+41
+00:02:33,610 --> 00:02:35,130
+This is actually going to go out of the
+model.
+
+42
+00:02:35,130 --> 00:02:36,940
+So that's what an intercept means.
+
+43
+00:02:36,940 --> 00:02:38,732
+The intercept is the value for
+
+44
+00:02:38,732 --> 00:02:43,420
+which you get at an exercise level if the
+x variable is zero.
+
+45
+00:02:43,420 --> 00:02:47,050
+That's your where it crosses the y axis.
+
+46
+00:02:47,050 --> 00:02:49,980
+Show 77.97, that would be the correct
+answer here.
+
+47
+00:02:49,980 --> 00:02:54,830
+B is incorrect, because exercise is not
+significantly related to optimism.
+
+48
+00:02:54,830 --> 00:02:57,814
+Our P value came out to be 0.12.
+
+49
+00:02:57,814 --> 00:03:01,178
+C is incorrect, because every additional
+hour of weekly exercise was
+
+50
+00:03:01,178 --> 00:03:05,960
+associated with with a 0.276 increase in
+optimism, not decrease.
+
+51
+00:03:05,960 --> 00:03:10,851
+Otherwise, it would have a negative sign,
+and D is incorrect, because, that is give,
+
+52
+00:03:10,851 --> 00:03:15,864
+the intercept is, is mis, constring/g, the
+intercept.
+
+53
+00:03:15,864 --> 00:03:18,389
+The intercept is 77.9, not the slope.
+
+54
+00:03:18,389 --> 00:03:22,401
+So, we're given here that we have a
+regression equation cholesterol is
+
+55
+00:03:22,401 --> 00:03:26,509
+equal to 150 is the intercept, two is the
+slope.
+
+56
+00:03:26,509 --> 00:03:28,392
+Our units are aged past 40.
+
+57
+00:03:28,392 --> 00:03:31,980
+So if we have 60 year old then we would
+say his age past 40 is 20, so
+
+58
+00:03:31,980 --> 00:03:35,296
+we've plug 20 into the model.
+
+59
+00:03:35,296 --> 00:03:39,230
+That would give him a predicted value of
+yi hat of 190.
+
+60
+00:03:39,230 --> 00:03:43,390
+This is asking for the residual, so what
+is his observed, his actual value?
+
+61
+00:03:43,390 --> 00:03:46,440
+The residual is your observed value minus
+your predicted value.
+
+62
+00:03:46,440 --> 00:03:51,259
+His, observed value, his actual value is
+250.
+
+63
+00:03:51,259 --> 00:03:53,500
+His, predictive value is 190.
+
+64
+00:03:53,500 --> 00:04:00,510
+So he would have a residual of positive
+60, which is A.
+
+65
+00:04:00,510 --> 00:04:03,410
+In this question, we're told that we've
+run a model with DSST scores or
+
+66
+00:04:03,410 --> 00:04:05,020
+outcome variable.
+
+67
+00:04:05,020 --> 00:04:09,490
+And our first model contains vitamin D and
+age as predictors.
+
+68
+00:04:09,490 --> 00:04:11,960
+The Beta for vitamin D we're given is
+0.30, and
+
+69
+00:04:11,960 --> 00:04:16,042
+we're given the 95% confidence interval,
+0.2 to 0.4.
+
+70
+00:04:16,042 --> 00:04:19,242
+Which means we know that it's
+statistically significant at
+
+71
+00:04:19,242 --> 00:04:21,450
+the 0.5 level.
+
+72
+00:04:21,450 --> 00:04:25,269
+We then run another model in which we add
+an additional predictor into the model,
+
+73
+00:04:25,269 --> 00:04:27,400
+we add exercise.
+
+74
+00:04:27,400 --> 00:04:30,680
+The new Beta for vitamin D turns out to be
+0.15, and
+
+75
+00:04:30,680 --> 00:04:35,750
+the confidence interval goes from 0.05 to
+0.25.
+
+76
+00:04:35,750 --> 00:04:39,054
+So, by adding exercise to the model, we
+drastically reduced the size of
+
+77
+00:04:39,054 --> 00:04:43,160
+the Beta coefficient, the slope between
+vitamin D and DSST.
+
+78
+00:04:43,160 --> 00:04:45,380
+It was reduced by 50%.
+
+79
+00:04:45,380 --> 00:04:49,034
+That's an indication that we have
+confounding, exercise is a confounder of
+
+80
+00:04:49,034 --> 00:04:52,700
+the relationship between vitamin D and
+DSST score.
+
+81
+00:04:52,700 --> 00:04:54,520
+So, A is correct here.
+
+82
+00:04:54,520 --> 00:04:57,620
+If you picked B, you got misled by the P
+values here.
+
+83
+00:04:57,620 --> 00:05:02,190
+So we are, we do have a statistically
+significant Beta in both cases.
+
+84
+00:05:02,190 --> 00:05:05,688
+That is, the relationship with vitamin D
+doesn't completely disappear when we
+
+85
+00:05:05,688 --> 00:05:07,430
+adjust for exercise.
+
+86
+00:05:07,430 --> 00:05:10,010
+But we don't look at the P values for
+judging confounding.
+
+87
+00:05:10,010 --> 00:05:15,600
+We look at the magnitude of the slope of
+the Beta coefficients.
+
+88
+00:05:15,600 --> 00:05:18,650
+In this question we're given the mean
+blood pressure of three groups.
+
+89
+00:05:18,650 --> 00:05:21,580
+So for the high exercise group it was 120.
+
+90
+00:05:21,580 --> 00:05:24,713
+For the medium exercise group it was 125.
+
+91
+00:05:25,830 --> 00:05:30,370
+And for the low exercise group, it was
+135.
+
+92
+00:05:30,370 --> 00:05:33,505
+If I fit a linear regression model where I
+don't have anything else in
+
+93
+00:05:33,505 --> 00:05:36,985
+the model other than this categorical
+predictor.
+
+94
+00:05:36,985 --> 00:05:41,606
+What's the resulting linear equation,
+regression equation going to look like?
+
+95
+00:05:41,606 --> 00:05:46,298
+Well my outcome here is systolic blood
+pressure I have to choose something to be
+
+96
+00:05:46,298 --> 00:05:48,780
+my reference group.
+
+97
+00:05:48,780 --> 00:05:52,060
+I'm going to be dummy coding this
+categorical predictor.
+
+98
+00:05:52,060 --> 00:05:54,230
+Well, which one am I going to choose to be
+the reference group?
+
+99
+00:05:54,230 --> 00:05:56,282
+Well, you could choose any of these to be
+the reference group, but
+
+100
+00:05:56,282 --> 00:05:59,280
+you're limited in your choices in the
+multiple choice question.
+
+101
+00:05:59,280 --> 00:06:03,950
+So, you can see that in most of them, I
+picked 120.
+
+102
+00:06:03,950 --> 00:06:07,590
+The lowest blood pressure with the high
+exercise group to be my reference.
+
+103
+00:06:07,590 --> 00:06:08,830
+So I need this one my reference group,
+
+104
+00:06:08,830 --> 00:06:11,360
+because it happened to have the lowest
+blood pressure.
+
+105
+00:06:11,360 --> 00:06:16,530
+So the intercept becomes the mean for the
+reference group.
+
+106
+00:06:16,530 --> 00:06:19,490
+then I'm going to have two dummy coded
+predictors in my model.
+
+107
+00:06:19,490 --> 00:06:21,275
+I'm going to have a dummy coded predictor
+for
+
+108
+00:06:21,275 --> 00:06:24,740
+if your in the medium excercise group,
+versus anybody else.
+
+109
+00:06:24,740 --> 00:06:28,955
+Their mean is 5 points higher than the
+reference group.
+
+110
+00:06:28,955 --> 00:06:32,242
+So there that data is going to have a
+value of five.
+
+111
+00:06:32,242 --> 00:06:36,024
+And we're going to be multiplying that
+times one if your a medium exercise,
+
+112
+00:06:36,024 --> 00:06:38,480
+that's how we dummy code.
+
+113
+00:06:40,430 --> 00:06:43,622
+Then we're going to have to have a dummy
+coded predictor in the model for
+
+114
+00:06:43,622 --> 00:06:45,750
+the low exercise group.
+
+115
+00:06:45,750 --> 00:06:47,598
+The difference between the low exercise
+group and
+
+116
+00:06:47,598 --> 00:06:50,603
+the high exercise group in the mean blood
+pressure was 15.
+
+117
+00:06:50,603 --> 00:06:53,030
+So they get an additional 15 for their
+blood pressure.
+
+118
+00:06:53,030 --> 00:06:57,120
+We're going to be multiplying that by one,
+if you're in the low group.
+
+119
+00:06:57,120 --> 00:07:01,169
+Everybody else will get a zero for that
+dummy coded variable.
+
+120
+00:07:01,169 --> 00:07:03,184
+So the correct answer here would be D,
+
+121
+00:07:03,184 --> 00:07:06,810
+because only D represents the correct
+equation.
+
+122
+00:07:06,810 --> 00:07:09,555
+This next question, we're given unadjusted
+means for
+
+123
+00:07:09,555 --> 00:07:14,660
+three groups, the high, medium and low
+exercise groups for blood pressure.
+
+124
+00:07:14,660 --> 00:07:16,785
+They were 120, 125 and 135, so,
+
+125
+00:07:16,785 --> 00:07:22,210
+the lowest exercising people have higher
+blood pressure.
+
+126
+00:07:22,210 --> 00:07:24,400
+We then adjusted those data for age.
+
+127
+00:07:24,400 --> 00:07:28,057
+The adjusted estimates for
+
+128
+00:07:28,057 --> 00:07:35,490
+the mean, then become 115, 125, and 140.
+
+129
+00:07:35,490 --> 00:07:37,542
+So what we notice is that when you adjust
+for
+
+130
+00:07:37,542 --> 00:07:41,770
+age, the disparity between the three
+groups actually increases.
+
+131
+00:07:41,770 --> 00:07:45,656
+It looks like there's an even bigger
+difference between especially the high and
+
+132
+00:07:45,656 --> 00:07:47,660
+low exercise groups.
+
+133
+00:07:47,660 --> 00:07:52,510
+So what does that tell us about the
+relationship here with age?
+
+134
+00:07:52,510 --> 00:07:56,952
+In general I've told you here that blood
+pressure will increase with age.
+
+135
+00:07:56,952 --> 00:08:00,063
+So if blood pressure is increasing with
+age and adjusting for
+
+136
+00:08:00,063 --> 00:08:04,780
+age makes our differences between the
+groups look even bigger.
+
+137
+00:08:04,780 --> 00:08:08,745
+Then what we can conclude is that the high
+exercise group actually was older on
+
+138
+00:08:08,745 --> 00:08:11,940
+average than the low exercise group.
+
+139
+00:08:11,940 --> 00:08:14,660
+When we adjusted for age there's actually
+a bigger difference here.
+
+140
+00:08:14,660 --> 00:08:18,180
+In other words if in original sample,
+where we didn't adjust for age we saw a 15
+
+141
+00:08:18,180 --> 00:08:23,560
+point difference between the highest and
+the lowest exercise groups.
+
+142
+00:08:23,560 --> 00:08:29,229
+However, when we adjusted for age, that
+went to a 25 point difference.
+
+143
+00:08:29,229 --> 00:08:30,714
+So, what must be happening here,
+
+144
+00:08:30,714 --> 00:08:35,204
+is that we happen to have some older
+people in the high exercise group.
+
+145
+00:08:35,204 --> 00:08:37,780
+Some younger people in the low excersise
+group.
+
+146
+00:08:37,780 --> 00:08:42,540
+And once we adjust for age we're revealing
+that the difference in blood pressure
+
+147
+00:08:42,540 --> 00:08:49,100
+between the exercises is even bigger than
+we saw when we hadn't adjusted for age.
+
+148
+00:08:49,100 --> 00:08:52,150
+In this question we are told that we've
+got a study were we've got a group of
+
+149
+00:08:52,150 --> 00:08:54,363
+just 14 women, a sub group.
+
+150
+00:08:54,363 --> 00:08:56,911
+We've run a linear regression model on
+just those 14 women, and
+
+151
+00:08:56,911 --> 00:08:59,550
+we get this miraculous R squared of 99%.
+
+152
+00:08:59,550 --> 00:09:01,710
+Well if it looks to good to be true, it
+is.
+
+153
+00:09:01,710 --> 00:09:03,550
+Once you stuff too many predictors in the
+model,
+
+154
+00:09:03,550 --> 00:09:07,910
+especially with a small sample size like
+this, you're at high risk of over-fitting.
+
+155
+00:09:07,910 --> 00:09:12,084
+That high R squared value reflects an
+over-fit model.
+
+156
+00:09:12,084 --> 00:09:16,331
+So C is correct here, the model suffers
+from over-fitting.

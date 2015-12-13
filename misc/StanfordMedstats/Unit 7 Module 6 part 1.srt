@@ -1,0 +1,376 @@
+1
+00:00:07,409 --> 00:00:08,497
+[BLANK_AUDIO].
+In this next module,
+
+2
+00:00:08,497 --> 00:00:12,017
+I'm going to introduce you to survival
+analysis and tell you about
+
+3
+00:00:12,017 --> 00:00:18,155
+the statistics that are used to compare
+time-to-event outcomes between groups.
+
+4
+00:00:18,155 --> 00:00:21,963
+We talked about time-to-event variables at
+the very first week of this course, so
+
+5
+00:00:21,963 --> 00:00:25,995
+a time-to-event variable is something that
+you can collect only in a randomized trial
+
+6
+00:00:25,995 --> 00:00:31,495
+or a cohort study where you're actually
+following people over time.
+
+7
+00:00:31,495 --> 00:00:32,870
+It's a hybrid variable.
+
+8
+00:00:32,870 --> 00:00:36,160
+You're measuring the amount of time that
+they contribute to the study before they
+
+9
+00:00:36,160 --> 00:00:39,590
+have the event, or until the study ends,
+or until they drop out of the study.
+
+10
+00:00:39,590 --> 00:00:42,170
+As well as you're recording whether or
+
+11
+00:00:42,170 --> 00:00:46,080
+not they actually have the event, because
+not everybody will have the event.
+
+12
+00:00:46,080 --> 00:00:49,240
+This might be something like time to
+death, or time to heart attack, or
+
+13
+00:00:49,240 --> 00:00:50,725
+time to chronic kidney disease.
+
+14
+00:00:50,725 --> 00:00:54,980
+People who don't have the event are said
+to be censored.
+
+15
+00:00:54,980 --> 00:00:58,640
+And that is recorded as well as the amount
+of time that they contribute.
+
+16
+00:00:58,640 --> 00:01:02,600
+So, the time-to-event variable has a time
+part.
+
+17
+00:01:02,600 --> 00:01:06,470
+That's the time from when enter the study
+until you have an outcome, or
+
+18
+00:01:06,470 --> 00:01:09,990
+you're censored, meaning you leave the
+study without having the outcome.
+
+19
+00:01:09,990 --> 00:01:12,270
+The binary part of the time-to-event
+variable is just whether or
+
+20
+00:01:12,270 --> 00:01:13,610
+not the subject had the event.
+
+21
+00:01:13,610 --> 00:01:16,080
+And again, subjects who don't have the
+event are said to be censored.
+
+22
+00:01:19,210 --> 00:01:23,410
+For time-to-event outcome survival
+analysis, there's a couple of
+
+23
+00:01:23,410 --> 00:01:25,870
+different statistics we're going to be
+talking about in this course.
+
+24
+00:01:25,870 --> 00:01:29,190
+So, I mentioned already in week two of the
+course, we talked about the rate ratio.
+
+25
+00:01:29,190 --> 00:01:32,230
+I'm not going to go over that again here,
+I'll refer you to week two.
+
+26
+00:01:32,230 --> 00:01:34,950
+This week I'm going to talk about
+Kaplan-Meier statistics that's
+
+27
+00:01:34,950 --> 00:01:42,170
+the unadjusted way of comparing survival
+experiences between two or more groups.
+
+28
+00:01:42,170 --> 00:01:44,840
+In a couple of weeks we'll talk about Cox
+regression which is the multivariate
+
+29
+00:01:44,840 --> 00:01:49,230
+regression technique that's commonly used
+for survival analysis.
+
+30
+00:01:49,230 --> 00:01:50,310
+What is survival analysis?
+
+31
+00:01:50,310 --> 00:01:53,050
+Again, it's the statistical methods for
+analyzing time to event data.
+
+32
+00:01:53,050 --> 00:01:56,200
+They get a special name because they are,
+they're a set of methods.
+
+33
+00:01:56,200 --> 00:01:59,140
+They combinate data from randomized trials
+or cohort study designs.
+
+34
+00:01:59,140 --> 00:02:02,640
+Again, you have to be following people
+over time to collect this type of data.
+
+35
+00:02:02,640 --> 00:02:08,750
+Here's an early example of a survival
+analysis going back to 1669.
+
+36
+00:02:08,750 --> 00:02:11,950
+This was a curve, that, someone drew,
+
+37
+00:02:11,950 --> 00:02:17,740
+showing how many out of a 100 people
+survive until 86 years of age.
+
+38
+00:02:17,740 --> 00:02:21,510
+So the way to read this curve is we are
+starting at an age of zero,
+
+39
+00:02:21,510 --> 00:02:27,550
+this is a 100 people born in 1669.
+
+40
+00:02:27,550 --> 00:02:31,210
+Notice that this, this is survival on the
+y axis.
+
+41
+00:02:31,210 --> 00:02:38,230
+This, this is the percent of people
+surviving out of 100.
+
+42
+00:02:38,230 --> 00:02:43,060
+So it starts at 100%, everybody's born and
+then there's a rapid drop off of survival.
+
+43
+00:02:43,060 --> 00:02:50,090
+So notice that at this is at about 10
+years old here, only 64% are surviving.
+
+44
+00:02:50,090 --> 00:02:53,840
+There was a lot of infant mortality back
+in the 1600s.
+
+45
+00:02:53,840 --> 00:03:00,400
+You get down to about 16 years of age
+there's only 40% surviving.
+
+46
+00:03:00,400 --> 00:03:06,500
+You get down to you know, 20 years of age,
+there's only a third of people surviving.
+
+47
+00:03:06,500 --> 00:03:09,660
+And you get down to 36 years of age.
+
+48
+00:03:09,660 --> 00:03:14,080
+Only one in six, 16% of people are still
+alive.
+
+49
+00:03:14,080 --> 00:03:18,460
+So if we all lived in the 1600s most of us
+would be dead by now.
+
+50
+00:03:18,460 --> 00:03:22,830
+So it's a really good thing that we live
+now and we have modern medicine.
+
+51
+00:03:22,830 --> 00:03:24,190
+Modern medicine has really,
+
+52
+00:03:24,190 --> 00:03:26,960
+really drastically improved survival
+compared to this.
+
+53
+00:03:26,960 --> 00:03:28,680
+And this is just a few centuries ago.
+
+54
+00:03:28,680 --> 00:03:30,950
+But this is an example of survival
+analysis.
+
+55
+00:03:30,950 --> 00:03:31,770
+What we're trying to do.
+
+56
+00:03:31,770 --> 00:03:34,950
+The goal in survival analysis is to figure
+out this survival curve.
+
+57
+00:03:34,950 --> 00:03:37,480
+We start at 100% and drop off from there.
+
+58
+00:03:37,480 --> 00:03:41,080
+We're going to draw some curves today
+called Kaplan-Meier curves.
+
+59
+00:03:41,080 --> 00:03:42,559
+And essentially that's what we're trying
+to do.
+
+60
+00:03:42,559 --> 00:03:46,370
+We're trying to, to define what percent of
+people are surviving.
+
+61
+00:03:46,370 --> 00:03:50,240
+Surviving is going to be used loosely
+because we're
+
+62
+00:03:50,240 --> 00:03:52,370
+not always going to be talking about the
+event of death.
+
+63
+00:03:52,370 --> 00:03:55,020
+We might be talking about other types of
+events besides death.
+
+64
+00:03:55,020 --> 00:03:57,950
+But this was developed, these methods were
+developed around.
+
+65
+00:03:57,950 --> 00:03:59,040
+Death, around survival.
+
+66
+00:03:59,040 --> 00:04:02,820
+And there's all sorts of things we can ask
+about this curve like what's the shape of
+
+67
+00:04:02,820 --> 00:04:03,468
+this function?
+
+68
+00:04:03,468 --> 00:04:06,006
+This is sort of an exponential curve
+you're seeing here.
+
+69
+00:04:06,006 --> 00:04:09,300
+We can define the curve based on what's
+the chance a person survived past
+
+70
+00:04:09,300 --> 00:04:10,758
+a certain age, past 20, past 36?
+
+71
+00:04:10,758 --> 00:04:14,484
+When we talk about the Kaplan-Meier curve,
+that's essentially what we're doing.
+
+72
+00:04:14,484 --> 00:04:20,450
+We're saying how many people survive event
+free, past certain, time points.
+
+73
+00:04:20,450 --> 00:04:21,254
+And this is survial analysis.
+
+74
+00:04:21,254 --> 00:04:23,172
+We're trying to estimate this curve.
+
+75
+00:04:23,172 --> 00:04:26,396
+We're going to do what's called a
+non-parametric estimate of this curve.
+
+76
+00:04:26,396 --> 00:04:28,363
+An emprical estimate of this curve.
+
+77
+00:04:28,363 --> 00:04:32,247
+That's a Kaplan-Meier curve in just a
+minute.
+
+78
+00:04:32,247 --> 00:04:35,651
+Again, this doesn't have to be time until
+death.
+
+79
+00:04:35,651 --> 00:04:40,179
+It can be time until any event that you
+want, any binary event.

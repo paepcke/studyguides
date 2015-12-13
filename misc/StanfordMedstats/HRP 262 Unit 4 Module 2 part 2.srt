@@ -1,0 +1,625 @@
+1
+00:00:01,940 --> 00:00:05,280
+I'm now going to have you practice
+actually writing out
+
+2
+00:00:05,280 --> 00:00:10,290
+the likelihood when you have a time
+changing predictor variable.
+
+3
+00:00:10,290 --> 00:00:13,420
+And I've made up a little mock dataset
+that's small enough that you
+
+4
+00:00:13,420 --> 00:00:15,320
+can write out the entire likelihood.
+
+5
+00:00:15,320 --> 00:00:19,180
+So this dataset contains time-to-event,
+the event here is death.
+
+6
+00:00:19,180 --> 00:00:20,550
+So, this is time to death.
+
+7
+00:00:20,550 --> 00:00:23,710
+Whether or not they die, died is one and
+zero is censored.
+
+8
+00:00:23,710 --> 00:00:26,230
+And then it has a time changing predictor
+of weight.
+
+9
+00:00:26,230 --> 00:00:32,230
+So, weight was measured here at baseline,
+three months, six months, and nine months.
+
+10
+00:00:32,230 --> 00:00:36,930
+And what I want you to do is to write out
+the likelihood equation if you
+
+11
+00:00:36,930 --> 00:00:40,640
+are modeling a Cox regression where you
+included weight as
+
+12
+00:00:40,640 --> 00:00:42,940
+a time changing predictor.
+
+13
+00:00:42,940 --> 00:00:44,740
+And so what that means is, for
+
+14
+00:00:44,740 --> 00:00:49,050
+example, the first term in the likelihood
+happens when the first event happens.
+
+15
+00:00:49,050 --> 00:00:52,560
+So the first event occurs at two months
+into the study.
+
+16
+00:00:52,560 --> 00:00:54,810
+So at two months into the study when you
+write that term and
+
+17
+00:00:54,810 --> 00:00:59,410
+a likelihood, you're going to incorporate
+the weights that were last measured.
+
+18
+00:00:59,410 --> 00:01:03,100
+Well, at two months into this study the,
+the last measured weight is the baseline
+
+19
+00:01:03,100 --> 00:01:06,620
+weight because we didn't update the
+weights again until three months.
+
+20
+00:01:06,620 --> 00:01:10,830
+So, for that term in the likelihood you'll
+be including the weight at baseline.
+
+21
+00:01:10,830 --> 00:01:14,110
+At eight months, when there's another
+event at eight months, for
+
+22
+00:01:14,110 --> 00:01:18,600
+that event you're going to include into
+the likelihood the last measured weight.
+
+23
+00:01:18,600 --> 00:01:19,700
+So, the last measured weight at
+
+24
+00:01:19,700 --> 00:01:21,820
+eight months was the measurement done at
+six months.
+
+25
+00:01:21,820 --> 00:01:24,860
+So you'll be including the weights from
+six months into that term of
+
+26
+00:01:24,860 --> 00:01:26,720
+the likelihood and so on.
+
+27
+00:01:26,720 --> 00:01:30,330
+There are three events here so there
+should be three terms in the likelihood.
+
+28
+00:01:30,330 --> 00:01:32,700
+So now, I want you to pause the video and
+
+29
+00:01:32,700 --> 00:01:35,520
+actually try writing out that whole
+likelihood on your own.
+
+30
+00:01:35,520 --> 00:01:38,348
+And then, when you're done, restart the
+video and I'll walk you through it.
+
+31
+00:01:38,348 --> 00:01:44,228
+[BLANK_AUDIO]
+
+32
+00:01:44,228 --> 00:01:49,660
+All right, so hopefully you were able to
+write that out without too much trouble.
+
+33
+00:01:49,660 --> 00:01:52,150
+It is a little cumbersome to write out the
+whole thing.
+
+34
+00:01:52,150 --> 00:01:56,920
+Again, we are doing a Cox Regression Model
+here where our only predictor in
+
+35
+00:01:56,920 --> 00:01:57,700
+the model is weight.
+
+36
+00:01:57,700 --> 00:02:00,160
+But weight here is a time changing
+predictor.
+
+37
+00:02:00,160 --> 00:02:01,890
+Notice we're going to get one data for
+
+38
+00:02:01,890 --> 00:02:05,520
+weight, but it's going to be based on the
+changing weight.
+
+39
+00:02:05,520 --> 00:02:09,300
+So, it's going to be interpreted as the
+effect for your current or
+
+40
+00:02:09,300 --> 00:02:11,740
+your most recently measured weight.
+
+41
+00:02:11,740 --> 00:02:13,745
+How would you actually write the
+likelihood out here?
+
+42
+00:02:13,745 --> 00:02:17,135
+While there are three events occurring at
+two months, eight months and
+
+43
+00:02:17,135 --> 00:02:21,090
+ten months into the study, so our
+likelihood will have three terms in it.
+
+44
+00:02:21,090 --> 00:02:22,990
+What I did to make the problem a little
+easier was,
+
+45
+00:02:22,990 --> 00:02:27,730
+I reordered my observations here from the
+lowest time to the highest time.
+
+46
+00:02:27,730 --> 00:02:30,770
+It just makes it simpler to find
+everything when you're writing out
+
+47
+00:02:30,770 --> 00:02:31,910
+the likelihood.
+
+48
+00:02:31,910 --> 00:02:34,160
+So, the first term of the likelihood
+occurs at two months.
+
+49
+00:02:34,160 --> 00:02:37,390
+Before two months we have somebody
+censored, so they're no longer at risk.
+
+50
+00:02:37,390 --> 00:02:41,270
+So, the first term in the likelihood will
+have in the denominator eight people,
+
+51
+00:02:41,270 --> 00:02:43,270
+the eight who are still at risk.
+
+52
+00:02:43,270 --> 00:02:45,170
+Because we're only two months into this
+study,
+
+53
+00:02:45,170 --> 00:02:47,220
+the last measured weight is the baseline
+weight so
+
+54
+00:02:47,220 --> 00:02:50,940
+we'll be using the baseline weight in this
+term in the likelihood.
+
+55
+00:02:50,940 --> 00:02:54,574
+So the person who had the event weighed
+240 pounds so
+
+56
+00:02:54,574 --> 00:02:58,388
+their risk, their hazard is e rate to beta
+times 240.
+
+57
+00:02:58,388 --> 00:03:02,630
+Everybody else who's at risk gets a term
+in the denominator here.
+
+58
+00:03:02,630 --> 00:03:05,220
+So, the person who had the event, of
+course, was at risk.
+
+59
+00:03:05,220 --> 00:03:06,090
+And then everybody else.
+
+60
+00:03:06,090 --> 00:03:07,920
+So, we had somebody who weighed 110.
+
+61
+00:03:07,920 --> 00:03:15,760
+We had another person at 130, and 200 I'm
+going to just run over the line here.
+
+62
+00:03:15,760 --> 00:03:22,890
+180, 140, and it's a little tedious to
+write out,
+
+63
+00:03:22,890 --> 00:03:26,540
+but you can write it out without too much
+trouble.
+
+64
+00:03:26,540 --> 00:03:29,110
+So hopefully you've got something like
+that for your first term.
+
+65
+00:03:29,110 --> 00:03:30,610
+For the second term in the likelihood,
+
+66
+00:03:30,610 --> 00:03:34,310
+it's going to be a little easier because a
+lot of things are going away.
+
+67
+00:03:34,310 --> 00:03:38,560
+We had some people being censored, so now
+at eight months into the study,
+
+68
+00:03:38,560 --> 00:03:41,660
+when the next event occurs, we only have
+five people at risk.
+
+69
+00:03:41,660 --> 00:03:43,460
+That'll make the term a little less
+cumbersome.
+
+70
+00:03:44,560 --> 00:03:46,340
+The weight that we're going to use now
+that
+
+71
+00:03:46,340 --> 00:03:49,470
+we're going to enter into the likelihood
+is the weight from six months,
+
+72
+00:03:49,470 --> 00:03:53,350
+because that was the last weight measured
+before eight months.
+
+73
+00:03:53,350 --> 00:03:57,760
+So, at six months into this study, the
+person who had the event was 250 pounds,
+
+74
+00:03:58,760 --> 00:04:05,850
+and those at risk were 250, 240, 155.
+
+75
+00:04:05,850 --> 00:04:13,290
+145 and again, I'm going to run out of
+room here, I'll just scroll over, and 180.
+
+76
+00:04:13,290 --> 00:04:19,170
+And then finally, we lose this subject
+because they died.
+
+77
+00:04:19,170 --> 00:04:23,130
+Finally the, the last event time occurred
+at ten months into this study, and
+
+78
+00:04:23,130 --> 00:04:24,620
+there were four people left at risk.
+
+79
+00:04:24,620 --> 00:04:26,400
+Now there's actually two ways you could
+have set this up,
+
+80
+00:04:26,400 --> 00:04:28,340
+because I had two people at ten.
+
+81
+00:04:28,340 --> 00:04:31,430
+I had one who is censored at ten and one
+who had the event at ten.
+
+82
+00:04:31,430 --> 00:04:35,600
+And I have got their time as exactly the
+same because I rounded the months here.
+
+83
+00:04:35,600 --> 00:04:39,390
+If you were to put that into SAS, SAS will
+count the one who is censored,
+
+84
+00:04:39,390 --> 00:04:42,760
+the censoring as having at, happened after
+the event.
+
+85
+00:04:42,760 --> 00:04:45,730
+So that censored person would be at risk
+at ten months.
+
+86
+00:04:45,730 --> 00:04:48,020
+So we're going to say that they're at risk
+at ten months.
+
+87
+00:04:48,020 --> 00:04:50,620
+If you did it the other way and, and
+dropped them, that's fine too.
+
+88
+00:04:50,620 --> 00:04:55,430
+You kind of have to know how the algorithm
+in the computer is handling it.
+
+89
+00:04:55,430 --> 00:04:56,420
+But we're going to include the,
+
+90
+00:04:56,420 --> 00:05:00,070
+we're going to say they were at risk and
+then they were censored at ten months.
+
+91
+00:05:00,070 --> 00:05:02,030
+So, they were at risk at ten months.
+
+92
+00:05:02,030 --> 00:05:05,780
+So, we're going to have in the numerator
+here, now we're using the weights from
+
+93
+00:05:05,780 --> 00:05:08,500
+nine months into the study, because that
+was the last measured weight.
+
+94
+00:05:08,500 --> 00:05:11,920
+The person who had the event was 280
+pounds.
+
+95
+00:05:11,920 --> 00:05:12,900
+And those at risk.
+
+96
+00:05:14,170 --> 00:05:18,290
+There were four at risk with the following
+weights.
+
+97
+00:05:18,290 --> 00:05:19,173
+[SOUND].
+
+98
+00:05:19,173 --> 00:05:27,320
+So that's what the complete likelihood
+function would look like here.
+
+99
+00:05:27,320 --> 00:05:31,530
+We would then maximize this likelihood
+function to get the beta that made
+
+100
+00:05:31,530 --> 00:05:33,070
+our data the most likely.
+
+101
+00:05:34,130 --> 00:05:37,240
+And just for fun, I actually went ahead
+and
+
+102
+00:05:37,240 --> 00:05:41,510
+plugged these data into the computer and
+actually solved for beta.
+
+103
+00:05:41,510 --> 00:05:43,630
+Now this is a really small dataset and so,
+
+104
+00:05:43,630 --> 00:05:46,850
+in fact, the estimates that I'm getting
+here are really unstable.
+
+105
+00:05:46,850 --> 00:05:50,070
+But we can actually get a hazard ratio to
+pop out out of the computer with some
+
+106
+00:05:50,070 --> 00:05:51,900
+warnings about convergence.
+
+107
+00:05:51,900 --> 00:05:53,760
+And just for fun, again, these are made up
+data.
+
+108
+00:05:53,760 --> 00:05:57,070
+When I made these data up, I made it so
+that I, you know,
+
+109
+00:05:57,070 --> 00:06:00,570
+as a person was dying that their last
+measured weight was a little bit higher.
+
+110
+00:06:00,570 --> 00:06:06,008
+I tried to make the higher weights link to
+time, somewhere near the time of death.
+
+111
+00:06:06,008 --> 00:06:08,980
+So, obviously we're expecting to get
+something where
+
+112
+00:06:08,980 --> 00:06:10,270
+there's an association here.
+
+113
+00:06:10,270 --> 00:06:11,760
+So when I actually ran these in,
+
+114
+00:06:11,760 --> 00:06:14,790
+in the computer when I used weight as a
+time-changing
+
+115
+00:06:14,790 --> 00:06:18,350
+variable corresponding to the likelihood
+that we just wrote out there.
+
+116
+00:06:18,350 --> 00:06:21,640
+I got a hazard ratio of 8.8, and again
+with all the caveats and
+
+117
+00:06:21,640 --> 00:06:24,680
+this being a very unstable, and very small
+sample of made up data.
+
+118
+00:06:24,680 --> 00:06:27,450
+But you know, because I made up the data
+for there to be a link there,
+
+119
+00:06:27,450 --> 00:06:28,905
+I got a very high hazard ratio.
+
+120
+00:06:28,905 --> 00:06:33,260
+Now, I then ran a model where I included
+a,
+
+121
+00:06:33,260 --> 00:06:36,580
+vary a predictor, a weight predictor that
+did not change over time.
+
+122
+00:06:36,580 --> 00:06:39,790
+So you could use, like, the baseline
+weight here, or you could use, like,
+
+123
+00:06:39,790 --> 00:06:43,300
+their average weight over the entire time
+we saw them.
+
+124
+00:06:43,300 --> 00:06:45,870
+When I used the baseline rate, I only got
+a hazard ratio of 2.7 and
+
+125
+00:06:45,870 --> 00:06:49,518
+when I used the average weight I got a
+hazard ratio of 1.2.
+
+126
+00:06:49,518 --> 00:06:52,820
+And these is, this is just to show you
+that it can make a really big difference,
+
+127
+00:06:52,820 --> 00:06:56,890
+even with real data, if you actually allow
+the predictor to change over time,
+
+128
+00:06:56,890 --> 00:07:00,370
+it can show when things are correlated in
+time.
+
+129
+00:07:00,370 --> 00:07:03,480
+So, when your current weight, your most
+recent weight is the thing that
+
+130
+00:07:03,480 --> 00:07:08,360
+matters in terms of mortality, that's
+reflected better in the hazard rate
+
+131
+00:07:08,360 --> 00:07:12,300
+when time weight was modeled as a
+time-changing predictor.

@@ -1,0 +1,1334 @@
+1
+00:00:05,660 --> 00:00:09,880
+In this next module, I'm going to talk
+about variable selection in a case
+
+2
+00:00:09,880 --> 00:00:15,040
+where you're trying to identify multiple
+important causal predictors of an outcome.
+
+3
+00:00:15,040 --> 00:00:18,260
+And there's a really nice discussion of
+this in Biddinghoff textbook,
+
+4
+00:00:18,260 --> 00:00:20,640
+it's very short, so I'd recommend reading
+it there as well.
+
+5
+00:00:22,940 --> 00:00:27,740
+So the ideal situation when we're doing a
+medical study is we would like to
+
+6
+00:00:27,740 --> 00:00:31,380
+have a primary hypothesis of interest from
+the get-go.
+
+7
+00:00:31,380 --> 00:00:35,410
+You, you design a study around that, and
+you get your data, you analyze your data.
+
+8
+00:00:35,410 --> 00:00:39,920
+By doing so, and pre-specifying everything
+ahead of time,
+
+9
+00:00:39,920 --> 00:00:43,360
+having one main hypothesis, you control
+your type one error.
+
+10
+00:00:44,360 --> 00:00:48,680
+Of course the reality is, we often do
+that, but in the course of doing
+
+11
+00:00:48,680 --> 00:00:53,790
+a particular study, we collect a whole
+bunch of data that's interesting data and
+
+12
+00:00:53,790 --> 00:00:56,990
+worth mining for additional information.
+
+13
+00:00:56,990 --> 00:01:00,830
+But that changes the situation for model
+building now because now there's not
+
+14
+00:01:00,830 --> 00:01:03,320
+necessarily a single predictor of
+interest.
+
+15
+00:01:03,320 --> 00:01:05,880
+We might be mining our data set just to
+say,
+
+16
+00:01:05,880 --> 00:01:08,190
+well what are other predictors of the
+outcome.
+
+17
+00:01:08,190 --> 00:01:11,310
+So we might be interested in multiple
+important predictors that might have
+
+18
+00:01:11,310 --> 00:01:13,540
+a causal relationship with our outcome.
+
+19
+00:01:13,540 --> 00:01:15,030
+And that's perfectly fine to do.
+
+20
+00:01:15,030 --> 00:01:18,730
+It's worth doing what we call secondary
+analysis like these.
+
+21
+00:01:18,730 --> 00:01:21,080
+Because we're getting the data are there
+and
+
+22
+00:01:21,080 --> 00:01:23,390
+we want to mine that for useful
+information.
+
+23
+00:01:23,390 --> 00:01:29,690
+However, variable selection in this
+scenario becomes much much trickier.
+
+24
+00:01:29,690 --> 00:01:31,180
+It's a bit of an art.
+
+25
+00:01:31,180 --> 00:01:34,030
+There are multiple potential approaches
+that you can take and
+
+26
+00:01:34,030 --> 00:01:37,150
+different people will have slightly
+different preferences for how to do this.
+
+27
+00:01:37,150 --> 00:01:42,810
+A lot of it will be guided by some kind of
+clinical judgement as well.
+
+28
+00:01:42,810 --> 00:01:43,890
+So, variable selection is,
+
+29
+00:01:43,890 --> 00:01:47,480
+as you're going to see in a minute, is
+going to be more decision points.
+
+30
+00:01:47,480 --> 00:01:50,350
+And, when you're doing these types of
+analyses where you're screening for
+
+31
+00:01:50,350 --> 00:01:52,972
+a number of po, potential important
+predictors,
+
+32
+00:01:52,972 --> 00:01:57,360
+you're obviously increasing your risk of a
+type one error.
+
+33
+00:01:57,360 --> 00:02:00,990
+Now, it's generally not recommended that
+you somehow try to do some kind of
+
+34
+00:02:00,990 --> 00:02:03,240
+p value correction in this context.
+
+35
+00:02:03,240 --> 00:02:05,220
+And that's simply because there's so
+
+36
+00:02:05,220 --> 00:02:08,980
+many decision points in the model building
+process here that it's actually really
+
+37
+00:02:08,980 --> 00:02:15,060
+hard to say what the true p value is or
+the true p value level is.
+
+38
+00:02:15,060 --> 00:02:18,290
+So hard to attach a, p value adjustment
+here.
+
+39
+00:02:18,290 --> 00:02:22,580
+Rather than doing that we tent to just
+want to interpret the results cautiously.
+
+40
+00:02:22,580 --> 00:02:27,820
+You have to tell your reader that this
+came from a data set that was set up
+
+41
+00:02:27,820 --> 00:02:30,960
+to test something else and that you're
+mining it for additional information and
+
+42
+00:02:30,960 --> 00:02:34,430
+therefore that things have to be taken
+with a grain of salt.
+
+43
+00:02:34,430 --> 00:02:38,800
+That there is going to be some chance
+findings expected to arise.
+
+44
+00:02:38,800 --> 00:02:42,510
+So I thought the easiest way to illustrate
+this would be just to
+
+45
+00:02:42,510 --> 00:02:44,410
+go through an actual example.
+
+46
+00:02:44,410 --> 00:02:47,060
+So this was a data set, that I was
+involved in.
+
+47
+00:02:47,060 --> 00:02:49,910
+A paper I was involved in a number of
+years ago.
+
+48
+00:02:49,910 --> 00:02:54,640
+You can see that I do a lot of data
+analysis on stress factors in runners.
+
+49
+00:02:54,640 --> 00:02:57,387
+because, I used to be a competitive
+runner, and
+
+50
+00:02:57,387 --> 00:03:02,010
+this is a different data set actually than
+I talked about with stress fractures and
+
+51
+00:03:02,010 --> 00:03:06,510
+runners last week, this was a data set
+that came from a randomized trial.
+
+52
+00:03:06,510 --> 00:03:09,430
+So we have randomized women runners.
+
+53
+00:03:09,430 --> 00:03:11,250
+To take hormonal contraception or not.
+
+54
+00:03:11,250 --> 00:03:14,620
+To see if that had an effect on bone
+density and stress fractures.
+
+55
+00:03:14,620 --> 00:03:18,900
+But then after we answered that question,
+and wrote up the main paper, here we had
+
+56
+00:03:18,900 --> 00:03:22,980
+sitting this great data set with all of
+these variables that we had collected and
+
+57
+00:03:22,980 --> 00:03:27,970
+we wanted to say, well, can we identify
+other risk factors for stress fractures?
+
+58
+00:03:27,970 --> 00:03:31,430
+So, this is the secondary analysis from a
+randomized trial.
+
+59
+00:03:31,430 --> 00:03:34,170
+You can see it's a different data set
+because my N now is 125.
+
+60
+00:03:34,170 --> 00:03:35,840
+These were college age women, so
+
+61
+00:03:35,840 --> 00:03:37,990
+older than the data set that I talked
+about last week.
+
+62
+00:03:39,200 --> 00:03:42,350
+We had a number of predictors that had
+previously been linked to
+
+63
+00:03:42,350 --> 00:03:43,140
+stress fractures, or
+
+64
+00:03:43,140 --> 00:03:45,670
+that we had some reason to believe would
+be linked to stress fractures.
+
+65
+00:03:45,670 --> 00:03:49,250
+So we had measure bone density on the
+women, menstrual function, calcium intake,
+
+66
+00:03:49,250 --> 00:03:52,660
+injury history, training Body size and
+composition age,
+
+67
+00:03:52,660 --> 00:03:57,820
+all things that we suspected, could be
+factors in stress fracture development.
+
+68
+00:03:57,820 --> 00:04:03,080
+So how do we actually do this model
+building this variable selection?
+
+69
+00:04:03,080 --> 00:04:06,560
+So what's typically done in this kind of
+scenario.
+
+70
+00:04:06,560 --> 00:04:11,790
+Is that we want to screen through a number
+of potential predictors, and
+
+71
+00:04:11,790 --> 00:04:15,350
+a way to do that is to do univariate
+analyses, so
+
+72
+00:04:15,350 --> 00:04:20,780
+to run each predictor with the outcome in
+a separate logistic regression model.
+
+73
+00:04:20,780 --> 00:04:23,256
+Or in this case, we actually have
+prospective data, so
+
+74
+00:04:23,256 --> 00:04:27,940
+Cox regression was run, but it's actually
+pretty much the same procedure.
+
+75
+00:04:27,940 --> 00:04:30,550
+So if we had a logistic model for
+
+76
+00:04:30,550 --> 00:04:34,040
+stress fracture we would do one variable
+at a time.
+
+77
+00:04:34,040 --> 00:04:36,840
+So here's a predictor that I think might
+be related, I put that in a model,
+
+78
+00:04:36,840 --> 00:04:39,190
+I run a unit variant model.
+
+79
+00:04:39,190 --> 00:04:43,000
+That gives me a sense, just sort of a
+screening of which ones are related to
+
+80
+00:04:43,000 --> 00:04:44,770
+stress fractures, in the unit area way.
+
+81
+00:04:44,770 --> 00:04:46,660
+Now there was a little bit of extra detail
+here.
+
+82
+00:04:46,660 --> 00:04:49,000
+Since these data came from a randomized
+trial,
+
+83
+00:04:49,000 --> 00:04:52,940
+we decided that it was important in all
+models to take that into account.
+
+84
+00:04:52,940 --> 00:04:56,760
+So even in the quote unquote unit area
+models, or only looking at one potential
+
+85
+00:04:56,760 --> 00:05:03,250
+predictor at a time, we also had adjusted
+for the site in the clinical trial,
+
+86
+00:05:03,250 --> 00:05:08,360
+which Would be dummy coded as well as what
+randomization group the women had been in
+
+87
+00:05:08,360 --> 00:05:11,370
+just in case there were any effects of
+those two things throughout the trial.
+
+88
+00:05:11,370 --> 00:05:13,550
+So there's a few other things lurking in
+the model,
+
+89
+00:05:13,550 --> 00:05:16,640
+but it pretty much we're just looking at
+one predictor at a time.
+
+90
+00:05:16,640 --> 00:05:18,578
+Those actually didn't have much of an
+effect on the estimates.
+
+91
+00:05:18,578 --> 00:05:24,610
+So here is a variable screen, here's all
+the results of the predictors
+
+92
+00:05:24,610 --> 00:05:30,060
+test one at a time with just these other
+two randomized trial details in the model.
+
+93
+00:05:30,060 --> 00:05:34,000
+So you can see that lots of things, lots
+of predictors were tested.
+
+94
+00:05:34,000 --> 00:05:36,670
+There's a whole bunch of things in this
+table, okay.
+
+95
+00:05:36,670 --> 00:05:39,930
+So we had a whole bunch of variables we
+wanted in we thought that,
+
+96
+00:05:39,930 --> 00:05:40,910
+we thought might be relevant.
+
+97
+00:05:40,910 --> 00:05:41,870
+We wanted to test them out.
+
+98
+00:05:42,940 --> 00:05:45,780
+One thing that you'll notice is that a lot
+of
+
+99
+00:05:45,780 --> 00:05:47,750
+the variables are highly related to one
+another.
+
+100
+00:05:47,750 --> 00:05:51,020
+So height, weight, body mass index,
+percent body fat lean mass.
+
+101
+00:05:51,020 --> 00:05:54,500
+All these things are measures of body size
+and composition.
+
+102
+00:05:54,500 --> 00:05:57,490
+We've got a bunch of measures about how
+long you've been running,
+
+103
+00:05:57,490 --> 00:05:58,659
+how much you run.
+
+104
+00:05:59,740 --> 00:06:05,270
+We've got history of fractures number of
+menstrual variable menstrual function
+
+105
+00:06:05,270 --> 00:06:10,560
+variable a whole bunch about bone density
+cause had given that mendesa.
+
+106
+00:06:10,560 --> 00:06:11,830
+We had a lot of bone density and
+
+107
+00:06:11,830 --> 00:06:16,270
+bone mineral content which is slightly
+different than density, we had that.
+
+108
+00:06:16,270 --> 00:06:18,830
+We had two measurements related to calcium
+intake.
+
+109
+00:06:18,830 --> 00:06:20,770
+So a lot of these are overlapping.
+
+110
+00:06:20,770 --> 00:06:23,090
+That means one of the first decision
+points that's going to need to
+
+111
+00:06:23,090 --> 00:06:26,350
+be made here is which if this when they're
+highly overlapping and
+
+112
+00:06:26,350 --> 00:06:28,940
+they both seem to be related to fractures.
+
+113
+00:06:28,940 --> 00:06:31,530
+Or multiple ones seem to be related to
+fractures.
+
+114
+00:06:31,530 --> 00:06:37,040
+Which of these do we carry over and test
+in the final model.
+
+115
+00:06:37,040 --> 00:06:39,980
+Now I'll just remind you that last week I
+talked about
+
+116
+00:06:39,980 --> 00:06:41,860
+principal components analysys.
+
+117
+00:06:41,860 --> 00:06:45,450
+And one of the advantages of doing a
+principal components analysis was that you
+
+118
+00:06:45,450 --> 00:06:48,610
+might be able to take some of these highly
+correlated variables, and
+
+119
+00:06:48,610 --> 00:06:52,800
+rather than having to just drop some and
+ignore some, you could compress them
+
+120
+00:06:52,800 --> 00:06:56,200
+into a single variable and take that
+forward for regression.
+
+121
+00:06:56,200 --> 00:06:58,390
+So that is another option that wasn't done
+here.
+
+122
+00:06:59,830 --> 00:07:04,240
+Again, just to show you some language from
+how these things are written up in papers.
+
+123
+00:07:04,240 --> 00:07:07,320
+So in the statistical analysis section in
+the,
+
+124
+00:07:07,320 --> 00:07:10,620
+when the, we're describing how the
+multi-variable models work.
+
+125
+00:07:10,620 --> 00:07:14,060
+How the variables were chosen for the
+final multi-variable models.
+
+126
+00:07:14,060 --> 00:07:17,260
+The first thing that's talked about is
+just the fact that
+
+127
+00:07:17,260 --> 00:07:21,990
+we didn't take forward all of the
+variables in table one here.
+
+128
+00:07:21,990 --> 00:07:25,358
+For the multivariate regression model, we
+were choosy about it.
+
+129
+00:07:25,358 --> 00:07:29,160
+So, various, the various indicators of
+bone mass basically,
+
+130
+00:07:29,160 --> 00:07:30,350
+were all highly correlated.
+
+131
+00:07:30,350 --> 00:07:33,930
+So, we had bone mass and bone density in
+their hip,
+
+132
+00:07:33,930 --> 00:07:36,900
+we had whole body...it's fine, all these
+are highly correlated.
+
+133
+00:07:36,900 --> 00:07:39,560
+Bone density is highly correlated with
+content.
+
+134
+00:07:39,560 --> 00:07:40,810
+So we selected one of them.
+
+135
+00:07:40,810 --> 00:07:43,110
+We selected whole body bone mineral
+content for
+
+136
+00:07:43,110 --> 00:07:45,190
+our primary multivariate model.
+
+137
+00:07:45,190 --> 00:07:45,990
+And why did we do that?
+
+138
+00:07:45,990 --> 00:07:46,990
+There's some justification.
+
+139
+00:07:46,990 --> 00:07:49,450
+Notice, this is all just clinical
+judgment.
+
+140
+00:07:49,450 --> 00:07:52,180
+It, there was, first of all, it was
+strongly associated with stress fractures.
+
+141
+00:07:52,180 --> 00:07:54,910
+So we are looking at saying, hey, that
+one, it does look like
+
+142
+00:07:54,910 --> 00:07:58,120
+it has a stronger relation the strongest
+relationship with stress fracture.
+
+143
+00:07:58,120 --> 00:08:02,440
+There were multiple skeletal sites where
+stress fractures could occur, so
+
+144
+00:08:02,440 --> 00:08:07,470
+a whole body bone strength measure might
+be the most relevant.
+
+145
+00:08:08,470 --> 00:08:11,920
+And there's some technical things about
+how to
+
+146
+00:08:11,920 --> 00:08:14,880
+measure bone strength especially when
+you're growing, so
+
+147
+00:08:14,880 --> 00:08:17,750
+there was some reasons for choosing that
+one out of the set.
+
+148
+00:08:19,180 --> 00:08:21,660
+Also, similarly, daily calcium intake and
+
+149
+00:08:21,660 --> 00:08:24,620
+servings of dairy products were highly
+correlated.
+
+150
+00:08:24,620 --> 00:08:28,390
+We chose dietary calcium intake for the
+multivariate model.
+
+151
+00:08:28,390 --> 00:08:31,450
+Now, if you go back and look at table one,
+I'll just highlight here,
+
+152
+00:08:31,450 --> 00:08:35,210
+if you look at calcium intake and servings
+of dairy products.
+
+153
+00:08:35,210 --> 00:08:38,500
+So calcium intake didn't quite make
+statistical significance.
+
+154
+00:08:38,500 --> 00:08:41,860
+However, servings of dairy products did.
+
+155
+00:08:41,860 --> 00:08:45,970
+And yet, a judgment was made not based on
+the p-value there, but
+
+156
+00:08:45,970 --> 00:08:49,250
+that dietary calcium is really more
+relevant, because that's kind of
+
+157
+00:08:49,250 --> 00:08:51,890
+what we're after, what we think would be
+related to bone density.
+
+158
+00:08:51,890 --> 00:08:55,010
+So a decision was made to put dietary
+calcium forward and
+
+159
+00:08:55,010 --> 00:08:58,380
+not dairy, without P value shopping.
+
+160
+00:08:58,380 --> 00:09:02,090
+And finally, lean body mass was so
+strongly to bone mineral content that it
+
+161
+00:09:02,090 --> 00:09:03,770
+was felt that it couldn't be carried
+forward, so
+
+162
+00:09:03,770 --> 00:09:07,170
+it was not carried forward into the
+multivariate model.
+
+163
+00:09:07,170 --> 00:09:11,560
+So there's some choices being made just in
+terms among highly correlated variables.
+
+164
+00:09:11,560 --> 00:09:15,720
+Which ones do we even try out in the
+multivariate model And then it's saying
+
+165
+00:09:15,720 --> 00:09:18,920
+well accordingly here is what we brought
+forward for the multivariate model.
+
+166
+00:09:18,920 --> 00:09:22,150
+age, height, weight, history of stress
+fracture, age at menarche,
+
+167
+00:09:22,150 --> 00:09:23,830
+history of menstrual irregularity.
+
+168
+00:09:23,830 --> 00:09:25,750
+And, and the ones we just talked about
+where,
+
+169
+00:09:25,750 --> 00:09:28,800
+was, there was some decision point that
+had to be made.
+
+170
+00:09:28,800 --> 00:09:32,840
+And this is along with certain other
+variables I don't remember exactly what
+
+171
+00:09:32,840 --> 00:09:35,320
+those were, I didn't actually do the
+analysis here, but
+
+172
+00:09:35,320 --> 00:09:40,150
+I think out of the ones that you saw in
+the earlier table.
+
+173
+00:09:40,150 --> 00:09:44,360
+Some of them clearly had some relationship
+or had, there was some indication of
+
+174
+00:09:44,360 --> 00:09:46,810
+a relationship with stress fractures,
+those were carried forward.
+
+175
+00:09:46,810 --> 00:09:51,250
+Some clearly were very close to one on the
+odds ratio, didn't look at all related.
+
+176
+00:09:51,250 --> 00:09:52,990
+Those were not carried forward.
+
+177
+00:09:52,990 --> 00:09:57,120
+And then that's who, what we included in a
+multivariate model.
+
+178
+00:09:57,120 --> 00:09:59,090
+And then we're going to prune some of
+those and
+
+179
+00:09:59,090 --> 00:10:00,610
+only retain some of those from the models.
+
+180
+00:10:00,610 --> 00:10:02,120
+So what was the decision point there?
+
+181
+00:10:02,120 --> 00:10:03,960
+So the decision was made to,
+
+182
+00:10:03,960 --> 00:10:08,720
+that those that were significant at a P of
+less than .10 were retained in the model.
+
+183
+00:10:08,720 --> 00:10:13,530
+Those that had P is greater than .1 were
+removed or pruned from the model.
+
+184
+00:10:13,530 --> 00:10:17,000
+However, there was one variable that's
+really relevant to
+
+185
+00:10:17,000 --> 00:10:20,720
+stress fractures in women, which is a
+history of menstrual irregularity.
+
+186
+00:10:20,720 --> 00:10:23,820
+And, even though P was les, greater than
+.1.
+
+187
+00:10:23,820 --> 00:10:27,730
+A decision was made to keep that in the
+multivariate model because the effect
+
+188
+00:10:27,730 --> 00:10:31,170
+size was actually large and it was
+consistent with other studies.
+
+189
+00:10:31,170 --> 00:10:34,400
+So even though it didn't make statistical
+significance in our small study,
+
+190
+00:10:34,400 --> 00:10:37,020
+we still it was important to keep it on
+the model.
+
+191
+00:10:37,020 --> 00:10:40,460
+So notice how many decision points have
+been made here in terms of
+
+192
+00:10:40,460 --> 00:10:43,420
+the choice of this multivariate model.
+
+193
+00:10:43,420 --> 00:10:46,270
+And somebody else looking at these data
+could have come up with slightly different
+
+194
+00:10:46,270 --> 00:10:50,300
+choices and definitely could have come up
+with a slightly different final model.
+
+195
+00:10:52,190 --> 00:10:55,140
+But the general procedure of looking at
+the univariate analyses and then moving
+
+196
+00:10:55,140 --> 00:10:58,160
+some of them forward to the multivarieate
+anaylysis and then pruning some that
+
+197
+00:10:58,160 --> 00:11:02,360
+are no longer significant is kind of the
+way, the general process that's used.
+
+198
+00:11:02,360 --> 00:11:04,830
+Here's the resulting multivariate model.
+
+199
+00:11:04,830 --> 00:11:10,070
+So the things that stuck in the model
+again are the P less than .10, were age,
+
+200
+00:11:10,070 --> 00:11:15,810
+and, and no, this is an interesting point
+about presentation of data, but
+
+201
+00:11:15,810 --> 00:11:20,080
+all of hte relative risks are set up so
+they are greater than one.
+
+202
+00:11:20,080 --> 00:11:23,860
+There was somebody, there was a coauthor
+on our page who insisted that
+
+203
+00:11:23,860 --> 00:11:28,630
+doctors wouldn't understand rate ratios or
+risk ratios below one.
+
+204
+00:11:28,630 --> 00:11:31,670
+They wouldn't understand what that means,
+so that we had to make them all above one
+
+205
+00:11:31,670 --> 00:11:35,790
+by making things like age per year younger
+increases your risk.
+
+206
+00:11:35,790 --> 00:11:38,020
+So the younger you are, the more your risk
+is.
+
+207
+00:11:38,020 --> 00:11:41,750
+I actually don't like that at all, because
+I think it's much more natural to
+
+208
+00:11:41,750 --> 00:11:45,680
+say per year older of age, your risk is
+per, your,
+
+209
+00:11:45,680 --> 00:11:49,810
+your risk is lowered But anyway, this is
+what ended up in the paper.
+
+210
+00:11:49,810 --> 00:11:53,290
+So being younger was protective.
+
+211
+00:11:53,290 --> 00:11:56,670
+Having a history of stress fractures was
+really highly related.
+
+212
+00:11:56,670 --> 00:11:58,920
+So if you're prone to stress fractures, if
+you've already had one,
+
+213
+00:11:58,920 --> 00:12:01,880
+you're probably much, much, much more
+likely to have one in the future.
+
+214
+00:12:01,880 --> 00:12:04,780
+And these are actually risk ratios, rate
+ratios.
+
+215
+00:12:04,780 --> 00:12:07,380
+So this can be interpreted as a six fold
+increase in risk.
+
+216
+00:12:07,380 --> 00:12:10,310
+The bone density also highly related.
+
+217
+00:12:10,310 --> 00:12:12,220
+This is per standard deviation lower.
+
+218
+00:12:12,220 --> 00:12:17,170
+So the lower you are, one state of
+deviation lower in bone mineral content.
+
+219
+00:12:17,170 --> 00:12:19,680
+Where this is associated with a doubling
+or tripling of risk.
+
+220
+00:12:20,690 --> 00:12:24,260
+Dietary calcium didn't quite make
+statistical significance.
+
+221
+00:12:24,260 --> 00:12:26,120
+P is less than 0.10 here.
+
+222
+00:12:26,120 --> 00:12:30,610
+But having, less calcium in your diet
+means more risk.
+
+223
+00:12:30,610 --> 00:12:32,940
+Age at menarche was significantly related
+at p of 0.05.
+
+224
+00:12:32,940 --> 00:12:35,500
+And then finally this history of menstrual
+irregularity.
+
+225
+00:12:35,500 --> 00:12:39,800
+Notice that, totally not significant but
+the effect size is pretty big.
+
+226
+00:12:39,800 --> 00:12:42,840
+And because it has been pretty well
+established in other studies that this is
+
+227
+00:12:42,840 --> 00:12:44,010
+an association.
+
+228
+00:12:44,010 --> 00:12:45,170
+We kept this in the model.
+
+229
+00:12:45,170 --> 00:12:46,430
+Again, many decision points here.
+
+230
+00:12:48,700 --> 00:12:54,030
+Now I just want to contrast this with, I
+actually did an example last week,
+
+231
+00:12:54,030 --> 00:12:58,500
+essentially, of a multiple important
+predictors of variable selection.
+
+232
+00:12:58,500 --> 00:13:01,080
+When I was talking about principal
+components anaylsis.
+
+233
+00:13:01,080 --> 00:13:02,530
+So I'll just kind of put upon for
+
+234
+00:13:02,530 --> 00:13:06,740
+principle components analysis here by
+showing that the variable selection for
+
+235
+00:13:06,740 --> 00:13:09,600
+the multivariate model was a heck of a lot
+easier in that case.
+
+236
+00:13:09,600 --> 00:13:14,820
+So just a reminder, I had a different data
+set on 91 high school women runners
+
+237
+00:13:14,820 --> 00:13:17,670
+who had, we had many of the same variables
+measured and
+
+238
+00:13:17,670 --> 00:13:20,410
+one of the outcomes of interest was stress
+factor.
+
+239
+00:13:21,980 --> 00:13:24,800
+Now this was a logistic regression rather
+than a Cox regression.
+
+240
+00:13:24,800 --> 00:13:27,770
+But I, I actually took all of those
+multiple measures of
+
+241
+00:13:27,770 --> 00:13:30,680
+things like body size and composition, and
+running performance and
+
+242
+00:13:30,680 --> 00:13:33,820
+special function and I ran that principal
+components analysis
+
+243
+00:13:33,820 --> 00:13:38,030
+to come up with four components at the end
+of the day.
+
+244
+00:13:38,030 --> 00:13:42,435
+The nice thing about doing it that way is,
+the variable selection for
+
+245
+00:13:42,435 --> 00:13:46,760
+the final logistic regression model was
+totally easy.
+
+246
+00:13:46,760 --> 00:13:48,520
+There was nothing to do really.
+
+247
+00:13:48,520 --> 00:13:52,990
+Once I have got principle components,
+they're uncorrelated with one another.
+
+248
+00:13:52,990 --> 00:13:57,990
+That means that whether I analyze them by
+themselves or whether I analyze them
+
+249
+00:13:57,990 --> 00:14:01,890
+with other of, other principle components
+in the model, I get the same answer.
+
+250
+00:14:01,890 --> 00:14:05,390
+So, in other words, if I ran this same
+regression model with body fat,
+
+251
+00:14:05,390 --> 00:14:08,000
+in the model and nothing else, I'm
+going to get the same beta and
+
+252
+00:14:08,000 --> 00:14:10,510
+the same p value, essentially, with very
+slight change.
+
+253
+00:14:11,570 --> 00:14:14,410
+If I run body fatness with running
+performance in the model and drop body
+
+254
+00:14:14,410 --> 00:14:18,000
+size and menstrual function, I'm going to
+get the same betas and the same P values.
+
+255
+00:14:18,000 --> 00:14:21,130
+In other words there's really no decision
+to be made about which variables
+
+256
+00:14:21,130 --> 00:14:21,730
+go in the model.
+
+257
+00:14:21,730 --> 00:14:24,860
+Once I've done principal component
+analysis I've already compressed my data I
+
+258
+00:14:24,860 --> 00:14:27,650
+now have uncorrelated predictors so
+
+259
+00:14:27,650 --> 00:14:30,130
+I can just put them all in the model and,
+and I'm done.
+
+260
+00:14:30,130 --> 00:14:33,440
+And so it does simplify your life for
+variable selection.
+
+261
+00:14:35,320 --> 00:14:38,790
+I just want to again caution on p value
+shopping in this
+
+262
+00:14:38,790 --> 00:14:42,680
+scenario again many opportunities to go p
+value shopping.
+
+263
+00:14:42,680 --> 00:14:45,770
+You know the more predictors you test of
+course we want to test ones that would be
+
+264
+00:14:45,770 --> 00:14:50,540
+more relevant, But the more you test the
+more chances of a type one error.
+
+265
+00:14:50,540 --> 00:14:54,910
+And you can imagine you know trying lot's
+a different combination of models and
+
+266
+00:14:54,910 --> 00:14:57,410
+trying to optimize the one with the
+highest numbers,
+
+267
+00:14:57,410 --> 00:14:58,990
+Highest number of significant p-values.
+
+268
+00:14:58,990 --> 00:15:01,790
+Shopping around, just, what is the model
+that gives me the best p-values?
+
+269
+00:15:01,790 --> 00:15:03,340
+That, we don't want to do.
+
+270
+00:15:03,340 --> 00:15:06,180
+You can see that that wasn't done in the
+example I showed you.
+
+271
+00:15:06,180 --> 00:15:11,240
+And, an automated way to try as many
+models as possible until you find the one
+
+272
+00:15:11,240 --> 00:15:14,390
+with the highest number of significant
+p-values is to use those automatic
+
+273
+00:15:14,390 --> 00:15:18,550
+selection procedures, which we've talked
+about before backwards forwards,
+
+274
+00:15:18,550 --> 00:15:22,150
+step wise, automated regression with the
+computer.
+
+275
+00:15:22,150 --> 00:15:27,120
+And it's probably better to avoid those
+for this particular situation.
+
+276
+00:15:27,120 --> 00:15:30,530
+And there's again, lots of opportunities
+for p value shopping,
+
+277
+00:15:30,530 --> 00:15:32,679
+you want to be very careful that you're
+not doing p value shopping.

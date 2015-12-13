@@ -1,0 +1,519 @@
+1
+00:00:01,430 --> 00:00:02,460
+Hello, students.
+
+2
+00:00:02,460 --> 00:00:06,310
+We're going to learn about how to measure
+gene expression on a massive scale.
+
+3
+00:00:06,310 --> 00:00:10,550
+We will learn about two methods, DNA
+microarrays and RNA sequencing.
+
+4
+00:00:11,680 --> 00:00:13,030
+So let's get started.
+
+5
+00:00:13,030 --> 00:00:15,750
+The first topic will be DNA microarrays.
+
+6
+00:00:15,750 --> 00:00:18,710
+These measure gene expression across the
+genome.
+
+7
+00:00:18,710 --> 00:00:22,800
+They consist of arrays of microscopic
+spots containing DNA probes for
+
+8
+00:00:22,800 --> 00:00:23,800
+every gene in the genome.
+
+9
+00:00:24,940 --> 00:00:30,070
+The first thing to do is to manufacture a
+whole bunch
+
+10
+00:00:30,070 --> 00:00:33,280
+of these microarrays which can be used
+over and over again.
+
+11
+00:00:33,280 --> 00:00:40,220
+And what you do in the manufacturing
+process is you take DNA probes and
+
+12
+00:00:40,220 --> 00:00:43,470
+you attach them to a solid support.
+
+13
+00:00:43,470 --> 00:00:47,370
+So as a result, each gene will have a
+specific location.
+
+14
+00:00:47,370 --> 00:00:51,820
+Or, if you want redundancy, multiple
+locations.
+
+15
+00:00:51,820 --> 00:00:56,170
+The strategy of DNA microarrays exploits
+our knowledge of the entire sequence for
+
+16
+00:00:56,170 --> 00:00:56,870
+the human genome.
+
+17
+00:00:58,220 --> 00:01:02,360
+In the second step you take the RNA sample
+and
+
+18
+00:01:02,360 --> 00:01:08,610
+you label it with say, a fluorescent dye.
+
+19
+00:01:08,610 --> 00:01:13,390
+And the RNA sample is very
+
+20
+00:01:13,390 --> 00:01:18,680
+complicated with many kinds of RNA, but if
+there is a spot on the solid
+
+21
+00:01:18,680 --> 00:01:23,940
+support that will hybridize to that RNA
+sample, it will, you'll get hybridization,
+
+22
+00:01:28,210 --> 00:01:32,740
+of the labeled RNA and allow that spot to
+light up.
+
+23
+00:01:34,200 --> 00:01:36,900
+And each spot here,
+
+24
+00:01:36,900 --> 00:01:41,900
+you'll, this is an example here of what a
+microarray would look like.
+
+25
+00:01:41,900 --> 00:01:45,670
+Each spot reveals the level of expression
+for a specific gene.
+
+26
+00:01:46,770 --> 00:01:52,840
+And under the microscope here, there's a
+blow up, you can see that each
+
+27
+00:01:52,840 --> 00:01:56,965
+spot is lighting up to a different extent
+depending on the level of expression.
+
+28
+00:01:56,965 --> 00:02:01,248
+[COUGH] And you get huge amounts of data.
+
+29
+00:02:01,248 --> 00:02:09,564
+[SOUND]
+Okay.
+
+30
+00:02:09,564 --> 00:02:18,210
+So, now that you have a snapshot of my,
+DNA macroarrays let's move on.
+
+31
+00:02:18,210 --> 00:02:22,120
+And talk about RNA-Seq or RNA sequencing
+concept.
+
+32
+00:02:22,120 --> 00:02:25,990
+Now in RNA sequencing, you end up
+
+33
+00:02:25,990 --> 00:02:30,210
+revealing a snapshot of that part of the
+genome that's transcribed.
+
+34
+00:02:31,520 --> 00:02:36,138
+There are a whole bunch of different kinds
+of RNAs in the cell.
+
+35
+00:02:36,138 --> 00:02:37,720
+There are microRNAs, and
+
+36
+00:02:37,720 --> 00:02:41,960
+I'm going to draw all of the RNAs as
+little, short wiggly lines.
+
+37
+00:02:43,970 --> 00:02:47,849
+So the microRNAs would be these short
+wiggly lines, and
+
+38
+00:02:47,849 --> 00:02:50,258
+you have messenger RNAs, which.
+
+39
+00:02:50,258 --> 00:02:56,445
+[SOUND] Are longer and have poly A tails.
+
+40
+00:02:56,445 --> 00:03:03,761
+[SOUND] And finally you have ribosomal
+RNAs,
+
+41
+00:03:03,761 --> 00:03:11,689
+which are the most abundant RNAs in the
+genome.
+
+42
+00:03:11,689 --> 00:03:16,810
+And so I'm going to draw many, many wiggly
+lines to indicate that.
+
+43
+00:03:16,810 --> 00:03:18,940
+The microRNAs are involved in gene
+regulation.
+
+44
+00:03:18,940 --> 00:03:24,120
+The messenger RNAs, are involved in code
+proteins.
+
+45
+00:03:24,120 --> 00:03:28,280
+And the ribosomal RNAs are part of the
+translational machinery
+
+46
+00:03:28,280 --> 00:03:29,920
+that decodes the messenger RNAs.
+
+47
+00:03:29,920 --> 00:03:34,620
+So, what you want to do if your
+
+48
+00:03:34,620 --> 00:03:40,120
+interested in studying these things, is
+you might want to isolate them.
+
+49
+00:03:40,120 --> 00:03:43,620
+For example, if your particularly
+interested in microRNAs,
+
+50
+00:03:43,620 --> 00:03:49,670
+you would do a size selection and select
+for the small RNAs in the mixture.
+
+51
+00:03:49,670 --> 00:03:55,415
+So you end up with a pool of microRNAs.
+
+52
+00:03:55,415 --> 00:03:59,230
+And then the next step is to use pi
+throughput or
+
+53
+00:03:59,230 --> 00:04:02,930
+next generation sequencing methods to
+sequence all the microRNAs.
+
+54
+00:04:02,930 --> 00:04:04,260
+How do you do that?
+
+55
+00:04:04,260 --> 00:04:08,480
+Well first you have to convert the
+microRNAs into DNA and
+
+56
+00:04:08,480 --> 00:04:11,880
+you need a, a known sequence to get
+started.
+
+57
+00:04:11,880 --> 00:04:20,560
+So, first, you get oligonucleotides,
+
+58
+00:04:20,560 --> 00:04:24,270
+or n oligonucleotide with a known
+sequence.
+
+59
+00:04:29,600 --> 00:04:36,088
+And then, you get RNA ligase.
+
+60
+00:04:36,088 --> 00:04:44,433
+[SOUND] To attach these oligos of a known
+sequence
+
+61
+00:04:44,433 --> 00:04:52,790
+to the three prime end of each of the
+microRNAs.
+
+62
+00:04:54,470 --> 00:05:02,130
+And in step three, you anneal a
+complementary oligonucleotide primer.
+
+63
+00:05:10,700 --> 00:05:14,460
+And the fourth step you add reverse
+transcriptase, or
+
+64
+00:05:14,460 --> 00:05:24,450
+RT, to make a complimentary copy of the
+microRNAs.
+
+65
+00:05:24,450 --> 00:05:25,620
+Extending the primers.
+
+66
+00:05:29,480 --> 00:05:30,990
+What about the messenger RNAs?
+
+67
+00:05:30,990 --> 00:05:36,760
+Well in the messenger RNAs you do what's
+called oligo-T selection.
+
+68
+00:05:36,760 --> 00:05:42,652
+You have strings of Ts attached to beads,
+and
+
+69
+00:05:42,652 --> 00:05:49,163
+what you do there is, first you take the
+sample and
+
+70
+00:05:49,163 --> 00:05:52,899
+you hybridize to the beads.
+
+71
+00:05:52,899 --> 00:05:56,945
+And the species that hybridize to
+
+72
+00:05:56,945 --> 00:06:02,615
+the beads will be those RNAs with poly A
+tails.
+
+73
+00:06:02,615 --> 00:06:08,222
+[SOUND] And in the second step,
+
+74
+00:06:08,222 --> 00:06:15,410
+you add reverse transcriptase or RT.
+
+75
+00:06:16,580 --> 00:06:21,360
+And you end up making a CD make copy.
+
+76
+00:06:21,360 --> 00:06:27,112
+With the messenger RNAs.
+
+77
+00:06:27,112 --> 00:06:31,503
+[BLANK_AUDIO]
+
+78
+00:06:31,503 --> 00:06:33,910
+Now.
+
+79
+00:06:33,910 --> 00:06:35,260
+What do you do now?
+
+80
+00:06:35,260 --> 00:06:40,050
+Well, now you use next generation
+sequencing to sequence all of
+
+81
+00:06:40,050 --> 00:06:44,440
+these species, so lets concentrate on, for
+now on the messenger RNAs.
+
+82
+00:06:44,440 --> 00:06:49,560
+So, these are the sequence leads you'd get
+from RNA-Seq.
+
+83
+00:06:49,560 --> 00:06:51,208
+Here's a example of a gene.
+
+84
+00:06:51,208 --> 00:06:56,583
+And this gene, of course,
+
+85
+00:06:56,583 --> 00:07:04,073
+has exons in tan and introns in black.
+
+86
+00:07:04,073 --> 00:07:05,246
+Okay.
+
+87
+00:07:05,246 --> 00:07:10,523
+And the, when the gene is transcribed into
+a pre-RNA it
+
+88
+00:07:10,523 --> 00:07:14,575
+gets spliced into a mature messenger RNA.
+
+89
+00:07:14,575 --> 00:07:17,166
+And then using the methods we just
+described,
+
+90
+00:07:17,166 --> 00:07:20,455
+you can get short sequence reads off of
+the messenger RNA.
+
+91
+00:07:20,455 --> 00:07:27,143
+[NOISE] And, what I'm showing you in red
+here,
+
+92
+00:07:27,143 --> 00:07:32,118
+in this microscopic image, are,
+
+93
+00:07:32,118 --> 00:07:38,141
+are reeds, sequence reeds, that span.
+
+94
+00:07:38,141 --> 00:07:41,525
+[SOUND] Two exons.
+
+95
+00:07:41,525 --> 00:07:49,445
+[NOISE] And, they define, splicing events.
+
+96
+00:07:49,445 --> 00:07:59,000
+[NOISE]
+
+97
+00:07:59,000 --> 00:08:01,615
+So, let's summarize what we've talked
+about.
+
+98
+00:08:01,615 --> 00:08:09,565
+[NOISE] For DNA micro arrays, we've
+
+99
+00:08:09,565 --> 00:08:18,310
+exploited the human genome sequence.
+
+100
+00:08:28,253 --> 00:08:32,012
+And we measure.
+
+101
+00:08:32,012 --> 00:08:40,461
+[SOUND]
+Genomyte expression.
+
+102
+00:08:40,461 --> 00:08:47,275
+[SOUND] And for RNA-Seq methods, RNA
+sequencing methods.
+
+103
+00:08:47,275 --> 00:08:54,250
+[SOUND]
+We also exploit.
+
+104
+00:08:54,250 --> 00:08:55,915
+The human genome sequence.
+
+105
+00:08:55,915 --> 00:09:01,570
+[SOUND]
+But
+
+106
+00:09:06,030 --> 00:09:11,220
+with the added exploitation of next
+generation sequencing.
+
+107
+00:09:22,480 --> 00:09:24,660
+We also measure genome expression.
+
+108
+00:09:29,670 --> 00:09:33,530
+Because the more sequence reads we have
+from a particular gene,
+
+109
+00:09:33,530 --> 00:09:34,920
+the higher the level of expression.
+
+110
+00:09:36,090 --> 00:09:45,110
+But in addition to that, we can find new
+RNAs, unexpected surprises.
+
+111
+00:09:45,110 --> 00:09:46,590
+So there you have it, class.
+
+112
+00:09:47,820 --> 00:09:50,428
+Measuring expression across the entire
+genome.
+
+113
+00:09:50,428 --> 00:09:51,617
+Thank you.
+
+114
+00:09:51,617 --> 00:09:53,999
+[BLANK_AUDIO]

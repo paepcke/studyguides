@@ -1,0 +1,330 @@
+1
+00:00:00,000 --> 00:00:04,820
+[BLANK_AUDIO]
+
+2
+00:00:04,820 --> 00:00:09,120
+In this next module, I'm going to tell you
+about the difference between modeling for
+
+3
+00:00:09,120 --> 00:00:12,700
+explanatory aims versus modeling for
+predictive aims.
+
+4
+00:00:12,700 --> 00:00:18,200
+So first of all, explanatory models, the
+endgame is
+
+5
+00:00:18,200 --> 00:00:23,430
+to identify causal relationships, to
+really understand what is happening.
+
+6
+00:00:23,430 --> 00:00:25,470
+Why is something happening?
+
+7
+00:00:25,470 --> 00:00:26,460
+So for example,
+
+8
+00:00:26,460 --> 00:00:30,610
+if I want to know does alcohol increase
+the risk of breast cancer?
+
+9
+00:00:30,610 --> 00:00:32,010
+In an explanatory model and
+
+10
+00:00:32,010 --> 00:00:35,990
+context, I want to know does the alcohol
+itself Have some
+
+11
+00:00:35,990 --> 00:00:40,240
+direct biological effect that therefore
+increases your risk of breast cancer.
+
+12
+00:00:40,240 --> 00:00:45,050
+Or I might want to know does a particular
+drug actually cause weight loss?
+
+13
+00:00:45,050 --> 00:00:47,960
+Is it an effective for that outcome?
+
+14
+00:00:47,960 --> 00:00:53,310
+Or I might what to know does psychological
+stress itself, as opposed to the many
+
+15
+00:00:53,310 --> 00:00:57,810
+possible things that might go along with
+Stress such as poor eating habits and
+
+16
+00:00:57,810 --> 00:01:00,700
+poor sleep and lack of exercise.
+
+17
+00:01:00,700 --> 00:01:05,480
+But does the stress itself somehow
+increase your mortality risk?
+
+18
+00:01:05,480 --> 00:01:09,440
+So all of these are trying to get at
+specific causes of disease.
+
+19
+00:01:10,650 --> 00:01:13,154
+Of course, in order to tease out whether
+or
+
+20
+00:01:13,154 --> 00:01:17,160
+not something is causal, especially if
+we're talking about observational studies,
+
+21
+00:01:17,160 --> 00:01:19,790
+we're going to need to deal a lot with
+confounding, and
+
+22
+00:01:19,790 --> 00:01:23,820
+we've talked a lot, so far in this course,
+about how to evaluate confounding.
+
+23
+00:01:23,820 --> 00:01:27,310
+We're going to continue that discussion
+today, because explanatory modeling
+
+24
+00:01:27,310 --> 00:01:32,310
+really has a lot to do with adjusting,
+taking into account, confounders.
+
+25
+00:01:33,840 --> 00:01:39,620
+Predictive modeling has a very different
+aim, the goal of a predictive model
+
+26
+00:01:39,620 --> 00:01:44,010
+is to be able to predict who is likely to
+have a particular outcome or
+
+27
+00:01:44,010 --> 00:01:45,460
+to even try to calculate their,
+
+28
+00:01:45,460 --> 00:01:50,470
+their probability of having that outcome
+As accurately as possible.
+
+29
+00:01:50,470 --> 00:01:52,800
+So notice that in the predictive model.
+
+30
+00:01:52,800 --> 00:01:54,190
+We care about accuracy.
+
+31
+00:01:54,190 --> 00:01:58,850
+We don't necessarily care about actually
+working out causal relationships.
+
+32
+00:01:58,850 --> 00:02:02,620
+We don't necessarily care why something is
+a good predictor.
+
+33
+00:02:02,620 --> 00:02:05,850
+All we care about is that something is a
+good marker, of whether or
+
+34
+00:02:05,850 --> 00:02:09,040
+not you are likely to go on and have an
+outcome or whether or
+
+35
+00:02:09,040 --> 00:02:13,079
+not you have a particular underlying
+condition in the context of diagnosis.
+
+36
+00:02:14,090 --> 00:02:17,330
+So some examples would be things like,
+what clinical factors,
+
+37
+00:02:17,330 --> 00:02:20,760
+when somebody comes into an emergency
+room, and they have ankle pain,
+
+38
+00:02:20,760 --> 00:02:25,620
+are there particular, particular clinical
+factors that you can identify and say,
+
+39
+00:02:25,620 --> 00:02:30,240
+hey, this person has a high probability of
+having an actual fracture.
+
+40
+00:02:30,240 --> 00:02:32,580
+And therefore, we should send them for an
+x-ray.
+
+41
+00:02:32,580 --> 00:02:34,770
+Or this person has a low probability of
+having a fracture and
+
+42
+00:02:34,770 --> 00:02:37,517
+therefore we don't have to bother to send
+them for an x-ray.
+
+43
+00:02:37,517 --> 00:02:41,710
+Note I said I don't care about anything
+causal in that picture.
+
+44
+00:02:41,710 --> 00:02:43,760
+I just want to know if I can have,
+
+45
+00:02:43,760 --> 00:02:47,040
+find markers of who's likely to have a
+fracture.
+
+46
+00:02:47,040 --> 00:02:50,150
+Or you might want to know if you can
+identify breast cancer
+
+47
+00:02:50,150 --> 00:02:55,330
+patients who are most likely to benefit
+from a particular chemotherapy.
+
+48
+00:02:55,330 --> 00:02:59,860
+For example, there's some gene expression
+tests out there that can help tell us.
+
+49
+00:02:59,860 --> 00:03:03,340
+Who is likely actually to benefit from
+chemotherapy.
+
+50
+00:03:03,340 --> 00:03:07,090
+Now, a lot of those gene expression tasks,
+they are measuring the expression of
+
+51
+00:03:07,090 --> 00:03:10,770
+a whole bunch of genes, and we don't
+necessarily know how those
+
+52
+00:03:10,770 --> 00:03:15,410
+genes play into either breast cancer or
+chemotherapy response.
+
+53
+00:03:15,410 --> 00:03:18,940
+But what we care about here is just that
+they are accurate predictors of who is
+
+54
+00:03:18,940 --> 00:03:21,222
+likely to respond.
+
+55
+00:03:21,222 --> 00:03:25,320
+Another example was the probability of the
+sub-fertile couple.
+
+56
+00:03:25,320 --> 00:03:29,076
+Some of the couples having trouble getting
+pregnant, will become pregnant
+
+57
+00:03:29,076 --> 00:03:33,680
+spontaneously without any assisted
+reproductive technology within a year.
+
+58
+00:03:33,680 --> 00:03:36,375
+That might be really useful to be able to
+tell couples that.
+
+59
+00:03:36,375 --> 00:03:41,199
+So can we identify a set of predictors
+about the couples that we therefore we
+
+60
+00:03:41,199 --> 00:03:45,807
+can go on and so well you're probability
+of getting pregnant without help is
+
+61
+00:03:45,807 --> 00:03:48,113
+you know 40%, 50%, 10%.
+
+62
+00:03:48,113 --> 00:03:51,999
+That can be very useful, and again we
+don't necessarily care why those are good
+
+63
+00:03:51,999 --> 00:03:56,210
+predictors, we just care that they are
+good predictors, that they are accurate.
+
+64
+00:03:56,210 --> 00:04:00,410
+Because the goals are very different here,
+the way that we mill, we build and
+
+65
+00:04:00,410 --> 00:04:03,280
+evaluate a predictive model is going to
+look a lit,
+
+66
+00:04:03,280 --> 00:04:08,230
+lot different from how we build and
+evaluate a, an explanatory model.
+
+67
+00:04:08,230 --> 00:04:09,980
+Again, we're going to talk about
+predictive modeling,
+
+68
+00:04:09,980 --> 00:04:11,140
+specifically, next week.
+
+69
+00:04:11,140 --> 00:04:16,019
+[BLANK_AUDIO]

@@ -1,0 +1,1135 @@
+1
+00:00:04,980 --> 00:00:08,370
+In this next module I'm going to introduce
+you to propensity scores.
+
+2
+00:00:10,010 --> 00:00:13,940
+So propensity scores are another data
+compression technique, but
+
+3
+00:00:13,940 --> 00:00:16,680
+it's a data compression technique
+specifically for confounders.
+
+4
+00:00:16,680 --> 00:00:19,410
+So we're going to be taking a whole big
+set of confounders and trying
+
+5
+00:00:19,410 --> 00:00:24,070
+to compress it into a single number, a
+probability called the propensity score.
+
+6
+00:00:25,080 --> 00:00:30,720
+The primary use case for propensity scores
+are observational treatment studies.
+
+7
+00:00:30,720 --> 00:00:34,350
+So this is where there are multiple
+possible treatment options for
+
+8
+00:00:34,350 --> 00:00:36,410
+a particular condition, but
+
+9
+00:00:36,410 --> 00:00:39,700
+they've never been compared head to head
+in a randomized trial.
+
+10
+00:00:39,700 --> 00:00:42,890
+And perhaps that's just really a difficult
+randomized trial to do and
+
+11
+00:00:42,890 --> 00:00:45,220
+they may never be compared in a randomized
+trial.
+
+12
+00:00:45,220 --> 00:00:48,250
+So the best thing that we can do is to try
+to
+
+13
+00:00:48,250 --> 00:00:52,116
+do some kind of observational study
+comparing those two treatments.
+
+14
+00:00:53,260 --> 00:00:56,880
+The problem here is that there's going to
+be a huge amount of confounding,
+
+15
+00:00:56,880 --> 00:01:01,100
+because doctors often have very specific
+reasons about why they're
+
+16
+00:01:01,100 --> 00:01:05,100
+going to choose one treatment over another
+for a particular patient.
+
+17
+00:01:05,100 --> 00:01:08,430
+And those reasons might also be related to
+the outcomes.
+
+18
+00:01:08,430 --> 00:01:11,370
+So we have what's called confounding by
+indication.
+
+19
+00:01:11,370 --> 00:01:14,690
+And propensity scores are trying to
+address this type of confounding.
+
+20
+00:01:14,690 --> 00:01:19,410
+I'm going to be using two examples to
+illustrate propensity scores, so
+
+21
+00:01:19,410 --> 00:01:21,390
+I'll just introduce them now.
+
+22
+00:01:21,390 --> 00:01:24,900
+So the first example is a retrospective
+cohort study that was
+
+23
+00:01:24,900 --> 00:01:28,630
+comparing two treatments for aortic valve
+replacements.
+
+24
+00:01:28,630 --> 00:01:31,840
+So there's something call the Ross
+procedure, which is an autograph,
+
+25
+00:01:31,840 --> 00:01:34,570
+meaning that person's own tissue was used
+for
+
+26
+00:01:34,570 --> 00:01:40,490
+the value replacement, versus a mechanical
+value, with some anticoagulation therapy.
+
+27
+00:01:40,490 --> 00:01:41,770
+They wanted to know whether or
+
+28
+00:01:41,770 --> 00:01:45,510
+not one of these procedures is optimal in
+terms of long-term survival,
+
+29
+00:01:45,510 --> 00:01:49,220
+that is not immediately after the surgery
+but long-term.
+
+30
+00:01:49,220 --> 00:01:52,420
+Now, previous studies have actually
+suggested that the Ross procedure might
+
+31
+00:01:52,420 --> 00:01:53,800
+have an advantage.
+
+32
+00:01:53,800 --> 00:01:57,480
+However, the patients that were getting
+the Ross procedure were
+
+33
+00:01:57,480 --> 00:02:00,820
+quite different than the patients who were
+getting the mechanical valve.
+
+34
+00:02:00,820 --> 00:02:05,360
+For whatever reasons, physicians tended to
+recommend the Ross procedure for
+
+35
+00:02:05,360 --> 00:02:08,880
+people who were younger and who were in
+better physical condition.
+
+36
+00:02:08,880 --> 00:02:10,570
+So that it's really hard to tease out.
+
+37
+00:02:10,570 --> 00:02:15,110
+Is it because the Ross Procedure actually
+improved mortality or
+
+38
+00:02:15,110 --> 00:02:19,700
+is it just because those are the patients
+that would have done well anyway?
+
+39
+00:02:19,700 --> 00:02:22,910
+So the propensity scores are going to try
+to address that.
+
+40
+00:02:22,910 --> 00:02:27,770
+So you can see from table one of this
+paper just how different these two groups
+
+41
+00:02:27,770 --> 00:02:32,100
+were, people who got the mechanical valve
+verses people who got the Ross procedure.
+
+42
+00:02:32,100 --> 00:02:34,880
+So this was from, again, a retrospective
+cohort study, so
+
+43
+00:02:34,880 --> 00:02:36,960
+they went back into medical records.
+
+44
+00:02:36,960 --> 00:02:40,870
+They found people who had had mechanical
+valve, people who have had the Ross
+
+45
+00:02:40,870 --> 00:02:46,070
+procedure, and they were able to get data
+on outcomes on death in this case.
+
+46
+00:02:46,070 --> 00:02:49,200
+But you can see that the mechanical valve
+patients were
+
+47
+00:02:49,200 --> 00:02:53,930
+quite a bit older than the Ross patients,
+almost a decade older, highly significant.
+
+48
+00:02:53,930 --> 00:02:55,775
+The mechanical value patients,
+
+49
+00:02:55,775 --> 00:02:59,700
+76% had calcification, strong
+calcification in their arteries,
+
+50
+00:02:59,700 --> 00:03:03,515
+which is a lot versus only 36%, about half
+as many in the Ross procedure.
+
+51
+00:03:03,515 --> 00:03:07,360
+36% of the mechanical valve patients had
+had
+
+52
+00:03:07,360 --> 00:03:12,580
+a coronary bypass at the same time versus
+only 4% of the Ross procedure patients.
+
+53
+00:03:12,580 --> 00:03:15,400
+So obviously, those getting the Ross
+procedure are going to
+
+54
+00:03:15,400 --> 00:03:19,040
+have better outcomes in terms of
+mortality, because they're younger,
+
+55
+00:03:19,040 --> 00:03:20,400
+because they're healthier.
+
+56
+00:03:20,400 --> 00:03:23,020
+Is there any additional advantage for the
+Ross procedure?
+
+57
+00:03:24,410 --> 00:03:28,990
+Second example is looking at whether or
+not patients with stroke who are in
+
+58
+00:03:28,990 --> 00:03:32,840
+a nursing home, whether or not they
+benefit from rehabilitation.
+
+59
+00:03:32,840 --> 00:03:36,010
+And this was another retrospective cohort
+study.
+
+60
+00:03:36,010 --> 00:03:40,400
+They were comparing patients who got
+rehabilitation or, or who didn't.
+
+61
+00:03:40,400 --> 00:03:43,130
+The outcomes were community discharge,
+that is getting out of the nursing home,
+
+62
+00:03:43,130 --> 00:03:46,330
+and just their functional status for these
+stroke patients.
+
+63
+00:03:46,330 --> 00:03:49,585
+Now it turns out other studies have shown
+that patients who receive rehabilitation,
+
+64
+00:03:49,585 --> 00:03:51,054
+indeed, do have better outcomes.
+
+65
+00:03:51,054 --> 00:03:54,590
+But you have to consider who gets
+rehabilitation.
+
+66
+00:03:54,590 --> 00:03:57,170
+They tend, it tends for whatever reason
+that people who
+
+67
+00:03:57,170 --> 00:04:01,250
+are less disabled actually are the ones
+who are getting more rehabilitation.
+
+68
+00:04:01,250 --> 00:04:03,760
+They tend to be better insured for
+probably obvious reasons.
+
+69
+00:04:03,760 --> 00:04:05,440
+They also tend to have more social
+support.
+
+70
+00:04:05,440 --> 00:04:08,930
+So they're just healthier, better insured
+to begin with.
+
+71
+00:04:08,930 --> 00:04:11,820
+How do we know it's the rehabilitation
+that's improving their outcomes as
+
+72
+00:04:11,820 --> 00:04:16,050
+opposed to just the type of patient that's
+selected for rehabilitation?
+
+73
+00:04:16,050 --> 00:04:18,420
+Propensity scores are going to help us
+answer that question.
+
+74
+00:04:19,490 --> 00:04:23,380
+Now we could try to just adjust for
+confounding by indication in
+
+75
+00:04:23,380 --> 00:04:26,740
+all the ways that I have told you about
+how we can adjust for confounding.
+
+76
+00:04:26,740 --> 00:04:27,370
+So we adjust for
+
+77
+00:04:27,370 --> 00:04:31,020
+confounding by stratification, matching,
+or statistical adjustment.
+
+78
+00:04:31,020 --> 00:04:33,770
+So you can imagine him saying, well, maybe
+I can just adjust for
+
+79
+00:04:33,770 --> 00:04:36,560
+all these differences between the groups
+with is some kind of, for
+
+80
+00:04:36,560 --> 00:04:39,040
+example, some kind of regression analysis.
+
+81
+00:04:39,040 --> 00:04:43,960
+There's obvious issues with all of these
+in, in this particular case.
+
+82
+00:04:43,960 --> 00:04:47,640
+So there's many confounders here and
+we're, stratification usually works
+
+83
+00:04:47,640 --> 00:04:49,870
+well if you're going to stratify on one
+confounder, but
+
+84
+00:04:49,870 --> 00:04:53,380
+it's really going to be impossible to
+stratify in a whole pile of confounders.
+
+85
+00:04:53,380 --> 00:04:56,250
+So we really can't use stratification
+here.
+
+86
+00:04:56,250 --> 00:04:58,640
+Matching, we're going to run into the same
+problem,
+
+87
+00:04:58,640 --> 00:05:00,240
+which variables are you going to match on?
+
+88
+00:05:00,240 --> 00:05:03,360
+If you try to match on to many it's going
+to be really hard to find good matches, so
+
+89
+00:05:03,360 --> 00:05:04,950
+we cant really do that here.
+
+90
+00:05:04,950 --> 00:05:07,820
+We're essentially left with statistical
+adjustment.
+
+91
+00:05:07,820 --> 00:05:11,560
+And statistical adjustment could work in
+this case, we could just adjust for
+
+92
+00:05:11,560 --> 00:05:13,120
+all these differences between the groups.
+
+93
+00:05:13,120 --> 00:05:14,860
+But there's some potential problems.
+
+94
+00:05:14,860 --> 00:05:18,010
+It may turn out that some people in the
+study, or
+
+95
+00:05:18,010 --> 00:05:20,700
+entire groups, are simply incomparable.
+
+96
+00:05:20,700 --> 00:05:23,060
+They're just too different to compare.
+
+97
+00:05:23,060 --> 00:05:24,200
+We can try to adjust for
+
+98
+00:05:24,200 --> 00:05:27,540
+the differences, but we, there's just no
+way to actually adjust out for them.
+
+99
+00:05:27,540 --> 00:05:30,907
+We've talked about some of the limits of
+statistical adjustment already.
+
+100
+00:05:30,907 --> 00:05:34,680
+There going to be a high chance of
+residual confounding because of this.
+
+101
+00:05:34,680 --> 00:05:36,770
+And we just may run into this situation
+where there be,
+
+102
+00:05:36,770 --> 00:05:39,790
+may be so many things that we want to
+adjust for
+
+103
+00:05:39,790 --> 00:05:43,340
+that we may not have a big enough sample
+size to handle that in our model.
+
+104
+00:05:43,340 --> 00:05:47,472
+So for the example of the Ross procedure
+study, they wanted to adjust for
+
+105
+00:05:47,472 --> 00:05:49,480
+24 confounders.
+
+106
+00:05:49,480 --> 00:05:53,360
+There were actually only 36 deaths in that
+study.
+
+107
+00:05:53,360 --> 00:05:56,950
+And when you're building models which have
+a binary outcome,
+
+108
+00:05:56,950 --> 00:05:59,970
+you either have the event or you didn't,
+you actually want to make sure that you
+
+109
+00:05:59,970 --> 00:06:06,060
+have enough events for every parameter
+that you try to estimate in your model.
+
+110
+00:06:06,060 --> 00:06:09,470
+So if you have only 36 events, the general
+recommendation would be that you
+
+111
+00:06:09,470 --> 00:06:13,420
+should only have three or four parameters
+in your model and not 24.
+
+112
+00:06:13,420 --> 00:06:16,750
+So that's going to be a high chance of
+overfitting if we try to put so
+
+113
+00:06:16,750 --> 00:06:20,090
+many confounders in the model when our
+sample size is too small.
+
+114
+00:06:20,090 --> 00:06:24,470
+So there's all these limitations to
+adjusting for confounding in this way.
+
+115
+00:06:24,470 --> 00:06:27,660
+With propensity scores, we can do well on
+all of these.
+
+116
+00:06:27,660 --> 00:06:29,920
+So our propensity score is a single
+number.
+
+117
+00:06:29,920 --> 00:06:33,940
+It's the probability that you would get
+one treatment or the other.
+
+118
+00:06:33,940 --> 00:06:37,290
+So for the Ross study example it's
+going to be the probability that
+
+119
+00:06:37,290 --> 00:06:40,730
+you would have been a person who would get
+the Ross treatment.
+
+120
+00:06:40,730 --> 00:06:43,710
+And we can take those propensities towards
+that single number and
+
+121
+00:06:43,710 --> 00:06:45,260
+we can stratify on them.
+
+122
+00:06:45,260 --> 00:06:49,060
+We can say, group people into quintiles of
+propensity scores and then we
+
+123
+00:06:49,060 --> 00:06:52,320
+only compare people in the lowest quintile
+to other people in the lowest quintile.
+
+124
+00:06:52,320 --> 00:06:54,510
+So now we can do stratification.
+
+125
+00:06:54,510 --> 00:06:55,921
+It's also now easy to match.
+
+126
+00:06:55,921 --> 00:06:57,359
+We can just match on that single number.
+
+127
+00:06:57,359 --> 00:07:01,324
+For every Ross patient with a propensity
+score of 0.7, we're going to try to
+
+128
+00:07:01,324 --> 00:07:05,213
+find a mechanical valve patient who also
+has a propensity score of 0.7.
+
+129
+00:07:05,213 --> 00:07:07,658
+So it makes matching really easy.
+
+130
+00:07:07,658 --> 00:07:10,405
+We can also now more easily statistically
+adjust,
+
+131
+00:07:10,405 --> 00:07:14,559
+because we can only have to put a single
+number into our regression model, so
+
+132
+00:07:14,559 --> 00:07:17,105
+we don't worry about issues with sample
+size.
+
+133
+00:07:17,105 --> 00:07:19,852
+Alright, here's the idea with propensity
+scores.
+
+134
+00:07:19,852 --> 00:07:21,393
+Think about a randomized trial.
+
+135
+00:07:21,393 --> 00:07:25,221
+The great thing about a randomized trial
+is that all participants have the same
+
+136
+00:07:25,221 --> 00:07:29,120
+probability of receiving each of the
+interventions in the trial.
+
+137
+00:07:29,120 --> 00:07:31,660
+That's not the case in observational
+studies.
+
+138
+00:07:31,660 --> 00:07:35,410
+In observational studies some patients are
+more likely to get the Ross procedure and
+
+139
+00:07:35,410 --> 00:07:38,150
+some people are much less likely to.
+
+140
+00:07:38,150 --> 00:07:42,600
+What we try to do with the propensity
+scores is actually explicitly
+
+141
+00:07:42,600 --> 00:07:45,130
+estimate the probabilities, these
+probabilities.
+
+142
+00:07:45,130 --> 00:07:49,520
+What is the probability that a particular
+person has of getting the Ross procedure?
+
+143
+00:07:49,520 --> 00:07:52,150
+Propensity scores estimate these
+probabilities.
+
+144
+00:07:52,150 --> 00:07:53,520
+And how do we do it?
+
+145
+00:07:53,520 --> 00:07:55,050
+Well, logistic regression,
+
+146
+00:07:55,050 --> 00:07:59,950
+because you can estimate predicted
+probabilities with logistic regression.
+
+147
+00:07:59,950 --> 00:08:04,520
+We fit a logistic regression model with
+all of a person's covariates,
+
+148
+00:08:04,520 --> 00:08:06,570
+all of the things that might be related to
+whether or
+
+149
+00:08:06,570 --> 00:08:08,160
+not they get a certain treatment.
+
+150
+00:08:08,160 --> 00:08:11,940
+We put that into the logistic regression
+model, out we get a predicted probability.
+
+151
+00:08:11,940 --> 00:08:15,005
+That's their probability of getting a
+certain treatment.
+
+152
+00:08:15,005 --> 00:08:16,190
+Now everyone in our study,
+
+153
+00:08:16,190 --> 00:08:19,040
+of course, they've already gotten one
+treatment or the other.
+
+154
+00:08:19,040 --> 00:08:22,780
+But this is theoretical, this is saying
+that if this type of person went to
+
+155
+00:08:22,780 --> 00:08:27,130
+a physician, went to kind of any
+physician, what's, what's the likelihood
+
+156
+00:08:27,130 --> 00:08:30,230
+that they would have come out with Ross
+procedure versus a mechanical valve?
+
+157
+00:08:31,420 --> 00:08:32,272
+The propensity score,
+
+158
+00:08:32,272 --> 00:08:36,720
+again, is the probability of receiving a
+given treatment given one's covariates.
+
+159
+00:08:36,720 --> 00:08:38,870
+We're estimating that with a logistic
+regression model.
+
+160
+00:08:38,870 --> 00:08:42,430
+So what's the probability that this
+patient would have got the Ross procedure,
+
+161
+00:08:42,430 --> 00:08:46,788
+given that they're young, they didn't have
+coronary artery bypass, et cetera,
+
+162
+00:08:46,788 --> 00:08:47,400
+et cetera?
+
+163
+00:08:47,400 --> 00:08:51,970
+And, for example, when we do this logistic
+regression the predictive probability for
+
+164
+00:08:51,970 --> 00:08:56,290
+a young patient who's in good physical
+condition might end up to being 70%.
+
+165
+00:08:56,290 --> 00:09:00,370
+So that patient, whether or not they
+actually did get the Ross procedure, they
+
+166
+00:09:00,370 --> 00:09:04,210
+theoretically have a 70% chance of getting
+it, based on all these characteristics.
+
+167
+00:09:04,210 --> 00:09:06,520
+Now an older patient in poor physical
+condition,
+
+168
+00:09:06,520 --> 00:09:09,960
+they might have had only a 30%
+probability.
+
+169
+00:09:09,960 --> 00:09:14,420
+The idea here is that we’re going to to
+try to find` people who have
+
+170
+00:09:14,420 --> 00:09:19,280
+equal probabilities and compare only those
+people to one another, apples to apples.
+
+171
+00:09:20,630 --> 00:09:23,240
+Propensity scores are estimated using
+logistic regression, so
+
+172
+00:09:23,240 --> 00:09:25,950
+we're literally going to fit a logistic
+regression model.
+
+173
+00:09:25,950 --> 00:09:30,310
+We can model the probability of getting
+the Ross procedure, for example.
+
+174
+00:09:30,310 --> 00:09:32,930
+And of course, if we don't get the Ross
+procedure, you get the mechanical valve,
+
+175
+00:09:32,930 --> 00:09:34,860
+so this is just the binary outcome.
+
+176
+00:09:34,860 --> 00:09:35,820
+We can choose either one, but
+
+177
+00:09:35,820 --> 00:09:38,900
+let's say we choose to model the
+probability of the Ross procedure.
+
+178
+00:09:38,900 --> 00:09:41,920
+If you don't get the Ross Procedure, then
+you get the other one.
+
+179
+00:09:41,920 --> 00:09:44,230
+And you're just going to fit the the
+logistic regression model with that as
+
+180
+00:09:44,230 --> 00:09:47,240
+the outcome and all of your potential
+covariates, all the things that
+
+181
+00:09:47,240 --> 00:09:51,070
+might predict which procedure you get, as
+your predictors in the model.
+
+182
+00:09:51,070 --> 00:09:52,930
+You get, out of logistic regression,
+
+183
+00:09:52,930 --> 00:09:55,970
+we've already talked about how to
+calculate predicted probabilities.
+
+184
+00:09:55,970 --> 00:09:58,300
+We then apply a particular person's
+covariates.
+
+185
+00:09:58,300 --> 00:09:59,390
+We put them in the model.
+
+186
+00:09:59,390 --> 00:10:01,830
+We get out a predicted probability for
+that person.
+
+187
+00:10:01,830 --> 00:10:03,650
+The computer will do that for you.
+
+188
+00:10:03,650 --> 00:10:07,250
+You get a propensity score or a
+probability for each person.
+
+189
+00:10:07,250 --> 00:10:09,550
+Now notice that we've taken a huge number
+of covariates and
+
+190
+00:10:09,550 --> 00:10:12,590
+we've compressed them into one number, one
+probability.
+
+191
+00:10:12,590 --> 00:10:14,510
+Now theoretically, we think,
+
+192
+00:10:14,510 --> 00:10:18,440
+the patients who have similar propensity
+scores are somehow comparable.
+
+193
+00:10:18,440 --> 00:10:23,550
+So if it turns out that we end up with a
+patient who has a 70% propensity score,
+
+194
+00:10:23,550 --> 00:10:27,760
+but they actually received the Ross
+procedure, and then we have another
+
+195
+00:10:27,760 --> 00:10:32,320
+patient who also, based on all their
+characteristics, had a 70 percent chance
+
+196
+00:10:32,320 --> 00:10:37,110
+of getting the Ross procedure, but they,
+in fact, received a mechanical valve,
+
+197
+00:10:37,110 --> 00:10:41,280
+now we have a situation where these two
+people are comparable.
+
+198
+00:10:41,280 --> 00:10:42,830
+They were both equally likely,
+
+199
+00:10:42,830 --> 00:10:46,180
+based on their characteristics, to get
+this procedure.
+
+200
+00:10:46,180 --> 00:10:48,320
+One got the Ross procedure and one didn't.
+
+201
+00:10:48,320 --> 00:10:51,960
+It's as if we had randomized them at that
+point.
+
+202
+00:10:51,960 --> 00:10:54,680
+In theory then, any difference in the
+outcome would be attributed to
+
+203
+00:10:54,680 --> 00:10:57,710
+the treatment rather than to patient
+selection.
+
+204
+00:10:57,710 --> 00:11:01,460
+Now just a quick note that all we are
+requiring here is
+
+205
+00:11:01,460 --> 00:11:05,480
+that their propensity scores be equal, it
+doesn't matter how they got there.
+
+206
+00:11:05,480 --> 00:11:09,160
+So somebody could have a high propensity
+score because they were young; another
+
+207
+00:11:09,160 --> 00:11:12,660
+person could have a high propensity score
+because they were healthy.
+
+208
+00:11:12,660 --> 00:11:16,300
+But as long as they're both equal, we
+think that they have an equal chance and
+
+209
+00:11:16,300 --> 00:11:20,150
+that it's something like they were
+randomly assigned at that point.
+
+210
+00:11:20,150 --> 00:11:21,500
+They each had a 70% chance.
+
+211
+00:11:21,500 --> 00:11:25,520
+We flipped the coin with a 70% chance of a
+heads and
+
+212
+00:11:25,520 --> 00:11:27,139
+one got the procedure and one didn't.
+
+213
+00:11:29,270 --> 00:11:32,460
+So what the idea here is that we're then
+going to match people,
+
+214
+00:11:32,460 --> 00:11:35,540
+one of the options is to match people, on
+their propensity score.
+
+215
+00:11:35,540 --> 00:11:39,550
+So we take somebody who actually got the
+ross procedure and
+
+216
+00:11:39,550 --> 00:11:41,030
+had a propensity of 0.7.
+
+217
+00:11:41,030 --> 00:11:45,020
+We match them to somebody who actually got
+the mechanical valve procedure but
+
+218
+00:11:45,020 --> 00:11:47,840
+also had a propensity score of 0.7.
+
+219
+00:11:47,840 --> 00:11:51,380
+If we look at the match score, for
+example, or
+
+220
+00:11:51,380 --> 00:11:55,560
+we could stratify and, and match people
+within strata.
+
+221
+00:11:55,560 --> 00:11:58,670
+If we then look at the two treatment
+groups after this matching or
+
+222
+00:11:58,670 --> 00:12:01,390
+stratification, what we'll see is that
+they
+
+223
+00:12:01,390 --> 00:12:04,990
+will hopefully be balanced with respect to
+all the covariates that we measured and
+
+224
+00:12:04,990 --> 00:12:07,750
+included in the logistic regression model.
+
+225
+00:12:07,750 --> 00:12:11,200
+Now, this is a little bit different than
+what happens with randomization.
+
+226
+00:12:11,200 --> 00:12:13,590
+This is not as good as randomization.
+
+227
+00:12:13,590 --> 00:12:15,770
+This is like a poor man's randomization.
+
+228
+00:12:15,770 --> 00:12:20,230
+Randomization is much better because
+randomization tells,
+
+229
+00:12:20,230 --> 00:12:23,780
+when you randomize that's going to yield
+treatment groups that are balanced,
+
+230
+00:12:23,780 --> 00:12:28,026
+both with respect to measured confounder
+and with unmeasured confounders.
+
+231
+00:12:28,026 --> 00:12:31,940
+That's because it's a random assignment,
+so even if you don't know
+
+232
+00:12:31,940 --> 00:12:35,310
+about the confounders, theoretically those
+are going to be balanced too.
+
+233
+00:12:35,310 --> 00:12:36,190
+Propensity scores,
+
+234
+00:12:36,190 --> 00:12:40,490
+on the other hand, don't balance anything
+that you didn't measure.
+
+235
+00:12:40,490 --> 00:12:42,560
+So they don't eliminate unmeasured or
+
+236
+00:12:42,560 --> 00:12:45,710
+residual confounding in the same way that
+randomization does.
+
+237
+00:12:45,710 --> 00:12:48,390
+So we'd always prefer randomization, if it
+was possible.

@@ -1,0 +1,532 @@
+1
+00:00:02,050 --> 00:00:05,290
+In the last module, we showed you how to
+make a data set from scratch.
+
+2
+00:00:05,290 --> 00:00:08,200
+When you use SAS for your data analysis,
+usually is a real data set.
+
+3
+00:00:08,200 --> 00:00:10,170
+But the methods we showed to you are
+useful for
+
+4
+00:00:10,170 --> 00:00:12,270
+making toy data sets to test things out.
+
+5
+00:00:13,790 --> 00:00:17,790
+>> The code we showed you last time used
+what is called a Data Step,
+
+6
+00:00:17,790 --> 00:00:20,260
+which is a really important function in
+SAS.
+
+7
+00:00:20,260 --> 00:00:24,770
+Data steps are a group of statements that
+always begin with the word data.
+
+8
+00:00:24,770 --> 00:00:27,720
+Data steps modify data sets one row at a
+time.
+
+9
+00:00:27,720 --> 00:00:31,150
+This means, that if you want to create a
+new variable that combines multiple rows
+
+10
+00:00:31,150 --> 00:00:34,470
+of other variables, data steps are what
+you should use.
+
+11
+00:00:34,470 --> 00:00:39,510
+Data steps could be used to create, and
+manipulate data, create new variables.
+
+12
+00:00:39,510 --> 00:00:41,580
+Find important information and present
+your data.
+
+13
+00:00:41,580 --> 00:00:44,520
+>> When you make changes to your data set,
+
+14
+00:00:44,520 --> 00:00:47,140
+you don't want to modify the original
+copy.
+
+15
+00:00:47,140 --> 00:00:49,730
+First, I'll show you how to make a
+duplicate copy of your data set, so
+
+16
+00:00:49,730 --> 00:00:50,510
+you could make some changes.
+
+17
+00:00:50,510 --> 00:00:52,770
+Let's take a look at this code.
+
+18
+00:00:54,190 --> 00:00:56,559
+First, you make a new data set called
+calculations.
+
+19
+00:00:57,780 --> 00:01:00,760
+You may have noticed I didn't specify any
+library like, I did before.
+
+20
+00:01:00,760 --> 00:01:02,910
+If you don't specify a library for
+
+21
+00:01:02,910 --> 00:01:06,180
+a data set like this, it'll be made in the
+work library by default.
+
+22
+00:01:07,210 --> 00:01:10,400
+>> So the first line makes a new data set
+called calculations,
+
+23
+00:01:10,400 --> 00:01:12,720
+which is going to be made in the work
+library.
+
+24
+00:01:12,720 --> 00:01:17,170
+The next line, sets the new data set equal
+to the people data set we made earlier.
+
+25
+00:01:17,170 --> 00:01:20,720
+That means that the new data set will have
+all the same variables, attributes, and
+
+26
+00:01:20,720 --> 00:01:22,730
+data as our old one.
+
+27
+00:01:22,730 --> 00:01:24,480
+And finally, we'll end with the run
+statement.
+
+28
+00:01:25,870 --> 00:01:26,850
+>> When we run this code,
+
+29
+00:01:26,850 --> 00:01:30,390
+we'll have a copy of our old data set,
+which we can make changes to.
+
+30
+00:01:30,390 --> 00:01:31,120
+Let's run this code.
+
+31
+00:01:33,470 --> 00:01:36,640
+If we look at a process flow, we can see
+that this code icon has an arrow
+
+32
+00:01:36,640 --> 00:01:39,350
+pointing towards the data set icon, called
+calculations.
+
+33
+00:01:40,540 --> 00:01:41,130
+Let's open it up.
+
+34
+00:01:42,560 --> 00:01:45,780
+As you can see, it's an exact copy of our
+old data set.
+
+35
+00:01:45,780 --> 00:01:46,950
+We can now do some calculations on
+
+36
+00:01:46,950 --> 00:01:49,400
+this data set without affecting the
+original one.
+
+37
+00:01:49,400 --> 00:01:51,180
+Let's go back to the code.
+
+38
+00:01:51,180 --> 00:01:54,846
+As you can see from the code, I've added
+in a new variable called weightPlusFive,
+
+39
+00:01:54,846 --> 00:01:59,030
+weightSquared, weight_in_kg and fun.
+
+40
+00:01:59,030 --> 00:02:02,510
+>> This is also a good time to say
+something about naming conventions in SAS.
+
+41
+00:02:02,510 --> 00:02:08,980
+As you mentioned before, SAS does not
+differentiate between weightSquared
+
+42
+00:02:08,980 --> 00:02:14,369
+with lowercase and WeightSquared with the
+w and s capitalized.
+
+43
+00:02:15,380 --> 00:02:17,050
+Size is not case sensitive.
+
+44
+00:02:17,050 --> 00:02:20,020
+So you can use capitals and lowercase
+letters to make things easier to read.
+
+45
+00:02:20,020 --> 00:02:23,300
+You can also use underscores to make it
+easier to read,
+
+46
+00:02:23,300 --> 00:02:25,800
+as in the case with weight in kilograms.
+
+47
+00:02:25,800 --> 00:02:29,280
+But remember, you can't have any spaces in
+your variable names.
+
+48
+00:02:29,280 --> 00:02:32,500
+Overall, it is important to be consistent
+with your naming conventions.
+
+49
+00:02:32,500 --> 00:02:34,209
+You want other people to be able to read
+your code.
+
+50
+00:02:35,290 --> 00:02:39,280
+>> You can do all sorts of mathematical
+operations using data steps.
+
+51
+00:02:39,280 --> 00:02:40,710
+Let's run this program and look at the
+output.
+
+52
+00:02:43,370 --> 00:02:46,400
+Remember, we set this equal to our old
+data set first.
+
+53
+00:02:46,400 --> 00:02:49,730
+But now we have a new column for each of
+the new variables that we made.
+
+54
+00:02:49,730 --> 00:02:52,190
+Let's look at the column weight plus 5.
+
+55
+00:02:52,190 --> 00:02:56,070
+Remember, data steps work with data one
+row at a time.
+
+56
+00:02:56,070 --> 00:02:58,180
+Just as we specified in our formula,
+
+57
+00:02:58,180 --> 00:03:02,790
+each row weight plus 5 column is equal to
+the weight column plus 5.
+
+58
+00:03:02,790 --> 00:03:06,060
+This is similar to the way formulas work
+in Excel,
+
+59
+00:03:06,060 --> 00:03:07,300
+which you've probably seen before.
+
+60
+00:03:08,850 --> 00:03:12,020
+>> Sometimes, you might have columns in
+your data set that you don't need anymore.
+
+61
+00:03:12,020 --> 00:03:14,070
+Now, I'll show you how to reshuffle the
+columns and
+
+62
+00:03:14,070 --> 00:03:15,409
+remove columns from your data set.
+
+63
+00:03:17,020 --> 00:03:19,790
+I don't think we need this variable called
+weight squared anymore, so
+
+64
+00:03:19,790 --> 00:03:20,870
+let's remove that column.
+
+65
+00:03:22,480 --> 00:03:26,830
+>> In this chunk of code, we create a new
+data set called dropping columns.
+
+66
+00:03:26,830 --> 00:03:28,890
+Remember, since I do not specify a
+library,
+
+67
+00:03:28,890 --> 00:03:31,020
+this will be created in the work library
+by default.
+
+68
+00:03:32,030 --> 00:03:34,940
+We set this new data set equal to the
+calculations data set that we
+
+69
+00:03:34,940 --> 00:03:35,440
+made earlier.
+
+70
+00:03:36,710 --> 00:03:40,220
+Then, the next line of code will drop the
+weight squared column from our data set.
+
+71
+00:03:40,220 --> 00:03:46,320
+If we run the code and look at the output,
+we can see that it has everything from
+
+72
+00:03:46,320 --> 00:03:49,211
+the data calculations data set, except for
+the column called weight squared.
+
+73
+00:03:50,410 --> 00:03:53,950
+>> The data sets we have looked at so far
+have been pretty small, but
+
+74
+00:03:53,950 --> 00:03:58,030
+sometimes you might be working with really
+large data sets with dozens of columns and
+
+75
+00:03:58,030 --> 00:03:59,750
+thousands of rows.
+
+76
+00:03:59,750 --> 00:04:02,100
+If you need to get rid of a lot of
+columns,
+
+77
+00:04:02,100 --> 00:04:04,810
+it gets really cumbersome to just use the
+drop statement.
+
+78
+00:04:04,810 --> 00:04:06,240
+I'll show you another way to do this.
+
+79
+00:04:07,620 --> 00:04:09,920
+Here's a data set I imported earlier.
+
+80
+00:04:09,920 --> 00:04:11,639
+As you can see there are a ton of columns.
+
+81
+00:04:13,120 --> 00:04:17,070
+Of the 68 columns in this data set, I am
+only really interested in working with
+
+82
+00:04:17,070 --> 00:04:21,220
+the ID numbers, marital status and smoking
+status.
+
+83
+00:04:21,220 --> 00:04:22,540
+Let's write some code to fix that.
+
+84
+00:04:25,620 --> 00:04:29,730
+>> First, I make a copy of the original
+data set, like we have seen before.
+
+85
+00:04:29,730 --> 00:04:32,550
+I just wanted to mention that you can
+specify if a data set is in a work
+
+86
+00:04:32,550 --> 00:04:33,900
+library, but it is not needed.
+
+87
+00:04:35,880 --> 00:04:38,860
+This data set is called final_broad.
+
+88
+00:04:38,860 --> 00:04:41,433
+So, we're making a new data set called
+keep columns and
+
+89
+00:04:41,433 --> 00:04:44,537
+we're setting it equal to the original
+data set, final_broad.
+
+90
+00:04:44,537 --> 00:04:48,410
+While we'd rather keep statement as
+specify some variables,
+
+91
+00:04:48,410 --> 00:04:51,060
+SAS will only keep these columns in our
+data set.
+
+92
+00:04:51,060 --> 00:04:52,090
+Everything else will be removed.
+
+93
+00:04:54,330 --> 00:04:55,710
+>> Let's run the code and look at the
+output.
+
+94
+00:04:57,280 --> 00:04:59,530
+Now we only have the variables we want.
+
+95
+00:04:59,530 --> 00:05:01,960
+ID, marital and eversmoke.
+
+96
+00:05:03,970 --> 00:05:05,970
+>> Sometimes we just want to reorder the
+variables and
+
+97
+00:05:05,970 --> 00:05:08,550
+their data set, we can do that with a
+retain statement.
+
+98
+00:05:08,550 --> 00:05:11,410
+Let me show you the code for doing that.
+
+99
+00:05:11,410 --> 00:05:14,810
+This time, we're going to make some
+changes to an existing data set.
+
+100
+00:05:14,810 --> 00:05:18,590
+We'll start the data set with the name of
+the original data set.
+
+101
+00:05:18,590 --> 00:05:21,820
+The next line will specify the order of
+the variables.
+
+102
+00:05:21,820 --> 00:05:25,840
+We want the ID to come first, then marital
+then eversmoke.
+
+103
+00:05:25,840 --> 00:05:31,390
+Now we use set final_broad to fill in the
+data from the original data set.
+
+104
+00:05:31,390 --> 00:05:33,730
+The order of this code is really
+important.
+
+105
+00:05:33,730 --> 00:05:37,290
+First, you use retain to specify the order
+of the variables,
+
+106
+00:05:37,290 --> 00:05:39,600
+then you use set to to fill in the data.
+
+107
+00:05:39,600 --> 00:05:43,340
+If you use set first and then retain, your
+code will not work correctly.
+
+108
+00:05:43,340 --> 00:05:44,670
+>> Let's run the code and look at the
+output.
+
+109
+00:05:45,720 --> 00:05:48,630
+As we can see from the output, we still
+have all the columns, but
+
+110
+00:05:48,630 --> 00:05:53,500
+the ones we want are now all the way to
+the left, in the order we specify.
+
+111
+00:05:53,500 --> 00:05:56,380
+The other columns come afterwards, in
+their original order.
+
+112
+00:05:56,380 --> 00:05:59,670
+This makes it easier to see the variables
+we are most interested in,
+
+113
+00:05:59,670 --> 00:06:01,350
+without having to scroll around a whole
+lot.

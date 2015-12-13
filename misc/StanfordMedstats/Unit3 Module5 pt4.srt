@@ -1,0 +1,302 @@
+1
+00:00:00,200 --> 00:00:03,490
+Proc freq is very useful because in
+addition to creating contingency tables
+
+2
+00:00:03,490 --> 00:00:04,400
+like we've showed you before,
+
+3
+00:00:04,400 --> 00:00:08,140
+you can also write table analysis like a
+Chi Squared Test.
+
+4
+00:00:08,140 --> 00:00:09,690
+let's take at some code.
+
+5
+00:00:09,690 --> 00:00:12,540
+Here we have the code for a contingency
+table like we saw before.
+
+6
+00:00:12,540 --> 00:00:15,780
+But we've added something new in the
+options for the table statement.
+
+7
+00:00:15,780 --> 00:00:20,730
+If you look closely you'll see CHISQ which
+specifies some statistical options.
+
+8
+00:00:20,730 --> 00:00:21,620
+Let's take a look at the output.
+
+9
+00:00:25,560 --> 00:00:27,840
+SAS runs a whole bunch of statistics on
+our table.
+
+10
+00:00:27,840 --> 00:00:31,300
+If you look down at this table it says
+statistics for
+
+11
+00:00:31,300 --> 00:00:32,590
+table of isTreated by isCured.
+
+12
+00:00:32,590 --> 00:00:34,620
+You can see the results of these tests.
+
+13
+00:00:35,690 --> 00:00:39,620
+The column statistic shows you the name of
+the test that was performed.
+
+14
+00:00:39,620 --> 00:00:41,330
+DF stands for degrees of freedom.
+
+15
+00:00:42,380 --> 00:00:45,720
+Value shows the value of the statistic for
+the specific test that you ran.
+
+16
+00:00:45,720 --> 00:00:48,460
+And prob gives you the P value for that
+test.
+
+17
+00:00:49,550 --> 00:00:52,810
+The first statistic listed here is a chi
+square test.
+
+18
+00:00:52,810 --> 00:00:54,900
+>> As you will learn in your HRP classes.
+
+19
+00:00:54,900 --> 00:00:58,300
+The Chi Square Statistic is used to
+determine whether distributions of
+
+20
+00:00:58,300 --> 00:01:00,540
+categorical variables are different from
+one another.
+
+21
+00:01:00,540 --> 00:01:05,510
+In other words the Chi Square Statistics
+compares categorical responses between
+
+22
+00:01:05,510 --> 00:01:07,150
+independent groups.
+
+23
+00:01:07,150 --> 00:01:11,840
+This test cannot be used to analyze
+proportions, percents, means, and so on.
+
+24
+00:01:11,840 --> 00:01:15,500
+In our example, we have a class square
+value of 36.9 with one degree of
+
+25
+00:01:15,500 --> 00:01:18,190
+freedom and a p value of less than .0001.
+
+26
+00:01:18,190 --> 00:01:21,980
+This significant P value indicates that we
+
+27
+00:01:21,980 --> 00:01:25,110
+can reject the null hypothesis that there
+is no association between.
+
+28
+00:01:25,110 --> 00:01:26,340
+Between the exposure and outcome.
+
+29
+00:01:27,450 --> 00:01:28,260
+In an earlier module,
+
+30
+00:01:28,260 --> 00:01:32,730
+we showed you how you can setup a two by
+two table to calculate a relative risk.
+
+31
+00:01:32,730 --> 00:01:35,940
+What if we want SAS to calculate this
+relative risk for us?
+
+32
+00:01:35,940 --> 00:01:37,800
+First we need to sort our data in
+descending order.
+
+33
+00:01:38,880 --> 00:01:41,530
+When SAS makes a contingency table with
+Proc Freq,
+
+34
+00:01:41,530 --> 00:01:44,450
+it'll order the columns in the order they
+show up in the data.
+
+35
+00:01:44,450 --> 00:01:47,200
+This will affect how it calculates the
+relative risk.
+
+36
+00:01:47,200 --> 00:01:49,860
+So, first we use Proc Sort to sort our
+data in
+
+37
+00:01:49,860 --> 00:01:52,500
+descending order by exposure and outcome.
+
+38
+00:01:52,500 --> 00:01:55,930
+This way the ones will show up first in
+our contingency table.
+
+39
+00:01:57,420 --> 00:02:00,970
+Next we specify order equals data in our
+Proc Free Statement.
+
+40
+00:02:02,460 --> 00:02:06,550
+Finally, we include well risk after the
+forward slash and a table statement and
+
+41
+00:02:06,550 --> 00:02:08,770
+everything else in Proc Freq is just the
+same as it was before.
+
+42
+00:02:10,340 --> 00:02:14,420
+So, let's run this and look at the output.
+
+43
+00:02:14,420 --> 00:02:16,939
+SAS will automatically calculate an odds
+ratio as well as a risk ratio.
+
+44
+00:02:18,050 --> 00:02:19,560
+Depending on the type of study you're
+using,
+
+45
+00:02:19,560 --> 00:02:21,940
+you might not be able to use a risk ratio.
+
+46
+00:02:21,940 --> 00:02:23,700
+In this case, a risk ratio should work
+just fine.
+
+47
+00:02:23,700 --> 00:02:27,370
+The second row shows the chance of getting
+cured in those who
+
+48
+00:02:27,370 --> 00:02:30,000
+were treated versus those who were not
+treated.
+
+49
+00:02:30,000 --> 00:02:31,772
+And the risk ratio is 2.1.
+
+50
+00:02:31,772 --> 00:02:36,800
+>> Next we'll take a look at another
+example from our data set on marriage.
+
+51
+00:02:36,800 --> 00:02:40,760
+If we include this where statement, we can
+restrict the analysis to women only.
+
+52
+00:02:40,760 --> 00:02:45,810
+In an earlier module we showed you how to
+run a by statement to run an analysis
+
+53
+00:02:45,810 --> 00:02:50,210
+multiple times for different subsets of
+the data based on an additional variable.
+
+54
+00:02:51,400 --> 00:02:53,960
+If you're using Proc Freq, there's another
+way how to do this.
+
+55
+00:02:55,400 --> 00:02:56,120
+Take a look at this code,
+
+56
+00:02:56,120 --> 00:02:59,540
+you'll see that we have three variables in
+the table statement.
+
+57
+00:02:59,540 --> 00:03:02,510
+The last two variables, race and
+
+58
+00:03:02,510 --> 00:03:06,790
+marital stat create a contingency table,
+just like we've seen so far.
+
+59
+00:03:06,790 --> 00:03:10,200
+The first variable functions just like a
+by statement.
+
+60
+00:03:10,200 --> 00:03:14,780
+This will allow you to create multiple two
+by two tables of race versus marital stat,
+
+61
+00:03:14,780 --> 00:03:17,280
+for each level of the gender variable.
+
+62
+00:03:17,280 --> 00:03:18,140
+Here, let's look at the code.
+
+63
+00:03:19,570 --> 00:03:21,310
+As you can see, we have two tables.
+
+64
+00:03:21,310 --> 00:03:22,680
+One of them says controlling for
+
+65
+00:03:22,680 --> 00:03:26,460
+gender equals zero and the other one says
+controlling for gender equals one.

@@ -1,0 +1,4678 @@
+1
+00:00:00,200 --> 00:00:03,249
+Today we'll, we'll do an overview lecture.
+
+2
+00:00:03,249 --> 00:00:06,132
+Just about sort of the big picture.
+
+3
+00:00:06,132 --> 00:00:09,872
+And we'll start with the, I'll talk about
+a couple things.
+
+4
+00:00:09,872 --> 00:00:12,561
+I'll talk about just sort of, what is
+optimization?
+
+5
+00:00:12,561 --> 00:00:15,442
+It'll be very informal, so anything you're
+not supposed to be following, you're
+
+6
+00:00:15,442 --> 00:00:19,361
+certainly not supposed to be following
+every detail of what I say today.
+
+7
+00:00:19,361 --> 00:00:21,923
+Because everything we're going to talk
+about today,
+
+8
+00:00:21,923 --> 00:00:25,510
+we're going to talk about later in
+disgusting detail.
+
+9
+00:00:25,510 --> 00:00:28,051
+I mean, we're going to go through it, it's
+going to be much longer.
+
+10
+00:00:28,051 --> 00:00:30,872
+So, if, if you're not following something,
+that's fine.
+
+11
+00:00:30,872 --> 00:00:33,636
+In fact, it's not even clear, it's what we
+say is complete.
+
+12
+00:00:33,636 --> 00:00:37,638
+okay, so talk about optimization.
+
+13
+00:00:37,638 --> 00:00:41,088
+I'll move on to least squares and linear
+programming and
+
+14
+00:00:41,088 --> 00:00:44,331
+these are really the most famous And the
+most widely used
+
+15
+00:00:44,331 --> 00:00:51,423
+optimization problems widely applied
+optimization problems that there are.
+
+16
+00:00:51,423 --> 00:00:54,485
+By the way, they're both convex
+optimization problems.
+
+17
+00:00:54,485 --> 00:00:57,657
+I'll then say just a little tiny bit about
+the common parent and
+
+18
+00:00:57,657 --> 00:01:01,514
+the common parent of them is convex
+optimization.
+
+19
+00:01:01,514 --> 00:01:05,024
+We'll look at an example, and then I'll,
+I'll have some general comments about
+
+20
+00:01:05,024 --> 00:01:09,114
+what, you know, what, what are we going to
+cover in the course?
+
+21
+00:01:09,114 --> 00:01:10,417
+What are the goals?
+
+22
+00:01:10,417 --> 00:01:13,080
+What's the style, all that kind of stuff.
+
+23
+00:01:13,080 --> 00:01:15,836
+I'll say a little bit about nonlinear
+optimization.
+
+24
+00:01:15,836 --> 00:01:19,420
+That's something we're not going to talk
+about much in the class.
+
+25
+00:01:19,420 --> 00:01:22,971
+But just be, as it's weird not to say
+something about it before launching into
+
+26
+00:01:22,971 --> 00:01:24,969
+in, into the class.
+
+27
+00:01:24,969 --> 00:01:25,887
+And then I'll, I'll,
+
+28
+00:01:25,887 --> 00:01:30,816
+I'll finish up this overview with a little
+bit of a history of convex optimization.
+
+29
+00:01:30,816 --> 00:01:35,145
+Okay, mathematical optimization.
+
+30
+00:01:35,145 --> 00:01:37,916
+Well an optimization problem.
+
+31
+00:01:37,916 --> 00:01:43,507
+Now the the notation is this, is, is, you
+say you minimize a, a function.
+
+32
+00:01:43,507 --> 00:01:48,316
+An objective function, subject to some
+constraints like that.
+
+33
+00:01:48,316 --> 00:01:51,705
+By the way, there's many other notations
+for this.
+
+34
+00:01:51,705 --> 00:01:53,803
+In particular, the notation from the
+Soviet Union.
+
+35
+00:01:53,803 --> 00:01:59,651
+Where there was a long tradition of work
+on optimization is this.
+
+36
+00:01:59,651 --> 00:02:03,371
+You write a problem this way, and this is
+now in, in the US you know, from,
+
+37
+00:02:03,371 --> 00:02:09,049
+from various people who were trained say
+at Moscow State, State University.
+
+38
+00:02:09,049 --> 00:02:14,869
+Is you write you write f0 arrow min and
+then st doesn't mean such that,
+
+39
+00:02:14,869 --> 00:02:23,972
+it means in this case subject to, and then
+you'd fi of x is less than bi.
+
+40
+00:02:23,972 --> 00:02:27,341
+Okay, something like this, so you'll see
+other notations for it.
+
+41
+00:02:27,341 --> 00:02:31,169
+One other thing I should say is although
+minimize and
+
+42
+00:02:31,169 --> 00:02:35,743
+subject to as English words, obviously.
+
+43
+00:02:35,743 --> 00:02:38,662
+I, I don't consider them that way here.
+
+44
+00:02:38,662 --> 00:02:41,434
+They are actually names of attributes and
+sort of,
+
+45
+00:02:41,434 --> 00:02:44,817
+you can think of this as an object, right?
+
+46
+00:02:44,817 --> 00:02:46,110
+It's an optimization problem.
+
+47
+00:02:46,110 --> 00:02:51,220
+Object minimize is an attribute which is
+the sense, it could also be maximized of
+
+48
+00:02:51,220 --> 00:02:58,428
+course, f0 of x is an objective fi of x
+are called constraint functions.
+
+49
+00:02:58,428 --> 00:03:01,500
+Okay, now, so that's, that's an
+optimization problem and
+
+50
+00:03:01,500 --> 00:03:05,490
+we'll talk about it in much greater detail
+later.
+
+51
+00:03:05,490 --> 00:03:08,850
+so, here so these, you have, you have a x
+here,
+
+52
+00:03:08,850 --> 00:03:13,310
+that's called the optimization variable.
+
+53
+00:03:13,310 --> 00:03:14,126
+There's a lot of other names for it.
+
+54
+00:03:14,126 --> 00:03:16,840
+Another one is decision variable, which is
+a great name because it,
+
+55
+00:03:16,840 --> 00:03:20,192
+it sort of tells you it's something you
+have to decide on.
+
+56
+00:03:20,192 --> 00:03:22,357
+You have a choice of different things.
+
+57
+00:03:22,357 --> 00:03:26,352
+Then f0 is the objective function.
+
+58
+00:03:26,352 --> 00:03:30,321
+F0 of x basically tells you actually how
+much that choice irritates,
+
+59
+00:03:30,321 --> 00:03:33,715
+irritates because you're minimizing f0.
+
+60
+00:03:33,715 --> 00:03:37,160
+And so, if f0 of x is large, that means
+you're very irritated, and
+
+61
+00:03:37,160 --> 00:03:40,602
+the smaller it is, the better, okay?
+
+62
+00:03:40,602 --> 00:03:44,704
+And then the constraint functions have a
+different semantics.
+
+63
+00:03:44,704 --> 00:03:46,870
+All that matters with a constraint
+function,
+
+64
+00:03:46,870 --> 00:03:49,984
+is that fi of x should be less or equal to
+bi.
+
+65
+00:03:49,984 --> 00:03:52,264
+Often, some of these, not al, but not
+always,
+
+66
+00:03:52,264 --> 00:03:57,374
+these have interpretations like resource
+resources or something like that.
+
+67
+00:03:57,374 --> 00:04:02,024
+So, fi of x is, when you choose x fi's how
+much of the ith resource you use, and
+
+68
+00:04:02,024 --> 00:04:07,374
+this constraint states that your budget is
+bi, okay?
+
+69
+00:04:07,374 --> 00:04:11,874
+Now, a solution is simply a point x which
+satisfies the constraints, and
+
+70
+00:04:11,874 --> 00:04:16,674
+among all those that satisfy, all the
+vectors that satisfy the constraints,
+
+71
+00:04:16,674 --> 00:04:21,017
+is one that minimizes f0, right?
+
+72
+00:04:21,017 --> 00:04:24,072
+And you can call that an optimal point.
+
+73
+00:04:24,072 --> 00:04:26,042
+You can also call it a solution.
+
+74
+00:04:26,042 --> 00:04:31,352
+To be honest with you, optimal solution,
+that term is redundant.
+
+75
+00:04:31,352 --> 00:04:32,537
+It's technically correct.
+
+76
+00:04:32,537 --> 00:04:35,929
+Stylistically a better statement would be
+something like, optimal x star or
+
+77
+00:04:35,929 --> 00:04:37,413
+solution x star.
+
+78
+00:04:37,413 --> 00:04:38,960
+Let's look at some examples.
+
+79
+00:04:38,960 --> 00:04:42,289
+So the, the first one, is portfolio
+optimization.
+
+80
+00:04:42,289 --> 00:04:45,652
+So, here the variables could be the
+amounts, you have x1 through xn, and
+
+81
+00:04:45,652 --> 00:04:50,163
+these could be the amounts you invest in
+different assets, right?
+
+82
+00:04:50,163 --> 00:04:53,163
+So, and by the way, these amounts could be
+number of shares, they could be
+
+83
+00:04:53,163 --> 00:04:57,962
+dollar values, or they could be fraction
+of a total torp, portfolio, right?
+
+84
+00:04:57,962 --> 00:05:00,427
+So, so there's lots of, they could
+represent different things.
+
+85
+00:05:00,427 --> 00:05:05,191
+also, by the way, negative could be used
+to represent a short position, right?
+
+86
+00:05:05,191 --> 00:05:08,180
+These are assets you borrow but have the
+obligation to pay back later, and
+
+87
+00:05:08,180 --> 00:05:12,135
+that's essentially the same as owning a
+negative number of them.
+
+88
+00:05:12,135 --> 00:05:15,565
+Okay, so these are the variables, right?
+
+89
+00:05:15,565 --> 00:05:17,945
+And so you would talk about a vector x
+then,
+
+90
+00:05:17,945 --> 00:05:24,362
+in this context as like a portfolio vector
+or a portfolio allocation vector, right?
+
+91
+00:05:24,362 --> 00:05:27,993
+So, that would mean how do you allocate
+your budget across a portfolio?
+
+92
+00:05:27,993 --> 00:05:28,838
+Something like that.
+
+93
+00:05:28,838 --> 00:05:31,456
+Well the constraints would be things like
+this.
+
+94
+00:05:31,456 --> 00:05:35,332
+Well, you'd have a budget for example of,
+everyone I'd like a portfolio which is 10
+
+95
+00:05:35,332 --> 00:05:39,062
+to the 9, 10 to the 9, 10 to the 9, 10 to
+the 9.
+
+96
+00:05:39,062 --> 00:05:40,793
+Everyone would.
+
+97
+00:05:40,793 --> 00:05:43,893
+And it wouldn't matter I guess this can't
+be fraction but
+
+98
+00:05:43,893 --> 00:05:47,937
+if they were in any other amount that'd be
+fine.
+
+99
+00:05:47,937 --> 00:05:52,401
+But of course, there's the constraint that
+it has to that the total has to be,
+
+100
+00:05:52,401 --> 00:05:55,241
+less than your budget.
+
+101
+00:05:55,241 --> 00:05:58,277
+There might be maximum, minimum investment
+per asset,
+
+102
+00:05:58,277 --> 00:06:04,545
+very common is that the, it's required,
+that the x's be none negative, right?
+
+103
+00:06:04,545 --> 00:06:06,580
+That means that you can't have short
+positions, right?
+
+104
+00:06:06,580 --> 00:06:09,357
+That you can't have you can't own a
+negative number of shares.
+
+105
+00:06:09,357 --> 00:06:13,387
+That's actually required legally in a
+bunch of situations like for
+
+106
+00:06:13,387 --> 00:06:16,296
+example mutual funds in the US.
+
+107
+00:06:16,296 --> 00:06:17,221
+You can't have you're not,
+
+108
+00:06:17,221 --> 00:06:19,703
+you're just not allowed to own a negative
+number of shares.
+
+109
+00:06:19,703 --> 00:06:21,072
+Hedge funds, that's false.
+
+110
+00:06:21,072 --> 00:06:22,929
+You're allowed to, okay.
+
+111
+00:06:22,929 --> 00:06:24,389
+You might have some,
+
+112
+00:06:24,389 --> 00:06:29,628
+another very important one would be like a
+minimum return, right?
+
+113
+00:06:29,628 --> 00:06:32,154
+So, you'd say, and that's of course
+expected return, right?
+
+114
+00:06:32,154 --> 00:06:34,514
+So, if there's a minimum guaranteed
+return,
+
+115
+00:06:34,514 --> 00:06:37,995
+that's called an arbitrage that, that,
+that well that, that's the,
+
+116
+00:06:37,995 --> 00:06:43,971
+that the religious basis on which modern
+western eco, economics is based.
+
+117
+00:06:43,971 --> 00:06:47,137
+On the idea there is no such thing as
+arbitrage.
+
+118
+00:06:47,137 --> 00:06:50,441
+Actually a lot of people at hedge funds
+will, will, will snicker and
+
+119
+00:06:50,441 --> 00:06:52,431
+say, oh yeah, sure.
+
+120
+00:06:52,431 --> 00:06:56,351
+[LAUGH] So okay, and then the objective
+might be so,
+
+121
+00:06:56,351 --> 00:07:02,032
+you might say, I want 5% expected return,
+minimum, okay?
+
+122
+00:07:02,032 --> 00:07:07,450
+And the objective might be to minimize the
+total risk in the portfolio, Right?
+
+123
+00:07:07,450 --> 00:07:09,294
+And, and there're many ways to give risk.
+
+124
+00:07:09,294 --> 00:07:12,415
+It could be the variance of the return
+over some period.
+
+125
+00:07:12,415 --> 00:07:16,762
+It could be something more sophisticated
+like you want to make sure that
+
+126
+00:07:16,762 --> 00:07:22,740
+the probability of a loss of a certain
+level is less than some number.
+
+127
+00:07:22,740 --> 00:07:24,724
+Lots of different ways to give these.
+
+128
+00:07:24,724 --> 00:07:27,129
+By the way, we'll end up looking at, at
+many of them.
+
+129
+00:07:27,129 --> 00:07:31,082
+Okay, so here what portfolio optimization
+does, is it chooses the best
+
+130
+00:07:31,082 --> 00:07:36,851
+portfolio that satisfies all the
+constraints and minimizes your risks.
+
+131
+00:07:36,851 --> 00:07:41,598
+Okay, next one is device sizing.
+
+132
+00:07:41,598 --> 00:07:47,463
+SoI guess that's form conceptual to and
+virtual to physical, right?
+
+133
+00:07:47,463 --> 00:07:50,503
+So, here the variables are the device with
+with some link.
+
+134
+00:07:50,503 --> 00:07:53,649
+So, all of you have lots of electronics on
+you right now.
+
+135
+00:07:53,649 --> 00:07:59,149
+every, all of it was at some point
+designed by someone.
+
+136
+00:07:59,149 --> 00:08:02,733
+And in particular, all, every device had
+the, the widths and
+
+137
+00:08:02,733 --> 00:08:06,991
+lengths of all the devices were, were
+chosen, right?
+
+138
+00:08:06,991 --> 00:08:07,751
+The lengths are often,
+
+139
+00:08:07,751 --> 00:08:10,271
+in digital circuits are often chosen to
+have the minimum possible value for
+
+140
+00:08:10,271 --> 00:08:11,865
+that technology.
+
+141
+00:08:11,865 --> 00:08:14,768
+Actually not always, but usually.
+
+142
+00:08:14,768 --> 00:08:18,453
+So that's, that's chosen and, and the
+basic and strength there is,
+
+143
+00:08:18,453 --> 00:08:21,673
+you can make a big, wide device.
+
+144
+00:08:21,673 --> 00:08:24,105
+it, they will be like like a wide gate.
+
+145
+00:08:24,105 --> 00:08:27,362
+A wide transistor and it will be really
+fast.
+
+146
+00:08:27,362 --> 00:08:28,875
+That's the good part.
+
+147
+00:08:28,875 --> 00:08:30,243
+The bad part is there will be,
+
+148
+00:08:30,243 --> 00:08:35,012
+it will consume a lot of power and it will
+consume a lot of area, okay?
+
+149
+00:08:35,012 --> 00:08:37,322
+So, I mean this is just roughly, the idea.
+
+150
+00:08:37,322 --> 00:08:42,961
+Okay, now the constraints are, things like
+manufacturing limits, right?
+
+151
+00:08:42,961 --> 00:08:46,097
+Because, when you design the circuit you
+send a big old file,
+
+152
+00:08:46,097 --> 00:08:48,001
+over to Taiwan where upon it gets sent to,
+
+153
+00:08:48,001 --> 00:08:53,079
+uh, [COUGH] where upon it gets sent to
+Pudong, for manufacture.
+
+154
+00:08:53,079 --> 00:08:56,670
+And, this is this giant file that
+describes in the standard language
+
+155
+00:08:56,670 --> 00:09:00,450
+basically the post script of, circuits,
+it, it, it explains, it,
+
+156
+00:09:00,450 --> 00:09:04,390
+it says this is my physical circuit.
+
+157
+00:09:04,390 --> 00:09:05,442
+Please manufacture it.
+
+158
+00:09:05,442 --> 00:09:06,227
+Right?
+
+159
+00:09:06,227 --> 00:09:10,461
+So, but whenever, when you manufacture it,
+at a certain fabrication facility or
+
+160
+00:09:10,461 --> 00:09:13,939
+fab, there, they'll have limits, right?
+
+161
+00:09:13,939 --> 00:09:15,535
+This length can't be bigger than,
+
+162
+00:09:15,535 --> 00:09:19,838
+can't be smaller than 22 nanometers,
+something like that, right?
+
+163
+00:09:19,838 --> 00:09:21,929
+So that's, that's how that works, okay?
+
+164
+00:09:21,929 --> 00:09:24,624
+Or, can't be larger, and there's actually
+very complex rules, but
+
+165
+00:09:24,624 --> 00:09:27,280
+the basic ones are minimum and maximum.
+
+166
+00:09:27,280 --> 00:09:28,570
+Things like that.
+
+167
+00:09:28,570 --> 00:09:29,927
+This is very important.
+
+168
+00:09:29,927 --> 00:09:31,214
+You have timing requirements.
+
+169
+00:09:31,214 --> 00:09:32,950
+So, timing requirements is that,
+
+170
+00:09:32,950 --> 00:09:37,045
+well, it basically says, your circuit has
+to work, okay?
+
+171
+00:09:37,045 --> 00:09:42,115
+It has to work at whatever clock speed it
+needs to work at.
+
+172
+00:09:42,115 --> 00:09:45,495
+So, if it's going to clock at 1.5
+gigahertz, or a gigahertz, or
+
+173
+00:09:45,495 --> 00:09:50,110
+something like that, then it says in maybe
+80% of a nanosecond once this, once the,
+
+174
+00:09:50,110 --> 00:09:53,574
+once the clock flips.
+
+175
+00:09:53,574 --> 00:09:56,694
+And the signals start running through the
+various gates and things like that,
+
+176
+00:09:56,694 --> 00:10:01,763
+you have to have stable values with with
+some margin before the next clock tick.
+
+177
+00:10:01,763 --> 00:10:04,482
+Which will come one nanosecond later
+gigahertz, right?
+
+178
+00:10:04,482 --> 00:10:08,301
+And so, there if you make minimum size,
+all the devices minimum size,
+
+179
+00:10:08,301 --> 00:10:14,614
+the good news is your chip will be very
+small and will consume very little power.
+
+180
+00:10:14,614 --> 00:10:15,587
+That would be great.
+
+181
+00:10:15,587 --> 00:10:18,467
+And the only minor problem is it won't
+work because it,
+
+182
+00:10:18,467 --> 00:10:21,587
+it won't, it, it certainly won't clock at
+the speed you want and
+
+183
+00:10:21,587 --> 00:10:25,795
+it may not even clock at a much lower
+speed.
+
+184
+00:10:25,795 --> 00:10:30,432
+But in any case it's not that interesting
+if it clocks at 150 megahertz, right?
+
+185
+00:10:30,432 --> 00:10:32,470
+As opposed to whatever, to whatever it's
+supposed to.
+
+186
+00:10:32,470 --> 00:10:33,702
+So, these are timing requirements.
+
+187
+00:10:33,702 --> 00:10:37,060
+And of course you might have a maximum
+area, right?
+
+188
+00:10:37,060 --> 00:10:39,870
+So, total area, you might say, it has to
+be no more.
+
+189
+00:10:39,870 --> 00:10:41,774
+than two square millimeters period, and
+
+190
+00:10:41,774 --> 00:10:44,630
+that drives a lot, a lot of economics of
+chip design and
+
+191
+00:10:44,630 --> 00:10:49,730
+stuff like that is based on area for you
+know, obvious reasons, right?
+
+192
+00:10:49,730 --> 00:10:53,946
+Okay, and the objective might be among all
+designs that satisfy the timing
+
+193
+00:10:53,946 --> 00:10:59,400
+requirements, everything else, might be
+minimize power consumption.
+
+194
+00:10:59,400 --> 00:11:04,510
+And that would be a good thing to do for
+many reasons but for portable devices it's
+
+195
+00:11:04,510 --> 00:11:11,090
+it has an immediate and obvious good
+effect if you have low power.
+
+196
+00:11:11,090 --> 00:11:14,342
+Because it means long battery life or
+something like that, so that's great.
+
+197
+00:11:14,342 --> 00:11:17,850
+Okay, so now, that, that's your second
+example in here.
+
+198
+00:11:17,850 --> 00:11:21,438
+If you apply optimization to this, which
+is basically what is,
+
+199
+00:11:21,438 --> 00:11:24,632
+in fact, done, what happens.
+
+200
+00:11:24,632 --> 00:11:28,349
+is, among all designs that meet all the
+constraints you find one that has
+
+201
+00:11:28,349 --> 00:11:30,561
+minimum power, right?
+
+202
+00:11:30,561 --> 00:11:31,770
+So, that's, that's kind of the idea.
+
+203
+00:11:31,770 --> 00:11:32,510
+Okay.
+
+204
+00:11:32,510 --> 00:11:36,566
+And the third is actually from a different
+category.
+
+205
+00:11:36,566 --> 00:11:38,400
+It's data fitting.
+
+206
+00:11:38,400 --> 00:11:40,870
+Right?
+So, it's got lots of other names.
+
+207
+00:11:40,870 --> 00:11:43,224
+It's also called for example statistics.
+
+208
+00:11:43,224 --> 00:11:47,190
+Another name for it is machine learning
+and we'll see lots of others.
+
+209
+00:11:47,190 --> 00:11:48,420
+Estimation.
+
+210
+00:11:48,420 --> 00:11:51,370
+Okay, so these are all names for kind of
+the same thing, but the idea, and
+
+211
+00:11:51,370 --> 00:11:56,440
+we'll see lots of examples of these by the
+way, but the idea is something like this.
+
+212
+00:11:56,440 --> 00:11:58,512
+Here the variables that you're deciding
+on,
+
+213
+00:11:58,512 --> 00:12:03,570
+note that the variables up here are things
+that kind of translate into actions.
+
+214
+00:12:03,570 --> 00:12:04,432
+Right?
+So, for
+
+215
+00:12:04,432 --> 00:12:11,070
+example, up here in the portfolio one, x3
+is the amount of asset three to buy.
+
+216
+00:12:11,070 --> 00:12:14,538
+That would translate, well in the the old
+days, into a phone call to tell someone to
+
+217
+00:12:14,538 --> 00:12:18,330
+buy three shares of something or whatever,
+or you know?
+
+218
+00:12:18,330 --> 00:12:19,490
+Some number of shares or something.
+
+219
+00:12:19,490 --> 00:12:22,838
+And nowadays, it ends up with a fixed
+protocol packet that goes to
+
+220
+00:12:22,838 --> 00:12:27,500
+some trading computer and then executes a
+trade for you, okay?
+
+221
+00:12:27,500 --> 00:12:30,649
+So, that's it's in other words when you
+optimize,
+
+222
+00:12:30,649 --> 00:12:35,620
+the result of the optimization is, there's
+an action, okay?
+
+223
+00:12:35,620 --> 00:12:38,950
+And the same is here, same is true here
+for device sizing, right?
+
+224
+00:12:38,950 --> 00:12:43,711
+You finish the optimization and the result
+is, this gigantic file, that describes
+
+225
+00:12:43,711 --> 00:12:50,650
+physically your chip and that gets sent
+off to TSMC or wherever it's going, right?
+
+226
+00:12:50,650 --> 00:12:53,267
+So, that's how that works, it gets sent to
+a fab to be made.
+
+227
+00:12:53,267 --> 00:12:55,488
+Okay, so these are, these are actions.
+
+228
+00:12:55,488 --> 00:13:01,710
+In data fittings, it's quite interesting,
+the variables represent model parameters.
+
+229
+00:13:01,710 --> 00:13:05,220
+And they actually, they, they don't
+correspond to any action whatsoever.
+
+230
+00:13:05,220 --> 00:13:07,220
+There's no action, right?
+
+231
+00:13:07,220 --> 00:13:10,860
+So, the variables are model parameters and
+the constraints so,
+
+232
+00:13:10,860 --> 00:13:16,260
+in other words you have a family of models
+to describe some data, right?
+
+233
+00:13:16,260 --> 00:13:18,580
+I mean, well, that's, that's what
+statistics is, right?
+
+234
+00:13:18,580 --> 00:13:21,670
+And then your constraints might be things
+like prior information.
+
+235
+00:13:21,670 --> 00:13:24,478
+For example, some of those parameters
+might be non-negative and
+
+236
+00:13:24,478 --> 00:13:26,070
+you know it, right?
+
+237
+00:13:26,070 --> 00:13:28,449
+And, and you won't even entertain a model
+that,
+
+238
+00:13:28,449 --> 00:13:33,750
+you won't even look at the idea of a model
+where those numbers are negative.
+
+239
+00:13:33,750 --> 00:13:35,686
+And other parts, part of the parameters
+might be, for
+
+240
+00:13:35,686 --> 00:13:37,810
+example, a co-variance matrix, right?
+
+241
+00:13:37,810 --> 00:13:38,650
+So, and they're,
+
+242
+00:13:38,650 --> 00:13:42,550
+no one would ever even entertain a method
+that estimates co-variances and
+
+243
+00:13:42,550 --> 00:13:48,394
+occasionally comes back with a matrix
+that's not positive, semi-definite, right?
+
+244
+00:13:48,394 --> 00:13:49,680
+This just doesn't make any sense.
+
+245
+00:13:49,680 --> 00:13:55,685
+Okay and the objective well, there's a
+couple so this is simplified.
+
+246
+00:13:55,685 --> 00:13:58,700
+But the main objective is actually just it
+could be
+
+247
+00:13:58,700 --> 00:14:03,400
+something like measure a misfit against
+your data, right?
+
+248
+00:14:03,400 --> 00:14:04,786
+So, and we'll see lots and
+
+249
+00:14:04,786 --> 00:14:09,406
+lots of examples right, for classification
+in regression type problems and
+
+250
+00:14:09,406 --> 00:14:15,220
+just general estimation, where you want to
+estimate some parameters.
+
+251
+00:14:15,220 --> 00:14:18,370
+You have some measurements and then the
+question is from the measurements,
+
+252
+00:14:18,370 --> 00:14:20,930
+how should you estimate the parameters?
+
+253
+00:14:20,930 --> 00:14:23,891
+By the way, it has lots of other names
+classically in,
+
+254
+00:14:23,891 --> 00:14:26,980
+in kind of older approaches to this.
+
+255
+00:14:26,980 --> 00:14:29,140
+It's sometimes called inversion.
+
+256
+00:14:29,140 --> 00:14:32,572
+Estimation even has kind of an older sound
+to it, sounds like it's from the 60s or
+
+257
+00:14:32,572 --> 00:14:35,079
+something like that, right?
+
+258
+00:14:35,079 --> 00:14:40,290
+But the modern method, it's a set up an
+optimization problem and solve it, right?
+
+259
+00:14:40,290 --> 00:14:42,552
+You set up, you say what you want to
+minimize and
+
+260
+00:14:42,552 --> 00:14:45,660
+then you do it if the problem is solvable.
+
+261
+00:14:45,660 --> 00:14:47,470
+We'll get to that, okay?
+
+262
+00:14:47,470 --> 00:14:49,250
+So, and this, we'll see a bunch of cases
+like this.
+
+263
+00:14:49,250 --> 00:14:51,582
+What's very interesting about this example
+though,
+
+264
+00:14:51,582 --> 00:14:56,028
+is that here the variables are not
+actions, they're parameters in a model.
+
+265
+00:14:56,028 --> 00:15:01,219
+Okay, so how do you solve an optimization
+problem?
+
+266
+00:15:01,219 --> 00:15:04,611
+Well, I should say, oh, I should mention,
+there are the childish ones that you
+
+267
+00:15:04,611 --> 00:15:08,380
+were subjected to when you were taught
+calculus, right?
+
+268
+00:15:08,380 --> 00:15:11,451
+So, this is kind of this 19th century
+view, right?
+
+269
+00:15:11,451 --> 00:15:13,257
+Yeah [INAUDIBLE] it kind of works.
+
+270
+00:15:13,257 --> 00:15:16,911
+That's like you set some derivatives equal
+to zero and there's like 21
+
+271
+00:15:16,911 --> 00:15:22,579
+problems like that you can actually solve
+and you know fine, whatever okay?
+
+272
+00:15:22,579 --> 00:15:24,760
+So, there are these cases, right?
+
+273
+00:15:24,760 --> 00:15:27,622
+And we shouldn't deny that, that these
+cases exist, but it's not
+
+274
+00:15:27,622 --> 00:15:32,850
+particularly interesting in my opinion in,
+in current in the current situation.
+
+275
+00:15:32,850 --> 00:15:36,872
+Okay, so most of them are basically very
+difficult to solve.
+
+276
+00:15:36,872 --> 00:15:39,600
+And in fact, probably I could go further
+than that and
+
+277
+00:15:39,600 --> 00:15:45,939
+say they are impossible to solve in some
+ways, if, if by solve you mean solve.
+
+278
+00:15:45,939 --> 00:15:51,274
+And you what you can do is you can change
+what you mean by solve, right?
+
+279
+00:15:51,274 --> 00:15:55,220
+To mean for example not solve um, [LAUGH]
+well, we'll, I'll get to that.
+
+280
+00:15:55,220 --> 00:15:56,560
+We'll talk about that a bit later.
+
+281
+00:15:56,560 --> 00:15:57,897
+Right?
+So, so in fact,
+
+282
+00:15:57,897 --> 00:16:04,675
+now the fact is a lot of people use, some
+general optimizations all the time, right?
+
+283
+00:16:04,675 --> 00:16:09,714
+Generally there's, but there has to be a
+compromise you know, in all cases.
+
+284
+00:16:09,714 --> 00:16:14,845
+The most, the most usual compromise is to
+not always find the solution.
+
+285
+00:16:14,845 --> 00:16:18,035
+So, that's, that's local optimization or
+something like that and
+
+286
+00:16:18,035 --> 00:16:21,225
+it means you simply run an algorithm that
+does something and may or
+
+287
+00:16:21,225 --> 00:16:24,905
+may not produce a point that's feasible.
+
+288
+00:16:24,905 --> 00:16:28,657
+And has an objective value that's lower
+than [COUGH], I don't know, it might have
+
+289
+00:16:28,657 --> 00:16:33,940
+been, or often you compare it to a
+starting point or something like that.
+
+290
+00:16:33,940 --> 00:16:35,675
+And that's, that's fine.
+
+291
+00:16:35,675 --> 00:16:39,360
+And that's quite useful now if you do
+insist on actually solving the problem,
+
+292
+00:16:39,360 --> 00:16:42,892
+like actually finding the, the global
+minimum.
+
+293
+00:16:42,892 --> 00:16:47,310
+Then what happens is, these problem can
+have very long computation times, right?
+
+294
+00:16:47,310 --> 00:16:51,155
+And there are other cases where that is
+used not anywhere near as many.
+
+295
+00:16:51,155 --> 00:16:53,243
+Okay, but there are exceptions and
+
+296
+00:16:53,243 --> 00:16:57,347
+the exceptions they are very famous
+classes of problems where that,
+
+297
+00:16:57,347 --> 00:17:03,942
+there are exceptions, and the most famous
+one by far is least squares.
+
+298
+00:17:03,942 --> 00:17:05,142
+So, in least squares problem,
+
+299
+00:17:05,142 --> 00:17:08,640
+that's a optimization problem we'll talk
+about it shortly.
+
+300
+00:17:08,640 --> 00:17:10,016
+You solve the problem.
+
+301
+00:17:10,016 --> 00:17:12,014
+You don't, there's nothing about, you
+know,
+
+302
+00:17:12,014 --> 00:17:15,567
+sometimes it works, it often works, it
+really works well.
+
+303
+00:17:15,567 --> 00:17:18,600
+It just works, always, period, okay?
+
+304
+00:17:18,600 --> 00:17:21,962
+So, so that's least squares problems.
+
+305
+00:17:21,962 --> 00:17:24,242
+Another one's linear programming problems.
+
+306
+00:17:24,242 --> 00:17:28,037
+That's another very famous and broad class
+of problems and the common parent of
+
+307
+00:17:28,037 --> 00:17:33,393
+these two, which is a lot broader and
+it's, well, it's what this class is about.
+
+308
+00:17:33,393 --> 00:17:35,440
+Is convex optimization problems, right?
+
+309
+00:17:35,440 --> 00:17:38,068
+So, that's that's the common parent of
+these.
+
+310
+00:17:38,068 --> 00:17:42,730
+And these are problems where, they can be
+solved efficiently and and
+
+311
+00:17:42,730 --> 00:17:44,993
+reliably, right?
+
+312
+00:17:44,993 --> 00:17:48,473
+And so, I mean, and when you start getting
+into some details, there's,
+
+313
+00:17:48,473 --> 00:17:52,013
+there's a lot of exceptions there and
+things, qualifications, but
+
+314
+00:17:52,013 --> 00:17:56,670
+roughly speaking this is correct.
+
+315
+00:17:56,670 --> 00:17:58,188
+So, lets look at least squares just to
+look at what one of
+
+316
+00:17:58,188 --> 00:17:59,465
+these things looks like.
+
+317
+00:17:59,465 --> 00:18:01,210
+It's a very simple problem.
+
+318
+00:18:01,210 --> 00:18:07,508
+Looks like this, it says, minimize the two
+norms squared of ax minus b.
+
+319
+00:18:07,508 --> 00:18:09,486
+The variable is x, by the way, that's part
+of the,
+
+320
+00:18:09,486 --> 00:18:11,810
+you have to say what the variable is.
+
+321
+00:18:11,810 --> 00:18:13,410
+And then a and b are data or parameters,
+
+322
+00:18:13,410 --> 00:18:17,976
+meaning that they are the ones that tell
+you what a problem instance looks like.
+
+323
+00:18:17,976 --> 00:18:19,476
+And you have to instantiate a and b or
+
+324
+00:18:19,476 --> 00:18:23,996
+specify them before then you have a
+problem instance and then you solve it.
+
+325
+00:18:23,996 --> 00:18:25,340
+Okay, so that's that I'm,
+
+326
+00:18:25,340 --> 00:18:29,820
+I'm assuming that everyone here have seen
+least squares in probably I would hope,
+
+327
+00:18:29,820 --> 00:18:35,870
+in multiple classes because it comes up in
+tons of classes or it should.
+
+328
+00:18:35,870 --> 00:18:39,756
+It might not look exactly like this in
+those classes, right?
+
+329
+00:18:39,756 --> 00:18:40,380
+so, all right,
+
+330
+00:18:40,380 --> 00:18:44,280
+well this problem, I mean I'm assuming,
+assuming no pathologies here.
+
+331
+00:18:44,280 --> 00:18:49,855
+I mean a is for example, a tall and full
+rank.
+
+332
+00:18:49,855 --> 00:18:52,420
+Then, this is just, this is an analytical
+solution to it.
+
+333
+00:18:52,420 --> 00:18:55,890
+It's just a transpose a inverse a
+transpose b, right?
+
+334
+00:18:55,890 --> 00:18:58,960
+So, that's a good chunk of what we did in
+EE263.
+
+335
+00:18:58,960 --> 00:19:01,140
+And I might add, many other classes,
+right?
+
+336
+00:19:01,140 --> 00:19:04,362
+In statistics this is called regression,
+okay?
+
+337
+00:19:04,362 --> 00:19:06,195
+Its got lots of names.
+
+338
+00:19:06,195 --> 00:19:11,381
+Alright, analytical solution oh which, by
+the way, doesn't mean a whole lot, right?
+
+339
+00:19:11,381 --> 00:19:13,925
+There plenty of things that have
+analytical solutions that
+
+340
+00:19:13,925 --> 00:19:17,894
+so-called analytical solutions that are
+impossible to actually compute.
+
+341
+00:19:17,894 --> 00:19:20,288
+And actually, this whole course is about
+lots of problems where there are no
+
+342
+00:19:20,288 --> 00:19:23,490
+analytical solutions, and they're very
+easy to compute.
+
+343
+00:19:23,490 --> 00:19:24,858
+That's kind of what this class is.
+
+344
+00:19:24,858 --> 00:19:28,290
+okay, so more than simply being an
+analytical solution, there
+
+345
+00:19:28,290 --> 00:19:34,770
+are reliable and efficient algorithms in
+software to solve least squares problems.
+
+346
+00:19:34,770 --> 00:19:36,630
+By the way, it's not trivial and, and
+
+347
+00:19:36,630 --> 00:19:40,730
+not one of them uses the analytical
+solution directly.
+
+348
+00:19:40,730 --> 00:19:43,610
+In another word, you, I'll tell you that
+you don't do, what you don't do is
+
+349
+00:19:43,610 --> 00:19:46,442
+form a transpose a then form its inverse
+multiply it by a transposed and
+
+350
+00:19:46,442 --> 00:19:48,620
+multiply by b.
+
+351
+00:19:48,620 --> 00:19:50,060
+You do, that's not how it's done.
+
+352
+00:19:50,060 --> 00:19:54,155
+I mean, obviously it's not done a whole
+lot difference from that because it
+
+353
+00:19:54,155 --> 00:19:57,770
+just evaluating this but still, okay.
+
+354
+00:19:57,770 --> 00:20:01,624
+And the computation time is proportional
+to n squared k,
+
+355
+00:20:01,624 --> 00:20:07,090
+n is the size of x here and k is the
+number of rows.
+
+356
+00:20:07,090 --> 00:20:08,764
+So, it is a regression problem or
+
+357
+00:20:08,764 --> 00:20:12,670
+let, something like that, you'd say that,
+that k is the number of examples or
+
+358
+00:20:12,670 --> 00:20:19,020
+something like that, or data measurements
+or data elements, something like that.
+
+359
+00:20:19,020 --> 00:20:21,828
+And then n is the number of you know,
+features or regressors, or
+
+360
+00:20:21,828 --> 00:20:24,070
+something like that, right?
+
+361
+00:20:24,070 --> 00:20:27,057
+And so the computation times proportional
+to n squared, k.
+
+362
+00:20:27,057 --> 00:20:29,070
+That's if everything is dense.
+
+363
+00:20:29,070 --> 00:20:33,917
+If a is sparse it's a whole lot less than
+that, right?
+
+364
+00:20:33,917 --> 00:20:38,429
+So, and I mean, this is absolutely
+amazing.
+
+365
+00:20:38,429 --> 00:20:43,060
+You can solve problems that are really
+quite large.
+
+366
+00:20:43,060 --> 00:20:46,480
+And with total and utter reliability.
+
+367
+00:20:46,480 --> 00:20:50,933
+Meaning you will compute in this case as
+assuming there are no pathologies here,
+
+368
+00:20:50,933 --> 00:20:53,678
+if there's actually a unique x that
+minimizes that and
+
+369
+00:20:53,678 --> 00:20:58,079
+you'll actually compute the, that point.
+
+370
+00:20:58,079 --> 00:21:03,254
+To very high accuracy very quickly, right?
+
+371
+00:21:03,254 --> 00:21:04,493
+So, okay.
+
+372
+00:21:04,493 --> 00:21:07,060
+So, I would say least squares is a mature
+technology.
+
+373
+00:21:07,060 --> 00:21:08,220
+Right?
+It's kind of cool,
+
+374
+00:21:08,220 --> 00:21:10,999
+it goes back about 200 years.
+
+375
+00:21:10,999 --> 00:21:16,943
+Because Gauss wrote a, a, wrote a paper
+about least squares in Latin.
+
+376
+00:21:16,943 --> 00:21:19,510
+Right around 180 something or other.
+
+377
+00:21:19,510 --> 00:21:20,320
+Right in there.
+So, so
+
+378
+00:21:20,320 --> 00:21:23,584
+a little bit more than 200 years old, I,
+anyway, so, and
+
+379
+00:21:23,584 --> 00:21:27,580
+it's been, it's been used like,
+everywhere.
+
+380
+00:21:27,580 --> 00:21:29,905
+Right, so, which I'm sure all of you know.
+
+381
+00:21:29,905 --> 00:21:33,380
+Okay, so how do use least squares?
+
+382
+00:21:33,380 --> 00:21:36,260
+Well, there's no, there, you can't even
+ask this question like, is your,
+
+383
+00:21:36,260 --> 00:21:38,469
+is this a least squares problem.
+
+384
+00:21:38,469 --> 00:21:40,170
+It's just not that hard, right?
+
+385
+00:21:40,170 --> 00:21:41,170
+See, here's, you ready?
+
+386
+00:21:41,170 --> 00:21:44,120
+Let's, let's figure out, how do you test
+that a problem is a least squares problem?
+
+387
+00:21:44,120 --> 00:21:48,812
+You first have to find, is the objective,
+are you being asked to minimize the norm,
+
+388
+00:21:48,812 --> 00:21:54,960
+the two norm squared of something which is
+an affine function of x.
+
+389
+00:21:54,960 --> 00:21:57,280
+Affine is linear plus a constant.
+
+390
+00:21:57,280 --> 00:22:00,872
+And if the answer is, yes then you say,
+yes it's least squares.
+
+391
+00:22:00,872 --> 00:22:03,610
+If its no then you say no, it's not.
+
+392
+00:22:03,610 --> 00:22:04,420
+Okay, so there.
+
+393
+00:22:04,420 --> 00:22:07,966
+That, that was the, so you don't even talk
+about this I mean, what does it mean?
+
+394
+00:22:07,966 --> 00:22:13,415
+So, instead, what least squares, the way
+you should learn about least squares.
+
+395
+00:22:13,415 --> 00:22:16,319
+And, I mean to some extent you get this
+maybe better in
+
+396
+00:22:16,319 --> 00:22:20,285
+the statistics courses than some other
+ones.
+
+397
+00:22:20,285 --> 00:22:24,380
+But you know, you learn a couple of
+tricks, for least squares.
+
+398
+00:22:24,380 --> 00:22:26,837
+Where upon, you are very effective.
+
+399
+00:22:26,837 --> 00:22:30,169
+One is the idea of weighting, so you, you
+know, you have a bunch of measurements and
+
+400
+00:22:30,169 --> 00:22:34,710
+you, you can weight some more than others,
+that's weighted least squares.
+
+401
+00:22:34,710 --> 00:22:36,920
+And then the idea of adding
+regularization.
+
+402
+00:22:36,920 --> 00:22:40,471
+And we're going to talk about these things
+later in the course but,
+
+403
+00:22:40,471 --> 00:22:45,164
+you know those two things and you are now
+very effective.
+
+404
+00:22:45,164 --> 00:22:49,040
+And in fact you can even say a giant pile
+of engineering, statistics,
+
+405
+00:22:49,040 --> 00:22:54,839
+all sorts of stuff, data analysis has been
+done exactly this way, right?
+
+406
+00:22:54,839 --> 00:22:57,729
+So, planes fly because of this, basically.
+
+407
+00:22:57,729 --> 00:23:00,750
+So, now they'll fly better when more
+people know the topic of
+
+408
+00:23:00,750 --> 00:23:01,833
+this class [LAUGH] but
+
+409
+00:23:01,833 --> 00:23:07,180
+we really have to say this [INAUDIBLE]
+least squares you can do a lot with it.
+
+410
+00:23:07,180 --> 00:23:10,400
+So, okay, Alright so, linear programming
+that's this problem.
+
+411
+00:23:17,240 --> 00:23:20,782
+You minimize a linear function of a
+variable subject to
+
+412
+00:23:20,782 --> 00:23:27,190
+some constraints which are of a linear
+function less than a budget, okay?
+
+413
+00:23:27,190 --> 00:23:29,668
+So, we'll talk about this in great detail
+later in the course, that's a,
+
+414
+00:23:29,668 --> 00:23:31,435
+that's a linear program.
+
+415
+00:23:31,435 --> 00:23:33,556
+This is also not new, by the way.
+
+416
+00:23:33,556 --> 00:23:38,092
+This was al, this for example Fourier
+wrote a paper about this, I don't know,
+
+417
+00:23:38,092 --> 00:23:42,210
+1820 something like that, long time ago.
+
+418
+00:23:42,210 --> 00:23:46,257
+So, but the modern area, era really traces
+to about 1948,1950 and
+
+419
+00:23:46,257 --> 00:23:49,935
+by the way, has a Stanford connection.
+
+420
+00:23:49,935 --> 00:23:51,925
+Right?
+because it's George Dantzig who
+
+421
+00:23:51,925 --> 00:23:53,900
+popularized it worldwide.
+
+422
+00:23:53,900 --> 00:23:57,345
+It actually more honestly, it has a Moscow
+connection because that's where it
+
+423
+00:23:57,345 --> 00:23:58,935
+was really done first in the 30s but,
+
+424
+00:23:58,935 --> 00:24:03,931
+anyway this is linear programming, we'll
+talk a lot about later.
+
+425
+00:24:03,931 --> 00:24:05,870
+But here's the interesting thing.
+
+426
+00:24:05,870 --> 00:24:08,126
+There's actually, except in completely
+trivial cases,
+
+427
+00:24:08,126 --> 00:24:11,080
+there's no analytical formula for the
+solution.
+
+428
+00:24:11,080 --> 00:24:14,820
+'Kay, there's nothing like a transpose a
+inverse a transpose b.
+
+429
+00:24:14,820 --> 00:24:19,440
+I mean there are for, you know, completely
+trivial special cases, right?
+
+430
+00:24:19,440 --> 00:24:21,946
+But, in general no, there's not.
+
+431
+00:24:21,946 --> 00:24:25,542
+Here too, there's reliable and efficient
+algorithms and software to
+
+432
+00:24:25,542 --> 00:24:31,523
+solve linear programming problems and it,
+it's just as reliable as least squares.
+
+433
+00:24:31,523 --> 00:24:35,183
+Well, maybe not just, but it's very
+reliable, and it's used everywhere,
+
+434
+00:24:35,183 --> 00:24:40,058
+in all mathematics, almost all
+mathematically sophisticated fields.
+
+435
+00:24:40,058 --> 00:24:40,616
+By the way,
+
+436
+00:24:40,616 --> 00:24:45,460
+there's still a few kind of backward
+fields where it hasn't penetrated yet.
+
+437
+00:24:45,460 --> 00:24:46,367
+It's coming.
+
+438
+00:24:46,367 --> 00:24:49,328
+If you know anyone in one of those, if you
+have a friend in one of those fields,
+
+439
+00:24:49,328 --> 00:24:52,618
+just, tell them what, you know, they bring
+linear programming into, well we'll see,
+
+440
+00:24:52,618 --> 00:24:55,435
+we'll get to that later.
+
+441
+00:24:55,435 --> 00:24:59,093
+Okay, so now the computation time, this is
+very interesting.
+
+442
+00:24:59,093 --> 00:25:02,301
+It's just like least squares [LAUGH]
+right?
+
+443
+00:25:02,301 --> 00:25:02,901
+It's the same,
+
+444
+00:25:02,901 --> 00:25:06,811
+it's the number of variables squared times
+the number of inequalities.
+
+445
+00:25:06,811 --> 00:25:10,951
+And the number of inequalities has to be
+bigger than actually doesn't have to be
+
+446
+00:25:10,951 --> 00:25:16,112
+but typically is bigger than the number of
+variables, right?
+
+447
+00:25:16,112 --> 00:25:17,616
+So, same sort of thing.
+
+448
+00:25:17,616 --> 00:25:20,447
+It's it's a small dimension squared times
+a big one.
+
+449
+00:25:20,447 --> 00:25:22,194
+We're going to come back to that later in
+the class.
+
+450
+00:25:22,194 --> 00:25:24,588
+If you remember nothing from the end of
+this class,
+
+451
+00:25:24,588 --> 00:25:29,761
+it's it's small squared times big, but
+we'll get to that later, much later.
+
+452
+00:25:29,761 --> 00:25:30,993
+Okay, so, this is a mature,
+
+453
+00:25:30,993 --> 00:25:34,820
+it turns out this is also I would say a
+mature technology.
+
+454
+00:25:34,820 --> 00:25:36,450
+Linear programming.
+
+455
+00:25:36,450 --> 00:25:39,090
+I mean it basically, it works.
+
+456
+00:25:39,090 --> 00:25:41,036
+It's like least squares.
+What's interesting about,
+
+457
+00:25:41,036 --> 00:25:45,128
+linear programming, is that there are many
+problems that don't look like,
+
+458
+00:25:45,128 --> 00:25:47,450
+linear programming.
+
+459
+00:25:47,450 --> 00:25:50,990
+But they can be transformed to linear
+programs.
+
+460
+00:25:50,990 --> 00:25:54,380
+And we'll, we'll see a lot of that, in in,
+in the course as well, right?
+
+461
+00:25:54,380 --> 00:25:56,300
+But that's good and bad news, right?
+
+462
+00:25:56,300 --> 00:25:59,432
+The, the, the good news is it means that
+something that looks pre,
+
+463
+00:25:59,432 --> 00:26:01,578
+like a pretty restrained problem, like
+it,,
+
+464
+00:26:01,578 --> 00:26:05,939
+the only thing it ever refers to is linear
+functions.
+
+465
+00:26:05,939 --> 00:26:09,239
+But almost any interesting thing you could
+think of, they are non linear
+
+466
+00:26:09,239 --> 00:26:14,630
+functions involved and then you say, well,
+this must have very limited practical use.
+
+467
+00:26:14,630 --> 00:26:17,290
+And that's going to turn out to be false,
+for the reason I just mentioned.
+
+468
+00:26:17,290 --> 00:26:19,630
+But there are a lot of problems that can
+be transformed to linear programming.
+
+469
+00:26:19,630 --> 00:26:20,980
+That's the, the good news.
+
+470
+00:26:20,980 --> 00:26:22,890
+Now, I don't know if it's bad news.
+
+471
+00:26:22,890 --> 00:26:23,390
+I don't know.
+
+472
+00:26:23,390 --> 00:26:24,447
+Maybe it's also good news.
+
+473
+00:26:24,447 --> 00:26:27,681
+The good news is, then, is you have to
+know what problems can be transformed, and
+
+474
+00:26:27,681 --> 00:26:29,680
+how to transform them.
+
+475
+00:26:29,680 --> 00:26:31,645
+And that's also going to be part of this
+course.
+
+476
+00:26:31,645 --> 00:26:39,160
+Okay, so that's linear programming, and
+we'll go over this in great detail later.
+
+477
+00:26:39,160 --> 00:26:41,660
+This gets us to, well, convex
+optimization.
+
+478
+00:26:41,660 --> 00:26:42,870
+So, I'll say what it is now.
+
+479
+00:26:42,870 --> 00:26:45,093
+Of course, we'll come back later and do
+tons of,
+
+480
+00:26:45,093 --> 00:26:48,112
+you know, go over this in great detail.
+
+481
+00:26:48,112 --> 00:26:51,920
+So for now we're going to say it looks
+like this.
+
+482
+00:26:51,920 --> 00:26:56,826
+It's a problem where you minimize an
+objective with constraint functions.
+
+483
+00:26:56,826 --> 00:26:59,505
+And in all of these, these functions have
+to be convex and
+
+484
+00:26:59,505 --> 00:27:02,811
+that just means that this inequality holds
+here it says that if
+
+485
+00:27:02,811 --> 00:27:08,055
+you take a weighted average of after of f
+and of, of x and y.
+
+486
+00:27:08,055 --> 00:27:12,475
+And you evaluate the function there that's
+less than the same weighted average of
+
+487
+00:27:12,475 --> 00:27:18,570
+the function values and that's basically a
+picture that looks like this, right?
+
+488
+00:27:18,570 --> 00:27:21,546
+It says that, it says that if you take x
+here, and y here, and
+
+489
+00:27:21,546 --> 00:27:26,799
+if you take some combination like alpha's
+0.25, beta's 0.75.
+
+490
+00:27:26,799 --> 00:27:27,865
+And you go here,
+
+491
+00:27:27,865 --> 00:27:33,441
+then it says that if you evaluate it at
+that combination that mixture the function
+
+492
+00:27:33,441 --> 00:27:41,790
+is less than the just the same mixture of
+the function values, right?
+
+493
+00:27:41,790 --> 00:27:44,830
+Or, to put it in classical language, you'd
+say something like this.
+
+494
+00:27:44,830 --> 00:27:48,000
+The cord lies above the graph.
+
+495
+00:27:48,000 --> 00:27:52,150
+Linear programming and least squares
+problems are special cases, right?
+
+496
+00:27:52,150 --> 00:27:57,570
+Because the graph of norm ax minus b
+squared is like a bowl shaped thing.
+
+497
+00:27:57,570 --> 00:27:58,444
+I mean, if you slice it,
+
+498
+00:27:58,444 --> 00:28:01,600
+you get ellipsoids and it kind of goes
+down like that, right?
+
+499
+00:28:01,600 --> 00:28:06,480
+So, I mean it's, we'll see later, it's
+going to satisfy this.
+
+500
+00:28:06,480 --> 00:28:10,293
+And affine functions actually satisfy this
+always, right?
+
+501
+00:28:10,293 --> 00:28:12,537
+In fact, affine functions satisfy this,
+
+502
+00:28:12,537 --> 00:28:16,580
+this const, this inequality here with
+equality, right?
+
+503
+00:28:16,580 --> 00:28:18,876
+So, or another way say it, is a convex
+function and
+
+504
+00:28:18,876 --> 00:28:23,423
+we'll talk about this in great detail in
+the next two, three weeks.
+
+505
+00:28:23,423 --> 00:28:25,980
+Convex functions have non negative
+curvature.
+
+506
+00:28:25,980 --> 00:28:28,500
+They curve up right?
+
+507
+00:28:28,500 --> 00:28:32,028
+Affine function linear plus constant, they
+have zero curvature they are on
+
+508
+00:28:32,028 --> 00:28:35,805
+the boundary between well not convex and
+convex right?
+
+509
+00:28:35,805 --> 00:28:39,409
+So, linearly programming is sort of like
+the extreme case of
+
+510
+00:28:39,409 --> 00:28:45,308
+convex optimization because all the
+functions involved are just barely convex.
+
+511
+00:28:45,308 --> 00:28:46,360
+Right?
+
+512
+00:28:46,360 --> 00:28:47,982
+Or something like that, right, they're
+right on the boundary.
+
+513
+00:28:47,982 --> 00:28:53,157
+Okay, alright, now, in general there's no
+analytical solution for convex, except for
+
+514
+00:28:53,157 --> 00:28:57,950
+of course you know, a handful of sort of
+trivial cases.
+
+515
+00:28:57,950 --> 00:29:00,229
+And we'll look at some of those, and some
+of those are useful, but
+
+516
+00:29:00,229 --> 00:29:03,152
+that, that's kind of not the focus of this
+course.
+
+517
+00:29:03,152 --> 00:29:05,309
+But there are reliable and efficient
+algorithms.
+
+518
+00:29:06,834 --> 00:29:11,485
+And the computation time, its roughly the
+same as something like least square.
+
+519
+00:29:11,485 --> 00:29:13,036
+It depends though on various things and
+
+520
+00:29:13,036 --> 00:29:16,858
+we will have a much more nuanced picture
+of this later in the class.
+
+521
+00:29:16,858 --> 00:29:22,101
+But its something like n squared m would
+come up, right?
+
+522
+00:29:22,101 --> 00:29:24,471
+Depending on the sizes of various things.
+
+523
+00:29:24,471 --> 00:29:28,893
+But in general it would look, it would
+degenerate to this something like, for
+
+524
+00:29:28,893 --> 00:29:34,791
+example, for linear programming it would
+degenerate to the numbers I gave.
+
+525
+00:29:34,791 --> 00:29:36,342
+And the same for least squares, right?
+
+526
+00:29:36,342 --> 00:29:38,240
+So, that, that's what it would look like
+something like that.
+
+527
+00:29:38,240 --> 00:29:40,064
+And it's related to, the number of,
+
+528
+00:29:40,064 --> 00:29:43,515
+of variables that's n cubed number of
+constraints m.
+
+529
+00:29:43,515 --> 00:29:46,075
+And, and capital F is something, the cost
+of evaluating all the functions and
+
+530
+00:29:46,075 --> 00:29:48,549
+their first and secondary, something like
+that.
+
+531
+00:29:48,549 --> 00:29:56,970
+Okay now then the question is, you know,
+how do you use convex optimization?
+
+532
+00:29:56,970 --> 00:29:57,806
+Well here is, I mean here is
+
+533
+00:29:57,806 --> 00:30:00,370
+the first thing that's actually kind of
+interesting is this.
+
+534
+00:30:00,370 --> 00:30:04,840
+It's actually not easy to recognize convex
+options.
+
+535
+00:30:04,840 --> 00:30:08,602
+And in fact, that's where you're going to
+spend the first three weeks getting up to
+
+536
+00:30:08,602 --> 00:30:10,330
+speed on that.
+
+537
+00:30:10,330 --> 00:30:12,860
+And in fact, not just the first three
+weeks, because we'll do it for
+
+538
+00:30:12,860 --> 00:30:16,420
+three weeks, and we'll be all overwhelmed
+and stuff like that.
+
+539
+00:30:16,420 --> 00:30:18,409
+But then for the next seven after that, in
+practical context,
+
+540
+00:30:18,409 --> 00:30:21,500
+we'll be doing absolutely nothing but
+recognizing convex functions.
+
+541
+00:30:21,500 --> 00:30:22,196
+Nothing.
+I mean,
+
+542
+00:30:22,196 --> 00:30:24,830
+that's, that's basically what the class is
+about, 'Kay?
+
+543
+00:30:24,830 --> 00:30:28,829
+So, and it's, it's just, it's just not
+that, it's not obvious.
+
+544
+00:30:28,829 --> 00:30:33,370
+We'll get in, we'll see some we'll see
+what that looks like later.
+
+545
+00:30:33,370 --> 00:30:37,172
+Okay, and there are some tricks.
+
+546
+00:30:37,172 --> 00:30:40,180
+There are some tricks we will see a bunch
+of them where for
+
+547
+00:30:40,180 --> 00:30:44,990
+example, problem might not be convex in
+its original form.
+
+548
+00:30:44,990 --> 00:30:49,540
+But then it turns out you do some
+transformation and now it's convex.
+
+549
+00:30:49,540 --> 00:30:51,525
+And the implication is now it's easy to
+solve.
+
+550
+00:30:51,525 --> 00:30:55,480
+A good example is that circuit design that
+we talked about.
+
+551
+00:30:55,480 --> 00:30:58,428
+It's not convex in the lengths and widths,
+but those are what you're supposed to,
+
+552
+00:30:58,428 --> 00:31:01,720
+that's what you're supposed to optimize,
+so what do you do?
+
+553
+00:31:01,720 --> 00:31:05,120
+And it turns out, and this is not at all
+obvious.
+
+554
+00:31:05,120 --> 00:31:07,100
+It is convex if you work, instead of with
+the widths and
+
+555
+00:31:07,100 --> 00:31:11,650
+the lengths, you work with the log of the
+lengths and the log of the widths.
+
+556
+00:31:11,650 --> 00:31:12,870
+That's weird.
+
+557
+00:31:12,870 --> 00:31:15,737
+Although actually if you talk to circuit
+designer, it's complete, they,
+
+558
+00:31:15,737 --> 00:31:18,520
+they would say well duh, or something like
+that.
+
+559
+00:31:18,520 --> 00:31:19,970
+And I would say well yea, why do you say
+that?
+
+560
+00:31:19,970 --> 00:31:21,310
+And their like it's obvious.
+
+561
+00:31:21,310 --> 00:31:22,364
+There's, I don't know anyway.
+
+562
+00:31:22,364 --> 00:31:24,614
+I actually, I actually trust them.
+
+563
+00:31:24,614 --> 00:31:27,089
+I, I believe they know that, right?
+
+564
+00:31:27,089 --> 00:31:30,239
+It's actually and also interesting if you
+look at sort of like,sometimes the widths
+
+565
+00:31:30,239 --> 00:31:33,850
+and lengths are discretized and they look
+like things like this.
+
+566
+00:31:33,850 --> 00:31:38,560
+It'll be like 1, 1.4, 2, 2.8.
+
+567
+00:31:38,560 --> 00:31:39,485
+Anyone know these numbers?
+
+568
+00:31:39,485 --> 00:31:41,796
+4.
+
+569
+00:31:41,796 --> 00:31:45,950
+So they're geometrically spaced, hinting
+that somebody knew clearly that what
+
+570
+00:31:45,950 --> 00:31:50,619
+mattered was actually the log of these
+things, of these widths.
+
+571
+00:31:50,619 --> 00:31:52,980
+And not the actual values or subjects.
+
+572
+00:31:52,980 --> 00:31:54,060
+So, okay.
+
+573
+00:31:54,060 --> 00:31:57,895
+Another thing it's true is that that's
+another focus of the class is
+
+574
+00:31:57,895 --> 00:32:04,175
+that it turns out that lots of problems
+can be solved via convex optimization.
+
+575
+00:32:04,175 --> 00:32:07,388
+so, that's, that's also that's also part
+of this class, so
+
+576
+00:32:07,388 --> 00:32:10,450
+we are going to look at a lot of them.
+
+577
+00:32:10,450 --> 00:32:14,162
+By the way, a whole, a whole lot more
+cannot be but that's another story and
+
+578
+00:32:14,162 --> 00:32:17,350
+we'll talk about that several times.
+
+579
+00:32:17,350 --> 00:32:19,180
+Okay, let's look at an example, so
+
+580
+00:32:19,180 --> 00:32:23,023
+here I have a bunch of lamps, that's,
+these, are these the lamp positions and
+
+581
+00:32:23,023 --> 00:32:27,914
+I have some surface down here which is
+[UNKNOWN] linear.
+
+582
+00:32:27,914 --> 00:32:30,598
+And the lamps, I can choose a power at
+each lamp and
+
+583
+00:32:30,598 --> 00:32:34,670
+then that gives you an illumination on
+each surface.
+
+584
+00:32:34,670 --> 00:32:39,350
+And the mapping from power to illumination
+is linear.
+
+585
+00:32:39,350 --> 00:32:39,880
+Right?
+
+586
+00:32:39,880 --> 00:32:43,272
+So, this is not, this is not coherent
+light, it's incoherent and
+
+587
+00:32:43,272 --> 00:32:45,570
+the power is add, okay?
+
+588
+00:32:45,570 --> 00:32:47,460
+And you just get some geometry factors.
+
+589
+00:32:47,460 --> 00:32:51,590
+The geometry factors would be inverse
+square the farther you are away.
+
+590
+00:32:51,590 --> 00:32:55,980
+And then you have a shading or I think
+some people call it the cosine factor.
+
+591
+00:32:55,980 --> 00:32:58,044
+Right?
+So, that if you shine light from here and
+
+592
+00:32:58,044 --> 00:33:00,935
+it goes down you know, you get cosine
+theta is the effective power or
+
+593
+00:33:00,935 --> 00:33:03,305
+illumination so, okay.
+
+594
+00:33:03,305 --> 00:33:05,951
+And the zero, says that if the surface is
+like this,
+
+595
+00:33:05,951 --> 00:33:08,282
+this is the surface you are illuminating
+and
+
+596
+00:33:08,282 --> 00:33:14,110
+the source is there, you get zero because
+it's under it, right, so, okay.
+
+597
+00:33:14,110 --> 00:33:17,034
+And you can make much more sophisticated
+models, that would look the same, for
+
+598
+00:33:17,034 --> 00:33:21,057
+example, you could add mirrors and weird
+other objects and stuff like that.
+
+599
+00:33:21,057 --> 00:33:22,089
+And it'd still be linear, but
+
+600
+00:33:22,089 --> 00:33:26,310
+it'd be a super pain in the ass to figure
+out what these coefficients are.
+
+601
+00:33:26,310 --> 00:33:28,659
+Now the question, you're going to choose
+the lamp powers.
+
+602
+00:33:28,659 --> 00:33:32,868
+The lamp powers by the way have to be
+between zero and some maximum power.
+
+603
+00:33:32,868 --> 00:33:34,320
+And what you want is to des,
+
+604
+00:33:34,320 --> 00:33:39,571
+is to, achieve some constant desired
+illumination on the bottom.
+
+605
+00:33:39,571 --> 00:33:42,013
+And we're going to measure that, by log,
+
+606
+00:33:42,013 --> 00:33:47,494
+by percentage deviation, in fact by
+maximum percentage deviation, right?
+
+607
+00:33:47,494 --> 00:33:49,080
+So, we're going to take the log of,
+
+608
+00:33:49,080 --> 00:33:53,228
+of the, the actual illumination, subtract
+that from the log of the desired one and
+
+609
+00:33:53,228 --> 00:33:59,370
+we'll take the max from that, that's
+basically the mini-max percentage error.
+
+610
+00:33:59,370 --> 00:34:02,230
+That's the correct interpretation of the
+objective, right?
+
+611
+00:34:02,230 --> 00:34:05,020
+So, okay, alright.
+
+612
+00:34:05,020 --> 00:34:05,795
+So, how would you do it?
+
+613
+00:34:05,795 --> 00:34:09,891
+Well, and I'll just trace you through what
+I think would be a reasonable way to
+
+614
+00:34:09,891 --> 00:34:12,630
+solve a problem like that.
+
+615
+00:34:12,630 --> 00:34:16,290
+By the way I'm, I'm, this is someone who
+actually wants to do this.
+
+616
+00:34:16,290 --> 00:34:18,900
+This is not a theoretical analysis or
+something like that.
+
+617
+00:34:18,900 --> 00:34:21,204
+So, it's, you might do the following, just
+to get a feel for
+
+618
+00:34:21,204 --> 00:34:23,320
+the problem, you might do this.
+
+619
+00:34:23,320 --> 00:34:27,450
+You might set all the lamps at constant
+power and then vary that power level, and,
+
+620
+00:34:27,450 --> 00:34:30,120
+and, and plot the objective.
+
+621
+00:34:30,120 --> 00:34:31,355
+And find, at least the,
+
+622
+00:34:31,355 --> 00:34:36,625
+find out what constant power level would
+give, would do the best that way.
+
+623
+00:34:36,625 --> 00:34:38,970
+Okay, you might use least squares.
+
+624
+00:34:38,970 --> 00:34:41,937
+So, you might do something like this, you
+might say,
+
+625
+00:34:41,937 --> 00:34:48,330
+well, I'll, I'll the idea is to make i
+desired, ik equal to i desired, right?
+
+626
+00:34:48,330 --> 00:34:52,740
+I really want to make it equal in a
+mini-max percentage error.
+
+627
+00:34:52,740 --> 00:34:53,980
+But you know, screw it.
+
+628
+00:34:53,980 --> 00:34:55,282
+I mean, one measure of being close is,
+
+629
+00:34:55,282 --> 00:34:57,004
+is gotta look like something like another
+one, so
+
+630
+00:34:57,004 --> 00:35:00,228
+I'll use least squares for which I have
+technology, okay?
+
+631
+00:35:00,228 --> 00:35:02,480
+So, I'll use least squares.
+
+632
+00:35:02,480 --> 00:35:04,510
+Now the problem with this is if you do
+this,
+
+633
+00:35:04,510 --> 00:35:09,951
+it's pretty much guaranteed that some of
+the powers are going to come out negative.
+
+634
+00:35:09,951 --> 00:35:13,812
+And in fact, you're going to do, it's
+likely that you'll do really well.
+
+635
+00:35:13,812 --> 00:35:16,440
+That you'll have, you'll really do well.
+
+636
+00:35:16,440 --> 00:35:19,025
+Many of the ik's will be very close to the
+desired one, and
+
+637
+00:35:19,025 --> 00:35:22,520
+the way you'll do that is something like
+this.
+
+638
+00:35:22,520 --> 00:35:25,400
+When, when you go back here you know,
+these things will put out some power, and
+
+639
+00:35:25,400 --> 00:35:29,659
+then to adjust it, like this guy in the
+middle will spray some negative power.
+
+640
+00:35:29,659 --> 00:35:35,297
+It will spray darkness on to the, on to
+the the patches, right?
+
+641
+00:35:35,297 --> 00:35:37,078
+And it'll just kind of adjust everything.
+
+642
+00:35:37,078 --> 00:35:38,119
+You'll do really well.
+
+643
+00:35:38,119 --> 00:35:43,191
+But, but it, it's not relevant that you do
+well, because it's, doesn't work.
+
+644
+00:35:43,191 --> 00:35:45,187
+It, it violates the constraints.
+
+645
+00:35:45,187 --> 00:35:47,837
+Okay, so, then you would go into some
+weird mode where you start,
+
+646
+00:35:47,837 --> 00:35:49,993
+you would do things like this.
+
+647
+00:35:49,993 --> 00:35:52,905
+You'd say, okay, I'll do least squares and
+get some lamp powers, and
+
+648
+00:35:52,905 --> 00:35:54,465
+then if the p that's being called for
+
+649
+00:35:54,465 --> 00:35:59,047
+in least squares is negative, I'll clip it
+off, I make it zero.
+
+650
+00:35:59,047 --> 00:36:01,185
+I'll turn that lamb off, okay?
+
+651
+00:36:01,185 --> 00:36:06,772
+And if pj is bigger than my maximum
+allowed power.
+
+652
+00:36:06,772 --> 00:36:08,289
+My maximum allowed power is 10 kilowatts
+and
+
+653
+00:36:08,289 --> 00:36:12,180
+it comes out as 20 kilowatts, I just clip
+it to 10, I'll so as much as I can, right?
+
+654
+00:36:12,180 --> 00:36:16,596
+And you know, if you're lucky, something
+like this might work, right?
+
+655
+00:36:16,596 --> 00:36:18,696
+But if you want to do something a little
+more sophisticated,
+
+656
+00:36:18,696 --> 00:36:21,510
+you would then come up with something like
+this, you'd say, well, I'll, I'll keep
+
+657
+00:36:21,510 --> 00:36:26,020
+this here because that's what I really
+want, it's not what I really want, sorry.
+
+658
+00:36:26,020 --> 00:36:27,762
+This is already a surrogate for
+
+659
+00:36:27,762 --> 00:36:32,719
+what you really want, which is the
+mini-max percentage error, okay.
+
+660
+00:36:32,719 --> 00:36:34,919
+And you'll add something like this, this
+is,
+
+661
+00:36:34,919 --> 00:36:37,712
+this is standard trick in least squares.
+
+662
+00:36:37,712 --> 00:36:40,998
+You add, you augment the objective by
+adding in this, this says,
+
+663
+00:36:40,998 --> 00:36:46,650
+I want my lamp powers to be right smack in
+the middle of the interval.
+
+664
+00:36:46,650 --> 00:36:49,350
+That they're allowed to be in, which is
+zero p max, right?
+
+665
+00:36:49,350 --> 00:36:50,230
+And so the point is here,
+
+666
+00:36:50,230 --> 00:36:54,190
+weight, these are like weights, these are
+little, that's a little knob I can turn.
+
+667
+00:36:54,190 --> 00:36:57,595
+And if I crank up a wj super high, what
+happens?
+
+668
+00:36:57,595 --> 00:37:00,972
+Pj gets to p max over two, I mean narrowly
+right?
+
+669
+00:37:00,972 --> 00:37:05,394
+Okay, but in particular some way as I'm
+turning that knob at some point pj gets in
+
+670
+00:37:05,394 --> 00:37:08,671
+the acceptable interval, right?
+
+671
+00:37:08,671 --> 00:37:11,217
+So, for these ws high enough you get
+feasible,
+
+672
+00:37:11,217 --> 00:37:14,750
+now of course that's part of the
+objective.
+
+673
+00:37:14,750 --> 00:37:16,514
+Meanwhile this is getting bigger and so
+
+674
+00:37:16,514 --> 00:37:19,944
+now you could think of some methods for
+automatically adjusting these weights, and
+
+675
+00:37:19,944 --> 00:37:24,096
+weight twiddling and all that kind of, you
+could do some stuff.
+
+676
+00:37:24,096 --> 00:37:26,890
+And something would probably work, maybe
+kind of.
+
+677
+00:37:26,890 --> 00:37:27,880
+Something would happen.
+
+678
+00:37:27,880 --> 00:37:28,630
+It would work.
+
+679
+00:37:28,630 --> 00:37:32,090
+This is, I mean, by the way, this is how
+stuff is actually done, right?
+
+680
+00:37:32,090 --> 00:37:33,300
+So, okay.
+
+681
+00:37:33,300 --> 00:37:36,020
+By the way, you're in statistics, you're
+machine learning and you're making, and
+
+682
+00:37:36,020 --> 00:37:37,720
+you're snickering right now?
+
+683
+00:37:37,720 --> 00:37:38,592
+You shouldn't be.
+
+684
+00:37:38,592 --> 00:37:39,860
+because there?
+
+685
+00:37:39,860 --> 00:37:43,350
+Same thing, it's just, it's these are
+just, these are just regularization.
+
+686
+00:37:43,350 --> 00:37:44,500
+Right?
+
+687
+00:37:44,500 --> 00:37:47,516
+Although I guess cross validation is
+pretty good, pretty that, that,
+
+688
+00:37:47,516 --> 00:37:51,140
+that no one can argue with, so that's
+fine, okay, alright.
+
+689
+00:37:51,140 --> 00:37:53,231
+Or you might say, well no, I know about
+linear programming and
+
+690
+00:37:53,231 --> 00:37:55,200
+I can actually solve this problem.
+
+691
+00:37:55,200 --> 00:37:58,006
+And it, this is, now you're getting real
+close to the real problem, right,
+
+692
+00:37:58,006 --> 00:38:02,280
+because look at this, you can handle in
+linear programming these inequalities.
+
+693
+00:38:02,280 --> 00:38:06,260
+And you can handle the, the max of an
+absolute value.
+
+694
+00:38:06,260 --> 00:38:09,690
+So, you're getting pretty close now to, to
+what you want.
+
+695
+00:38:09,690 --> 00:38:11,916
+The difference is, this is the mini-max
+error, but
+
+696
+00:38:11,916 --> 00:38:16,880
+what you want is in fact not the mini-max
+error, but the mini-max fractional error.
+
+697
+00:38:16,880 --> 00:38:17,870
+So, you're getting close.
+
+698
+00:38:17,870 --> 00:38:21,115
+This would get you pretty close,
+especially by the way, if the opt,
+
+699
+00:38:21,115 --> 00:38:25,536
+if the solution comes out, and it's only
+like plus, minus 5%.
+
+700
+00:38:25,536 --> 00:38:26,956
+You're done.
+
+701
+00:38:26,956 --> 00:38:29,626
+Why?
+Because, you know, between 0.95 and
+
+702
+00:38:29,626 --> 00:38:32,510
+1.05, log log 1 [INAUDIBLE].
+
+703
+00:38:32,510 --> 00:38:36,367
+You know, log x looks like, you know, x
+minus 1, period.
+
+704
+00:38:36,367 --> 00:38:38,730
+So, you're done, right?
+
+705
+00:38:38,730 --> 00:38:41,306
+Now, if it comes out plus minus 50%
+something like that,
+
+706
+00:38:41,306 --> 00:38:43,967
+that's not true anymore.
+
+707
+00:38:43,967 --> 00:38:46,260
+but, okay.
+
+708
+00:38:46,260 --> 00:38:47,709
+Now all of these are kind of,
+
+709
+00:38:47,709 --> 00:38:51,937
+these are not solutions, these are
+approximations, right?
+
+710
+00:38:51,937 --> 00:38:54,832
+But it turns out it's a convex problem,
+right?
+
+711
+00:38:54,832 --> 00:38:57,211
+And it's convex I'll say why in a minute,
+but
+
+712
+00:38:57,211 --> 00:39:01,237
+it's convex because what you're really
+minimizing if you take the x of it is,
+
+713
+00:39:01,237 --> 00:39:06,882
+this thing h is something like the
+fractional error, right?
+
+714
+00:39:06,882 --> 00:39:08,488
+So, it looks like this.
+
+715
+00:39:08,488 --> 00:39:12,951
+If, if you're above your target one,
+right, then it's just linear in it right?
+
+716
+00:39:12,951 --> 00:39:17,130
+And if you're below it it's one over it,
+because it's something like that.
+
+717
+00:39:17,130 --> 00:39:19,527
+So, in other words plus or minus two would
+tell you something,
+
+718
+00:39:19,527 --> 00:39:23,610
+that's the 50% point and indeed it would
+be the interval one half to two.
+
+719
+00:39:23,610 --> 00:39:24,200
+Right?
+
+720
+00:39:24,200 --> 00:39:25,275
+So, that's how that works.
+
+721
+00:39:25,275 --> 00:39:29,144
+And we'll see later that a sum, a convex
+function is convex and so
+
+722
+00:39:29,144 --> 00:39:32,875
+is a max and all that kind of stuff.
+
+723
+00:39:32,875 --> 00:39:37,023
+So, that would tell you this function is
+this problem is convex and
+
+724
+00:39:37,023 --> 00:39:39,764
+you solve it exactly.
+
+725
+00:39:39,764 --> 00:39:42,964
+And not only that, actually with tools
+that you will learn in
+
+726
+00:39:42,964 --> 00:39:47,572
+this course this would be completely, you
+could, I mean by the fifth, fourth week or
+
+727
+00:39:47,572 --> 00:39:52,670
+something like that this would be a joke
+for you.
+
+728
+00:39:52,670 --> 00:39:56,570
+It would be insulting to ask you to solve
+a problem like that and you could
+
+729
+00:39:56,570 --> 00:40:02,940
+actually write a script that's about four
+lines long that would solve it, right?
+
+730
+00:40:02,940 --> 00:40:04,820
+By the eighth week of the class, you could
+write your own,
+
+731
+00:40:04,820 --> 00:40:06,960
+you could roll your own for this, right?
+
+732
+00:40:06,960 --> 00:40:09,710
+You could write your own, solve for it,
+stuff like that.
+
+733
+00:40:09,710 --> 00:40:10,900
+So, oh and by the way,
+
+734
+00:40:10,900 --> 00:40:16,610
+the computational complexity is a modest
+factor times least squares, right?
+
+735
+00:40:16,610 --> 00:40:18,930
+So, like, 20, maybe 10.
+
+736
+00:40:18,930 --> 00:40:20,125
+Right?
+So, what that tells you is
+
+737
+00:40:20,125 --> 00:40:22,105
+that if you do more than ten weight
+twiddle, you know,
+
+738
+00:40:22,105 --> 00:40:26,328
+if you twiddle around with the weights
+like ten times, and fiddling around.
+
+739
+00:40:26,328 --> 00:40:30,030
+Then it would, it would be faster just to
+solve it exactly.
+
+740
+00:40:30,030 --> 00:40:30,845
+That's what it comes down to.
+
+741
+00:40:30,845 --> 00:40:32,585
+Okay.
+
+742
+00:40:32,585 --> 00:40:35,940
+[COUGH] But let's see, let's add some more
+constraints, and see what happens.
+
+743
+00:40:35,940 --> 00:40:39,800
+So, we'll add, we'll think about adding
+one of, you know, two constraints.
+
+744
+00:40:39,800 --> 00:40:44,359
+Here's one, no more than half of the total
+power is in any 10 lamps.
+
+745
+00:40:45,730 --> 00:40:48,030
+I have no idea why you'd have a constraint
+like that, but
+
+746
+00:40:48,030 --> 00:40:50,134
+let's suppose you did, right?
+
+747
+00:40:50,134 --> 00:40:52,560
+Something like that, right?
+
+748
+00:40:52,560 --> 00:40:53,752
+Okay?
+So, or
+
+749
+00:40:53,752 --> 00:40:58,930
+no more than half the lamps are on, right?
+
+750
+00:40:58,930 --> 00:41:02,120
+So, suppose these are your two these,
+these are your these,
+
+751
+00:41:02,120 --> 00:41:04,430
+these are two constraints.
+
+752
+00:41:04,430 --> 00:41:06,440
+At first, they sound like they're about
+the same.
+
+753
+00:41:06,440 --> 00:41:11,266
+And certainly if you parse them in English
+they sound kind of similar, right?
+
+754
+00:41:11,266 --> 00:41:14,026
+They, they don't sound that different,
+right?
+
+755
+00:41:14,026 --> 00:41:16,710
+And it turns out this, this constraint is
+convex, and
+
+756
+00:41:16,710 --> 00:41:20,676
+that means it's immediately easy to solve,
+exactly.
+
+757
+00:41:20,676 --> 00:41:23,726
+This one is actually extremely difficult
+to solve exactly,
+
+758
+00:41:23,726 --> 00:41:28,677
+by the way there's very good heuristics
+for solving the second one.
+
+759
+00:41:28,677 --> 00:41:31,540
+Sorry approximately solving the second
+one.
+
+760
+00:41:31,540 --> 00:41:35,974
+Very good heuristics for it but they're
+just heuristics.
+
+761
+00:41:35,974 --> 00:41:36,670
+Okay?
+
+762
+00:41:36,670 --> 00:41:39,690
+I mean, heuristics are, can be, very
+useful, right?
+
+763
+00:41:39,690 --> 00:41:42,890
+But they're not, you're not solving the
+problem, right?
+
+764
+00:41:42,890 --> 00:41:46,930
+And, what's interesting about this things
+like this.
+
+765
+00:41:46,930 --> 00:41:49,471
+There are lots of other examples like
+this.
+
+766
+00:41:49,471 --> 00:41:53,749
+is, it turns out that sort of, you know,
+your basic intuition about whether
+
+767
+00:41:53,749 --> 00:42:00,643
+a problem is easy or hard especially if
+you're not trained about say convexity.
+
+768
+00:42:00,643 --> 00:42:04,892
+And we're talking about continuous
+optimization problems right?
+
+769
+00:42:04,892 --> 00:42:08,324
+If you're not trained in recognizing
+convexity,
+
+770
+00:42:08,324 --> 00:42:12,990
+then basically your intuition is mostly
+just wrong.
+
+771
+00:42:12,990 --> 00:42:14,239
+This is wrong, right?
+
+772
+00:42:14,239 --> 00:42:16,918
+The, the kind of things that you either
+got explicitly or
+
+773
+00:42:16,918 --> 00:42:21,079
+implicitly from your 19th century
+mathematics training, right?
+
+774
+00:42:21,079 --> 00:42:25,850
+Which is like, small problems are easier
+than big ones, I don't know, you know.
+
+775
+00:42:25,850 --> 00:42:30,370
+These, they move the smoother things they,
+that things are, the, the easier they are.
+
+776
+00:42:30,370 --> 00:42:34,270
+All of these are just re, they're just
+false, they're just not true, right?
+
+777
+00:42:34,270 --> 00:42:38,062
+They're not, and worse than that they're
+not useful, right?
+
+778
+00:42:38,062 --> 00:42:38,781
+So, okay.
+
+779
+00:42:38,781 --> 00:42:41,977
+That's actually one of the things we'll,
+we'll, we'll see in this, in this class as
+
+780
+00:42:41,977 --> 00:42:46,285
+we move forward, they'll be lots of,
+examples of this kind of stuff.
+
+781
+00:42:46,285 --> 00:42:50,480
+So, let me say a little bit about what the
+course is about.
+
+782
+00:42:50,480 --> 00:42:51,800
+So, the goals are well,
+
+783
+00:42:51,800 --> 00:42:57,020
+basically to get you all up to speed in
+recognizing these, these problems, right?
+
+784
+00:42:57,020 --> 00:43:00,800
+So, how, how can you if someone has a
+problem, in a practical context, and
+
+785
+00:43:00,800 --> 00:43:06,000
+the question is, how do you recognize it
+as convex, formulate it.
+
+786
+00:43:06,000 --> 00:43:06,592
+Or in the,
+
+787
+00:43:06,592 --> 00:43:13,030
+in these more advance settings it, it's
+kind of a second tier, or whatever.
+
+788
+00:43:13,030 --> 00:43:16,054
+You would do something like this instead
+of saying that's convex or
+
+789
+00:43:16,054 --> 00:43:18,808
+not, you would say, that's not convex, but
+if we work with, and
+
+790
+00:43:18,808 --> 00:43:23,240
+then you name some sick change of
+variable, it is convex.
+
+791
+00:43:23,240 --> 00:43:25,420
+Right?
+So, we, we'll get to plenty of those, too.
+
+792
+00:43:25,420 --> 00:43:28,907
+And by this a bunch of those, they, they
+occur in all sort of things.
+
+793
+00:43:28,907 --> 00:43:30,671
+Actually people trained in statistics and
+
+794
+00:43:30,671 --> 00:43:35,350
+machine learning would already know this
+and the case of exponential family, right?
+
+795
+00:43:35,350 --> 00:43:39,610
+Turns out, the correct thing to estimate
+is not the co-variance, that's wrong.
+
+796
+00:43:39,610 --> 00:43:44,400
+Turns out, the correct parameter to
+estimate is the inverse co-variance.
+
+797
+00:43:44,400 --> 00:43:48,090
+Even sicker, the correct thing to estimate
+is not the mean of a bunch of vectors.
+
+798
+00:43:48,090 --> 00:43:51,266
+It's the co-variance inverse times the
+mean.
+
+799
+00:43:51,266 --> 00:43:52,076
+Okay?
+
+800
+00:43:52,076 --> 00:43:56,710
+So, you will, you will see all sorts of
+little cool things like that.
+
+801
+00:43:56,710 --> 00:43:59,020
+You've already heard two from this, from
+today's overview.
+
+802
+00:43:59,020 --> 00:43:59,711
+Right?
+
+803
+00:43:59,711 --> 00:44:03,841
+Okay so we'll also at least in principal
+in fact not even just in principle but
+
+804
+00:44:03,841 --> 00:44:07,617
+we'll actually have you write up some
+simple code, and that's simple code for
+
+805
+00:44:07,617 --> 00:44:11,530
+solving problems like, like these.
+
+806
+00:44:11,530 --> 00:44:15,534
+You'll know how it's done you won't, we
+won't focus a lot on,
+
+807
+00:44:15,534 --> 00:44:18,502
+on that, that's silly.
+
+808
+00:44:18,502 --> 00:44:21,190
+Because well, there's quite good software
+done by
+
+809
+00:44:21,190 --> 00:44:25,812
+people who know a lot more than you will
+know at that point.
+
+810
+00:44:25,812 --> 00:44:29,070
+Actually a lot more than I know about some
+of these things.
+
+811
+00:44:29,070 --> 00:44:31,630
+And they've spent a lot of time doing it.
+
+812
+00:44:31,630 --> 00:44:34,340
+So, so it's not to replicate it.
+
+813
+00:44:34,340 --> 00:44:36,220
+It's actually to demystify it.
+
+814
+00:44:36,220 --> 00:44:38,850
+To be able to characterize the solution, a
+solution.
+
+815
+00:44:38,850 --> 00:44:39,550
+Right?
+
+816
+00:44:39,550 --> 00:44:40,860
+And say what does it look like.
+
+817
+00:44:40,860 --> 00:44:43,460
+You could say it's no better than this,
+and things like that.
+
+818
+00:44:43,460 --> 00:44:44,588
+We'll see that.
+So, okay, so
+
+819
+00:44:44,588 --> 00:44:47,072
+the main topics of the class then are for
+
+820
+00:44:47,072 --> 00:44:50,522
+the first couple of weeks we're going to
+look at convex sets and
+
+821
+00:44:50,522 --> 00:44:57,200
+function I, I'm going to warn you now it's
+going to be dry.
+
+822
+00:44:57,200 --> 00:44:59,100
+And what can I say?
+
+823
+00:44:59,100 --> 00:45:00,582
+Too bad.
+
+824
+00:45:00,582 --> 00:45:05,574
+It's all for a a grander purpose because I
+don't know somewhere around week three or
+
+825
+00:45:05,574 --> 00:45:10,315
+four it will actually then start getting
+interesting.
+
+826
+00:45:10,315 --> 00:45:15,278
+And by five, six, seven, eight, we, we'll
+hit, we'll have hit our stride.
+
+827
+00:45:15,278 --> 00:45:18,470
+And by then, by week six, my claim is
+you'll have been paid back for
+
+828
+00:45:18,470 --> 00:45:23,258
+what happened to you during the first, the
+second and third weeks.
+
+829
+00:45:23,258 --> 00:45:26,170
+we'll, we'll look at a whole bunch along
+the way of examples and applications.
+
+830
+00:45:26,170 --> 00:45:29,434
+Sometimes they'll be along, along the way,
+just to illustrate something which is
+
+831
+00:45:29,434 --> 00:45:33,010
+a theoretical thing or sometimes it'll
+just be fun by itself.
+
+832
+00:45:33,010 --> 00:45:37,834
+We'll just spend whole lectures looking at
+thing like a statistical models and
+
+833
+00:45:37,834 --> 00:45:40,040
+things like that.
+
+834
+00:45:40,040 --> 00:45:41,510
+We'll hold lectures looking at various
+things.
+
+835
+00:45:41,510 --> 00:45:45,384
+And we'll also do, then do a section at
+the end which is on algorithms.
+
+836
+00:45:45,384 --> 00:45:48,070
+And algorithms, yeah, how do you actually
+solve these things.
+
+837
+00:45:48,070 --> 00:45:51,260
+And again, that's mostly to demystify
+these things, because they're not,
+
+838
+00:45:51,260 --> 00:45:54,105
+they're not that, they're not that hard.
+
+839
+00:45:54,105 --> 00:45:55,990
+Okay.
+
+840
+00:45:55,990 --> 00:46:01,097
+So, I do want to say a little bit about
+non-linear optimization.
+
+841
+00:46:01,097 --> 00:46:04,403
+And so this is the traditional, these are
+traditional techniques for
+
+842
+00:46:04,403 --> 00:46:07,370
+general non-convex op, eh, problems.
+
+843
+00:46:07,370 --> 00:46:08,992
+And they involve compromises.
+
+844
+00:46:08,992 --> 00:46:10,728
+By the way this is also called NLP,
+
+845
+00:46:10,728 --> 00:46:15,670
+which I know clashes with natural language
+programming, but you know.
+
+846
+00:46:15,670 --> 00:46:17,716
+They actually had the acronym first for
+
+847
+00:46:17,716 --> 00:46:21,374
+the record but that's NLP, it's non linear
+programming, and
+
+848
+00:46:21,374 --> 00:46:27,696
+by the way, that's the kind of, very much
+the western view of the world, right?
+
+849
+00:46:27,696 --> 00:46:31,000
+The, as, as, as all the stuff was
+developed in the 50s, 60s, 70s in the US,
+
+850
+00:46:31,000 --> 00:46:35,900
+it was mostly, oh and, you know, and
+Britain and various other places.
+
+851
+00:46:35,900 --> 00:46:38,310
+It was LP vs NLP.
+
+852
+00:46:38,310 --> 00:46:40,710
+So, linear programming versus non-linear
+programming and
+
+853
+00:46:40,710 --> 00:46:43,782
+that was the conceptual view, and that's
+how people identified you know,
+
+854
+00:46:43,782 --> 00:46:48,010
+that's, that's who you would hang out
+with, and things like that.
+
+855
+00:46:48,010 --> 00:46:51,748
+There were a few others, it was was ILP,
+that was Integer Linear Programming.
+
+856
+00:46:51,748 --> 00:46:55,250
+And they mostly didn't hang out with each
+other.
+
+857
+00:46:55,250 --> 00:46:56,307
+Anyway, we'll move on.
+
+858
+00:46:56,307 --> 00:47:01,521
+okay, so here people use local
+optimization methods and the idea is, is,
+
+859
+00:47:01,521 --> 00:47:03,180
+at, at, at the very least,
+
+860
+00:47:03,180 --> 00:47:11,060
+you find a point that minimizes [UNKNOWN]
+zero among feasible points near it.
+
+861
+00:47:11,060 --> 00:47:12,122
+Right?
+So, at least you find,
+
+862
+00:47:12,122 --> 00:47:13,970
+if you come up with a circuit design and
+you say, and
+
+863
+00:47:13,970 --> 00:47:17,777
+they say, what's the power distribution,
+you say it's 82 milliwatts.
+
+864
+00:47:17,777 --> 00:47:21,200
+And they go, hm that's pretty good
+because, you know, last week it was 122.
+
+865
+00:47:21,200 --> 00:47:25,400
+And then, then you'd say, well, you know,
+if you, and the idea is this,
+
+866
+00:47:25,400 --> 00:47:30,020
+if you we're to search around your design
+space near that current solution,
+
+867
+00:47:30,020 --> 00:47:36,740
+the power would always either go up or
+you'd become infeasible.
+
+868
+00:47:36,740 --> 00:47:38,356
+Right?
+You move in one direction and
+
+869
+00:47:38,356 --> 00:47:40,948
+you'd, you'd no longer meet your timing
+requirements but
+
+870
+00:47:40,948 --> 00:47:45,285
+you move in another direction, you meet
+your timing requirements.
+
+871
+00:47:45,285 --> 00:47:48,566
+And everything else but unfortunately the
+power goes out, right?
+
+872
+00:47:48,566 --> 00:47:50,810
+Or something like that, so that, that's a
+local solution.
+
+873
+00:47:50,810 --> 00:47:51,322
+Okay, and
+
+874
+00:47:51,322 --> 00:47:56,240
+this, this is extremely successful, I mean
+this can handle large problems.
+
+875
+00:47:56,240 --> 00:47:59,100
+It can do all sorts of stuff, it can be
+fast.
+
+876
+00:47:59,100 --> 00:48:03,500
+Unfortunately, what it, what it requires
+is an initial guess a good guess, right?
+
+877
+00:48:03,500 --> 00:48:05,010
+So, that's how that's done.
+
+878
+00:48:05,010 --> 00:48:08,426
+And it kind of really turns it into an art
+not really a science but,
+
+879
+00:48:08,426 --> 00:48:11,647
+which is great so it's an art.
+
+880
+00:48:11,647 --> 00:48:15,427
+And of course, when you do this you're
+never really quite sure whether or
+
+881
+00:48:15,427 --> 00:48:20,256
+not this is the best you can do, because
+you don't know.
+
+882
+00:48:20,256 --> 00:48:24,132
+Now you may not care because, you know, if
+you're taping out in ten days and someone
+
+883
+00:48:24,132 --> 00:48:30,013
+just reduced the power of some some sub
+circuit by some significant amount.
+
+884
+00:48:30,013 --> 00:48:33,739
+Your primary thought is not my God, do you
+think there's another design that's like
+
+885
+00:48:33,739 --> 00:48:38,760
+a little bit better or something like
+that, you're like, this is great.
+
+886
+00:48:38,760 --> 00:48:40,360
+So, so this is fine.
+
+887
+00:48:40,360 --> 00:48:42,880
+I, I mean in, in some applications, it's.
+
+888
+00:48:42,880 --> 00:48:44,460
+In many applications, this is just fine.
+
+889
+00:48:44,460 --> 00:48:48,549
+Okay, now the other compromise is to give
+up on speed,
+
+890
+00:48:48,549 --> 00:48:52,760
+you don't give up on solving, right?
+
+891
+00:48:52,760 --> 00:48:55,940
+So, another way to say this is, in local
+optimization, you kind of give up,
+
+892
+00:48:55,940 --> 00:48:59,026
+you redefine solve to mean not solve,
+right?
+
+893
+00:48:59,026 --> 00:49:01,163
+It's kind of a best effort thing, right?
+
+894
+00:49:01,163 --> 00:49:03,971
+By the way, you can always do anything
+because you take a heuristic and
+
+895
+00:49:03,971 --> 00:49:07,351
+you round it, you round, at the end before
+you return the solution, you check if
+
+896
+00:49:07,351 --> 00:49:12,990
+what you require that someone pass in an
+initial design or an initial point.
+
+897
+00:49:12,990 --> 00:49:16,058
+And if after you've done some you time
+out, you do whatever the hell you,
+
+898
+00:49:16,058 --> 00:49:17,566
+it doesn't make any of yous quit and
+
+899
+00:49:17,566 --> 00:49:23,240
+you check if you what you have produced is
+better than what they had.
+
+900
+00:49:23,240 --> 00:49:27,150
+If it's not, you just, you return what
+they gave you, right?
+
+901
+00:49:27,150 --> 00:49:28,590
+So, then you can do no harm, right?
+
+902
+00:49:28,590 --> 00:49:30,382
+So, then it's fine, I guess.
+
+903
+00:49:30,382 --> 00:49:33,194
+alright, now the other opt, the other goal
+is,
+
+904
+00:49:33,194 --> 00:49:38,630
+the other option is to do this, you
+actually solve the problem.
+
+905
+00:49:38,630 --> 00:49:41,894
+You get the absolute best, but you, but
+now you're willing and
+
+906
+00:49:41,894 --> 00:49:47,187
+you will have to sometimes accept very
+long computation times, right?
+
+907
+00:49:47,187 --> 00:49:47,999
+And in this case,
+
+908
+00:49:47,999 --> 00:49:52,001
+the worst case complexity in theory grows
+exponentially with problem size and
+
+909
+00:49:52,001 --> 00:49:56,860
+sometimes in practice actually fairly
+often in, in practice.
+
+910
+00:49:56,860 --> 00:49:59,836
+This is where you actually get the
+absolute best you get, you, you, you get,
+
+911
+00:49:59,836 --> 00:50:03,623
+you get something to absolutely minimizes
+the objective, right?
+
+912
+00:50:03,623 --> 00:50:06,248
+Now, it turns out in both of these well,
+
+913
+00:50:06,248 --> 00:50:09,998
+certainly in global optimization, almost
+every method for
+
+914
+00:50:09,998 --> 00:50:16,907
+global optimization is based on convex
+optimization as a subroutine right?
+
+915
+00:50:16,907 --> 00:50:19,427
+So, and we'll see bits and pieces of that
+as we go through the course.
+
+916
+00:50:19,427 --> 00:50:26,214
+So, let me let me finish up with just a
+brief history of convex optimization.
+
+917
+00:50:26,214 --> 00:50:30,546
+So, bits and pieces of course trace much
+earlier than this in mathematics, right?
+
+918
+00:50:30,546 --> 00:50:32,496
+well, linear programming you know,
+
+919
+00:50:32,496 --> 00:50:38,318
+is 200 years old easily least squares is
+whatever 200 years old maybe older.
+
+920
+00:50:38,318 --> 00:50:42,806
+But the theory of it you know, was pretty
+well developed actually by about 1950 and
+
+921
+00:50:42,806 --> 00:50:46,939
+by 1970 it was really quite well
+developed.
+
+922
+00:50:46,939 --> 00:50:48,880
+I guess in math it's called convex
+analysis.
+
+923
+00:50:48,880 --> 00:50:53,895
+That's the mathematics of, convexity
+mathematics of convex optimization.
+
+924
+00:50:53,895 --> 00:51:00,178
+Yeah, it's kind of, and that was basically
+like, kind of done in 1970, roughly.
+
+925
+00:51:00,178 --> 00:51:03,610
+Now algorithms for solving it there have
+been lots, but
+
+926
+00:51:03,610 --> 00:51:07,379
+I'll just mention some of the highlights.
+
+927
+00:51:07,379 --> 00:51:11,070
+So the one is this simplex method for
+linear programming.
+
+928
+00:51:11,070 --> 00:51:13,976
+And this is George Dantzig, who was
+actually at Stanford.
+
+929
+00:51:13,976 --> 00:51:20,294
+So this is from the 40s this is also done
+in Moscow in the 30s I should add.
+
+930
+00:51:20,294 --> 00:51:22,156
+This is simplex method for linear
+programming and, and
+
+931
+00:51:22,156 --> 00:51:25,120
+actually the date is really interesting
+because it tells you something.
+
+932
+00:51:25,120 --> 00:51:26,754
+It's basically coincident with the
+development of
+
+933
+00:51:26,754 --> 00:51:28,950
+the modern digital computer.
+
+934
+00:51:28,950 --> 00:51:31,155
+And that, that's what sort of make this
+entere, I mean,
+
+935
+00:51:31,155 --> 00:51:33,801
+this was in 1940 all the material we're
+going to cover in this class,
+
+936
+00:51:33,801 --> 00:51:37,703
+what we couldn't have covered any of the
+applications.
+
+937
+00:51:37,703 --> 00:51:40,198
+But all of the material will be super
+interesting.
+
+938
+00:51:40,198 --> 00:51:43,236
+Very interesting mathematics, right?
+
+939
+00:51:43,236 --> 00:51:46,591
+What, but, when you throw computation, the
+ability to do computation and
+
+940
+00:51:46,591 --> 00:51:48,956
+actually do stuff that has real
+algorithmic teeth,
+
+941
+00:51:48,956 --> 00:51:52,944
+where you're not just writing down silly
+formulas.
+
+942
+00:51:52,944 --> 00:51:55,089
+And or searching for silly formulas in
+vain, or
+
+943
+00:51:55,089 --> 00:51:58,579
+something like that, then it gets really
+interesting.
+
+944
+00:51:58,579 --> 00:52:01,820
+And so, it's not an accident that, that,
+that this is about the right time.
+
+945
+00:52:01,820 --> 00:52:03,460
+It came at the right time.
+
+946
+00:52:03,460 --> 00:52:06,322
+It's a very simple method called, simplex,
+it was propagated and
+
+947
+00:52:06,322 --> 00:52:08,520
+used everywhere in the world.
+
+948
+00:52:08,520 --> 00:52:10,523
+It's used in, all over to this day.
+
+949
+00:52:10,523 --> 00:52:13,954
+Okay now, part of something interesting in
+this class is
+
+950
+00:52:13,954 --> 00:52:20,770
+in the 60s there were some early, early
+attempts at, at interior point methods.
+
+951
+00:52:20,770 --> 00:52:23,290
+We are going to study those in maybe the
+seventh, eighth week of the class or
+
+952
+00:52:23,290 --> 00:52:25,616
+eighth or ninth, something like that.
+
+953
+00:52:25,616 --> 00:52:26,790
+There were early attempts at these.
+
+954
+00:52:26,790 --> 00:52:29,375
+So, a lot of the stuff that we are
+going to look at is not new.
+
+955
+00:52:29,375 --> 00:52:31,050
+By the way some, is very new.
+
+956
+00:52:31,050 --> 00:52:33,670
+So, some of the applications and things
+like that are very new, some is new.
+
+957
+00:52:33,670 --> 00:52:36,000
+But, a lot of it is, not new.
+
+958
+00:52:36,000 --> 00:52:37,705
+Those traces to the 60s.
+
+959
+00:52:37,705 --> 00:52:41,555
+In the 70s, there was work out of, out of
+Soviet Union on,
+
+960
+00:52:41,555 --> 00:52:46,910
+methods called ellipsoid methods and
+sub-gradient methods.
+
+961
+00:52:46,910 --> 00:52:49,066
+We're actually not going to cover those in
+this class, but
+
+962
+00:52:49,066 --> 00:52:52,344
+just its another I think a very important
+milestone.
+
+963
+00:52:52,344 --> 00:52:55,264
+A big one was in the 80s and in the 1980s
+you may
+
+964
+00:52:55,264 --> 00:53:02,645
+even heard about this I guess AT&T was
+being broken up or something like that.
+
+965
+00:53:02,645 --> 00:53:06,650
+Bell Lab was, was being pulled, was, was,
+was going out on its own.
+
+966
+00:53:06,650 --> 00:53:07,950
+And somebody knew something,
+
+967
+00:53:07,950 --> 00:53:11,590
+somebody who knew somebody else who knew
+somebody else and, and an algorithm for
+
+968
+00:53:11,590 --> 00:53:16,420
+linear programming ended up on the front
+page of the New York Times.
+
+969
+00:53:16,420 --> 00:53:19,205
+Right, not, not, not front, the sci, not
+the science section.
+
+970
+00:53:19,205 --> 00:53:20,637
+Front page.
+
+971
+00:53:20,637 --> 00:53:24,202
+I mean okay, maybe it was a slow news day
+okay, still.
+
+972
+00:53:24,202 --> 00:53:24,735
+>> [LAUGH].
+
+973
+00:53:24,735 --> 00:53:27,075
+>> But still, still it was the front page.
+
+974
+00:53:27,075 --> 00:53:30,261
+And sometime in the late 80s to now there
+was just a whole bunch of
+
+975
+00:53:30,261 --> 00:53:33,262
+things came together in the right way.
+
+976
+00:53:33,262 --> 00:53:36,772
+And there are people in the Soviet Union
+working on solving general convex
+
+977
+00:53:36,772 --> 00:53:38,878
+problems, people looking at applications
+and
+
+978
+00:53:38,878 --> 00:53:43,030
+this all kind of came together, and and it
+was great.
+
+979
+00:53:43,030 --> 00:53:45,320
+So, and, and things worked out.
+
+980
+00:53:45,320 --> 00:53:48,824
+So, the most interesting part is something
+like this,
+
+981
+00:53:48,824 --> 00:53:54,459
+is before about 1990 there, there were
+plenty of applications.
+
+982
+00:53:54,459 --> 00:53:57,649
+It was almost all linear programming,
+right and they were,
+
+983
+00:53:57,649 --> 00:54:00,665
+they were generally not, I mean, some were
+in engineering, but
+
+984
+00:54:00,665 --> 00:54:05,815
+mostly they were in areas like finance
+management.
+
+985
+00:54:05,815 --> 00:54:10,859
+These types of areas and so they were in
+operations research departments.
+
+986
+00:54:10,859 --> 00:54:15,080
+What were happened in the 90s was that
+more and more areas in engineering started
+
+987
+00:54:15,080 --> 00:54:21,040
+using these things by the way, a similar
+thing happened in statistics.
+
+988
+00:54:21,040 --> 00:54:22,960
+I would say that up until 19 you know,
+
+989
+00:54:22,960 --> 00:54:27,056
+90 it was still like you're doing you know
+Fisher and analysis of variants and
+
+990
+00:54:27,056 --> 00:54:31,740
+basically in least squares and things like
+that.
+
+991
+00:54:31,740 --> 00:54:35,558
+And it's somewhere between 1990 and like
+ten years ago,
+
+992
+00:54:35,558 --> 00:54:41,119
+the idea that you would actually solve
+some problem to come up with a statistical
+
+993
+00:54:41,119 --> 00:54:49,660
+estimate sort of became mainstream and has
+propagated very widely now.
+
+994
+00:54:49,660 --> 00:54:51,520
+We'll talk about that in great detail.
+
+995
+00:54:51,520 --> 00:54:56,344
+But since then there's been this huge
+explosion in lots of areas, in engineering
+
+996
+00:54:56,344 --> 00:55:02,375
+but also in statistics, machine learning
+and lots of other areas so.

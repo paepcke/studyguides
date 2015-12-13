@@ -1,0 +1,353 @@
+1
+00:00:01,460 --> 00:00:02,410
+>> Welcome back.
+
+2
+00:00:02,410 --> 00:00:04,960
+In this module, we're going to show you
+some extra tricks for managing data sets.
+
+3
+00:00:07,470 --> 00:00:10,990
+First, I'll show you an alternative to if,
+then, now statements.
+
+4
+00:00:10,990 --> 00:00:14,420
+Most of the time, if then now statements
+are enough to get the job done.
+
+5
+00:00:14,420 --> 00:00:17,740
+Sometimes, it's important to make sure you
+cover all possible cases with your if
+
+6
+00:00:17,740 --> 00:00:19,290
+then now statements.
+
+7
+00:00:19,290 --> 00:00:20,890
+You can do this by using a select end
+statement.
+
+8
+00:00:20,890 --> 00:00:22,770
+Let's look at an example.
+
+9
+00:00:24,720 --> 00:00:26,380
+So, instead of using if statements,
+
+10
+00:00:26,380 --> 00:00:30,720
+we have when statements to specify the
+conditions which must be in parenthesis.
+
+11
+00:00:30,720 --> 00:00:33,010
+There's no need to use a then statement.
+
+12
+00:00:33,010 --> 00:00:34,885
+If the condition in the when statement is
+met,
+
+13
+00:00:34,885 --> 00:00:37,960
+SAS will perform the action that follows
+the close parenthesis.
+
+14
+00:00:39,290 --> 00:00:42,410
+Here we have a block of three when
+statements to specify conditions and
+
+15
+00:00:42,410 --> 00:00:45,230
+actions, just like we did with the if then
+else statements before.
+
+16
+00:00:45,230 --> 00:00:49,350
+It's important to note that, whenever you
+want to use a block or when statements.
+
+17
+00:00:49,350 --> 00:00:52,240
+You must begin the block with a select
+statement, and
+
+18
+00:00:52,240 --> 00:00:53,380
+end the block with an end statement.
+
+19
+00:00:55,480 --> 00:00:59,760
+Just like with if then else statements, we
+create a new variable called weight group,
+
+20
+00:00:59,760 --> 00:01:01,830
+which depends on the value of weight and
+gender.
+
+21
+00:01:03,250 --> 00:01:06,730
+The difference, is that if one of these
+when statements is not satisfied.
+
+22
+00:01:06,730 --> 00:01:08,520
+The program will not run.
+
+23
+00:01:08,520 --> 00:01:11,320
+You will get an error and a notification
+in the log.
+
+24
+00:01:11,320 --> 00:01:13,650
+This is useful for catching conditions you
+did not consider.
+
+25
+00:01:15,230 --> 00:01:16,720
+Let's look at what happens when I try to
+run the code.
+
+26
+00:01:19,110 --> 00:01:20,980
+We get an error and a notification in the
+log.
+
+27
+00:01:22,240 --> 00:01:24,960
+Looks like we forgot to consider men with
+weight over 200.
+
+28
+00:01:24,960 --> 00:01:28,480
+And we haven't really specified what to do
+if weight is missing, or
+
+29
+00:01:28,480 --> 00:01:29,260
+subject is a woman.
+
+30
+00:01:31,530 --> 00:01:32,370
+Here, I fixed the code.
+
+31
+00:01:33,650 --> 00:01:36,880
+Men with weight over 200 are now placed
+into weight group four.
+
+32
+00:01:36,880 --> 00:01:39,640
+And males, females, or anyone with a
+missing value for
+
+33
+00:01:39,640 --> 00:01:42,840
+weight are now given a missing value for
+the weight variable.
+
+34
+00:01:45,310 --> 00:01:46,540
+Now the code will work, and
+
+35
+00:01:46,540 --> 00:01:49,730
+we can be sure every case in our data set
+was covered by our conditions.
+
+36
+00:01:52,510 --> 00:01:55,230
+>> I'll now show you an easy way to filter
+your data sets.
+
+37
+00:01:55,230 --> 00:01:58,880
+Sometimes you want to run a data analysis
+on a subset of your data.
+
+38
+00:01:58,880 --> 00:02:02,700
+It can be helpful to create a separate
+data set that just has the specific group
+
+39
+00:02:02,700 --> 00:02:04,330
+that you want to focus on.
+
+40
+00:02:04,330 --> 00:02:05,060
+Here's how you would do it.
+
+41
+00:02:06,200 --> 00:02:09,450
+I start with naming the new temporary data
+set that I want to create.
+
+42
+00:02:09,450 --> 00:02:12,260
+In this case, I will call it female.
+
+43
+00:02:12,260 --> 00:02:18,530
+I then use set to fill in all the data
+from the hrp223people3 data set,
+
+44
+00:02:18,530 --> 00:02:21,920
+by including where gender equals f.
+
+45
+00:02:21,920 --> 00:02:24,910
+I'm asking SAS to only fill in data where
+gender is F.
+
+46
+00:02:24,910 --> 00:02:29,150
+In other words, we will only include women
+in this new data set.
+
+47
+00:02:31,170 --> 00:02:34,560
+I just want to reiterate that you should
+always remember to use quotation marks,
+
+48
+00:02:34,560 --> 00:02:37,770
+when specifying a character value in SAS.
+
+49
+00:02:37,770 --> 00:02:40,600
+In the code above in the example in the
+previous modules,
+
+50
+00:02:40,600 --> 00:02:44,239
+we made sure to put the M and F values for
+gender in quotation marks.
+
+51
+00:02:45,450 --> 00:02:48,930
+When you're using aware statements, you
+can either use parenthesis and
+
+52
+00:02:48,930 --> 00:02:53,310
+logical operations, just like we did with
+if then statements before.
+
+53
+00:02:53,310 --> 00:02:57,330
+You will soon learn that if you're using
+the label statement,
+
+54
+00:02:57,330 --> 00:03:00,010
+you can use apostrophe's to label columns.
+
+55
+00:03:00,010 --> 00:03:03,480
+At first, it will be hard to keep track of
+all these quotation marks,parenthesis,
+
+56
+00:03:03,480 --> 00:03:04,530
+apostrophe's.
+
+57
+00:03:04,530 --> 00:03:07,150
+But just remember, you can always check
+the syntax and
+
+58
+00:03:07,150 --> 00:03:11,930
+the SAS documentation online.
+
+59
+00:03:11,930 --> 00:03:14,690
+I also want to take a few minutes to talk
+about the label statement,
+
+60
+00:03:14,690 --> 00:03:17,960
+the label statement can give a column a
+more scriptive title.
+
+61
+00:03:17,960 --> 00:03:20,220
+Which will be displayed instead of the
+variable name.
+
+62
+00:03:22,310 --> 00:03:25,680
+>> Let's take a look at the code, as you
+can see I start with data and
+
+63
+00:03:25,680 --> 00:03:27,610
+name my new data set people_label,
+
+64
+00:03:27,610 --> 00:03:31,780
+and then include set to fill in the data
+from the original people data set.
+
+65
+00:03:31,780 --> 00:03:35,710
+The statement label weight allows you to
+create a label,
+
+66
+00:03:35,710 --> 00:03:37,159
+that is associated with the weight
+variable.
+
+67
+00:03:38,360 --> 00:03:41,520
+Make sure to include an apostrophe so
+whenever you use a label statement.
+
+68
+00:03:41,520 --> 00:03:42,465
+If you use quotation marks,
+
+69
+00:03:42,465 --> 00:03:47,280
+SAS will still run your code but your
+label will look a little different.
+
+70
+00:03:47,280 --> 00:03:50,210
+So when you see this, SAS has now created
+a new data set with
+
+71
+00:03:50,210 --> 00:03:52,160
+all the same observations and variables as
+before.
+
+72
+00:03:52,160 --> 00:03:56,110
+In this new data set, there's now a label
+associated with the weight variable.
+
+73
+00:03:57,150 --> 00:04:00,370
+So whenever you make any graphics, or
+analysis, or
+
+74
+00:04:00,370 --> 00:04:03,440
+just look at the data set, instead of
+displaying the variable name for
+
+75
+00:04:03,440 --> 00:04:05,340
+weight, it'll display this label instead.

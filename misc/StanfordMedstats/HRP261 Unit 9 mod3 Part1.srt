@@ -1,0 +1,1439 @@
+1
+00:00:00,000 --> 00:00:05,340
+[BLANK_AUDIO]
+
+2
+00:00:05,340 --> 00:00:08,920
+In this next module I'm going to tell you
+about GEE modeling, which is
+
+3
+00:00:08,920 --> 00:00:13,390
+used to analyze correlated data when you
+want to do between cluster comparisons,
+
+4
+00:00:13,390 --> 00:00:15,019
+within cluster comparisons, or both.
+
+5
+00:00:18,010 --> 00:00:21,980
+So generalized estimating equations are
+used to analyze correlated data
+
+6
+00:00:21,980 --> 00:00:23,880
+including repeated measures data.
+
+7
+00:00:23,880 --> 00:00:26,890
+Although I would just want to put the
+caveat that this module's going to
+
+8
+00:00:26,890 --> 00:00:29,640
+focus on when we have data at one time
+point.
+
+9
+00:00:29,640 --> 00:00:33,270
+It gets, adds a layer of complexity when
+we want to talk about repeated measures so
+
+10
+00:00:33,270 --> 00:00:36,350
+we won't get into that in this course.
+
+11
+00:00:36,350 --> 00:00:40,100
+If you're interested in learning more
+about GEE for repeated measures,
+
+12
+00:00:40,100 --> 00:00:43,350
+I'll be teaching that in the Spring
+quarter course, in HRP262.
+
+13
+00:00:45,340 --> 00:00:49,530
+So GEE models basically just build on
+generalized linear models, which is what,
+
+14
+00:00:49,530 --> 00:00:52,190
+something we've talked about throughout
+this course.
+
+15
+00:00:52,190 --> 00:00:55,740
+They build on those generalized linear
+models by actually estimating and
+
+16
+00:00:55,740 --> 00:00:58,620
+accounting for the correlations in the
+data.
+
+17
+00:00:58,620 --> 00:01:02,480
+So let me just walk you back a step here
+and remind you of a few things.
+
+18
+00:01:02,480 --> 00:01:06,150
+So if we go all the way back to regular
+old linear regression,
+
+19
+00:01:06,150 --> 00:01:08,400
+a regular linear regression model looks
+something like this.
+
+20
+00:01:12,710 --> 00:01:16,190
+We have some linear combination of betas
+and
+
+21
+00:01:16,190 --> 00:01:20,230
+predictors that we're using to predict a
+continuous, normally distributed outcome.
+
+22
+00:01:21,510 --> 00:01:24,610
+Now we often don't really pay attention to
+it, but there's something lurking in
+
+23
+00:01:24,610 --> 00:01:27,500
+the model that we're also estimating
+beside the betas and the alphas, and
+
+24
+00:01:27,500 --> 00:01:28,810
+that's the error.
+
+25
+00:01:28,810 --> 00:01:33,600
+And we need to estimate that in order to
+be able to estimate the standard errors,
+
+26
+00:01:33,600 --> 00:01:35,310
+which of course give us our P-values.
+
+27
+00:01:35,310 --> 00:01:39,090
+But there's a couple of very important
+assumptions about the error term in
+
+28
+00:01:39,090 --> 00:01:39,780
+linear regression.
+
+29
+00:01:39,780 --> 00:01:42,350
+So one of the assumptions is that it's
+normally distributed.
+
+30
+00:01:42,350 --> 00:01:45,430
+That is, the error is normally
+distributed, we check that by looking at
+
+31
+00:01:45,430 --> 00:01:49,640
+the distribution of the residuals and
+seeing if those are normally distributed.
+
+32
+00:01:49,640 --> 00:01:52,490
+So that was an assumption of linear
+regression, and
+
+33
+00:01:52,490 --> 00:01:57,150
+the other assumption is that the errors
+are independent.
+
+34
+00:01:58,900 --> 00:02:01,520
+That was another assumption of linear
+regression.
+
+35
+00:02:01,520 --> 00:02:03,360
+So of course in this term,
+
+36
+00:02:03,360 --> 00:02:06,800
+we violated this assumption of normality
+of errors, because we've been
+
+37
+00:02:06,800 --> 00:02:10,030
+dealing with outcome variables that are
+not normally distributed.
+
+38
+00:02:10,030 --> 00:02:14,190
+So, we got around that by using
+generalized linear models,
+
+39
+00:02:14,190 --> 00:02:16,220
+rather than regular old linear regression.
+
+40
+00:02:16,220 --> 00:02:18,770
+That general of those generalized linear
+models al,
+
+41
+00:02:18,770 --> 00:02:22,710
+allowed us to deal with non-normal error
+terms, non-normal outcomes.
+
+42
+00:02:22,710 --> 00:02:28,100
+So for example we did logistic regression
+for binary outcomes.
+
+43
+00:02:28,100 --> 00:02:31,430
+And that model looked an awful lot like a
+linear regression model.
+
+44
+00:02:31,430 --> 00:02:33,580
+The right hand side of the equation is
+exactly the same, but
+
+45
+00:02:33,580 --> 00:02:35,410
+we did this transformation.
+
+46
+00:02:35,410 --> 00:02:39,120
+The logit of our outcome variable and the
+generalized linear model
+
+47
+00:02:39,120 --> 00:02:42,470
+framework allowed us to incorporate
+non-normal errors.
+
+48
+00:02:42,470 --> 00:02:44,760
+GEE goes one step further.
+
+49
+00:02:44,760 --> 00:02:49,940
+Because it also takes care of, whether the
+errors are independent.
+
+50
+00:02:49,940 --> 00:02:53,960
+We are no longer, with GEE models,
+required to have independence of errors.
+
+51
+00:02:53,960 --> 00:02:57,120
+So it explicitly models the correlation
+structure, and
+
+52
+00:02:57,120 --> 00:03:00,319
+corrects the error terms for the
+correlation in the errors.
+
+53
+00:03:02,030 --> 00:03:06,660
+Just to remind you, the generalized linear
+models we've talked about if you,
+
+54
+00:03:06,660 --> 00:03:09,660
+if your outcome is continuous, you're just
+doing a regular linear regression.
+
+55
+00:03:09,660 --> 00:03:12,750
+You can think of that as a generalized
+linear model where the outcome
+
+56
+00:03:12,750 --> 00:03:16,120
+distribution is normal and you're not
+doing any transformation to the outcomes,
+
+57
+00:03:16,120 --> 00:03:18,750
+so we say that link function is the
+identity function.
+
+58
+00:03:18,750 --> 00:03:22,690
+We talked a lot in this course about how
+to analyze categorical outcomes,
+
+59
+00:03:22,690 --> 00:03:24,590
+that is binomial or multinomial outcomes.
+
+60
+00:03:24,590 --> 00:03:26,370
+You do a logit transformation for
+
+61
+00:03:26,370 --> 00:03:29,465
+those, and for count data we talked about
+using poisson regression.
+
+62
+00:03:29,465 --> 00:03:35,580
+GEE models go one step further and add one
+additional thing, to the model.
+
+63
+00:03:35,580 --> 00:03:38,580
+So for example, here's a logistic
+regression model but
+
+64
+00:03:38,580 --> 00:03:42,640
+in the GEE framework we're going to
+estimate an additional set of parameters.
+
+65
+00:03:42,640 --> 00:03:44,790
+And this is the correlation matrix.
+
+66
+00:03:44,790 --> 00:03:47,380
+We're going to be estimating something
+called the correlation matrix.
+
+67
+00:03:48,690 --> 00:03:51,930
+That's going to reflect the correlation in
+our data.
+
+68
+00:03:51,930 --> 00:03:53,860
+By estimating the correlation matrix,
+
+69
+00:03:53,860 --> 00:03:57,210
+we can use that then to correct the the
+errors.
+
+70
+00:03:57,210 --> 00:04:00,670
+To correct our standard errors for this
+correlation.
+
+71
+00:04:00,670 --> 00:04:02,550
+If we don't estimate the correlation
+matrix and
+
+72
+00:04:02,550 --> 00:04:06,200
+we don't correct for it, then our standard
+errors are going to be, all be off.
+
+73
+00:04:06,200 --> 00:04:09,920
+If we do estimate it, then we can get the
+correct standard errors.
+
+74
+00:04:09,920 --> 00:04:12,680
+Now, this is some additional parameters
+that we're going to have to estimate.
+
+75
+00:04:12,680 --> 00:04:15,810
+And it turns out that we often don't
+really care too much what that
+
+76
+00:04:15,810 --> 00:04:17,330
+correlation matrix looks like.
+
+77
+00:04:17,330 --> 00:04:19,670
+We're not necessarily going to report it
+in our paper.
+
+78
+00:04:19,670 --> 00:04:22,630
+We still care about the betas and the
+alphas, but we need to
+
+79
+00:04:22,630 --> 00:04:26,580
+estimate this correlation matrix in order
+to get the correct standard errors.
+
+80
+00:04:26,580 --> 00:04:27,640
+That's the key here.
+
+81
+00:04:27,640 --> 00:04:31,300
+We may not be doing anything in terms of
+reporting that correlation matrix in
+
+82
+00:04:31,300 --> 00:04:32,840
+our paper, although we'll look at some
+today.
+
+83
+00:04:33,920 --> 00:04:37,420
+But it's just I, explicitly correcting for
+these correlation.
+
+84
+00:04:37,420 --> 00:04:40,340
+So let me just give you an example of a
+very simple correlation matrix.
+
+85
+00:04:40,340 --> 00:04:41,700
+What do I mean by this?
+
+86
+00:04:41,700 --> 00:04:46,420
+So, remember we had some data of a
+hypothetical trial one,
+
+87
+00:04:46,420 --> 00:04:50,460
+which was, people were treated in one eye
+with a treatment, an active drug, and
+
+88
+00:04:50,460 --> 00:04:52,350
+in the other eye with a placebo.
+
+89
+00:04:52,350 --> 00:04:56,790
+And I actually ran the correlation matrix
+to see, is eye1 and
+
+90
+00:04:56,790 --> 00:05:00,760
+eye2, say, left eye and right eye within a
+person, are those correlated?
+
+91
+00:05:00,760 --> 00:05:04,810
+And indeed, we did have a significant
+correlation here, as you would expect.
+
+92
+00:05:04,810 --> 00:05:06,950
+Eyes are correlated within a person.
+
+93
+00:05:06,950 --> 00:05:08,780
+So this is the correlation matrix.
+
+94
+00:05:08,780 --> 00:05:10,410
+That's all we mean by a correlation
+matrix.
+
+95
+00:05:10,410 --> 00:05:12,700
+Now, this is a very simple correlation
+matrix, but
+
+96
+00:05:12,700 --> 00:05:17,070
+that's all we're trying to estimate in
+gene, in GEE models.
+
+97
+00:05:17,070 --> 00:05:18,990
+So it's going to be easy when we have a
+simple one like this.
+
+98
+00:05:18,990 --> 00:05:22,554
+You can imagine that if you're, you have a
+more complicated situation like,
+
+99
+00:05:22,554 --> 00:05:25,163
+you of course can't have more than two
+eyes on a person.
+
+100
+00:05:25,163 --> 00:05:27,347
+But if somehow we were talking about
+aliens and
+
+101
+00:05:27,347 --> 00:05:31,267
+you can have four eyes within an alien,
+you, you know, then you'd have four cor,
+
+102
+00:05:31,267 --> 00:05:33,397
+you know, you'd have a four by four
+matrix.
+
+103
+00:05:33,397 --> 00:05:38,310
+And the more things that are correlated,
+the bigger, you know, that matrix can get.
+
+104
+00:05:38,310 --> 00:05:41,850
+If you had four time points, you'd have a
+four by four matrix.
+
+105
+00:05:41,850 --> 00:05:44,780
+So that means there's going to be a lot
+more things to estimate if you
+
+106
+00:05:44,780 --> 00:05:47,580
+want to estimate each one of these
+correlation coefficients.
+
+107
+00:05:47,580 --> 00:05:48,750
+So that's what we're going to be doing.
+
+108
+00:05:48,750 --> 00:05:52,230
+We're going to estimate this correlation
+matrix through GEE.
+
+109
+00:05:52,230 --> 00:05:56,980
+I just want to point out quickly that
+generalized linear models
+
+110
+00:05:56,980 --> 00:06:00,110
+worked by using something called maximum
+likelihood estimation,
+
+111
+00:06:00,110 --> 00:06:02,190
+that we've talked about in this course.
+
+112
+00:06:02,190 --> 00:06:04,820
+It turns out that if you have correlated
+data, remember, for
+
+113
+00:06:04,820 --> 00:06:08,540
+maximum likelihood estimation, we've had
+to build a likelihood function.
+
+114
+00:06:08,540 --> 00:06:13,630
+And that was, where we multiplied together
+a bunch of probabilities.
+
+115
+00:06:13,630 --> 00:06:15,450
+So for example in logistic regression,
+
+116
+00:06:15,450 --> 00:06:19,440
+here's the probability that a particular
+person gets the disease.
+
+117
+00:06:19,440 --> 00:06:22,040
+Here's the prob, probability that somebody
+doesn't get the disease.
+
+118
+00:06:22,040 --> 00:06:24,300
+And we multiply those probabilities
+together.
+
+119
+00:06:24,300 --> 00:06:27,010
+The fact that we multiply those
+probabilities together mean that we were
+
+120
+00:06:27,010 --> 00:06:31,030
+assuming that those observations were
+independent of one another.
+
+121
+00:06:31,030 --> 00:06:35,700
+With correlated data it gets really messy
+to specify this probability distribution.
+
+122
+00:06:35,700 --> 00:06:38,950
+Can be very complicated when some of your
+observations are correlated with one
+
+123
+00:06:38,950 --> 00:06:42,758
+another, it's too hard to specify in the
+maximum likelihood framework.
+
+124
+00:06:42,758 --> 00:06:46,890
+But the quasi-likelihood estimation method
+only requires that you
+
+125
+00:06:46,890 --> 00:06:50,720
+specify the relationship between the
+outcome mean and the covariate.
+
+126
+00:06:50,720 --> 00:06:54,360
+So the mean of the outcome and your beta
+coefficient, and
+
+127
+00:06:54,360 --> 00:06:57,140
+the relationship between the outcome mean
+and the, and the variance.
+
+128
+00:06:57,140 --> 00:07:00,440
+So you don't have to specify the whole
+complex distribution, you just have to
+
+129
+00:07:00,440 --> 00:07:02,690
+say what's the relationship between the
+mean and the variance.
+
+130
+00:07:02,690 --> 00:07:06,110
+So for a Poisson, for example, the mean
+and the variance would be equal.
+
+131
+00:07:06,110 --> 00:07:09,420
+So it has many of the advantages of
+maximum likelihood estimation, but
+
+132
+00:07:09,420 --> 00:07:11,320
+it doesn't require all of the assumptions.
+
+133
+00:07:11,320 --> 00:07:12,610
+So that's what actually used here.
+
+134
+00:07:13,750 --> 00:07:16,970
+The actual mechanics of generalized
+estimating equations.
+
+135
+00:07:16,970 --> 00:07:19,740
+What's happening behind the scenes, is
+basically that
+
+136
+00:07:19,740 --> 00:07:24,620
+the computer is just fitting a regular old
+logistic regression or
+
+137
+00:07:24,620 --> 00:07:28,310
+whatever type of model you're using,
+Poisson regression, linear regression.
+
+138
+00:07:28,310 --> 00:07:33,140
+It's fitting the as if to start with
+without doing anything to account for
+
+139
+00:07:33,140 --> 00:07:34,060
+the correlation.
+
+140
+00:07:34,060 --> 00:07:37,400
+Assuming the observations are independent,
+it starts there.
+
+141
+00:07:37,400 --> 00:07:41,910
+The next things that, that it does is it
+calculates all of the residuals.
+
+142
+00:07:41,910 --> 00:07:45,650
+So remember residuals are just a person's
+observed value minus their
+
+143
+00:07:45,650 --> 00:07:47,080
+predicted value from the model and
+
+144
+00:07:47,080 --> 00:07:51,040
+usually it, that residual is transformed
+into something, kind of z score.
+
+145
+00:07:51,040 --> 00:07:52,960
+So those residuals represent the errors.
+
+146
+00:07:52,960 --> 00:07:58,200
+So it uses, the computer's using the
+residuals to pick out what actually is
+
+147
+00:07:58,200 --> 00:07:59,720
+the correlation structure.
+
+148
+00:07:59,720 --> 00:08:02,240
+Now, if the residuals are independent,
+that means we are,
+
+149
+00:08:02,240 --> 00:08:03,180
+we have independent data.
+
+150
+00:08:03,180 --> 00:08:06,850
+If the residuals are not independent, what
+is the structure of the correlation?
+
+151
+00:08:06,850 --> 00:08:08,310
+What are the correlation coefficients?
+
+152
+00:08:08,310 --> 00:08:13,120
+And it comes up with some kind of working
+correlation matrix from these residuals.
+
+153
+00:08:13,120 --> 00:08:14,630
+This is an iterative process, though, so
+
+154
+00:08:14,630 --> 00:08:20,340
+then it takes that working correlation
+matrix, it runs the the model again,
+
+155
+00:08:20,340 --> 00:08:23,670
+this time accounting for this, cor, these
+correlations.
+
+156
+00:08:23,670 --> 00:08:25,830
+Refits the regression coefficients,
+correcting for
+
+157
+00:08:25,830 --> 00:08:30,650
+the correlations, then it recalculates the
+residuals based on this new model.
+
+158
+00:08:30,650 --> 00:08:32,870
+And there may still be some unaccounted
+for
+
+159
+00:08:32,870 --> 00:08:34,810
+correlation that it's picking up in the
+residual.
+
+160
+00:08:34,810 --> 00:08:39,260
+So it reestimates the working correlation
+matrix, reruns the model, recalculates
+
+161
+00:08:39,260 --> 00:08:43,460
+the residuals, and walks through this
+until you get some kind of convergence.
+
+162
+00:08:43,460 --> 00:08:46,510
+You converge upon a particular working
+correlation matrix.
+
+163
+00:08:47,890 --> 00:08:51,200
+Again, this correlation matrix is really
+just a nuisance variable.
+
+164
+00:08:51,200 --> 00:08:54,390
+We have to estimate it in order to get the
+right standard errors here, but
+
+165
+00:08:54,390 --> 00:08:55,780
+it's not something that we usually care
+about.
+
+166
+00:08:55,780 --> 00:08:57,990
+It's just kind of a nuisance variable that
+we have to estimate.
+
+167
+00:08:57,990 --> 00:09:00,370
+The computer, of course, is going to do
+all this for you behind the scenes.
+
+168
+00:09:01,890 --> 00:09:05,690
+Now one of the things that you need to
+know about GEE models is that you actually
+
+169
+00:09:05,690 --> 00:09:10,830
+have to specify a correlation structure up
+front, when you ask to run these models.
+
+170
+00:09:10,830 --> 00:09:13,880
+The computer needs some kind of framework
+of the structure of
+
+171
+00:09:13,880 --> 00:09:15,320
+the correlation matrix.
+
+172
+00:09:15,320 --> 00:09:16,940
+Let me just give you an example of what I
+mean by that.
+
+173
+00:09:16,940 --> 00:09:18,910
+A very simple correlation matrix,
+
+174
+00:09:18,910 --> 00:09:22,309
+imagine I'm going to do something where we
+have three time points.
+
+175
+00:09:23,860 --> 00:09:28,030
+So if you measured an outcome like bone
+density at
+
+176
+00:09:28,030 --> 00:09:31,260
+three different time points you can build
+a correlation matrix.
+
+177
+00:09:34,360 --> 00:09:36,210
+So this would be a person's bone density,
+
+178
+00:09:36,210 --> 00:09:38,400
+how does it correlate with their bone
+density.
+
+179
+00:09:38,400 --> 00:09:41,670
+How did the bone density at time 1
+correlate to the bone density at time 2,
+
+180
+00:09:41,670 --> 00:09:42,720
+for example.
+
+181
+00:09:42,720 --> 00:09:46,280
+Of course time 1 is going to correlate
+perfectly with itself.
+
+182
+00:09:46,280 --> 00:09:48,580
+But maybe time 1 and time 2 have a
+correlation of 0.95.
+
+183
+00:09:48,580 --> 00:09:51,180
+And time 1 and time 3 have a correlation
+of 0.92.
+
+184
+00:09:51,180 --> 00:09:54,930
+And 2 and 3 have a correlation of 0.93.
+
+185
+00:09:54,930 --> 00:10:02,830
+I'm just making these up.
+
+186
+00:10:02,830 --> 00:10:07,030
+And the correlation matrix is going to be
+a, the same across the diagonal.
+
+187
+00:10:07,030 --> 00:10:08,980
+So, there's a couple of choices you have
+for
+
+188
+00:10:08,980 --> 00:10:11,030
+this, for estimating this correlation
+matrix.
+
+189
+00:10:11,030 --> 00:10:12,010
+A couple of different structures.
+
+190
+00:10:12,010 --> 00:10:14,660
+So you could actually try to estimate all
+of
+
+191
+00:10:14,660 --> 00:10:16,600
+the individual correlation coefficients.
+
+192
+00:10:16,600 --> 00:10:19,410
+And you might think, well, why don't we
+always do that, right?
+
+193
+00:10:19,410 --> 00:10:20,370
+That seems perfect.
+
+194
+00:10:20,370 --> 00:10:23,540
+We just actually estimate the individual
+correlation coefficients.
+
+195
+00:10:23,540 --> 00:10:29,150
+That is what we would call an unstructured
+correlation structure,
+
+196
+00:10:29,150 --> 00:10:31,330
+because you're estimating everything
+separately.
+
+197
+00:10:31,330 --> 00:10:34,600
+The problem with that is, well, for three
+time points, or
+
+198
+00:10:34,600 --> 00:10:37,810
+three, you know, whatever is correlated
+here.
+
+199
+00:10:37,810 --> 00:10:39,150
+It's fine probably,
+
+200
+00:10:39,150 --> 00:10:43,000
+because there's only three correlation
+coefficients that you have to estimate.
+
+201
+00:10:43,000 --> 00:10:46,290
+But imagine if I had a four-by-four matri,
+then it's going to be
+
+202
+00:10:46,290 --> 00:10:49,330
+four choose two correlation coefficients
+that have to be estimated.
+
+203
+00:10:49,330 --> 00:10:53,440
+If I have a five-by-five correlation
+matrix that's going to be five choose two.
+
+204
+00:10:53,440 --> 00:10:56,640
+All of a sudden, you're going to have too
+many parameters to estimate,
+
+205
+00:10:56,640 --> 00:10:59,590
+and so you're actually not going to be
+able to estimate all of those parameters
+
+206
+00:10:59,590 --> 00:11:02,860
+separately unless you have, you know, just
+a huge data set.
+
+207
+00:11:02,860 --> 00:11:06,300
+So, there are ways to kind of cheat that
+and
+
+208
+00:11:06,300 --> 00:11:08,540
+not have to estimate all of those
+separately.
+
+209
+00:11:08,540 --> 00:11:10,320
+You don't want to use up all your degrees
+of freedom on this.
+
+210
+00:11:11,640 --> 00:11:13,900
+So here's another possibility you could
+do.
+
+211
+00:11:13,900 --> 00:11:16,790
+It's called an exchangeable correlation
+matrix.
+
+212
+00:11:16,790 --> 00:11:17,710
+This is the simplest.
+
+213
+00:11:17,710 --> 00:11:19,820
+Well, you could just say, well, I know
+there's some correlation.
+
+214
+00:11:19,820 --> 00:11:20,420
+It's not zero.
+
+215
+00:11:20,420 --> 00:11:23,510
+What, this is what it would look like if
+our time points were independent,
+
+216
+00:11:23,510 --> 00:11:24,790
+if our outcomes were independent.
+
+217
+00:11:24,790 --> 00:11:26,910
+We'd get, the correlations would all be
+zero.
+
+218
+00:11:26,910 --> 00:11:28,230
+Okay.
+That's what we call
+
+219
+00:11:28,230 --> 00:11:30,240
+the independence correlation structure.
+
+220
+00:11:30,240 --> 00:11:34,060
+But if we know we have correlation, we
+might just say well,
+
+221
+00:11:34,060 --> 00:11:37,110
+I'm going to assume that all the
+correlation coefficients are the same.
+
+222
+00:11:37,110 --> 00:11:39,220
+So, eh, for the bone density one, we are
+saying you know,
+
+223
+00:11:39,220 --> 00:11:40,240
+they were all pretty close.
+
+224
+00:11:40,240 --> 00:11:43,960
+And maybe we'll just call it 0.94 for all
+of them, close enough.
+
+225
+00:11:43,960 --> 00:11:46,790
+We're going to estimate a single
+correlation coefficient for
+
+226
+00:11:46,790 --> 00:11:49,600
+all of, of the correlations.
+
+227
+00:11:49,600 --> 00:11:52,190
+This is what we call an exchangeable
+structure.
+
+228
+00:11:52,190 --> 00:11:55,710
+And that's the one that's mostly commonly
+used in the situation where you
+
+229
+00:11:55,710 --> 00:11:58,560
+have data at one time but not repeated
+measures.
+
+230
+00:11:58,560 --> 00:12:00,590
+And you just have some kind of clustering
+in the data.
+
+231
+00:12:00,590 --> 00:12:02,000
+There's no natural ordering.
+
+232
+00:12:02,000 --> 00:12:03,860
+And so there's no, you know,
+
+233
+00:12:03,860 --> 00:12:06,160
+and we probably don't want to estimate
+each one separately.
+
+234
+00:12:06,160 --> 00:12:07,890
+So often, exchangeable is fine.
+
+235
+00:12:07,890 --> 00:12:11,580
+You do a lot better by saying that there's
+some correlation than that there's none.
+
+236
+00:12:11,580 --> 00:12:14,450
+And so even if we don't get all the
+correlation coefficients right,
+
+237
+00:12:14,450 --> 00:12:15,730
+you do pretty well there.
+
+238
+00:12:15,730 --> 00:12:17,520
+There are some other choices which I'll go
+through.
+
+239
+00:12:17,520 --> 00:12:19,980
+So, independent means that all the
+correlations are zero or
+
+240
+00:12:19,980 --> 00:12:21,920
+you assume that they're all zero.
+
+241
+00:12:21,920 --> 00:12:25,520
+Exchangeable means you just estimate one
+single correlation coefficient.
+
+242
+00:12:25,520 --> 00:12:28,180
+That's beneficial because you only use up
+one degree of freedom.
+
+243
+00:12:28,180 --> 00:12:29,908
+Unstructured says you estimate them all,
+
+244
+00:12:29,908 --> 00:12:32,460
+that might be too costly in tems of
+degrees of freedom.
+
+245
+00:12:32,460 --> 00:12:37,170
+And then these last two are pertinent to
+repeated measures data, primarily.
+
+246
+00:12:37,170 --> 00:12:39,860
+I'll just walk through them quickly, just
+to show you that they're all,
+
+247
+00:12:39,860 --> 00:12:41,610
+there are these, different choices.
+
+248
+00:12:42,682 --> 00:12:46,590
+And basically, at the end of the day,
+we're looking for the simplest structure.
+
+249
+00:12:46,590 --> 00:12:49,960
+Use up the fewest degrees of freedom that,
+that does well in our data.
+
+250
+00:12:49,960 --> 00:12:52,620
+It turns out, actually, for GEE models,
+
+251
+00:12:52,620 --> 00:12:56,270
+that if you get the correlation structure
+wrong, you don't do too badly,
+
+252
+00:12:56,270 --> 00:12:59,220
+as long as you're choosing something
+called robust standard errors.
+
+253
+00:12:59,220 --> 00:13:03,250
+The robust standard errors are robust
+against misspecifications of
+
+254
+00:13:03,250 --> 00:13:04,210
+the correlation structure.
+
+255
+00:13:04,210 --> 00:13:07,915
+So that even though you have to specify it
+up front, if you get it wrong, uyh,
+
+256
+00:13:07,915 --> 00:13:11,070
+you probably, it probably is not going to
+be too big of a deal.
+
+257
+00:13:12,270 --> 00:13:13,620
+All right, so, different correlation
+structures.
+
+258
+00:13:13,620 --> 00:13:15,980
+So this is the independence correlation
+structure.
+
+259
+00:13:15,980 --> 00:13:18,870
+That means that all of the outcomes are
+independent.
+
+260
+00:13:18,870 --> 00:13:20,070
+So that one's easy.
+
+261
+00:13:20,070 --> 00:13:20,970
+That they're all set to 0.
+
+262
+00:13:20,970 --> 00:13:22,480
+Clearly, we're talking about,
+
+263
+00:13:22,480 --> 00:13:25,640
+this week, about situations where we don't
+have independence.
+
+264
+00:13:25,640 --> 00:13:29,870
+So this is what we would need in order to
+be able to do regular linear regression or
+
+265
+00:13:29,870 --> 00:13:31,350
+regular logistic regression.
+
+266
+00:13:31,350 --> 00:13:35,260
+Presumably, we don't have this if we're
+turning to GEE models.
+
+267
+00:13:35,260 --> 00:13:37,710
+I mentioned the exchangeable correlation
+matrix.
+
+268
+00:13:37,710 --> 00:13:41,820
+Whatever, however many time points or
+however many correlated things you have
+
+269
+00:13:41,820 --> 00:13:45,900
+you're going to be estimating just one
+correlation coefficient for all of them.
+
+270
+00:13:45,900 --> 00:13:48,780
+Well again, that does pretty well because
+you're not assuming they're zero,
+
+271
+00:13:48,780 --> 00:13:51,400
+which is what, which is definitely
+problematic.
+
+272
+00:13:51,400 --> 00:13:53,290
+But as long as they're all kind of similar
+or
+
+273
+00:13:53,290 --> 00:13:57,110
+there's no real pattern to them, you can
+do pretty well by just accounting for
+
+274
+00:13:57,110 --> 00:14:01,100
+the fact that there is some correlation as
+opposed to saying there's none.
+
+275
+00:14:01,100 --> 00:14:02,870
+And it doesn't use up too many degrees of
+freedom, so
+
+276
+00:14:02,870 --> 00:14:06,850
+this is often used for, if you've got data
+at one time point.
+
+277
+00:14:06,850 --> 00:14:11,800
+Like, you have siblings you're looking at,
+or two eyes in a person, or case control,
+
+278
+00:14:11,800 --> 00:14:14,840
+match case control, that is, you're not
+talking about repeated measures.
+
+279
+00:14:14,840 --> 00:14:15,960
+This often suffices.
+
+280
+00:14:17,210 --> 00:14:20,210
+Unstructured estimates all of the
+correlations separately.
+
+281
+00:14:20,210 --> 00:14:24,130
+If you get four four by four matrix, that
+means you're going to have to
+
+282
+00:14:24,130 --> 00:14:27,470
+estimate four choose two or six
+correlations separately.
+
+283
+00:14:27,470 --> 00:14:30,290
+You can see that if was a bigger matrix,
+which it often can be,
+
+284
+00:14:30,290 --> 00:14:32,500
+you can start eating up degrees of freedom
+really fast.
+
+285
+00:14:34,460 --> 00:14:38,390
+Just to point out that there are other
+structures that you can come up with.
+
+286
+00:14:38,390 --> 00:14:41,695
+Autoregressive is something where this is
+specifically really for
+
+287
+00:14:41,695 --> 00:14:45,590
+repeated-measures data if you're thinking
+of the t1 through t4 as four time points.
+
+288
+00:14:45,590 --> 00:14:49,410
+So again, bone density, measure of the
+same person at four time points,
+
+289
+00:14:49,410 --> 00:14:52,750
+you can still get away with only
+estimating one parameter here.
+
+290
+00:14:52,750 --> 00:14:54,990
+But you raise, you square it and then cube
+it.
+
+291
+00:14:54,990 --> 00:14:58,600
+You raise it to different powers so that
+as you go further and
+
+292
+00:14:58,600 --> 00:15:01,010
+further apart in time, there's less and
+less correlation.
+
+293
+00:15:01,010 --> 00:15:01,960
+That makes sense for
+
+294
+00:15:01,960 --> 00:15:05,430
+repeated measures because there's some
+kind of natural ordering of things.
+
+295
+00:15:05,430 --> 00:15:08,764
+It doesn't usually make as much sense for
+just cluster data at the same time point.
+
+296
+00:15:08,764 --> 00:15:14,170
+M-dependent is similar to autoregressive,
+except rather than taking squares or
+
+297
+00:15:14,170 --> 00:15:19,300
+cubes, you're just estimating, a single
+correlation coefficient for,
+
+298
+00:15:19,300 --> 00:15:21,280
+time points that are one time point away.
+
+299
+00:15:21,280 --> 00:15:25,720
+A different one for time points that are
+two time points away, and, and, and so on.
+
+300
+00:15:25,720 --> 00:15:28,200
+So that saves you, again, some degrees of
+freedom, but
+
+301
+00:15:28,200 --> 00:15:33,001
+allows you a little more flexibility than
+the autoregressive.

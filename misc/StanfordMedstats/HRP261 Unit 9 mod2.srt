@@ -1,0 +1,2617 @@
+1
+00:00:05,830 --> 00:00:09,770
+In this next module I'm going to tell you
+about Conditional Logistic Regression,
+
+2
+00:00:09,770 --> 00:00:12,180
+which can be used when you have correlated
+data and
+
+3
+00:00:12,180 --> 00:00:14,280
+you want to do within cluster comparisons.
+
+4
+00:00:14,280 --> 00:00:21,440
+So let me go back to an example that I
+introduced in Unit Two of the course.
+
+5
+00:00:21,440 --> 00:00:24,355
+This is a simple example that we talked
+about when we were talking about
+
+6
+00:00:24,355 --> 00:00:25,690
+McNemar's test.
+
+7
+00:00:25,690 --> 00:00:28,950
+So it was a one to one matched case
+control study.
+
+8
+00:00:28,950 --> 00:00:32,490
+Each heart attack case was matched to a
+control based on their age and
+
+9
+00:00:32,490 --> 00:00:35,269
+gender, and the exposure of interest was
+diabetes.
+
+10
+00:00:36,920 --> 00:00:38,880
+Just to remind you, refresh your memory.
+
+11
+00:00:38,880 --> 00:00:40,350
+We these are what the,
+
+12
+00:00:40,350 --> 00:00:43,510
+the data looked like when we applied
+McNemar's test to these data.
+
+13
+00:00:43,510 --> 00:00:48,490
+So what you're seeing here represents that
+there were 144 matched case control pairs.
+
+14
+00:00:50,300 --> 00:00:54,200
+And 9 of those pairs, both the case and
+the control had diabetes.
+
+15
+00:00:54,200 --> 00:00:56,830
+82 of those, of these pairs, neither of
+them had diabetes.
+
+16
+00:00:56,830 --> 00:01:00,350
+It turns out that those cells, those
+concordant cells are non
+
+17
+00:01:00,350 --> 00:01:05,320
+informative because they weren't identical
+in terms of their diabetes.
+
+18
+00:01:05,320 --> 00:01:10,200
+The cells that are of interest are the
+discordant pairs, the 37 and the 16.
+
+19
+00:01:10,200 --> 00:01:16,770
+So it turned out that 37 of the cases had
+diabetes, where the control did not.
+
+20
+00:01:16,770 --> 00:01:21,750
+And in 16 pairs it was the control who had
+diabetes, where the case did not.
+
+21
+00:01:21,750 --> 00:01:24,710
+We applied McNemar's statistics to these
+data.
+
+22
+00:01:24,710 --> 00:01:30,555
+And remember McNemar's is just b minus c
+squared, over b plus c.
+
+23
+00:01:30,555 --> 00:01:34,330
+Well b and c here are just the 37 and the
+16.
+
+24
+00:01:34,330 --> 00:01:40,320
+So 37 minus 16 squared, divided by 37 plus
+16, which is 53.
+
+25
+00:01:40,320 --> 00:01:44,500
+When you actually calculate that out you
+get a chi-squared of 8.3.
+
+26
+00:01:44,500 --> 00:01:46,630
+This is a chi-squared with 1 degree of
+freedom, so
+
+27
+00:01:46,630 --> 00:01:50,660
+this corresponds to a p value of 0.0039.
+
+28
+00:01:50,660 --> 00:01:53,590
+We can also calculate a McNemar's odds
+ratio for
+
+29
+00:01:53,590 --> 00:01:58,510
+these data, which we get just by dividing
+b by c.
+
+30
+00:01:58,510 --> 00:02:01,250
+So, 37 divided by 16.
+
+31
+00:02:01,250 --> 00:02:02,790
+That gives us a value of 2.3125.
+
+32
+00:02:02,790 --> 00:02:04,955
+So indeed, there is a,
+
+33
+00:02:04,955 --> 00:02:09,870
+an elevation in your risk of heart attack
+if you have diabetes.
+
+34
+00:02:09,870 --> 00:02:12,870
+I also showed you back in Unit Two,
+
+35
+00:02:12,870 --> 00:02:17,920
+that McNemar's test is equivalent to
+taking that same data and
+
+36
+00:02:17,920 --> 00:02:24,250
+stratifying on the data by pair, actually
+making 144 strata.
+
+37
+00:02:24,250 --> 00:02:27,920
+Each of the strata only contains two
+people, the pair.
+
+38
+00:02:27,920 --> 00:02:28,980
+But you can do that and
+
+39
+00:02:28,980 --> 00:02:33,050
+then you can apply Mantel-Haenszel
+statistics to that stratified data.
+
+40
+00:02:33,050 --> 00:02:33,950
+And it turns out that
+
+41
+00:02:33,950 --> 00:02:36,410
+that's mathematically equivalent to the
+McNemar's test.
+
+42
+00:02:36,410 --> 00:02:40,222
+So you can see that here I've actually
+applied Mantel-Haenszel to
+
+43
+00:02:40,222 --> 00:02:42,270
+the to the stratify data.
+
+44
+00:02:42,270 --> 00:02:43,900
+I get a chi-square of 8.3.
+
+45
+00:02:43,900 --> 00:02:45,650
+I get the exact same p value of .0039.
+
+46
+00:02:45,650 --> 00:02:50,490
+I get the exact same odds ratio 2.3125.
+
+47
+00:02:50,490 --> 00:02:53,920
+That idea of stratifying on
+
+48
+00:02:53,920 --> 00:02:57,769
+pair is actually the basis of conditional
+logistic regression.
+
+49
+00:02:59,630 --> 00:03:01,250
+So conditional logistic regression,
+
+50
+00:03:01,250 --> 00:03:05,940
+the basic idea is that we're going to be
+stratifying on the cluster.
+
+51
+00:03:05,940 --> 00:03:09,500
+Which in some cases might be a pair, or it
+can be larger than a pair.
+
+52
+00:03:09,500 --> 00:03:12,980
+But, you're going to be stratifying on a
+cluster and comparing people or
+
+53
+00:03:12,980 --> 00:03:14,780
+observations within a cluster.
+
+54
+00:03:14,780 --> 00:03:17,210
+That's how we're accounting for the
+correlation.
+
+55
+00:03:18,370 --> 00:03:19,610
+So I actually went ahead and
+
+56
+00:03:19,610 --> 00:03:22,690
+ran a conditional logistic regression on
+this simple data set,
+
+57
+00:03:22,690 --> 00:03:27,480
+now of course we could just run McNemar's
+test here, we don't need to do regression.
+
+58
+00:03:27,480 --> 00:03:30,400
+But imagine that there were other things
+that we wanted to adjust for
+
+59
+00:03:30,400 --> 00:03:31,360
+with this data set.
+
+60
+00:03:31,360 --> 00:03:34,720
+We'd then have to run a conditional
+logistic regression.
+
+61
+00:03:34,720 --> 00:03:35,817
+So here is the results.
+
+62
+00:03:35,817 --> 00:03:36,940
+Couple of things to notice.
+
+63
+00:03:36,940 --> 00:03:40,830
+So first of all, that the chi-square comes
+out to 7.85.
+
+64
+00:03:40,830 --> 00:03:42,910
+The p value is 0.005.
+
+65
+00:03:42,910 --> 00:03:45,130
+And the odds ratio is 2.312.
+
+66
+00:03:45,130 --> 00:03:48,870
+You can see that the p-value and the
+chi-square, and
+
+67
+00:03:48,870 --> 00:03:53,490
+the odds ratio are not identical to what
+we got, from the McNemar's test, and
+
+68
+00:03:53,490 --> 00:03:55,240
+from the Mantel–Haenszel test.
+
+69
+00:03:55,240 --> 00:03:57,720
+So, what's happening in conditional
+logistic regression,
+
+70
+00:03:57,720 --> 00:04:00,160
+mathematically, is just slightly
+different.
+
+71
+00:04:00,160 --> 00:04:04,800
+Because we're now going back to doing
+those likelihood estimation methods.
+
+72
+00:04:04,800 --> 00:04:06,080
+Since we're doing something different,
+
+73
+00:04:06,080 --> 00:04:08,680
+mathematically, we're going to get
+slightly different answers.
+
+74
+00:04:08,680 --> 00:04:12,080
+But you'll notice how close those are to
+the answer that we got from McNemar's
+
+75
+00:04:12,080 --> 00:04:15,330
+test, or from the Mantel–Haenszel test
+applied to the stratified data.
+
+76
+00:04:16,560 --> 00:04:20,430
+One other thing to point out about the,
+output here.
+
+77
+00:04:20,430 --> 00:04:23,960
+Notice, what's different about the output
+that we've seen before from
+
+78
+00:04:23,960 --> 00:04:27,480
+logistic regression, is that I get my beta
+coefficient.
+
+79
+00:04:27,480 --> 00:04:30,500
+But, under parameters, I don't get an
+intercept.
+
+80
+00:04:30,500 --> 00:04:33,530
+So that's the other thing that you need to
+understand about conditional logistic
+
+81
+00:04:33,530 --> 00:04:38,010
+regression, is that we are no longer going
+to be trying to estimate the intercept.
+
+82
+00:04:38,010 --> 00:04:42,020
+And I'm going to show you that, what's
+happening mathematically in just a,
+
+83
+00:04:42,020 --> 00:04:43,300
+a second here.
+
+84
+00:04:43,300 --> 00:04:47,310
+But conceptually what we're saying,
+basically, is every pair, or
+
+85
+00:04:47,310 --> 00:04:48,975
+every cluster, every strata,
+
+86
+00:04:48,975 --> 00:04:53,160
+might have its own intercept, might have
+its own baseline risk.
+
+87
+00:04:53,160 --> 00:04:58,390
+So in this particular data set, each pair
+is defined by different ages and genders.
+
+88
+00:04:58,390 --> 00:05:03,440
+So it makes sense that if you're looking
+at a pair that is 50 to 55 year old women,
+
+89
+00:05:03,440 --> 00:05:06,330
+that they're going to have a different
+baseline risk for
+
+90
+00:05:06,330 --> 00:05:11,450
+heart attack than, say, if you're looking
+at a pair of 75 year old men.
+
+91
+00:05:11,450 --> 00:05:14,320
+Right, so we're allowing each pair to have
+its own, sort of,
+
+92
+00:05:14,320 --> 00:05:15,960
+baseline risk of heart attack.
+
+93
+00:05:17,050 --> 00:05:18,630
+We can't estimate it separately for
+
+94
+00:05:18,630 --> 00:05:20,720
+each pair, we don't have enough degrees of
+freedom.
+
+95
+00:05:20,720 --> 00:05:24,250
+So what we're going to do instead is
+create this conditional logistic
+
+96
+00:05:24,250 --> 00:05:27,810
+regression, which allows us to cancel out
+the intercept essentially, and
+
+97
+00:05:27,810 --> 00:05:29,550
+not even bother to try to estimate it.
+
+98
+00:05:29,550 --> 00:05:32,400
+Well, that's generally fine, because in a
+case-control study the intercept doesn't
+
+99
+00:05:32,400 --> 00:05:33,900
+mean a heck of a lot anyway, right.
+
+100
+00:05:33,900 --> 00:05:37,540
+So a lot of times we don't care about the
+intercept, we just care about the beta or
+
+101
+00:05:37,540 --> 00:05:38,590
+the odds ratio.
+
+102
+00:05:38,590 --> 00:05:39,710
+And that's all we're going to get here.
+
+103
+00:05:41,420 --> 00:05:45,440
+Alright, so now I'm going to delve into
+the mathematical details of
+
+104
+00:05:45,440 --> 00:05:46,690
+conditional logistic regression.
+
+105
+00:05:46,690 --> 00:05:48,300
+So this parts going to get a little mathy,
+
+106
+00:05:48,300 --> 00:05:50,659
+kind of similar to when we talked about
+likelihoods before.
+
+107
+00:05:51,940 --> 00:05:54,540
+Just to remind you, what is a likelihood
+function?
+
+108
+00:05:54,540 --> 00:05:59,160
+A likelihood function is the probably of
+your data.
+
+109
+00:05:59,160 --> 00:06:02,920
+And what that was when we did regular
+logistic regression.
+
+110
+00:06:02,920 --> 00:06:03,960
+It looked something like this.
+
+111
+00:06:03,960 --> 00:06:07,620
+So our likelihood function was equal to
+each person,
+
+112
+00:06:07,620 --> 00:06:11,420
+each observation in our data set got one
+term in the likelihood.
+
+113
+00:06:11,420 --> 00:06:12,430
+So, if you were a case.
+
+114
+00:06:12,430 --> 00:06:15,750
+If you were ha, someone who had the
+outcome in the likelihood,
+
+115
+00:06:15,750 --> 00:06:18,490
+you got your probability of having the
+outcome.
+
+116
+00:06:18,490 --> 00:06:19,980
+And it looks something like that.
+
+117
+00:06:19,980 --> 00:06:22,540
+Because you, in fact, were somebody who
+had the outcome.
+
+118
+00:06:22,540 --> 00:06:25,590
+Everybody who didn't have the outcome
+would get in the likelihood as
+
+119
+00:06:25,590 --> 00:06:27,780
+a function of their covariates.
+
+120
+00:06:27,780 --> 00:06:30,140
+Would get their probability of not having
+the outcome.
+
+121
+00:06:30,140 --> 00:06:31,330
+because that's, in fact, what happened.
+
+122
+00:06:31,330 --> 00:06:32,850
+They didn't have the outcome.
+
+123
+00:06:32,850 --> 00:06:36,110
+And we would get a likelihood again with
+one term and a likelihood for
+
+124
+00:06:36,110 --> 00:06:37,540
+every individual in the data set.
+
+125
+00:06:39,220 --> 00:06:42,820
+Now what's different about the likelihood
+function for conditional logistic
+
+126
+00:06:42,820 --> 00:06:47,720
+regression is that you're going to get one
+term in the likelihood for every cluster,
+
+127
+00:06:47,720 --> 00:06:51,560
+rather than one term for every individual,
+one term for every strata.
+
+128
+00:06:51,560 --> 00:06:54,350
+And in this particular example where we're
+talking about,
+
+129
+00:06:54,350 --> 00:06:56,680
+it's going to be one term for every pair.
+
+130
+00:06:56,680 --> 00:07:01,900
+So the idea is this, your likelihood is
+going to be something multiplied together.
+
+131
+00:07:01,900 --> 00:07:04,680
+So again, we're going to have multiple
+things multiplied together.
+
+132
+00:07:04,680 --> 00:07:08,202
+But the total number of things multiplied
+together will be the total number of
+
+133
+00:07:08,202 --> 00:07:11,890
+clusters in your dataset, rather than
+that's a little number of individuals.
+
+134
+00:07:11,890 --> 00:07:16,080
+Well what are these probabilities that go
+into the likelihood?
+
+135
+00:07:16,080 --> 00:07:19,690
+Rather than modelling this straight
+probability of somebody having an outcome
+
+136
+00:07:19,690 --> 00:07:23,902
+or not, we are instead going to model a
+conditional probability.
+
+137
+00:07:23,902 --> 00:07:26,450
+So now go back to these little pictures I
+was drawing.
+
+138
+00:07:26,450 --> 00:07:29,740
+So imagine here is a cluster of people.
+
+139
+00:07:29,740 --> 00:07:34,040
+They're, they're related somehow, and each
+of these clusters, again,
+
+140
+00:07:34,040 --> 00:07:36,280
+is going to get one term in the
+likelihood.
+
+141
+00:07:36,280 --> 00:07:39,810
+But the term is going to correspond to a
+conditional probability.
+
+142
+00:07:39,810 --> 00:07:43,750
+So imagine that in this cluster, two
+people get the outcome.
+
+143
+00:07:45,670 --> 00:07:48,490
+I'm going to circle them in a color you
+can see here.
+
+144
+00:07:48,490 --> 00:07:51,110
+So imagine that two people get the outcome
+and
+
+145
+00:07:51,110 --> 00:07:53,520
+the other three people don't get the
+outcome.
+
+146
+00:07:53,520 --> 00:07:57,980
+The probability that we're going to put in
+the likelihood is going to be
+
+147
+00:07:57,980 --> 00:08:04,470
+the probability that it's these exact two
+people that get the outcome.
+
+148
+00:08:04,470 --> 00:08:08,410
+Out of the probability that any two out of
+the five would have gotten the outcome.
+
+149
+00:08:08,410 --> 00:08:11,430
+In how many ways can two people out of
+five get the outcome.
+
+150
+00:08:11,430 --> 00:08:12,578
+Well that's 5 choose 2.
+
+151
+00:08:12,578 --> 00:08:14,460
+There's 5 choose 2 different ways,
+
+152
+00:08:14,460 --> 00:08:19,130
+that's 2 out of 5 exactly could've come
+out with the outcome.
+
+153
+00:08:19,130 --> 00:08:21,960
+So we're going to be modeling though, the
+probability that it's these particular 2.
+
+154
+00:08:21,960 --> 00:08:26,530
+So maybe it turns out that the 2 people
+that have the outcome they're
+
+155
+00:08:26,530 --> 00:08:29,300
+smokers you know they have poor diets.
+
+156
+00:08:29,300 --> 00:08:33,590
+And the 3 people who didn't get the
+outcome live a healthy lifestyle and
+
+157
+00:08:33,590 --> 00:08:34,840
+were non-smokers.
+
+158
+00:08:34,840 --> 00:08:38,340
+If we plug into our model data about
+smoking and
+
+159
+00:08:38,340 --> 00:08:42,640
+lifestyle, that's going to be reflected in
+the beta coefficients that come out.
+
+160
+00:08:42,640 --> 00:08:46,410
+So, the terminal likelihood is going to
+have something in the denominator where we
+
+161
+00:08:46,410 --> 00:08:50,760
+say, here's all the possible ways that two
+out five people could've got the outcome.
+
+162
+00:08:50,760 --> 00:08:54,122
+And if I number these, let's say if I
+number these people1, 2,
+
+163
+00:08:54,122 --> 00:08:57,310
+3, 4, and 5, just to give them like, ID
+numbers here.
+
+164
+00:08:57,310 --> 00:09:01,040
+So, one possible thing that could have
+happened, if I'm conditioning on two out
+
+165
+00:09:01,040 --> 00:09:05,180
+of five having the outcome, here's one
+possible thing that could've happened.
+
+166
+00:09:05,180 --> 00:09:12,010
+So, it could have been that person that id
+number 1, 1 get's the outcome,
+
+167
+00:09:14,760 --> 00:09:20,500
+and it could have been that person 2 gets
+the outcome, and
+
+168
+00:09:20,500 --> 00:09:24,750
+the 3, 4, and 5, do not have the outcome.
+
+169
+00:09:24,750 --> 00:09:28,760
+So, that's one way that you could get two
+out of five exactly having the outcome.
+
+170
+00:09:29,760 --> 00:09:31,680
+Now, to write out the probability of that,
+
+171
+00:09:31,680 --> 00:09:33,400
+you're actually going to have to write out
+the probability.
+
+172
+00:09:33,400 --> 00:09:35,110
+The probability that one, that Person 1,
+
+173
+00:09:35,110 --> 00:09:38,430
+with all their characteristics gets the
+outcome, that Person 2 gets the outcomes,
+
+174
+00:09:38,430 --> 00:09:41,060
+and then if 3 doesn't, and 4 doesn't, and
+5 doesn't.
+
+175
+00:09:41,060 --> 00:09:42,640
+That's one possible outcome.
+
+176
+00:09:42,640 --> 00:09:46,590
+You're then going to add that to a term
+that represents the probability that
+
+177
+00:09:47,680 --> 00:09:52,760
+you know, maybe 2 and 3 get the outcome,
+4, 5, 1 do not.
+
+178
+00:09:52,760 --> 00:09:54,790
+And then, and so on.
+
+179
+00:09:54,790 --> 00:09:57,749
+There's going to be, you know, 5 choose 3
+possibilities here.
+
+180
+00:09:58,770 --> 00:09:59,811
+All of those go in the denominator.
+
+181
+00:09:59,811 --> 00:10:03,950
+You're writing out all possible outcomes
+that represent, here again, conditioning
+
+182
+00:10:03,950 --> 00:10:07,530
+on the fact that we're getting exactly 2
+out of 5 to have the outcome.
+
+183
+00:10:07,530 --> 00:10:09,700
+Now what actually happened in your
+dataset?
+
+184
+00:10:09,700 --> 00:10:11,310
+That's what goes in the numerator.
+
+185
+00:10:11,310 --> 00:10:15,490
+So what actually happened here is that
+person 2 and person 4 got the outcome.
+
+186
+00:10:15,490 --> 00:10:22,024
+So in the numerator we would be doing the
+probability that 2 gets the outcome,
+
+187
+00:10:22,024 --> 00:10:27,220
+4 gets the outcome, and then 5, 1, and 3
+do not.
+
+188
+00:10:27,220 --> 00:10:30,370
+And again, that's going to be some
+probability terms multiplied together, but
+
+189
+00:10:30,370 --> 00:10:32,020
+that's the general idea.
+
+190
+00:10:32,020 --> 00:10:35,460
+We're going to condition on all possible
+outcomes that involve exactly two out of
+
+191
+00:10:35,460 --> 00:10:37,100
+five getting, having the outcome.
+
+192
+00:10:37,100 --> 00:10:40,340
+But what actually happened in my data set,
+what goes in the numerator, is just one of
+
+193
+00:10:40,340 --> 00:10:44,710
+these terms that represents that it's 2
+and 4 specifically who had the outcome.
+
+194
+00:10:44,710 --> 00:10:47,800
+Remember, we'll be filling in these
+probabilities with something from
+
+195
+00:10:47,800 --> 00:10:49,420
+the logistic regression model.
+
+196
+00:10:49,420 --> 00:10:52,640
+Now, it's rather complicated to write out
+that example that I just gave.
+
+197
+00:10:52,640 --> 00:10:55,450
+So let's now go back to the simpler
+example where we're just
+
+198
+00:10:55,450 --> 00:10:59,570
+dealing with case control pairs, lot,
+little bit less going on in that case.
+
+199
+00:11:00,580 --> 00:11:03,520
+And we can actually write out the
+likelihood more easily for
+
+200
+00:11:03,520 --> 00:11:04,139
+the simpler case.
+
+201
+00:11:06,810 --> 00:11:10,060
+So back to our little example with case
+control pairs.
+
+202
+00:11:10,060 --> 00:11:13,480
+Now our clusters just have two people in
+them, and
+
+203
+00:11:13,480 --> 00:11:16,370
+one of the people got the outcome, because
+it's case control pairs, so
+
+204
+00:11:16,370 --> 00:11:19,010
+we know one person got the outcome, the
+other person didn't.
+
+205
+00:11:19,010 --> 00:11:21,880
+So now all we have to condition on in the
+denominator is
+
+206
+00:11:21,880 --> 00:11:24,840
+what are all the possible ways that one
+person could get the outcome out of two?
+
+207
+00:11:24,840 --> 00:11:26,630
+That's a little bit simpler, right?
+
+208
+00:11:26,630 --> 00:11:27,510
+Not too, too bad.
+
+209
+00:11:27,510 --> 00:11:33,190
+So we would put in the denominator the
+probability that the case gets
+
+210
+00:11:33,190 --> 00:11:39,430
+the outcome, and the control doesn't.
+
+211
+00:11:41,100 --> 00:11:45,230
+And we would add to that, the other
+possible thing though,
+
+212
+00:11:45,230 --> 00:11:52,170
+it could have been that the control got
+the disease, and the case didn't.
+
+213
+00:11:56,810 --> 00:12:00,580
+That is another possible outcome that
+involves one person getting the disease.
+
+214
+00:12:00,580 --> 00:12:03,770
+Of course, we know that it's the, it's the
+case person who got the disease.
+
+215
+00:12:03,770 --> 00:12:07,370
+But remember that the probabilities that
+go into this
+
+216
+00:12:07,370 --> 00:12:09,700
+are predicted probabilities from logistic
+regression.
+
+217
+00:12:09,700 --> 00:12:12,160
+So, those aren't going to equal just what
+actually happened.
+
+218
+00:12:13,750 --> 00:12:16,930
+So okay, in this case, that's our
+denominator,
+
+219
+00:12:16,930 --> 00:12:19,770
+all the possible ways that one out of two
+can get the outcome.
+
+220
+00:12:19,770 --> 00:12:23,360
+What actually happened in our dataset, of
+course, was that it was the case that got
+
+221
+00:12:23,360 --> 00:12:28,886
+the outcome, and then the control did not.
+
+222
+00:12:28,886 --> 00:12:34,840
+And then of course, we're
+
+223
+00:12:34,840 --> 00:12:38,360
+going to be then plugging in all this,
+the, the characteristics of the case, and
+
+224
+00:12:38,360 --> 00:12:40,990
+the controls, in some alphas and betas,
+which I'll just do in a second.
+
+225
+00:12:40,990 --> 00:12:43,480
+But I just want to kind of motivate,
+that's the general idea.
+
+226
+00:12:43,480 --> 00:12:46,080
+We're modeling some conditional
+probability.
+
+227
+00:12:46,080 --> 00:12:49,240
+What's nice here is that because we have
+things in the denominator and
+
+228
+00:12:49,240 --> 00:12:51,300
+the numerator, we're going to be able to
+cancel some things out.
+
+229
+00:12:51,300 --> 00:12:53,890
+We're eventually going to be able to
+cancel the intercept.
+
+230
+00:12:53,890 --> 00:12:55,440
+So that's kind of the general idea, but
+
+231
+00:12:55,440 --> 00:12:57,640
+now, what are these individual
+probabilities.
+
+232
+00:12:57,640 --> 00:12:59,490
+I'm kind of writing them out very
+generally here.
+
+233
+00:12:59,490 --> 00:13:02,960
+But what are the actual probability terms
+that will go in the model?
+
+234
+00:13:02,960 --> 00:13:05,090
+So let's actually, specifically put those
+in now.
+
+235
+00:13:06,630 --> 00:13:11,020
+So recall for the simple case, where we
+just have a binary exposure,
+
+236
+00:13:11,020 --> 00:13:14,150
+you have diabetes or you don't, and a
+binary outcome.
+
+237
+00:13:14,150 --> 00:13:16,960
+You are a case or you're not, you're a
+control.
+
+238
+00:13:16,960 --> 00:13:20,320
+The probability terms are actually fairly
+straightforward, and
+
+239
+00:13:20,320 --> 00:13:23,540
+we saw these in an earlier unit in the
+course.
+
+240
+00:13:23,540 --> 00:13:25,600
+So case who has diabetes,
+
+241
+00:13:25,600 --> 00:13:28,610
+they get this probability of having the
+disease in the outcome.
+
+242
+00:13:28,610 --> 00:13:31,720
+This is the probability of having the
+disease if you have diabetes.
+
+243
+00:13:31,720 --> 00:13:35,820
+This is the probability of, of getting the
+disease if you don't have diabetes.
+
+244
+00:13:35,820 --> 00:13:38,560
+So the beta is multiplied by 0 and goes
+away.
+
+245
+00:13:38,560 --> 00:13:42,280
+This is the probability of getting the,
+the disease, the outcome here,
+
+246
+00:13:42,280 --> 00:13:43,200
+if you have diabetes.
+
+247
+00:13:43,200 --> 00:13:45,100
+So we put a 1 in the numerator.
+
+248
+00:13:45,100 --> 00:13:49,180
+And this is the probability of not getting
+the disease if you do not have diabetes,
+
+249
+00:13:49,180 --> 00:13:51,220
+so the beta, again, is multiplied by 0.
+
+250
+00:13:51,220 --> 00:13:52,160
+We get a 1 in the numerator.
+
+251
+00:13:52,160 --> 00:13:55,610
+You should kind of be familiar with these
+different probability terms by now.
+
+252
+00:13:55,610 --> 00:13:59,900
+Let me now just actually apply this to
+that example dataset of
+
+253
+00:13:59,900 --> 00:14:01,000
+diabetes and case control.
+
+254
+00:14:01,000 --> 00:14:03,170
+It's easier to apply it to a real example.
+
+255
+00:14:03,170 --> 00:14:04,980
+So what would the terms and
+
+256
+00:14:04,980 --> 00:14:08,920
+the likelihood actually look like for each
+of these types of pairs?
+
+257
+00:14:08,920 --> 00:14:12,980
+So remember we had nine pairs where both
+the case and the control had diabetes.
+
+258
+00:14:12,980 --> 00:14:16,930
+Since we're not incorporating any other
+information about these people into our
+
+259
+00:14:16,930 --> 00:14:20,330
+model it's actually they're going to all
+have the same term into likelihood.
+
+260
+00:14:20,330 --> 00:14:21,920
+There are going to be nine identical
+terms.
+
+261
+00:14:21,920 --> 00:14:25,350
+Of course, if we were integrating other
+information like age, and
+
+262
+00:14:25,350 --> 00:14:29,440
+weight, and so on then everyone would have
+a different term in the likelihood, but
+
+263
+00:14:29,440 --> 00:14:31,100
+I'm trying to keep it simple here.
+
+264
+00:14:31,100 --> 00:14:33,680
+So what would the term in the likelihood
+actually look like here.
+
+265
+00:14:33,680 --> 00:14:37,580
+So, again, it's a conditional probability
+there's two possible ways that
+
+266
+00:14:37,580 --> 00:14:41,560
+one person could get the outcome here and
+one person not get the outcome.
+
+267
+00:14:41,560 --> 00:14:46,035
+So it could be the case that it's the case
+who has the outcome.
+
+268
+00:14:46,035 --> 00:14:48,230
+And remember, the case here has diabetes.
+
+269
+00:14:48,230 --> 00:14:51,300
+So here's the probability of getting the
+outcome if you have diabetes.
+
+270
+00:14:51,300 --> 00:14:54,400
+And the case, indeed, has diabetes here.
+
+271
+00:14:54,400 --> 00:14:56,390
+So it's that probability term.
+
+272
+00:14:56,390 --> 00:14:58,620
+So that's the probability of the case
+having the outcome.
+
+273
+00:14:58,620 --> 00:15:03,420
+We would multiply that by the probability
+that the control does not get the outcome.
+
+274
+00:15:03,420 --> 00:15:06,450
+So the control is, the control in this
+case though,
+
+275
+00:15:06,450 --> 00:15:10,620
+also has diabetes so they get the beta for
+having diabetes, but
+
+276
+00:15:10,620 --> 00:15:14,040
+they get the probability of not having the
+heart attack.
+
+277
+00:15:14,040 --> 00:15:16,580
+So it could have been that the case had
+the heart attack and
+
+278
+00:15:16,580 --> 00:15:19,110
+the control did not, which was what
+actually happened in our data, but
+
+279
+00:15:19,110 --> 00:15:22,430
+the other possible outcome was that it
+could have been that it was
+
+280
+00:15:22,430 --> 00:15:28,730
+the control who had the heart attack and
+the case who did not.
+
+281
+00:15:28,730 --> 00:15:30,445
+That, that theoretically could have
+happened.
+
+282
+00:15:30,445 --> 00:15:40,270
+[NOISE]
+So
+
+283
+00:15:40,270 --> 00:15:46,240
+this represents that case has the heart
+attack, control does not.
+
+284
+00:15:48,380 --> 00:15:55,220
+And this one represents the case does not,
+and
+
+285
+00:15:55,220 --> 00:15:57,380
+the control has the MI, the heart attack.
+
+286
+00:15:58,980 --> 00:16:03,450
+Now, notice though, because there's this
+very simple example, the case and
+
+287
+00:16:03,450 --> 00:16:05,250
+the control both have diabetes, so
+
+288
+00:16:05,250 --> 00:16:08,550
+in fact, the terms, these two terms, are
+identical.
+
+289
+00:16:08,550 --> 00:16:09,950
+Right?
+You can see that they're, they're,
+
+290
+00:16:09,950 --> 00:16:11,758
+they're just the same.
+
+291
+00:16:11,758 --> 00:16:17,878
+We put in the numerator, the what actually
+happened which is what the,
+
+292
+00:16:17,878 --> 00:16:20,269
+the, the case that the MI.
+
+293
+00:16:20,269 --> 00:16:22,364
+And that control did not.
+
+294
+00:16:22,364 --> 00:16:26,324
+But if you start to look carefully here,
+what you'll notice, which is kind of nice,
+
+295
+00:16:26,324 --> 00:16:29,050
+is that all of these terms are exactly
+identical.
+
+296
+00:16:29,050 --> 00:16:31,530
+Because, again this is a simple situation.
+
+297
+00:16:31,530 --> 00:16:34,300
+So, this is going to cancel, this is
+going to cancel, this is going to cancel.
+
+298
+00:16:34,300 --> 00:16:36,600
+This whole likelihood term goes to 1.
+
+299
+00:16:36,600 --> 00:16:39,060
+So we're going to get 9, 1s in the
+likelihood.
+
+300
+00:16:39,060 --> 00:16:40,810
+Those aren't going to count at all.
+
+301
+00:16:40,810 --> 00:16:44,340
+So we turned up that this is also true,
+you could work this out for
+
+302
+00:16:44,340 --> 00:16:49,490
+the situation where the pairs, where the
+pair, they both did not have diabetes.
+
+303
+00:16:49,490 --> 00:16:54,340
+We will also get identical terms, in the
+likelihood that we'll also reduce to one.
+
+304
+00:16:54,340 --> 00:16:55,540
+So, just as with McNemar's test,
+
+305
+00:16:55,540 --> 00:16:59,020
+the concordant pairs contribute nothing to
+the likelihood.
+
+306
+00:16:59,020 --> 00:17:00,620
+So that's kind of not surprising.
+
+307
+00:17:00,620 --> 00:17:01,430
+And it's good.
+
+308
+00:17:01,430 --> 00:17:04,260
+It's kind of a nice check that that works
+out as we would hope it would.
+
+309
+00:17:04,260 --> 00:17:07,730
+So now, let me turn to the discordant
+pairs, which are,
+
+310
+00:17:07,730 --> 00:17:11,982
+of course, where the uh,interesting
+information lies.
+
+311
+00:17:11,982 --> 00:17:12,860
+Alright.
+
+312
+00:17:12,860 --> 00:17:17,530
+So what if we're talking about the 37
+discordant
+
+313
+00:17:17,530 --> 00:17:21,250
+pairs where the case have diabetes but the
+control did not?
+
+314
+00:17:21,250 --> 00:17:23,130
+What would the likelihood term look like
+there?
+
+315
+00:17:24,130 --> 00:17:25,966
+Alright, so what's the prob,
+
+316
+00:17:25,966 --> 00:17:30,635
+what's the probability that it's the case
+who gets the heart attack?
+
+317
+00:17:30,635 --> 00:17:32,530
+Since the case here has diabetes,
+
+318
+00:17:32,530 --> 00:17:36,650
+they are going to have an, a beta in their
+likelihood terms.
+
+319
+00:17:36,650 --> 00:17:42,140
+So this is this is the probability that
+the case has the outcome, and then
+
+320
+00:17:42,140 --> 00:17:43,970
+the control does not.
+
+321
+00:17:43,970 --> 00:17:46,130
+Now the control here does not have
+diabetes, so
+
+322
+00:17:46,130 --> 00:17:49,710
+they gotta term that's just 1 over 1 plus
+e raised to alpha.
+
+323
+00:17:49,710 --> 00:17:51,620
+Then we add that to the other possibility.
+
+324
+00:17:51,620 --> 00:17:56,180
+It could have been a case that the case
+was not the one who got the heart attack.
+
+325
+00:17:57,260 --> 00:17:58,420
+So they get a 1 in the numerator,
+
+326
+00:17:58,420 --> 00:18:00,990
+they still have the beta because they have
+diabetes, but
+
+327
+00:18:00,990 --> 00:18:04,480
+it was the control who got the heart
+attack.
+
+328
+00:18:04,480 --> 00:18:06,480
+The they get e alpha over 1 plus e alpha.
+
+329
+00:18:06,480 --> 00:18:09,720
+That was the other way that one of the two
+people could have had the outcome.
+
+330
+00:18:09,720 --> 00:18:11,630
+What actually happened, of course, is this
+one.
+
+331
+00:18:13,750 --> 00:18:19,060
+The case had the heart attack, and the
+control did not.
+
+332
+00:18:21,750 --> 00:18:26,040
+And what you'll notice here is that a lot
+of things are going to cancel, but
+
+333
+00:18:26,040 --> 00:18:27,430
+not everything will cancel.
+
+334
+00:18:27,430 --> 00:18:29,100
+So I will go through the cancellations,
+
+335
+00:18:29,100 --> 00:18:31,660
+the things that do cancel, in just a
+minute here.
+
+336
+00:18:31,660 --> 00:18:35,180
+But not everything cancels, unlike with a
+concordant pairs.
+
+337
+00:18:35,180 --> 00:18:38,840
+Now, what about the case where it's the
+control who has diabetes and
+
+338
+00:18:38,840 --> 00:18:40,950
+the case who does not have diabetes?
+
+339
+00:18:40,950 --> 00:18:44,120
+What would change if I were to make this
+into the likelihood term for
+
+340
+00:18:44,120 --> 00:18:45,910
+those 16 here?
+
+341
+00:18:45,910 --> 00:18:49,550
+So the only things that would change is
+that the case would not get beta anymore.
+
+342
+00:18:49,550 --> 00:18:53,020
+So this is the probability now of the case
+getting the outcome.
+
+343
+00:18:53,020 --> 00:18:55,250
+The control of course, would have the
+beta.
+
+344
+00:18:55,250 --> 00:18:59,730
+This is the probability of the control not
+getting the outcome and so and so
+
+345
+00:18:59,730 --> 00:19:02,710
+forth, we'd have to stick in some betas
+here.
+
+346
+00:19:03,820 --> 00:19:06,000
+And then in the numerator this beta would
+go away.
+
+347
+00:19:07,450 --> 00:19:09,640
+And we would put in a beta for the control
+subject.
+
+348
+00:19:09,640 --> 00:19:11,650
+So that's what term would look like for
+
+349
+00:19:11,650 --> 00:19:15,970
+the 16 pairs where the control had
+diabetes, but the case did not.
+
+350
+00:19:15,970 --> 00:19:18,720
+Now, this, of course, would be multiplied
+together 16 times,
+
+351
+00:19:18,720 --> 00:19:20,580
+because there's 16 pairs that look like
+that.
+
+352
+00:19:22,900 --> 00:19:25,430
+So now we can simplify these further.
+
+353
+00:19:25,430 --> 00:19:29,160
+But I've added a little subscript I just
+want to point out here.
+
+354
+00:19:29,160 --> 00:19:32,730
+I've added a subscript to all the
+intercept terms.
+
+355
+00:19:32,730 --> 00:19:38,440
+So I have, for every strata, every pair
+here, I'm allowing each pair to have its
+
+356
+00:19:38,440 --> 00:19:42,700
+own intercept, which I'm representing here
+as alpha sub one, alpha sub two, etcetera.
+
+357
+00:19:42,700 --> 00:19:43,670
+And I can do that,
+
+358
+00:19:43,670 --> 00:19:47,240
+because I know that the intercepts are
+eventually going to cancel out.
+
+359
+00:19:47,240 --> 00:19:48,940
+And therefore, that we're not going to
+have to estimate them.
+
+360
+00:19:48,940 --> 00:19:50,800
+Because, clearly, it would be impossible
+for
+
+361
+00:19:50,800 --> 00:19:53,710
+us to estimate 53 different intercepts.
+
+362
+00:19:53,710 --> 00:19:57,380
+But we can allow each strata to have its
+own baseline risk, its own baseline
+
+363
+00:19:57,380 --> 00:20:01,410
+odds here, its own intercept, because
+we're going to cancel them in a minute.
+
+364
+00:20:01,410 --> 00:20:05,590
+I, I notice I have a typo on this line, so
+this top one represents the 16 discordant
+
+365
+00:20:05,590 --> 00:20:07,540
+strata where it was the control who had
+diabetes.
+
+366
+00:20:07,540 --> 00:20:11,220
+The bottom one here represents the 37
+discordant strata where
+
+367
+00:20:11,220 --> 00:20:12,389
+the case had diabetes.
+
+368
+00:20:13,600 --> 00:20:16,520
+The nice thing, these terms look really,
+really complicated and awful.
+
+369
+00:20:16,520 --> 00:20:19,060
+But you're going to see that a lot of
+things are going to start to cancel.
+
+370
+00:20:19,060 --> 00:20:21,070
+So, first of all, if you look at the
+numerator and
+
+371
+00:20:21,070 --> 00:20:25,370
+the denominator here, all of these terms
+cancel.
+
+372
+00:20:25,370 --> 00:20:27,310
+They all in the numerator and
+
+373
+00:20:27,310 --> 00:20:30,500
+denominator, these fractions have the
+exact same denominator.
+
+374
+00:20:30,500 --> 00:20:32,520
+So, all of these denominators cancel.
+
+375
+00:20:32,520 --> 00:20:36,680
+So we can simplify this quite quickly to
+something much nicer, which is this e
+
+376
+00:20:36,680 --> 00:20:42,550
+raised to alpha sub j, which is just the
+pair-specific intercepts and
+
+377
+00:20:42,550 --> 00:20:45,130
+then in the denominator, all we're left
+with is the following.
+
+378
+00:20:47,440 --> 00:20:49,080
+So that one's quite easy.
+
+379
+00:20:49,080 --> 00:20:50,890
+It reduces down quite nicely and
+
+380
+00:20:50,890 --> 00:20:53,140
+you'll see there's even more we can cancel
+in just a second.
+
+381
+00:20:54,156 --> 00:20:58,314
+For this bottom one, again all of these
+cancel and
+
+382
+00:20:58,314 --> 00:21:02,868
+we're left with only e raised to alpha sub
+i plus beta,
+
+383
+00:21:02,868 --> 00:21:07,890
+e raised to alpha sub i plus beta plus e
+raised to alpha sub i.
+
+384
+00:21:07,890 --> 00:21:10,230
+And again, I mul, the, the sub i's and
+
+385
+00:21:10,230 --> 00:21:12,980
+sub j's just mean it's like, everyone can
+have their own intercept.
+
+386
+00:21:12,980 --> 00:21:14,790
+Every pair can have their own intercept.
+
+387
+00:21:14,790 --> 00:21:16,965
+Well, guess what.
+Things are going to simplify even further,
+
+388
+00:21:16,965 --> 00:21:18,350
+because if you're looking at this
+carefully,
+
+389
+00:21:18,350 --> 00:21:20,355
+you can see now we can actually cancel out
+the intercepts.
+
+390
+00:21:21,560 --> 00:21:23,230
+So let me go ahead and cancel out the
+intercepts.
+
+391
+00:21:23,230 --> 00:21:27,490
+So I've just copied over from the previous
+slide,
+
+392
+00:21:27,490 --> 00:21:31,110
+and this, this, and this will all cancel.
+
+393
+00:21:31,110 --> 00:21:36,160
+We're left with just a one over e plus,
+one over e raised to beta here, and
+
+394
+00:21:36,160 --> 00:21:39,220
+then this, this, and this will cancel.
+
+395
+00:21:39,220 --> 00:21:47,440
+So we're left with e raised to beta, over,
+1 plus e raised to beta here.
+
+396
+00:21:47,440 --> 00:21:53,060
+This one we're left with just 1 over, e
+raised to beta plus 1.
+
+397
+00:21:53,060 --> 00:21:53,640
+So that's it.
+
+398
+00:21:53,640 --> 00:21:55,260
+That's all the terms reduced to.
+
+399
+00:21:55,260 --> 00:21:56,940
+So they end up to being pretty simple in
+the end.
+
+400
+00:21:56,940 --> 00:22:00,980
+Again, this was just a case where we have
+a single binary exposure.
+
+401
+00:22:00,980 --> 00:22:03,760
+Well, we have 16 terms that look like this
+in our likelihood,
+
+402
+00:22:03,760 --> 00:22:06,980
+we have 37 terms that look like this in
+our likelihood, likelihood.
+
+403
+00:22:06,980 --> 00:22:08,920
+So this is our final likelihood.
+
+404
+00:22:08,920 --> 00:22:11,150
+Our likelihood is a function of beta.
+
+405
+00:22:11,150 --> 00:22:12,600
+And there's 53 terms in it.
+
+406
+00:22:12,600 --> 00:22:14,800
+Now, of course, we also have multiplied a
+whole bunch of 1s, but
+
+407
+00:22:14,800 --> 00:22:17,160
+I haven't bothered to put in the 1s for
+the concordant pairs.
+
+408
+00:22:18,910 --> 00:22:21,820
+Well, we could take this likelihood
+function, and actually, it's,
+
+409
+00:22:21,820 --> 00:22:25,300
+because it's a very simple case, we could
+do the maximization ourself.
+
+410
+00:22:25,300 --> 00:22:26,700
+I'll just walk you through it for fun.
+
+411
+00:22:26,700 --> 00:22:29,040
+Of course, you don't really have to do any
+of these by hand.
+
+412
+00:22:29,040 --> 00:22:33,800
+But that's, if we wanted to now solve for
+beta, it's fairly straightforward to solve
+
+413
+00:22:33,800 --> 00:22:37,510
+for beta here, to maximize this function
+as a function of beta.
+
+414
+00:22:37,510 --> 00:22:40,410
+We're going to first take the log of the
+likelihood to make it easier to
+
+415
+00:22:40,410 --> 00:22:41,490
+take the derivative.
+
+416
+00:22:41,490 --> 00:22:42,220
+So I've done that here,
+
+417
+00:22:42,220 --> 00:22:45,780
+take the log of the likelihood and then we
+take the derivative.
+
+418
+00:22:45,780 --> 00:22:47,850
+We did this in an earlier unit.
+
+419
+00:22:47,850 --> 00:22:49,250
+I'll refer you back to that if you want to
+
+420
+00:22:49,250 --> 00:22:50,980
+go through all the details of taking the
+derivatives.
+
+421
+00:22:50,980 --> 00:22:52,230
+Take the derivative.
+
+422
+00:22:52,230 --> 00:22:55,150
+Set it equal to 0, and then we simply
+solve for beta.
+
+423
+00:22:57,120 --> 00:23:00,020
+And all that you kind of walk it through
+that your own if you're interested.
+
+424
+00:23:00,020 --> 00:23:04,210
+Again, I'm not expecting you to actually
+be able recreate this for this class.
+
+425
+00:23:04,210 --> 00:23:06,050
+What you end up with at the end of the
+day, though,
+
+426
+00:23:06,050 --> 00:23:11,420
+is that beta is equal to the natural log
+of 37 over 16 or
+
+427
+00:23:11,420 --> 00:23:16,280
+equivalent, equivalently, e raised to beta
+is equal to 37 over 16.
+
+428
+00:23:16,280 --> 00:23:16,840
+Well guess what?
+
+429
+00:23:16,840 --> 00:23:19,440
+That's just the odds ratio from McNemar's
+test.
+
+430
+00:23:19,440 --> 00:23:21,730
+So we solved it out and we are,
+
+431
+00:23:21,730 --> 00:23:24,770
+we get back exactly what we already know
+should be the odds ratio.
+
+432
+00:23:24,770 --> 00:23:26,180
+So that's our little check that, hey,
+
+433
+00:23:26,180 --> 00:23:31,360
+this whole method actually does give us
+the right data back at the end of the day.
+
+434
+00:23:31,360 --> 00:23:34,160
+Of course, you can't do it by hand if it's
+much more complicated than this, but
+
+435
+00:23:34,160 --> 00:23:37,200
+it's always nice to do a very simple
+example by hand and
+
+436
+00:23:37,200 --> 00:23:41,490
+just convince yourself that in fact, you
+get out what you think you should get out.
+
+437
+00:23:41,490 --> 00:23:43,310
+And indeed, it works out here.
+
+438
+00:23:43,310 --> 00:23:46,220
+That's the idea of the conditional
+likelihood.
+
+439
+00:23:46,220 --> 00:23:50,140
+And of course, it's, it can get really
+complicated to write out pretty fast.
+
+440
+00:23:50,140 --> 00:23:53,845
+And what the computer is actually doing is
+some kind of version of that in the,
+
+441
+00:23:53,845 --> 00:23:58,940
+in the background some kind of algorithm
+that approximates that in the background.
+
+442
+00:23:58,940 --> 00:24:04,380
+So let me now just jump, that's the math,
+and now let me jump to a, actually
+
+443
+00:24:04,380 --> 00:24:09,490
+applying this to some, some real data that
+we've already seen in an earlier module.
+
+444
+00:24:09,490 --> 00:24:14,320
+So remember that we have this example of a
+hypothetical eye trial.
+
+445
+00:24:14,320 --> 00:24:16,730
+So, this was hypothetical trial 1.
+
+446
+00:24:16,730 --> 00:24:20,580
+So remember this is a one where different
+people had different treatments in
+
+447
+00:24:20,580 --> 00:24:23,509
+each eye, so we're going to be thinking
+about within person comparison.
+
+448
+00:24:24,590 --> 00:24:28,170
+So 50 patients with bilateral eye-disease
+got a drug in one eye and
+
+449
+00:24:28,170 --> 00:24:29,420
+a placebo in the other eye.
+
+450
+00:24:30,590 --> 00:24:32,250
+We're keeping the example simple.
+
+451
+00:24:32,250 --> 00:24:35,340
+So success of positive outcome here is if
+you improve by more than 50%.
+
+452
+00:24:35,340 --> 00:24:37,930
+The negative outcome is you did not.
+
+453
+00:24:37,930 --> 00:24:41,270
+Now, we can check to say, I didn't show
+you this earlier, but
+
+454
+00:24:41,270 --> 00:24:44,110
+we can actually check and say, are the
+eyes correlated?
+
+455
+00:24:44,110 --> 00:24:47,960
+We, that's, that, that, we like to know
+that in terms of their, who improved, and
+
+456
+00:24:47,960 --> 00:24:50,170
+which eyes improved, and which eyes didn't
+improve.
+
+457
+00:24:50,170 --> 00:24:52,360
+Was there correlation within a person?
+
+458
+00:24:52,360 --> 00:24:53,800
+We're not guaranteed that there would be.
+
+459
+00:24:53,800 --> 00:24:55,930
+We would expect there to be, there doesn't
+have to be.
+
+460
+00:24:55,930 --> 00:24:58,060
+So I can actually check that in my data.
+
+461
+00:24:58,060 --> 00:24:59,630
+So I've done that now.
+
+462
+00:24:59,630 --> 00:25:01,230
+Are the eyes actually correlated?
+
+463
+00:25:01,230 --> 00:25:05,510
+Is eye one and eye two in a, within a
+given person, correlated?
+
+464
+00:25:05,510 --> 00:25:08,090
+So we can just run a Pearson's correlation
+coefficient to check that.
+
+465
+00:25:08,090 --> 00:25:10,360
+And I did that for the 50 people.
+
+466
+00:25:10,360 --> 00:25:12,440
+Each person has two eyes, of course.
+
+467
+00:25:12,440 --> 00:25:14,590
+And here are the correlation coefficients.
+
+468
+00:25:14,590 --> 00:25:16,380
+So we get a correlation coefficient of
+about 0.36.
+
+469
+00:25:16,380 --> 00:25:18,500
+It's statistically significant.
+
+470
+00:25:18,500 --> 00:25:19,740
+We care less about that than the,
+
+471
+00:25:19,740 --> 00:25:23,680
+just the fact that that's a fair, fairly
+high correlation.
+
+472
+00:25:23,680 --> 00:25:26,280
+You know, not terribly high, but
+reasonably, you know,
+
+473
+00:25:26,280 --> 00:25:29,220
+there is definitely some correlation
+between eyes here.
+
+474
+00:25:29,220 --> 00:25:30,210
+Which means, if we ignore it,
+
+475
+00:25:30,210 --> 00:25:32,990
+it is really, it's definitely going to
+affect the results.
+
+476
+00:25:32,990 --> 00:25:35,700
+Now, here is the actual outcomes of the
+trial.
+
+477
+00:25:35,700 --> 00:25:39,400
+I, we've previously analyzed these with
+the McNemar's test.
+
+478
+00:25:39,400 --> 00:25:42,030
+The p-value comes out to be 0.029.
+
+479
+00:25:42,030 --> 00:25:45,360
+I'm now going to use these data in the
+regression context.
+
+480
+00:25:45,360 --> 00:25:48,950
+We actually could just stop at McNemar's
+test, but to illustrate for
+
+481
+00:25:48,950 --> 00:25:50,460
+you conditional logistic regression,
+
+482
+00:25:50,460 --> 00:25:55,100
+I'm going to plug these data into the
+regression context.
+
+483
+00:25:55,100 --> 00:25:57,470
+Of course you'd probably be adjusting for
+
+484
+00:25:57,470 --> 00:26:00,450
+other things to make it even worthwhile to
+do a regression.
+
+485
+00:26:00,450 --> 00:26:02,820
+But it's, we're just going to keep it
+simple here.
+
+486
+00:26:02,820 --> 00:26:06,550
+So first of all, though, I'm going to
+imagine that I took these data and
+
+487
+00:26:06,550 --> 00:26:08,360
+I didn't know about conditional logistic
+regression.
+
+488
+00:26:08,360 --> 00:26:10,410
+I forgot to consider the correlation and
+
+489
+00:26:10,410 --> 00:26:12,990
+I just plugged this into an ordinary
+logistic regression.
+
+490
+00:26:12,990 --> 00:26:13,690
+I could do that.
+
+491
+00:26:13,690 --> 00:26:15,920
+My outcome is improved or not.
+
+492
+00:26:15,920 --> 00:26:18,940
+My predictor here is, if you're a treated
+eye or
+
+493
+00:26:18,940 --> 00:26:23,080
+not, and if I just ignore the correlations
+between eyes in the same person.
+
+494
+00:26:23,080 --> 00:26:24,580
+We're at a regular logistic regression.
+
+495
+00:26:24,580 --> 00:26:25,710
+This is incorrect.
+
+496
+00:26:25,710 --> 00:26:27,790
+Here's the results that I get.
+
+497
+00:26:27,790 --> 00:26:30,290
+So you can see that it's a regular
+logistic regression because we
+
+498
+00:26:30,290 --> 00:26:34,290
+have an intercept which of course will not
+be estimated in a conditional logistic.
+
+499
+00:26:34,290 --> 00:26:37,890
+Notice that we get, here's our beta we get
+a p-value of about 0.07.
+
+500
+00:26:37,890 --> 00:26:41,430
+So that's very similar to what we got when
+we ran a chi-square, and
+
+501
+00:26:41,430 --> 00:26:42,870
+incorrect chi-square on these data.
+
+502
+00:26:42,870 --> 00:26:47,800
+So this is the incorrect analysis our
+p-value is too high because we've
+
+503
+00:26:47,800 --> 00:26:49,180
+ignored the correlation.
+
+504
+00:26:49,180 --> 00:26:51,770
+And when you ignore correlations from
+within cluster comparisons,
+
+505
+00:26:51,770 --> 00:26:54,120
+your p-value ends up to being too high.
+
+506
+00:26:54,120 --> 00:26:57,540
+I then took these same data and applied
+conditional logistic regression,
+
+507
+00:26:57,540 --> 00:26:59,550
+which is not hard to do in the computer.
+
+508
+00:26:59,550 --> 00:27:02,110
+Most statistical packages will do this
+very easily for you.
+
+509
+00:27:02,110 --> 00:27:06,440
+All you have to do is specify that you
+want to stratify on pair in this case.
+
+510
+00:27:06,440 --> 00:27:08,690
+Or in this case, stratify on person,
+because they're,
+
+511
+00:27:08,690 --> 00:27:11,840
+your eyes are correlated within a person.
+
+512
+00:27:11,840 --> 00:27:13,650
+So you'd stratify on, say, the subject's
+ID number.
+
+513
+00:27:13,650 --> 00:27:15,870
+And when I do that,
+
+514
+00:27:15,870 --> 00:27:18,730
+I do the correct conditional logistic
+regression, here's what I get.
+
+515
+00:27:18,730 --> 00:27:22,810
+I get, notice, no intercept, because it's
+conditional logistic regression.
+
+516
+00:27:22,810 --> 00:27:25,800
+I get my beta coefficient, and I get my
+p-value.
+
+517
+00:27:25,800 --> 00:27:28,770
+Notice, now that my p-value is
+statistically significant,
+
+518
+00:27:28,770 --> 00:27:31,696
+the p-value from McNemar's was 0.029.
+
+519
+00:27:31,696 --> 00:27:34,460
+So I don't get exactly the same p-value,
+but they're extremely close.
+
+520
+00:27:34,460 --> 00:27:37,950
+Again, McNemar's is a little bit different
+mathematically than doing
+
+521
+00:27:37,950 --> 00:27:39,800
+a likelihood estimation method.
+
+522
+00:27:39,800 --> 00:27:44,144
+Applying conditional logistic regression
+really is pretty straightforward.
+
+523
+00:27:44,144 --> 00:27:47,440
+The interpretation is the essentially the
+same as before.
+
+524
+00:27:47,440 --> 00:27:49,950
+We're going to get odds ratios out.
+
+525
+00:27:49,950 --> 00:27:54,430
+You'd want to do you can't really do a
+logit plot within strata, so
+
+526
+00:27:54,430 --> 00:27:56,960
+sometimes we might just do an you know,
+
+527
+00:27:56,960 --> 00:27:59,340
+we might do a logit plot where we don't
+account for the correlation,
+
+528
+00:27:59,340 --> 00:28:02,450
+just being able to plot something if
+you've got a continuous predictor.
+
+529
+00:28:02,450 --> 00:28:07,130
+But you actually can't do it anyway a
+logit plot within strata that's not
+
+530
+00:28:07,130 --> 00:28:11,340
+going to be possible but you can do your
+regular logit plots.
+
+531
+00:28:11,340 --> 00:28:15,010
+The thing that's really most affected by
+getting this, accounting for
+
+532
+00:28:15,010 --> 00:28:18,924
+the correlations is not the magnitude of
+the association, but the p-values.
+
+533
+00:28:18,924 --> 00:28:21,020
+So we want to get the correct p-values,
+but
+
+534
+00:28:21,020 --> 00:28:22,410
+that's not going to affect the logit plot
+too much.
+
+535
+00:28:22,410 --> 00:28:25,390
+So everything else is kind of the same as
+we've talked about with regular
+
+536
+00:28:25,390 --> 00:28:26,700
+logistic regression.
+
+537
+00:28:26,700 --> 00:28:29,980
+But this is the way that you can adjust
+for correlation.
+
+538
+00:28:29,980 --> 00:28:33,410
+Now, just to point out here that
+conditional logistic regression,
+
+539
+00:28:33,410 --> 00:28:35,920
+think about the way the likelihood is
+made.
+
+540
+00:28:35,920 --> 00:28:40,350
+Every term in the likelihood is comparing
+only people within a cluster.
+
+541
+00:28:40,350 --> 00:28:43,890
+So all conditional logistic regression is
+doing is comparing within-clusters.
+
+542
+00:28:43,890 --> 00:28:46,990
+There are no between-cluster comparisons.
+
+543
+00:28:46,990 --> 00:28:50,710
+Therefore, if everybody in your cluster
+has the same value for
+
+544
+00:28:50,710 --> 00:28:52,750
+the predictor, you can't do this.
+
+545
+00:28:52,750 --> 00:28:55,520
+So if everybody in the cluster was treated
+with the same treatment,
+
+546
+00:28:55,520 --> 00:28:57,700
+you can't do a conditional logistic
+regression.
+
+547
+00:28:57,700 --> 00:29:00,340
+So that hypothetical eye trial 2 that I
+talked about,
+
+548
+00:29:00,340 --> 00:29:05,310
+where everybody got treatment in, or a
+placebo in both eyes there would be no,
+
+549
+00:29:05,310 --> 00:29:08,540
+you couldn't apply conditional logistic
+regression to those data.
+
+550
+00:29:08,540 --> 00:29:13,070
+And similarly this we generally don't use
+conditional logistic regression for
+
+551
+00:29:13,070 --> 00:29:17,000
+repeated measures data because if it's the
+same person over time,
+
+552
+00:29:17,000 --> 00:29:21,230
+unless all of the predictors you care
+about are changing over time you know,
+
+553
+00:29:21,230 --> 00:29:23,640
+the same person over time is going to have
+the same gender,
+
+554
+00:29:23,640 --> 00:29:25,990
+they're going to have the same general
+characteristics over time.
+
+555
+00:29:25,990 --> 00:29:29,430
+So, so generally we're not using
+conditional logistic regression for
+
+556
+00:29:29,430 --> 00:29:30,600
+repeated measures data.
+
+557
+00:29:30,600 --> 00:29:36,000
+[BLANK_AUDIO]

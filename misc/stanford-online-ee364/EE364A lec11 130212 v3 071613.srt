@@ -1,0 +1,4855 @@
+1
+00:00:00,570 --> 00:00:02,160
+Here, what this is is the following.
+
+2
+00:00:02,160 --> 00:00:04,510
+Is we have, I mean, this is a very simple
+thing.
+
+3
+00:00:04,510 --> 00:00:07,990
+We actually have, it's a two dimensional
+ellipsoid.
+
+4
+00:00:07,990 --> 00:00:12,240
+I guess you might even call it an ellipse
+or something like that, of A matrices.
+
+5
+00:00:12,240 --> 00:00:16,750
+You commit to x, and then we find the,
+we'll find like the worst integral that
+
+6
+00:00:16,750 --> 00:00:20,090
+we'll actually plot here, is the histogram
+of the residuals.
+
+7
+00:00:20,090 --> 00:00:21,490
+Right?
+
+8
+00:00:21,490 --> 00:00:25,120
+Now, here we'll take uniformly distributed
+on the unit disk, okay?
+
+9
+00:00:25,120 --> 00:00:26,520
+And we'll take several values of x.
+
+10
+00:00:26,520 --> 00:00:29,620
+The first is, suppose you just completely
+ignore uncertainty and
+
+11
+00:00:29,620 --> 00:00:33,760
+you solve the least squares problem,
+minimize A0x minus b.
+
+12
+00:00:33,760 --> 00:00:35,460
+That's the nominal problem.
+
+13
+00:00:35,460 --> 00:00:39,850
+You minimize that and you get this
+distribution of residuals.
+
+14
+00:00:39,850 --> 00:00:41,890
+Right?
+So they're all over the place.
+
+15
+00:00:41,890 --> 00:00:44,630
+And You know, some, some of the residuals
+are 4 and 5.
+
+16
+00:00:44,630 --> 00:00:46,510
+And, by the way, how do you,
+
+17
+00:00:46,510 --> 00:00:50,510
+how would you describe what happens in
+this situation over here on the left?
+
+18
+00:00:50,510 --> 00:00:52,710
+Dumlock, that's exactly what it is, right?
+
+19
+00:00:52,710 --> 00:00:55,830
+You commit it to an x and in fact there
+are As
+
+20
+00:00:55,830 --> 00:00:59,800
+that make the residuals than you thought
+it was going to be.
+
+21
+00:00:59,800 --> 00:01:02,840
+Okay, so that's just dumlock but you pay
+for it over here.
+
+22
+00:01:02,840 --> 00:01:05,540
+Okay.
+Now you turn on Taken Off Regularization.
+
+23
+00:01:05,540 --> 00:01:06,460
+And you can even imagine.
+
+24
+00:01:06,460 --> 00:01:08,400
+I mean, one could even make a cartoon of
+this.
+
+25
+00:01:08,400 --> 00:01:08,970
+Right?
+You can
+
+26
+00:01:08,970 --> 00:01:11,720
+imagine turning the Taken Off
+Regularization knob.
+
+27
+00:01:11,720 --> 00:01:14,280
+When it's 0, you get this distribution.
+
+28
+00:01:14,280 --> 00:01:18,840
+Okay, as I turn it up, what happens is
+that distribution will,
+
+29
+00:01:18,840 --> 00:01:20,310
+will end up looking like this.
+
+30
+00:01:20,310 --> 00:01:23,370
+This is sort of the best looking one, the
+Taken Off Regularization one.
+
+31
+00:01:23,370 --> 00:01:26,210
+And you can see it did exactly what it was
+supposed to do.
+
+32
+00:01:26,210 --> 00:01:28,370
+Right?
+Taken off regularization is something like
+
+33
+00:01:28,370 --> 00:01:33,790
+heuristic for, it's a heuristic for giving
+you a robust solution and
+
+34
+00:01:33,790 --> 00:01:37,250
+you can see, and here robustness, we're
+going to make it very vague,
+
+35
+00:01:37,250 --> 00:01:40,720
+you get a tighter distribution of
+residuals, okay?
+
+36
+00:01:40,720 --> 00:01:44,450
+And in fact, the expected value of this
+distribution is smaller than this one.
+
+37
+00:01:44,450 --> 00:01:46,840
+I mean, I'm not going to work it out
+because it's too simple here.
+
+38
+00:01:46,840 --> 00:01:51,720
+But, you can see its simply, from robust
+point of view, a better solution.
+
+39
+00:01:51,720 --> 00:01:52,620
+Okay?
+So,
+
+40
+00:01:52,620 --> 00:01:55,565
+this shows exactly what people have known
+for, I don't know,
+
+41
+00:01:55,565 --> 00:01:58,830
+50-100 days that you had regularization
+and one interpretation for
+
+42
+00:01:58,830 --> 00:02:04,986
+regularization is to make your solution
+more robust variation here.
+
+43
+00:02:04,986 --> 00:02:09,350
+Okay, now the exact robustly squares.
+
+44
+00:02:09,350 --> 00:02:14,110
+The one that minimizes the worst case
+residual over this, over this ellipsoid of
+
+45
+00:02:14,110 --> 00:02:19,980
+matrices is the one you have attained by
+solving this this stp here.
+
+46
+00:02:19,980 --> 00:02:21,950
+Right?
+So, you solve that stp there and
+
+47
+00:02:21,950 --> 00:02:24,960
+you get the following distribution of
+residuals, its right here and
+
+48
+00:02:24,960 --> 00:02:28,160
+this is right there, that is, that's the
+number.
+
+49
+00:02:28,160 --> 00:02:29,580
+Right?
+That, that is the optimal,
+
+50
+00:02:29,580 --> 00:02:32,630
+that is the globally optimal number for
+the best you can do.
+
+51
+00:02:33,690 --> 00:02:37,990
+That is kind of the idea, and I think
+these distributions explain everything.
+
+52
+00:02:37,990 --> 00:02:40,320
+Right?
+About what you're trying to do here,
+
+53
+00:02:40,320 --> 00:02:42,470
+and and what robust optimization does.
+
+54
+00:02:42,470 --> 00:02:44,780
+Right, so this is the kind, this is, this
+is the idea.
+
+55
+00:02:47,168 --> 00:02:51,870
+Notice that when you I mean we can
+anthropomorphize this a little bit,
+
+56
+00:02:51,870 --> 00:02:57,070
+one thing interesting to notice is all of
+these, everything over here in either
+
+57
+00:02:57,070 --> 00:03:01,820
+the Tikhonov regular rise, or the nominal
+solution.
+
+58
+00:03:01,820 --> 00:03:02,940
+All of those are cases,
+
+59
+00:03:02,940 --> 00:03:07,630
+where by dumb luck, you did better than
+the robustly squares.
+
+60
+00:03:07,630 --> 00:03:09,040
+Right.
+
+61
+00:03:09,040 --> 00:03:10,660
+so, and what's interesting though is,
+
+62
+00:03:10,660 --> 00:03:16,000
+when you typically push the worse case
+residual down.
+
+63
+00:03:17,380 --> 00:03:22,080
+Usually an affect is that actually the
+best case actually [LAUGH] goes
+
+64
+00:03:22,080 --> 00:03:22,708
+the other way.
+
+65
+00:03:22,708 --> 00:03:25,080
+Right?
+And I mean, this is sort of natural, but.
+
+66
+00:03:25,080 --> 00:03:27,900
+And, and again, what I'm saying now is
+extremely vague.
+
+67
+00:03:27,900 --> 00:03:29,759
+These are not the arguments you would be
+allowed to make.
+
+68
+00:03:30,760 --> 00:03:34,880
+In public but its just something to point
+out.
+
+69
+00:03:34,880 --> 00:03:38,560
+So, now we move on to another section.
+
+70
+00:03:38,560 --> 00:03:39,130
+It's going to be
+
+71
+00:03:39,130 --> 00:03:42,250
+a world wind tour of some interesting
+problems in statistical estimation.
+
+72
+00:03:43,450 --> 00:03:47,050
+As with these other lectures, there is
+actually much more.
+
+73
+00:03:47,050 --> 00:03:49,370
+We expect you to read all of it.
+
+74
+00:03:49,370 --> 00:03:50,820
+Skim it all.
+
+75
+00:03:50,820 --> 00:03:52,560
+Homework will cover other things.
+
+76
+00:03:52,560 --> 00:03:57,200
+But we'll look at [COUGH] some of the big,
+big picture questions here.
+
+77
+00:03:57,200 --> 00:03:59,450
+And, we'll look at some interesting
+examples.
+
+78
+00:03:59,450 --> 00:04:07,705
+So we'll start with the idea of Parametric
+distribution estimation.
+
+79
+00:04:07,705 --> 00:04:11,974
+Though any, I mean this is at the
+[INAUDIBLE] absolute core of statistics.
+
+80
+00:04:11,974 --> 00:04:17,470
+So wait until so if you have, I mean,
+well, there's several.
+
+81
+00:04:17,470 --> 00:04:20,733
+We won't look at the non-parametric case,
+we'll look at the parametric case.
+
+82
+00:04:20,733 --> 00:04:26,660
+The, the parametric case is this, is that
+you have a, you have observed
+
+83
+00:04:26,660 --> 00:04:31,920
+a variable, an outcome, of a random
+variable, but it came, you don't know
+
+84
+00:04:31,920 --> 00:04:35,510
+which distribution in came from, and you
+have a parameterized set of distributions.
+
+85
+00:04:35,510 --> 00:04:39,100
+So this is kind of the basic starting
+point in standard classical
+
+86
+00:04:39,100 --> 00:04:40,700
+frequentist statistics.
+
+87
+00:04:40,700 --> 00:04:42,720
+So, so this, this is the idea.
+
+88
+00:04:42,720 --> 00:04:45,500
+So you have a parameterized family of
+distributions and
+
+89
+00:04:45,500 --> 00:04:50,610
+it's parameterized will you, the parameter
+will call x, okay.
+
+90
+00:04:50,610 --> 00:04:51,360
+So yeah.
+
+91
+00:04:51,360 --> 00:04:54,840
+This notation does not exactly conform to
+standard statistics notation.
+
+92
+00:04:54,840 --> 00:04:56,830
+I guess it would be theta or something
+like this, right?
+
+93
+00:04:56,830 --> 00:04:58,680
+But, that's fine.
+
+94
+00:04:58,680 --> 00:04:59,560
+okay.
+
+95
+00:04:59,560 --> 00:05:00,330
+Now.
+
+96
+00:05:00,330 --> 00:05:07,540
+An absolutely standard method for
+estimating which distribution generated
+
+97
+00:05:07,540 --> 00:05:13,190
+the actual observed outcome, y, is maximum
+likelihood estimation.
+
+98
+00:05:13,190 --> 00:05:16,010
+And what that says is, you take, you take
+your observation.
+
+99
+00:05:16,010 --> 00:05:16,510
+That's y.
+
+100
+00:05:17,880 --> 00:05:20,360
+You plug this in to the density.
+
+101
+00:05:20,360 --> 00:05:23,360
+It doesn't have to, I mean, it could also
+be a discrete probability, but,
+
+102
+00:05:23,360 --> 00:05:25,540
+density, whatever you like, right, here.
+
+103
+00:05:25,540 --> 00:05:28,480
+And you consider this function as a
+function of
+
+104
+00:05:28,480 --> 00:05:33,330
+the parameter that parameterizes the
+family of distributions, right?
+
+105
+00:05:33,330 --> 00:05:35,360
+And that's called a likelihood function.
+
+106
+00:05:35,360 --> 00:05:37,620
+And in fact, usually people take the log.
+
+107
+00:05:37,620 --> 00:05:39,430
+It doesn't matter if you're maximizing.
+
+108
+00:05:39,430 --> 00:05:42,430
+And so if you choose x by solving this
+problem,
+
+109
+00:05:42,430 --> 00:05:44,080
+that's maximum likelihood estimation.
+
+110
+00:05:44,080 --> 00:05:45,930
+Right so, and if you take a statistics
+course,
+
+111
+00:05:45,930 --> 00:05:48,990
+you'll hear all about why this is a good
+idea, you know,
+
+112
+00:05:48,990 --> 00:05:51,550
+in some cases asymptotically optimal and
+all that kind of stuff.
+
+113
+00:05:53,700 --> 00:05:56,360
+So this l of x.
+
+114
+00:05:56,360 --> 00:05:58,590
+That's going to be the log likelihood
+function, and
+
+115
+00:05:58,590 --> 00:06:02,640
+you can add constraints on, on that, and a
+lot times they're implicit.
+
+116
+00:06:02,640 --> 00:06:03,790
+You know, for example.
+
+117
+00:06:03,790 --> 00:06:06,570
+X, the parameter might include something
+like a co-variants metrix,
+
+118
+00:06:06,570 --> 00:06:10,420
+that's right because your, your, for
+example your family might be Gaussian or
+
+119
+00:06:10,420 --> 00:06:11,590
+something like that.
+
+120
+00:06:11,590 --> 00:06:16,490
+And, so the mean and co-variants might be
+the parameter plus they characterizes it
+
+121
+00:06:16,490 --> 00:06:18,400
+and they of course, the parameter,
+
+122
+00:06:18,400 --> 00:06:21,763
+the co-response of the co-variants
+obviously has to be positive depth, right?
+
+123
+00:06:21,763 --> 00:06:26,050
+These could, and there could be then what
+you do is, yet
+
+124
+00:06:26,050 --> 00:06:28,700
+that's the domain of the likelihood
+function, and
+
+125
+00:06:28,700 --> 00:06:32,090
+you would simply make something, one, one
+simple way is to simply say that
+
+126
+00:06:32,090 --> 00:06:36,320
+this is 0 there, because then log of it is
+minus infinity, right?
+
+127
+00:06:36,320 --> 00:06:39,430
+So, and that's infinitely bad if you're
+maximizing.
+
+128
+00:06:39,430 --> 00:06:40,420
+So that's one.
+
+129
+00:06:40,420 --> 00:06:41,100
+Okay.
+
+130
+00:06:41,100 --> 00:06:42,490
+Now.
+
+131
+00:06:42,490 --> 00:06:45,880
+The maximum likelihood estimation problem,
+that's convex.
+
+132
+00:06:45,880 --> 00:06:50,380
+If the log likelihood is concave That, but
+this is, by the way,
+
+133
+00:06:50,380 --> 00:06:54,650
+this is different for a log concave
+distribution which we've looked at before.
+
+134
+00:06:54,650 --> 00:06:58,130
+This is, this is log concave in the
+parameters that describe
+
+135
+00:06:58,130 --> 00:07:00,160
+the family of distributions.
+
+136
+00:07:00,160 --> 00:07:01,900
+Now, if you know about exponential
+families,
+
+137
+00:07:01,900 --> 00:07:04,550
+then these two coincide, because there's
+actually only,
+
+138
+00:07:04,550 --> 00:07:08,750
+they're both involved in exp of an inner
+product, and then a normalizing constant.
+
+139
+00:07:08,750 --> 00:07:10,980
+So if you know what I'm talking about,
+fine.
+
+140
+00:07:10,980 --> 00:07:12,820
+If you don't, Don't worry about it.
+
+141
+00:07:12,820 --> 00:07:15,110
+Okay, but, but its a different concept.
+
+142
+00:07:15,110 --> 00:07:18,390
+The concept here is, is the log likelihood
+function
+
+143
+00:07:18,390 --> 00:07:23,380
+concave in the parameters that describe
+the distribution?
+
+144
+00:07:23,380 --> 00:07:24,900
+Actually something very interesting's
+going to happen.
+
+145
+00:07:24,900 --> 00:07:26,680
+In a lot of cases you'll have the, you'll,
+
+146
+00:07:26,680 --> 00:07:30,440
+you'll sort of have what you think are the
+natural parameters for distribution.
+
+147
+00:07:30,440 --> 00:07:32,710
+And sure enough it will be log concave in
+those parameters.
+
+148
+00:07:32,710 --> 00:07:34,542
+Well, we're going to see examples very
+shortly.
+
+149
+00:07:34,542 --> 00:07:35,099
+Right?
+
+150
+00:07:35,099 --> 00:07:37,820
+But actually in other cases something
+really cool is going to happen.
+
+151
+00:07:39,050 --> 00:07:43,090
+You look at the log concave, you'll look
+at the log likelihood function as
+
+152
+00:07:43,090 --> 00:07:46,080
+a function of what you though were the
+natural parameters, and
+
+153
+00:07:46,080 --> 00:07:47,710
+guess what, won't be concave.
+
+154
+00:07:48,970 --> 00:07:50,010
+It just won't be.
+
+155
+00:07:50,010 --> 00:07:51,170
+Give us an example.
+
+156
+00:07:51,170 --> 00:07:55,770
+Let's estimate the mean and covariance of
+a Gaussian that generated the sample.
+
+157
+00:07:55,770 --> 00:07:57,100
+What could be simpler?
+
+158
+00:07:57,100 --> 00:07:57,730
+Okay?
+Well it turns out in
+
+159
+00:07:57,730 --> 00:08:02,550
+the log likelihood function, in sigma and
+mu, is not concave.
+
+160
+00:08:02,550 --> 00:08:05,660
+But it's going to turn out, you just got
+to change your variables and it will be.
+
+161
+00:08:05,660 --> 00:08:09,400
+Not if you had enough machine learning and
+statistics.
+
+162
+00:08:09,400 --> 00:08:13,100
+You'll understand that the correct, it, it
+will not be a shock to you that
+
+163
+00:08:13,100 --> 00:08:17,630
+the correct branders there are like sigma
+inverse and sigma inverse mu, okay.
+
+164
+00:08:17,630 --> 00:08:22,280
+These, these are actually more natural,
+right, than sigma and mu.
+
+165
+00:08:22,280 --> 00:08:25,770
+So, again, this is a bit more advanced
+than I want to be at this point,
+
+166
+00:08:25,770 --> 00:08:28,800
+but just, just to mention to those people
+who know about these things, right.
+
+167
+00:08:28,800 --> 00:08:31,440
+And it turns out those are precisely the
+parameters in an ex,
+
+168
+00:08:31,440 --> 00:08:32,870
+in an exponential model.
+
+169
+00:08:32,870 --> 00:08:33,400
+So, okay.
+
+170
+00:08:35,480 --> 00:08:36,330
+Okay.
+
+171
+00:08:36,330 --> 00:08:38,300
+So, oh, and I should say all of this
+material.
+
+172
+00:08:38,300 --> 00:08:42,300
+I mean, you know, your, our goal here is
+just to
+
+173
+00:08:42,300 --> 00:08:44,940
+go over something interesting things that
+you have never seen the stuff before.
+
+174
+00:08:44,940 --> 00:08:46,200
+Some of the stuff we are going to about,
+
+175
+00:08:46,200 --> 00:08:49,450
+that's going to be super simple and
+completely accessible.
+
+176
+00:08:49,450 --> 00:08:54,778
+And if you have, you know some PHD level
+courses in statistics or machine learning.
+
+177
+00:08:54,778 --> 00:08:57,256
+Then they'll be a little bit added stuff
+and I'm going to mention some of
+
+178
+00:08:57,256 --> 00:09:00,560
+that stuff like I just did some of the
+more advanced stuff just for fun.
+
+179
+00:09:00,560 --> 00:09:01,810
+Okay.
+
+180
+00:09:01,810 --> 00:09:04,090
+So let's start with a very simple set up.
+
+181
+00:09:04,090 --> 00:09:05,500
+Let's do linear measurement models.
+
+182
+00:09:05,500 --> 00:09:10,156
+So here, x is a vector of unknown
+parameters and
+
+183
+00:09:10,156 --> 00:09:14,740
+we have linear measurements so we have y,
+i.
+
+184
+00:09:14,740 --> 00:09:20,230
+Is a, it's a scaler, it's a linear
+function of x plus a noise, right?
+
+185
+00:09:20,230 --> 00:09:24,490
+And so and by the way, this is a good
+point to stop and
+
+186
+00:09:24,490 --> 00:09:28,400
+talk about sort of just, I mean it's, it
+doesn't make any difference at all,
+
+187
+00:09:28,400 --> 00:09:32,610
+but sort of the philosophical way you
+would regard the setup, right.
+
+188
+00:09:32,610 --> 00:09:34,740
+So if you're in something like signal
+processing or
+
+189
+00:09:34,740 --> 00:09:38,420
+something like that, you would say This
+says, I mean,
+
+190
+00:09:38,420 --> 00:09:42,710
+your, your view of the world is, you know,
+this gives you the ideal measurement.
+
+191
+00:09:42,710 --> 00:09:45,490
+If your measurements were perfect, they're
+not perfect.
+
+192
+00:09:45,490 --> 00:09:48,950
+And vi is sort of like an added noise,
+right.
+
+193
+00:09:48,950 --> 00:09:53,120
+So this is your corrupted or real or
+whatever you like to call it measurement.
+
+194
+00:09:53,120 --> 00:09:55,840
+Okay, and that would be the view from
+someone who does signal processing or
+
+195
+00:09:55,840 --> 00:09:56,940
+something like that, right?
+
+196
+00:09:56,940 --> 00:10:00,900
+That, if you had, if you were to, if you
+were to do something like get
+
+197
+00:10:00,900 --> 00:10:06,380
+a perfect sensor and run this experiment
+at, like, 0 or 0.01 degree Kelvin,
+
+198
+00:10:06,380 --> 00:10:09,490
+right, so there's no thermal noise or
+whatever else that comes from.
+
+199
+00:10:09,490 --> 00:10:12,190
+Then, in fact, you'd get y i equals a i
+transpose x.
+
+200
+00:10:12,190 --> 00:10:13,150
+Right?
+
+201
+00:10:13,150 --> 00:10:16,090
+You don't, since you don't do those
+things, the i is a noise.
+
+202
+00:10:16,090 --> 00:10:16,620
+Right?
+So,
+
+203
+00:10:16,620 --> 00:10:18,760
+a statistician would say the following.
+
+204
+00:10:18,760 --> 00:10:24,710
+They would look at that and they would
+say, x is a, y comes from a distribution.
+
+205
+00:10:24,710 --> 00:10:25,540
+Right?
+It's a distribution,
+
+206
+00:10:25,540 --> 00:10:27,660
+because that's a random variable right
+there, the vi.
+
+207
+00:10:27,660 --> 00:10:29,120
+Those are random variables.
+
+208
+00:10:29,120 --> 00:10:32,130
+They would say, so y comes from a
+distribution.
+
+209
+00:10:32,130 --> 00:10:33,770
+And you say, well, what distribution does
+it come from?
+
+210
+00:10:33,770 --> 00:10:35,970
+And the answer is, well, it depends on
+what x is.
+
+211
+00:10:35,970 --> 00:10:39,950
+So, x here is, is a parameter that descri,
+
+212
+00:10:39,950 --> 00:10:43,730
+that tells you which distribution
+generated y, right?
+
+213
+00:10:43,730 --> 00:10:45,300
+So, I don't know if this is making.
+
+214
+00:10:45,300 --> 00:10:48,970
+I, at the end of the day, you end up doing
+the same things with this.
+
+215
+00:10:48,970 --> 00:10:50,660
+But it is actually just interesting to sit
+for
+
+216
+00:10:50,660 --> 00:10:55,350
+a minute, and think about the different
+views of what y equals ax plus v can mean.
+
+217
+00:10:55,350 --> 00:10:57,710
+Okay, so, and so there's nothing deep in
+this.
+
+218
+00:10:57,710 --> 00:10:59,078
+I'm just saying these are the two views.
+
+219
+00:10:59,078 --> 00:11:01,728
+Okay.
+
+220
+00:11:01,728 --> 00:11:06,410
+Now what you, what you do here is, is
+this, is why has, and
+
+221
+00:11:06,410 --> 00:11:11,070
+I'm going to assume that the vi are IID
+here, with some density p of z.
+
+222
+00:11:11,070 --> 00:11:16,260
+If you, if you, if x has the value x, or
+if the parameter has the value x,
+
+223
+00:11:16,260 --> 00:11:20,040
+then the distribution, the density of y,
+is this, right?
+
+224
+00:11:20,040 --> 00:11:22,840
+It's the product, because they're
+independent, and
+
+225
+00:11:22,840 --> 00:11:27,650
+y i minus a i transpose x is, well, that's
+exactly v i.
+
+226
+00:11:27,650 --> 00:11:28,310
+Right?
+
+227
+00:11:28,310 --> 00:11:31,920
+So, and then, that, these are the, that's
+the value that v i had, and
+
+228
+00:11:31,920 --> 00:11:35,680
+you simply take the product of the
+densities, because it's independent,
+
+229
+00:11:35,680 --> 00:11:42,000
+to get the density of Of, of y the vector,
+right, so that's that's the idea.
+
+230
+00:11:42,000 --> 00:11:45,750
+By the way, other people would call
+something like this the residual.
+
+231
+00:11:47,520 --> 00:11:51,280
+And the residual here is in fact nothing
+but the noise.
+
+232
+00:11:51,280 --> 00:11:54,790
+So that's another way to, to think of to
+think of this.
+
+233
+00:11:54,790 --> 00:11:57,860
+Okay, so the maximum likelihood solution
+says.
+
+234
+00:11:57,860 --> 00:12:01,320
+Here, if you want to estimate x by maximum
+likelihood, what you do,
+
+235
+00:12:01,320 --> 00:12:06,340
+is we'll form the, we'll max, we'll
+maximize the log that this product, but
+
+236
+00:12:06,340 --> 00:12:07,380
+that's the sum, right, and
+
+237
+00:12:07,380 --> 00:12:10,650
+it tells, gives you a hint as to why the
+log is going to come up off it, right.
+
+238
+00:12:10,650 --> 00:12:16,270
+So, you maximize the sum of the log of the
+density of the residual.
+
+239
+00:12:16,270 --> 00:12:17,010
+Okay?
+
+240
+00:12:17,010 --> 00:12:19,060
+Now, by the way, if the residuals are,
+
+241
+00:12:19,060 --> 00:12:23,650
+have a density that, that is sort of
+centered around 0, right?
+
+242
+00:12:23,650 --> 00:12:25,670
+And, and be kind of, if they don't, by the
+way,
+
+243
+00:12:25,670 --> 00:12:28,740
+that means it's sort of a known offset and
+that's a bit silly, right?
+
+244
+00:12:28,740 --> 00:12:33,130
+But if, if they do, what that says is, you
+know, these are functions that are kind of
+
+245
+00:12:33,130 --> 00:12:35,870
+centered, this function is sort of
+centered around 0.
+
+246
+00:12:35,870 --> 00:12:37,940
+And then it kind of goes off.
+
+247
+00:12:37,940 --> 00:12:40,880
+Right?
+It, it's a concave function that tails off
+
+248
+00:12:40,880 --> 00:12:41,800
+after that.
+
+249
+00:12:41,800 --> 00:12:45,140
+That's actually quite interesting because
+this is, this is actually a penalty.
+
+250
+00:12:45,140 --> 00:12:47,570
+This is penalty approximation, right?
+
+251
+00:12:47,570 --> 00:12:51,810
+Is exactly minimizing a sum of a function
+a, a, which,
+
+252
+00:12:51,810 --> 00:12:55,750
+which we previously called penalties, it's
+a penalty approximation method.
+
+253
+00:12:55,750 --> 00:12:57,690
+But here the penalty is specifically,
+
+254
+00:12:57,690 --> 00:13:01,300
+the negative log likelihood if you convert
+this to a minimization problem.
+
+255
+00:13:01,300 --> 00:13:02,680
+Everybody got this?
+
+256
+00:13:02,680 --> 00:13:06,630
+So, so in other words, where you might
+just say, that's the penalty, and
+
+257
+00:13:06,630 --> 00:13:09,810
+then give a story about your penalty
+function in terms of how much it
+
+258
+00:13:09,810 --> 00:13:12,510
+irritates you to have a big residual, a
+small residual, you know,
+
+259
+00:13:12,510 --> 00:13:14,390
+medium sized residual, all this kind of
+stuff.
+
+260
+00:13:14,390 --> 00:13:16,110
+A negative versus a positive residual,
+
+261
+00:13:16,110 --> 00:13:18,880
+that would be your discussion of why
+you're using a certain penalty.
+
+262
+00:13:18,880 --> 00:13:24,150
+It says that all of that can be transposed
+perfectly to a statistics framework, and
+
+263
+00:13:24,150 --> 00:13:27,640
+there, instead of saying something like,
+it irritates me to have,
+
+264
+00:13:27,640 --> 00:13:30,850
+a positive residual is more irritating
+than a negative residual.
+
+265
+00:13:30,850 --> 00:13:34,480
+What you're really saying is something
+about the distribution,
+
+266
+00:13:34,480 --> 00:13:36,560
+the density, of the noise.
+
+267
+00:13:36,560 --> 00:13:37,380
+Okay?
+
+268
+00:13:37,380 --> 00:13:39,550
+So let's look at some examples.
+
+269
+00:13:39,550 --> 00:13:40,340
+Here's one.
+
+270
+00:13:40,340 --> 00:13:42,420
+Suppose these noises are Gaussian.
+
+271
+00:13:42,420 --> 00:13:46,412
+Well then, if I take the negative log
+likelihood, I get this, right?
+
+272
+00:13:46,412 --> 00:13:48,760
+So that, that, that, sorry, that's the log
+likelihood.
+
+273
+00:13:48,760 --> 00:13:50,530
+And, it's this, that's a constant.
+
+274
+00:13:50,530 --> 00:13:52,780
+And when I'm maximizing over x, it doesn't
+matter.
+
+275
+00:13:54,018 --> 00:13:57,290
+This constant's irrelevant, and I'm
+maximizing this thing,
+
+276
+00:13:57,290 --> 00:13:59,740
+well there's a negative sign here, so I
+can just minimize this thing.
+
+277
+00:13:59,740 --> 00:14:02,910
+That doesn't matter, because it's a
+positive constant.
+
+278
+00:14:02,910 --> 00:14:05,460
+So I can minimize, hey, that's just least
+squares.
+
+279
+00:14:05,460 --> 00:14:10,955
+Okay, so now you know Lee Squares is
+nothing but it is exactly maximum
+
+280
+00:14:10,955 --> 00:14:15,310
+likelihood estimation under the assumption
+that the noises are Gaussian.
+
+281
+00:14:15,310 --> 00:14:17,550
+If you say get the square and say what
+does that mean?
+
+282
+00:14:17,550 --> 00:14:19,970
+You say well it means if the residual is
+small,
+
+283
+00:14:19,970 --> 00:14:22,170
+I mean it's fine with me because its sort
+of small squared.
+
+284
+00:14:22,170 --> 00:14:24,410
+But if it's big, that's not so good.
+
+285
+00:14:24,410 --> 00:14:28,100
+What this says is that corresponds exactly
+to statistical model with
+
+286
+00:14:28,100 --> 00:14:31,820
+Gaussian noise because you have Gaussian
+noise and you say if something is
+
+287
+00:14:31,820 --> 00:14:37,760
+less than one sigma like say fine okay no,
+that's entirely plausible.
+
+288
+00:14:37,760 --> 00:14:38,550
+Right.
+
+289
+00:14:38,550 --> 00:14:41,930
+Whereas if something was like six sigma or
+eight sigma you'd look at that and
+
+290
+00:14:41,930 --> 00:14:46,740
+say hm, that's, that's I mean I can't say
+it's impossible, but
+
+291
+00:14:46,740 --> 00:14:52,140
+it seems very strange, that, that my fit
+here or my estimation is
+
+292
+00:14:52,140 --> 00:14:55,810
+telling me that the parameter that what
+I've observed is an eight sigma event.
+
+293
+00:14:55,810 --> 00:14:56,740
+Everybody see what I am saying here?
+
+294
+00:14:57,820 --> 00:14:58,370
+So okay.
+
+295
+00:14:59,600 --> 00:15:00,760
+Let's look at Laplacian noise.
+
+296
+00:15:00,760 --> 00:15:04,830
+That's noise with a density that is a
+double-sided exponential like that.
+
+297
+00:15:04,830 --> 00:15:08,290
+And it's actually a little bit interesting
+to look at that distribution.
+
+298
+00:15:08,290 --> 00:15:11,690
+Compared to a Gaussian, what can you say
+about the tails of a Laplacian
+
+299
+00:15:11,690 --> 00:15:12,900
+distribution compared to Gaussian?
+
+300
+00:15:14,650 --> 00:15:15,830
+Much heavier, right?
+
+301
+00:15:15,830 --> 00:15:19,580
+Because this is like e to the minus
+[COUGH] you know, z squared.
+
+302
+00:15:19,580 --> 00:15:21,230
+This is e to the minus z.
+
+303
+00:15:21,230 --> 00:15:23,590
+Okay, so it's way bigger tails.
+
+304
+00:15:23,590 --> 00:15:28,740
+What that says is that the likelihood of,
+of big outlier is, well,
+
+305
+00:15:28,740 --> 00:15:29,940
+I mean it's going down, right?
+
+306
+00:15:29,940 --> 00:15:31,160
+It's e to the minus z.
+
+307
+00:15:31,160 --> 00:15:33,180
+But it's way bigger than for a Gaussian.
+
+308
+00:15:33,180 --> 00:15:34,350
+Everybody following this?
+
+309
+00:15:34,350 --> 00:15:37,630
+And then, this is a bit of a weird thing
+here, right?
+
+310
+00:15:37,630 --> 00:15:40,570
+This, you have that point there.
+
+311
+00:15:40,570 --> 00:15:42,980
+And it even says that, something like
+this.
+
+312
+00:15:42,980 --> 00:15:47,590
+I mean that, that's going to tell you
+that, the probability of having, of being
+
+313
+00:15:47,590 --> 00:15:52,490
+a little bit off actually is substantially
+reduced from being right at zero.
+
+314
+00:15:52,490 --> 00:15:53,650
+Everybody, and that,
+
+315
+00:15:53,650 --> 00:15:57,680
+that's comes now just from probability
+from that kink right there.
+
+316
+00:15:57,680 --> 00:16:00,932
+Okay, so this turns into, guess what?
+
+317
+00:16:00,932 --> 00:16:06,890
+L1, and it makes perfect sense, because
+now if you look at l1.
+
+318
+00:16:06,890 --> 00:16:10,640
+You, you get both of those things about
+what happens for large residuals and
+
+319
+00:16:10,640 --> 00:16:11,160
+small residuals.
+
+320
+00:16:11,160 --> 00:16:14,720
+For large residuals, a one charges you
+linearly, where as get,
+
+321
+00:16:14,720 --> 00:16:17,150
+where as least squares charges you
+quadratically.
+
+322
+00:16:17,150 --> 00:16:21,610
+So, it's not you like, it's not like you
+expect to have large residuals, but
+
+323
+00:16:21,610 --> 00:16:25,400
+you don't go nuts as you would if it was
+quadratic or worse, right?
+
+324
+00:16:25,400 --> 00:16:30,000
+And at the, then you focus on small things
+small residuals and this says it actually
+
+325
+00:16:30,000 --> 00:16:36,180
+keeps up the it, it keeps up the incentive
+to drive residual to zero, right?
+
+326
+00:16:36,180 --> 00:16:39,980
+And you can see that exactly here, right
+so, so its actually a kind of interesting
+
+327
+00:16:39,980 --> 00:16:45,780
+that both, both of these could be it can
+be, you can interpret both but it's just
+
+328
+00:16:45,780 --> 00:16:50,970
+from an intuitive description of a penalty
+function, abstract penalty function.
+
+329
+00:16:50,970 --> 00:16:55,750
+Or from the probability, the implied
+probability distribution of the, of,
+
+330
+00:16:55,750 --> 00:16:58,750
+of, of the noise in a, in an additive
+noise model.
+
+331
+00:17:00,530 --> 00:17:01,970
+Let's do uniform noise.
+
+332
+00:17:01,970 --> 00:17:03,660
+Right?
+Well, if you have uniform noise,
+
+333
+00:17:04,750 --> 00:17:10,510
+then the log likelihood function is well,
+it's actually just constant.
+
+334
+00:17:10,510 --> 00:17:15,125
+And it's, basically, it's a constant
+doesn't matter what constant it is,
+
+335
+00:17:15,125 --> 00:17:18,950
+actually, provided you are consistent with
+the measurement.
+
+336
+00:17:18,950 --> 00:17:19,730
+Right?
+
+337
+00:17:19,730 --> 00:17:23,010
+And so, there you simply solve a
+feasibility problem, and
+
+338
+00:17:23,010 --> 00:17:25,260
+there are multiple maximum likelihood
+solutions, and
+
+339
+00:17:25,260 --> 00:17:28,700
+you simply choose one that satisfies this,
+this condition.
+
+340
+00:17:28,700 --> 00:17:32,200
+And all of those are maximum likelihood
+estimates, right?
+
+341
+00:17:32,200 --> 00:17:36,460
+By the way, their statistical properties
+would not be would, would not all be
+
+342
+00:17:36,460 --> 00:17:41,790
+equally good, so, because the maximum
+likelihood's been used for
+
+343
+00:17:41,790 --> 00:17:44,520
+maybe 100 years, something like that now.
+
+344
+00:17:44,520 --> 00:17:47,770
+Is, most of that theory assumes things
+like that this
+
+345
+00:17:47,770 --> 00:17:52,520
+log likelihood function has a unique
+maximum or something like that, roughly.
+
+346
+00:17:52,520 --> 00:17:54,600
+Right, so, and that's not the case here.
+
+347
+00:17:56,420 --> 00:17:57,690
+Okay.
+
+348
+00:17:57,690 --> 00:18:00,740
+oh, let's, let me mention just one other
+thing.
+
+349
+00:18:00,740 --> 00:18:04,870
+So here, what this says is that you can
+actually go backwards.
+
+350
+00:18:04,870 --> 00:18:06,650
+You can start from a probability
+distribution and
+
+351
+00:18:06,650 --> 00:18:10,970
+find the penalty, because you just take
+the negative log of the distribution.
+
+352
+00:18:10,970 --> 00:18:12,300
+But you can also go backwards, right.
+
+353
+00:18:12,300 --> 00:18:16,530
+So for example if, if you decided, if you
+discussed with someone in some
+
+354
+00:18:16,530 --> 00:18:20,850
+fitting problem, what they want, and it's
+determined that what they want is
+
+355
+00:18:20,850 --> 00:18:26,030
+something that looks like this, you know
+that's quadratic, and this rises deeply.
+
+356
+00:18:26,030 --> 00:18:27,970
+You know, I don't know how this would come
+up, but it would.
+
+357
+00:18:27,970 --> 00:18:31,070
+You, you talked them, you'd say what do
+you feel about under fitting.
+
+358
+00:18:31,070 --> 00:18:32,520
+And they'd say, oh, that's, that's bad.
+
+359
+00:18:32,520 --> 00:18:33,970
+That is not good.
+
+360
+00:18:33,970 --> 00:18:35,220
+Right?
+And, you would say,
+
+361
+00:18:35,220 --> 00:18:36,710
+how about if you under fit just a little
+bit?
+
+362
+00:18:36,710 --> 00:18:39,100
+No, that's bit, that is not good.
+
+363
+00:18:39,100 --> 00:18:41,590
+And then say, but what about if you under
+fit a lot?
+
+364
+00:18:41,590 --> 00:18:44,960
+And, you'll say, look because the data has
+got weared out, wires and stuff like that.
+
+365
+00:18:44,960 --> 00:18:50,520
+If there has to be, and I have to under
+fit in a couple of my points it, so be it.
+
+366
+00:18:50,520 --> 00:18:55,500
+I don't want to go nuts over it and that
+discussion generates that.
+
+367
+00:18:55,500 --> 00:18:56,800
+And then you'd say, what if you overfit?
+
+368
+00:18:56,800 --> 00:18:58,190
+And you say, well, the fact is,
+
+369
+00:18:58,190 --> 00:19:01,340
+if you overfit a little bit, it doesn't
+make any difference at all.
+
+370
+00:19:01,340 --> 00:19:03,580
+And you say, what about overfitting more?
+
+371
+00:19:03,580 --> 00:19:05,460
+Then they'd say, well, I don't know.
+
+372
+00:19:05,460 --> 00:19:06,610
+So anyway, it doesn't matter.
+
+373
+00:19:06,610 --> 00:19:07,700
+You end up with a story like this.
+
+374
+00:19:07,700 --> 00:19:09,180
+Right.
+We all know this now.
+
+375
+00:19:09,180 --> 00:19:12,850
+You can translate a little of the story
+and description into this.
+
+376
+00:19:12,850 --> 00:19:13,810
+Okay.
+
+377
+00:19:13,810 --> 00:19:15,710
+What this says is the following.
+
+378
+00:19:15,710 --> 00:19:18,810
+It says then if a statistician walks into
+the room, and you say, what are you doing,
+
+379
+00:19:18,810 --> 00:19:22,132
+they don't want to hear a story about your
+feelings about over-fitting and
+
+380
+00:19:22,132 --> 00:19:23,370
+under-fitting and things like that.
+
+381
+00:19:23,370 --> 00:19:24,370
+They don't want to hear that.
+
+382
+00:19:24,370 --> 00:19:25,990
+So what you say to them is you say, oh,
+excuse me,
+
+383
+00:19:25,990 --> 00:19:27,700
+I'm doing maximum likelihood estimation.
+
+384
+00:19:28,920 --> 00:19:29,510
+Right.
+
+385
+00:19:29,510 --> 00:19:32,580
+This implies a distribution, and the
+distribution is very simple.
+
+386
+00:19:32,580 --> 00:19:33,790
+It's e to the minus this.
+
+387
+00:19:34,950 --> 00:19:37,140
+Course you have to normalize it, but
+that's it.
+
+388
+00:19:37,140 --> 00:19:41,000
+So you'd say to them, you say, I'm doing
+maximum likely es, estimation, and for
+
+389
+00:19:41,000 --> 00:19:42,320
+this problem, we can even say what it is.
+
+390
+00:19:42,320 --> 00:19:43,770
+How would you describe this distribution?
+
+391
+00:19:43,770 --> 00:19:44,740
+Somebody describe it to me.
+
+392
+00:19:44,740 --> 00:19:45,240
+I mean, in words.
+
+393
+00:19:45,240 --> 00:19:48,300
+So it's some weird Frankenstein
+distribution on the left.
+
+394
+00:19:48,300 --> 00:19:50,680
+It's got some weird exponential, right.
+
+395
+00:19:50,680 --> 00:19:54,230
+On the right, it's Gaussian, and in the
+middle it's got some uniform phase.
+
+396
+00:19:55,740 --> 00:19:56,860
+Now, they would think you were weird.
+
+397
+00:19:58,330 --> 00:19:59,890
+But you, then you turn to the statistician
+and
+
+398
+00:19:59,890 --> 00:20:02,160
+say, no, no, no, we, we've been doing this
+for years.
+
+399
+00:20:02,160 --> 00:20:04,580
+And we know this, this, it looks like
+this.
+
+400
+00:20:05,820 --> 00:20:06,860
+Okay, every, everybody got this?
+
+401
+00:20:06,860 --> 00:20:09,830
+So the, so it's actually very interesting
+that you can justify these from
+
+402
+00:20:09,830 --> 00:20:11,695
+different points of view.
+
+403
+00:20:11,695 --> 00:20:15,490
+[NOISE] and you get, you'll, you, you, end
+up at the same conclusion.
+
+404
+00:20:15,490 --> 00:20:17,590
+Okay, so Alright.
+
+405
+00:20:17,590 --> 00:20:20,230
+Now, these things here by the way, are
+things that are kind of obvious.
+
+406
+00:20:20,230 --> 00:20:22,070
+These are things we talked about in
+approximation,
+
+407
+00:20:22,070 --> 00:20:23,210
+little linear approximations.
+
+408
+00:20:23,210 --> 00:20:26,915
+In some ways, they're penalty problems
+with an aphine function, you know?
+
+409
+00:20:26,915 --> 00:20:28,830
+ax minus b or something like that.
+
+410
+00:20:28,830 --> 00:20:29,870
+I mean, that's what this is.
+
+411
+00:20:29,870 --> 00:20:33,042
+But actually, what's interesting is, in
+maximum you end,
+
+412
+00:20:33,042 --> 00:20:36,946
+you end up with all sorts of interesting
+things where you do not end up with a,
+
+413
+00:20:36,946 --> 00:20:41,338
+an affine function, a norm, or a penalty
+function of an affine function, and so
+
+414
+00:20:41,338 --> 00:20:43,550
+these are actually quite interesting.
+
+415
+00:20:43,550 --> 00:20:44,780
+So we'll look at a couple of these.
+
+416
+00:20:44,780 --> 00:20:46,540
+So, first is logistic regression.
+
+417
+00:20:47,970 --> 00:20:50,050
+So the, this is a distribution actually
+on, so
+
+418
+00:20:50,050 --> 00:20:53,990
+the outcomes are zero one, boolean
+outcomes, and.
+
+419
+00:20:53,990 --> 00:20:58,020
+The probability that you get a one is the
+logistic function.
+
+420
+00:20:58,020 --> 00:21:03,510
+So, it's, it's e to the a transpose u plus
+b divided by 1 plus a transpose u plus b.
+
+421
+00:21:03,510 --> 00:21:06,570
+And the probability that y equals o is 1
+minus this, right,
+
+422
+00:21:06,570 --> 00:21:12,530
+which of course is 1 over 1 plus e to the
+a transpose u plus b.
+
+423
+00:21:12,530 --> 00:21:13,140
+Okay?
+
+424
+00:21:13,140 --> 00:21:14,050
+So that's the idea.
+
+425
+00:21:14,050 --> 00:21:19,160
+Now here, the idea is that u are here,
+
+426
+00:21:19,160 --> 00:21:21,690
+these observable explanatory variants,
+right?
+
+427
+00:21:21,690 --> 00:21:26,380
+So I mean, I, can tell all sorts of things
+about these would be,
+
+428
+00:21:26,380 --> 00:21:29,190
+lets say that patient admitted to the
+hospital eventually develops Sepsis.
+
+429
+00:21:29,190 --> 00:21:32,800
+That, that's what we looking at, okay?
+
+430
+00:21:32,800 --> 00:21:39,390
+And then, you here would be all sorts of
+medically relevant variants.
+
+431
+00:21:39,390 --> 00:21:40,898
+Right?
+Could, could be basic, that,
+
+432
+00:21:40,898 --> 00:21:42,360
+you know, all sorts of basic things.
+
+433
+00:21:42,360 --> 00:21:47,230
+Various scores given to them, various,
+anyway doesn't matter.
+
+434
+00:21:47,230 --> 00:21:48,740
+That's a whole bunch of things like that.
+
+435
+00:21:48,740 --> 00:21:50,070
+By the way, some of these could be boolean
+too.
+
+436
+00:21:50,070 --> 00:21:51,650
+That would be very often the case.
+
+437
+00:21:51,650 --> 00:21:52,218
+Right?
+So
+
+438
+00:21:52,218 --> 00:21:54,690
+it'd be so-called categorical variables.
+
+439
+00:21:54,690 --> 00:21:55,310
+Right?
+And so
+
+440
+00:21:55,310 --> 00:22:00,320
+a model like this, and this model is
+instantiated by fixing a and
+
+441
+00:22:00,320 --> 00:22:05,880
+b then gives you a model of the
+probability of someone developing Sepsis.
+
+442
+00:22:05,880 --> 00:22:07,640
+Right?
+When they're admitted to the hospital.
+
+443
+00:22:07,640 --> 00:22:08,200
+Right?
+So that.
+
+444
+00:22:08,200 --> 00:22:12,280
+Coz you just simply take their u, you
+evaluate this function.
+
+445
+00:22:12,280 --> 00:22:18,640
+And if it is 0.05, that's good, and if
+it's 0.87 that's not good.
+
+446
+00:22:18,640 --> 00:22:20,670
+Okay?
+So that's the idea.
+
+447
+00:22:20,670 --> 00:22:21,420
+Alright.
+
+448
+00:22:21,420 --> 00:22:26,750
+So the estimation problem is to estimate,
+a, these parameters a and
+
+449
+00:22:26,750 --> 00:22:28,270
+b from observations.
+
+450
+00:22:28,270 --> 00:22:31,940
+Right, so, that's, that, that would be
+your, that's what we're going to do.
+
+451
+00:22:31,940 --> 00:22:34,620
+So we're going to work out the
+log-likelihood function.
+
+452
+00:22:34,620 --> 00:22:37,670
+And and then, we're going to maximize it,
+right?
+
+453
+00:22:37,670 --> 00:22:41,390
+And it, I guess it wouldn't be in this
+class if it didn't turn out to be concave,
+
+454
+00:22:41,390 --> 00:22:42,480
+so that's, okay.
+
+455
+00:22:42,480 --> 00:22:44,040
+So, let's take a look at that.
+
+456
+00:22:45,360 --> 00:22:47,670
+So what we'll do is so you, you've been
+given a,
+
+457
+00:22:47,670 --> 00:22:51,420
+a bunch of observations and basically what
+these are is these are previous patients.
+
+458
+00:22:51,420 --> 00:22:52,660
+Right?
+Could be from the last year,
+
+459
+00:22:52,660 --> 00:22:54,140
+from the region, doesn't matter.
+
+460
+00:22:54,140 --> 00:22:55,918
+So you just get a whole bunch of data
+[COUGH].
+
+461
+00:22:55,918 --> 00:22:56,430
+'Kay?
+
+462
+00:22:56,430 --> 00:22:57,560
+And the ys are, are just 01.
+
+463
+00:22:57,560 --> 00:22:58,640
+Right?
+
+464
+00:22:58,640 --> 00:23:02,370
+So I guess you, you'd call these maybe
+labels in, in machine learning.
+
+465
+00:23:02,370 --> 00:23:06,190
+Alright, so well just make it simple and
+reorder them so
+
+466
+00:23:06,190 --> 00:23:09,300
+that all the ones that actually develop
+sepsis are first, that's k of them.
+
+467
+00:23:09,300 --> 00:23:10,650
+And the rest did not.
+
+468
+00:23:10,650 --> 00:23:11,890
+Right?
+Just for simplicity.
+
+469
+00:23:13,330 --> 00:23:15,820
+Then, the log likelihood function, well
+it's very simple.
+
+470
+00:23:15,820 --> 00:23:21,330
+It's simply the, you, you take this, for
+the, over the ones where y was 1.
+
+471
+00:23:21,330 --> 00:23:23,430
+So that's, that, that's these terms,
+right?
+
+472
+00:23:23,430 --> 00:23:28,200
+And then for, for the case where y was 0,
+that's 1 minus this,
+
+473
+00:23:28,200 --> 00:23:29,690
+which is exactly that.
+
+474
+00:23:29,690 --> 00:23:32,080
+And so that, that's the log likelihood
+function.
+
+475
+00:23:32,080 --> 00:23:34,980
+And it is a function of a and b.
+
+476
+00:23:34,980 --> 00:23:36,460
+Okay?
+
+477
+00:23:36,460 --> 00:23:39,990
+Well, if you work out what this is well,
+you can see all sorts of bits.
+
+478
+00:23:39,990 --> 00:23:42,000
+This is log of the probability of x.
+
+479
+00:23:42,000 --> 00:23:43,480
+But that's just this thing, right?
+
+480
+00:23:43,480 --> 00:23:47,020
+And then you get minus, and then here
+there's this thing on the bottom,
+
+481
+00:23:47,020 --> 00:23:49,110
+you just, you sum that over, over the, all
+of it.
+
+482
+00:23:49,110 --> 00:23:50,180
+That's log sum x.
+
+483
+00:23:50,180 --> 00:23:53,870
+But we all know, we all recognize log sum
+x is convex.
+
+484
+00:23:53,870 --> 00:23:59,010
+And so, now we do this in, in discipline
+convex programming, or cvx style.
+
+485
+00:23:59,010 --> 00:24:01,670
+We just walk from the inside of the
+expression tree out.
+
+486
+00:24:01,670 --> 00:24:03,380
+And you say, that's [UNKNOWN].
+
+487
+00:24:03,380 --> 00:24:07,750
+By the way, you don't then say exp is
+convex.
+
+488
+00:24:07,750 --> 00:24:09,280
+That would be a false move.
+
+489
+00:24:09,280 --> 00:24:13,090
+You recognize log of 1 plus exp.
+
+490
+00:24:13,090 --> 00:24:19,160
+As log of e to the 0 plus e to the a
+transpose u plus bi.
+
+491
+00:24:19,160 --> 00:24:24,820
+And you say log sum x is convex, log sum x
+of [UNKNOWN] is convex,
+
+492
+00:24:24,820 --> 00:24:28,250
+sum convex minus concave, done.
+
+493
+00:24:28,250 --> 00:24:29,870
+Everybody got this?
+
+494
+00:24:29,870 --> 00:24:33,630
+Okay, so what this says is if you have a
+bunch of data,
+
+495
+00:24:33,630 --> 00:24:37,830
+you simply maximize this function here.
+
+496
+00:24:37,830 --> 00:24:40,490
+And that will give you a and b.
+
+497
+00:24:40,490 --> 00:24:43,770
+That'll, that'll give you parameters a and
+b, and now, you have a model.
+
+498
+00:24:43,770 --> 00:24:47,700
+And you have model that will predict
+predict probabilities for, for new and
+
+499
+00:24:47,700 --> 00:24:50,910
+unseen values of u instances, right.
+
+500
+00:24:50,910 --> 00:24:52,560
+That's, that's, that's the idea, so.
+
+501
+00:24:52,560 --> 00:24:55,640
+This is of course, extremely widely used,
+so.
+
+502
+00:24:57,320 --> 00:25:02,600
+And depending on your background and I can
+speak from my own so
+
+503
+00:25:02,600 --> 00:25:06,420
+if your background is from, sort of,
+traditional EE type things,
+
+504
+00:25:06,420 --> 00:25:08,890
+with signal processing, you probably won't
+have seen this.
+
+505
+00:25:10,300 --> 00:25:11,660
+Which is sort of a pity, right.
+
+506
+00:25:11,660 --> 00:25:13,850
+You've seen a lot of stuff involving
+linear things and
+
+507
+00:25:13,850 --> 00:25:15,940
+stuff like that, but you probably won't
+have seen this.
+
+508
+00:25:15,940 --> 00:25:17,210
+So, okay.
+
+509
+00:25:17,210 --> 00:25:18,660
+So here's an example.
+
+510
+00:25:18,660 --> 00:25:23,570
+But this is an example where you hardly
+need anything fancy, right, but just so
+
+511
+00:25:23,570 --> 00:25:25,080
+we can draw it.
+
+512
+00:25:25,080 --> 00:25:27,060
+So the example here has n equals one.
+
+513
+00:25:27,060 --> 00:25:28,120
+There's one explanatory feature.
+
+514
+00:25:28,120 --> 00:25:28,980
+It's kind of dumb.
+
+515
+00:25:28,980 --> 00:25:32,280
+That's u, that's here, and it varies
+between 0 and 10, and
+
+516
+00:25:32,280 --> 00:25:35,400
+what, what are plotted here, are a bunch
+of samples, right.
+
+517
+00:25:35,400 --> 00:25:36,990
+And so, ignore this curve for the moment.
+
+518
+00:25:36,990 --> 00:25:39,470
+We just take a look at it, and we'd say
+things like this.
+
+519
+00:25:39,470 --> 00:25:44,510
+Look its kind of I mean you don't need any
+fancy for u equals 1, you look at this and
+
+520
+00:25:44,510 --> 00:25:49,910
+you say yeah look I mean if, if u is like
+2 or I don't know 2 or
+
+521
+00:25:49,910 --> 00:25:56,690
+3 below 3, its quite likely but not its
+quite likely that the, that
+
+522
+00:25:56,690 --> 00:26:01,629
+the outcome y will be 0 its but it is not
+1 because look at this guy up here, okay?
+
+523
+00:26:01,629 --> 00:26:04,244
+It sorry, it's not probability,
+
+524
+00:26:04,244 --> 00:26:09,170
+it's not the probability that your 0 does
+not want, right?
+
+525
+00:26:09,170 --> 00:26:10,510
+Because there are exceptions.
+
+526
+00:26:10,510 --> 00:26:15,190
+On the other hand, if you say that if u is
+bigger then about 6, its, its quite
+
+527
+00:26:15,190 --> 00:26:19,830
+likely that the outcome is going to be 1
+but it is absolutely not, certainly.
+
+528
+00:26:19,830 --> 00:26:21,230
+Because look at that.
+
+529
+00:26:21,230 --> 00:26:26,800
+Okay, so what this shows here, is the
+logistic fit right, and
+
+530
+00:26:26,800 --> 00:26:29,820
+so and it, I mean it certainly seems about
+right, and
+
+531
+00:26:29,820 --> 00:26:31,810
+it has all the way to the statistics
+behind it.
+
+532
+00:26:31,810 --> 00:26:34,320
+So it can be justified at great length.
+
+533
+00:26:34,320 --> 00:26:37,320
+and, and so the use of this would go
+something like this.
+
+534
+00:26:37,320 --> 00:26:40,260
+A new sample will come along and you would
+be too.
+
+535
+00:26:40,260 --> 00:26:42,719
+And you would say, well I think the
+probability is about 8%.
+
+536
+00:26:44,110 --> 00:26:46,100
+That it's 1, right?
+
+537
+00:26:46,100 --> 00:26:49,040
+U comes along, it's 8 and you'd say it's
+about 94% now.
+
+538
+00:26:49,040 --> 00:26:55,730
+And u will come along in it's, it's 5 and
+you'd say I don't know.
+
+539
+00:26:55,730 --> 00:26:58,830
+Okay, so we'll move to a completely
+different thing which is
+
+540
+00:26:58,830 --> 00:27:00,520
+actually this hypothesis testing.
+
+541
+00:27:00,520 --> 00:27:03,060
+Actually these are all realated because in
+fact.
+
+542
+00:27:04,130 --> 00:27:08,390
+Maximum likelihood estimation with
+parameter that is continuous.
+
+543
+00:27:08,390 --> 00:27:10,930
+Is something like the hypothesis testing.
+
+544
+00:27:10,930 --> 00:27:11,720
+Right?
+Because you're,
+
+545
+00:27:11,720 --> 00:27:14,170
+you're sort of testing one value of x
+versus another.
+
+546
+00:27:14,170 --> 00:27:17,500
+And in fact, we're going to see that
+maximum likelihood is basically.
+
+547
+00:27:17,500 --> 00:27:20,460
+It, it, it's the thing that would win in a
+binary hypothes,
+
+548
+00:27:20,460 --> 00:27:22,300
+hypothesis test against any other value.
+
+549
+00:27:22,300 --> 00:27:22,920
+But, okay.
+
+550
+00:27:22,920 --> 00:27:26,170
+So here it is.
+This is it's absolutely, most basic form,
+
+551
+00:27:26,170 --> 00:27:26,840
+goes like this.
+
+552
+00:27:28,110 --> 00:27:33,400
+And it's the most basic form, actually,
+of, well, I guess, statistics, it's this.
+
+553
+00:27:34,470 --> 00:27:37,500
+What you have, is you have two hypotheses,
+
+554
+00:27:37,500 --> 00:27:40,510
+that you have a variable that was
+generated either from one distribution,
+
+555
+00:27:40,510 --> 00:27:42,680
+this is a finite value, it's got n
+possible values.
+
+556
+00:27:42,680 --> 00:27:44,390
+It's either generated from one
+distribution or
+
+557
+00:27:44,390 --> 00:27:45,750
+another, period, that's it.
+
+558
+00:27:45,750 --> 00:27:48,230
+So it can't get any more basic than this.
+
+559
+00:27:48,230 --> 00:27:51,270
+I guess you could have, like, 2, or
+something here, but, okay.
+
+560
+00:27:51,270 --> 00:27:55,010
+So you have two distributions, and you see
+a sample, and what you want to say is,
+
+561
+00:27:55,010 --> 00:27:57,920
+you want to say something intelligent
+about whether or
+
+562
+00:27:57,920 --> 00:28:00,450
+not, which distribution it came from.
+
+563
+00:28:00,450 --> 00:28:02,620
+That's it, that's the most basic one.
+
+564
+00:28:02,620 --> 00:28:03,130
+Okay.
+And,
+
+565
+00:28:03,130 --> 00:28:04,950
+you know some things would be obvious
+here.
+
+566
+00:28:04,950 --> 00:28:08,210
+Right?
+That if one distribution, you know,
+
+567
+00:28:08,210 --> 00:28:13,360
+looked like this, you know .9, you know
+.100, or something like that.
+
+568
+00:28:13,360 --> 00:28:17,423
+And, the other looked like, you know, .05,
+you know .05.
+
+569
+00:28:17,423 --> 00:28:19,880
+You know, .8 and .1.
+
+570
+00:28:19,880 --> 00:28:23,590
+Then, you know, it's, I mean you could
+guess, right?
+
+571
+00:28:23,590 --> 00:28:24,530
+That if the,
+
+572
+00:28:24,530 --> 00:28:29,290
+if in fact what you observe was say, this
+one, then you could say with absolute and
+
+573
+00:28:29,290 --> 00:28:33,410
+total certainty that it was this
+distribution that generated it, right?
+
+574
+00:28:33,410 --> 00:28:35,180
+If it turned out to be.
+
+575
+00:28:35,180 --> 00:28:38,490
+If your observation was one capital X
+equals one.
+
+576
+00:28:38,490 --> 00:28:41,830
+You could say with very good confidence
+that in fact it
+
+577
+00:28:41,830 --> 00:28:43,050
+was generated by the distribution.
+
+578
+00:28:43,050 --> 00:28:44,220
+Does everybody see that?
+
+579
+00:28:44,220 --> 00:28:46,220
+Right.
+So in fact the whole idea here is
+
+580
+00:28:46,220 --> 00:28:49,830
+as the two distributions get closer
+together this gets harder to do.
+
+581
+00:28:49,830 --> 00:28:51,220
+Okay, and so now we're just going to look
+at,
+
+582
+00:28:51,220 --> 00:28:55,630
+what's a, what's a, what is a good and
+principled way to make this choice?
+
+583
+00:28:55,630 --> 00:28:56,370
+Okay.
+
+584
+00:28:56,370 --> 00:28:59,282
+So we're going to look at randomized
+detectors.
+
+585
+00:28:59,282 --> 00:29:01,550
+So randomized detector, that's a matrix.
+
+586
+00:29:01,550 --> 00:29:03,240
+It's going to look like this.
+
+587
+00:29:03,240 --> 00:29:04,560
+It's 2 by n.
+
+588
+00:29:04,560 --> 00:29:07,430
+These are the outcomes here, over here.
+
+589
+00:29:07,430 --> 00:29:12,860
+So we write the outcomes here, and then
+this is something like 1 and 2.
+
+590
+00:29:12,860 --> 00:29:15,950
+And what it is that each column is
+going to be,
+
+591
+00:29:15,950 --> 00:29:20,760
+is going to tell you what you should do
+when the outcome is if its
+
+592
+00:29:20,760 --> 00:29:23,820
+column four if the outcome is capital X
+equals 4, right?
+
+593
+00:29:23,820 --> 00:29:26,950
+So if you look over here you might have
+point nine and point
+
+594
+00:29:26,950 --> 00:29:29,750
+one that's pretty weird because what it
+says is something like this it says like
+
+595
+00:29:29,750 --> 00:29:35,650
+capital x equals four you should say Next
+one's going to be a randomized detector.
+
+596
+00:29:35,650 --> 00:29:37,970
+So you're going to say with probability
+.9,
+
+597
+00:29:37,970 --> 00:29:40,740
+you're going to say that it was generated
+from distribution 1 and probability .1,
+
+598
+00:29:40,740 --> 00:29:43,030
+you're going to say was generated from
+distribution 2.
+
+599
+00:29:43,030 --> 00:29:46,320
+So, we'll talk about why you might do this
+in a minute.
+
+600
+00:29:46,320 --> 00:29:49,700
+Now, much more natural, would be things
+like this, okay?
+
+601
+00:29:49,700 --> 00:29:54,080
+And that says that if capital X equals 7,
+you simply say, well it was, it was,
+
+602
+00:29:54,080 --> 00:29:54,810
+it was outcome 2.
+
+603
+00:29:54,810 --> 00:29:56,910
+That was distribution 2 that it came from.
+
+604
+00:29:56,910 --> 00:29:58,350
+Okay, so this is the idea.
+
+605
+00:29:58,350 --> 00:30:03,220
+Why you would want a randomized detector
+we will talk about in a minute.
+
+606
+00:30:04,360 --> 00:30:08,690
+Actually it's interesting you can think of
+it as a relaxation of an estimator.
+
+607
+00:30:08,690 --> 00:30:09,610
+Okay.
+
+608
+00:30:09,610 --> 00:30:11,340
+And if all of the elements are 0 or
+
+609
+00:30:11,340 --> 00:30:14,260
+1 it is called a deterministic detector,
+so that's the idea.
+
+610
+00:30:14,260 --> 00:30:15,330
+Alright.
+
+611
+00:30:15,330 --> 00:30:17,970
+So, how you choose that detector?
+
+612
+00:30:17,970 --> 00:30:21,220
+Well, if you simply multiply, you take.
+
+613
+00:30:21,220 --> 00:30:22,830
+There's a detection matrix.
+
+614
+00:30:22,830 --> 00:30:25,670
+In the detecting matrix, you simply
+multiply T by p.
+
+615
+00:30:25,670 --> 00:30:29,546
+You multiply T on the left by p and q, and
+you get a 2 by 2 matrix, and
+
+616
+00:30:29,546 --> 00:30:33,470
+the entries can be interpreted in a very
+interesting way.
+
+617
+00:30:33,470 --> 00:30:36,790
+They're basically the probability of.
+
+618
+00:30:36,790 --> 00:30:37,730
+air, so this gives you,
+
+619
+00:30:37,730 --> 00:30:40,970
+this gives if, if P is the true
+distribution, q is the distribution.
+
+620
+00:30:40,970 --> 00:30:45,720
+Then this tells you sort of the
+probability of selecting the correct one.
+
+621
+00:30:45,720 --> 00:30:49,590
+Right?
+So these entries tell you something about
+
+622
+00:30:49,590 --> 00:30:53,780
+the probabilities here of, of being right.
+
+623
+00:30:53,780 --> 00:30:54,450
+Right?
+
+624
+00:30:54,450 --> 00:30:57,510
+Being right means capital X came from
+distribution one and
+
+625
+00:30:57,510 --> 00:31:00,310
+you announce that it came from
+distribution one.
+
+626
+00:31:00,310 --> 00:31:02,720
+And you can swap 1 with 2, and that's
+being right.
+
+627
+00:31:02,720 --> 00:31:07,080
+Being wrong is the distribution came from,
+the sample came from distribution 1,
+
+628
+00:31:07,080 --> 00:31:09,490
+but you announce that it was distribution
+2, right.
+
+629
+00:31:09,490 --> 00:31:13,170
+And these have name like, you know, false
+positive and false negative.
+
+630
+00:31:14,780 --> 00:31:17,140
+And you know that, that means one of
+things you, anyway so
+
+631
+00:31:17,140 --> 00:31:18,550
+that's the idea, right.
+
+632
+00:31:18,550 --> 00:31:23,320
+So So this is the, this, this is the idea.
+
+633
+00:31:23,320 --> 00:31:27,450
+okay, so, Pfp, that's probability of
+selecting hypothesis 2 if x
+
+634
+00:31:27,450 --> 00:31:31,310
+is generated by distribution 1, and that's
+a false positive.
+
+635
+00:31:31,310 --> 00:31:33,050
+So, you're saying it's from distribution
+2, but
+
+636
+00:31:33,050 --> 00:31:34,840
+in fact, it was from distribution 1, and
+false.
+
+637
+00:31:34,840 --> 00:31:38,870
+And of course, what you'd like is, you
+want both of these things to be zero.
+
+638
+00:31:38,870 --> 00:31:39,610
+I mean, that would.
+I mean,
+
+639
+00:31:39,610 --> 00:31:42,920
+you want this matrix to be i, the
+identity, right?
+
+640
+00:31:42,920 --> 00:31:43,510
+Oh,.
+
+641
+00:31:43,510 --> 00:31:44,330
+There's another name for this.
+
+642
+00:31:44,330 --> 00:31:47,100
+I think some people call it a confusion
+matrix, I think.
+
+643
+00:31:48,470 --> 00:31:49,230
+alright.
+
+644
+00:31:49,230 --> 00:31:52,950
+So we basically have a multi-criterion
+formulation, right?
+
+645
+00:31:52,950 --> 00:31:54,260
+Because what you would really like.
+
+646
+00:31:54,260 --> 00:31:55,570
+Oh, by the way.
+
+647
+00:31:55,570 --> 00:31:59,395
+How would you make false positive rate 0?
+
+648
+00:32:00,500 --> 00:32:01,100
+That you can do.
+
+649
+00:32:02,600 --> 00:32:06,470
+You never want to select hypothesis 2, if
+it was generated by, what?
+
+650
+00:32:06,470 --> 00:32:08,610
+>> [INAUDIBLE]
+
+651
+00:32:08,610 --> 00:32:10,940
+>> Yeah, just clear, this make everything
+negative.
+
+652
+00:32:10,940 --> 00:32:15,750
+Just, then, the great news there is that
+your false positive rate is as low as it
+
+653
+00:32:15,750 --> 00:32:17,060
+can get, zero.
+
+654
+00:32:17,060 --> 00:32:17,930
+Okay, so that's one.
+
+655
+00:32:17,930 --> 00:32:21,686
+And so, and so, so, I mean, it's a real
+trade-off here.
+
+656
+00:32:21,686 --> 00:32:22,360
+Right?
+
+657
+00:32:22,360 --> 00:32:25,340
+Right, so if we make this a bi-criterion
+problem, it just looks like this, right.
+
+658
+00:32:25,340 --> 00:32:26,460
+It's very simple one.
+
+659
+00:32:28,290 --> 00:32:31,020
+And the natural thing to do is scalarize.
+
+660
+00:32:31,020 --> 00:32:35,590
+So if you use scalarize, right, this'll
+give you the Perito curve.
+
+661
+00:32:35,590 --> 00:32:36,710
+actually, it won't in this case.
+
+662
+00:32:36,710 --> 00:32:39,610
+You'll see exactly what it does get you,
+it, because, the piece,
+
+663
+00:32:39,610 --> 00:32:44,570
+the Perito curve in this case is piecewise
+linear and it gives you vertices on it.
+
+664
+00:32:44,570 --> 00:32:45,610
+So we'll, we'll see that in a minute.
+
+665
+00:32:45,610 --> 00:32:50,258
+So you minimize this, but in fact that,
+
+666
+00:32:50,258 --> 00:32:54,310
+this is, this is completely trivial to
+solve.
+
+667
+00:32:54,310 --> 00:32:59,940
+For one thing, the whole problem splits
+across the columns of t,
+
+668
+00:32:59,940 --> 00:33:04,890
+right, because the constraints only
+involved, tell you that the columns are.
+
+669
+00:33:04,890 --> 00:33:06,690
+Have sum up to 1, right?
+
+670
+00:33:06,690 --> 00:33:09,870
+And the objective is linear, so its
+completely separable, so
+
+671
+00:33:09,870 --> 00:33:13,170
+this things splits, you can decide each
+one and then as [INAUDIBLE]
+
+672
+00:33:13,170 --> 00:33:17,293
+completely trivial to work out what the
+answer is and the answer is simply this.
+
+673
+00:33:17,293 --> 00:33:20,651
+It's very interesting, it says, here
+lambda remembered is, is actually, and
+
+674
+00:33:20,651 --> 00:33:22,640
+lambda is a beautiful interpretation.
+
+675
+00:33:22,640 --> 00:33:24,350
+Lambda is our,
+
+676
+00:33:24,350 --> 00:33:29,280
+is remembered something as translates, I
+think its the false positive.
+
+677
+00:33:29,280 --> 00:33:33,410
+I think it's the false positive rate,
+
+678
+00:33:33,410 --> 00:33:37,900
+the irritation at false positive versus
+irritation for false negative.
+
+679
+00:33:37,900 --> 00:33:42,560
+Right so it's the exchange rate between
+the two things that you want small.
+
+680
+00:33:42,560 --> 00:33:45,450
+That's the interpretation from duality
+your multi criteria.
+
+681
+00:33:45,450 --> 00:33:47,570
+So the answer turns out to be really
+simple.
+
+682
+00:33:47,570 --> 00:33:48,590
+It's this.
+
+683
+00:33:48,590 --> 00:33:50,640
+You get a deterministic detector.
+
+684
+00:33:50,640 --> 00:33:55,230
+And you should choose one, if p is bigger
+than the lambda q, and
+
+685
+00:33:55,230 --> 00:34:00,740
+this is sometimes written this way, like
+that, right.
+
+686
+00:34:00,740 --> 00:34:02,300
+And the other one is written, of course,
+this way.
+
+687
+00:34:04,570 --> 00:34:08,510
+And then, this is called a likelihood
+threshold test, or
+
+688
+00:34:08,510 --> 00:34:10,120
+likelihood ratio test, right.
+
+689
+00:34:10,120 --> 00:34:12,120
+So you simple have a threshold, and so
+
+690
+00:34:12,120 --> 00:34:16,190
+all you do now is you simple take one
+distribution and the other one.
+
+691
+00:34:16,190 --> 00:34:17,570
+You take the ratio.
+
+692
+00:34:17,570 --> 00:34:20,270
+And then, all you're doing is just setting
+a threshold.
+
+693
+00:34:20,270 --> 00:34:22,270
+And then, for any given threshold.
+
+694
+00:34:22,270 --> 00:34:26,640
+You choose whichever, whichever one has
+the higher, value, or
+
+695
+00:34:26,640 --> 00:34:27,830
+something like that, right?
+
+696
+00:34:27,830 --> 00:34:30,380
+So, or you sort these, and then choose
+those.
+
+697
+00:34:30,380 --> 00:34:30,970
+anyway.
+
+698
+00:34:30,970 --> 00:34:35,860
+And then, as you vary Lambda here, the
+ratio, than what you're
+
+699
+00:34:35,860 --> 00:34:40,620
+getting are a tradeoff, you're trading off
+false positive and false negative.
+
+700
+00:34:40,620 --> 00:34:41,270
+Okay?
+
+701
+00:34:41,270 --> 00:34:45,000
+So, another one you could do is minimax
+detector.
+
+702
+00:34:45,000 --> 00:34:45,750
+That's very interesting.
+
+703
+00:34:45,750 --> 00:34:48,890
+So, minimax detector says, no, no, I care
+about false positive and
+
+704
+00:34:48,890 --> 00:34:50,680
+false negative equally, please minimize.
+
+705
+00:34:50,680 --> 00:34:52,820
+In fact, this says, please minimize
+probability there.
+
+706
+00:34:54,220 --> 00:34:56,470
+I want to minimize probability of error.
+
+707
+00:34:56,470 --> 00:35:00,210
+Then you get this thing, and actually,
+that's a real, that's an honest LP, and
+
+708
+00:35:00,210 --> 00:35:03,380
+the solution is generally not
+deterministic.
+
+709
+00:35:03,380 --> 00:35:05,260
+Right?
+It's generally something
+
+710
+00:35:05,260 --> 00:35:09,940
+where the detector has entries that are
+not 0 1 1 0.
+
+711
+00:35:09,940 --> 00:35:10,570
+Okay?
+
+712
+00:35:10,570 --> 00:35:13,536
+So let's look at an example.
+
+713
+00:35:13,536 --> 00:35:18,058
+obviously, you don't need this kind of
+heavy stuff for this thing, right?
+
+714
+00:35:18,058 --> 00:35:19,180
+Here's an example.
+
+715
+00:35:19,180 --> 00:35:22,620
+So, here's two distributions I guess
+that's P, and that's Q.
+
+716
+00:35:22,620 --> 00:35:24,030
+And, you know?
+Some things are obvious, right?
+
+717
+00:35:24,030 --> 00:35:26,140
+If the outcome is one, it looks rather.
+
+718
+00:35:26,140 --> 00:35:30,280
+It looks like a pretty good guess that
+distribution P generated it.
+
+719
+00:35:30,280 --> 00:35:32,556
+If the outcome is 3.
+
+720
+00:35:32,556 --> 00:35:37,070
+It looks like [COUGH] a quite good bet,
+rather good bet that distribution,
+
+721
+00:35:37,070 --> 00:35:39,740
+the second distribution q, generated the
+data, right.
+
+722
+00:35:39,740 --> 00:35:41,020
+Just, just, just looking at it.
+
+723
+00:35:43,030 --> 00:35:44,410
+And let's see.
+
+724
+00:35:44,410 --> 00:35:49,020
+eh, if the outcome is 2 or 4, it's maybe
+less obvious, right,
+
+725
+00:35:49,020 --> 00:35:50,700
+as to which one generated it.
+
+726
+00:35:50,700 --> 00:35:51,366
+Right, so
+
+727
+00:35:51,366 --> 00:35:57,750
+here is the tradeof curve, [COUGH] so this
+trade off curve is piece-wise linear.
+
+728
+00:35:57,750 --> 00:36:02,490
+And this is showing you these various, so
+the, this is the actual trade off curve.
+
+729
+00:36:02,490 --> 00:36:06,640
+These actually are the points you get from
+the likelyhood ration tests.
+
+730
+00:36:06,640 --> 00:36:08,550
+Right, these, well I guess you get these
+too.
+
+731
+00:36:08,550 --> 00:36:10,520
+Those, those are the two we talked about
+before.
+
+732
+00:36:10,520 --> 00:36:14,830
+Which is how, how can you get zero false
+positives or something like that.
+
+733
+00:36:14,830 --> 00:36:15,850
+So, you get something like this.
+
+734
+00:36:17,650 --> 00:36:18,590
+So you see the idea.
+
+735
+00:36:18,590 --> 00:36:22,210
+Oh, by the way, this picture when inver, I
+think it's, you turn it.
+
+736
+00:36:22,210 --> 00:36:24,770
+I think you just flip it top to bottom.
+
+737
+00:36:24,770 --> 00:36:31,500
+It's, it's got a name called ROC, which is
+Receiver Operating Characteristic.
+
+738
+00:36:31,500 --> 00:36:33,260
+Now the minimax one is 4.
+
+739
+00:36:33,260 --> 00:36:33,840
+Right?
+
+740
+00:36:33,840 --> 00:36:37,300
+This line here is the line of equal error.
+
+741
+00:36:37,300 --> 00:36:40,380
+A false, false positive and false
+negative, and it's right here, right.
+
+742
+00:36:40,380 --> 00:36:42,820
+So that's the, that's the idea, so.
+
+743
+00:36:42,820 --> 00:36:43,750
+So, it's a bit strange.
+
+744
+00:36:43,750 --> 00:36:49,470
+By the way, this is one of those cases
+where well, as, as, as a big picture,
+
+745
+00:36:49,470 --> 00:36:53,110
+we will and we have talked about these and
+we will talk about it more,
+
+746
+00:36:53,110 --> 00:36:59,140
+where you want to solve a problem and you
+end up doing something like a relaxation.
+
+747
+00:36:59,140 --> 00:37:01,190
+Right.
+So, if someone comes up to you and
+
+748
+00:37:01,190 --> 00:37:04,020
+says find, these are the two
+distributions.
+
+749
+00:37:04,020 --> 00:37:07,320
+I want you to estimate repeated, what's
+going to happen repeatedly is,
+
+750
+00:37:07,320 --> 00:37:10,660
+you're going to see samples, outcomes, and
+I want you to guess which distribution it
+
+751
+00:37:10,660 --> 00:37:13,950
+came from, and I want you to absolutely
+minimize being wrong.
+
+752
+00:37:15,760 --> 00:37:16,960
+Right, simple.
+
+753
+00:37:16,960 --> 00:37:18,520
+You have to use the minimax detector.
+
+754
+00:37:18,520 --> 00:37:20,490
+What's weird about it, is you're not
+consistent.
+
+755
+00:37:20,490 --> 00:37:23,100
+Right because you'd say things like x
+equals 3, and
+
+756
+00:37:23,100 --> 00:37:25,470
+you go that came [INAUDIBLE] come one.
+
+757
+00:37:25,470 --> 00:37:27,960
+And then later they say x equals three,
+
+758
+00:37:27,960 --> 00:37:31,630
+you go, sorry that, that came from
+distribution Q.
+
+759
+00:37:31,630 --> 00:37:33,590
+I'm sorry the first one came from
+distribution P, then Q.
+
+760
+00:37:33,590 --> 00:37:36,928
+So you're not consistent, it's a, it's a,
+it is a.
+
+761
+00:37:36,928 --> 00:37:39,830
+It's a non-deterministic detector, right.
+
+762
+00:37:39,830 --> 00:37:43,170
+But, that is the, that is actually the
+only way that you
+
+763
+00:37:43,170 --> 00:37:46,770
+can actually minimize the probability of
+being wrong.
+
+764
+00:37:46,770 --> 00:37:49,260
+Right, so, okay, so thats, that.
+
+765
+00:37:49,260 --> 00:37:51,010
+By the way.
+It's not very interesting with
+
+766
+00:37:51,010 --> 00:37:52,390
+two distributions, right.
+
+767
+00:37:52,390 --> 00:37:56,530
+This actually is already very interesting
+when I have lets say ten distributions.
+
+768
+00:37:56,530 --> 00:37:58,030
+There bigger and things like that.
+
+769
+00:37:58,030 --> 00:38:00,450
+It's already way interesting.
+
+770
+00:38:00,450 --> 00:38:02,510
+And I should add something there.
+
+771
+00:38:03,770 --> 00:38:06,720
+You can, you can actually get really
+interesting problems.
+
+772
+00:38:06,720 --> 00:38:13,360
+If I show you ten distributions on let's
+say, 1,000 outcomes, or 10,000 outcomes.
+
+773
+00:38:13,360 --> 00:38:16,590
+it, it's actually there your confusion
+matrix or
+
+774
+00:38:16,590 --> 00:38:18,700
+I think we called it the detector matrix.
+
+775
+00:38:18,700 --> 00:38:19,690
+What'd we call it?
+
+776
+00:38:19,690 --> 00:38:21,230
+Find the detection probability matrix or
+
+777
+00:38:21,230 --> 00:38:24,130
+the confusion matrix, it's got a lot
+entries in it, right.
+
+778
+00:38:24,130 --> 00:38:26,510
+Like, for example, it's got 100, okay.
+
+779
+00:38:26,510 --> 00:38:30,300
+And you can think of all sorts of
+interesting convex problems you could do.
+
+780
+00:38:30,300 --> 00:38:36,410
+You could say things like, you'd say, you
+know what, I, I absolutely do not,
+
+781
+00:38:36,410 --> 00:38:40,580
+the probability that you think that you
+say,
+
+782
+00:38:40,580 --> 00:38:44,460
+that you estimated came from distribution
+7 when it really came from distribution 6.
+
+783
+00:38:44,460 --> 00:38:47,410
+That absolutely cant exceed 10%, okay.
+
+784
+00:38:48,570 --> 00:38:50,350
+Anyone understand what I just said?
+
+785
+00:38:50,350 --> 00:38:54,310
+That's just simply a linear inequality on
+one entry in that matrix.
+
+786
+00:38:54,310 --> 00:38:55,340
+You see what I'm saying, right?
+
+787
+00:38:55,340 --> 00:38:59,330
+And you can go on and add all sorts of
+panel convex, constrains and
+
+788
+00:38:59,330 --> 00:39:00,280
+things like that.
+
+789
+00:39:00,280 --> 00:39:05,040
+You'd say, the probability of being wrong,
+when the distribution come,
+
+790
+00:39:05,040 --> 00:39:07,700
+is actually generated from distribution
+three.
+
+791
+00:39:07,700 --> 00:39:10,435
+I want the probability of being wrong to
+be no more than 10%.
+
+792
+00:39:11,570 --> 00:39:12,510
+What would that be?
+
+793
+00:39:12,510 --> 00:39:16,090
+What I just said, what kind of constraint
+on D would that be?
+
+794
+00:39:20,380 --> 00:39:21,090
+That's it.
+
+795
+00:39:21,090 --> 00:39:22,530
+That's nothing more, right?
+
+796
+00:39:22,530 --> 00:39:25,100
+Either the diagonal element.
+
+797
+00:39:25,100 --> 00:39:26,130
+Is bigger than 0.9.
+
+798
+00:39:26,130 --> 00:39:27,300
+That's just fine.
+
+799
+00:39:27,300 --> 00:39:30,380
+Or actually the sum of the off diagonals,
+is less than the number.
+
+800
+00:39:30,380 --> 00:39:32,490
+But that's the same, because they all add
+up to, you know, okay.
+
+801
+00:39:32,490 --> 00:39:34,030
+Everybody, everybody got this?
+
+802
+00:39:34,030 --> 00:39:37,460
+So, by the way a lot of these problems are
+not, I don't think
+
+803
+00:39:37,460 --> 00:39:40,800
+taught in standard statistics type things
+or machine learning.
+
+804
+00:39:40,800 --> 00:39:41,460
+I mean, I think there is.
+
+805
+00:39:41,460 --> 00:39:43,590
+They have a lost function for all of these
+things.
+
+806
+00:39:43,590 --> 00:39:46,540
+So on.
+But you can now do interesting things,
+
+807
+00:39:46,540 --> 00:39:49,180
+just because you know about linear
+programming, for example.
+
+808
+00:39:49,180 --> 00:39:49,980
+Okay.
+So.
+
+809
+00:39:49,980 --> 00:39:51,420
+Okay.
+
+810
+00:39:51,420 --> 00:39:51,920
+Okay.
+
+811
+00:39:54,330 --> 00:39:58,320
+We're going to go to our last sample here
+of topics.
+
+812
+00:39:58,320 --> 00:40:00,450
+It's actually a very interesting one.
+
+813
+00:40:00,450 --> 00:40:01,970
+It's experiment design.
+
+814
+00:40:01,970 --> 00:40:05,660
+Right, so, and it's in a very specific
+setting, it's in the setting where you get
+
+815
+00:40:05,660 --> 00:40:11,230
+a simple problem, but It's actually quite
+interesting useful, search this.
+
+816
+00:40:12,380 --> 00:40:15,840
+We're going to have M linear measurements,
+so I have a bunch of measurements.
+
+817
+00:40:15,840 --> 00:40:17,470
+Yi is ai transpose x plus wi.
+
+818
+00:40:17,470 --> 00:40:20,860
+And what we're going to do is we're
+going to normalize
+
+819
+00:40:20,860 --> 00:40:24,700
+things to have all these noises in 0,1.
+
+820
+00:40:24,700 --> 00:40:29,080
+Right, so, I mean so for example if the
+noise actually had a smaller variance or
+
+821
+00:40:29,080 --> 00:40:30,220
+something like that.
+
+822
+00:40:30,220 --> 00:40:34,160
+I would scale it up and that would
+actually just make upscale a and
+
+823
+00:40:34,160 --> 00:40:36,050
+y would just scaling all that kind of
+stuff, right?
+
+824
+00:40:36,050 --> 00:40:36,580
+So that's yes.
+So
+
+825
+00:40:36,580 --> 00:40:40,870
+all noises are normalized to have variance
+one, standard deviation one, okay.
+
+826
+00:40:42,680 --> 00:40:45,790
+And so if you want to, I mean we can talk
+about various things here.
+
+827
+00:40:45,790 --> 00:40:47,830
+X is, x is a parameter we want to
+estimate,
+
+828
+00:40:47,830 --> 00:40:50,790
+y is a measurement and you should
+interpret the size of
+
+829
+00:40:50,790 --> 00:40:54,280
+a now as something like a signal to noise
+ratio, right.
+
+830
+00:40:54,280 --> 00:40:58,300
+Because if a is big, if a3 is big that
+means that's a,
+
+831
+00:40:58,300 --> 00:41:00,310
+that's a clean sensor measurement.
+
+832
+00:41:00,310 --> 00:41:03,660
+If a3 is small, that's a crappy sensor
+measurement.
+
+833
+00:41:03,660 --> 00:41:04,480
+Everybody got this?
+
+834
+00:41:04,480 --> 00:41:06,280
+Right?
+So, because, you know,
+
+835
+00:41:06,280 --> 00:41:09,510
+the bigger a3 is the bigger.
+
+836
+00:41:09,510 --> 00:41:13,930
+This chunk is compared to the noise, which
+is on the order of one.
+
+837
+00:41:13,930 --> 00:41:18,050
+Okay?
+So, norm of a being big is, is good.
+
+838
+00:41:18,050 --> 00:41:19,710
+That, something like a signal to noise
+ratio.
+
+839
+00:41:21,080 --> 00:41:26,680
+Now, if I estimate this, well the least
+squares estimate is just that.
+
+840
+00:41:26,680 --> 00:41:28,416
+Right, it's just whatever it is.
+
+841
+00:41:28,416 --> 00:41:29,650
+A-transposed A vs B-transposed B.
+
+842
+00:41:29,650 --> 00:41:32,350
+And that's this, and we write it this way.
+
+843
+00:41:32,350 --> 00:41:33,770
+And, what you see here.
+
+844
+00:41:33,770 --> 00:41:40,590
+Is its a sum, the other products of the a
+Is and then inverse times this sum.
+
+845
+00:41:40,590 --> 00:41:42,830
+Okay?
+So, that, that's simple enough.
+
+846
+00:41:42,830 --> 00:41:47,660
+Okay, now, the air that's x hat minus x is
+0 mean.
+
+847
+00:41:48,710 --> 00:41:51,630
+And has a co-variants metrix which is
+actually just thing here.
+
+848
+00:41:51,630 --> 00:41:53,928
+So, that, that's the co-variants metrix.
+
+849
+00:41:53,928 --> 00:41:54,540
+Okay?
+And,
+
+850
+00:41:54,540 --> 00:41:56,160
+and notice that this kind of makes sense.
+
+851
+00:41:56,160 --> 00:41:57,790
+Right?
+Because look at this.
+
+852
+00:41:57,790 --> 00:41:59,940
+If, that's, now that's a co-variance
+matrix,
+
+853
+00:41:59,940 --> 00:42:03,570
+so it's a positive semi-definite matrix.
+
+854
+00:42:03,570 --> 00:42:04,950
+Well it's actually a positive definite
+matrix.
+
+855
+00:42:04,950 --> 00:42:06,310
+What's interesting about it is this.
+
+856
+00:42:06,310 --> 00:42:09,330
+If a at i is bigger, this thing gets
+smaller.
+
+857
+00:42:09,330 --> 00:42:10,314
+I mean if they're all bigger, right?
+
+858
+00:42:10,314 --> 00:42:12,560
+Because, we'll just look at it.
+
+859
+00:42:12,560 --> 00:42:16,540
+This, this matrix is monotone, in the
+matrix sense, in ai.
+
+860
+00:42:16,540 --> 00:42:19,210
+I mean that sounds weird, but you know
+what I mean.
+
+861
+00:42:19,210 --> 00:42:22,050
+It means that if, if you were to double a,
+you know,
+
+862
+00:42:22,050 --> 00:42:27,470
+a7 that dyad contribution would be bigger
+in the matrix sense.
+
+863
+00:42:27,470 --> 00:42:28,810
+This matrix would be bigger,
+
+864
+00:42:28,810 --> 00:42:31,670
+and then when you take the inverse, that
+would switch and it would be smaller.
+
+865
+00:42:31,670 --> 00:42:34,020
+So you'd do, you'd get better estimation.
+
+866
+00:42:34,020 --> 00:42:35,740
+Okay, so it'd all make sense.
+
+867
+00:42:35,740 --> 00:42:36,380
+Okay.
+
+868
+00:42:36,380 --> 00:42:39,740
+And so for example, if you wanted to get a
+confidence ellipsoid.
+
+869
+00:42:39,740 --> 00:42:41,540
+That would be related this way.
+
+870
+00:42:41,540 --> 00:42:43,150
+It would be something like this.
+
+871
+00:42:43,150 --> 00:42:45,170
+You'd have x hat, that's your, that's your
+estimate from here.
+
+872
+00:42:46,900 --> 00:42:50,390
+And you'd select data depending on the
+confidence level of what you want.
+
+873
+00:42:50,390 --> 00:42:52,630
+You know, depending on some chi squared
+distribution or something like that.
+
+874
+00:42:52,630 --> 00:42:54,380
+That would give you the confidence level.
+
+875
+00:42:54,380 --> 00:42:58,160
+And.
+So experiment design says the following.
+
+876
+00:42:58,160 --> 00:42:59,120
+So all of this is basic.
+
+877
+00:42:59,120 --> 00:43:02,050
+Experiment design is the following
+problem.
+
+878
+00:43:02,050 --> 00:43:07,010
+You can choose from a palette of
+measurements that are possible.
+
+879
+00:43:07,010 --> 00:43:12,870
+In other words, you have something like p
+possible measurements here.
+
+880
+00:43:12,870 --> 00:43:14,610
+They're going to be denoted v1 through vp.
+
+881
+00:43:16,330 --> 00:43:21,390
+And you are allowed to choose a bun like
+from e,
+
+882
+00:43:21,390 --> 00:43:23,890
+for each m, you choose one of those,
+right.
+
+883
+00:43:23,890 --> 00:43:26,100
+So, for example, you might say something
+like this.
+
+884
+00:43:27,602 --> 00:43:30,620
+I want all my measurements to be v1.
+
+885
+00:43:30,620 --> 00:43:31,410
+That's why.
+
+886
+00:43:31,410 --> 00:43:33,990
+Why?
+Because it's the best sensor, okay?
+
+887
+00:43:33,990 --> 00:43:34,810
+Something like that.
+
+888
+00:43:34,810 --> 00:43:40,250
+Or you might say, I want to do this, I
+want to, I want, I want to start with v1,
+
+889
+00:43:40,250 --> 00:43:45,520
+and then v2, then I'll do a v7, then I'll
+come back with another v1,
+
+890
+00:43:45,520 --> 00:43:47,610
+everybody following this?
+
+891
+00:43:47,610 --> 00:43:49,930
+This is what you have to choose.
+
+892
+00:43:49,930 --> 00:43:51,960
+Some things are kind of obvious here.
+
+893
+00:43:51,960 --> 00:43:55,060
+For example, this just, it's a sum of
+dyads, right?
+
+894
+00:43:55,060 --> 00:43:58,720
+So it actually doesn't matter what order
+you do them in, right.
+
+895
+00:43:58,720 --> 00:44:02,400
+And in fact, the only thing you really
+have to say here to specify an experiment
+
+896
+00:44:02,400 --> 00:44:08,036
+design is to say, I want to do 22 of
+experiment one, 12 of experiment 2,
+
+897
+00:44:08,036 --> 00:44:12,550
+0 of experiment 3, and so on, and those
+integers have to add up to m,
+
+898
+00:44:12,550 --> 00:44:14,940
+which is the total number of experiments
+you're going to do.
+
+899
+00:44:14,940 --> 00:44:16,180
+Everybody got that?
+
+900
+00:44:16,180 --> 00:44:18,970
+So, and you can imagine.
+
+901
+00:44:18,970 --> 00:44:20,990
+All sorts of variations where you add
+costs for
+
+902
+00:44:20,990 --> 00:44:23,910
+the experiments, and time, or money or
+something like that.
+
+903
+00:44:23,910 --> 00:44:25,230
+You can imagine all sorts of things,
+
+904
+00:44:25,230 --> 00:44:27,740
+but we're going to stick with the simple
+one at first.
+
+905
+00:44:27,740 --> 00:44:30,250
+Okay, so we ended up with a problem that
+looks like this, and, and
+
+906
+00:44:30,250 --> 00:44:31,720
+this'll, this is a good time for
+
+907
+00:44:31,720 --> 00:44:35,360
+me to say something, it's a general thing
+that we can talk about and this is fun.
+
+908
+00:44:35,360 --> 00:44:36,510
+Okay.
+So,
+
+909
+00:44:36,510 --> 00:44:38,610
+you end up with a problem that looks like
+this.
+
+910
+00:44:38,610 --> 00:44:42,270
+Choose a bunch of integers, m1 through mp,
+they add up to m.
+
+911
+00:44:42,270 --> 00:44:47,340
+In fact what you're really doing is you're
+allocating a set of m experiments accross
+
+912
+00:44:47,340 --> 00:44:48,880
+p possible experiments.
+
+913
+00:44:48,880 --> 00:44:50,870
+So you just, that's an, it's an allocation
+problem, but
+
+914
+00:44:50,870 --> 00:44:53,220
+notice that it's an integer allocation
+problem okay.
+
+915
+00:44:53,220 --> 00:44:57,638
+And you want to do that to minimize this
+covariance matrix.
+
+916
+00:44:57,638 --> 00:45:00,630
+Now, of course that's a vector
+optimiszation problem, because it has,
+
+917
+00:45:00,630 --> 00:45:04,020
+it makes absolutely no sense of say
+minimize echo variance matrix, right.
+
+918
+00:45:04,020 --> 00:45:06,810
+So, it's pretty optimal and.
+
+919
+00:45:06,810 --> 00:45:11,430
+Many ways of that, you could scalarize,
+you could do all sorts of things, right.
+
+920
+00:45:11,430 --> 00:45:17,350
+There's many ways to talk about a
+minimizing a covariance matrix, right.
+
+921
+00:45:17,350 --> 00:45:18,710
+So, or if you like, this,
+
+922
+00:45:18,710 --> 00:45:24,550
+you like things geometrically, find me the
+smallest confidence ellipsoid, right.
+
+923
+00:45:24,550 --> 00:45:28,000
+By the way, there is no such thing, so you
+want to say something like this.
+
+924
+00:45:28,000 --> 00:45:31,170
+Find me a small confidence ellipsoid, and
+that's translated to mean.
+
+925
+00:45:31,170 --> 00:45:33,690
+Find the pareto optimal one.
+
+926
+00:45:33,690 --> 00:45:38,060
+So pareto optimal in that sense means find
+me a confidence, a choice of these ms so
+
+927
+00:45:38,060 --> 00:45:43,120
+that the confidence ellipsoid you get,
+there's no smaller confidence
+
+928
+00:45:43,120 --> 00:45:47,100
+ellipsoid that you could get by another
+allocation of experiments.
+
+929
+00:45:47,100 --> 00:45:47,940
+Right that, so what that means.
+
+930
+00:45:47,940 --> 00:45:48,530
+Okay, so, but
+
+931
+00:45:48,530 --> 00:45:51,200
+we all know that because that's what
+multi-criterion optimization is.
+
+932
+00:45:51,200 --> 00:45:52,680
+Okay.
+
+933
+00:45:52,680 --> 00:45:54,650
+Now the variables are a bunch of integers.
+
+934
+00:45:54,650 --> 00:45:59,790
+That should be lighting up a big warning
+sign.
+
+935
+00:45:59,790 --> 00:46:04,330
+So the amber light in your convex
+optimization conceptual center
+
+936
+00:46:04,330 --> 00:46:06,160
+should be blinking.
+
+937
+00:46:06,160 --> 00:46:07,850
+When you hear, integers.
+
+938
+00:46:07,850 --> 00:46:10,380
+And, in fact, this problem is difficult,
+in general, right?
+
+939
+00:46:10,380 --> 00:46:13,060
+I mean, that's the right thing to say
+whenever you see integers.
+
+940
+00:46:13,060 --> 00:46:15,580
+Actually, in some cases, it's false, of
+course.
+
+941
+00:46:15,580 --> 00:46:19,150
+There are plenty of integer problems which
+actually are solveable.
+
+942
+00:46:19,150 --> 00:46:22,410
+But, in in general they're not.
+
+943
+00:46:22,410 --> 00:46:25,440
+So, instead what we're going to do is
+relaxed experiment design.
+
+944
+00:46:25,440 --> 00:46:27,930
+So, relaxed experiment design says this,
+hmm.
+
+945
+00:46:29,450 --> 00:46:31,280
+What I'm going to do is I'm going to
+rewrite it this way.
+
+946
+00:46:31,280 --> 00:46:35,230
+I'm going to work with the fractions of
+the experiments of each type I do.
+
+947
+00:46:35,230 --> 00:46:37,960
+And so I'm going to get, I'm going to work
+with a lambda.
+
+948
+00:46:37,960 --> 00:46:41,730
+And, I'll have one transposed lambda is 0.
+
+949
+00:46:41,730 --> 00:46:44,030
+and, if I added one more constraint.
+
+950
+00:46:44,030 --> 00:46:49,550
+If I added simply this, m lambda is in z,
+
+951
+00:46:49,550 --> 00:46:53,640
+then, this problem would be identical to
+that problem.
+
+952
+00:46:53,640 --> 00:46:54,690
+Right?
+This says
+
+953
+00:46:54,690 --> 00:46:58,270
+that the lambdas are integer multiples of
+one over m.
+
+954
+00:46:58,270 --> 00:47:01,820
+So if I added this constraint, this is
+identical to that one and
+
+955
+00:47:01,820 --> 00:47:05,550
+now, want to see what, want to see how
+convex relaxation is done?
+
+956
+00:47:05,550 --> 00:47:06,420
+Everybody knows this now?
+
+957
+00:47:06,420 --> 00:47:08,400
+You know what convex relaxation is, right?
+
+958
+00:47:08,400 --> 00:47:09,380
+Watch very carefully.
+
+959
+00:47:11,710 --> 00:47:13,230
+Convex relaxation is this.
+
+960
+00:47:13,230 --> 00:47:15,170
+You write down an optimization problem.
+
+961
+00:47:15,170 --> 00:47:17,880
+There are a few constraints that you don't
+know how to handle.
+
+962
+00:47:17,880 --> 00:47:19,560
+Comment them out.
+
+963
+00:47:19,560 --> 00:47:21,320
+That's what is is, okay.
+
+964
+00:47:21,320 --> 00:47:22,200
+What are some common scalarizations?
+
+965
+00:47:22,200 --> 00:47:24,960
+Well you can minimize the log of the
+determinant.
+
+966
+00:47:24,960 --> 00:47:27,260
+That's a convex well sorry.
+
+967
+00:47:27,260 --> 00:47:29,390
+Concave increasing function, and
+
+968
+00:47:29,390 --> 00:47:31,260
+therefore [COUGH] will produce a pareto
+optimal point.
+
+969
+00:47:31,260 --> 00:47:34,320
+[COUGH] You can take the trace, the
+maximum igon value,
+
+970
+00:47:34,320 --> 00:47:35,610
+all sorts of crazy stuff.
+
+971
+00:47:35,610 --> 00:47:39,692
+You can add all sorts of you know, you can
+add all sorts of constraints now to it.
+
+972
+00:47:39,692 --> 00:47:42,830
+[COUGH] Sorry fo, for this thing.
+
+973
+00:47:42,830 --> 00:47:44,390
+Okay, so it needs to have names, right.
+
+974
+00:47:44,390 --> 00:47:48,560
+So, [COUGH] when you minimize the log
+determine of the inverse.
+
+975
+00:47:48,560 --> 00:47:50,220
+It's beautiful interpretation.
+
+976
+00:47:50,220 --> 00:47:54,250
+That's exactly, you are minimizing the
+volume of the confidence ellipsoid.
+
+977
+00:47:54,250 --> 00:47:57,280
+Right, and you end up with this problem
+which is convex.
+
+978
+00:47:57,280 --> 00:47:58,300
+Right, so you solve that.
+
+979
+00:48:00,870 --> 00:48:03,670
+And then, you know depending on what, if
+you were successful in convincing someone
+
+980
+00:48:03,670 --> 00:48:07,980
+that it was more sophisticated to solve
+the relaxed problem, your done.
+
+981
+00:48:07,980 --> 00:48:09,620
+If you haven't then you round and
+
+982
+00:48:09,620 --> 00:48:15,590
+you hold up the optimal value of the
+relaxed problem as a lower band.
+
+983
+00:48:15,590 --> 00:48:16,090
+Okay.
+
+984
+00:48:17,500 --> 00:48:18,390
+Let's take a look at that.
+
+985
+00:48:18,390 --> 00:48:19,890
+I mean, I'm, I'm not going to go into the
+details here.
+
+986
+00:48:19,890 --> 00:48:21,660
+I'm not going to argue everything about
+the dual, but
+
+987
+00:48:21,660 --> 00:48:23,720
+it's actually quite interesting.
+
+988
+00:48:23,720 --> 00:48:28,010
+So the dual problem of this can be
+massaged.
+
+989
+00:48:28,010 --> 00:48:29,800
+I, I should say a dual problem.
+
+990
+00:48:29,800 --> 00:48:33,510
+And that means you have to allow me to do
+a few little manipulations before and
+
+991
+00:48:33,510 --> 00:48:34,490
+a few after.
+
+992
+00:48:34,490 --> 00:48:37,060
+But you get it into a real form that looks
+like this.
+
+993
+00:48:37,060 --> 00:48:41,556
+Maximizes log det w plus a constant which
+is totally irrelevant.
+
+994
+00:48:41,556 --> 00:48:45,470
+Subject to [COUGH] vk transpose wvk less
+than or equal to 1.
+
+995
+00:48:46,970 --> 00:48:50,330
+And this has a beautiful interpretation
+geometrically.
+
+996
+00:48:50,330 --> 00:48:55,070
+It turns out this says, find me the
+minimum volume ellipsoid,
+
+997
+00:48:55,070 --> 00:48:58,585
+center at the origin, that includes all
+the test vectors.
+
+998
+00:48:58,585 --> 00:49:03,470
+[COUGH] And it turns out that the LaGrange
+multipliers on these constraints
+
+999
+00:49:04,580 --> 00:49:09,850
+are precisely the fractions the optimal
+fractions that you should use, right?
+
+1000
+00:49:09,850 --> 00:49:10,970
+So, it's beautiful.
+
+1001
+00:49:10,970 --> 00:49:13,660
+So you get this connection between an
+experiment design problem, and
+
+1002
+00:49:13,660 --> 00:49:16,700
+a geometric problem, which is going to be
+our next topic.
+
+1003
+00:49:16,700 --> 00:49:17,300
+Right.
+
+1004
+00:49:17,300 --> 00:49:21,920
+And so the picture is something like this
+well, this is the picture, right.
+
+1005
+00:49:21,920 --> 00:49:24,090
+The picture is, is this.
+
+1006
+00:49:24,090 --> 00:49:25,730
+We have 20 test vectors.
+
+1007
+00:49:25,730 --> 00:49:28,690
+That's the origin, and here's a bunch of
+things, tests you can do,
+
+1008
+00:49:28,690 --> 00:49:30,480
+potential tests, and here's a bunch.
+
+1009
+00:49:30,480 --> 00:49:33,280
+Okay?
+And now I'm going to, before we even look
+
+1010
+00:49:33,280 --> 00:49:36,220
+at what the optimal design is, I'm
+going to ask you some questions about it.
+
+1011
+00:49:36,220 --> 00:49:38,270
+Okay.
+So let me ask you.
+
+1012
+00:49:38,270 --> 00:49:42,550
+Please explain intuitively, why you would
+never chose, choose that experiment.
+
+1013
+00:49:42,550 --> 00:49:43,800
+Let's suppose that's experiment #11.
+
+1014
+00:49:43,800 --> 00:49:48,584
+Why would you not choose experiment 11?
+
+1015
+00:49:48,584 --> 00:49:51,764
+[COUGH] You can say,
+
+1016
+00:49:51,764 --> 00:49:55,620
+and don't say anything about convex
+optimization or log data or anything else.
+
+1017
+00:49:55,620 --> 00:49:58,570
+Just you tell me why would you not choose
+that experiment.
+
+1018
+00:50:03,110 --> 00:50:04,510
+What is this experiment here?
+
+1019
+00:50:06,500 --> 00:50:12,390
+It basically it gives the negative of that
+experiment but it's about twice as big.
+
+1020
+00:50:13,660 --> 00:50:16,648
+So in other words it's a completely
+equivalent measurement with
+
+1021
+00:50:16,648 --> 00:50:19,410
+one-half the noise.
+
+1022
+00:50:19,410 --> 00:50:21,140
+Twice the signal to noise ratio.
+
+1023
+00:50:21,140 --> 00:50:22,270
+Right?
+
+1024
+00:50:22,270 --> 00:50:27,450
+So if I give you a set of, a palette of 20
+experiments you can carry out, one is
+
+1025
+00:50:27,450 --> 00:50:32,170
+basically a copy of another, but twice as
+bad, then why would you ever use it?
+
+1026
+00:50:32,170 --> 00:50:33,110
+You would not.
+
+1027
+00:50:33,110 --> 00:50:33,820
+Okay?
+So I'm just,
+
+1028
+00:50:33,820 --> 00:50:35,980
+I'm just saying, all of this is kind of
+intuitive, right.
+
+1029
+00:50:35,980 --> 00:50:39,250
+You want to use experiments that are
+spread apart.
+
+1030
+00:50:39,250 --> 00:50:45,070
+Now, roughly speaking, you don't choose
+any of these because these, well not quite
+
+1031
+00:50:45,070 --> 00:50:50,880
+because they don't go up here, but these
+measurements here are kind of like those.
+
+1032
+00:50:50,880 --> 00:50:52,960
+I mean, they're, got a minus sign, but who
+cares?
+
+1033
+00:50:52,960 --> 00:50:56,670
+Actually, it goes away immediately when
+you form that dyad, the vkvk transpose.
+
+1034
+00:50:56,670 --> 00:50:57,479
+It goes away instantly.
+
+1035
+00:50:59,340 --> 00:51:03,120
+So what happens is you're, you're not
+going to choose any of these
+
+1036
+00:51:03,120 --> 00:51:07,170
+because these sort of stand in for them
+and have higher signal to noise ratio.
+
+1037
+00:51:07,170 --> 00:51:09,540
+And sure enough, look what it does.
+
+1038
+00:51:09,540 --> 00:51:12,800
+It picks the two [COUGH] which have kind
+of highest angle.
+
+1039
+00:51:12,800 --> 00:51:16,030
+The two measurements which are most
+independent if you want to say that, or
+
+1040
+00:51:16,030 --> 00:51:20,230
+something like that, have the highest
+angle And, it concentrates 50-50 on them.
+
+1041
+00:51:20,230 --> 00:51:20,900
+Okay?
+
+1042
+00:51:20,900 --> 00:51:21,800
+So.
+By the way,
+
+1043
+00:51:21,800 --> 00:51:24,760
+this is stupid in r2, you don't need this,
+right?
+
+1044
+00:51:24,760 --> 00:51:26,720
+But, if you are making, if you are
+estimating 10 or
+
+1045
+00:51:26,720 --> 00:51:29,380
+a hundred parameters, these things are not
+obvious at all.
+
+1046
+00:51:29,380 --> 00:51:30,520
+Right?
+Not at all, right?
+
+1047
+00:51:30,520 --> 00:51:33,580
+You have a thousand possible experiments
+to do and so on.

@@ -1,0 +1,1148 @@
+1
+00:00:00,000 --> 00:00:05,610
+[BLANK_AUDIO]
+
+2
+00:00:05,610 --> 00:00:07,700
+In this next module, I'm going to walk you
+the,
+
+3
+00:00:07,700 --> 00:00:10,804
+through the specific steps of 10-fold
+cross-validation.
+
+4
+00:00:12,140 --> 00:00:14,420
+So the idea of cross-validation is the
+following.
+
+5
+00:00:14,420 --> 00:00:20,100
+You want to sort of cleverly split your
+data into multiple training and test sets.
+
+6
+00:00:20,100 --> 00:00:23,140
+In a way that the data that are used to
+train the model,
+
+7
+00:00:23,140 --> 00:00:25,750
+are never the same data that are used to
+test the model.
+
+8
+00:00:25,750 --> 00:00:27,540
+And there's a lot of ways to do this.
+
+9
+00:00:27,540 --> 00:00:30,280
+So one of them is leave-one-out
+cross-validation, where you
+
+10
+00:00:30,280 --> 00:00:35,020
+literally leave one observation out at a
+time, you fit the model on everybody else,
+
+11
+00:00:35,020 --> 00:00:38,150
+and then you test the model on that one
+observation that was left out.
+
+12
+00:00:38,150 --> 00:00:39,560
+So if you're doing logistic regression,
+
+13
+00:00:39,560 --> 00:00:43,570
+you take that logistic regression that was
+fit and you'd apply it to
+
+14
+00:00:43,570 --> 00:00:48,330
+that one observation that was left out to
+calculate their predicted probability.
+
+15
+00:00:48,330 --> 00:00:50,470
+And then you do that for everybody so
+
+16
+00:00:50,470 --> 00:00:54,940
+that every observation was left out once,
+and then you'd somehow summarize those
+
+17
+00:00:54,940 --> 00:00:58,080
+predicted probabilities that were
+calculated based on
+
+18
+00:00:58,080 --> 00:01:01,138
+models where those observations were not
+included in the fitting.
+
+19
+00:01:01,138 --> 00:01:03,460
+For K-fold cross-validation,
+
+20
+00:01:03,460 --> 00:01:06,260
+you're going to hold out a larger chunk of
+the data at a time.
+
+21
+00:01:06,260 --> 00:01:11,580
+So I'm going to show you the steps of
+10-fold cross-validation but
+
+22
+00:01:11,580 --> 00:01:14,140
+if you wanted to do five-fold
+cross-validation it would be very similar,
+
+23
+00:01:14,140 --> 00:01:15,690
+you would just do it five times rather
+than than ten.
+
+24
+00:01:15,690 --> 00:01:21,070
+So the first step is you're going to
+randomly divide your data into ten tenths,
+
+25
+00:01:21,070 --> 00:01:21,700
+ten pieces.
+
+26
+00:01:22,960 --> 00:01:24,660
+You're going to to take the first tenth of
+the data,
+
+27
+00:01:24,660 --> 00:01:26,860
+that's going to be your test data set.
+
+28
+00:01:26,860 --> 00:01:29,730
+You're going to fit your model to the
+other nine tenths of the data,
+
+29
+00:01:29,730 --> 00:01:31,790
+which are now the training data.
+
+30
+00:01:31,790 --> 00:01:33,820
+Now fitting the model means you're
+going to do the,
+
+31
+00:01:33,820 --> 00:01:37,560
+the whole thing again including both the
+variable selection and
+
+32
+00:01:37,560 --> 00:01:39,570
+the pocketing of the beta coefficients.
+
+33
+00:01:39,570 --> 00:01:41,780
+That's an important point which I'll get
+back to in a minute.
+
+34
+00:01:41,780 --> 00:01:44,080
+Once you fit the model you're then
+going to apply that model to
+
+35
+00:01:44,080 --> 00:01:45,070
+the test data.
+
+36
+00:01:45,070 --> 00:01:48,160
+So if you've done logistic regression that
+means you're going to calculate predictive
+
+37
+00:01:48,160 --> 00:01:48,990
+probabilities for
+
+38
+00:01:48,990 --> 00:01:53,200
+everybody in the test set based on the
+model which they weren't used to fit.
+
+39
+00:01:54,688 --> 00:01:58,000
+Then you're going to repeat that procedure
+for all 10 tenths of the data.
+
+40
+00:01:58,000 --> 00:02:02,360
+You're going to come out with su, you're
+going to be able to then summarize all of
+
+41
+00:02:02,360 --> 00:02:05,060
+the mea, measures of accuracy from the
+test data.
+
+42
+00:02:05,060 --> 00:02:06,200
+You're going to summarize that.
+
+43
+00:02:06,200 --> 00:02:08,000
+Often we'll take like a mean.
+
+44
+00:02:08,000 --> 00:02:11,640
+For logistic regression, if you calculated
+predicted probabilities from all
+
+45
+00:02:11,640 --> 00:02:15,960
+the test data, you can put those together,
+and make an ROC curve and
+
+46
+00:02:15,960 --> 00:02:18,660
+calculate an area under the ROC curve.
+
+47
+00:02:18,660 --> 00:02:23,060
+now, there's a common mistake that people
+make when doing 10-fold cross-validation.
+
+48
+00:02:23,060 --> 00:02:26,021
+And it may, this mistake's been made in a
+lot of, like, micro-array and
+
+49
+00:02:26,021 --> 00:02:27,620
+gene studies.
+
+50
+00:02:27,620 --> 00:02:32,876
+So, it's very important this little point
+I make it in, bullet two here, is that
+
+51
+00:02:32,876 --> 00:02:37,735
+you have to redo your variable selection
+every time for each one of these folds.
+
+52
+00:02:37,735 --> 00:02:42,311
+So for example, maybe you, you're do a
+study on gene and
+
+53
+00:02:42,311 --> 00:02:47,855
+you do your model selection, your model
+fitting, your model building and
+
+54
+00:02:47,855 --> 00:02:53,877
+you come out with a model that says, this
+disease is related to these five genes.
+
+55
+00:02:53,877 --> 00:03:01,997
+Call them gene A, gene F, gene Z, gene G
+and gene H.
+
+56
+00:03:01,997 --> 00:03:04,590
+Let's say, we started with 26 genes to
+choose from.
+
+57
+00:03:04,590 --> 00:03:07,260
+Usually there's more genes than that, but
+some, some set of genes.
+
+58
+00:03:07,260 --> 00:03:09,788
+And this is the ones that came out in the
+end of the final day to,
+
+59
+00:03:09,788 --> 00:03:12,670
+to be retained in our final model.
+
+60
+00:03:12,670 --> 00:03:15,440
+Maybe we were using some kind of automatic
+selection procedure.
+
+61
+00:03:15,440 --> 00:03:17,900
+Whatev, however we were selecting these
+variables.
+
+62
+00:03:17,900 --> 00:03:19,990
+These are the ones that made it in the
+final model.
+
+63
+00:03:19,990 --> 00:03:21,760
+And of course, we're doing some
+regression,
+
+64
+00:03:21,760 --> 00:03:25,390
+there's going to be some data associated
+with each of those genes.
+
+65
+00:03:25,390 --> 00:03:27,050
+So there's sort of two pieces here.
+
+66
+00:03:27,050 --> 00:03:29,950
+There's what genes actually make the final
+model, and then there's
+
+67
+00:03:29,950 --> 00:03:34,110
+the exact weight that they're given in the
+final model, the beta coefficients.
+
+68
+00:03:34,110 --> 00:03:38,595
+When you rerun the model, refit the model
+on the, for
+
+69
+00:03:38,595 --> 00:03:41,310
+cross-validation, you have to do both of
+those steps.
+
+70
+00:03:41,310 --> 00:03:45,470
+Both selecting which genes make it into
+the final model and
+
+71
+00:03:45,470 --> 00:03:48,190
+refitting those beta coefficients, those,
+those weights.
+
+72
+00:03:48,190 --> 00:03:51,060
+What a lot of people forget to do is the
+first part of that.
+
+73
+00:03:51,060 --> 00:03:52,650
+They don't redo their variable selection.
+
+74
+00:03:52,650 --> 00:03:53,940
+So, if you were to do this wrong,
+
+75
+00:03:53,940 --> 00:03:57,260
+let's say this again gives you the final
+model that you came out with.
+
+76
+00:03:57,260 --> 00:03:58,124
+At the end of the day,
+
+77
+00:03:58,124 --> 00:04:01,253
+that's the model you want to validate with
+10-fold cross-validation.
+
+78
+00:04:01,253 --> 00:04:04,893
+You go to do your 10-fold cross-validation
+and you get to step two here and
+
+79
+00:04:04,893 --> 00:04:08,569
+you say okay, now I'm going to fit my
+model again on my nine tenths of the data.
+
+80
+00:04:08,569 --> 00:04:13,201
+So rather than re-selecting the genes you
+just start with only this set.
+
+81
+00:04:13,201 --> 00:04:18,935
+So you fit the logistic regression model
+or whatever regression you're
+
+82
+00:04:18,935 --> 00:04:25,000
+doing with gene A, gene F, gene Z, gene G
+and gene H, and you fit new beta.
+
+83
+00:04:25,000 --> 00:04:28,800
+So you get a beta called a beta star
+because you're, you know, it's a new beta.
+
+84
+00:04:28,800 --> 00:04:32,390
+So you get some new betas, and then you
+apply that model.
+
+85
+00:04:32,390 --> 00:04:33,730
+To your test data set.
+
+86
+00:04:33,730 --> 00:04:35,240
+That's wrong.
+
+87
+00:04:35,240 --> 00:04:40,810
+Because you had all these other genes that
+you, when you fit your original model.
+
+88
+00:04:40,810 --> 00:04:43,800
+You had to select which genes were
+going to get included in the,
+
+89
+00:04:43,800 --> 00:04:45,890
+in the predictor set for that model.
+
+90
+00:04:45,890 --> 00:04:51,590
+What you need to do, the correct thing to
+do, is to start over again and apply say,
+
+91
+00:04:51,590 --> 00:04:55,270
+your automatic selection procedure to the
+original set of candidate predictors or
+
+92
+00:04:55,270 --> 00:04:56,840
+candidate genes in this case.
+
+93
+00:04:56,840 --> 00:05:00,100
+So that means that the model that comes
+out for the first tenth of
+
+94
+00:05:00,100 --> 00:05:03,920
+your data set for this cross validation,
+might be slightly different.
+
+95
+00:05:03,920 --> 00:05:08,272
+So maybe you get, you know, gene A and
+
+96
+00:05:08,272 --> 00:05:14,392
+you get gene F and you get gene Z and you
+get gene G,
+
+97
+00:05:14,392 --> 00:05:19,280
+but then instead of gene H you get gene N.
+
+98
+00:05:19,280 --> 00:05:21,770
+You're you can get a slightly different
+set.
+
+99
+00:05:21,770 --> 00:05:23,980
+And so you need to redo that variable
+selection step.
+
+100
+00:05:23,980 --> 00:05:27,924
+And if you don't, then this
+cross-validation will not be valid.
+
+101
+00:05:27,924 --> 00:05:29,730
+You're then going to do this ten times.
+
+102
+00:05:29,730 --> 00:05:32,420
+That means you could come out with ten
+slightly different models, both in terms
+
+103
+00:05:32,420 --> 00:05:35,880
+of the beta coefficient and the variables
+contained in the, in those models.
+
+104
+00:05:35,880 --> 00:05:38,300
+Now a question that a lot of people will
+have at the end of this is they'll say,
+
+105
+00:05:38,300 --> 00:05:41,350
+well, okay, well I, now I've got ten
+different models.
+
+106
+00:05:41,350 --> 00:05:43,790
+Which model do I report in my paper?
+
+107
+00:05:43,790 --> 00:05:47,790
+Well, you're still going to report the
+original model that you first fit.
+
+108
+00:05:47,790 --> 00:05:52,030
+So the validation is what it's buying you
+is just getting a better estimate of
+
+109
+00:05:52,030 --> 00:05:54,450
+the actual model accuracy.
+
+110
+00:05:54,450 --> 00:05:58,925
+So you're going to re, report the, the,
+better ROC area under the ROC curve, but
+
+111
+00:05:58,925 --> 00:06:00,510
+you're going to report the original model.
+
+112
+00:06:00,510 --> 00:06:04,550
+This is just to give you a sense of how
+overfit that original model is.
+
+113
+00:06:04,550 --> 00:06:07,390
+There may be reason where you try to use
+the, you know,
+
+114
+00:06:07,390 --> 00:06:10,110
+the different models fit from different
+bootstrap samples or something.
+
+115
+00:06:10,110 --> 00:06:13,340
+But usually we're just doing this
+cross-validation to
+
+116
+00:06:13,340 --> 00:06:15,884
+get a better estimate of say that area
+under the curve.
+
+117
+00:06:15,884 --> 00:06:19,140
+So the fact that we have slightly
+different models in every fold is
+
+118
+00:06:19,140 --> 00:06:19,880
+not a problem.
+
+119
+00:06:19,880 --> 00:06:25,770
+And this is an important enough error that
+people have made in enough microarray
+
+120
+00:06:25,770 --> 00:06:28,690
+papers and such that it you know, it's
+been written about in the literature, so
+
+121
+00:06:28,690 --> 00:06:31,500
+here is a, a paper writing about this
+particular error, and
+
+122
+00:06:31,500 --> 00:06:35,040
+kind of illustrating what can go wrong if
+you make this error.
+
+123
+00:06:35,040 --> 00:06:36,180
+So what this graphic is showing.
+
+124
+00:06:36,180 --> 00:06:39,330
+This was a, a paper where they did a
+number of simulations, and
+
+125
+00:06:39,330 --> 00:06:41,360
+they simulated kind of gene studies, so
+
+126
+00:06:41,360 --> 00:06:44,990
+something like micro array or SNP studies,
+where there's a buncha candidate genes.
+
+127
+00:06:44,990 --> 00:06:48,300
+And what they did in this simulation
+though was,
+
+128
+00:06:48,300 --> 00:06:50,170
+they pretended that all of the genes were
+noise.
+
+129
+00:06:50,170 --> 00:06:53,430
+So, actually nothing is related to the
+disease that they care about.
+
+130
+00:06:53,430 --> 00:06:55,970
+And they went through and they selected
+models and
+
+131
+00:06:55,970 --> 00:06:59,640
+they found that a number of those genes
+popped up in the selected models.
+
+132
+00:06:59,640 --> 00:07:02,560
+As you would expect, there is some, some
+type of error going on here so
+
+133
+00:07:02,560 --> 00:07:05,895
+a lot of those noise genes get selected in
+the models.
+
+134
+00:07:05,895 --> 00:07:07,610
+We're going to then do some kind of
+cross-validation to
+
+135
+00:07:07,610 --> 00:07:09,680
+try get at that overfitting.
+
+136
+00:07:09,680 --> 00:07:14,370
+And what they did is they, ran the model,
+and didn't cross-validate.
+
+137
+00:07:14,370 --> 00:07:15,580
+They just did some kind of,
+
+138
+00:07:15,580 --> 00:07:18,490
+what a re-substitution here means just
+that you're calculating your
+
+139
+00:07:18,490 --> 00:07:22,830
+ROC curve based on the original data, and
+you're not doing any cross-validation.
+
+140
+00:07:22,830 --> 00:07:24,492
+They then did the cross-validation wrong.
+
+141
+00:07:24,492 --> 00:07:27,720
+They cross-validated after the selection
+of
+
+142
+00:07:27,720 --> 00:07:31,780
+genes without re-selecting the genes at
+each fold as we just talked about.
+
+143
+00:07:32,792 --> 00:07:35,866
+That's going to be in the graph here, the
+diagonal lines and
+
+144
+00:07:35,866 --> 00:07:39,244
+then they did it correctly and that's the
+checkered pattern here.
+
+145
+00:07:39,244 --> 00:07:43,141
+And what this graph is showing you here
+is, remember these are all noise genes.
+
+146
+00:07:43,141 --> 00:07:46,563
+So you want the cross, cross-validation to
+show you those errors,
+
+147
+00:07:46,563 --> 00:07:50,516
+to show you where things have been wrongly
+classified as being important so
+
+148
+00:07:50,516 --> 00:07:53,690
+that you want many, many
+misclassifications.
+
+149
+00:07:53,690 --> 00:07:56,410
+When you don't cross-validate you get none
+of course because you
+
+150
+00:07:56,410 --> 00:07:57,480
+haven't cross-validated.
+
+151
+00:07:57,480 --> 00:08:02,410
+When you do a cross-validation wrong you
+only identify a couple of the noise genes,
+
+152
+00:08:02,410 --> 00:08:03,940
+a couple of the errors.
+
+153
+00:08:03,940 --> 00:08:07,890
+When you do the cross-validation right,
+you identify a huge number of more errors.
+
+154
+00:08:07,890 --> 00:08:10,250
+So, doing the cross-validation wrong will,
+
+155
+00:08:10,250 --> 00:08:14,150
+you will absolutely not catch how much
+you've actually overfit your model.
+
+156
+00:08:15,410 --> 00:08:19,000
+Let me just show you an example of 10-fold
+cross-validation in the literature.
+
+157
+00:08:19,000 --> 00:08:22,950
+So the point of this study was to estimate
+the probability that a patient who
+
+158
+00:08:22,950 --> 00:08:28,130
+has a solitary pa, pulmonary nodule,
+that's just a like a mass in their lung.
+
+159
+00:08:28,130 --> 00:08:30,520
+Sometimes you'll have masses in the lung
+that are benign.
+
+160
+00:08:30,520 --> 00:08:31,950
+Some will be lung cancer.
+
+161
+00:08:31,950 --> 00:08:36,690
+And we need to make some decisions to say
+who's likely to actually have lung cancer.
+
+162
+00:08:36,690 --> 00:08:40,600
+It's actually pretty invasive to go in and
+biopsy a growth in your lungs, so
+
+163
+00:08:40,600 --> 00:08:42,790
+we probably don't want to have to do that
+invasive surgery for
+
+164
+00:08:42,790 --> 00:08:45,269
+someone who has a really low chance of
+actually having lung cancer.
+
+165
+00:08:47,020 --> 00:08:49,180
+So they wanted to come up with the
+prediction model here.
+
+166
+00:08:49,180 --> 00:08:53,860
+They used a data set of 375 veterans who
+had these nodules and
+
+167
+00:08:53,860 --> 00:08:56,870
+the actually done the gold standard test,
+the biopsy they
+
+168
+00:08:56,870 --> 00:09:02,400
+knew that 54% actually had lung cancer and
+46% actually had benign masses.
+
+169
+00:09:02,400 --> 00:09:04,535
+Then they used stepwise logistic
+regression so,
+
+170
+00:09:04,535 --> 00:09:07,700
+they're using automatic selection
+procedure coupled with they're doing
+
+171
+00:09:07,700 --> 00:09:10,420
+a logistic regression because the outcome
+here is binary.
+
+172
+00:09:10,420 --> 00:09:11,790
+You either have lung cancer or you don't.
+
+173
+00:09:12,900 --> 00:09:14,170
+So they came up with a final model.
+
+174
+00:09:14,170 --> 00:09:14,920
+So here's the model,
+
+175
+00:09:14,920 --> 00:09:17,880
+when they ran their stepwise progression
+here's what they came, came out with.
+
+176
+00:09:17,880 --> 00:09:22,990
+So if you were a smoker, you have a much,
+much higher probability of actually hav,
+
+177
+00:09:22,990 --> 00:09:25,540
+having lung cancer, not surprisingly.
+
+178
+00:09:25,540 --> 00:09:28,240
+Being older was also a risk factor for
+having lung cancer,
+
+179
+00:09:28,240 --> 00:09:32,500
+bigger nodules were more likely to be lung
+cancer and if you'd quit smoking then you
+
+180
+00:09:32,500 --> 00:09:36,640
+were a little bit less likely to actually
+have a malignant tumor or lung cancer.
+
+181
+00:09:36,640 --> 00:09:40,610
+So that was the final model that they
+reported in their paper.
+
+182
+00:09:40,610 --> 00:09:42,280
+And let me tell you a little bit more
+about this model,
+
+183
+00:09:42,280 --> 00:09:45,700
+so I've shown you the odds ratios on the
+previous slide.
+
+184
+00:09:45,700 --> 00:09:49,910
+But we can make an actual, we can
+calculate a predicted probability for
+
+185
+00:09:49,910 --> 00:09:52,080
+everybody, based on the model.
+
+186
+00:09:52,080 --> 00:09:55,470
+So, remember, a predicted probability from
+logistic regression looks
+
+187
+00:09:55,470 --> 00:09:58,310
+something like e raised to something over
+1 plus e raised to
+
+188
+00:09:58,310 --> 00:10:01,310
+something that's our predicted probability
+from logistic regression.
+
+189
+00:10:01,310 --> 00:10:04,340
+The something here is the alpha plus beta
+blah blah blah.
+
+190
+00:10:04,340 --> 00:10:06,130
+So the alpha here was 8.404.
+
+191
+00:10:06,130 --> 00:10:10,320
+The beta for smoking we, I showed you as
+an odds ratio on the previous page,
+
+192
+00:10:10,320 --> 00:10:11,790
+now I'm just showing you the beta.
+
+193
+00:10:11,790 --> 00:10:15,370
+That's the beta for smoking, the beta for
+age, the beta for how big the, the tum,
+
+194
+00:10:15,370 --> 00:10:16,790
+the nodule is.
+
+195
+00:10:16,790 --> 00:10:21,060
+And a beta for years that they've quit,
+every 10 years they've quit smoking.
+
+196
+00:10:21,060 --> 00:10:22,660
+So this is just the logistic regression
+model.
+
+197
+00:10:22,660 --> 00:10:25,970
+It can be used to calculate a predicted
+probability for everybody.
+
+198
+00:10:25,970 --> 00:10:29,666
+That predicted probability then is used to
+calculate, to make an ROC curve and
+
+199
+00:10:29,666 --> 00:10:32,208
+calculate the area under the curve.
+
+200
+00:10:32,208 --> 00:10:34,550
+Whey they calculated the area under the
+curve just for
+
+201
+00:10:34,550 --> 00:10:37,290
+the original data without doing any
+cross-validation.
+
+202
+00:10:37,290 --> 00:10:39,420
+That model had an area under the curve of
+0.79.
+
+203
+00:10:39,420 --> 00:10:42,530
+So, pretty good predicted accuracy.
+
+204
+00:10:42,530 --> 00:10:43,090
+Not bad.
+
+205
+00:10:43,090 --> 00:10:47,650
+They also showed you that the 95%
+confidence interval that the predicted
+
+206
+00:10:47,650 --> 00:10:50,660
+accuracy is somewhere between probably 74%
+and 84%.
+
+207
+00:10:50,660 --> 00:10:51,440
+Perfect.
+
+208
+00:10:51,440 --> 00:10:55,170
+Always nice to put a confidence interval
+on that area under the curve.
+
+209
+00:10:55,170 --> 00:10:58,190
+As we know, this area under the curve may
+be overly optimistic.
+
+210
+00:10:58,190 --> 00:11:01,362
+So, if we were to apply this logistic
+regression model to a new dataset,
+
+211
+00:11:01,362 --> 00:11:03,390
+the area under the curve is going to be
+smaller and
+
+212
+00:11:03,390 --> 00:11:06,480
+it might be considerable smaller if there
+was a lot of over fitting.
+
+213
+00:11:07,650 --> 00:11:09,360
+We don't have extra data lying around.
+
+214
+00:11:09,360 --> 00:11:13,050
+So, instead what they did was to do
+10-fold cross-validation to
+
+215
+00:11:13,050 --> 00:11:15,409
+get a better estimate of the area under
+the curve.
+
+216
+00:11:16,690 --> 00:11:19,270
+So here's how the 10-fold cross-validation
+works.
+
+217
+00:11:19,270 --> 00:11:22,650
+They first took the 375 people and they
+randomly divided them
+
+218
+00:11:22,650 --> 00:11:25,840
+into sets of either 37 or 38, it doesn't
+come out exactly even here.
+
+219
+00:11:26,870 --> 00:11:29,290
+They would then fit the logistic
+regression model to the 337, or
+
+220
+00:11:29,290 --> 00:11:30,450
+338 that were held out.
+
+221
+00:11:30,450 --> 00:11:36,420
+And they're going to again repeat the
+whole stepwise selection to generate
+
+222
+00:11:36,420 --> 00:11:39,340
+a new model, meaning new predictors might
+end up in some of those models.
+
+223
+00:11:39,340 --> 00:11:42,330
+So re-select the variables, get slightly
+new betas.
+
+224
+00:11:42,330 --> 00:11:45,350
+So slightly different models than the,
+from the original.
+
+225
+00:11:45,350 --> 00:11:48,320
+Then they used the resulting model to
+calculate the predictive probabilities for
+
+226
+00:11:48,320 --> 00:11:51,230
+the test data set say for the 38 who were
+held out.
+
+227
+00:11:51,230 --> 00:11:52,790
+Then you save those predictive
+probabilities,
+
+228
+00:11:52,790 --> 00:11:55,280
+store them in a new data set, save them
+somewhere on your computer.
+
+229
+00:11:56,590 --> 00:11:57,970
+Then you're going to repeat steps two and
+
+230
+00:11:57,970 --> 00:12:02,090
+three for each of the tenths of the data,
+until you end up with a,
+
+231
+00:12:02,090 --> 00:12:05,480
+everybody having a predicted probability,
+and those predicted probabilities having
+
+232
+00:12:05,480 --> 00:12:09,520
+been calculated on models that those
+people were not used to fit.
+
+233
+00:12:09,520 --> 00:12:12,730
+So then you build the ROC curve with those
+predicted probabilities and
+
+234
+00:12:12,730 --> 00:12:15,030
+you can calculate the area under the
+curve.
+
+235
+00:12:15,030 --> 00:12:16,620
+And that's what they did here.
+
+236
+00:12:16,620 --> 00:12:19,150
+When they did this, they calculated the
+area under the curve.
+
+237
+00:12:19,150 --> 00:12:20,108
+It was 78%.
+
+238
+00:12:20,108 --> 00:12:22,600
+It was 79% on the original data.
+
+239
+00:12:22,600 --> 00:12:23,700
+It only went down to 78%.
+
+240
+00:12:23,700 --> 00:12:27,005
+That indicates that there were actually
+was not a lot of
+
+241
+00:12:27,005 --> 00:12:28,470
+over-fitting going on in this model.
+
+242
+00:12:28,470 --> 00:12:30,150
+This model was fairly robust.

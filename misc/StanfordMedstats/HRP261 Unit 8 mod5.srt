@@ -1,0 +1,572 @@
+1
+00:00:00,000 --> 00:00:06,220
+[MUSIC]
+
+2
+00:00:06,220 --> 00:00:09,110
+In this next module, I'm going to show you
+an evil trick.
+
+3
+00:00:09,110 --> 00:00:10,500
+If you've got a binary outcome,
+
+4
+00:00:10,500 --> 00:00:14,650
+you can actually run it in a Poisson
+Regression with a little modification and
+
+5
+00:00:14,650 --> 00:00:18,122
+it's a way to get adjusted risk ratios and
+avoid odds ratios.
+
+6
+00:00:20,560 --> 00:00:24,810
+So we talked about using Poisson
+regression for count data, but it turns
+
+7
+00:00:24,810 --> 00:00:29,940
+out that you can actually apply Poisson
+regression to binary outcome data as well.
+
+8
+00:00:29,940 --> 00:00:32,280
+Now, there's a little bit of a problem
+here, and so
+
+9
+00:00:32,280 --> 00:00:34,190
+let me just explain what the problem is.
+
+10
+00:00:34,190 --> 00:00:38,960
+So remember that when you were assuming
+that you're on a Poisson distribution,
+
+11
+00:00:38,960 --> 00:00:40,550
+you're assuming that the mean and
+
+12
+00:00:40,550 --> 00:00:44,260
+the variance are equal, that's true of a
+Poisson distribution.
+
+13
+00:00:44,260 --> 00:00:47,300
+So that is something that's built into the
+Poisson regression.
+
+14
+00:00:47,300 --> 00:00:50,220
+Now think about binomial outcomes, okay?
+
+15
+00:00:50,220 --> 00:00:51,350
+Binomial variables.
+
+16
+00:00:51,350 --> 00:00:53,020
+What's the mean for a binomial?
+
+17
+00:00:53,020 --> 00:00:55,460
+The mean is n times p.
+
+18
+00:00:55,460 --> 00:00:57,380
+What's the variance for a binomial?
+
+19
+00:00:57,380 --> 00:01:01,992
+Recall that a var, the variance for a
+binomial is n times p times 1 minus p.
+
+20
+00:01:03,070 --> 00:01:06,470
+So what's always going to be the case,
+when you're on a binomial distribution,
+
+21
+00:01:06,470 --> 00:01:10,050
+is that the mean is going to be greater
+than the variance.
+
+22
+00:01:10,050 --> 00:01:12,300
+The variance is actually going to be
+smaller than the mean.
+
+23
+00:01:12,300 --> 00:01:16,020
+And you can see that because you're always
+multiplying the mean times one minus p.
+
+24
+00:01:16,020 --> 00:01:20,830
+As long as p is not one or zero, then this
+is going to be a fraction.
+
+25
+00:01:20,830 --> 00:01:23,400
+And so the variance is always going to be
+smaller.
+
+26
+00:01:23,400 --> 00:01:28,060
+Therefore, if you apply Poisson regression
+to binary outcome data,
+
+27
+00:01:28,060 --> 00:01:30,360
+you're going to over estimate your
+variance and
+
+28
+00:01:30,360 --> 00:01:33,110
+you're going to over estimate your
+standard errors.
+
+29
+00:01:33,110 --> 00:01:35,430
+So that means your confidence intervals
+are going to be too wide.
+
+30
+00:01:35,430 --> 00:01:37,420
+Your standard errors are going to be too
+big.
+
+31
+00:01:37,420 --> 00:01:39,120
+Your p values are going to be too big.
+
+32
+00:01:39,120 --> 00:01:41,490
+So certainly you don't want to do that
+because then you're going to
+
+33
+00:01:41,490 --> 00:01:43,620
+lose statistical power unnecessarily.
+
+34
+00:01:44,760 --> 00:01:49,510
+However, there is a simple modification
+that researchers have figured out that you
+
+35
+00:01:49,510 --> 00:01:53,790
+can do to the Poisson regression to get to
+the correct standard errors.
+
+36
+00:01:53,790 --> 00:01:57,690
+And that's something called applying
+robust standard errors.
+
+37
+00:01:57,690 --> 00:02:01,750
+And it's fairly easy to do in most
+standard statistical packages.
+
+38
+00:02:01,750 --> 00:02:03,440
+It's just a simple line of code.
+
+39
+00:02:04,490 --> 00:02:09,100
+And so this is great because now you can
+take any situation where you've
+
+40
+00:02:09,100 --> 00:02:13,740
+got binary outcome data and rather than
+running a logistic regression you could
+
+41
+00:02:13,740 --> 00:02:18,470
+instead choose to simply run a Poisson
+regression with this modification.
+
+42
+00:02:18,470 --> 00:02:20,010
+What does that buy you?
+
+43
+00:02:20,010 --> 00:02:23,650
+Well, if you have a common outcome what
+that buys you is that you're
+
+44
+00:02:23,650 --> 00:02:25,030
+going to get risk ratios.
+
+45
+00:02:25,030 --> 00:02:28,140
+The Poisson gives you these incidence rate
+ratios which can be
+
+46
+00:02:28,140 --> 00:02:31,260
+interpreted as risk ratios.
+
+47
+00:02:31,260 --> 00:02:35,470
+Risk ratios are not misleading if you have
+a common outcome,
+
+48
+00:02:35,470 --> 00:02:37,230
+odds ratios are misleading.
+
+49
+00:02:37,230 --> 00:02:43,700
+I'll just refer you to the reference for
+this modification it's a 2004 paper.
+
+50
+00:02:43,700 --> 00:02:45,800
+This author shows, through simulation,
+
+51
+00:02:45,800 --> 00:02:48,840
+that this is a reasonable thing to do with
+binary outcome data.
+
+52
+00:02:48,840 --> 00:02:53,860
+Now I haven't seen this applied too widely
+in the literature, but
+
+53
+00:02:53,860 --> 00:02:57,470
+one can make an argument that whenever you
+have a common outcome, it's probably
+
+54
+00:02:57,470 --> 00:03:02,720
+preferable to analyze the data this way,
+than to do them in logistic regression.
+
+55
+00:03:02,720 --> 00:03:03,780
+Because of the fact that,
+
+56
+00:03:03,780 --> 00:03:07,330
+again, those odds ratios that come out of
+logistic regression can be so misleading.
+
+57
+00:03:08,440 --> 00:03:11,510
+You can try to interpret those odds ratios
+well for your readers, but
+
+58
+00:03:11,510 --> 00:03:15,570
+they still can be misleading, even if you
+do a good job in the write up, so.
+
+59
+00:03:15,570 --> 00:03:17,710
+Just to give you an example of how this
+works,
+
+60
+00:03:17,710 --> 00:03:20,460
+I'm going to go back to that data set that
+I have on runners.
+
+61
+00:03:20,460 --> 00:03:23,640
+150 different women distance runners.
+
+62
+00:03:23,640 --> 00:03:28,158
+The outcome that we were looking at in an
+earlier module was menstrual irregularity
+
+63
+00:03:28,158 --> 00:03:34,540
+and 33% of the runners in my sample had
+menstrual irregularity.
+
+64
+00:03:34,540 --> 00:03:36,050
+Either amenorrhea or oligomenorrhea.
+
+65
+00:03:36,050 --> 00:03:38,450
+And now I'm going to use that outcome,
+
+66
+00:03:38,450 --> 00:03:41,460
+that kind of inclusive outcome as the
+outcome for
+
+67
+00:03:41,460 --> 00:03:45,000
+logistic regression because I want to make
+it as common as possible.
+
+68
+00:03:45,000 --> 00:03:47,520
+Just to show you how the odds ratios get
+inflated.
+
+69
+00:03:47,520 --> 00:03:50,850
+The more common the outcome, the more the
+odds ratio are inflated.
+
+70
+00:03:50,850 --> 00:03:53,650
+The predictor of interest that we were
+looking at is a score on
+
+71
+00:03:53,650 --> 00:03:55,100
+an eating disorder questionnaire.
+
+72
+00:03:55,100 --> 00:03:58,200
+I'm abbreviating that as the EDIA.
+
+73
+00:03:58,200 --> 00:04:00,300
+So I went ahead and ran a logistic
+regression first.
+
+74
+00:04:00,300 --> 00:04:01,930
+Again, common outcome.
+
+75
+00:04:01,930 --> 00:04:04,690
+I get out my odds ratios for the EDIA
+score.
+
+76
+00:04:04,690 --> 00:04:08,560
+This is the odds ratio for a one unit
+increase in your eating disorder score.
+
+77
+00:04:09,780 --> 00:04:11,350
+It's highly statistical significant.
+
+78
+00:04:11,350 --> 00:04:13,220
+The odds ratio comes out to be 1.12.
+
+79
+00:04:13,220 --> 00:04:16,530
+You would interpret this as a 12% increase
+in your
+
+80
+00:04:16,530 --> 00:04:19,260
+odds of having menstrual irregularity for
+
+81
+00:04:19,260 --> 00:04:24,310
+every one point increase in your score on
+this eating disorder questionnaire.
+
+82
+00:04:25,460 --> 00:04:28,980
+Remember, this isn't increase in odds
+though, because my outcome is common, so
+
+83
+00:04:28,980 --> 00:04:32,370
+we would not want to misinterpret this as
+an increase in your risk, or
+
+84
+00:04:32,370 --> 00:04:34,770
+the prevalence of menstrual irregularity.
+
+85
+00:04:36,070 --> 00:04:40,250
+But, I can also run these same data with
+this binary outcome of menstrual
+
+86
+00:04:40,250 --> 00:04:45,410
+irregularity in a Poisson regression with
+these robust standard errors.
+
+87
+00:04:45,410 --> 00:04:46,940
+And that's what I've done here.
+
+88
+00:04:46,940 --> 00:04:50,060
+And so here's my predictor variable,
+
+89
+00:04:50,060 --> 00:04:54,350
+EDIA here's my beta coefficient, and
+here's my standard error,
+
+90
+00:04:54,350 --> 00:04:57,830
+this is the robust standard error, so now
+these standard errors will be correct.
+
+91
+00:04:57,830 --> 00:05:01,650
+You can see that I indeed get a highly
+statistically significant effect for
+
+92
+00:05:01,650 --> 00:05:04,050
+eating disorders scored, just as before.
+
+93
+00:05:04,050 --> 00:05:08,960
+But now I can take this beta coefficient
+and I can exponentiate it and what I
+
+94
+00:05:08,960 --> 00:05:13,700
+get out are these relative risks, these
+risk ratios, rather than odds ratios.
+
+95
+00:05:13,700 --> 00:05:16,679
+And if I had other things in the model, I
+would be getting out adjusted risk ratios.
+
+96
+00:05:17,770 --> 00:05:22,020
+I am going to use the beta coefficient
+this computer output also gave me
+
+97
+00:05:22,020 --> 00:05:27,230
+the 95% confidence interval for this beta
+coefficient, if I exponentiate these,
+
+98
+00:05:27,230 --> 00:05:30,780
+I will get the 95% confidence interval for
+the odds ratio.
+
+99
+00:05:30,780 --> 00:05:32,470
+I mean starting for the risk ratio.
+
+100
+00:05:34,050 --> 00:05:40,414
+So, let me just do that now, so I'm going
+to exponentiate the 0.0653.
+
+101
+00:05:40,414 --> 00:05:45,530
+When I exponentiate that, I get that the
+point estimate for
+
+102
+00:05:45,530 --> 00:05:50,700
+my odds ratio is one, sorry for my risk
+ratio is 1.067.
+
+103
+00:05:50,700 --> 00:05:53,490
+So this is an incidence rate ratio of
+course,
+
+104
+00:05:53,490 --> 00:05:55,430
+in this case we're talking about cross
+sectional data.
+
+105
+00:05:55,430 --> 00:05:58,850
+So it's really technically called a
+prevalence ratio, so you could
+
+106
+00:05:58,850 --> 00:06:03,220
+interpret this as, for every one unit
+increase in the eating disorder score.
+
+107
+00:06:03,220 --> 00:06:06,420
+You have a 6.7% increase in your
+prevalence of or
+
+108
+00:06:06,420 --> 00:06:08,700
+risk of menstrual irregularity.
+
+109
+00:06:08,700 --> 00:06:13,450
+We can also do the 95% confidence limits,
+so if I exponentiate those confidence
+
+110
+00:06:13,450 --> 00:06:22,360
+limits from the previous page, I get a
+lower bound of about 0.04, 1.04.
+
+111
+00:06:22,360 --> 00:06:29,143
+And an upper bound of about 1.096.
+
+112
+00:06:29,143 --> 00:06:33,220
+So that can be interpreted as the adjusted
+risk ratio.
+
+113
+00:06:33,220 --> 00:06:36,590
+You don't need to worry about this
+business about odds ratios being
+
+114
+00:06:36,590 --> 00:06:38,390
+misleading, you can avoid them altogether.
+
+115
+00:06:38,390 --> 00:06:44,780
+And just to compare, remember when we did
+the odds ratio from logistic regression,
+
+116
+00:06:44,780 --> 00:06:49,010
+what we got there was point estimate of
+1.12 and
+
+117
+00:06:49,010 --> 00:06:54,261
+a 95% confidence interval of 1.06 to 1.1
+about 1.19.
+
+118
+00:06:54,261 --> 00:07:00,580
+So the width of the confidence interval is
+similar here but these are all inflated.
+
+119
+00:07:00,580 --> 00:07:04,480
+And somebody could misinterpret those as
+increases in,
+
+120
+00:07:04,480 --> 00:07:06,444
+in risk rather than increases in odds.
+
+121
+00:07:06,444 --> 00:07:09,580
+So sometimes it's nice just to be able to
+directly report risk ratios and
+
+122
+00:07:09,580 --> 00:07:12,010
+this is one way to do that.

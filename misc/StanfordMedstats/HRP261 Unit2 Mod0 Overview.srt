@@ -1,0 +1,249 @@
+1
+00:00:00,000 --> 00:00:06,000
+[BLANK_AUDIO]
+
+2
+00:00:06,000 --> 00:00:09,510
+Welcome to week 2 of HRP 261.
+
+3
+00:00:09,510 --> 00:00:12,080
+Last week we talked about some basic
+tests,
+
+4
+00:00:12,080 --> 00:00:14,410
+that you can use to analyze data from
+contingency tables.
+
+5
+00:00:14,410 --> 00:00:17,720
+So that was a situation where we just
+wanted to see whether or
+
+6
+00:00:17,720 --> 00:00:22,080
+not a categorical predictor and a
+categorical outcome were associated,
+
+7
+00:00:22,080 --> 00:00:26,480
+not taking into account any things like
+confounders or any other variables.
+
+8
+00:00:26,480 --> 00:00:29,770
+This week we're going to complicate the
+picture just slightly by adding a third
+
+9
+00:00:29,770 --> 00:00:30,870
+variable to the picture.
+
+10
+00:00:32,410 --> 00:00:35,800
+So this week I'm going to be talking about
+three concepts that are important for
+
+11
+00:00:35,800 --> 00:00:38,630
+you to understand before we move on to
+regression analysis.
+
+12
+00:00:38,630 --> 00:00:41,420
+Some of you may already be familiar with
+these concepts, but
+
+13
+00:00:41,420 --> 00:00:44,700
+they are confounding, interaction, and
+mediation.
+
+14
+00:00:44,700 --> 00:00:46,536
+And for the first few modules this week,
+
+15
+00:00:46,536 --> 00:00:50,640
+I am just basically going to go over
+conceptually, what those things look like.
+
+16
+00:00:50,640 --> 00:00:52,080
+Now I'm going to tell you a little bit
+about,
+
+17
+00:00:52,080 --> 00:00:54,140
+what it called the Mantel-Haenszel tests.
+
+18
+00:00:54,140 --> 00:00:57,160
+These tests can be used to evaluate
+confounding.
+
+19
+00:00:57,160 --> 00:01:01,640
+In a very simple situation, when we have a
+single categorical confounder.
+
+20
+00:01:03,600 --> 00:01:06,300
+So again, we're sort of adding a third
+variable to the picture we
+
+21
+00:01:06,300 --> 00:01:07,930
+talked about last week.
+
+22
+00:01:07,930 --> 00:01:09,950
+Last week we talked about trying to see
+whether or
+
+23
+00:01:09,950 --> 00:01:13,490
+not a predictor in an outcome variable
+were statistically linked.
+
+24
+00:01:13,490 --> 00:01:16,790
+We looked at a bunch of tests that you
+could use to evaluate that.
+
+25
+00:01:16,790 --> 00:01:19,810
+This week again, we're going to add a
+third variable to that picture,
+
+26
+00:01:19,810 --> 00:01:22,840
+either a Confounder, a Mediator or an
+Effect modifier.
+
+27
+00:01:22,840 --> 00:01:26,000
+And I'll go over in turn with you what
+each of those variables is.
+
+28
+00:01:27,410 --> 00:01:30,450
+I'm going to try to start each week with
+at least one teaser.
+
+29
+00:01:30,450 --> 00:01:33,310
+This is just something I'm going to
+preview something that we're
+
+30
+00:01:33,310 --> 00:01:37,000
+going to be talking about in the future
+modules just to get you thinking.
+
+31
+00:01:37,000 --> 00:01:41,040
+So this was an interesting example that
+was looking at gender bias or
+
+32
+00:01:41,040 --> 00:01:43,230
+potential of gender bias at Berkeley.
+
+33
+00:01:43,230 --> 00:01:44,930
+Now this was back in the 1970s and
+
+34
+00:01:44,930 --> 00:01:49,640
+this was dealing with graduate admissions
+to graduate school at Berkeley.
+
+35
+00:01:49,640 --> 00:01:55,360
+Of course we probably were more worried
+about overt gender bias back in the 1970s.
+
+36
+00:01:55,360 --> 00:01:56,810
+And somebody went ahead and
+
+37
+00:01:56,810 --> 00:02:01,167
+looked at the admissions data to graduate
+school at Berkeley one year in the,
+
+38
+00:02:01,167 --> 00:02:06,720
+in the 70s and you can see the data
+represented in a two-by-two table.
+
+39
+00:02:06,720 --> 00:02:09,010
+You can see at that point, back in the
+70s,
+
+40
+00:02:09,010 --> 00:02:11,176
+more men apply to graduate school than
+women.
+
+41
+00:02:11,176 --> 00:02:12,920
+1,835 women versus 2,681 men.
+
+42
+00:02:12,920 --> 00:02:17,150
+But if you look at who got into graduate
+school and
+
+43
+00:02:17,150 --> 00:02:20,670
+who didn't, indeed the women were denied
+at a higher rate.
+
+44
+00:02:20,670 --> 00:02:25,410
+So I can calculate the risk ratio in the
+way that we talked about last week here.
+
+45
+00:02:25,410 --> 00:02:28,090
+And it turns out that the risk ratio is
+1.25.
+
+46
+00:02:28,090 --> 00:02:32,670
+I would interpret that as that women were
+25% more likely to be
+
+47
+00:02:32,670 --> 00:02:36,770
+denied admission to graduate school at
+Berkeley than men.
+
+48
+00:02:36,770 --> 00:02:40,860
+So of course, people were up in arms about
+this there was a lawsuit but
+
+49
+00:02:40,860 --> 00:02:45,970
+there's actually something else going on
+here besides gender bias and
+
+50
+00:02:45,970 --> 00:02:48,450
+that relates to the material we're
+going to talk about this week.
+
+51
+00:02:48,450 --> 00:02:50,960
+So, we'll get back to this in a future
+module and
+
+52
+00:02:50,960 --> 00:02:53,780
+actually tease through the numbers, in a
+little more detail.

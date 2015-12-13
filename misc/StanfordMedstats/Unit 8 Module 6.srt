@@ -1,0 +1,1192 @@
+1
+00:00:08,080 --> 00:00:10,950
+In this next module, we're going to do a
+practical example.
+
+2
+00:00:10,950 --> 00:00:15,120
+I'm going to walk you through how to
+interrupt linear regression results in
+
+3
+00:00:15,120 --> 00:00:16,681
+a medical paper.
+
+4
+00:00:16,681 --> 00:00:20,410
+We're going to go back to this vitamin D
+and
+
+5
+00:00:20,410 --> 00:00:23,730
+cognitive function study that I mentioned
+in the teaser and
+
+6
+00:00:23,730 --> 00:00:27,050
+that was also the basis of all the
+hypothetical data I used this week.
+
+7
+00:00:27,050 --> 00:00:29,910
+Now, I'm going to show you the result from
+the actual study.
+
+8
+00:00:29,910 --> 00:00:34,400
+So, the headlines that came out in 2009,
+this was widely covered in the news media,
+
+9
+00:00:34,400 --> 00:00:37,010
+was things like Brighten the twilight
+years,
+
+10
+00:00:37,010 --> 00:00:39,420
+Sunshine vitamin boosts brain function in
+the elderly.
+
+11
+00:00:39,420 --> 00:00:43,799
+And the articles made the point that this
+is some of the strongest evidence yet
+
+12
+00:00:43,799 --> 00:00:47,210
+of a link between vitamin D levels and
+cognitive function.
+
+13
+00:00:47,210 --> 00:00:49,280
+So, remember what this study was.
+
+14
+00:00:49,280 --> 00:00:53,240
+They, this was a large cross-sectional
+study of middle-aged and
+
+15
+00:00:53,240 --> 00:00:55,470
+older men in Europe.
+
+16
+00:00:55,470 --> 00:00:58,330
+They measured their vitamin D levels at
+one time point.
+
+17
+00:00:58,330 --> 00:01:01,480
+They also had them take some various
+cognitive tests to
+
+18
+00:01:01,480 --> 00:01:02,660
+measure their cognitive function.
+
+19
+00:01:02,660 --> 00:01:05,950
+There were actually a number of cognitive
+tests they took.
+
+20
+00:01:05,950 --> 00:01:08,660
+I've been focusing so far on the DSST
+scores, but
+
+21
+00:01:08,660 --> 00:01:10,000
+I'll show you some others in a minute.
+
+22
+00:01:10,000 --> 00:01:15,160
+And they found an association between
+those things.
+
+23
+00:01:15,160 --> 00:01:17,370
+We're going to kind of walk through that
+in a minute.
+
+24
+00:01:17,370 --> 00:01:20,460
+But this study had a number of resolve
+linear regression.
+
+25
+00:01:20,460 --> 00:01:22,450
+There are lots of linear regressions were,
+were on.
+
+26
+00:01:22,450 --> 00:01:26,510
+And the number of the tables involved the
+output from linear regression.
+
+27
+00:01:26,510 --> 00:01:28,110
+So, we're going to walk through it.
+
+28
+00:01:28,110 --> 00:01:32,490
+We're going to evaluate how strong this
+evidence is.
+
+29
+00:01:32,490 --> 00:01:35,906
+So, here's table two from that paper, it's
+rather large and, and cumbersome.
+
+30
+00:01:35,906 --> 00:01:39,730
+But in a minute, I'm going to go through
+it bit by bit, and kind of zoom in, here.
+
+31
+00:01:39,730 --> 00:01:44,980
+So this table was trying to get at what
+are some of the potential confounders
+
+32
+00:01:44,980 --> 00:01:49,610
+between, that might confound the
+relationship between vitamin D level and
+
+33
+00:01:49,610 --> 00:01:51,220
+cognitive function?
+
+34
+00:01:51,220 --> 00:01:52,690
+So, what it's showing you here is,
+
+35
+00:01:52,690 --> 00:01:56,230
+there, each of the columns represents a
+different outcome variable.
+
+36
+00:01:56,230 --> 00:01:59,590
+So, the first column is showing the
+results of a bunch of linear regressions,
+
+37
+00:01:59,590 --> 00:02:04,931
+where the outcome variable was a cognitive
+test called the ROCF copy score.
+
+38
+00:02:04,931 --> 00:02:08,900
+There are, there were four cognitive tests
+administered here,
+
+39
+00:02:08,900 --> 00:02:12,240
+so we get results for the ROCF copy score,
+
+40
+00:02:12,240 --> 00:02:16,920
+the ROCF recall score, the CTRM score, and
+also the DSST score.
+
+41
+00:02:16,920 --> 00:02:18,556
+The one I've been talking the most about.
+
+42
+00:02:18,556 --> 00:02:25,475
+And we also get a series of models which
+use vitamin D as the outcome variable.
+
+43
+00:02:25,475 --> 00:02:28,280
+Because remember to be a cofounder, you
+have to
+
+44
+00:02:28,280 --> 00:02:32,680
+be related both to the predictor variable
+and to the outcome variable.
+
+45
+00:02:32,680 --> 00:02:34,260
+So, we're trying to access what are,
+
+46
+00:02:34,260 --> 00:02:38,640
+which of these third variables is related
+to both cognitive function and vitamin D.
+
+47
+00:02:38,640 --> 00:02:42,660
+And thus, might be confounding that
+relationship.
+
+48
+00:02:42,660 --> 00:02:44,970
+Now, I'm going to walk you through, what,
+
+49
+00:02:44,970 --> 00:02:47,430
+these are all beta coefficients that
+you're seeing here.
+
+50
+00:02:47,430 --> 00:02:50,730
+I'm going to walk you through what these
+beta coefficients mean and
+
+51
+00:02:50,730 --> 00:02:54,390
+how to interpret them.
+
+52
+00:02:54,390 --> 00:02:55,840
+Let's start with age.
+
+53
+00:02:55,840 --> 00:02:57,985
+Age is a continuous predictor.
+
+54
+00:02:57,985 --> 00:03:00,520
+It's measured in units of years.
+
+55
+00:03:00,520 --> 00:03:04,710
+And for continuous predictors, you need to
+know what the units of measurements are.
+
+56
+00:03:04,710 --> 00:03:09,070
+And they nicely put that for you in the
+table here, so you have it.
+
+57
+00:03:09,070 --> 00:03:10,315
+There's a lot of data here.
+
+58
+00:03:10,315 --> 00:03:12,435
+So, I'm just going to go over a couple of
+these.
+
+59
+00:03:12,435 --> 00:03:16,640
+So, first of all, if you kind of scroll
+across all the different cognitive tests,
+
+60
+00:03:16,640 --> 00:03:21,160
+you'll notice that there's a little star
+beside each of those estimates going.
+
+61
+00:03:21,160 --> 00:03:25,550
+As your age goes up, your cognitive
+function goes down on all of
+
+62
+00:03:25,550 --> 00:03:27,410
+those tests and it is statistically
+significant.
+
+63
+00:03:27,410 --> 00:03:28,615
+That's not surprising.
+
+64
+00:03:28,615 --> 00:03:32,870
+Interestingly, I'll focus, for the moment,
+on the vitamin D.
+
+65
+00:03:32,870 --> 00:03:36,644
+The vitamin D was not that strongly
+related to age in the study.
+
+66
+00:03:36,644 --> 00:03:37,960
+So, the coeffecient here, the beta
+co-efficient is negative 0.0135.
+
+67
+00:03:37,960 --> 00:03:43,550
+So, that does mean that your, as your age
+goes up,
+
+68
+00:03:43,550 --> 00:03:48,680
+you vita, your outcome here is vitamin D.
+
+69
+00:03:48,680 --> 00:03:51,620
+So, as your age goes up, your vitamin D
+level goes down.
+
+70
+00:03:51,620 --> 00:03:55,100
+For every one year increase in age,
+
+71
+00:03:55,100 --> 00:04:00,380
+we are decreasing our vitamin D levels by
+an average of 0.0135.
+
+72
+00:04:00,380 --> 00:04:03,970
+So, it's not a big effect, and it's not
+statistically significant.
+
+73
+00:04:03,970 --> 00:04:06,710
+The, let's look at the beta coefficient
+for DSST score.
+
+74
+00:04:06,710 --> 00:04:11,274
+So, for DSST score, the beta coefficient
+is negative 0.415.
+
+75
+00:04:11,274 --> 00:04:14,554
+That says that for every one year increase
+in age,
+
+76
+00:04:14,554 --> 00:04:19,556
+your DSST score is going down by 0.415 of
+a point, almost a half a point.
+
+77
+00:04:19,556 --> 00:04:21,606
+So, that's a pretty big effect.
+
+78
+00:04:21,606 --> 00:04:23,902
+It is statistically significant.
+
+79
+00:04:23,902 --> 00:04:28,002
+These models, right here, have not been
+adjusted for anything.
+
+80
+00:04:28,002 --> 00:04:33,110
+The rest of the models that I'm going to
+show you are adjusted only for age.
+
+81
+00:04:33,110 --> 00:04:34,450
+And, and nothing else.
+
+82
+00:04:34,450 --> 00:04:38,808
+Now, I want to show you an example of a
+categorical predictor.
+
+83
+00:04:38,808 --> 00:04:42,494
+So, they also measured depression on these
+men.
+
+84
+00:04:42,494 --> 00:04:47,926
+They measured depression on the BDI, the
+Beck Depression Inventory.
+
+85
+00:04:47,926 --> 00:04:51,440
+They classified men into normal, meaning
+no depression,
+
+86
+00:04:51,440 --> 00:04:56,410
+mild to borderline depression, and
+moderate to extreme depression.
+
+87
+00:04:56,410 --> 00:04:59,740
+They use those three groups then, in
+linear regression.
+
+88
+00:04:59,740 --> 00:05:03,500
+And again, these models are all adjusted
+for age, but nothing else.
+
+89
+00:05:03,500 --> 00:05:06,570
+I'm going to, let's choose the CTRM score
+here, just for
+
+90
+00:05:06,570 --> 00:05:08,330
+fun to look at something different.
+
+91
+00:05:08,330 --> 00:05:10,570
+So, the way you would interpret these
+coefficients,
+
+92
+00:05:10,570 --> 00:05:12,180
+everything is compared to the reference
+group.
+
+93
+00:05:12,180 --> 00:05:14,050
+So, the reference group is the normal.
+
+94
+00:05:14,050 --> 00:05:18,350
+Then, we see that, if you are, have mild
+to borderline depression,
+
+95
+00:05:18,350 --> 00:05:22,200
+compared with being having no depression,
+would be normal.
+
+96
+00:05:22,200 --> 00:05:27,230
+You go down in your CTRM score by 0.849.
+
+97
+00:05:27,230 --> 00:05:29,290
+And that is statistically significant.
+
+98
+00:05:29,290 --> 00:05:30,920
+If you're in the moderate to extreme,
+
+99
+00:05:30,920 --> 00:05:34,538
+the higher depression group, you go down
+on average by 1.4 points.
+
+100
+00:05:34,538 --> 00:05:36,890
+If you're in moderate to extreme
+depression,
+
+101
+00:05:36,890 --> 00:05:38,900
+compared with if you're normal.
+
+102
+00:05:38,900 --> 00:05:41,810
+And that also is statistically
+significant.
+
+103
+00:05:41,810 --> 00:05:43,470
+Interestingly, let's look at the vitamin
+D,
+
+104
+00:05:43,470 --> 00:05:45,860
+where vitamin D is outcome in those
+models.
+
+105
+00:05:45,860 --> 00:05:51,480
+So, if you go, if you're in the mild to
+borderline depression group,
+
+106
+00:05:51,480 --> 00:05:57,610
+your vitamin D levels go down, 9.641 nmol
+per liter.
+
+107
+00:05:57,610 --> 00:06:01,070
+So, that's a pretty big drop in vitamin D
+with depression.
+
+108
+00:06:01,070 --> 00:06:04,139
+And if you're in the highest depression
+group, compared with normal,
+
+109
+00:06:04,139 --> 00:06:08,020
+your vitamin D levels are 13.93 nmol per
+liter lower.
+
+110
+00:06:08,020 --> 00:06:10,130
+So, those are some big drops in vitamin D.
+
+111
+00:06:10,130 --> 00:06:12,200
+So, interestingly, if you're depressed,
+
+112
+00:06:12,200 --> 00:06:14,520
+you're likely to have lower levels of
+vitamin D.
+
+113
+00:06:14,520 --> 00:06:17,580
+You're also likely to have lower levels of
+cognitive score.
+
+114
+00:06:17,580 --> 00:06:21,150
+So, this is definitely a potential
+confounder here.
+
+115
+00:06:21,150 --> 00:06:24,670
+Body mass index, the measure of your, how
+big you are,
+
+116
+00:06:24,670 --> 00:06:28,776
+your size, is also a continuous predictor.
+
+117
+00:06:28,776 --> 00:06:31,180
+Let's look at DSST score.
+
+118
+00:06:31,180 --> 00:06:33,970
+So, as your body mass index goes
+up,actually,
+
+119
+00:06:33,970 --> 00:06:38,004
+your cognitive function goes down every
+one unit increase in BMI.
+
+120
+00:06:38,004 --> 00:06:40,550
+BMI is measured in kilograms per meter
+squared,
+
+121
+00:06:40,550 --> 00:06:44,878
+correlated in a 0.115 decrease in your
+DSST score.
+
+122
+00:06:44,878 --> 00:06:48,970
+So, not a huge effect, but it is
+statistically significant.
+
+123
+00:06:48,970 --> 00:06:52,580
+The, for vitamin D, vitamin D was also
+related to BMI.
+
+124
+00:06:52,580 --> 00:06:57,377
+So, as your BMI goes up for every one unit
+increase in, in your BMI,
+
+125
+00:06:57,377 --> 00:07:02,740
+your vitamin D levels goes to down 0.811
+nmol per liter on average.
+
+126
+00:07:02,740 --> 00:07:04,180
+And that is statistically significant.
+
+127
+00:07:04,180 --> 00:07:06,622
+So again, BMI could also be a confounder.
+
+128
+00:07:06,622 --> 00:07:09,050
+As yor BMI goes up, your vitamin D levels
+go down, and
+
+129
+00:07:09,050 --> 00:07:12,050
+so does your cognitive function.
+
+130
+00:07:12,050 --> 00:07:14,820
+There's another categorical variable,
+physical activity.
+
+131
+00:07:14,820 --> 00:07:18,950
+So, this is the low, medium and high
+exercise groups.
+
+132
+00:07:18,950 --> 00:07:21,980
+And, let's look at, let's look at CTRM
+score.
+
+133
+00:07:21,980 --> 00:07:26,310
+So, for CTRM score, if you're in the
+middle exercise group,
+
+134
+00:07:26,310 --> 00:07:32,490
+you are about 1.283 points higher on your
+CTRM score than the low exercise group.
+
+135
+00:07:32,490 --> 00:07:33,950
+And that was significant.
+
+136
+00:07:33,950 --> 00:07:37,850
+And the highest exercise group was, also
+about a point,
+
+137
+00:07:37,850 --> 00:07:41,830
+a little over a point higher than the low
+exercise group, in CTRM.
+
+138
+00:07:41,830 --> 00:07:44,690
+CTRM score also statistically significant.
+
+139
+00:07:44,690 --> 00:07:49,255
+So, more exercise seems to be correlated
+with somewhat bigger cognitive function.
+
+140
+00:07:49,255 --> 00:07:54,070
+For interestingly vitamin D, also
+correlated with exercise.
+
+141
+00:07:54,070 --> 00:07:58,895
+So, if you were in the middle exercise
+group, you were 5.148 higher in your
+
+142
+00:07:58,895 --> 00:08:02,100
+nmol per liter and your vitamin D compared
+with the normal group.
+
+143
+00:08:02,100 --> 00:08:08,100
+The high exercise group was on average
+7.072 nmol per liter higher in vitamin D.
+
+144
+00:08:08,100 --> 00:08:09,660
+So, if you're exercising a lot,
+
+145
+00:08:09,660 --> 00:08:13,363
+you tend to be outside more, you have
+higher vitamin D levels again.
+
+146
+00:08:13,363 --> 00:08:14,873
+It could be a confounder.
+
+147
+00:08:14,873 --> 00:08:18,467
+Like more physical activity, better
+cognitive function, and bigger vitamin D.
+
+148
+00:08:18,467 --> 00:08:19,967
+How about smoking?
+
+149
+00:08:19,967 --> 00:08:23,054
+okay.
+Well, not surprisingly for smoking.
+
+150
+00:08:23,054 --> 00:08:27,130
+Smoking a binary variable, so it's easy to
+interpret.
+
+151
+00:08:27,130 --> 00:08:28,900
+Vitamin D goes down with more smoking.
+
+152
+00:08:28,900 --> 00:08:31,792
+So, if you're a smoker, compared with a
+non-smoker,
+
+153
+00:08:31,792 --> 00:08:33,430
+the reference group here is the
+non-smoker.
+
+154
+00:08:33,430 --> 00:08:37,360
+The smokers are on average 10.95 nmol per
+liter,
+
+155
+00:08:37,360 --> 00:08:40,270
+lower in their vitamin D levels than
+non-smokers.
+
+156
+00:08:40,270 --> 00:08:43,870
+And also, notice that across all of the
+cognitive scores,
+
+157
+00:08:43,870 --> 00:08:45,970
+your cognitive score goes down if you
+smoke.
+
+158
+00:08:45,970 --> 00:08:47,954
+So, another potential confounder.
+
+159
+00:08:47,954 --> 00:08:49,670
+How about alcohol drinking?
+
+160
+00:08:49,670 --> 00:08:53,970
+Well, interestingly alcohol drinking is
+correlated with slightly
+
+161
+00:08:53,970 --> 00:08:58,510
+higher cognitive function, at least on the
+CTRM score, and the DSST score.
+
+162
+00:08:58,510 --> 00:09:02,710
+So, if you were a drinker, alcohol was put
+it as a binary variable.
+
+163
+00:09:02,710 --> 00:09:07,220
+So, drinking at least one drink a day
+versus less than that was correlated with
+
+164
+00:09:07,220 --> 00:09:11,190
+a slightly higher DSST score, 2.159 points
+higher, and
+
+165
+00:09:11,190 --> 00:09:12,960
+that was statistically significant.
+
+166
+00:09:12,960 --> 00:09:17,230
+So, for some reason drinkers tend to have
+slightly higher cognitive function.
+
+167
+00:09:17,230 --> 00:09:19,645
+It might not be due to the drinking,but
+those tend to go together.
+
+168
+00:09:19,645 --> 00:09:23,960
+Similarly, drinkers tend to have a better
+vitamin D level.
+
+169
+00:09:23,960 --> 00:09:25,650
+So, if you're a drinker versus
+non-drinker,
+
+170
+00:09:25,650 --> 00:09:30,450
+your vitamin D level was 8.521 higher on
+average.
+
+171
+00:09:30,450 --> 00:09:32,321
+So again, that one could be a confounder
+too.
+
+172
+00:09:32,321 --> 00:09:35,710
+So, all there's many, many potential
+confounders in this,
+
+173
+00:09:35,710 --> 00:09:37,910
+in this data set that need to be accounted
+for.
+
+174
+00:09:37,910 --> 00:09:42,320
+Now, I'm going to jump to the heart of
+this study.
+
+175
+00:09:42,320 --> 00:09:47,230
+The table that actually shows you the
+relationship between vitamin D and
+
+176
+00:09:47,230 --> 00:09:49,898
+cognitive function which is what this
+study was trying to get.
+
+177
+00:09:49,898 --> 00:09:52,142
+Remember, this is cross sectional study.
+
+178
+00:09:52,142 --> 00:09:55,238
+I'm going to kind of walk you through this
+table.
+
+179
+00:09:55,238 --> 00:09:59,920
+Remember, the headlines said that this was
+the strongest evidence yet
+
+180
+00:09:59,920 --> 00:10:03,200
+of a link between vitamin D level and
+cognitive function.
+
+181
+00:10:03,200 --> 00:10:06,460
+So, let's see how strong that evidence is.
+
+182
+00:10:06,460 --> 00:10:08,710
+So, first of all, if you look at the first
+row here,
+
+183
+00:10:08,710 --> 00:10:14,760
+I'm highlighting the CTRM test score and
+the DSST score, because those are the two
+
+184
+00:10:14,760 --> 00:10:20,340
+that had a significant relationship with
+vitamin D in this data set.
+
+185
+00:10:20,340 --> 00:10:23,290
+If you just adjust for age, which is what
+that first row is.
+
+186
+00:10:23,290 --> 00:10:26,990
+This is the result of linear regression
+with the cognitive score is the outcome
+
+187
+00:10:26,990 --> 00:10:31,170
+and vitamin D as the predictor, adjusted
+for age only in that first row.
+
+188
+00:10:31,170 --> 00:10:34,690
+So, when you just adjust for age, there is
+a statistically significant
+
+189
+00:10:34,690 --> 00:10:39,350
+relationship between vitamin D levels, and
+both CTRM score and the DSST score.
+
+190
+00:10:39,350 --> 00:10:41,600
+It's not huge, but there's a relationship
+there.
+
+191
+00:10:41,600 --> 00:10:45,930
+So, for example the 0.318 beta
+coefficient,
+
+192
+00:10:45,930 --> 00:10:51,680
+the way we would interrupt that as is
+every 10 nmol per liter increase in
+
+193
+00:10:51,680 --> 00:10:57,231
+your vitamin D levels, your DSST score
+goes up by about a 3rd of a point.
+
+194
+00:10:57,231 --> 00:11:02,350
+Just for comparison, remember that I made
+some mock data sets.
+
+195
+00:11:02,350 --> 00:11:06,960
+The, the low, in that, in that, those mock
+data sets,
+
+196
+00:11:06,960 --> 00:11:11,200
+the very low relationship when I had a
+beta coefficient of 0.5.
+
+197
+00:11:11,200 --> 00:11:16,424
+So, this 0.318 represents an, an even
+smaller relationship than,
+
+198
+00:11:16,424 --> 00:11:20,080
+than the lowest of those data sets I, the
+hypothetical data sets.
+
+199
+00:11:20,080 --> 00:11:24,320
+I had a hypothetical data set with 0.5,
+another one with 1.0,
+
+200
+00:11:24,320 --> 00:11:26,170
+and another with 1.5.
+
+201
+00:11:26,170 --> 00:11:29,332
+So, if you go back to those, that, that
+very weak relationship was 0.5.
+
+202
+00:11:29,332 --> 00:11:33,610
+So, 0.318 is even lower than that, but it
+is significant.
+
+203
+00:11:33,610 --> 00:11:37,490
+The next row represents, after you adjust
+for a lot of things.
+
+204
+00:11:37,490 --> 00:11:40,810
+So, if you look at the footnote after you
+adjust for age, education, depression,
+
+205
+00:11:40,810 --> 00:11:44,205
+body mass index, physical activity,
+physical performance, smoking, alcohol,
+
+206
+00:11:44,205 --> 00:11:47,930
+center and season, all these potential
+confounders identified in table two.
+
+207
+00:11:47,930 --> 00:11:49,810
+What happens to the estimates?
+
+208
+00:11:49,810 --> 00:11:52,300
+Well, look at CTRM test score, once you
+adjust for
+
+209
+00:11:52,300 --> 00:11:53,910
+these confounders, it disappears
+completely,
+
+210
+00:11:53,910 --> 00:11:57,720
+there's no relationship now between
+vitamin D and CTRM test score.
+
+211
+00:11:57,720 --> 00:11:59,980
+That beta coefficient is essentially zero.
+
+212
+00:11:59,980 --> 00:12:05,310
+For DSST score, it does hang onto a small
+relationship, but
+
+213
+00:12:05,310 --> 00:12:08,550
+notice that the beta coefficient has been
+attenuated greatly.
+
+214
+00:12:08,550 --> 00:12:13,860
+When we adjust for these confounders, it
+decreases by more than 50%.
+
+215
+00:12:13,860 --> 00:12:16,170
+And now, that beta coefficient is pretty
+small.
+
+216
+00:12:16,170 --> 00:12:24,160
+It's a 0.15 point increase in DSST score
+for every 10 nmol per liter in vitamin D.
+
+217
+00:12:24,160 --> 00:12:29,370
+That's a 10th of the hypothetical data set
+I was showing you with the slope of 1.5,
+
+218
+00:12:29,370 --> 00:12:31,630
+which was kind of a moderate relationship.
+
+219
+00:12:31,630 --> 00:12:32,990
+So, it's a 10th of that relationship.
+
+220
+00:12:32,990 --> 00:12:34,260
+So, its really, really small.
+
+221
+00:12:34,260 --> 00:12:37,360
+It does hold on to a statistical
+significance.
+
+222
+00:12:37,360 --> 00:12:39,530
+However, it's a small relationship.
+
+223
+00:12:39,530 --> 00:12:44,070
+And you have to remember that it really
+gets attenuated when you adjust for
+
+224
+00:12:44,070 --> 00:12:44,910
+confounding here.
+
+225
+00:12:44,910 --> 00:12:48,640
+There's probably a lot of things that we
+haven't adjusted for here.
+
+226
+00:12:48,640 --> 00:12:51,010
+And we haven't adjusted for them
+perfectly.
+
+227
+00:12:51,010 --> 00:12:55,400
+So, a lot of that 0.15 is almost certainly
+also due to confounding.
+
+228
+00:12:55,400 --> 00:12:57,790
+It's just that we haven't completely
+adjusted for it.
+
+229
+00:12:57,790 --> 00:13:02,750
+So this is not a huge, this is not what I
+would call, you know,
+
+230
+00:13:02,750 --> 00:13:07,970
+rocket evident, you know, great evidence
+that that there's a huge link here.
+
+231
+00:13:07,970 --> 00:13:09,750
+This is also a cross-sectional study, so
+
+232
+00:13:09,750 --> 00:13:14,820
+we don't know the direction of the of the
+causality, if there is any causality here.
+
+233
+00:13:14,820 --> 00:13:17,420
+It could be that if you have better
+cognitive function, you go outside more,
+
+234
+00:13:17,420 --> 00:13:18,480
+you take better care of yourself.
+
+235
+00:13:18,480 --> 00:13:20,510
+And that's why your vitamin D is just a
+little bit higher.
+
+236
+00:13:20,510 --> 00:13:23,624
+So, the direction of the effected course
+is unknown here.
+
+237
+00:13:23,624 --> 00:13:27,940
+Just for practice, let's also look at the
+vitamin D category.
+
+238
+00:13:27,940 --> 00:13:30,290
+So, besides looking at vitamin D as a
+continuous predictor,
+
+239
+00:13:30,290 --> 00:13:33,490
+they also broke into potentially
+clinically useful categories,
+
+240
+00:13:33,490 --> 00:13:36,213
+similar to what I did in, in an earlier
+module.
+
+241
+00:13:36,213 --> 00:13:40,670
+They make four categories Sufficient,
+Suboptimum, Insuffisient and Deficient.
+
+242
+00:13:40,670 --> 00:13:44,690
+And the Reference group is obviously the
+Sufficient.
+
+243
+00:13:44,690 --> 00:13:50,990
+So, for example, the Deficient group the
+data coefficient is negative 1.4.
+
+244
+00:13:50,990 --> 00:13:55,021
+So that would say that if you're in a, if
+your deficient has a very low level of
+
+245
+00:13:55,021 --> 00:13:58,840
+vitamin D, compared with normal, above 75,
+or what see if what they're
+
+246
+00:13:58,840 --> 00:14:04,002
+calling sufficient, you are an average 1.4
+points lower in your DSST score.
+
+247
+00:14:04,002 --> 00:14:08,444
+That does remain statistically significant
+after adjusting for all these confounders.
+
+248
+00:14:08,444 --> 00:14:14,390
+But again, it's a fair, it's still a
+fairly a small effect.
+
+249
+00:14:14,390 --> 00:14:19,040
+So, I, I wouldn't call this, you know,
+huge evidence of a,
+
+250
+00:14:19,040 --> 00:14:27,365
+a great straw, big link between vitamin D
+and, and cognitive function.

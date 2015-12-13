@@ -1,0 +1,632 @@
+1
+00:00:00,000 --> 00:00:05,270
+[BLANK_AUDIO]
+
+2
+00:00:05,270 --> 00:00:08,850
+Since we're not having an official class
+meeting after the,
+
+3
+00:00:08,850 --> 00:00:12,500
+final exam is slated to be released, I
+thought it would be worth me taping just
+
+4
+00:00:12,500 --> 00:00:15,080
+a short video to say a few words about the
+final exam.
+
+5
+00:00:17,690 --> 00:00:21,660
+So, the data for the final exam come from
+a BMJ Open paper.
+
+6
+00:00:21,660 --> 00:00:25,070
+The authors were kind enough to share
+their data with us.
+
+7
+00:00:25,070 --> 00:00:29,450
+The authors had run a cluster randomized
+trial.
+
+8
+00:00:29,450 --> 00:00:33,040
+So, they had randomly assigned six
+pregnancy clinics.
+
+9
+00:00:33,040 --> 00:00:36,264
+They assigned three of them to be the
+intervention clinics and
+
+10
+00:00:36,264 --> 00:00:38,320
+three to be the control clinics.
+
+11
+00:00:38,320 --> 00:00:42,260
+And women were enrolled from within those
+clinics.
+
+12
+00:00:42,260 --> 00:00:46,286
+Women rolled into the, enrolled into the
+intervention clinics received some
+
+13
+00:00:46,286 --> 00:00:49,519
+lifestyle counseling about diet and
+exercise to help them lose
+
+14
+00:00:49,519 --> 00:00:53,330
+their pregnancy weight faster after the
+birth of their babies.
+
+15
+00:00:53,330 --> 00:00:56,150
+The control clinics didn't receive
+anything.
+
+16
+00:00:56,150 --> 00:01:02,330
+And the primary outcome of this trial was
+the mother's weight loss postpartum.
+
+17
+00:01:02,330 --> 00:01:06,140
+Those data are in a different paper and
+that's not the focus of this analysis.
+
+18
+00:01:06,140 --> 00:01:09,360
+So, this paper is actually looking at a
+secondary outcome.
+
+19
+00:01:09,360 --> 00:01:14,500
+The authors went back and collected data
+about the weight gain of the infants and
+
+20
+00:01:14,500 --> 00:01:15,740
+toddlers over time.
+
+21
+00:01:15,740 --> 00:01:20,250
+And their thought was that if the mothers
+received some training about
+
+22
+00:01:20,250 --> 00:01:23,850
+eating better, that that somehow might rub
+off on their children and
+
+23
+00:01:23,850 --> 00:01:27,620
+that the children might have a slower
+trajectory of weight gain over time,
+
+24
+00:01:27,620 --> 00:01:31,840
+which would be valuable for preventing
+things like childhood obesity.
+
+25
+00:01:31,840 --> 00:01:34,880
+So, they were able to collect, the
+original trial had 89 women in it.
+
+26
+00:01:34,880 --> 00:01:39,410
+They were able to go back and collect this
+weight gain data on the infants for
+
+27
+00:01:39,410 --> 00:01:40,920
+64 out of the original 89 infants.
+
+28
+00:01:40,920 --> 00:01:45,180
+And the infants had their weights measured
+about ten times during their
+
+29
+00:01:45,180 --> 00:01:46,200
+first year of life.
+
+30
+00:01:46,200 --> 00:01:49,110
+Infants go in frequently to the doctor to
+be checked.
+
+31
+00:01:49,110 --> 00:01:51,090
+And then had their weights measured and
+
+32
+00:01:51,090 --> 00:01:54,680
+heights measured at their second, third
+and fourth birthdays.
+
+33
+00:01:56,680 --> 00:01:58,860
+The authors provided me the data.
+
+34
+00:01:58,860 --> 00:02:00,340
+Here's the final exam shown here.
+
+35
+00:02:00,340 --> 00:02:04,750
+The authors provided me the data in the
+long form the variables also had Italian
+
+36
+00:02:04,750 --> 00:02:09,223
+names which I went through and changed for
+you into something English, but
+
+37
+00:02:09,223 --> 00:02:13,080
+the data dictionary is there for available
+in the long form of the data.
+
+38
+00:02:13,080 --> 00:02:15,210
+In that Excel file, there's a tab that
+says labels and
+
+39
+00:02:15,210 --> 00:02:18,830
+values, you can click on that, you'll see
+the full data dictionary in English.
+
+40
+00:02:18,830 --> 00:02:22,270
+I also turned the data into the broad form
+just in case there are some analyses that
+
+41
+00:02:22,270 --> 00:02:26,380
+are easier to do with the broad form and
+you want the broad form in the data.
+
+42
+00:02:26,380 --> 00:02:28,780
+For the exam I'm asking you to look at
+three outcomes,
+
+43
+00:02:28,780 --> 00:02:31,790
+the two outcomes that the authors look for
+in their paper, the weight for
+
+44
+00:02:31,790 --> 00:02:34,810
+length z scores which was measured at
+every time point.
+
+45
+00:02:34,810 --> 00:02:39,850
+The BMI z score, which is only available
+after the infants turn two
+
+46
+00:02:39,850 --> 00:02:45,370
+because the standardization to calculate
+those z scores is only available.
+
+47
+00:02:45,370 --> 00:02:47,080
+It's based on population norms and
+
+48
+00:02:47,080 --> 00:02:51,040
+it's only available for infants who are
+older than two.
+
+49
+00:02:51,040 --> 00:02:54,930
+So there's most of the infants only have
+two or three values for that BMI z score.
+
+50
+00:02:54,930 --> 00:02:57,800
+Those are the two outcomes that the
+authors looked at in the paper.
+
+51
+00:02:57,800 --> 00:03:01,430
+I am additionally asking you to look at
+the absolute value of
+
+52
+00:03:01,430 --> 00:03:06,250
+weight in kilograms to give you a third
+variable that isn't in the paper, for
+
+53
+00:03:06,250 --> 00:03:08,960
+you to grapple with for your final exam.
+
+54
+00:03:08,960 --> 00:03:10,360
+I'm leading you through a series of
+questions,
+
+55
+00:03:10,360 --> 00:03:12,760
+there's a couple of questions that ask you
+to think about missing data.
+
+56
+00:03:12,760 --> 00:03:16,540
+And then I'm leading you through a series
+of plots that you need to do and
+
+57
+00:03:16,540 --> 00:03:18,730
+it's going to be really important to
+understand these data.
+
+58
+00:03:18,730 --> 00:03:20,650
+You really need to do a lot of plotting.
+
+59
+00:03:20,650 --> 00:03:23,530
+The first plot you're going to have to do
+is just to reproduce figure two
+
+60
+00:03:23,530 --> 00:03:26,450
+which you see here, these growth
+trajectories.
+
+61
+00:03:26,450 --> 00:03:29,660
+I just let you know that you do not have
+to make all of
+
+62
+00:03:29,660 --> 00:03:32,460
+the formatting identical to what is in the
+paper here.
+
+63
+00:03:32,460 --> 00:03:35,570
+It should look professional and the
+trajectory should look the same but
+
+64
+00:03:35,570 --> 00:03:38,820
+you don't have to match exactly the
+legends and things.
+
+65
+00:03:38,820 --> 00:03:41,520
+I'm leading you through a series of other
+graphics that will help you to
+
+66
+00:03:41,520 --> 00:03:43,100
+understand the data.
+
+67
+00:03:43,100 --> 00:03:47,033
+In question seven here, I'm then asking
+you to basically recreate
+
+68
+00:03:47,033 --> 00:03:51,460
+the statistical models that the author's
+themselves ran in their paper.
+
+69
+00:03:52,560 --> 00:03:53,880
+And there's a nice description if
+
+70
+00:03:53,880 --> 00:03:56,390
+you scroll down into the statistical
+methods section.
+
+71
+00:03:56,390 --> 00:03:58,470
+It starts mixed effects linear regression
+models.
+
+72
+00:03:58,470 --> 00:04:02,069
+It tells you exactly what those what, what
+they put in those models, and
+
+73
+00:04:02,069 --> 00:04:05,786
+you're welcome to run very similar models,
+to what the authors ran here,
+
+74
+00:04:05,786 --> 00:04:08,190
+of course, you want to think about it.
+
+75
+00:04:08,190 --> 00:04:09,670
+Think carefully about it.
+
+76
+00:04:10,772 --> 00:04:14,615
+I want to just point out that there is a
+layer of complexity here that we
+
+77
+00:04:14,615 --> 00:04:18,330
+haven't dealt with in the homeworks so far
+for this class.
+
+78
+00:04:18,330 --> 00:04:22,700
+And, what we have here, is we have two
+sources of clustering.
+
+79
+00:04:22,700 --> 00:04:25,740
+So we have been dealing with observations
+that are clustered within
+
+80
+00:04:25,740 --> 00:04:28,700
+an individual because we have repeated
+measures within the same individual.
+
+81
+00:04:28,700 --> 00:04:31,380
+We've dealt with that so far and I told
+you how to deal with that.
+
+82
+00:04:31,380 --> 00:04:34,110
+There's an additional source of
+correlation here, however, because this is
+
+83
+00:04:34,110 --> 00:04:39,460
+a cluster randomized trial and so that
+means that we may have some correlation
+
+84
+00:04:39,460 --> 00:04:43,680
+among the women within a given clinic and
+so we at least have to consider that.
+
+85
+00:04:43,680 --> 00:04:46,330
+We at least have to try to build that into
+our models to
+
+86
+00:04:46,330 --> 00:04:48,770
+test whether there's any correlation there
+that we need to worry about.
+
+87
+00:04:49,886 --> 00:04:53,129
+The nice thing is that if you use a random
+effects model,
+
+88
+00:04:53,129 --> 00:04:56,165
+you can actually have it in the code two
+random line,
+
+89
+00:04:56,165 --> 00:05:00,236
+more than one line where you can ask for
+not only randomized effects for
+
+90
+00:05:00,236 --> 00:05:05,110
+subjects, so subject specific intercept
+and subject specific slopes.
+
+91
+00:05:05,110 --> 00:05:08,320
+But you can also ask for clinic specific
+intercepts and
+
+92
+00:05:08,320 --> 00:05:11,700
+clinic specific slopes and I've given you
+the code under question seven here that
+
+93
+00:05:11,700 --> 00:05:15,500
+you would need in order to be able to do
+this kind of model.
+
+94
+00:05:15,500 --> 00:05:18,360
+So, that should be enough to set you up to
+do those models.
+
+95
+00:05:18,360 --> 00:05:21,530
+It may turn out that the random effects
+for
+
+96
+00:05:21,530 --> 00:05:24,590
+clinic may not add much to the model fit.
+
+97
+00:05:24,590 --> 00:05:27,680
+It may be that there isn't a lot of
+correlation within class, within clinic.
+
+98
+00:05:27,680 --> 00:05:29,720
+And if that's the case, you know then
+it'll be up to you whether or
+
+99
+00:05:29,720 --> 00:05:30,740
+not you keep those in the model.
+
+100
+00:05:30,740 --> 00:05:33,392
+But we at least need to think about the
+effect of clinic here,
+
+101
+00:05:33,392 --> 00:05:35,660
+because it is a cluster randomized trial.
+
+102
+00:05:35,660 --> 00:05:38,700
+So, I think I've given you enough
+instruction there, to be able to do that.
+
+103
+00:05:40,120 --> 00:05:41,650
+I'm asking you to recreate the,
+
+104
+00:05:41,650 --> 00:05:43,980
+basically, the analyses that are presented
+in table two.
+
+105
+00:05:43,980 --> 00:05:47,390
+So, you're going to make something similar
+to what you see here in table two.
+
+106
+00:05:47,390 --> 00:05:50,348
+I'll point out that, even if you run the
+exact same models,
+
+107
+00:05:50,348 --> 00:05:54,176
+you think you're running the exact same
+models as what the authors describe in
+
+108
+00:05:54,176 --> 00:05:57,826
+their paper you may get slightly, slightly
+different estimates.
+
+109
+00:05:57,826 --> 00:05:59,716
+They used a different program than SAS and
+
+110
+00:05:59,716 --> 00:06:03,172
+there may be slightly different things
+about how we're modeling degrees of
+
+111
+00:06:03,172 --> 00:06:07,820
+freedom so, I didn't get identical values
+to what's in the table so don't expect to.
+
+112
+00:06:07,820 --> 00:06:12,310
+I'm also asking you to additionally, get
+the values to build a model for
+
+113
+00:06:12,310 --> 00:06:13,664
+weight in kilograms.
+
+114
+00:06:13,664 --> 00:06:16,930
+Of course that's so that I can make sure
+that you're actually building these models
+
+115
+00:06:16,930 --> 00:06:20,270
+correctly and not just copying the values
+that are presented in the table here.
+
+116
+00:06:21,810 --> 00:06:23,710
+And so that's just basically the final
+exam.
+
+117
+00:06:23,710 --> 00:06:25,650
+I'm leaving you through a series of
+questions.
+
+118
+00:06:25,650 --> 00:06:29,432
+There's probably going to be a lot more
+you do to look at these data than
+
+119
+00:06:29,432 --> 00:06:33,620
+than our just, then just the questions I'm
+asking you on the final exam.
+
+120
+00:06:33,620 --> 00:06:36,190
+I'll point out that there is a, an age
+cube.
+
+121
+00:06:36,190 --> 00:06:39,910
+There's a cubic term in the weight for
+length z score model.
+
+122
+00:06:39,910 --> 00:06:43,970
+To get that it's very similar to dealing
+with a quadratic instead of doing age
+
+123
+00:06:43,970 --> 00:06:49,140
+star age, you would do age star age star
+age and that would give you in cubic term.
+
+124
+00:06:49,140 --> 00:06:52,130
+That just means that the weight growth
+trajectories over
+
+125
+00:06:52,130 --> 00:06:54,592
+time are cubic rather than quadratic.
+
+126
+00:06:54,592 --> 00:06:58,478
+And as you might expect the growth
+trajectories as you can see in the picture
+
+127
+00:06:58,478 --> 00:07:02,132
+from figure two, the growth trajectories
+don't look perfectly linear or
+
+128
+00:07:02,132 --> 00:07:04,940
+quadratic over time there's actually a
+cubic there.
+
+129
+00:07:04,940 --> 00:07:07,920
+So hopefully that's enough to get you
+started and good luck with the exam.
+
+130
+00:07:07,920 --> 00:07:12,180
+I will be providing a solutions video at,
+after you've
+
+131
+00:07:12,180 --> 00:07:16,360
+finished the exam that will again walk you
+through the steps of a real data analysis.

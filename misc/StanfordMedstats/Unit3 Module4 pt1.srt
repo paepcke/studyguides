@@ -1,0 +1,253 @@
+1
+00:00:01,340 --> 00:00:02,200
+Welcome back.
+
+2
+00:00:02,200 --> 00:00:03,790
+In this module we're going to talk about
+Proc Sort.
+
+3
+00:00:04,790 --> 00:00:08,030
+This procedure is useful for sorting your
+data set.
+
+4
+00:00:08,030 --> 00:00:12,630
+Let's use the people two data set we
+created in the last module.
+
+5
+00:00:12,630 --> 00:00:16,050
+Proc Sort can be used to sort the people
+data set.
+
+6
+00:00:16,050 --> 00:00:18,770
+Say we want to organize our data set so
+that we have females first and then males.
+
+7
+00:00:20,430 --> 00:00:20,970
+Let's look at some code.
+
+8
+00:00:20,970 --> 00:00:28,580
+We start with Proc, which by now you know,
+stands for procedure.
+
+9
+00:00:28,580 --> 00:00:34,040
+Our next command is sort, followed by the
+data set we want to sort.
+
+10
+00:00:34,040 --> 00:00:37,302
+Here we've included out equals
+people_sort_gender,
+
+11
+00:00:37,302 --> 00:00:38,480
+to name the output data set.
+
+12
+00:00:38,480 --> 00:00:39,940
+The next line of code says, by gender.
+
+13
+00:00:39,940 --> 00:00:42,310
+Which means that were sorting our data set
+by the gender variable.
+
+14
+00:00:43,370 --> 00:00:47,370
+Since this is a character variable it will
+be sorted in alphabetical order.
+
+15
+00:00:47,370 --> 00:00:51,270
+Let's press run.
+Here's our output,
+
+16
+00:00:51,270 --> 00:00:53,535
+as you can see the new data set is sorted
+by gender.
+
+17
+00:00:53,535 --> 00:00:56,970
+[SOUND]
+
+18
+00:00:56,970 --> 00:01:00,469
+>> Now suppose were interested in sorting
+the data by ages in descending order.
+
+19
+00:01:01,750 --> 00:01:04,350
+To accomplish this, I once again write
+Proc Sort,
+
+20
+00:01:05,390 --> 00:01:12,170
+specify our people2 data set and name a
+new data set called people_sort_ages.
+
+21
+00:01:12,170 --> 00:01:16,580
+In the next line, I write by descending
+age.
+
+22
+00:01:16,580 --> 00:01:20,160
+This tells SAS to sort my original data by
+descending age values.
+
+23
+00:01:21,370 --> 00:01:21,890
+Let me run this.
+
+24
+00:01:24,880 --> 00:01:27,500
+You can now see that the data are ordered
+by age.
+
+25
+00:01:27,500 --> 00:01:30,270
+From the highest to the lowest.
+
+26
+00:01:31,610 --> 00:01:34,190
+So far, the examples we have used, have
+been pretty straightforward.
+
+27
+00:01:35,410 --> 00:01:38,430
+But what if we want to sort on more than
+one variable at a time.
+
+28
+00:01:38,430 --> 00:01:42,970
+Say we wanted to sort by gender and then
+by weight within the gender levels.
+
+29
+00:01:44,410 --> 00:01:46,510
+Let's take a look at the code for this.
+
+30
+00:01:46,510 --> 00:01:50,940
+For our by statement, we first wrote
+gender, and then specified weight.
+
+31
+00:01:50,940 --> 00:01:55,010
+So within males and females, the data
+should be sorted by weight.
+
+32
+00:01:56,100 --> 00:01:58,550
+Here we'll run it, within males and
+
+33
+00:01:58,550 --> 00:02:01,960
+females, we now have the data sorted by
+weight.
+
+34
+00:02:03,540 --> 00:02:06,450
+The key to multiple level sorting is drive
+by and
+
+35
+00:02:06,450 --> 00:02:10,180
+then the variables you want sorted in the
+order you want them sorted.
+
+36
+00:02:10,180 --> 00:02:15,000
+In our case, we wanted gender first and
+then wait in ascending order.
+
+37
+00:02:15,000 --> 00:02:18,000
+>> Now I'll cover something a little bit
+more complicated.
+
+38
+00:02:19,080 --> 00:02:20,790
+Let's start by rebuilding our people data
+set.
+
+39
+00:02:22,340 --> 00:02:25,060
+In this data set, I've duplicated one of
+the records.
+
+40
+00:02:25,060 --> 00:02:27,420
+As you can see here.
+
+41
+00:02:27,420 --> 00:02:32,090
+I want to demonstrate a function of Proc
+Sort that lets you remove duplicates.
+
+42
+00:02:32,090 --> 00:02:32,890
+SAS can do this if we
+
+43
+00:02:32,890 --> 00:02:37,210
+include the NODUPLICATES option in the
+Proc Sort's statement.
+
+44
+00:02:37,210 --> 00:02:41,570
+Let's take a look at the output.
+
+45
+00:02:41,570 --> 00:02:45,430
+As we can see, we no longer have that
+duplicated record in our data set.
+
+46
+00:02:45,430 --> 00:02:46,150
+Oh, this is a great feature.
+
+47
+00:02:46,150 --> 00:02:48,810
+It only works when duplicate observations
+are right next to each other.
+
+48
+00:02:50,140 --> 00:02:52,420
+What do you do when duplicate observations
+are not next to each other?
+
+49
+00:02:52,420 --> 00:02:53,830
+In this case,
+
+50
+00:02:53,830 --> 00:02:57,140
+I sorted the data set by all the variables
+by adding underscore all underscore.
+
+51
+00:02:59,000 --> 00:03:01,200
+This code forces the duplicate
+observations to fall
+
+52
+00:03:01,200 --> 00:03:01,980
+right next to each other.
+
+53
+00:03:03,360 --> 00:03:04,610
+And then we run this code,
+
+54
+00:03:04,610 --> 00:03:07,260
+it'll remove all the duplicates, no matter
+where they're on the data set.

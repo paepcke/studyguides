@@ -1,0 +1,523 @@
+1
+00:00:00,360 --> 00:00:03,920
+>> In the last module, we showed you what
+a dataset looks like in SAS.
+
+2
+00:00:03,920 --> 00:00:06,440
+You might be wondering where that dataset
+comes from.
+
+3
+00:00:06,440 --> 00:00:07,485
+>> That's what we'll show you today.
+
+4
+00:00:07,485 --> 00:00:11,535
+>> [SOUND] Your data set can come in many
+different file types.
+
+5
+00:00:11,535 --> 00:00:14,480
+[SOUND] Often times you might get a
+dataset as an Excel file,
+
+6
+00:00:14,480 --> 00:00:20,150
+which will have the file format .xls or
+.xlsx.
+
+7
+00:00:20,150 --> 00:00:23,310
+Another common file type used with Excel
+is a .csv file.
+
+8
+00:00:24,595 --> 00:00:28,305
+SAS has it's own file format for data sets
+called .sas7b.
+
+9
+00:00:29,340 --> 00:00:33,300
+All of these file types and many more, can
+be imported directly into SAS.
+
+10
+00:00:33,300 --> 00:00:36,470
+>> Many researchers like to use red cap to
+collect their data.
+
+11
+00:00:36,470 --> 00:00:38,202
+We will not be discussing Red Cap and
+
+12
+00:00:38,202 --> 00:00:43,110
+HRP223, that being said if your data's an
+online Red Cap database we can
+
+13
+00:00:43,110 --> 00:00:46,731
+provide you with a special program that
+will let you import that into SaS as well.
+
+14
+00:00:48,010 --> 00:00:50,220
+>> Let's take another look at that data
+set we showed you last time.
+
+15
+00:00:51,850 --> 00:00:55,720
+It's hard to tell what a lot of this
+means, the columns have strange names and
+
+16
+00:00:55,720 --> 00:00:58,220
+it's hard to tell what these one's and
+zero's mean.
+
+17
+00:00:58,220 --> 00:01:00,450
+What we need is a data dictionary.
+
+18
+00:01:00,450 --> 00:01:03,290
+This is basically an explanation of each
+variable is, and
+
+19
+00:01:03,290 --> 00:01:04,220
+how the variables are encoded.
+
+20
+00:01:04,220 --> 00:01:07,480
+Here is what a data dictionary might look
+like.
+
+21
+00:01:09,370 --> 00:01:12,090
+Now we can see that the variable Hospidays
+represents the length of
+
+22
+00:01:12,090 --> 00:01:14,620
+the hospital stay measured in days.
+
+23
+00:01:14,620 --> 00:01:17,978
+CHF is a variable about heart failure
+complications.
+
+24
+00:01:17,978 --> 00:01:21,560
+If his [INAUDIBLE] has complications, they
+are entered as a one.
+
+25
+00:01:21,560 --> 00:01:24,000
+And if they didn't, they are entered as a
+zero.
+
+26
+00:01:24,000 --> 00:01:28,100
+>> Whenever you get a data set, make sure
+you also get a data dictionary, or
+
+27
+00:01:28,100 --> 00:01:30,250
+else you will not be able to interpret the
+data.
+
+28
+00:01:30,250 --> 00:01:34,170
+Sometimes, people like to put a data
+dictionary at the top of an Excel file.
+
+29
+00:01:34,170 --> 00:01:37,440
+If you can, try to open up your data set
+in Excel and look at the data set and
+
+30
+00:01:37,440 --> 00:01:38,509
+case it as a dictionary.
+
+31
+00:01:39,600 --> 00:01:42,890
+We were just describing a data set in SAS
+Enterprise Guide, but I want to take
+
+32
+00:01:42,890 --> 00:01:46,890
+step back and show you how to import your
+data using the point and click method.
+
+33
+00:01:46,890 --> 00:01:49,230
+Even though I tend to write most of my own
+code in SAS,
+
+34
+00:01:49,230 --> 00:01:52,210
+I still like to use the point and click
+method to import data.
+
+35
+00:01:52,210 --> 00:01:56,370
+This method makes it easy to rename
+variables, specify permanent folder, and
+
+36
+00:01:56,370 --> 00:01:59,070
+ensure that SAS is importing the variables
+in the right format.
+
+37
+00:02:00,110 --> 00:02:02,990
+>> If you're using an Excel file, open it
+in Excel first and
+
+38
+00:02:02,990 --> 00:02:05,990
+make sure that first row contains the
+variable names.
+
+39
+00:02:05,990 --> 00:02:08,370
+Sometimes people include things like a
+data dictionary, or
+
+40
+00:02:08,370 --> 00:02:11,090
+other comments which are not data or
+variable names.
+
+41
+00:02:11,090 --> 00:02:12,860
+If there's any extra information, delete
+it.
+
+42
+00:02:13,980 --> 00:02:16,510
+>> Since we're dealing with a new project
+in SAS, let's open it up.
+
+43
+00:02:18,890 --> 00:02:22,160
+Our first step is going to be to
+reestablish our permanent folder,
+
+44
+00:02:22,160 --> 00:02:24,820
+by pointing to the folder we created in
+the previous module,
+
+45
+00:02:24,820 --> 00:02:27,430
+we can save the data set in a permanent
+file.
+
+46
+00:02:27,430 --> 00:02:30,190
+First open up a new project, which we've
+already done.
+
+47
+00:02:30,190 --> 00:02:32,760
+Paste in the code which we've also already
+done,
+
+48
+00:02:32,760 --> 00:02:34,850
+and then point to the permanent folder.
+
+49
+00:02:36,340 --> 00:02:38,190
+Now, we're ready to import our Excel data
+set.
+
+50
+00:02:39,740 --> 00:02:41,660
+>> Click on File and then Import Data.
+
+51
+00:02:43,250 --> 00:02:46,200
+Navigate to the file you want to import
+and then click Open.
+
+52
+00:02:46,200 --> 00:02:46,720
+>> In the next page,
+
+53
+00:02:46,720 --> 00:02:50,600
+you can specify which library you wish to
+import your data in to.
+
+54
+00:02:50,600 --> 00:02:53,540
+By default, you can save it in to the work
+library.
+
+55
+00:02:53,540 --> 00:02:55,760
+If you'd like to save your data into a
+different library,
+
+56
+00:02:55,760 --> 00:03:01,740
+such as a permanent library you've already
+made, click Browse to find that library.
+
+57
+00:03:01,740 --> 00:03:06,463
+We're going to save our data into the
+HRP223 library we just made.
+
+58
+00:03:06,463 --> 00:03:08,230
+Select a library and then click Save.
+
+59
+00:03:08,230 --> 00:03:11,789
+When you're done specifying your library,
+click Next.
+
+60
+00:03:13,070 --> 00:03:16,570
+>> If you're importing data from an Excel
+file with multiple worksheets,
+
+61
+00:03:16,570 --> 00:03:18,530
+you can select the right worksheet here on
+the left.
+
+62
+00:03:19,550 --> 00:03:21,980
+Also, make sure to check the box that
+says,
+
+63
+00:03:21,980 --> 00:03:25,950
+first row of range contains field names,
+and click Next.
+
+64
+00:03:25,950 --> 00:03:28,770
+On the next page, please make sure to
+check each variable and
+
+65
+00:03:28,770 --> 00:03:31,820
+verify that it is being imported in the
+correct format.
+
+66
+00:03:31,820 --> 00:03:36,290
+>> If you have a new Mac variable, the
+data type should give us this number.
+
+67
+00:03:36,290 --> 00:03:39,160
+If you have a date variable, the data type
+should be able to send us date.
+
+68
+00:03:39,160 --> 00:03:43,260
+If you have a categorical variable, with
+data entered as words or
+
+69
+00:03:43,260 --> 00:03:46,710
+characters, the data type should be listed
+as string.
+
+70
+00:03:46,710 --> 00:03:49,050
+You can specify the data type, by
+selecting the variable and
+
+71
+00:03:49,050 --> 00:03:50,710
+clicking Modify.
+
+72
+00:03:50,710 --> 00:03:53,670
+This step crucial because if you
+mis-specify your data type.
+
+73
+00:03:53,670 --> 00:03:55,780
+But problems with your analysis.
+
+74
+00:03:55,780 --> 00:03:58,820
+So here we can see that the age variable
+is specified by a string.
+
+75
+00:03:59,820 --> 00:04:02,400
+That's incorrect, so lets click Modify and
+fix that.
+
+76
+00:04:04,360 --> 00:04:06,150
+Now, we'll correctly specify it as number.
+
+77
+00:04:07,570 --> 00:04:10,100
+>> While you're on this page, you can also
+specify the name and
+
+78
+00:04:10,100 --> 00:04:13,300
+or label of each variable if you'd like to
+rename it.
+
+79
+00:04:13,300 --> 00:04:15,210
+Variable names can not have any spaces,
+and
+
+80
+00:04:15,210 --> 00:04:18,350
+are used in specifying the variables for
+analysis.
+
+81
+00:04:18,350 --> 00:04:21,280
+On the other hand, variable labels can be
+lengthy descriptions with or
+
+82
+00:04:21,280 --> 00:04:22,770
+without spaces.
+
+83
+00:04:22,770 --> 00:04:25,370
+These are used in graphics and, or tables.
+
+84
+00:04:25,370 --> 00:04:28,110
+>> Once you make sure that your variables
+are correctly represented,
+
+85
+00:04:28,110 --> 00:04:30,090
+click Next and Finish.
+
+86
+00:04:30,090 --> 00:04:33,099
+>> Your data set has now been imported
+into SAS Enterprise Guide.
+
+87
+00:04:35,010 --> 00:04:36,195
+>> Now, you can put it into the data set,
+
+88
+00:04:36,195 --> 00:04:38,790
+you can double check, if that everything
+is in order.
+
+89
+00:04:38,790 --> 00:04:40,580
+The column names have icons next to them,
+
+90
+00:04:40,580 --> 00:04:43,790
+which indicate which data type they are
+entered as.
+
+91
+00:04:43,790 --> 00:04:45,890
+This blue icon indicates that its a number
+variable.
+
+92
+00:04:45,890 --> 00:04:49,810
+And this red icon, indicates that its the
+string variable.
+
+93
+00:04:49,810 --> 00:04:51,630
+This one's incorrect.
+
+94
+00:04:51,630 --> 00:04:52,779
+Click Modify Task.
+
+95
+00:04:54,970 --> 00:04:58,505
+And go back to the field attribute, to
+correctly specify your variable.
+
+96
+00:04:58,505 --> 00:04:59,864
+[SOUND].
+
+97
+00:04:59,864 --> 00:05:07,838
+[BLANK_AUDIO]
+
+98
+00:05:07,838 --> 00:05:09,323
+>> Now everything looks correct,
+
+99
+00:05:09,323 --> 00:05:13,510
+please always make sure to check the to
+define the field attributes windows.
+
+100
+00:05:13,510 --> 00:05:15,580
+Incorrectly specifying a field attribute,
+
+101
+00:05:15,580 --> 00:05:18,359
+can make it impossible to run even the
+simplest data analysis.
+
+102
+00:05:20,190 --> 00:05:23,190
+>> Once you input your data in SAS, you
+can start running your data analysis.
+
+103
+00:05:24,250 --> 00:05:27,330
+SAS stores a copy of the data set and
+whatever library you're working on,
+
+104
+00:05:27,330 --> 00:05:30,430
+and leaves your original data set file
+intact.
+
+105
+00:05:30,430 --> 00:05:31,370
+That way you don't lose or
+
+106
+00:05:31,370 --> 00:05:35,630
+change the original data once you start
+working on it.
+
+107
+00:05:35,630 --> 00:05:39,370
+>> One finally note, let's use point and
+click to look at our data.
+
+108
+00:05:39,370 --> 00:05:42,868
+Notice that some cells just have a period
+in place of a number,
+
+109
+00:05:42,868 --> 00:05:45,830
+this is SAS way of encoding missing data.
+
+110
+00:05:45,830 --> 00:05:47,750
+We'll return to this idea in future
+modules.

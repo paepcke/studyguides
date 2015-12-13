@@ -1,0 +1,613 @@
+1
+00:00:05,720 --> 00:00:06,800
+In this next module,
+
+2
+00:00:06,800 --> 00:00:11,070
+I'm going to talk about the two ways that
+we typically store repeated measures data.
+
+3
+00:00:14,400 --> 00:00:18,850
+So there's two ways to represent, repeated
+measures data.
+
+4
+00:00:18,850 --> 00:00:21,640
+You can put it in what is called the broad
+form, and
+
+5
+00:00:21,640 --> 00:00:27,040
+often when we're doing data entry, it's
+easier to enter it in the broad form.
+
+6
+00:00:27,040 --> 00:00:29,120
+So the broad form is going to be just what
+it sounds like,
+
+7
+00:00:29,120 --> 00:00:31,850
+it's going to be broad so every person is
+going to
+
+8
+00:00:31,850 --> 00:00:36,810
+have only one row in the data set as we
+normally do one observation, one row.
+
+9
+00:00:36,810 --> 00:00:41,260
+And the multiple measures that you've made
+over time are going to
+
+10
+00:00:41,260 --> 00:00:43,570
+be stored as separate variables.
+
+11
+00:00:43,570 --> 00:00:48,410
+So here I've got, say these are some
+scores on a depression questionnaire.
+
+12
+00:00:48,410 --> 00:00:53,540
+I've got other person who had a value on
+that questionnaire at time 1 of 31.
+
+13
+00:00:53,540 --> 00:00:57,200
+At time 2 it went down to 29, and then 15
+and then 26.
+
+14
+00:00:57,200 --> 00:01:02,010
+Person 2 had a depression score at time
+point 1,
+
+15
+00:01:02,010 --> 00:01:06,669
+F24 that went to 28 at time point 2 and
+then 20 and then 32 and so on.
+
+16
+00:01:06,669 --> 00:01:08,095
+This is the broad form of the data,
+
+17
+00:01:08,095 --> 00:01:13,420
+because it's broad every person will have
+a lot of observations along the row.
+
+18
+00:01:13,420 --> 00:01:15,150
+That's one way to store the data.
+
+19
+00:01:15,150 --> 00:01:18,210
+However, sometimes we need the data in
+what's called the long form.
+
+20
+00:01:18,210 --> 00:01:19,950
+So again, the long form's just what it
+sounds like.
+
+21
+00:01:19,950 --> 00:01:21,280
+It's long, so
+
+22
+00:01:21,280 --> 00:01:27,380
+there are going to be multiple rows now
+per observation, per person.
+
+23
+00:01:27,380 --> 00:01:28,080
+So you can see, for
+
+24
+00:01:28,080 --> 00:01:33,470
+example, subject number one had four
+measurements of this depression score.
+
+25
+00:01:33,470 --> 00:01:36,980
+What we're now going to do, is we're
+going to have only two variables.
+
+26
+00:01:36,980 --> 00:01:38,300
+That stores those depression scores,
+
+27
+00:01:38,300 --> 00:01:43,920
+one to indicate the time and one to
+indicate the actual score at that time.
+
+28
+00:01:43,920 --> 00:01:47,780
+So for example, person number 1, ID number
+1 at time point 1,
+
+29
+00:01:47,780 --> 00:01:50,550
+their depression score is 31 and at time
+point two it was 29,
+
+30
+00:01:50,550 --> 00:01:54,468
+at time point 3 it was 15, at time point
+four it was 26.
+
+31
+00:01:54,468 --> 00:01:58,420
+Person number 2 had a depression score of
+24 at time point one,
+
+32
+00:01:58,420 --> 00:02:00,270
+28 at time point two, and so on.
+
+33
+00:02:00,270 --> 00:02:01,990
+Now, converting between these two forms,
+
+34
+00:02:01,990 --> 00:02:06,210
+can involve a little bit of trickery
+having to do this in a computer.
+
+35
+00:02:06,210 --> 00:02:08,180
+Sometimes it's hard to go from one form to
+the other.
+
+36
+00:02:08,180 --> 00:02:11,260
+I'll try to give you some tricks in the
+computer for doing that.
+
+37
+00:02:11,260 --> 00:02:15,200
+But you can see why there might be
+advantages of one form or the other.
+
+38
+00:02:15,200 --> 00:02:18,690
+So one place that we might use the broad
+form, is if I wanted to
+
+39
+00:02:18,690 --> 00:02:22,660
+get the correlations in depression scores
+between different time points.
+
+40
+00:02:22,660 --> 00:02:23,900
+And we need the broad form of the data.
+
+41
+00:02:23,900 --> 00:02:26,306
+Because my correlation matrix would be
+time one.
+
+42
+00:02:26,306 --> 00:02:29,502
+Time two, time three, and time four and
+
+43
+00:02:29,502 --> 00:02:35,120
+I would want to get the correlations
+between all of those time points.
+
+44
+00:02:35,120 --> 00:02:36,740
+So we, I need them in the broad form.
+
+45
+00:02:37,820 --> 00:02:40,480
+However, if I wanted to plot,
+
+46
+00:02:40,480 --> 00:02:45,920
+the depression scores over time to do a
+plot over time of these depression scores.
+
+47
+00:02:45,920 --> 00:02:49,510
+I'm going to need the data in the long
+form because I want to have one
+
+48
+00:02:49,510 --> 00:02:53,440
+x variable and one y variable to plot that
+over time.
+
+49
+00:02:53,440 --> 00:02:56,450
+So for plotting over time, I'm going to
+need it in the long form.
+
+50
+00:02:56,450 --> 00:03:00,440
+So different analyses will require the
+data in different forms.
+
+51
+00:03:00,440 --> 00:03:04,410
+Now I went ahead just to show you, I
+plotted these six individuals.
+
+52
+00:03:04,410 --> 00:03:06,560
+I did some what we call profile plots.
+
+53
+00:03:06,560 --> 00:03:08,070
+So this is just one individual at a time.
+
+54
+00:03:08,070 --> 00:03:10,370
+Every rep, line represents one individual.
+
+55
+00:03:10,370 --> 00:03:11,940
+I've plotted over time the scores, but
+
+56
+00:03:11,940 --> 00:03:14,650
+you can see that in order to make that
+plot I needed the long form of the data.
+
+57
+00:03:14,650 --> 00:03:17,460
+This is showing you all six individuals.
+
+58
+00:03:17,460 --> 00:03:21,660
+We can also just plot the mean, at each
+time point for the six individuals.
+
+59
+00:03:21,660 --> 00:03:24,250
+And then I have superimposed those two
+plots.
+
+60
+00:03:24,250 --> 00:03:26,520
+In the next module I'm going to be showing
+you a lot of different plots,
+
+61
+00:03:26,520 --> 00:03:28,380
+we can do for these type of, of data.
+
+62
+00:03:28,380 --> 00:03:30,660
+Those are usually done on the long form of
+the data.
+
+63
+00:03:32,020 --> 00:03:34,810
+Just to put a real data example now to
+this,
+
+64
+00:03:34,810 --> 00:03:39,350
+I have some data longitudinal data on bone
+density in women runners who tend,
+
+65
+00:03:39,350 --> 00:03:41,260
+who can be at risk for having low bone
+density.
+
+66
+00:03:41,260 --> 00:03:42,790
+This was a two year study.
+
+67
+00:03:42,790 --> 00:03:46,560
+And bone density was measured at baseline
+one year into the study and
+
+68
+00:03:46,560 --> 00:03:47,440
+two years into the study.
+
+69
+00:03:47,440 --> 00:03:50,710
+You measure bone density with a machine
+called a DEXA machine.
+
+70
+00:03:50,710 --> 00:03:54,430
+And I've modified the data just slightly
+to meet all the HIPAA rules.
+
+71
+00:03:54,430 --> 00:03:58,200
+I've jiggered some dates and changed
+values a little bit and rounded things.
+
+72
+00:03:58,200 --> 00:04:00,140
+But just to show you some real data or
+
+73
+00:04:00,140 --> 00:04:04,206
+something that's very close to real data,
+this is the broad form of the data.
+
+74
+00:04:04,206 --> 00:04:07,450
+So the women, so for example, subject
+number id number one,
+
+75
+00:04:07,450 --> 00:04:10,780
+she came in April of 1999, that's a pretty
+old data set.
+
+76
+00:04:10,780 --> 00:04:14,380
+For her first measurement, and then again
+in April of 2000 for
+
+77
+00:04:14,380 --> 00:04:18,610
+her next measurement, and then in May of
+2001 for her next measurement.
+
+78
+00:04:18,610 --> 00:04:21,136
+Her spine bone densities were 0.93, 0.93,
+and
+
+79
+00:04:21,136 --> 00:04:24,680
+0.93 beyond, so she didn't change at all
+over time.
+
+80
+00:04:24,680 --> 00:04:27,690
+And her bone mineral content total calcium
+in her skeleton.
+
+81
+00:04:27,690 --> 00:04:30,860
+Went down slightly at measurement two, but
+didn't, was pretty stable.
+
+82
+00:04:30,860 --> 00:04:33,280
+You can see there wasn't much change for
+that person there.
+
+83
+00:04:33,280 --> 00:04:35,210
+That's the broad form of the data.
+
+84
+00:04:35,210 --> 00:04:37,920
+If I want to translate this into the long
+form of the data,
+
+85
+00:04:37,920 --> 00:04:40,770
+there might be two ways I can represent
+time now.
+
+86
+00:04:40,770 --> 00:04:43,880
+So I can represent time as just time 0.1,
+time 0.2, and time 0.3.
+
+87
+00:04:43,880 --> 00:04:48,910
+However, if you look closely, you'll
+notice that there was some variation in.
+
+88
+00:04:48,910 --> 00:04:50,570
+Women were supposed to come back every
+year, but
+
+89
+00:04:50,570 --> 00:04:54,300
+there was some considerable variation in
+when women actually came back for
+
+90
+00:04:54,300 --> 00:04:56,500
+their subsequent, their follow-up
+measurements.
+
+91
+00:04:56,500 --> 00:04:58,270
+So I could also, since I've got actual
+dates,
+
+92
+00:04:58,270 --> 00:05:01,300
+I could take these dates, and I could
+subtract them, and
+
+93
+00:05:01,300 --> 00:05:04,470
+I could get the actual amount of time
+between measurements.
+
+94
+00:05:04,470 --> 00:05:06,330
+For a given woman, so I've done both of
+those.
+
+95
+00:05:07,590 --> 00:05:09,840
+So I've now turned this into the long form
+of the data.
+
+96
+00:05:09,840 --> 00:05:11,070
+So every woman had three measurements so
+
+97
+00:05:11,070 --> 00:05:14,548
+she's going to get three rows in the long
+form of the data set.
+
+98
+00:05:14,548 --> 00:05:18,490
+I can represent time as just this one,
+two, three, which measurement was it.
+
+99
+00:05:18,490 --> 00:05:21,030
+Or I can represent it more precisely.
+
+100
+00:05:21,030 --> 00:05:25,670
+So for example person number one, baseline
+would be zero years into the study.
+
+101
+00:05:25,670 --> 00:05:28,582
+She came back nice and close to one year
+into the study and, and
+
+102
+00:05:28,582 --> 00:05:30,510
+2.1 years into the study.
+
+103
+00:05:30,510 --> 00:05:32,660
+Not everybody did so well in being so
+precise.
+
+104
+00:05:32,660 --> 00:05:34,914
+So like subject number seven came back at
+one year, but
+
+105
+00:05:34,914 --> 00:05:37,396
+then not until 2.7 years into the study.
+
+106
+00:05:37,396 --> 00:05:39,830
+Then the spine bone densities for each of
+those time period,
+
+107
+00:05:39,830 --> 00:05:44,290
+points is represented next as well as the
+bone mineral content.
+
+108
+00:05:44,290 --> 00:05:47,290
+So we have one variable now storing the
+spine bone density, and
+
+109
+00:05:47,290 --> 00:05:49,350
+one variable storing the bone mineral
+content,
+
+110
+00:05:49,350 --> 00:05:53,570
+which again will allow us to do plots in
+certain types of analyses.
+
+111
+00:05:53,570 --> 00:05:57,610
+Just to give you a quick overview of where
+you'd want to use one versus the other.
+
+112
+00:05:57,610 --> 00:06:00,650
+So for you, if you want to calculate
+correlations between different time
+
+113
+00:06:00,650 --> 00:06:02,290
+points you actually need the broad form of
+the data.
+
+114
+00:06:02,290 --> 00:06:07,700
+If you took HRP 261 there were a couple of
+situations where I gave you both forms
+
+115
+00:06:07,700 --> 00:06:11,450
+of the data set because you needed the
+broad form for doing correlations.
+
+116
+00:06:11,450 --> 00:06:13,220
+Between time points.
+
+117
+00:06:13,220 --> 00:06:15,210
+With actually correlations between time
+points then, but
+
+118
+00:06:15,210 --> 00:06:18,440
+between physician practices, if I'm
+remembering that correctly.
+
+119
+00:06:18,440 --> 00:06:21,840
+You'll also need the broad form if you
+want to calculate the change
+
+120
+00:06:21,840 --> 00:06:23,350
+between time points for a given woman.
+
+121
+00:06:23,350 --> 00:06:27,300
+It's actually easier to subtract within a
+row than to,
+
+122
+00:06:27,300 --> 00:06:28,810
+to subtract across different rows.
+
+123
+00:06:28,810 --> 00:06:32,050
+So, it's usually easier to calculate the
+change scores from the broad form.
+
+124
+00:06:32,050 --> 00:06:34,960
+When we do repeated measures in Nova next
+week we'll be using the broad form
+
+125
+00:06:34,960 --> 00:06:36,138
+of the data.
+
+126
+00:06:36,138 --> 00:06:37,950
+However, you're going to need the long
+form for
+
+127
+00:06:37,950 --> 00:06:40,160
+kind of all the really cool things you
+want to do with the data.
+
+128
+00:06:40,160 --> 00:06:42,610
+So if we want to make plots you need the
+long form of the data and
+
+129
+00:06:42,610 --> 00:06:46,520
+when we get to mixed models and GE models,
+you'll be using the long form of the data.

@@ -1,0 +1,1087 @@
+1
+00:00:05,410 --> 00:00:09,380
+In this next module, I'm going to explain
+the difference between modeling a variable
+
+2
+00:00:09,380 --> 00:00:13,360
+as a categorical variable versus an
+ordinal variable And I'm also going to
+
+3
+00:00:13,360 --> 00:00:17,150
+talk about a test that's directly related
+to that called the p value for trend test.
+
+4
+00:00:22,300 --> 00:00:27,440
+So if you have an ordinal variable, that
+is a variable that's ordered category is
+
+5
+00:00:27,440 --> 00:00:32,490
+something like a Likert scale, you might
+end up coding that variable as numeric.
+
+6
+00:00:32,490 --> 00:00:33,510
+So like code it 1 through 5 and
+
+7
+00:00:34,770 --> 00:00:39,290
+you could choose to analyze that data then
+as a number that predictable variable but
+
+8
+00:00:39,290 --> 00:00:42,460
+could be treated as a number in the
+regression model.
+
+9
+00:00:42,460 --> 00:00:44,460
+Now there are some assumptions if you do
+this.
+
+10
+00:00:44,460 --> 00:00:46,050
+So, if you just throw that variable,
+
+11
+00:00:46,050 --> 00:00:49,410
+that number 1 through 5 into your model,
+you are making an assumption.
+
+12
+00:00:49,410 --> 00:00:53,107
+So, in a logistic regression, you are
+assuming that the logit of
+
+13
+00:00:53,107 --> 00:00:58,300
+the outcome has a linear relationship with
+across the numbers, 1 through 5.
+
+14
+00:00:58,300 --> 00:00:59,744
+So literally that there would be a line.
+
+15
+00:00:59,744 --> 00:01:03,950
+You know, So if you plotted that, it would
+something that was, roughly, on a line.
+
+16
+00:01:03,950 --> 00:01:06,490
+Now that's somewhat of an, of a big
+assumption, right,
+
+17
+00:01:06,490 --> 00:01:11,120
+you're assuming that you're, as you go
+from category one to two, that your,
+
+18
+00:01:11,120 --> 00:01:14,560
+your increase in risk, your jump in risk,
+or your jump in the logit, of,
+
+19
+00:01:14,560 --> 00:01:18,630
+of the outcome, is equal across all of
+these different levels.
+
+20
+00:01:18,630 --> 00:01:20,240
+And that may be true in some cases, but
+
+21
+00:01:20,240 --> 00:01:23,770
+you can imagine a lot of cases where those
+categories aren't really evenly spaced,
+
+22
+00:01:23,770 --> 00:01:27,080
+and that your risk doesn't jump up evenly
+across the categories.
+
+23
+00:01:27,080 --> 00:01:32,740
+You're assuming that when you just treat
+that variable as a number.
+
+24
+00:01:32,740 --> 00:01:35,510
+You're only going to also get a single
+estimate when you
+
+25
+00:01:35,510 --> 00:01:38,620
+put that variable into your logistic
+regression model.
+
+26
+00:01:38,620 --> 00:01:40,870
+You're going to get a single beta and a
+single odd ratio.
+
+27
+00:01:40,870 --> 00:01:43,770
+The reason being is that when you treat
+this as a number you're
+
+28
+00:01:43,770 --> 00:01:47,260
+literally just getting one slope that's
+the reason for that one.
+
+29
+00:01:47,260 --> 00:01:48,240
+You're going to get one p value.
+
+30
+00:01:48,240 --> 00:01:50,890
+Now that might be have some advantages.
+
+31
+00:01:50,890 --> 00:01:54,590
+If you have a small data set, the thing
+about categorical variables is that if you
+
+32
+00:01:54,590 --> 00:01:58,370
+have a large number of categories, and you
+dummy code them, that eats up a lot of,
+
+33
+00:01:58,370 --> 00:01:59,520
+you have to estimate a lot of betas.
+
+34
+00:01:59,520 --> 00:02:01,030
+That eats up a lot of degrees of freedom.
+
+35
+00:02:01,030 --> 00:02:04,130
+So if you're dealing with a small data
+set, sometimes you might want to
+
+36
+00:02:04,130 --> 00:02:07,130
+treat something as an ordinal variable
+just because you don't have enough degrees
+
+37
+00:02:07,130 --> 00:02:10,880
+of freedom to model it, to dummy code all
+the categories.
+
+38
+00:02:10,880 --> 00:02:13,480
+Alternatively of course, you could just
+take your ordinal variable and
+
+39
+00:02:13,480 --> 00:02:16,400
+treat it as categorical, treat it as dummy
+coded.
+
+40
+00:02:17,500 --> 00:02:19,830
+In the way that we do with any categorical
+variable.
+
+41
+00:02:19,830 --> 00:02:23,100
+This makes no assumptions about the
+relationships between increasing
+
+42
+00:02:23,100 --> 00:02:27,640
+categories, because you're allowing every
+category comp, you're comparing,
+
+43
+00:02:27,640 --> 00:02:29,310
+you're calculating a separate odds ratio
+for
+
+44
+00:02:29,310 --> 00:02:32,510
+every category relative to the reference
+group.
+
+45
+00:02:32,510 --> 00:02:34,810
+And so if one of the odds ratios is 3, and
+
+46
+00:02:34,810 --> 00:02:37,260
+the next category has an odds ratio you
+know, of 2.9 and
+
+47
+00:02:37,260 --> 00:02:41,200
+there's really no increase, you'll you'll
+capture all of that differences.
+
+48
+00:02:41,200 --> 00:02:43,730
+Of course it costs more degrees of freedom
+you've gotta estimate all those betas and
+
+49
+00:02:43,730 --> 00:02:45,850
+all those odds ratios so that sometimes
+can be an issue.
+
+50
+00:02:48,560 --> 00:02:49,510
+Now be very careful,
+
+51
+00:02:49,510 --> 00:02:53,360
+I just want to point out that sometimes
+when you're coding data.
+
+52
+00:02:53,360 --> 00:02:56,112
+You take a categorical variable something
+like the occupation and
+
+53
+00:02:56,112 --> 00:02:59,610
+just because it's easy to type it in, you
+might end up coding it as a number.
+
+54
+00:02:59,610 --> 00:03:03,790
+Like one means teacher, two means social
+worker, ectera.
+
+55
+00:03:03,790 --> 00:03:06,930
+That occupation variable is truly nominal
+variable.
+
+56
+00:03:06,930 --> 00:03:09,420
+It is not ordered categories right now.
+
+57
+00:03:09,420 --> 00:03:12,350
+So just be careful that you don't
+accidently dump that.
+
+58
+00:03:12,350 --> 00:03:14,510
+Variable into your regression model and
+
+59
+00:03:14,510 --> 00:03:16,750
+treat it as a number without even
+realizing it.
+
+60
+00:03:16,750 --> 00:03:19,560
+You have to clearly, you cannot treat that
+as a number.
+
+61
+00:03:19,560 --> 00:03:20,580
+It must be dummy coded.
+
+62
+00:03:21,590 --> 00:03:24,220
+Just to, illustrate all of this with an
+examnple.
+
+63
+00:03:24,220 --> 00:03:29,090
+This was a study that was looking at
+whether or not for men if they're
+
+64
+00:03:29,090 --> 00:03:33,990
+breastfed as infants are they more likely
+to or less likely to be obese or
+
+65
+00:03:33,990 --> 00:03:37,470
+overweight later in life and I'm just
+focusing here on the results for obesity.
+
+66
+00:03:38,760 --> 00:03:40,950
+So these are odds ratios this was a
+logistic regression,
+
+67
+00:03:40,950 --> 00:03:46,560
+the outcome is obesity and breastfeeding
+was measured in Five categories.
+
+68
+00:03:46,560 --> 00:03:51,040
+And now this probably has to do something
+with how the questionnaire was set up.
+
+69
+00:03:51,040 --> 00:03:53,970
+Maybe there was a questionnaire where
+people had to check off these categories.
+
+70
+00:03:53,970 --> 00:03:55,270
+So we ended up with five categories.
+
+71
+00:03:55,270 --> 00:03:58,220
+You could have measured breast feeding as
+a continuous variable, but
+
+72
+00:03:58,220 --> 00:04:01,220
+I'm assuming here that it probably wasn't
+measured as continuous and
+
+73
+00:04:01,220 --> 00:04:03,660
+that's why they're treating it as a
+categorical variable.
+
+74
+00:04:03,660 --> 00:04:05,716
+But it clearly ordered categories, right?
+
+75
+00:04:05,716 --> 00:04:09,220
+So here's category one, two, three, four
+and five.
+
+76
+00:04:09,220 --> 00:04:13,090
+So, the reference group are those who were
+fed, breastfed for at least four months.
+
+77
+00:04:13,090 --> 00:04:13,910
+And then the, the,
+
+78
+00:04:13,910 --> 00:04:18,350
+the sort of, highest risk group is those
+who were breastfed for less than a month.
+
+79
+00:04:18,350 --> 00:04:19,609
+And then we have categories in between.
+
+80
+00:04:20,640 --> 00:04:21,650
+But they're clearly ordered.
+
+81
+00:04:22,680 --> 00:04:25,200
+Okay, looking at the results, what do we
+see here?
+
+82
+00:04:25,200 --> 00:04:27,220
+First of all, where do these ratios come
+from?
+
+83
+00:04:27,220 --> 00:04:29,400
+The first row here is just a crude odds
+ratio,
+
+84
+00:04:29,400 --> 00:04:30,620
+it means we haven't adjusted for
+everything.
+
+85
+00:04:30,620 --> 00:04:33,670
+Notice the crude and the adjusted odds
+ratios look awfully similar.
+
+86
+00:04:33,670 --> 00:04:35,960
+So the adjustment doesn't make a huge
+difference here.
+
+87
+00:04:35,960 --> 00:04:37,260
+So where did the odds ratios come from?
+
+88
+00:04:37,260 --> 00:04:40,400
+Well, I fit a, or the authors here fit a
+logit model for
+
+89
+00:04:40,400 --> 00:04:44,960
+obesity With an alpha that represents the
+reference group and
+
+90
+00:04:44,960 --> 00:04:48,280
+then four betas for those four additional
+categories.
+
+91
+00:04:50,290 --> 00:04:53,080
+Those translate therefore into four odds
+ratios.
+
+92
+00:04:55,310 --> 00:04:58,130
+We calculated those odds ratios here's
+what they come out to be
+
+93
+00:04:58,130 --> 00:05:01,960
+you can see that the first of the non
+breastfed group essentially looks to
+
+94
+00:05:01,960 --> 00:05:03,517
+have somewhat of an elevated risk.
+
+95
+00:05:03,517 --> 00:05:06,424
+We also get a P value for linear trend
+which is trying to summarize and
+
+96
+00:05:06,424 --> 00:05:08,170
+cross all those different categories.
+
+97
+00:05:08,170 --> 00:05:11,280
+That I will talk about in just a minute
+but
+
+98
+00:05:11,280 --> 00:05:13,990
+again when I'm doing w coding my equation
+is going to look like this.
+
+99
+00:05:13,990 --> 00:05:16,310
+I have to estimate four parameters.
+
+100
+00:05:16,310 --> 00:05:19,820
+Well we can also try to look at this
+visually.
+
+101
+00:05:19,820 --> 00:05:21,840
+I did a plot of those odds ratios.
+
+102
+00:05:21,840 --> 00:05:24,340
+I can't do the log plot here cause I don't
+have the original data but
+
+103
+00:05:24,340 --> 00:05:26,350
+I can take the odds ratios that were in
+the paper.
+
+104
+00:05:26,350 --> 00:05:29,472
+And just for illustration's purposes just
+plot them against these categories 1
+
+105
+00:05:29,472 --> 00:05:30,380
+through 5.
+
+106
+00:05:30,380 --> 00:05:33,070
+This is just show you that they kind of
+jump around a little.
+
+107
+00:05:33,070 --> 00:05:35,800
+This is not certainly not a smooth curve
+because odds ratio was
+
+108
+00:05:35,800 --> 00:05:36,750
+estimated separately.
+
+109
+00:05:38,880 --> 00:05:41,610
+Now what would happen though if I were to
+
+110
+00:05:41,610 --> 00:05:44,474
+model breast feeding as an ordinal
+variable that is literally just.
+
+111
+00:05:44,474 --> 00:05:46,880
+Coded as one, two, three, four, five for
+those five categories, and
+
+112
+00:05:46,880 --> 00:05:51,090
+dump it in the model at, treat it as a
+number, the number 1 through 5.
+
+113
+00:05:51,090 --> 00:05:52,410
+I'm now only going to have a single beta,
+
+114
+00:05:52,410 --> 00:05:56,280
+because I'm, I'm treating it essentially
+as a numeric or continuous variable.
+
+115
+00:05:56,280 --> 00:05:58,120
+I'm going to get out a single beta.
+
+116
+00:05:58,120 --> 00:05:58,960
+And I can kind of,
+
+117
+00:05:58,960 --> 00:06:01,870
+I can't actually run this on this data,
+because I don't have it, but I can guess.
+
+118
+00:06:01,870 --> 00:06:05,100
+From the odds ratio published in the paper
+that if I did that the betas going to come
+
+119
+00:06:05,100 --> 00:06:07,670
+out somewhere around lets say about -.08.
+
+120
+00:06:07,670 --> 00:06:11,478
+Then, I can then do both the logit plot
+and the odds ratio plot.
+
+121
+00:06:11,478 --> 00:06:14,100
+The logit plot's going to be really easy,
+assuming that I'm
+
+122
+00:06:15,100 --> 00:06:19,800
+pretty close on my estimate here is my
+categories one, two, three, four, five.
+
+123
+00:06:19,800 --> 00:06:22,310
+My logit plot is again just going to be a
+straight line so
+
+124
+00:06:22,310 --> 00:06:25,450
+I'm going to be going down across the
+categories here and
+
+125
+00:06:25,450 --> 00:06:28,950
+my beta will be -.08 that's the slope of
+that line.
+
+126
+00:06:28,950 --> 00:06:30,620
+So if my logit plot will just be a
+straight line.
+
+127
+00:06:30,620 --> 00:06:33,990
+If I plot the odds ratios like I did in
+the previous slide it'd
+
+128
+00:06:33,990 --> 00:06:36,770
+actually be a little bit curved cause we
+don't have a linear relationship with
+
+129
+00:06:36,770 --> 00:06:38,070
+the odds ratios but with the beta.
+
+130
+00:06:39,400 --> 00:06:43,230
+The P value for this beta I know, comes
+out to be .03 and the reason I
+
+131
+00:06:43,230 --> 00:06:48,200
+know that is because they told us that the
+P value for linear trend is .03.
+
+132
+00:06:48,200 --> 00:06:52,290
+And all the P variable from the near trend
+is, is when you put the variable in
+
+133
+00:06:52,290 --> 00:06:55,840
+as an ordinal variable, so I know that
+beta is going to have a P value of .03.
+
+134
+00:06:55,840 --> 00:07:00,120
+And just to show you here is were we have
+a single Beta.
+
+135
+00:07:00,120 --> 00:07:01,670
+This is ordinal graph.
+
+136
+00:07:01,670 --> 00:07:02,450
+Of the odds ratios.
+
+137
+00:07:02,450 --> 00:07:04,970
+You can see it's smooth, cause we only
+estimated one beta,
+
+138
+00:07:04,970 --> 00:07:07,490
+essentially one odds ratio, one set of
+odds ratios.
+
+139
+00:07:07,490 --> 00:07:11,450
+And then for when we treated it as
+categorical, if you plot the odds ratios
+
+140
+00:07:11,450 --> 00:07:15,280
+it looks jagged, because we estimated
+separate odds ratios for each category.
+
+141
+00:07:16,920 --> 00:07:20,840
+Now this P value for linear trend again
+all it is, is if I take the model and
+
+142
+00:07:20,840 --> 00:07:24,930
+I do the logit of obesity [SOUND] and
+
+143
+00:07:24,930 --> 00:07:28,940
+I plug in a single data for breastfeeding,
+that's the number 1 through 5.
+
+144
+00:07:28,940 --> 00:07:32,500
+That ordinal variable, I treat it as a
+ordinal variable The p-value that's
+
+145
+00:07:32,500 --> 00:07:35,680
+associated with this beta, that is the
+p-value for linear trend.
+
+146
+00:07:35,680 --> 00:07:38,810
+That's where it comes from, it came at
+3.03 in this case.
+
+147
+00:07:38,810 --> 00:07:40,730
+Well, what does that really mean?
+
+148
+00:07:40,730 --> 00:07:42,570
+Well, all that really means is okay.
+
+149
+00:07:43,610 --> 00:07:46,700
+Again I don't know the exact logit plot
+here but I can kind of guess
+
+150
+00:07:46,700 --> 00:07:50,010
+what the logit plot would look like if I
+had the original raw data.
+
+151
+00:07:50,010 --> 00:07:52,200
+I can kind of guess about what it would
+look like.
+
+152
+00:07:52,200 --> 00:07:57,310
+And you know it's going to be something
+like, well clearly our
+
+153
+00:07:57,310 --> 00:08:03,100
+category one was elevated and then there
+was you know some little bit of elevation.
+
+154
+00:08:03,100 --> 00:08:05,440
+Category four is actually lower than five.
+
+155
+00:08:05,440 --> 00:08:07,990
+So you know, its going to look something
+like that and
+
+156
+00:08:07,990 --> 00:08:10,070
+I can fit a line to those points.
+
+157
+00:08:10,070 --> 00:08:12,110
+That's all I'm doing when I'm treating
+this as an ordinal variable.
+
+158
+00:08:12,110 --> 00:08:13,390
+I'm fitting a line to those points.
+
+159
+00:08:13,390 --> 00:08:14,770
+So lets I fit the line to those points.
+
+160
+00:08:14,770 --> 00:08:16,030
+It comes out like that and
+
+161
+00:08:16,030 --> 00:08:19,360
+that slope is enough to trigger
+statistical significance.
+
+162
+00:08:19,360 --> 00:08:22,290
+Well that comes out to be statistical
+significance.
+
+163
+00:08:22,290 --> 00:08:26,040
+Therefore my p-value for linear trend is
+signiificant.
+
+164
+00:08:26,040 --> 00:08:26,780
+What does that mean?
+
+165
+00:08:26,780 --> 00:08:29,510
+All it means is that if I fit a line to
+those five points, and
+
+166
+00:08:29,510 --> 00:08:32,740
+five points isn't a lot, it, the slope is
+significant.
+
+167
+00:08:32,740 --> 00:08:35,810
+Well how can I trigger a significant
+p-value for a linear trend?
+
+168
+00:08:35,810 --> 00:08:36,900
+Well there's a lot of ways to do it.
+
+169
+00:08:36,900 --> 00:08:40,550
+You know, if I again, let's say I just had
+the same kind of data set but
+
+170
+00:08:40,550 --> 00:08:43,120
+really there was no elevation.
+
+171
+00:08:43,120 --> 00:08:44,670
+And here's my reference group and then
+there,
+
+172
+00:08:44,670 --> 00:08:47,980
+there was only one group, the most extreme
+group from the reference group.
+
+173
+00:08:47,980 --> 00:08:51,020
+Category one versus category five that one
+happened to be elevated well guess what I
+
+174
+00:08:51,020 --> 00:08:55,250
+can probably if I fit the line to those
+data it's also probably going to
+
+175
+00:08:55,250 --> 00:08:57,330
+be a statistically significant slope.
+
+176
+00:08:57,330 --> 00:09:00,790
+Does that mean that I'm increasing
+linearally as I go across the categories?
+
+177
+00:09:00,790 --> 00:09:03,287
+Clearly not it just means that you know,
+
+178
+00:09:03,287 --> 00:09:05,970
+the category one was elevated compared
+with category five.
+
+179
+00:09:05,970 --> 00:09:07,170
+That could be enough.
+
+180
+00:09:07,170 --> 00:09:10,160
+To trigger a significant linear p-value
+for linear trends.
+
+181
+00:09:10,160 --> 00:09:11,000
+You have to be a little careful.
+
+182
+00:09:11,000 --> 00:09:12,540
+It doesn't tell you about dose response.
+
+183
+00:09:12,540 --> 00:09:14,980
+It doesn't tell you a whole heck of a lot.
+
+184
+00:09:14,980 --> 00:09:19,370
+It's just one way though that you can
+summarize across multiple
+
+185
+00:09:19,370 --> 00:09:21,320
+categories an overall p-value.
+
+186
+00:09:21,320 --> 00:09:25,220
+You can see that in the overall chart here
+the p-values come out to be .03
+
+187
+00:09:25,220 --> 00:09:26,380
+for obesity.
+
+188
+00:09:26,380 --> 00:09:27,930
+I'm showing both the crude and adjusted
+here.
+
+189
+00:09:29,390 --> 00:09:32,350
+That's largely triggered by the fact that
+we have Elevation in
+
+190
+00:09:32,350 --> 00:09:35,270
+that first category and a little bit of
+decrease as we go across
+
+191
+00:09:35,270 --> 00:09:37,850
+the categories towards the reference
+group.
+
+192
+00:09:37,850 --> 00:09:39,500
+It does give you a single p value, though,
+
+193
+00:09:39,500 --> 00:09:42,750
+that you can point to, which is why people
+use it.
+
+194
+00:09:42,750 --> 00:09:45,060
+If, you try to calculate a p value for
+
+195
+00:09:45,060 --> 00:09:49,020
+each of these separate categories, you do
+get one when you dummy code.
+
+196
+00:09:49,020 --> 00:09:50,160
+But if people worry about,
+
+197
+00:09:50,160 --> 00:09:54,490
+well then, multiple testing because I'm
+reporting so many p values.
+
+198
+00:09:54,490 --> 00:09:55,890
+They want one summary measure, so
+
+199
+00:09:55,890 --> 00:09:59,130
+this gives a summary measure that tells
+you something across those categories.
+
+200
+00:09:59,130 --> 00:10:00,780
+Again, it doesn't tell you a whole heck of
+a lot, though,
+
+201
+00:10:00,780 --> 00:10:05,400
+it just tells you that if you were to fit
+a line to only those five points,
+
+202
+00:10:05,400 --> 00:10:07,590
+that at least the slope of that line would
+be significant.
+
+203
+00:10:09,420 --> 00:10:13,050
+Just to show you one more example of a p
+for trend, so we saw this example
+
+204
+00:10:13,050 --> 00:10:16,840
+earlier about dietary patterns and breast
+cancer risk, they also reported a p for
+
+205
+00:10:16,840 --> 00:10:19,635
+trend, because they had the same kind of
+thing, they had an ordinal variable.
+
+206
+00:10:19,635 --> 00:10:24,500
+Quin-tiles of dietary pattern they broken
+up into quin-tiles for
+
+207
+00:10:24,500 --> 00:10:28,260
+whatever reason perhaps because they
+didn't think it was linear,
+
+208
+00:10:28,260 --> 00:10:30,604
+well it's actually didn't have a [UNKNOWN]
+it was,
+
+209
+00:10:30,604 --> 00:10:35,320
+it was contravention perhaps, it didn't
+think it was linear in that model.
+
+210
+00:10:35,320 --> 00:10:38,250
+For some reason they've broken it up into
+categories, so the reference could be
+
+211
+00:10:38,250 --> 00:10:41,310
+the lowest quin-tile, and what you can see
+is the one that comes
+
+212
+00:10:41,310 --> 00:10:45,730
+really significant in the P value for
+trend is this salad and wine diet.
+
+213
+00:10:45,730 --> 00:10:47,380
+That's really triggered by if you look,
+
+214
+00:10:47,380 --> 00:10:50,100
+you know, it's pretty much staying right
+around 1.0.
+
+215
+00:10:50,100 --> 00:10:53,710
+And then suddenly in the fifth category,
+it jumps up in risk.
+
+216
+00:10:53,710 --> 00:10:57,760
+So the logit plot here is going to look
+something like [SOUND].
+
+217
+00:10:57,760 --> 00:11:01,650
+And basically, here is my reference group.
+
+218
+00:11:01,650 --> 00:11:03,950
+If you go up a little bit, maybe a little
+bit in group three,
+
+219
+00:11:03,950 --> 00:11:04,790
+kind of sticking around one,
+
+220
+00:11:04,790 --> 00:11:06,540
+and then suddenly there's a big jump up in
+group five.
+
+221
+00:11:06,540 --> 00:11:07,884
+Well, yeah, if I fit a,
+
+222
+00:11:07,884 --> 00:11:12,320
+a line to those five points, yeah, it'll,
+it's going to trigger a significant.
+
+223
+00:11:12,320 --> 00:11:15,400
+It kind of came out to a highly
+significant.
+
+224
+00:11:15,400 --> 00:11:17,360
+Slope there, so we do get a significant
+slope but
+
+225
+00:11:17,360 --> 00:11:18,830
+its not based on a lot of points and
+
+226
+00:11:18,830 --> 00:11:22,960
+it just means that the highest category
+was a lot higher then the lowest category.
+
+227
+00:11:22,960 --> 00:11:25,080
+So again, take the P value for
+
+228
+00:11:25,080 --> 00:11:29,270
+trend with a grain of salt, it is one way
+though that you can summarize.
+
+229
+00:11:29,270 --> 00:11:32,040
+When you're doing, when you have ordered
+categories it is one way that
+
+230
+00:11:32,040 --> 00:11:36,285
+you can get a single p value associated
+with those ordered categories.

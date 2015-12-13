@@ -1,0 +1,1310 @@
+1
+00:00:01,140 --> 00:00:05,020
+Now I'm going to return to my two
+hypothetical eye trial examples.
+
+2
+00:00:05,020 --> 00:00:05,890
+These are nice, some nice,
+
+3
+00:00:05,890 --> 00:00:09,720
+simple data that I can use to illustrate
+how GE modeling works.
+
+4
+00:00:09,720 --> 00:00:12,070
+So remember, the first trial, every
+patient,
+
+5
+00:00:12,070 --> 00:00:14,110
+there were 50 patients with bilateral eye
+disease.
+
+6
+00:00:14,110 --> 00:00:19,180
+Every patient received both the drug in
+one eye and the placebo in the other eye.
+
+7
+00:00:19,180 --> 00:00:23,010
+The outcome was a binary outcome of
+improvement, yes or no.
+
+8
+00:00:23,010 --> 00:00:27,320
+In the second hypothetical trial, it was
+basically the same except,
+
+9
+00:00:27,320 --> 00:00:31,260
+every person got the drug in both eyes, or
+the placebo in both eyes.
+
+10
+00:00:31,260 --> 00:00:32,570
+So they only got one or the other.
+
+11
+00:00:35,310 --> 00:00:39,130
+Now, if we're talking about the first
+example, the within person example where
+
+12
+00:00:39,130 --> 00:00:41,690
+we're having different things happening
+within a person.
+
+13
+00:00:41,690 --> 00:00:45,960
+I can, we first need to look at what is
+the correlation between you know,
+
+14
+00:00:45,960 --> 00:00:47,330
+within eyes in a person.
+
+15
+00:00:47,330 --> 00:00:50,300
+So, what is the left and right eye in a
+person are they correlated?
+
+16
+00:00:50,300 --> 00:00:51,940
+And in fact, in these made up data.
+
+17
+00:00:51,940 --> 00:00:53,800
+Of course, they're made up, so I made sure
+they were.
+
+18
+00:00:53,800 --> 00:00:55,120
+They were in fact correlated.
+
+19
+00:00:55,120 --> 00:01:01,430
+So there was a correlation of about 0.36
+for within eye, you know, within a person.
+
+20
+00:01:01,430 --> 00:01:04,480
+A person who improves in one eye is more
+likely to improve in the other eye.
+
+21
+00:01:04,480 --> 00:01:05,090
+That's what that means.
+
+22
+00:01:06,190 --> 00:01:07,725
+Now the as I said, for
+
+23
+00:01:07,725 --> 00:01:10,530
+GEE models, you have to start by choosing
+a correlation structure.
+
+24
+00:01:10,530 --> 00:01:14,552
+So it's really easy here because the
+correlation matrix there's only one
+
+25
+00:01:14,552 --> 00:01:15,410
+correlation coefficient.
+
+26
+00:01:15,410 --> 00:01:16,780
+I made a really simple example right.
+
+27
+00:01:16,780 --> 00:01:18,470
+So there's only one correlation
+coefficient.
+
+28
+00:01:18,470 --> 00:01:23,710
+So we can just choose the exchangeable
+correlation which is actually going to
+
+29
+00:01:23,710 --> 00:01:26,590
+be the same as the unstructured here
+because there's only a single correlation.
+
+30
+00:01:26,590 --> 00:01:29,110
+There's only one choice here, which is
+exchangeable and
+
+31
+00:01:29,110 --> 00:01:31,526
+that's the same as structured.
+
+32
+00:01:31,526 --> 00:01:36,340
+So I, I'll get, for a lot of cases, we're
+just talking about cluster data.
+
+33
+00:01:36,340 --> 00:01:38,820
+Even if there is more than one correlation
+coefficient,
+
+34
+00:01:38,820 --> 00:01:41,150
+oftentimes we're still just picking the
+exchangeable.
+
+35
+00:01:41,150 --> 00:01:42,810
+That is sort of the most commonly used.
+
+36
+00:01:42,810 --> 00:01:44,730
+You might choose unstructured if you, you
+know,
+
+37
+00:01:44,730 --> 00:01:47,620
+if there aren't too many correlation
+coefficients to estimate.
+
+38
+00:01:47,620 --> 00:01:51,040
+Now interestingly, it turns out that in
+this example, we could also,
+
+39
+00:01:51,040 --> 00:01:53,550
+I'm going to show you, we could also
+choose the independent structure.
+
+40
+00:01:53,550 --> 00:01:57,120
+That way, as you know, we could pretend we
+had that the correlation between the eyes
+
+41
+00:01:57,120 --> 00:01:58,170
+was actually zero.
+
+42
+00:01:58,170 --> 00:02:00,160
+And you might say, well how, how can that
+be.
+
+43
+00:02:00,160 --> 00:02:04,180
+Because we, the whole point of GEE is to
+correct for non-independence.
+
+44
+00:02:04,180 --> 00:02:08,320
+But it turns out that GEE modeling relies
+on something called,
+
+45
+00:02:08,320 --> 00:02:11,240
+you can calculate something called robust
+standard errors.
+
+46
+00:02:11,240 --> 00:02:14,630
+And those standard errors, when you
+calculate those they're fairly.
+
+47
+00:02:14,630 --> 00:02:18,240
+Robust against the misspecification of
+correlation.
+
+48
+00:02:18,240 --> 00:02:21,570
+In fact, if you put independents in here
+but choose the robust standard errors,
+
+49
+00:02:21,570 --> 00:02:23,570
+you're still going to get clues to the
+right answer.
+
+50
+00:02:23,570 --> 00:02:25,950
+So of course, you, in this case, want to
+choose the exchangeable.
+
+51
+00:02:25,950 --> 00:02:29,860
+But if you got it wrong and choose the
+independence, which is really wrong,
+
+52
+00:02:29,860 --> 00:02:33,120
+you still do well as long as you report
+the robust standard error.
+
+53
+00:02:33,120 --> 00:02:34,570
+I'll, I'll talk more about that in a bit.
+
+54
+00:02:36,470 --> 00:02:38,410
+So first of all, I just applied regular,
+
+55
+00:02:38,410 --> 00:02:41,340
+all this logistic regression to these
+data, ignoring the correlation.
+
+56
+00:02:41,340 --> 00:02:43,360
+This is the incorrect analysis.
+
+57
+00:02:43,360 --> 00:02:48,660
+So when I do that, what you'll notice is
+that I get a P-value of 0.07 that's
+
+58
+00:02:48,660 --> 00:02:54,248
+too high, because the correct analysis
+here is, is comparing within subjects.
+
+59
+00:02:54,248 --> 00:02:58,880
+And so ignoring the correlation makes are
+P value too high.
+
+60
+00:02:58,880 --> 00:03:00,900
+Our odds ratio is about two.
+
+61
+00:03:00,900 --> 00:03:04,690
+We have an intercept because this is
+ordinary logistic regression.
+
+62
+00:03:04,690 --> 00:03:09,090
+Recall that then also fit these data with
+conditional logistic regression which is
+
+63
+00:03:09,090 --> 00:03:11,750
+a perfectly valid to set these data if you
+just want to do with or
+
+64
+00:03:11,750 --> 00:03:14,060
+within person to person comparison.
+
+65
+00:03:14,060 --> 00:03:16,450
+The odds ratio is a little higher here.
+
+66
+00:03:16,450 --> 00:03:19,640
+But the P value went down because we, when
+we analyze these data,
+
+67
+00:03:19,640 --> 00:03:23,050
+correctly accounting for correlation, the
+P value becomes smaller.
+
+68
+00:03:23,050 --> 00:03:26,170
+Conditional Logistic Regression is a
+possible choice here.
+
+69
+00:03:26,170 --> 00:03:28,940
+For this situation, I probably prefer to
+use
+
+70
+00:03:28,940 --> 00:03:31,980
+the GEE model rather than Conditional
+Logistic regression, but
+
+71
+00:03:31,980 --> 00:03:33,399
+you'll see that we get very similar
+answers.
+
+72
+00:03:34,560 --> 00:03:37,480
+Again the correlation structure here is
+just exchangeable because there's only one
+
+73
+00:03:37,480 --> 00:03:39,180
+correlation to estimate.
+
+74
+00:03:39,180 --> 00:03:43,010
+So I asked the computer to do a GEE model,
+I specified
+
+75
+00:03:43,010 --> 00:03:47,310
+an exchangeable correlation matrix, and
+here is the results that I get.
+
+76
+00:03:47,310 --> 00:03:51,290
+Now when we do the GEE model we are back
+to getting the intercepts.
+
+77
+00:03:51,290 --> 00:03:54,410
+So we now do get in a unlikely with a
+conditional logistic regression Where we
+
+78
+00:03:54,410 --> 00:03:57,940
+didn't get an intercept, with a GEE model
+we will get an intercept.
+
+79
+00:03:57,940 --> 00:04:01,330
+We're not doing any kind of conditioned
+likihood where things are cancelling.
+
+80
+00:04:01,330 --> 00:04:03,960
+The P value here comes out to be 0.0248.
+
+81
+00:04:03,960 --> 00:04:07,617
+I'll just remind you that when we analyze
+the same data with McNamera's test the P
+
+82
+00:04:07,617 --> 00:04:08,770
+value was 0.029.
+
+83
+00:04:08,770 --> 00:04:09,990
+So, this is very close.
+
+84
+00:04:09,990 --> 00:04:13,180
+Its a little bit closer to the McNamera's
+test than the conditional logistic
+
+85
+00:04:13,180 --> 00:04:13,770
+regression is.
+
+86
+00:04:15,030 --> 00:04:19,920
+Notice that the odds ratio here the 2.078
+output in Sass, for
+
+87
+00:04:19,920 --> 00:04:23,340
+the odds ratio is a little funny, because
+you have to ask specifically for this, but
+
+88
+00:04:23,340 --> 00:04:24,770
+this is just the odds ratio.
+
+89
+00:04:24,770 --> 00:04:29,628
+Notice that the odd, the odds ratio 2.078
+and beta coefficient 0.7357.
+
+90
+00:04:29,628 --> 00:04:34,310
+If you go back to the incorrect analysis,
+with regular logistic regression,
+
+91
+00:04:34,310 --> 00:04:37,700
+the beta, and of course the odds ration
+then are identical.
+
+92
+00:04:37,700 --> 00:04:41,650
+So you're getting the exact same magnitude
+of the effect is
+
+93
+00:04:41,650 --> 00:04:45,880
+only the standard errors that really gets
+effected by doing GEE modeling.
+
+94
+00:04:45,880 --> 00:04:48,970
+So the point estimates don't change it's
+just the standard errors.
+
+95
+00:04:48,970 --> 00:04:51,270
+So that's it, that's our GEE model.
+
+96
+00:04:51,270 --> 00:04:55,360
+Again, got the same beta coefficient as
+with the ordinary logistic regression, so
+
+97
+00:04:55,360 --> 00:04:57,520
+if I didn't care about P-values and
+standard errors.
+
+98
+00:04:57,520 --> 00:04:59,000
+I, you know, that would have been fine.
+
+99
+00:04:59,000 --> 00:05:01,875
+But usually I care about reporting
+confidence intervals and
+
+100
+00:05:01,875 --> 00:05:04,770
+P-values, so I need to do the correct GEE
+model.
+
+101
+00:05:04,770 --> 00:05:08,000
+I then ask the computer here to give me
+the working correlation matrix.
+
+102
+00:05:08,000 --> 00:05:09,770
+So you can actually ask a computer to just
+say,
+
+103
+00:05:09,770 --> 00:05:13,050
+well what did you come up with for that
+correlation matrix at the end of the day?
+
+104
+00:05:13,050 --> 00:05:18,230
+So remember that when we look at the
+actual correlations in this simple case.
+
+105
+00:05:18,230 --> 00:05:21,418
+The correlation within I's was something
+like 0.3, it was close to 0.36,
+
+106
+00:05:21,418 --> 00:05:22,530
+it was 0.35 something.
+
+107
+00:05:22,530 --> 00:05:26,645
+Let me go back here and get that actual
+number.
+
+108
+00:05:26,645 --> 00:05:29,070
+0.358 essentially.
+
+109
+00:05:29,070 --> 00:05:32,380
+So, that's what we actually, that's the
+actual correlation.
+
+110
+00:05:32,380 --> 00:05:35,040
+Of course, we're doing some kind of
+quasi-likelihood method here, and
+
+111
+00:05:35,040 --> 00:05:37,350
+it's estimating things, and it's coming
+out to be pretty close.
+
+112
+00:05:37,350 --> 00:05:39,120
+It's right around where we'd expect, about
+0.36.
+
+113
+00:05:39,120 --> 00:05:42,190
+So that's the working correlation matrix
+we came up with.
+
+114
+00:05:42,190 --> 00:05:44,160
+It corrected our standard, and
+
+115
+00:05:44,160 --> 00:05:48,290
+therefore our P-values by the fact that we
+have correlation here.
+
+116
+00:05:48,290 --> 00:05:52,330
+These standard errors that I reported back
+here are what we call
+
+117
+00:05:52,330 --> 00:05:54,570
+robust standard errors in SASS.
+
+118
+00:05:54,570 --> 00:05:55,510
+This is the default.
+
+119
+00:05:55,510 --> 00:05:57,270
+You get out what are called the robust
+errors.
+
+120
+00:05:57,270 --> 00:05:59,830
+They're also called the empirical standard
+errors.
+
+121
+00:05:59,830 --> 00:06:02,530
+So that's the same thing as robust
+standard errors,
+
+122
+00:06:02,530 --> 00:06:04,880
+I've been talking about robust standard
+errors.
+
+123
+00:06:04,880 --> 00:06:07,200
+But you'll see it also as empirical
+standard errors.
+
+124
+00:06:07,200 --> 00:06:10,450
+Those are the defaults, those are the ones
+that you generally want to report.
+
+125
+00:06:10,450 --> 00:06:13,380
+Now, I want to just show you that there's
+another type of standard error that you
+
+126
+00:06:13,380 --> 00:06:14,930
+can ask for.
+
+127
+00:06:14,930 --> 00:06:17,970
+That you have to actually ask for in SASS,
+specifically, but
+
+128
+00:06:17,970 --> 00:06:20,810
+it's something called the model-based
+standard error.
+
+129
+00:06:20,810 --> 00:06:23,140
+And I'll just show you that as long as we
+specify,
+
+130
+00:06:23,140 --> 00:06:26,510
+I've specified an exchangeable correlation
+matrix here, as long as we specify
+
+131
+00:06:26,510 --> 00:06:31,220
+the correlation structure correctly we get
+about the same P value, but still 0.02.
+
+132
+00:06:31,220 --> 00:06:33,910
+So the model-based standard errors will be
+fine if you
+
+133
+00:06:33,910 --> 00:06:35,740
+get the correlation structure right.
+
+134
+00:06:35,740 --> 00:06:39,040
+Notice beta doesn't not effected again
+only the P value is.
+
+135
+00:06:39,040 --> 00:06:41,860
+So, I'll talk a little bit more about the
+difference between these two
+
+136
+00:06:41,860 --> 00:06:42,450
+standard errors and
+
+137
+00:06:42,450 --> 00:06:46,300
+when you might want to use the model based
+errors and just in just a minute here.
+
+138
+00:06:46,300 --> 00:06:48,000
+But I just want to point out that as long
+as you're
+
+139
+00:06:48,000 --> 00:06:50,840
+getting the correlation structure right
+they actually come out pretty,
+
+140
+00:06:50,840 --> 00:06:53,220
+fairly similar but I just want to show
+you.
+
+141
+00:06:53,220 --> 00:06:57,370
+I then ran the GEE model but I specified I
+wanted independent correlation structure.
+
+142
+00:06:57,370 --> 00:06:59,340
+Okay, that's the totally wrong correlation
+structure.
+
+143
+00:06:59,340 --> 00:07:02,370
+Because clearly the eyes are correlated
+within a person here.
+
+144
+00:07:02,370 --> 00:07:05,640
+But I got the robust standard errors
+again, that's the default in SASS,
+
+145
+00:07:05,640 --> 00:07:09,030
+so here is when I ask for the independent
+correlation structure.
+
+146
+00:07:09,030 --> 00:07:13,540
+I get basically the same P-value as when I
+asked for the exchangeable.
+
+147
+00:07:13,540 --> 00:07:17,720
+As long as I'm using the empirical or
+robust standard error, so nothing changes.
+
+148
+00:07:17,720 --> 00:07:21,030
+However, if I specify independent
+correlation structure, but ask for
+
+149
+00:07:21,030 --> 00:07:22,450
+the model-based standard errors,
+
+150
+00:07:22,450 --> 00:07:25,560
+I'm basically going back to a regular old
+logistical regression.
+
+151
+00:07:25,560 --> 00:07:28,820
+This is the same P-value I got out of an
+ordinary logistic regression.
+
+152
+00:07:28,820 --> 00:07:31,324
+So, if I get the correlation structure
+wrong and ask for
+
+153
+00:07:31,324 --> 00:07:34,010
+the model-bases standard errors, I could
+be very off.
+
+154
+00:07:34,010 --> 00:07:37,940
+I'm essentially gone back to not
+correcting for the correlation here.
+
+155
+00:07:37,940 --> 00:07:41,170
+but, the robust standard errors do well
+even if I get the correlation structure
+
+156
+00:07:41,170 --> 00:07:42,190
+totally off.
+
+157
+00:07:42,190 --> 00:07:44,009
+So, ju, that's just something to keep in
+mind.
+
+158
+00:07:45,070 --> 00:07:47,920
+again, there's two types of standard
+errors, what we call robust or
+
+159
+00:07:47,920 --> 00:07:49,790
+empirical and model-based.
+
+160
+00:07:49,790 --> 00:07:52,070
+And in general, you're going to report the
+robust standard errors.
+
+161
+00:07:52,070 --> 00:07:54,750
+That's generally what you report.
+
+162
+00:07:54,750 --> 00:07:55,790
+It's the default in SASS.
+
+163
+00:07:55,790 --> 00:07:59,330
+You have to specifically ask for the other
+type, type of standard error.
+
+164
+00:07:59,330 --> 00:08:02,750
+The robust errors are great because they
+are robust against the incorrect choice of
+
+165
+00:08:02,750 --> 00:08:04,068
+correlation structure, as we've seen.
+
+166
+00:08:04,068 --> 00:08:06,890
+Whereas the model-based standard errors
+are very sensitive to that.
+
+167
+00:08:06,890 --> 00:08:10,370
+There are a few cases, however, where the
+model-based standard errors are preferred.
+
+168
+00:08:10,370 --> 00:08:11,250
+So I'll just point those out.
+
+169
+00:08:11,250 --> 00:08:15,190
+If you have a situation where you have a
+low number of clusters.
+
+170
+00:08:15,190 --> 00:08:16,790
+So you know,
+
+171
+00:08:16,790 --> 00:08:20,350
+this could be, like, a randomized cluster
+trial where you have, you know,
+
+172
+00:08:20,350 --> 00:08:23,560
+you randomized five schools to one thing
+and five schools to another thing.
+
+173
+00:08:23,560 --> 00:08:25,300
+So you'll only have ten total clusters.
+
+174
+00:08:25,300 --> 00:08:28,268
+There's situations where you might have a,
+kind of a low number of clusters.
+
+175
+00:08:28,268 --> 00:08:31,250
+Then the model-based standard errors are
+actually preferred.
+
+176
+00:08:31,250 --> 00:08:33,830
+Of course you're going to try to get the
+right correlation structure, so
+
+177
+00:08:33,830 --> 00:08:35,340
+that in a way it doesn't matter.
+
+178
+00:08:35,340 --> 00:08:38,110
+So this latter situation with low number
+of clusters,
+
+179
+00:08:38,110 --> 00:08:40,670
+you wouldn't find that usually for
+something like repeated measures where
+
+180
+00:08:40,670 --> 00:08:43,050
+you're measuring a whole bunch of people
+over time.
+
+181
+00:08:43,050 --> 00:08:46,560
+Usually with repeated-measures, you have
+kind of a large number of subjects and
+
+182
+00:08:46,560 --> 00:08:49,050
+a few number of time points so they're
+not, you know,
+
+183
+00:08:49,050 --> 00:08:51,190
+you don't have a low number of clusters.
+
+184
+00:08:51,190 --> 00:08:53,390
+But sometimes, we had you know,
+
+185
+00:08:53,390 --> 00:08:56,390
+again, something like a randomized cluster
+trial, this situation could come up.
+
+186
+00:08:56,390 --> 00:08:59,380
+So that I'll just point out that those
+model-based standard errors are there for
+
+187
+00:08:59,380 --> 00:09:00,640
+that kind of situation.
+
+188
+00:09:02,630 --> 00:09:05,040
+Now let's move to this hypothetical eye
+trial two.
+
+189
+00:09:05,040 --> 00:09:08,170
+This is a situation where the patients
+were
+
+190
+00:09:08,170 --> 00:09:12,820
+treated in both eyes with the same
+treatment, either the drug or the placebo.
+
+191
+00:09:12,820 --> 00:09:17,050
+When I look at the correlation between
+eyes in the same person from this
+
+192
+00:09:17,050 --> 00:09:19,030
+trial it's much higher.
+
+193
+00:09:19,030 --> 00:09:22,690
+And the reason being is that you got the
+same treatment in both eyes.
+
+194
+00:09:22,690 --> 00:09:24,630
+So when you don't get the same treatment
+in both eyes,
+
+195
+00:09:24,630 --> 00:09:28,240
+of course, if the treatment does anything
+the correlation is going to be lower.
+
+196
+00:09:28,240 --> 00:09:31,540
+When we treat both eyes with the same
+treatment, we're getting somewhat more
+
+197
+00:09:31,540 --> 00:09:35,580
+similar outcomes and so we get a little
+bit of a higher correlations.
+
+198
+00:09:35,580 --> 00:09:37,530
+The correlation here is 0.6, which is just
+quite a bit high.
+
+199
+00:09:37,530 --> 00:09:38,600
+Of course, these are made up data so
+
+200
+00:09:38,600 --> 00:09:41,790
+I just made the correlations come out high
+like this.
+
+201
+00:09:41,790 --> 00:09:44,980
+So, that's the correlation matrix, the
+observed correlation matrix for
+
+202
+00:09:44,980 --> 00:09:46,950
+the hypothetical trial two.
+
+203
+00:09:46,950 --> 00:09:47,710
+I then took those,
+
+204
+00:09:47,710 --> 00:09:51,700
+those data, ran them in the incorrect
+ordinary logistic regression.
+
+205
+00:09:51,700 --> 00:09:55,640
+Remember, here we're doing between cluster
+comparisons, right,
+
+206
+00:09:55,640 --> 00:10:00,290
+because we're comparing a person who got
+treatments in both eyes, or, or
+
+207
+00:10:00,290 --> 00:10:02,580
+the, the eyes from the same person.
+
+208
+00:10:02,580 --> 00:10:05,620
+To and an, another person's eyes; who
+didn't get treatment.
+
+209
+00:10:05,620 --> 00:10:08,260
+So we're comparing across people.
+
+210
+00:10:08,260 --> 00:10:11,010
+And so when we do the incorrect analysis,
+we fail to account for
+
+211
+00:10:11,010 --> 00:10:13,500
+correlations, our P values are too small.
+
+212
+00:10:13,500 --> 00:10:15,260
+As we've already seen with this example,
+
+213
+00:10:15,260 --> 00:10:17,360
+our P value here comes out to be
+significantly lower,
+
+214
+00:10:17,360 --> 00:10:22,234
+essentially over counting eyes The beta is
+0.8, and the odds ratio is about 2.28.
+
+215
+00:10:22,234 --> 00:10:24,720
+So that's the incorrect analysis.
+
+216
+00:10:24,720 --> 00:10:28,450
+When I then run the GEE model, I'm
+specifying I
+
+217
+00:10:28,450 --> 00:10:32,620
+want an exchangeable correlation matrix,
+and I run my GEE model on the same data.
+
+218
+00:10:32,620 --> 00:10:36,120
+Notice I get the same data coefficient,
+same odds ratio, so
+
+219
+00:10:36,120 --> 00:10:38,670
+that doesn't change, but my P-value goes
+up.
+
+220
+00:10:38,670 --> 00:10:42,180
+This is no longer statistically
+significant anymore.
+
+221
+00:10:42,180 --> 00:10:44,250
+Because now we've we've corrected for
+that.
+
+222
+00:10:44,250 --> 00:10:46,980
+We've gotten rid of that double counting
+of eyes, essentially.
+
+223
+00:10:46,980 --> 00:10:49,920
+So here's the, the correct P value.
+
+224
+00:10:49,920 --> 00:10:53,150
+I asked the computer to give me the
+working correlation matrix.
+
+225
+00:10:53,150 --> 00:10:56,007
+Remember that the observed correlation was
+about 0.66.
+
+226
+00:10:58,140 --> 00:10:59,940
+When it goes through this whole estimation
+method,
+
+227
+00:10:59,940 --> 00:11:01,500
+it estimates the correlation matrix and
+
+228
+00:11:01,500 --> 00:11:04,240
+gets correlations of about .59 so that's
+very close.
+
+229
+00:11:04,240 --> 00:11:06,630
+It's, it's doing you know, what we'd
+expect here.
+
+230
+00:11:08,020 --> 00:11:11,840
+Now I also asked to get the model based
+standard error just to show you,
+
+231
+00:11:11,840 --> 00:11:14,370
+If I correctly specify exchangeable
+correlation matrix.
+
+232
+00:11:14,370 --> 00:11:15,850
+Which is the right structure here, you
+know,
+
+233
+00:11:15,850 --> 00:11:18,676
+I get the same beta, I get about the same
+P-value with this
+
+234
+00:11:18,676 --> 00:11:21,800
+model-based standard error as I get with
+the robust standard errors.
+
+235
+00:11:21,800 --> 00:11:25,210
+However, when I incorrectly specify the
+correlation structure,
+
+236
+00:11:25,210 --> 00:11:28,890
+I say it's independent when clearly these
+are not independent.
+
+237
+00:11:28,890 --> 00:11:31,220
+The robust standard errors still do
+perfectly.
+
+238
+00:11:31,220 --> 00:11:33,040
+So notice that the P-value's still 0.11.
+
+239
+00:11:33,040 --> 00:11:34,860
+That, that's the correct P value here.
+
+240
+00:11:34,860 --> 00:11:37,450
+So the robust standard errors are
+empirical standard errors.
+
+241
+00:11:37,450 --> 00:11:41,510
+I get the right answer even if I specify
+the totally wrong correlation structure.
+
+242
+00:11:41,510 --> 00:11:44,750
+However, the model based standard errors
+take me back to just
+
+243
+00:11:44,750 --> 00:11:48,210
+a regular logistic regression now, and so
+I get the wrong P value.
+
+244
+00:11:48,210 --> 00:11:50,810
+So again, there's only certain situations
+where you might want to
+
+245
+00:11:50,810 --> 00:11:53,880
+think about the model based errors, but in
+general you're going to chose the robust.
+
+246
+00:11:55,690 --> 00:11:59,190
+And I just want to add one last example
+here just to show you again the,
+
+247
+00:11:59,190 --> 00:12:02,700
+the effect, the impact that this can have
+upon standard errors and P values.
+
+248
+00:12:02,700 --> 00:12:06,670
+So hypothetical eye trial three, is the
+same as hypothetical eye trial two.
+
+249
+00:12:06,670 --> 00:12:10,440
+But I rejiggered the data to make it so
+
+250
+00:12:10,440 --> 00:12:12,550
+that there's perfect correlation between
+eyes.
+
+251
+00:12:12,550 --> 00:12:16,250
+So in a, in a single person who got
+treatment Both eyes improve or
+
+252
+00:12:16,250 --> 00:12:17,190
+both eyes don't improve.
+
+253
+00:12:17,190 --> 00:12:19,340
+And the same with the person who got
+placebo.
+
+254
+00:12:19,340 --> 00:12:22,770
+So I made it you know, a mock dataset
+where the correlation is perfect.
+
+255
+00:12:22,770 --> 00:12:24,790
+So here's the observed correlation matrix.
+
+256
+00:12:24,790 --> 00:12:26,810
+There's perfect correlation between the
+eyes.
+
+257
+00:12:26,810 --> 00:12:31,100
+I just want to show you that the bigger
+the correlation the more impact it's going
+
+258
+00:12:31,100 --> 00:12:35,000
+to have if you fail to account for it.
+
+259
+00:12:35,000 --> 00:12:36,740
+So, when I did ordinary logistic
+regression,
+
+260
+00:12:36,740 --> 00:12:39,380
+I'm still getting this overly optimistic P
+value of about 0.04.
+
+261
+00:12:39,380 --> 00:12:44,680
+When I then run the correct GEE model now,
+when I have this much correlation.
+
+262
+00:12:44,680 --> 00:12:49,340
+Same outcomes, same number of eyes
+improved, in each group.
+
+263
+00:12:49,340 --> 00:12:52,876
+But more correlation between eyes than the
+P-value,
+
+264
+00:12:52,876 --> 00:12:55,210
+the correct P-value was even smaller.
+
+265
+00:12:55,210 --> 00:12:57,490
+Because I'm totally double counting,
+right.
+
+266
+00:12:57,490 --> 00:13:00,560
+If everybody always improves, both of
+their eyes always improve, or
+
+267
+00:13:00,560 --> 00:13:01,930
+both of their eyes always don't improve,
+
+268
+00:13:01,930 --> 00:13:06,410
+then I'm completely double counting when I
+count two eyes from the same person.
+
+269
+00:13:06,410 --> 00:13:09,750
+There's no longer any additional
+information from the second eye.
+
+270
+00:13:09,750 --> 00:13:13,230
+So there's even more of an impact on my
+p-values from over counting here.
+
+271
+00:13:13,230 --> 00:13:16,070
+The true P-value is even, is even worse
+here.
+
+272
+00:13:16,070 --> 00:13:20,420
+So just to kind of bring home the idea
+that it's very important to
+
+273
+00:13:20,420 --> 00:13:21,220
+account for correlation.
+
+274
+00:13:21,220 --> 00:13:22,800
+The bigger the correlations, of course,
+
+275
+00:13:22,800 --> 00:13:25,560
+the more impact they're going to have on
+your standard errors and your P-values.
+
+276
+00:13:25,560 --> 00:13:30,839
+>> [BLANK_AUDIO]

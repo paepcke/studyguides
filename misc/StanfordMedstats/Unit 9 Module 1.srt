@@ -1,0 +1,4036 @@
+1
+00:00:08,250 --> 00:00:12,440
+In this next module, we're going to dive
+right in to the logistic regression model.
+
+2
+00:00:14,489 --> 00:00:17,702
+We've talked about, when you have binary
+or categorical outcomes, that is,
+
+3
+00:00:17,702 --> 00:00:21,323
+when you're looking at proportions, we've
+talked about some statistical tests when
+
+4
+00:00:21,323 --> 00:00:25,420
+you don't want to adjust for anything that
+you can use.
+
+5
+00:00:25,420 --> 00:00:28,592
+So this is like the risk difference,
+relative risk, the Chi-square test,
+
+6
+00:00:28,592 --> 00:00:31,920
+the McNemar's chi-square test, so we
+talked about those, but what about when
+
+7
+00:00:31,920 --> 00:00:37,680
+you want to do a regression analysis when
+you have a binary or categorical outcome?
+
+8
+00:00:37,680 --> 00:00:40,375
+In that case you're going to be using
+logistic regression,
+
+9
+00:00:40,375 --> 00:00:43,400
+which we're going to talk about in this
+module.
+
+10
+00:00:43,400 --> 00:00:46,880
+I want to just give you a little overview
+of logistic regression so, to
+
+11
+00:00:46,880 --> 00:00:52,400
+remind you when we did linear regression,
+the model looked like the following.
+
+12
+00:00:52,400 --> 00:00:55,354
+We were predicting the value of some
+continuous.
+
+13
+00:00:55,354 --> 00:00:59,370
+Outcome variable, call it Y as a, a
+function of X.
+
+14
+00:00:59,370 --> 00:01:02,180
+Here's a simple linear regression model.
+
+15
+00:01:02,180 --> 00:01:05,610
+We have the intercept alpha, and the beta
+is our slope.
+
+16
+00:01:05,610 --> 00:01:07,820
+So that was the simple linear regression
+model.
+
+17
+00:01:07,820 --> 00:01:12,044
+In the multi-variant regression model, we
+can add some additional betas and
+
+18
+00:01:12,044 --> 00:01:14,720
+x's, additional predictors.
+
+19
+00:01:14,720 --> 00:01:16,488
+That makes it then a plane or
+
+20
+00:01:16,488 --> 00:01:22,890
+a higher dimension thing, but essentially
+we're feeding lines, linear regression.
+
+21
+00:01:22,890 --> 00:01:25,680
+Logistic regression actually isn't that
+different.
+
+22
+00:01:25,680 --> 00:01:29,145
+The right hand side of the equation is
+identical in logistic regression, so
+
+23
+00:01:29,145 --> 00:01:31,870
+it's going to look something like this.
+
+24
+00:01:31,870 --> 00:01:37,120
+There's a linear combination of datas and,
+and x's, risk factors.
+
+25
+00:01:37,120 --> 00:01:39,510
+It looks exactly the same.
+
+26
+00:01:39,510 --> 00:01:42,460
+And everything's going to be set up
+exactly the same in terms of
+
+27
+00:01:42,460 --> 00:01:46,340
+defining the predictors of the, of the
+model.
+
+28
+00:01:46,340 --> 00:01:47,750
+You can put binary predictors in.
+
+29
+00:01:47,750 --> 00:01:48,730
+You can put continuation.
+
+30
+00:01:48,730 --> 00:01:49,710
+You can put categorical.
+
+31
+00:01:49,710 --> 00:01:50,730
+You can do dummy coating.
+
+32
+00:01:50,730 --> 00:01:53,680
+All of that is the same as with linear
+regression.
+
+33
+00:01:53,680 --> 00:01:57,800
+What's different in logistic equation is
+the left hand side of the equation.
+
+34
+00:01:57,800 --> 00:02:00,390
+We are no longer modelling y-i.
+
+35
+00:02:00,390 --> 00:02:03,110
+The outcome variable directly.
+
+36
+00:02:03,110 --> 00:02:07,990
+Rather we're going to be modelling a
+transformation of the outcome Variable.
+
+37
+00:02:07,990 --> 00:02:10,135
+In logistic, the case of logistic
+regression,
+
+38
+00:02:10,135 --> 00:02:13,470
+we're going to be modeling the log odds of
+the outcome.
+
+39
+00:02:13,470 --> 00:02:17,175
+And I know that sounds terrible, that's
+called a logit function, and
+
+40
+00:02:17,175 --> 00:02:19,860
+I'll explain why in a minute.
+
+41
+00:02:19,860 --> 00:02:23,640
+We're going to be modeling this logit
+function, the log odds of the outcome,
+
+42
+00:02:23,640 --> 00:02:26,230
+that's our outcome variable.
+
+43
+00:02:26,230 --> 00:02:30,570
+We're going to be modeling that as a line
+though, as an alpha plus a.
+
+44
+00:02:30,570 --> 00:02:33,680
+Beta x, intercept, and the slope.
+
+45
+00:02:33,680 --> 00:02:37,340
+Because we've made this transformation,
+the beta is just slightly more
+
+46
+00:02:37,340 --> 00:02:41,860
+complicated to interpret than the beta
+from linear regression.
+
+47
+00:02:41,860 --> 00:02:44,605
+So for linear regression, the beta was
+just the slope,
+
+48
+00:02:44,605 --> 00:02:48,370
+it's as x goes up by 1 unit, how much does
+y go up?
+
+49
+00:02:48,370 --> 00:02:50,330
+So there was a direct interpretation.
+
+50
+00:02:50,330 --> 00:02:53,417
+It's just slightly more tricky to
+interpret the betas from
+
+51
+00:02:53,417 --> 00:02:54,803
+logistic regression, but
+
+52
+00:02:54,803 --> 00:03:00,090
+actually it's not terrible because the
+betas from logistic regression.
+
+53
+00:03:00,090 --> 00:03:03,681
+If you exponentiate them, what it gives
+you out is the odds ratio, and
+
+54
+00:03:03,681 --> 00:03:07,370
+I refer to in the second week of the
+course.
+
+55
+00:03:07,370 --> 00:03:09,610
+We talked a lot about odds ratios, and I
+told you,
+
+56
+00:03:09,610 --> 00:03:13,362
+hey, logistic regression spits out odds
+ratios, and this is where it comes from,
+
+57
+00:03:13,362 --> 00:03:19,530
+the betas, they are directly interpreted
+as odds ratios, just by exponentiating.
+
+58
+00:03:19,530 --> 00:03:22,522
+And the reason there's an exponential
+involved, is because our outcome variable
+
+59
+00:03:22,522 --> 00:03:26,630
+Involves a natural look so this is just
+the overview of where we're going this.
+
+60
+00:03:26,630 --> 00:03:29,765
+Just keep in mind that the right hand side
+of the equations the same as
+
+61
+00:03:29,765 --> 00:03:33,585
+with linear regression so we're still
+fitting a line.
+
+62
+00:03:33,585 --> 00:03:36,870
+It's just we're fitting the outcome
+variable there's
+
+63
+00:03:36,870 --> 00:03:39,580
+something trickier going on.
+
+64
+00:03:39,580 --> 00:03:43,804
+Let me start here with a simple example,
+using that example data set, data set on
+
+65
+00:03:43,804 --> 00:03:50,710
+my Stanford student that I've been using
+since the beginning of the course.
+
+66
+00:03:50,710 --> 00:03:54,090
+One of the questions I asked my Stanford
+students is whether or
+
+67
+00:03:54,090 --> 00:03:58,870
+not the consider themselves to be book
+smart or street smart.
+
+68
+00:03:58,870 --> 00:04:02,118
+this is a binary variable, book smart, the
+variable is equal to one,
+
+69
+00:04:02,118 --> 00:04:06,250
+that means Means that they consider
+themselves book smart.
+
+70
+00:04:06,250 --> 00:04:10,030
+If the variable is equal to zero, the way
+I've coded it.
+
+71
+00:04:10,030 --> 00:04:12,800
+That means that they consider themselves
+to be street smart.
+
+72
+00:04:12,800 --> 00:04:16,292
+So we can see that this is the book smart
+group over here.
+
+73
+00:04:16,292 --> 00:04:21,606
+And this is the street smart book, group
+over here.
+
+74
+00:04:21,606 --> 00:04:25,030
+And I, just as an aside, I've been asking
+this question.
+
+75
+00:04:25,030 --> 00:04:27,400
+So lots of Standford students just for fun
+over the years.
+
+76
+00:04:27,400 --> 00:04:31,376
+And it generally comes out about 80% of my
+Standford students consider themselves to
+
+77
+00:04:31,376 --> 00:04:35,590
+be book smart and 20% consider themselves
+to be street smart.
+
+78
+00:04:35,590 --> 00:04:39,074
+And that was indeed the case in this
+little practice data set is
+
+79
+00:04:39,074 --> 00:04:41,110
+right around 80%.
+
+80
+00:04:41,110 --> 00:04:43,959
+I wondered if book-smart students did
+more,
+
+81
+00:04:43,959 --> 00:04:50,480
+spent more time on homework, were more
+studious, than street-smart students.
+
+82
+00:04:50,480 --> 00:04:53,120
+And so I wanted to look at the variable
+homework in the number of hours per
+
+83
+00:04:53,120 --> 00:04:55,290
+week that they spent on homework.
+
+84
+00:04:55,290 --> 00:04:57,980
+That's another question that I'd asked
+these students.
+
+85
+00:04:57,980 --> 00:04:59,150
+And we can look at that here.
+
+86
+00:04:59,150 --> 00:04:59,900
+And I've done this.
+
+87
+00:04:59,900 --> 00:05:01,604
+I've looked at this graphically here.
+
+88
+00:05:01,604 --> 00:05:05,069
+So I'm graphing, my predictor variable is
+just a binary, a yes-no,
+
+89
+00:05:05,069 --> 00:05:07,040
+book smart or not.
+
+90
+00:05:07,040 --> 00:05:09,846
+In my outcome variable here is homework in
+the number of hours per week and
+
+91
+00:05:09,846 --> 00:05:13,204
+now, surprisingly there are students who
+consider themselves book smart as you can
+
+92
+00:05:13,204 --> 00:05:16,332
+see from this graphic here, actually, on
+average, do slightly less homework than
+
+93
+00:05:16,332 --> 00:05:21,730
+the students who consider themselves
+street smart for whatever reason.
+
+94
+00:05:21,730 --> 00:05:27,740
+So it went kind of in the opposite
+direction from what I might have expected.
+
+95
+00:05:27,740 --> 00:05:31,700
+This analysis, this graphic that I'm
+showing you here actually coincides with
+
+96
+00:05:31,700 --> 00:05:33,655
+a linear regression.
+
+97
+00:05:33,655 --> 00:05:38,128
+So the way I set up the problem now is
+I've got a binary predictor variable and
+
+98
+00:05:38,128 --> 00:05:42,220
+a continuous outcome variable homework.
+
+99
+00:05:42,220 --> 00:05:44,780
+We could model this with a linear
+regression.
+
+100
+00:05:44,780 --> 00:05:46,870
+Using what we talked about last week.
+
+101
+00:05:46,870 --> 00:05:50,720
+When we have a binary predictor it's a
+very simple linear regression.
+
+102
+00:05:50,720 --> 00:05:51,690
+Right.
+That line is just,
+
+103
+00:05:51,690 --> 00:05:54,570
+you connect the mean for the street smart
+group with the mean for the book
+
+104
+00:05:54,570 --> 00:05:59,728
+smart group and if you connect two points
+with a line, that, that defines a line.
+
+105
+00:05:59,728 --> 00:06:01,490
+And then so we end up with a very simple
+line.
+
+106
+00:06:01,490 --> 00:06:04,330
+So we could answer this question.
+
+107
+00:06:04,330 --> 00:06:05,250
+Look at this question.
+
+108
+00:06:05,250 --> 00:06:07,960
+In this data set with a linear regression.
+
+109
+00:06:07,960 --> 00:06:11,970
+Or even a T test, which of course is a
+special case of linear regression.
+
+110
+00:06:11,970 --> 00:06:15,386
+This is cross-sectional data however, so I
+happen to pick, just for
+
+111
+00:06:15,386 --> 00:06:19,351
+the purposes of illustration, And for this
+slide, to put book smart as the x
+
+112
+00:06:19,351 --> 00:06:25,070
+variable, as the predictor in homework as
+the outcome variable.
+
+113
+00:06:25,070 --> 00:06:30,520
+But because this is cross-sectional data,
+I could ask, I could flip that.
+
+114
+00:06:30,520 --> 00:06:33,352
+I could ask not whether or not you
+classify yourself as
+
+115
+00:06:33,352 --> 00:06:39,140
+book smart predicts the amount of homework
+you do, but I could ask it the other way.
+
+116
+00:06:39,140 --> 00:06:41,835
+Does the amount of homework you do or the
+amount of time you spend on
+
+117
+00:06:41,835 --> 00:06:45,800
+homework predict whether or not you
+consider yourself book smart?
+
+118
+00:06:45,800 --> 00:06:48,570
+So I'm just going to flip the x and y
+variables.
+
+119
+00:06:48,570 --> 00:06:51,550
+So here's the graphic when I flip the x
+and y variables.
+
+120
+00:06:51,550 --> 00:06:53,406
+So now my x, my predictor variable,
+
+121
+00:06:53,406 --> 00:06:57,890
+is continuous, the number of hours Spent
+on homework per week.
+
+122
+00:06:57,890 --> 00:07:01,903
+And my outcome variable is this binary,
+this yes-no.
+
+123
+00:07:01,903 --> 00:07:03,845
+0 is street smart, 1 is book smart.
+
+124
+00:07:03,845 --> 00:07:10,870
+We've got a new graphic, and we could try
+to fit a line to these data.
+
+125
+00:07:10,870 --> 00:07:13,480
+But look what happens when I try to fit a
+line to these data.
+
+126
+00:07:13,480 --> 00:07:16,819
+Notice that all of my, my outcomes are
+either all 1 or all 0, so you just get
+
+127
+00:07:16,819 --> 00:07:22,090
+these two stripes, and it doesn't, it
+doesn't seem optimal to try to fit a line.
+
+128
+00:07:22,090 --> 00:07:24,830
+I did fit a line to these data.
+
+129
+00:07:24,830 --> 00:07:26,980
+You can do it, you, this is a linear
+regression line.
+
+130
+00:07:26,980 --> 00:07:30,290
+So I've fit the linear, the best fit line
+to these data.
+
+131
+00:07:30,290 --> 00:07:34,060
+But you can see that if you look at this
+picture it doesn't really look like that
+
+132
+00:07:34,060 --> 00:07:37,172
+line fits the data very well, right?
+
+133
+00:07:37,172 --> 00:07:40,116
+I mean we're doing linear regression last
+week we had these scatter plots and
+
+134
+00:07:40,116 --> 00:07:44,430
+we were trying to find the line that was
+kind of very close to all those dots.
+
+135
+00:07:44,430 --> 00:07:46,140
+Well, this line does, I mean you can fit
+it, but
+
+136
+00:07:46,140 --> 00:07:48,840
+it doesn't look very close to all of those
+dots.
+
+137
+00:07:48,840 --> 00:07:51,360
+It doesn't look like a very good fit.
+
+138
+00:07:51,360 --> 00:07:54,660
+So, a linear regression model is not
+optimal here.
+
+139
+00:07:54,660 --> 00:07:57,060
+Well, what do we do?
+
+140
+00:07:57,060 --> 00:08:00,040
+Again, I told you we're still going to
+want to fit lines Here.
+
+141
+00:08:00,040 --> 00:08:06,592
+So how can we still fit a line but do
+something other than linear regression?
+
+142
+00:08:06,592 --> 00:08:09,382
+How could we, what could we do?
+
+143
+00:08:09,382 --> 00:08:15,490
+So, what we could do here, is to transform
+the outcome variable.
+
+144
+00:08:15,490 --> 00:08:17,890
+Again, I still want to fit a line
+ultimately, but
+
+145
+00:08:17,890 --> 00:08:21,070
+I don't want a zero one variable as my
+outcome, because a zero one
+
+146
+00:08:21,070 --> 00:08:27,340
+variable just doesn't fit well to a line,
+it has only two possible values.
+
+147
+00:08:27,340 --> 00:08:29,490
+So what could I do?
+
+148
+00:08:29,490 --> 00:08:31,781
+How could I transform that binary,
+
+149
+00:08:31,781 --> 00:08:37,210
+that zero one variable into something that
+better fits a line?
+
+150
+00:08:37,210 --> 00:08:39,060
+Well here is one thing, this is where,
+just a starting point,
+
+151
+00:08:39,060 --> 00:08:41,000
+because we're going to go further with
+this.
+
+152
+00:08:41,000 --> 00:08:44,020
+But, let's just start with some, some
+simple thing we can do.
+
+153
+00:08:44,020 --> 00:08:49,560
+So, recognize instead of modeling it as a
+yes no A zero one.
+
+154
+00:08:49,560 --> 00:08:53,249
+What if we could somehow model it as a
+probability.
+
+155
+00:08:53,249 --> 00:08:57,011
+A probability as you know, is a value that
+ranges from zero to one, but
+
+156
+00:08:57,011 --> 00:08:59,585
+it can take on any value between zero and
+one, so
+
+157
+00:08:59,585 --> 00:09:06,260
+we would do a little bit better, we would
+put in all these values between.
+
+158
+00:09:06,260 --> 00:09:08,120
+Between zero and one back into play,
+
+159
+00:09:08,120 --> 00:09:11,592
+if somehow we could model this as we could
+make the outcome variable
+
+160
+00:09:11,592 --> 00:09:17,510
+the probability of being book smart rather
+than yes no you are book smart.
+
+161
+00:09:17,510 --> 00:09:20,062
+Just looking at the data here you can see,
+well.
+
+162
+00:09:20,062 --> 00:09:24,020
+That's not immediate, obvious, immediately
+obvious how you would do it.
+
+163
+00:09:24,020 --> 00:09:27,802
+In fact, we're going to do something
+called the logit, which is a function of
+
+164
+00:09:27,802 --> 00:09:31,026
+the probability, and in fact what the
+computer is going to do is do
+
+165
+00:09:31,026 --> 00:09:38,140
+a little algorithm involving some calculus
+to calculate the probability of the logit.
+
+166
+00:09:38,140 --> 00:09:40,790
+But we can actually approximate it just
+looking at the data, and
+
+167
+00:09:40,790 --> 00:09:44,010
+I think that this is the best way to
+understand it.
+
+168
+00:09:44,010 --> 00:09:45,660
+So if I wanted to get a probability here,
+
+169
+00:09:45,660 --> 00:09:49,000
+rather than a 0-1 variable, imagine I did
+the following.
+
+170
+00:09:49,000 --> 00:09:49,552
+What if I just,
+
+171
+00:09:49,552 --> 00:09:52,920
+to get a probability I'm going to have to
+look at more than one person.
+
+172
+00:09:52,920 --> 00:09:54,500
+I'm going to have to look at a group of
+people.
+
+173
+00:09:54,500 --> 00:09:59,710
+So what if I kind of arbitrarily looked at
+you know, a group of people.
+
+174
+00:09:59,710 --> 00:10:00,944
+Let's just pick, say.
+
+175
+00:10:00,944 --> 00:10:06,726
+The, the ten people with the lowest amount
+of homework time per week.
+
+176
+00:10:06,726 --> 00:10:08,420
+Notice that these little red dots here.
+
+177
+00:10:08,420 --> 00:10:11,090
+Actually, some of these dots represent
+more than one person.
+
+178
+00:10:11,090 --> 00:10:14,500
+Because there were a lot of people who had
+tied values.
+
+179
+00:10:14,500 --> 00:10:16,058
+They selected the same number of homework
+and
+
+180
+00:10:16,058 --> 00:10:18,560
+they also called themselves book smart,
+for example.
+
+181
+00:10:18,560 --> 00:10:21,410
+So that each of these dots might represent
+more than on person.
+
+182
+00:10:21,410 --> 00:10:22,901
+So imagine that this, and
+
+183
+00:10:22,901 --> 00:10:27,460
+this what I've Putting this box here
+represents ten people.
+
+184
+00:10:27,460 --> 00:10:30,650
+I could look at the ten people with the
+lowest amount of homework time,
+
+185
+00:10:30,650 --> 00:10:33,966
+putting in the lowest amount of homework
+time.
+
+186
+00:10:33,966 --> 00:10:37,678
+And I could count up how many of them
+called themselves book smart, and
+
+187
+00:10:37,678 --> 00:10:41,710
+how many of them called themselves street
+smart.
+
+188
+00:10:41,710 --> 00:10:44,035
+And I could calculate a proportion, a
+percentage.
+
+189
+00:10:44,035 --> 00:10:45,230
+A probability.
+
+190
+00:10:45,230 --> 00:10:48,580
+So let's say, I'm just making this up, but
+let's say when I calculate that.
+
+191
+00:10:48,580 --> 00:10:51,813
+Again, since some of these dots are
+overlapping I can't do it exactly but,
+
+192
+00:10:51,813 --> 00:10:53,520
+from the graphic.
+
+193
+00:10:53,520 --> 00:10:54,818
+But let's say I count up and
+
+194
+00:10:54,818 --> 00:10:58,720
+I find that among those doing the least
+Amount of homework.
+
+195
+00:10:58,720 --> 00:11:04,700
+Let's say that 90% of them, again I'm just
+making this up.
+
+196
+00:11:04,700 --> 00:11:05,960
+Let's say 90% of that ten,
+
+197
+00:11:05,960 --> 00:11:10,800
+nine out of ten considered themselves book
+smart rather than street smart.
+
+198
+00:11:10,800 --> 00:11:14,550
+Now I've got a probability rather than a
+zero one.
+
+199
+00:11:14,550 --> 00:11:20,002
+And I could do this for the next group of
+10, the next highest in homework.
+
+200
+00:11:20,002 --> 00:11:23,885
+Maybe in the next group, the probability
+is,.
+
+201
+00:11:23,885 --> 00:11:27,420
+again, I'm just making this up, is 85
+percent.
+
+202
+00:11:27,420 --> 00:11:30,730
+And I can't tell, because, again, these
+dots are overlapping.
+
+203
+00:11:30,730 --> 00:11:32,010
+Maybe that comes out to be 85 percent.
+
+204
+00:11:32,010 --> 00:11:35,430
+But I could go along, and I could group,
+people.
+
+205
+00:11:35,430 --> 00:11:38,860
+I have to group people in order to be able
+to get a percentage of probability.
+
+206
+00:11:38,860 --> 00:11:40,700
+But I could come up with some.
+
+207
+00:11:40,700 --> 00:11:41,330
+Probabilities.
+
+208
+00:11:41,330 --> 00:11:44,662
+And of course, the probabilities I come up
+with are going to depend exactly on how I
+
+209
+00:11:44,662 --> 00:11:45,299
+group them, but
+
+210
+00:11:45,299 --> 00:11:50,570
+just realize that the grouping is just for
+the purposes of illustration.
+
+211
+00:11:50,570 --> 00:11:52,168
+When you actually do this with calculus,
+
+212
+00:11:52,168 --> 00:11:54,790
+you don't have to make any arbitrary
+groupings.
+
+213
+00:11:54,790 --> 00:11:56,946
+Of course, we won't go through the
+calculus here, but
+
+214
+00:11:56,946 --> 00:11:59,000
+the computer does that for you.
+
+215
+00:11:59,000 --> 00:12:02,234
+So if I could get that probability now, I
+can make a graphic,
+
+216
+00:12:02,234 --> 00:12:06,392
+which is my predictor variable, is the
+number of hours of homework per week,
+
+217
+00:12:06,392 --> 00:12:09,830
+the continuous variable.
+
+218
+00:12:09,830 --> 00:12:15,690
+Now my outcome variable is a probability,
+a number that ranges between 0 and 1.
+
+219
+00:12:15,690 --> 00:12:18,070
+I have fewer dots on this graphic.
+
+220
+00:12:18,070 --> 00:12:22,800
+I'm going to just, for now, talk about the
+graphic on the left side, this 10 groups.
+
+221
+00:12:22,800 --> 00:12:24,620
+I, notice I have fewer dots on that
+graphic.
+
+222
+00:12:24,620 --> 00:12:26,722
+None of these dots are overlapping
+anymore.
+
+223
+00:12:26,722 --> 00:12:31,060
+More, so actually I have, I had, my
+previous graphic represented 48 people.
+
+224
+00:12:31,060 --> 00:12:34,190
+This graphic only represents 10
+observations.
+
+225
+00:12:34,190 --> 00:12:38,220
+I divided those 48 people, up into roughly
+even groups of, 10 groups of,
+
+226
+00:12:38,220 --> 00:12:41,004
+you know some are between.
+
+227
+00:12:41,004 --> 00:12:43,490
+Of about four or five per group.
+
+228
+00:12:43,490 --> 00:12:45,860
+And I got those percentages and I plotted
+them here.
+
+229
+00:12:45,860 --> 00:12:49,009
+What you notice is that this is much more
+amenable, this,
+
+230
+00:12:49,009 --> 00:12:52,280
+this scatter plot, to fitting a line.
+
+231
+00:12:52,280 --> 00:12:55,010
+Right now, we've got dots all around the
+range, and
+
+232
+00:12:55,010 --> 00:13:00,130
+you can imagine actually fitting a
+meaningful line to To those dots.
+
+233
+00:13:00,130 --> 00:13:01,690
+As I mentioned, this is just for
+
+234
+00:13:01,690 --> 00:13:05,410
+the purposes of graphing, just to show you
+the concept.
+
+235
+00:13:05,410 --> 00:13:08,780
+And so, it's arbitrary how I group people.
+
+236
+00:13:08,780 --> 00:13:10,392
+So, of course, the graphics going to look
+a little bit different,
+
+237
+00:13:10,392 --> 00:13:11,824
+depending on how I group people.
+
+238
+00:13:11,824 --> 00:13:14,450
+So just to show you that I also divide it
+into five groups.
+
+239
+00:13:14,450 --> 00:13:17,400
+There's 48 people so this is roughly
+groups of, you know, eight, nine or
+
+240
+00:13:17,400 --> 00:13:20,450
+ten and I calculated the proportion who
+consider themselves book smart,
+
+241
+00:13:20,450 --> 00:13:25,425
+that probability in each of those five
+groups, and I plotted it here.
+
+242
+00:13:25,425 --> 00:13:30,800
+By the way, when I'm each of these groups,
+of course, has a range of homework values.
+
+243
+00:13:30,800 --> 00:13:32,750
+I'm using the mean homework time for
+
+244
+00:13:32,750 --> 00:13:36,700
+each group, that's what I'm putting in the
+plot here.
+
+245
+00:13:36,700 --> 00:13:39,542
+So for example the lowest homework group
+on this plot here,
+
+246
+00:13:39,542 --> 00:13:43,312
+they have a mean homework time of just,
+you know 30 minutes to an hour and their,
+
+247
+00:13:43,312 --> 00:13:49,250
+the proportion that considered themselves
+book smart was right around 78%.
+
+248
+00:13:49,250 --> 00:13:52,755
+So I'm using the mean just for graphical
+purposes.
+
+249
+00:13:52,755 --> 00:13:57,219
+But the picture looks a little different
+depending on How you group it, but
+
+250
+00:13:57,219 --> 00:13:59,780
+you can get the idea.
+
+251
+00:13:59,780 --> 00:14:02,642
+Now we've put back all the numbers between
+zero and one into play,
+
+252
+00:14:02,642 --> 00:14:05,822
+it makes much more sense to fit a line,
+but this is still limited, okay, so
+
+253
+00:14:05,822 --> 00:14:10,340
+this is not, we're going to go further
+than that with this.
+
+254
+00:14:10,340 --> 00:14:15,203
+Because a probability is a number that's
+bounded between zero and.
+
+255
+00:14:15,203 --> 00:14:17,590
+1, so it's still a bounded quantity.
+
+256
+00:14:17,590 --> 00:14:20,720
+You can't go lower than 0, you can't go
+higher than 1.
+
+257
+00:14:20,720 --> 00:14:23,562
+The problem with that is imagine when we
+fit a line, when you fit a line,
+
+258
+00:14:23,562 --> 00:14:26,012
+theoretically, that line can go anywhere
+from negative in,
+
+259
+00:14:26,012 --> 00:14:30,830
+the y value can go anywhere from negative
+infinity to positive infinity.
+
+260
+00:14:30,830 --> 00:14:34,320
+So, with this it's still not perfect.
+
+261
+00:14:34,320 --> 00:14:37,919
+So what we're going to do is instead of
+directly Having the probability be
+
+262
+00:14:37,919 --> 00:14:42,620
+the outcome variable, we're going to make
+a little transformation.
+
+263
+00:14:42,620 --> 00:14:44,700
+So probability is bounded from zero to
+one.
+
+264
+00:14:44,700 --> 00:14:49,404
+If I divide the probability however, by
+one minus the probability,
+
+265
+00:14:49,404 --> 00:14:54,980
+that of course is what we learned earlier
+is the odds.
+
+266
+00:14:54,980 --> 00:14:58,920
+So divide the probability by the
+probability of something not happening.
+
+267
+00:14:58,920 --> 00:15:01,570
+The probability divided by one minus the
+probability.
+
+268
+00:15:01,570 --> 00:15:05,690
+That's what we learned in week 2 of the
+course is an odds.
+
+269
+00:15:05,690 --> 00:15:07,630
+Why would I want to do that?
+
+270
+00:15:07,630 --> 00:15:10,650
+Well, a probability can't be bigger than
+one.
+
+271
+00:15:10,650 --> 00:15:16,020
+But an odds can go from any, anywhere from
+zero to positive infinity.
+
+272
+00:15:16,020 --> 00:15:18,040
+The odds has no right hand bound.
+
+273
+00:15:18,040 --> 00:15:23,490
+So now we've put in all the positive Real
+numbers back into play.
+
+274
+00:15:23,490 --> 00:15:24,540
+We're still missing the negatives.
+
+275
+00:15:24,540 --> 00:15:26,030
+How can we get the negatives back in?
+
+276
+00:15:26,030 --> 00:15:28,090
+So here's where the natural log comes in.
+
+277
+00:15:28,090 --> 00:15:32,700
+So if I then take the natural log of the
+odds.
+
+278
+00:15:32,700 --> 00:15:35,216
+It turns out that when you take a natural
+log,
+
+279
+00:15:35,216 --> 00:15:39,960
+any value that was below one now becomes a
+negative number.
+
+280
+00:15:39,960 --> 00:15:44,745
+So this, the natural log of the odds,
+actually ranges from negative.
+
+281
+00:15:44,745 --> 00:15:48,320
+It can theoretically range from negative
+infinity to positive infinity.
+
+282
+00:15:48,320 --> 00:15:50,600
+So now we've put all the numbers back into
+play.
+
+283
+00:15:50,600 --> 00:15:54,020
+So now this is the optimal for fitting a
+line.
+
+284
+00:15:54,020 --> 00:15:57,782
+So the outcome variable for logistic
+regression, and I've mentioned earlier,
+
+285
+00:15:57,782 --> 00:16:02,120
+is actually going to be the natural log of
+the odds of the outcome.
+
+286
+00:16:02,120 --> 00:16:06,135
+A little complicated but, it's for
+mathematical reasons that we,
+
+287
+00:16:06,135 --> 00:16:08,220
+we We choose that.
+
+288
+00:16:08,220 --> 00:16:12,120
+And just to illustrate, I took those, the
+same groupings, ten groups and
+
+289
+00:16:12,120 --> 00:16:15,760
+five groups, where I had calculate the
+percent, the probability of
+
+290
+00:16:15,760 --> 00:16:22,570
+being book-smart in each of those groups,
+and I transformed that into a logit.
+
+291
+00:16:22,570 --> 00:16:25,690
+so that's, I took the percentage, divided
+by 1 minus the percentage, and
+
+292
+00:16:25,690 --> 00:16:28,710
+then I took the natural log Of that
+number.
+
+293
+00:16:28,710 --> 00:16:30,966
+This gives me some numbers 0.5, 1.0, 1.5,
+2.0.
+
+294
+00:16:30,966 --> 00:16:36,150
+the, the logit has no inherent meaning to
+me.
+
+295
+00:16:36,150 --> 00:16:37,275
+But that's okay because when we
+
+296
+00:16:37,275 --> 00:16:40,340
+eventually will translate it back into
+something meaningful.
+
+297
+00:16:40,340 --> 00:16:43,364
+But now this outcome variable is a number
+that can theoretically go
+
+298
+00:16:43,364 --> 00:16:47,330
+anywhere from negative infinity to
+positive infinity.
+
+299
+00:16:47,330 --> 00:16:49,130
+Makes a very fit, nicer fitting line.
+
+300
+00:16:49,130 --> 00:16:52,900
+I'm graphing here the logit for each of
+these groups against again the mean
+
+301
+00:16:52,900 --> 00:16:56,010
+homework time in each of those groups.
+
+302
+00:16:57,280 --> 00:16:59,420
+And you could fit a line to that.
+
+303
+00:16:59,420 --> 00:17:01,830
+And that's what we're doing in logistic
+regression.
+
+304
+00:17:01,830 --> 00:17:03,340
+That's the line that we're fitting.
+
+305
+00:17:03,340 --> 00:17:06,280
+So, we're going to estimate an alpha and a
+beta, an intercept and a slope for
+
+306
+00:17:06,280 --> 00:17:08,100
+that particular line.
+
+307
+00:17:08,100 --> 00:17:12,600
+As I mentioned, the groupings here are
+completely arbitrary.
+
+308
+00:17:12,600 --> 00:17:16,240
+When you actually do this in a computer,
+there's calculus going on.
+
+309
+00:17:16,240 --> 00:17:19,370
+And so, you're going to get the best alpha
+and the best beta.
+
+310
+00:17:19,370 --> 00:17:23,660
+When I do this graphically, it's a little
+bit of an approximation.
+
+311
+00:17:23,660 --> 00:17:25,464
+You can see that the line is slightly
+different when I
+
+312
+00:17:25,464 --> 00:17:28,530
+group it into ten groups than when I group
+it into five groups.
+
+313
+00:17:28,530 --> 00:17:30,650
+These slides are slightly different.
+
+314
+00:17:30,650 --> 00:17:33,202
+But we can actually kind of look at these
+graphics and
+
+315
+00:17:33,202 --> 00:17:37,430
+just kind of visually approximate the
+equation of that line.
+
+316
+00:17:37,430 --> 00:17:38,640
+So, I'm going to do that now.
+
+317
+00:17:40,000 --> 00:17:42,600
+This is not as good as doing the calculus
+in the computer.
+
+318
+00:17:42,600 --> 00:17:44,650
+But it is, it will give us a little bit of
+an approximation and
+
+319
+00:17:44,650 --> 00:17:48,240
+I think it's also good for illustrating
+what's actually going on here.
+
+320
+00:17:48,240 --> 00:17:50,160
+So what is the equation of this line?
+
+321
+00:17:50,160 --> 00:17:51,160
+There's two lines here.
+
+322
+00:17:51,160 --> 00:17:56,200
+And we can kind of say, the, the real line
+is going to be somewhere around these two.
+
+323
+00:17:56,200 --> 00:17:58,150
+So first of all, what's the intercept
+value?
+
+324
+00:17:58,150 --> 00:18:00,790
+So if I just look at the graphic, my
+intercept for
+
+325
+00:18:00,790 --> 00:18:05,440
+this line over on the left side is, I
+guess, about 1.6.
+
+326
+00:18:05,440 --> 00:18:07,080
+You know, I'm just approximating here.
+
+327
+00:18:07,080 --> 00:18:08,730
+And the intercept over for
+
+328
+00:18:08,730 --> 00:18:14,290
+the line on the right hand side of the
+page is, maybe about 1.8.
+
+329
+00:18:14,290 --> 00:18:17,584
+So, let's just kind of call it that the,
+the equation for this line, again,
+
+330
+00:18:17,584 --> 00:18:21,148
+if we're kind of saying there's one line
+here that we're trying to approximate,
+
+331
+00:18:21,148 --> 00:18:24,010
+maybe it's around 1.7.
+
+332
+00:18:24,010 --> 00:18:27,380
+I'm just making it somewhere in that
+ballpark.
+
+333
+00:18:27,380 --> 00:18:30,298
+Maybe around 1.7 is the intercept.
+
+334
+00:18:30,298 --> 00:18:32,746
+How would I get the slopes of these lines,
+just visually here,
+
+335
+00:18:32,746 --> 00:18:35,750
+how could I approximate the slopes of
+these lines?
+
+336
+00:18:35,750 --> 00:18:36,910
+So what's a slope?
+
+337
+00:18:36,910 --> 00:18:37,900
+It's rise over run.
+
+338
+00:18:37,900 --> 00:18:42,112
+So I could say, well, how much have I gone
+up in the y variable and
+
+339
+00:18:42,112 --> 00:18:46,870
+how much have I gone up in the x variable.
+
+340
+00:18:46,870 --> 00:18:49,720
+So I can just kind of look at this as a
+triangle here.
+
+341
+00:18:49,720 --> 00:18:52,240
+And say, well what's the, how far did I
+go.
+
+342
+00:18:52,240 --> 00:18:55,220
+On, on the x axis I went from about 0 to
+40.
+
+343
+00:18:55,220 --> 00:18:58,700
+So the x changes about 40 here, for this
+triangle.
+
+344
+00:18:58,700 --> 00:19:00,050
+On the y end of things,
+
+345
+00:19:00,050 --> 00:19:06,513
+you know if you kind of approximate, it's
+maybe going from about .3, maybe to 1.6.
+
+346
+00:19:06,513 --> 00:19:09,633
+I'm going to just call it 1.3 so,
+
+347
+00:19:09,633 --> 00:19:17,250
+sorry, the, you, the, we go up 1.3 in the
+log odds.
+
+348
+00:19:17,250 --> 00:19:20,589
+So the slope here is going to be rise over
+one, so 1.3 divided by 40 or
+
+349
+00:19:20,589 --> 00:19:24,730
+approximately .03 so the slope here is
+about .03.
+
+350
+00:19:24,730 --> 00:19:27,079
+For this line we can use the same kind of
+logic.
+
+351
+00:19:27,079 --> 00:19:31,630
+[SOUND] So, for the X we went over about
+35 here.
+
+352
+00:19:31,630 --> 00:19:33,510
+That's about zero to about 35.
+
+353
+00:19:33,510 --> 00:19:37,046
+On the Y end, we've gone up a little bit
+bigger, maybe about 1.8,
+
+354
+00:19:37,046 --> 00:19:39,816
+from one to about 1.8.
+
+355
+00:19:39,816 --> 00:19:44,480
+The slope then would be 1.8 divided by 35,
+which is about 0.05.
+
+356
+00:19:44,480 --> 00:19:47,252
+So, you know, this somewhere I'm going to
+approximate somewhere between 0.03
+
+357
+00:19:47,252 --> 00:19:48,220
+and 0.05.
+
+358
+00:19:48,220 --> 00:19:50,820
+Let's call it 0.04 and of course this is
+negative.
+
+359
+00:19:50,820 --> 00:19:54,500
+I should, emphasize here that this is a
+downward slope.
+
+360
+00:19:54,500 --> 00:19:58,343
+We've gone down 1.3 or down 1.8 and Y, so
+both of these slopes are negative, so
+
+361
+00:19:58,343 --> 00:20:03,130
+on average, this looks to be somewhere
+around negative 0.04.
+
+362
+00:20:03,130 --> 00:20:04,770
+This is just my graphical.
+
+363
+00:20:04,770 --> 00:20:05,700
+Approximation.
+
+364
+00:20:05,700 --> 00:20:07,900
+But that's what we're doing on logistic
+regression.
+
+365
+00:20:07,900 --> 00:20:09,010
+That's the line we're fitting.
+
+366
+00:20:09,010 --> 00:20:11,980
+Now I'm actually going to put the data in
+the computer and
+
+367
+00:20:11,980 --> 00:20:16,072
+let the computer use the beautiful
+calculus to estimate this perfectly to
+
+368
+00:20:16,072 --> 00:20:22,580
+get the actual best intercept and best
+data slope that fits these data.
+
+369
+00:20:22,580 --> 00:20:25,790
+And I'll show you that our approximation
+wasn't bad.
+
+370
+00:20:25,790 --> 00:20:27,467
+Here's what the computer comes out with
+when it
+
+371
+00:20:27,467 --> 00:20:29,980
+does what's called maximum likelihood
+estimation.
+
+372
+00:20:29,980 --> 00:20:33,910
+This involves calculus it gives us some
+maximum likelihood estimates.
+
+373
+00:20:33,910 --> 00:20:36,880
+I'm not going to go into the details of
+maximum likelihood estimation, that's for
+
+374
+00:20:36,880 --> 00:20:38,160
+another course.
+
+375
+00:20:38,160 --> 00:20:41,184
+But this is just the way that using some
+calculus that we're getting the best
+
+376
+00:20:41,184 --> 00:20:43,360
+alpha and the best beta here.
+
+377
+00:20:43,360 --> 00:20:44,470
+The best fit line.
+
+378
+00:20:44,470 --> 00:20:48,590
+So when I do this on a computer, the
+intercept comes out to be just over 2.
+
+379
+00:20:48,590 --> 00:20:51,720
+So just slightly different than what we
+got in our approximation Summation.
+
+380
+00:20:51,720 --> 00:20:56,550
+The slope came out to be right around
+negative .04, negative .039.
+
+381
+00:20:56,550 --> 00:20:58,110
+So, and where did I get those in the
+output?
+
+382
+00:20:58,110 --> 00:21:01,520
+Here's the estimate for the intercept,
+that's the alpha estimate.
+
+383
+00:21:01,520 --> 00:21:05,920
+Here's the estimate for the beta, that's
+the estimate for the slope.
+
+384
+00:21:05,920 --> 00:21:08,564
+Along with the alpha and the beta, we also
+get a P value to.
+
+385
+00:21:08,564 --> 00:21:12,800
+Tell us whether that alpha or beta is
+statistically different than zero.
+
+386
+00:21:12,800 --> 00:21:17,550
+A beta of zero would mean no association,
+same as it did with linear regression.
+
+387
+00:21:17,550 --> 00:21:21,093
+So the intercept is clearly significantly
+different than zero.
+
+388
+00:21:21,093 --> 00:21:23,350
+again, that's not all that meaningful
+here,
+
+389
+00:21:23,350 --> 00:21:27,193
+because we wouldn't expect the intercept
+to be zero however the p-value for
+
+390
+00:21:27,193 --> 00:21:31,120
+homework is not statistically significant.
+
+391
+00:21:31,120 --> 00:21:32,488
+So as you might have guessed just looking
+at
+
+392
+00:21:32,488 --> 00:21:34,760
+the picture there isn't a strong
+association here.
+
+393
+00:21:34,760 --> 00:21:38,170
+So it's not statistically different than
+zero.
+
+394
+00:21:38,170 --> 00:21:41,366
+Probably meaning it doesn't look like
+there's a lot of evidence that homework
+
+395
+00:21:41,366 --> 00:21:45,170
+And whether or not you consider yourself
+book smart are related.
+
+396
+00:21:46,280 --> 00:21:51,446
+But here's the final model, the log odds
+of being book smart, or considering
+
+397
+00:21:51,446 --> 00:21:58,600
+yourself book smart is equal to the
+intercept 2.12 minus the slope .039.
+
+398
+00:21:58,600 --> 00:22:02,800
+And we would of course multiply that beta
+times the amount of homework.
+
+399
+00:22:02,800 --> 00:22:04,470
+So this is a continuous predictor.
+
+400
+00:22:04,470 --> 00:22:08,214
+So we would be multiplying them out of
+homework for
+
+401
+00:22:08,214 --> 00:22:12,140
+a particular person times that slope.
+
+402
+00:22:12,140 --> 00:22:14,450
+What's this logistic regression equation
+useful for?
+
+403
+00:22:14,450 --> 00:22:16,925
+So, just like when we talked about linear
+regression,
+
+404
+00:22:16,925 --> 00:22:20,520
+there's many Couple different potential
+functions here.
+
+405
+00:22:20,520 --> 00:22:23,835
+So one thing is we could use the logistic
+regression equation model to try to do
+
+406
+00:22:23,835 --> 00:22:25,970
+some kind of prediction.
+
+407
+00:22:25,970 --> 00:22:29,160
+This is very useful in clinical
+applications because often we want to
+
+408
+00:22:29,160 --> 00:22:33,354
+classify people as having a condition or
+not having a condition.
+
+409
+00:22:33,354 --> 00:22:35,169
+Condition, that's a binary outcome, so
+
+410
+00:22:35,169 --> 00:22:40,250
+if we're doing that kind of prediction, we
+would likely be using logistic regression.
+
+411
+00:22:40,250 --> 00:22:45,146
+So we can try to come up with a set of
+predictors that predicts who's going to
+
+412
+00:22:45,146 --> 00:22:50,050
+have a disease or not have a disease.
+
+413
+00:22:50,050 --> 00:22:53,070
+So that's one of the functions of logistic
+regression prediction.
+
+414
+00:22:53,070 --> 00:22:58,670
+A second function of logistic regression
+which is probably, is used more often,
+
+415
+00:22:58,670 --> 00:23:00,030
+is just to try to say,
+
+416
+00:23:00,030 --> 00:23:07,240
+is a particular predictor, like homework,
+related to the outcome?
+
+417
+00:23:07,240 --> 00:23:09,590
+In this court case, booksmart or street
+smart.
+
+418
+00:23:09,590 --> 00:23:10,880
+Are those variables related.
+
+419
+00:23:10,880 --> 00:23:13,085
+Is a treatment related to an outcome?
+
+420
+00:23:13,085 --> 00:23:17,440
+And that's very useful in of itself and of
+course we can say, is that predictor,
+
+421
+00:23:17,440 --> 00:23:23,900
+that treatment related to the outcome
+after adjusting for potential confounders.
+
+422
+00:23:23,900 --> 00:23:27,850
+So, that's another very important use of
+the logistic The regression model.
+
+423
+00:23:27,850 --> 00:23:31,388
+I'm going to start by talking just briefly
+about the first of these aims,
+
+424
+00:23:31,388 --> 00:23:34,594
+which is the prediction end of things.
+
+425
+00:23:34,594 --> 00:23:37,552
+Again here's a logistic regression model.
+
+426
+00:23:37,552 --> 00:23:42,130
+We've modeled the outcome variable, is the
+log odds of the outcome.
+
+427
+00:23:42,130 --> 00:23:43,910
+The, we're modeling that as a line.
+
+428
+00:23:43,910 --> 00:23:48,314
+Let me take that model that we just fit.
+
+429
+00:23:48,314 --> 00:23:52,513
+And how would we actually apply it to make
+some predictions.
+
+430
+00:23:52,513 --> 00:23:56,797
+So, if you're somebody who does no
+homework per week, 0 hours of homework per
+
+431
+00:23:56,797 --> 00:24:03,950
+week, you could plug in that val, [COUGH],
+value for homework of 0 into the model.
+
+432
+00:24:03,950 --> 00:24:07,690
+You get that your predicted logint is
+2.12.
+
+433
+00:24:07,690 --> 00:24:10,082
+As I mentioned most of us don't think in
+logint so wait a minute,
+
+434
+00:24:10,082 --> 00:24:13,026
+we're going to do something with that
+number to make it more interpretable, but
+
+435
+00:24:13,026 --> 00:24:17,400
+if you did ten hours per week of homework
+you could plug in ten.
+
+436
+00:24:17,400 --> 00:24:19,920
+The predicted logint there is 1.73...
+
+437
+00:24:19,920 --> 00:24:24,070
+if you did 50 hours per week, the
+predicted logit is .17.
+
+438
+00:24:24,070 --> 00:24:28,260
+So the more homework you sdo, the more the
+logit goes down.
+
+439
+00:24:28,260 --> 00:24:31,920
+Well I don't want to deal with a logit
+because I can't think in logit.
+
+440
+00:24:31,920 --> 00:24:35,100
+However, we can get this, notice the
+There's a probability in there,
+
+441
+00:24:35,100 --> 00:24:39,450
+what we want to get out is the predicted
+probability of the outcome.
+
+442
+00:24:39,450 --> 00:24:43,510
+The predicted probability of considering
+yourself booksmart in this case.
+
+443
+00:24:43,510 --> 00:24:46,950
+I want, I use to like this predicted
+probability.
+
+444
+00:24:46,950 --> 00:24:48,470
+Well, it's actually not that hard to do,
+right?
+
+445
+00:24:48,470 --> 00:24:50,190
+We've got one equation and one unknown.
+
+446
+00:24:50,190 --> 00:24:52,250
+We can isolate that probability.
+
+447
+00:24:52,250 --> 00:24:54,510
+So how do we do it?
+
+448
+00:24:54,510 --> 00:24:57,303
+The first thing that we're going to want
+to do is we're going to want to
+
+449
+00:24:57,303 --> 00:24:59,320
+exponentiate both sides.
+
+450
+00:24:59,320 --> 00:25:01,240
+So for example the zero hours per week,
+
+451
+00:25:01,240 --> 00:25:05,050
+that person would be predicted to have a
+logit of 2.12.
+
+452
+00:25:05,050 --> 00:25:08,960
+I can then exponentiate both sides of
+those- Of that equation.
+
+453
+00:25:08,960 --> 00:25:11,719
+So that would tell me that the odds for
+
+454
+00:25:11,719 --> 00:25:19,537
+somebody that does zero homework per week
+is the exponential raised to 2.12.
+
+455
+00:25:19,537 --> 00:25:23,300
+That value is 8.33 if you actually
+calculated it out.
+
+456
+00:25:23,300 --> 00:25:25,520
+So e raised to 2.2 is Is 8.33.
+
+457
+00:25:25,520 --> 00:25:28,656
+That's the odds for a person who does the
+odds of being book smart for
+
+458
+00:25:28,656 --> 00:25:32,410
+a person who does zero hours per week of
+homework.
+
+459
+00:25:32,410 --> 00:25:35,154
+Then we could exponentiate this 1.73, that
+will give me the odds for
+
+460
+00:25:35,154 --> 00:25:38,276
+somebody who does 10 hours per week,
+that's 5.64.
+
+461
+00:25:38,276 --> 00:25:41,060
+We could exponentiate the 0.17, that gives
+me the odds for
+
+462
+00:25:41,060 --> 00:25:43,820
+somebody who does 50 hours per week.
+
+463
+00:25:43,820 --> 00:25:45,560
+That comes out to be 1.19.
+
+464
+00:25:45,560 --> 00:25:47,375
+So your odds of being book smart, again,
+
+465
+00:25:47,375 --> 00:25:50,230
+goes down as you do more homework per
+week.
+
+466
+00:25:50,230 --> 00:25:52,626
+So the opposite of what you might expect.
+
+467
+00:25:52,626 --> 00:25:56,470
+But of course this is not statistically
+significant.
+
+468
+00:25:56,470 --> 00:25:58,034
+Well, of course, I don't think in odds, so
+
+469
+00:25:58,034 --> 00:26:02,000
+I want to go one step further and
+translate the odds into a probability.
+
+470
+00:26:02,000 --> 00:26:03,483
+Well, here are the odds.
+
+471
+00:26:03,483 --> 00:26:08,220
+The odds is just the probability divided
+by one minus the probability.
+
+472
+00:26:08,220 --> 00:26:10,120
+So we can actually solve for p here.
+
+473
+00:26:10,120 --> 00:26:11,870
+So, to solve for p.
+
+474
+00:26:11,870 --> 00:26:14,000
+For example, for this first one.
+
+475
+00:26:14,000 --> 00:26:18,490
+I'm going to multiply both sides of my
+equation by one minus p.
+
+476
+00:26:18,490 --> 00:26:25,852
+Then I'm going to get that P is equal to
+8.33 minus 8.33 p.
+
+477
+00:26:25,852 --> 00:26:28,680
+I can add that negative, that 8.33 p.
+
+478
+00:26:28,680 --> 00:26:32,410
+I'm going to add 8.33 p to both sides of
+the equation here.
+
+479
+00:26:35,800 --> 00:26:38,670
+Then I'm going to get 9.33.
+
+480
+00:26:38,670 --> 00:26:41,870
+P is equal to 8.33.
+
+481
+00:26:41,870 --> 00:26:45,612
+Now to isolate p I'm going to divide both
+sides of the equation by 9.33.
+
+482
+00:26:45,612 --> 00:26:49,662
+.33.
+A general formula here is you would do p
+
+483
+00:26:49,662 --> 00:26:56,740
+is equal to the, odds divided by 1 plus
+the odds.
+
+484
+00:26:56,740 --> 00:26:59,410
+And when you do that, 8.33 divided by
+9.33.
+
+485
+00:26:59,410 --> 00:27:01,650
+Notice that's always going to be a number
+between zero and one.
+
+486
+00:27:01,650 --> 00:27:04,560
+So that's going to give you a probability
+that comes out to be 89%.
+
+487
+00:27:04,560 --> 00:27:07,488
+So the predicted probability for somebody
+who does zero hours per week of
+
+488
+00:27:07,488 --> 00:27:11,080
+homework is that they have an 89% chance
+of being book-smart.
+
+489
+00:27:11,080 --> 00:27:13,320
+The less homework, more chance of being
+book-smart.
+
+490
+00:27:13,320 --> 00:27:14,104
+When you do this for
+
+491
+00:27:14,104 --> 00:27:18,410
+ten hours per week, you get 85% is the
+predicted probability of being book-smart.
+
+492
+00:27:18,410 --> 00:27:22,140
+For somebody who does 50 hours per week,
+they're only, you know, 54% chance.
+
+493
+00:27:22,140 --> 00:27:25,620
+Their predictive probability of being book
+smart is only 54%.
+
+494
+00:27:25,620 --> 00:27:28,806
+Again, none of this is statistically
+significant, but just in terms of
+
+495
+00:27:28,806 --> 00:27:33,080
+the effect sizes here, these would be the
+predicted probabilities.
+
+496
+00:27:33,080 --> 00:27:37,427
+So out of a logistic regression model you
+can predict for a particular person their
+
+497
+00:27:37,427 --> 00:27:42,970
+probability given their characteristics of
+having a particular outcome.
+
+498
+00:27:42,970 --> 00:27:48,802
+You can also say how good of a job does
+the model do of predicting.
+
+499
+00:27:48,802 --> 00:27:51,200
+An outcome.
+
+500
+00:27:51,200 --> 00:27:54,008
+You measure this with something called the
+area under the curve,
+
+501
+00:27:54,008 --> 00:27:56,110
+the area under the ROC curve.
+
+502
+00:27:56,110 --> 00:27:59,768
+And the area under the curve for logistic
+regression is analyse to the R
+
+503
+00:27:59,768 --> 00:28:03,480
+squared that we got out of linear
+regression.
+
+504
+00:28:03,480 --> 00:28:07,638
+It's a measure of model fit and how good
+your predictive power is.
+
+505
+00:28:07,638 --> 00:28:09,728
+Remember that when we did linear
+regression,
+
+506
+00:28:09,728 --> 00:28:13,083
+sometimes you could over-fit your model,
+and get really good R-squares,
+
+507
+00:28:13,083 --> 00:28:17,640
+that actually didn't mean that you had
+great predictive power.
+
+508
+00:28:17,640 --> 00:28:19,810
+It just meant that you had an over-fit
+model.
+
+509
+00:28:19,810 --> 00:28:21,730
+Same principle applies here.
+
+510
+00:28:21,730 --> 00:28:25,013
+Sometimes a really good area under the
+curve reflects over-fitting rather than
+
+511
+00:28:25,013 --> 00:28:26,870
+good predictive ability.
+
+512
+00:28:26,870 --> 00:28:29,190
+So just kind of keep that in mind.
+
+513
+00:28:29,190 --> 00:28:31,760
+I just want to briefly review the ROC
+curve.
+
+514
+00:28:31,760 --> 00:28:33,690
+So let me give you the big picture first.
+
+515
+00:28:33,690 --> 00:28:34,860
+So this is an ROC curve.
+
+516
+00:28:34,860 --> 00:28:37,530
+This is the ROC curve for the model we
+just fit.
+
+517
+00:28:37,530 --> 00:28:41,480
+Homework hours predicting book smart,
+street smart.
+
+518
+00:28:41,480 --> 00:28:43,570
+This is actually a really bad ROC curve.
+
+519
+00:28:43,570 --> 00:28:46,150
+Because homework is not very predictive of
+the outcome here.
+
+520
+00:28:46,150 --> 00:28:49,233
+It's not signifigantly related.
+
+521
+00:28:49,233 --> 00:28:50,240
+An ROC curve.
+
+522
+00:28:50,240 --> 00:28:51,614
+Here's the diagonal line.
+
+523
+00:28:51,614 --> 00:28:53,722
+If you look at the diagonal line here,
+
+524
+00:28:53,722 --> 00:28:58,640
+the diagonal line on the ROC curve means
+no predictive ability.
+
+525
+00:28:58,640 --> 00:29:00,584
+So if your model falls right near this
+line,
+
+526
+00:29:00,584 --> 00:29:04,160
+that means your model has no predictive
+ability, really.
+
+527
+00:29:04,160 --> 00:29:05,740
+And that's essentially what's happening
+here.
+
+528
+00:29:05,740 --> 00:29:07,370
+Here's our, our, ROC curve in blue.
+
+529
+00:29:07,370 --> 00:29:10,470
+It's Not doing much better than the, the
+line.
+
+530
+00:29:10,470 --> 00:29:12,770
+This line represents chance.
+
+531
+00:29:12,770 --> 00:29:15,416
+That you're, you're just flipping a coin
+to determine whether or
+
+532
+00:29:15,416 --> 00:29:17,830
+not somebody has the outcome or not.
+
+533
+00:29:17,830 --> 00:29:19,675
+So, we're not doing much better than
+chance here.
+
+534
+00:29:19,675 --> 00:29:23,000
+An area under the curve of 50% means no
+predictive ability.
+
+535
+00:29:23,000 --> 00:29:27,290
+The are, an area under the curve of 60%
+is, which we have here.
+
+536
+00:29:27,290 --> 00:29:28,070
+You can see that here.
+
+537
+00:29:28,070 --> 00:29:29,740
+It's really not much better than that.
+
+538
+00:29:29,740 --> 00:29:34,670
+What is the ROC curve, though, and what
+we're looking for on the ROC curve?
+
+539
+00:29:34,670 --> 00:29:36,506
+You know you have really good predictive
+ability when you get
+
+540
+00:29:36,506 --> 00:29:37,950
+a curve that looks like this.
+
+541
+00:29:37,950 --> 00:29:42,850
+Where that is an area under the curve's
+going to be close to 100 percent.
+
+542
+00:29:42,850 --> 00:29:44,280
+The ROC curve is,.
+
+543
+00:29:44,280 --> 00:29:48,900
+What it actually is, is you're graphing
+sensitivity against 1 minus.
+
+544
+00:29:48,900 --> 00:29:49,840
+The specificity.
+
+545
+00:29:49,840 --> 00:29:50,533
+High values,
+
+546
+00:29:50,533 --> 00:29:55,646
+close to 100% is really good predictive
+power assuming you're not over fitting.
+
+547
+00:29:55,646 --> 00:30:00,800
+Values closer to 50% are poor or no
+predictive power.
+
+548
+00:30:00,800 --> 00:30:03,068
+So that's the general picture of the ROC
+curve, and
+
+549
+00:30:03,068 --> 00:30:06,362
+this, my computer just you know, when I
+did the logistic regression it
+
+550
+00:30:06,362 --> 00:30:12,250
+spit this curve out for me automatically
+so I didn't have to do any work to get it.
+
+551
+00:30:12,250 --> 00:30:15,613
+But just to give you a little bit of
+detail about where it comes from so
+
+552
+00:30:15,613 --> 00:30:17,029
+you sort of understand that,
+
+553
+00:30:17,029 --> 00:30:22,690
+let me show you how this ROC curve is
+drawn using this particular example.
+
+554
+00:30:22,690 --> 00:30:27,667
+Again, logistic regression model gives me
+out a predicted probability for
+
+555
+00:30:27,667 --> 00:30:29,580
+every person.
+
+556
+00:30:29,580 --> 00:30:32,742
+In this case, the predicted probability
+for a given person only depends on
+
+557
+00:30:32,742 --> 00:30:36,930
+the number of hours of homework that they
+reported doing every week.
+
+558
+00:30:36,930 --> 00:30:38,370
+So if you did zero hours of homework,
+
+559
+00:30:38,370 --> 00:30:41,140
+you were predicted in 89% predicted
+probability.
+
+560
+00:30:41,140 --> 00:30:44,910
+If you did 50 hours of homework, you had a
+54% predicted probability and so on.
+
+561
+00:30:44,910 --> 00:30:47,440
+What we can do, is we can calculate the
+predicted probability, and
+
+562
+00:30:47,440 --> 00:30:49,880
+again the computer is doing this for me.
+
+563
+00:30:49,880 --> 00:30:52,426
+We can calculate the predicted probability
+for every person in the data set, and
+
+564
+00:30:52,426 --> 00:30:55,940
+some of these will be ties, because there
+are some people who have the same.
+
+565
+00:30:55,940 --> 00:30:58,750
+Same homework time and thus the same
+predicted probability.
+
+566
+00:30:58,750 --> 00:31:01,244
+So, I'm just showing here some of the
+predicted probabilities from my
+
+567
+00:31:01,244 --> 00:31:02,975
+dataset I'm not showing all.
+
+568
+00:31:02,975 --> 00:31:05,727
+I'm showing I've lined up the predicted
+probabilities from the lowest in
+
+569
+00:31:05,727 --> 00:31:06,802
+the dataset to the highest and
+
+570
+00:31:06,802 --> 00:31:11,137
+I'm not showing the ones in between I'm
+just showing the lowest and the highest.
+
+571
+00:31:11,137 --> 00:31:12,634
+Just to illustrate.
+
+572
+00:31:12,634 --> 00:31:13,594
+What you then to is,
+
+573
+00:31:13,594 --> 00:31:17,871
+again, though our c curve is based on
+sensitivity and specificity.
+
+574
+00:31:17,871 --> 00:31:20,367
+But we have a continuous predictor here.
+
+575
+00:31:20,367 --> 00:31:23,966
+So it's not that you know, I have a test
+and you either pass the test or
+
+576
+00:31:23,966 --> 00:31:26,172
+you fail the test.
+
+577
+00:31:26,172 --> 00:31:29,652
+To get sensitivity and specificity from a
+continuous predictor,
+
+578
+00:31:29,652 --> 00:31:33,939
+we're going to have a range of
+sensitivities, and specificities.
+
+579
+00:31:33,939 --> 00:31:37,306
+The ROC curve is set up by doing the
+following.
+
+580
+00:31:37,306 --> 00:31:40,897
+You take the person with the lowest
+predicted probability in your data set,
+
+581
+00:31:40,897 --> 00:31:43,804
+you make that lowest predicted probability
+the cut-off, for
+
+582
+00:31:43,804 --> 00:31:47,337
+being classified in this case as books.
+
+583
+00:31:47,337 --> 00:31:51,957
+Smart, so you say everybody who has a
+predicted probability of .52 or
+
+584
+00:31:51,957 --> 00:31:56,172
+higher is going to be called book smart.
+
+585
+00:31:56,172 --> 00:31:59,826
+Well, since everybody on your data set has
+a predicted probability of .52 or
+
+586
+00:31:59,826 --> 00:32:04,771
+higher, everybody in your data set's
+going to be classified as book smart.
+
+587
+00:32:04,771 --> 00:32:08,715
+So we can actually make a little two by
+two table here if our test is -- if
+
+588
+00:32:08,715 --> 00:32:12,387
+your predicted probability is greater than
+.52, greater than or
+
+589
+00:32:12,387 --> 00:32:18,134
+equal to .52, you're going to be
+classified as book smart.
+
+590
+00:32:18,134 --> 00:32:20,897
+That's a, that is as a positive test.
+
+591
+00:32:20,897 --> 00:32:21,527
+Then all 48,
+
+592
+00:32:21,527 --> 00:32:26,110
+there's 48 people here, all 48 are
+going to be classified as book smart.
+
+593
+00:32:26,110 --> 00:32:30,105
+You're classified as street smart if
+you're below .52 On
+
+594
+00:32:30,105 --> 00:32:33,217
+this particular cut-off.
+
+595
+00:32:33,217 --> 00:32:36,733
+That means nobody will be classified as
+street-smart to start here.
+
+596
+00:32:36,733 --> 00:32:40,942
+And this is their -- we can actually then
+compare that to the true value for
+
+597
+00:32:40,942 --> 00:32:43,978
+book smart or street smart.
+
+598
+00:32:43,978 --> 00:32:48,190
+So in my data set, out of 48, there were
+40 book-smart people And
+
+599
+00:32:48,190 --> 00:32:51,184
+8 street smart people.
+
+600
+00:32:51,184 --> 00:32:55,140
+If we count them all as book smart
+according to our test,
+
+601
+00:32:55,140 --> 00:33:02,013
+then we are going to have perfect
+sensitivity and zero specificity.
+
+602
+00:33:02,013 --> 00:33:05,199
+So we've captured everybody who is book
+smart if you make the test
+
+603
+00:33:05,199 --> 00:33:08,226
+predict a probability 0.52 or higher.
+
+604
+00:33:08,226 --> 00:33:10,030
+We're going to capture everybody who's
+book smart, but
+
+605
+00:33:10,030 --> 00:33:12,369
+we're going to capture nobody who was
+street smart.
+
+606
+00:33:12,369 --> 00:33:16,305
+We're going to miss classify all of them,
+so our specificity's going to be 0.
+
+607
+00:33:16,305 --> 00:33:19,033
+We represent that on the ROC curve right
+here.
+
+608
+00:33:19,033 --> 00:33:22,377
+So this is 100% sensitivity.
+
+609
+00:33:22,377 --> 00:33:27,470
+And 0% specificity because remember we're
+graphing 1 minus 0.
+
+610
+00:33:27,470 --> 00:33:32,335
+1 minus the specificity, so 1 minus 0
+gives us a 1.0 value here.
+
+611
+00:33:32,335 --> 00:33:34,042
+So we end up here on the curve.
+
+612
+00:33:34,042 --> 00:33:35,876
+Then we do this again.
+
+613
+00:33:35,876 --> 00:33:39,008
+Now we move up our cut-off for classifying
+people as book smart or
+
+614
+00:33:39,008 --> 00:33:43,880
+street smart to the next predictive
+probability level, which is 0.54.
+
+615
+00:33:43,880 --> 00:33:46,806
+So now we say, everybody who is 0.54 or
+higher,
+
+616
+00:33:46,806 --> 00:33:51,811
+on their predictive probability, we're
+going to call you book smart And in fact,
+
+617
+00:33:51,811 --> 00:33:56,739
+when we do this, that is going to capture
+most everybody has point five four or
+
+618
+00:33:56,739 --> 00:34:04,200
+higher, but not everybody, so that's our
+positive test.
+
+619
+00:34:04,200 --> 00:34:09,220
+Our negative test, now there are a few who
+are below point five four.
+
+620
+00:34:09,220 --> 00:34:11,091
+They're going to be counted as having a
+negative.
+
+621
+00:34:11,091 --> 00:34:12,860
+On this test.
+
+622
+00:34:12,860 --> 00:34:17,475
+So we end up with classifying 46 people as
+book smart according to our test, but
+
+623
+00:34:17,475 --> 00:34:22,940
+two we're classifying as street smart
+according to our test.
+
+624
+00:34:22,940 --> 00:34:25,418
+We can actually look at the true value,
+who was actually book smart, and
+
+625
+00:34:25,418 --> 00:34:26,890
+who was street smart.
+
+626
+00:34:26,890 --> 00:34:30,620
+Remember we had 40 in our set who
+considered themselves book smart.
+
+627
+00:34:30,620 --> 00:34:33,508
+And in fact, we ended up with 38 out of
+the 40 who
+
+628
+00:34:33,508 --> 00:34:40,960
+were book smart were correctly classified
+as book smart, and two were misclassified.
+
+629
+00:34:40,960 --> 00:34:43,780
+The two had predicted probabilities less
+than 0.54 were actually out of
+
+630
+00:34:43,780 --> 00:34:45,370
+the book smart group.
+
+631
+00:34:45,370 --> 00:34:49,520
+And we misclassified eight, the eight
+street smart people as book smart again.
+
+632
+00:34:49,520 --> 00:34:54,490
+So, our specificity remains at a 0.
+
+633
+00:34:54,490 --> 00:34:58,570
+Our sensitivity is now 38 out of 40, or
+95%.
+
+634
+00:34:58,570 --> 00:35:02,400
+So we're not, we no longer have a perfect
+sensitivity.
+
+635
+00:35:02,400 --> 00:35:06,243
+That's going to move us down on the chart,
+here, to a sensitivity of 95% and
+
+636
+00:35:06,243 --> 00:35:10,080
+we're continuing to have a specificity of
+0.
+
+637
+00:35:10,080 --> 00:35:13,356
+And we go on and do this for all the
+observe, all the predicted probabilities
+
+638
+00:35:13,356 --> 00:35:16,788
+in our data set, and that's what defines
+this curve here, and again, if we have no
+
+639
+00:35:16,788 --> 00:35:22,580
+predictive ability, you're going to end up
+right along that line as we do here.
+
+640
+00:35:22,580 --> 00:35:29,380
+So that's the ROC curve that tells us how
+good we're, how predictive our model is.
+
+641
+00:35:29,380 --> 00:35:31,216
+The other thing that's often more useful
+or
+
+642
+00:35:31,216 --> 00:35:35,270
+more commonly used from the logistic
+regression model is just the same.
+
+643
+00:35:35,270 --> 00:35:38,768
+What's the relationship between the
+predictor, and the outcome, in this case,
+
+644
+00:35:38,768 --> 00:35:41,365
+homework and book smarts, and as I
+mentioned earlier, the,
+
+645
+00:35:41,365 --> 00:35:46,526
+the beta coefficient from logistic
+regression, what happens is if you x/g.
+
+646
+00:35:46,526 --> 00:35:49,780
+Exponentiate that beta coefficient from
+logistic regression.
+
+647
+00:35:49,780 --> 00:35:53,420
+When you exponentiate that that gives you
+an odds ratio.
+
+648
+00:35:53,420 --> 00:35:59,003
+So we can take this beta for homework here
+and we can exponentiate it.
+
+649
+00:35:59,003 --> 00:36:02,760
+And so we can raise that to point,
+negative 0.0389.
+
+650
+00:36:02,760 --> 00:36:05,910
+When you do that you come out with a value
+of 0.96.
+
+651
+00:36:05,910 --> 00:36:07,264
+So that's the odds ratio here.
+
+652
+00:36:07,264 --> 00:36:08,930
+Here.
+
+653
+00:36:08,930 --> 00:36:12,025
+I'll show you in a minute why you can
+interpret the beta like this.
+
+654
+00:36:12,025 --> 00:36:18,505
+But, what this means is we have quantified
+the relationship between homework time and
+
+655
+00:36:18,505 --> 00:36:22,510
+your odds of being book smart.
+
+656
+00:36:22,510 --> 00:36:26,136
+And you would read this odds ratio of .96
+to say that there is
+
+657
+00:36:26,136 --> 00:36:29,762
+a four percent decrease in your odds of
+being book smart for
+
+658
+00:36:29,762 --> 00:36:35,956
+every one hour more that you spend on
+homework per week.
+
+659
+00:36:35,956 --> 00:36:38,896
+So if I just exponentiate that beta, the
+units here are, is,
+
+660
+00:36:38,896 --> 00:36:42,320
+you know, are one hour of homework per
+week.
+
+661
+00:36:42,320 --> 00:36:45,732
+Notice now we've got an odds ratio for a
+continuous predictor.
+
+662
+00:36:45,732 --> 00:36:48,505
+You can get that in a logistic
+regressions, and now we're talking about
+
+663
+00:36:48,505 --> 00:36:52,550
+an increase in odds for a one unit
+increase in the continuous predictor.
+
+664
+00:36:52,550 --> 00:36:53,252
+Everything up to now,
+
+665
+00:36:53,252 --> 00:36:56,330
+when we've done odds ratios, we've been
+talking about a binary predictor.
+
+666
+00:36:56,330 --> 00:36:58,040
+You're either in this group or not.
+
+667
+00:36:58,040 --> 00:37:01,950
+But now we can get odds ratios for
+continuous predictors.
+
+668
+00:37:01,950 --> 00:37:03,210
+Well, how does that translate?
+
+669
+00:37:03,210 --> 00:37:06,810
+How does that beta become an odds ratio?
+
+670
+00:37:06,810 --> 00:37:08,030
+Exactly how does that work?
+
+671
+00:37:08,030 --> 00:37:09,210
+So let me show you that now.
+
+672
+00:37:09,210 --> 00:37:14,790
+How do we get from beta to odds ratios?
+
+673
+00:37:14,790 --> 00:37:15,960
+Well, what is an odds ratio?
+
+674
+00:37:15,960 --> 00:37:19,376
+If I want to know the odds ratio for being
+book smart, for the exposure here,
+
+675
+00:37:19,376 --> 00:37:24,820
+which is more homework time compared to
+less homework time What is the odds ratio?
+
+676
+00:37:24,820 --> 00:37:26,830
+And odds ratio is a ratio of two odds.
+
+677
+00:37:26,830 --> 00:37:29,828
+So my odds ratio here would be the odds of
+being booksmart.
+
+678
+00:37:29,828 --> 00:37:32,792
+For somebody who does more homework,
+compared with the odds of
+
+679
+00:37:32,792 --> 00:37:37,073
+being book smart for somebody who spends
+less time on homework.
+
+680
+00:37:37,073 --> 00:37:40,741
+And if we're just going with the units
+that I've used here.
+
+681
+00:37:40,741 --> 00:37:42,351
+The difference between the numerator and
+
+682
+00:37:42,351 --> 00:37:44,770
+the denominator, I could make it in one
+hour.
+
+683
+00:37:44,770 --> 00:37:47,073
+Difference in homework time, so what's my
+odds ratio for
+
+684
+00:37:47,073 --> 00:37:49,376
+a one-hour change, a one-hour increase n
+homework time,
+
+685
+00:37:49,376 --> 00:37:52,801
+how doe that affect my odds of being
+book-smart?
+
+686
+00:37:52,801 --> 00:37:56,014
+Well, now I can just fill in, I fit a
+model that tells me that predicted odds of
+
+687
+00:37:56,014 --> 00:37:59,244
+being book-smart for a given homework
+level.
+
+688
+00:37:59,244 --> 00:38:01,241
+So I can just plug in that model.
+
+689
+00:38:01,241 --> 00:38:04,211
+So what's the odds of being book-smart for
+somebody who does, say,
+
+690
+00:38:04,211 --> 00:38:09,008
+one hour of homework compared with
+somebody who does zero hours of homework?
+
+691
+00:38:09,008 --> 00:38:11,080
+The odds, which I can put in the
+numerator, so
+
+692
+00:38:11,080 --> 00:38:14,328
+I fit the model that says the log odds is
+alpha plus beta homework times
+
+693
+00:38:14,328 --> 00:38:19,864
+the amount of homework, if I exponentiate
+that, remember, I get the odds.
+
+694
+00:38:19,864 --> 00:38:21,227
+So the odds of being book-smart for
+
+695
+00:38:21,227 --> 00:38:24,960
+somebody who does on hour of homework, I
+can put that in the numerator.
+
+696
+00:38:24,960 --> 00:38:27,153
+I can compare that to the odds of being
+book smart for
+
+697
+00:38:27,153 --> 00:38:29,372
+somebody who does no homework.
+
+698
+00:38:29,372 --> 00:38:32,270
+So now I've made a ratio of two odds, the
+odds for somebody who does one hour of
+
+699
+00:38:32,270 --> 00:38:36,106
+homework divided by the odds for somebody
+who does no homework.
+
+700
+00:38:36,106 --> 00:38:38,509
+And then we can simplify this a little
+bit.
+
+701
+00:38:38,509 --> 00:38:41,485
+What you'll notice right away is, you have
+to know a little bit about how
+
+702
+00:38:41,485 --> 00:38:44,701
+exponential works to know how I leapt from
+here to here, but if you have e raised to
+
+703
+00:38:44,701 --> 00:38:50,340
+alpha plus beta, that's the same as e
+raised to alpha times e raised to beta.
+
+704
+00:38:50,340 --> 00:38:52,932
+Well, notice there, they both have the
+same intercept, so
+
+705
+00:38:52,932 --> 00:38:55,367
+those intercepts are going to cancel.
+
+706
+00:38:55,367 --> 00:38:57,108
+That's the nice thing here.
+
+707
+00:38:57,108 --> 00:39:01,256
+Those cancel, and if we simplify this, it
+just turns out that we're left with this e
+
+708
+00:39:01,256 --> 00:39:05,343
+beta times one in the numerator, divided
+by e raised the zero in the denominator,
+
+709
+00:39:05,343 --> 00:39:09,775
+that's just e raised to beta homework.
+
+710
+00:39:09,775 --> 00:39:12,642
+And so that's the odds ratio.
+
+711
+00:39:12,642 --> 00:39:16,369
+You take the beta for homework, you
+exponentiate it, you get the odds ratio.
+
+712
+00:39:16,369 --> 00:39:19,736
+And the actual value here, for beta was
+negative 0.039.
+
+713
+00:39:19,736 --> 00:39:23,509
+Again, if I exponentiate that, I get an
+odds ratio of 0.96.
+
+714
+00:39:23,509 --> 00:39:26,238
+Six.
+
+715
+00:39:26,238 --> 00:39:27,438
+So the odds ratio 0.96 means that for
+
+716
+00:39:27,438 --> 00:39:28,958
+every one hour increase in homework per
+week,
+
+717
+00:39:28,958 --> 00:39:31,973
+your odds of believing yourself book smart
+decreases by 4%.
+
+718
+00:39:31,973 --> 00:39:33,726
+And of course, it wasn't significant here.
+
+719
+00:39:33,726 --> 00:39:35,902
+I want to just extend this logic to show,
+
+720
+00:39:35,902 --> 00:39:40,704
+how not only can we get odds ratio out of
+logistic regression.
+
+721
+00:39:40,704 --> 00:39:43,873
+We can get multivariate adjusted odds
+ratios.
+
+722
+00:39:43,873 --> 00:39:46,993
+So just as we made the leap from linear
+regression Simple linear regression of
+
+723
+00:39:46,993 --> 00:39:49,237
+multivariate linear regression.
+
+724
+00:39:49,237 --> 00:39:51,803
+We can do the same thing with logistic
+regression.
+
+725
+00:39:51,803 --> 00:39:54,347
+It's very easy to add additional
+predictors to the right side of
+
+726
+00:39:54,347 --> 00:39:55,576
+the equation.
+
+727
+00:39:55,576 --> 00:39:58,537
+We can have a bunch of predictors just
+like this.
+
+728
+00:39:58,537 --> 00:40:00,603
+That's our multivariate linear logistic
+equation.
+
+729
+00:40:00,603 --> 00:40:02,774
+And here's some examples.
+
+730
+00:40:02,774 --> 00:40:06,550
+Imagine that we did a study where we were
+looking at lung cancer.
+
+731
+00:40:06,550 --> 00:40:10,390
+And let's say for the first logistic
+regression model we fit, we put in as
+
+732
+00:40:10,390 --> 00:40:16,420
+predictors a binary predictor for smoking
+and a binary predictor for drinking.
+
+733
+00:40:16,420 --> 00:40:20,210
+So we looked at smoking, yes or no, and
+drinking, yes or no.
+
+734
+00:40:20,210 --> 00:40:21,600
+Those are two binary variables.
+
+735
+00:40:21,600 --> 00:40:23,190
+So that's one model we could fit.
+
+736
+00:40:23,190 --> 00:40:31,110
+That's a simpler model so I'm going to
+start there.
+
+737
+00:40:31,110 --> 00:40:31,994
+The beta for smoking would then represent
+the the effect of
+
+738
+00:40:31,994 --> 00:40:32,783
+smoking adjusted for drinking.
+
+739
+00:40:32,783 --> 00:40:35,880
+The beta for drinking represent the effect
+of drinking adjusted for smoking.
+
+740
+00:40:35,880 --> 00:40:39,219
+We can make it slightly more complicated
+by also adding an additional Small
+
+741
+00:40:39,219 --> 00:40:43,270
+variable additional predictor in the
+model, let's add also age.
+
+742
+00:40:43,270 --> 00:40:48,000
+We could then get the effective smoking
+adjusted for both drinking and age.
+
+743
+00:40:48,000 --> 00:40:51,159
+The effect of drinking adjusted for both
+smoking and age.
+
+744
+00:40:51,159 --> 00:40:54,468
+And the effect of age, adjusted for both
+smoking and drinking.
+
+745
+00:40:54,468 --> 00:40:56,824
+Let me show you now exactly what I mean.
+
+746
+00:40:56,824 --> 00:40:57,812
+By adjusted for.
+
+747
+00:40:57,812 --> 00:41:01,992
+When I keep using that term adjusted for,
+what does that really mean?
+
+748
+00:41:01,992 --> 00:41:04,720
+That means that if I fix everything else
+in the model,
+
+749
+00:41:04,720 --> 00:41:09,820
+it's the isolated effect of smoking or the
+isolated effect of drinking.
+
+750
+00:41:09,820 --> 00:41:12,010
+So let me show you that mathematically
+now.
+
+751
+00:41:12,010 --> 00:41:14,800
+I think it's helpful.
+
+752
+00:41:14,800 --> 00:41:16,924
+I'm going to start with the binary
+predictor,
+
+753
+00:41:16,924 --> 00:41:20,790
+the model with the two binary predictors
+because it's simpler.
+
+754
+00:41:20,790 --> 00:41:21,880
+Again, what's an odds ratio?
+
+755
+00:41:21,880 --> 00:41:23,840
+It's the odds of a disease, say, lung
+cancer, for
+
+756
+00:41:23,840 --> 00:41:28,070
+an exposed group compared with the odds of
+a disease for an unexposed group.
+
+757
+00:41:28,070 --> 00:41:29,792
+If I have just a binary predictor, say,
+exposed and
+
+758
+00:41:29,792 --> 00:41:33,320
+unexposed drinker, a non drinker, smoker,
+a non smoker.
+
+759
+00:41:33,320 --> 00:41:34,950
+That's what an odds ratio is.
+
+760
+00:41:34,950 --> 00:41:39,250
+My logistic regression model models the
+odds of disease for given people.
+
+761
+00:41:39,250 --> 00:41:42,814
+So I can put in the numerator the odds of
+disease for, say, a drinker, and I can put
+
+762
+00:41:42,814 --> 00:41:48,075
+in the denominator the odds of disease,
+lung cancer here, for a non-drinker.
+
+763
+00:41:48,075 --> 00:41:49,615
+And that's what I've done here, so
+
+764
+00:41:49,615 --> 00:41:54,333
+my model, my first model had alcohol and
+smoking, two binary predictors in it.
+
+765
+00:41:54,333 --> 00:41:56,930
+So if I want to know the odds ratio for
+drinking, adjusted for
+
+766
+00:41:56,930 --> 00:42:00,481
+smoking, I can just say, let me compare in
+the numerator the odds for a drinker and
+
+767
+00:42:00,481 --> 00:42:03,661
+in the denominator the odds for a
+non-drinker, so they're, I put in a 1 for
+
+768
+00:42:03,661 --> 00:42:10,169
+drinking and 0, in the numerator, and a 0
+for drinking in the denominator.
+
+769
+00:42:10,169 --> 00:42:12,019
+Now I'm comparing the odds of lung cancer
+for
+
+770
+00:42:12,019 --> 00:42:15,812
+a drinker compared with the odds of lung
+cancer for a non-drinker.
+
+771
+00:42:15,812 --> 00:42:17,632
+Now, I've also got smoking in the model,
+so
+
+772
+00:42:17,632 --> 00:42:21,744
+I have to put in something for smoking,
+but what if I hold it fixed?
+
+773
+00:42:21,744 --> 00:42:24,624
+So what if I say I'm only comparing a
+drinking smoker to a non-drinking smoker
+
+774
+00:42:24,624 --> 00:42:27,594
+to a non-drinking smoker, so I put in a
+one for smoking for both the numerator and
+
+775
+00:42:27,594 --> 00:42:31,102
+the The denominator, I hold smoking fixed.
+
+776
+00:42:31,102 --> 00:42:34,066
+And actually, it wouldn't matter if I
+chose to
+
+777
+00:42:34,066 --> 00:42:39,438
+compare a drinking non-smoker to a
+drinking non-smoker.
+
+778
+00:42:39,438 --> 00:42:42,607
+I just have to hold smoking fixed for both
+the numerator and the denominator.
+
+779
+00:42:42,607 --> 00:42:44,070
+I have to make it the same.
+
+780
+00:42:44,070 --> 00:42:47,970
+If I make it the same, what you can show
+is that the intercepts cancel, and
+
+781
+00:42:47,970 --> 00:42:53,161
+now, as long as I hold smoking fixed, The
+smoking betas cancel.
+
+782
+00:42:53,161 --> 00:42:54,844
+What am I left with?
+
+783
+00:42:54,844 --> 00:42:56,209
+Well, if I simplify this,
+
+784
+00:42:56,209 --> 00:43:01,508
+I just have e raised to beta alcohol, e
+raised to 0 in the denominator is 1.
+
+785
+00:43:01,508 --> 00:43:05,343
+So I can show that the odds ratio for
+drinking, if I hold smoking fixed is
+
+786
+00:43:05,343 --> 00:43:10,506
+just all I do is take the beta for alcohol
+and exponentiate it.
+
+787
+00:43:10,506 --> 00:43:15,940
+That gives me the odds ratio for lung
+cancer compared to a non drinker.
+
+788
+00:43:15,940 --> 00:43:19,202
+And again, where I've held smoking
+constant.
+
+789
+00:43:19,202 --> 00:43:22,834
+Notice that this well be the odds ratio
+for drinking.
+
+790
+00:43:22,834 --> 00:43:26,644
+If i compare 2 small pairs or if I compare
+2 non smokers.
+
+791
+00:43:26,644 --> 00:43:31,834
+So, I'm assuming the effect of drinking is
+the same in smokers and nonsmokers.
+
+792
+00:43:31,834 --> 00:43:37,465
+I can use the same logic to show you this
+works for a continuous predictor, as well.
+
+793
+00:43:37,465 --> 00:43:39,229
+So, here's a continuous predictor.
+
+794
+00:43:39,229 --> 00:43:42,825
+For a continuous predictor, I'm going to
+be comparing the odds of disease for
+
+795
+00:43:42,825 --> 00:43:46,189
+somebody with a higher level of the
+continuous predictor compared to
+
+796
+00:43:46,189 --> 00:43:49,342
+somebody with the lower level.
+
+797
+00:43:49,342 --> 00:43:53,563
+For example, imagine that I've got my
+second model here that's got alcohol,
+
+798
+00:43:53,563 --> 00:43:56,540
+smoking, and age in the model.
+
+799
+00:43:56,540 --> 00:43:58,223
+Age is a continuous predictor.
+
+800
+00:43:58,223 --> 00:44:00,940
+If I want to compare in the numerator an
+older person.
+
+801
+00:44:00,940 --> 00:44:02,972
+The odds of lung cancer for an older
+person.
+
+802
+00:44:02,972 --> 00:44:07,604
+Compared with the odds of smoking for a
+younger person in the denominator.
+
+803
+00:44:07,604 --> 00:44:10,077
+This will give you the odds ratio for an
+increase in age.
+
+804
+00:44:10,077 --> 00:44:13,072
+How much does age affect my odds of lung
+cancer.
+
+805
+00:44:13,072 --> 00:44:16,660
+I'm again going to hold all the other
+variables in the model here.
+
+806
+00:44:16,660 --> 00:44:18,041
+Alcohol and smoking.
+
+807
+00:44:18,041 --> 00:44:19,040
+I'm going to hold those fixed.
+
+808
+00:44:19,040 --> 00:44:20,874
+So say I have two drinking smokers.
+
+809
+00:44:20,874 --> 00:44:24,090
+And I'm comparing a drinking smoker who's
+29 years old to a drinking smoker who's
+
+810
+00:44:24,090 --> 00:44:25,739
+only 19 years old.
+
+811
+00:44:25,739 --> 00:44:27,991
+That's a 10 unit jump in age.
+
+812
+00:44:27,991 --> 00:44:31,531
+And you'll see, it wouldn't really matter
+if I had put in 40 and 30, or
+
+813
+00:44:31,531 --> 00:44:37,140
+50 and 40, any 10 unit jump in age is
+going to give me the same answer, here.
+
+814
+00:44:37,140 --> 00:44:38,636
+You'll notice that lots of things per er,
+
+815
+00:44:38,636 --> 00:44:40,901
+cancelled out, that's the great thing
+here.
+
+816
+00:44:40,901 --> 00:44:43,676
+So we've fix all the other variables, they
+all cancel out.
+
+817
+00:44:43,676 --> 00:44:46,474
+So we're left with, that the beta for age.
+
+818
+00:44:46,474 --> 00:44:50,500
+In this case, if we and if you solve it
+here, 20, beta, e raised to beta 20
+
+819
+00:44:50,500 --> 00:44:57,306
+times 29 minus e raised to beta 19, that's
+the same as e raised to beta h times 10.
+
+820
+00:44:57,306 --> 00:45:01,226
+So what this tells us is that if I
+multiply the beta for h times 10, and
+
+821
+00:45:01,226 --> 00:45:07,407
+then exponentiate, I will get the odds
+ratio for a 10-unit jump in age.
+
+822
+00:45:07,407 --> 00:45:10,991
+So this would give me, for a 10-unit
+increase in age, a decade in age,
+
+823
+00:45:10,991 --> 00:45:15,499
+What's the increase in my odds of getting
+lung cancer?
+
+824
+00:45:15,499 --> 00:45:18,739
+If I wanted to do it for a one unit
+increase in age I would just take the beta
+
+825
+00:45:18,739 --> 00:45:21,838
+for age and exponentiate it directly.
+
+826
+00:45:21,838 --> 00:45:24,578
+That would give me the odds ratio for a
+one unit increase in age.
+
+827
+00:45:24,578 --> 00:45:26,866
+It doesn't really matter what you pick for
+the units of age, but
+
+828
+00:45:26,866 --> 00:45:29,614
+you want to pick something sort of
+meaningful.
+
+829
+00:45:29,614 --> 00:45:32,844
+A one unit or ten unit increase is
+probably reasonable.
+
+830
+00:45:32,844 --> 00:45:35,503
+That gives you the odd ratio for that unit
+jump.
+
+831
+00:45:35,503 --> 00:45:36,067
+You can see for
+
+832
+00:45:36,067 --> 00:45:40,326
+a continuous predictor, the magnitude of
+the odds ratio would depend on the units.
+
+833
+00:45:40,326 --> 00:45:43,290
+It's not going to, what units you choose
+will not effect the p value, but
+
+834
+00:45:43,290 --> 00:45:46,939
+it will effect how big or small that odds
+ratio looks.
+
+835
+00:45:46,939 --> 00:45:49,110
+Just keep that in mind.
+
+836
+00:45:49,110 --> 00:45:50,550
+You always have to give the units in your
+table so
+
+837
+00:45:50,550 --> 00:45:52,210
+people know how to interpret that.
+
+838
+00:45:52,210 --> 00:45:55,675
+This is the odds ratio for age adjusted
+for smoking and
+
+839
+00:45:55,675 --> 00:46:01,335
+alcohol which means that we've held
+smoking and alcohol fixed.
+
+840
+00:46:01,335 --> 00:46:04,216
+So that is if we're looking at two people
+who have the The same level of smoking and
+
+841
+00:46:04,216 --> 00:46:08,441
+alcohol and the only difference between
+them is a ten unit difference in age.
+
+842
+00:46:08,441 --> 00:46:10,542
+This would be the effect of that age.
+
+843
+00:46:10,542 --> 00:46:13,242
+So, just to summarize the practical
+interpretation here is
+
+844
+00:46:13,242 --> 00:46:16,158
+that you take the beta, the slope from a
+logistic regression, for
+
+845
+00:46:16,158 --> 00:46:20,875
+any of your exposures, your predictors,
+and you exponentiate it.
+
+846
+00:46:20,875 --> 00:46:23,174
+You get the odds ratio for that exposure.
+
+847
+00:46:23,174 --> 00:46:27,261
+And you will interpret that as that's if
+the increase in the odds of your outcome,
+
+848
+00:46:27,261 --> 00:46:30,860
+for every 1 unit increase in the exposure
+adjusted for controlling for
+
+849
+00:46:30,860 --> 00:46:37,373
+other varia-, all the other variables, all
+the other predictors in the model.
+
+850
+00:46:37,373 --> 00:46:44,176
+And we'll practice looking at, an example
+of how to use this in the next module.
+
+851
+00:46:44,176 --> 00:46:47,686
+Just to tell you, most computer packages,
+when you run a logistic regression,
+
+852
+00:46:47,686 --> 00:46:51,340
+you don't actually have to even do the
+exponentiation.
+
+853
+00:46:51,340 --> 00:46:54,962
+Most computer packages will automatically
+give you the odds ratio.
+
+854
+00:46:54,962 --> 00:46:58,770
+So again, out of a logistic regression we
+
+855
+00:46:58,770 --> 00:47:04,714
+get these multi variate adjusted odds
+ratios.

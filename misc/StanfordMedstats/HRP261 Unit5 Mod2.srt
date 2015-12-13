@@ -1,0 +1,668 @@
+1
+00:00:00,000 --> 00:00:04,750
+[BLANK_AUDIO]
+
+2
+00:00:04,750 --> 00:00:09,010
+Last week we talked about how to test
+whether or not your continuous variable
+
+3
+00:00:09,010 --> 00:00:12,420
+really does have a linear relationship
+with the logit of the outcome.
+
+4
+00:00:12,420 --> 00:00:14,750
+Which is what the logistic model assumes.
+
+5
+00:00:14,750 --> 00:00:18,100
+This week we are going to talk about what
+to do if your variable does
+
+6
+00:00:18,100 --> 00:00:19,710
+not have a linear relationship.
+
+7
+00:00:21,640 --> 00:00:26,460
+So last week I showed you various plots,
+logit plots,
+
+8
+00:00:26,460 --> 00:00:28,840
+which plot the logit of the outcome.
+
+9
+00:00:28,840 --> 00:00:33,460
+In this case, for this graph of the
+outcome here was low bone density.
+
+10
+00:00:33,460 --> 00:00:38,556
+Against a continuous predictor in this
+case the predictor here was
+
+11
+00:00:38,556 --> 00:00:43,130
+the number of menstrual periods in the
+past year.
+
+12
+00:00:43,130 --> 00:00:46,346
+And in general for women if they are
+having irregular periods they have
+
+13
+00:00:46,346 --> 00:00:49,031
+a higher chance of having low bone density
+you can see that here.
+
+14
+00:00:49,031 --> 00:00:51,989
+As women have more regular periods they
+have a lower chance of
+
+15
+00:00:51,989 --> 00:00:53,295
+having low bone density.
+
+16
+00:00:53,295 --> 00:00:57,057
+And the relationship here looks nice and
+linear, it's really pretty close to
+
+17
+00:00:57,057 --> 00:01:00,534
+a straight line, so if we were to just put
+menstrural periods in the model
+
+18
+00:01:00,534 --> 00:01:05,340
+without doing any kind of transformation
+It seems to nicely fit a straight line.
+
+19
+00:01:05,340 --> 00:01:07,500
+So that one does look linear in the logit.
+
+20
+00:01:09,010 --> 00:01:11,200
+In the last module I talked about the,
+
+21
+00:01:11,200 --> 00:01:14,970
+the data on women runners that I'd been
+looking at, and
+
+22
+00:01:14,970 --> 00:01:20,150
+it turned out that fat mass was protective
+against stress fractures in that group.
+
+23
+00:01:20,150 --> 00:01:21,410
+Again, probably because.
+
+24
+00:01:21,410 --> 00:01:24,740
+Fat mass increases the period regularity.
+
+25
+00:01:24,740 --> 00:01:28,280
+And so the graph here is showing the logit
+of stress fractures,
+
+26
+00:01:28,280 --> 00:01:32,800
+that's my binary outcome, and the
+predictor here is fat mass.
+
+27
+00:01:32,800 --> 00:01:35,660
+And this fat mass variable was turned into
+Z scores,
+
+28
+00:01:35,660 --> 00:01:38,100
+as we talked about in an earlier module.
+
+29
+00:01:38,100 --> 00:01:42,200
+And you can see that, indeed, as women go
+up in fat mass,
+
+30
+00:01:42,200 --> 00:01:46,540
+they seem to go down in their logit of
+stress fractures in a nice linear pattern.
+
+31
+00:01:46,540 --> 00:01:50,220
+So this one would also be, meet the linear
+in the logit assumption.
+
+32
+00:01:51,330 --> 00:01:55,020
+I also showed you last week a couple of
+graphs.
+
+33
+00:01:55,020 --> 00:01:58,970
+We are, we did not meet the linearity in
+the logit assumption.
+
+34
+00:01:58,970 --> 00:02:02,940
+And so here are two examples shown again
+here.
+
+35
+00:02:02,940 --> 00:02:06,950
+So in the last panel this was a study
+looking at cardiovascular disease.
+
+36
+00:02:06,950 --> 00:02:12,050
+So we have the logit of cardiovascular
+disease on the y-axis.
+
+37
+00:02:12,050 --> 00:02:14,760
+And on the x-axis, axis we have smoking.
+
+38
+00:02:14,760 --> 00:02:17,950
+And you can see that it doesn't have a
+nice linear relationship as you
+
+39
+00:02:17,950 --> 00:02:20,030
+go from being a non-smoker to a smoker.
+
+40
+00:02:20,030 --> 00:02:24,590
+There's a huge, steep, rise in your risk
+of cardiovascular disease.
+
+41
+00:02:24,590 --> 00:02:26,720
+But then things seem to level off.
+
+42
+00:02:26,720 --> 00:02:29,880
+They're sort of diminishing returns as you
+increase the level of smoking,
+
+43
+00:02:29,880 --> 00:02:32,800
+you're still increasing your risk but not
+quite as steeply.
+
+44
+00:02:32,800 --> 00:02:36,500
+So it looks like it has a little bit more
+of a quadratic relation.
+
+45
+00:02:36,500 --> 00:02:40,020
+Now this one might be well modeled by
+changing your
+
+46
+00:02:40,020 --> 00:02:42,460
+smoking variable into categories, right?
+
+47
+00:02:42,460 --> 00:02:44,500
+Rather than modeling it as a continuous
+variable,
+
+48
+00:02:44,500 --> 00:02:48,120
+you might say non-smoke versus light
+smokers, versus heavy smokers.
+
+49
+00:02:48,120 --> 00:02:49,720
+Or something like that.
+
+50
+00:02:49,720 --> 00:02:54,350
+Now in the right hand panel, I showed you
+these data on typhosis, so this was,
+
+51
+00:02:54,350 --> 00:02:56,900
+the outcome here was Having spinal
+curvature, or
+
+52
+00:02:56,900 --> 00:03:00,850
+kyphosis, after corrective spine surgery
+in children.
+
+53
+00:03:00,850 --> 00:03:05,000
+The age here, the predictor variable is
+age, and it's measured in months.
+
+54
+00:03:05,000 --> 00:03:08,630
+And we saw last week that there's a nice
+quadratic relationship here.
+
+55
+00:03:08,630 --> 00:03:12,530
+The middle ages are at higher risk than
+the younger and older ages.
+
+56
+00:03:12,530 --> 00:03:16,850
+That one was well modeled as a squared
+variable because of the quadratic.
+
+57
+00:03:19,040 --> 00:03:24,310
+So, what do we do when we find that our
+predictor variable violates linearity?
+
+58
+00:03:24,310 --> 00:03:25,240
+We have a couple of choices.
+
+59
+00:03:25,240 --> 00:03:28,430
+So we can transform the variable
+mathematically in some ways.
+
+60
+00:03:28,430 --> 00:03:31,800
+So I've shown you an example where we took
+the square of the variable.
+
+61
+00:03:31,800 --> 00:03:34,920
+There might be other instances where
+taking the log of the variable
+
+62
+00:03:34,920 --> 00:03:38,060
+accomplishes making it linear with the log
+then.
+
+63
+00:03:38,060 --> 00:03:41,820
+You also might in some cases choose to
+break up
+
+64
+00:03:41,820 --> 00:03:45,920
+your continuous variable into a
+categorical variable and
+
+65
+00:03:45,920 --> 00:03:50,220
+there's a lot of times clinically there
+might be some natural clinical category.
+
+66
+00:03:50,220 --> 00:03:54,570
+So if it doesn't appear to be linear the
+log may be treated divided into those
+
+67
+00:03:54,570 --> 00:03:56,160
+Clinically meaningful categories.
+
+68
+00:03:57,970 --> 00:04:01,150
+Just to illustrate both of those with one
+more example,
+
+69
+00:04:01,150 --> 00:04:05,180
+here's a data set that was looking at
+predictors of low birth weight.
+
+70
+00:04:05,180 --> 00:04:08,700
+And of course, one of the predictors that
+you might expect to to be
+
+71
+00:04:08,700 --> 00:04:11,800
+a predictor of low birth weight is
+maternal age.
+
+72
+00:04:11,800 --> 00:04:15,910
+however, if you were just to take these
+data and throw maternal age into
+
+73
+00:04:15,910 --> 00:04:20,460
+the model, so we're modeling here the
+logit of low birth weight.
+
+74
+00:04:20,460 --> 00:04:26,030
+But if you were to just throw age in as a
+linear variable into the model and
+
+75
+00:04:26,030 --> 00:04:28,230
+run that model, here's the results that
+you get.
+
+76
+00:04:28,230 --> 00:04:29,780
+So here's maternal age.
+
+77
+00:04:29,780 --> 00:04:34,210
+Our beta is practically zero and our p
+value is totally non-significant.
+
+78
+00:04:34,210 --> 00:04:37,380
+In other words it looks like age has
+absolutely no relationship with
+
+79
+00:04:37,380 --> 00:04:38,810
+low birth weight.
+
+80
+00:04:38,810 --> 00:04:41,610
+Now, something seems a little wrong there,
+because I think most of us know that
+
+81
+00:04:41,610 --> 00:04:44,910
+indeed maternal age does relate to low
+birth weight.
+
+82
+00:04:44,910 --> 00:04:48,809
+Well, of course we didn't plot our
+variable which is always a mistake.
+
+83
+00:04:49,860 --> 00:04:52,020
+So now let me show you the plots for this
+variable.
+
+84
+00:04:53,020 --> 00:04:56,660
+Here as I have plotted the plotted the low
+gen of low birth weight compared to
+
+85
+00:04:56,660 --> 00:04:57,840
+maternal age.
+
+86
+00:04:57,840 --> 00:05:02,580
+And I've done one plot where I used ten
+bins and another plot where I used five.
+
+87
+00:05:02,580 --> 00:05:07,740
+Remember when you are using these plots,
+you have to be ale to group people.
+
+88
+00:05:07,740 --> 00:05:11,830
+To calculate probabilities and therefore
+odds.
+
+89
+00:05:11,830 --> 00:05:14,560
+And so the bin size will slightly,
+
+90
+00:05:14,560 --> 00:05:19,220
+that you choose will slightly change the
+what you see in your graph.
+
+91
+00:05:19,220 --> 00:05:21,220
+In this case I had a fairly big data set
+so
+
+92
+00:05:21,220 --> 00:05:24,430
+I could easily break it into ten bins and
+get a meaningful plot.
+
+93
+00:05:24,430 --> 00:05:28,670
+But the ten bin plot and the five bin plot
+look pretty much the same to me.
+
+94
+00:05:28,670 --> 00:05:34,050
+I'm seeing a clean quadratic relationship,
+where the younger and older ages have
+
+95
+00:05:34,050 --> 00:05:38,880
+higher risks of low birth weights than the
+ages in between, somewhere in the 20s
+
+96
+00:05:38,880 --> 00:05:43,190
+looks to be about, or about the the mid to
+late 20s looks to be the optimal age.
+
+97
+00:05:44,700 --> 00:05:48,090
+So what do we do?
+It's a clearly not linear, and notice.
+
+98
+00:05:48,090 --> 00:05:51,400
+When I just throw age into the model
+without thinking about it, what I'm
+
+99
+00:05:51,400 --> 00:05:55,410
+asking the computer to do is just to find
+the best fit line for these points.
+
+100
+00:05:55,410 --> 00:05:59,330
+The best fit line for these points is
+basically just a straight horizontal line,
+
+101
+00:05:59,330 --> 00:06:01,390
+and that's why we see no relationship.
+
+102
+00:06:01,390 --> 00:06:03,630
+That's because there is not a linear
+relationship here, but
+
+103
+00:06:03,630 --> 00:06:05,320
+there is a quadratic relationship.
+
+104
+00:06:06,610 --> 00:06:08,090
+So, how am I going to deal with this?
+
+105
+00:06:08,090 --> 00:06:10,790
+Again I might end up just saying, well
+it's a quadratic.
+
+106
+00:06:10,790 --> 00:06:13,820
+So, I'm going to put in the square of my
+predictor variable.
+
+107
+00:06:13,820 --> 00:06:15,050
+So, I tried that.
+
+108
+00:06:15,050 --> 00:06:18,240
+And indeed when you model it as the
+square, so I'm going to
+
+109
+00:06:18,240 --> 00:06:22,220
+put age in as a linear term and than the
+higher order term of age squared.
+
+110
+00:06:22,220 --> 00:06:26,660
+Notice that both of those indeed turn out
+to be statistically significant once I've
+
+111
+00:06:26,660 --> 00:06:29,920
+got the correct function here.
+
+112
+00:06:29,920 --> 00:06:32,530
+The only problem with using a square here
+is it's a little
+
+113
+00:06:32,530 --> 00:06:36,170
+bit hard to explain exactly what these
+beta coefficients mean,
+
+114
+00:06:36,170 --> 00:06:38,200
+it's going to be hard to calculate odds
+ratios.
+
+115
+00:06:38,200 --> 00:06:42,210
+It's a little bit harder to explain to
+your leader, and so
+
+116
+00:06:42,210 --> 00:06:46,740
+in this case it might be more natural to
+take this graphic and
+
+117
+00:06:46,740 --> 00:06:49,900
+say well what is it actually mean, what is
+the quadratic relationship mean.
+
+118
+00:06:49,900 --> 00:06:55,130
+It really means that very young women and
+very old, well not very old, just older
+
+119
+00:06:55,130 --> 00:07:00,380
+women reproductively those groups have
+higher risks than the, the women in their.
+
+120
+00:07:00,380 --> 00:07:05,270
+Or 20s who have sort of have more of the
+optimum age for reproduction.
+
+121
+00:07:05,270 --> 00:07:08,340
+So it might be natural actually to divide
+this up in to these data,
+
+122
+00:07:08,340 --> 00:07:11,550
+up in to categories that tells a cleaner
+and neater story.
+
+123
+00:07:11,550 --> 00:07:13,280
+So I then did that.
+
+124
+00:07:13,280 --> 00:07:15,180
+The categories I chose here are a little
+bit arbitrary,
+
+125
+00:07:15,180 --> 00:07:18,500
+they're sort of based on what I, the
+pattern I saw in the graphic, but
+
+126
+00:07:18,500 --> 00:07:22,280
+you might want to chose sort of clinically
+meaningful categories.
+
+127
+00:07:22,280 --> 00:07:23,480
+But basically had a, you know,
+
+128
+00:07:23,480 --> 00:07:28,410
+sort of young, pre haven't graduated from
+the college age.
+
+129
+00:07:28,410 --> 00:07:30,480
+And an older age, here, is just above 30.
+
+130
+00:07:30,480 --> 00:07:33,830
+Which isn't really old but a little bit
+older reproductively.
+
+131
+00:07:33,830 --> 00:07:36,910
+And then the middle age is sort of the
+optimal age, it's in between 22 and 30.
+
+132
+00:07:36,910 --> 00:07:42,100
+And when I compare those three groups in
+a, logistic regression.
+
+133
+00:07:42,100 --> 00:07:43,400
+Dummy coding them.
+
+134
+00:07:43,400 --> 00:07:46,860
+I end up with that older age versus being
+of the optimal age get an odds
+
+135
+00:07:46,860 --> 00:07:50,080
+ratio of about 2.3, so they have about
+double the odds of low birth weight.
+
+136
+00:07:50,080 --> 00:07:54,670
+And similarly, the young age versus that
+optimal middle age also has an odds
+
+137
+00:07:54,670 --> 00:07:58,170
+ratio of about a doubling of the, of the
+odds of low birth weight.
+
+138
+00:07:59,200 --> 00:08:02,125
+So it may be conceptually preferable, in
+this case,
+
+139
+00:08:02,125 --> 00:08:05,296
+to divide that continuous variable up into
+categories.
+
+140
+00:08:05,296 --> 00:08:10,130
+[BLANK_AUDIO]

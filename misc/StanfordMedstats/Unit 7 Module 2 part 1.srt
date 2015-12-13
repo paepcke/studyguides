@@ -1,0 +1,1283 @@
+1
+00:00:08,140 --> 00:00:11,180
+In this next module I'm going to tell you
+about the test that are used to
+
+2
+00:00:11,180 --> 00:00:17,790
+compare means between more than two groups
+or more than two time points.
+
+3
+00:00:17,790 --> 00:00:20,890
+I'll start here with The 1 way anova test.
+
+4
+00:00:20,890 --> 00:00:26,050
+This is a test that's used to compare
+means continous outcomes between 2 or
+
+5
+00:00:26,050 --> 00:00:27,610
+more independent groups.
+
+6
+00:00:27,610 --> 00:00:33,440
+The T test was limited to 2 groups the
+anova can actually 2 or more groups.
+
+7
+00:00:33,440 --> 00:00:36,490
+Actually the T is a special case of an
+anova.
+
+8
+00:00:36,490 --> 00:00:40,510
+And remember the T test and anova are both
+special cases of linear regression.
+
+9
+00:00:40,510 --> 00:00:44,370
+So really you could apply, if you had two
+groups you could apply an ANOVA, but
+
+10
+00:00:44,370 --> 00:00:48,294
+if you have more than two groups you have
+to apply an ANOVA or a linear regression.
+
+11
+00:00:48,294 --> 00:00:50,044
+Let me just start with an example here.
+
+12
+00:00:50,044 --> 00:00:52,468
+Imagine we have a hypothetical trial.
+
+13
+00:00:52,468 --> 00:00:55,440
+We randomize 33 subjects to three groups.
+
+14
+00:00:55,440 --> 00:01:00,050
+800 milligrams of calcium supplement, 1500
+milligrams of a calcium supplement, or
+
+15
+00:01:00,050 --> 00:01:03,680
+a placebo pill, and the outcome here that
+we're looking at is spine bone density.
+
+16
+00:01:03,680 --> 00:01:08,220
+We want to see if, at the end of the day
+the most supplemented group ends up with
+
+17
+00:01:08,220 --> 00:01:09,350
+a higher spine bone density.
+
+18
+00:01:09,350 --> 00:01:12,600
+This is some hypothetical data that I've
+made up.
+
+19
+00:01:12,600 --> 00:01:15,070
+We're going to compare their spine bone
+densities.
+
+20
+00:01:15,070 --> 00:01:18,070
+At one year assuming that all three groups
+started with roughly the same
+
+21
+00:01:18,070 --> 00:01:19,070
+spine bone density.
+
+22
+00:01:20,150 --> 00:01:22,680
+And here's the results from my
+hypothetical data,
+
+23
+00:01:22,680 --> 00:01:23,840
+showing you some box plots.
+
+24
+00:01:23,840 --> 00:01:29,050
+The placebo group is a little bit lower
+than the 800 milligram calcium group and
+
+25
+00:01:29,050 --> 00:01:31,910
+that's a little bit lower than the 1500
+milligram calcium group.
+
+26
+00:01:31,910 --> 00:01:35,150
+So it looks like there's some increase as
+you add more and
+
+27
+00:01:35,150 --> 00:01:37,460
+more calcium supplement to the diet.
+
+28
+00:01:37,460 --> 00:01:39,470
+In terms of spine bone density after a
+year.
+
+29
+00:01:39,470 --> 00:01:41,210
+How do we determine whether or
+
+30
+00:01:41,210 --> 00:01:45,770
+not the differences that you're viewing
+here are statistically significant.
+
+31
+00:01:45,770 --> 00:01:48,860
+This is where a 1 anova would be useful.
+
+32
+00:01:48,860 --> 00:01:50,186
+How do I get to a 1 way anova.
+
+33
+00:01:50,186 --> 00:01:53,490
+Okay, I'm goign to walk you through the
+logic here to get you to the right test.
+
+34
+00:01:53,490 --> 00:01:54,230
+The question is,
+
+35
+00:01:54,230 --> 00:01:59,320
+is there is a difference in final spine
+density in the 3 treatment groups.
+
+36
+00:01:59,320 --> 00:02:01,875
+What's the outcome variable it's spine
+bone density.
+
+37
+00:02:01,875 --> 00:02:02,480
+Density.
+
+38
+00:02:02,480 --> 00:02:03,700
+What type of variable is it?
+
+39
+00:02:03,700 --> 00:02:05,920
+Well, it's a continuous variable.
+
+40
+00:02:05,920 --> 00:02:07,550
+Is it normally distributed?
+
+41
+00:02:07,550 --> 00:02:09,650
+Yes, I am telling you that it's normally
+distributed.
+
+42
+00:02:09,650 --> 00:02:12,640
+Of course you would need to, to do some
+legwork to,
+
+43
+00:02:12,640 --> 00:02:15,070
+to figure out if it was normally
+distributed but
+
+44
+00:02:15,070 --> 00:02:18,260
+trust me that I tested it and it does
+follow a normal distribution.
+
+45
+00:02:18,260 --> 00:02:20,710
+Are the observations correlated?
+
+46
+00:02:20,710 --> 00:02:22,319
+No, we have three independent groups.
+
+47
+00:02:22,319 --> 00:02:23,891
+How many groups are we comparing?
+
+48
+00:02:23,891 --> 00:02:25,290
+Well, we are comparing three.
+
+49
+00:02:25,290 --> 00:02:28,110
+Three groups here, so a t-test is going to
+be insufficient.
+
+50
+00:02:28,110 --> 00:02:32,680
+So, that's why we're going to need a one
+way ANOVA.
+
+51
+00:02:32,680 --> 00:02:34,276
+How does the ANOVA work?
+
+52
+00:02:34,276 --> 00:02:37,830
+Again, ANOVA's really mathematically the
+same as a t-test.
+
+53
+00:02:37,830 --> 00:02:39,410
+So, the assumptions are the same.
+
+54
+00:02:39,410 --> 00:02:42,130
+We're assuming that we have a normally
+distributed outcome.
+
+55
+00:02:42,130 --> 00:02:46,270
+I get the a nova is robust against this
+assumption and
+
+56
+00:02:46,270 --> 00:02:48,400
+as long as your sample is big enough.
+
+57
+00:02:48,400 --> 00:02:52,700
+In fact the central limit theorm kicks in
+and so this assumption really matters for
+
+58
+00:02:52,700 --> 00:02:53,540
+small samples.
+
+59
+00:02:53,540 --> 00:02:56,980
+We're also assuming equal variance between
+the variance between the group.
+
+60
+00:02:56,980 --> 00:03:00,640
+The way that analysis of variance is
+computed.
+
+61
+00:03:00,640 --> 00:03:03,200
+Is that we are always using a pooled
+variance.
+
+62
+00:03:03,200 --> 00:03:08,640
+There are some, variance of anova that you
+can find that allow for unequal variances.
+
+63
+00:03:08,640 --> 00:03:11,540
+But the standard one way anova when you go
+into your
+
+64
+00:03:11,540 --> 00:03:14,970
+computer will assume the variances are
+equal that will pool the variances.
+
+65
+00:03:14,970 --> 00:03:16,630
+So we want to check on that.
+
+66
+00:03:16,630 --> 00:03:20,290
+Also, a one way anova assumes that the
+groups are independent.
+
+67
+00:03:20,290 --> 00:03:24,333
+So this is analogous to the two sample t
+test.
+
+68
+00:03:24,333 --> 00:03:27,406
+[INAUDIBLE] Now, you might ask a question
+here, why wouldn't I just,
+
+69
+00:03:27,406 --> 00:03:31,170
+I've got thre groups,oops, why wouldn't I
+just run multiple t tests?
+
+70
+00:03:31,170 --> 00:03:32,760
+The t tests everyone is comfortable with
+tje t test,
+
+71
+00:03:32,760 --> 00:03:35,640
+why wouldn't I just run a t test that
+compares the placebo group to the 800
+
+72
+00:03:35,640 --> 00:03:38,970
+milligram group, and the 800 milligram
+group to the 1500 milligram group, and
+
+73
+00:03:38,970 --> 00:03:40,170
+the 1500 milligram group to the placebo.
+
+74
+00:03:40,170 --> 00:03:42,760
+Why wouldn't I just run those 3 t tests as
+t tests?
+
+75
+00:03:42,760 --> 00:03:44,380
+Why do an anova at all.
+
+76
+00:03:44,380 --> 00:03:47,990
+It's a fair question, and the reason is.
+
+77
+00:03:47,990 --> 00:03:52,440
+Is that remember, we learned last week
+that when you run multiple tests,
+
+78
+00:03:52,440 --> 00:03:54,251
+you increase your type I error rate.
+
+79
+00:03:54,251 --> 00:03:57,694
+Instead of running one test here, you'd be
+running three tests.
+
+80
+00:03:57,694 --> 00:04:00,076
+And, if these were independent
+comparisons.
+
+81
+00:04:00,076 --> 00:04:02,590
+Of course, there not independent
+comparisons.
+
+82
+00:04:02,590 --> 00:04:05,945
+But it's very hard to calc, to, to figure
+out exactly how what this
+
+83
+00:04:05,945 --> 00:04:10,060
+probability I'm about to calculate is, if
+you don't assume independence.
+
+84
+00:04:10,060 --> 00:04:13,200
+So I'll, I'm going to calculate this
+probabilty assuming independence.
+
+85
+00:04:13,200 --> 00:04:15,930
+It might be slightly different beause
+really we dont have indepedence here.
+
+86
+00:04:15,930 --> 00:04:19,440
+But if the, these were three independent
+tests Each one of
+
+87
+00:04:19,440 --> 00:04:21,940
+those tasks has a 5% chance of a type 1
+error.
+
+88
+00:04:21,940 --> 00:04:24,990
+So what's the chance of making at least
+one type 1 error?
+
+89
+00:04:24,990 --> 00:04:28,530
+That's going to be 1 minus 95% rate to the
+third.
+
+90
+00:04:28,530 --> 00:04:29,990
+Using our little trick in probability,
+
+91
+00:04:29,990 --> 00:04:33,450
+1 minus the probability of none is equal
+to the probability of at least one.
+
+92
+00:04:33,450 --> 00:04:37,870
+So, we're roughly somewhere around a 14%
+chance of making a type 1 error.
+
+93
+00:04:37,870 --> 00:04:42,028
+That increases our type 1 error rate if we
+if we run all those three pairwise tests.
+
+94
+00:04:42,028 --> 00:04:47,340
+The Inova, on the other hand, runs just
+one test, just characterizes one p value.
+
+95
+00:04:47,340 --> 00:04:49,870
+It's called a global test.
+
+96
+00:04:49,870 --> 00:04:52,382
+Because it's looking at all those
+comparisons essentially at once.
+
+97
+00:04:52,382 --> 00:04:55,730
+So the null hypothesis for
+
+98
+00:04:55,730 --> 00:04:59,900
+the ANOVA, for the one-way ANOVA is that
+the means of all the groups are equal.
+
+99
+00:04:59,900 --> 00:05:02,220
+So like the means by mode density.
+
+100
+00:05:02,220 --> 00:05:06,320
+In the placebo group is equal to that in
+the 800 milligram calcium group is
+
+101
+00:05:06,320 --> 00:05:08,270
+equal to that in the 1500 milligram
+calcium group.
+
+102
+00:05:08,270 --> 00:05:09,490
+That's our null hypothesis.
+
+103
+00:05:09,490 --> 00:05:12,180
+The alternative is just that the null
+isn't truth,
+
+104
+00:05:12,180 --> 00:05:15,460
+that at least one of the means is
+different.
+
+105
+00:05:15,460 --> 00:05:17,390
+Notice if we reject the null hypothesis
+here,
+
+106
+00:05:17,390 --> 00:05:20,390
+it does not tell you which groups are
+different.
+
+107
+00:05:20,390 --> 00:05:23,720
+It only tells you that some, one of those
+groups is different.
+
+108
+00:05:23,720 --> 00:05:25,350
+At least one of those groups is different.
+
+109
+00:05:25,350 --> 00:05:28,360
+So this is a global test, because it gives
+us kind of an overall,
+
+110
+00:05:28,360 --> 00:05:31,700
+a single P value To tell us if there's any
+difference here,
+
+111
+00:05:31,700 --> 00:05:34,405
+but it doesn't tell us specifically where
+those differences lie.
+
+112
+00:05:34,405 --> 00:05:38,030
+It's good for controlling the type one
+error though because it's
+
+113
+00:05:38,030 --> 00:05:39,785
+only testing that single hypothesis.
+
+114
+00:05:39,785 --> 00:05:43,650
+Well here's the general idea of an Anova.
+
+115
+00:05:43,650 --> 00:05:45,234
+I'm not going to walk you through.
+
+116
+00:05:45,234 --> 00:05:48,630
+The exact calcuations in the anova if you
+want to be walked through that I have
+
+117
+00:05:48,630 --> 00:05:53,150
+an op I have some optional material on on
+it for you but I don't think its important
+
+118
+00:05:53,150 --> 00:05:56,810
+to be able to calcuate an anova by hand we
+never calculate these by hand these days.
+
+119
+00:05:56,810 --> 00:06:01,460
+Here's the general idea [COUGH] if I have
+3 groups say and
+
+120
+00:06:01,460 --> 00:06:03,360
+I want to compare the means.
+
+121
+00:06:03,360 --> 00:06:06,750
+For 3 groups, I can, I could do 3
+pair-wise ttests but,
+
+122
+00:06:06,750 --> 00:06:08,570
+as I said, this would increase my type 1
+error.
+
+123
+00:06:08,570 --> 00:06:11,200
+So what I want to do is actually to look
+at those,
+
+124
+00:06:11,200 --> 00:06:16,470
+the difference in means, those 3
+differences in means all at once.
+
+125
+00:06:16,470 --> 00:06:20,460
+How, what's a way I can look at multiple
+differences at once?
+
+126
+00:06:20,460 --> 00:06:21,790
+Actually the variance.
+
+127
+00:06:21,790 --> 00:06:24,650
+The variance is a statistic that let's me
+
+128
+00:06:24,650 --> 00:06:26,870
+look at more than once difference at a
+time.
+
+129
+00:06:26,870 --> 00:06:28,640
+The T-test only allowed me to compare, you
+know,
+
+130
+00:06:28,640 --> 00:06:30,630
+one difference, one difference in in
+means.
+
+131
+00:06:30,630 --> 00:06:34,600
+The variance allows you to compare
+multiple differences in means at once.
+
+132
+00:06:34,600 --> 00:06:36,150
+So the anova is going to involve,
+
+133
+00:06:36,150 --> 00:06:42,290
+it's called analysis of a variance,
+because it involves calculating variances.
+
+134
+00:06:42,290 --> 00:06:46,210
+It involves what's called an F test, so, I
+want to know,
+
+135
+00:06:46,210 --> 00:06:49,710
+is the difference in the means of the
+group, the difference of means,
+
+136
+00:06:49,710 --> 00:06:52,070
+say the 3 groups, is that more than the
+background noise?
+
+137
+00:06:52,070 --> 00:06:54,210
+Is it more than the variability within
+groups?
+
+138
+00:06:54,210 --> 00:06:56,110
+It turns out there is a distribution,
+
+139
+00:06:56,110 --> 00:07:00,900
+a test that compares the variance between
+groups to the variance within group.
+
+140
+00:07:00,900 --> 00:07:04,210
+So we can summarize the variance between
+the group,
+
+141
+00:07:04,210 --> 00:07:08,070
+that, that represents the differences
+between all the groups that won.
+
+142
+00:07:08,070 --> 00:07:09,310
+That, that variance,
+
+143
+00:07:09,310 --> 00:07:13,250
+we can compare how different the groups
+are between, each other.
+
+144
+00:07:13,250 --> 00:07:15,820
+To sort of the background, noise.
+
+145
+00:07:15,820 --> 00:07:17,570
+The variability within the groups.
+
+146
+00:07:17,570 --> 00:07:22,060
+And this denominator here is analogous to
+the pool variance from a t test.
+
+147
+00:07:22,060 --> 00:07:23,250
+So if we just say,
+
+148
+00:07:23,250 --> 00:07:26,780
+how much variance is there in spine bone
+density within each of those groups.
+
+149
+00:07:26,780 --> 00:07:29,630
+That represents the variability of spine
+bone density.
+
+150
+00:07:29,630 --> 00:07:32,600
+Does that, does the between group
+variance.
+
+151
+00:07:32,600 --> 00:07:33,630
+The difference between the groups.
+
+152
+00:07:33,630 --> 00:07:35,450
+Does that exceed that background noise?
+
+153
+00:07:35,450 --> 00:07:36,947
+That's the idea of the ANOVA.
+
+154
+00:07:36,947 --> 00:07:40,830
+And the ANOVA It's also called an F test
+because a ratio of
+
+155
+00:07:40,830 --> 00:07:43,070
+variance is follows a distribution called
+an F-distribution.
+
+156
+00:07:43,070 --> 00:07:47,400
+Just for fun, I'm just showing you the
+F-distribution.
+
+157
+00:07:47,400 --> 00:07:48,730
+It's yet another distribution.
+
+158
+00:07:48,730 --> 00:07:51,710
+We've seen a T-distribution, we've seen a
+Z-distribution.
+
+159
+00:07:51,710 --> 00:07:55,460
+If you have a ratio of two variances, that
+follows something called
+
+160
+00:07:55,460 --> 00:07:59,470
+an F-distribution and it depends on two
+sets of degree of freedom, the numerator
+
+161
+00:07:59,470 --> 00:08:02,330
+degree of freedom and the denominator
+degree of freedom because the variance and
+
+162
+00:08:02,330 --> 00:08:04,210
+the numerator has degree of freedoms.
+
+163
+00:08:04,210 --> 00:08:06,770
+The variance of the denominator has
+decreased the freedom.
+
+164
+00:08:06,770 --> 00:08:09,880
+This forms a different shapes depending on
+the, the degrees of freedom.
+
+165
+00:08:09,880 --> 00:08:12,890
+So that's why when you see the results
+from an ANOVA test you're
+
+166
+00:08:12,890 --> 00:08:16,550
+going to see that an F statistic, it comes
+up with an F distribution.
+
+167
+00:08:16,550 --> 00:08:22,940
+Ratios of variances which is what we're
+looking at here, follow an F distribution.
+
+168
+00:08:22,940 --> 00:08:28,102
+The F test tests the hypothesis that those
+2 variances are equal.
+
+169
+00:08:28,102 --> 00:08:31,180
+Equal if the variance between the groups
+is equal to the variance within the group
+
+170
+00:08:31,180 --> 00:08:34,960
+set suggests that the groups do not var,
+do not differ in their means.
+
+171
+00:08:34,960 --> 00:08:38,222
+If the F is close to one
+
+172
+00:08:38,222 --> 00:08:43,777
+suggests that there's no difference in
+means across the groups.
+
+173
+00:08:43,777 --> 00:08:47,550
+However, if the F is very far from one
+That was suggest that there
+
+174
+00:08:47,550 --> 00:08:50,990
+is a difference in the between group
+variance from the within group variance in
+
+175
+00:08:50,990 --> 00:08:53,820
+other words taht there is more difference
+between the groups than
+
+176
+00:08:53,820 --> 00:08:56,790
+within the groups that would suggest that
+there is a difference between the means
+
+177
+00:08:56,790 --> 00:08:58,010
+across the groups.
+
+178
+00:08:58,010 --> 00:09:00,050
+That's general idea of an anova.
+
+179
+00:09:00,050 --> 00:09:03,050
+Again if you want the details of the
+mechanics that is going to be
+
+180
+00:09:03,050 --> 00:09:03,950
+optional material.
+
+181
+00:09:03,950 --> 00:09:06,160
+I just want you to understand the general
+idea.
+
+182
+00:09:06,160 --> 00:09:07,600
+[INAUDIBLE] here.
+
+183
+00:09:07,600 --> 00:09:11,430
+So let me just illustrate that, going back
+to our spine bone density example.
+
+184
+00:09:11,430 --> 00:09:18,000
+Within group variability is represented
+just by the spread of these box plots.
+
+185
+00:09:18,000 --> 00:09:20,380
+So that's kind of the background noise in
+spine bone density.
+
+186
+00:09:20,380 --> 00:09:23,660
+How much variability in any given group is
+there in spine bone density?
+
+187
+00:09:23,660 --> 00:09:25,820
+And we're assuming that that variability
+is kind of the,
+
+188
+00:09:25,820 --> 00:09:27,680
+roughly the same across the different
+groups.
+
+189
+00:09:27,680 --> 00:09:30,410
+Remember, we have an assumption of
+equality of variances here.
+
+190
+00:09:30,410 --> 00:09:31,870
+Well, it's It, it's close enough.
+
+191
+00:09:31,870 --> 00:09:32,920
+They're, they're pretty similar.
+
+192
+00:09:32,920 --> 00:09:35,180
+They're not exactly the same but similar.
+
+193
+00:09:35,180 --> 00:09:40,850
+We want to know, does the difference in
+means between the groups exceed that,
+
+194
+00:09:40,850 --> 00:09:41,880
+kind of, background noise?
+
+195
+00:09:41,880 --> 00:09:43,680
+That variability within the groups.
+
+196
+00:09:43,680 --> 00:09:47,140
+So the between group variants can be
+presented by looking at the means of
+
+197
+00:09:47,140 --> 00:09:48,070
+the three groups.
+
+198
+00:09:48,070 --> 00:09:49,850
+The means are represented by plus signs
+here.
+
+199
+00:09:49,850 --> 00:09:52,000
+Is the difference in the means of those
+three groups,
+
+200
+00:09:52,000 --> 00:09:53,520
+does that exceed the background
+variability?
+
+201
+00:09:53,520 --> 00:09:56,104
+That, that's what a Nova is set up to
+[INAUDIBLE] answer.
+
+202
+00:09:56,104 --> 00:09:59,250
+And I'll walk you through a brief
+calculation here, and
+
+203
+00:09:59,250 --> 00:10:01,990
+again I don't expect you to be able to
+calculate these on your own, but
+
+204
+00:10:01,990 --> 00:10:03,950
+just understand the concepts here.
+
+205
+00:10:03,950 --> 00:10:06,560
+So here's some numbers to, to work with.
+
+206
+00:10:06,560 --> 00:10:08,100
+The placebo group has 11 people in it.
+
+207
+00:10:08,100 --> 00:10:12,975
+The mean spine bone density at the end of
+year one was .92, standard deviation's .1.
+
+208
+00:10:12,975 --> 00:10:17,880
+For the 800 milligram group the mean was
+0.94, the standard deviation is 0.08.
+
+209
+00:10:17,880 --> 00:10:21,680
+For the high calcium supplement group, the
+mean is 0.106 and
+
+210
+00:10:21,680 --> 00:10:23,230
+the standard deviation is 0.11.
+
+211
+00:10:23,230 --> 00:10:26,500
+Notice that the variance is the standard
+deviation of spine bone density is
+
+212
+00:10:26,500 --> 00:10:28,072
+roughly the same across the different
+groups.
+
+213
+00:10:28,072 --> 00:10:33,580
+It probably just trying to pool them as
+they do Here's how the f test works.
+
+214
+00:10:33,580 --> 00:10:39,770
+So again, the f test is just a ratio
+between
+
+215
+00:10:39,770 --> 00:10:44,430
+the variance to within your variance.
+
+216
+00:10:44,430 --> 00:10:46,320
+I'll walk you though how these are
+actually calculated.
+
+217
+00:10:46,320 --> 00:10:49,250
+In this particular example, and so much.
+
+218
+00:10:49,250 --> 00:10:50,350
+Understand the concepts here.
+
+219
+00:10:50,350 --> 00:10:54,970
+So the between group variance we calculate
+by subtracting,
+
+220
+00:10:54,970 --> 00:10:57,900
+first of all we have to calculate an
+overall mean for spine bone density.
+
+221
+00:10:57,900 --> 00:11:01,570
+So the means of the three groups were
+0.92, 0.94 and 1.06.
+
+222
+00:11:01,570 --> 00:11:04,720
+The overall mean, therefore, is 0.97.
+
+223
+00:11:04,720 --> 00:11:07,020
+We're going to compare the mean.
+
+224
+00:11:07,020 --> 00:11:08,750
+From each group, to the overall mean.
+
+225
+00:11:09,870 --> 00:11:12,760
+And then we're going to square it, add it
+up, divide by 3 minus 1.
+
+226
+00:11:12,760 --> 00:11:14,470
+Notice we're just calculating a variance
+here.
+
+227
+00:11:14,470 --> 00:11:18,320
+This is how we calculate a variance, but
+our observations here are the means.
+
+228
+00:11:18,320 --> 00:11:20,630
+We're calculating a variance for the means
+of the.
+
+229
+00:11:20,630 --> 00:11:21,765
+The three groups.
+
+230
+00:11:21,765 --> 00:11:23,700
+but that's what we call the between group
+variance.
+
+231
+00:11:23,700 --> 00:11:24,810
+Obviously if that's big,
+
+232
+00:11:24,810 --> 00:11:27,770
+that means there's a lot of difference in
+the means between the three groups.
+
+233
+00:11:27,770 --> 00:11:31,730
+So we calculate that between group
+variance here, it comes out to be .063.
+
+234
+00:11:31,730 --> 00:11:33,810
+We then calculate the within group
+variance,
+
+235
+00:11:33,810 --> 00:11:38,700
+all that is Is the average of the standard
+deviation of bone density or
+
+236
+00:11:38,700 --> 00:11:42,799
+the variance of bone density in each of
+those groups.
+
+237
+00:11:42,799 --> 00:11:45,850
+Remember the standard deviations were
+0.10, 0.08 and 0.11.
+
+238
+00:11:45,850 --> 00:11:48,870
+We square them to get the variance and we
+just take the average variance.
+
+239
+00:11:48,870 --> 00:11:53,110
+That's the average variability in bone
+density within any given Group that comes
+
+240
+00:11:53,110 --> 00:11:55,270
+out to be .0095.
+
+241
+00:11:55,270 --> 00:11:58,950
+The F statistic is just the ratio of those
+two variances.
+
+242
+00:11:58,950 --> 00:12:04,480
+When I put those together here, it comes
+out to ave an F statistic of 6.6.
+
+243
+00:12:04,480 --> 00:12:08,600
+If I took that F statistic to an F chart,
+I have to plug in,
+
+244
+00:12:08,600 --> 00:12:13,070
+I have to tell the computer, the chart,
+that I have a numerator degrees of
+
+245
+00:12:13,070 --> 00:12:15,230
+freedom of 2, a denominator degrees of
+freedom of 30.
+
+246
+00:12:15,230 --> 00:12:17,620
+I can get a corresponding P value.
+
+247
+00:12:17,620 --> 00:12:21,320
+The P value does come out to be highly
+Statistically significant here,
+
+248
+00:12:21,320 --> 00:12:24,240
+it's something like .00, less than .001.
+
+249
+00:12:24,240 --> 00:12:27,215
+Because under the null hypothesis the f
+should come out to be one.
+
+250
+00:12:27,215 --> 00:12:29,770
+6.6 definitely exceeds that.
+
+251
+00:12:29,770 --> 00:12:31,770
+Again don't worry too much about the
+details of this test.
+
+252
+00:12:31,770 --> 00:12:34,340
+All of this will be calculated for you by
+the computer.
+
+253
+00:12:34,340 --> 00:12:36,504
+Just get the variable, the basic idea
+here.
+
+254
+00:12:36,504 --> 00:12:39,830
+Here.
+
+255
+00:12:39,830 --> 00:12:43,690
+Now, we get this statistically significant
+ANOVA here, that tells us that
+
+256
+00:12:43,690 --> 00:12:47,311
+at least one of the groups differs, it
+doesn't tell us which one differ.
+
+257
+00:12:47,311 --> 00:12:52,933
+If we then want to answer that question
+about where those specific
+
+258
+00:12:52,933 --> 00:12:57,631
+differences lie, we would then have to go
+in and do some post hoc tests.
+
+259
+00:12:57,631 --> 00:13:01,580
+Some actual comparing specific groups but
+because we
+
+260
+00:13:01,580 --> 00:13:05,490
+are comparing multiple groups we then have
+to compare multple comparisions.
+
+261
+00:13:05,490 --> 00:13:09,070
+I mentioned last week that there are ways
+to correct your P values from
+
+262
+00:13:09,070 --> 00:13:14,110
+multiple comparisions and you could apply
+those correction to account for
+
+263
+00:13:14,110 --> 00:13:17,380
+the fact that your doing multiple T test.
+
+264
+00:13:17,380 --> 00:13:18,370
+Here's some of the names for
+
+265
+00:13:18,370 --> 00:13:22,590
+some of those types that you might see in
+the statistical analysis program.
+
+266
+00:13:22,590 --> 00:13:23,260
+Here's how to correct for
+
+267
+00:13:23,260 --> 00:13:26,090
+multiple comparisons, if you want to do
+all those pair wise comparisons to
+
+268
+00:13:26,090 --> 00:13:27,930
+figure out where the differences really
+lie.
+
+269
+00:13:27,930 --> 00:13:30,810
+The most common one that everyone is
+
+270
+00:13:30,810 --> 00:13:33,520
+familiar with is called the Bonferroni
+correction.
+
+271
+00:13:33,520 --> 00:13:35,550
+It's very easy to plot, to apply.
+
+272
+00:13:35,550 --> 00:13:40,420
+You're just basically, dividing your
+p-value, [UNKNOWN] .05, by the number of
+
+273
+00:13:40,420 --> 00:13:43,855
+tests you run, to make a more stringent
+cut off for a statistical screen.
+
+274
+00:13:43,855 --> 00:13:47,089
+Bonferroni is very conservative, those
+overly conservative.

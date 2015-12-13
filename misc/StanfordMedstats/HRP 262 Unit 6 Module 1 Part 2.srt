@@ -1,0 +1,1132 @@
+1
+00:00:02,140 --> 00:00:05,750
+So now I'm just going to walk you through
+a quick review of linear regression.
+
+2
+00:00:05,750 --> 00:00:08,120
+So what we're dealing with linear
+regression,
+
+3
+00:00:08,120 --> 00:00:13,070
+the picture is that we've got a continuous
+outcome variable, call it y.
+
+4
+00:00:13,070 --> 00:00:17,520
+And then we've got predictors that could
+be continuous, or could be binary, or
+
+5
+00:00:17,520 --> 00:00:20,770
+categorical variables chopped into binary
+variables, dummy coded.
+
+6
+00:00:20,770 --> 00:00:23,030
+But for now, let's imagine that we've got
+an x variable,
+
+7
+00:00:23,030 --> 00:00:24,760
+a predictor that's continuous.
+
+8
+00:00:24,760 --> 00:00:28,180
+If you got two continuous variables you
+can draw some kind of scatter plot.
+
+9
+00:00:28,180 --> 00:00:31,050
+And the idea of linear regression is that
+
+10
+00:00:31,050 --> 00:00:35,080
+we're just going to fit the best fit line
+to those points that you see there.
+
+11
+00:00:35,080 --> 00:00:35,820
+Something like that.
+
+12
+00:00:36,960 --> 00:00:39,970
+Linear regression is the easiest because
+unlike all the other types of
+
+13
+00:00:39,970 --> 00:00:41,310
+regression we've dealt with.
+
+14
+00:00:41,310 --> 00:00:44,780
+Where you had to do some kind of
+transformation of the outcome Y,
+
+15
+00:00:44,780 --> 00:00:46,260
+we don't have to do any transformation
+here.
+
+16
+00:00:46,260 --> 00:00:51,510
+We're just modeling Y as itself, so that
+makes life a lot easier.
+
+17
+00:00:51,510 --> 00:00:52,510
+We're fitting a line, so
+
+18
+00:00:52,510 --> 00:00:55,690
+that means that we're going to have,
+there's two things that define this line.
+
+19
+00:00:55,690 --> 00:00:58,090
+We're going to have an intercept which we
+usually call alpha.
+
+20
+00:00:58,090 --> 00:01:01,700
+That's just the point at which x is equal
+to 0.
+
+21
+00:01:01,700 --> 00:01:03,760
+Where are we on the y axis?
+
+22
+00:01:03,760 --> 00:01:08,230
+So that's the intercept, that's the value
+of y when x is equal to 0.
+
+23
+00:01:08,230 --> 00:01:11,480
+And then, of course, the other thing that
+defines a line is the slope.
+
+24
+00:01:11,480 --> 00:01:16,280
+Which is just, how much does y change as x
+goes up one unit?
+
+25
+00:01:17,320 --> 00:01:20,250
+So, then y is defined by an intercept in
+the slope.
+
+26
+00:01:20,250 --> 00:01:23,980
+In linear regression we usually call the
+slope a beta and the beta
+
+27
+00:01:23,980 --> 00:01:29,600
+coefficient tells us about whether or not
+x is significantly related to y.
+
+28
+00:01:29,600 --> 00:01:34,090
+So, the null hypothesis for linear
+regression is that beta is equal to 0.
+
+29
+00:01:34,090 --> 00:01:36,130
+If the slope is equal to 0.
+
+30
+00:01:36,130 --> 00:01:38,070
+That means we would have a horizontal line
+and
+
+31
+00:01:38,070 --> 00:01:42,000
+there was no relationship between the
+predictor x and the outcome y.
+
+32
+00:01:42,000 --> 00:01:45,790
+If we reject the null hypothesis and say
+that beta is different than zero,
+
+33
+00:01:45,790 --> 00:01:49,440
+that would tell us that there is some
+relationship between x and y.
+
+34
+00:01:49,440 --> 00:01:53,440
+Notice that we are assuming a straight
+line, we're fitting a straight line here.
+
+35
+00:01:53,440 --> 00:01:56,490
+So if we had some kind of relationship
+ship between x and
+
+36
+00:01:56,490 --> 00:01:59,870
+y that wasn't a straight line, something
+like a quadratic,
+
+37
+00:01:59,870 --> 00:02:02,938
+well clearly if we try to fit a straight
+line here we might end up with.
+
+38
+00:02:02,938 --> 00:02:04,330
+Beta equals 0, but
+
+39
+00:02:04,330 --> 00:02:09,030
+haven't fit the right relationship, this
+is not, x is not linearly related to Y, so
+
+40
+00:02:09,030 --> 00:02:11,460
+of course we're always going to want to
+plot things and evaluate that.
+
+41
+00:02:11,460 --> 00:02:14,580
+Because, perhaps we need to put an x
+squared in the model, or
+
+42
+00:02:14,580 --> 00:02:17,341
+somehow model the predictor or the outcome
+differently.
+
+43
+00:02:18,730 --> 00:02:21,640
+But that's just the basics of linear
+regression, of course it get's more
+
+44
+00:02:21,640 --> 00:02:25,730
+complicated if you put more things in to
+the model, so our basic model.
+
+45
+00:02:25,730 --> 00:02:29,390
+Is just to say that the, the average value
+of y,
+
+46
+00:02:29,390 --> 00:02:33,550
+the expected value of y, is equal to some
+alpha plus beta x.
+
+47
+00:02:33,550 --> 00:02:35,740
+But we could add another, you know, that
+could,
+
+48
+00:02:35,740 --> 00:02:39,750
+we could have a beta 1, and then we could
+put in another variable x2.
+
+49
+00:02:39,750 --> 00:02:43,240
+This gets hard to draw because what we're
+doing is we have two predictors in
+
+50
+00:02:43,240 --> 00:02:44,070
+the model.
+
+51
+00:02:44,070 --> 00:02:48,255
+We're fitting a plane rather than a line,
+so we have to kind of come out from the,
+
+52
+00:02:48,255 --> 00:02:51,820
+out from the screen here and to into the
+three dimensions.
+
+53
+00:02:51,820 --> 00:02:54,390
+So imagine here's x 2 here's x 1.
+
+54
+00:02:54,390 --> 00:02:56,710
+We can then fit a plane into the scatter
+plot,
+
+55
+00:02:56,710 --> 00:03:01,250
+it gets a little hard to draw and if we
+add another beta to the model,
+
+56
+00:03:01,250 --> 00:03:05,810
+we're now instead of on a plane we're on
+some kind of three dimensional cube.
+
+57
+00:03:05,810 --> 00:03:07,790
+And you know, it gets hard to draw after
+that.
+
+58
+00:03:07,790 --> 00:03:09,840
+But basically it's the same idea.
+
+59
+00:03:09,840 --> 00:03:12,560
+If these betas are equal to 0, that would
+say there's no
+
+60
+00:03:12,560 --> 00:03:16,230
+relationship between the predictor and the
+outcome, at least no linear relationship.
+
+61
+00:03:16,230 --> 00:03:19,332
+And if they're significantly different
+than zero, that would say that these
+
+62
+00:03:19,332 --> 00:03:22,387
+predictors have a significant relationship
+with the outcome, adjusted for
+
+63
+00:03:22,387 --> 00:03:23,719
+everything else in the model.
+
+64
+00:03:24,830 --> 00:03:26,240
+We've dealt with regression before, so
+
+65
+00:03:26,240 --> 00:03:30,650
+in a way linear regression is sort of the
+easiest of all of the regression again.
+
+66
+00:03:30,650 --> 00:03:32,970
+Since Y is not transformed in any way.
+
+67
+00:03:32,970 --> 00:03:38,460
+So now I made up some data just to
+illustrate linear regression here.
+
+68
+00:03:38,460 --> 00:03:42,950
+I'm using that same, those same test
+scores, exact same test scores as before.
+
+69
+00:03:42,950 --> 00:03:44,560
+But I've made up a new predictor variable.
+
+70
+00:03:44,560 --> 00:03:47,820
+So imagine we didn't have some group, some
+intervention here, but
+
+71
+00:03:47,820 --> 00:03:50,350
+imagine we were looking at parental
+education.
+
+72
+00:03:50,350 --> 00:03:54,900
+And I've just defined that as the average
+total number of years of school,
+
+73
+00:03:54,900 --> 00:03:57,190
+averaged between the mother and the
+father.
+
+74
+00:03:57,190 --> 00:03:58,990
+Again, these are just made-up data.
+
+75
+00:03:58,990 --> 00:04:00,260
+All right, I've got a couple of scores on
+the test.
+
+76
+00:04:00,260 --> 00:04:02,280
+And now, we've just got 24 kids.
+
+77
+00:04:02,280 --> 00:04:04,640
+These are independent kids, so they're not
+siblings.
+
+78
+00:04:04,640 --> 00:04:07,030
+Yeah, and they have some average parental
+education and
+
+79
+00:04:07,030 --> 00:04:08,950
+then they take the test, they get some
+score on it.
+
+80
+00:04:08,950 --> 00:04:10,380
+We're going to see if those are
+correlated.
+
+81
+00:04:11,840 --> 00:04:15,250
+The outcome variable here is the same
+scores as before, so it's still looks and
+
+82
+00:04:15,250 --> 00:04:18,400
+nice and normally distributed, nothing has
+changed on the scores.
+
+83
+00:04:18,400 --> 00:04:22,100
+So that says it's okay to use linear
+regression, we're going to want to of
+
+84
+00:04:22,100 --> 00:04:25,350
+course plot our data so we've got our
+continuous predictor, average parental
+
+85
+00:04:25,350 --> 00:04:31,520
+education, our test score is our outcome
+variable here, and I do a scatter plot.
+
+86
+00:04:31,520 --> 00:04:35,550
+I actually like to fit a smooth line to
+those points just to see if there is
+
+87
+00:04:35,550 --> 00:04:40,440
+any curvature to see whether or not this
+is really well modeled as a straight line.
+
+88
+00:04:40,440 --> 00:04:42,200
+When I do that here it looks pretty good.
+
+89
+00:04:42,200 --> 00:04:44,090
+I mean, it's never going to be a perfect
+straight line, but
+
+90
+00:04:44,090 --> 00:04:48,250
+as real data goes that looks pretty nice
+and, and straight.
+
+91
+00:04:48,250 --> 00:04:52,730
+We, of course, have also assumed that the
+average scatter around the line,
+
+92
+00:04:52,730 --> 00:04:55,950
+that the homogeneity of variances of the
+average scatter around the line,
+
+93
+00:04:55,950 --> 00:04:56,710
+is about equal.
+
+94
+00:04:56,710 --> 00:04:57,270
+I mean.
+
+95
+00:04:57,270 --> 00:04:59,930
+It looks like, there's maybe, just a
+little bit more variability at
+
+96
+00:04:59,930 --> 00:05:02,570
+the higher ends of parental education than
+at the lower ends but
+
+97
+00:05:02,570 --> 00:05:05,500
+it generally looks pretty balanced, pretty
+constant.
+
+98
+00:05:05,500 --> 00:05:09,610
+So, the homogeneity of variances looks
+okay here as well.
+
+99
+00:05:09,610 --> 00:05:13,690
+So now, we have independent kids that I
+would say that it is okay to fit a.
+
+100
+00:05:13,690 --> 00:05:14,600
+Linear regression line.
+
+101
+00:05:14,600 --> 00:05:16,990
+So I went ahead and actually fit a linear
+regression line, so
+
+102
+00:05:16,990 --> 00:05:20,130
+when we do the linear regression line,
+we're forcing a straight line.
+
+103
+00:05:20,130 --> 00:05:21,450
+Keep that in mind.
+
+104
+00:05:21,450 --> 00:05:25,010
+Again, we're going to end up with a
+y-intercept, which here, I'm sorry,
+
+105
+00:05:25,010 --> 00:05:26,250
+this is really small.
+
+106
+00:05:26,250 --> 00:05:27,850
+I can't really see that.
+
+107
+00:05:27,850 --> 00:05:30,180
+The units on the y-axis here.
+
+108
+00:05:30,180 --> 00:05:32,130
+But the intercept comes out to be about 6.
+
+109
+00:05:32,130 --> 00:05:35,620
+So when parental education is 0, if you
+project this line out,
+
+110
+00:05:35,620 --> 00:05:37,640
+it would say that the average score would
+be predicted to be 6.
+
+111
+00:05:37,640 --> 00:05:40,360
+And then you can see clearly that there's
+a, you know,
+
+112
+00:05:40,360 --> 00:05:43,930
+a positive, pretty big positive slope
+here.
+
+113
+00:05:43,930 --> 00:05:47,140
+The slope, as I'll show you in the next
+slide, comes out to be about 1.3.
+
+114
+00:05:47,140 --> 00:05:51,370
+So every one year extra of parental
+education.
+
+115
+00:05:51,370 --> 00:05:57,150
+Corresponds to about a 1.3%, 1.3 unit
+increase in this test score.
+
+116
+00:05:57,150 --> 00:05:58,670
+And it is statistically significant.
+
+117
+00:05:58,670 --> 00:05:59,420
+So let me just show you.
+
+118
+00:05:59,420 --> 00:06:03,410
+I went ahead and ran the regression in the
+computer to actually get out
+
+119
+00:06:03,410 --> 00:06:05,380
+the parameter estimates, the alpha and the
+beta.
+
+120
+00:06:05,380 --> 00:06:07,230
+So the intercept here is about 6.2.
+
+121
+00:06:07,230 --> 00:06:10,600
+The beta, the slope here, is 1.349.
+
+122
+00:06:10,600 --> 00:06:14,300
+And that does turn out to be statistically
+significant.
+
+123
+00:06:14,300 --> 00:06:16,250
+So that really does, and I made up these
+data, so
+
+124
+00:06:16,250 --> 00:06:18,730
+of course I made there be a significant
+relationship.
+
+125
+00:06:18,730 --> 00:06:22,840
+So there really does appear to be a
+significant increase in the score,
+
+126
+00:06:22,840 --> 00:06:26,100
+the test scores, as parental education
+goes up.
+
+127
+00:06:26,100 --> 00:06:28,060
+I'll just point out one other thing in the
+output here.
+
+128
+00:06:28,060 --> 00:06:31,510
+There's something called the root mean
+squared error.
+
+129
+00:06:31,510 --> 00:06:35,420
+Which is just a fancy name, for, the
+standard error.
+
+130
+00:06:35,420 --> 00:06:39,380
+This is the average variability, around
+the line.
+
+131
+00:06:39,380 --> 00:06:41,140
+The average residuals essentially.
+
+132
+00:06:41,140 --> 00:06:44,290
+And this, this root mean squared error is
+what we.
+
+133
+00:06:44,290 --> 00:06:48,680
+Minimize when this line is fit, so when
+the computer runs the algorithm to,
+
+134
+00:06:48,680 --> 00:06:50,670
+to actually get out the alpha and the
+beta,
+
+135
+00:06:50,670 --> 00:06:55,740
+what it's doing is finding the line that
+minimizes this root mean squared error.
+
+136
+00:06:55,740 --> 00:06:59,660
+So, this line here gives us the smallest
+possible root mean squared error.
+
+137
+00:06:59,660 --> 00:07:03,600
+This root mean squared error just reflects
+the average variability around the line.
+
+138
+00:07:03,600 --> 00:07:08,180
+The standard error of Y given X is another
+way to write that.
+
+139
+00:07:08,180 --> 00:07:10,400
+So this is saying that, if we're on our.
+
+140
+00:07:10,400 --> 00:07:13,280
+Here's our Y, there's some scatter around
+the line.
+
+141
+00:07:13,280 --> 00:07:15,140
+So this, this scatter around the line,
+
+142
+00:07:15,140 --> 00:07:17,709
+that's standard error at any given value
+for X.
+
+143
+00:07:20,030 --> 00:07:23,870
+That variability, that's the root mean
+squared error.
+
+144
+00:07:23,870 --> 00:07:28,450
+And that factors into calculating the
+standard errors for alpha and
+
+145
+00:07:28,450 --> 00:07:32,530
+beta, which then determines whether or not
+we reach statistical significance.
+
+146
+00:07:33,760 --> 00:07:35,420
+So I want to just focus for a minute.
+
+147
+00:07:35,420 --> 00:07:37,840
+When, usually when we're doing real linear
+regression.
+
+148
+00:07:37,840 --> 00:07:38,890
+Problems in medicine.
+
+149
+00:07:38,890 --> 00:07:41,000
+We, of course, we care about the alpha and
+the beta.
+
+150
+00:07:41,000 --> 00:07:43,480
+We, we're, that's usually what gets
+reported in the paper.
+
+151
+00:07:43,480 --> 00:07:47,540
+And we kind of ignore the fact that
+there's something else in the model.
+
+152
+00:07:47,540 --> 00:07:50,320
+But we're going to, I want to focus on it
+for a minute.
+
+153
+00:07:50,320 --> 00:07:53,330
+Because it's going to be important when we
+talk about how to account for
+
+154
+00:07:53,330 --> 00:07:56,050
+correlations in the data, such as repeated
+measures.
+
+155
+00:07:56,050 --> 00:08:01,320
+So our linear regression line basically
+says that the expected value of y.
+
+156
+00:08:01,320 --> 00:08:05,380
+Is alpha plus beta x is just very simple
+single line.
+
+157
+00:08:05,380 --> 00:08:09,400
+This is the expected value so this is the
+actual line value, the average value or
+
+158
+00:08:09,400 --> 00:08:12,530
+the expected value for any given value of
+x.
+
+159
+00:08:12,530 --> 00:08:15,320
+But in, of course any given individual Yi,
+
+160
+00:08:15,320 --> 00:08:18,380
+everybody will have points that are not
+exactly on the line.
+
+161
+00:08:18,380 --> 00:08:20,280
+Some people might rie, lie right on the
+line.
+
+162
+00:08:20,280 --> 00:08:22,370
+But most people are going to lie somewhere
+around the line, but
+
+163
+00:08:22,370 --> 00:08:23,880
+not right on the line.
+
+164
+00:08:23,880 --> 00:08:26,490
+The distance between a person's actual
+value and
+
+165
+00:08:26,490 --> 00:08:28,970
+the line is called their residual.
+
+166
+00:08:28,970 --> 00:08:31,280
+That's the observed minus the expected
+value.
+
+167
+00:08:31,280 --> 00:08:33,450
+We also call that the error.
+
+168
+00:08:33,450 --> 00:08:37,970
+So every person, their value is the, the
+predicted value on the line plus, or
+
+169
+00:08:37,970 --> 00:08:39,750
+minus some error.
+
+170
+00:08:39,750 --> 00:08:41,460
+Some distance from the line.
+
+171
+00:08:41,460 --> 00:08:45,669
+We these error terms are what we're this
+is related to the root mean square error,
+
+172
+00:08:45,669 --> 00:08:50,060
+this is what we're minimizing, we're
+minimizing the square error terms.
+
+173
+00:08:50,060 --> 00:08:53,540
+When we fit this line, we find the line
+that minimizes the square errors.
+
+174
+00:08:53,540 --> 00:08:56,120
+The square distances from the line that's
+the best fit line.
+
+175
+00:08:58,170 --> 00:09:01,160
+That represents the unexplained
+variability in y, once I've accounted for
+
+176
+00:09:01,160 --> 00:09:04,610
+x how much variability is there still left
+over in y?
+
+177
+00:09:04,610 --> 00:09:06,800
+Couple of things to keep in mind about
+these errors.
+
+178
+00:09:06,800 --> 00:09:08,940
+So what are the assumptions that we are
+making about the errors?
+
+179
+00:09:08,940 --> 00:09:10,725
+So the actual assumptions of linear
+regression.
+
+180
+00:09:10,725 --> 00:09:12,110
+They actually revolve around the error.
+
+181
+00:09:12,110 --> 00:09:16,510
+So the error terms are assumed to be
+normally distributed.
+
+182
+00:09:16,510 --> 00:09:21,350
+They are also assumed to have equal
+variance, so at any given value of x,
+
+183
+00:09:21,350 --> 00:09:25,130
+those, that, those errors around the line
+are assumed to be equal.
+
+184
+00:09:25,130 --> 00:09:27,750
+That's that homogeneity of variances
+assumption.
+
+185
+00:09:27,750 --> 00:09:29,580
+And they're also assumed to be
+independent.
+
+186
+00:09:29,580 --> 00:09:32,540
+So one observation doesn't have any
+correlation.
+
+187
+00:09:32,540 --> 00:09:36,060
+Their error doesn't have any particular
+correlation with another person's,
+
+188
+00:09:36,060 --> 00:09:38,010
+another observation's error.
+
+189
+00:09:38,010 --> 00:09:40,110
+Those are the basic assumptions of linear
+regression.
+
+190
+00:09:40,110 --> 00:09:43,140
+Somewhat easier to illustrate those with a
+picture.
+
+191
+00:09:43,140 --> 00:09:45,630
+So now I've got some x variable, some y
+variable.
+
+192
+00:09:45,630 --> 00:09:48,190
+And what I'm assuming is that we can fit.
+
+193
+00:09:48,190 --> 00:09:49,260
+A line.
+
+194
+00:09:49,260 --> 00:09:54,240
+And the line tells us the expected value
+for y, for every given value of x.
+
+195
+00:09:54,240 --> 00:09:56,550
+But, of course, not everybody's going to
+lie right on the line.
+
+196
+00:09:56,550 --> 00:09:58,790
+There's going to be some variability
+around the line.
+
+197
+00:10:00,120 --> 00:10:03,640
+We're assuming, scatter around the line
+falls in normal distribution.
+
+198
+00:10:03,640 --> 00:10:04,505
+That all the observations.
+
+199
+00:10:04,505 --> 00:10:07,048
+They're normally distributed around the
+line.
+
+200
+00:10:07,048 --> 00:10:11,530
+And that, that, that standard error for
+that normal distribution is the same at
+
+201
+00:10:11,530 --> 00:10:15,960
+every different value of x and that's also
+called the root mean squared error.
+
+202
+00:10:15,960 --> 00:10:17,290
+This is what I've written here.
+
+203
+00:10:17,290 --> 00:10:21,190
+That's what we minimize when we fit a
+linear regression line.
+
+204
+00:10:21,190 --> 00:10:22,470
+So we're assuming that's homogenous.
+
+205
+00:10:22,470 --> 00:10:27,070
+We are also assuming that if I pick you
+know, this particular person here, and
+
+206
+00:10:27,070 --> 00:10:30,540
+this particular person here, that their
+errors are in no way correlated.
+
+207
+00:10:30,540 --> 00:10:33,120
+Now that's the part that's going to be
+violated.
+
+208
+00:10:33,120 --> 00:10:34,650
+When we have repeated measures data.
+
+209
+00:10:34,650 --> 00:10:38,770
+So imagine for a minute that my predictor
+now is time.
+
+210
+00:10:38,770 --> 00:10:42,130
+And these dots represent the same people
+at different times.
+
+211
+00:10:42,130 --> 00:10:47,430
+And imagine I'm, I'm going to give some
+examples with my outcome is bone destiny.
+
+212
+00:10:47,430 --> 00:10:49,540
+Basically reflecting your bone strength.
+
+213
+00:10:49,540 --> 00:10:51,720
+In the units and modules this week.
+
+214
+00:10:51,720 --> 00:10:54,950
+So imagine my outcome variable is some
+kind of bone strength,
+
+215
+00:10:54,950 --> 00:10:56,450
+which is bone density.
+
+216
+00:10:56,450 --> 00:11:01,580
+Imagine that I have a person here whose
+bone density was measured at baseline and
+
+217
+00:11:01,580 --> 00:11:05,460
+then this is the corresponding to one year
+in the study and
+
+218
+00:11:05,460 --> 00:11:06,240
+this is corresponding to two years in the
+study.
+
+219
+00:11:06,240 --> 00:11:08,640
+I'm just making up the units of time.
+
+220
+00:11:08,640 --> 00:11:10,440
+But imagine that this person.
+
+221
+00:11:10,440 --> 00:11:11,840
+Is measured at baseline.
+
+222
+00:11:11,840 --> 00:11:14,570
+And then they're measured again a year
+later.
+
+223
+00:11:14,570 --> 00:11:16,510
+And then they're measured again two years
+later.
+
+224
+00:11:16,510 --> 00:11:18,460
+And because they started low,
+
+225
+00:11:18,460 --> 00:11:22,600
+they had lower than average bone density,
+they remained low.
+
+226
+00:11:22,600 --> 00:11:25,580
+So their residuals are always low.
+
+227
+00:11:25,580 --> 00:11:27,470
+Of course, that person may change over
+time.
+
+228
+00:11:27,470 --> 00:11:29,410
+They may go up a little or down a little.
+
+229
+00:11:29,410 --> 00:11:33,280
+But, the, the fact that they started low
+means that the residual for
+
+230
+00:11:33,280 --> 00:11:36,760
+this guy and this one and this one are all
+correlated, they're related to
+
+231
+00:11:36,760 --> 00:11:40,530
+one another because it's the same person,
+that residual is low to begin with,
+
+232
+00:11:40,530 --> 00:11:43,860
+it's going to be low at every subsequent
+time point most likely.
+
+233
+00:11:43,860 --> 00:11:45,380
+So there's some correlation there and
+
+234
+00:11:45,380 --> 00:11:48,870
+that violates this assumption of the
+errors being independent.
+
+235
+00:11:48,870 --> 00:11:51,640
+That's what we're going to need to deal
+with when we
+
+236
+00:11:51,640 --> 00:11:53,890
+talk about having repeated measures data.
+
+237
+00:11:53,890 --> 00:11:57,950
+So a lot of our discussion on dealing with
+repeated measures data will focus on what
+
+238
+00:11:57,950 --> 00:11:59,510
+to do with those error terms.
+
+239
+00:11:59,510 --> 00:12:04,339
+[BLANK_AUDIO]

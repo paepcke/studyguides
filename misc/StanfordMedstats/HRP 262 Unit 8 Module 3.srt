@@ -1,0 +1,671 @@
+1
+00:00:00,052 --> 00:00:05,045
+[BLANK_AUDIO].
+
+2
+00:00:05,045 --> 00:00:09,805
+In this next module, I just wanted to show
+you that, even though we're focusing on
+
+3
+00:00:09,805 --> 00:00:14,157
+continuous outcomes in this class,
+generalized estimating equations can
+
+4
+00:00:14,157 --> 00:00:19,350
+handle other types of repeated-measures
+outcomes data, including binary outcomes.
+
+5
+00:00:19,350 --> 00:00:22,590
+So, just for the purposes of illustration,
+I made up a simple,
+
+6
+00:00:22,590 --> 00:00:25,680
+little data set where we can run GE on
+this data set.
+
+7
+00:00:25,680 --> 00:00:28,542
+So, imagine we had 20 teenagers, some of
+whom were smokers,
+
+8
+00:00:28,542 --> 00:00:30,220
+some of whom were not smokers.
+
+9
+00:00:30,220 --> 00:00:33,260
+We randomized them to an anti-smoking
+intervention.
+
+10
+00:00:33,260 --> 00:00:37,340
+Smoking status, which is a binary outcome,
+is allowed to change over time, and
+
+11
+00:00:37,340 --> 00:00:40,839
+we measured that smoking status at four
+time points after baseline.
+
+12
+00:00:42,760 --> 00:00:45,170
+So, the data now looks something like
+this.
+
+13
+00:00:45,170 --> 00:00:47,464
+I, I'm showing you the data in the long
+form.
+
+14
+00:00:47,464 --> 00:00:49,910
+We've got an ID number to identify the
+subjects.
+
+15
+00:00:49,910 --> 00:00:52,360
+Every subject is measured at four time
+points.
+
+16
+00:00:52,360 --> 00:00:56,228
+Their smoking status, which is the
+repeated-measures outcome here.
+
+17
+00:00:56,228 --> 00:00:59,728
+you, you can have a subject go, so like,
+subject number one was a smoker to start,
+
+18
+00:00:59,728 --> 00:01:02,478
+then they became a non-smoker, then they
+were a smoker again for
+
+19
+00:01:02,478 --> 00:01:03,765
+the last two time periods.
+
+20
+00:01:03,765 --> 00:01:05,620
+So, that's allowed to change.
+
+21
+00:01:05,620 --> 00:01:07,930
+That might, that's my repeated-measures
+outcome.
+
+22
+00:01:07,930 --> 00:01:09,510
+Here's my time variable.
+
+23
+00:01:09,510 --> 00:01:11,789
+I have a time-independent predictor, which
+is,
+
+24
+00:01:11,789 --> 00:01:14,540
+you're either in the treatment group or
+the control group.
+
+25
+00:01:14,540 --> 00:01:15,930
+That does not change over time.
+
+26
+00:01:15,930 --> 00:01:18,790
+It's always the same within a, a given
+subject.
+
+27
+00:01:18,790 --> 00:01:20,880
+So, we're sticking with the
+time-independent predictors for
+
+28
+00:01:20,880 --> 00:01:21,849
+a little bit longer, here.
+
+29
+00:01:24,290 --> 00:01:26,306
+I went ahead and graphed these data
+because, of course,
+
+30
+00:01:26,306 --> 00:01:29,250
+the graph is most important in
+understanding what you have.
+
+31
+00:01:29,250 --> 00:01:33,192
+So, what I'm graphing here is, my outcome
+is binary, you're either a smoker or
+
+32
+00:01:33,192 --> 00:01:36,310
+you're not a smoker, but I'm graphing the
+means for the sample.
+
+33
+00:01:36,310 --> 00:01:38,830
+So, this represents the percent of each
+sample,
+
+34
+00:01:38,830 --> 00:01:42,200
+the percent of people who are smokers at a
+given time point.
+
+35
+00:01:42,200 --> 00:01:45,622
+So, for example, at baseline, both of the
+groups had about 60%,
+
+36
+00:01:45,622 --> 00:01:50,030
+were already smoking, and there's some
+change in the smoking status over time.
+
+37
+00:01:50,030 --> 00:01:52,838
+You can see that the treatment group stays
+pretty flat in their
+
+38
+00:01:52,838 --> 00:01:54,140
+smoking status over time.
+
+39
+00:01:54,140 --> 00:01:56,760
+They even go down, maybe just a little,
+little bit.
+
+40
+00:01:56,760 --> 00:01:59,054
+Whereas, the control group gets higher and
+
+41
+00:01:59,054 --> 00:02:01,796
+they're, more of them become smokers over
+time.
+
+42
+00:02:01,796 --> 00:02:05,046
+So, it looks like the treatment is doing
+something but
+
+43
+00:02:05,046 --> 00:02:08,700
+we need to attach to this graphic some
+effect sizes and p-value.
+
+44
+00:02:10,170 --> 00:02:13,453
+So, if I were just to hand you this data
+set and you didn't know anything about GE
+
+45
+00:02:13,453 --> 00:02:17,060
+models, your first instinct would probably
+be to run a logistic regression, right?
+
+46
+00:02:17,060 --> 00:02:19,876
+You have a binary outcome, so you would
+say, okay,
+
+47
+00:02:19,876 --> 00:02:24,319
+I'm going to run a logistic regression
+where my outcome is the logit of smoking.
+
+48
+00:02:24,319 --> 00:02:28,089
+And, the simplest model you could think of
+was just to put a beta in for
+
+49
+00:02:28,089 --> 00:02:32,980
+treatment to say whether or not treatment
+is related to a lower risk of smoking.
+
+50
+00:02:32,980 --> 00:02:36,499
+Now, obviously, this would be incorrect
+because it completely ignores the repeated
+
+51
+00:02:36,499 --> 00:02:39,557
+measures, but I went ahead and did that
+just to show you what happens.
+
+52
+00:02:39,557 --> 00:02:42,470
+And, when you run that model, you get a
+negative beta coefficient.
+
+53
+00:02:42,470 --> 00:02:45,650
+That indicates that, indeed, the treatment
+group is associated with
+
+54
+00:02:45,650 --> 00:02:49,020
+a lower likelihood of smoking, as we saw
+in the graphic.
+
+55
+00:02:49,020 --> 00:02:50,720
+The p-value that's attached to that,
+
+56
+00:02:50,720 --> 00:02:53,070
+however, it looks statistically
+significant, but,
+
+57
+00:02:53,070 --> 00:02:56,120
+in fact, that's overly optimistic, that is
+too small.
+
+58
+00:02:56,120 --> 00:02:59,252
+And, the reason being is that, if you
+think about the data set,
+
+59
+00:02:59,252 --> 00:03:03,250
+we have 20 individuals, but they're all
+measured at four time points.
+
+60
+00:03:03,250 --> 00:03:05,278
+So, we actually have 80 observations, and
+
+61
+00:03:05,278 --> 00:03:08,970
+we are over-counting people by allowing
+somebody who was in the treatment groups,
+
+62
+00:03:08,970 --> 00:03:12,440
+so essentially four times in the data set,
+to be counted four times.
+
+63
+00:03:12,440 --> 00:03:14,540
+That's going to make our p-values here too
+small.
+
+64
+00:03:14,540 --> 00:03:16,370
+Treatment is a between-subjects
+comparison.
+
+65
+00:03:16,370 --> 00:03:19,241
+Failing to account for correlations will
+make our p-values too small.
+
+66
+00:03:19,241 --> 00:03:21,760
+We're over-counting people.
+
+67
+00:03:21,760 --> 00:03:25,840
+So, I then went ahead and ran one other
+logistic regression model, just for
+
+68
+00:03:25,840 --> 00:03:27,173
+illustration purposes.
+
+69
+00:03:27,173 --> 00:03:31,410
+This is closer to what we're actually
+going to be running in the GE model.
+
+70
+00:03:31,410 --> 00:03:35,835
+So, in a GE model, we're going to want to
+put in a beta for time, a beta for
+
+71
+00:03:35,835 --> 00:03:39,430
+treatment, and a beta for time by
+treatment.
+
+72
+00:03:39,430 --> 00:03:41,580
+Now, this logistic model has not yet
+accounted for
+
+73
+00:03:41,580 --> 00:03:43,230
+the correlation within subjects, but
+
+74
+00:03:43,230 --> 00:03:46,520
+otherwise, it's similar to what we're
+going to be running for the GE model.
+
+75
+00:03:46,520 --> 00:03:49,716
+And what you'll notice is, when I run
+this, I actually don't get anything to be
+
+76
+00:03:49,716 --> 00:03:53,150
+statistically significant, so all my
+p-values are non-significant.
+
+77
+00:03:53,150 --> 00:03:56,648
+Some of those p-values are going to change
+when we, now, correctly account for
+
+78
+00:03:56,648 --> 00:03:58,230
+the correlation within subject.
+
+79
+00:04:00,870 --> 00:04:02,920
+So, here's the empirical correlation
+matrix.
+
+80
+00:04:02,920 --> 00:04:05,471
+A binary outcome can have correlation
+across time periods.
+
+81
+00:04:05,471 --> 00:04:07,121
+If you were a smoker in one time period,
+
+82
+00:04:07,121 --> 00:04:09,614
+you're more likely to be a smoker in
+another time period.
+
+83
+00:04:09,614 --> 00:04:13,059
+And I went ahead and just run it, ran
+piercing correlation coefficients be,
+
+84
+00:04:13,059 --> 00:04:16,370
+between those ones and zeros at different
+time periods.
+
+85
+00:04:16,370 --> 00:04:19,890
+What you'll notice is that between
+adjacent time periods,
+
+86
+00:04:19,890 --> 00:04:24,551
+the correlations are the highest: 0.83,
+point, almost 0.6, 0.75.
+
+87
+00:04:24,551 --> 00:04:27,961
+If you go two time points apart, the
+correlations are a little bit lower,
+
+88
+00:04:27,961 --> 00:04:30,383
+as you would expect with repeated-measures
+data.
+
+89
+00:04:30,383 --> 00:04:34,080
+If you go three time points apart, the
+correlations are even smaller.
+
+90
+00:04:34,080 --> 00:04:37,280
+So, probably, something like an
+autoregressive would be a good choice for
+
+91
+00:04:37,280 --> 00:04:38,628
+the correlation matrix here.
+
+92
+00:04:38,628 --> 00:04:42,058
+Indeed, that's what I ended up choosing.
+
+93
+00:04:42,058 --> 00:04:44,559
+So then, I went ahead and ran the GE
+model.
+
+94
+00:04:44,559 --> 00:04:47,745
+It looks exactly like the logistic
+regression model, except that now
+
+95
+00:04:47,745 --> 00:04:51,633
+we're adding this correlation factor, this
+correction for the correlation within
+
+96
+00:04:51,633 --> 00:04:55,140
+subjects, the correlation matrix that we
+just saw on the previous page.
+
+97
+00:04:56,430 --> 00:05:00,210
+Running logistic regression model just
+means that our errors were say, saying our
+
+98
+00:05:00,210 --> 00:05:04,180
+errors follow a binomial distribution,
+rather than a normal distribution.
+
+99
+00:05:04,180 --> 00:05:07,956
+Our outcome, we're going to model as a
+logit of the outcome because, again,
+
+100
+00:05:07,956 --> 00:05:09,260
+we have a binary outcome.
+
+101
+00:05:09,260 --> 00:05:12,268
+So, it's just like a logistic regression
+with this additional correction
+
+102
+00:05:12,268 --> 00:05:13,020
+for correlation.
+
+103
+00:05:14,630 --> 00:05:19,440
+I went ahead and ran that model, and
+here's what I got for my output.
+
+104
+00:05:19,440 --> 00:05:20,940
+So, a couple of things to pay attention
+to.
+
+105
+00:05:20,940 --> 00:05:23,550
+So, first of all, I want you pay attention
+to the p-values over here.
+
+106
+00:05:23,550 --> 00:05:27,290
+The p-value for treatment, when I ran the
+regular logistic regression, was 0.7.
+
+107
+00:05:27,290 --> 00:05:31,030
+That went up when I ran the correct model.
+
+108
+00:05:31,030 --> 00:05:34,310
+So, treatment is a between-subjects
+comparison.
+
+109
+00:05:34,310 --> 00:05:37,410
+So, for between-subjects comparisons, the
+p-values are too small.
+
+110
+00:05:37,410 --> 00:05:38,422
+When you fail to correct for
+
+111
+00:05:38,422 --> 00:05:41,330
+correlations, they going to go up when you
+correct for correlations.
+
+112
+00:05:41,330 --> 00:05:45,661
+However, the treatment by time, and time
+effects are within-subjects effects,
+
+113
+00:05:45,661 --> 00:05:49,376
+when we correctly account for correlation,
+these p-values go down.
+
+114
+00:05:49,376 --> 00:05:52,232
+Now, they're starting to approach
+statistical significance,
+
+115
+00:05:52,232 --> 00:05:53,552
+which they weren't before.
+
+116
+00:05:53,552 --> 00:05:54,824
+Remember, in the picture,
+
+117
+00:05:54,824 --> 00:05:59,240
+it did look like the treatment group did
+somewhat better than the control group.
+
+118
+00:05:59,240 --> 00:06:01,550
+How would I interpret the beta
+coefficients here?
+
+119
+00:06:01,550 --> 00:06:05,255
+Well, the effect for treatment here if I
+were to exponentiate these beta
+
+120
+00:06:05,255 --> 00:06:09,473
+coefficients I would get odds ratios, but
+basically, a negative beta coefficient for
+
+121
+00:06:09,473 --> 00:06:11,297
+treatment means that at baseline, so
+
+122
+00:06:11,297 --> 00:06:14,570
+the main effect for treatment is the
+affected baseline.
+
+123
+00:06:14,570 --> 00:06:18,378
+At baseline, the treatment group actually
+had slightly fewer smokers in it
+
+124
+00:06:18,378 --> 00:06:21,626
+than the control group, even though this
+is a randomized trial, but
+
+125
+00:06:21,626 --> 00:06:24,290
+that difference was not statistically
+significant.
+
+126
+00:06:25,864 --> 00:06:27,484
+The main effect for
+
+127
+00:06:27,484 --> 00:06:33,094
+time represents the change in the risk of
+smoking over time for the control group.
+
+128
+00:06:33,094 --> 00:06:34,462
+And so, that's positive,
+
+129
+00:06:34,462 --> 00:06:38,053
+seeing that the control group was going up
+in their smoking over time, as we
+
+130
+00:06:38,053 --> 00:06:42,308
+saw in the picture that didn't quite reach
+statistical significance, but almost.
+
+131
+00:06:42,308 --> 00:06:45,480
+And then finally, the treatment by time
+effect is negative,
+
+132
+00:06:45,480 --> 00:06:49,615
+saying that the treatment group does
+better over time than the control group.
+
+133
+00:06:49,615 --> 00:06:54,424
+They're, they don't go up as much as the
+control group in their smoking status.
+
+134
+00:06:54,424 --> 00:06:57,670
+In fact, they stayed pretty flat or even
+went down a little.
+
+135
+00:06:57,670 --> 00:07:00,750
+The difference between the control and
+treatment over time did not
+
+136
+00:07:00,750 --> 00:07:05,010
+quite reach statistical significance, but
+it was approaching it.
+
+137
+00:07:05,010 --> 00:07:08,370
+So you can see that the interpretation's
+actually very similar to
+
+138
+00:07:08,370 --> 00:07:11,000
+the interpretation when we had a
+continuous outcome.
+
+139
+00:07:11,000 --> 00:07:12,320
+The model looks very similar.
+
+140
+00:07:13,630 --> 00:07:17,290
+GE can handle other types of outcome data,
+like binary outcomes.

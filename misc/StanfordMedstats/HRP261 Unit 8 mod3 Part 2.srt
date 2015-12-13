@@ -1,0 +1,2005 @@
+1
+00:00:01,680 --> 00:00:06,280
+So now to illustrate Poisson regression,
+I'm going to refer to a particular set of
+
+2
+00:00:06,280 --> 00:00:10,930
+example data, this was data that was
+compiled by a student at Colorado College.
+
+3
+00:00:10,930 --> 00:00:15,000
+The outcome here is the number of world
+records broken in swimming in
+
+4
+00:00:15,000 --> 00:00:16,430
+any given year.
+
+5
+00:00:16,430 --> 00:00:20,280
+And this means like anytime a world record
+is broken in any event, men or women.
+
+6
+00:00:20,280 --> 00:00:21,510
+So you can see that the there are a fair
+
+7
+00:00:21,510 --> 00:00:23,980
+number of records can be broken in any
+year.
+
+8
+00:00:23,980 --> 00:00:26,920
+The predictors that we're going to look at
+are the calendar year.
+
+9
+00:00:26,920 --> 00:00:32,240
+Is there any trends over time and also in
+a given year if a lot of technologies,
+
+10
+00:00:32,240 --> 00:00:36,120
+new technologies are introduced like
+better swimsuits or better goggles.
+
+11
+00:00:36,120 --> 00:00:39,220
+Does that predict that more world records
+will be broken, so
+
+12
+00:00:39,220 --> 00:00:40,800
+we're going to look at those two outcomes.
+
+13
+00:00:40,800 --> 00:00:45,350
+Now first of all let's examine the outcome
+variable here, the outcome variable again,
+
+14
+00:00:45,350 --> 00:00:48,030
+is the number of world's records broken
+per year.
+
+15
+00:00:48,030 --> 00:00:52,384
+This is a count variable, because you
+can't break 1.5 records or
+
+16
+00:00:52,384 --> 00:00:54,220
+one and three quarters records.
+
+17
+00:00:54,220 --> 00:00:56,220
+You can only, you, you know, it's a cal
+variable.
+
+18
+00:00:56,220 --> 00:00:59,890
+You can only break from zero up to some
+number of records.
+
+19
+00:00:59,890 --> 00:01:03,930
+So when I plot the histogram of my outcome
+variable here.
+
+20
+00:01:03,930 --> 00:01:04,780
+.
+First of all,
+
+21
+00:01:04,780 --> 00:01:07,740
+what you'll notice is that on some years a
+lot of world records get broken.
+
+22
+00:01:07,740 --> 00:01:10,890
+So here's my frequency distribution, my
+histogram.
+
+23
+00:01:10,890 --> 00:01:15,450
+My predictor, my variable here on X axis
+is world records so in
+
+24
+00:01:15,450 --> 00:01:20,580
+a lot of years you're going to have five,
+15, even 25, 35 world records broken.
+
+25
+00:01:20,580 --> 00:01:22,510
+There's a lot of events in swimming and
+again we have.
+
+26
+00:01:22,510 --> 00:01:23,630
+Multiple genders and things.
+
+27
+00:01:23,630 --> 00:01:28,100
+So there's a lot of opportunities for
+world records to be broken.
+
+28
+00:01:28,100 --> 00:01:29,280
+The average here was 17.95.
+
+29
+00:01:29,280 --> 00:01:33,990
+So in an average year, on average, about
+18 records fall each year.
+
+30
+00:01:33,990 --> 00:01:35,540
+These are world records.
+
+31
+00:01:35,540 --> 00:01:37,410
+Now, clearly, if you look at this
+histogram,
+
+32
+00:01:37,410 --> 00:01:39,760
+this is not a normally distributed
+variable.
+
+33
+00:01:39,760 --> 00:01:43,350
+[UNKNOWN] We actually wouldn't expect to
+be normally distributed, because we have
+
+34
+00:01:43,350 --> 00:01:48,940
+a bound at zero and it's not continuous,
+we can only take on discrete count values.
+
+35
+00:01:48,940 --> 00:01:52,390
+So if you were to get this data set, you
+know, couple of things are going to go
+
+36
+00:01:52,390 --> 00:01:55,700
+through your mind, in terms of what model
+am I going to apply to this data set.
+
+37
+00:01:55,700 --> 00:01:58,610
+It's not as obvious that it's a discrete
+outcome.
+
+38
+00:01:58,610 --> 00:02:02,430
+Because, you know, it can take on a fair
+range of values here.
+
+39
+00:02:02,430 --> 00:02:05,250
+And the first thing you might think of
+when you look at these data is to say,
+
+40
+00:02:05,250 --> 00:02:08,410
+well, yeah its truly discreet but I'm
+going to kind of look at this and
+
+41
+00:02:08,410 --> 00:02:11,320
+say it has a good range of values, I'm
+going to pretend its continuous and
+
+42
+00:02:11,320 --> 00:02:13,160
+I'm going to do some kind of linear
+regression.
+
+43
+00:02:13,160 --> 00:02:14,480
+That might be something that you reach
+for,
+
+44
+00:02:14,480 --> 00:02:16,500
+that's not unreasonable actually with this
+data set.
+
+45
+00:02:17,500 --> 00:02:21,710
+Now, clearly however, on my end here by
+the way, is I have 41 years that I,
+
+46
+00:02:21,710 --> 00:02:22,650
+we're look, looked at.
+
+47
+00:02:22,650 --> 00:02:27,400
+So it's a small sample and this is clearly
+not normally distributed so
+
+48
+00:02:27,400 --> 00:02:28,430
+I'm not going to want to.
+
+49
+00:02:28,430 --> 00:02:31,650
+Apply linear regression to this outcome
+with such a small sample.
+
+50
+00:02:31,650 --> 00:02:34,030
+We're going to have problems with
+inference there.
+
+51
+00:02:34,030 --> 00:02:37,390
+But remember, one of the things that you
+can do is take an outcome variable like
+
+52
+00:02:37,390 --> 00:02:41,400
+this and transform it in some way to try
+to make it look more normally distributed.
+
+53
+00:02:41,400 --> 00:02:44,910
+So in this case, we could take the counts,
+and we could log transform them.
+
+54
+00:02:44,910 --> 00:02:48,950
+Simply just take the natural log of the
+counts rather than the original counts.
+
+55
+00:02:48,950 --> 00:02:49,670
+When you do that,
+
+56
+00:02:49,670 --> 00:02:53,030
+you'll notice that it's starting to look
+more normally distributed.
+
+57
+00:02:53,030 --> 00:02:57,590
+It's still actually not a perfect, normal
+distribution, but
+
+58
+00:02:57,590 --> 00:03:02,060
+it's kind of getting to the range where
+it's close to normal.
+
+59
+00:03:02,060 --> 00:03:05,500
+So potentially, you could take these log
+counts and
+
+60
+00:03:05,500 --> 00:03:07,920
+you could model them in a linear
+regression.
+
+61
+00:03:07,920 --> 00:03:10,110
+That wouldn't be terrible here.
+
+62
+00:03:10,110 --> 00:03:12,830
+The sample size is still really small so,
+it's, you know,
+
+63
+00:03:12,830 --> 00:03:14,730
+we are off of our normality a little bit.
+
+64
+00:03:14,730 --> 00:03:16,030
+It's going to make some difference.
+
+65
+00:03:16,030 --> 00:03:20,080
+It's also a little tricky to interpret log
+accounts at the end of the day, so
+
+66
+00:03:20,080 --> 00:03:22,840
+there are some drawbacks to doing a linear
+regression here however and
+
+67
+00:03:22,840 --> 00:03:26,010
+that might not be optimal for this data
+set.
+
+68
+00:03:26,010 --> 00:03:29,730
+So, keep in the back of your mind, though,
+that, that's sometimes what happens.
+
+69
+00:03:29,730 --> 00:03:31,930
+You should also keep in the back of your
+mind that there are,
+
+70
+00:03:31,930 --> 00:03:36,050
+this count, this particular outcome
+variable I've chosen because i's kind of,
+
+71
+00:03:36,050 --> 00:03:39,250
+it, it could almost be modeled in, with a
+linear regression because it
+
+72
+00:03:39,250 --> 00:03:44,000
+has a reasonable range of values and
+they're not totally all clustered at zero.
+
+73
+00:03:44,000 --> 00:03:46,020
+A lot of times with count variables,
+
+74
+00:03:46,020 --> 00:03:48,450
+what you see is something that looks more
+like this though.
+
+75
+00:03:48,450 --> 00:03:51,740
+You've got a lot of people clustered at
+the low numbers: zero, one,
+
+76
+00:03:51,740 --> 00:03:54,440
+two, and then you've got a long right
+tail.
+
+77
+00:03:54,440 --> 00:03:58,550
+And that variable's clearly not normally
+distributed if it looks like that.
+
+78
+00:03:58,550 --> 00:04:03,520
+And it's hard, even with a transformation,
+to get that to look normally distributed.
+
+79
+00:04:03,520 --> 00:04:07,240
+So when you have count data that looks
+like that or you know again, in this
+
+80
+00:04:07,240 --> 00:04:11,270
+case because we have a small sample size,
+it's not quite normally distributed.
+
+81
+00:04:11,270 --> 00:04:15,400
+When you have count data, consider Poisson
+regression,
+
+82
+00:04:15,400 --> 00:04:18,130
+because Poisson regression is actually
+setup for count data.
+
+83
+00:04:19,160 --> 00:04:22,900
+So we're actually going to apply Poisson
+regression to these data.
+
+84
+00:04:22,900 --> 00:04:24,070
+Now, what I'm going to do first,
+
+85
+00:04:24,070 --> 00:04:27,180
+is I'm just going to run a Poisson
+regression model with no predictors in
+
+86
+00:04:27,180 --> 00:04:30,570
+the model because it's very simple to say
+what's going on.
+
+87
+00:04:30,570 --> 00:04:33,950
+If you can do the model with nothing else
+in it, with just the intercept,
+
+88
+00:04:33,950 --> 00:04:37,300
+it gives you a sense of the model, and
+then we can add predictors later.
+
+89
+00:04:37,300 --> 00:04:40,460
+So, first of all, when we're doing a
+Poisson regression,
+
+90
+00:04:40,460 --> 00:04:43,630
+the likelihood function is going to be
+based on Poisson probabilities.
+
+91
+00:04:43,630 --> 00:04:45,850
+I'll show you that in a, in a little bit.
+
+92
+00:04:45,850 --> 00:04:48,840
+But what you need to know is that where
+you're actually your
+
+93
+00:04:48,840 --> 00:04:51,150
+outcome variable is not going to be the
+counts directly.
+
+94
+00:04:51,150 --> 00:04:52,640
+It's going to be the log counts.
+
+95
+00:04:52,640 --> 00:04:54,340
+And when you plug into a computer and
+
+96
+00:04:54,340 --> 00:04:56,600
+ask for Poisson regression it will know to
+do that.
+
+97
+00:04:56,600 --> 00:04:58,980
+You don't have to ask for what's called.
+
+98
+00:04:58,980 --> 00:05:00,230
+The log link function.
+
+99
+00:05:00,230 --> 00:05:02,820
+But, that's pretty easy to do.
+
+100
+00:05:02,820 --> 00:05:05,060
+But, essentially what you're modeling is
+the log counts.
+
+101
+00:05:05,060 --> 00:05:09,880
+That means that when we test you know a
+continuous predictor, like year,
+
+102
+00:05:11,020 --> 00:05:14,770
+against log counts that ought to be linear
+in the log counts.
+
+103
+00:05:14,770 --> 00:05:17,450
+So, we'll have to do a test of linearity
+in the log count.
+
+104
+00:05:17,450 --> 00:05:22,150
+I'll show you that in a minute, but our
+output here is actually the log count, and
+
+105
+00:05:22,150 --> 00:05:23,650
+now I'm going to say what,
+
+106
+00:05:23,650 --> 00:05:26,490
+what we'd expect when I fit this model
+with just the intercept.
+
+107
+00:05:26,490 --> 00:05:31,240
+So I told you that the average number of
+world records broken per year in
+
+108
+00:05:31,240 --> 00:05:36,030
+the time period studied, which was in data
+set, was 1969 to 2009.
+
+109
+00:05:36,030 --> 00:05:39,030
+The mean records broken in any given year
+was about 18.
+
+110
+00:05:39,030 --> 00:05:42,060
+We're looking not at the original counts
+but
+
+111
+00:05:42,060 --> 00:05:45,000
+we're going to be looking at the log
+counts here.
+
+112
+00:05:45,000 --> 00:05:49,000
+So if I take the natural log of 17.95
+
+113
+00:05:49,000 --> 00:05:53,850
+The mean of the log count is, turns out to
+be about 2.89.
+
+114
+00:05:53,850 --> 00:05:58,500
+So what that means is that the alpha, when
+I fit the model with nothing else,
+
+115
+00:05:58,500 --> 00:06:02,838
+my alpha value is going to come out to be
+2.89, about 2.89.
+
+116
+00:06:02,838 --> 00:06:06,430
+Because if there's nothing else in the
+model, the best guess for,
+
+117
+00:06:06,430 --> 00:06:08,040
+since we're just modeling log counts.
+
+118
+00:06:08,040 --> 00:06:10,370
+The intercept.
+The intercept is just the mean for
+
+119
+00:06:10,370 --> 00:06:11,280
+the log counts.
+
+120
+00:06:11,280 --> 00:06:11,780
+That's it.
+
+121
+00:06:13,160 --> 00:06:16,490
+So here's what happened when I actually
+put these in into the computer and
+
+122
+00:06:16,490 --> 00:06:18,520
+asked it to run a Poisson regression for
+me.
+
+123
+00:06:18,520 --> 00:06:19,790
+So I get.
+
+124
+00:06:19,790 --> 00:06:21,110
+It's an intercept only model.
+
+125
+00:06:21,110 --> 00:06:23,520
+So and I get my intercept is about 2.9,
+
+126
+00:06:23,520 --> 00:06:26,290
+because that is the mean of the log
+counts.
+
+127
+00:06:26,290 --> 00:06:27,890
+So that's what I'm going to get out of my
+model.
+
+128
+00:06:29,050 --> 00:06:30,250
+So that's the intercept only model.
+
+129
+00:06:30,250 --> 00:06:31,510
+Nothing surprising.
+
+130
+00:06:31,510 --> 00:06:34,460
+The intercept represents the mean log
+counts and
+
+131
+00:06:34,460 --> 00:06:38,260
+indeed we got out the mean log counts, so
+nothing fancy there.
+
+132
+00:06:38,260 --> 00:06:40,650
+Alright, now I'm going to think about
+putting a predictor into my model.
+
+133
+00:06:40,650 --> 00:06:43,790
+So the first predictor I'm going to look
+at is the calendar year.
+
+134
+00:06:43,790 --> 00:06:45,720
+Okay?
+And let me just do a plot here.
+
+135
+00:06:45,720 --> 00:06:48,390
+because we alway want to plot our data to
+see what's going on.
+
+136
+00:06:48,390 --> 00:06:50,470
+So here I've plotted the calender year and
+
+137
+00:06:50,470 --> 00:06:51,730
+the data were collected between 1969 and
+2009.
+
+138
+00:06:51,730 --> 00:06:54,490
+So here's the calendar year, and
+
+139
+00:06:54,490 --> 00:06:58,810
+I'm plotting my outcome of the number of
+world records broken against the year.
+
+140
+00:06:58,810 --> 00:07:04,950
+So you can see like in 1969, there was
+something like 15 world records broken.
+
+141
+00:07:04,950 --> 00:07:07,340
+In 1970, there was 18 world records
+broken.
+
+142
+00:07:08,750 --> 00:07:10,390
+In 2009, it went up pretty high.
+
+143
+00:07:10,390 --> 00:07:13,550
+It's somewhere closer, you know, to the
+mid 40s.
+
+144
+00:07:13,550 --> 00:07:18,370
+I added a smoothing line to this plot to
+kind of help us see the pattern in
+
+145
+00:07:18,370 --> 00:07:23,020
+the dots, so what you'll notice right away
+is this is not a linear relationship.
+
+146
+00:07:23,020 --> 00:07:24,310
+The year and
+
+147
+00:07:24,310 --> 00:07:27,280
+the number of world records broken does
+not have a linear relationship.
+
+148
+00:07:27,280 --> 00:07:29,430
+It has more of a quadratic relationship.
+
+149
+00:07:29,430 --> 00:07:31,900
+So something's happening where.
+
+150
+00:07:31,900 --> 00:07:36,000
+You know, back in the 1970s, there were a
+lot of world records being broken, and
+
+151
+00:07:36,000 --> 00:07:38,970
+then there was a drop-off in that and it
+kind of plateaued to a,
+
+152
+00:07:38,970 --> 00:07:42,250
+to a bottom here in the 1990s.
+
+153
+00:07:42,250 --> 00:07:45,230
+But then, probably due to new technology
+in the 2000s,
+
+154
+00:07:45,230 --> 00:07:46,780
+it starts to rapidly rise again.
+
+155
+00:07:46,780 --> 00:07:48,550
+So we end up with a quadratic function.
+
+156
+00:07:48,550 --> 00:07:53,040
+Now, this graph isn't quite right, doesn't
+quite match our model because, remember,
+
+157
+00:07:53,040 --> 00:07:56,690
+I told you that the outcome for a Poisson
+regression is actually the long count.
+
+158
+00:07:56,690 --> 00:07:58,420
+So technically we should model.
+
+159
+00:07:58,420 --> 00:08:02,420
+We should graph the year, of the calendar
+year against the Log Counts.
+
+160
+00:08:02,420 --> 00:08:04,720
+The pattern we see is actually pretty
+similar.
+
+161
+00:08:04,720 --> 00:08:07,380
+It's still definitely a quadratic.
+
+162
+00:08:07,380 --> 00:08:08,390
+So what does that tell us?
+
+163
+00:08:08,390 --> 00:08:11,360
+That tells us that when we go to fit our
+Poisson regression model,
+
+164
+00:08:11,360 --> 00:08:14,230
+we're not going to want to simply throw in
+our continuous predictor of
+
+165
+00:08:14,230 --> 00:08:16,020
+Year as a linear variable.
+
+166
+00:08:16,020 --> 00:08:18,860
+We need to put it in as a quadratic, as a
+squared term.
+
+167
+00:08:18,860 --> 00:08:23,510
+So I'm going to start by writing the
+following Poisson regression model.
+
+168
+00:08:23,510 --> 00:08:27,200
+Again, the outcome is the log count, it's
+going to have an intercept, and
+
+169
+00:08:27,200 --> 00:08:30,710
+then I'm going to have a beta for year and
+a beta for year squared.
+
+170
+00:08:30,710 --> 00:08:32,160
+And whenever we're putting a squared term
+in
+
+171
+00:08:32,160 --> 00:08:33,950
+we also want to include the, the linear
+term.
+
+172
+00:08:33,950 --> 00:08:34,700
+Term.
+
+173
+00:08:34,700 --> 00:08:38,500
+So I'm going to run that model first in my
+in my computer, but
+
+174
+00:08:38,500 --> 00:08:42,710
+I want to now tell you what the likelihood
+function behind this
+
+175
+00:08:42,710 --> 00:08:44,850
+model is actually going to look like just
+to give you again,
+
+176
+00:08:44,850 --> 00:08:48,560
+a deeper understanding of what's actually
+going on behind the scenes here.
+
+177
+00:08:49,790 --> 00:08:52,980
+So let me now kind of write out the
+likelihood function that
+
+178
+00:08:52,980 --> 00:08:53,920
+we're going to be using.
+
+179
+00:08:53,920 --> 00:08:56,680
+We're assuming we're on a Poisson
+distribution, and
+
+180
+00:08:56,680 --> 00:09:01,090
+therefore our likelihood function is going
+to contain Poisson probabilities.
+
+181
+00:09:01,090 --> 00:09:03,040
+So what is it actually going to look like?
+
+182
+00:09:03,040 --> 00:09:04,220
+Here is our likelihood function.
+
+183
+00:09:04,220 --> 00:09:07,330
+Remember, the likelihood function is just
+the probability of our data as
+
+184
+00:09:07,330 --> 00:09:09,050
+a function of our unknowns.
+
+185
+00:09:09,050 --> 00:09:10,830
+The unknowns that we want to estimate.
+
+186
+00:09:10,830 --> 00:09:15,820
+In this case, are a beta for year, a beta
+for year squared, and an intercept, so
+
+187
+00:09:15,820 --> 00:09:17,460
+we have three unknowns we're trying to
+estimate.
+
+188
+00:09:18,750 --> 00:09:21,030
+All right, so let me just take a
+particular year.
+
+189
+00:09:21,030 --> 00:09:24,650
+Every year, every observation, the
+observations are years here,
+
+190
+00:09:24,650 --> 00:09:27,020
+is going to get one term in the likelihood
+function.
+
+191
+00:09:27,020 --> 00:09:29,830
+So let me take the year 1969, for example.
+
+192
+00:09:29,830 --> 00:09:33,520
+In 1969, there were 15 world records
+broken.
+
+193
+00:09:33,520 --> 00:09:34,020
+Okay?
+
+194
+00:09:35,270 --> 00:09:37,200
+So, what are we going to put in the
+likelihood term?
+
+195
+00:09:37,200 --> 00:09:37,990
+That's what we saw.
+
+196
+00:09:37,990 --> 00:09:39,010
+That's what our data saved at.
+
+197
+00:09:39,010 --> 00:09:41,220
+And that year, there were fif, fifteen
+world records broken.
+
+198
+00:09:41,220 --> 00:09:44,060
+So, our likelihood function is going to
+look like the following.
+
+199
+00:09:44,060 --> 00:09:46,130
+It's going to be a pruson probability.
+
+200
+00:09:46,130 --> 00:09:47,890
+So, what's the probability?
+
+201
+00:09:47,890 --> 00:09:52,080
+That we got exactly 15 world records
+broken in that year.
+
+202
+00:09:52,080 --> 00:09:57,260
+Okay, so, first of all, I showed you that
+the Poisson probability function is
+
+203
+00:09:57,260 --> 00:09:58,650
+going to look like the following.
+
+204
+00:09:58,650 --> 00:10:06,550
+That is the probability of breaking
+exactly 15 records in that year.
+
+205
+00:10:06,550 --> 00:10:09,350
+Now, it's a function of some unknowns.
+
+206
+00:10:09,350 --> 00:10:13,070
+Okay?
+So, it's a function of this mean count.
+
+207
+00:10:13,070 --> 00:10:14,820
+Well, what's the mean count going to be?
+
+208
+00:10:14,820 --> 00:10:17,790
+The mean count, we can break this down a
+little bit.
+
+209
+00:10:17,790 --> 00:10:20,390
+There's several pieces to the mean count.
+
+210
+00:10:20,390 --> 00:10:25,430
+The mean count, remember we're modeling
+the, the Poisson regression
+
+211
+00:10:25,430 --> 00:10:30,360
+model as the log count, is equal to alpha
+plus beta year plus beta year squared.
+
+212
+00:10:30,360 --> 00:10:32,660
+Well, the, expected value or
+
+213
+00:10:32,660 --> 00:10:37,000
+the mean that's going to go in here, is
+going to depend on the year.
+
+214
+00:10:37,000 --> 00:10:41,100
+So, this is the log count, when, once we
+solve for the betas, for
+
+215
+00:10:41,100 --> 00:10:42,832
+year in your [INAUDIBLE] for the alpha
+there, we would get the log count.
+
+216
+00:10:42,832 --> 00:10:51,340
+We would then plug in the year 1969, and
+we would get the log count.
+
+217
+00:10:51,340 --> 00:10:54,740
+We don't want the log count, because what
+this mean is actually in counts and
+
+218
+00:10:54,740 --> 00:10:57,510
+not in log counts, so we're actually
+going to exponentiate.
+
+219
+00:10:57,510 --> 00:10:58,920
+So what's actually going to go in for
+
+220
+00:10:58,920 --> 00:11:03,700
+the mean here is right from the Poisson
+regression model.
+
+221
+00:11:03,700 --> 00:11:11,080
+In this case, it's going to be E raised to
+alpha plus beta year times 1969.
+
+222
+00:11:11,080 --> 00:11:14,460
+Plus beta year squared, times 1969
+squared.
+
+223
+00:11:14,460 --> 00:11:17,180
+This will actually be 1969 squared.
+
+224
+00:11:19,500 --> 00:11:21,730
+And then the same thing will be plugged in
+here for the mu.
+
+225
+00:11:21,730 --> 00:11:23,360
+Now when I was actually fitting this
+model,
+
+226
+00:11:23,360 --> 00:11:27,080
+I realized it would be simpler to not put
+in the actual year.
+
+227
+00:11:29,990 --> 00:11:31,620
+But to put in the year since 1969.
+
+228
+00:11:31,620 --> 00:11:35,860
+So since we're talking about 1969, I'll
+just plug in a zero for those.
+
+229
+00:11:35,860 --> 00:11:39,320
+We would then plug in the same thing over
+here for the mean.
+
+230
+00:11:39,320 --> 00:11:42,540
+So it's going to be E raised to alpha, and
+then since these go to zero,
+
+231
+00:11:42,540 --> 00:11:46,400
+if I'm doing the year since 1969, it would
+be just E raised to alpha.
+
+232
+00:11:46,400 --> 00:11:50,590
+That raised to the 15th, E raised to
+negative this, this whole term for, for
+
+233
+00:11:50,590 --> 00:11:51,470
+the mean here.
+
+234
+00:11:51,470 --> 00:11:55,130
+Expected value here this comes out of the
+regression model, divided by
+
+235
+00:11:55,130 --> 00:11:58,440
+15th factorial, luckily you're never
+going to have to do this yourself by hand.
+
+236
+00:11:58,440 --> 00:12:00,880
+But just to illustrate what's going on, so
+did, nine,
+
+237
+00:12:00,880 --> 00:12:05,710
+if I were look at the year 1970, there
+were 18 world records broken in 1970.
+
+238
+00:12:05,710 --> 00:12:08,160
+So when I put the term in the likelihood.
+
+239
+00:12:08,160 --> 00:12:11,650
+For 1970, it's going to look very similar
+except I had
+
+240
+00:12:11,650 --> 00:12:17,580
+18 world records actually broken so I'm
+putting in the probability of having 18.
+
+241
+00:12:17,580 --> 00:12:21,290
+The mean now again is a function of these
+alphas and
+
+242
+00:12:21,290 --> 00:12:25,140
+the betas of the actual year for this one,
+I'm going to give it a value of one.
+
+243
+00:12:25,140 --> 00:12:27,400
+Because it's one year past 1969.
+
+244
+00:12:27,400 --> 00:12:28,710
+So it will look like that.
+
+245
+00:12:28,710 --> 00:12:31,780
+That's my mean that's going to be raised
+to the eighteenth.
+
+246
+00:12:31,780 --> 00:12:36,530
+And then e raised to negative of the mean,
+which again is just this e alpha plus
+
+247
+00:12:36,530 --> 00:12:41,530
+beta plus beta because of, 1970 is only
+one year past 1969.
+
+248
+00:12:41,530 --> 00:12:45,560
+Now that looks awful because you have all
+these e's floating around, but just keep
+
+249
+00:12:45,560 --> 00:12:49,360
+in mind that this component right here is
+what comes out of the regression model.
+
+250
+00:12:49,360 --> 00:12:52,050
+It's a term that looks similar to
+something that comes out of the logistic
+
+251
+00:12:52,050 --> 00:12:55,870
+regression model, that is the mean that
+gets plugged into likelihood function.
+
+252
+00:12:55,870 --> 00:13:00,450
+It's a function of the alphas and betas,
+and the individual, you know years, that
+
+253
+00:13:00,450 --> 00:13:05,520
+have the number 1970, 1969, and any other
+predictors we want to put in the model.
+
+254
+00:13:05,520 --> 00:13:10,030
+We can then do this for every year, every,
+all of our 41 observations.
+
+255
+00:13:10,030 --> 00:13:11,690
+And then we can use that to solve for
+
+256
+00:13:11,690 --> 00:13:14,590
+Alpha and Beta, you will never have to do
+this by hand, but I just want you to have
+
+257
+00:13:14,590 --> 00:13:18,300
+a sense of what's going in the likelihood
+function; it's Poisson Probabilities.
+
+258
+00:13:20,100 --> 00:13:22,820
+Okay so now I let my computer do all of
+the math there for
+
+259
+00:13:22,820 --> 00:13:25,420
+me, and I actually ran my Poisson
+regression model and
+
+260
+00:13:25,420 --> 00:13:28,600
+here's what I [UNKNOWN] out when I have
+year and year squared in the model.
+
+261
+00:13:28,600 --> 00:13:32,120
+Just to note again, I did the years since
+1969.
+
+262
+00:13:32,120 --> 00:13:35,080
+So 1969 will get a value of zero, 1970
+gets the value of one,
+
+263
+00:13:35,080 --> 00:13:39,000
+1971 gets a value of two, it's just
+slightly easier so that we don't blow up,
+
+264
+00:13:39,000 --> 00:13:41,090
+you know, 1969 squared is going to be a
+huge number.
+
+265
+00:13:41,090 --> 00:13:44,140
+So this keeps it things, the numbers
+manageable.
+
+266
+00:13:44,140 --> 00:13:45,660
+So what do I get here?
+
+267
+00:13:45,660 --> 00:13:49,630
+So first of all, I get a term for year,
+and the, and the term for year squared.
+
+268
+00:13:49,630 --> 00:13:53,050
+The estimate for year is negative, the
+estimate for year squared is positive.
+
+269
+00:13:53,050 --> 00:13:55,030
+That's going to define the quadratic
+function.
+
+270
+00:13:55,030 --> 00:13:57,710
+Notice that both of those are highly
+significant.
+
+271
+00:13:57,710 --> 00:14:02,610
+Saying that there is indeed a quadratic
+relationship with year in the log counts.
+
+272
+00:14:03,830 --> 00:14:07,170
+The intercept here represents the log
+counts in the year,
+
+273
+00:14:07,170 --> 00:14:11,170
+1969 since I've set years as the year
+since 1969.
+
+274
+00:14:11,170 --> 00:14:13,770
+So year is zero when we're at 1967.
+
+275
+00:14:13,770 --> 00:14:19,780
+Now I can take this model and I can plot
+the expected values for each year.
+
+276
+00:14:19,780 --> 00:14:21,760
+I can put that in a plot so this is what I
+got.
+
+277
+00:14:21,760 --> 00:14:24,270
+So this is what I, the model that I just
+fit.
+
+278
+00:14:24,270 --> 00:14:29,380
+I am showing you the predictive log counts
+and the Y axis and the year on the X axis.
+
+279
+00:14:29,380 --> 00:14:33,020
+This is what my model predicts that we are
+following a quadratic function.
+
+280
+00:14:33,020 --> 00:14:35,430
+Remember what the picture of the data
+looked like earlier,
+
+281
+00:14:35,430 --> 00:14:39,390
+that seems like a pretty reasonable fit
+given the scatterplot that we saw earlier.
+
+282
+00:14:39,390 --> 00:14:41,060
+But that's actually the model that we fit.
+
+283
+00:14:41,060 --> 00:14:42,670
+We fit it a quadratic co,
+
+284
+00:14:42,670 --> 00:14:46,570
+connecting year with the log counts of the
+world records broken.
+
+285
+00:14:46,570 --> 00:14:50,960
+Now, I just want to pause for a minute and
+again I mentioned that with this data set,
+
+286
+00:14:50,960 --> 00:14:55,300
+it wouldn't be terribly unreasonable to,
+if you didn't think of doing it as count.
+
+287
+00:14:55,300 --> 00:14:57,430
+To think of it as a continuous outcome.
+
+288
+00:14:57,430 --> 00:15:01,040
+And transform that outcome with a log, and
+then run some kind of linear regression.
+
+289
+00:15:01,040 --> 00:15:03,280
+I'll just show you that you get kind of
+similar results.
+
+290
+00:15:03,280 --> 00:15:04,150
+This is not optimal.
+
+291
+00:15:04,150 --> 00:15:07,210
+The linear regression model is not optimal
+with these data.
+
+292
+00:15:07,210 --> 00:15:08,890
+But, you get pretty similar results.
+
+293
+00:15:08,890 --> 00:15:12,360
+So, what I, what I did here is I just took
+my counts, like my 18, 15, 16.
+
+294
+00:15:12,360 --> 00:15:15,260
+Took a log of those, and then ran a linear
+regression.
+
+295
+00:15:15,260 --> 00:15:16,370
+It's still the same idea.
+
+296
+00:15:16,370 --> 00:15:18,940
+I have still a quadratic relationship.
+
+297
+00:15:18,940 --> 00:15:22,480
+The beta coefficients look pretty similar
+to what I got from the,
+
+298
+00:15:22,480 --> 00:15:24,880
+Poisson regression, although not
+identical.
+
+299
+00:15:24,880 --> 00:15:27,260
+And the P values are still highly
+significant although, you know,
+
+300
+00:15:27,260 --> 00:15:31,780
+you can see that it's, it's somewhat
+different, but it's in the same ballpark.
+
+301
+00:15:31,780 --> 00:15:35,270
+So not terribly unreasonable to run a
+linear regression here.
+
+302
+00:15:35,270 --> 00:15:37,750
+However that the linear regression is
+really not optimal.
+
+303
+00:15:37,750 --> 00:15:40,040
+And actually in a future module I'm
+going to tell you that
+
+304
+00:15:40,040 --> 00:15:42,490
+the Poisson regression here is not optimal
+either.
+
+305
+00:15:42,490 --> 00:15:44,170
+And that in fact what you should do with
+these data is
+
+306
+00:15:44,170 --> 00:15:47,350
+a negative binomial regression, but that's
+getting ahead of ourselves.
+
+307
+00:15:47,350 --> 00:15:50,330
+But just to show you that you kind of get
+similar results here if you did this
+
+308
+00:15:50,330 --> 00:15:51,190
+as a linear regression.
+
+309
+00:15:51,190 --> 00:15:55,160
+Just for fun I want to what, put one more
+predictor into the model, this is
+
+310
+00:15:55,160 --> 00:15:58,790
+a really cool question about swimming
+world records; I think it's kind of fun.
+
+311
+00:15:58,790 --> 00:16:03,410
+So 1 of the other data point] that this
+person have collected was the number of
+
+312
+00:16:03,410 --> 00:16:06,390
+new technologies introduced in each year.
+
+313
+00:16:06,390 --> 00:16:08,140
+So in some years there might, I think, in
+the, I don't,
+
+314
+00:16:08,140 --> 00:16:11,200
+exactly know how those are Counted, but
+we'll assume that she did a good
+
+315
+00:16:11,200 --> 00:16:14,900
+job in that, you know this represents a
+number of new types of swimsuits, or
+
+316
+00:16:14,900 --> 00:16:19,470
+new types of goggles or whatever you know,
+swimmers, technology swimmers use.
+
+317
+00:16:19,470 --> 00:16:22,720
+And we're going to, I've plotted the
+number of new technologies introduced per
+
+318
+00:16:22,720 --> 00:16:24,505
+year, you can see it's pretty low, one,
+two, three, four,
+
+319
+00:16:24,505 --> 00:16:28,960
+five is the range, against the long counts
+again of the world records.
+
+320
+00:16:28,960 --> 00:16:30,770
+Because that's truly what we're modeling.
+
+321
+00:16:30,770 --> 00:16:33,230
+In the Poisson Regression is the log
+count.
+
+322
+00:16:33,230 --> 00:16:35,900
+You can see that we're again looking for
+kind of a straight line.
+
+323
+00:16:35,900 --> 00:16:38,070
+You can see that it's not unreasonable
+prob,
+
+324
+00:16:38,070 --> 00:16:41,580
+unreasonable probably to model this as a
+straight line.
+
+325
+00:16:41,580 --> 00:16:45,330
+There does look to be some increase in the
+number of log world records,
+
+326
+00:16:45,330 --> 00:16:47,430
+as you go up in the number of technologies
+introduced.
+
+327
+00:16:47,430 --> 00:16:50,130
+So I'm going to put this in as a linear
+term in the model.
+
+328
+00:16:50,130 --> 00:16:52,470
+So I went ahead and did this new model.
+
+329
+00:16:52,470 --> 00:16:55,780
+I will have years and years squares and
+then, squared, and then I added the number
+
+330
+00:16:55,780 --> 00:16:58,630
+of new technologies as another predictor
+to my model.
+
+331
+00:16:58,630 --> 00:16:59,650
+I ran a Poisson regression,
+
+332
+00:16:59,650 --> 00:17:03,440
+which again means that in the likelihoods
+I'm dealing with Poisson probabilities.
+
+333
+00:17:03,440 --> 00:17:05,960
+And here's what I get out when I run that
+model.
+
+334
+00:17:05,960 --> 00:17:07,780
+So, what you'll notice is that year and
+
+335
+00:17:07,780 --> 00:17:10,780
+year squared are still statistically
+significant.
+
+336
+00:17:10,780 --> 00:17:15,210
+I now have a new term for New Tech, the
+number of new technologies introduced.
+
+337
+00:17:15,210 --> 00:17:18,380
+The data here .15, it's high significant.
+
+338
+00:17:18,380 --> 00:17:23,230
+It's positive which tells us as more
+technologies are introduced,
+
+339
+00:17:23,230 --> 00:17:26,940
+we do seem to have an increase in the
+number of world records.
+
+340
+00:17:26,940 --> 00:17:27,890
+Now there's a.
+
+341
+00:17:27,890 --> 00:17:29,300
+Interpretation.
+
+342
+00:17:29,300 --> 00:17:33,760
+This beta coefficient can be interpreted
+as a kind of relative risk, and
+
+343
+00:17:33,760 --> 00:17:34,990
+I want to show that to you now.
+
+344
+00:17:34,990 --> 00:17:39,030
+It was hard to do with years, because we
+had that year squared term in, but
+
+345
+00:17:39,030 --> 00:17:40,650
+now we just have a linear term here, so
+
+346
+00:17:40,650 --> 00:17:44,320
+I can show you a direct interpretation as
+a relative risk, and
+
+347
+00:17:44,320 --> 00:17:47,490
+the relative risk type that we get out of
+a Poisson regression.
+
+348
+00:17:47,490 --> 00:17:52,710
+Is actually technically an incident rate
+ratio because with Poisson regression,
+
+349
+00:17:52,710 --> 00:17:55,840
+we're talking about the rate at which
+events occur.
+
+350
+00:17:55,840 --> 00:17:57,920
+So this turns out to have an
+interpretation as
+
+351
+00:17:57,920 --> 00:17:59,100
+the incidence rate ratio.
+
+352
+00:17:59,100 --> 00:18:03,410
+So if I take this beta coefficient, the
+0.149 that I got for
+
+353
+00:18:03,410 --> 00:18:05,400
+the number of new technologies out.
+
+354
+00:18:05,400 --> 00:18:07,610
+15, 1549, and I
+
+355
+00:18:12,910 --> 00:18:16,810
+exponentiate that, that gives me the
+incident rates ratio.
+
+356
+00:18:16,810 --> 00:18:21,260
+And in that, this case that turns out to
+be an incident rate ratio of 1.16 676.
+
+357
+00:18:21,260 --> 00:18:25,500
+So just exponentiating those beta
+coefficients gives me
+
+358
+00:18:25,500 --> 00:18:27,890
+an incidence rate ratio.
+
+359
+00:18:27,890 --> 00:18:32,020
+At the reason is let me just kind of walk
+you through the logic here.
+
+360
+00:18:32,020 --> 00:18:34,030
+So we're trying to get some kind of rate
+ratio.
+
+361
+00:18:36,750 --> 00:18:41,560
+The expected number of counts, we get that
+from the model by exponentiating.
+
+362
+00:18:41,560 --> 00:18:45,480
+So, the expected number of calves for a
+given year and
+
+363
+00:18:45,480 --> 00:18:50,740
+I'm just going to plug in, I'm just
+going to represent this as beta year,
+
+364
+00:18:50,740 --> 00:18:55,810
+the year plus beta year squared, year
+squared.
+
+365
+00:18:55,810 --> 00:18:58,610
+And then, I'm going to actually put in the
+value that we found for
+
+366
+00:18:58,610 --> 00:19:00,650
+the beta for technology.
+
+367
+00:19:00,650 --> 00:19:06,290
+And, I want to say well what's the
+increase in the expected
+
+368
+00:19:06,290 --> 00:19:10,990
+number of world records if I have one
+additional technology.
+
+369
+00:19:10,990 --> 00:19:14,000
+So imagine I have technology plus 1 here.
+
+370
+00:19:14,000 --> 00:19:15,990
+And now I want to control for year.
+
+371
+00:19:15,990 --> 00:19:17,380
+So remember, this is,
+
+372
+00:19:17,380 --> 00:19:21,370
+what I've now put in the numerator is the
+expected number of world records for
+
+373
+00:19:21,370 --> 00:19:25,360
+a given year and a given number of
+technologies, based on my fitted model.
+
+374
+00:19:25,360 --> 00:19:28,410
+In the denominator, I want to compare that
+to the same year, controlling for
+
+375
+00:19:28,410 --> 00:19:32,920
+year, but in the same year, having one
+technology less.
+
+376
+00:19:32,920 --> 00:19:36,210
+So I would represent that, I'm not even
+actually filling in values for the betas
+
+377
+00:19:36,210 --> 00:19:39,500
+for year or year, because we're going to
+cancel those out, as we've done before.
+
+378
+00:19:41,530 --> 00:19:44,800
+But I want to compare technology plus 1 to
+just technology.
+
+379
+00:19:44,800 --> 00:19:47,350
+In other words, one more technology to one
+less technology.
+
+380
+00:19:47,350 --> 00:19:50,300
+So this could be the difference of going
+from zero technologies to one more
+
+381
+00:19:50,300 --> 00:19:53,740
+introduced, or one technology to two
+introduced, etc.
+
+382
+00:19:53,740 --> 00:19:54,850
+You can tell a lot of things are going to
+cancel.
+
+383
+00:19:54,850 --> 00:19:55,880
+Intercepts cancel.
+
+384
+00:19:55,880 --> 00:19:58,430
+All the stuff about years cancels out, so
+
+385
+00:19:58,430 --> 00:20:02,250
+all we're left with here is, e raised to
+0.149.
+
+386
+00:20:02,250 --> 00:20:06,950
+The technology and technology will cancel
+out and
+
+387
+00:20:06,950 --> 00:20:08,540
+we're left with 1.1549 in the numerator.
+
+388
+00:20:08,540 --> 00:20:09,220
+Greater.
+
+389
+00:20:09,220 --> 00:20:14,180
+So we can interpret this as for every one
+unit increase in technology,
+
+390
+00:20:14,180 --> 00:20:18,980
+this is the increase in the rate of world
+records per year.
+
+391
+00:20:18,980 --> 00:20:24,140
+So we call that an incidence rate ratio
+and again that turns out to be 1.1676.
+
+392
+00:20:24,140 --> 00:20:26,910
+We could also use the standard error to
+calculate confidence intervals.
+
+393
+00:20:26,910 --> 00:20:32,420
+The confidence interval here turns out to
+be 1.085 to 1.256, so for every new
+
+394
+00:20:32,420 --> 00:20:38,000
+technology introduced in a year, we have a
+16% increase in the rate of world records.
+
+395
+00:20:39,060 --> 00:20:41,870
+So it has, the Poisson regression has a
+nice, easy interpretation.
+
+396
+00:20:41,870 --> 00:20:45,750
+These are not odds ratios, these are
+actually rate ratios, so that's great,
+
+397
+00:20:45,750 --> 00:20:48,240
+because we don't have to worry about the
+confusion.
+
+398
+00:20:48,240 --> 00:20:49,590
+With odds ratios being misleading.
+
+399
+00:20:49,590 --> 00:20:51,580
+We're actually getting out rate ratios
+here.
+
+400
+00:20:53,230 --> 00:20:54,730
+Now one more thing just for fun.
+
+401
+00:20:54,730 --> 00:20:56,450
+As I was playing around with these data,
+
+402
+00:20:56,450 --> 00:21:00,770
+I also tried an interaction between the
+new technol, the number of
+
+403
+00:21:00,770 --> 00:21:03,640
+new technologies and the year to see if
+there was an interaction there.
+
+404
+00:21:03,640 --> 00:21:07,580
+And in fact, there did turn out to be a
+highly significant interaction there.
+
+405
+00:21:07,580 --> 00:21:11,030
+The interaction term has a positive beta
+coefficient.
+
+406
+00:21:11,030 --> 00:21:14,480
+I won't make you work out the rate ratios
+based on interaction terms like I
+
+407
+00:21:14,480 --> 00:21:16,910
+did with odds ratios, although you could
+do it.
+
+408
+00:21:16,910 --> 00:21:18,900
+But you can just look at the sign here.
+
+409
+00:21:18,900 --> 00:21:21,980
+It's positive, so what that's telling you
+is that
+
+410
+00:21:21,980 --> 00:21:27,570
+new technologies introduced in later years
+had a bigger effect.
+
+411
+00:21:27,570 --> 00:21:30,250
+Then new technologies introduced in
+earlier years.
+
+412
+00:21:30,250 --> 00:21:34,410
+So back in the 1970s and 80s, the new
+technologies weren't having as much of
+
+413
+00:21:34,410 --> 00:21:36,500
+an effect on the number of world records.
+
+414
+00:21:36,500 --> 00:21:40,080
+recently, all those new technologies with
+the great new swimsuits and
+
+415
+00:21:40,080 --> 00:21:42,770
+things have had a bigger impact on world
+records.
+
+416
+00:21:42,770 --> 00:21:47,540
+So there's actually a year times new
+technology interaction here as well
+
+417
+00:21:47,540 --> 00:21:49,180
+which is kind of cool.
+
+418
+00:21:49,180 --> 00:21:52,520
+Now, I'm going to do a little bit more
+with this data set in an upcoming module
+
+419
+00:21:52,520 --> 00:21:55,800
+and show you that actually we probably do
+better with this data set
+
+420
+00:21:55,800 --> 00:21:59,210
+applying a slightly different version of
+[UNKNOWN] regression something called.
+
+421
+00:21:59,210 --> 00:22:01,170
+A negative binomial regression.
+
+422
+00:22:01,170 --> 00:22:03,810
+And I'll tell you about that in an
+upcoming module.
+
+423
+00:22:03,810 --> 00:22:08,110
+[BLANK_AUDIO]

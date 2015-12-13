@@ -1,0 +1,1362 @@
+1
+00:00:00,110 --> 00:00:05,544
+[BLANK_AUDIO]
+
+2
+00:00:05,544 --> 00:00:08,624
+In this next module, I'm going to tell you
+about some of the math that
+
+3
+00:00:08,624 --> 00:00:10,480
+underlies the Cox regression model.
+
+4
+00:00:10,480 --> 00:00:13,480
+Specifically, we're going to talk about
+the likelihood function.
+
+5
+00:00:13,480 --> 00:00:16,690
+I'm not expecting you to be able to
+maximize any likelihood functions or
+
+6
+00:00:16,690 --> 00:00:18,940
+take any derivatives or anything like
+that.
+
+7
+00:00:18,940 --> 00:00:22,190
+But I do want you to have a basic
+understanding of what the likelihood
+
+8
+00:00:22,190 --> 00:00:23,530
+function looks like.
+
+9
+00:00:23,530 --> 00:00:26,520
+That's going to be especially important
+when we start talking about time
+
+10
+00:00:26,520 --> 00:00:27,600
+changing predictors.
+
+11
+00:00:29,740 --> 00:00:32,960
+So the likelihood function, when we talk
+about parametric regression had
+
+12
+00:00:32,960 --> 00:00:38,630
+one term in the likelihood for every
+observation, every person in the study.
+
+13
+00:00:38,630 --> 00:00:42,030
+The likelihood function for Cox
+regression, which is sometimes called
+
+14
+00:00:42,030 --> 00:00:46,870
+a partial likelihood function, is going to
+have one term in the likelihood for
+
+15
+00:00:46,870 --> 00:00:52,190
+every event time, so every unique time
+when events occurred.
+
+16
+00:00:52,190 --> 00:00:54,940
+So just like Kaplan–Meier is pegged on
+those event times,
+
+17
+00:00:54,940 --> 00:00:57,700
+the partial likelihood is pegged on those
+event times.
+
+18
+00:00:57,700 --> 00:01:00,912
+I just want to point out that Kaplan–Meier
+methods,
+
+19
+00:01:00,912 --> 00:01:05,260
+we call those non-parametric because we
+estimated no parameters.
+
+20
+00:01:05,260 --> 00:01:08,520
+The parametric regression methods, we
+called those parametric because we
+
+21
+00:01:08,520 --> 00:01:11,090
+estimated all the parameters, all the
+alphas and the betas.
+
+22
+00:01:11,090 --> 00:01:15,700
+The Cox regression method is sometimes
+called semi-parametric because we're
+
+23
+00:01:15,700 --> 00:01:18,220
+going to estimate some of the parameters,
+but not others.
+
+24
+00:01:18,220 --> 00:01:20,480
+We're not going to bother to estimate the
+intercepts, but
+
+25
+00:01:20,480 --> 00:01:22,620
+we are going to estimate the betas.
+
+26
+00:01:22,620 --> 00:01:25,110
+So this is called, also, a partial
+likelihood.
+
+27
+00:01:25,110 --> 00:01:29,420
+Just to set up with the likelihood
+function is going to be here.
+
+28
+00:01:30,600 --> 00:01:33,220
+The likelihood function again is the
+probability of our data, and
+
+29
+00:01:33,220 --> 00:01:36,320
+it's going to be a conditional likelihood,
+kind of similar to
+
+30
+00:01:36,320 --> 00:01:40,780
+conditional logistic regression, the
+likelihood that we saw there.
+
+31
+00:01:40,780 --> 00:01:44,410
+The likelihood function is going to have
+one term in the likelihood for
+
+32
+00:01:44,410 --> 00:01:46,320
+every event time.
+
+33
+00:01:46,320 --> 00:01:49,850
+And basically, it's going to be a
+conditional probability.
+
+34
+00:01:49,850 --> 00:01:55,270
+So we're going to have a term, say, at a
+particular event time in the study,
+
+35
+00:01:55,270 --> 00:01:58,170
+I don't know, event time equals 4,
+whatever it might be.
+
+36
+00:01:58,170 --> 00:02:01,360
+There are a certain number of people who
+are still at risk of
+
+37
+00:02:01,360 --> 00:02:02,870
+having the event at time four.
+
+38
+00:02:02,870 --> 00:02:06,380
+Those are the people who have some
+probability of having the event at
+
+39
+00:02:06,380 --> 00:02:08,030
+four months into the study.
+
+40
+00:02:08,030 --> 00:02:10,190
+What's going to go in the denominator is
+that for
+
+41
+00:02:10,190 --> 00:02:14,260
+everybody at risk we're going to put their
+probability of having the event, of dying,
+
+42
+00:02:14,260 --> 00:02:18,580
+or having whatever the event is, at that
+exact time, at time is equal to four.
+
+43
+00:02:18,580 --> 00:02:22,250
+And every person may have a different
+hazard rate depending on their
+
+44
+00:02:22,250 --> 00:02:22,909
+risk factors.
+
+45
+00:02:24,180 --> 00:02:28,380
+So let's make this really simple and say
+that there
+
+46
+00:02:28,380 --> 00:02:33,460
+are only four people that are still at
+risk in our study at event time 4,
+
+47
+00:02:33,460 --> 00:02:36,880
+we're calling them subjects one through
+four.
+
+48
+00:02:36,880 --> 00:02:39,060
+I'm writing down their hazard function
+here,
+
+49
+00:02:39,060 --> 00:02:43,150
+because remember the hazard function is a
+person's probability of having the event
+
+50
+00:02:43,150 --> 00:02:48,430
+at exactly that time, at exactly event
+time four.
+
+51
+00:02:48,430 --> 00:02:52,150
+So the denominator represents the
+probability of somebody,
+
+52
+00:02:53,580 --> 00:02:54,845
+anyone who's at risk.
+
+53
+00:02:54,845 --> 00:03:02,030
+[NOISE].
+
+54
+00:03:02,030 --> 00:03:02,850
+Having the event.
+
+55
+00:03:03,850 --> 00:03:05,900
+And let's just call the event time, the
+event here,
+
+56
+00:03:05,900 --> 00:03:07,420
+dying just to make it easier for me to
+write.
+
+57
+00:03:07,420 --> 00:03:10,445
+So just imagine the event is dying, so
+it's the probability that
+
+58
+00:03:10,445 --> 00:03:13,470
+the denominator represents that the
+probability that anybody in
+
+59
+00:03:13,470 --> 00:03:17,640
+the risk set whose still at risk, dies at
+that time, timing equal to four.
+
+60
+00:03:17,640 --> 00:03:19,630
+Well, what actually happened in our data?
+
+61
+00:03:19,630 --> 00:03:20,410
+Somebody died.
+
+62
+00:03:20,410 --> 00:03:23,620
+So we're conditioning on the fact that
+somebody died at time four.
+
+63
+00:03:23,620 --> 00:03:25,200
+And who was it that died?
+
+64
+00:03:25,200 --> 00:03:30,250
+Let's say that it happens to be person
+two, who happened to be the one who died.
+
+65
+00:03:30,250 --> 00:03:32,218
+So the probability of this event,
+
+66
+00:03:32,218 --> 00:03:35,190
+the given that we know that somebody died
+at event time four,
+
+67
+00:03:35,190 --> 00:03:39,270
+what is the probability that it's person
+two who died as opposed to anybody else?
+
+68
+00:03:39,270 --> 00:03:42,340
+That's what this conditional probability
+represents.
+
+69
+00:03:42,340 --> 00:03:46,350
+So we put the hazard, the probability of
+the person who did die,
+
+70
+00:03:46,350 --> 00:03:49,410
+what actually happened in our data, we put
+their hazard in the numerator.
+
+71
+00:03:50,510 --> 00:03:53,940
+So you can imagine then of course these
+hazard functions are going to be
+
+72
+00:03:53,940 --> 00:03:55,470
+a function of your risk factor.
+
+73
+00:03:55,470 --> 00:03:58,310
+So maybe person two is a smoker and
+
+74
+00:03:58,310 --> 00:04:02,540
+has all these other bad risk factors, and
+that will mean that the betas for
+
+75
+00:04:02,540 --> 00:04:07,240
+smoking and things will reflect the fact
+that they died early in the study.
+
+76
+00:04:07,240 --> 00:04:10,090
+But we get these conditional probability
+terms in likelihood.
+
+77
+00:04:10,090 --> 00:04:11,840
+That's what the likelihood function looks
+like.
+
+78
+00:04:13,020 --> 00:04:15,790
+This is going to be nice, because we're
+going to be able to cancel some
+
+79
+00:04:15,790 --> 00:04:18,610
+things out as we did with conditional
+logistic regression.
+
+80
+00:04:18,610 --> 00:04:22,690
+I think it would actually be helpful to
+just make this really simple by
+
+81
+00:04:22,690 --> 00:04:27,320
+writing out a likelihood for a very simple
+data set.
+
+82
+00:04:27,320 --> 00:04:30,375
+So, I'm going to kind of lead you through
+how you'd write out the likelihood for
+
+83
+00:04:30,375 --> 00:04:31,526
+this small little data set.
+
+84
+00:04:31,526 --> 00:04:33,416
+And I think that will help you to
+understand that,
+
+85
+00:04:33,416 --> 00:04:34,818
+once you've seen one written out.
+
+86
+00:04:34,818 --> 00:04:38,210
+So we've got a data set here with just six
+people in it.
+
+87
+00:04:38,210 --> 00:04:40,635
+Five of them died, so there are five event
+times, so
+
+88
+00:04:40,635 --> 00:04:44,100
+that likelihood function is going to have
+five terms in it.
+
+89
+00:04:44,100 --> 00:04:46,820
+The only thing, we're going to do a Cox
+regression model.
+
+90
+00:04:46,820 --> 00:04:49,770
+Let me just write out the Cox model first.
+
+91
+00:04:49,770 --> 00:04:54,730
+So the Cox regression model is going to
+say that the log of our hazard rate is
+
+92
+00:04:54,730 --> 00:04:58,940
+equal to the some, log of the, some
+baseline hazard rate.
+
+93
+00:04:58,940 --> 00:05:02,450
+Of course, we're not going to want to have
+to specify that, but that's in the model.
+
+94
+00:05:02,450 --> 00:05:06,310
+plus, a beta for age, we're only going to
+have age in the model, and nothing else.
+
+95
+00:05:07,310 --> 00:05:09,160
+And just to make this easy to write out,
+
+96
+00:05:09,160 --> 00:05:12,210
+I'm going to say that beta, I'm going to
+write the word beta.
+
+97
+00:05:12,210 --> 00:05:14,160
+And what I mean by beta, here, is beta
+age, so
+
+98
+00:05:14,160 --> 00:05:16,070
+that I don't have to keep writing out age
+every time.
+
+99
+00:05:16,070 --> 00:05:18,570
+So there's only one beta in the model, the
+beta here is beta age.
+
+100
+00:05:19,650 --> 00:05:22,820
+If that's the Cox regression model, that
+means that the hazard rate for
+
+101
+00:05:22,820 --> 00:05:27,280
+a given person, we have to exponentiate
+both sides to get the hazard rates.
+
+102
+00:05:27,280 --> 00:05:30,130
+So if I exponentiate both sides with the
+hazard rate for
+
+103
+00:05:30,130 --> 00:05:34,820
+a person is equal to the baseline hazard
+rate,
+
+104
+00:05:34,820 --> 00:05:40,470
+exponentiate it, so e raised to some
+baseline hazard rate at a given time,
+
+105
+00:05:40,470 --> 00:05:45,160
+times e raised to beta age, times their
+age, whatever their age might be.
+
+106
+00:05:45,160 --> 00:05:48,750
+So that's going to be the hazard rate at a
+given time for a given person.
+
+107
+00:05:48,750 --> 00:05:50,190
+So now, let me write out the likelihood.
+
+108
+00:05:50,190 --> 00:05:54,280
+So the first thing that happens in my data
+as at time equals 1, we have an event.
+
+109
+00:05:54,280 --> 00:05:57,086
+So we're going to get a term in the
+likelihood, where time is equal to 1 and
+
+110
+00:05:57,086 --> 00:05:58,984
+actually, I'm going to write this out for
+you.
+
+111
+00:05:58,984 --> 00:06:00,780
+It's going to be pretty long.
+
+112
+00:06:00,780 --> 00:06:03,460
+For the first event time, we have
+everybody still at risk.
+
+113
+00:06:03,460 --> 00:06:07,510
+So what's going to go in the numerator
+here the hazard for the person who died.
+
+114
+00:06:07,510 --> 00:06:12,750
+So, the hazard for the person who died is
+this base line hazard for t is equal to 1.
+
+115
+00:06:12,750 --> 00:06:13,730
+Whatever that might be,
+
+116
+00:06:13,730 --> 00:06:15,720
+which we're eventually not going to bother
+to estimate, but
+
+117
+00:06:15,720 --> 00:06:19,580
+rather we're going to cancel out, times e
+raised to beta, the beta for
+
+118
+00:06:19,580 --> 00:06:20,920
+age, times this person's age.
+
+119
+00:06:20,920 --> 00:06:22,810
+The person age who died was 60 years old.
+
+120
+00:06:22,810 --> 00:06:25,010
+So they, we're plugging in their age.
+
+121
+00:06:25,010 --> 00:06:27,560
+That's the person who died, who is at
+risk.
+
+122
+00:06:27,560 --> 00:06:30,480
+So everybody at risk includes everybody in
+the set here.
+
+123
+00:06:30,480 --> 00:06:36,150
+So the person who died, that's they're
+risk of dying at exactly one month
+
+124
+00:06:36,150 --> 00:06:43,519
+into the study plus the second person, the
+65-year old, their hazard looks like this.
+
+125
+00:06:43,519 --> 00:06:46,436
+[NOISE].
+
+126
+00:06:46,436 --> 00:06:50,156
+Plus, the third person, their hazard,
+everybody's at risk still,
+
+127
+00:06:50,156 --> 00:06:51,152
+looks like this.
+
+128
+00:06:51,152 --> 00:06:53,612
+[NOISE].
+
+129
+00:06:53,612 --> 00:06:57,140
+And you can see this is going to be very
+long.
+
+130
+00:06:57,140 --> 00:07:00,510
+Then the fourth person, their hazard looks
+like that.
+
+131
+00:07:02,150 --> 00:07:07,340
+And, I'm going to add to that the
+probability of the fifth person dying,
+
+132
+00:07:07,340 --> 00:07:10,853
+their hazard, their chance of dying right
+then is equal to that.
+
+133
+00:07:10,853 --> 00:07:15,263
+And then finally the 40 year old, their
+hazard, their chance of dying,
+
+134
+00:07:15,263 --> 00:07:19,530
+their probability of dying at one month
+into the study is equal to that.
+
+135
+00:07:19,530 --> 00:07:20,760
+Notice that these are all,
+
+136
+00:07:20,760 --> 00:07:23,360
+these probabilities are all a function of
+this unknown beta.
+
+137
+00:07:23,360 --> 00:07:27,110
+Well, that's what we're going to try to
+solve when we maximize this function.
+
+138
+00:07:27,110 --> 00:07:28,845
+We're going to solve for this beta for
+age.
+
+139
+00:07:28,845 --> 00:07:31,440
+Alright, this looks rather cumbersome.
+
+140
+00:07:31,440 --> 00:07:36,020
+It's tedious to write out, but I want you
+to notice something that everybody has
+
+141
+00:07:36,020 --> 00:07:40,140
+the same baseline hazard, because the
+numerate, we have a numerator and
+
+142
+00:07:40,140 --> 00:07:44,440
+a denominator here, all the baseline
+hazards can cancel.
+
+143
+00:07:44,440 --> 00:07:47,974
+We're assuming everybody has the same
+baseline hazard, and, at time equals 1,
+
+144
+00:07:47,974 --> 00:07:49,790
+and we are just going to cancel them out.
+
+145
+00:07:49,790 --> 00:07:52,228
+Whatever the hazard rate is at time equals
+1 doesn't matter,
+
+146
+00:07:52,228 --> 00:07:54,838
+because everybody has the same one, that
+same baseline hazard.
+
+147
+00:07:54,838 --> 00:07:58,120
+We're just going to cancel those out, so
+that's a nice thing about a conditional
+
+148
+00:07:58,120 --> 00:08:02,200
+likelihood, we just get to cancel out that
+intercept, we do not have to estimate it,
+
+149
+00:08:02,200 --> 00:08:05,670
+and I'm going to just erase it here to
+make this easier to read.
+
+150
+00:08:05,670 --> 00:08:07,140
+So we've now cancelled those out,
+
+151
+00:08:07,140 --> 00:08:12,240
+we no longer have to worry about
+estimating an alpha here an intercept.
+
+152
+00:08:12,240 --> 00:08:19,285
+It means we don't have to specify what
+that baseline hazard function looks like.
+
+153
+00:08:19,285 --> 00:08:21,950
+It doesn't have to follow a particular
+mathematical function.
+
+154
+00:08:21,950 --> 00:08:23,300
+We are not committed to anything.
+
+155
+00:08:23,300 --> 00:08:28,190
+So that's what the terminal likelihood now
+looks like for time is equal to 1.
+
+156
+00:08:28,190 --> 00:08:29,590
+How about for time equals 2?
+
+157
+00:08:29,590 --> 00:08:32,030
+So at time equals, well time equals 2
+nothing happens, so
+
+158
+00:08:32,030 --> 00:08:35,040
+at time equals 3 that's when we have our
+next event.
+
+159
+00:08:35,040 --> 00:08:37,720
+So we get a terminal likelihood for time
+equals 3.
+
+160
+00:08:37,720 --> 00:08:40,830
+Alright, so that's going to look like, who
+is at risk?
+
+161
+00:08:40,830 --> 00:08:44,830
+Well, the person who died at time 1 is no
+longer at risk, so
+
+162
+00:08:44,830 --> 00:08:48,085
+we're just going to have the rest of them
+at risk.
+
+163
+00:08:48,085 --> 00:08:57,498
+[NOISE].
+
+164
+00:08:57,498 --> 00:09:01,757
+And the person who died was the
+65-year-old, so they're in the numerator.
+
+165
+00:09:01,757 --> 00:09:03,970
+And, and so on and so forth, we're
+going to keep going.
+
+166
+00:09:03,970 --> 00:09:07,210
+Notice that the denominator shrinks every
+time you lose people and
+
+167
+00:09:07,210 --> 00:09:10,960
+the person who was censored will be in the
+first three terms in the likelihood, but
+
+168
+00:09:10,960 --> 00:09:15,020
+they won't be in the likelihood after
+that, because they'll be censored.
+
+169
+00:09:15,020 --> 00:09:18,350
+They never get to be in the numerator, but
+they're in the denominator a few times.
+
+170
+00:09:18,350 --> 00:09:22,080
+And so on, so we could write this whole
+thing out and then we'd have a function.
+
+171
+00:09:22,080 --> 00:09:26,520
+Take the log of that function, maximize
+it, and so I'll take the derivative, and
+
+172
+00:09:26,520 --> 00:09:29,580
+solve, you know, solve for beta there.
+
+173
+00:09:29,580 --> 00:09:33,990
+Obviously if people with the higher ages
+are dying early that's going to lead to us
+
+174
+00:09:33,990 --> 00:09:37,600
+estimating that beta is associated with
+dying early.
+
+175
+00:09:37,600 --> 00:09:38,860
+I stopped writing out this,
+
+176
+00:09:38,860 --> 00:09:42,505
+it takes a while to write out, but I went
+ahead and you can pause the video if you
+
+177
+00:09:42,505 --> 00:09:46,240
+want to see that you agree with the full
+likelihood that I've written out here.
+
+178
+00:09:46,240 --> 00:09:50,850
+Make sure that you can follow how the full
+likelihood that I've written out here.
+
+179
+00:09:50,850 --> 00:09:53,300
+This is very, this likelihood is very
+interesting,
+
+180
+00:09:53,300 --> 00:09:57,080
+it's going to come back again when we talk
+about time changing predictors,
+
+181
+00:09:57,080 --> 00:09:59,700
+because I want you to notice something,
+that every person,
+
+182
+00:09:59,700 --> 00:10:04,580
+every time they're at risk, I'm writing
+their age in to determine the likelihood.
+
+183
+00:10:04,580 --> 00:10:06,372
+So for example, the 60-year old,
+
+184
+00:10:06,372 --> 00:10:09,620
+well let's not do the 60-year old because
+he drops out after, but
+
+185
+00:10:09,620 --> 00:10:13,980
+the 40-year old, that 40-year old is in
+the denominator of the first term.
+
+186
+00:10:13,980 --> 00:10:16,470
+He's in the denominator, he or she is in
+the denominator for
+
+187
+00:10:16,470 --> 00:10:19,080
+the second term, the third term, the
+fourth term, and the fifth term.
+
+188
+00:10:19,080 --> 00:10:21,080
+Now they're in each one of those.
+
+189
+00:10:21,080 --> 00:10:25,630
+Why that's important is I've written the
+age 40 five different times.
+
+190
+00:10:25,630 --> 00:10:29,870
+But what if we had a predictor that could
+change over time.
+
+191
+00:10:29,870 --> 00:10:35,480
+Because I have to re-enter the value every
+time there's an event for a person, that
+
+192
+00:10:35,480 --> 00:10:38,840
+leaves open the possibility that I don't
+have to write the same value every time.
+
+193
+00:10:38,840 --> 00:10:43,664
+Now, age of course, is not a good example,
+but what if we had something like weight,
+
+194
+00:10:43,664 --> 00:10:47,349
+and somebody was, weighed a 100 pounds at
+time point one, but
+
+195
+00:10:47,349 --> 00:10:50,250
+then at three months they weighed 120
+pounds.
+
+196
+00:10:50,250 --> 00:10:53,006
+You would put in a 100 in the first
+terminal likelihood, and
+
+197
+00:10:53,006 --> 00:10:55,281
+then you'd just put in 120 in the second
+term.
+
+198
+00:10:55,281 --> 00:10:59,277
+So all of a sudden, this likelihood
+function suddenly allows us
+
+199
+00:10:59,277 --> 00:11:02,392
+to update people's values for the
+predictors.
+
+200
+00:11:02,392 --> 00:11:04,719
+This is the first time we've had that
+flexibility.
+
+201
+00:11:04,719 --> 00:11:07,113
+So I'm going to be talking about that next
+week, but
+
+202
+00:11:07,113 --> 00:11:09,770
+it's just kind of built into the
+likelihood function.
+
+203
+00:11:09,770 --> 00:11:10,580
+So that's really cool.
+
+204
+00:11:10,580 --> 00:11:13,850
+Tuck that into the back of your mind, and
+we'll get back to that next week.
+
+205
+00:11:13,850 --> 00:11:15,470
+After you've written out the likelihood
+function, which,
+
+206
+00:11:15,470 --> 00:11:16,660
+again, I'm not going to make you write
+out, but
+
+207
+00:11:16,660 --> 00:11:18,640
+I just want you to understand what it
+looks like.
+
+208
+00:11:18,640 --> 00:11:20,910
+Once you've written out the likelihood
+function,
+
+209
+00:11:20,910 --> 00:11:22,260
+then you're just going to maximize it.
+
+210
+00:11:22,260 --> 00:11:26,140
+So that means you take the log of the
+likelihood function with respect to beta,
+
+211
+00:11:26,140 --> 00:11:29,810
+take the derivative, set it equal to zero,
+find, solve for beta.
+
+212
+00:11:29,810 --> 00:11:33,010
+And that's going to be the value of beta
+that makes your data the most likely.
+
+213
+00:11:33,010 --> 00:11:35,180
+And of course, we want to make our data
+the most likely.
+
+214
+00:11:35,180 --> 00:11:37,375
+That's the maximum likelihood estimates.
+
+215
+00:11:37,375 --> 00:11:41,940
+So just the same as when we did maximum
+likelihood estimation for
+
+216
+00:11:41,940 --> 00:11:45,910
+logistic regression or any other
+generalized linear model.
+
+217
+00:11:45,910 --> 00:11:49,410
+Out of maximum likelihood estimation you
+also, the variance, or
+
+218
+00:11:49,410 --> 00:11:52,550
+the standard error of beta also falls out
+of that method.
+
+219
+00:11:52,550 --> 00:11:55,722
+So the variance actually turns out be
+related to the second derivative of
+
+220
+00:11:55,722 --> 00:11:57,370
+the likelihood function.
+
+221
+00:11:57,370 --> 00:11:59,460
+So we can get a standard error for beta.
+
+222
+00:11:59,460 --> 00:12:02,850
+And that's nice because that allows us to
+do hypothesis testing, so you don't have
+
+223
+00:12:02,850 --> 00:12:06,110
+to do any of this, but the computer will
+give you the standard error for
+
+224
+00:12:06,110 --> 00:12:08,700
+beta and a p-value that goes with beta.
+
+225
+00:12:08,700 --> 00:12:13,458
+The p-value that goes with the beta for a
+particular predictor is just,
+
+226
+00:12:13,458 --> 00:12:17,890
+you take the estimate for beta and divide
+it by the standard error.
+
+227
+00:12:17,890 --> 00:12:20,230
+You get what we call the asymptotic
+standard error because again,
+
+228
+00:12:20,230 --> 00:12:23,300
+that came out of maximum likelihood
+estimation.
+
+229
+00:12:23,300 --> 00:12:26,865
+So beta divided by it's standard error
+will follow a z-distribution.
+
+230
+00:12:26,865 --> 00:12:28,910
+So it will come with a p-value to tell you
+whether or
+
+231
+00:12:28,910 --> 00:12:31,314
+not beta is significantly different from
+zero.
+
+232
+00:12:31,314 --> 00:12:34,310
+A beta of zero of course would mean the
+slope of zero,
+
+233
+00:12:34,310 --> 00:12:37,860
+no relationship between the predictor and
+the hazard function.
+
+234
+00:12:39,190 --> 00:12:43,830
+Just to give an example, remember we had
+some data last week on a hepatitis trial.
+
+235
+00:12:43,830 --> 00:12:47,390
+People with active hepatitis were given
+either a treatment, a steroid, or
+
+236
+00:12:47,390 --> 00:12:49,390
+were in the control group.
+
+237
+00:12:49,390 --> 00:12:52,590
+I ran these data in a Cox regression
+model.
+
+238
+00:12:52,590 --> 00:12:54,460
+Out come our maximum likelihood estimates,
+
+239
+00:12:54,460 --> 00:12:57,930
+we get a parameter, we get a beta, we get
+a standard error for beta.
+
+240
+00:12:57,930 --> 00:13:01,710
+If you divide beta by it's standard error
+you get a z-value which is
+
+241
+00:13:01,710 --> 00:13:03,150
+a little bit more than two.
+
+242
+00:13:03,150 --> 00:13:06,440
+You can square that to get a chi-square
+with one degree of freedom that
+
+243
+00:13:06,440 --> 00:13:09,524
+corresponds to a p-value of just under
+0.05.
+
+244
+00:13:09,524 --> 00:13:14,140
+So this p-value just comes out of dividing
+beta by it's standard error,
+
+245
+00:13:14,140 --> 00:13:15,600
+as we did with logistic regression.
+
+246
+00:13:16,890 --> 00:13:17,430
+Also, what,
+
+247
+00:13:17,430 --> 00:13:20,500
+what else do you get out of maximum
+likelihood, the maximum likelihood method?
+
+248
+00:13:20,500 --> 00:13:22,500
+Well you get the negative 2 log
+likelihoods, and
+
+249
+00:13:22,500 --> 00:13:27,960
+you can do global tests of whether any of
+the betas in the model are significant.
+
+250
+00:13:27,960 --> 00:13:30,960
+The one we've talked most about is the
+likelihood ratio test.
+
+251
+00:13:30,960 --> 00:13:33,980
+So if you take the negative 2 log
+likelihood from one model and
+
+252
+00:13:33,980 --> 00:13:38,110
+subtract it from the negative 2 log
+likelihood from a nested model,
+
+253
+00:13:38,110 --> 00:13:43,050
+you get a chi-square with degrees of
+freedom equal to the number of parameters
+
+254
+00:13:43,050 --> 00:13:46,930
+different between the two models and you
+can get a p-value with that.
+
+255
+00:13:46,930 --> 00:13:49,780
+So this will tell you in, in this
+particular example I
+
+256
+00:13:49,780 --> 00:13:52,490
+only have one beta in the model, but if
+you have multiple betas in the model,
+
+257
+00:13:52,490 --> 00:13:56,490
+the null hypothesis here is that all of
+the betas are equal to zero.
+
+258
+00:13:56,490 --> 00:13:57,380
+So if that rejects,
+
+259
+00:13:57,380 --> 00:14:01,320
+that tells you that something in the model
+is predictive an overall global test.
+
+260
+00:14:03,300 --> 00:14:06,930
+We can also get statistics about model
+fit.
+
+261
+00:14:06,930 --> 00:14:12,750
+So, again, the negative 2 log likelihood
+if I do the model without any covariates,
+
+262
+00:14:12,750 --> 00:14:15,430
+I subtract from that the model with the
+covariates.
+
+263
+00:14:15,430 --> 00:14:19,000
+The one that has more covariates is always
+going to be smaller.
+
+264
+00:14:19,000 --> 00:14:22,260
+You subtract those, that's going to have a
+chi-square in this case with one degree of
+
+265
+00:14:22,260 --> 00:14:24,780
+freedom because there's only one covariate
+in the model.
+
+266
+00:14:25,930 --> 00:14:28,000
+That in this case comes out to be a little
+over four, and
+
+267
+00:14:28,000 --> 00:14:29,935
+does come out to be statistically
+significant, so
+
+268
+00:14:29,935 --> 00:14:33,460
+that's that likelihood ratio statistic
+that we just talked about.
+
+269
+00:14:33,460 --> 00:14:36,930
+You also get something called the AIC
+criteria,
+
+270
+00:14:36,930 --> 00:14:38,900
+which I have talked about a little
+earlier.
+
+271
+00:14:38,900 --> 00:14:42,451
+All this is is you take the negative 2 log
+likelihood value and
+
+272
+00:14:42,451 --> 00:14:45,727
+you add 2 times the number of parameters
+in your model.
+
+273
+00:14:45,727 --> 00:14:50,237
+In this case we only have one parameter in
+our model, one beta, so
+
+274
+00:14:50,237 --> 00:14:54,287
+I'm just going to add 2, so 173 plus 2
+gives me 175.
+
+275
+00:14:54,287 --> 00:14:56,736
+With the AIC, smaller is better, so
+
+276
+00:14:56,736 --> 00:15:02,900
+if you wanted to compare different models,
+they don't even have to be nested models.
+
+277
+00:15:02,900 --> 00:15:05,820
+Different models on the same data, if,
+
+278
+00:15:05,820 --> 00:15:10,020
+the one with the smaller AIC is going to
+be considered the better fit model,
+
+279
+00:15:10,020 --> 00:15:13,680
+because the AIC has a penalty built in for
+the number of parameters.
+
+280
+00:15:13,680 --> 00:15:16,448
+So you've been essentially controlled for
+the number of parameters.
+
+281
+00:15:16,448 --> 00:15:19,530
+The negative 2 log likelihood is always
+going to be
+
+282
+00:15:19,530 --> 00:15:21,944
+smaller when you put more parameters in
+the model, so we need to correct for
+
+283
+00:15:21,944 --> 00:15:23,590
+that, that's what the AIC does.
+
+284
+00:15:23,590 --> 00:15:27,000
+So that's a statistic you can use to
+compare different models.

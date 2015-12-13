@@ -1,0 +1,674 @@
+1
+00:00:08,119 --> 00:00:11,550
+In this next module, I'm going to walk
+through a real example just to
+
+2
+00:00:11,550 --> 00:00:14,830
+practice how to interpret the results of
+logistic regression.
+
+3
+00:00:14,830 --> 00:00:17,460
+So I'm going to use a real example from
+the medical literature.
+
+4
+00:00:17,460 --> 00:00:22,470
+This was a case control study that was
+done,
+
+5
+00:00:22,470 --> 00:00:27,610
+the physicians who graduated from medical
+school at UCSF.
+
+6
+00:00:27,610 --> 00:00:31,230
+What they were looking for, the outcome
+they were interested in was being
+
+7
+00:00:31,230 --> 00:00:33,330
+disciplined by the Medical Board of
+California.
+
+8
+00:00:33,330 --> 00:00:35,760
+So if a physician gets disciplined by the
+medical board,
+
+9
+00:00:35,760 --> 00:00:39,267
+that's a pretty bad thing, so those are
+the cases.
+
+10
+00:00:39,267 --> 00:00:45,125
+They identified 68 physicians who have a
+disciplinary action between 1990 and
+
+11
+00:00:45,125 --> 00:00:47,700
+2000, who had graduated from UCSF.
+
+12
+00:00:47,700 --> 00:00:50,415
+Those are the cases in our outcome
+variable here is that
+
+13
+00:00:50,415 --> 00:00:53,230
+disiplining from the Medical Board of
+California.
+
+14
+00:00:53,230 --> 00:00:57,040
+It's a case control study so the
+researchers found those people who
+
+15
+00:00:57,040 --> 00:00:59,480
+had been disciplined, you know it's fairly
+rare.
+
+16
+00:00:59,480 --> 00:01:02,000
+So they zoned in on them by picking those
+in particular.
+
+17
+00:01:02,000 --> 00:01:07,055
+Then they found controls, the controls
+were graduates,
+
+18
+00:01:07,055 --> 00:01:10,860
+196 controls, who were matched by medical
+school graduation year.
+
+19
+00:01:10,860 --> 00:01:14,360
+So they were the same graduating class,
+and specialty choice.
+
+20
+00:01:14,360 --> 00:01:18,010
+So each, for each case, the, they went out
+and
+
+21
+00:01:18,010 --> 00:01:22,090
+found a couple of controls who came from
+the same graduating class.
+
+22
+00:01:22,090 --> 00:01:24,190
+And were from the same specialty choice.
+
+23
+00:01:24,190 --> 00:01:29,829
+The aim of the study, I'm just quoting
+from the paper here, was, to determine
+
+24
+00:01:29,829 --> 00:01:34,010
+if medical students who demonstrate
+unprofessional behavior in medical school.
+
+25
+00:01:34,010 --> 00:01:37,800
+Are more likely to have subsequent state
+board disciplinary action.
+
+26
+00:01:37,800 --> 00:01:41,880
+So they were going back into the records
+of these graduates and trying to
+
+27
+00:01:41,880 --> 00:01:45,980
+determine if there were things that could
+predict subsequent disciplinary action.
+
+28
+00:01:45,980 --> 00:01:48,980
+By the medical board in particular.
+
+29
+00:01:48,980 --> 00:01:52,140
+They wanted to see if there was some
+unprofessional behavior in medical school
+
+30
+00:01:52,140 --> 00:01:55,690
+that could flag those who were at risk of
+this outcome.
+
+31
+00:01:55,690 --> 00:01:58,350
+It's a binary outcome, you're either
+disciplined or you weren't.
+
+32
+00:02:00,230 --> 00:02:03,220
+What kind of analysis are we going to
+analyze?
+
+33
+00:02:03,220 --> 00:02:05,260
+We are going to use to analyze these data.
+
+34
+00:02:05,260 --> 00:02:08,730
+If you look at our little chart here,
+we've got a binary outcome.
+
+35
+00:02:08,730 --> 00:02:11,330
+We were disciplined by the Medical Board
+of California or not.
+
+36
+00:02:11,330 --> 00:02:14,520
+It's a case control study so the outcome
+is case or control.
+
+37
+00:02:14,520 --> 00:02:18,335
+We want to do some kind of regression
+analysis because it's
+
+38
+00:02:18,335 --> 00:02:22,810
+an observational study , we want to be
+able to control for confounder.
+
+39
+00:02:22,810 --> 00:02:25,460
+That might lead you to think, oh, I should
+pick logistic regression.
+
+40
+00:02:25,460 --> 00:02:29,240
+And in fact, the authors of this study did
+indeed use just
+
+41
+00:02:29,240 --> 00:02:31,319
+a plain old logistic regression analysis.
+
+42
+00:02:32,590 --> 00:02:36,020
+I want to just point out here though, if
+you look closely at this study,
+
+43
+00:02:36,020 --> 00:02:39,770
+the observations are not independent, they
+are correlated.
+
+44
+00:02:39,770 --> 00:02:41,910
+This was a matched case control study.
+
+45
+00:02:41,910 --> 00:02:45,864
+Each case was matched to a couple of
+control.
+
+46
+00:02:45,864 --> 00:02:50,650
+So actually we should be using here the
+logistic regression for
+
+47
+00:02:50,650 --> 00:02:54,540
+correlated data which is something called
+conditional logistic regression.
+
+48
+00:02:54,540 --> 00:02:56,270
+That counts for the correlation.
+
+49
+00:02:56,270 --> 00:03:00,560
+So that's actually the proper statisical
+technique that should've been used here.
+
+50
+00:03:00,560 --> 00:03:03,580
+It would still give odds ratios, and in
+this case,
+
+51
+00:03:03,580 --> 00:03:06,800
+I'm not sure it would have made a huge
+difference to the results of this study.
+
+52
+00:03:06,800 --> 00:03:10,000
+But it's correlated data, so
+
+53
+00:03:10,000 --> 00:03:12,915
+that would have actually been the
+appropriate statistical test to use.
+
+54
+00:03:12,915 --> 00:03:16,350
+What's the consequence here that the
+authors used
+
+55
+00:03:16,350 --> 00:03:19,670
+logistic regression instead of conditional
+logistic regression.
+
+56
+00:03:19,670 --> 00:03:23,114
+We have a situation where were are
+comparing within groups.
+
+57
+00:03:23,114 --> 00:03:26,750
+Remember when we were talking about
+correlated data, I told you that if you
+
+58
+00:03:26,750 --> 00:03:30,330
+ignore the correlation when you're doing a
+within group comparison.
+
+59
+00:03:30,330 --> 00:03:32,500
+That your peer leaders are going to be too
+high.
+
+60
+00:03:32,500 --> 00:03:39,300
+That means you might miss in effect by not
+analyzing the data correctly.
+
+61
+00:03:39,300 --> 00:03:44,525
+So here what you should do is compare each
+case to their matched control.
+
+62
+00:03:44,525 --> 00:03:47,930
+cases, those case control groups are more
+similar to
+
+63
+00:03:47,930 --> 00:03:50,530
+each other than to other people in the
+study.
+
+64
+00:03:50,530 --> 00:03:53,470
+If you account for that correlation, you
+actually would've gotten
+
+65
+00:03:53,470 --> 00:03:57,020
+probably here a little bit better P values
+than what the authors got.
+
+66
+00:03:57,020 --> 00:03:59,800
+So their analysis could be described as a
+little conservative.
+
+67
+00:04:00,880 --> 00:04:05,260
+Anything that came out significant, we're
+pretty sure that's real.
+
+68
+00:04:05,260 --> 00:04:08,390
+But it could have been that those P values
+could have come out more significant in
+
+69
+00:04:08,390 --> 00:04:11,940
+some of the things that didn't come out
+significant.
+
+70
+00:04:11,940 --> 00:04:13,940
+In the correct analysis might have, so
+
+71
+00:04:13,940 --> 00:04:16,710
+this is a conservative analysis by
+ignoring that correlation.
+
+72
+00:04:16,710 --> 00:04:17,600
+I just want to point that out to
+
+73
+00:04:17,600 --> 00:04:20,210
+remind you the importance of thinking
+about correlation.
+
+74
+00:04:20,210 --> 00:04:23,915
+In any case, the author's used a regular
+old logistic regression, and
+
+75
+00:04:23,915 --> 00:04:26,710
+again, these results might be a little
+conservative.
+
+76
+00:04:26,710 --> 00:04:29,380
+We might have missed something here as a
+result.
+
+77
+00:04:29,380 --> 00:04:32,740
+But we can look at the odds ratios, that
+logistic regression model, and
+
+78
+00:04:32,740 --> 00:04:35,130
+just, I want to walk you through how you'd
+interpret this table.
+
+79
+00:04:35,130 --> 00:04:36,040
+So this is Table 5,
+
+80
+00:04:36,040 --> 00:04:39,560
+from the paper, this is the results of the
+logistics regression analysis.
+
+81
+00:04:39,560 --> 00:04:44,200
+Notice that they're not presenting any
+betas, they're just simply going right for
+
+82
+00:04:44,200 --> 00:04:45,020
+the odds ratios.
+
+83
+00:04:45,020 --> 00:04:47,420
+They're not presenting any intercepts, we
+don't need all of that for
+
+84
+00:04:47,420 --> 00:04:48,900
+this particular example.
+
+85
+00:04:48,900 --> 00:04:50,880
+We only care about the odds ratios.
+
+86
+00:04:50,880 --> 00:04:54,090
+So, just they're just presenting directly
+the odds ratios,
+
+87
+00:04:54,090 --> 00:04:57,320
+the confidence intervals for those odds
+ratios, and the P values.
+
+88
+00:04:57,320 --> 00:04:59,470
+I know want to walk you through what each
+of these odds ratios means,
+
+89
+00:04:59,470 --> 00:05:00,500
+how do we interpret it?
+
+90
+00:05:00,500 --> 00:05:04,380
+So the first predictor you'll notice here
+is male gender.
+
+91
+00:05:04,380 --> 00:05:09,530
+So the Odds Ratio here is 1.51.
+
+92
+00:05:09,530 --> 00:05:11,640
+Now this is a fairly rare outcome.
+
+93
+00:05:11,640 --> 00:05:14,540
+So we can interpret the odds ratios like
+risk ratios and
+
+94
+00:05:14,540 --> 00:05:16,890
+there's not going to be much distortion in
+the effect here.
+
+95
+00:05:16,890 --> 00:05:20,380
+So the odds ratio is 1.51 for males.
+
+96
+00:05:20,380 --> 00:05:22,590
+It's not statistically significant so
+
+97
+00:05:22,590 --> 00:05:25,980
+we're not sure that it's any different
+than one.
+
+98
+00:05:25,980 --> 00:05:30,120
+We would say that there's a 50 percent
+increase in the odds of the disciplinary
+
+99
+00:05:30,120 --> 00:05:33,520
+action for men versus women, but it's not
+statistically significant.
+
+100
+00:05:33,520 --> 00:05:37,270
+So this model includes all the things that
+you see in the table.
+
+101
+00:05:37,270 --> 00:05:40,690
+So once you adjust for all of these other
+factors the effect of male,
+
+102
+00:05:40,690 --> 00:05:45,820
+of being male is not statistically
+signifigant.
+
+103
+00:05:45,820 --> 00:05:49,370
+The next variable is, Undergraduate GPA.
+
+104
+00:05:49,370 --> 00:05:57,290
+This is a continuous predictor, it ranges
+from 0 to 4.0.
+
+105
+00:05:57,290 --> 00:06:00,770
+So the way that, you interpret this odds
+ratio.
+
+106
+00:06:00,770 --> 00:06:05,537
+First of all, we notice that
+undergraduate, GPA is protective.
+
+107
+00:06:05,537 --> 00:06:10,030
+So as your GPA goes up a whole unit, so
+this is for
+
+108
+00:06:10,030 --> 00:06:11,880
+a 1 unit increase in GPA, that's pretty
+big.
+
+109
+00:06:11,880 --> 00:06:14,320
+That's like going from 3 to 4, 2 to 3.
+
+110
+00:06:14,320 --> 00:06:19,190
+A one unit jump in your GPA, will decrease
+your odds of
+
+111
+00:06:19,190 --> 00:06:24,110
+disciplinary action by 43%, but it's also
+not statistically significant.
+
+112
+00:06:24,110 --> 00:06:27,050
+So once you've accounted for all the other
+things, all the other variables that
+
+113
+00:06:27,050 --> 00:06:31,040
+you see in this table the effect of
+undergraduate GPA is not significant.
+
+114
+00:06:31,040 --> 00:06:34,210
+It doesn't appear to be an independent
+predictor.
+
+115
+00:06:34,210 --> 00:06:36,320
+Although it trends in the direction of
+being protective here.
+
+116
+00:06:36,320 --> 00:06:40,740
+Interestingly the MCAT score, so the way
+they measure MCAT score here.
+
+117
+00:06:40,740 --> 00:06:45,570
+It's this is comparing those who are in
+the lowest quartile of MCAT score to
+
+118
+00:06:45,570 --> 00:06:49,180
+those who are in the higher 3 quartiles,
+so this is a binary variable here.
+
+119
+00:06:49,180 --> 00:06:53,410
+If you're in the lowest quartile compared
+to the others, your odds ratio was 1.01.
+
+120
+00:06:53,410 --> 00:06:54,310
+So after counting for
+
+121
+00:06:54,310 --> 00:06:57,540
+all these other things in the table,
+there's really no effective MCAT score.
+
+122
+00:06:57,540 --> 00:07:01,700
+Interestingly enough, MCAT score was not
+an independent predictor at all here.
+
+123
+00:07:01,700 --> 00:07:05,910
+The P value you can see is, you know,
+very, very high.
+
+124
+00:07:05,910 --> 00:07:10,130
+If you another binary variable, if you did
+not pass, if you failed,
+
+125
+00:07:10,130 --> 00:07:14,570
+in other words if you failed, any of your
+courses in medical school.
+
+126
+00:07:14,570 --> 00:07:15,858
+Your odds ratio was 1.30, so
+
+127
+00:07:15,858 --> 00:07:20,170
+a 30% increase in your odds of
+disciplinary action, although again,
+
+128
+00:07:20,170 --> 00:07:24,800
+that's clearly not statistically
+significant, so that's very close to 1.
+
+129
+00:07:24,800 --> 00:07:29,420
+Not an independent predictor, but in the
+direction of increasing your risk.
+
+130
+00:07:29,420 --> 00:07:35,650
+Finally, if you had, displayed
+unprofessional behavior in medical school.
+
+131
+00:07:35,650 --> 00:07:39,209
+Severe enough to meet, this, their
+criteria here that they,
+
+132
+00:07:39,209 --> 00:07:42,690
+you had displayed this unprofessional
+behavior in medical school.
+
+133
+00:07:42,690 --> 00:07:46,740
+Which they think might be a flag for later
+disciplinary action.
+
+134
+00:07:46,740 --> 00:07:51,130
+This is the only significant predictor
+after adjusting for
+
+135
+00:07:51,130 --> 00:07:51,960
+everything else in the model.
+
+136
+00:07:51,960 --> 00:07:56,630
+So that doubled your odds of getting
+disciplinary action.
+
+137
+00:07:56,630 --> 00:07:59,850
+And in this case, because the outcome is
+fairly rare, if you said it
+
+138
+00:07:59,850 --> 00:08:03,860
+doubled your risk of having disciplinary
+action, that would actually be very close.
+
+139
+00:08:03,860 --> 00:08:06,290
+So that was the only independent predictor
+after adjusting for
+
+140
+00:08:06,290 --> 00:08:12,114
+everything else in the model.

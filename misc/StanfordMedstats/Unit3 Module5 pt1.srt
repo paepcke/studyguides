@@ -1,0 +1,282 @@
+1
+00:00:01,050 --> 00:00:03,360
+Hi and welcome to our module on Proc Freq.
+
+2
+00:00:03,360 --> 00:00:07,270
+Freq, which stands for frequency, is an
+essential aspect of data analysis and
+
+3
+00:00:07,270 --> 00:00:08,830
+SAS enterprise guide.
+
+4
+00:00:08,830 --> 00:00:12,550
+This procedure creates frequency tables
+and contingency tables.
+
+5
+00:00:12,550 --> 00:00:14,410
+>> If you're taking HRP 225 or
+
+6
+00:00:14,410 --> 00:00:18,090
+259, you're probably learning about
+contingency tables right now.
+
+7
+00:00:18,090 --> 00:00:21,730
+Contingency tables which are also called
+cross tabulation tables show you
+
+8
+00:00:21,730 --> 00:00:23,931
+the frequency distribution of your
+variables.
+
+9
+00:00:23,931 --> 00:00:26,691
+Well the name Freq may lead you to believe
+that all this procedure does,
+
+10
+00:00:26,691 --> 00:00:29,911
+is create tables based on categorical
+data, you'll find that this procedure also
+
+11
+00:00:29,911 --> 00:00:32,350
+does really important statistical measures
+on these tables.
+
+12
+00:00:32,350 --> 00:00:35,520
+Let's start coding so you can learn about
+the more important features of Proc Freq.
+
+13
+00:00:35,520 --> 00:00:38,360
+>> I want to build a new data set for this
+module.
+
+14
+00:00:38,360 --> 00:00:40,070
+This data set is completely made up so
+
+15
+00:00:40,070 --> 00:00:44,020
+that we have an interesting outcome when
+we start talking about Chi-Square test.
+
+16
+00:00:44,020 --> 00:00:47,180
+Say we have a clinical trial testing out a
+new treatment for a disease.
+
+17
+00:00:47,180 --> 00:00:50,100
+Let's just call it disease x and we're
+interested in finding out if
+
+18
+00:00:50,100 --> 00:00:54,220
+treated patients have a better outcome
+than non-treated.
+
+19
+00:00:54,220 --> 00:00:58,120
+Treated patients get a one and those not
+treated get a zero.
+
+20
+00:00:58,120 --> 00:01:00,970
+Those cured get a one and those not cured
+get a zero.
+
+21
+00:01:03,830 --> 00:01:04,940
+Now that we've created that data set,
+
+22
+00:01:04,940 --> 00:01:06,920
+let's start with our first frequency
+procedure.
+
+23
+00:01:08,480 --> 00:01:11,540
+A frequency distribution of the treatment
+variable, which tells the percentage of
+
+24
+00:01:11,540 --> 00:01:13,930
+subjects who were treated and the percent
+who are not treated.
+
+25
+00:01:15,110 --> 00:01:15,910
+This is how to do it in code.
+
+26
+00:01:17,370 --> 00:01:19,710
+Notice how the code is pretty similar to
+previous procedures I have discussed.
+
+27
+00:01:19,710 --> 00:01:23,960
+You start with the word proc, followed by
+the procedure of interest,
+
+28
+00:01:23,960 --> 00:01:26,170
+which in this case, is freq.
+
+29
+00:01:26,170 --> 00:01:30,800
+We make sure to specify our new data set,
+which is a temporary file called trial.
+
+30
+00:01:30,800 --> 00:01:32,320
+To create a one way table,
+
+31
+00:01:32,320 --> 00:01:36,040
+we include the word tables followed by the
+variable we want to analyze.
+
+32
+00:01:36,040 --> 00:01:38,960
+As you can see, we wrote tables isTreated
+and then semicolon.
+
+33
+00:01:39,990 --> 00:01:42,100
+Let's press run and look at the output.
+
+34
+00:01:42,100 --> 00:01:45,170
+>> Now you can see the frequency, percent,
+cumulative frequency and
+
+35
+00:01:45,170 --> 00:01:48,300
+then the cumulative percent of the
+isTreated variable.
+
+36
+00:01:48,300 --> 00:01:53,160
+The frequency column shows you how many
+observation are in each treated group.
+
+37
+00:01:53,160 --> 00:01:56,020
+There were 18 treated, and 17 non treated.
+
+38
+00:01:56,020 --> 00:01:59,060
+The percent column shows you what percent
+of the data received the treatment and
+
+39
+00:01:59,060 --> 00:02:01,690
+what percentage did not receive the
+treatment.
+
+40
+00:02:01,690 --> 00:02:02,990
+The cumulative frequency and
+
+41
+00:02:02,990 --> 00:02:06,350
+cumulative percent and not very
+informative in this analysis,
+
+42
+00:02:06,350 --> 00:02:09,930
+you may find these more insightful when it
+comes to dealing with ordinal data.
+
+43
+00:02:09,930 --> 00:02:12,320
+For example, say you measure the
+improvement,
+
+44
+00:02:12,320 --> 00:02:15,660
+after treatment on the ordinal scale from
+one to five.
+
+45
+00:02:15,660 --> 00:02:18,570
+This table would then allow you to say
+what percent of your population had
+
+46
+00:02:18,570 --> 00:02:20,455
+an improvement level of three or less.
+
+47
+00:02:20,455 --> 00:02:24,680
+>> See we're all only interested in one
+specific aspect of the output.
+
+48
+00:02:24,680 --> 00:02:27,430
+For example, if you only wanted to know
+the frequency.
+
+49
+00:02:27,430 --> 00:02:30,235
+We could rewrite our code [SOUND].
+
+50
+00:02:30,235 --> 00:02:32,860
+As you can see, the code's exactly the
+same as my initial frequency code.
+
+51
+00:02:32,860 --> 00:02:35,690
+The only difference is that after
+isTreated,
+
+52
+00:02:35,690 --> 00:02:40,040
+I've included a forward slash with the
+words nocum and nopercent.
+
+53
+00:02:40,040 --> 00:02:43,270
+The forward slash tell SAS that I want to
+use some optional settings for
+
+54
+00:02:43,270 --> 00:02:45,050
+the table statement.
+
+55
+00:02:45,050 --> 00:02:47,980
+The settings I add in just tell SAS not to
+display the cumulative values
+
+56
+00:02:47,980 --> 00:02:48,520
+and percent values.
+
+57
+00:02:48,520 --> 00:02:51,266
+There are many code variations that can be
+
+58
+00:02:51,266 --> 00:02:55,050
+made related to a one way frequency
+distribution.
+
+59
+00:02:55,050 --> 00:02:56,860
+As we discussed in the previous module,
+
+60
+00:02:56,860 --> 00:02:59,970
+it's best to use the online SAS guides to
+figure out specific variations.

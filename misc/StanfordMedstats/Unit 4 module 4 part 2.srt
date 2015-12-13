@@ -1,0 +1,1524 @@
+1
+00:00:00,603 --> 00:00:04,841
+So, we also write the binomial.
+
+2
+00:00:04,841 --> 00:00:07,319
+If I want to shorthand the binomial, I
+will write X,
+
+3
+00:00:07,319 --> 00:00:12,770
+and this little tilda means is distributed
+as a binomial with parameters n and p.
+
+4
+00:00:12,770 --> 00:00:15,006
+So every binomial distribution is defined
+by two parameters,
+
+5
+00:00:15,006 --> 00:00:17,921
+the number of trials and the probability
+of it's success.
+
+6
+00:00:17,921 --> 00:00:20,921
+And sometimes in shorthand I'll write x
+tilda Binomial, and
+
+7
+00:00:20,921 --> 00:00:25,769
+this just my short hand way of saying X is
+distributed as a binomial.
+
+8
+00:00:25,769 --> 00:00:28,709
+Again, the probability that they're
+exactly X successes,
+
+9
+00:00:28,709 --> 00:00:32,596
+is when you have a binomial is this parti,
+this formula.
+
+10
+00:00:32,596 --> 00:00:35,707
+N choose X, P raised to X, 1 minus P
+raised to N minus X.
+
+11
+00:00:35,707 --> 00:00:38,829
+So lets use this now, and solve some
+problems.
+
+12
+00:00:40,310 --> 00:00:43,580
+So I want to return now to the problem
+that I set out,
+
+13
+00:00:43,580 --> 00:00:45,430
+one of the problems I set out in the
+teaser.
+
+14
+00:00:45,430 --> 00:00:49,430
+It turns out that this is a binomial
+problem, and
+
+15
+00:00:49,430 --> 00:00:52,290
+the hardest thing about getting binomial
+problems right,
+
+16
+00:00:52,290 --> 00:00:56,190
+is just recognizing when you're on a
+binomial distribution.
+
+17
+00:00:56,190 --> 00:00:59,694
+Applying the formula is really trivial,
+and most days times now,
+
+18
+00:00:59,694 --> 00:01:03,010
+are days you can just you know do
+calculate things on the computer.
+
+19
+00:01:03,010 --> 00:01:06,750
+The key to getting, to doing well here, is
+to be
+
+20
+00:01:06,750 --> 00:01:11,580
+able to recognize when a problem fits into
+a binomial distribution, as this one does.
+
+21
+00:01:11,580 --> 00:01:13,282
+So, here was the problem.
+
+22
+00:01:13,282 --> 00:01:18,010
+We had a new anti aging treatment, and we
+wanted to test if it did anything.
+
+23
+00:01:18,010 --> 00:01:20,530
+So let's say we treat ten patients with
+wrinkles,
+
+24
+00:01:20,530 --> 00:01:22,220
+with this new anti-aging treatment.
+
+25
+00:01:22,220 --> 00:01:23,050
+There's no control group or
+
+26
+00:01:23,050 --> 00:01:26,300
+anything, it's a limited study here, but
+just a very simple study.
+
+27
+00:01:26,300 --> 00:01:29,980
+The ten patients are photographed before
+their treatment and after.
+
+28
+00:01:29,980 --> 00:01:34,810
+Those pairs of photographs are given to a
+blinded independent dermatologist, and
+
+29
+00:01:34,810 --> 00:01:39,110
+he or she is asked to distinguish the pre
+and the post photographs.
+
+30
+00:01:39,110 --> 00:01:43,350
+The idea being that you call the one with
+less wrinkles the pre-photograph, and
+
+31
+00:01:43,350 --> 00:01:44,450
+the one, or sorry.
+
+32
+00:01:44,450 --> 00:01:47,660
+The one with more wrinkles the
+pre-photograph, and
+
+33
+00:01:47,660 --> 00:01:51,140
+the one with less wrinkles after the anti
+treat, aging treatment the post.
+
+34
+00:01:51,140 --> 00:01:53,640
+So if the, if the dermatologist can get
+that right,
+
+35
+00:01:53,640 --> 00:01:57,720
+that means that the dermatologist sees a
+visible change in wrinkles, and
+
+36
+00:01:57,720 --> 00:02:02,200
+is able to say that there are fewer
+wrinkles after in the post period.
+
+37
+00:02:02,200 --> 00:02:03,940
+Now, let's say that you do this
+experiment.
+
+38
+00:02:03,940 --> 00:02:07,420
+And your independent dermatologist
+actually arranges the pre and
+
+39
+00:02:07,420 --> 00:02:12,090
+post photographs correctly for nine out of
+the ten subjects.
+
+40
+00:02:12,090 --> 00:02:15,170
+Well, you might think, you know, that's
+some evidence.
+
+41
+00:02:15,170 --> 00:02:16,450
+They're able to get nine right.
+
+42
+00:02:16,450 --> 00:02:19,640
+There's, that's some evidence that the
+anti-aging treatment is doing something.
+
+43
+00:02:19,640 --> 00:02:21,950
+On the other hand, you also might look at
+those data and say.
+
+44
+00:02:21,950 --> 00:02:26,040
+Well, but, you know, if the dermatologist
+was just guessing,
+
+45
+00:02:26,040 --> 00:02:28,910
+they could just guess their way to getting
+five of those right.
+
+46
+00:02:28,910 --> 00:02:29,480
+Right?
+
+47
+00:02:29,480 --> 00:02:31,990
+It would be easy to just guess and to get
+five correct.
+
+48
+00:02:31,990 --> 00:02:34,750
+So is nine really that much better or are
+they,
+
+49
+00:02:34,750 --> 00:02:36,450
+just is that, just is that lucky guessing?
+
+50
+00:02:36,450 --> 00:02:38,970
+So we want to answer the question.
+
+51
+00:02:38,970 --> 00:02:40,920
+We want to set the problem up in the
+following way.
+
+52
+00:02:40,920 --> 00:02:45,470
+We want to say, well lets assume that the
+anti-aging treatment doesn't do anything,
+
+53
+00:02:45,470 --> 00:02:47,420
+it's completely ineffective.
+
+54
+00:02:47,420 --> 00:02:50,550
+What's the probability that the
+dermatologist could of
+
+55
+00:02:50,550 --> 00:02:55,060
+gotten at least nine right, purely by
+lucky guessing.
+
+56
+00:02:55,060 --> 00:02:56,930
+And getting ten right would be even
+better.
+
+57
+00:02:56,930 --> 00:02:58,230
+So, we're going to say, at least nine.
+
+58
+00:02:58,230 --> 00:02:59,480
+If they get nine or
+
+59
+00:02:59,480 --> 00:03:04,210
+ten right, is that evidence that the
+anti-aging treatment works?
+
+60
+00:03:04,210 --> 00:03:08,390
+Or, is it [COUGH] that it's just, one
+could easily get nine or
+
+61
+00:03:08,390 --> 00:03:10,170
+ten right, just by guessing?
+
+62
+00:03:10,170 --> 00:03:11,970
+Is it probable or is it improbable?
+
+63
+00:03:11,970 --> 00:03:14,620
+So, let's take, calculate the probability
+that purely by guessing,
+
+64
+00:03:14,620 --> 00:03:17,305
+the dermatologists could have gotten at
+least nine right.
+
+65
+00:03:17,305 --> 00:03:22,130
+Well, this is a binomial problem.
+
+66
+00:03:22,130 --> 00:03:26,330
+Right?
+It's a binomial with an n of 10, and
+
+67
+00:03:26,330 --> 00:03:29,580
+again assuming that the anti-aging
+treatment doesn't do anything,
+
+68
+00:03:29,580 --> 00:03:31,589
+we're going to start with that assumption,
+
+69
+00:03:31,589 --> 00:03:37,490
+the probability of correctly ordering the
+photographs then is 0.5.
+
+70
+00:03:37,490 --> 00:03:41,530
+So, if there's 10 patients, probability of
+0.5,
+
+71
+00:03:41,530 --> 00:03:44,400
+we're on a binomial with an n or 10 and p
+of 0.5.
+
+72
+00:03:44,400 --> 00:03:47,630
+And we want to know what's the chance of
+getting at least 9.
+
+73
+00:03:47,630 --> 00:03:50,380
+Our outcome is getting at least 9 of those
+ordered correctly,
+
+74
+00:03:50,380 --> 00:03:52,790
+that means either 9 or 10.
+
+75
+00:03:52,790 --> 00:03:54,280
+So again we're on a binomial now.
+
+76
+00:03:54,280 --> 00:03:57,730
+We have to recognize this is a binomial,
+which is the tricky part of this problem.
+
+77
+00:03:57,730 --> 00:04:01,563
+We're on a binomial where we have 10
+trials, 10 patients.
+
+78
+00:04:01,563 --> 00:04:05,510
+And each time the dermatologist looks at a
+patient, for
+
+79
+00:04:05,510 --> 00:04:06,560
+each of those patients, they're going to,
+
+80
+00:04:06,560 --> 00:04:08,980
+that dermatologist is going to try to
+order the photos correctly.
+
+81
+00:04:08,980 --> 00:04:11,280
+If the anti aging treatment is really
+ineffective,
+
+82
+00:04:11,280 --> 00:04:12,740
+they have a 0.5 chance of getting it
+right.
+
+83
+00:04:12,740 --> 00:04:14,130
+Purely guessing.
+
+84
+00:04:14,130 --> 00:04:17,440
+So what's the probability that, by purely
+guessing, they could get nine or
+
+85
+00:04:17,440 --> 00:04:19,490
+even do better and get ten right?
+
+86
+00:04:19,490 --> 00:04:23,190
+Well, we have to calculate the probability
+of getting exactly nine right,
+
+87
+00:04:23,190 --> 00:04:26,080
+plus the probability of getting exactly
+ten right.
+
+88
+00:04:26,080 --> 00:04:30,140
+When we calculate these types of
+probabilities we always calculate all the,
+
+89
+00:04:30,140 --> 00:04:33,640
+we always think of the, the probabilities
+in the tail, in the full tail.
+
+90
+00:04:33,640 --> 00:04:37,279
+Because sometimes there's many, many, many
+possibilities in any
+
+91
+00:04:37,279 --> 00:04:39,780
+particular probability, may not have a big
+probability.
+
+92
+00:04:39,780 --> 00:04:43,540
+So we always take, calculate the
+probability of what we observed, and
+
+93
+00:04:43,540 --> 00:04:44,630
+anything more extreme.
+
+94
+00:04:44,630 --> 00:04:46,030
+In, in other words, the entire tail.
+
+95
+00:04:46,030 --> 00:04:49,230
+So, we're going to calculate the
+probability that X equals 9, and
+
+96
+00:04:49,230 --> 00:04:50,560
+the probability that X equals 10.
+
+97
+00:04:50,560 --> 00:04:52,605
+Well, we can just apply the binomial
+formula.
+
+98
+00:04:52,605 --> 00:04:56,950
+So, the probability that X is going to
+equal exactly 9,
+
+99
+00:04:56,950 --> 00:05:00,142
+which is what actually happened in the
+study, would be 10, choose 9,
+
+100
+00:05:00,142 --> 00:05:05,791
+0.5 raised to 9, and 1 minus 0.5, which is
+of course just 0.5, raised to 1.
+
+101
+00:05:05,791 --> 00:05:08,762
+The probability of getting exactly 10
+right,
+
+102
+00:05:08,762 --> 00:05:15,640
+is 10 choose 10 0.5 raised to 10, and then
+0.5 raised to 0 of course just 1.
+
+103
+00:05:15,640 --> 00:05:18,230
+Well we can do out the choosing function
+just for practice.
+
+104
+00:05:18,230 --> 00:05:21,990
+So 10 choose 9 is 10 factorial divided by
+9 factorial times 1 factorial.
+
+105
+00:05:21,990 --> 00:05:24,347
+That's just equal to 10, if you solve it
+out.
+
+106
+00:05:24,347 --> 00:05:26,830
+10 choose 10 is just equal to 1.
+
+107
+00:05:26,830 --> 00:05:29,210
+10 factorial divided by 10 factorial.
+
+108
+00:05:29,210 --> 00:05:30,480
+So we can calculate this out, and
+
+109
+00:05:30,480 --> 00:05:33,950
+the total probability here turns out to be
+1.1%.
+
+110
+00:05:33,950 --> 00:05:38,080
+So, if the anti-aging treatment did
+nothing, that dermatologist would've only
+
+111
+00:05:38,080 --> 00:05:43,930
+have a 1.1% chance of guessing of getting
+at least 9 right.
+
+112
+00:05:43,930 --> 00:05:45,710
+And so that's pretty low, so
+
+113
+00:05:45,710 --> 00:05:49,300
+we might then believe that the anti-aging
+treatment is actually doing something.
+
+114
+00:05:49,300 --> 00:05:52,470
+And this is our introduction to the
+calculation of a P value,
+
+115
+00:05:52,470 --> 00:05:55,330
+which we will start talking about next
+week.
+
+116
+00:05:55,330 --> 00:05:56,520
+But I just want to show you here,
+
+117
+00:05:56,520 --> 00:06:00,360
+I actually did out all the possible
+outcomes, all the probabilities for all
+
+118
+00:06:00,360 --> 00:06:04,750
+the possible outcomes here, just to show
+you the full binomial distribution here.
+
+119
+00:06:04,750 --> 00:06:06,620
+What are your, what are more of the
+possible outcomes.
+
+120
+00:06:06,620 --> 00:06:10,240
+Well, the dermatologist could've gotten
+zero right.
+
+121
+00:06:10,240 --> 00:06:11,900
+In fact, if he got, if he or
+
+122
+00:06:11,900 --> 00:06:15,730
+she got zero right, this means that he
+miss ordered all of them.
+
+123
+00:06:15,730 --> 00:06:20,460
+So that in other words, all of them were
+put post first and pre second.
+
+124
+00:06:20,460 --> 00:06:23,310
+That would suggest that the anti-aging
+treatment actually had
+
+125
+00:06:23,310 --> 00:06:26,510
+a negative effect on wrinkles, increased
+wrinkles.
+
+126
+00:06:27,520 --> 00:06:31,900
+You can get anywhere from zero all the way
+up to ten orderings correct,
+
+127
+00:06:31,900 --> 00:06:34,020
+five is the most common if you're just
+guessing.
+
+128
+00:06:35,020 --> 00:06:37,410
+Then I took the br, binomial
+probabilities, and
+
+129
+00:06:37,410 --> 00:06:40,890
+I calculated the probabilities of each one
+of those outcomes.
+
+130
+00:06:40,890 --> 00:06:42,430
+And notice that if you add those up,
+
+131
+00:06:42,430 --> 00:06:46,135
+they do indeed sum up to one, because one
+of those outcomes has to occur.
+
+132
+00:06:46,135 --> 00:06:49,400
+Another practice problem.
+
+133
+00:06:49,400 --> 00:06:52,580
+Let's say you're conducting a case control
+study of smoking and lung cancer.
+
+134
+00:06:52,580 --> 00:06:58,990
+And the probability that a particular lung
+cancer case is a smoker, is 0.6.
+
+135
+00:06:58,990 --> 00:07:00,800
+You have a group of eight cases.
+
+136
+00:07:01,830 --> 00:07:05,464
+I want to know, this is a binomial
+probability distribution,
+
+137
+00:07:05,464 --> 00:07:09,080
+because each case has the same
+probability, 0.6 of being a smoker.
+
+138
+00:07:09,080 --> 00:07:12,740
+So I want to ask, what's the probability
+that in that group of eight cases,
+
+139
+00:07:12,740 --> 00:07:15,170
+you end up with less than two smokers?
+
+140
+00:07:15,170 --> 00:07:18,100
+What's the probability that you end up
+with more than five?
+
+141
+00:07:18,100 --> 00:07:21,190
+And notice now I'm asking to give the
+probability not for
+
+142
+00:07:21,190 --> 00:07:24,540
+an exact number, but for a range of
+values.
+
+143
+00:07:24,540 --> 00:07:27,950
+That means that you're going to have to
+calculate multiple binomial probabilities.
+
+144
+00:07:27,950 --> 00:07:29,870
+So to calculate the probability of less
+than two,
+
+145
+00:07:29,870 --> 00:07:34,020
+you have to calculate the probability of
+zero, and the probability of one.
+
+146
+00:07:34,020 --> 00:07:36,880
+To calculate more than five, you have to
+calculate the probability of six and
+
+147
+00:07:36,880 --> 00:07:37,750
+seven, and eight.
+
+148
+00:07:37,750 --> 00:07:41,650
+You can see that doing that binomial
+probabilities is a little bit tedious.
+
+149
+00:07:41,650 --> 00:07:42,890
+For the most part,
+
+150
+00:07:42,890 --> 00:07:48,220
+you'll eventually be able to do this on a
+computer or you can, it turns out there's
+
+151
+00:07:48,220 --> 00:07:51,220
+a way to approximate binomials that we're
+going to learn in a future module.
+
+152
+00:07:51,220 --> 00:07:52,990
+But let's do this out here.
+
+153
+00:07:52,990 --> 00:07:55,760
+I actually did out the entire probability
+distribution.
+
+154
+00:07:55,760 --> 00:07:57,370
+Just to remind you that, you know,
+
+155
+00:07:57,370 --> 00:07:59,620
+there's all these different possible
+outcomes here.
+
+156
+00:07:59,620 --> 00:08:01,120
+There's nine different possible outcomes.
+
+157
+00:08:01,120 --> 00:08:05,620
+And we can calcu, calculate the exact
+probability of each different outcome.
+
+158
+00:08:05,620 --> 00:08:08,640
+If we add those probabilities all up, they
+add up to one.
+
+159
+00:08:08,640 --> 00:08:13,140
+So, I've just calculated, I've applied the
+binomial probability formula here,
+
+160
+00:08:13,140 --> 00:08:15,840
+to calculate the probability of all
+possible outcomes here.
+
+161
+00:08:15,840 --> 00:08:17,439
+If you sum those up they add up to one.
+
+162
+00:08:19,240 --> 00:08:22,050
+So, what's the probability of getting less
+than two smokers?
+
+163
+00:08:22,050 --> 00:08:24,350
+That's the probability of getting either 0
+or 1, so
+
+164
+00:08:24,350 --> 00:08:25,850
+we add those two probabilities up.
+
+165
+00:08:25,850 --> 00:08:31,480
+So, from the chart on the previous page is
+was 0.0065 plus 0.008, that
+
+166
+00:08:31,480 --> 00:08:36,460
+turned out to be a probability of 0.865%,
+that we would get less than two smokers.
+
+167
+00:08:36,460 --> 00:08:39,600
+The probability of getting more than five
+smokers is equal to the probability of
+
+168
+00:08:39,600 --> 00:08:42,106
+getting six, plus the probability of
+getting seven,
+
+169
+00:08:42,106 --> 00:08:43,780
+plus the probability of getting eight.
+
+170
+00:08:43,780 --> 00:08:50,400
+When you add those up, you get 31.68%.
+
+171
+00:08:50,400 --> 00:08:55,100
+Now, all probability distributions have an
+expected value and a variance, and
+
+172
+00:08:55,100 --> 00:08:57,770
+the binomial distribution does as well.
+
+173
+00:08:57,770 --> 00:09:01,270
+The expected value is actually pretty easy
+to reason out.
+
+174
+00:09:01,270 --> 00:09:05,850
+Like if I said you flip a coin 100 times,
+what,
+
+175
+00:09:05,850 --> 00:09:08,530
+what's the number of heads that you'd
+expect to get?
+
+176
+00:09:08,530 --> 00:09:10,050
+Everybody will say 50 heads.
+
+177
+00:09:10,050 --> 00:09:13,336
+You don't know why you're saying that,
+you're just kind of well, you know,
+
+178
+00:09:13,336 --> 00:09:16,780
+100 coin flips, 50% chance of heads, or
+
+179
+00:09:16,780 --> 00:09:19,810
+I'm multiplying those together I should
+get 50 heads.
+
+180
+00:09:19,810 --> 00:09:22,130
+So that is the expected value of a
+binomial.
+
+181
+00:09:22,130 --> 00:09:24,740
+You actually are just multiplying n times
+p.
+
+182
+00:09:24,740 --> 00:09:27,210
+And I think makes good Intuitive sense.
+
+183
+00:09:27,210 --> 00:09:29,850
+So the expected value just turns out to be
+n times p, and
+
+184
+00:09:29,850 --> 00:09:32,480
+I think everybody intuitively will buy
+that.
+
+185
+00:09:32,480 --> 00:09:34,980
+Now, the variance is a little bit less
+straight forward, but
+
+186
+00:09:34,980 --> 00:09:41,060
+it turns out that the variance of a
+binomial is n times p times 1 minus p.
+
+187
+00:09:41,060 --> 00:09:44,230
+For those of you who would like the proof
+of that,
+
+188
+00:09:44,230 --> 00:09:47,690
+I'm going to offer that as an optional
+module in a few minutes.
+
+189
+00:09:49,170 --> 00:09:51,390
+For those of you who are less interested
+in this,
+
+190
+00:09:51,390 --> 00:09:53,190
+a little bit of an algebraic proof.
+
+191
+00:09:53,190 --> 00:09:56,070
+I'm going to try to get you to believe
+this,
+
+192
+00:09:56,070 --> 00:09:59,310
+just by showing you some computer
+simulation in a minute.
+
+193
+00:09:59,310 --> 00:10:01,540
+Of course, if the variance is n times p
+times 1 minus p,
+
+194
+00:10:01,540 --> 00:10:03,593
+the standard deviation is the square root
+of that.
+
+195
+00:10:03,593 --> 00:10:07,725
+Now, this n times p times 1 minus p, I
+think, is just an interesting quantity.
+
+196
+00:10:07,725 --> 00:10:12,810
+Because, it has, it's a bounded quantity,
+p times 1 minus p,
+
+197
+00:10:12,810 --> 00:10:16,250
+can only get so big, and I think it's a
+just worth pointing that out.
+
+198
+00:10:16,250 --> 00:10:19,895
+So, if you think of p, p is a number
+between zero and one it's a probability.
+
+199
+00:10:19,895 --> 00:10:23,906
+P times 1 minus p is then a function of p,
+and
+
+200
+00:10:23,906 --> 00:10:30,700
+that function p times 1 minus p has a
+maximum point.
+
+201
+00:10:30,700 --> 00:10:33,960
+It occurs when p, is equal to 0.5.
+
+202
+00:10:33,960 --> 00:10:37,310
+So, these will get bigger and bigger, p
+times 1 minus p, will get bigger and
+
+203
+00:10:37,310 --> 00:10:40,700
+bigger, until, and it will peak at where p
+is equal to 0.5.
+
+204
+00:10:40,700 --> 00:10:42,700
+So you're going to have the most
+variability,
+
+205
+00:10:42,700 --> 00:10:45,620
+in a binomial when p is equal 0.5.
+
+206
+00:10:45,620 --> 00:10:47,060
+One fifty, we have fifty, fifty chance.
+
+207
+00:10:47,060 --> 00:10:50,940
+This occurs of course 0.5 times 0.5 is
+2.5.
+
+208
+00:10:50,940 --> 00:10:53,280
+This occurs, the biggest value you can
+have is a quarter.
+
+209
+00:10:53,280 --> 00:10:57,240
+Where p is 0.5, then p times 1 minus p
+will be 0.25.
+
+210
+00:10:57,240 --> 00:11:01,990
+So that means that the variance of any
+binomial, has to be either equal to or
+
+211
+00:11:01,990 --> 00:11:04,860
+less than n times a quarter.
+
+212
+00:11:04,860 --> 00:11:08,930
+So, a quarter of n is the maximum variance
+any particular binomial can have.
+
+213
+00:11:08,930 --> 00:11:12,620
+So if you're working with a binomial where
+you've got a probability of success that's
+
+214
+00:11:12,620 --> 00:11:16,310
+pretty close to 0.5, and you want to just
+kind of estimate the variance,
+
+215
+00:11:16,310 --> 00:11:20,630
+you could just multiply n times a quarter
+to get a quick estimate of the variance.
+
+216
+00:11:22,500 --> 00:11:23,480
+How would we use this?
+
+217
+00:11:23,480 --> 00:11:26,600
+Why is it useful to know the expected
+value and variance of a binomial?
+
+218
+00:11:26,600 --> 00:11:29,515
+Well, it turns out to be very useful to be
+able to, to know those.
+
+219
+00:11:29,515 --> 00:11:32,930
+because now, you can say what the
+expected, if you know you're on
+
+220
+00:11:32,930 --> 00:11:36,570
+a binomial problem, you can easily
+calculate the expected value.
+
+221
+00:11:36,570 --> 00:11:40,400
+And you can easily put a margin of error
+around that expected value,
+
+222
+00:11:40,400 --> 00:11:41,320
+because you know the variance.
+
+223
+00:11:43,470 --> 00:11:48,140
+So just to apply this expected value and
+variance concept,
+
+224
+00:11:48,140 --> 00:11:53,040
+let's take the problem where you have a
+coin in that your going to flip 100 times.
+
+225
+00:11:53,040 --> 00:11:55,490
+If I asked you, what's the expected value
+of the variance and
+
+226
+00:11:55,490 --> 00:11:58,010
+the standard deviation for the number of
+heads.
+
+227
+00:11:58,010 --> 00:11:59,800
+Again, I think everybody would agree,
+
+228
+00:11:59,800 --> 00:12:04,000
+without knowing anything about binomials,
+that the expected value here should be 50.
+
+229
+00:12:04,000 --> 00:12:08,860
+And indeed if we see this as a binomial
+with a n of 100 and a p of 0.5,
+
+230
+00:12:08,860 --> 00:12:11,579
+if I multiply 100 times 0.5 I get 50.
+
+231
+00:12:11,579 --> 00:12:15,380
+So expected value's easy, what about the
+variance and standard deviation?
+
+232
+00:12:15,380 --> 00:12:19,220
+So the expected value is n times p equals
+fif, 50.
+
+233
+00:12:19,220 --> 00:12:25,750
+The variance is n times p times 1 minus p,
+so that would be 100 times 0.5 times 0.5.
+
+234
+00:12:25,750 --> 00:12:26,990
+That comes out to be 25.
+
+235
+00:12:26,990 --> 00:12:32,150
+Remember I told you, that the cap on
+variance for a binomial is a quarter of n,
+
+236
+00:12:32,150 --> 00:12:36,790
+and that occurs the the biggest, when the
+maximum occurs when you p is 0.5, so
+
+237
+00:12:36,790 --> 00:12:39,750
+the variance here turns out to be exactly
+a quarter of n.
+
+238
+00:12:39,750 --> 00:12:42,240
+If the variance is 25,
+
+239
+00:12:42,240 --> 00:12:44,390
+the standard deviation is the square root
+of that, or 5.
+
+240
+00:12:44,390 --> 00:12:46,560
+So what does this tell us?
+
+241
+00:12:46,560 --> 00:12:48,390
+How is this helpful or useful.
+
+242
+00:12:48,390 --> 00:12:50,660
+Well this tells you that if you flip a
+coin a 100 times,
+
+243
+00:12:50,660 --> 00:12:53,510
+your expecting to get about 50 heads.
+
+244
+00:12:53,510 --> 00:12:56,970
+But of course we know that we're not going
+to get exactly 50 heads every time.
+
+245
+00:12:56,970 --> 00:12:58,800
+We could easily get 49, 48, 51,
+
+246
+00:12:58,800 --> 00:13:03,960
+it's not going to be exactly heads because
+there's some random chance going on here.
+
+247
+00:13:03,960 --> 00:13:07,000
+So what this standard deviation tells us,
+is that we're expecting to
+
+248
+00:13:07,000 --> 00:13:11,030
+get about 50 heads, and the standard
+deviation's a sort of a margin of error.
+
+249
+00:13:11,030 --> 00:13:15,670
+We're expecting to get about 50 heads plus
+or minus 5.
+
+250
+00:13:15,670 --> 00:13:20,675
+And so it would be totally reasonable that
+you could get 45 heads all the way up to
+
+251
+00:13:20,675 --> 00:13:26,890
+55 heads, and even you could even go down
+to 40, and all the way up to 60.
+
+252
+00:13:26,890 --> 00:13:30,350
+Those are all reasonable outcomes, given
+the variability here.
+
+253
+00:13:30,350 --> 00:13:32,020
+Things that get much smaller or
+
+254
+00:13:32,020 --> 00:13:35,380
+much bigger than that, turn out to be
+improbable.
+
+255
+00:13:35,380 --> 00:13:37,470
+So because the standard deviation here is
+5,
+
+256
+00:13:37,470 --> 00:13:42,440
+we're expecting on average to be 5 away
+from 50.
+
+257
+00:13:42,440 --> 00:13:45,770
+Now I told you that if you didn't want to
+see the proof for
+
+258
+00:13:45,770 --> 00:13:49,560
+the variance of the binomial, I would try
+to motivate that
+
+259
+00:13:49,560 --> 00:13:53,800
+n times p times 1 minus p is correct, by
+showing you computer simulation.
+
+260
+00:13:53,800 --> 00:13:57,220
+And we're going to start doing a lot
+computer simulations next week.
+
+261
+00:13:57,220 --> 00:14:01,540
+So this coin problem is just a nice
+problem to start with,
+
+262
+00:14:01,540 --> 00:14:04,330
+to illustrate the concept of a computer
+simulation.
+
+263
+00:14:06,650 --> 00:14:09,030
+So, what all computer simulation means,
+
+264
+00:14:09,030 --> 00:14:13,488
+is that I can have the computer flip coins
+virtually.
+
+265
+00:14:13,488 --> 00:14:18,045
+And I can have the computer figure out the
+expected value and
+
+266
+00:14:18,045 --> 00:14:21,370
+variants, simply by flipping a lot of
+virtual coins.
+
+267
+00:14:21,370 --> 00:14:23,240
+So, this is the logic behind it.
+
+268
+00:14:23,240 --> 00:14:26,230
+I would tell the computer to flip a
+virtual coin 100 times and
+
+269
+00:14:26,230 --> 00:14:27,220
+count up the number of heads.
+
+270
+00:14:27,220 --> 00:14:32,720
+That would give me one trial, one answer
+to the binomial.
+
+271
+00:14:32,720 --> 00:14:35,250
+But then I would do that many, many, many,
+many times.
+
+272
+00:14:35,250 --> 00:14:36,890
+Have the computer do that many, many,
+
+273
+00:14:36,890 --> 00:14:39,468
+many, many times and record all the
+results.
+
+274
+00:14:39,468 --> 00:14:41,700
+The idea is that by doing it many, many,
+
+275
+00:14:41,700 --> 00:14:45,302
+many times, I'm going to see how
+frequently different outcomes occur.
+
+276
+00:14:45,302 --> 00:14:47,640
+How frequently do I get 40 heads?
+
+277
+00:14:47,640 --> 00:14:50,170
+How frequently does, do I get 41 heads?
+
+278
+00:14:50,170 --> 00:14:52,790
+How frequently do I get 70 heads?
+
+279
+00:14:52,790 --> 00:14:55,070
+Do I even ever get 70 heads?
+
+280
+00:14:55,070 --> 00:14:57,300
+So I have the computer repeat this over
+and over and
+
+281
+00:14:57,300 --> 00:15:00,450
+over again, an arbitrarily large number of
+times.
+
+282
+00:15:00,450 --> 00:15:02,622
+And I'm going to, I'm going to try 30,000
+times.
+
+283
+00:15:02,622 --> 00:15:03,490
+Why 30,000?
+
+284
+00:15:03,490 --> 00:15:04,720
+It's totally arbitrary.
+
+285
+00:15:04,720 --> 00:15:08,200
+I just know that 30,000 is a pretty large
+number, but it's not so
+
+286
+00:15:08,200 --> 00:15:09,788
+large that it freezes my computer.
+
+287
+00:15:09,788 --> 00:15:13,800
+So, I'm going to have my computer do this
+30,000 times, and
+
+288
+00:15:13,800 --> 00:15:15,460
+I'm going to plot the results in a
+histogram.
+
+289
+00:15:15,460 --> 00:15:16,220
+And here's the results.
+
+290
+00:15:17,260 --> 00:15:22,670
+So here's what happens when I have the
+computer flip 100 coins, 30,000 times.
+
+291
+00:15:22,670 --> 00:15:25,330
+And every time it flips 100 coins, it
+counts up the number of heads.
+
+292
+00:15:25,330 --> 00:15:29,930
+So what you notice is that the, the most
+common outcome was an outcome of 50,
+
+293
+00:15:29,930 --> 00:15:32,290
+exactly what we expect.
+
+294
+00:15:32,290 --> 00:15:34,600
+That occurred, though, less than 2500
+times.
+
+295
+00:15:35,740 --> 00:15:40,560
+Because you easily, you could easily get
+49 heads, a lot of times we got 51 heads.
+
+296
+00:15:40,560 --> 00:15:43,548
+And you can see as you get down towards
+67, 68 and down towards 33,
+
+297
+00:15:43,548 --> 00:15:44,650
+32, it's peters off.
+
+298
+00:15:44,650 --> 00:15:51,430
+Out of 30,000 times,
+
+299
+00:15:51,430 --> 00:15:54,780
+we never got thing, values that big.
+
+300
+00:15:54,780 --> 00:15:57,490
+So, that tells you that those values occur
+very infrequently, and
+
+301
+00:15:57,490 --> 00:15:59,080
+they're very in, unlikely.
+
+302
+00:16:00,460 --> 00:16:03,330
+If you just look at this graphic, if you
+look at the,
+
+303
+00:16:03,330 --> 00:16:06,120
+all the different outcomes here; the mean
+is 50 as expected.
+
+304
+00:16:06,120 --> 00:16:07,820
+The standard deviation for
+
+305
+00:16:07,820 --> 00:16:11,860
+this data set of 30,000 observations,
+turns out to be exactly five.
+
+306
+00:16:11,860 --> 00:16:13,890
+Exactly what the formula predicted.
+
+307
+00:16:13,890 --> 00:16:15,820
+The other really interesting thing to
+notice here,
+
+308
+00:16:15,820 --> 00:16:19,570
+is that it makes a perfect normal
+distribution.
+
+309
+00:16:19,570 --> 00:16:23,520
+So even though we're talking about a
+binomial distribution,
+
+310
+00:16:24,600 --> 00:16:27,290
+which is a discrete distribution, it turns
+out that in
+
+311
+00:16:27,290 --> 00:16:31,300
+many cases the binomial distribution ends
+up looking like a normal.
+
+312
+00:16:31,300 --> 00:16:36,370
+And in a few modules we're going to see
+that we often approximated a binomial as
+
+313
+00:16:36,370 --> 00:16:37,940
+a normal for that reason.
+
+314
+00:16:37,940 --> 00:16:40,460
+The other thing to notice, is because
+we're on a normal distribution,
+
+315
+00:16:40,460 --> 00:16:44,160
+it's actually pretty much a perfect normal
+distribution, 95% of
+
+316
+00:16:44,160 --> 00:16:47,810
+the observations are expected to fall
+between two standard deviations below,
+
+317
+00:16:47,810 --> 00:16:50,040
+all the way up to 2 standard deviations
+above the mean.
+
+318
+00:16:50,040 --> 00:16:54,220
+And indeed, 95% of these observations fell
+between 40 heads, and
+
+319
+00:16:54,220 --> 00:16:57,340
+60 has two standard deviations below to
+above the mean.
+
+320
+00:16:57,340 --> 00:17:00,138
+So it really is on a perfect normal curve.
+
+321
+00:17:00,138 --> 00:17:04,130
+And this technique again of computer
+simulation,
+
+322
+00:17:04,130 --> 00:17:07,430
+is going to be very useful in the up
+coming weeks of this course.

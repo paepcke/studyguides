@@ -1,0 +1,644 @@
+1
+00:00:08,240 --> 00:00:09,150
+In this next module,
+
+2
+00:00:09,150 --> 00:00:12,120
+I'm going to talk about one of the
+assumptions of linear regression that you
+
+3
+00:00:12,120 --> 00:00:15,970
+really should test if you've got
+continuous predictors in your model.
+
+4
+00:00:15,970 --> 00:00:18,500
+I think it's often an ignored assumption.
+
+5
+00:00:18,500 --> 00:00:21,460
+So when you're reading papers, you should
+look to see whether or
+
+6
+00:00:21,460 --> 00:00:22,590
+not it was tested, and
+
+7
+00:00:22,590 --> 00:00:28,810
+if you're doing your own data analysis, it
+would be important to run this test.
+
+8
+00:00:28,810 --> 00:00:33,110
+This assumption is something called linear
+in the logit, and it's as simple as just
+
+9
+00:00:33,110 --> 00:00:36,030
+when we do a linear regression, remember,
+what do you want to do, of course?
+
+10
+00:00:36,030 --> 00:00:38,160
+When you do a linear regression, you
+want to do the plot.
+
+11
+00:00:38,160 --> 00:00:40,740
+And you want to see if it actually looks
+like a line.
+
+12
+00:00:40,740 --> 00:00:42,570
+This one looks like a line.
+
+13
+00:00:42,570 --> 00:00:44,460
+Here's a scatter plot that doesn't look
+like a line.
+
+14
+00:00:44,460 --> 00:00:46,140
+It actually looks like a quadratic.
+
+15
+00:00:46,140 --> 00:00:49,700
+So, for linear regression, it's really
+easy, because we can just plot x
+
+16
+00:00:49,700 --> 00:00:54,190
+against y, and we can see immediately if
+if looks like the, the scatter plot.
+
+17
+00:00:54,190 --> 00:00:55,255
+Roughly fits a line.
+
+18
+00:00:55,255 --> 00:00:57,370
+For logistic regression,
+
+19
+00:00:57,370 --> 00:01:02,680
+we're still fitting lines, but it's harder
+to draw this graphic.
+
+20
+00:01:02,680 --> 00:01:06,430
+Because the outcome remember, is this
+logit function, and
+
+21
+00:01:06,430 --> 00:01:09,700
+there's no way to directly see the logit
+function.
+
+22
+00:01:09,700 --> 00:01:15,710
+The best you can do is, I did some logit
+plots in the first module for
+
+23
+00:01:15,710 --> 00:01:18,950
+this week, and how I did that, in order to
+be able to do that,
+
+24
+00:01:18,950 --> 00:01:23,040
+I had to group people according to their
+level on the predictor.
+
+25
+00:01:23,040 --> 00:01:26,770
+So I can group people who did the lowest
+number, amount of homework.
+
+26
+00:01:26,770 --> 00:01:30,400
+And you know like the 10 lowest, 10 people
+with the lowest homework time.
+
+27
+00:01:30,400 --> 00:01:33,150
+And then the next 10, and then the next
+10, so
+
+28
+00:01:33,150 --> 00:01:37,400
+I have to somehow group people in order
+that I can calculate the proportion who
+
+29
+00:01:37,400 --> 00:01:43,190
+have had the binary outcome from the
+proportion I can then calculate the logit.
+
+30
+00:01:43,190 --> 00:01:45,470
+If you do that then you can make some
+plots.
+
+31
+00:01:45,470 --> 00:01:48,500
+But, of course, the plot is going to
+depend slightly on how you bend people,
+
+32
+00:01:48,500 --> 00:01:49,600
+how you group people.
+
+33
+00:01:49,600 --> 00:01:53,210
+So I'm going to show you in a minute some
+examples of testing this linear in
+
+34
+00:01:53,210 --> 00:01:55,050
+the logit assumption and you will see that
+I,
+
+35
+00:01:55,050 --> 00:01:59,440
+we'll usually run several different graphs
+with several different bin sizes.
+
+36
+00:01:59,440 --> 00:02:04,330
+So that I can get a sense of the data
+without you know, being too arbitrary.
+
+37
+00:02:04,330 --> 00:02:08,000
+And we're looking for that what we're
+testing is that,
+
+38
+00:02:08,000 --> 00:02:11,470
+if you have a continuous predictor in
+logistic regression.
+
+39
+00:02:11,470 --> 00:02:15,800
+What we're doing is we're fitting a line
+that says, that continuous predictor acts
+
+40
+00:02:15,800 --> 00:02:19,720
+Has a linear relationship, roughly, with
+the logit of the outcome.
+
+41
+00:02:19,720 --> 00:02:21,960
+So you actually want to make that plot as
+best you can, and
+
+42
+00:02:21,960 --> 00:02:26,670
+see if the relationship is really linear
+or if maybe it's not.
+
+43
+00:02:26,670 --> 00:02:30,725
+If it's something else, if the
+relationship looks, you know,
+
+44
+00:02:30,725 --> 00:02:34,194
+quadratic, that means you're going to have
+to model a quadratic variable for x.
+
+45
+00:02:34,194 --> 00:02:36,420
+You're going to put in the x squared into
+the model.
+
+46
+00:02:36,420 --> 00:02:40,030
+Or you might have to transform that
+continuous variable into
+
+47
+00:02:40,030 --> 00:02:41,220
+a categorical variable.
+
+48
+00:02:41,220 --> 00:02:43,910
+It may not be simply fine to just put that
+
+49
+00:02:43,910 --> 00:02:46,775
+continuous predictor directly into the
+model.
+
+50
+00:02:46,775 --> 00:02:49,860
+Notice if you have a binary or
+
+51
+00:02:49,860 --> 00:02:53,304
+a categorical predictor, you do not have
+to worry about this assumption.
+
+52
+00:02:53,304 --> 00:02:57,360
+Because if you have a binary variable, a
+binary predictor,
+
+53
+00:02:57,360 --> 00:02:59,210
+you're only doing a 0, 1.
+
+54
+00:02:59,210 --> 00:03:02,550
+You've got only two dots, therefore, and
+any time you connect two dots,
+
+55
+00:03:02,550 --> 00:03:03,660
+it's automatically a line.
+
+56
+00:03:03,660 --> 00:03:07,460
+If you have a categorical predictor,
+you're going to be dummy coding it, so
+
+57
+00:03:07,460 --> 00:03:08,790
+you're going to have a series of zero
+ones.
+
+58
+00:03:08,790 --> 00:03:12,190
+Those are all going to make lines, so this
+is only a worry when you have a continuous
+
+59
+00:03:12,190 --> 00:03:13,877
+predictor in logistic regression.
+
+60
+00:03:13,877 --> 00:03:16,985
+I want to show you some real examples with
+real data.
+
+61
+00:03:16,985 --> 00:03:22,920
+Various examples where I've had to draw
+linear in the logit plots.
+
+62
+00:03:22,920 --> 00:03:26,780
+This example was from a data set where the
+outcome is heart disease.
+
+63
+00:03:26,780 --> 00:03:29,700
+The predictor that we're looking at here
+called tobacco,
+
+64
+00:03:29,700 --> 00:03:32,740
+this is the number of cigarettes smoked
+per day.
+
+65
+00:03:32,740 --> 00:03:37,760
+And I grouped the data set-up into four
+bins, as well as ten bins,
+
+66
+00:03:37,760 --> 00:03:41,380
+just to give us a sense of the
+relationship between the number of
+
+67
+00:03:41,380 --> 00:03:44,520
+cigarettes per day and the logit of heart
+disease.
+
+68
+00:03:44,520 --> 00:03:48,270
+And again, I have to group people, and
+what I'm graphing here is the,
+
+69
+00:03:48,270 --> 00:03:51,590
+I'm graphing their mean cigarettes per
+day.
+
+70
+00:03:51,590 --> 00:03:55,250
+The mean cigarettes per day for the group
+against the logit for that group.
+
+71
+00:03:55,250 --> 00:03:57,810
+The observed logit for that group.
+
+72
+00:03:57,810 --> 00:04:00,320
+What you can see here is that, for
+
+73
+00:04:00,320 --> 00:04:03,390
+this particular variable, the number of
+cigarettes per day.
+
+74
+00:04:03,390 --> 00:04:05,200
+It does not look linear in the logit.
+
+75
+00:04:05,200 --> 00:04:07,680
+The relationship between cigarettes per
+day, and our,
+
+76
+00:04:07,680 --> 00:04:12,260
+the logit of having heart disease appears
+curvilinear.
+
+77
+00:04:12,260 --> 00:04:14,460
+There appears to be a curved relationship.
+
+78
+00:04:14,460 --> 00:04:16,100
+In both of these graphics, you can see it,
+
+79
+00:04:16,100 --> 00:04:19,120
+that there's sort of a curved relationship
+here.
+
+80
+00:04:19,120 --> 00:04:20,730
+Why is that?
+
+81
+00:04:20,730 --> 00:04:22,850
+Well, think about the variable, cigarettes
+per day.
+
+82
+00:04:22,850 --> 00:04:27,060
+You have a bunch of people who smoke 0
+cigarettes per day and
+
+83
+00:04:27,060 --> 00:04:30,300
+then you got people increasing on their
+cigarettes per day.
+
+84
+00:04:30,300 --> 00:04:33,070
+What you're seeing in this graphic here,
+is when you
+
+85
+00:04:33,070 --> 00:04:36,700
+jump from being a non-smoker to smoking,
+you know, some little amount per day,
+
+86
+00:04:36,700 --> 00:04:40,930
+there's a huge jump in your odds at risk
+getting heart disease.
+
+87
+00:04:40,930 --> 00:04:43,190
+There's a major steep jump, jump.
+
+88
+00:04:43,190 --> 00:04:44,680
+But then there's sort of diminishing
+returns,
+
+89
+00:04:44,680 --> 00:04:46,480
+once you're already a smoker, whether you
+smoke.
+
+90
+00:04:46,480 --> 00:04:48,724
+A couple cigarettes per day, or more, it,
+
+91
+00:04:48,724 --> 00:04:51,580
+your risk does go up but it doesn't go up
+as steeply.
+
+92
+00:04:51,580 --> 00:04:55,592
+And then when you go from being a moderate
+smoker to being a heavy smoker,
+
+93
+00:04:55,592 --> 00:04:58,730
+your risk also goes up but it goes up even
+less steeply.
+
+94
+00:04:58,730 --> 00:05:02,580
+So the relationship is really curved,
+rather than linear.
+
+95
+00:05:02,580 --> 00:05:03,815
+How might you account for this?
+
+96
+00:05:03,815 --> 00:05:07,510
+Probably the best way is to think about
+cigarette smoking as
+
+97
+00:05:07,510 --> 00:05:09,280
+a categorical variable.
+
+98
+00:05:09,280 --> 00:05:13,280
+You might want to model this as non
+smokers versus light to
+
+99
+00:05:13,280 --> 00:05:15,310
+moderate smokers versus heavy smokers.
+
+100
+00:05:15,310 --> 00:05:17,280
+And that might be the best way to actually
+model this.
+
+101
+00:05:17,280 --> 00:05:21,210
+This might be the case where it makes
+sense to treat tobacco smoking
+
+102
+00:05:21,210 --> 00:05:26,580
+cigarettes per day as a categorical
+variable rather than continuous.
+
+103
+00:05:26,580 --> 00:05:29,620
+So that's an example that violated the
+linear in the logit assumption.
+
+104
+00:05:29,620 --> 00:05:32,630
+Here's an example where we're actually
+meeting the linear in the logit
+
+105
+00:05:32,630 --> 00:05:33,840
+assumption pretty well.
+
+106
+00:05:33,840 --> 00:05:38,070
+This was some data I had On women
+athletes.
+
+107
+00:05:38,070 --> 00:05:42,650
+And the outcome variable here is low bone
+mineral density.
+
+108
+00:05:42,650 --> 00:05:45,200
+So, low skeletal strength.
+
+109
+00:05:45,200 --> 00:05:49,400
+It turns out that women athletes sometimes
+don't menstruate normally.
+
+110
+00:05:49,400 --> 00:05:54,810
+And, if you don't have normal menses, that
+actually can reduce your,
+
+111
+00:05:54,810 --> 00:05:58,330
+your skeletal strength, your, your bone
+mineral, bone mineral density.
+
+112
+00:05:58,330 --> 00:05:59,430
+So that, this was the data set.
+
+113
+00:05:59,430 --> 00:06:02,050
+Looking at that, again, I did too many in
+the linear pot so
+
+114
+00:06:02,050 --> 00:06:05,190
+I'm getting a sense depending on how I bin
+things.
+
+115
+00:06:05,190 --> 00:06:07,880
+How many people per group that I'm getting
+the right relationship.
+
+116
+00:06:07,880 --> 00:06:11,280
+So I grouped into about twelve bins, as
+well as five bins, and
+
+117
+00:06:11,280 --> 00:06:14,820
+you can see that there's of course more
+local noise when you have twelve bins.
+
+118
+00:06:14,820 --> 00:06:18,200
+But the pattern looks pretty similar in
+both cases.
+
+119
+00:06:18,200 --> 00:06:20,910
+I would say that this is pretty close to
+fitting lines.
+
+120
+00:06:20,910 --> 00:06:21,870
+Not a perfect line, but
+
+121
+00:06:21,870 --> 00:06:24,980
+it looks like it actually is reasonably
+linear in the logit.
+
+122
+00:06:24,980 --> 00:06:28,990
+In both cases you can imagine kind of a
+drawing a line again with lots of points.
+
+123
+00:06:28,990 --> 00:06:33,660
+There's going to be some local variability
+but essentially that's well fit by a line.
+
+124
+00:06:33,660 --> 00:06:37,030
+So, in this case our predictor variable
+here is
+
+125
+00:06:37,030 --> 00:06:41,486
+the number of menses the number of
+menstral periods per year.
+
+126
+00:06:41,486 --> 00:06:45,260
+So, normal is sort of around 12.
+
+127
+00:06:45,260 --> 00:06:47,870
+A lot of women athletes are having many
+less than that.
+
+128
+00:06:47,870 --> 00:06:51,530
+And it turns out, there is a linear
+relationship here as the number of
+
+129
+00:06:51,530 --> 00:06:57,200
+menstrual periods goes up, from 0 to all
+the way up to normal, 12,
+
+130
+00:06:57,200 --> 00:07:01,960
+the chances, the odds of getting low or
+having low bone density go down.
+
+131
+00:07:01,960 --> 00:07:04,600
+It appears to be well modeled as linear,
+so
+
+132
+00:07:04,600 --> 00:07:08,490
+I could put the number of menstrual cycles
+per year as the predictor variable.
+
+133
+00:07:08,490 --> 00:07:13,940
+And get an odds ratio for every one unit
+increase in menstrual, in menses.
+
+134
+00:07:13,940 --> 00:07:17,970
+How does that decrease my odds of getting
+low bone marrow density?
+
+135
+00:07:17,970 --> 00:07:26,291
+This one seems reasonably modeled as a
+linear variable.

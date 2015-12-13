@@ -1,0 +1,2202 @@
+1
+00:00:05,550 --> 00:00:06,640
+In this next module,
+
+2
+00:00:06,640 --> 00:00:09,400
+I'm going to tell you about different
+strategies that you can use to
+
+3
+00:00:09,400 --> 00:00:13,310
+select the variables that are going to go
+in your final prediction model.
+
+4
+00:00:13,310 --> 00:00:18,300
+So, first of all, before we even talk
+about variable selection,
+
+5
+00:00:18,300 --> 00:00:21,320
+the first step of model building, of
+course, is to understand your data.
+
+6
+00:00:21,320 --> 00:00:23,050
+To know what variables you have in there.
+
+7
+00:00:23,050 --> 00:00:24,990
+To understand their distributions.
+
+8
+00:00:24,990 --> 00:00:28,350
+To make sure you know how much missing
+data that you have.
+
+9
+00:00:28,350 --> 00:00:30,210
+And that you've done something to deal
+with it.
+
+10
+00:00:30,210 --> 00:00:32,418
+It's going to be very important to impute
+missing data,
+
+11
+00:00:32,418 --> 00:00:33,820
+as you're going to see in a minute.
+
+12
+00:00:35,230 --> 00:00:37,860
+You need to decide on how you're going to
+be modeling your predictors.
+
+13
+00:00:37,860 --> 00:00:41,530
+Are you going to be modeling them as
+categorical, as standardized variables,
+
+14
+00:00:41,530 --> 00:00:45,810
+as continuous variables, all the things
+we've talked about.
+
+15
+00:00:45,810 --> 00:00:48,060
+You'll probably want to consider some data
+reduction.
+
+16
+00:00:48,060 --> 00:00:49,890
+So maybe your,
+
+17
+00:00:49,890 --> 00:00:52,830
+some of the variables are going to be too
+hard to measure clinically.
+
+18
+00:00:52,830 --> 00:00:56,450
+And so therefore, they wouldn't be great
+for a clinical prediction model.
+
+19
+00:00:56,450 --> 00:00:59,630
+Or maybe you apply, there might be some
+cases where it's even worth apply,
+
+20
+00:00:59,630 --> 00:01:01,630
+applying some formal data reduction
+techniques,
+
+21
+00:01:01,630 --> 00:01:04,190
+like principal components analysis.
+
+22
+00:01:04,190 --> 00:01:07,950
+But somehow you're going to get your
+variables down to a more manageable set.
+
+23
+00:01:10,420 --> 00:01:13,910
+And then there's a lot of different ways
+we can approach model building, and
+
+24
+00:01:13,910 --> 00:01:16,490
+everybody has slightly different
+preferences.
+
+25
+00:01:16,490 --> 00:01:19,040
+So, you know, it's really great to read
+the literature and
+
+26
+00:01:19,040 --> 00:01:22,340
+see what different people do, but I'm
+going to give you some general strategies
+
+27
+00:01:22,340 --> 00:01:24,425
+that are typically used just to get you
+started.
+
+28
+00:01:24,425 --> 00:01:28,898
+And so you might choose to do your
+prediction modeling with some kind of
+
+29
+00:01:28,898 --> 00:01:33,699
+manual selection, as opposed to an
+automated model building procedure.
+
+30
+00:01:33,699 --> 00:01:36,675
+So, you know, a typical thing that people
+might do is they might do,
+
+31
+00:01:36,675 --> 00:01:39,090
+start with some kind of univariate screen.
+
+32
+00:01:39,090 --> 00:01:42,850
+So you might say, well, all the p-values
+we saw in the delirium example,
+
+33
+00:01:42,850 --> 00:01:47,410
+that if the p-values were greater than
+0.15, we, in univariate models,
+
+34
+00:01:47,410 --> 00:01:48,870
+we're just going to eliminate those
+variables.
+
+35
+00:01:48,870 --> 00:01:53,570
+So some way to, again, get that candidate
+set of predictors down to a smaller set,
+
+36
+00:01:53,570 --> 00:01:55,660
+before we do any further modeling.
+
+37
+00:01:55,660 --> 00:01:58,738
+So that's very typical, you probably
+want to also use some clinical
+
+38
+00:01:58,738 --> 00:02:01,760
+judgment there, about what variables to
+move forward.
+
+39
+00:02:01,760 --> 00:02:03,730
+So then, you're going to enter any
+significant or
+
+40
+00:02:03,730 --> 00:02:05,990
+near significant variables from the
+univariate screen,
+
+41
+00:02:05,990 --> 00:02:08,280
+you're going to put them together into
+some kind of multivariate model.
+
+42
+00:02:08,280 --> 00:02:10,680
+Again, as they did in that delirium
+example.
+
+43
+00:02:10,680 --> 00:02:13,280
+And, you know, especially if we're doing
+manual selection,
+
+44
+00:02:13,280 --> 00:02:17,200
+you're going to use some clinical judgment
+about which variables to move forward.
+
+45
+00:02:17,200 --> 00:02:20,000
+And if there are highly correlated
+predictors that are essentially measuring
+
+46
+00:02:20,000 --> 00:02:23,460
+the same thing, you're probably going to
+want to drop one of them and
+
+47
+00:02:23,460 --> 00:02:25,520
+not enter all, both of those forward.
+
+48
+00:02:25,520 --> 00:02:28,268
+So there's going to be some judgment that
+you make here.
+
+49
+00:02:28,268 --> 00:02:29,830
+Then you're going to put all of those
+variables,
+
+50
+00:02:29,830 --> 00:02:31,690
+again you're putting all those variables
+into a multivariate model,
+
+51
+00:02:31,690 --> 00:02:33,410
+making some judgments.
+
+52
+00:02:33,410 --> 00:02:36,825
+And then once you have that, that big
+multivariate model, then you're
+
+53
+00:02:36,825 --> 00:02:40,160
+going to start manually pruning the
+nonsignificant variables from the model.
+
+54
+00:02:40,160 --> 00:02:42,080
+And people will use different criteria.
+
+55
+00:02:42,080 --> 00:02:43,610
+They might the prune the ones that are
+greater than 0.10,
+
+56
+00:02:43,610 --> 00:02:45,780
+as we saw in the delirium example.
+
+57
+00:02:45,780 --> 00:02:47,273
+Sometimes people will choose 0.05.
+
+58
+00:02:47,273 --> 00:02:52,330
+But you're going to get rid of the
+variables that aren't significant, or, or
+
+59
+00:02:52,330 --> 00:02:55,340
+not, at least, near significantly related
+to the outcome.
+
+60
+00:02:55,340 --> 00:02:57,700
+And there might be some iteration between
+these different steps,
+
+61
+00:02:57,700 --> 00:02:59,610
+if you're doing this manually.
+
+62
+00:02:59,610 --> 00:03:02,080
+At the end of the day, you're going to
+come out with some kind of final model.
+
+63
+00:03:02,080 --> 00:03:04,450
+Of course, you're going to need to
+validate that model, and
+
+64
+00:03:04,450 --> 00:03:08,420
+that's going to be true in all of these,
+when we're building prediction models,
+
+65
+00:03:08,420 --> 00:03:10,020
+we're going to need to validate.
+
+66
+00:03:10,020 --> 00:03:12,590
+Now I'll just tell you that, in validating
+the model,
+
+67
+00:03:12,590 --> 00:03:18,910
+a lot of the internal validation methods,
+which make, reuse the data basically,
+
+68
+00:03:18,910 --> 00:03:25,510
+will involve you having to repeat your
+entire model building strategy again.
+
+69
+00:03:26,680 --> 00:03:29,020
+You won't really have to repeat the
+univariate screen because that will come
+
+70
+00:03:29,020 --> 00:03:30,410
+out the same every time.
+
+71
+00:03:30,410 --> 00:03:32,160
+But any kind of multivariate model and
+
+72
+00:03:32,160 --> 00:03:36,368
+you'll have to repeat, in selection
+procedures, you'll have to repeat again.
+
+73
+00:03:36,368 --> 00:03:39,740
+If you've choose, chosen to do a manual
+selection procedure in
+
+74
+00:03:39,740 --> 00:03:43,690
+your model building, that means you'd have
+to go through those steps again.
+
+75
+00:03:43,690 --> 00:03:47,570
+And so, sometimes if you're doing some
+kind of the internal validation techniques
+
+76
+00:03:47,570 --> 00:03:51,910
+where you have to run through multiple
+iterations of this, that can,
+
+77
+00:03:51,910 --> 00:03:53,200
+can be a little bit more work.
+
+78
+00:03:53,200 --> 00:03:56,311
+So just realize that one of the reasons
+that you'll often see people will
+
+79
+00:03:56,311 --> 00:04:00,049
+choose automated selection procedures for
+their variables is for this very reason.
+
+80
+00:04:00,049 --> 00:04:04,807
+That the validation step involves you
+re-running the whole modeling,
+
+81
+00:04:04,807 --> 00:04:07,704
+model selection procedure on new sample.
+
+82
+00:04:07,704 --> 00:04:11,084
+And so that can be quite difficult if
+you've done manual selection, but
+
+83
+00:04:11,084 --> 00:04:12,488
+still, there are arguments for
+
+84
+00:04:12,488 --> 00:04:16,200
+doing manual selection, because again, it
+builds in more clinical judgement.
+
+85
+00:04:16,200 --> 00:04:21,514
+There's you know, the, there has some
+advantages as well.
+
+86
+00:04:21,514 --> 00:04:24,535
+But you know, commonly you will see that
+people will use some kind of
+
+87
+00:04:24,535 --> 00:04:27,503
+automated selection procedure, especially
+if they're going to be
+
+88
+00:04:27,503 --> 00:04:31,850
+doing internal validation where they have
+to reselect the model multiple times.
+
+89
+00:04:31,850 --> 00:04:32,980
+So how do those work?
+
+90
+00:04:32,980 --> 00:04:35,010
+So basically you're going to probably be,
+
+91
+00:04:35,010 --> 00:04:37,440
+you might be running some kind of
+univariate screen.
+
+92
+00:04:37,440 --> 00:04:39,420
+Sometimes people will not run a univariate
+screen,
+
+93
+00:04:39,420 --> 00:04:42,720
+they'll just choose a set of predictors
+and move them all forward.
+
+94
+00:04:42,720 --> 00:04:45,850
+But usually we're going to be pruning out
+at least some of the variables based on
+
+95
+00:04:45,850 --> 00:04:48,494
+clinical judgement and what things are
+highly correlated, and
+
+96
+00:04:48,494 --> 00:04:50,210
+may, maybe measuring the same thing.
+
+97
+00:04:50,210 --> 00:04:52,890
+We're going to cover the candidate say,
+set of predictors.
+
+98
+00:04:52,890 --> 00:04:56,960
+And then we're going to put them into an
+automated selection procedure in
+
+99
+00:04:56,960 --> 00:04:58,570
+your computer.
+
+100
+00:04:58,570 --> 00:05:02,580
+And, there's different ones, backward,
+forward, stepwise, best subsets.
+
+101
+00:05:02,580 --> 00:05:06,530
+Most common statistical packages will have
+all of those built in.
+
+102
+00:05:06,530 --> 00:05:09,620
+So, you run your regression using
+automated selection.
+
+103
+00:05:09,620 --> 00:05:13,290
+Your computer basically chooses the best
+set of predictors.
+
+104
+00:05:13,290 --> 00:05:16,090
+However, these automated selection
+procedures have a bunch of
+
+105
+00:05:16,090 --> 00:05:17,580
+drawbacks we're going to talk about.
+
+106
+00:05:17,580 --> 00:05:19,540
+You're definitely going to need to
+validate your model.
+
+107
+00:05:19,540 --> 00:05:21,780
+And again, that may involve you going back
+and
+
+108
+00:05:21,780 --> 00:05:26,470
+rerunning those automated selection
+procedures on multiple samples.
+
+109
+00:05:26,470 --> 00:05:29,920
+Now for example, on multiple bootstrap
+samples from your original sample.
+
+110
+00:05:31,670 --> 00:05:32,690
+So let me take a minute here and
+
+111
+00:05:32,690 --> 00:05:35,590
+talk a little bit more about the automated
+selection procedures.
+
+112
+00:05:35,590 --> 00:05:38,530
+They have some important drawbacks that
+you should be aware of.
+
+113
+00:05:38,530 --> 00:05:41,420
+First of all, there're multiple different
+types they come out to
+
+114
+00:05:41,420 --> 00:05:45,090
+be pretty similar as I'll show you in an
+example in a few minutes.
+
+115
+00:05:45,090 --> 00:05:48,760
+But forward just means that you're, the
+way that the model is built is that
+
+116
+00:05:48,760 --> 00:05:52,170
+you start with an empty model and you add
+variable once at a time, and
+
+117
+00:05:52,170 --> 00:05:54,830
+keep them in if they meet some p-value
+criteria.
+
+118
+00:05:54,830 --> 00:05:58,440
+Say, p is less than 0.05 or maybe p is
+less than 0.10.
+
+119
+00:05:58,440 --> 00:06:02,283
+However, you want to set that backward,
+starts with all the variables in
+
+120
+00:06:02,283 --> 00:06:06,160
+the model and then prunes them out if the
+p-value is too high.
+
+121
+00:06:06,160 --> 00:06:08,170
+Stepwise does both of those things, so
+
+122
+00:06:08,170 --> 00:06:12,540
+it's more iterative, it puts some in,
+takes some out, depending on the p-values.
+
+123
+00:06:12,540 --> 00:06:18,250
+So, all of those are available in most of
+your major statistical packages,
+
+124
+00:06:18,250 --> 00:06:22,010
+and they tend to give fairly similar
+results, although not identical.
+
+125
+00:06:23,410 --> 00:06:26,100
+Now the problem with automated selection
+procedures,
+
+126
+00:06:26,100 --> 00:06:28,220
+they have a number of drawbacks.
+
+127
+00:06:28,220 --> 00:06:30,670
+And in fact, if you're doing explanatory
+modeling,
+
+128
+00:06:30,670 --> 00:06:33,280
+I'll recommend that you don't use them at
+all.
+
+129
+00:06:33,280 --> 00:06:34,790
+When we're trying to do explanatory
+modeling, and
+
+130
+00:06:34,790 --> 00:06:37,330
+we're really trying to get at causal
+relationships.
+
+131
+00:06:38,650 --> 00:06:41,610
+These just have so many problems that I
+think that I'd recommend you
+
+132
+00:06:41,610 --> 00:06:45,680
+always do some kind of manual model
+selection procedure.
+
+133
+00:06:45,680 --> 00:06:47,820
+Here are some of the problems with the
+automated selection procedures.
+
+134
+00:06:47,820 --> 00:06:52,750
+So, what you're doing is you are weeding
+through a large set of potential predictor
+
+135
+00:06:52,750 --> 00:06:57,310
+variables and a large set of potential
+combinations of those variables.
+
+136
+00:06:57,310 --> 00:06:59,948
+That is going to mean that you will have
+chance findings.
+
+137
+00:06:59,948 --> 00:07:01,800
+Your type 1 error will be high when you're
+
+138
+00:07:01,800 --> 00:07:04,200
+doing these automated selection
+procedures.
+
+139
+00:07:04,200 --> 00:07:07,208
+I'll show you an example in a minute where
+we can guess that the,
+
+140
+00:07:07,208 --> 00:07:11,960
+the type 1 error rate was about 16% with
+automated selection
+
+141
+00:07:11,960 --> 00:07:14,910
+procedures in a particular simulation,
+I'll show you.
+
+142
+00:07:16,560 --> 00:07:19,410
+So there, the p-values, your p-values are
+going to be underestimated, so
+
+143
+00:07:19,410 --> 00:07:20,890
+your type 1 error is going to be much
+higher.
+
+144
+00:07:20,890 --> 00:07:25,230
+So if you use a p-value cut off of 0.05,
+the true type 1 error might be 16%,
+
+145
+00:07:25,230 --> 00:07:27,722
+the true significance level might be 16%.
+
+146
+00:07:27,722 --> 00:07:30,010
+So your p-values are going to be much too
+small.
+
+147
+00:07:31,290 --> 00:07:33,810
+You're also going to over estimate your
+effect sizes.
+
+148
+00:07:33,810 --> 00:07:37,240
+So all your betas are going to be biased a
+little bit too high.
+
+149
+00:07:37,240 --> 00:07:40,470
+You're going to be a little bit overly
+optimistic.
+
+150
+00:07:40,470 --> 00:07:45,240
+And also you're going to be overfitting
+your model,
+
+151
+00:07:45,240 --> 00:07:50,960
+which just means that you are fitting to
+all the little quirks in your data.
+
+152
+00:07:50,960 --> 00:07:55,250
+Which means if you calculate something
+about how well does your model fit your
+
+153
+00:07:55,250 --> 00:07:59,160
+data points, it's going to look like it
+fits them better than it does.
+
+154
+00:07:59,160 --> 00:08:02,510
+It's going to look like the model is more
+accurate than it actually is.
+
+155
+00:08:02,510 --> 00:08:05,350
+So you're going to get model overfitting.
+
+156
+00:08:05,350 --> 00:08:07,270
+The underestimation of p-values and
+
+157
+00:08:07,270 --> 00:08:11,130
+the overestimation of effect sizes, those
+are important.
+
+158
+00:08:11,130 --> 00:08:15,350
+We most read when we talk about prediction
+models, about the overfitting part.
+
+159
+00:08:15,350 --> 00:08:17,980
+But we're going to try to, in some cases,
+to correct also for
+
+160
+00:08:17,980 --> 00:08:20,360
+the overestimation of the effect sizes.
+
+161
+00:08:20,360 --> 00:08:22,360
+Because all of these things are going on,
+
+162
+00:08:22,360 --> 00:08:24,420
+it's absolutely important that we
+validate.
+
+163
+00:08:24,420 --> 00:08:26,190
+If you're going to use automatic selection
+procedures,
+
+164
+00:08:26,190 --> 00:08:29,920
+you absolutely, absolutely must validate,
+either an internal validation or
+
+165
+00:08:29,920 --> 00:08:30,880
+an external validation.
+
+166
+00:08:32,410 --> 00:08:35,510
+And you should also be aware that there
+are some
+
+167
+00:08:35,510 --> 00:08:40,280
+modern techniques that are being applied
+to automatic selection procedures.
+
+168
+00:08:40,280 --> 00:08:44,430
+That are slight modifications that can
+actually improve all of these things.
+
+169
+00:08:44,430 --> 00:08:46,810
+So, reduce the chances of type 1 errors.
+
+170
+00:08:47,860 --> 00:08:51,310
+Shrink the effect sizes down to more,
+reasonable effect sizes.
+
+171
+00:08:51,310 --> 00:08:55,520
+And, also correct for over-fitting.
+
+172
+00:08:55,520 --> 00:09:00,700
+So one of those modifications that you can
+use is something called shrinkage.
+
+173
+00:09:00,700 --> 00:09:03,220
+And so, the basic steps are the same at
+the beginning.
+
+174
+00:09:03,220 --> 00:09:05,230
+You're going to come up with some
+candidate set of predictors,
+
+175
+00:09:05,230 --> 00:09:07,610
+based on either clinical judgment,
+univariate screen,
+
+176
+00:09:07,610 --> 00:09:09,500
+some combination of those.
+
+177
+00:09:09,500 --> 00:09:12,790
+Then you can apply an automated selection
+procedure with shrinkage.
+
+178
+00:09:12,790 --> 00:09:16,415
+And all shrinkage is, is it's this attempt
+to shrink your
+
+179
+00:09:16,415 --> 00:09:19,070
+beta coefficients to adjust for the fact
+that they're too big.
+
+180
+00:09:19,070 --> 00:09:23,210
+So one very easy way is to apply what's
+called a shrinkage factor.
+
+181
+00:09:23,210 --> 00:09:24,340
+And that would say something like,
+
+182
+00:09:24,340 --> 00:09:29,730
+we're going to multiply all of our beta
+coefficients by 0.8 in order to adjust for
+
+183
+00:09:29,730 --> 00:09:32,520
+the fact that they're a little bit
+overestimated.
+
+184
+00:09:32,520 --> 00:09:35,850
+So they're going to get a little bit
+smaller and a little bit closer to 0.
+
+185
+00:09:35,850 --> 00:09:39,710
+Estimating that shrinkage factor takes a
+little bit of work.
+
+186
+00:09:39,710 --> 00:09:42,490
+But applying it to all the betas is just a
+multiplication thing, so
+
+187
+00:09:42,490 --> 00:09:43,300
+that's not too hard.
+
+188
+00:09:45,290 --> 00:09:49,960
+Penalized maximum likelihood is a way of
+shrinking the coefficients as you
+
+189
+00:09:49,960 --> 00:09:51,000
+estimate them.
+
+190
+00:09:51,000 --> 00:09:53,580
+So, all this means is, remember that the
+way we're running say,
+
+191
+00:09:53,580 --> 00:09:56,119
+logistic regression, is we're fitting some
+kind of likelihood.
+
+192
+00:09:57,140 --> 00:10:01,910
+And what you can do is to the likelihood
+or the, the negative 2 log likelihood,
+
+193
+00:10:01,910 --> 00:10:06,480
+which is actually what we often look at,
+we can subtract some kind of penalty, or
+
+194
+00:10:06,480 --> 00:10:08,880
+add some kind of penalty to that.
+
+195
+00:10:08,880 --> 00:10:14,120
+And that penalty term will then
+automatically shrink the coefficient.
+
+196
+00:10:14,120 --> 00:10:17,120
+So your beta coefficients will come out
+smaller than they would have had you
+
+197
+00:10:17,120 --> 00:10:18,860
+not applied that penalty.
+
+198
+00:10:20,480 --> 00:10:23,120
+There's another procedure called the, the
+Lasso, or
+
+199
+00:10:23,120 --> 00:10:26,180
+the least absolute shrinkage and selection
+operator,
+
+200
+00:10:26,180 --> 00:10:30,840
+that also applies a penalty to the maximum
+likelihood equation.
+
+201
+00:10:30,840 --> 00:10:35,585
+But it not only shrinks the beta, betas,
+but it also prunes some of
+
+202
+00:10:35,585 --> 00:10:39,350
+them out of the model, so it sets some of
+the betas all the way down to zero and
+
+203
+00:10:39,350 --> 00:10:41,280
+drops those variables from the model.
+
+204
+00:10:41,280 --> 00:10:45,752
+So this one's great, because it not only
+corrects the fact that your
+
+205
+00:10:45,752 --> 00:10:49,670
+effect sizes are a little bit too big, but
+it also performs model selection and
+
+206
+00:10:49,670 --> 00:10:53,810
+gets rid of some of variables that, some
+variables that shouldn't be in the model.
+
+207
+00:10:53,810 --> 00:10:55,830
+And of course even when you run these,
+
+208
+00:10:55,830 --> 00:10:58,380
+you're going to need to validate the model
+at the end of the day.
+
+209
+00:10:58,380 --> 00:11:02,090
+I just want to walk you through an example
+where somebody actually applied shrinkage.
+
+210
+00:11:02,090 --> 00:11:03,140
+This is a nice example.
+
+211
+00:11:03,140 --> 00:11:07,390
+It's worth looking at if you're interested
+to get more details about shrinkage.
+
+212
+00:11:07,390 --> 00:11:12,550
+Because they were specifically trying to
+apply shrinkage to some real data to,
+
+213
+00:11:12,550 --> 00:11:14,930
+to show clinicians how to use this
+technique.
+
+214
+00:11:14,930 --> 00:11:17,930
+And I think it's a nicely written paper,
+so I'll refer you there.
+
+215
+00:11:17,930 --> 00:11:22,080
+But basically, they are aiming to build a
+prediction model for pulmonary embolism.
+
+216
+00:11:23,300 --> 00:11:26,380
+Sometimes people come in to the emergency
+room, and
+
+217
+00:11:26,380 --> 00:11:30,250
+they have signs where it, it seems like
+they might have a pulmonary embolism.
+
+218
+00:11:30,250 --> 00:11:33,030
+But we want to know who is really likely
+to have it and
+
+219
+00:11:33,030 --> 00:11:36,710
+needs to be sent on for further testing,
+and who's unlikely to have it.
+
+220
+00:11:36,710 --> 00:11:40,615
+Their data set that they used here was 398
+people.
+
+221
+00:11:40,615 --> 00:11:44,580
+43% of them actually had a pulmonary
+embolism, actually had the event.
+
+222
+00:11:44,580 --> 00:11:47,490
+It's a binary, so we're going to be using
+logistic regression.
+
+223
+00:11:47,490 --> 00:11:52,900
+They had 27 candidate predictors that they
+wanted to test in their model building.
+
+224
+00:11:52,900 --> 00:11:56,190
+So what they did was they performed
+actually three different model
+
+225
+00:11:56,190 --> 00:11:57,919
+strategies just to illustrate how to do
+these things.
+
+226
+00:11:59,280 --> 00:12:03,360
+So the first model strategy, which is at
+the label here, is no shrinkage.
+
+227
+00:12:03,360 --> 00:12:07,990
+They just applied an automatic selection
+procedure to their 27 candidate variables,
+
+228
+00:12:07,990 --> 00:12:12,690
+and they came out with about 13 were
+retained in the model.
+
+229
+00:12:12,690 --> 00:12:17,660
+And here are all the ones that were left
+in the model, these two actually were
+
+230
+00:12:17,660 --> 00:12:21,710
+pruned from the model, did not end up in
+the model, in the final model.
+
+231
+00:12:21,710 --> 00:12:24,160
+So here's all the variables that were
+left, and
+
+232
+00:12:24,160 --> 00:12:27,550
+here are the beta coefficients that were
+
+233
+00:12:27,550 --> 00:12:31,760
+estimated when we just ran a regular old
+logistic regression with no corrections.
+
+234
+00:12:32,760 --> 00:12:35,680
+The area under the curve came out to be
+78%.
+
+235
+00:12:35,680 --> 00:12:36,870
+They then said, okay,
+
+236
+00:12:36,870 --> 00:12:41,160
+let's apply a shrinking factor to all the
+beta coefficients, okay.
+
+237
+00:12:41,160 --> 00:12:43,320
+So that's what they've done here in step
+two.
+
+238
+00:12:43,320 --> 00:12:49,625
+They calculated that their shrinkage
+factor here was 0.71.
+
+239
+00:12:49,625 --> 00:12:53,270
+And I'll refer you to the paper if you
+want more details about how they got that.
+
+240
+00:12:53,270 --> 00:12:57,750
+But I'll just mention that one of the ways
+you can calculate the shrinkage factor is
+
+241
+00:12:57,750 --> 00:12:59,050
+with bootstrapping.
+
+242
+00:12:59,050 --> 00:13:03,710
+And so, that's saying that our, we need to
+shrink all the beta coefficients by 0.71.
+
+243
+00:13:03,710 --> 00:13:06,610
+So to do that, all we have to do is
+multiply the beta coefficients from
+
+244
+00:13:06,610 --> 00:13:08,610
+the original model by 0.71.
+
+245
+00:13:08,610 --> 00:13:11,530
+So 0.19 times0.71 gives us 0.14.
+
+246
+00:13:11,530 --> 00:13:15,880
+0.17 times 0.71 gives us 0.12, and et
+cetera.
+
+247
+00:13:15,880 --> 00:13:18,850
+And so, it's going to have all the same
+variables in the model, but
+
+248
+00:13:18,850 --> 00:13:20,660
+the beta coefficients are shrunk.
+
+249
+00:13:20,660 --> 00:13:24,630
+When we do that, the area under the curve
+shrinks as well.
+
+250
+00:13:24,630 --> 00:13:27,870
+And it goes down to 0.72, so it's telling
+us that our original model,
+
+251
+00:13:27,870 --> 00:13:30,990
+the area under the curve was a little bit
+overly optimistic, too high, and
+
+252
+00:13:30,990 --> 00:13:34,830
+now we've got a better estimate of that
+after we've done shrunk, shrinkage.
+
+253
+00:13:36,200 --> 00:13:40,080
+They then did a penalized maximum
+likelihood estimation.
+
+254
+00:13:40,080 --> 00:13:43,200
+So all they did there is, there's, there's
+an algorithm in the computer.
+
+255
+00:13:43,200 --> 00:13:46,100
+Some statistical packages like R have this
+built in.
+
+256
+00:13:46,100 --> 00:13:48,100
+Others don't have this yet.
+
+257
+00:13:48,100 --> 00:13:51,470
+But there is a, a procedure in there where
+you can say,
+
+258
+00:13:51,470 --> 00:13:55,490
+I want to run this penalized maximum
+likelihood, estimate, estimation.
+
+259
+00:13:55,490 --> 00:13:58,140
+You have to define how big you want that
+penalty to be.
+
+260
+00:13:58,140 --> 00:14:01,275
+But then, in the process of fitting the
+beta coefficients,
+
+261
+00:14:01,275 --> 00:14:04,630
+there's a penalty applied within
+estimation.
+
+262
+00:14:04,630 --> 00:14:07,270
+And so you can see the resulting beta
+coefficients here.
+
+263
+00:14:07,270 --> 00:14:11,710
+Also, you'll notice that, there, there's
+nothing, some, a couple of
+
+264
+00:14:11,710 --> 00:14:16,380
+the variables ended up in this model that
+didn't end up in the other models.
+
+265
+00:14:16,380 --> 00:14:20,470
+The shrinkage here is different depending
+on the beta.
+
+266
+00:14:20,470 --> 00:14:23,450
+So if we just compare the original model,
+the 0.19 to the,
+
+267
+00:14:23,450 --> 00:14:27,270
+what comes out of the penalized maximum
+likelihood estimate, 0.17.
+
+268
+00:14:27,270 --> 00:14:30,180
+This one's shrinkage factor was 0.89, it
+only was shrunk by 11%.
+
+269
+00:14:30,180 --> 00:14:34,580
+However, there was whatever this weta-led
+index is.
+
+270
+00:14:34,580 --> 00:14:37,230
+It had a beta coefficient of 0.17 in the
+original model.
+
+271
+00:14:37,230 --> 00:14:38,290
+It went down to 0.06.
+
+272
+00:14:38,290 --> 00:14:39,680
+So that was shrunk by 65%.
+
+273
+00:14:39,680 --> 00:14:41,080
+So that's all that last column needs.
+
+274
+00:14:41,080 --> 00:14:45,330
+The area under the curve here for this
+model is 0.75.
+
+275
+00:14:45,330 --> 00:14:49,990
+So, here we have two different ways to
+apply shrinkage.
+
+276
+00:14:49,990 --> 00:14:53,250
+There's yet another way of penalizing the
+maximum likelihood estimate,
+
+277
+00:14:53,250 --> 00:14:56,970
+again called the Lasso, where it will
+actually prune some of the model,
+
+278
+00:14:56,970 --> 00:14:59,160
+the variables out of the model at the same
+time.
+
+279
+00:14:59,160 --> 00:15:02,430
+What do we gain by doing this?
+
+280
+00:15:02,430 --> 00:15:06,190
+Well, this picture is trying to get a
+little bit at what you're gaining here.
+
+281
+00:15:06,190 --> 00:15:09,790
+So here is, we've got 20 observations from
+the data set.
+
+282
+00:15:09,790 --> 00:15:13,690
+We take their values and we calculate
+predicted probabilities from them.
+
+283
+00:15:13,690 --> 00:15:18,190
+So this is, this over here is a on the
+y-axis, is predicted probability.
+
+284
+00:15:18,190 --> 00:15:21,180
+So these are just some predicted
+probabilities of individuals from
+
+285
+00:15:21,180 --> 00:15:22,550
+the original data set.
+
+286
+00:15:22,550 --> 00:15:26,390
+So you apply the original full unpenalized
+model to the,
+
+287
+00:15:26,390 --> 00:15:27,860
+to a particular person's values.
+
+288
+00:15:27,860 --> 00:15:31,169
+This person had a really high predicted
+probability of having pulmonary embolism.
+
+289
+00:15:32,220 --> 00:15:33,840
+These are the predictor populations for
+
+290
+00:15:33,840 --> 00:15:36,940
+20 people for the, from the unpenalized
+model.
+
+291
+00:15:36,940 --> 00:15:38,760
+When you apply the penalized model,
+
+292
+00:15:38,760 --> 00:15:42,130
+you'll notice what we do is we ended up
+shrinking those predictor probabilities.
+
+293
+00:15:42,130 --> 00:15:43,240
+They're a little bit closer together.
+
+294
+00:15:43,240 --> 00:15:46,150
+There's a little less variability now.
+
+295
+00:15:46,150 --> 00:15:48,930
+What's that, what that's going to have a,
+
+296
+00:15:48,930 --> 00:15:53,460
+an effect on, basically, is when the
+predicted probabilities are allowed to be,
+
+297
+00:15:53,460 --> 00:15:55,840
+we, we don't have as many extreme
+predicted probabilities.
+
+298
+00:15:55,840 --> 00:15:59,970
+When they're allowed to be a little bit
+more extreme, that can overfit, right?
+
+299
+00:15:59,970 --> 00:16:04,410
+Because you can have, you can be fitting
+predictive probabilities of 0.99.
+
+300
+00:16:04,410 --> 00:16:05,710
+For a percent.
+
+301
+00:16:05,710 --> 00:16:09,040
+And that might just mean that we've over
+fit to that person.
+
+302
+00:16:09,040 --> 00:16:13,150
+So we end up with a little bit less
+extreme predictions over here
+
+303
+00:16:13,150 --> 00:16:13,750
+on the right.
+
+304
+00:16:13,750 --> 00:16:18,640
+All right, one more approach I just
+want to mention here.
+
+305
+00:16:18,640 --> 00:16:22,170
+So you can again kind of get a set of
+candidate predictors and
+
+306
+00:16:22,170 --> 00:16:26,450
+use automated selection, but add onto that
+automated selection some kind of
+
+307
+00:16:26,450 --> 00:16:28,750
+bootstrapping to do variable selection.
+
+308
+00:16:28,750 --> 00:16:31,490
+And I've told you at this point enough
+about bootstrapping that you
+
+309
+00:16:31,490 --> 00:16:33,610
+can follow the logic here.
+
+310
+00:16:33,610 --> 00:16:38,680
+This is a way of selecting the variables
+using a combination of
+
+311
+00:16:38,680 --> 00:16:40,800
+automatic selection with bootstrapping.
+
+312
+00:16:40,800 --> 00:16:42,890
+And then again, here you're going to
+want to validate the model.
+
+313
+00:16:44,590 --> 00:16:45,560
+So here's how this would work.
+
+314
+00:16:45,560 --> 00:16:47,330
+I'm just going to illustrate this with an
+example.
+
+315
+00:16:47,330 --> 00:16:51,635
+So some researchers actually wanted to
+come up with a prediction model for
+
+316
+00:16:51,635 --> 00:16:55,560
+30-day mortality using patients with heart
+attacks.
+
+317
+00:16:55,560 --> 00:16:57,502
+So what's your chance of dying in 30 days
+after you've had a heart attack.
+
+318
+00:16:57,502 --> 00:17:01,872
+They had a sample of 4,911 patients.
+
+319
+00:17:01,872 --> 00:17:04,898
+They had an initial set of 29 candidate
+predictors, okay.
+
+320
+00:17:06,320 --> 00:17:09,890
+So what they did was to do bootstrapping
+to draw bootstrap samples
+
+321
+00:17:09,890 --> 00:17:10,940
+from their original samples.
+
+322
+00:17:10,940 --> 00:17:14,910
+So their original sample has 4,911
+patients in it.
+
+323
+00:17:14,910 --> 00:17:18,910
+They then drew 1,000 bootstrap samples
+from that original sample.
+
+324
+00:17:18,910 --> 00:17:22,460
+So remember, bootstrap samples means I'm
+sampling with replacement.
+
+325
+00:17:22,460 --> 00:17:25,460
+So some observations will appear multiple
+times, and
+
+326
+00:17:25,460 --> 00:17:27,450
+some observations will not appear at all.
+
+327
+00:17:27,450 --> 00:17:30,490
+That way I can come up with 1,000
+different samples.
+
+328
+00:17:30,490 --> 00:17:34,662
+Still they each are sample size of 4,911.
+
+329
+00:17:34,662 --> 00:17:37,622
+So, we still have samples of the same
+size, but
+
+330
+00:17:37,622 --> 00:17:40,782
+the compositions of these samples is
+different.
+
+331
+00:17:40,782 --> 00:17:44,545
+Remember, in any given sample about
+two-thirds of the observations will be in
+
+332
+00:17:44,545 --> 00:17:46,400
+that sample, and about one-thirds of,
+
+333
+00:17:46,400 --> 00:17:49,870
+one-third of the observations will not be
+included in that given sample.
+
+334
+00:17:49,870 --> 00:17:52,720
+So we have 1,000 now, slightly different
+samples.
+
+335
+00:17:52,720 --> 00:17:56,790
+And then, the point of this study was
+actually to illustrate the problems with
+
+336
+00:17:56,790 --> 00:17:58,960
+backward, forward, and stepwise
+regression.
+
+337
+00:17:58,960 --> 00:18:02,830
+So what they did was they actually ran
+backwards, forwards, and
+
+338
+00:18:02,830 --> 00:18:07,290
+stepwise selection on all 1,000 samples.
+
+339
+00:18:07,290 --> 00:18:10,220
+All three algorithms on all 1,000 samples.
+
+340
+00:18:10,220 --> 00:18:14,660
+They used a p-value cut off of 0.05 for
+the automatic selection procedures.
+
+341
+00:18:14,660 --> 00:18:16,766
+It's automatic though, so at least this
+can be done on a computer,
+
+342
+00:18:16,766 --> 00:18:19,510
+it's not like you're having to do this a
+thousand times by hand.
+
+343
+00:18:19,510 --> 00:18:21,400
+All right, so what did they find?
+
+344
+00:18:21,400 --> 00:18:25,660
+So literally what they're doing, they're
+taking these 29 candidate predictors from,
+
+345
+00:18:25,660 --> 00:18:28,410
+they're taking one of the bootstrap
+samples.
+
+346
+00:18:28,410 --> 00:18:32,000
+They are running backwards, forwards, and
+stepwise selection on those
+
+347
+00:18:32,000 --> 00:18:37,720
+29 predictors for a particular bootstrap
+sample, and coming up with three models.
+
+348
+00:18:37,720 --> 00:18:40,390
+And then they're repeating that for all
+1,000 bootstrap samples.
+
+349
+00:18:40,390 --> 00:18:44,340
+So they're coming out with here, 3,000
+different models.
+
+350
+00:18:44,340 --> 00:18:48,610
+What's really interesting is that the
+models that they get from these
+
+351
+00:18:48,610 --> 00:18:51,200
+slightly different samples, remember
+different bootstrap samples you know,
+
+352
+00:18:51,200 --> 00:18:54,800
+share about two-thirds of the observations
+are the same across these.
+
+353
+00:18:56,700 --> 00:18:57,940
+They're slightly different samples, but
+
+354
+00:18:57,940 --> 00:19:00,870
+they're coming out with pretty different
+models.
+
+355
+00:19:00,870 --> 00:19:04,207
+So in red here, it's showing the results
+from the backward selection, in yellow,
+
+356
+00:19:04,207 --> 00:19:06,087
+it's showing from the forward selection,
+and
+
+357
+00:19:06,087 --> 00:19:08,190
+in blue, showing from the stepwise
+selection.
+
+358
+00:19:08,190 --> 00:19:12,460
+And you can see that the three selected
+procedures give pretty similar results.
+
+359
+00:19:12,460 --> 00:19:15,690
+This is just a frequency distribution, a
+histogram, showing you,
+
+360
+00:19:15,690 --> 00:19:18,010
+remember, there were a total of 29
+candidate predictors.
+
+361
+00:19:18,010 --> 00:19:21,690
+They were showing you the final models
+contain anywhere between 8 and
+
+362
+00:19:21,690 --> 00:19:23,120
+19 predictors.
+
+363
+00:19:23,120 --> 00:19:26,650
+How often did those different model sizes
+occur?
+
+364
+00:19:26,650 --> 00:19:32,090
+So, a couple of times, the automatic
+selection procedures in the bootstrap
+
+365
+00:19:32,090 --> 00:19:36,090
+samples about, you know, maybe one, little
+less than 1% of the time,
+
+366
+00:19:36,090 --> 00:19:38,670
+came out with only eight predictors in the
+model.
+
+367
+00:19:38,670 --> 00:19:42,125
+There were a few times, a handful of
+times, where they came out with 18 or
+
+368
+00:19:42,125 --> 00:19:45,000
+19 predictors that were retained in the
+final model.
+
+369
+00:19:45,000 --> 00:19:47,220
+And then we get everything in between.
+
+370
+00:19:47,220 --> 00:19:51,220
+Most commonly, somewhere between 12 and 13
+variables were selected.
+
+371
+00:19:51,220 --> 00:19:54,780
+But you can see there's a lot of variation
+here showing you that if you,
+
+372
+00:19:54,780 --> 00:19:59,050
+you know, there's a lot of chance, a lot
+of noise here.
+
+373
+00:19:59,050 --> 00:20:02,310
+Because just depending on exactly which
+bootstrap sample you've got,
+
+374
+00:20:02,310 --> 00:20:04,500
+you've got a very different final model.
+
+375
+00:20:04,500 --> 00:20:07,940
+And then they went a little even, one step
+further here.
+
+376
+00:20:07,940 --> 00:20:09,640
+This is a very useful graphic.
+
+377
+00:20:09,640 --> 00:20:12,000
+Again showing you backward selection in
+blue.
+
+378
+00:20:12,000 --> 00:20:15,020
+Forward selection in this kind of reddish
+color.
+
+379
+00:20:15,020 --> 00:20:17,490
+And stepwise selection in yellow.
+
+380
+00:20:17,490 --> 00:20:21,050
+Again, the three selection methods giving
+you pretty similar answers when applied to
+
+381
+00:20:21,050 --> 00:20:22,650
+the same sample.
+
+382
+00:20:22,650 --> 00:20:23,570
+But here's what they're showing you.
+
+383
+00:20:23,570 --> 00:20:27,070
+They're showing you, here's the 29
+original predictor variables on
+
+384
+00:20:27,070 --> 00:20:28,650
+the x-axis.
+
+385
+00:20:28,650 --> 00:20:32,168
+And here's the number of times that the
+variables were chosen out of
+
+386
+00:20:32,168 --> 00:20:34,150
+1,000 different samples.
+
+387
+00:20:34,150 --> 00:20:38,820
+So, for example, age was chosen for every
+single bootstrap sample.
+
+388
+00:20:38,820 --> 00:20:41,450
+For every selection procedure, forward,
+backwards and
+
+389
+00:20:41,450 --> 00:20:44,660
+stepwise, age was chosen 1,000 out of
+1,000 times.
+
+390
+00:20:44,660 --> 00:20:47,800
+That tells you that this is a really
+robust predictor, because no matter what
+
+391
+00:20:47,800 --> 00:20:52,720
+the quirks of the particular sample were,
+age was chosen in all of those models.
+
+392
+00:20:52,720 --> 00:20:54,090
+shock, blood pressure,
+
+393
+00:20:54,090 --> 00:20:59,670
+glucose white blood cells were also chosen
+almost in all of the models.
+
+394
+00:20:59,670 --> 00:21:02,390
+Urea was also chosen a pretty high
+percentage of the time,
+
+395
+00:21:02,390 --> 00:21:04,420
+more than 90% of the time.
+
+396
+00:21:04,420 --> 00:21:07,920
+So, that's telling you that there are some
+variables which are clearly related to
+
+397
+00:21:07,920 --> 00:21:09,240
+the outcome of mortality here.
+
+398
+00:21:09,240 --> 00:21:13,002
+That even chance differences in what made
+it into the sample doesn't make
+
+399
+00:21:13,002 --> 00:21:13,983
+a huge difference.
+
+400
+00:21:13,983 --> 00:21:17,517
+However, if you look at the other side of
+this distribution curve,
+
+401
+00:21:17,517 --> 00:21:21,299
+what you see is there's a whole bunch of
+variables where they made it into
+
+402
+00:21:21,299 --> 00:21:25,639
+the model a couple of times, you know, 10%
+of the time, 20% of the time, but
+
+403
+00:21:25,639 --> 00:21:27,986
+they didn't make it into most of the
+model.
+
+404
+00:21:27,986 --> 00:21:31,148
+That said, by chance, they can make it
+into a model, here or
+
+405
+00:21:31,148 --> 00:21:33,142
+there, pretty easily.
+
+406
+00:21:33,142 --> 00:21:34,920
+But this is probably not robust.
+
+407
+00:21:34,920 --> 00:21:36,870
+It's probably just that they're making it
+in by chance,
+
+408
+00:21:36,870 --> 00:21:39,320
+because we have a high chance of a type 1
+error here.
+
+409
+00:21:39,320 --> 00:21:43,290
+So this just gives you a sense that these
+automatic selection procedures do
+
+410
+00:21:43,290 --> 00:21:46,070
+have a lot of problems, because you're
+getting a lot of different answers.
+
+411
+00:21:46,070 --> 00:21:49,360
+And depending on exactly the sample you've
+got, sometimes the variable's included,
+
+412
+00:21:49,360 --> 00:21:50,590
+and sometimes it's not included.
+
+413
+00:21:50,590 --> 00:21:53,680
+So a lot of the variables that end up in
+the final model may not be robust.
+
+414
+00:21:55,410 --> 00:21:59,510
+And, when they counted up how many
+different final models they had, so
+
+415
+00:21:59,510 --> 00:22:01,560
+when just looking at backwards selection
+only.
+
+416
+00:22:01,560 --> 00:22:04,600
+Out of the 1,000 different bootstrap
+samples that they applied backwards
+
+417
+00:22:04,600 --> 00:22:09,600
+selection to, they came up with 940
+different final models.
+
+418
+00:22:09,600 --> 00:22:11,870
+Now this is not talking about differences
+in the beta coefficients.
+
+419
+00:22:11,870 --> 00:22:16,350
+This is just talking about which variables
+out of those 29 were selected for
+
+420
+00:22:16,350 --> 00:22:17,350
+the final model.
+
+421
+00:22:17,350 --> 00:22:21,580
+So they came out with 940 different
+combinations of variables, out of 1,000.
+
+422
+00:22:21,580 --> 00:22:25,560
+So that tells you that you can get quite
+different models, this is telling you
+
+423
+00:22:25,560 --> 00:22:28,560
+a little bit about the instability of
+these automatic selection procedures,
+
+424
+00:22:28,560 --> 00:22:30,890
+which again was the point of this paper.
+
+425
+00:22:30,890 --> 00:22:35,020
+They then not only did that, but they
+added a random noise variable.
+
+426
+00:22:35,020 --> 00:22:39,680
+So in, to that candidate set of 29
+predictors, they added a couple of
+
+427
+00:22:39,680 --> 00:22:45,150
+variables which were just noise, that they
+knew were not at all related to mortality.
+
+428
+00:22:45,150 --> 00:22:49,240
+They wanted to know how often would those
+make it in, with a p of 0.05,
+
+429
+00:22:49,240 --> 00:22:53,040
+less than 0.05, would make it in to some
+final models?
+
+430
+00:22:53,040 --> 00:22:55,620
+So it turned out that 16% of the time,
+
+431
+00:22:55,620 --> 00:22:58,580
+those noise variables appeared in 16% of
+the models.
+
+432
+00:22:58,580 --> 00:23:01,680
+So they didn't have a less than 5% chance
+of appearing in those models,
+
+433
+00:23:01,680 --> 00:23:04,590
+they had a 16% chance of appearing in
+those models.
+
+434
+00:23:04,590 --> 00:23:08,880
+So we had about a 16% chance of false
+positives here, not a 5% chance.
+
+435
+00:23:08,880 --> 00:23:11,620
+So that tells you that our type 1 error
+rate is somewhere, you know,
+
+436
+00:23:11,620 --> 00:23:14,080
+that our significance level is really
+around 16%,
+
+437
+00:23:14,080 --> 00:23:16,290
+even though we used a p-value cutoff of
+0.05.
+
+438
+00:23:16,290 --> 00:23:19,250
+So that's really useful to understand.
+
+439
+00:23:19,250 --> 00:23:22,382
+If you look back to this graph here, you
+can see that, you know,
+
+440
+00:23:22,382 --> 00:23:24,750
+16% is a 160 out of 1,000.
+
+441
+00:23:24,750 --> 00:23:29,260
+A lot of variables had appeared in about
+16% of the models, and
+
+442
+00:23:29,260 --> 00:23:30,310
+these are the real variables.
+
+443
+00:23:30,310 --> 00:23:34,410
+These are actual variables that appeared
+in about 16% of the models.
+
+444
+00:23:34,410 --> 00:23:37,530
+You can be sure that these variables are
+probably just noise variables and
+
+445
+00:23:37,530 --> 00:23:39,450
+actually have no relationship to
+mortality.
+
+446
+00:23:40,940 --> 00:23:45,250
+Now, as I mentioned, six predictors were
+selected in more than 90% of the models,
+
+447
+00:23:45,250 --> 00:23:48,220
+so that suggests that those are really
+robust predictors.
+
+448
+00:23:48,220 --> 00:23:51,430
+So, you could actually use this setup of
+combining automatic
+
+449
+00:23:51,430 --> 00:23:53,308
+selection with bootstrapping.
+
+450
+00:23:53,308 --> 00:23:55,705
+You probably want to pick only one of
+backward, forward, or
+
+451
+00:23:55,705 --> 00:23:57,400
+stepwise, you don't need to do all three.
+
+452
+00:23:57,400 --> 00:23:58,920
+But you could do one of those and
+
+453
+00:23:58,920 --> 00:24:01,960
+you could, you would figure out which were
+the really robust variables.
+
+454
+00:24:01,960 --> 00:24:05,310
+So variables that were included in say,
+more than 90% of the models.
+
+455
+00:24:05,310 --> 00:24:08,200
+Or sometimes people will use cutoffs of
+more than 80% or
+
+456
+00:24:08,200 --> 00:24:10,400
+even more than 60% or 70%.
+
+457
+00:24:10,400 --> 00:24:12,270
+You could use some cutoff and say,
+
+458
+00:24:12,270 --> 00:24:15,450
+well, all of those variables are pretty
+robust because they were selected a lot.
+
+459
+00:24:15,450 --> 00:24:17,740
+So they're unlikely to be just chance
+findings, so
+
+460
+00:24:17,740 --> 00:24:21,840
+you then choose those variables and you
+put those variables into your final model.
+
+461
+00:24:21,840 --> 00:24:25,500
+So you could use, also use this
+combination of automatic selection and
+
+462
+00:24:25,500 --> 00:24:27,650
+bootstrapping for variable selection.

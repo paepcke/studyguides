@@ -1,0 +1,1676 @@
+1
+00:00:05,630 --> 00:00:09,710
+So I've told you how to test for
+interactions in the logistic regression
+
+2
+00:00:09,710 --> 00:00:14,000
+model and see whether the interacting
+terms are statistically significant.
+
+3
+00:00:14,000 --> 00:00:17,360
+What I haven't told you is how to
+calculate effect sizes or
+
+4
+00:00:17,360 --> 00:00:19,270
+odds ratios in the presence of
+interaction.
+
+5
+00:00:19,270 --> 00:00:20,709
+So that's what we're going to do in this
+module.
+
+6
+00:00:23,650 --> 00:00:26,590
+So this module will get into some math
+derivations.
+
+7
+00:00:26,590 --> 00:00:28,190
+I think they're, really fun.
+
+8
+00:00:28,190 --> 00:00:29,300
+They're a good challenge.
+
+9
+00:00:29,300 --> 00:00:30,710
+Hopefully you'll enjoy them too.
+
+10
+00:00:30,710 --> 00:00:32,550
+But, there is a little bit of math.
+
+11
+00:00:32,550 --> 00:00:35,840
+And so I am going to be throwing up a lot
+of exponentials.
+
+12
+00:00:35,840 --> 00:00:40,630
+And I just want to quickly remind you that
+if you have something like this,
+
+13
+00:00:40,630 --> 00:00:43,630
+an exponential function raised to a sum.
+
+14
+00:00:43,630 --> 00:00:49,570
+That is the same as e raised to e, a,
+times e raised to b, times e raised to c.
+
+15
+00:00:49,570 --> 00:00:53,090
+I might jump between the two of these
+quite quickly, so
+
+16
+00:00:53,090 --> 00:00:55,890
+if you haven't thought about the way that
+exponentials work in a while you
+
+17
+00:00:55,890 --> 00:00:58,830
+might just want to quickly review that in
+preparations for
+
+18
+00:00:58,830 --> 00:01:00,460
+the derivations in this module.
+
+19
+00:01:02,560 --> 00:01:04,700
+So the example I'm going to be referring
+to in this module,
+
+20
+00:01:04,700 --> 00:01:09,310
+which we're going to use for some practice
+data, to figure out how to do, calculate
+
+21
+00:01:09,310 --> 00:01:12,820
+odds ratios when we have interaction
+terms, is a rather fun data set.
+
+22
+00:01:12,820 --> 00:01:16,440
+It's actually quite challenging, much more
+challenging than the data set you're
+
+23
+00:01:16,440 --> 00:01:17,750
+going to have to deal with for your
+homework.
+
+24
+00:01:18,830 --> 00:01:20,680
+So this was a study that was,
+
+25
+00:01:20,680 --> 00:01:23,890
+it was a population-based study about
+seven, 800 women.
+
+26
+00:01:23,890 --> 00:01:27,040
+The outcome variable was annual
+mammography use.
+
+27
+00:01:27,040 --> 00:01:29,440
+So if you went and got your annual
+mammography,
+
+28
+00:01:29,440 --> 00:01:32,720
+you get a yes on this variable, if you
+didn't, if you weren't good about the,
+
+29
+00:01:32,720 --> 00:01:35,220
+that annual screening, you get a no.
+
+30
+00:01:35,220 --> 00:01:37,400
+So we have a binary outcome variable.
+
+31
+00:01:37,400 --> 00:01:40,570
+The authors were interested in sort of two
+different predictors.
+
+32
+00:01:40,570 --> 00:01:44,590
+So one, they thought that women who
+worried a lot about breast
+
+33
+00:01:44,590 --> 00:01:50,320
+cancer might be more likely go get their
+mano-, mammographies every year,
+
+34
+00:01:50,320 --> 00:01:53,100
+because if you're worried about it, you
+might want that screening.
+
+35
+00:01:53,100 --> 00:01:56,720
+Or they also thought it was potentially
+uh,the case that if you were
+
+36
+00:01:56,720 --> 00:02:01,220
+really worried, that you might actually be
+less likely to go get your mammographies,
+
+37
+00:02:01,220 --> 00:02:03,200
+maybe you just don't even want to think
+about it or
+
+38
+00:02:03,200 --> 00:02:05,790
+deal with it because you're just so
+worried about it.
+
+39
+00:02:05,790 --> 00:02:07,910
+So, it could kind of go in either
+direction.
+
+40
+00:02:07,910 --> 00:02:08,720
+So, they looked at worry.
+
+41
+00:02:08,720 --> 00:02:11,460
+The way they measured worry was as a
+continuous variable that
+
+42
+00:02:11,460 --> 00:02:14,220
+ranged from a value of negative 6 to a
+value of positive 6.
+
+43
+00:02:14,220 --> 00:02:16,450
+It was a nice, normally-distributed
+variable.
+
+44
+00:02:17,560 --> 00:02:20,400
+They also looked at family history.
+
+45
+00:02:20,400 --> 00:02:24,740
+So, if you're a woman who has had a family
+member who's had breast cancer,
+
+46
+00:02:24,740 --> 00:02:28,410
+you might be more likely to go in for
+those, that annual screening.
+
+47
+00:02:28,410 --> 00:02:30,830
+So they wanted to look at the effects of
+family history.
+
+48
+00:02:30,830 --> 00:02:34,900
+And then they were also interested in
+looking at to see if there was
+
+49
+00:02:34,900 --> 00:02:40,060
+an interaction between family history and
+worry, because maybe whether or
+
+50
+00:02:40,060 --> 00:02:43,760
+not you have a background of having a
+family history, maybe that
+
+51
+00:02:43,760 --> 00:02:48,070
+influences the effect of worry on whether
+or not you're likely to get a mammography.
+
+52
+00:02:48,070 --> 00:02:49,610
+So complicated picture here.
+
+53
+00:02:49,610 --> 00:02:53,730
+And I'll show you the results that they've
+presented in their paper.
+
+54
+00:02:53,730 --> 00:02:57,440
+So this, these are the results from a
+logistic regression model
+
+55
+00:02:57,440 --> 00:03:00,040
+that included the following things.
+
+56
+00:03:00,040 --> 00:03:03,540
+It included family history, that's, you
+are either a high-risk woman or
+
+57
+00:03:03,540 --> 00:03:07,180
+a low-risk woman, is the other way they
+talked about it in the paper.
+
+58
+00:03:07,180 --> 00:03:11,060
+Included age, included worry, this
+continuous worry variable, huff.
+
+59
+00:03:11,060 --> 00:03:12,220
+But now it gets interesting.
+
+60
+00:03:12,220 --> 00:03:15,280
+It also include a worry squared term.
+
+61
+00:03:15,280 --> 00:03:18,920
+That is essentially worry interacting with
+itself.
+
+62
+00:03:18,920 --> 00:03:23,790
+And it included this interaction between
+worry and family history.
+
+63
+00:03:23,790 --> 00:03:25,110
+And there's actually good reason for
+
+64
+00:03:25,110 --> 00:03:29,650
+including both of those interacting terms
+in the model, yeah, which I'm
+
+65
+00:03:29,650 --> 00:03:33,800
+going to show you in the minute, the, the
+picture that was included with the study.
+
+66
+00:03:33,800 --> 00:03:38,020
+So there's a good reason to include those
+because of the graphical display of
+
+67
+00:03:38,020 --> 00:03:41,350
+the data that the authors were nice enough
+to put in their paper.
+
+68
+00:03:41,350 --> 00:03:44,270
+Now what's a little confusing here is that
+the author has
+
+69
+00:03:44,270 --> 00:03:48,230
+presented single odds ratios for all these
+interac- all these variables that
+
+70
+00:03:48,230 --> 00:03:51,300
+are involved in an interaction; that's
+family history and worry.
+
+71
+00:03:51,300 --> 00:03:56,750
+They've said, oh, well the odds ratio for
+family history is 1.14, the odds ratio for
+
+72
+00:03:56,750 --> 00:03:59,630
+worry is .96, etc.
+
+73
+00:03:59,630 --> 00:04:05,350
+In fact, the whole idea of an interaction,
+if there are interactions in the model,
+
+74
+00:04:05,350 --> 00:04:09,890
+that means that there is not a single odds
+ratio for either family history or
+
+75
+00:04:09,890 --> 00:04:13,025
+worry and so it's kind of misleading.
+
+76
+00:04:13,025 --> 00:04:16,960
+It's not quite right way to present the
+data here to present a single odds ratio.
+
+77
+00:04:16,960 --> 00:04:19,390
+There are actually multiple odds ratio for
+family history and
+
+78
+00:04:19,390 --> 00:04:20,592
+multiple odds ratios for worry.
+
+79
+00:04:20,592 --> 00:04:23,370
+And that gets really confusing because
+they've presented odds ratios for
+
+80
+00:04:23,370 --> 00:04:26,956
+the interacting term, which really have,
+actually, no meaning.
+
+81
+00:04:26,956 --> 00:04:31,850
+So we probably would've been better off
+presenting betas in this case, or
+
+82
+00:04:31,850 --> 00:04:35,100
+doing the little exercise that we're about
+to go through, to, to get a sense of,
+
+83
+00:04:35,100 --> 00:04:38,270
+to calculate the fact that there are
+multiple odds ratios.
+
+84
+00:04:38,270 --> 00:04:41,250
+For the purposes of this exercise I'll
+just note we're not really going to
+
+85
+00:04:41,250 --> 00:04:44,290
+pay attention to which of these came out
+to be significant.
+
+86
+00:04:44,290 --> 00:04:49,060
+In fact, only age and worry squared turned
+out to be statistically significant here.
+
+87
+00:04:49,060 --> 00:04:54,164
+We want to calculate the, the correct odds
+ratios and
+
+88
+00:04:54,164 --> 00:04:59,848
+the odds ratios in, if, if it even comes
+out to be 1.0,
+
+89
+00:04:59,848 --> 00:05:04,653
+the effect size is important even if it's
+null.
+
+90
+00:05:04,653 --> 00:05:07,727
+So we want to know what the effect size is
+regardless of whether or
+
+91
+00:05:07,727 --> 00:05:09,733
+not it's statistically significant.
+
+92
+00:05:09,733 --> 00:05:10,485
+So in a minute I'm going to walk you
+through the exercise of
+
+93
+00:05:10,485 --> 00:05:11,301
+actually calculating what are these odds
+ratios supposed to
+
+94
+00:05:11,301 --> 00:05:11,949
+be because there isn't a single odds
+ratio.
+
+95
+00:05:11,949 --> 00:05:12,570
+It's going to involve a little bit of
+math.
+
+96
+00:05:12,570 --> 00:05:17,470
+But I just want to show you that one of
+the reasons that I chose to, to use this
+
+97
+00:05:17,470 --> 00:05:21,620
+paper as an example is because the authors
+presented this wonderful graphic, and
+
+98
+00:05:21,620 --> 00:05:23,660
+I'm a sucker for good graphics.
+
+99
+00:05:23,660 --> 00:05:27,070
+So what they did to produce this graphic,
+I mean, this graphic essentially tells
+
+100
+00:05:27,070 --> 00:05:31,170
+the whole story in a way, I might even
+suggest that we don't
+
+101
+00:05:31,170 --> 00:05:36,600
+try to give effect sizes in any other way
+than potentially to present the betas from
+
+102
+00:05:36,600 --> 00:05:40,240
+the logistic regression and the graphic
+and not even try to go to odds ratios.
+
+103
+00:05:40,240 --> 00:05:43,250
+You're going to see it gets confusing when
+we get to odds ratios.
+
+104
+00:05:43,250 --> 00:05:44,550
+This graphic is just beautiful.
+
+105
+00:05:44,550 --> 00:05:48,040
+So this is showing you the worry on the
+x-axis.
+
+106
+00:05:48,040 --> 00:05:50,820
+The rate of mammography use on the y-axis.
+
+107
+00:05:50,820 --> 00:05:52,230
+And there's two groups.
+
+108
+00:05:52,230 --> 00:05:53,580
+This is the high-risk group.
+
+109
+00:05:53,580 --> 00:05:55,890
+This is the women who have a family
+history, so
+
+110
+00:05:55,890 --> 00:05:59,360
+their family history value is equal to
+one.
+
+111
+00:05:59,360 --> 00:06:01,820
+This is the low-risk group, the dotted
+line is the low-risk group.
+
+112
+00:06:01,820 --> 00:06:04,840
+Their family history value is equal to
+zero.
+
+113
+00:06:04,840 --> 00:06:08,480
+Authors call them average risk because
+they're just at normal risk for
+
+114
+00:06:08,480 --> 00:06:09,655
+women in the population.
+
+115
+00:06:09,655 --> 00:06:13,070
+And what they did to make this graphic is,
+
+116
+00:06:13,070 --> 00:06:18,930
+remember we have to looked at grouped data
+in order to make any kind of graphic here,
+
+117
+00:06:18,930 --> 00:06:23,510
+because it's every woman either has her
+annual mammography or she doesn't, so
+
+118
+00:06:23,510 --> 00:06:26,680
+it's a one zero variable but what they've
+plotted here is the percent of women.
+
+119
+00:06:26,680 --> 00:06:30,090
+So what they did is that each level worry,
+at each one unit different level of
+
+120
+00:06:30,090 --> 00:06:35,180
+worry they looked at all the women say,
+who had a worry of negative five in both
+
+121
+00:06:35,180 --> 00:06:40,000
+of these groups, and they just said if
+there was 100 women in this group and,
+
+122
+00:06:40,000 --> 00:06:43,980
+you know, 55 of them had their annual
+mammography, then they plotted 55%.
+
+123
+00:06:43,980 --> 00:06:48,000
+So that group had a 55% rate of
+mammography use.
+
+124
+00:06:48,000 --> 00:06:50,390
+This group here was a little bit higher
+than that at about 60%.
+
+125
+00:06:50,390 --> 00:06:53,250
+And they plotted that for each different
+level of worry.
+
+126
+00:06:53,250 --> 00:06:55,520
+So this, these dots represent grouped
+data.
+
+127
+00:06:55,520 --> 00:06:56,350
+A group of women,
+
+128
+00:06:56,350 --> 00:07:01,650
+what was their uh,mammography rate for a
+given level of worry in these two groups.
+
+129
+00:07:01,650 --> 00:07:03,540
+And the graphic is just beautiful.
+
+130
+00:07:03,540 --> 00:07:06,610
+Hopefully, I'm going to assume, although
+the others don't tell us in the paper,
+
+131
+00:07:06,610 --> 00:07:09,680
+I'm going to assume that where these
+curves came from was that they
+
+132
+00:07:09,680 --> 00:07:14,000
+actually drew the curve by, based on the
+logistic regression model.
+
+133
+00:07:14,000 --> 00:07:15,880
+That would be the way that you should do
+this.
+
+134
+00:07:15,880 --> 00:07:18,970
+So I'm just going to assume that these
+curves represent the curves from
+
+135
+00:07:18,970 --> 00:07:20,820
+the logistic regression model.
+
+136
+00:07:20,820 --> 00:07:22,428
+And what you can see here is,
+
+137
+00:07:22,428 --> 00:07:27,453
+here's the reason they put a worry squared
+term in the model, is that graphically,
+
+138
+00:07:27,453 --> 00:07:31,690
+you can see that there is a quadratic
+relationship with worry.
+
+139
+00:07:31,690 --> 00:07:35,100
+So if you're super un-worried, that's at
+the negative end of things,
+
+140
+00:07:35,100 --> 00:07:37,218
+ou're less likely to get your mammography.
+
+141
+00:07:37,218 --> 00:07:40,518
+It kind of goes up as you get more
+worried, and then as you get more,
+
+142
+00:07:40,518 --> 00:07:43,488
+even more worried, as you get in the kind
+of severe end of worry,
+
+143
+00:07:43,488 --> 00:07:45,830
+you're less likely to get mammography.
+
+144
+00:07:45,830 --> 00:07:48,820
+So again, maybe women who are very worried
+just don't want to even deal with or
+
+145
+00:07:48,820 --> 00:07:51,990
+think about it and they don't go in for
+those annual mammographies.
+
+146
+00:07:53,020 --> 00:07:59,490
+The curve, the relationship, the curve
+between worry and rate of mammography use,
+
+147
+00:07:59,490 --> 00:08:03,300
+differ somewhat among those with a high
+risk and those with a low risk.
+
+148
+00:08:03,300 --> 00:08:05,070
+You can see that the two curves are
+actually,
+
+149
+00:08:05,070 --> 00:08:07,730
+the shapes of those curves are actually
+somewhat different.
+
+150
+00:08:07,730 --> 00:08:09,810
+It turns out that the difference between
+these two curves is
+
+151
+00:08:09,810 --> 00:08:13,520
+not statistically significant, as we saw
+from the logistic regression model but
+
+152
+00:08:13,520 --> 00:08:15,830
+they are somewhat different.
+
+153
+00:08:15,830 --> 00:08:17,210
+This is not a logic plot.
+
+154
+00:08:17,210 --> 00:08:19,210
+This is just plotting the percentage in
+each group.
+
+155
+00:08:19,210 --> 00:08:23,310
+So, this isn't directly from the logistic
+regression model.
+
+156
+00:08:23,310 --> 00:08:26,070
+But that shows you the general
+relationship here, and
+
+157
+00:08:26,070 --> 00:08:30,790
+that's going to probably translate to
+something similar in the logistic model.
+
+158
+00:08:30,790 --> 00:08:33,430
+In a way, again, if you just look at the
+picture you
+
+159
+00:08:33,430 --> 00:08:37,580
+kind of get exactly what the logistic
+regression model is telling us.
+
+160
+00:08:37,580 --> 00:08:40,880
+But now I actually want to go back and
+figure out the odds ratios.
+
+161
+00:08:40,880 --> 00:08:44,530
+How do you calculate those odds ratios in
+the presence of interaction?
+
+162
+00:08:44,530 --> 00:08:49,570
+And this is going to be a hard problem
+because we have three things going on here
+
+163
+00:08:49,570 --> 00:08:52,380
+that make this problem tougher than the
+one that I will give you for
+
+164
+00:08:52,380 --> 00:08:53,270
+your homework.
+
+165
+00:08:53,270 --> 00:08:56,720
+We have a continuous variable that's
+interacting with things.
+
+166
+00:08:56,720 --> 00:08:59,050
+It's easier to do this when we have two
+binary variables.
+
+167
+00:08:59,050 --> 00:09:01,856
+But we've got a binary and a continuous;
+worry.
+
+168
+00:09:01,856 --> 00:09:04,560
+We have a, a variable interacting with
+itself, so
+
+169
+00:09:04,560 --> 00:09:07,290
+worry times worry is worry interacting
+with itself.
+
+170
+00:09:07,290 --> 00:09:08,750
+And then we've got the interaction.
+
+171
+00:09:08,750 --> 00:09:11,400
+So we've got essentially two interactions
+and a continuous variable.
+
+172
+00:09:11,400 --> 00:09:13,820
+This is what will make this problem a lot
+of fun.
+
+173
+00:09:13,820 --> 00:09:14,320
+What I did,
+
+174
+00:09:14,320 --> 00:09:18,940
+though, is, we cannot calculate the odds
+ratios without knowing the betas.
+
+175
+00:09:18,940 --> 00:09:22,550
+We actually have to take the odds ratios,
+which I'm going to assume that the way
+
+176
+00:09:22,550 --> 00:09:25,430
+that the authors got those odds ratios
+that they presented in
+
+177
+00:09:25,430 --> 00:09:28,790
+their table was that they just took
+whatever beta they got, say the beta for
+
+178
+00:09:28,790 --> 00:09:33,120
+family history, and they exponentiated it,
+and they called that the odds ratio.
+
+179
+00:09:33,120 --> 00:09:36,260
+So, for example, the 1.14 they probably
+got just by
+
+180
+00:09:36,260 --> 00:09:39,570
+exponentiating whatever beta came out for
+family history.
+
+181
+00:09:39,570 --> 00:09:42,810
+What we're going to do to get back to the
+betas which is what we really need here in
+
+182
+00:09:42,810 --> 00:09:45,770
+order to be able to do this correctly, is
+we're going to take the natural log.
+
+183
+00:09:45,770 --> 00:09:47,362
+So, I took the natural log of 1.14.
+
+184
+00:09:47,362 --> 00:09:47,950
+That's just 0.14.
+
+185
+00:09:47,950 --> 00:09:51,150
+And so that's what you're seeing in this
+table.
+
+186
+00:09:51,150 --> 00:09:54,220
+I went through and took the natural log to
+get all of those betas.
+
+187
+00:09:54,220 --> 00:09:58,470
+So this gives the, back the original
+logistic regression model and
+
+188
+00:09:58,470 --> 00:09:59,450
+now we can go back and
+
+189
+00:09:59,450 --> 00:10:03,980
+correctly calculate the odds ratios that
+ought to come out of this model.
+
+190
+00:10:03,980 --> 00:10:07,700
+So I've just rewritten in this slide what
+I just gave you in the last slide.
+
+191
+00:10:07,700 --> 00:10:09,959
+This is the, the logistic regression model
+written out.
+
+192
+00:10:10,960 --> 00:10:12,400
+We did, we don't know what alpha is
+because
+
+193
+00:10:12,400 --> 00:10:14,130
+they didn't give us that information in
+the paper.
+
+194
+00:10:14,130 --> 00:10:15,770
+It actually doesn't matter because,
+
+195
+00:10:15,770 --> 00:10:18,930
+as you're going to see in a minute, all
+the intercepts are going to cancel.
+
+196
+00:10:18,930 --> 00:10:21,750
+Everybody has the same baseline risk, so
+that will cancel out.
+
+197
+00:10:21,750 --> 00:10:23,950
+So here is the logistic regression model.
+
+198
+00:10:23,950 --> 00:10:30,230
+We are going to plug into this model to
+see what the odds ratios actually are.
+
+199
+00:10:30,230 --> 00:10:32,840
+And this will take a little bit of math
+here.
+
+200
+00:10:32,840 --> 00:10:33,920
+But here we go.
+
+201
+00:10:33,920 --> 00:10:37,430
+So we're going to start with calculating
+the odds ratio for
+
+202
+00:10:37,430 --> 00:10:39,590
+family history, the binary predictor.
+
+203
+00:10:39,590 --> 00:10:41,940
+That one's actually a little easier to
+calculate.
+
+204
+00:10:41,940 --> 00:10:44,260
+So that's why we're going to start there.
+
+205
+00:10:44,260 --> 00:10:49,340
+So I want get the odds ratio for annual
+mammography in women
+
+206
+00:10:49,340 --> 00:10:53,210
+with a family history compared with women
+who don't have a family history.
+
+207
+00:10:53,210 --> 00:10:54,170
+Binary predictor.
+
+208
+00:10:56,860 --> 00:10:59,460
+Now, we know that because there's an
+interaction term in
+
+209
+00:10:59,460 --> 00:11:03,990
+the model between family history and worry
+that there is not a single odds ratio.
+
+210
+00:11:03,990 --> 00:11:06,610
+The odds ratio, the relationship between
+family history and
+
+211
+00:11:06,610 --> 00:11:09,400
+mammography depends on the level of worry.
+
+212
+00:11:09,400 --> 00:11:11,830
+So to make this easy, we're going to start
+with this simple case.
+
+213
+00:11:11,830 --> 00:11:15,029
+We're going to start with a case where
+we're at a level of worry equals zero.
+
+214
+00:11:15,029 --> 00:11:18,860
+Depending on what worry is, the odds ratio
+for family history is going to change.
+
+215
+00:11:20,030 --> 00:11:24,920
+So all we can do, is sort of calculate it
+for different levels of worry.
+
+216
+00:11:24,920 --> 00:11:26,810
+So imagine we're at a level of worry of
+zero.
+
+217
+00:11:26,810 --> 00:11:30,610
+I'm starting with worry of zero because
+that makes things cancel out of the model.
+
+218
+00:11:30,610 --> 00:11:31,810
+Well what is an odds ratio?
+
+219
+00:11:31,810 --> 00:11:34,900
+An odds ration is a ratio of two odds.
+
+220
+00:11:34,900 --> 00:11:42,000
+In the numerator we're going to get at the
+odds of annual mammography use for
+
+221
+00:11:42,000 --> 00:11:43,615
+women with a family history.
+
+222
+00:11:43,615 --> 00:11:50,570
+And we want to compare that to the odds
+for women with a family history,
+
+223
+00:11:50,570 --> 00:11:53,170
+with the, without a family history, family
+history is equal to zero.
+
+224
+00:11:53,170 --> 00:11:54,830
+So that's what we want to put.
+
+225
+00:11:54,830 --> 00:11:56,030
+Well, where do we get the odds from?
+
+226
+00:11:56,030 --> 00:11:59,310
+We plug into the logistic regression model
+to get the odds for
+
+227
+00:11:59,310 --> 00:12:00,780
+each of those types of women.
+
+228
+00:12:00,780 --> 00:12:02,950
+So that's what I'm going to do now.
+
+229
+00:12:04,230 --> 00:12:07,840
+So what about the odds for a woman with
+family history.
+
+230
+00:12:07,840 --> 00:12:11,990
+So her odds based on the model, I'm just
+exponentiating both sides here based on
+
+231
+00:12:11,990 --> 00:12:16,180
+the model is e raised to alpha, alpha's
+going to cancel so it doesn't matter what
+
+232
+00:12:17,500 --> 00:12:22,864
+it is, plus 0.14 times 1 because she has a
+family history, minus 0.03.
+
+233
+00:12:22,864 --> 00:12:25,640
+I'm going to, this is for, this is age.
+
+234
+00:12:25,640 --> 00:12:27,110
+But I'm just going to plus in an age of
+50.
+
+235
+00:12:27,110 --> 00:12:29,880
+It actually doesn't matter what I plug in
+here,
+
+236
+00:12:29,880 --> 00:12:32,850
+because we are calculating the adjusted
+odds ratio.
+
+237
+00:12:32,850 --> 00:12:35,370
+So what we're going to do is we're
+going to hold age fixed.
+
+238
+00:12:35,370 --> 00:12:37,850
+Whatever we, whatever the age of the woman
+in the numerator,
+
+239
+00:12:37,850 --> 00:12:41,190
+we're going to give the same age to the
+woman in the denominator.
+
+240
+00:12:41,190 --> 00:12:43,540
+That's what it means to adjust for age.
+
+241
+00:12:43,540 --> 00:12:44,390
+We're holding it fixed.
+
+242
+00:12:44,390 --> 00:12:47,080
+We're comparing only 50 year olds to 50
+years olds.
+
+243
+00:12:47,080 --> 00:12:49,690
+I can put any number in for age as long as
+I hold it constant.
+
+244
+00:12:50,970 --> 00:12:52,740
+Then we get negative 0.04 times Worry.
+
+245
+00:12:52,740 --> 00:12:54,409
+Well, what's Worry here?
+
+246
+00:12:54,409 --> 00:12:55,061
+It's zero.
+
+247
+00:12:55,061 --> 00:12:58,895
+Then we get negative .03 times worry
+squared while, again,
+
+248
+00:12:58,895 --> 00:13:00,600
+zero squared is just zero.
+
+249
+00:13:00,600 --> 00:13:05,190
+And then we get negative .02 times, times,
+worr, times the interaction between worry
+
+250
+00:13:05,190 --> 00:13:07,715
+and family history while worry is zero
+that also goes to zero.
+
+251
+00:13:07,715 --> 00:13:10,030
+So you can see a lot of things are
+going to drop out here.
+
+252
+00:13:10,030 --> 00:13:12,340
+Now I'm just going to re-write something
+here.
+
+253
+00:13:12,340 --> 00:13:15,420
+I am going to just remind you that we can,
+this,
+
+254
+00:13:15,420 --> 00:13:19,110
+it will easier to see that things cancel
+if I actually go through and
+
+255
+00:13:19,110 --> 00:13:24,410
+say, well this is the same as multiplying
+by e raised to each of these things.
+
+256
+00:13:24,410 --> 00:13:25,320
+That'll just be easier for
+
+257
+00:13:25,320 --> 00:13:29,150
+you to see that when I'm cancelling things
+that I'm justified in doing, so.
+
+258
+00:13:29,150 --> 00:13:33,370
+So, all of this is the same as multiplying
+e raised to alpha plus 0.14 is the same as
+
+259
+00:13:33,370 --> 00:13:35,762
+e raised to alpha times e raised to 0.14.
+
+260
+00:13:35,762 --> 00:13:37,570
+Now what goes in the denominator?
+
+261
+00:13:37,570 --> 00:13:40,370
+So, now we want to compare to a woman who
+does not have a family history.
+
+262
+00:13:40,370 --> 00:13:43,449
+So, she gets for the family history term,
+a value of zero.
+
+263
+00:13:44,730 --> 00:13:47,760
+We're going to hold age fixed, so she gets
+the same value for age.
+
+264
+00:13:49,060 --> 00:13:54,090
+We're going to uh,give her a value of zero
+for worry,
+
+265
+00:13:54,090 --> 00:13:58,090
+because we're saying this is at, comparing
+two women who have a worry of zero, so
+
+266
+00:13:58,090 --> 00:14:01,040
+all the values of worry, this is, are all
+going to be zero, so
+
+267
+00:14:01,040 --> 00:14:03,030
+that's going to make this problem a little
+easier.
+
+268
+00:14:03,030 --> 00:14:06,340
+So worry go- is at zero, we're, we're
+saying this is the odds ratio at
+
+269
+00:14:06,340 --> 00:14:09,590
+a worry of zero, so we get- we're noticing
+that a lot of things cancel here.
+
+270
+00:14:09,590 --> 00:14:11,950
+So e raised to alpha, that's going to
+cancel for
+
+271
+00:14:11,950 --> 00:14:17,130
+both women, this differs between the
+women, so she gets
+
+272
+00:14:17,130 --> 00:14:21,790
+e raised to .14 in the numerator, that's e
+raised to zero in the denominator.
+
+273
+00:14:21,790 --> 00:14:24,160
+The term for age is going to cancel, we're
+holding age fixed, so
+
+274
+00:14:24,160 --> 00:14:26,080
+there should be no additional effect for
+age.
+
+275
+00:14:26,080 --> 00:14:28,990
+And then since worry is held at zero, all
+these things are just zero,
+
+276
+00:14:28,990 --> 00:14:30,430
+they're all going to cancel.
+
+277
+00:14:30,430 --> 00:14:33,030
+That makes our life a little bit easier
+here.
+
+278
+00:14:33,030 --> 00:14:34,640
+So what is this simplified to?
+
+279
+00:14:34,640 --> 00:14:37,250
+This simplifies just to e raised to 0.14,
+
+280
+00:14:37,250 --> 00:14:41,040
+e raised to zero in the denominator here,
+e raised to zero is just one.
+
+281
+00:14:41,040 --> 00:14:44,210
+So this turns out to be just e raised to
+.14.
+
+282
+00:14:44,210 --> 00:14:49,010
+So at a worry of zero, all we have to do
+is take the beta for family history and
+
+283
+00:14:49,010 --> 00:14:52,710
+exponentiate it, and that gives us the
+odds ratio of 1.14.
+
+284
+00:14:52,710 --> 00:14:55,570
+Now that's what the authors reported in
+their paper, but
+
+285
+00:14:55,570 --> 00:15:00,240
+that's only the odds ratio when women are
+at a worry level of zero.
+
+286
+00:15:00,240 --> 00:15:03,330
+So we actually need to do a little bit
+more work to figure out what
+
+287
+00:15:03,330 --> 00:15:04,560
+the general formula for
+
+288
+00:15:04,560 --> 00:15:09,420
+the odds ratio is here, because the odds
+ration is actually a function of worry.
+
+289
+00:15:10,500 --> 00:15:15,210
+So, I'm going to do one more example, and
+the we can just, just general it.
+
+290
+00:15:15,210 --> 00:15:19,170
+So, what if I am instead at a worry level
+of say, five.
+
+291
+00:15:19,170 --> 00:15:22,480
+I could just pic any value here but we're
+going to generalize this in a minute.
+
+292
+00:15:22,480 --> 00:15:25,630
+So if I'm at a worry level of 5, I'm
+going to go through the same logic,
+
+293
+00:15:25,630 --> 00:15:28,230
+except some terms are not going to cancel
+out anymore.
+
+294
+00:15:28,230 --> 00:15:32,040
+So family history, odds ratio for family
+history, for mammography use,
+
+295
+00:15:32,040 --> 00:15:34,690
+let me compare a woman with a family
+history, so
+
+296
+00:15:34,690 --> 00:15:39,830
+she gets the following values, e raised
+to, it doesn't matter what age is,
+
+297
+00:15:39,830 --> 00:15:43,430
+I'm going to cancel that out anyway,
+because we're going to hold it fixed.
+
+298
+00:15:43,430 --> 00:15:45,390
+But now we have to put in something for
+worry.
+
+299
+00:15:45,390 --> 00:15:49,870
+So she gets a value of 5 for worry, a
+value of 25 for
+
+300
+00:15:49,870 --> 00:15:55,890
+worry squared, and for the interaction
+term she has a worry value of 5 and
+
+301
+00:15:55,890 --> 00:15:58,400
+she has a family history, so 5 times 1 is
+equal to 5,
+
+302
+00:15:58,400 --> 00:16:03,680
+so her interaction term, she gets an
+interaction term of 5.
+
+303
+00:16:03,680 --> 00:16:07,290
+What about the woman who does not have a
+family history that we're comparing to?
+
+304
+00:16:07,290 --> 00:16:11,390
+So in the denominator the odds for a woman
+who does not have a family history but
+
+305
+00:16:11,390 --> 00:16:14,930
+is at a level of worry five, she's getting
+e raised to alpha.
+
+306
+00:16:14,930 --> 00:16:19,230
+She's getting e raised to 0.14 times 0,
+because she doesn't have a family history.
+
+307
+00:16:19,230 --> 00:16:21,030
+So her value there is 0.
+
+308
+00:16:21,030 --> 00:16:24,460
+Again, we're just holding age fixed, so
+that's going to be the same for both.
+
+309
+00:16:25,860 --> 00:16:32,440
+Now, she also has a worry level of 5, and
+she also has a worry squared of 25.
+
+310
+00:16:32,440 --> 00:16:37,700
+However, for the interaction, she has a
+value of zero for
+
+311
+00:16:37,700 --> 00:16:43,180
+family history so her interaction is going
+to be 5 times zero, or zero.
+
+312
+00:16:43,180 --> 00:16:45,730
+So, she's actually going to get a zero
+there.
+
+313
+00:16:45,730 --> 00:16:48,420
+Now let's go and see what things cancel.
+
+314
+00:16:48,420 --> 00:16:51,450
+So, the alpha is going to cancel.
+
+315
+00:16:51,450 --> 00:16:53,280
+The age term is going to cancel.
+
+316
+00:16:53,280 --> 00:16:57,650
+The main effect for worry and the main
+effect for worry squared are going to
+
+317
+00:16:57,650 --> 00:17:01,460
+cancel, because those are the same since
+worry is held fixed.
+
+318
+00:17:01,460 --> 00:17:06,593
+But, we're going to have this additional
+term here from the interaction.
+
+319
+00:17:06,593 --> 00:17:09,180
+E zero raised to zero goes to 1.
+
+320
+00:17:09,180 --> 00:17:15,050
+So we get, this is what's left, we get
+that the odds ratio here
+
+321
+00:17:15,050 --> 00:17:18,510
+is equal to e raised to .14,
+
+322
+00:17:18,510 --> 00:17:24,720
+this e raised to 0 goes to 1, minus e,
+times e raised to point 1,
+
+323
+00:17:24,720 --> 00:17:30,396
+oh this is .02 times 5 is .10, or we can
+rewrite that as e raised to .14 minus .10.
+
+324
+00:17:30,396 --> 00:17:33,150
+So I've just simplified this, let me
+simplify a little further,
+
+325
+00:17:33,150 --> 00:17:39,290
+I get that it's e raised to .04, which is
+equal to 1.04.
+
+326
+00:17:39,290 --> 00:17:43,970
+So what happened here is at a higher level
+of worry,
+
+327
+00:17:43,970 --> 00:17:47,250
+family history actually matters less, the
+odds ratio for
+
+328
+00:17:47,250 --> 00:17:51,740
+family is closer to 1 when we get to a
+higher level of worry.
+
+329
+00:17:52,860 --> 00:17:57,250
+And we've gotta go back to the picture
+here, we can see,
+
+330
+00:17:57,250 --> 00:18:02,500
+let me just take you back to the picture,
+that at higher level of,
+
+331
+00:18:02,500 --> 00:18:06,520
+worry, that the difference and, and
+different levels of worry,
+
+332
+00:18:06,520 --> 00:18:11,140
+the effect of family history differs, and
+that's what's captured here.
+
+333
+00:18:11,140 --> 00:18:12,860
+And we can even make this into a general
+formula.
+
+334
+00:18:12,860 --> 00:18:14,170
+So, you'll notice that all I did here,
+
+335
+00:18:14,170 --> 00:18:19,090
+the, the odds ratio in general is going to
+be e raised to 0.14.
+
+336
+00:18:19,090 --> 00:18:21,030
+So, we're always going to have that e
+raised to 0.14,
+
+337
+00:18:21,030 --> 00:18:25,860
+but then it's going to be minus 0.02 times
+whatever the worry level is.
+
+338
+00:18:25,860 --> 00:18:28,730
+So, I happen to have a worry level of five
+here, but if I had a worry,
+
+339
+00:18:28,730 --> 00:18:33,070
+a different worry level you would see that
+captured, you could just plug in that w.
+
+340
+00:18:33,070 --> 00:18:36,790
+If the worry is zero, you're plugging in
+zero, so that's why at zero it
+
+341
+00:18:36,790 --> 00:18:42,270
+becomes an odds ratio of 1.14, but that is
+the general formula, for, and
+
+342
+00:18:42,270 --> 00:18:45,950
+there's an infinite number of odds ratios
+here depending on the level of worry.
+
+343
+00:18:45,950 --> 00:18:49,100
+What if somebody had a level of worry of
+negative 5,
+
+344
+00:18:49,100 --> 00:18:54,604
+well if you had a level of worry of
+negative 5, this would be .14 minus .02
+
+345
+00:18:54,604 --> 00:18:59,465
+times minus 5 would be plus .10, so that
+would come out to be e raised to
+
+346
+00:18:59,465 --> 00:19:05,450
+.24 Which is going to be an odds ratio of
+around, it's a little bit more than 1.25.
+
+347
+00:19:05,450 --> 00:19:07,610
+So that's going to be a little bit higher.
+
+348
+00:19:07,610 --> 00:19:09,770
+So if you're at a lower level of worry,
+
+349
+00:19:09,770 --> 00:19:12,100
+then your family history is is mattering
+more.
+
+350
+00:19:12,100 --> 00:19:16,240
+So that's what the, the model is telling
+us.
+
+351
+00:19:16,240 --> 00:19:20,500
+There is a function, the odds ratio is a
+function of worry here.

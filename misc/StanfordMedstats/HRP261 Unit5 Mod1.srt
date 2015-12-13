@@ -1,0 +1,1165 @@
+1
+00:00:00,000 --> 00:00:06,100
+[BLANK_AUDIO]
+
+2
+00:00:06,100 --> 00:00:07,150
+In this next module,
+
+3
+00:00:07,150 --> 00:00:10,870
+I'm going to talk about how to
+standardize, your continuous variables.
+
+4
+00:00:10,870 --> 00:00:13,850
+That is, to translate them into standard
+deviation units, or
+
+5
+00:00:13,850 --> 00:00:16,940
+Z scores, prior to putting them, in your
+regression model.
+
+6
+00:00:19,220 --> 00:00:23,210
+So, when you're doing a regression model,
+you get a beta coefficient and
+
+7
+00:00:23,210 --> 00:00:25,850
+those beta coefficients are slopes.
+
+8
+00:00:25,850 --> 00:00:31,610
+So, of course, slopes are going to depend,
+on the units that you choose for x and y.
+
+9
+00:00:31,610 --> 00:00:34,800
+For example, if you were to put weight, in
+the model as.
+
+10
+00:00:34,800 --> 00:00:38,550
+Pounds, you're going to get a different
+beta coefficient, a different slope, than,
+
+11
+00:00:38,550 --> 00:00:42,240
+if you put, weight in the model as
+kilograms.
+
+12
+00:00:42,240 --> 00:00:44,560
+Now, mathematically, there's really no
+difference here,
+
+13
+00:00:44,560 --> 00:00:48,500
+you're going to get exactly, the same P
+values for those 2 beta coefficients.
+
+14
+00:00:48,500 --> 00:00:52,430
+So, it really, doesn't matter which units
+you choose however,
+
+15
+00:00:52,430 --> 00:00:53,450
+in terms of the message,
+
+16
+00:00:53,450 --> 00:00:56,850
+that you report to your reader, the betas
+are going to look differently.
+
+17
+00:00:56,850 --> 00:00:58,870
+One is going to look bigger than the
+other, and
+
+18
+00:00:58,870 --> 00:01:00,830
+that might make a different impression on
+your reader, so
+
+19
+00:01:00,830 --> 00:01:03,220
+you have to be a little bit careful, about
+unit choice.
+
+20
+00:01:04,510 --> 00:01:06,810
+For logistic regressions specifically,
+
+21
+00:01:06,810 --> 00:01:10,630
+the magnitude of the odds ratio is
+going to depend, on the units.
+
+22
+00:01:10,630 --> 00:01:13,190
+So, let's say we have a data set where we
+have age measured in years, and
+
+23
+00:01:13,190 --> 00:01:15,700
+I throw that into my logistic regression
+model.
+
+24
+00:01:15,700 --> 00:01:17,270
+I come out, with a beta for age of .1.
+
+25
+00:01:17,270 --> 00:01:20,610
+And let's say that's indeed, a
+statistically significant effect.
+
+26
+00:01:22,690 --> 00:01:25,860
+I might, then report the odds ratio for,
+a, one year increase.
+
+27
+00:01:25,860 --> 00:01:27,140
+That's what my computer program's,
+
+28
+00:01:27,140 --> 00:01:29,180
+probably automatically going to calculate
+for me.
+
+29
+00:01:29,180 --> 00:01:33,960
+I exponentiation the beta of .1, I get an
+odds ratio of 1.11.
+
+30
+00:01:33,960 --> 00:01:36,620
+Again, that's statistically significant.
+
+31
+00:01:36,620 --> 00:01:39,740
+But, that odds ratio looks kind of small,
+right?
+
+32
+00:01:39,740 --> 00:01:42,260
+It doesn't ,look very impressive.
+
+33
+00:01:42,260 --> 00:01:45,420
+That 1.11 and 11 percent increase in your
+odds of the outcome here,
+
+34
+00:01:45,420 --> 00:01:46,120
+well that's small,
+
+35
+00:01:46,120 --> 00:01:50,620
+because, a one year jump in age is also a
+small jump in the predictor variable.
+
+36
+00:01:50,620 --> 00:01:55,540
+It's a small unit, however, I might choose
+to instead,
+
+37
+00:01:55,540 --> 00:01:59,240
+talk about a report ratio for a ten year
+increase in age.
+
+38
+00:01:59,240 --> 00:02:00,510
+So, how would I calculate that?
+
+39
+00:02:00,510 --> 00:02:03,220
+It's very easy, to do, I'm just going to
+take my beta coefficient and
+
+40
+00:02:03,220 --> 00:02:06,310
+multiply it by ten before exponentiating.
+
+41
+00:02:06,310 --> 00:02:08,990
+Well, then you see, it come out with an
+odds ratio of 2.7.
+
+42
+00:02:08,990 --> 00:02:10,390
+Well that looks much more impressive.
+
+43
+00:02:10,390 --> 00:02:14,670
+Now that, P value, for this last ratio is
+exactly the same, nothing has really,
+
+44
+00:02:14,670 --> 00:02:15,890
+changed here.
+
+45
+00:02:15,890 --> 00:02:20,140
+Except that, the message that you convey
+to your readers is a little bit different.
+
+46
+00:02:20,140 --> 00:02:23,320
+Because, of 2.71 jump is going to grab the
+attention of your reader.
+
+47
+00:02:23,320 --> 00:02:28,255
+A little bit more than a 1.11 odds ratio.
+
+48
+00:02:28,255 --> 00:02:32,300
+So, the trace of units is a little bit
+arbitrary and to get around this issue.
+
+49
+00:02:32,300 --> 00:02:35,640
+What, sometimes, we'll do and which,
+often, is a good idea to do.
+
+50
+00:02:35,640 --> 00:02:41,050
+Is to standardize, their variables, before
+putting them into the regression model and
+
+51
+00:02:41,050 --> 00:02:45,490
+typically ,that means, translating our
+variable into Z-scores.
+
+52
+00:02:45,490 --> 00:02:46,897
+So, what are Z-scores?
+
+53
+00:02:46,897 --> 00:02:49,580
+Z-scores are just standard deviation
+units.
+
+54
+00:02:49,580 --> 00:02:51,300
+You can calculate them, very easily.
+
+55
+00:02:51,300 --> 00:02:55,210
+All you do, is you take an observations,
+value, you subtract the mean and
+
+56
+00:02:55,210 --> 00:02:57,100
+divide by the standard deviation.
+
+57
+00:02:57,100 --> 00:02:59,890
+That will give you standard deviation
+units, rather than the original.
+
+58
+00:02:59,890 --> 00:03:03,580
+Units, so instead of kilograms per meters
+squared, you'll have Z scores, or
+
+59
+00:03:03,580 --> 00:03:05,210
+standard deviations of BMI.
+
+60
+00:03:06,210 --> 00:03:09,670
+This is nice, because, then all the
+variables are sort of comparable to
+
+61
+00:03:09,670 --> 00:03:13,300
+one another, because, they're all talking
+about, they're all in standard deviation.
+
+62
+00:03:13,300 --> 00:03:17,190
+How do we actually accomplish this against
+very simple, I'm assuming,
+
+63
+00:03:17,190 --> 00:03:19,890
+all of you have had to calculate Z scores
+before.
+
+64
+00:03:19,890 --> 00:03:21,850
+But, you take, to calculate Z score,
+
+65
+00:03:21,850 --> 00:03:25,950
+you take a particular observation, you
+subtract from the mean of your sample, and
+
+66
+00:03:25,950 --> 00:03:30,070
+you divide by the standard deviation of
+your sample for that particular, variable.
+
+67
+00:03:30,070 --> 00:03:32,908
+This is best to illustrate this with an
+actual example.
+
+68
+00:03:32,908 --> 00:03:37,140
+I'm, going to ,be talking, a lot this week
+about a particular data set,
+
+69
+00:03:37,140 --> 00:03:41,550
+that I worked on, for some sports
+medicine, physicians.
+
+70
+00:03:41,550 --> 00:03:45,110
+And one of the variables, that was in that
+data set was fat mass.
+
+71
+00:03:45,110 --> 00:03:48,200
+And so we were interested in bone density
+and
+
+72
+00:03:48,200 --> 00:03:51,800
+these were women and, male, young runners.
+
+73
+00:03:51,800 --> 00:03:53,920
+And sometimes, they will have bone density
+issues.
+
+74
+00:03:54,950 --> 00:03:59,690
+So, these athletes were measured with dual
+x-ray absorbtomotry, which gives you
+
+75
+00:03:59,690 --> 00:04:03,160
+your bone density, but it also gives you a
+very precise measurement of fat mass.
+
+76
+00:04:03,160 --> 00:04:05,980
+So ,that's one of the variables we have in
+the data set.
+
+77
+00:04:05,980 --> 00:04:07,310
+The mean, for this group, for
+
+78
+00:04:07,310 --> 00:04:11,640
+the women, for fat mass, was 31.4 pounds
+worth of fat mass.
+
+79
+00:04:11,640 --> 00:04:15,090
+That's actually, very lean, because, this
+is a very young and athletic group.
+
+80
+00:04:15,090 --> 00:04:18,488
+The standard deviation for the variable is
+11.4 pounds, so
+
+81
+00:04:18,488 --> 00:04:22,630
+,just kind of randomly picking, a
+particular observation from the data set,
+
+82
+00:04:22,630 --> 00:04:27,650
+one of the women had a Fat mass of 11.6
+pounds, which is actually fairly low.
+
+83
+00:04:27,650 --> 00:04:29,230
+So, what would her z score be?
+
+84
+00:04:29,230 --> 00:04:30,030
+It's simple to calculate.
+
+85
+00:04:30,030 --> 00:04:31,550
+We know it's going to be negative.
+
+86
+00:04:31,550 --> 00:04:34,400
+We know it's going to be, a fair bit
+negative, because,
+
+87
+00:04:34,400 --> 00:04:36,910
+she's quite low compared to the mean.
+
+88
+00:04:36,910 --> 00:04:40,350
+To calculate her precise z score, we take
+her value 11.6 11.6,
+
+89
+00:04:40,350 --> 00:04:44,620
+subtract from, from that, the mean of the
+sample which was 31.4,
+
+90
+00:04:44,620 --> 00:04:47,350
+divide by the standard deviation which was
+11.4.
+
+91
+00:04:47,350 --> 00:04:51,710
+Her Z score is negative 1.74 meaning that
+she's one and
+
+92
+00:04:51,710 --> 00:04:55,050
+three quarters of a standard deviation
+below average.
+
+93
+00:04:55,050 --> 00:04:59,430
+On fat mass, now you're not going to have
+to do too much of this,
+
+94
+00:04:59,430 --> 00:05:04,130
+by, hand because most computer packages,
+statistical packages,
+
+95
+00:05:04,130 --> 00:05:08,150
+come, with an algorithm to do standard
+devi, standardization for
+
+96
+00:05:08,150 --> 00:05:11,610
+you, so it's not like have to tell the
+computer this is subtractive mean,
+
+97
+00:05:11,610 --> 00:05:15,330
+and you don't have to find the mean
+standardization to do this.
+
+98
+00:05:15,330 --> 00:05:17,340
+The computer, will just do this
+automatically.
+
+99
+00:05:17,340 --> 00:05:21,860
+Most, computer programs, it's the click of
+a button or teeny piece of code.
+
+100
+00:05:21,860 --> 00:05:25,990
+So, for example, I said, I told the
+computer to translate, fatmass,
+
+101
+00:05:25,990 --> 00:05:29,420
+my variable fatmass into, to standardize
+it into z scores.
+
+102
+00:05:29,420 --> 00:05:31,710
+And it does, It did it automatically, I
+didn't have to do any work.
+
+103
+00:05:31,710 --> 00:05:36,030
+I rounded the values, here, but, for
+example, a fatmass of 26 turns,
+
+104
+00:05:36,030 --> 00:05:38,630
+out to be a z score of -.5.
+
+105
+00:05:38,630 --> 00:05:42,500
+This person's about ,a half standard
+deviation below average.
+
+106
+00:05:42,500 --> 00:05:45,010
+And ,I get this for all of the
+observations, in my data set.
+
+107
+00:05:45,010 --> 00:05:47,803
+Again, really simple you shouldn't, have
+to do much work to get this.
+
+108
+00:05:47,803 --> 00:05:53,113
+This new variable, the z-scores of course,
+will have a mean of 0 and
+
+109
+00:05:53,113 --> 00:05:55,340
+a standard deviation of 1.
+
+110
+00:05:55,340 --> 00:05:57,860
+And that's also nice, that's a nice
+property.
+
+111
+00:05:57,860 --> 00:06:01,440
+All of your variables then, that you
+standardize will have means of 0 and
+
+112
+00:06:01,440 --> 00:06:02,430
+standard deviations of 1.
+
+113
+00:06:02,430 --> 00:06:08,070
+Now ,why might you want to bother to go
+through, this little extra step?
+
+114
+00:06:09,300 --> 00:06:13,450
+There's a couple of reasons, so one thing,
+is standard deviation units,
+
+115
+00:06:13,450 --> 00:06:16,130
+are more, comparable than the original
+units, units, so
+
+116
+00:06:16,130 --> 00:06:19,830
+it makes it a little bit easier to compare
+effects across different predictors that
+
+117
+00:06:19,830 --> 00:06:22,140
+have different inherent units.
+
+118
+00:06:22,140 --> 00:06:26,040
+You can talk about the standard deviation
+that your standard deviation of
+
+119
+00:06:26,040 --> 00:06:28,940
+caloric intake, your standard deviation of
+bone density,
+
+120
+00:06:28,940 --> 00:06:32,170
+your standard deviation of BMI, and it
+makes it a little bit easier,
+
+121
+00:06:32,170 --> 00:06:36,440
+to look at different data coefficients and
+get some sense of how they compare.
+
+122
+00:06:36,440 --> 00:06:39,200
+You want to be careful, though, because,
+some people think,
+
+123
+00:06:39,200 --> 00:06:42,190
+well ,if I've translated, everything into
+standard deviation units,
+
+124
+00:06:42,190 --> 00:06:45,970
+then the beta with the highest number, is
+therefore the most important variable.
+
+125
+00:06:45,970 --> 00:06:47,890
+And that may not quite be true.
+
+126
+00:06:47,890 --> 00:06:51,190
+Because, a standard deviation of age,
+might mean something a little different,
+
+127
+00:06:51,190 --> 00:06:53,550
+than a standard deviation of BMI for
+example.
+
+128
+00:06:53,550 --> 00:06:57,750
+So, it's more comparable, although not
+completely comparable, compared with the,
+
+129
+00:06:57,750 --> 00:06:58,750
+original unit.
+
+130
+00:06:58,750 --> 00:07:01,110
+If you've got variables with arbitrary
+units,
+
+131
+00:07:01,110 --> 00:07:03,360
+standard deviations, are really nice.
+
+132
+00:07:03,360 --> 00:07:07,380
+So, for example ,we might give people, a
+depression questionnaire and
+
+133
+00:07:07,380 --> 00:07:09,800
+they get some score, on that
+questionnaire.
+
+134
+00:07:09,800 --> 00:07:12,300
+You just put the score, into your
+regression model.
+
+135
+00:07:12,300 --> 00:07:16,360
+You're going to get the betas, for, a one
+unit increase in depression score.
+
+136
+00:07:16,360 --> 00:07:18,170
+But, what does that mean intuitively?
+
+137
+00:07:18,170 --> 00:07:20,490
+Nobody's really going to understand, what
+it means to go up,
+
+138
+00:07:20,490 --> 00:07:23,930
+one point on that particular arbitrary
+scale.
+
+139
+00:07:23,930 --> 00:07:26,390
+If you translate, it into standard
+deviation units,
+
+140
+00:07:26,390 --> 00:07:29,740
+however, it has a lot more meaning,
+because now, you can say what does it
+
+141
+00:07:29,740 --> 00:07:34,470
+mean to be a standard deviation, above
+average in this population.
+
+142
+00:07:34,470 --> 00:07:35,900
+So, it's easier to interpret.
+
+143
+00:07:35,900 --> 00:07:40,060
+And then finally, it makes the intercept
+more interpretable, as well.
+
+144
+00:07:40,060 --> 00:07:47,300
+So, the intercept of course, is the value,
+in this case for the lougan, when all
+
+145
+00:07:47,300 --> 00:07:51,460
+the predictors, in your model that you've
+included in your model are equal to zero.
+
+146
+00:07:51,460 --> 00:07:54,190
+If you've put into you model age and
+weight and
+
+147
+00:07:54,190 --> 00:07:58,780
+things like this, what does it mean, to,
+if you've set all of those to zero?
+
+148
+00:07:58,780 --> 00:08:00,380
+There is no person that exists.
+
+149
+00:08:00,380 --> 00:08:02,770
+That has an age of zero and a weight of
+zero.
+
+150
+00:08:02,770 --> 00:08:05,770
+Right, so that intercept has no kind of
+natural interpretation,
+
+151
+00:08:05,770 --> 00:08:08,600
+if you've got continuous predictors of the
+model.
+
+152
+00:08:08,600 --> 00:08:13,870
+However, if you standardized ,all your
+continuous predictors, the, a mean of
+
+153
+00:08:13,870 --> 00:08:18,750
+zero, a value of zero now means, you're at
+the mean, for that variable in the sample.
+
+154
+00:08:18,750 --> 00:08:21,190
+So, now the intercept has some nice
+natural interpretation.
+
+155
+00:08:21,190 --> 00:08:25,580
+It's the expected value for someone with
+the mean, value of all the predictors.
+
+156
+00:08:25,580 --> 00:08:27,748
+So ,a little easier, to make sense of the
+intercept.
+
+157
+00:08:27,748 --> 00:08:33,080
+[SOUND] I'm now going to show you, a
+particular example.
+
+158
+00:08:33,080 --> 00:08:35,450
+And, this, example, again, comes from the
+data,
+
+159
+00:08:35,450 --> 00:08:40,980
+that I was looking at, on bone mineral
+density, in, young.
+
+160
+00:08:40,980 --> 00:08:44,400
+These are adolescent, runners, and
+
+161
+00:08:44,400 --> 00:08:47,400
+we have some data on girls, as well as,
+boys, adolescents.
+
+162
+00:08:48,450 --> 00:08:51,280
+So, just I'm showing you, a subset of the
+data.
+
+163
+00:08:51,280 --> 00:08:53,330
+This is from linear regression, just to
+start with.
+
+164
+00:08:53,330 --> 00:08:56,740
+Just to show you that this also works, you
+can, do this with a linear regression.
+
+165
+00:08:56,740 --> 00:09:01,250
+The outcome here, is the spine, bone
+density, and whole body density.
+
+166
+00:09:01,250 --> 00:09:04,100
+Two places, we are interested, in the bone
+density.
+
+167
+00:09:04,100 --> 00:09:06,860
+And, this, these bone density measurements
+,are also in Z score, so
+
+168
+00:09:06,860 --> 00:09:08,380
+the outcome here is Z scores.
+
+169
+00:09:08,380 --> 00:09:10,080
+[LAUGH] The predictors are all Z scores.
+
+170
+00:09:10,080 --> 00:09:13,150
+Makes it fairly easy, to, interpret those
+beta coefficients.
+
+171
+00:09:13,150 --> 00:09:17,750
+Then we have a number of different, body
+measures: weight, height, BMI, lean mass
+
+172
+00:09:17,750 --> 00:09:21,750
+and fat mass, and android fat ratio, which
+is a mark of visceral fat, all of those
+
+173
+00:09:21,750 --> 00:09:26,490
+come out of your decks, your dual X-ray,
+other [UNKNOWN] bone density measurement.
+
+174
+00:09:28,020 --> 00:09:30,950
+Now, and, how do you interpret the beta
+coefficients, that you see here?
+
+175
+00:09:30,950 --> 00:09:33,436
+So, I'm just going to, show you, one how
+to interpret it.
+
+176
+00:09:33,436 --> 00:09:36,770
+So, this 0.24 here, this is the beta
+coefficient, for a model,
+
+177
+00:09:36,770 --> 00:09:41,850
+in which spine Z score, is the outcome and
+I had, these are all unit variant.
+
+178
+00:09:41,850 --> 00:09:43,230
+From univariate linear regression, so
+
+179
+00:09:43,230 --> 00:09:47,070
+it had a single predictor, weight, in
+standard deviation units.
+
+180
+00:09:47,070 --> 00:09:49,400
+So, the way you interpret this 0.24 is
+that for
+
+181
+00:09:49,400 --> 00:09:55,900
+every one standard deviation increase in
+weight, spine, Z score goes up 0.24.
+
+182
+00:09:55,900 --> 00:09:57,220
+You get a,
+
+183
+00:09:57,220 --> 00:10:02,480
+about a quarter of a standard deviation
+increase ,in your spine, bone density.
+
+184
+00:10:02,480 --> 00:10:08,260
+So, that has a nice easy, interpretation
+and, it makes it easier to compare,
+
+185
+00:10:08,260 --> 00:10:12,430
+across different predictors, as well as
+across different bone density sites,
+
+186
+00:10:12,430 --> 00:10:14,930
+as well as across different genders.
+
+187
+00:10:14,930 --> 00:10:19,260
+And again, you can't, assume that the
+comparison is absolute, here, but
+
+188
+00:10:19,260 --> 00:10:22,040
+it gives you a sense of which of these
+body measures is
+
+189
+00:10:22,040 --> 00:10:25,900
+more strongly related to bone density, at
+which site, and in which gender.
+
+190
+00:10:27,180 --> 00:10:30,500
+And, you can see that, so for example, the
+point for one,
+
+191
+00:10:30,500 --> 00:10:36,320
+is the highest beta coefficient and women
+here had point four one so
+
+192
+00:10:36,320 --> 00:10:41,300
+for weight as the predictor in whole body,
+bone density ,as the outcome.
+
+193
+00:10:41,300 --> 00:10:42,710
+So, that gives you a sense that weight,
+
+194
+00:10:42,710 --> 00:10:45,810
+is really important, in terms of your
+whole body bone density.
+
+195
+00:10:45,810 --> 00:10:48,330
+If you look at spine.
+
+196
+00:10:48,330 --> 00:10:52,910
+For the spine, it looks like, you're,
+actually your visceral fat, having more
+
+197
+00:10:52,910 --> 00:10:57,710
+visceral fat, was actually fairly good for
+the spine, for both, men and women.
+
+198
+00:10:57,710 --> 00:11:02,030
+You get a higher coefficient there, out of
+all those, predictors.
+
+199
+00:11:03,200 --> 00:11:04,640
+It's also interesting just to note,
+
+200
+00:11:04,640 --> 00:11:06,610
+that there are differences, between men
+and women.
+
+201
+00:11:06,610 --> 00:11:10,740
+Also the P values, tend to be very, easy
+to predict, because,
+
+202
+00:11:10,740 --> 00:11:16,860
+you can see that as long as, for women,
+where N is 90 1 as long as you were 2 or
+
+203
+00:11:16,860 --> 00:11:22,495
+below, the P value was definitely, a was
+point at the10 level you had to get above
+
+204
+00:11:22,495 --> 00:11:28,916
+.2 to hit that .05 level and then when you
+got above .25 you hit the.
+
+205
+00:11:28,916 --> 00:11:31,040
+0.005 level.
+
+206
+00:11:31,040 --> 00:11:33,300
+So, there's kind of a natural progression
+here,
+
+207
+00:11:33,300 --> 00:11:35,410
+again, it's a little bit more comparable.
+
+208
+00:11:35,410 --> 00:11:36,830
+You can kind of compare across and
+
+209
+00:11:36,830 --> 00:11:41,190
+they naturally, become significant at a
+certain level, depending on the end.
+
+210
+00:11:41,190 --> 00:11:44,690
+So, all of that makes this just a little
+easier, to, interpret.
+
+211
+00:11:44,690 --> 00:11:49,080
+And, just to show you an example, from
+logistic regression as well,.
+
+212
+00:11:49,080 --> 00:11:51,920
+So, I threw those same body measurements,
+into a model,
+
+213
+00:11:51,920 --> 00:11:55,570
+where my outcome now is stress fractures,
+and if you have lower bone density, then,
+
+214
+00:11:55,570 --> 00:11:57,130
+you're more likely to fracture.
+
+215
+00:11:57,130 --> 00:11:59,960
+So, all of those body measures which were
+tied with
+
+216
+00:11:59,960 --> 00:12:04,020
+higher bone density are tied with a lower
+risk or lower odds of stress fractures.
+
+217
+00:12:04,020 --> 00:12:08,100
+Interestingly, the one that has the
+strongest odd ratio is fat mass.
+
+218
+00:12:08,100 --> 00:12:10,670
+This is just looking at women now, not in
+the men.
+
+219
+00:12:10,670 --> 00:12:15,090
+But, in women, having a higher fat mass, a
+one standard deviation increase in
+
+220
+00:12:15,090 --> 00:12:20,010
+fat mass, was associated with about 64%,
+decrease in the odds of stress fracture.
+
+221
+00:12:20,010 --> 00:12:21,900
+Notice, that, that's the biggest odd ratio
+or
+
+222
+00:12:21,900 --> 00:12:28,100
+the most protective and the reason that,
+is, probably is that in this.
+
+223
+00:12:28,100 --> 00:12:32,500
+Population of women runners, they tend to
+get, menstrual irregularities,
+
+224
+00:12:32,500 --> 00:12:34,660
+Amenorrhoea, and that's linked to low bone
+density.
+
+225
+00:12:34,660 --> 00:12:36,240
+Low bone density is linked to fracture.
+
+226
+00:12:36,240 --> 00:12:39,120
+So ,having more fat, actually incre,
+
+227
+00:12:39,120 --> 00:12:42,620
+increases your chances of having a normal
+period, which increases your bone density,
+
+228
+00:12:42,620 --> 00:12:45,360
+which, you know, makes you protected
+against fractures.
+
+229
+00:12:46,380 --> 00:12:47,760
+But these standard deviation units, again,
+
+230
+00:12:47,760 --> 00:12:49,930
+make these odds ratios very easy to
+interpret.
+
+231
+00:12:51,230 --> 00:12:54,760
+I just want to point out, one thing, just
+a clarification.
+
+232
+00:12:54,760 --> 00:12:55,950
+When we're talking about z scores,
+
+233
+00:12:55,950 --> 00:12:59,120
+everybody thinks about the standard normal
+curve, so you automatically,
+
+234
+00:12:59,120 --> 00:13:03,550
+start thinking about normality, that your
+variables must be normally distributed,
+
+235
+00:13:03,550 --> 00:13:06,340
+but z standardization, is not the same
+thing,
+
+236
+00:13:06,340 --> 00:13:11,150
+as making a variable normally distributed,
+so, if you just ,subtract the mean and
+
+237
+00:13:11,150 --> 00:13:15,210
+divide by the standard deviation, of a
+variable, if that variable started out as
+
+238
+00:13:15,210 --> 00:13:19,490
+a non-normal variable, as a skewed
+variable, it will remain non-normal.
+
+239
+00:13:19,490 --> 00:13:24,100
+It doesn't magically, become normal, just,
+because you done a z-standardization.
+
+240
+00:13:24,100 --> 00:13:27,064
+Of course, if the original value was
+normally distributed,
+
+241
+00:13:27,064 --> 00:13:29,857
+then the z-score will also be normally
+distributed, but
+
+242
+00:13:29,857 --> 00:13:34,075
+that's not a guarantee, so don't assume
+,just because you've standardized ,that
+
+243
+00:13:34,075 --> 00:13:37,497
+your variable is then normally
+distributed, because it may not be.
+
+244
+00:13:37,497 --> 00:13:42,260
+[BLANK_AUDIO]

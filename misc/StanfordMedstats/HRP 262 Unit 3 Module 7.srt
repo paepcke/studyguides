@@ -1,0 +1,785 @@
+1
+00:00:06,320 --> 00:00:09,800
+In this next module, I'm going to tell you
+about a neat little trick available in
+
+2
+00:00:09,800 --> 00:00:12,130
+cart regression called stratification.
+
+3
+00:00:12,130 --> 00:00:18,310
+So, let's say you test for proportional
+hazards for a particular variable,
+
+4
+00:00:18,310 --> 00:00:20,899
+and you find that that assumption is
+violated, then what do you do?
+
+5
+00:00:21,900 --> 00:00:24,960
+So, the first thing you should do is to
+try to understand why?
+
+6
+00:00:24,960 --> 00:00:29,960
+What's going on underneath the problem,
+biologically, what, what have you,
+
+7
+00:00:29,960 --> 00:00:34,140
+that could explain why we're seeing a
+violation of proportional hazards?
+
+8
+00:00:34,140 --> 00:00:37,200
+So, first really try to grapple with
+understanding why?
+
+9
+00:00:37,200 --> 00:00:42,360
+Then auctions for sort of assumptions.
+
+10
+00:00:42,360 --> 00:00:46,730
+We talked about adding a time by covariate
+interaction in the model.
+
+11
+00:00:46,730 --> 00:00:52,500
+If you're doing that, if you're adding a
+time by covariate interaction,
+
+12
+00:00:52,500 --> 00:00:56,550
+what you're essentially saying is that
+you're modeling an extra beta in there,
+
+13
+00:00:56,550 --> 00:00:59,310
+that tells you that you're, the beta for
+
+14
+00:00:59,310 --> 00:01:03,600
+your covariate is increasing or decreasing
+linearly.
+
+15
+00:01:03,600 --> 00:01:04,700
+With time.
+
+16
+00:01:04,700 --> 00:01:07,710
+That model would be the correct model for
+certain situations, and
+
+17
+00:01:07,710 --> 00:01:09,870
+it might not be correct for, for other
+situations.
+
+18
+00:01:09,870 --> 00:01:13,500
+But if indeed, that's the correct model or
+a reasonable approximation,
+
+19
+00:01:13,500 --> 00:01:16,310
+that would be one way to deal with the
+proportional hazards is to,
+
+20
+00:01:16,310 --> 00:01:20,570
+explicitly model the fact that the hazard
+ratio is changing over time.
+
+21
+00:01:20,570 --> 00:01:23,750
+There are other options if it doesn't
+quite fit increasing or
+
+22
+00:01:23,750 --> 00:01:26,950
+decreasing linearly with time, there are
+other options such as
+
+23
+00:01:26,950 --> 00:01:29,940
+adding a time-dependent version of the
+co-variate of interest, and
+
+24
+00:01:29,940 --> 00:01:33,690
+that's something we're going to get into
+next week.
+
+25
+00:01:33,690 --> 00:01:37,600
+A third option is to stratify on that
+variable.
+
+26
+00:01:37,600 --> 00:01:41,630
+If you stratify on the variable, you don't
+have to meet proportional hazards.
+
+27
+00:01:41,630 --> 00:01:44,190
+You will end up not getting a hazard
+ratio.
+
+28
+00:01:44,190 --> 00:01:47,250
+You won't be estimating a hazard ratio for
+that variable, but for
+
+29
+00:01:47,250 --> 00:01:50,440
+many nuance things that you just need to
+adjust for, but you don't really care
+
+30
+00:01:50,440 --> 00:01:54,940
+about the effect, stratification turns
+about to be a very reasonable option.
+
+31
+00:01:54,940 --> 00:01:58,270
+The other option is there may be some
+situations where you violate proportional
+
+32
+00:01:58,270 --> 00:02:01,710
+hazards, but you don't end up modifying
+your model in any way.
+
+33
+00:02:01,710 --> 00:02:05,380
+You can imagine that there might be a case
+where the hazard ratio does seem to
+
+34
+00:02:05,380 --> 00:02:07,470
+be changing somewhat over time.
+
+35
+00:02:07,470 --> 00:02:09,350
+But, perhaps the summary hazard ratio,
+
+36
+00:02:09,350 --> 00:02:13,830
+a single hazard ratio, sort of an average
+over time is a reasonable summary.
+
+37
+00:02:13,830 --> 00:02:16,490
+Captures the take home message reasonably
+well, so
+
+38
+00:02:16,490 --> 00:02:19,750
+you may end up just reporting that, but of
+course you'll want to note in your
+
+39
+00:02:19,750 --> 00:02:23,900
+paper that there was a violation, and what
+kinds of effects that could have.
+
+40
+00:02:23,900 --> 00:02:26,840
+But for this module, I'm going to be
+focusing on stratification.
+
+41
+00:02:28,400 --> 00:02:31,880
+I actually think the easiest way to
+understand stratification is to start with
+
+42
+00:02:31,880 --> 00:02:33,220
+the likelihood function.
+
+43
+00:02:33,220 --> 00:02:36,170
+If you see what's going on in the
+likelihood function, I think.
+
+44
+00:02:36,170 --> 00:02:38,490
+Stratification makes perfect sense.
+
+45
+00:02:38,490 --> 00:02:41,680
+So, this is a little complicated but I
+already took this simple data set and
+
+46
+00:02:41,680 --> 00:02:43,950
+I, I drew out part of the likelihood
+function just so
+
+47
+00:02:43,950 --> 00:02:47,760
+I wouldn't have to sit here and, and write
+everything out which takes time.
+
+48
+00:02:47,760 --> 00:02:49,790
+But here is the idea with stratification.
+
+49
+00:02:49,790 --> 00:02:51,190
+This is a data set which.
+
+50
+00:02:51,190 --> 00:02:54,170
+We've got, time to event, whether or not
+the person died,
+
+51
+00:02:54,170 --> 00:02:58,860
+age, we're going to have a model here, Cox
+Regression
+
+52
+00:02:58,860 --> 00:03:04,400
+model, with one predictor in the model,
+which is age.
+
+53
+00:03:04,400 --> 00:03:06,420
+So the beta I'm writing down here is the
+beta for age.
+
+54
+00:03:06,420 --> 00:03:10,350
+Age, and we're going to stratify on
+gender.
+
+55
+00:03:12,080 --> 00:03:15,260
+How does that actually get incorporated
+into the likelihood function?
+
+56
+00:03:15,260 --> 00:03:16,440
+That's what this slide is showing.
+
+57
+00:03:16,440 --> 00:03:20,840
+So here is gender, one is male, zero is
+female.
+
+58
+00:03:20,840 --> 00:03:22,200
+So, we're going to start the likelihood
+function,
+
+59
+00:03:22,200 --> 00:03:25,590
+remember the likelihood function, put the
+term in the model for every event time.
+
+60
+00:03:25,590 --> 00:03:29,120
+So, first event happens at times equals
+one.
+
+61
+00:03:29,120 --> 00:03:33,260
+That event occurred in a male, the male
+was 60 years old.
+
+62
+00:03:33,260 --> 00:03:36,630
+So, when we add a term to the likelihood
+function, we are only going to
+
+63
+00:03:36,630 --> 00:03:42,330
+put men into that strata, into that term
+in the likelihood function.
+
+64
+00:03:42,330 --> 00:03:45,700
+In other words, we are only going to be
+care, comparing men to men.
+
+65
+00:03:45,700 --> 00:03:48,400
+So, what you'll notice is that when I
+wrote out this first term in
+
+66
+00:03:48,400 --> 00:03:52,020
+the likelihood function, for time 1, I
+only have men in the numerator and the.
+
+67
+00:03:52,020 --> 00:03:54,280
+In the risk set in the denominator.
+
+68
+00:03:54,280 --> 00:03:58,360
+So I've got the person who died, was a 60
+year old male.
+
+69
+00:03:58,360 --> 00:04:02,990
+So they get their hazard their chance of
+dying at one month is
+
+70
+00:04:02,990 --> 00:04:05,240
+e raised to the baseline hazard function
+and
+
+71
+00:04:05,240 --> 00:04:07,940
+I'm explicitly putting it in here just to
+show you.
+
+72
+00:04:07,940 --> 00:04:11,870
+How it kind of factors in and then we have
+a beta for age in the model.
+
+73
+00:04:11,870 --> 00:04:15,500
+So, times e raised to beta times the
+person's age.
+
+74
+00:04:15,500 --> 00:04:16,720
+This person was 60.
+
+75
+00:04:16,720 --> 00:04:19,940
+So, the person who died goes in the
+numerator there were four men at
+
+76
+00:04:19,940 --> 00:04:21,280
+risk at time 1.
+
+77
+00:04:21,280 --> 00:04:25,840
+The 60 year old the 55 year old man, the
+60 year old and the 50 year old.
+
+78
+00:04:25,840 --> 00:04:27,680
+So, I put a term in the denominator for
+
+79
+00:04:27,680 --> 00:04:31,140
+each one of them, representing their
+probability of dying at time 1.
+
+80
+00:04:31,140 --> 00:04:33,330
+So, here's the person who actually died.
+
+81
+00:04:33,330 --> 00:04:37,050
+Here's the 55 year old, the 60 year old,
+and the 50 year old.
+
+82
+00:04:37,050 --> 00:04:39,380
+Notice that they all have the same,
+
+83
+00:04:39,380 --> 00:04:44,190
+we're assuming that they all have the same
+hazard at one month into the study.
+
+84
+00:04:44,190 --> 00:04:45,930
+And some hazard rate that we can cancel.
+
+85
+00:04:45,930 --> 00:04:48,460
+But we're only canceling the hazard rate.
+
+86
+00:04:48,460 --> 00:04:49,520
+For men to men.
+
+87
+00:04:49,520 --> 00:04:51,920
+So, everybody in this term is a male,
+
+88
+00:04:51,920 --> 00:04:54,620
+we're cancelling out those hazard rates
+for men.
+
+89
+00:04:54,620 --> 00:04:57,700
+We have, don't have any women, we have
+kept, we're keeping the men and
+
+90
+00:04:57,700 --> 00:04:59,360
+the women separate in the likelihood here.
+
+91
+00:04:59,360 --> 00:05:01,150
+Now let's go to time 0.3.
+
+92
+00:05:01,150 --> 00:05:02,900
+At time 0.3 there's another event.
+
+93
+00:05:02,900 --> 00:05:05,610
+This event happens to be a woman who dies.
+
+94
+00:05:05,610 --> 00:05:07,470
+She's 65 years old.
+
+95
+00:05:07,470 --> 00:05:08,550
+What goes in the likelihood?
+
+96
+00:05:08,550 --> 00:05:09,950
+So, we're going to have a term.
+
+97
+00:05:09,950 --> 00:05:14,090
+The woman who died, she gets a term in the
+likelihood that's e raised to
+
+98
+00:05:14,090 --> 00:05:18,990
+the baseline hazard at 3 times the effect
+of age, essentially.
+
+99
+00:05:18,990 --> 00:05:22,830
+I've indicated here again that there's
+the, the hazard rate for
+
+100
+00:05:22,830 --> 00:05:23,670
+females at [INAUDIBLE].
+
+101
+00:05:23,670 --> 00:05:25,610
+Three is female specific.
+
+102
+00:05:25,610 --> 00:05:27,950
+It might be different than the hazard rate
+would be for men.
+
+103
+00:05:29,070 --> 00:05:30,870
+But we're only care, comparing women to
+women so
+
+104
+00:05:30,870 --> 00:05:34,530
+there's three women in the denominator,
+the 65 year old, the 45 year old, and
+
+105
+00:05:34,530 --> 00:05:37,250
+the 40 year old, who were all the ones.
+
+106
+00:05:37,250 --> 00:05:39,780
+Who were at risk at time 3.
+
+107
+00:05:39,780 --> 00:05:41,230
+So again, only comparing women to women,
+so,
+
+108
+00:05:41,230 --> 00:05:45,300
+means we're canceling out the baseline
+hazards for women at this time point.
+
+109
+00:05:45,300 --> 00:05:46,700
+We're assuming it's all the same.
+
+110
+00:05:46,700 --> 00:05:50,360
+But we've made no assumptions whatsoever
+about the relationship between
+
+111
+00:05:50,360 --> 00:05:52,990
+the hazard function for men, the baseline
+hazard function for
+
+112
+00:05:52,990 --> 00:05:55,830
+men, and the baseline hazard function for
+women.
+
+113
+00:05:55,830 --> 00:05:59,750
+In other words, if we plotted over time,
+the baseline hazard function for
+
+114
+00:05:59,750 --> 00:06:02,870
+men might look like this, and the baseline
+hazard function for
+
+115
+00:06:02,870 --> 00:06:05,970
+women might look like this, and that's
+perfectly fine.
+
+116
+00:06:05,970 --> 00:06:08,330
+Because we are only canceling men with men
+and
+
+117
+00:06:08,330 --> 00:06:11,350
+only women with women, so we're making no
+assumptions that those baseline hazard
+
+118
+00:06:11,350 --> 00:06:14,630
+functions have any particular relationship
+to one another.
+
+119
+00:06:14,630 --> 00:06:17,490
+Just to keep going on the likelihood I
+think you're getting the idea now,
+
+120
+00:06:17,490 --> 00:06:19,670
+by time point 4 was a man so
+
+121
+00:06:19,670 --> 00:06:22,240
+I've determined that goes in the
+likelihood we will only have men.
+
+122
+00:06:22,240 --> 00:06:25,390
+There were 3 men at risk, the 55-year-old,
+the 60-year-old, and
+
+123
+00:06:25,390 --> 00:06:29,140
+the 50-year-old, and again we can cancel
+out the baseline hazards, but
+
+124
+00:06:29,140 --> 00:06:33,150
+make no assumption about the relationship
+between the baseline hazards for men and
+
+125
+00:06:33,150 --> 00:06:35,500
+the baseline hazards for women.
+
+126
+00:06:35,500 --> 00:06:38,750
+Now notice, when we set up the likelihood
+in this way,
+
+127
+00:06:38,750 --> 00:06:40,750
+there's a couple of important things.
+
+128
+00:06:40,750 --> 00:06:44,900
+So first of all, I only have a beta for
+age that I'm estimating.
+
+129
+00:06:44,900 --> 00:06:49,730
+I am not estimating any beta for gender,
+because I am never comparing men and
+
+130
+00:06:49,730 --> 00:06:53,170
+women, so I can't say what the effect of
+gender is here.
+
+131
+00:06:53,170 --> 00:06:56,530
+However, that's fine if I don't care about
+the effect of gender, but
+
+132
+00:06:56,530 --> 00:06:57,980
+I want to adjust for it, and
+
+133
+00:06:57,980 --> 00:07:01,550
+make no assumption about proportional
+hazards, this is the way to do it.
+
+134
+00:07:01,550 --> 00:07:05,720
+Something else to note, the other
+assumption that I'm making here is,
+
+135
+00:07:05,720 --> 00:07:08,280
+I'm essentially, what I'm doing is,
+there's a single beta.
+
+136
+00:07:08,280 --> 00:07:13,120
+I am using the same beta in the terms for
+men as I am using in the terms for women.
+
+137
+00:07:13,120 --> 00:07:17,100
+So what I'm essentially doing is
+calculating a weighted average of
+
+138
+00:07:17,100 --> 00:07:20,240
+the betas, weighted, you know, there's a
+beta for men and a beta for women.
+
+139
+00:07:20,240 --> 00:07:22,050
+I'm assuming those betas are the same, and
+
+140
+00:07:22,050 --> 00:07:25,690
+I'm sort of calculating an average beta
+across men and women.
+
+141
+00:07:25,690 --> 00:07:29,520
+The only potential issue there is that I'm
+assuming that there is
+
+142
+00:07:29,520 --> 00:07:31,920
+no interaction between age and gender
+here, so
+
+143
+00:07:31,920 --> 00:07:35,060
+that's something that I'd want to test
+before I stratified on gender.
+
+144
+00:07:35,060 --> 00:07:37,450
+Because obviously I'm, making that
+assumption.
+
+145
+00:07:37,450 --> 00:07:39,860
+I'm just averaging over men and women
+here.
+
+146
+00:07:39,860 --> 00:07:41,850
+So that's the general idea of
+stratification again.
+
+147
+00:07:41,850 --> 00:07:46,140
+It's great for nuisance variables, like if
+you've done a multi-site study, and you
+
+148
+00:07:46,140 --> 00:07:50,030
+need to adjust for the fact that different
+sites might be slightly different.
+
+149
+00:07:50,030 --> 00:07:53,390
+But you don't really care about the effect
+of sight, it would be perfectly
+
+150
+00:07:53,390 --> 00:07:56,500
+reasonable to stratify on site, rather
+than putting it in the model.
+
+151
+00:07:58,490 --> 00:08:00,230
+And just a few notes on stratification.
+
+152
+00:08:00,230 --> 00:08:03,580
+Again, different strata are allowed to
+have different baseline hazard functions,
+
+153
+00:08:03,580 --> 00:08:04,800
+and there's no assumption.
+
+154
+00:08:04,800 --> 00:08:07,410
+That those hazard functions are parallel
+between different strata.
+
+155
+00:08:07,410 --> 00:08:09,050
+So that's the, the neat trick here.
+
+156
+00:08:10,160 --> 00:08:15,020
+Essentially we're, what we get out at the
+end of the day is a weighted hazard ratio.
+
+157
+00:08:15,020 --> 00:08:17,770
+It's been weighted over the different
+strata, weighted over men and women.
+
+158
+00:08:17,770 --> 00:08:20,490
+So again, we're assuming there's no
+interaction between,
+
+159
+00:08:20,490 --> 00:08:22,500
+the stratification variable and the
+covariants we.
+
+160
+00:08:22,500 --> 00:08:23,140
+That we care about.
+
+161
+00:08:23,140 --> 00:08:25,440
+Again, it's very useful for
+
+162
+00:08:25,440 --> 00:08:28,510
+nuisance confounders where you don't want
+to estimate the effect because your,
+
+163
+00:08:28,510 --> 00:08:32,440
+you lose the ability to estimate the
+effect if you stratify on it.
+
+164
+00:08:32,440 --> 00:08:35,420
+And again it assumes no interaction
+between the stratification variable and
+
+165
+00:08:35,420 --> 00:08:36,290
+the main predictors.
+
+166
+00:08:36,290 --> 00:08:39,420
+So, you'd want to make sure that you
+tested that from the outset.

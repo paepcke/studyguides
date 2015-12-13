@@ -1,0 +1,946 @@
+1
+00:00:00,000 --> 00:00:04,895
+[BLANK_AUDIO]
+
+2
+00:00:04,895 --> 00:00:05,749
+So up until now,
+
+3
+00:00:05,749 --> 00:00:09,749
+we've been dealing with data sets that
+have had independent observations.
+
+4
+00:00:09,749 --> 00:00:12,322
+Basically different, unrelated people.
+
+5
+00:00:12,322 --> 00:00:15,740
+But what about the situation when you have
+some kind of correlations in your data?
+
+6
+00:00:15,740 --> 00:00:19,400
+So maybe you've measured two eyes on every
+person in your data set, or
+
+7
+00:00:19,400 --> 00:00:21,120
+you have sibling pairs.
+
+8
+00:00:21,120 --> 00:00:23,500
+Or maybe you've done a cluster randomized
+trial, and
+
+9
+00:00:23,500 --> 00:00:28,190
+you've randomized different schools, to
+different interventions, then the children
+
+10
+00:00:28,190 --> 00:00:31,740
+within each of those schools will have
+some correlations with one another.
+
+11
+00:00:31,740 --> 00:00:34,710
+How do you handle those correlations in
+the Cox regression model?
+
+12
+00:00:34,710 --> 00:00:38,490
+That's what we're going to talk about in
+this module.
+
+13
+00:00:38,490 --> 00:00:42,434
+So again, up until now, we've been dealing
+with tests that have assumed that we
+
+14
+00:00:42,434 --> 00:00:44,688
+had completely independent observations.
+
+15
+00:00:44,688 --> 00:00:48,458
+How do we deal with a situation where we
+might have some kind of correlations in
+
+16
+00:00:48,458 --> 00:00:49,660
+our data?
+
+17
+00:00:49,660 --> 00:00:52,930
+So in this module, I'm going to tell you
+about a very simple fix for
+
+18
+00:00:52,930 --> 00:00:56,990
+dealing with correlations in the data when
+you want to do Cox regression, and
+
+19
+00:00:56,990 --> 00:01:00,550
+that is to ask for the variances for your
+betas to
+
+20
+00:01:00,550 --> 00:01:05,120
+be estimated in a slightly different way
+called the robust standard errors.
+
+21
+00:01:05,120 --> 00:01:05,780
+If you ask for
+
+22
+00:01:05,780 --> 00:01:10,600
+those robust standard errors, those
+account for the correlations in your data.
+
+23
+00:01:10,600 --> 00:01:14,450
+And it's fairly simple to get those in all
+modern statistical packages.
+
+24
+00:01:14,450 --> 00:01:18,330
+So, the fix is pretty easy to implement
+here.
+
+25
+00:01:18,330 --> 00:01:21,460
+I'll just point out that there are some
+more complicated models for
+
+26
+00:01:21,460 --> 00:01:22,922
+dealing with correlation.
+
+27
+00:01:22,922 --> 00:01:24,730
+We are not going to go into those in this
+class, but
+
+28
+00:01:24,730 --> 00:01:26,790
+there's something called a frailty model,
+for example, so
+
+29
+00:01:26,790 --> 00:01:29,230
+there are some more complicated models out
+there.
+
+30
+00:01:29,230 --> 00:01:31,960
+But for a lot of simple cases, this simple
+fix will do and so
+
+31
+00:01:31,960 --> 00:01:35,560
+that's what we're going to deal with in
+this module, robust standard errors.
+
+32
+00:01:36,620 --> 00:01:39,540
+So, the robust standard errors if you took
+HRP261 or
+
+33
+00:01:39,540 --> 00:01:43,260
+something that you saw before when we were
+talking about dealing with
+
+34
+00:01:43,260 --> 00:01:46,100
+correlated data in the context of logistic
+regression.
+
+35
+00:01:46,100 --> 00:01:48,340
+It's the same idea here.
+
+36
+00:01:48,340 --> 00:01:50,060
+We are going to ask for
+
+37
+00:01:50,060 --> 00:01:54,710
+our variances of our betas to be estimated
+in a slightly different way.
+
+38
+00:01:54,710 --> 00:01:58,170
+And it's sometimes these robust standard
+errors are also sometimes called
+
+39
+00:01:58,170 --> 00:02:03,300
+the sandwich estimator of the variance,
+because if you look at the matrix algebra,
+
+40
+00:02:03,300 --> 00:02:04,350
+it looks like a sandwich.
+
+41
+00:02:04,350 --> 00:02:07,830
+And now and I just want to say that I am
+trying to avoid going into any
+
+42
+00:02:07,830 --> 00:02:09,630
+matrix algebra or linear algebra.
+
+43
+00:02:09,630 --> 00:02:13,400
+I don't expect you to understand the
+expressions that are up here unless you
+
+44
+00:02:13,400 --> 00:02:17,260
+had linear algebra in the past, but I just
+want to show you what it looks like to
+
+45
+00:02:17,260 --> 00:02:20,530
+show you where this name sandwich
+estimator comes from.
+
+46
+00:02:20,530 --> 00:02:23,200
+So basically in the matrix algebra
+expressions,
+
+47
+00:02:23,200 --> 00:02:25,700
+you have kind of the same things on both
+sides.
+
+48
+00:02:25,700 --> 00:02:28,920
+That's what we would kind of referred to
+as the bread here.
+
+49
+00:02:28,920 --> 00:02:32,350
+And then what's important is the meat that
+goes inside the sandwich.
+
+50
+00:02:32,350 --> 00:02:36,122
+And so what we put in for these robust
+standard errors,
+
+51
+00:02:36,122 --> 00:02:40,789
+what goes in this formula here, is the
+residuals from your model.
+
+52
+00:02:40,789 --> 00:02:44,943
+And the residuals from your model will
+reflect if you have correlations in
+
+53
+00:02:44,943 --> 00:02:48,119
+your data, those will be reflected in the
+residuals.
+
+54
+00:02:48,119 --> 00:02:51,881
+So there's a, a math expression that deals
+with the residuals that
+
+55
+00:02:51,881 --> 00:02:53,927
+goes inside this sandwich here, and
+
+56
+00:02:53,927 --> 00:02:59,620
+that's the way in which we are counting,
+accounting for correlations in our data.
+
+57
+00:02:59,620 --> 00:03:03,590
+If you simplify this formula by assuming
+that you have independent observations,
+
+58
+00:03:03,590 --> 00:03:05,730
+you can then simplify this formula.
+
+59
+00:03:05,730 --> 00:03:08,960
+Then you'll get simplier estimate for
+variates, but that estimate for
+
+60
+00:03:08,960 --> 00:03:11,900
+variates will be wrong when you have
+correlations in the data.
+
+61
+00:03:13,660 --> 00:03:16,900
+And I don't want to spend too much time on
+the math here but,
+
+62
+00:03:16,900 --> 00:03:20,190
+just to go a little bit further into the
+formula.
+
+63
+00:03:20,190 --> 00:03:24,100
+For those, I'm assuming that everybody has
+had Ordinary Least Squares regression,
+
+64
+00:03:24,100 --> 00:03:25,950
+just regular old linear regression before.
+
+65
+00:03:25,950 --> 00:03:28,810
+And somewhere in there you may not
+remember, but somewhere in there you
+
+66
+00:03:28,810 --> 00:03:33,090
+probably encountered the formula that you
+see on this slide.
+
+67
+00:03:33,090 --> 00:03:37,090
+So, if the case of ordinary linear
+regression.
+
+68
+00:03:37,090 --> 00:03:38,870
+Just simple linear regression.
+
+69
+00:03:38,870 --> 00:03:40,120
+Got a line.
+
+70
+00:03:40,120 --> 00:03:42,130
+One data, we're just talking about one
+line here,
+
+71
+00:03:42,130 --> 00:03:44,210
+with one predictor in the model.
+
+72
+00:03:44,210 --> 00:03:48,330
+Remember that the line is going to be,
+become the best fit line.
+
+73
+00:03:48,330 --> 00:03:50,900
+But there's still going to be some
+variation around the line.
+
+74
+00:03:50,900 --> 00:03:55,120
+So everybody will have an observed point
+and then if you draw down to the point
+
+75
+00:03:55,120 --> 00:03:58,230
+that they're expected to have on the line,
+that's called their predicted value.
+
+76
+00:03:58,230 --> 00:03:59,850
+The difference between the observed and
+
+77
+00:03:59,850 --> 00:04:02,865
+the predicted, the value on the line, is
+called the residual.
+
+78
+00:04:02,865 --> 00:04:07,690
+And one of the assumptions of ordinary
+linear regression you know, you probably
+
+79
+00:04:07,690 --> 00:04:11,200
+remember plotting the residuals and
+looking for any patterns within the data.
+
+80
+00:04:11,200 --> 00:04:14,120
+If there's some kind of correlation in the
+observations,
+
+81
+00:04:14,120 --> 00:04:18,570
+you might end up with a non-random pattern
+of residuals when you plot them.
+
+82
+00:04:18,570 --> 00:04:23,260
+But the formula for the variance of data,
+incorporates the residuals, but
+
+83
+00:04:23,260 --> 00:04:25,860
+it incorporates sort of an average measure
+of the residuals.
+
+84
+00:04:25,860 --> 00:04:30,050
+We're assuming that this red of
+variability around the line is
+
+85
+00:04:30,050 --> 00:04:33,630
+the same everywhere along the different
+values of x.
+
+86
+00:04:33,630 --> 00:04:37,140
+So we estimate one variance of y around
+the line,
+
+87
+00:04:37,140 --> 00:04:39,460
+and we assume that there's a single one.
+
+88
+00:04:39,460 --> 00:04:43,440
+That would not be a good assumption if we
+had data where the observations weren't
+
+89
+00:04:43,440 --> 00:04:46,200
+independent, but this gives us a nice
+simple formula for
+
+90
+00:04:46,200 --> 00:04:48,640
+getting the variance for beta, which you
+see pictured here.
+
+91
+00:04:50,480 --> 00:04:54,190
+In fact, that simpler formula we can back
+up a step and
+
+92
+00:04:54,190 --> 00:04:57,540
+there's actually a more general variance
+formula where that comes from.
+
+93
+00:04:57,540 --> 00:05:01,370
+We can show that the more general variance
+formula will simplify to
+
+94
+00:05:01,370 --> 00:05:06,230
+the simpler formula in the case that we
+have independent observations.
+
+95
+00:05:06,230 --> 00:05:08,270
+So again, this is a sandwich estimator.
+
+96
+00:05:08,270 --> 00:05:11,310
+I'm showing that the bread, again, on both
+sides here.
+
+97
+00:05:11,310 --> 00:05:14,240
+Don't worry about the details of this
+formula.
+
+98
+00:05:14,240 --> 00:05:18,900
+But this is just a way of estimating the
+variances for the betas in your model.
+
+99
+00:05:18,900 --> 00:05:21,350
+And I'm giving you the formula here just
+for a single beta so
+
+100
+00:05:21,350 --> 00:05:24,500
+that we can avoid any matrix algebra.
+
+101
+00:05:24,500 --> 00:05:28,480
+Basically, again, the residuals are part
+of this formula.
+
+102
+00:05:28,480 --> 00:05:31,630
+If you assume independence, that your
+observations are independent,
+
+103
+00:05:31,630 --> 00:05:34,910
+then you can assume that there's sort of
+an average distance from the line,
+
+104
+00:05:34,910 --> 00:05:36,260
+an average residual.
+
+105
+00:05:36,260 --> 00:05:39,810
+You can estimate this expression here as a
+constant, and
+
+106
+00:05:39,810 --> 00:05:41,960
+you can pull it out of the summation sign.
+
+107
+00:05:41,960 --> 00:05:46,580
+When you'll, you do that, you'll notice
+that this cancels with this, and
+
+108
+00:05:46,580 --> 00:05:50,550
+you're back to the simple formula that I
+just gave you on the last slide.
+
+109
+00:05:52,840 --> 00:05:54,770
+So this will simplify down.
+
+110
+00:05:54,770 --> 00:05:59,660
+However, if we have some kind of
+correlations in our data,
+
+111
+00:06:02,220 --> 00:06:07,650
+then it may not be fair to estimate the
+residuals with a single estimate.
+
+112
+00:06:07,650 --> 00:06:12,520
+We may need to actually keep the formula
+in this more general form, where we
+
+113
+00:06:12,520 --> 00:06:18,410
+multiply every person's individual
+residual with their deviation from x.
+
+114
+00:06:18,410 --> 00:06:21,620
+So in this way, we are allowing the
+residuals,
+
+115
+00:06:21,620 --> 00:06:25,560
+which reflect the pattern of correlation
+in our data, to stand rather than
+
+116
+00:06:25,560 --> 00:06:29,080
+making any assumptions about the fact that
+we have independent observations.
+
+117
+00:06:29,080 --> 00:06:32,170
+That's the general idea with the robust
+standard errors.
+
+118
+00:06:32,170 --> 00:06:35,550
+It's a way to estimate variance that
+accounts for correlation in our data.
+
+119
+00:06:36,570 --> 00:06:37,980
+So let's actually now just apply it.
+
+120
+00:06:37,980 --> 00:06:40,390
+Again, it's actually fairly easy to
+implement.
+
+121
+00:06:40,390 --> 00:06:42,060
+I've implemented it in SAS here, but
+
+122
+00:06:42,060 --> 00:06:46,270
+it's easy to implement in all of your
+major statistical packages.
+
+123
+00:06:46,270 --> 00:06:48,490
+To illustrate the effect of asking for
+
+124
+00:06:48,490 --> 00:06:52,900
+the robust standard errors, I'm going to
+present two hypothetical data sets.
+
+125
+00:06:52,900 --> 00:06:57,320
+If you were in HRP 261, you saw a version
+of these data sets already.
+
+126
+00:06:57,320 --> 00:07:01,550
+They're very similar to the two eye trial
+data sets that I presented when we
+
+127
+00:07:01,550 --> 00:07:05,700
+talked about correlations in the logistic
+regression model.
+
+128
+00:07:05,700 --> 00:07:09,040
+So, hypothetical eye trial one has a
+situation where
+
+129
+00:07:09,040 --> 00:07:13,980
+researchers have assigned 50 patients who
+have disease in both of their eyes,
+
+130
+00:07:13,980 --> 00:07:17,790
+to randomly receive drug in one eye, and
+placebo in the other.
+
+131
+00:07:17,790 --> 00:07:20,410
+So there's a difference within a person in
+what,
+
+132
+00:07:20,410 --> 00:07:22,580
+which treatment they receive in which eye.
+
+133
+00:07:22,580 --> 00:07:24,830
+Therefore you can do within person
+comparisons.
+
+134
+00:07:26,080 --> 00:07:30,690
+The outcome here is time to improvement,
+rather than just improvement yes or
+
+135
+00:07:30,690 --> 00:07:33,063
+no, I've now got a time to event outcome,
+so
+
+136
+00:07:33,063 --> 00:07:36,512
+the outcome is the time to it, the eye
+improving by more than 50%.
+
+137
+00:07:36,512 --> 00:07:39,350
+Some people will have that improvement,
+some people won't.
+
+138
+00:07:40,360 --> 00:07:44,670
+Hypothetical eye trial two is basically
+the same idea except we are randomly
+
+139
+00:07:44,670 --> 00:07:51,030
+assigning patients to have treatment in
+both eyes, or placebo in both eyes.
+
+140
+00:07:51,030 --> 00:07:55,700
+And the difference here is that you can
+only do between person comparisons.
+
+141
+00:07:55,700 --> 00:07:58,136
+You cannot do within person comparisons.
+
+142
+00:07:58,136 --> 00:08:02,570
+Hopefully you've you know enough about
+correlated data,
+
+143
+00:08:02,570 --> 00:08:06,880
+have encountered it in the past, to know
+that if you fail to account for
+
+144
+00:08:06,880 --> 00:08:10,530
+correlations, when you're dealing with
+within person core comparisons,
+
+145
+00:08:10,530 --> 00:08:12,730
+like in hypothetical trial one.
+
+146
+00:08:12,730 --> 00:08:13,600
+Failure to account for
+
+147
+00:08:13,600 --> 00:08:18,040
+correlations there will mean that you
+actually overestimate your p values.
+
+148
+00:08:18,040 --> 00:08:20,140
+The p values will be too high.
+
+149
+00:08:20,140 --> 00:08:22,450
+So you inflate your type two error.
+
+150
+00:08:22,450 --> 00:08:25,450
+For between person comparisons, when you
+fail to account for
+
+151
+00:08:25,450 --> 00:08:27,130
+the correlations, you do the opposite.
+
+152
+00:08:27,130 --> 00:08:29,680
+Your p values come out to be too small.
+
+153
+00:08:29,680 --> 00:08:33,370
+And you have underestimated them, and
+inflated your type one error.
+
+154
+00:08:34,700 --> 00:08:35,590
+And that's illustrated here.
+
+155
+00:08:35,590 --> 00:08:38,560
+These are some made up data sets where
+I've got
+
+156
+00:08:38,560 --> 00:08:41,850
+some correlation between the eyes within a
+person.
+
+157
+00:08:41,850 --> 00:08:43,000
+For eye trial one, where,
+
+158
+00:08:43,000 --> 00:08:45,970
+when we're comparing person within a
+person because you
+
+159
+00:08:45,970 --> 00:08:50,770
+can compare the eye that's treated to the
+eye that's got a placebo within a person,
+
+160
+00:08:50,770 --> 00:08:55,110
+I first ran a Cox regression model, where
+I just ran a regular Cox regression model.
+
+161
+00:08:55,110 --> 00:08:56,650
+I ignored the correlation.
+
+162
+00:08:56,650 --> 00:08:59,350
+My predictor here is treatment versus
+placebo.
+
+163
+00:08:59,350 --> 00:09:02,040
+And you'll see that I get hazard ratio of
+1.775,
+
+164
+00:09:02,040 --> 00:09:07,420
+so indeed the treatment increases your
+chances of improvement.
+
+165
+00:09:07,420 --> 00:09:10,440
+And it's statistically significant but the
+p value is 0.02.
+
+166
+00:09:10,440 --> 00:09:14,330
+When I then correctly account for the
+correlation by asking for these
+
+167
+00:09:14,330 --> 00:09:18,660
+robust standard errors, notice in the SAS
+output it says Sandwich Variance Estimate,
+
+168
+00:09:18,660 --> 00:09:22,160
+because again, this is sometimes called
+the Sandwich Estimator.
+
+169
+00:09:22,160 --> 00:09:23,710
+And it's the same thing.
+
+170
+00:09:23,710 --> 00:09:25,990
+I look and I get the exact same hazard
+ratios.
+
+171
+00:09:25,990 --> 00:09:28,100
+So, this does not affect my point
+estimate.
+
+172
+00:09:28,100 --> 00:09:33,270
+However, my standard error, which was
+0.915 for beta, when I didn't account for
+
+173
+00:09:33,270 --> 00:09:35,370
+correlation, has now become smaller.
+
+174
+00:09:35,370 --> 00:09:36,750
+It's down to 0.735.
+
+175
+00:09:36,750 --> 00:09:39,300
+And as a result, my p values are also
+smaller.
+
+176
+00:09:39,300 --> 00:09:43,930
+So the correct p value here is smaller,
+than if you did not account for
+
+177
+00:09:43,930 --> 00:09:45,170
+the correlation.
+
+178
+00:09:45,170 --> 00:09:48,400
+So we've you know, you, you can increase
+your statistical power by
+
+179
+00:09:48,400 --> 00:09:51,270
+correctly accounting for the correlation
+in this situation.
+
+180
+00:09:52,640 --> 00:09:56,300
+For eye trial two, where we were doing
+between person comparisons,
+
+181
+00:09:56,300 --> 00:10:00,220
+failing to account for the correlations
+will make your p values overly optimistic.
+
+182
+00:10:00,220 --> 00:10:03,230
+So I first ran a clock progression where I
+ignored correlation,
+
+183
+00:10:03,230 --> 00:10:05,980
+treatment versus placebo, the hazard ratio
+here comes out to be 2.9.
+
+184
+00:10:05,980 --> 00:10:08,640
+This is a totally separate hypothetical
+data set so
+
+185
+00:10:08,640 --> 00:10:10,870
+the point estimates are actually
+different.
+
+186
+00:10:10,870 --> 00:10:14,408
+But, the p value here is highly
+significant when I don't account for
+
+187
+00:10:14,408 --> 00:10:16,313
+the correlation, 0.0008.
+
+188
+00:10:16,313 --> 00:10:17,681
+When I correctly account for
+
+189
+00:10:17,681 --> 00:10:21,443
+the correlation using the robust standard
+errors, you can see it again that it
+
+190
+00:10:21,443 --> 00:10:25,322
+says Sandwich Variance Estimate SAS, then
+my hazard ratio is exactly the same.
+
+191
+00:10:25,322 --> 00:10:29,592
+This does not affect the point estimate,
+but my standard error goes up.
+
+192
+00:10:29,592 --> 00:10:36,681
+So it went up from 0.31 to 0.36, and my p
+value is actually higher.
+
+193
+00:10:36,681 --> 00:10:40,335
+So I went from 0.0008 to 0.003.
+
+194
+00:10:40,335 --> 00:10:42,773
+So they're both still statistically
+significant but
+
+195
+00:10:42,773 --> 00:10:46,059
+you can imagine in a situation where you
+might go from being significant to
+
+196
+00:10:46,059 --> 00:10:49,572
+non-significant, when you correctly
+account for the correlation.
+
+197
+00:10:49,572 --> 00:10:54,026
+So, the robust standard error represent a
+simple way to, to account for correlation.
+
+198
+00:10:54,026 --> 00:10:55,952
+It's simple to implement in the computer.
+
+199
+00:10:55,952 --> 00:10:59,770
+[BLANK_AUDIO]

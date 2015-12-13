@@ -1,0 +1,292 @@
+1
+00:00:00,880 --> 00:00:04,030
+In this module, I want to show you how to
+create a simple box plot,
+
+2
+00:00:04,030 --> 00:00:05,190
+as well as a simple histogram.
+
+3
+00:00:07,270 --> 00:00:08,730
+>> Say we wanted to create a box plot for
+
+4
+00:00:08,730 --> 00:00:12,640
+the white variable, and that we wanted one
+plot for males, and one plot for females.
+
+5
+00:00:12,640 --> 00:00:18,060
+We'll start our code with PROC SGPLOT, and
+then specify your data set.
+
+6
+00:00:18,060 --> 00:00:22,610
+In the second line of code we write, hbox.
+
+7
+00:00:22,610 --> 00:00:25,000
+Hbox stands for horizontal box.
+
+8
+00:00:25,000 --> 00:00:26,920
+This statement tells SAS that we want a
+box plot.
+
+9
+00:00:28,300 --> 00:00:30,850
+We then specify the variable for which you
+want to make a box plot.
+
+10
+00:00:30,850 --> 00:00:32,889
+In our case we're interested in weight.
+
+11
+00:00:34,090 --> 00:00:36,590
+Remember, we want to make a separate plot
+for males and females.
+
+12
+00:00:36,590 --> 00:00:41,400
+We can do this by adding a forward slash,
+followed by category equals gender.
+
+13
+00:00:43,640 --> 00:00:44,760
+If you ever forget this syntax,
+
+14
+00:00:44,760 --> 00:00:47,100
+you can always check back on the online
+SAS documentation.
+
+15
+00:00:48,730 --> 00:00:49,960
+Let's run the code and look at the output.
+
+16
+00:00:52,650 --> 00:00:55,590
+As you can see we now have a separate box
+plot for males and for females.
+
+17
+00:00:55,590 --> 00:00:58,220
+>> Now I'll show you how to create a
+histogram.
+
+18
+00:01:00,210 --> 00:01:01,130
+As you can see from our code,
+
+19
+00:01:01,130 --> 00:01:04,000
+our first line has not changed from our
+previous example.
+
+20
+00:01:04,000 --> 00:01:08,480
+And our second line we have now specified
+histogram followed by
+
+21
+00:01:08,480 --> 00:01:11,520
+the variable we want to analyze, which in
+this case is h.
+
+22
+00:01:13,218 --> 00:01:13,810
+In unit three,
+
+23
+00:01:13,810 --> 00:01:17,780
+we showed you how to use PROC univariate
+to create a histogram for you data.
+
+24
+00:01:17,780 --> 00:01:19,210
+PROC SGPLOT is nice for
+
+25
+00:01:19,210 --> 00:01:22,030
+making a histogram, if you need some extra
+graphic options.
+
+26
+00:01:22,030 --> 00:01:23,723
+Let's take a look at the default
+histogram.
+
+27
+00:01:23,723 --> 00:01:31,808
+[SOUND] Now let's take a look at a
+histogram with some optional commands.
+
+28
+00:01:31,808 --> 00:01:36,309
+[SOUND].
+
+29
+00:01:36,309 --> 00:01:38,194
+>> So this is what the default histogram
+will look like.
+
+30
+00:01:39,880 --> 00:01:41,780
+And this is what a histogram can look like
+if you use some of
+
+31
+00:01:41,780 --> 00:01:43,815
+the optional commands for the PROC SGPLOT
+statement.
+
+32
+00:01:43,815 --> 00:01:46,900
+>> [SOUND]
+
+33
+00:01:46,900 --> 00:01:49,460
+The more you start experimenting with
+graphics,
+
+34
+00:01:49,460 --> 00:01:53,670
+you'll probably realize that sometimes the
+graphics can get a little glitchy.
+
+35
+00:01:53,670 --> 00:01:57,955
+If you make a title on one plot, it might
+carry over onto all your other plots.
+
+36
+00:01:57,955 --> 00:02:00,480
+[SOUND]
+
+37
+00:02:00,480 --> 00:02:02,580
+>> For example, in this code, we have two
+plots.
+
+38
+00:02:03,600 --> 00:02:06,070
+The first one doesn't have a title, but
+the second one does.
+
+39
+00:02:07,770 --> 00:02:11,170
+When we run it, we have a title for both
+of them.
+
+40
+00:02:12,180 --> 00:02:16,980
+By adding GOptions, reset equals all,
+
+41
+00:02:16,980 --> 00:02:22,800
+before each line of code, will flush
+
+42
+00:02:22,800 --> 00:02:26,250
+out any graphic settings, so that each
+plot will be made from a clean slate.
+
+43
+00:02:26,250 --> 00:02:30,790
+[BLANK_AUDIO]
+
+44
+00:02:30,790 --> 00:02:32,720
+Now the plots will look just like the way
+we wanted it.
+
+45
+00:02:34,350 --> 00:02:36,190
+>> Before we end this module,
+
+46
+00:02:36,190 --> 00:02:40,240
+let's talk a little bit about online SAS
+documentation for graphics.
+
+47
+00:02:40,240 --> 00:02:44,850
+Let's open up our web browser and search
+PROC SGPLOT, and
+
+48
+00:02:46,170 --> 00:02:48,109
+open up our first option from SAS.
+
+49
+00:02:50,160 --> 00:02:52,360
+We can then open the procedure syntax on
+the left,
+
+50
+00:02:52,360 --> 00:02:54,730
+and pick the histogram statement.
+
+51
+00:02:56,760 --> 00:03:00,380
+As we can see on this page, we have all
+the options for the histogram statement.
+
+52
+00:03:02,690 --> 00:03:04,839
+All the options will come after a forward
+slash.
+
+53
+00:03:07,210 --> 00:03:09,670
+After the forward slash, we can use any of
+these options here.
+
+54
+00:03:10,990 --> 00:03:12,180
+If we wanted to change the color for
+
+55
+00:03:12,180 --> 00:03:16,050
+example, we could use this fill attribute
+statement.
+
+56
+00:03:16,050 --> 00:03:20,700
+We use fill attributes equals, color
+equals, and then specify a color.
+
+57
+00:03:22,760 --> 00:03:24,460
+That's just what we did right here.
+
+58
+00:03:24,460 --> 00:03:29,530
+Fill attributes equals color equals
+lavender, and we had that in parenthesis.
+
+59
+00:03:34,070 --> 00:03:36,730
+That's what made this histogram lavender
+as opposed to this one,
+
+60
+00:03:36,730 --> 00:03:37,490
+which was a light blue.
+
+61
+00:03:38,630 --> 00:03:41,040
+>> If you ever want to modify your
+graphics and
+
+62
+00:03:41,040 --> 00:03:46,820
+customize certain aspects, feel free to
+use this online documentation.
+
+63
+00:03:46,820 --> 00:03:50,120
+It'll provide with all the code necessary
+to make professional graphics.

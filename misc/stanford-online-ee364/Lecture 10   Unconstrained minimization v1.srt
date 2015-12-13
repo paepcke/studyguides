@@ -1,0 +1,9638 @@
+1
+00:00:00,860 --> 00:00:03,870
+Today we're going to look at Unconstrained
+Minimization.
+
+2
+00:00:03,870 --> 00:00:10,020
+So that's, how do you minimize a smooth
+convex function?
+
+3
+00:00:10,020 --> 00:00:11,950
+So that, that's what we're going to look
+at.
+
+4
+00:00:11,950 --> 00:00:13,940
+And we'll start with just some basic ideas
+and
+
+5
+00:00:13,940 --> 00:00:16,510
+definitions about what it means to
+minimize it.
+
+6
+00:00:16,510 --> 00:00:19,315
+By the way, most of these problems don't
+have exact solutions,
+
+7
+00:00:19,315 --> 00:00:21,140
+they don't have analytical solutions.
+
+8
+00:00:21,140 --> 00:00:24,360
+So we're going to come up with algorithms
+that only in the limit actually achieve
+
+9
+00:00:24,360 --> 00:00:24,960
+what you want.
+
+10
+00:00:24,960 --> 00:00:27,550
+But that's good enough for any practical
+purpose.
+
+11
+00:00:27,550 --> 00:00:30,470
+We'll talk about what is basically the
+most obvious and
+
+12
+00:00:30,470 --> 00:00:31,710
+the most famous algorithm.
+
+13
+00:00:31,710 --> 00:00:32,990
+That's the gradient descent method,
+
+14
+00:00:32,990 --> 00:00:35,870
+where you just evaluate the gradient and,
+roughly speaking, go downhill.
+
+15
+00:00:37,480 --> 00:00:39,600
+Steepest descent is a variation on that.
+
+16
+00:00:39,600 --> 00:00:43,280
+And then we'll get to something quite
+interesting.
+
+17
+00:00:43,280 --> 00:00:44,850
+Newton's method.
+
+18
+00:00:44,850 --> 00:00:47,220
+well, the very name suggests that this is
+not new.
+
+19
+00:00:48,530 --> 00:00:52,400
+but, we'll see the important thing about
+Newton's method is we'll understand how
+
+20
+00:00:52,400 --> 00:00:56,770
+you get an algorithm that exploits not
+just a first-order, a gradient, but
+
+21
+00:00:56,770 --> 00:00:58,525
+also a Hessian, as well.
+
+22
+00:00:58,525 --> 00:01:01,450
+These methods, probably you've seen it.
+
+23
+00:01:01,450 --> 00:01:04,095
+I hope you've seen it in some other
+context, and you might know,
+
+24
+00:01:04,095 --> 00:01:09,020
+you might know about Newton's method is
+that yet, when, once it gets close to
+
+25
+00:01:09,020 --> 00:01:12,770
+the solution, it converges to extremely
+high accuracy and very quickly.
+
+26
+00:01:12,770 --> 00:01:16,490
+And we're going to analyze that very much.
+
+27
+00:01:16,490 --> 00:01:18,470
+then, what will do is we'll switch gears.
+
+28
+00:01:18,470 --> 00:01:19,860
+You know, this is obviously not new.
+
+29
+00:01:19,860 --> 00:01:22,530
+I mean, it is, after all, Isaac Newton's
+Method.
+
+30
+00:01:23,610 --> 00:01:25,670
+So then, we'll switch gears and
+
+31
+00:01:25,670 --> 00:01:28,590
+we'll talk about something which is
+actually quite modern.
+
+32
+00:01:28,590 --> 00:01:31,520
+It's a theory only 10, 15 years old.
+
+33
+00:01:31,520 --> 00:01:33,790
+And that's the theory of self-concordant
+functions.
+
+34
+00:01:33,790 --> 00:01:37,800
+This is pioneered by Nesterov and
+Nemirovski.
+
+35
+00:01:37,800 --> 00:01:39,850
+And so we'll talk about that and it's a
+new,
+
+36
+00:01:39,850 --> 00:01:43,190
+it's a new way to analyze Newton's method.
+
+37
+00:01:43,190 --> 00:01:48,150
+And it's, it's the method that will be
+successful later in the course in showing
+
+38
+00:01:48,150 --> 00:01:51,340
+that the methods we're going to look at
+into your point methods actually have
+
+39
+00:01:51,340 --> 00:01:55,380
+polynomial time complexity on convex
+optimization problems.
+
+40
+00:01:56,900 --> 00:01:59,790
+Finally at the end, we'll say a little bit
+about the implementation.
+
+41
+00:01:59,790 --> 00:02:03,770
+We'll tie the ideas of this section.
+
+42
+00:02:03,770 --> 00:02:08,510
+We'll tie all of this together with the
+ideas of numerical methods that we
+
+43
+00:02:08,510 --> 00:02:10,590
+discussed in the last lecture.
+
+44
+00:02:10,590 --> 00:02:14,660
+And in particular particularly interesting
+will be topics like this.
+
+45
+00:02:16,090 --> 00:02:20,510
+How do you exploit structure in solving
+the linear equations that you'll have to
+
+46
+00:02:20,510 --> 00:02:23,300
+solve when you implement Newton's method?
+
+47
+00:02:23,300 --> 00:02:25,970
+And that'll be a very interesting topic.
+
+48
+00:02:25,970 --> 00:02:28,260
+So we're going to look at smooth
+unconstrained minimization.
+
+49
+00:02:28,260 --> 00:02:31,350
+So we're going to minimize an objective
+function, f.
+
+50
+00:02:31,350 --> 00:02:33,480
+And we're going to assume it's it's convex
+and
+
+51
+00:02:33,480 --> 00:02:35,310
+twice continuously differentiable, right?
+
+52
+00:02:35,310 --> 00:02:36,360
+So its domain is open.
+
+53
+00:02:37,670 --> 00:02:40,600
+And we're going to assume that the optimal
+value is attained, right?
+
+54
+00:02:40,600 --> 00:02:43,760
+The only other option, of course, it'd, is
+that it's minus infinity.
+
+55
+00:02:43,760 --> 00:02:45,000
+It's unboundable up.
+
+56
+00:02:45,000 --> 00:02:49,320
+Actually, all the methods we're looking at
+will do the right thing when its
+
+57
+00:02:49,320 --> 00:02:50,780
+unbounded below.
+
+58
+00:02:50,780 --> 00:02:53,961
+We'll see how that works but we're just
+going to assume its, we're in,
+
+59
+00:02:53,961 --> 00:02:59,110
+we're in the case where we assume its
+bounded below and attained.
+
+60
+00:02:59,110 --> 00:03:02,420
+And so the idea the goal is to produce a
+sequence of
+
+61
+00:03:02,420 --> 00:03:07,050
+points where f of xk goes to p star,
+alright?
+
+62
+00:03:07,050 --> 00:03:08,910
+So that's, that's the, that's the idea.
+
+63
+00:03:08,910 --> 00:03:09,430
+And by the way,
+
+64
+00:03:09,430 --> 00:03:12,140
+even when it's unconstrained, it's the
+same statement, right?
+
+65
+00:03:12,140 --> 00:03:14,020
+So, you've produced and unbounded
+sequence.
+
+66
+00:03:14,020 --> 00:03:18,810
+I mean, that's a bit silly because when
+you run an algorithm, it terminates at
+
+67
+00:03:18,810 --> 00:03:23,010
+some point, finite, you know, term, it'll
+run out some maximum number of iterations.
+
+68
+00:03:23,010 --> 00:03:25,910
+And produce a, a, a, a function value
+that's very, very low.
+
+69
+00:03:27,750 --> 00:03:33,010
+okay, and you can, you can interpret a
+method, you know,
+
+70
+00:03:33,010 --> 00:03:36,140
+a method that produces a minimizing
+sequence.
+
+71
+00:03:36,140 --> 00:03:38,460
+That's sometimes what people call a
+sequence that does this.
+
+72
+00:03:39,540 --> 00:03:42,770
+You can interpret that actually as these
+are iterative methods for
+
+73
+00:03:42,770 --> 00:03:44,470
+solving this set of equations,
+
+74
+00:03:44,470 --> 00:03:47,580
+which are the optimality conditions such
+as gradient equal to 0, right?
+
+75
+00:03:47,580 --> 00:03:50,010
+So that's the other way to interpret it.
+
+76
+00:03:50,010 --> 00:03:51,490
+And in fact, for several of the algorithm,
+
+77
+00:03:51,490 --> 00:03:54,720
+we'll see both interpretations are quite
+illuminating, right?
+
+78
+00:03:54,720 --> 00:03:59,320
+So okay, oh, and I should mention one
+thing.
+
+79
+00:03:59,320 --> 00:04:01,900
+We're going to look exclusively at
+iterative methods.
+
+80
+00:04:01,900 --> 00:04:04,400
+There are a handful of problems where
+there's some sort of like,
+
+81
+00:04:04,400 --> 00:04:06,170
+silly analytical solution.
+
+82
+00:04:06,170 --> 00:04:08,880
+I mean, some they are important, what is
+least squares, alright?
+
+83
+00:04:08,880 --> 00:04:11,480
+So you don't need an iterative method to
+solve least squares.
+
+84
+00:04:11,480 --> 00:04:14,050
+So that, I mean, that is an important
+building block.
+
+85
+00:04:14,050 --> 00:04:16,770
+Of course, minimizing a least, least
+squares problem or
+
+86
+00:04:16,770 --> 00:04:18,770
+something like that, that's Linear
+Algebra, right,
+
+87
+00:04:18,770 --> 00:04:21,290
+because the optimality condition is the
+gradient equal to 0.
+
+88
+00:04:21,290 --> 00:04:22,874
+And that's a set of linear equations and
+so
+
+89
+00:04:22,874 --> 00:04:25,370
+you know all of that already, there's
+nothing to say.
+
+90
+00:04:25,370 --> 00:04:27,790
+so, but we're mostly interested in case
+where that's not true.
+
+91
+00:04:27,790 --> 00:04:30,420
+And so you'll need iterative method to
+solve it.
+
+92
+00:04:30,420 --> 00:04:30,920
+Okay.
+
+93
+00:04:32,150 --> 00:04:34,900
+Now, there are a couple of assumptions,
+I'm not going to go into it
+
+94
+00:04:34,900 --> 00:04:38,360
+in huge detail, but they're actually
+important to understand.
+
+95
+00:04:38,360 --> 00:04:42,110
+So the first thing is you have to have a
+point that's in the domain.
+
+96
+00:04:42,110 --> 00:04:44,230
+So you have, have to start with a point in
+the domain.
+
+97
+00:04:45,660 --> 00:04:47,240
+Often that's easy.
+
+98
+00:04:47,240 --> 00:04:48,340
+The domain is all of Rn.
+
+99
+00:04:48,340 --> 00:04:49,320
+It's nothing.
+
+100
+00:04:49,320 --> 00:04:50,800
+You pick your favorite point.
+
+101
+00:04:50,800 --> 00:04:55,370
+If the domain is, you know, R plus to the
+n, that's so, again, very easy.
+
+102
+00:04:55,370 --> 00:04:58,330
+You might start from the vector of R1s.
+
+103
+00:04:58,330 --> 00:05:01,480
+But actually, in some cases, it may not be
+easy to find a point in the domain.
+
+104
+00:05:01,480 --> 00:05:06,640
+We will later see methods that would work
+
+105
+00:05:06,640 --> 00:05:08,850
+even if you don't know a point in the
+domain.
+
+106
+00:05:08,850 --> 00:05:09,860
+So, we'll, we'll see that later.
+
+107
+00:05:11,140 --> 00:05:12,160
+Another very important thing is we're,
+
+108
+00:05:12,160 --> 00:05:14,030
+we're going to have assumed that the
+sublevel set,
+
+109
+00:05:14,030 --> 00:05:15,515
+the initial sublevel set is closed.
+
+110
+00:05:15,515 --> 00:05:16,370
+Alright.
+
+111
+00:05:16,370 --> 00:05:23,330
+And that's, and this is basically
+going to, you know prevent us from,
+
+112
+00:05:23,330 --> 00:05:28,560
+prevent the algorithm from having x, you
+know go towards a point which is
+
+113
+00:05:28,560 --> 00:05:32,730
+not on the closure of, of this and that
+would, you know, okay, that's a pathology.
+
+114
+00:05:33,980 --> 00:05:37,600
+Now it turns out this is generally quite
+hard to satisf.
+
+115
+00:05:37,600 --> 00:05:43,080
+But one simple sufficient condition for
+that is that all sublevel sets are closed.
+
+116
+00:05:43,080 --> 00:05:45,460
+And that, by the way some people simply
+say,
+
+117
+00:05:45,460 --> 00:05:50,190
+f is a closed function, that means epi f
+is a closed set.
+
+118
+00:05:50,190 --> 00:05:53,430
+So, by the way, if you have a background
+in analysis that's fine and if you
+
+119
+00:05:53,430 --> 00:05:57,530
+don't then at least you should understand
+what this means intuitively, right?
+
+120
+00:05:57,530 --> 00:05:59,920
+And you can work, figure out what, what
+these things mean.
+
+121
+00:05:59,920 --> 00:06:02,320
+So, now if your differentiable and closed,
+
+122
+00:06:02,320 --> 00:06:05,820
+it means your domain is open and the
+epigraph is closed.
+
+123
+00:06:05,820 --> 00:06:10,770
+And that means you can't do something like
+simply have a boundary in the domain and
+
+124
+00:06:10,770 --> 00:06:12,120
+then go straight up to infinity, right?
+
+125
+00:06:12,120 --> 00:06:14,090
+That would be closed, that's a closed
+function but
+
+126
+00:06:14,090 --> 00:06:15,048
+it's not closed differentiable.
+
+127
+00:06:15,048 --> 00:06:17,090
+Closed, if you have a closed
+differentiable function,
+
+128
+00:06:17,090 --> 00:06:19,615
+it basically says the function kind of has
+to go to plus infinite,
+
+129
+00:06:19,615 --> 00:06:21,450
+there's no other way to do it, right?
+
+130
+00:06:21,450 --> 00:06:26,210
+You can't have something like entropy or
+square root, where you get a, a,
+
+131
+00:06:26,210 --> 00:06:30,658
+a pathology like this and then it stops at
+a finite value.
+
+132
+00:06:30,658 --> 00:06:31,730
+You can't, that's you can't do.
+
+133
+00:06:33,900 --> 00:06:36,910
+And some conditions here that are
+sufficient, you know,
+
+134
+00:06:36,910 --> 00:06:39,370
+obviously if the domain is everything,
+that's fine.
+
+135
+00:06:39,370 --> 00:06:42,080
+Another one is if the function goes to
+infinity as you go to
+
+136
+00:06:42,080 --> 00:06:43,980
+the boundary that's good enough.
+
+137
+00:06:43,980 --> 00:06:48,080
+That's, that's called a barrier function
+for the domain and
+
+138
+00:06:48,080 --> 00:06:49,880
+that's good enough to imply this.
+
+139
+00:06:49,880 --> 00:06:51,800
+Okay.
+So here's some examples.
+
+140
+00:06:51,800 --> 00:06:53,804
+Here's a log sum x function.
+
+141
+00:06:53,804 --> 00:06:56,120
+this, it's obvious because the domain is
+everything.
+
+142
+00:06:56,120 --> 00:06:57,370
+The domain is Rn.
+
+143
+00:06:57,370 --> 00:07:00,514
+So, of course, that has closed sublevel
+sets.
+
+144
+00:07:01,640 --> 00:07:07,210
+Then here's another one, this one does not
+here, that's the log barrier for
+
+145
+00:07:07,210 --> 00:07:09,920
+a set of linear inequalities, right?
+
+146
+00:07:09,920 --> 00:07:11,960
+Which is ai transpose x less than bi.
+
+147
+00:07:11,960 --> 00:07:13,300
+That's the log barrier.
+
+148
+00:07:13,300 --> 00:07:17,570
+And by the way, this is the perfect
+example of a function where it is not,
+
+149
+00:07:17,570 --> 00:07:21,880
+it need not be easy to find a point in the
+domain.
+
+150
+00:07:21,880 --> 00:07:24,250
+To find a point in the domain of this,
+
+151
+00:07:24,250 --> 00:07:28,070
+means find a point that satisfies a set of
+strict linear inequalities, and
+
+152
+00:07:28,070 --> 00:07:31,100
+you may have to solve a linear program to
+find such a point, right?
+
+153
+00:07:31,100 --> 00:07:32,790
+So, this is an example of that.
+
+154
+00:07:32,790 --> 00:07:36,340
+But it's also an example of a point where
+the domain is obviously not all of Rn.
+
+155
+00:07:36,340 --> 00:07:39,720
+The domain is an open, is an open
+polyhedron here.
+
+156
+00:07:39,720 --> 00:07:43,580
+So, it's the interior of a polyhedron,
+right, that's the domain.
+
+157
+00:07:43,580 --> 00:07:47,730
+And in fact, this has, this has the
+property that epi f is closed and
+
+158
+00:07:47,730 --> 00:07:49,630
+what happens here is that it's a barrier.
+
+159
+00:07:49,630 --> 00:07:55,600
+As you move towards the boundary, if any
+if ai transposed x gets close to bi,
+
+160
+00:07:55,600 --> 00:07:59,540
+then one of these terms gets super
+negative with the minus sign here,
+
+161
+00:07:59,540 --> 00:08:00,958
+the whole function goes to plus infinity.
+
+162
+00:08:00,958 --> 00:08:03,978
+So, okay.
+
+163
+00:08:05,000 --> 00:08:07,680
+So we will be using, at several times,
+
+164
+00:08:07,680 --> 00:08:12,710
+we're going to be using basically a
+sledgehammer t, well, show convergence.
+
+165
+00:08:12,710 --> 00:08:14,274
+Let me explain why.
+
+166
+00:08:14,274 --> 00:08:19,640
+In some sense, these convergent,
+convergence analysis of algorithms and
+
+167
+00:08:19,640 --> 00:08:22,866
+things like that in this case, they're,
+they're important.
+
+168
+00:08:22,866 --> 00:08:26,452
+What they really are is they're sort of
+like feel good things, right?
+
+169
+00:08:26,452 --> 00:08:29,210
+They, because, you know, you implement
+something in a real language and
+
+170
+00:08:29,210 --> 00:08:30,642
+it works, and stuff like that.
+
+171
+00:08:30,642 --> 00:08:33,390
+And, and there's always something in there
+that has a maxIter like 30 or
+
+172
+00:08:33,390 --> 00:08:35,420
+50 or something like that.
+
+173
+00:08:35,420 --> 00:08:36,190
+And, you know,
+
+174
+00:08:36,190 --> 00:08:39,540
+if you hit the maxIter, you're, you're not
+going to go forever, right?
+
+175
+00:08:39,540 --> 00:08:42,980
+So the, the kind of algorithms you have, I
+mean these results that you have that say
+
+176
+00:08:42,980 --> 00:08:47,175
+something like, you know, as m, as k goes
+to infinity, you converge to a solution.
+
+177
+00:08:47,175 --> 00:08:48,872
+And technically speaking you're not per,
+
+178
+00:08:48,872 --> 00:08:50,870
+you're not actually really relevant in
+practice.
+
+179
+00:08:50,870 --> 00:08:52,310
+If, if you see what I mean, right?
+
+180
+00:08:52,310 --> 00:08:53,290
+They're just not, right?
+
+181
+00:08:53,290 --> 00:08:56,290
+Because you don't run algorithms for
+infinity, right?
+
+182
+00:08:56,290 --> 00:08:59,510
+You're not interested if the limit is, you
+know, has, has optimal value.
+
+183
+00:08:59,510 --> 00:09:01,180
+I mean, these are not interesting, right?
+
+184
+00:09:01,180 --> 00:09:05,075
+So, these are more like sort of feel good
+things that basically say,
+
+185
+00:09:05,075 --> 00:09:09,360
+well, in my running, in my production
+code, I have this maxIter thing there,
+
+186
+00:09:09,360 --> 00:09:13,630
+but if, but if you don't hit that, right,
+then in principle,
+
+187
+00:09:13,630 --> 00:09:15,480
+this would produce a solution, or
+something like that.
+
+188
+00:09:15,480 --> 00:09:16,820
+And so these are not bad things to say.
+
+189
+00:09:18,480 --> 00:09:20,720
+My feeling is, given the, that, by the
+way,
+
+190
+00:09:20,720 --> 00:09:24,528
+we will see some exceptions to this later
+that are very impressive.
+
+191
+00:09:24,528 --> 00:09:27,880
+so, we'll see some exceptions to things,
+they're not feel-good things things.
+
+192
+00:09:27,880 --> 00:09:29,940
+They're actually quite explicit.
+
+193
+00:09:29,940 --> 00:09:32,030
+But most of this stuff is just feel-good
+stuff.
+
+194
+00:09:32,030 --> 00:09:33,850
+we'll, you'll see why.
+
+195
+00:09:33,850 --> 00:09:36,870
+I'll, I'll stop and make various points
+about this earlier.
+
+196
+00:09:36,870 --> 00:09:37,990
+But what it means is,
+
+197
+00:09:37,990 --> 00:09:42,620
+I'm going to feel free to take extremely
+strong assumptions, right?
+
+198
+00:09:42,620 --> 00:09:45,730
+Because it just shortens the proof, and
+because there's no point, you know,
+
+199
+00:09:45,730 --> 00:09:48,070
+proving this under the most general
+conditions, or something like that.
+
+200
+00:09:48,070 --> 00:09:49,110
+So, here's one of them.
+
+201
+00:09:49,110 --> 00:09:49,710
+Ready?
+
+202
+00:09:49,710 --> 00:09:51,070
+Is strong convexity.
+
+203
+00:09:51,070 --> 00:09:54,800
+So strong convexity, basically says,
+there's a minimum curvature.
+
+204
+00:09:54,800 --> 00:09:57,530
+It says, the Hessian has min, minimum
+curvature, little m.
+
+205
+00:09:57,530 --> 00:10:00,140
+And, you know, this could hold, this has
+to hold only on
+
+206
+00:10:00,140 --> 00:10:03,220
+that initial sublevel set or something
+like that but that's all you need, right?
+
+207
+00:10:03,220 --> 00:10:06,760
+And by the way, if the sublevel is
+bounded, this is automatic, right?
+
+208
+00:10:06,760 --> 00:10:11,530
+Because if the, actually all you really
+have to say is that the Hess,
+
+209
+00:10:11,530 --> 00:10:14,410
+is that the Hessian is positive definite
+everywhere.
+
+210
+00:10:14,410 --> 00:10:17,140
+Then, I mean, if the sublevel sets are
+bounded, right,
+
+211
+00:10:17,140 --> 00:10:21,850
+then the minimum of a continuous function
+all comes back to the positive, right?
+
+212
+00:10:21,850 --> 00:10:23,370
+That, that, that of a positive function.
+
+213
+00:10:23,370 --> 00:10:26,180
+So, that's again, if you know analysis.
+
+214
+00:10:26,180 --> 00:10:27,820
+because if you don't, don't worry about
+it.
+
+215
+00:10:27,820 --> 00:10:28,625
+Okay.
+So that's a very,
+
+216
+00:10:28,625 --> 00:10:30,690
+that's a very strong assumption.
+
+217
+00:10:30,690 --> 00:10:33,040
+Alright, now what this does is actually
+something very interesting.
+
+218
+00:10:33,040 --> 00:10:34,570
+And we'll see variations on this later.
+
+219
+00:10:35,820 --> 00:10:40,550
+This inequality right here, that's the
+classic inequality that holds, right, so
+
+220
+00:10:40,550 --> 00:10:42,840
+that's, that's without this term.
+
+221
+00:10:42,840 --> 00:10:47,420
+This inequality holds, of course, for any
+convex function.
+
+222
+00:10:47,420 --> 00:10:48,230
+I mean that's what it says.
+
+223
+00:10:48,230 --> 00:10:51,830
+It says, that the first-order of Taylor
+expansion is a global lower bound on f.
+
+224
+00:10:52,870 --> 00:10:55,560
+If you add the assumption of minimum
+curvature here,
+
+225
+00:10:55,560 --> 00:10:58,020
+then you can actually tighten it, alright?
+
+226
+00:10:58,020 --> 00:10:59,560
+So, you can actually say,
+
+227
+00:10:59,560 --> 00:11:03,230
+plus m over 2 times x minus y normal
+squared here, right?
+
+228
+00:11:03,230 --> 00:11:06,370
+So, you actually get a, and, in fact,
+that's really cool because what
+
+229
+00:11:06,370 --> 00:11:10,110
+was before, this used to be an affine
+lower bound.
+
+230
+00:11:10,110 --> 00:11:13,760
+You now have a quadratic lower bound,
+okay?
+
+231
+00:11:13,760 --> 00:11:16,990
+Not, not as quadratic but one with a
+curvature m, alright?
+
+232
+00:11:16,990 --> 00:11:19,150
+All sorts of implications here, right?
+
+233
+00:11:19,150 --> 00:11:23,760
+So, for example, if I minimize over y, the
+right-hand side,
+
+234
+00:11:23,760 --> 00:11:25,660
+it's a quadratic function in y.
+
+235
+00:11:25,660 --> 00:11:28,740
+It has a lower I mean, has a number,
+right?
+
+236
+00:11:28,740 --> 00:11:34,190
+And in fact, if you do that you
+immediately get the following found,
+
+237
+00:11:34,190 --> 00:11:35,280
+which says this.
+
+238
+00:11:35,280 --> 00:11:39,040
+It says that f of x minus p star is less
+than or
+
+239
+00:11:39,040 --> 00:11:42,610
+equal to 1 over 2m times the norm of the
+gradient squared I mean,
+
+240
+00:11:42,610 --> 00:11:45,120
+that's actually very useful as a crop as a
+stopping criterion.
+
+241
+00:11:45,120 --> 00:11:47,020
+again, in a feel-good way.
+
+242
+00:11:47,020 --> 00:11:49,980
+And the reason is you don't really know m
+in practice, right?
+
+243
+00:11:49,980 --> 00:11:56,650
+So, the actual code says, you know, if, if
+the norm of the gradient
+
+244
+00:11:56,650 --> 00:12:01,230
+is less than 1e minus 7, right, or
+something like that, it says break.
+
+245
+00:12:01,230 --> 00:12:03,090
+That's, that's what actually in the code.
+
+246
+00:12:03,090 --> 00:12:05,660
+And someone looks at that and says, what's
+that all about?
+
+247
+00:12:05,660 --> 00:12:08,110
+And you would point to this at the
+justification.
+
+248
+00:12:08,110 --> 00:12:10,970
+You might even put this in the comment in
+the code, right?
+
+249
+00:12:10,970 --> 00:12:13,500
+Only minor problem is you don't know m,
+right?
+
+250
+00:12:13,500 --> 00:12:17,090
+So that's the, so that's why I would call
+this a feel-good thing, okay?
+
+251
+00:12:17,090 --> 00:12:17,740
+So that's the idea.
+
+252
+00:12:19,970 --> 00:12:21,730
+So biggest class of methods.
+
+253
+00:12:21,730 --> 00:12:23,940
+Not, not, not all methods but
+
+254
+00:12:23,940 --> 00:12:26,830
+a very big class of methods that are
+called descent methods.
+
+255
+00:12:26,830 --> 00:12:29,220
+And we'll look at them completely
+generically.
+
+256
+00:12:29,220 --> 00:12:31,140
+It looks like this.
+
+257
+00:12:31,140 --> 00:12:38,360
+It says that your new point is going to be
+your current point plus a scaler
+
+258
+00:12:38,360 --> 00:12:43,340
+which is going to be positive, right,
+times some direction vector.
+
+259
+00:12:43,340 --> 00:12:45,460
+And it's typically written something like
+delta x.
+
+260
+00:12:45,460 --> 00:12:47,620
+I mean, there's, people write it other
+ways, but
+
+261
+00:12:47,620 --> 00:12:50,660
+this, this is, it's, it's a, anyone would
+understand this, right?
+
+262
+00:12:50,660 --> 00:12:53,992
+And it's a descent method because when you
+run this method,
+
+263
+00:12:53,992 --> 00:12:58,010
+you all, the function value goes down,
+right?
+
+264
+00:12:58,010 --> 00:13:00,920
+So, it says that at every step, your
+function value goes down.
+
+265
+00:13:02,640 --> 00:13:04,990
+Now, whenever you have an iterative method
+and
+
+266
+00:13:04,990 --> 00:13:08,480
+especially if you have one that actually
+works the analysis of it
+
+267
+00:13:08,480 --> 00:13:12,760
+usually hinges on some quantity which is
+decreasing, right?
+
+268
+00:13:12,760 --> 00:13:16,528
+And so, well, if you want to minimize f,
+this is the most natural quantity.
+
+269
+00:13:16,528 --> 00:13:18,900
+It says, so you say what do you do, what
+is your algorithm doing?
+
+270
+00:13:18,900 --> 00:13:23,610
+It's minimizing f and it has the property
+that every step it takes, f gets lower.
+
+271
+00:13:23,610 --> 00:13:25,820
+Oh, by the way, unless you're at the
+optimum point.
+
+272
+00:13:25,820 --> 00:13:27,540
+If you're at the optimum point, the
+gradient is zero and
+
+273
+00:13:27,540 --> 00:13:30,180
+you break because you're done, right?
+
+274
+00:13:30,180 --> 00:13:32,670
+Otherwise, it produces a point that's
+better.
+
+275
+00:13:32,670 --> 00:13:37,160
+So basically the, the stopping, the, the
+algorithm has a little,
+
+276
+00:13:37,160 --> 00:13:43,040
+the control flow looks like if not
+optimal, then produce a better point.
+
+277
+00:13:43,040 --> 00:13:44,955
+Better means lower function value, okay?
+
+278
+00:13:44,955 --> 00:13:48,520
+Okay, by the way, you might think that it
+has to be this way but that's not true.
+
+279
+00:13:48,520 --> 00:13:51,790
+The names, there's many names for the
+function that goes down, for
+
+280
+00:13:51,790 --> 00:13:54,184
+a function that decreases during an
+algorithm.
+
+281
+00:13:54,184 --> 00:13:56,310
+And in fact,they have lots in you know,
+
+282
+00:13:56,310 --> 00:13:59,620
+actually for all algorithms usually
+there's something like this.
+
+283
+00:13:59,620 --> 00:14:01,110
+And it doesn't have to be f.
+
+284
+00:14:01,110 --> 00:14:04,025
+Another function that could go down that's
+used all the time is
+
+285
+00:14:04,025 --> 00:14:07,490
+something like the norm of the gradient
+and that would do the trick, too, right?
+
+286
+00:14:07,490 --> 00:14:10,515
+It says that because what your trying to
+do is find a quote with zero
+
+287
+00:14:10,515 --> 00:14:13,220
+gradient you'd say, well, this algorithm
+does the following.
+
+288
+00:14:13,220 --> 00:14:14,670
+If the gradient is not already zero,
+
+289
+00:14:14,670 --> 00:14:18,210
+it produces a new point with smaller
+gradients that's it, right?
+
+290
+00:14:18,210 --> 00:14:19,210
+That's, that's kind of the idea.
+
+291
+00:14:19,210 --> 00:14:20,960
+So, it doesn't have to be f.
+
+292
+00:14:20,960 --> 00:14:26,080
+And we'll later see algorithms for which
+something like this or something more
+
+293
+00:14:26,080 --> 00:14:31,630
+complicated, but in the spirit, closer to
+this actually goes down rather than f.
+
+294
+00:14:31,630 --> 00:14:32,130
+Okay.
+
+295
+00:14:33,330 --> 00:14:37,190
+Now oh, and this is written lots of other
+notations you know,
+
+296
+00:14:37,190 --> 00:14:40,380
+something like this, that's, that's some
+kind of like pseudo-code assignment or
+
+297
+00:14:40,380 --> 00:14:42,040
+something, read, you know, or something
+like that.
+
+298
+00:14:42,040 --> 00:14:44,740
+And, or it might be written this way to
+make lighter notation.
+
+299
+00:14:44,740 --> 00:14:47,720
+If you don't want to have ks and k plus 1s
+floating around,
+
+300
+00:14:47,720 --> 00:14:50,762
+all over the place, x is sort of the
+current point, x plus is,
+
+301
+00:14:50,762 --> 00:14:54,005
+you know, reasonably standard notation for
+the next iterate, right?
+
+302
+00:14:54,005 --> 00:14:55,940
+And you just get cleaner notation.
+
+303
+00:14:55,940 --> 00:15:02,470
+Okay, now if, if in fact, f of x plus is
+less than f, so it's a descent direction,
+
+304
+00:15:02,470 --> 00:15:07,990
+that says that the inner product of the
+direction you stepped in,
+
+305
+00:15:07,990 --> 00:15:11,800
+that's delta, x and the gradient has to be
+negative, okay?
+
+306
+00:15:11,800 --> 00:15:17,600
+So, and such a, such a direction is called
+the descent direction, right?
+
+307
+00:15:17,600 --> 00:15:20,367
+So, here's a generic scheme.
+
+308
+00:15:20,367 --> 00:15:23,275
+It's a, a, a gradient descent method, it
+looks like this.
+
+309
+00:15:23,275 --> 00:15:25,340
+You're given a starting point in the, in
+the domain and
+
+310
+00:15:25,340 --> 00:15:27,740
+in each step, you determine a descent
+direction.
+
+311
+00:15:27,740 --> 00:15:28,860
+Now that, we have to make,
+
+312
+00:15:28,860 --> 00:15:31,570
+we have to instantiate that to make this a
+real algorithm.
+
+313
+00:15:31,570 --> 00:15:33,050
+So, this is like a prototype, right?
+
+314
+00:15:33,050 --> 00:15:35,350
+So it says, you find a descent direction,
+
+315
+00:15:35,350 --> 00:15:37,490
+we're going to see tons of ways to do
+that, okay?
+
+316
+00:15:38,500 --> 00:15:41,180
+Then you'll line search, again, tons of
+ways.
+
+317
+00:15:41,180 --> 00:15:42,540
+But you'll have to choose t so
+
+318
+00:15:42,540 --> 00:15:46,010
+that this holds up here and possibly some
+more, right?
+
+319
+00:15:46,010 --> 00:15:47,440
+And then, you update.
+
+320
+00:15:47,440 --> 00:15:50,470
+And then you do this until a, a stopping
+criterion is satisfied.
+
+321
+00:15:50,470 --> 00:15:53,340
+And, in fact, a real control flow in a
+real algorithm doesn't quite look
+
+322
+00:15:53,340 --> 00:15:57,360
+like this, because the stopping criterion
+usually involves something.
+
+323
+00:15:57,360 --> 00:16:02,330
+Actually, when you calculate this you
+would do something like look at its norm,
+
+324
+00:16:02,330 --> 00:16:05,060
+and you'd, and if the norm is less than
+some tolerance, you'd break.
+
+325
+00:16:05,060 --> 00:16:06,850
+So the control flow doesn't look exactly
+like this, but
+
+326
+00:16:06,850 --> 00:16:08,600
+it looks close enough to this, okay?
+
+327
+00:16:08,600 --> 00:16:10,320
+This is, this is the idea.
+
+328
+00:16:10,320 --> 00:16:15,280
+Okay, so, to make, to instantiate, to make
+a real algorithm out of this prototype, we
+
+329
+00:16:15,280 --> 00:16:19,440
+have to say, how do you compete this, how
+do you compute the search direction and
+
+330
+00:16:19,440 --> 00:16:22,110
+then how do you compute the step size,
+right?
+
+331
+00:16:22,110 --> 00:16:24,426
+And there's actually a couple of surprises
+on each of these.
+
+332
+00:16:24,426 --> 00:16:31,006
+S, I will we'll get, today, there's
+going to be maybe one or two surprises.
+
+333
+00:16:31,006 --> 00:16:36,066
+I think these are not just intuitive, that
+you might not know and there, I,
+
+334
+00:16:36,066 --> 00:16:40,531
+there are just things that you would not
+know unless you actually tried a bunch of
+
+335
+00:16:40,531 --> 00:16:41,624
+these things.
+
+336
+00:16:41,624 --> 00:16:42,620
+Okay.
+This is,
+
+337
+00:16:42,620 --> 00:16:45,290
+there's going to be punch line here which
+is one of them.
+
+338
+00:16:45,290 --> 00:16:47,830
+So so here's some line search types.
+
+339
+00:16:47,830 --> 00:16:51,150
+One is an exact line search, so it says,
+hey, you know what,
+
+340
+00:16:51,150 --> 00:16:56,170
+you're trying to minimize f you've
+specified a direction that x plus t
+
+341
+00:16:56,170 --> 00:16:59,070
+delta x is well, t is positive so that's a
+red.
+
+342
+00:16:59,070 --> 00:17:00,290
+And so, what you simply do is you say,
+
+343
+00:17:00,290 --> 00:17:03,500
+well, along that ray, I'll choose the
+minimum value of f, okay?
+
+344
+00:17:03,500 --> 00:17:05,380
+I mean that, that's, what you're trying to
+do,
+
+345
+00:17:05,380 --> 00:17:08,360
+you're trying to minimize f so why would
+you not do that, right?
+
+346
+00:17:09,970 --> 00:17:15,780
+now, by the way, that that means that you
+restricted that convex function to a line,
+
+347
+00:17:15,780 --> 00:17:18,750
+oh, and we should probably deal with that
+right away.
+
+348
+00:17:18,750 --> 00:17:21,652
+How do you minimize the convex function of
+a single variable?
+
+349
+00:17:21,652 --> 00:17:22,840
+>> [INAUDIBLE]
+
+350
+00:17:22,840 --> 00:17:23,900
+>> Yeah, binary search.
+
+351
+00:17:23,900 --> 00:17:25,500
+Yeah, that's it.
+
+352
+00:17:25,500 --> 00:17:27,498
+So just do bisection, that's all.
+
+353
+00:17:27,498 --> 00:17:28,930
+So, so, there's no issue there.
+
+354
+00:17:28,930 --> 00:17:30,260
+You don't have to do, you don't have to
+know anything,
+
+355
+00:17:30,260 --> 00:17:32,520
+you just do binary search so this would be
+done with binary search, for
+
+356
+00:17:32,520 --> 00:17:34,030
+example, okay?
+
+357
+00:17:34,030 --> 00:17:36,390
+Oh, I guess we call it bisection.
+
+358
+00:17:36,390 --> 00:17:41,320
+Okay, here's something at the other end,
+it's extremely simple.
+
+359
+00:17:41,320 --> 00:17:43,040
+It's called backtracking line search and
+
+360
+00:17:43,040 --> 00:17:46,050
+it's got other names, depending on your
+cultural background, right?
+
+361
+00:17:46,050 --> 00:17:50,885
+So it's also called an Armijo search a
+Goldstein search, and, and
+
+362
+00:17:50,885 --> 00:17:54,240
+Armijo-Goldstein search and probably many
+other things.
+
+363
+00:17:54,240 --> 00:17:59,415
+You'll, you'll see this line searches like
+this in spirit all over the place.
+
+364
+00:17:59,415 --> 00:18:01,168
+And it says, it says something like this.
+
+365
+00:18:01,168 --> 00:18:03,920
+You take two parameters, an alpha and a
+beta and, and
+
+366
+00:18:03,920 --> 00:18:07,080
+what you do is that the line search starts
+like this, you start with,
+
+367
+00:18:07,080 --> 00:18:09,920
+with a step of one by the way, all of this
+can be changed.
+
+368
+00:18:09,920 --> 00:18:11,010
+You start with the step one.
+
+369
+00:18:12,410 --> 00:18:14,370
+And here's what you're going to do.
+
+370
+00:18:14,370 --> 00:18:19,640
+This is the convex function which is
+restricted to this ray.
+
+371
+00:18:19,640 --> 00:18:23,990
+And so, if you did an exact line search,
+you would pick that t,
+
+372
+00:18:23,990 --> 00:18:26,495
+something like that, that would be the
+exact one, okay.
+
+373
+00:18:26,495 --> 00:18:30,020
+And instead, what you do is this If I,
+
+374
+00:18:30,020 --> 00:18:35,400
+if I look at the function f of x plus t
+and then, the inner product
+
+375
+00:18:35,400 --> 00:18:41,090
+of gradient with delta x take alpha equals
+1 in this expression, that is actually,
+
+376
+00:18:41,090 --> 00:18:45,350
+that's, that's the affine lower bound on
+the restriction function, right?
+
+377
+00:18:45,350 --> 00:18:46,420
+That's plotted here.
+
+378
+00:18:46,420 --> 00:18:47,920
+So, this is where you are.
+
+379
+00:18:47,920 --> 00:18:49,470
+That, that's t equals 0 right here.
+
+380
+00:18:49,470 --> 00:18:50,780
+So you're at t equals 0.
+
+381
+00:18:50,780 --> 00:18:54,820
+And then this function here, is this
+thing, right?
+
+382
+00:18:54,820 --> 00:18:56,460
+It's that thing with alpha equals 0.
+
+383
+00:18:56,460 --> 00:18:58,580
+Now, that's a lower bound on your
+function.
+
+384
+00:18:58,580 --> 00:19:01,230
+So, whatever your function is, it's above
+that, okay?
+
+385
+00:19:02,666 --> 00:19:06,300
+By the way, that means there is no t that
+would ever get you a,
+
+386
+00:19:06,300 --> 00:19:10,140
+a decrease as big a this, right, so that,
+because it's a lower bound.
+
+387
+00:19:10,140 --> 00:19:15,500
+So, here's what you do, you degrade that
+lower bound by a factor and
+
+388
+00:19:15,500 --> 00:19:16,820
+the factor is alpha.
+
+389
+00:19:16,820 --> 00:19:17,970
+So, if alpha is 0.5,
+
+390
+00:19:17,970 --> 00:19:22,370
+it says you take half that slope, and you
+get something that looks like this.
+
+391
+00:19:22,370 --> 00:19:24,370
+Okay.
+This might be for, yeah,
+
+392
+00:19:24,370 --> 00:19:25,980
+it could be alpha equals 0.4 or something.
+
+393
+00:19:25,980 --> 00:19:27,350
+I don't know what it is, right?
+
+394
+00:19:27,350 --> 00:19:31,370
+So, you take alpha equals 0.4, and that's
+this thing, okay?
+
+395
+00:19:31,370 --> 00:19:34,000
+Now, this one has the following property.
+
+396
+00:19:34,000 --> 00:19:39,140
+That there are plenty of ts where you will
+get a decrease at least
+
+397
+00:19:39,140 --> 00:19:41,010
+as much as this, okay?
+
+398
+00:19:41,010 --> 00:19:45,730
+And then that's, the algorithm says, you
+start at t zero, t, t, whatever one.
+
+399
+00:19:45,730 --> 00:19:47,310
+It could be anything you like.
+
+400
+00:19:47,310 --> 00:19:51,340
+And then, you simply multiply by beta
+until this inequality holds.
+
+401
+00:19:51,340 --> 00:19:55,710
+And I think that's called maybe the Armijo
+condition or I guess if,
+
+402
+00:19:55,710 --> 00:19:58,760
+if you're in Moscow, it's the Goldstein
+condition or something like that, right?
+
+403
+00:19:58,760 --> 00:20:01,300
+So, that, that, that's the idea.
+
+404
+00:20:01,300 --> 00:20:06,810
+That's, now, when you look at this so
+here's going to be the first surprise.
+
+405
+00:20:06,810 --> 00:20:07,610
+Here it is.
+
+406
+00:20:07,610 --> 00:20:09,050
+When you look at this you would say,
+
+407
+00:20:09,050 --> 00:20:12,750
+whoa, the exact line search has got to be
+way better, right?
+
+408
+00:20:12,750 --> 00:20:16,720
+I mean it just, because a typical
+parameter value for beta is a half, right?
+
+409
+00:20:16,720 --> 00:20:21,560
+So, the only step lengths you ever take
+are half, one, half, quarter, eighth.
+
+410
+00:20:21,560 --> 00:20:22,910
+I mean this looks very crude.
+
+411
+00:20:22,910 --> 00:20:24,910
+By the way, alpha can be all sorts of
+weird things.
+
+412
+00:20:24,910 --> 00:20:28,610
+Here's a very common value of alpha,
+unbelievable 0.01.
+
+413
+00:20:28,610 --> 00:20:33,150
+So, that basically says, if I get, if the
+minute I get 1%
+
+414
+00:20:33,150 --> 00:20:39,460
+of the decrease predicted by the linear
+extrapolation, I'll take it, okay?
+
+415
+00:20:39,460 --> 00:20:44,050
+I mean this sounds you're not coming close
+to doing a, an exact line search, and
+
+416
+00:20:44,050 --> 00:20:46,960
+the exact one, I mean the picture, all
+your intuitions suggests and
+
+417
+00:20:46,960 --> 00:20:48,600
+exact line search would work way better.
+
+418
+00:20:48,600 --> 00:20:49,930
+Guess what?
+
+419
+00:20:49,930 --> 00:20:51,340
+That's false.
+
+420
+00:20:51,340 --> 00:20:53,760
+It, it doesn't work actually any better.
+
+421
+00:20:53,760 --> 00:20:56,950
+I mean, it does for silly little problems
+in like three dimensions or five or
+
+422
+00:20:56,950 --> 00:20:58,350
+15 or something, right?
+
+423
+00:20:58,350 --> 00:21:02,540
+But for any real problem, it turns out it,
+in fact, quite often
+
+424
+00:21:02,540 --> 00:21:07,180
+the backtracking search works not just
+just as well, but actually often better.
+
+425
+00:21:07,180 --> 00:21:10,090
+Now that's bizarre and there's no way, I
+actually don't even
+
+426
+00:21:10,090 --> 00:21:13,350
+really have any particular intuition to
+explain that but it's true.
+
+427
+00:21:13,350 --> 00:21:16,360
+Okay, so here's gradient descent method,
+there's a fully inst,
+
+428
+00:21:16,360 --> 00:21:20,700
+here's our first fully instantiated
+method, method.
+
+429
+00:21:20,700 --> 00:21:24,270
+oh, and I might add it's due to Newton
+without the backtracking.
+
+430
+00:21:24,270 --> 00:21:25,810
+But anyway, so, here it is.
+
+431
+00:21:27,000 --> 00:21:30,490
+It says what you do, where, so
+
+432
+00:21:30,490 --> 00:21:34,220
+the search direction will simply be
+negative gradient, right?
+
+433
+00:21:34,220 --> 00:21:37,150
+And by the way, what could be more
+natural.
+
+434
+00:21:37,150 --> 00:21:38,700
+By the way, we're going to find out it's
+not natural at all.
+
+435
+00:21:38,700 --> 00:21:41,240
+But then this, this is just to set it up,
+right?
+
+436
+00:21:41,240 --> 00:21:42,530
+So, what could be more natural?
+
+437
+00:21:42,530 --> 00:21:46,150
+You're at x and you say I would now like
+to
+
+438
+00:21:46,150 --> 00:21:50,610
+choose a direction where the function gets
+smaller, right?
+
+439
+00:21:50,610 --> 00:21:53,200
+So you take the gradient, that's the local
+information.
+
+440
+00:21:53,200 --> 00:21:55,930
+And the negative gradient direction is
+actually the direction where
+
+441
+00:21:55,930 --> 00:21:58,210
+the function is going down the fastest.
+
+442
+00:21:58,210 --> 00:22:01,690
+So you, I mean, why would you not do this?
+
+443
+00:22:01,690 --> 00:22:04,520
+It would be hard to imagine not doing
+this, okay?
+
+444
+00:22:04,520 --> 00:22:07,030
+So, let's just start with doing this
+because it's,
+
+445
+00:22:07,030 --> 00:22:08,920
+it's kind of the most basic algorithm and
+so on.
+
+446
+00:22:08,920 --> 00:22:09,980
+So, here it is.
+
+447
+00:22:09,980 --> 00:22:12,960
+We choose the gradient, negative gradient
+direction, and here it is.
+
+448
+00:22:12,960 --> 00:22:14,910
+So we evaluate the negative gradient
+direction.
+
+449
+00:22:15,930 --> 00:22:19,675
+the, the real algorithm might have it
+would test the gradient here and
+
+450
+00:22:19,675 --> 00:22:22,990
+it's a gradient where less than the
+[UNKNOWN] should break, okay?
+
+451
+00:22:22,990 --> 00:22:24,110
+Then, do a line search.
+
+452
+00:22:24,110 --> 00:22:27,280
+You could do exact line search,
+backtracking is fine.
+
+453
+00:22:27,280 --> 00:22:28,530
+And then, you update.
+
+454
+00:22:28,530 --> 00:22:30,680
+And so, this works.
+
+455
+00:22:30,680 --> 00:22:32,060
+I mean that's, that's the idea.
+
+456
+00:22:32,060 --> 00:22:32,920
+I mean it's not hard.
+
+457
+00:22:32,920 --> 00:22:35,060
+It is actually quite easy to show it
+works.
+
+458
+00:22:35,060 --> 00:22:36,620
+And you could read to the book.
+
+459
+00:22:36,620 --> 00:22:37,650
+And you can show various things.
+
+460
+00:22:37,650 --> 00:22:39,230
+Like here, you could show that, for
+
+461
+00:22:39,230 --> 00:22:43,730
+example, the objective value converges,
+you know, exponentially or,
+
+462
+00:22:43,730 --> 00:22:48,700
+you know, towards the to, to to p star,
+something like that.
+
+463
+00:22:48,700 --> 00:22:53,530
+Now, now, to that c is like basically
+0.9999999 or something like that.
+
+464
+00:22:53,530 --> 00:22:55,764
+But, that's another story, okay?
+
+465
+00:22:55,764 --> 00:22:57,190
+alright.
+
+466
+00:22:57,190 --> 00:22:58,550
+now, here comes the first surprise.
+
+467
+00:23:00,050 --> 00:23:03,660
+I mean, actually this is used because it's
+extremely simple, right?
+
+468
+00:23:03,660 --> 00:23:08,620
+And, you know, for some problems, you will
+soon know why it works on some problems.
+
+469
+00:23:08,620 --> 00:23:10,890
+But on others, it's completely useless.
+
+470
+00:23:10,890 --> 00:23:11,770
+It doesn't work at all.
+
+471
+00:23:11,770 --> 00:23:13,630
+Well, of course, in theory, it works.
+
+472
+00:23:13,630 --> 00:23:16,470
+But since in practice, you're not
+interested in doing ten to the nine
+
+473
+00:23:16,470 --> 00:23:20,380
+iterations it, it doesn't, it work in
+practice, okay?
+
+474
+00:23:20,380 --> 00:23:23,460
+I mean, in theory, it always works, okay?
+
+475
+00:23:23,460 --> 00:23:27,405
+You will soon know exactly why it doesn't
+work but
+
+476
+00:23:27,405 --> 00:23:30,456
+this is the first, I mean, I think this is
+the first thing that's not obvious, right?
+
+477
+00:23:30,456 --> 00:23:31,250
+because the gradient is, if you just,
+
+478
+00:23:31,250 --> 00:23:35,180
+if you didn't know monotomization, someone
+said what [UNKNOWN] streets and
+
+479
+00:23:35,180 --> 00:23:37,630
+please make up an algorithm for it, you'd
+make this up.
+
+480
+00:23:37,630 --> 00:23:39,890
+This is the I hope you would make this up,
+right?
+
+481
+00:23:39,890 --> 00:23:42,091
+because it's the most obvious thing to do,
+right?
+
+482
+00:23:42,091 --> 00:23:45,790
+You said, please make me an algorithm, you
+can use local information, you know,
+
+483
+00:23:45,790 --> 00:23:46,818
+wherever you are.
+
+484
+00:23:46,818 --> 00:23:49,355
+I'lI, I'll tell you things like gradient
+and whatever.
+
+485
+00:23:49,355 --> 00:23:52,280
+You, this is the, I hope this is the
+algorithm you'd come up with.
+
+486
+00:23:52,280 --> 00:23:55,250
+And the weird part is, it doesn't work
+that well in, in a lot of cases.
+
+487
+00:23:55,250 --> 00:23:57,946
+You'll soon see why, okay?
+
+488
+00:23:57,946 --> 00:23:59,634
+Okay.
+
+489
+00:23:59,634 --> 00:24:03,735
+So, let's examine it Let's take a, a
+quadratic problem, looks like this.
+
+490
+00:24:03,735 --> 00:24:06,070
+This is just an R2 just to understand.
+
+491
+00:24:06,070 --> 00:24:11,150
+So here we have parameter here, a gamma
+and
+
+492
+00:24:11,150 --> 00:24:14,850
+we can make as we make gamma big, what
+happens is
+
+493
+00:24:14,850 --> 00:24:18,539
+we're changing the condition number of
+the, of the quadratic form here, right?
+
+494
+00:24:18,539 --> 00:24:21,160
+This is x tranpose px, I can change the
+condition number to gamma, right?
+
+495
+00:24:21,160 --> 00:24:23,770
+because this is diag, the matrix diag 1
+gamma.
+
+496
+00:24:23,770 --> 00:24:27,580
+And if I make gamma huge or small, the
+condition number gets really big, right?
+
+497
+00:24:27,580 --> 00:24:29,440
+And so, what does that mean geometrically?
+
+498
+00:24:29,440 --> 00:24:33,850
+It means that the sublevel sets, if gamma
+is 1, the sublevel sets are round.
+
+499
+00:24:33,850 --> 00:24:34,510
+Oh, yeah.
+
+500
+00:24:34,510 --> 00:24:36,310
+Please, let's discuss that.
+
+501
+00:24:36,310 --> 00:24:40,250
+How does the gradient method work if the,
+if gamma is 1?
+
+502
+00:24:40,250 --> 00:24:42,240
+I mean, you can work out the exact
+formulas but who cares.
+
+503
+00:24:42,240 --> 00:24:44,310
+Just tell me what, what happens then?
+
+504
+00:24:44,310 --> 00:24:48,060
+Here, here are the sublevel sets, right,
+like that.
+
+505
+00:24:48,060 --> 00:24:50,720
+Here are you, which way is the gradient
+pointing?
+
+506
+00:24:50,720 --> 00:24:52,230
+It's pointing straight uphill.
+
+507
+00:24:52,230 --> 00:24:57,206
+And then negative gradient is pointing
+straight towards the solution, okay?
+
+508
+00:24:57,206 --> 00:25:01,930
+So, you know, gradient method works
+superbly when gamma is 1, right?
+
+509
+00:25:01,930 --> 00:25:06,286
+Because, in fact, the gradient points you
+directly to the solution, okay?
+
+510
+00:25:06,286 --> 00:25:09,304
+And then, you know, so what if you're
+doing a backtracking line search, right?
+
+511
+00:25:09,304 --> 00:25:13,330
+You, you make up, if you, you'll cover a
+distance of factor two each time, and
+
+512
+00:25:13,330 --> 00:25:15,172
+you're going to get very fast convergence.
+
+513
+00:25:15,172 --> 00:25:16,310
+Everybody see this?
+
+514
+00:25:16,310 --> 00:25:18,600
+Now, if you'll look at what happens here,
+this is a,
+
+515
+00:25:18,600 --> 00:25:20,720
+this is condition, this is condition
+number 10, actually,
+
+516
+00:25:20,720 --> 00:25:24,920
+which is really square root of 10 in terms
+of the, the, the semi axis ratios.
+
+517
+00:25:24,920 --> 00:25:29,790
+But, so here, look what happens These are,
+they, they are now ellipsoids, right.
+
+518
+00:25:29,790 --> 00:25:31,960
+And what happens is the gradient, of
+course,
+
+519
+00:25:31,960 --> 00:25:35,080
+is the normal to the level curve pointing
+uphill.
+
+520
+00:25:35,080 --> 00:25:38,150
+So a negative gradient is the normal to
+the level curve pointing downhill.
+
+521
+00:25:38,150 --> 00:25:41,590
+And so, you can see what happened is that
+is the direction of
+
+522
+00:25:41,590 --> 00:25:43,680
+the negative gradient, okay?
+
+523
+00:25:44,690 --> 00:25:46,540
+Now, is it pointing directly?
+
+524
+00:25:46,540 --> 00:25:49,080
+I mean, is that pointing generally in the
+right direction?
+
+525
+00:25:49,080 --> 00:25:50,220
+Yes it is, right?
+
+526
+00:25:50,220 --> 00:25:54,270
+It's point, it's pointed more towards zero
+than away from zero, okay?
+
+527
+00:25:54,270 --> 00:25:57,030
+But it's not pointed the right direction,
+right?
+
+528
+00:25:57,030 --> 00:26:01,140
+And so what happens is you go over here,
+then here, and this is because for
+
+529
+00:26:01,140 --> 00:26:03,890
+exact line search, you get exactly the
+same thing for backtracking lines.
+
+530
+00:26:03,890 --> 00:26:07,470
+For exact line search, you can just work
+out what the iterates are, right?
+
+531
+00:26:07,470 --> 00:26:08,980
+And so, you get this kind of thing.
+
+532
+00:26:08,980 --> 00:26:12,360
+And this actually has a name and I forgot
+what it was but it doesn't matter.
+
+533
+00:26:12,360 --> 00:26:16,100
+So somebody's name is attached to this
+zigzagging, okay?
+
+534
+00:26:16,100 --> 00:26:18,450
+Now this picture makes it completely
+clear.
+
+535
+00:26:18,450 --> 00:26:23,960
+If I made gamma, that, that was 10, what
+if I made it 10,000, what would happen?
+
+536
+00:26:23,960 --> 00:26:25,830
+I mean, you can see exactly what would
+happen, right?
+
+537
+00:26:25,830 --> 00:26:27,480
+The iterates would just go like this,
+right?
+
+538
+00:26:27,480 --> 00:26:32,500
+And they'd make very slow progress towards
+zero but that's what would happen.
+
+539
+00:26:32,500 --> 00:26:34,360
+By the way, what happens if I make gamma
+really small?
+
+540
+00:26:37,215 --> 00:26:40,120
+Yeah, and this thing just rotates 90
+degrees and this, and
+
+541
+00:26:40,120 --> 00:26:42,380
+so actually, this is your first hint.
+
+542
+00:26:42,380 --> 00:26:48,680
+Your first hint of what's going on, is
+that the condition number,
+
+543
+00:26:48,680 --> 00:26:52,650
+right of the sublevel sets is going to
+
+544
+00:26:52,650 --> 00:26:56,480
+play a role if you look at something like
+a gradient method, right?
+
+545
+00:26:56,480 --> 00:26:58,770
+That's, that's, that's the, that's the
+hint, right?
+
+546
+00:26:58,770 --> 00:27:03,770
+So, a gradient method works beautifully
+when, and condition number of sublevel
+
+547
+00:27:03,770 --> 00:27:10,520
+sets is basically how anisotropic, the
+function is, right?
+
+548
+00:27:10,520 --> 00:27:14,965
+Isotropic means it's going the same in all
+directions, you know, it means that these,
+
+549
+00:27:14,965 --> 00:27:18,129
+the level sets are kind of a roundish,
+right?
+
+550
+00:27:18,129 --> 00:27:22,350
+Anisotropic means they're weird and have a
+big condition number, right?
+
+551
+00:27:22,350 --> 00:27:25,640
+They, they, it's very different going in
+one direction from another, right?
+
+552
+00:27:25,640 --> 00:27:29,440
+So, if the sublevel sets, if the function
+is kind of a well-conditioned, right,
+
+553
+00:27:29,440 --> 00:27:34,360
+then what happens is gradient method works
+really well.
+
+554
+00:27:34,360 --> 00:27:35,190
+because for one thing,
+
+555
+00:27:35,190 --> 00:27:38,091
+the negative gradient points you towards a
+solution, right?
+
+556
+00:27:38,091 --> 00:27:43,510
+If, if it's not if, if, if you have a big
+condition number, the gradient
+
+557
+00:27:43,510 --> 00:27:46,560
+method points you some, somewhere that's
+vaguely in the right direction but
+
+558
+00:27:46,560 --> 00:27:49,434
+you made, you might be making an angle of
+like you know,
+
+559
+00:27:49,434 --> 00:27:52,430
+89.9 degrees or something like that
+towards the right direction.
+
+560
+00:27:52,430 --> 00:27:53,278
+Everybody see what I'm saying?
+
+561
+00:27:53,278 --> 00:27:57,800
+Okay, so, that's, and this is why it
+doesn't work.
+
+562
+00:27:57,800 --> 00:27:59,010
+By the way, if you're really lucky and
+
+563
+00:27:59,010 --> 00:28:02,600
+the function you want to minimize has
+reasonable condition number,
+
+564
+00:28:02,600 --> 00:28:04,490
+then gradient methods going to work great
+for you.
+
+565
+00:28:04,490 --> 00:28:06,440
+And that's great, your code will be 4
+lines or
+
+566
+00:28:06,440 --> 00:28:10,497
+whatever, and something like that, and
+everything will be fine, okay?
+
+567
+00:28:10,497 --> 00:28:11,020
+Okay.
+So
+
+568
+00:28:11,020 --> 00:28:13,970
+let's look at a nonquadratic example and
+see how this works.
+
+569
+00:28:15,830 --> 00:28:20,230
+So here's one where in, sublevels levels
+that are not sphere, I mean they're
+
+570
+00:28:20,230 --> 00:28:22,960
+certainly not ellipsoidal, right, they're
+not spherical or anything like that.
+
+571
+00:28:22,960 --> 00:28:24,678
+But, you know, roughly you still have the
+same idea.
+
+572
+00:28:24,678 --> 00:28:31,100
+Here, the sublevel sets are, they're not
+round, right?
+
+573
+00:28:31,100 --> 00:28:33,140
+I mean, they're a bit wider than they are
+tall.
+
+574
+00:28:33,140 --> 00:28:34,500
+I mean, not even by much, right?
+
+575
+00:28:34,500 --> 00:28:36,630
+I mean, that's the hilarious part.
+
+576
+00:28:36,630 --> 00:28:39,260
+And you can see you get kind of the same
+phenomenon.
+
+577
+00:28:39,260 --> 00:28:41,570
+This actually looks like it works pretty
+well.
+
+578
+00:28:41,570 --> 00:28:45,440
+By the way, this is an example of an exact
+line search beating a backtracking line
+
+579
+00:28:45,440 --> 00:28:46,720
+search but this is an R2.
+
+580
+00:28:46,720 --> 00:28:50,310
+R2 is really not even, it doesn't even
+count as a legitimate problem.
+
+581
+00:28:50,310 --> 00:28:52,550
+So, okay, so this is the idea.
+
+582
+00:28:52,550 --> 00:28:58,710
+Now, that brings us so here would be like
+a, a measure of what f looks like.
+
+583
+00:28:58,710 --> 00:29:01,300
+There's a problem in R100, right?
+
+584
+00:29:01,300 --> 00:29:04,066
+And here, I mean, you can see all the
+various things here.
+
+585
+00:29:04,066 --> 00:29:05,445
+Oh, by the way, this is a funny one,
+right?
+
+586
+00:29:05,445 --> 00:29:09,600
+So here you are minimizing this, that's a
+real problem, okay, that's a problem in
+
+587
+00:29:09,600 --> 00:29:12,195
+R100 and you're minimizing a log barrier
+plus a linear function.
+
+588
+00:29:12,195 --> 00:29:14,015
+And, by the way, what's kind of clueless
+here,
+
+589
+00:29:14,015 --> 00:29:16,990
+look, look at all of this, I mean, it
+hardly matters but
+
+590
+00:29:16,990 --> 00:29:22,280
+it basically says, doing the cruder line
+search, you're doing better for a while.
+
+591
+00:29:22,280 --> 00:29:25,950
+I mean, it's, this doesn't matter but it,
+this is just not obvious, right?
+
+592
+00:29:25,950 --> 00:29:29,540
+You might imagine that this run two
+different paths and things like this.
+
+593
+00:29:29,540 --> 00:29:33,840
+By the way, this is called a sort of
+linear convergence
+
+594
+00:29:33,840 --> 00:29:35,540
+that's standard notation.
+
+595
+00:29:35,540 --> 00:29:39,110
+And it means that, it actually means
+exponential convergence, right?
+
+596
+00:29:39,110 --> 00:29:43,150
+Because these iterations on a linear scale
+and
+
+597
+00:29:43,150 --> 00:29:47,170
+that's some kind of error, in this case,
+sub-optimality on a log scale, right?
+
+598
+00:29:47,170 --> 00:29:50,500
+So, linear means, and the slope, of
+course, gives you the, the factor, right?
+
+599
+00:29:50,500 --> 00:29:52,202
+It says, so, it says something like this,
+
+600
+00:29:52,202 --> 00:29:56,810
+each iteration, you reduce your error by a
+factor of 0.9, you know, or
+
+601
+00:29:56,810 --> 00:29:59,990
+we could work out what it is here, I'm not
+going to do it but that's the idea, okay?
+
+602
+00:29:59,990 --> 00:30:03,092
+So, that's linear convergence.
+
+603
+00:30:03,092 --> 00:30:06,190
+Now, so let's now talk about this idea of
+gradient because you think,
+
+604
+00:30:06,190 --> 00:30:07,680
+now you think and you realize, wow,
+
+605
+00:30:07,680 --> 00:30:12,500
+the gradient had to do with, I don't the,
+what's wrong with the gradient method?
+
+606
+00:30:12,500 --> 00:30:17,150
+And the answer is something like if the
+function is has, has if,
+
+607
+00:30:17,150 --> 00:30:22,690
+if, if it's, if it is anisotropic or if
+the, if the sublevel
+
+608
+00:30:22,690 --> 00:30:28,390
+sets are not well-conditioned is when
+gradient works badly.
+
+609
+00:30:28,390 --> 00:30:31,980
+And this kind of hints that you can come
+up with something that's the spirit of
+
+610
+00:30:31,980 --> 00:30:36,880
+gradient method but then actually adapts
+for the geometry or, you know,
+
+611
+00:30:36,880 --> 00:30:39,800
+the work, that has a different geometry,
+right?
+
+612
+00:30:39,800 --> 00:30:42,090
+And it turns out that's correct.
+
+613
+00:30:42,090 --> 00:30:44,640
+So, here's what you do, it turns out when
+you ask,
+
+614
+00:30:44,640 --> 00:30:47,340
+if you ask the very simple question, if
+you're sitting at the point x and
+
+615
+00:30:47,340 --> 00:30:51,840
+you say what's the fastest way down hill,
+you ask someone for directions, right?
+
+616
+00:30:51,840 --> 00:30:52,990
+And they point.
+
+617
+00:30:52,990 --> 00:30:54,770
+You would think, there's really only one
+way they can [INAUDIBLE] and
+
+618
+00:30:54,770 --> 00:30:56,070
+they can get the gradient.
+
+619
+00:30:56,070 --> 00:30:57,220
+That's reasonable, right?
+
+620
+00:30:57,220 --> 00:30:58,165
+It's actually wrong.
+
+621
+00:30:58,165 --> 00:31:00,490
+because it turns out there's actually a,
+
+622
+00:31:00,490 --> 00:31:03,630
+a cultural bias when you ask which is the
+fast, the fast way, and the re,
+
+623
+00:31:03,630 --> 00:31:06,020
+it's not a cultural bias, what it is, is
+this kind of bias.
+
+624
+00:31:06,020 --> 00:31:08,150
+It depends on the metric you're using.
+
+625
+00:31:08,150 --> 00:31:11,824
+If you change the metric and ask someone
+what's the fastest way downhill,
+
+626
+00:31:11,824 --> 00:31:14,146
+you get a different answer, okay?
+
+627
+00:31:14,146 --> 00:31:15,955
+It's weird but it's true.
+
+628
+00:31:15,955 --> 00:31:20,347
+You'd think, what's wrong with minus
+partial f, partial xi.
+
+629
+00:31:20,347 --> 00:31:22,627
+I mean, that, how can that not be.
+
+630
+00:31:22,627 --> 00:31:24,432
+That is the, that will be,
+
+631
+00:31:24,432 --> 00:31:29,740
+in fact, the fastest way downhill if
+you're using a Euclidian norm.
+
+632
+00:31:29,740 --> 00:31:32,180
+If you're using [UNKNOWN] norm or weighted
+norm or
+
+633
+00:31:32,180 --> 00:31:35,030
+some other weird norm, that's not the
+fastest way downhill.
+
+634
+00:31:35,030 --> 00:31:36,910
+So that's the topic we're going to look
+at.
+
+635
+00:31:36,910 --> 00:31:37,822
+It's actually interesting.
+
+636
+00:31:37,822 --> 00:31:41,820
+And it's important to understand that the
+gradient, well,
+
+637
+00:31:41,820 --> 00:31:43,578
+I guess if you know about physics and
+things like that.
+
+638
+00:31:43,578 --> 00:31:47,720
+The gradient, it, it changes when you
+change coordinates, right?
+
+639
+00:31:47,720 --> 00:31:48,300
+So, okay.
+
+640
+00:31:49,360 --> 00:31:50,630
+So, let's see how that works.
+
+641
+00:31:50,630 --> 00:31:52,820
+So, let's take any norm.
+
+642
+00:31:52,820 --> 00:31:55,070
+Not necessarily that Euclidian norm.
+
+643
+00:31:55,070 --> 00:31:58,390
+And then, what we are going to do is we
+are going to say that the steepest descent
+
+644
+00:31:58,390 --> 00:31:59,530
+direction is this.
+
+645
+00:31:59,530 --> 00:32:03,740
+You say, find me a direction of norm 1,
+and that's where the norm comes in
+
+646
+00:32:03,740 --> 00:32:08,680
+because that's how you are normalizing
+that minimizes this thing that is,
+
+647
+00:32:08,680 --> 00:32:12,960
+that is your linear approximated decreased
+in f, okay?
+
+648
+00:32:12,960 --> 00:32:17,460
+Now, if this were the two norm, why the
+answer would be the gradient scale, right?
+
+649
+00:32:17,460 --> 00:32:18,672
+Because it's scaled to have norm 1.
+
+650
+00:32:18,672 --> 00:32:20,850
+It would be the gradient divided by the
+norm of the gradient.
+
+651
+00:32:20,850 --> 00:32:21,650
+That's what it would be.
+
+652
+00:32:21,650 --> 00:32:25,210
+And that, but what's weird then, is if you
+walk up to someone using a different
+
+653
+00:32:25,210 --> 00:32:28,810
+metric, and you say, please tell me what
+the fastest way downhill, if they're
+
+654
+00:32:28,810 --> 00:32:32,690
+using a different metric, they'll point in
+the different direction, right?
+
+655
+00:32:32,690 --> 00:32:35,410
+And the reason is that it has to do with
+efficiency, right?
+
+656
+00:32:35,410 --> 00:32:40,110
+If if a narrow metric distance is this way
+are, are,
+
+657
+00:32:40,110 --> 00:32:42,695
+are long I don't know, they might point
+you there.
+
+658
+00:32:42,695 --> 00:32:49,070
+Because according to their, by their idea
+of efficiency or you know, or how
+
+659
+00:32:49,070 --> 00:32:53,610
+steep the descent is, that's better than
+simply following the negative gradient.
+
+660
+00:32:53,610 --> 00:32:54,110
+Okay.
+
+661
+00:32:55,150 --> 00:32:56,770
+So this is,
+
+662
+00:32:56,770 --> 00:32:59,532
+this is the normalized steepest descent
+because the thing has norm 1.
+
+663
+00:32:59,532 --> 00:33:01,748
+And then often it is unnormalized.
+
+664
+00:33:01,748 --> 00:33:04,615
+And it's unnormalized by multiplying this
+which has norm
+
+665
+00:33:04,615 --> 00:33:08,310
+1 by the duel norm of the gradient itself.
+
+666
+00:33:08,310 --> 00:33:12,070
+And what that does is it makes sure that
+the inner product of the gradient and
+
+667
+00:33:12,070 --> 00:33:17,740
+the normalized steep the, the norm the
+unnormalized steepest descent direction
+
+668
+00:33:17,740 --> 00:33:22,320
+is minus the norm of the gradient squared
+with the dual norm, right?
+
+669
+00:33:22,320 --> 00:33:25,034
+And that makes, that, that actually makes
+everything work with things like the two
+
+670
+00:33:25,034 --> 00:33:27,200
+norm, and this would agree with the two
+norm and things like that.
+
+671
+00:33:27,200 --> 00:33:30,580
+So, steepest descent method is basically
+general descent method.
+
+672
+00:33:30,580 --> 00:33:32,010
+You choose the steepest descent.
+
+673
+00:33:32,010 --> 00:33:35,180
+And it, the, it's, it's just like gradient
+descent.
+
+674
+00:33:35,180 --> 00:33:37,005
+It, basically for the summaries, it works.
+
+675
+00:33:37,005 --> 00:33:38,700
+Okay.
+
+676
+00:33:38,700 --> 00:33:42,300
+But what's very interesting now, is this
+really a family of methods because for
+
+677
+00:33:42,300 --> 00:33:44,170
+every norm, you get a different method.
+
+678
+00:33:44,170 --> 00:33:45,660
+And you get some interesting ones.
+
+679
+00:33:46,910 --> 00:33:48,100
+So let's look at a couple.
+
+680
+00:33:48,100 --> 00:33:53,070
+If you get the Euclidean norm, it's, it's
+identical to the gradient descent method.
+
+681
+00:33:53,070 --> 00:33:56,150
+But supposed you use a quadratic norm and
+it's going to be extremely important so
+
+682
+00:33:56,150 --> 00:33:57,590
+we're going to get to this.
+
+683
+00:33:57,590 --> 00:34:02,750
+If you use a quadratic norm, so x
+transposed Px to the 1 half, right?
+
+684
+00:34:02,750 --> 00:34:07,090
+Then it turns out that what you use is the
+negative gradient but
+
+685
+00:34:07,090 --> 00:34:08,710
+then multiplied by P inverse.
+
+686
+00:34:08,710 --> 00:34:10,630
+Okay, now that's positive definite matrix.
+
+687
+00:34:10,630 --> 00:34:14,870
+It doesn't rotate things more than 90
+degrees so it's a descent direction but
+
+688
+00:34:14,870 --> 00:34:16,420
+it's, it's different, right?
+
+689
+00:34:16,420 --> 00:34:19,120
+It, it's minus P inverse so we're
+going to, we're going to get to that.
+
+690
+00:34:22,120 --> 00:34:23,050
+I'll come back to that in a minute.
+
+691
+00:34:23,050 --> 00:34:25,680
+But actually I'll, I'll say another very
+cool thing about it.
+
+692
+00:34:25,680 --> 00:34:29,944
+If you're going to use the steepest
+descent with a quadratic norm,
+
+693
+00:34:29,944 --> 00:34:33,550
+with norm P, it's completely equivalent to
+doing the following.
+
+694
+00:34:33,550 --> 00:34:37,320
+Take the original problem and change
+coordinates by P minus 1 half.
+
+695
+00:34:38,730 --> 00:34:43,830
+If you change coordinates by P minus 1
+half, then this P norm actually becomes in
+
+696
+00:34:43,830 --> 00:34:47,800
+the new coordinates, the norm, and it's
+steepest descent.
+
+697
+00:34:47,800 --> 00:34:51,240
+So what that says is, sorry, it's gradient
+descent.
+
+698
+00:34:51,240 --> 00:34:55,450
+It says that steepest descent with a
+quadratic norm associated with
+
+699
+00:34:55,450 --> 00:34:57,660
+P is identical to the following.
+
+700
+00:34:57,660 --> 00:34:59,740
+It's, it's exactly the same as doing the
+following.
+
+701
+00:34:59,740 --> 00:35:04,370
+Take your original problem, change
+coordinates to make
+
+702
+00:35:04,370 --> 00:35:09,870
+this metric i and then applying gradient
+descent.
+
+703
+00:35:09,870 --> 00:35:10,920
+So it, so in other words, it's,
+
+704
+00:35:10,920 --> 00:35:14,510
+it's not much different, it just says
+change coordinates, okay?
+
+705
+00:35:14,510 --> 00:35:19,140
+We'll come back to that in a minute
+because that tells you exactly how you
+
+706
+00:35:19,140 --> 00:35:22,320
+want to choose the change of coordinates,
+right?
+
+707
+00:35:22,320 --> 00:35:26,020
+So okay and okay, let's look at another
+one just for fun.
+
+708
+00:35:26,020 --> 00:35:30,830
+We will take the l1 norm, you'd say,
+what's the steepest descent direction.
+
+709
+00:35:30,830 --> 00:35:32,160
+And it turns out,
+
+710
+00:35:32,160 --> 00:35:37,010
+you can always choose the steepest descent
+direction to be a single, an ei.
+
+711
+00:35:37,010 --> 00:35:41,740
+So it's something like that, and in fact,
+so it's a, it's a var, it's an algorithm
+
+712
+00:35:41,740 --> 00:35:45,515
+also invented in every field periodically
+every 10, 15 years or something.
+
+713
+00:35:45,515 --> 00:35:47,580
+It has a name in every field.
+
+714
+00:35:47,580 --> 00:35:49,910
+You know, sometimes like, I don't know if
+they do it in blocks,
+
+715
+00:35:49,910 --> 00:35:52,740
+it's like I don't know, scaler, something
+descent.
+
+716
+00:35:52,740 --> 00:35:54,638
+I don't know, but block descent.
+
+717
+00:35:54,638 --> 00:35:56,822
+So it does this, it says, you,
+
+718
+00:35:56,822 --> 00:36:02,050
+you will only update one variable, xi, one
+coordinate at a time.
+
+719
+00:36:02,050 --> 00:36:04,600
+And so, what you do is you, you get the
+gradient.
+
+720
+00:36:04,600 --> 00:36:07,910
+You look at the components of the
+gradient, you find out which is largest.
+
+721
+00:36:07,910 --> 00:36:09,922
+And then, you go in the appropriate
+direction.
+
+722
+00:36:09,922 --> 00:36:11,570
+Either you increase or decrease depending
+on
+
+723
+00:36:11,570 --> 00:36:13,670
+whether the sign of the partial derivative
+is positive or negative.
+
+724
+00:36:13,670 --> 00:36:14,861
+Everybody got it?
+
+725
+00:36:14,861 --> 00:36:19,515
+And so, and that work, that's just
+steepest descent in the l1 norm, okay?
+
+726
+00:36:19,515 --> 00:36:21,960
+And the picture would look something like
+this.
+
+727
+00:36:21,960 --> 00:36:24,590
+So here's, that would be the negative
+gradient.
+
+728
+00:36:24,590 --> 00:36:30,930
+But here, if, if I have, if, if I use
+steepest descent with a P norm, and that's
+
+729
+00:36:30,930 --> 00:36:35,210
+the ellipsoid, it gets, it says you're not
+actually going in this direction.
+
+730
+00:36:35,210 --> 00:36:38,040
+What you're really doing is you're solving
+sort of a linear program.
+
+731
+00:36:38,040 --> 00:36:42,030
+You're saying, please go as far as you can
+in that direction staying in here.
+
+732
+00:36:42,030 --> 00:36:43,740
+And the solution is here.
+
+733
+00:36:43,740 --> 00:36:47,860
+And you can see that in fact you're going
+in a different direction, right?
+
+734
+00:36:47,860 --> 00:36:49,900
+Now, the direction is never more than 90
+degrees away.
+
+735
+00:36:49,900 --> 00:36:51,620
+It, it's not even 90 degrees away, right?
+
+736
+00:36:51,620 --> 00:36:55,460
+It's a positive definite matrix so it's,
+but, so the idea is that if
+
+737
+00:36:55,460 --> 00:37:00,650
+you do steepest descent with a quadratic
+norm, P, it says that actually, you,
+
+738
+00:37:00,650 --> 00:37:07,070
+you have distorted space and it bends the
+gradient descent method.
+
+739
+00:37:07,070 --> 00:37:10,210
+It will bend it to another direction,
+okay?
+
+740
+00:37:10,210 --> 00:37:11,980
+So, I'm saying all these things you don't
+have to,
+
+741
+00:37:11,980 --> 00:37:15,360
+I mean, these don't even have like perfect
+meanings, right?
+
+742
+00:37:15,360 --> 00:37:20,230
+So I'm just talking about this at the idea
+level because we're going to get to
+
+743
+00:37:20,230 --> 00:37:23,260
+something and it's going to be kind a,
+kind of obvious.
+
+744
+00:37:23,260 --> 00:37:24,910
+So let me ask you the following.
+
+745
+00:37:26,190 --> 00:37:29,030
+You can change, you can choose P for
+
+746
+00:37:29,030 --> 00:37:33,310
+our problem, how roughly do you think you
+should choose it?
+
+747
+00:37:33,310 --> 00:37:34,810
+I mean, two ways to think of it, right?
+
+748
+00:37:34,810 --> 00:37:36,790
+One way to think of it is you should
+choose P so
+
+749
+00:37:36,790 --> 00:37:41,078
+the ellipsoid P kind of matches the shape
+and dimension of the sublevel sets.
+
+750
+00:37:41,078 --> 00:37:44,690
+Now the sublevel sets are not ellipsoids
+unless the problem is quadratic,
+
+751
+00:37:44,690 --> 00:37:47,470
+in which case, you can minimize it by
+solving linear equations.
+
+752
+00:37:47,470 --> 00:37:50,280
+And then, I'm so, but just roughly, you
+would choose it so
+
+753
+00:37:50,280 --> 00:37:54,570
+the ellipsoid defined by P kind of has the
+same shape and stuff like that.
+
+754
+00:37:54,570 --> 00:37:59,130
+Alternatively, you would choose P so that
+the P to the minus 1 half multiply,
+
+755
+00:37:59,130 --> 00:38:01,020
+if you transform by the P to the minus 1
+half,
+
+756
+00:38:01,020 --> 00:38:06,680
+the sublevel sets of the function become
+round to the extent possible, right?
+
+757
+00:38:06,680 --> 00:38:08,500
+Now, they're not going to be lipsodes, so
+
+758
+00:38:08,500 --> 00:38:10,350
+they're not going to become spheres,
+right?
+
+759
+00:38:10,350 --> 00:38:13,330
+But, you kind of, and in fact some people
+even refer to that as rounding.
+
+760
+00:38:15,680 --> 00:38:18,280
+So this tells you about how this,
+
+761
+00:38:18,280 --> 00:38:21,010
+now you have the intuition about how you
+should choose P.
+
+762
+00:38:21,010 --> 00:38:22,426
+So let's look at an example.
+
+763
+00:38:22,426 --> 00:38:24,050
+it's, it's a silly example in R2.
+
+764
+00:38:24,050 --> 00:38:26,020
+But it actually shows what happens.
+
+765
+00:38:27,100 --> 00:38:28,520
+okay, so here it is.
+
+766
+00:38:28,520 --> 00:38:30,550
+Here's, here's this nonlinear function.
+
+767
+00:38:30,550 --> 00:38:32,230
+You know, these sublevels as a
+non-ellipsoids, but
+
+768
+00:38:32,230 --> 00:38:36,400
+roughly speaking, you know, this sublevel
+sets here are wider than they are tall.
+
+769
+00:38:36,400 --> 00:38:38,621
+By the, by the way, not even by a big
+factor, okay?
+
+770
+00:38:38,621 --> 00:38:42,176
+And here, if you choose the,
+
+771
+00:38:42,176 --> 00:38:47,932
+this, this would be a good choice of P,
+right?
+
+772
+00:38:47,932 --> 00:38:51,640
+P here, a good choice of P would be to
+have these ellipsoids kind of
+
+773
+00:38:51,640 --> 00:38:54,710
+aligned with the sublevel sets of the
+function.
+
+774
+00:38:54,710 --> 00:38:55,604
+In which case, I mean,
+
+775
+00:38:55,604 --> 00:38:59,020
+you could just sort of visually see that
+it's doing well, right?
+
+776
+00:38:59,020 --> 00:38:59,690
+Here's a case.
+
+777
+00:38:59,690 --> 00:39:00,530
+That's a bad choice.
+
+778
+00:39:00,530 --> 00:39:05,700
+That was worse than P equals i, right,
+because it doesn't get the right way.
+
+779
+00:39:05,700 --> 00:39:08,350
+Now another way to think of it is the
+following.
+
+780
+00:39:08,350 --> 00:39:10,620
+When you're choosing p to have the
+ellipsoid like that,
+
+781
+00:39:10,620 --> 00:39:15,520
+that's the same as scrunching space this
+way, right?
+
+782
+00:39:15,520 --> 00:39:16,600
+because that, that's what it means.
+
+783
+00:39:16,600 --> 00:39:21,260
+It says that, if you're, if you believe
+that if this, if you believe sort of
+
+784
+00:39:21,260 --> 00:39:26,110
+like that distance is the same as that
+distance, if that's your view of things,
+
+785
+00:39:26,110 --> 00:39:31,110
+then the correct way to think of that is
+to take this image and scrunch it.
+
+786
+00:39:31,110 --> 00:39:35,510
+That's, by the way, transform by P minus 1
+half, okay, that's rounding it, right?
+
+787
+00:39:35,510 --> 00:39:41,530
+And if you round these things, you will
+see they get more spherical, right?
+
+788
+00:39:41,530 --> 00:39:42,890
+Less condition number.
+
+789
+00:39:42,890 --> 00:39:45,534
+Less condition number means gradient is
+going to work well, okay?
+
+790
+00:39:45,534 --> 00:39:51,330
+So here, basically it says if, if this is
+your opinion,
+
+791
+00:39:51,330 --> 00:39:54,976
+if that's the metric you are using, then
+what this says is if that is the metric
+
+792
+00:39:54,976 --> 00:39:58,760
+you're using it says that basically what
+you should do is take those images and
+
+793
+00:39:58,760 --> 00:40:00,780
+crush them like this by a factor of two.
+
+794
+00:40:00,780 --> 00:40:02,702
+And what's, they're going to get more
+elongated.
+
+795
+00:40:02,702 --> 00:40:04,861
+And gradients going to work much worse.
+
+796
+00:40:04,861 --> 00:40:06,433
+Everybody following this?
+
+797
+00:40:06,433 --> 00:40:08,372
+So, I mean this all, okay, fine.
+
+798
+00:40:08,372 --> 00:40:09,994
+Okay.
+So, what this says is,
+
+799
+00:40:09,994 --> 00:40:14,892
+choice of metric has a very strong effect
+on the speed of convergence, right?
+
+800
+00:40:14,892 --> 00:40:18,921
+So if you're doing some prob, if you're
+have some problem and
+
+801
+00:40:18,921 --> 00:40:22,410
+the condition number is, you know, fine,
+go ahead and use gradient.
+
+802
+00:40:22,410 --> 00:40:26,010
+But, otherwise, the choice of the metric,
+actually what says is,
+
+803
+00:40:26,010 --> 00:40:29,340
+if you do an affine change of coordinates
+of your problem,
+
+804
+00:40:30,340 --> 00:40:32,990
+then it has a first-order effect on
+gradient.
+
+805
+00:40:32,990 --> 00:40:33,890
+In other words,
+
+806
+00:40:33,890 --> 00:40:39,010
+it can make it go from working well to
+terrible, that usually, it does that.
+
+807
+00:40:39,010 --> 00:40:40,950
+Of course, if you're really good about
+your choice,
+
+808
+00:40:40,950 --> 00:40:42,820
+it can go from terrible to good.
+
+809
+00:40:42,820 --> 00:40:43,900
+But if it's, if you're not good,
+
+810
+00:40:43,900 --> 00:40:49,330
+it goes usually from good or okay to
+terrible, okay?
+
+811
+00:40:49,330 --> 00:40:54,700
+And this brings us to your suggestion,
+which was let's adapt.
+
+812
+00:40:54,700 --> 00:40:58,740
+Let's do steepest descent but let's
+actually change the metric every time.
+
+813
+00:40:58,740 --> 00:41:02,790
+And it'll always be based on our best
+guess of actually the curve,
+
+814
+00:41:02,790 --> 00:41:04,910
+kind of the curvature of the function.
+
+815
+00:41:04,910 --> 00:41:08,360
+By the way, there's lots of ways to do
+curvature, this is only one of them.
+
+816
+00:41:08,360 --> 00:41:11,730
+Other ways are much more sophisticated
+this, but this is one.
+
+817
+00:41:11,730 --> 00:41:12,300
+So here it is.
+
+818
+00:41:13,370 --> 00:41:14,028
+It's just this.
+
+819
+00:41:14,028 --> 00:41:18,560
+What we're going to do is, we're going to
+have, the Newton step is going to be
+
+820
+00:41:18,560 --> 00:41:22,330
+negative gradient, then multiply by the
+inverse of the Hessian, right?
+
+821
+00:41:22,330 --> 00:41:24,200
+And you can see this makes total sense.
+
+822
+00:41:24,200 --> 00:41:28,860
+This says, if, if you're minimizing a
+function, you're at a point x, and
+
+823
+00:41:28,860 --> 00:41:31,110
+someone says, what do the sublevel sets
+look like?
+
+824
+00:41:31,110 --> 00:41:33,140
+The answer is, you know, I don't know what
+the sublevel set is,
+
+825
+00:41:33,140 --> 00:41:34,045
+of course, I don't know.
+
+826
+00:41:34,045 --> 00:41:37,440
+Because all I, in fact, all I have is
+gradient and Hessian oracle.
+
+827
+00:41:37,440 --> 00:41:39,740
+The only thing I'm allowed to do is call
+two methods,
+
+828
+00:41:39,740 --> 00:41:42,280
+three, maybe one because there are three
+things.
+
+829
+00:41:42,280 --> 00:41:45,530
+I quarry the function at a cost and I get
+the function value to gradient and
+
+830
+00:41:45,530 --> 00:41:47,960
+Hessian, that's it I don't know anything
+else, right?
+
+831
+00:41:47,960 --> 00:41:50,784
+I mean, I may have some other information
+but that's not that [UNKNOWN].
+
+832
+00:41:50,784 --> 00:41:53,775
+So, if I do that you don't know but
+
+833
+00:41:53,775 --> 00:41:57,396
+it's actually a very good guess if you
+knew the solution is the Hessian.
+
+834
+00:41:57,396 --> 00:42:00,870
+Hessian tells everything because near the
+solution, all convex,
+
+835
+00:42:00,870 --> 00:42:04,188
+smooth convex functions, near the minimum,
+they all look quadratic.
+
+836
+00:42:04,188 --> 00:42:07,810
+And the sublevel sets are exactly given by
+the Hessian.
+
+837
+00:42:07,810 --> 00:42:12,160
+So, that seems like a good choice and
+that's exactly what the Newton step does.
+
+838
+00:42:12,160 --> 00:42:12,830
+Okay.
+
+839
+00:42:12,830 --> 00:42:14,490
+So, a lot of other ways to interpret it.
+
+840
+00:42:14,490 --> 00:42:15,790
+Here's one.
+
+841
+00:42:15,790 --> 00:42:18,000
+One says, well, let's take,
+
+842
+00:42:18,000 --> 00:42:23,910
+let's take the function, let's form f hat
+at the current point.
+
+843
+00:42:23,910 --> 00:42:27,340
+And f hat is going to be the second-order
+approximation.
+
+844
+00:42:27,340 --> 00:42:28,932
+So that's the first-order approximation
+and that's the,
+
+845
+00:42:28,932 --> 00:42:31,430
+that's the second term of the Taylor
+series.
+
+846
+00:42:31,430 --> 00:42:33,860
+And then, it says I'll take this
+second-order approximation and
+
+847
+00:42:33,860 --> 00:42:35,370
+it's a convex quadratic.
+
+848
+00:42:35,370 --> 00:42:36,560
+I'll minimize it.
+
+849
+00:42:36,560 --> 00:42:38,702
+And you know what you get?
+
+850
+00:42:38,702 --> 00:42:40,344
+The Hessian, the Newton step, that's the
+Newton step.
+
+851
+00:42:40,344 --> 00:42:44,240
+Another way, is to say, I would like, I
+would like to find a v so
+
+852
+00:42:44,240 --> 00:42:48,680
+that the gradient of f of x plus v, v is
+the step, I want that to be 0.
+
+853
+00:42:48,680 --> 00:42:51,680
+But I don't know what the grade, I don't
+how the gradient changes, right?
+
+854
+00:42:51,680 --> 00:42:55,400
+Oh, if the gradient were affine, I would
+know exactly how to calculate v, but
+
+855
+00:42:55,400 --> 00:42:58,120
+that's the case if the function being
+quadratic,
+
+856
+00:42:58,120 --> 00:43:00,940
+which means I can solve it in one, just by
+solving linear equations.
+
+857
+00:43:00,940 --> 00:43:01,570
+So I don't know.
+
+858
+00:43:01,570 --> 00:43:04,050
+So what I'm going to do is this, I'll say
+well what,
+
+859
+00:43:04,050 --> 00:43:08,090
+what is a good approximation of what the
+gradient is when you step v?
+
+860
+00:43:08,090 --> 00:43:09,650
+The answer, it's very simple.
+
+861
+00:43:09,650 --> 00:43:12,125
+It's the current gradient plus the
+derivative of the gradient,
+
+862
+00:43:12,125 --> 00:43:16,320
+that's the second derivative which is the
+Hessian, multiplied by the step you take.
+
+863
+00:43:16,320 --> 00:43:18,170
+And so, this,
+
+864
+00:43:18,170 --> 00:43:23,490
+that is the first-order of approximation
+of what the gradient will be at x plus v.
+
+865
+00:43:23,490 --> 00:43:27,290
+And so, you don't know what the gradient
+is at x plus v but you want it to be zero.
+
+866
+00:43:27,290 --> 00:43:29,760
+So, but what you have is this
+approximation.
+
+867
+00:43:29,760 --> 00:43:31,600
+So, you set the approximation equal to
+zero.
+
+868
+00:43:31,600 --> 00:43:34,625
+Here, solve, you get the Newton step,
+okay?
+
+869
+00:43:34,625 --> 00:43:37,578
+So, so here are, here are the two
+pictures.
+
+870
+00:43:37,578 --> 00:43:42,212
+They're different but they both suggest
+some very interesting things.
+
+871
+00:43:42,212 --> 00:43:45,210
+Here's a function f, just in one
+dimension, I'm minimizing, so here I am.
+
+872
+00:43:45,210 --> 00:43:47,930
+And Newton's method does the following.
+
+873
+00:43:47,930 --> 00:43:53,110
+It fits f hat, which is the quadratic
+approximation.
+
+874
+00:43:53,110 --> 00:43:55,380
+By the way, f hat does not have to be
+above f.
+
+875
+00:43:55,380 --> 00:43:59,300
+It could go below it as well, or, I mean,
+it can, it doesn't have to be above.
+
+876
+00:43:59,300 --> 00:44:01,380
+In this example it is, but okay.
+
+877
+00:44:01,380 --> 00:44:05,610
+So, and then, you take the minimizer there
+and then that's your,
+
+878
+00:44:05,610 --> 00:44:07,580
+that's the Newton step, okay?
+
+879
+00:44:09,050 --> 00:44:13,930
+here, this is the derivative of that
+function and what it says is you're here
+
+880
+00:44:13,930 --> 00:44:18,770
+and what you want is you want to find the
+crossing of f prime with 0,
+
+881
+00:44:18,770 --> 00:44:20,940
+because that's what, f prime is the
+gradient you want,
+
+882
+00:44:20,940 --> 00:44:23,420
+f you want the gradient to be equal to 0,
+so you want the crossing.
+
+883
+00:44:23,420 --> 00:44:26,570
+You're here, and it says, please find me a
+point.
+
+884
+00:44:26,570 --> 00:44:29,950
+Fig, get me a point where you have the
+zero crossing.
+
+885
+00:44:29,950 --> 00:44:32,720
+And the answer is you take, you do a
+linear extrapolation.
+
+886
+00:44:32,720 --> 00:44:35,860
+This slope is exactly the second
+derivative, right?
+
+887
+00:44:35,860 --> 00:44:38,950
+So, so that would give you this point,
+okay?
+
+888
+00:44:38,950 --> 00:44:39,790
+And now I'm going to ask you.
+
+889
+00:44:39,790 --> 00:44:41,800
+This is just geometrically, I don't
+want to hear anything else,
+
+890
+00:44:41,800 --> 00:44:43,400
+just geometric intuition.
+
+891
+00:44:43,400 --> 00:44:44,335
+[SOUND] If you repeat,
+
+892
+00:44:44,335 --> 00:44:48,517
+what is going to happen on the next step
+of Newton's method?
+
+893
+00:44:48,517 --> 00:44:51,312
+We can talk about it on the left or on the
+right.
+
+894
+00:44:51,312 --> 00:44:52,892
+Let's start with the left.
+
+895
+00:44:52,892 --> 00:44:55,237
+What happens on the next Newton's step?
+
+896
+00:44:55,237 --> 00:44:56,467
+You start from here.
+
+897
+00:44:56,467 --> 00:45:00,190
+You have moved closer to the minimum and
+the next step is going,
+
+898
+00:45:00,190 --> 00:45:03,893
+you're going to form a new quadratic model
+but now around here.
+
+899
+00:45:03,893 --> 00:45:06,850
+When I form a quadratic model around
+there,
+
+900
+00:45:06,850 --> 00:45:10,360
+it's going to be way better than this one,
+right?
+
+901
+00:45:10,360 --> 00:45:13,110
+And so, the next step is going to be very
+good.
+
+902
+00:45:13,110 --> 00:45:16,670
+By the way, when you get near the bottom,
+how good is the quadratic approximation?
+
+903
+00:45:16,670 --> 00:45:18,682
+Very, very good.
+
+904
+00:45:18,682 --> 00:45:19,830
+>> [LAUGH]
+
+905
+00:45:19,830 --> 00:45:20,990
+>> Right?
+Because that's, that's,
+
+906
+00:45:20,990 --> 00:45:28,670
+that's informal speech for it, it, it's at
+least quadratic good, right?
+
+907
+00:45:28,670 --> 00:45:29,850
+Okay, right?
+So, and
+
+908
+00:45:29,850 --> 00:45:32,880
+what happens here, what happens on the
+next step here?
+
+909
+00:45:32,880 --> 00:45:36,480
+On the next step here, when you want to,
+you're,
+
+910
+00:45:36,480 --> 00:45:39,550
+you're next estimate of the zero crossing
+is going to be excellent.
+
+911
+00:45:39,550 --> 00:45:40,650
+Why?
+
+912
+00:45:40,650 --> 00:45:45,460
+Because, when you have a smooth function
+that's going to cross zero, right, and
+
+913
+00:45:45,460 --> 00:45:51,303
+you're near, you're near where it crosses
+0, the linear approximation is excellent.
+
+914
+00:45:51,303 --> 00:45:54,300
+And therefore, your next estimate will be
+good and
+
+915
+00:45:54,300 --> 00:45:56,760
+then the one after that is going to be
+like stunningly good, okay?
+
+916
+00:45:56,760 --> 00:45:58,850
+All, but all of this is just sort of,
+
+917
+00:45:58,850 --> 00:46:01,770
+it's very important to have the geometric
+intuition, right?
+
+918
+00:46:01,770 --> 00:46:04,720
+So what this suggests is this, if we are,
+
+919
+00:46:04,720 --> 00:46:08,412
+if we do this thing where we update the
+metric or however you want to call it,
+
+920
+00:46:08,412 --> 00:46:11,724
+if you do something like a Newton step,
+this is going to work.
+
+921
+00:46:11,724 --> 00:46:15,252
+you're, we're going to see something very
+shocking happening at the end.
+
+922
+00:46:15,252 --> 00:46:16,580
+We're going to get to that.
+
+923
+00:46:16,580 --> 00:46:20,040
+Oh, by the way, here's a very, here's a
+perfectly interesting method.
+
+924
+00:46:20,040 --> 00:46:21,250
+It goes like this.
+
+925
+00:46:21,250 --> 00:46:26,110
+You evaluate the grade, the Hessian at the
+first point, just once, right?
+
+926
+00:46:26,110 --> 00:46:29,384
+You calculate well, you calculate, you
+know, now, you calculate, you do
+
+927
+00:46:29,384 --> 00:46:36,670
+a Cholesky factorization of, of the grade,
+of the Hessian, of f at x zero, period.
+
+928
+00:46:36,670 --> 00:46:39,270
+And then, you simply change coordinates
+once, and
+
+929
+00:46:39,270 --> 00:46:40,900
+do gradient descent in that new thing.
+
+930
+00:46:40,900 --> 00:46:41,640
+That'll work.
+
+931
+00:46:41,640 --> 00:46:45,770
+That actually, if your initial point is
+okay, that'll work incredibly well.
+
+932
+00:46:45,770 --> 00:46:47,910
+But this is adapting it every step.
+
+933
+00:46:47,910 --> 00:46:49,550
+Oh, and there's all sorts of other cool
+things like you
+
+934
+00:46:49,550 --> 00:46:51,120
+can adapt at every ten steps.
+
+935
+00:46:51,120 --> 00:46:51,730
+You can update it.
+
+936
+00:46:51,730 --> 00:46:53,198
+You can update it every 30.
+
+937
+00:46:53,198 --> 00:46:55,320
+There's all sorts of things.
+
+938
+00:46:55,320 --> 00:46:57,100
+Another interpretation is this,
+
+939
+00:46:57,100 --> 00:47:03,790
+the the Newton step is simply steepest
+decent in the local Hessian norm, right?
+
+940
+00:47:03,790 --> 00:47:10,030
+So, what you do is you have a a norm
+induced by the Hessian and
+
+941
+00:47:10,030 --> 00:47:14,820
+you take, you take the steepest descent in
+that metric, right?
+
+942
+00:47:14,820 --> 00:47:18,150
+So, and that's what, that's what you get,
+okay?
+
+943
+00:47:18,150 --> 00:47:20,120
+So, alright.
+
+944
+00:47:20,120 --> 00:47:25,620
+So one of the things you get is that, I
+will explain where this is all headed,
+
+945
+00:47:25,620 --> 00:47:31,740
+and some very interesting attributes of it
+but, so this, this is lambda of x, right?
+
+946
+00:47:31,740 --> 00:47:33,550
+That's called a Newton decrement.
+
+947
+00:47:33,550 --> 00:47:35,080
+And here's what it is.
+
+948
+00:47:35,080 --> 00:47:38,440
+It, it is, I mean, it has lots of
+interpretations.
+
+949
+00:47:38,440 --> 00:47:43,030
+But it's a measure of the proximity of x
+to x star, right, to the optimal point.
+
+950
+00:47:43,030 --> 00:47:44,900
+And, what it says, it's a, it's a,
+
+951
+00:47:44,900 --> 00:47:48,750
+it's a very good estimate of, of f of x
+minus b star, right?
+
+952
+00:47:48,750 --> 00:47:49,600
+Assuming you're close.
+
+953
+00:47:49,600 --> 00:47:55,300
+If you're close, this is basically, it
+says, you've formed the quadratic thing,
+
+954
+00:47:55,300 --> 00:47:58,438
+and you ask yourself, how much is the
+quadratic going to go down?
+
+955
+00:47:58,438 --> 00:48:01,680
+The answer is exactly lambda squared over
+2, okay?
+
+956
+00:48:01,680 --> 00:48:05,600
+So that's what, so lambda squared over 2
+is, is very small.
+
+957
+00:48:05,600 --> 00:48:08,850
+I mean, that may or may not predict the
+actual function going down, but
+
+958
+00:48:08,850 --> 00:48:10,460
+to the extent that it does, it's,
+
+959
+00:48:10,460 --> 00:48:14,450
+it's a very good estimate of how far off
+you are, right?
+
+960
+00:48:14,450 --> 00:48:19,300
+So, in fact, stopping criterion based on
+lambda are actually,
+
+961
+00:48:19,300 --> 00:48:22,635
+way better than stop, than based on the
+gradient, right?
+
+962
+00:48:22,635 --> 00:48:26,490
+If you remember the gradient, the relation
+between the norm of the gradient, and
+
+963
+00:48:26,490 --> 00:48:30,610
+how sub-optimally you were, involved that
+1 over m, which you don't know, right?
+
+964
+00:48:30,610 --> 00:48:34,560
+So this one actually gives you a number
+that you can trust, right?
+
+965
+00:48:34,560 --> 00:48:36,570
+And it's not a feel-good thing, right?
+
+966
+00:48:36,570 --> 00:48:38,920
+Well, this one is because it depends on
+third derivative,
+
+967
+00:48:38,920 --> 00:48:41,160
+we're going to get to talk about that,
+too, okay?
+
+968
+00:48:41,160 --> 00:48:45,280
+So, but it's way better than just the norm
+of the gradient is small.
+
+969
+00:48:45,280 --> 00:48:49,050
+Okay, now it's got all sorts of
+interpretations It is the norm of
+
+970
+00:48:49,050 --> 00:48:51,600
+the Newton's step in the quadratic Hessian
+norm.
+
+971
+00:48:51,600 --> 00:48:53,270
+So that's another way to say it.
+
+972
+00:48:53,270 --> 00:48:55,490
+And it's the directional derivative so if
+you remember,
+
+973
+00:48:55,490 --> 00:48:59,880
+in the Armijo line search to Goldstein
+line search there's that slope.
+
+974
+00:48:59,880 --> 00:49:02,440
+Which says, how fast are you going down?
+
+975
+00:49:02,440 --> 00:49:05,640
+And the answer is, it's minus lambda
+squared, right?
+
+976
+00:49:05,640 --> 00:49:09,860
+Which once again tells you if lambda
+squared over two is tiny, it says in your
+
+977
+00:49:09,860 --> 00:49:13,600
+line search, you're not going to, it's not
+going to go down much, right?
+
+978
+00:49:13,600 --> 00:49:15,110
+So that, that tells you that.
+
+979
+00:49:15,110 --> 00:49:17,960
+Okay, now, this is very important, is the
+following.
+
+980
+00:49:19,080 --> 00:49:24,132
+This measure of proximity of x to x star
+is affine invariant, okay?
+
+981
+00:49:24,132 --> 00:49:28,410
+Affine invariant means if I take my
+problem and
+
+982
+00:49:28,410 --> 00:49:32,480
+if I change coordinates with an affine
+transformation and
+
+983
+00:49:32,480 --> 00:49:36,170
+the simplest one that does the trick is
+you scale the variables.
+
+984
+00:49:36,170 --> 00:49:38,110
+That's all, you just scale the variables.
+
+985
+00:49:38,110 --> 00:49:44,370
+Instead of x2, you use 50x2, instead of
+x7, you use 1e minus 6 times x7.
+
+986
+00:49:44,370 --> 00:49:46,780
+Okay, that's scaling the variables, right?
+
+987
+00:49:46,780 --> 00:49:49,588
+Okay, now that, that's an affine
+transformation.
+
+988
+00:49:49,588 --> 00:49:52,890
+The steepest des, the gradient descent
+method
+
+989
+00:49:52,890 --> 00:49:58,310
+does not commute with affine changes
+agreed, it's not affine invariant.
+
+990
+00:49:58,310 --> 00:50:00,740
+Affine invariant means that some operation
+or
+
+991
+00:50:00,740 --> 00:50:05,030
+algorithm is invariant, under, you get a
+commutative diagram.
+
+992
+00:50:05,030 --> 00:50:09,650
+You change coordinates, run, you change
+coordinates, run the algorithm or
+
+993
+00:50:09,650 --> 00:50:11,770
+you run the algorithm and change
+coordinates, you get the same thing.
+
+994
+00:50:11,770 --> 00:50:14,890
+That's false for gradient descent, okay?
+
+995
+00:50:14,890 --> 00:50:15,860
+And we already knew that.
+
+996
+00:50:15,860 --> 00:50:20,040
+because in gradient descent, if I change
+the coordinates, it's going to,
+
+997
+00:50:20,040 --> 00:50:24,140
+it's, it's going to absolutely, completely
+change the geometry of your set.
+
+998
+00:50:24,140 --> 00:50:28,360
+And if I change them in a benevolent way,
+I can make the convergence faster.
+
+999
+00:50:28,360 --> 00:50:31,590
+If I change them in a not benevolent way,
+
+1000
+00:50:31,590 --> 00:50:34,260
+I will bring your gradient descent method
+to a halt.
+
+1001
+00:50:34,260 --> 00:50:35,220
+Not a halt.
+
+1002
+00:50:35,220 --> 00:50:38,580
+But I'll make it so slow that, for
+practical purposes, it's useless.
+
+1003
+00:50:38,580 --> 00:50:39,840
+Everybody got this?
+
+1004
+00:50:39,840 --> 00:50:41,890
+By the way, among changes of coordinates,
+
+1005
+00:50:41,890 --> 00:50:43,460
+there's a lot more bad ones than good
+ones.
+
+1006
+00:50:43,460 --> 00:50:44,070
+Just so you know.
+
+1007
+00:50:44,070 --> 00:50:45,470
+So, right?
+
+1008
+00:50:45,470 --> 00:50:46,140
+Everybody got this?
+
+1009
+00:50:47,180 --> 00:50:52,860
+Okay, so this measure is actually affine
+invariant and that's very simple to see.
+
+1010
+00:50:52,860 --> 00:50:55,010
+By the way, the Newton step is affine
+invariant.
+
+1011
+00:50:55,010 --> 00:50:58,570
+The Newton algorithm is entirely affine
+invariant.
+
+1012
+00:50:58,570 --> 00:50:59,550
+Why?
+
+1013
+00:50:59,550 --> 00:51:02,670
+Because if you change coordinates by t,
+the gradient transforms like
+
+1014
+00:51:02,670 --> 00:51:05,760
+t times the gradient or something like
+that or t transposed.
+
+1015
+00:51:05,760 --> 00:51:09,520
+And then, then the Hessian undoes that,
+because that transform just
+
+1016
+00:51:09,520 --> 00:51:14,290
+like t Hessian t transpose, when the smoke
+clears the ts are gone.
+
+1017
+00:51:14,290 --> 00:51:17,290
+There's one t left and you get a
+commutative diagram.
+
+1018
+00:51:17,290 --> 00:51:23,105
+Okay, so Newton method is actually
+invariant under scaling, right?
+
+1019
+00:51:23,105 --> 00:51:26,650
+Gradient method is very much not invariant
+under gradient under,
+
+1020
+00:51:26,650 --> 00:51:29,890
+under, under affine transformation, okay?
+
+1021
+00:51:30,960 --> 00:51:34,220
+And this stopping criterion here if you
+base it on lambda,
+
+1022
+00:51:34,220 --> 00:51:37,580
+invariant under changes of coordinates,
+which is actually very cool, right?
+
+1023
+00:51:37,580 --> 00:51:42,140
+because the other one will ruin, I can, I
+can break any algorithm that has, or any,
+
+1024
+00:51:42,140 --> 00:51:46,810
+if I grep through the code and find, if
+norm of something is less than this,
+
+1025
+00:51:46,810 --> 00:51:48,930
+I can break that code so easy it's not
+funny.
+
+1026
+00:51:48,930 --> 00:51:52,460
+All I have to do is take, I, all I do is I
+take your problems for
+
+1027
+00:51:52,460 --> 00:51:53,900
+it to worthing, working.
+
+1028
+00:51:53,900 --> 00:51:56,090
+I scale the variables in some way.
+
+1029
+00:51:56,090 --> 00:51:58,560
+And you'll either stop on the first step
+or you'll never stop or
+
+1030
+00:51:58,560 --> 00:51:59,220
+something like that.
+
+1031
+00:51:59,220 --> 00:52:01,340
+And I can break it super fast.
+
+1032
+00:52:01,340 --> 00:52:04,887
+You cannot do that with a Newton method,
+alright?
+
+1033
+00:52:04,887 --> 00:52:07,570
+So, okay, here's Newton's method.
+
+1034
+00:52:07,570 --> 00:52:08,160
+It works like this.
+
+1035
+00:52:09,250 --> 00:52:11,330
+You compute the Newton step and the
+decrement.
+
+1036
+00:52:11,330 --> 00:52:12,990
+So, you compute this and that.
+
+1037
+00:52:12,990 --> 00:52:15,030
+And, the real stopping criterion would be
+right here.
+
+1038
+00:52:15,030 --> 00:52:17,132
+If lambda squared of 2 is less than the
+tolerance, break,
+
+1039
+00:52:17,132 --> 00:52:20,460
+that would be the real the real control
+flow would look like that.
+
+1040
+00:52:21,960 --> 00:52:23,840
+okay, sorry, our algorithm here says that
+[UNKNOWN].
+
+1041
+00:52:23,840 --> 00:52:28,160
+then, either line search and you could
+just use it by backtracking, that's fine.
+
+1042
+00:52:28,160 --> 00:52:30,120
+And then, you do an update.
+
+1043
+00:52:30,120 --> 00:52:34,440
+And so, this algorithm is ab, is affine
+invariant, right?
+
+1044
+00:52:34,440 --> 00:52:37,390
+So another way to say this is that this
+scaling doesn't matter.
+
+1045
+00:52:37,390 --> 00:52:41,040
+Well, it matters, but it's a second-order
+issue and
+
+1046
+00:52:41,040 --> 00:52:46,130
+it matters only to the extent that your
+Linear Algebra will be stressed.
+
+1047
+00:52:46,130 --> 00:52:49,626
+But certainly you can handle things like
+condition numbers of, you know,
+
+1048
+00:52:49,626 --> 00:52:51,710
+10 to the 5 with no problem, right?
+
+1049
+00:52:51,710 --> 00:52:55,830
+Whereas, a condition number of a 100 will
+bring a gradient method to a halt for
+
+1050
+00:52:55,830 --> 00:52:57,238
+practical purposes, right?
+
+1051
+00:52:57,238 --> 00:53:02,686
+So, so, and then there's just a huge gap
+in, in how much scaling you can do.
+
+1052
+00:53:02,686 --> 00:53:07,552
+So, okay, it means something like the
+difference between fixed-point numbers and
+
+1053
+00:53:07,552 --> 00:53:08,878
+floating-point numbers, right?
+
+1054
+00:53:08,878 --> 00:53:10,994
+I mean, that's, that's the, the,
+qualitatively, I mean,
+
+1055
+00:53:10,994 --> 00:53:14,106
+I don't want to push that too far but it's
+something like that, right?
+
+1056
+00:53:14,106 --> 00:53:18,170
+That, you know, if you're writing a
+fixed-point algorithm, boy, you have to
+
+1057
+00:53:18,170 --> 00:53:21,470
+be careful not to overflow and underflow
+and all that kind of stuff, right?
+
+1058
+00:53:21,470 --> 00:53:25,030
+If you're writing something with, with,
+with floats, yeah, you know,
+
+1059
+00:53:25,030 --> 00:53:27,120
+I mean it can actually tolerate some
+pretty big ranges.
+
+1060
+00:53:27,120 --> 00:53:28,575
+Now you can still overflow and underflow
+and
+
+1061
+00:53:28,575 --> 00:53:32,090
+have to write a terrible algorithm but
+it's a whole lot harder than for,
+
+1062
+00:53:32,090 --> 00:53:34,780
+if you're doing something with floats than
+with some fixed-point numbers.
+
+1063
+00:53:34,780 --> 00:53:36,678
+It's way easier to be in trouble.
+
+1064
+00:53:36,678 --> 00:53:39,990
+Fixed-point, a fixed-point algorithm can
+work perfectly provided you've
+
+1065
+00:53:39,990 --> 00:53:43,560
+had incredibly care to set everything up
+and scale everything correctly.
+
+1066
+00:53:43,560 --> 00:53:46,570
+But you're using floats, yeah, you've got
+much more leeway.
+
+1067
+00:53:46,570 --> 00:53:48,680
+So, I mean, this is just very rough and
+
+1068
+00:53:48,680 --> 00:53:50,742
+I don't want to push it too much, but it's
+something like that.
+
+1069
+00:53:50,742 --> 00:53:58,299
+Okay, what we're going to look at now is
+the classical convergence analysis,
+
+1070
+00:53:58,299 --> 00:54:03,830
+this is due to Kanterovich and, that's of
+Newton's method.
+
+1071
+00:54:03,830 --> 00:54:05,802
+And, so we'll, we'll look at this and
+
+1072
+00:54:05,802 --> 00:54:09,800
+actually before we start, here's what I'd
+like to ask you.
+
+1073
+00:54:09,800 --> 00:54:11,350
+So, some questions.
+
+1074
+00:54:11,350 --> 00:54:12,770
+How well, my first question is this,
+
+1075
+00:54:12,770 --> 00:54:16,480
+how well does Newton's method work for
+quadratic functions?
+
+1076
+00:54:16,480 --> 00:54:16,980
+Perfectly.
+
+1077
+00:54:16,980 --> 00:54:21,630
+It's one step, right, because, and here's
+an abstraction of Newton's method.
+
+1078
+00:54:22,850 --> 00:54:23,860
+You call the method,
+
+1079
+00:54:23,860 --> 00:54:28,520
+get quadratic approximation at a point,
+you, you get the quadratic approximation.
+
+1080
+00:54:28,520 --> 00:54:29,310
+It's actually the function.
+
+1081
+00:54:29,310 --> 00:54:30,120
+You don't know it, right?
+
+1082
+00:54:30,120 --> 00:54:32,550
+And then it says, okay, I'm going to
+minimize the quadratic approximation, and
+
+1083
+00:54:32,550 --> 00:54:33,500
+here's my next x.
+
+1084
+00:54:33,500 --> 00:54:34,246
+It's actually the minimizer.
+
+1085
+00:54:34,246 --> 00:54:37,830
+So the answer is quadratic, one step,
+okay?
+
+1086
+00:54:37,830 --> 00:54:43,930
+So, now if a function now what if the
+Hessian is changing slowly?
+
+1087
+00:54:45,413 --> 00:54:46,616
+Or suppose, suppose in fact,
+
+1088
+00:54:46,616 --> 00:54:50,660
+the Hessian doesn't change very much as
+you move x around.
+
+1089
+00:54:50,660 --> 00:54:53,520
+It's now a quadratic function but it's
+changing very slowly.
+
+1090
+00:54:53,520 --> 00:54:56,910
+That suggests Newton's method is going to
+work unbelievable, that's the kind of
+
+1091
+00:54:56,910 --> 00:55:00,290
+function Newton's method will just work
+unbelievably well on.
+
+1092
+00:55:00,290 --> 00:55:03,220
+By the way, it comes back to your
+suggestion which is
+
+1093
+00:55:03,220 --> 00:55:06,610
+the Hessian is actually a heuristic for
+ex, for,
+
+1094
+00:55:06,610 --> 00:55:09,400
+for saying I'd like to change coordinates
+to get the sublevels set,
+
+1095
+00:55:09,400 --> 00:55:13,620
+you don't have the sublevels set and use
+the Hessian as an appoximation, right?
+
+1096
+00:55:13,620 --> 00:55:15,260
+So, the current local Hessian.
+
+1097
+00:55:15,260 --> 00:55:20,790
+And so if the Hessian doesn't change much,
+right, as you move around in space,
+
+1098
+00:55:20,790 --> 00:55:23,030
+that's where Newton's method is going to
+nail it.
+
+1099
+00:55:23,030 --> 00:55:25,250
+And the extreme, is the Hessian doesn't
+change at all,
+
+1100
+00:55:25,250 --> 00:55:27,860
+that's called a quadratic function one
+step, okay?
+
+1101
+00:55:27,860 --> 00:55:31,750
+So, this is just intuition that suggests
+the following, how fast the Hessian
+
+1102
+00:55:31,750 --> 00:55:36,360
+changes is what's going to determine
+whether Newton's method works well or not.
+
+1103
+00:55:36,360 --> 00:55:38,640
+And so sure enough, guess what comes up?
+
+1104
+00:55:38,640 --> 00:55:41,810
+What comes up is exactly the Lipschitz
+constants on,
+
+1105
+00:55:41,810 --> 00:55:44,140
+a Lipschitz constants on the second
+derivative.
+
+1106
+00:55:45,310 --> 00:55:47,830
+By the way, if you like, we can talk,
+
+1107
+00:55:47,830 --> 00:55:50,130
+you can talk about the third derivative,
+right?
+
+1108
+00:55:50,130 --> 00:55:54,790
+Because L is something like the maximum of
+the third derivative, okay?
+
+1109
+00:55:54,790 --> 00:56:00,776
+And there are people who work this out in
+terms of f d cubed f, okay?
+
+1110
+00:56:00,776 --> 00:56:03,952
+Now, we're not going to do that but
+
+1111
+00:56:03,952 --> 00:56:07,680
+just to understand what L means, L is a
+bound on the third derivative.
+
+1112
+00:56:07,680 --> 00:56:09,140
+Now, the reason, I'll tell you why we're
+not going to do it,
+
+1113
+00:56:09,140 --> 00:56:11,902
+because the third derivative of a function
+of [UNKNOWN]
+
+1114
+00:56:11,902 --> 00:56:17,460
+function in Rn is actually a third-order
+tensor, right?
+
+1115
+00:56:17,460 --> 00:56:20,220
+And, so, unless you're trained in this,
+maybe in mechanical engineering or
+
+1116
+00:56:20,220 --> 00:56:26,540
+something like that, or physics it can
+cause severe headaches to consider.
+
+1117
+00:56:26,540 --> 00:56:29,632
+so, I don't recommend, it's a trilinear
+form.
+
+1118
+00:56:29,632 --> 00:56:34,030
+And, so, you know, the fact is, that you
+know, Linear Algebra, you know,
+
+1119
+00:56:34,030 --> 00:56:37,358
+you take all these classes on statistics,
+probability, mechanical engineering.
+
+1120
+00:56:37,358 --> 00:56:39,120
+I don't know.
+And a lot of matrices come up so
+
+1121
+00:56:39,120 --> 00:56:43,640
+we all have very well developed ideas
+about matrices and things like that.
+
+1122
+00:56:43,640 --> 00:56:47,000
+And third-order tensors are only a very
+small number of us are cool with, right?
+
+1123
+00:56:47,000 --> 00:56:48,620
+And the rest of us just get a headache.
+
+1124
+00:56:48,620 --> 00:56:52,460
+So I'm just, I'm just saying, that's why
+were going to use Lipschitz condition.
+
+1125
+00:56:52,460 --> 00:56:53,610
+But you should understand what l is.
+
+1126
+00:56:53,610 --> 00:56:56,600
+It's the third derivative, that's what it
+is.
+
+1127
+00:56:56,600 --> 00:57:00,050
+By the way, that model goes back to why
+Newton works well.
+
+1128
+00:57:00,050 --> 00:57:04,740
+If the third derivative is small, that
+tells you Newton works well, why?
+
+1129
+00:57:04,740 --> 00:57:08,860
+Here's one explanation, Newton method says
+this, call the following method,
+
+1130
+00:57:08,860 --> 00:57:10,800
+get quadratic approximation.
+
+1131
+00:57:10,800 --> 00:57:14,460
+If I get a quadratic approximation, what's
+the next term I'm missing?
+
+1132
+00:57:14,460 --> 00:57:16,380
+The cubic, the third derivative.
+
+1133
+00:57:16,380 --> 00:57:18,970
+So, if the third derivative, derivative is
+small, I mean as though I'm
+
+1134
+00:57:18,970 --> 00:57:22,490
+waving my hands, but the third derivative
+is small, you know what it means?
+
+1135
+00:57:22,490 --> 00:57:26,948
+It means that second derivative
+approximation was pretty good, okay?
+
+1136
+00:57:26,948 --> 00:57:30,090
+So, again, so all of this is me, I mean,
+this is totally obvious,
+
+1137
+00:57:30,090 --> 00:57:32,830
+there's nothing hidden here, there's
+nothing deep here, it just says,
+
+1138
+00:57:32,830 --> 00:57:37,020
+we expect Newton's method to work well,
+when, the third derivative is small.
+
+1139
+00:57:37,020 --> 00:57:38,030
+That's one way to say it.
+
+1140
+00:57:38,030 --> 00:57:39,060
+There's another way.
+
+1141
+00:57:39,060 --> 00:57:42,620
+The second derivative has a small
+Lipschitz constant, okay?
+
+1142
+00:57:42,620 --> 00:57:44,850
+That's all.
+There's nothing, that's obvious.
+
+1143
+00:57:44,850 --> 00:57:48,860
+Okay, so back to the analysis which is due
+to Kanterovich.
+
+1144
+00:57:48,860 --> 00:57:49,490
+Okay.
+So,
+
+1145
+00:57:49,490 --> 00:57:53,290
+it says, this has a it has a Lipschitz
+constant L and
+
+1146
+00:57:53,290 --> 00:57:56,818
+then, it basically, the analysis [UNKNOWN]
+basically breaks into two portions, right?
+
+1147
+00:57:56,818 --> 00:58:00,402
+So I'll, I'll say what [UNKNOWN] sometimes
+it's called a damped and undamped phase.
+
+1148
+00:58:00,402 --> 00:58:01,690
+And I'll explain what it is.
+
+1149
+00:58:01,690 --> 00:58:05,580
+So I'll, I'll say what uuu, sometimes it's
+called a damped and undamped phase.
+
+1150
+00:58:05,580 --> 00:58:07,140
+And I'll explain what it is.
+
+1151
+00:58:07,140 --> 00:58:08,270
+It says the following.
+
+1152
+00:58:08,270 --> 00:58:10,260
+There's, there's a constant eta.
+
+1153
+00:58:10,260 --> 00:58:15,390
+And if the gradient exceeds eta, then
+here's what you can guarantee.
+
+1154
+00:58:15,390 --> 00:58:22,010
+The Newton step with backtracking, right,
+will go down by a fixed number, gamma.
+
+1155
+00:58:22,010 --> 00:58:23,970
+At least maybe more, okay?
+
+1156
+00:58:23,970 --> 00:58:27,130
+So that's, that's, that's what that's
+called some people call that the undamped
+
+1157
+00:58:27,130 --> 00:58:28,788
+phase of Newton's method.
+
+1158
+00:58:28,788 --> 00:58:31,268
+Then there's this.
+
+1159
+00:58:32,330 --> 00:58:34,920
+Once the gradient gets smaller than a
+number,
+
+1160
+00:58:34,920 --> 00:58:39,540
+which it must because you can't execute
+this step too many times, right?
+
+1161
+00:58:39,540 --> 00:58:42,038
+In fact, if it goes down by gamma each
+step,
+
+1162
+00:58:42,038 --> 00:58:46,670
+then it can't, you really can't execute
+that more than whatever it is.
+
+1163
+00:58:46,670 --> 00:58:49,740
+You know, f of x0 minus f star divided by
+gamma steps.
+
+1164
+00:58:49,740 --> 00:58:51,260
+You can't do any more than that, right?
+
+1165
+00:58:51,260 --> 00:58:54,990
+So after finding the number of steps, the
+gradient norm will be less than eta.
+
+1166
+00:58:54,990 --> 00:58:57,420
+And at that point, the following occurs.
+
+1167
+00:58:57,420 --> 00:59:01,280
+The norm of the gradient at the next step,
+actually another thing happens.
+
+1168
+00:59:01,280 --> 00:59:04,990
+In backtracking line search, you will take
+a step of one, okay?
+
+1169
+00:59:04,990 --> 00:59:06,860
+You'll take a step of one in Newton
+method.
+
+1170
+00:59:06,860 --> 00:59:08,110
+You will not backtrack, number one.
+
+1171
+00:59:08,110 --> 00:59:12,480
+And number two, the gradient at the next
+step will be less than,
+
+1172
+00:59:12,480 --> 00:59:14,000
+ignore the constant in front.
+
+1173
+00:59:14,000 --> 00:59:17,930
+But, will be less than the norm of the
+gradient at the previous step,
+
+1174
+00:59:17,930 --> 00:59:20,990
+at the current step squared, okay?
+
+1175
+00:59:20,990 --> 00:59:26,000
+Now when this is less than one, that's a
+very good, that basically says, it,
+
+1176
+00:59:26,000 --> 00:59:29,140
+I mean, so, now very roughly, it says that
+when you get into, so
+
+1177
+00:59:29,140 --> 00:59:31,190
+this is called this is lots of names.
+
+1178
+00:59:31,190 --> 00:59:34,820
+One is it's the undamped face, it's the
+region of quadratic convergence.
+
+1179
+00:59:36,420 --> 00:59:37,530
+We'll see why in a minute.
+
+1180
+00:59:37,530 --> 00:59:40,680
+But what it says is very interesting It
+says, I mean, and roughly speaking,
+
+1181
+00:59:40,680 --> 00:59:44,900
+it says, when you get into that second
+phase, every time you do Newton's step,
+
+1182
+00:59:44,900 --> 00:59:53,490
+the number of significant figures is very
+rough doubles, okay?
+
+1183
+00:59:53,490 --> 00:59:55,775
+You do a Newton step, it's now 1e minus 4.
+
+1184
+00:59:55,775 --> 00:59:59,810
+Then it's 1e minus 8 then it's all over on
+the next step, okay?
+
+1185
+00:59:59,810 --> 01:00:01,430
+Everybody got this?
+
+1186
+01:00:01,430 --> 01:00:04,030
+By the way, this fits our intuition
+perfectly about, you know,
+
+1187
+01:00:04,030 --> 01:00:06,040
+you just go back and look at these
+pictures, right?
+
+1188
+01:00:07,060 --> 01:00:10,740
+I mean, over here, that fits this stuff
+really well, right?
+
+1189
+01:00:10,740 --> 01:00:12,920
+Once you're down near the minimum here,
+
+1190
+01:00:12,920 --> 01:00:15,860
+the quadratic approximation is superb,
+right?
+
+1191
+01:00:15,860 --> 01:00:17,380
+When you are near the crossing point,
+
+1192
+01:00:17,380 --> 01:00:21,920
+if you zoom in on it, all you see is a
+straight line, like this, right?
+
+1193
+01:00:21,920 --> 01:00:23,540
+I mean, it got a small curvature.
+
+1194
+01:00:23,540 --> 01:00:28,410
+But this method, this method of following
+the tangent, is going to get you from
+
+1195
+01:00:28,410 --> 01:00:33,600
+a good point to a superb point to like a
+really superb point, that,
+
+1196
+01:00:33,600 --> 01:00:36,430
+so it's all kind of make sense that's how
+this works, right?
+
+1197
+01:00:36,430 --> 01:00:41,100
+I mean, I think this, this kind of the
+intuition is, is, is clear.
+
+1198
+01:00:41,100 --> 01:00:41,600
+Okay.
+
+1199
+01:00:42,640 --> 01:00:47,520
+So in a damped Newton phase
+
+1200
+01:00:47,520 --> 01:00:50,790
+most iterations are going to require
+backtracking, right?
+
+1201
+01:00:50,790 --> 01:00:51,750
+The idea is, I already said this,
+
+1202
+01:00:51,750 --> 01:00:55,150
+the function value decreases by at least
+this value of gamma.
+
+1203
+01:00:55,150 --> 01:00:57,750
+And this can only go that number of
+iterations, right?
+
+1204
+01:00:57,750 --> 01:01:01,790
+So in the quadratically convergent phase,
+that's once,
+
+1205
+01:01:01,790 --> 01:01:06,010
+once the gradient gets small enough no
+damping whatsoever, and
+
+1206
+01:01:06,010 --> 01:01:09,390
+what'll happen is, this will converge at
+the zero quadratically.
+
+1207
+01:01:09,390 --> 01:01:12,540
+Quadratically means on a log plot,
+
+1208
+01:01:12,540 --> 01:01:15,580
+on a semi-log plot you'll actually get a
+quadratic.
+
+1209
+01:01:15,580 --> 01:01:20,270
+So the idea is that the number of
+iterations is less than
+
+1210
+01:01:20,270 --> 01:01:24,600
+something dependent on how sub-optimal the
+first one is, right?
+
+1211
+01:01:24,600 --> 01:01:28,240
+And then the second term is log log
+epsilon 0 over epsilon, right?
+
+1212
+01:01:28,240 --> 01:01:31,270
+So, so why?
+
+1213
+01:01:31,270 --> 01:01:33,180
+Because, if you are doing quadratic
+convergence and
+
+1214
+01:01:33,180 --> 01:01:36,200
+you invert what that mean, it's log-log,
+right?
+
+1215
+01:01:36,200 --> 01:01:42,370
+So okay, so now this second term, it's
+small, you know, it's on the order of six.
+
+1216
+01:01:42,370 --> 01:01:44,870
+And in fact, for a long time, I used to go
+around and
+
+1217
+01:01:44,870 --> 01:01:49,680
+give talks, and I would write five for log
+log epsilon zero over epsilon.
+
+1218
+01:01:49,680 --> 01:01:54,060
+And I did it just to bait people who were
+complexity theorists.
+
+1219
+01:01:54,060 --> 01:01:59,660
+Anyway, so this analysis, this is the
+classical analysis of the Newton method.
+
+1220
+01:01:59,660 --> 01:02:02,430
+And, but now, I'm going to, I want to say
+something bad things about,
+
+1221
+01:02:02,430 --> 01:02:03,810
+the good news is, it's a feel-good thing.
+
+1222
+01:02:03,810 --> 01:02:05,840
+It says, it always works and it says,
+
+1223
+01:02:05,840 --> 01:02:10,060
+eventually the, the convergence is like
+super fast and all that kind of stuff.
+
+1224
+01:02:10,060 --> 01:02:12,730
+And, you know, this is what exam, this,
+this is correct.
+
+1225
+01:02:12,730 --> 01:02:14,380
+I mean, it work something like this.
+
+1226
+01:02:14,380 --> 01:02:17,310
+And you get a lot of insight, like they
+did to these two phases and
+
+1227
+01:02:17,310 --> 01:02:18,710
+all that kind of stuff.
+
+1228
+01:02:18,710 --> 01:02:19,260
+It's good.
+
+1229
+01:02:19,260 --> 01:02:22,420
+Now, I do want to make fun of it though.
+
+1230
+01:02:22,420 --> 01:02:26,070
+Because this is your classical, I was
+going to say your classical western
+
+1231
+01:02:26,070 --> 01:02:28,830
+analysis but unfortunately, this came from
+Moscow, so I can't say that.
+
+1232
+01:02:28,830 --> 01:02:31,440
+But it is kind of like your classical
+western analysis of
+
+1233
+01:02:31,440 --> 01:02:32,480
+an algorithm goes like this.
+
+1234
+01:02:32,480 --> 01:02:36,480
+It says, if and if you have a whole lot of
+hypothesis, halt, then,
+
+1235
+01:02:36,480 --> 01:02:38,090
+and then you have a conclusion.
+
+1236
+01:02:38,090 --> 01:02:40,400
+Now, if you look at the whole lot of
+hypothesis,
+
+1237
+01:02:40,400 --> 01:02:43,394
+not one of them is actually verifiable in
+practice.
+
+1238
+01:02:43,394 --> 01:02:46,920
+Not one, you'd be like the, you have a
+Lipschitz constant.
+
+1239
+01:02:46,920 --> 01:02:48,260
+You have a strong convexity constant.
+
+1240
+01:02:48,260 --> 01:02:49,350
+You have all sorts of crap there.
+
+1241
+01:02:49,350 --> 01:02:53,200
+Not one of, there would be almost no
+circumstances where you know them, right?
+
+1242
+01:02:53,200 --> 01:02:55,910
+Except if the function is quadratic but
+then it's stupid because how do you
+
+1243
+01:02:55,910 --> 01:02:57,550
+minimize a quadratic if you solve linear
+equations.
+
+1244
+01:02:57,550 --> 01:02:58,880
+Everybody see what I'm saying here?
+
+1245
+01:02:58,880 --> 01:02:59,620
+Okay.
+
+1246
+01:02:59,620 --> 01:03:02,170
+Then you look at the conclusions and the
+conclusions would be kind of goofy.
+
+1247
+01:03:02,170 --> 01:03:07,010
+They would say things like if, if the the
+conclusion would be something like,
+
+1248
+01:03:07,010 --> 01:03:09,710
+you know, a limit point of this algorithm
+is optimal.
+
+1249
+01:03:09,710 --> 01:03:13,650
+But yet that's not how you know, you
+don't, that's, you know,
+
+1250
+01:03:13,650 --> 01:03:16,840
+Java doesn't have limit points,
+accumulation points, right?
+
+1251
+01:03:16,840 --> 01:03:19,850
+I mean, you have a maximum number of
+iterers, and that's it, okay?
+
+1252
+01:03:19,850 --> 01:03:21,070
+Everybody see what I'm saying?
+
+1253
+01:03:21,070 --> 01:03:22,200
+So, that's the classic one.
+
+1254
+01:03:22,200 --> 01:03:25,780
+And then you point out that in fact that
+theorem, which someone then spends like
+
+1255
+01:03:25,780 --> 01:03:28,420
+two lectures proving, you know, when
+everyone's sleeping.
+
+1256
+01:03:29,730 --> 01:03:31,860
+Then you point out, it's actually totally
+useless.
+
+1257
+01:03:31,860 --> 01:03:33,690
+And they say, no, no, you don't
+understand.
+
+1258
+01:03:33,690 --> 01:03:34,700
+You don't get it.
+
+1259
+01:03:34,700 --> 01:03:36,620
+This is kind of to make you feel good,
+kind of,
+
+1260
+01:03:36,620 --> 01:03:40,010
+so that this is, then we run the code,
+and, you know, and
+
+1261
+01:03:40,010 --> 01:03:42,980
+then, and then this is the conceptual
+framework and base.
+
+1262
+01:03:42,980 --> 01:03:44,592
+But anyway.
+Okay.Every got this?
+
+1263
+01:03:44,592 --> 01:03:46,075
+And let me point out here, something here.
+
+1264
+01:03:46,075 --> 01:03:50,070
+Suppose you want to run Newton's method to
+find out,
+
+1265
+01:03:50,070 --> 01:03:52,600
+I give you a function like one of these
+logs, some [UNKNOWN] or
+
+1266
+01:03:52,600 --> 01:03:55,620
+a barrier and I want to find out, how many
+steps is it going to take?
+
+1267
+01:03:55,620 --> 01:03:57,740
+Give me an upper bound on the number of
+steps Newton's method's going to take?
+
+1268
+01:03:57,740 --> 01:03:59,160
+And they go, hey, no problem.
+
+1269
+01:03:59,160 --> 01:04:00,300
+We've got this theory.
+
+1270
+01:04:00,300 --> 01:04:01,910
+Look.
+Now look, now they look down here and
+
+1271
+01:04:01,910 --> 01:04:03,220
+they say, right there.
+
+1272
+01:04:03,220 --> 01:04:04,370
+There's your number.
+
+1273
+01:04:04,370 --> 01:04:06,080
+Now, number one, epsilon zero,
+
+1274
+01:04:06,080 --> 01:04:08,710
+you don't know it because it depends on
+all sorts of crap you don't know.
+
+1275
+01:04:08,710 --> 01:04:09,540
+You don't know m.
+
+1276
+01:04:09,540 --> 01:04:10,670
+You don't l.
+
+1277
+01:04:10,670 --> 01:04:11,220
+Okay?
+
+1278
+01:04:11,220 --> 01:04:12,360
+So, you don't know epsilon zero.
+
+1279
+01:04:12,360 --> 01:04:12,950
+Fine.
+
+1280
+01:04:12,950 --> 01:04:16,220
+Fortunately, log log epsilon zero over
+epsilon is basically six.
+
+1281
+01:04:16,220 --> 01:04:20,340
+For all reasonable values of epsilon 0, so
+it doesn't matter, okay?
+
+1282
+01:04:20,340 --> 01:04:20,880
+Great.
+
+1283
+01:04:20,880 --> 01:04:22,590
+Now, look at the first term.
+
+1284
+01:04:22,590 --> 01:04:26,960
+Again, you don't know, well, you could,
+let's, let's pretend you know gamma, okay?
+
+1285
+01:04:26,960 --> 01:04:30,120
+The first term says, there you go, that's
+the number of steps.
+
+1286
+01:04:30,120 --> 01:04:31,280
+It depends on how sub-optimal you are.
+
+1287
+01:04:31,280 --> 01:04:32,900
+And you say, excuse me?
+
+1288
+01:04:32,900 --> 01:04:35,929
+I haven't, how would you find p star, and
+they'd say, run Newton's method.
+
+1289
+01:04:37,380 --> 01:04:39,430
+But if you run Newton's method to find p
+star,
+
+1290
+01:04:39,430 --> 01:04:42,420
+now you know exactly how many steps and
+you don't need an upper bound on it.
+
+1291
+01:04:42,420 --> 01:04:45,412
+Is everyone following this, like how
+ridiculous this is, right?
+
+1292
+01:04:45,412 --> 01:04:49,870
+Okay, so, all I'm doing is I'm just making
+fun of the way this is
+
+1293
+01:04:49,870 --> 01:04:52,170
+normally discussed and taught and all that
+kind of stuff.
+
+1294
+01:04:52,170 --> 01:04:54,364
+Because we're going to fix it next time.
+
+1295
+01:04:54,364 --> 01:04:57,520
+In fact, we're going to get a little bit
+I,
+
+1296
+01:04:57,520 --> 01:04:59,300
+these are just the hints of what's
+going to happen.
+
+1297
+01:04:59,300 --> 01:05:03,260
+Here's our little example like this, and
+you can see exactly what's happening.
+
+1298
+01:05:03,260 --> 01:05:07,950
+What's being plotted at least for the
+first two is the actual,
+
+1299
+01:05:07,950 --> 01:05:11,180
+it's the ellipsoid determined by the
+Hessian, right?
+
+1300
+01:05:11,180 --> 01:05:14,585
+And you can see, by the way, in this first
+one it's maybe not quite right, right?
+
+1301
+01:05:14,585 --> 01:05:18,990
+because, you know, may, maybe the correct
+Hessian change accordance will be this.
+
+1302
+01:05:18,990 --> 01:05:20,920
+Well, it's a little bit like that, right?
+
+1303
+01:05:20,920 --> 01:05:23,350
+So, and you can see by the time you get
+down here,
+
+1304
+01:05:23,350 --> 01:05:25,878
+by the time you get down to the, this,
+this point, you,
+
+1305
+01:05:25,878 --> 01:05:29,200
+you're actually applying the correct local
+change of coordinates.
+
+1306
+01:05:29,200 --> 01:05:33,160
+And, and the thing you want to focus down
+here is the axis.
+
+1307
+01:05:33,160 --> 01:05:36,080
+This is 10 to the minus 15, right?
+
+1308
+01:05:36,080 --> 01:05:37,320
+So what happens here,
+
+1309
+01:05:37,320 --> 01:05:40,440
+now unfortunately, this thing goes into
+quadratic conversions almost immediately.
+
+1310
+01:05:40,440 --> 01:05:43,970
+But we'll see a bigger example, maybe on
+the next slide.
+
+1311
+01:05:43,970 --> 01:05:46,420
+Now we'll go, yeah, here we go, here's an
+example in our 100's.
+
+1312
+01:05:46,420 --> 01:05:47,595
+This is very typical.
+
+1313
+01:05:47,595 --> 01:05:48,643
+Okay.
+
+1314
+01:05:48,643 --> 01:05:53,120
+So, here's the exact line search
+backtracking and what you can see,
+
+1315
+01:05:53,120 --> 01:05:55,450
+the scale here is ten, covers 10 to the
+20, right?
+
+1316
+01:05:55,450 --> 01:05:57,490
+So you have to understand how to read the
+scale.
+
+1317
+01:05:58,560 --> 01:05:59,840
+So what happens is,
+
+1318
+01:05:59,840 --> 01:06:03,250
+you know, this is sort of the region of
+linear that's the damped convergence.
+
+1319
+01:06:03,250 --> 01:06:07,830
+And when this thing, when you get the
+undamped phase here's what happens,
+
+1320
+01:06:07,830 --> 01:06:12,830
+you can see that this thing is going down
+quadratically, right?
+
+1321
+01:06:12,830 --> 01:06:15,382
+And, I mean, it's all over at 10 to minus
+12, right?
+
+1322
+01:06:15,382 --> 01:06:16,184
+That's your, at that point,
+
+1323
+01:06:16,184 --> 01:06:19,730
+your double precision is stationary and
+there's nothing more to do, right?
+
+1324
+01:06:19,730 --> 01:06:21,300
+Actually if you run it some more,
+
+1325
+01:06:21,300 --> 01:06:22,970
+you would get things that look like this,
+right?
+
+1326
+01:06:22,970 --> 01:06:25,550
+I mention this because you will be doing
+it and you might get that.
+
+1327
+01:06:25,550 --> 01:06:27,070
+What would that be when you see that?
+
+1328
+01:06:27,070 --> 01:06:30,730
+What's happening is, what you're looking
+at, these numbers would be so small.
+
+1329
+01:06:30,730 --> 01:06:33,540
+You're looking at just the round off error
+from floating point numbers.
+
+1330
+01:06:33,540 --> 01:06:35,070
+That's what you're looking at, okay?
+
+1331
+01:06:35,070 --> 01:06:38,770
+So if you see that, then back off and
+
+1332
+01:06:38,770 --> 01:06:41,890
+don't plot and clip your graph higher,
+okay?
+
+1333
+01:06:41,890 --> 01:06:43,960
+Because it's unattractive, okay?
+
+1334
+01:06:43,960 --> 01:06:46,140
+And it's, I mean you study this in another
+class.
+
+1335
+01:06:46,140 --> 01:06:47,690
+I mean, look, it's all over.
+
+1336
+01:06:47,690 --> 01:06:51,720
+There's no, there's no optimization
+problem where you actually have to worry.
+
+1337
+01:06:51,720 --> 01:06:52,890
+If you're solving optimization problem and
+
+1338
+01:06:52,890 --> 01:06:57,520
+you actually have to worry about the
+eighth digit that's impossible.
+
+1339
+01:06:57,520 --> 01:06:59,090
+Let's just leave it that way, okay?
+
+1340
+01:06:59,090 --> 01:07:01,090
+It's not good, right?
+
+1341
+01:07:01,090 --> 01:07:05,160
+If, if whatever you're real application
+depends on the eighth significant digit,
+
+1342
+01:07:05,160 --> 01:07:08,540
+just go home because it's all over.
+
+1343
+01:07:08,540 --> 01:07:10,130
+Okay.
+So here's a big one.
+
+1344
+01:07:10,130 --> 01:07:10,900
+Just for fun.
+
+1345
+01:07:10,900 --> 01:07:13,060
+Just to show you that this persists in
+higher dimensions.
+
+1346
+01:07:14,320 --> 01:07:19,240
+So here, we're minimizing, I don't know,
+some [UNKNOWN] log barrier type thing.
+
+1347
+01:07:19,240 --> 01:07:22,830
+And this is in R10000, okay?
+
+1348
+01:07:22,830 --> 01:07:26,020
+here, and this is a good point because I'm
+going to get to quiz you on
+
+1349
+01:07:26,020 --> 01:07:29,170
+some things momentarily but let's see.
+
+1350
+01:07:29,170 --> 01:07:32,020
+So here, you're minimizing this, this
+thing.
+
+1351
+01:07:32,020 --> 01:07:34,560
+That's a log barrier, by the way, for the
+unit cube, right?
+
+1352
+01:07:34,560 --> 01:07:39,210
+And this is the log barrier for some
+polyhedron.
+
+1353
+01:07:39,210 --> 01:07:43,950
+It's a polyhedron in R10000 with 100,000
+faces, okay?
+
+1354
+01:07:43,950 --> 01:07:46,620
+How many vertices does a polydron have by
+the way?
+
+1355
+01:07:46,620 --> 01:07:49,780
+Basically, probably more than the number
+of subatomic particles in the known
+
+1356
+01:07:49,780 --> 01:07:51,240
+universe, okay?
+
+1357
+01:07:51,240 --> 01:07:52,950
+Maybe with our without the dark matter.
+
+1358
+01:07:52,950 --> 01:07:54,962
+I don't know, it's, it's vague, okay?
+
+1359
+01:07:54,962 --> 01:07:55,840
+It's the point.
+
+1360
+01:07:55,840 --> 01:08:01,140
+So alright, so and here it is, this is on
+a huge scale, right?
+
+1361
+01:08:01,140 --> 01:08:02,870
+So for our practical purposes, I mean you,
+
+1362
+01:08:02,870 --> 01:08:07,240
+you've probably done like right there but
+and here it is and it, you see exactly,
+
+1363
+01:08:07,240 --> 01:08:13,180
+it persists, you see this is sort of the,
+that sort of linear convergence.
+
+1364
+01:08:13,180 --> 01:08:16,920
+When that thing rolls over like that,
+that, that's when you,
+
+1365
+01:08:16,920 --> 01:08:19,210
+you you declare success.
+
+1366
+01:08:19,210 --> 01:08:21,967
+and, and you've achieved quadratic
+convergence, okay?
+
+1367
+01:08:21,967 --> 01:08:26,820
+And what you'll see at the same time, if
+you plot the damping factor,
+
+1368
+01:08:26,820 --> 01:08:31,050
+the tk, the step size, it should be one
+from then on, right?
+
+1369
+01:08:31,050 --> 01:08:34,840
+If you see anything else, it means you
+messed up or something like that, right?
+
+1370
+01:08:34,840 --> 01:08:35,460
+So, that's it.
+
+1371
+01:08:35,460 --> 01:08:36,770
+So, this works.
+
+1372
+01:08:36,770 --> 01:08:45,990
+By the way, this requires solving a system
+of the form of this, right?
+
+1373
+01:08:45,990 --> 01:08:48,280
+We had to calculate the Newton step each
+time.
+
+1374
+01:08:48,280 --> 01:08:49,380
+We had to calculate that.
+
+1375
+01:08:49,380 --> 01:08:53,060
+That metric is 10,000 by 10,000.
+
+1376
+01:08:53,060 --> 01:08:59,444
+Maybe this is jumping a little bit ahead
+but why this,
+
+1377
+01:08:59,444 --> 01:09:02,770
+this runs really fast, guess why.
+
+1378
+01:09:02,770 --> 01:09:06,560
+You can kind of guess.
+
+1379
+01:09:06,560 --> 01:09:07,380
+I don't know if you can do this.
+
+1380
+01:09:07,380 --> 01:09:09,610
+In your head, you can say what the Hessian
+of this first term is.
+
+1381
+01:09:09,610 --> 01:09:14,940
+It's diagonal, right?
+
+1382
+01:09:14,940 --> 01:09:19,340
+Because they don't, its a sum of functions
+of xi alone, so its diagonal.
+
+1383
+01:09:20,984 --> 01:09:22,620
+This one, these are sparse, right?
+
+1384
+01:09:22,620 --> 01:09:25,993
+So, we indeed computed this thing, but
+we're,
+
+1385
+01:09:25,993 --> 01:09:28,300
+we're relying on this thing being sparse,
+right?
+
+1386
+01:09:28,300 --> 01:09:29,810
+Without sparse, we could do it.
+
+1387
+01:09:29,810 --> 01:09:32,200
+It would be way, way slower.
+
+1388
+01:09:34,430 --> 01:09:38,340
+I'd pointed out something very awkward and
+that was this.
+
+1389
+01:09:38,340 --> 01:09:41,400
+That the, we were in a weird situation
+where
+
+1390
+01:09:41,400 --> 01:09:47,730
+the code was more sophisticated than the
+mathematical analysis, right?
+
+1391
+01:09:47,730 --> 01:09:51,970
+Because the, the code is, was actually
+affine invariant for Newton's method.
+
+1392
+01:09:51,970 --> 01:09:56,120
+In other words, if you'd scaled things
+except for second order effects which
+
+1393
+01:09:56,120 --> 01:10:00,390
+would be just like numerical errors you
+would generate the same sequence.
+
+1394
+01:10:00,390 --> 01:10:04,190
+But the mathematical analysis was not
+affine invariant.
+
+1395
+01:10:04,190 --> 01:10:07,190
+If you changed, if you changed the
+coordinates
+
+1396
+01:10:07,190 --> 01:10:10,140
+in in the mathematical analysis,
+everything changed.
+
+1397
+01:10:10,140 --> 01:10:13,410
+There were numbers like little m, big M,
+the Lipschitz constant changed.
+
+1398
+01:10:13,410 --> 01:10:17,150
+That was a critical thing that told you
+how big the third derivative was, right?
+
+1399
+01:10:17,150 --> 01:10:18,820
+So, this is awkward, right?
+
+1400
+01:10:18,820 --> 01:10:20,190
+The, because it should be the other way
+around.
+
+1401
+01:10:20,190 --> 01:10:23,570
+It should be that the math is clean, and
+beautiful, as beautiful aesthetics.
+
+1402
+01:10:23,570 --> 01:10:25,610
+And then the code, it's got all sorts of
+hacks in it and
+
+1403
+01:10:25,610 --> 01:10:29,160
+the you shouldn't look inside it, because
+you didn't want to see it.
+
+1404
+01:10:29,160 --> 01:10:30,060
+Okay?
+That's the way it should be.
+
+1405
+01:10:30,060 --> 01:10:33,470
+So this was fixed.
+
+1406
+01:10:33,470 --> 01:10:37,990
+This was fixed about, I don't know, 20,
+15, 20 years ago, something like that.
+
+1407
+01:10:37,990 --> 01:10:41,686
+By Nesterov and Nemirovski.
+
+1408
+01:10:41,686 --> 01:10:46,910
+So, and, once with all the background, you
+could almost guess what the solution is.
+
+1409
+01:10:46,910 --> 01:10:48,160
+So, here's the background.
+
+1410
+01:10:48,160 --> 01:10:49,480
+This is before we get into anything.
+
+1411
+01:10:49,480 --> 01:10:50,720
+I just, what it is.
+
+1412
+01:10:50,720 --> 01:10:51,230
+So what we're going to do,
+
+1413
+01:10:51,230 --> 01:10:54,740
+so what we're doing is an analysis, what
+we want is an analysis of Newton's method.
+
+1414
+01:10:54,740 --> 01:10:58,650
+That, like Newton's method is affinely
+invariant that's what we need.
+
+1415
+01:10:58,650 --> 01:11:03,190
+That, because, I mean aesthetics demands
+it, right?
+
+1416
+01:11:03,190 --> 01:11:05,790
+So now, let's think about what that means.
+
+1417
+01:11:05,790 --> 01:11:09,670
+Newton's method works well, when the third
+derivative is small.
+
+1418
+01:11:09,670 --> 01:11:10,490
+That's the point.
+
+1419
+01:11:10,490 --> 01:11:11,330
+If the third derivative is 0,
+
+1420
+01:11:11,330 --> 01:11:14,640
+your problem is quadratic, and Newton's
+method works in one step.
+
+1421
+01:11:14,640 --> 01:11:19,794
+If it's small, you know, then it means
+that the quadratic approximation is
+
+1422
+01:11:19,794 --> 01:11:21,328
+a good approximation, do this method
+[UNKNOWN].
+
+1423
+01:11:21,328 --> 01:11:23,050
+Okay, everybody remembers this.
+
+1424
+01:11:23,050 --> 01:11:26,860
+And in fact, you should remember that
+Newton's method in, in the classical
+
+1425
+01:11:26,860 --> 01:11:32,160
+analysis of Newton's method by Kanterovich
+then the third derivative
+
+1426
+01:11:32,160 --> 01:11:36,300
+being small was expressed through the
+Lipshitz constant L on the Hessian, right?
+
+1427
+01:11:36,300 --> 01:11:39,050
+That's essentially up bound on third
+derivative..
+
+1428
+01:11:39,050 --> 01:11:39,606
+Okay.
+
+1429
+01:11:39,606 --> 01:11:42,450
+So, the question comes down to this
+abstractly and
+
+1430
+01:11:42,450 --> 01:11:44,680
+the answer will almost like pop out by
+itself.
+
+1431
+01:11:44,680 --> 01:11:47,060
+If you just saw the answer, the answer is
+on the next slide.
+
+1432
+01:11:47,060 --> 01:11:48,920
+You just saw the answer by your, yourself.
+
+1433
+01:11:48,920 --> 01:11:52,390
+You' say, oh my god, like who would ever
+think of such a thing I mean,
+
+1434
+01:11:52,390 --> 01:11:57,630
+the answer being Nestorov and Nemirovski
+but so the question is this.
+
+1435
+01:11:57,630 --> 01:12:02,880
+How would you, how can you express the
+third derivative being small
+
+1436
+01:12:02,880 --> 01:12:05,400
+in a way that is affinely invariant?
+
+1437
+01:12:05,400 --> 01:12:08,720
+So that is, that what it comes down to
+because if you can do that,
+
+1438
+01:12:08,720 --> 01:12:12,484
+you can analyze Newton's method now in a
+way that it's affine invariant.
+
+1439
+01:12:12,484 --> 01:12:13,850
+Did everybody got this?
+
+1440
+01:12:13,850 --> 01:12:17,750
+So, here's the thing you cannot do you
+cannot say something like this.
+
+1441
+01:12:17,750 --> 01:12:18,970
+You cannot say, you know,
+
+1442
+01:12:18,970 --> 01:12:22,040
+f prime prime prime, I'll just take the
+scaler because it, it doesn't matter.
+
+1443
+01:12:22,040 --> 01:12:24,130
+You cannot say the following, right?
+
+1444
+01:12:24,130 --> 01:12:28,390
+That this, you know, is less than some
+numbers I mean, like one or two or any.
+
+1445
+01:12:28,390 --> 01:12:30,345
+You can't say that, why?
+
+1446
+01:12:30,345 --> 01:12:34,470
+Because if I change coordinates here for
+example,
+
+1447
+01:12:34,470 --> 01:12:37,734
+if instead of f, I look at f of ax,
+
+1448
+01:12:37,734 --> 01:12:42,157
+right, the third derivative will change by
+a cubed or something like that, right?
+
+1449
+01:12:42,157 --> 01:12:44,200
+The third derivative of this would be a
+cubed.
+
+1450
+01:12:44,200 --> 01:12:48,660
+And that says that by, by doing a change
+of coordinates here,
+
+1451
+01:12:48,660 --> 01:12:51,180
+I can make the third derivative any number
+I want.
+
+1452
+01:12:51,180 --> 01:12:53,220
+And I can make it as small as I like or as
+big as I want.
+
+1453
+01:12:53,220 --> 01:12:54,670
+Everybody got this?
+
+1454
+01:12:54,670 --> 01:12:56,870
+So this kind of ruins everything, right?
+
+1455
+01:12:56,870 --> 01:13:00,220
+Because it says that the third derivative
+is not affine invariant,
+
+1456
+01:13:00,220 --> 01:13:00,950
+the magnitude of it.
+
+1457
+01:13:00,950 --> 01:13:02,690
+Well, okay, duh, right?
+
+1458
+01:13:02,690 --> 01:13:04,890
+So this would be something like L.
+
+1459
+01:13:04,890 --> 01:13:06,250
+Okay.
+
+1460
+01:13:06,250 --> 01:13:09,500
+So then the question is how can you say
+that their derivative is small
+
+1461
+01:13:09,500 --> 01:13:14,550
+in a way where whatever that definition of
+small is,
+
+1462
+01:13:14,550 --> 01:13:18,080
+it will hold not just for f of x, but f of
+ax.
+
+1463
+01:13:18,080 --> 01:13:22,500
+And, you know, this is the, a is, well,
+okay, that's the change of coordinates,
+
+1464
+01:13:22,500 --> 01:13:25,390
+the change of coordinates in R is very
+simple just says scaling, right?
+
+1465
+01:13:25,390 --> 01:13:29,830
+So, you have to have a scale invariant way
+to say that their derivative is small.
+
+1466
+01:13:29,830 --> 01:13:34,550
+And if you think about it for a long time,
+only one thing could possibly come up.
+
+1467
+01:13:34,550 --> 01:13:37,160
+And the, we'll get to that on the next
+page but
+
+1468
+01:13:37,160 --> 01:13:38,830
+we can almost sort of invent it right now.
+
+1469
+01:13:40,160 --> 01:13:42,840
+This thing will scale like a cubed.
+
+1470
+01:13:42,840 --> 01:13:46,900
+[COUGH] This one, that's the second
+derivative.
+
+1471
+01:13:46,900 --> 01:13:54,752
+Here, this thing is going to scale like a
+squared, that is always nonnegative.
+
+1472
+01:13:54,752 --> 01:13:59,330
+And so, one completely reasonable thing in
+fact, there really is
+
+1473
+01:13:59,330 --> 01:14:03,570
+no other choice is to do something like
+take the third derivative or
+
+1474
+01:14:03,570 --> 01:14:07,570
+the second derivative and take it to the
+like 3 halves power.
+
+1475
+01:14:07,570 --> 01:14:11,210
+I mean, that's how you convert an a
+squared to an a cubed.
+
+1476
+01:14:11,210 --> 01:14:14,456
+And you could do another way You could
+take the, the 2 3rds power of the,
+
+1477
+01:14:14,456 --> 01:14:15,300
+the third derivative.
+
+1478
+01:14:15,300 --> 01:14:16,410
+Everybody following this?
+
+1479
+01:14:16,410 --> 01:14:17,540
+I mean.
+So, right.
+
+1480
+01:14:17,540 --> 01:14:19,700
+So all of that just came from aesthetics.
+
+1481
+01:14:19,700 --> 01:14:23,660
+It said, let's, let's figure out a way to
+say the third derivative is small
+
+1482
+01:14:24,730 --> 01:14:30,810
+which however is absolute, is invariant
+under scaling of the argument, okay?
+
+1483
+01:14:30,810 --> 01:14:32,380
+So that's, everybody got that?
+
+1484
+01:14:32,380 --> 01:14:33,330
+So that's it.
+Okay.
+
+1485
+01:14:33,330 --> 01:14:37,330
+So, that's the background, so the next
+slide is not going to be a shock.
+
+1486
+01:14:37,330 --> 01:14:38,722
+But let me say a little bit about it.
+
+1487
+01:14:38,722 --> 01:14:44,210
+So self-concordance is the name given for
+a condition.
+
+1488
+01:14:44,210 --> 01:14:46,190
+You're going to see it on the next page,
+but it's basically this.
+
+1489
+01:14:47,400 --> 01:14:51,170
+And what's going to, it, it, it, what's
+going to happen is,
+
+1490
+01:14:51,170 --> 01:14:54,700
+it's going to remove all the short comings
+of the classical analysis, right?
+
+1491
+01:14:54,700 --> 01:14:59,430
+So, if something is self-concordant, it's
+not going to depend on any constants that,
+
+1492
+01:14:59,430 --> 01:15:00,380
+that are unknown.
+
+1493
+01:15:00,380 --> 01:15:04,000
+It's not going to depend on any constants
+which change when you change coordinates.
+
+1494
+01:15:04,000 --> 01:15:05,549
+So it's made completely independent of it.
+
+1495
+01:15:07,210 --> 01:15:09,980
+So in other words, we're going to make
+
+1496
+01:15:09,980 --> 01:15:14,340
+our mathematical analysis affine invariant
+the way the actual algorithm is.
+
+1497
+01:15:14,340 --> 01:15:15,078
+Okay.
+
+1498
+01:15:15,078 --> 01:15:18,150
+Now, what's going to happen is we're going
+to get a special class of convex
+
+1499
+01:15:18,150 --> 01:15:21,200
+functions, these are going to be called,
+be called self-concordant functions.
+
+1500
+01:15:21,200 --> 01:15:22,880
+They're going to satisfy this property.
+
+1501
+01:15:22,880 --> 01:15:24,450
+So it's not going to be all convex
+functions.
+
+1502
+01:15:25,470 --> 01:15:29,820
+And for these special functions,
+self-concordant, what's going to happen is
+
+1503
+01:15:29,820 --> 01:15:34,324
+we're going to have a very streamlined
+analysis of Newton's method.
+
+1504
+01:15:34,324 --> 01:15:37,258
+And it's not going to be like one of these
+
+1505
+01:15:37,258 --> 01:15:41,458
+classical Western Western convergence
+theorems that says if,
+
+1506
+01:15:41,458 --> 01:15:45,850
+and then a long string of things not one
+of which you could ever check, holds.
+
+1507
+01:15:45,850 --> 01:15:47,630
+Then a long string of things,
+
+1508
+01:15:47,630 --> 01:15:50,890
+not one of which you could actually care
+about if you're actually solving problems.
+
+1509
+01:15:50,890 --> 01:15:52,310
+Here it is.
+
+1510
+01:15:52,310 --> 01:15:57,020
+A function on R is self-concordant if the
+absolute value of the third derivative is
+
+1511
+01:15:57,020 --> 01:16:00,190
+less than two times the 3 halves power of
+the second derivative.
+
+1512
+01:16:00,190 --> 01:16:01,230
+[SOUND] Okay?
+
+1513
+01:16:01,230 --> 01:16:01,880
+So that's it.
+
+1514
+01:16:01,880 --> 01:16:05,910
+Now, without the discussion we had
+earlier, you would've looked at that and
+
+1515
+01:16:05,910 --> 01:16:09,574
+said, I mean, I remember I did and it
+wasn't written that way, by the way,
+
+1516
+01:16:09,574 --> 01:16:10,120
+it's written in a much more complicated
+notation.
+
+1517
+01:16:10,120 --> 01:16:10,822
+And you would look at that and go, what
+where did that come from.
+
+1518
+01:16:10,822 --> 01:16:11,355
+so, but it's kind of clear.
+This is the idea Then if
+
+1519
+01:16:11,355 --> 01:16:11,920
+you like, this could be a Lipschitz
+constant.
+
+1520
+01:16:11,920 --> 01:16:16,670
+And you would look at that and go, what
+where did that come from.
+
+1521
+01:16:16,670 --> 01:16:19,210
+so, but it's kind of clear.
+
+1522
+01:16:19,210 --> 01:16:20,125
+This is the idea.
+
+1523
+01:16:20,125 --> 01:16:23,240
+Then if you like, this could be a
+Lipschitz constant.
+
+1524
+01:16:23,240 --> 01:16:24,490
+By the way, why is the two there?
+
+1525
+01:16:24,490 --> 01:16:26,440
+You can replace two with any other number.
+
+1526
+01:16:26,440 --> 01:16:28,470
+The analysis, all the analysis would work
+fine.
+
+1527
+01:16:28,470 --> 01:16:32,180
+Two happens to be a number that works well
+with a lot of common functions, right?
+
+1528
+01:16:32,180 --> 01:16:34,462
+So we're going to see that.
+
+1529
+01:16:34,462 --> 01:16:36,180
+okay.
+So, the two is there again for
+
+1530
+01:16:36,180 --> 01:16:37,270
+aesthetic reasons.
+
+1531
+01:16:37,270 --> 01:16:37,780
+It's more or
+
+1532
+01:16:37,780 --> 01:16:41,530
+less the same reason why in front of a
+quadratic, you often put a 1 half, right?
+
+1533
+01:16:41,530 --> 01:16:43,940
+Just aesthetics, because you take
+gradients and
+
+1534
+01:16:43,940 --> 01:16:45,005
+it goes away and I don't know.
+
+1535
+01:16:45,005 --> 01:16:46,930
+Okay.
+
+1536
+01:16:46,930 --> 01:16:50,990
+Now we say a function on our Rn to R is
+self-concordant if the following is true.
+
+1537
+01:16:50,990 --> 01:16:55,815
+You restrict the function to an arbitrary
+line, right, that, so
+
+1538
+01:16:55,815 --> 01:16:58,540
+f is a function on Rn and g is a function
+in R.
+
+1539
+01:16:58,540 --> 01:17:02,940
+If that function is self-concordant,
+right, so if it satisfies this,
+
+1540
+01:17:02,940 --> 01:17:07,900
+if g satisfies that, then, you define the
+function to be self-concordant.
+
+1541
+01:17:07,900 --> 01:17:09,690
+Okay.
+So that, that's the idea.
+
+1542
+01:17:09,690 --> 01:17:10,870
+And it's a way to say.
+
+1543
+01:17:10,870 --> 01:17:13,620
+I mean, the correct way to think of this
+is this is
+
+1544
+01:17:13,620 --> 01:17:17,400
+a method to say that the third derivative
+is small but
+
+1545
+01:17:17,400 --> 01:17:22,900
+it's a method that will is invariant under
+scaling, very important.
+
+1546
+01:17:22,900 --> 01:17:24,695
+Okay.
+So, let's look at some examples.
+
+1547
+01:17:24,695 --> 01:17:28,120
+Well, look linear and quadratic functions
+f prime prime is 0.
+
+1548
+01:17:28,120 --> 01:17:30,640
+So, I mean, of course, right?
+
+1549
+01:17:30,640 --> 01:17:35,490
+Of course, the theory of Newton's method
+applied to linear and quadratic functions
+
+1550
+01:17:35,490 --> 01:17:39,630
+is a pretty short theory, so and we don't
+need a theory of it, right?
+
+1551
+01:17:39,630 --> 01:17:40,130
+So, anyway.
+
+1552
+01:17:41,280 --> 01:17:43,600
+But the following is true, if a function
+itself can,
+
+1553
+01:17:43,600 --> 01:17:44,790
+well we'll get to that in a minute.
+
+1554
+01:17:44,790 --> 01:17:45,760
+Okay.
+
+1555
+01:17:45,760 --> 01:17:49,430
+So negative logarithm, there's, there's a
+function that comes up all the time.
+
+1556
+01:17:49,430 --> 01:17:51,040
+And, you know, how do you verify these
+things?
+
+1557
+01:17:51,040 --> 01:17:52,560
+You just check.
+
+1558
+01:17:52,560 --> 01:17:54,840
+You, you take the derivatives, minus 1
+over x.
+
+1559
+01:17:54,840 --> 01:17:56,850
+The second derivative is something, and
+then you get a q,
+
+1560
+01:17:56,850 --> 01:18:00,440
+in fact you get something like x to the
+minus 3 with some number in front.
+
+1561
+01:18:00,440 --> 01:18:05,250
+You take the 3 halves power, whatever the
+second derivative is, and
+
+1562
+01:18:05,250 --> 01:18:06,630
+you just verify, okay?
+
+1563
+01:18:06,630 --> 01:18:08,060
+That, that it holds, okay?
+
+1564
+01:18:08,060 --> 01:18:10,840
+That's the negative logarithm is.
+
+1565
+01:18:10,840 --> 01:18:11,670
+Here's one.
+
+1566
+01:18:11,670 --> 01:18:13,910
+It turns out negative entropy, that's x
+log x.
+
+1567
+01:18:13,910 --> 01:18:15,090
+That's not self-concordant.
+
+1568
+01:18:16,270 --> 01:18:21,750
+But, x log x minus log x is.
+
+1569
+01:18:21,750 --> 01:18:23,570
+Okay, so that's self-concordant.
+
+1570
+01:18:23,570 --> 01:18:25,150
+And there's a reason for that,
+
+1571
+01:18:25,150 --> 01:18:28,710
+because self-concordant functions will
+actually automatically be barriers, right?
+
+1572
+01:18:28,710 --> 01:18:32,220
+So if they're not zero, they'll be
+barriers, okay?
+
+1573
+01:18:32,220 --> 01:18:34,620
+So and that adds a barrier.
+
+1574
+01:18:34,620 --> 01:18:38,780
+You'll remember that x log x is not a
+barrier because it goes to zero.
+
+1575
+01:18:38,780 --> 01:18:40,750
+At x equal 0, which is boundary of the
+domain.
+
+1576
+01:18:40,750 --> 01:18:42,955
+It's not the barrier because although the
+slope gets infinite,
+
+1577
+01:18:42,955 --> 01:18:46,150
+it goes up like this, it stops at 0, it's
+not a barrier.
+
+1578
+01:18:46,150 --> 01:18:49,240
+And that means, by the way, it violates
+one of these rules that we have for
+
+1579
+01:18:49,240 --> 01:18:51,650
+whether one of these unconstrained method
+works, right,
+
+1580
+01:18:51,650 --> 01:18:52,971
+which is in sublevel sets are closed.
+
+1581
+01:18:54,250 --> 01:18:55,400
+Okay.
+
+1582
+01:18:55,400 --> 01:18:58,370
+Here's the most important part, is this,
+and this is kind of obvious.
+
+1583
+01:18:58,370 --> 01:19:01,460
+It says, let's, let's scale the argument.
+
+1584
+01:19:01,460 --> 01:19:03,180
+The translation, of course, is totally
+irrelevant.
+
+1585
+01:19:03,180 --> 01:19:05,070
+But let's scale it by a.
+
+1586
+01:19:05,070 --> 01:19:06,747
+Then it says, that we call that f tilde
+and
+
+1587
+01:19:06,747 --> 01:19:11,520
+we'll calculates f tilde prime prime, you
+get this, of course, and this is that.
+
+1588
+01:19:11,520 --> 01:19:14,300
+And, of course, if I take the absolute
+value of this and
+
+1589
+01:19:14,300 --> 01:19:20,670
+compare it to 3 halves power of this
+thing, then the a just go away.
+
+1590
+01:19:20,670 --> 01:19:22,650
+And so, the point is it's self-concordant.
+
+1591
+01:19:22,650 --> 01:19:23,470
+It's just want we want.
+
+1592
+01:19:23,470 --> 01:19:26,770
+It's a way to say that if a function has a
+small third derivative,
+
+1593
+01:19:26,770 --> 01:19:29,190
+which is invariant under scaling, okay?
+
+1594
+01:19:29,190 --> 01:19:34,810
+So, by the way, it is not at all invariant
+under scaling the function on the outside.
+
+1595
+01:19:34,810 --> 01:19:39,614
+So, 2f, if f self-concordant, 2f need not
+be, okay?
+
+1596
+01:19:39,614 --> 01:19:43,445
+So, and, but actually that's not the real
+issue,
+
+1597
+01:19:43,445 --> 01:19:45,150
+it's whether you can scale a function like
+that.
+
+1598
+01:19:45,150 --> 01:19:47,723
+In fact, you wouldn't want to, because the
+complexity analysis based on,
+
+1599
+01:19:47,723 --> 01:19:49,820
+based on scaling the function outside
+would be nonsense, right?
+
+1600
+01:19:49,820 --> 01:19:52,640
+Because, one of the things you're
+interested in is whether you have
+
+1601
+01:19:52,640 --> 01:19:57,000
+an epsilon of the solution but [UNKNOWN]
+of scale function itself, I,
+
+1602
+01:19:57,000 --> 01:20:00,050
+I can make any thing and have any error,
+right?
+
+1603
+01:20:00,050 --> 01:20:02,160
+So, okay.
+
+1604
+01:20:02,160 --> 01:20:07,282
+So, there's a whole calculative
+self-concordant functions.
+
+1605
+01:20:07,282 --> 01:20:08,820
+And here's this one.
+
+1606
+01:20:08,820 --> 01:20:13,770
+You can scale a function but only by
+something more than one, okay?
+
+1607
+01:20:13,770 --> 01:20:16,690
+The sum of self-concordant function is
+self-concordant.
+
+1608
+01:20:16,690 --> 01:20:18,070
+By the way, that's not obvious.
+
+1609
+01:20:18,070 --> 01:20:19,930
+I mean you actually have to kind of show
+those things.
+
+1610
+01:20:19,930 --> 01:20:23,680
+It's, it's not, you know, it's kind of
+classic, classical analysis, right?
+
+1611
+01:20:23,680 --> 01:20:28,090
+You sit down and you work out some stuff
+and then some, you know, polynomials and
+
+1612
+01:20:28,090 --> 01:20:31,090
+some various inequalities, couple a of
+[UNKNOWN] later or
+
+1613
+01:20:31,090 --> 01:20:32,620
+however you do these things.
+
+1614
+01:20:32,620 --> 01:20:34,370
+And the next thing you know, you have it,
+right?
+
+1615
+01:20:34,370 --> 01:20:38,500
+So, but it's you know, it's kind of like
+pencil and paper kind of stuff, right?
+
+1616
+01:20:38,500 --> 01:20:39,870
+okay.
+
+1617
+01:20:39,870 --> 01:20:42,380
+It's preserved under composition with an
+affine function.
+
+1618
+01:20:42,380 --> 01:20:43,230
+That's clear.
+
+1619
+01:20:43,230 --> 01:20:45,080
+In fact, that's completely clear.
+
+1620
+01:20:45,080 --> 01:20:49,648
+So if f is self-concordant so is f of ax
+plus b.
+
+1621
+01:20:49,648 --> 01:20:53,090
+That's pre-composition.
+
+1622
+01:20:53,090 --> 01:20:57,360
+One way to generate a lot of them is, it
+turns out that a lot of functions end up
+
+1623
+01:20:57,360 --> 01:21:01,690
+looking something like this, it's the log
+of something is self-concordant, right?
+
+1624
+01:21:01,690 --> 01:21:05,310
+And so, a general theorem for that says
+that if the third derivative of
+
+1625
+01:21:05,310 --> 01:21:09,210
+a function is less than, you know, three
+times the second derivative divided by x.
+
+1626
+01:21:09,210 --> 01:21:12,070
+I mean, these are just obscure weird
+conditions, right,
+
+1627
+01:21:12,070 --> 01:21:13,550
+then this function is self-concordant.
+
+1628
+01:21:13,550 --> 01:21:17,150
+And that allows you to show a lot of
+things are self concordant, right?
+
+1629
+01:21:17,150 --> 01:21:20,110
+So so let's look at a couple of examples.
+
+1630
+01:21:20,110 --> 01:21:21,858
+Here's one the log barrier.
+
+1631
+01:21:21,858 --> 01:21:24,750
+That's self-concordant.
+
+1632
+01:21:24,750 --> 01:21:25,630
+why?
+
+1633
+01:21:25,630 --> 01:21:30,730
+Well because you know, this, the, the
+minus log is, right, and
+
+1634
+01:21:30,730 --> 01:21:35,620
+the minus log of affine is, sum is done.
+
+1635
+01:21:35,620 --> 01:21:38,436
+Here's one.
+This is not obvious at all, but it's true.
+
+1636
+01:21:38,436 --> 01:21:41,910
+Negative log det X, that's one of our,
+that's actually the barrier for
+
+1637
+01:21:41,910 --> 01:21:43,990
+the positive definite cone, right?
+
+1638
+01:21:43,990 --> 01:21:45,520
+It's also related to all sorts of things.
+
+1639
+01:21:45,520 --> 01:21:47,840
+It's like entropy of a Gaussian
+distribution,
+
+1640
+01:21:47,840 --> 01:21:50,486
+it has a function of the covariance.
+
+1641
+01:21:50,486 --> 01:21:53,830
+It's it has to do with volume of
+ellipsoids if we're doing
+
+1642
+01:21:53,830 --> 01:21:57,640
+a geometrical problem So, this comes up in
+tons of things, right?
+
+1643
+01:21:57,640 --> 01:22:05,795
+And not only is minus log det X, convex,
+it is in fact, self-condordant, right?
+
+1644
+01:22:05,795 --> 01:22:08,260
+By the way, this would not have been so
+much fun, right?
+
+1645
+01:22:08,260 --> 01:22:13,980
+So, for example, the third derivative of
+minus log det X is a pretty,
+
+1646
+01:22:13,980 --> 01:22:17,140
+it's something that could easily give you
+a little bit of a headache, right?
+
+1647
+01:22:17,140 --> 01:22:20,490
+Because it's a trilinear form on symmetric
+matrices.
+
+1648
+01:22:20,490 --> 01:22:23,650
+So it's a trilinear symmetric form that
+takes three arguments, right?
+
+1649
+01:22:23,650 --> 01:22:28,202
+You know a, b and c and it's tri, I mean
+so anyway.
+
+1650
+01:22:28,202 --> 01:22:29,840
+I, let's just put it this way.
+
+1651
+01:22:29,840 --> 01:22:31,620
+That's six indices, okay?
+
+1652
+01:22:31,620 --> 01:22:35,600
+So, if you're good at that or whatever,
+great.
+
+1653
+01:22:35,600 --> 01:22:40,850
+But six indices, like several passed my
+own limit, I can tell you that.
+
+1654
+01:22:40,850 --> 01:22:41,350
+Here's one.
+
+1655
+01:22:42,770 --> 01:22:45,140
+That's a convex function of both x and y.
+
+1656
+01:22:45,140 --> 01:22:50,490
+That is actually the log barrier for the
+second order cone, this thing.
+
+1657
+01:22:50,490 --> 01:22:53,280
+By the way, bits and pieces of it do not
+look convex, right?
+
+1658
+01:22:54,320 --> 01:22:54,970
+here, right?
+
+1659
+01:22:54,970 --> 01:22:58,360
+So, for example, the y squared looks
+deeply suspicious, right?
+
+1660
+01:22:58,360 --> 01:23:00,700
+because how could this be convex in both x
+and
+
+1661
+01:23:00,700 --> 01:23:04,070
+y, because, the, this is kind of weird,
+right?
+
+1662
+01:23:04,070 --> 01:23:05,260
+Look at that.
+
+1663
+01:23:05,260 --> 01:23:07,180
+That's quadratic in x, but there's a minus
+sign.
+
+1664
+01:23:07,180 --> 01:23:10,930
+That's quadratic in y but there's a plus
+sign so, but it is.
+
+1665
+01:23:10,930 --> 01:23:14,040
+This is this is convex and actually you've
+seen it before.
+
+1666
+01:23:14,040 --> 01:23:15,660
+But it's not just convex.
+
+1667
+01:23:15,660 --> 01:23:17,590
+It's actually self-concordant.
+
+1668
+01:23:17,590 --> 01:23:18,610
+So, okay.
+
+1669
+01:23:20,140 --> 01:23:22,020
+Now, let's look at Newton's method.
+
+1670
+01:23:22,020 --> 01:23:25,810
+All the details are in the book so but
+we'll just see how this works.
+
+1671
+01:23:25,810 --> 01:23:29,850
+Remember how Newton's method worked in the
+classical analysis but
+
+1672
+01:23:29,850 --> 01:23:32,060
+which by the way also came from Moscow.
+
+1673
+01:23:32,060 --> 01:23:34,958
+So here's the, here's the, the difference
+is this.
+
+1674
+01:23:34,958 --> 01:23:40,730
+This says you look at the Newton
+decrement, that's lambda of x, right?
+
+1675
+01:23:40,730 --> 01:23:41,890
+And it says the following.
+
+1676
+01:23:41,890 --> 01:23:45,560
+If it's bigger than some number and, you
+know, you can get them super duper
+
+1677
+01:23:45,560 --> 01:23:48,450
+explicit about the number, it depends only
+on the backtracking parameters, right?
+
+1678
+01:23:48,450 --> 01:23:51,780
+So you get, you get things like if you
+tell me whatever alpha and beta in your
+
+1679
+01:23:51,780 --> 01:23:56,888
+backtracking thing, I can tell you what 8
+is and it would be like 0.16, right?
+
+1680
+01:23:56,888 --> 01:23:59,560
+And see, I even see cool papers like that
+where there'd be
+
+1681
+01:23:59,560 --> 01:24:02,650
+things where this is less than 0.16 and
+you're like, where did that come from?
+
+1682
+01:24:02,650 --> 01:24:05,020
+Anyway, so the point is if this,
+
+1683
+01:24:05,020 --> 01:24:10,300
+if this Newton decrement is bigger than
+some number then, the following holds.
+
+1684
+01:24:10,300 --> 01:24:15,090
+The function value goes down by at least
+gamma, right?
+
+1685
+01:24:15,090 --> 01:24:16,920
+And gamma is an absolute constant.
+
+1686
+01:24:16,920 --> 01:24:20,830
+I mean, they only depend on, you can work
+it out and be, you can evaluate it.
+
+1687
+01:24:20,830 --> 01:24:21,860
+And it's just a number.
+
+1688
+01:24:21,860 --> 01:24:24,640
+It depends on absolutely nothing you don't
+know.
+
+1689
+01:24:24,640 --> 01:24:29,360
+Well, I guess the prior knowledge here is
+that the function is self-concordant so
+
+1690
+01:24:29,360 --> 01:24:31,280
+I guess that's something you know.
+
+1691
+01:24:31,280 --> 01:24:33,340
+But you already know a whole bunch that
+are.
+
+1692
+01:24:33,340 --> 01:24:35,710
+Okay, the second is this.
+
+1693
+01:24:35,710 --> 01:24:39,750
+If on the other hand, once this Newton
+decrement gets less than this,
+
+1694
+01:24:39,750 --> 01:24:43,110
+this critical value of eta, then the
+following is true.
+
+1695
+01:24:44,370 --> 01:24:49,880
+Two times it is less than two times it
+squared, right?
+
+1696
+01:24:49,880 --> 01:24:52,816
+By the way, this kind of hints this one
+may be that we would have
+
+1697
+01:24:52,816 --> 01:24:56,720
+improve the aesthetics if instead of we
+defined the decrement as lambda, maybe
+
+1698
+01:24:56,720 --> 01:25:00,370
+lambda over two, right, because then this
+would have been real super duper pretty.
+
+1699
+01:25:00,370 --> 01:25:03,060
+It would have been something is less than
+something squared.
+
+1700
+01:25:03,060 --> 01:25:04,372
+But remember in the other one,
+
+1701
+01:25:04,372 --> 01:25:07,770
+in the classical analysis, you had things
+that looked like this.
+
+1702
+01:25:07,770 --> 01:25:09,480
+I mean, this thing basically says that the
+error at
+
+1703
+01:25:09,480 --> 01:25:12,140
+the next step is less than the square of
+the current error.
+
+1704
+01:25:12,140 --> 01:25:13,250
+But in the classical analysis,
+
+1705
+01:25:13,250 --> 01:25:16,630
+there's all sorts of other crap in here
+involving little m, big L.
+
+1706
+01:25:16,630 --> 01:25:18,210
+All sorts of stuff you don't know.
+
+1707
+01:25:18,210 --> 01:25:21,130
+Now, that doesn't matter if your idea of a
+convergence proof
+
+1708
+01:25:21,130 --> 01:25:23,330
+is that it's a feel-good thing, right?
+
+1709
+01:25:23,330 --> 01:25:24,140
+That kind of, you know,
+
+1710
+01:25:24,140 --> 01:25:27,310
+it vaguely justifies, you know, your
+method or something, right?
+
+1711
+01:25:27,310 --> 01:25:28,250
+Then that's fine.
+
+1712
+01:25:28,250 --> 01:25:30,090
+because you don't know those constants in
+any way.
+
+1713
+01:25:31,100 --> 01:25:33,360
+So here though, it's not, it's just, there
+it is.
+
+1714
+01:25:33,360 --> 01:25:35,190
+It's just, there's nothing there.
+
+1715
+01:25:35,190 --> 01:25:38,490
+And so the complexity bound you get is
+shocking.
+
+1716
+01:25:38,490 --> 01:25:39,044
+It's says this.
+
+1717
+01:25:39,044 --> 01:25:41,468
+It says, if f of x0 minus p star,
+
+1718
+01:25:41,468 --> 01:25:47,300
+that's how sub-optimal you start, divided
+by gamma plus log log 1 over epsilon.
+
+1719
+01:25:47,300 --> 01:25:47,820
+That's it.
+
+1720
+01:25:47,820 --> 01:25:51,128
+That's the, there's absolutely no constant
+in there you do not know.
+
+1721
+01:25:51,128 --> 01:25:54,480
+It's just, that's,that's just the number
+the number of bounds, okay?
+
+1722
+01:25:54,480 --> 01:25:57,850
+Now if you take the simple analysis, the
+one we have in the book or
+
+1723
+01:25:57,850 --> 01:26:02,131
+whatever, and plug in various things, this
+bound will come out to be 375 times f
+
+1724
+01:26:02,131 --> 01:26:07,050
+minus sub-optimality plus 6, okay?
+
+1725
+01:26:07,050 --> 01:26:12,380
+Oh, by the way I would usually write that
+as five or six just for fun but mostly
+
+1726
+01:26:12,380 --> 01:26:16,200
+to irritate people who were, do complexity
+analysis but and it works, by the way.
+
+1727
+01:26:16,200 --> 01:26:16,990
+I can recommend that.
+
+1728
+01:26:18,470 --> 01:26:19,260
+Well, wait a minute.
+
+1729
+01:26:19,260 --> 01:26:21,490
+You'll look at this thing and you go, that
+is so cool.
+
+1730
+01:26:21,490 --> 01:26:22,900
+There's nothing there you don't know.
+
+1731
+01:26:22,900 --> 01:26:24,940
+Oh, wait.
+There is something you don't know.
+
+1732
+01:26:24,940 --> 01:26:25,440
+Wait a minute.
+
+1733
+01:26:26,630 --> 01:26:27,200
+You don't know that.
+
+1734
+01:26:27,200 --> 01:26:30,990
+[LAUGH] And you'd say, oh, well.
+
+1735
+01:26:30,990 --> 01:26:33,830
+Okay, that puts a little bit of a hole in
+it there, right?
+
+1736
+01:26:33,830 --> 01:26:37,800
+It's 375 times [UNKNOWN] and then you say
+well how do you get p star?
+
+1737
+01:26:37,800 --> 01:26:39,450
+Well, you might run Newton's method.
+
+1738
+01:26:39,450 --> 01:26:42,980
+Okay, but once you run Newton's method,
+you do not need an upper bound on
+
+1739
+01:26:42,980 --> 01:26:45,680
+the [UNKNOWN] Newton method because you
+just figure out you just record how many
+
+1740
+01:26:45,680 --> 01:26:46,710
+steps it took.
+
+1741
+01:26:46,710 --> 01:26:48,490
+Am I capturing the, okay, good.
+
+1742
+01:26:48,490 --> 01:26:52,570
+So, alright, so what I'm going to say,
+this is going to be super vague now and
+
+1743
+01:26:52,570 --> 01:26:54,370
+it will not be vague on Thursday.
+
+1744
+01:26:54,370 --> 01:26:54,930
+So here it is.
+
+1745
+01:26:56,370 --> 01:27:00,600
+Have you ever heard of any method by which
+a person can get a lower bound on p star?
+
+1746
+01:27:00,600 --> 01:27:02,190
+Let's just admit freely that,
+
+1747
+01:27:02,190 --> 01:27:05,490
+yes, there's a number in here we don't
+know, it's P star.
+
+1748
+01:27:05,490 --> 01:27:11,170
+And then well we're going to say somehow,
+when, when we actually use this for
+
+1749
+01:27:11,170 --> 01:27:14,820
+something, the way it's going to go down,
+it's duality is going to come on.
+
+1750
+01:27:14,820 --> 01:27:18,580
+And, and it will have a, somehow, we're
+going to get a lower bound on p star.
+
+1751
+01:27:18,580 --> 01:27:22,170
+By the way this is a, kind of a sloppy
+bound.
+
+1752
+01:27:22,170 --> 01:27:25,900
+If you do a very careful, kind of
+Russian-style bound, right?
+
+1753
+01:27:25,900 --> 01:27:28,050
+You, this number comes down to something
+like 10.5 or
+
+1754
+01:27:28,050 --> 01:27:33,270
+11 times f minus this, plus the log log
+thing, right?
+
+1755
+01:27:33,270 --> 01:27:36,720
+That's, so instead of like, half a page,
+that's like 6, 8,
+
+1756
+01:27:36,720 --> 01:27:40,090
+pages of some pretty, pretty crazy stuff,
+right?
+
+1757
+01:27:40,090 --> 01:27:41,960
+But, that's not bad.
+
+1758
+01:27:41,960 --> 01:27:42,460
+Okay.
+
+1759
+01:27:43,570 --> 01:27:46,680
+So, something very interesting happens.
+
+1760
+01:27:46,680 --> 01:27:50,740
+And, and this is worth looking at.
+
+1761
+01:27:50,740 --> 01:27:51,270
+Here it is.
+
+1762
+01:27:53,280 --> 01:27:56,040
+Here's a log barrier that's a
+self-concordant function.
+
+1763
+01:27:56,040 --> 01:28:00,230
+Oh, of course, two or three times this is
+also self-concordant.
+
+1764
+01:28:00,230 --> 01:28:03,520
+So, I, I think probably the right thing we
+should say about this problem is
+
+1765
+01:28:03,520 --> 01:28:06,690
+this function is it is minimally self,
+self-concordant.
+
+1766
+01:28:06,690 --> 01:28:11,966
+Meaning if you not, if you, if you divide
+it by any number, if,
+
+1767
+01:28:11,966 --> 01:28:15,680
+if you scale it down, it won't be
+self-concordant, right?
+
+1768
+01:28:15,680 --> 01:28:18,840
+So that's that's kind of the idea because
+I could also,
+
+1769
+01:28:18,840 --> 01:28:21,730
+I could multiply this by a 100 and
+everything will be off, right?
+
+1770
+01:28:21,730 --> 01:28:26,300
+So alright, because actually what happens
+is what scales is f minus p star,
+
+1771
+01:28:26,300 --> 01:28:28,340
+f of x0 minus p star which scaled by 100
+and
+
+1772
+01:28:28,340 --> 01:28:30,545
+we get it totally, well, it would scale
+the wrong way.
+
+1773
+01:28:30,545 --> 01:28:31,190
+Okay.
+So
+
+1774
+01:28:31,190 --> 01:28:34,150
+that's a minimally self-concordant
+function.
+
+1775
+01:28:34,150 --> 01:28:36,050
+Now [COUGH] what's here is this.
+
+1776
+01:28:38,060 --> 01:28:42,970
+We generated a kind of random instances of
+this and then with random number for
+
+1777
+01:28:42,970 --> 01:28:47,370
+n, m, and then we just used Newton's
+method to solve it
+
+1778
+01:28:47,370 --> 01:28:49,360
+whereupon we recorded the number of steps
+it took.
+
+1779
+01:28:50,720 --> 01:28:53,880
+Okay?
+and what this shows oh,
+
+1780
+01:28:53,880 --> 01:28:55,300
+whereupon we recorded two things,
+
+1781
+01:28:55,300 --> 01:28:57,860
+of course, the actual sub-optimality
+because once you run Newton's method,
+
+1782
+01:28:57,860 --> 01:29:00,900
+you know what f of x minus p star is, and
+you also know the number of steps.
+
+1783
+01:29:00,900 --> 01:29:01,860
+And you just make a scatter plot.
+
+1784
+01:29:01,860 --> 01:29:02,765
+And you get something like this, okay?
+
+1785
+01:29:02,765 --> 01:29:09,210
+So now, what the self-concordance analysis
+tells you is this.
+
+1786
+01:29:09,210 --> 01:29:10,700
+It says that's an upper bound.
+
+1787
+01:29:10,700 --> 01:29:13,320
+And the good news, now that would be a
+function that looks like this.
+
+1788
+01:29:13,320 --> 01:29:14,060
+It starts here and
+
+1789
+01:29:14,060 --> 01:29:16,752
+then basically goes up with infinite, you
+know, it looks like that.
+
+1790
+01:29:16,752 --> 01:29:19,310
+You know, that didn't come out right, but
+you know what I mean.
+
+1791
+01:29:19,310 --> 01:29:23,484
+It, it starts at six and goes up with a
+slope of 375, okay?
+
+1792
+01:29:23,484 --> 01:29:27,430
+So, and, good news is, all of these are
+below that, okay?
+
+1793
+01:29:27,430 --> 01:29:28,630
+Mm.
+
+1794
+01:29:28,630 --> 01:29:30,700
+The better Russian bound.
+
+1795
+01:29:30,700 --> 01:29:32,390
+The Nesterov-Nemirovski bound.
+
+1796
+01:29:32,390 --> 01:29:35,150
+You put a 10 in there or an 11, or
+something like that.
+
+1797
+01:29:35,150 --> 01:29:36,990
+And now your slope is, you know, it's not
+so bad.
+
+1798
+01:29:36,990 --> 01:29:39,300
+It looks more like, I don't know,
+something like this, right?
+
+1799
+01:29:39,300 --> 01:29:39,800
+I don't know.
+
+1800
+01:29:39,800 --> 01:29:40,565
+Like, like that.
+
+1801
+01:29:40,565 --> 01:29:43,020
+Okay.
+
+1802
+01:29:43,020 --> 01:29:46,960
+But what you see hence is the following It
+suggests that it
+
+1803
+01:29:46,960 --> 01:29:52,000
+kind of works with c1, right?
+
+1804
+01:29:52,000 --> 01:29:54,050
+That's an empirical estimates, right?
+
+1805
+01:29:54,050 --> 01:29:58,410
+Oh, and by the way, what, how do you
+explain that and that and that?
+
+1806
+01:29:58,410 --> 01:29:59,138
+What are these points?
+
+1807
+01:29:59,138 --> 01:30:01,940
+Dumb luck, okay?
+
+1808
+01:30:01,940 --> 01:30:06,840
+So this is the case where you were quite
+far from optimality, and
+
+1809
+01:30:06,840 --> 01:30:09,890
+your Newton step, well it only took 10
+steps.
+
+1810
+01:30:09,890 --> 01:30:13,490
+So what happened was, it kind of went
+there, it went there, there and
+
+1811
+01:30:13,490 --> 01:30:16,760
+just accidentally found itself, you know,
+after like two steps in
+
+1812
+01:30:16,760 --> 01:30:19,760
+the region of quadratic convergence and it
+was all over four steps later, okay?
+
+1813
+01:30:19,760 --> 01:30:21,430
+So, so these are dumb luck.
+
+1814
+01:30:21,430 --> 01:30:23,340
+And, of course, that's going to happen,
+right?
+
+1815
+01:30:23,340 --> 01:30:24,920
+By the way, the way you know it's going to
+happen is you
+
+1816
+01:30:24,920 --> 01:30:27,320
+can do things like run Newton backward and
+stuff like that.
+
+1817
+01:30:27,320 --> 01:30:31,070
+And, and so you'll quickly get far away
+and so that means that in,
+
+1818
+01:30:31,070 --> 01:30:36,340
+in all of space there'll be, there will be
+points where dumb luck will prevail, okay?
+
+1819
+01:30:36,340 --> 01:30:41,500
+So, but what's kind of cool about this is
+what's wonderful about it is this.
+
+1820
+01:30:41,500 --> 01:30:44,580
+It says that we can actually have two
+discussions about the complexity of
+
+1821
+01:30:44,580 --> 01:30:45,260
+Newton's method.
+
+1822
+01:30:46,520 --> 01:30:48,800
+And both discussions work like this.
+
+1823
+01:30:48,800 --> 01:30:52,240
+It says, I can have an actual mathematical
+discussion.
+
+1824
+01:30:52,240 --> 01:30:55,860
+I plug in c equals 11 and, of course, I
+would expand,
+
+1825
+01:30:55,860 --> 01:30:59,330
+I would explain that six is a macro for
+log log 1 over epsilon, right?
+
+1826
+01:30:59,330 --> 01:31:03,100
+So if I replace six with log log 1 over
+epsilon, I put 11 for c.
+
+1827
+01:31:03,100 --> 01:31:05,530
+And [COUGH] then it's actually a true
+statement.
+
+1828
+01:31:05,530 --> 01:31:09,630
+That is the, is an upper bound on the
+number, maximum number of Newton steps it
+
+1829
+01:31:09,630 --> 01:31:13,540
+can take and that, you, you could say that
+in the Math department, no problem, okay?
+
+1830
+01:31:13,540 --> 01:31:14,470
+So that [UNKNOWN].
+
+1831
+01:31:14,470 --> 01:31:17,710
+But the other cool thing is if you, you
+can also talk, you can divide the audience
+
+1832
+01:31:17,710 --> 01:31:21,920
+in two, people who just care about look,
+how many steps does it going to take.
+
+1833
+01:31:21,920 --> 01:31:25,640
+You know, on average or typical what can I
+expect, right?
+
+1834
+01:31:25,640 --> 01:31:29,130
+Then all I do is change c and I'll change
+it to one.
+
+1835
+01:31:29,130 --> 01:31:32,710
+And it's kind of an empirical upper bound,
+I mean change it to a half and
+
+1836
+01:31:32,710 --> 01:31:35,340
+it's probably a good estimate of what it
+is, or three-quarters.
+
+1837
+01:31:35,340 --> 01:31:37,040
+Everybody see what I'm saying, right?
+
+1838
+01:31:37,040 --> 01:31:40,640
+So, it's actually, it suggests that
+things,
+
+1839
+01:31:40,640 --> 01:31:43,635
+things based on this, you can have a dual
+discussion.
+
+1840
+01:31:43,635 --> 01:31:46,470
+You can be talking to the people who want
+to do math.
+
+1841
+01:31:46,470 --> 01:31:47,390
+There's nothing wrong with that.
+
+1842
+01:31:47,390 --> 01:31:48,910
+The people doing complex analysis.
+
+1843
+01:31:48,910 --> 01:31:52,330
+And you can also at this exact same time
+be talking to people who just
+
+1844
+01:31:52,330 --> 01:31:55,200
+say how should I choose alpha and beta in
+my thing?
+
+1845
+01:31:55,200 --> 01:31:56,930
+Or something like that, right?
+
+1846
+01:31:56,930 --> 01:31:59,540
+In which case, you could minimize this
+with c equals 1, and
+
+1847
+01:31:59,540 --> 01:32:02,890
+this would kind of give you a reasonable
+way to do it.
+
+1848
+01:32:05,910 --> 01:32:06,490
+okay.
+So let's
+
+1849
+01:32:06,490 --> 01:32:08,890
+talk about implementing Newton's method.
+
+1850
+01:32:08,890 --> 01:32:11,190
+now, you're going to use Linear Algebra.
+
+1851
+01:32:11,190 --> 01:32:12,080
+Now here, this is it.
+
+1852
+01:32:12,080 --> 01:32:16,910
+And this is where actually knowing Linear
+Algebra numerical Linear Algebra is
+
+1853
+01:32:16,910 --> 01:32:18,490
+actually very important, right?
+
+1854
+01:32:18,490 --> 01:32:19,660
+Because, yeah.
+
+1855
+01:32:19,660 --> 01:32:22,020
+In fact, I should give you some of the
+history.
+
+1856
+01:32:22,020 --> 01:32:24,060
+So, Newton's method well,
+
+1857
+01:32:24,060 --> 01:32:28,530
+[COUGH] the name suggest it was not
+invented 20 years ago, okay?
+
+1858
+01:32:28,530 --> 01:32:32,840
+It goes, I mean, you know, and Newton did
+one with one variable and
+
+1859
+01:32:32,840 --> 01:32:36,980
+then in the mid early 19th century, it was
+extended by Raphson, this is the,
+
+1860
+01:32:36,980 --> 01:32:40,690
+this is the British-centric view of how
+the world went.
+
+1861
+01:32:40,690 --> 01:32:43,730
+I'm sure that there's other versions of
+the history.
+
+1862
+01:32:43,730 --> 01:32:46,960
+And so, sometimes Newton with more
+variables than one vectors is
+
+1863
+01:32:46,960 --> 01:32:50,760
+called Newton-Raphson method, okay, but
+now we're in the early 19th century or
+
+1864
+01:32:50,760 --> 01:32:52,150
+something like that.
+
+1865
+01:32:52,150 --> 01:32:54,140
+So, you know, this is not new.
+
+1866
+01:32:54,140 --> 01:32:59,400
+Now the, oh, by the way, many variables in
+1850 or
+
+1867
+01:32:59,400 --> 01:33:02,260
+whenever Raphson did this would be like
+three or four, right?
+
+1868
+01:33:02,260 --> 01:33:06,200
+Because, by the way, if you are, I mean
+that would be like, a super big
+
+1869
+01:33:06,200 --> 01:33:09,020
+problem because I guess, you know how you
+solve linear equations in 1840.
+
+1870
+01:33:09,020 --> 01:33:12,350
+We know, you know how to do that.
+
+1871
+01:33:12,350 --> 01:33:15,310
+We fast forward to nine, the 19, you know,
+
+1872
+01:33:15,310 --> 01:33:17,090
+well, let's say to the early, early
+computers.
+
+1873
+01:33:17,090 --> 01:33:19,970
+So it's the 50s, it's the 60s, right?
+
+1874
+01:33:19,970 --> 01:33:25,550
+And there yeah, it was a big deal to solve
+a system of linear equations
+
+1875
+01:33:25,550 --> 01:33:29,220
+with like 100 variables and 100 unknowns,
+I mean, that was a really big deal, right?
+
+1876
+01:33:29,220 --> 01:33:31,638
+That's right, so in fact, there are people
+who have, you know,
+
+1877
+01:33:31,638 --> 01:33:34,590
+these same old story like maybe the world
+market for
+
+1878
+01:33:34,590 --> 01:33:36,744
+computers will one day approach six or
+something, I don't know.
+
+1879
+01:33:36,744 --> 01:33:40,690
+You know, same sort of thing with linear
+equations, that people said things like,
+
+1880
+01:33:40,690 --> 01:33:44,120
+well, you can imagine possibly solving a
+hundred variables,
+
+1881
+01:33:44,120 --> 01:33:47,650
+with a hundred unknowns, but it wouldn't
+seem to have much meaning or, you know,
+
+1882
+01:33:47,650 --> 01:33:48,920
+you can't imagine that, right?
+
+1883
+01:33:48,920 --> 01:33:52,238
+So, okay, of course, people say this all
+the time, right?
+
+1884
+01:33:52,238 --> 01:33:54,430
+Or that kind, they make that kind of
+statement.
+
+1885
+01:33:54,430 --> 01:33:55,160
+Okay.
+
+1886
+01:33:55,160 --> 01:34:00,100
+So, in the 60's, and this is mostly in the
+West what happened is that
+
+1887
+01:34:00,100 --> 01:34:03,210
+Newton's method kind of went out of favor.
+
+1888
+01:34:03,210 --> 01:34:05,400
+And the reason was everybody focused on
+oh,
+
+1889
+01:34:05,400 --> 01:34:10,490
+my god, you have to solve this equation
+here, instead of linear equations.
+
+1890
+01:34:10,490 --> 01:34:14,220
+And you, you wouldn't want to do that for
+more than a hundred variables, right?
+
+1891
+01:34:14,220 --> 01:34:15,760
+So that, that was the argument.
+
+1892
+01:34:15,760 --> 01:34:17,160
+And there are actually a whole bunch of
+methods,
+
+1893
+01:34:17,160 --> 01:34:19,430
+which are actually quite good methods.
+
+1894
+01:34:19,430 --> 01:34:21,610
+In fact a lot of them are called
+quasi-Newton methods.
+
+1895
+01:34:21,610 --> 01:34:25,760
+And the whole idea is to get around this
+terrible past of solving a system of
+
+1896
+01:34:25,760 --> 01:34:26,460
+linear equations.
+
+1897
+01:34:26,460 --> 01:34:27,235
+Everybody got this?
+
+1898
+01:34:27,235 --> 01:34:30,720
+Now, of course, these days, that's all
+nonsense so
+
+1899
+01:34:30,720 --> 01:34:34,370
+you go up to like a couple of thousand and
+it's not a problem on a laptop, right?
+
+1900
+01:34:34,370 --> 01:34:38,136
+It's a non-issue But what it misses is the
+following.
+
+1901
+01:34:38,136 --> 01:34:40,930
+If, if there's a structure in the Hessian,
+
+1902
+01:34:40,930 --> 01:34:43,560
+that's where smart Linear Algebra comes
+in, okay?
+
+1903
+01:34:43,560 --> 01:34:45,370
+And so, let, we're going to look at that.
+
+1904
+01:34:45,370 --> 01:34:46,910
+And so, there are lots of cases where
+you'll say,
+
+1905
+01:34:46,910 --> 01:34:49,490
+well, we would never use Newton's method
+and you look at it.
+
+1906
+01:34:49,490 --> 01:34:52,170
+And the Hessian is, like, you know, banded
+plus rank 5.
+
+1907
+01:34:52,170 --> 01:34:58,930
+And you're like, I can actually do an
+iteration in about 80 microseconds.
+
+1908
+01:34:58,930 --> 01:35:01,730
+So, again, if you know what you're doing.
+
+1909
+01:35:01,730 --> 01:35:03,340
+So, okay, let's, let's move on.
+
+1910
+01:35:04,560 --> 01:35:06,350
+So, how, how would you do this?
+
+1911
+01:35:06,350 --> 01:35:07,650
+A very good method would be this.
+
+1912
+01:35:07,650 --> 01:35:11,610
+You just do a Cholesky, you form the
+Hessian into a Cholesky factorization.
+
+1913
+01:35:11,610 --> 01:35:13,077
+And it turns out that, by the way,
+
+1914
+01:35:13,077 --> 01:35:15,590
+that the Newton decrement is one of the
+parts of this.
+
+1915
+01:35:15,590 --> 01:35:17,270
+I mean, not surprisingly, right?
+
+1916
+01:35:17,270 --> 01:35:21,110
+It, it's the norm of, of the, of L inverse
+g.
+
+1917
+01:35:23,050 --> 01:35:27,380
+That costs, you know, n cubed over 3 flops
+for an unstructured system.
+
+1918
+01:35:27,380 --> 01:35:31,050
+And if h is like sparse, right, a specific
+case that would be banded.
+
+1919
+01:35:31,050 --> 01:35:31,890
+This would be way less.
+
+1920
+01:35:31,890 --> 01:35:34,860
+For example, if it's banded, this is o of
+n, right?
+
+1921
+01:35:34,860 --> 01:35:37,610
+So that mean, for example, on that laptop,
+this laptop here,
+
+1922
+01:35:37,610 --> 01:35:41,720
+I can easily knock off a Newton iter, a
+Newton step
+
+1923
+01:35:41,720 --> 01:35:46,600
+on something where the bandwidth is ten
+and it's a million variables.
+
+1924
+01:35:46,600 --> 01:35:49,290
+I can knock if off and I don't know what,
+I have to do the arithmetic but,
+
+1925
+01:35:49,290 --> 01:35:53,270
+you know, it's way, it's measured in
+milliseconds, okay?
+
+1926
+01:35:53,270 --> 01:35:57,595
+Whereas, if you don't know that, it mean
+you're cubing a million and, you know,
+
+1927
+01:35:57,595 --> 01:36:00,580
+and incorrectly concluding that Newton's
+method is useless.
+
+1928
+01:36:00,580 --> 01:36:01,592
+Everybody see what I'm saying here?
+
+1929
+01:36:01,592 --> 01:36:02,670
+So, this is why you want to know about
+linear,
+
+1930
+01:36:02,670 --> 01:36:07,000
+this is why you want to know about
+numerical Linear Algebra.
+
+1931
+01:36:07,000 --> 01:36:10,640
+Okay alright.
+
+1932
+01:36:10,640 --> 01:36:14,630
+So, here's an example and in fact, this is
+the last thing you, you have to do,
+
+1933
+01:36:14,630 --> 01:36:17,250
+there's one more thing but it's related to
+it.
+
+1934
+01:36:17,250 --> 01:36:20,548
+You should know some numerical Linear
+Algebra.
+
+1935
+01:36:20,548 --> 01:36:23,320
+And that means that there's a part of your
+brain that's all set up now.
+
+1936
+01:36:23,320 --> 01:36:27,340
+And like, it should release endorphins
+when you see things like band you know,
+
+1937
+01:36:27,340 --> 01:36:29,310
+arrow matrix, right?
+
+1938
+01:36:29,310 --> 01:36:31,900
+You should look at that and go oh, that's
+great.
+
+1939
+01:36:31,900 --> 01:36:34,630
+Oh, you should, everybody know what I'm
+talking about here?
+
+1940
+01:36:34,630 --> 01:36:35,460
+Right?
+
+1941
+01:36:35,460 --> 01:36:37,850
+If you see things that are like, I don't
+know, you know,
+
+1942
+01:36:37,850 --> 01:36:41,250
+diagonal plus low rank, you should say,
+oh, boy.
+
+1943
+01:36:41,250 --> 01:36:42,490
+I know, step back.
+
+1944
+01:36:42,490 --> 01:36:44,928
+I'm an expert, I know how to handle this,
+okay?
+
+1945
+01:36:44,928 --> 01:36:47,075
+Everybody, okay, do you now what I'm
+saying?
+
+1946
+01:36:47,075 --> 01:36:50,230
+So, these are all the things, so you
+should understand, you know, sparsity and
+
+1947
+01:36:50,230 --> 01:36:53,570
+things like that unless it give you a good
+feeling and stuff like that about how to,
+
+1948
+01:36:53,570 --> 01:36:56,360
+you know, that, that there's some,
+something you can do, right?
+
+1949
+01:36:56,360 --> 01:37:00,700
+Some problem is on a graph, if there's a
+sparse graph and you look at it.
+
+1950
+01:37:00,700 --> 01:37:02,050
+Okay.
+
+1951
+01:37:02,050 --> 01:37:07,880
+But the next thing to do is to relate that
+back to the optimization problem, right?
+
+1952
+01:37:07,880 --> 01:37:10,960
+So, and specifically Hessians.
+
+1953
+01:37:10,960 --> 01:37:13,190
+So, here's an example that shows you how
+to trick,
+
+1954
+01:37:13,190 --> 01:37:17,970
+that tells you how the structure in an
+optimization problem translates into
+
+1955
+01:37:17,970 --> 01:37:20,780
+sparsity pattern in the Hessian or
+structure, not just sparse-dependent.
+
+1956
+01:37:20,780 --> 01:37:21,740
+Here's an example.
+
+1957
+01:37:21,740 --> 01:37:23,340
+Let's take a function, which is this.
+
+1958
+01:37:23,340 --> 01:37:25,480
+It is a sub, it's separable.
+
+1959
+01:37:25,480 --> 01:37:27,090
+That's a separable function, right?
+
+1960
+01:37:27,090 --> 01:37:28,630
+By the way, you know, this could be
+regularization.
+
+1961
+01:37:28,630 --> 01:37:31,710
+That could be an L, you know, but it's not
+an L1 norm, because
+
+1962
+01:37:31,710 --> 01:37:35,560
+we're doing Newton's method, but it could
+be some kind of regularization, right?
+
+1963
+01:37:35,560 --> 01:37:39,380
+Some, some function of the individual
+things plus a function of
+
+1964
+01:37:39,380 --> 01:37:43,710
+a linear of a linear, of an affine
+combination, okay?
+
+1965
+01:37:43,710 --> 01:37:48,370
+Now, a function like that, if you work at
+what the Hessian is, it's this.
+
+1966
+01:37:48,370 --> 01:37:51,486
+The Hessian of a separable function is
+diagonal, right?
+
+1967
+01:37:51,486 --> 01:37:56,741
+Why, because I mean, partial, partial xi,
+partial xj is 0, right?
+
+1968
+01:37:56,741 --> 01:38:01,620
+If you take partial xi, you get you know,
+[UNKNOWN] prime of xi, it hasn't do an xj.
+
+1969
+01:38:01,620 --> 01:38:06,150
+So, so basically, I mean so these are the
+maps you want to make in your brain.
+
+1970
+01:38:06,150 --> 01:38:10,230
+That things like separable, means diagonal
+hashing.
+
+1971
+01:38:10,230 --> 01:38:13,850
+By the way what is block separable imply?
+
+1972
+01:38:13,850 --> 01:38:17,510
+Block separable means I can chunk my
+vector up into chunks, you know,
+
+1973
+01:38:17,510 --> 01:38:18,730
+maybe 5 long.
+
+1974
+01:38:18,730 --> 01:38:19,490
+It doesn't matter.
+
+1975
+01:38:19,490 --> 01:38:25,380
+I'd, I'd chunk it up and my function is a
+sum of functions of those chunks.
+
+1976
+01:38:25,380 --> 01:38:27,290
+What does the Hessian look like?
+
+1977
+01:38:27,290 --> 01:38:28,840
+It's block diagonal.
+
+1978
+01:38:28,840 --> 01:38:31,530
+And block diagonal would be one of the
+things you should be
+
+1979
+01:38:31,530 --> 01:38:33,410
+triggering endorphins.
+
+1980
+01:38:33,410 --> 01:38:34,830
+in, in at least in the section of
+
+1981
+01:38:34,830 --> 01:38:37,540
+your brain that does numerical Linear
+Algebra , right?
+
+1982
+01:38:37,540 --> 01:38:42,810
+Because it's way ease, it, you should say,
+I can solve that fast, right?
+
+1983
+01:38:42,810 --> 01:38:45,320
+Because you can, right?
+
+1984
+01:38:45,320 --> 01:38:48,090
+By the way, why is it you can solve block
+diagonal things fast?
+
+1985
+01:38:51,160 --> 01:38:52,450
+You can do blockwise inverse.
+
+1986
+01:38:52,450 --> 01:38:53,860
+And so, you can say, I can do a blockwise
+inverse.
+
+1987
+01:38:53,860 --> 01:38:55,440
+I can do all in parallel, right?
+
+1988
+01:38:55,440 --> 01:38:58,150
+I could, I can have different threads
+doing each one.
+
+1989
+01:38:58,150 --> 01:38:59,160
+yeah.
+All these things are true.
+
+1990
+01:38:59,160 --> 01:39:01,040
+But, maybe another way to say it is this.
+
+1991
+01:39:01,040 --> 01:39:06,650
+The cost of, if the cost of solving a
+block, which it's like n cubed, it's
+
+1992
+01:39:06,650 --> 01:39:12,780
+convex, it follows instantly that if you
+break it up, you're going to do better.
+
+1993
+01:39:12,780 --> 01:39:17,291
+So that's, that's it, so it's actually
+convexity that tells you that, alright?
+
+1994
+01:39:17,291 --> 01:39:22,250
+So okay now when you see this, it's
+something like that.
+
+1995
+01:39:22,250 --> 01:39:24,410
+The Hessian is, is this.
+
+1996
+01:39:24,410 --> 01:39:26,812
+This is just simply a formula for the
+Hessian.
+
+1997
+01:39:26,812 --> 01:39:34,490
+H zero is the hessian of the psi here, psi
+zero evaluated at Ax plus b.
+
+1998
+01:39:34,490 --> 01:39:37,710
+By the way this formula for the hessian,
+these are things that are sort of,
+
+1999
+01:39:37,710 --> 01:39:40,030
+we put them in kind of an appendix of the
+book because it's,
+
+2000
+01:39:40,030 --> 01:39:41,270
+it's a pain to work them out.
+
+2001
+01:39:41,270 --> 01:39:44,090
+And I'm going to give you some very
+practical advise so please listen now.
+
+2002
+01:39:45,100 --> 01:39:47,460
+When you see something like that, like a
+log barrier,
+
+2003
+01:39:48,880 --> 01:39:53,520
+you might want to do something like
+calculate the Hessian by hand.
+
+2004
+01:39:53,520 --> 01:39:54,020
+Why not?
+
+2005
+01:39:54,020 --> 01:39:55,140
+It's just a second derivative.
+
+2006
+01:39:55,140 --> 01:39:56,530
+How hard can it be to calculate partial,
+
+2007
+01:39:56,530 --> 01:40:00,750
+partial xi and then after that partial,
+partial xj?
+
+2008
+01:40:00,750 --> 01:40:01,980
+It's reasonable right?
+
+2009
+01:40:01,980 --> 01:40:05,260
+And by the way, at the end of the day, I
+mean, this is probably not a bad thing to,
+
+2010
+01:40:05,260 --> 01:40:07,720
+you know, I mean you should check it,
+right if or whatever.
+
+2011
+01:40:07,720 --> 01:40:09,110
+Or I mean the ones in the book are correct
+so
+
+2012
+01:40:09,110 --> 01:40:11,090
+you don't have to check those but, you
+know, anyway.
+
+2013
+01:40:11,090 --> 01:40:12,400
+Everybody, do you know what I'm saying?
+
+2014
+01:40:12,400 --> 01:40:16,900
+Okay, so here's my advice for practical,
+yeah, don't do that, okay?
+
+2015
+01:40:16,900 --> 01:40:18,370
+You will be very sorry.
+
+2016
+01:40:18,370 --> 01:40:22,120
+Use the Chain Rule absolutely whenever you
+can, right?
+
+2017
+01:40:22,120 --> 01:40:27,770
+So usually, size 0 is something real
+simple, right, like size 0 could
+
+2018
+01:40:27,770 --> 01:40:34,770
+be something like, you know, the square
+root of 1 plus, you know, y transpose y.
+
+2019
+01:40:34,770 --> 01:40:36,750
+There you go, that's a nice differentiable
+function.
+
+2020
+01:40:36,750 --> 01:40:39,720
+That's size 0 of y, okay?
+
+2021
+01:40:39,720 --> 01:40:46,940
+Now, that, go ahead and take partial yi
+and partial yj, please do, right?
+
+2022
+01:40:46,940 --> 01:40:48,110
+That makes sense.
+
+2023
+01:40:48,110 --> 01:40:51,680
+But the minute you put these as and bs in
+there, you're, there's no way,
+
+2024
+01:40:51,680 --> 01:40:56,250
+you're every going to come out of this
+with anything correct, so, okay, so.
+
+2025
+01:40:56,250 --> 01:41:00,512
+And by the way, I sometimes have to remind
+myself this, because I look at something,
+
+2026
+01:41:00,512 --> 01:41:03,190
+I"ll start taking partial derivative and
+then I'll hear my
+
+2027
+01:41:03,190 --> 01:41:07,246
+own voice saying don't do this, you're
+doing some, don't do this, okay?
+
+2028
+01:41:07,246 --> 01:41:07,960
+so, okay.
+
+2029
+01:41:07,960 --> 01:41:08,790
+Alright.
+
+2030
+01:41:08,790 --> 01:41:10,450
+That you can, anyway.
+
+2031
+01:41:10,450 --> 01:41:13,740
+Trust me, this will be relevant for you at
+some point in the near future.
+
+2032
+01:41:13,740 --> 01:41:15,100
+So, okay.
+
+2033
+01:41:16,280 --> 01:41:22,310
+So the point is, here, now you stare at
+that and you realize that if a is if,
+
+2034
+01:41:22,310 --> 01:41:26,480
+if, a here is, is is wide, right?
+
+2035
+01:41:26,480 --> 01:41:28,560
+Then, that's low rank, right?
+
+2036
+01:41:28,560 --> 01:41:37,010
+So, a function of a low dimensional affine
+function, the Hessian of that is low rank.
+
+2037
+01:41:37,010 --> 01:41:39,455
+In fact, the rank is exactly equal to the,
+
+2038
+01:41:39,455 --> 01:41:43,130
+the size of the intermediate variable,
+okay?
+
+2039
+01:41:43,130 --> 01:41:44,320
+So, I'm just and, you know,
+
+2040
+01:41:44,320 --> 01:41:47,290
+there will be other things that you will
+connect, and things like that, but,
+
+2041
+01:41:47,290 --> 01:41:52,360
+you want to get a mapping from a problem
+to sparsity patterns.
+
+2042
+01:41:52,360 --> 01:41:54,430
+And then, of course, once you're, know
+about sparsity patterns,
+
+2043
+01:41:54,430 --> 01:41:57,380
+you want to understand how to exploit that
+sparsity pattern in solving linear
+
+2044
+01:41:57,380 --> 01:41:58,680
+equations, right?
+
+2045
+01:41:58,680 --> 01:42:00,595
+And so, this will take you quite far.
+
+2046
+01:42:00,595 --> 01:42:01,095
+okay.
+
+2047
+01:42:02,800 --> 01:42:05,410
+So, here, you know, I mean, of course,
+this is the message, right?
+
+2048
+01:42:05,410 --> 01:42:08,440
+Dumb Linear Algebra says H is dense here.
+
+2049
+01:42:08,440 --> 01:42:09,440
+Of course, it's dense, right?
+
+2050
+01:42:09,440 --> 01:42:12,190
+If you add a, a low rank thing to
+anything, it's going to be dense.
+
+2051
+01:42:12,190 --> 01:42:13,990
+I mean, well, with high probability,
+right?
+
+2052
+01:42:13,990 --> 01:42:18,260
+It's you add and then you do this, and
+it's like n cubed or something like that.
+
+2053
+01:42:18,260 --> 01:42:21,419
+But, if you do the right thing which is
+just,
+
+2054
+01:42:21,419 --> 01:42:26,260
+it's, it's, it's just exploiting the
+diagonal plus low rank you'll end up
+
+2055
+01:42:26,260 --> 01:42:31,080
+solving this in actually, linear in n as
+opposed to n cubed, okay?
+
+2056
+01:42:31,080 --> 01:42:35,690
+This is a big difference, right, because
+n, you know, problems are not interesting
+
+2057
+01:42:35,690 --> 01:42:38,870
+until they have a thousand variables or
+more and they can have a whole lot more.
+
+2058
+01:42:38,870 --> 01:42:43,960
+And so, if you take here n equals a 100 k,
+this gets super interesting, right?
+
+2059
+01:42:43,960 --> 01:42:48,720
+So, it says that that problem, I mean, if
+this if the height of a is 10 and
+
+2060
+01:42:48,720 --> 01:42:55,690
+n is 10,000, that's easily within striking
+distance of a laptop, maybe even a phone.
+
+2061
+01:42:55,690 --> 01:42:56,200
+Okay.
+
+2062
+01:42:56,200 --> 01:42:59,280
+So but for that you have to know the, you
+have to know Linear Algebra.
+
+2063
+01:42:59,280 --> 01:43:01,120
+You actually have to know Linear Algebra.
+
+2064
+01:43:01,120 --> 01:43:01,620
+Okay.

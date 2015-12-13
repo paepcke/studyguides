@@ -1,0 +1,1405 @@
+1
+00:00:07,718 --> 00:00:09,122
+[BLANK_AUDIO].
+In this next module, I'm going to
+
+2
+00:00:09,122 --> 00:00:13,040
+show you how linear regression
+accommodates categorical predictors.
+
+3
+00:00:13,040 --> 00:00:18,674
+And I'll also show you the link between
+ttests, and ANOVA, and linear regression.
+
+4
+00:00:18,674 --> 00:00:22,280
+So, how does linear regression handle
+categorical predictors?
+
+5
+00:00:22,280 --> 00:00:25,060
+In the case of a binary predictor is
+actually really easy.
+
+6
+00:00:25,060 --> 00:00:27,800
+In the very first beginning of this
+course, I talked a lot
+
+7
+00:00:27,800 --> 00:00:33,250
+about binary variables and thinking about
+them as 0,1, as numerical variables.
+
+8
+00:00:33,250 --> 00:00:36,500
+Well, that becomes useful now because the
+way that we
+
+9
+00:00:36,500 --> 00:00:40,570
+handle binary variables is just to put
+them in a linear regression model and
+
+10
+00:00:40,570 --> 00:00:43,550
+treat them as numbers, as a 0 and a 1.
+
+11
+00:00:43,550 --> 00:00:47,820
+And that makes it easy to model, and I'll
+show you the picture in a minute.
+
+12
+00:00:47,820 --> 00:00:50,370
+Categorical variables are just slightly
+more tricky.
+
+13
+00:00:50,370 --> 00:00:52,740
+These are variables that have more than
+two categories.
+
+14
+00:00:52,740 --> 00:00:58,538
+We are essentially going to turn them into
+a series of binary, of 0,1 variables.
+
+15
+00:00:58,538 --> 00:01:01,505
+And that's the way we're going to
+accommodate them in the regression model.
+
+16
+00:01:01,505 --> 00:01:02,920
+We call this dummy coding.
+
+17
+00:01:02,920 --> 00:01:06,020
+And I'm going to get to this dummy coding
+idea in a few minutes.
+
+18
+00:01:06,020 --> 00:01:08,790
+But let's start with the easier case, with
+the binary case.
+
+19
+00:01:08,790 --> 00:01:11,130
+Imagine for the,
+
+20
+00:01:11,130 --> 00:01:16,390
+for a moment that I wanted to use vitamin
+D as a binary predictor.
+
+21
+00:01:16,390 --> 00:01:19,580
+We have been talking about this example
+all week where I've been
+
+22
+00:01:19,580 --> 00:01:21,680
+treating vitamin D as a continuous
+predictor.
+
+23
+00:01:21,680 --> 00:01:25,210
+But there might be some reason that I end
+up wanting to treat vitamin D
+
+24
+00:01:25,210 --> 00:01:26,180
+as a binary predictor.
+
+25
+00:01:26,180 --> 00:01:27,900
+Maybe I didn't measure, maybe.
+
+26
+00:01:27,900 --> 00:01:30,990
+And for some reason, in my data, said I
+don't have it as a continuous predictor.
+
+27
+00:01:30,990 --> 00:01:34,940
+Or maybe, for some reason, I'm clinically
+interested in
+
+28
+00:01:34,940 --> 00:01:36,980
+comparing the insufficient group to the
+sufficient group.
+
+29
+00:01:36,980 --> 00:01:41,220
+So for whatever reason, I'm using vitamin
+D as a binary predictor.
+
+30
+00:01:41,220 --> 00:01:46,364
+If I look in my data set, and let's say
+I'm, this is sort of arbitrary, let's
+
+31
+00:01:46,364 --> 00:01:50,530
+say less than 15 nmol/L is a clinical
+reason for calling that insufficient.
+
+32
+00:01:50,530 --> 00:01:52,792
+More than that we'll call that sufficient.
+
+33
+00:01:52,792 --> 00:01:56,010
+We're going to code this insufficient
+variable as a 1,0.
+
+34
+00:01:56,010 --> 00:01:58,740
+So, if you're a 1, that means you're in an
+insufficient group.
+
+35
+00:01:58,740 --> 00:02:01,360
+If you're a 0, that means you're in a
+sufficient group.
+
+36
+00:02:01,360 --> 00:02:05,190
+I actually looked my data set and the mean
+DSST score,
+
+37
+00:02:05,190 --> 00:02:08,685
+the mean cognitive score in the
+insufficient indeed was lower.
+
+38
+00:02:08,685 --> 00:02:14,390
+That in the sufficient group it was 32.5,
+and in the sufficient group it was 40.
+
+39
+00:02:14,390 --> 00:02:17,400
+Now you might just think about the
+lectures that we had last week.
+
+40
+00:02:17,400 --> 00:02:20,300
+And you might say oh well, here I've got a
+situation where I
+
+41
+00:02:20,300 --> 00:02:23,362
+have a continuous normally distributed
+outcome variable.
+
+42
+00:02:23,362 --> 00:02:25,024
+I've got two groups I want to compare.
+
+43
+00:02:25,024 --> 00:02:27,770
+I want to compare the means of that
+continuous variable.
+
+44
+00:02:27,770 --> 00:02:30,320
+Between two groups, why wouldn't I just
+use a t-test here?
+
+45
+00:02:30,320 --> 00:02:33,377
+And indeed, you could absolutely use a
+ttest here.
+
+46
+00:02:33,377 --> 00:02:37,530
+I'm going to show you how to also use
+linear regression, and
+
+47
+00:02:37,530 --> 00:02:38,690
+to analyze these same data.
+
+48
+00:02:38,690 --> 00:02:41,260
+And then, I'll show you how the linear
+regression and
+
+49
+00:02:41,260 --> 00:02:43,610
+the ttests actually give you identical
+answers.
+
+50
+00:02:43,610 --> 00:02:46,770
+Let me graph this for you.
+
+51
+00:02:46,770 --> 00:02:51,352
+So again, we're treating our, our binary
+variable as a 0,1 variable.
+
+52
+00:02:51,352 --> 00:02:53,590
+One means you're in the insufficient
+group,
+
+53
+00:02:53,590 --> 00:02:58,680
+zero means you're sufficient, you're in
+the normal level group.
+
+54
+00:02:58,680 --> 00:03:02,500
+The linear regression line here is the
+easiest possible line you can draw.
+
+55
+00:03:02,500 --> 00:03:05,695
+So, what I'm showing you here, these
+little individual points represent all of
+
+56
+00:03:05,695 --> 00:03:09,020
+DSST levels, for all of the people in the
+normal group.
+
+57
+00:03:09,020 --> 00:03:12,230
+Their mean level is right here at 40.
+
+58
+00:03:12,230 --> 00:03:16,930
+That was the mean in in the normal group,
+the vitamin D
+
+59
+00:03:16,930 --> 00:03:18,320
+insufficient group over here.
+
+60
+00:03:18,320 --> 00:03:19,910
+This is all their DSST levels.
+
+61
+00:03:19,910 --> 00:03:23,640
+Their mean, as I mentioned, with 32 32.5.
+
+62
+00:03:23,640 --> 00:03:24,770
+So, what's this line?
+
+63
+00:03:24,770 --> 00:03:27,130
+All I did to draw this line was to connect
+the two means.
+
+64
+00:03:27,130 --> 00:03:31,500
+It's really, it's like the simplest line,
+line you can possibly draw.
+
+65
+00:03:31,500 --> 00:03:34,260
+Any two points, you can connect them, and
+draw a line.
+
+66
+00:03:34,260 --> 00:03:38,113
+And it's, we don't have to test the
+linearity assumption here.
+
+67
+00:03:38,113 --> 00:03:41,570
+Because when you have two points, it's
+automatically going to make a line.
+
+68
+00:03:41,570 --> 00:03:42,740
+So, that's nice.
+
+69
+00:03:42,740 --> 00:03:45,610
+The intercept of this line as you can see
+here is 40.
+
+70
+00:03:45,610 --> 00:03:47,110
+What's the slope of this line going to be?
+
+71
+00:03:47,110 --> 00:03:49,880
+Well, the x variable only goes from 0 to
+1.
+
+72
+00:03:49,880 --> 00:03:53,280
+So, there's only going to be a one unit
+change in x.
+
+73
+00:03:53,280 --> 00:03:55,900
+What happens to y when x goes from 0 to 1?
+
+74
+00:03:55,900 --> 00:03:58,900
+Well, y goes from 40 down to 32.5.
+
+75
+00:03:58,900 --> 00:04:03,514
+So, the slope of this line is It's
+going to be 40 - 32.5 or 7.5.
+
+76
+00:04:03,514 --> 00:04:09,240
+Notice that that's just the difference in
+means, between the two groups.
+
+77
+00:04:09,240 --> 00:04:10,550
+I then took these data and
+
+78
+00:04:10,550 --> 00:04:13,450
+actually ran them officially in a linear
+regression program.
+
+79
+00:04:13,450 --> 00:04:17,130
+And indeed, not surprisingly, what I get
+out in the model is,
+
+80
+00:04:17,130 --> 00:04:18,770
+here is the parameter estimates.
+
+81
+00:04:18,770 --> 00:04:22,470
+So the, the intercept is 40, and the
+difference in means, the,
+
+82
+00:04:22,470 --> 00:04:23,637
+the beta here is negative.
+
+83
+00:04:23,637 --> 00:04:25,580
+Get a 7.5 because we're decreasing as
+we're
+
+84
+00:04:25,580 --> 00:04:27,630
+going from sufficient to insufficient.
+
+85
+00:04:27,630 --> 00:04:30,730
+It's highly statistically significant as
+you can see.
+
+86
+00:04:30,730 --> 00:04:33,440
+This has just given me back the equation
+of that line.
+
+87
+00:04:33,440 --> 00:04:35,490
+We could also kind of look at the graph
+again to,
+
+88
+00:04:35,490 --> 00:04:37,610
+to see the equation of that line.
+
+89
+00:04:38,720 --> 00:04:42,020
+And the intercept represents the mean
+value in the sufficient group.
+
+90
+00:04:42,020 --> 00:04:45,180
+The slope here just represents the
+difference in means between
+
+91
+00:04:45,180 --> 00:04:48,354
+the two groups and it is statistically
+significant.
+
+92
+00:04:48,354 --> 00:04:52,590
+Now, I want to show you what would have
+happened had we run these data in
+
+93
+00:04:52,590 --> 00:04:55,680
+a ttest rather than bothering to get fancy
+and run a linear regression.
+
+94
+00:04:55,680 --> 00:04:58,200
+Well, we would have got the same answer
+again, and
+
+95
+00:04:58,200 --> 00:05:00,020
+we have two groups, we want to compare
+means.
+
+96
+00:05:00,020 --> 00:05:02,460
+We can evaluate these data with a ttest.
+
+97
+00:05:02,460 --> 00:05:05,300
+It turns out that the slope we get from
+linear regression is
+
+98
+00:05:05,300 --> 00:05:07,600
+exactly equal to the difference in means.
+
+99
+00:05:07,600 --> 00:05:09,670
+Which is the effect of size of interest
+for
+
+100
+00:05:09,670 --> 00:05:15,070
+a ttest and the p-values we get out are
+also exactly identical.
+
+101
+00:05:15,070 --> 00:05:17,060
+So, here's the ttest that we would run.
+
+102
+00:05:17,060 --> 00:05:19,480
+We would in the numerator going the
+difference in mean.
+
+103
+00:05:19,480 --> 00:05:22,133
+Again which is 40 minus 32.5 or 7.5.
+
+104
+00:05:22,133 --> 00:05:25,840
+We can calcuate the standard error in the
+demoninator that turns out to be the same
+
+105
+00:05:25,840 --> 00:05:30,260
+standard error that you can in the linear
+regression model in the earlier slide.
+
+106
+00:05:30,260 --> 00:05:33,620
+The T-value comes out to be 3.46, the
+p-value comes out to be 0.008.
+
+107
+00:05:33,620 --> 00:05:37,070
+And actually, if you look at the previous
+slide,
+
+108
+00:05:37,070 --> 00:05:41,270
+you can see that that is the T-value and
+the p-value from the linear regression.
+
+109
+00:05:41,270 --> 00:05:44,780
+So, there's nothing new here
+mathematically.
+
+110
+00:05:44,780 --> 00:05:48,380
+A ttest and linear regression are exactly
+the same.
+
+111
+00:05:48,380 --> 00:05:51,800
+You could say we don't even really need to
+have a ttest in the world because you
+
+112
+00:05:51,800 --> 00:05:55,595
+could always run that problem, that
+particular problem, in linear regression.
+
+113
+00:05:55,595 --> 00:05:57,292
+It's just, of course, that linear
+regression is more,
+
+114
+00:05:57,292 --> 00:05:57,859
+you know, seems more complicated.
+
+115
+00:05:57,859 --> 00:05:59,161
+A ttest seems very simple, so a lot of
+times if it, we have the simplest problem,
+
+116
+00:05:59,161 --> 00:06:00,505
+we end up just defaulting to ttest rather
+than calling it a linear regression.
+
+117
+00:06:00,505 --> 00:06:04,010
+But in fact, a ttest is a special case of
+linear regression.
+
+118
+00:06:04,010 --> 00:06:06,620
+Now, I'm going to move to the more tricky
+concept,
+
+119
+00:06:06,620 --> 00:06:09,511
+which is what to do when you have more
+than two categories.
+
+120
+00:06:09,511 --> 00:06:15,088
+You have a categorical predictor
+
+121
+00:06:15,088 --> 00:06:20,068
+with more than two categories.
+
+122
+00:06:20,068 --> 00:06:25,720
+What we're going to have to do here is to
+do some dummy coding.
+
+123
+00:06:25,720 --> 00:06:31,230
+We're going to translate our categories
+into a series of binary variables.
+
+124
+00:06:31,230 --> 00:06:33,784
+So, that we can deal again with binary
+variables.
+
+125
+00:06:33,784 --> 00:06:38,460
+So what what if our vitamin D variable had
+been a categorical predictor rather than
+
+126
+00:06:38,460 --> 00:06:39,460
+a continuous predictor?
+
+127
+00:06:39,460 --> 00:06:41,880
+What if there were three levels we cared
+about the deficient?
+
+128
+00:06:41,880 --> 00:06:43,650
+That's, like, the really low people.
+
+129
+00:06:43,650 --> 00:06:46,070
+Insufficient, kind of mildly low and, and
+sufficient.
+
+130
+00:06:46,070 --> 00:06:48,621
+Sometimes people will divide that up this
+way.
+
+131
+00:06:48,621 --> 00:06:53,360
+I want to know about the difference in
+DSST scores between those three groups.
+
+132
+00:06:53,360 --> 00:06:55,717
+I could analyze those data then within
+ANOVA,
+
+133
+00:06:55,717 --> 00:06:58,090
+a simple ANOVA as we talked about last
+week.
+
+134
+00:06:58,090 --> 00:07:00,700
+And I also could analyze it with linear
+regression.
+
+135
+00:07:00,700 --> 00:07:03,850
+So, let me just tell you what the means,
+the mean DSST score in all of these
+
+136
+00:07:03,850 --> 00:07:06,930
+groups were, so the sufficient group, the
+normal group, is still the same here.
+
+137
+00:07:06,930 --> 00:07:09,630
+The average was still 40.
+
+138
+00:07:09,630 --> 00:07:13,280
+The insufficient group now excludes the
+ones who were lower than 25, so
+
+139
+00:07:13,280 --> 00:07:16,680
+the average in that group is now 33.13.
+
+140
+00:07:16,680 --> 00:07:20,870
+And in the deficient group, it turns out
+that the mean DSST score is 30.13.
+
+141
+00:07:20,870 --> 00:07:23,120
+So, it does seem to down across those
+groups.
+
+142
+00:07:23,120 --> 00:07:24,850
+How do we dummy code this?
+
+143
+00:07:24,850 --> 00:07:26,489
+How do we dummy code these three
+categories?
+
+144
+00:07:26,489 --> 00:07:27,690
+So, here's dummy coding.
+
+145
+00:07:27,690 --> 00:07:31,577
+If I want to take a three-level
+categorical variable.
+
+146
+00:07:31,577 --> 00:07:34,130
+I can represent it as a series of binary
+variables.
+
+147
+00:07:34,130 --> 00:07:37,990
+I actually only need two binary variables
+if it's a three-level variable.
+
+148
+00:07:37,990 --> 00:07:40,519
+If it was a four-level categorical
+variable,
+
+149
+00:07:40,519 --> 00:07:42,949
+I would need three binary variables and so
+on.
+
+150
+00:07:42,949 --> 00:07:46,250
+There's going to be one group, that's the
+reference group, and that's going to
+
+151
+00:07:46,250 --> 00:07:50,320
+be the variable that has a zero on all
+the, on all the binary variables.
+
+152
+00:07:50,320 --> 00:07:51,830
+Let me illustrate that here.
+
+153
+00:07:51,830 --> 00:07:53,160
+So, I'm going to make two new variables.
+
+154
+00:07:53,160 --> 00:07:56,240
+I'm going to create a new variable that is
+deficient yes or no.
+
+155
+00:07:56,240 --> 00:07:58,730
+It's binary here, either in the deficient
+category or you're not.
+
+156
+00:07:58,730 --> 00:08:01,700
+And another one, insufficient.
+
+157
+00:08:01,700 --> 00:08:04,100
+That's a variable, another binary.
+
+158
+00:08:04,100 --> 00:08:06,630
+That says you're either in the
+insufficient group or you're not.
+
+159
+00:08:06,630 --> 00:08:08,130
+So, if you're somebody in the deficient
+group,
+
+160
+00:08:08,130 --> 00:08:10,420
+you're going to get a 1 on the deficient
+variable, but
+
+161
+00:08:10,420 --> 00:08:12,800
+a 0 on the insufficient variable.
+
+162
+00:08:12,800 --> 00:08:14,090
+If you're in the insufficient group,
+
+163
+00:08:14,090 --> 00:08:16,780
+you're going to get a 0 on the deficient
+group because you're not,
+
+164
+00:08:16,780 --> 00:08:17,673
+you're not deficient.
+
+165
+00:08:17,673 --> 00:08:20,420
+But, you're going to get a one on the
+insufficient.
+
+166
+00:08:20,420 --> 00:08:22,497
+If you're in the sufficient group,
+
+167
+00:08:22,497 --> 00:08:25,350
+however, you're going to get a zero on
+both of those.
+
+168
+00:08:25,350 --> 00:08:29,510
+So, notice that two binary variables is
+sufficient to uniquely identify all
+
+169
+00:08:29,510 --> 00:08:31,526
+three of those categories.
+
+170
+00:08:31,526 --> 00:08:34,970
+Now, we have a reference group and we have
+a series of
+
+171
+00:08:34,970 --> 00:08:38,985
+binary variables that tell us about the
+difference between the deficient group.
+
+172
+00:08:38,985 --> 00:08:40,300
+And the sufficient group, and
+
+173
+00:08:40,300 --> 00:08:44,400
+the difference between the insufficient
+group and the sufficient group.
+
+174
+00:08:44,400 --> 00:08:46,560
+How do we represent this in pictures?
+
+175
+00:08:47,680 --> 00:08:57,430
+So, it looks a lot like the pictures we
+did for the simple binary predictor,
+
+176
+00:08:57,430 --> 00:08:58,281
+the insufficient group.
+
+177
+00:08:58,281 --> 00:08:59,101
+The, again, the mean level of DSST for
+
+178
+00:08:59,101 --> 00:09:02,490
+the insufficient group was about 33, the
+mean for the normal group is 40.
+
+179
+00:09:02,490 --> 00:09:07,410
+It forms a simple line, the intercept is
+40, the slope is about negative 7.
+
+180
+00:09:07,410 --> 00:09:09,990
+For the deficient group,
+
+181
+00:09:09,990 --> 00:09:13,210
+same intercept because we're still
+comparing against the normal group.
+
+182
+00:09:13,210 --> 00:09:16,010
+The slope here, the, the mean for
+
+183
+00:09:16,010 --> 00:09:21,280
+the deficient group is about 30, so the
+slope here is almost 10.
+
+184
+00:09:21,280 --> 00:09:24,310
+Now technically, this is a multivariate
+regression.
+
+185
+00:09:24,310 --> 00:09:26,340
+because we now have two predictors in the
+model.
+
+186
+00:09:26,340 --> 00:09:28,780
+I could represent these pictures on a
+plain.
+
+187
+00:09:28,780 --> 00:09:30,180
+It's just harder to draw that plane.
+
+188
+00:09:30,180 --> 00:09:32,950
+So, I represented it as, as two separate
+graphs here.
+
+189
+00:09:32,950 --> 00:09:38,240
+I took the, the data, and I put them into
+the computer, and
+
+190
+00:09:38,240 --> 00:09:41,510
+asked it to run a linear regression with
+this dummy, these dummy coded variables.
+
+191
+00:09:41,510 --> 00:09:43,300
+And here are the results that I get.
+
+192
+00:09:43,300 --> 00:09:46,276
+So here's my model, here's my p-values.
+
+193
+00:09:46,276 --> 00:09:49,890
+Again, the intercept represents the mean
+value in the reference group.
+
+194
+00:09:49,890 --> 00:09:51,940
+That's 40, that's the normal group.
+
+195
+00:09:51,940 --> 00:09:54,250
+The beta coefficient, the slope for
+
+196
+00:09:54,250 --> 00:09:57,287
+the insufficient group represents the
+difference.
+
+197
+00:09:57,287 --> 00:10:02,220
+In the DSST levels between the normal
+group and the insufficient group,
+
+198
+00:10:02,220 --> 00:10:04,000
+the difference from the reference.
+
+199
+00:10:04,000 --> 00:10:08,960
+So, the insufficient group was about
+almost 7 units lower in
+
+200
+00:10:08,960 --> 00:10:11,070
+cognitive score than the normal group.
+
+201
+00:10:11,070 --> 00:10:14,940
+The deficient group was almost 10 units
+lower in the cognitive score than
+
+202
+00:10:14,940 --> 00:10:16,935
+the normal, so that should show for them.
+
+203
+00:10:16,935 --> 00:10:19,949
+Both are highly statistically significant.
+
+204
+00:10:22,370 --> 00:10:24,720
+That's the linear regression equation
+written out.
+
+205
+00:10:24,720 --> 00:10:26,410
+And we can use that to then predict,
+
+206
+00:10:26,410 --> 00:10:29,497
+what's the mean value for those in the
+insufficient group.
+
+207
+00:10:29,497 --> 00:10:32,670
+Those in the deficient group, and those in
+the, the normal group.
+
+208
+00:10:32,670 --> 00:10:33,890
+And you're going to see that for
+
+209
+00:10:33,890 --> 00:10:39,010
+the simple model, it's nothing too
+profound, the 40 is the mean.
+
+210
+00:10:39,010 --> 00:10:42,770
+In that reference group, negative 6.87
+represents the difference in
+
+211
+00:10:42,770 --> 00:10:44,640
+means between the insufficient and
+sufficient groups.
+
+212
+00:10:44,640 --> 00:10:47,880
+And again, negative 9.87 represents the
+difference in
+
+213
+00:10:47,880 --> 00:10:50,550
+means between the deficient and sufficient
+groups.
+
+214
+00:10:50,550 --> 00:10:53,286
+And you can just show this by applying the
+equation.
+
+215
+00:10:53,286 --> 00:10:57,250
+So, if I have got a person whose is in the
+deficient group, how do I apply this,
+
+216
+00:10:57,250 --> 00:10:58,325
+the equation to them.
+
+217
+00:10:58,325 --> 00:11:00,349
+Well, they get they get the intercept.
+
+218
+00:11:00,349 --> 00:11:04,440
+They get a zero because they're not in the
+insufficient group, and they get a one for
+
+219
+00:11:04,440 --> 00:11:05,230
+being deficient.
+
+220
+00:11:05,230 --> 00:11:08,390
+So, when you do 40 minus 9.87, that's,
+that just gives you
+
+221
+00:11:08,390 --> 00:11:13,280
+back what we already knew was the mean in
+the in the deficient group.
+
+222
+00:11:13,280 --> 00:11:14,450
+A person in the insufficient group,
+
+223
+00:11:14,450 --> 00:11:16,690
+when you apply the equation, they get a
+one for insufficient.
+
+224
+00:11:16,690 --> 00:11:20,580
+A zero for deficient when you add that up
+it comes out to be 33.13.
+
+225
+00:11:20,580 --> 00:11:24,970
+Again, what we already knew was the mean
+in the insufficient group.
+
+226
+00:11:24,970 --> 00:11:27,710
+And the person who's in a su, sufficient
+group gets a zero for
+
+227
+00:11:27,710 --> 00:11:30,390
+both the insufficient and deficient
+variables.
+
+228
+00:11:30,390 --> 00:11:34,500
+So, they're just left with 40, which again
+we knew was the mean in the normal group.
+
+229
+00:11:34,500 --> 00:11:36,470
+So, it's a little like this is an, you
+know,
+
+230
+00:11:36,470 --> 00:11:39,140
+it's just spitting back out the means, it
+doesn't seem all that profound.
+
+231
+00:11:39,140 --> 00:11:42,550
+It doesn't seem, doesn't seem all that
+useful but the reason it's going to
+
+232
+00:11:42,550 --> 00:11:45,785
+be useful is because we might want to
+adjust for other variables.
+
+233
+00:11:45,785 --> 00:11:50,260
+ANOVA is just linear regression, so
+
+234
+00:11:50,260 --> 00:11:54,440
+the p-value that you would get if you ran
+ANOVA here is exactly the same as
+
+235
+00:11:54,440 --> 00:11:58,460
+the p-value you are going to get for the
+overall model set for linear regression.
+
+236
+00:11:58,460 --> 00:12:02,290
+So again, mathematically, these things are
+identical.
+
+237
+00:12:02,290 --> 00:12:05,260
+So, when you you could argue that you
+never needed an ANOVA,
+
+238
+00:12:05,260 --> 00:12:06,920
+you could always just run a linear
+regression.
+
+239
+00:12:06,920 --> 00:12:08,970
+Again, why is this useful?
+
+240
+00:12:08,970 --> 00:12:11,820
+We're just getting back up the means, it
+doesn't seem all that interesting.
+
+241
+00:12:11,820 --> 00:12:16,000
+But because it's useful, because we can
+then throw other things into the mold.
+
+242
+00:12:16,000 --> 00:12:19,175
+Multi-variant regression model to adjust
+for that, those covariance and
+
+243
+00:12:19,175 --> 00:12:22,110
+co-founders, or to get better predictors.
+
+244
+00:12:22,110 --> 00:12:25,940
+For example, let's say I was to throw age
+into the model to try to
+
+245
+00:12:25,940 --> 00:12:29,530
+get age adjusted means for each of those
+vitamin D groups.
+
+246
+00:12:29,530 --> 00:12:30,620
+Age being the potential confounder here.
+
+247
+00:12:30,620 --> 00:12:33,710
+So to adjust age, I'm just going to throw
+age into the model.
+
+248
+00:12:33,710 --> 00:12:34,724
+Nothing tricky.
+
+249
+00:12:34,724 --> 00:12:38,624
+And here is the model that comes out when
+I add age to the model.
+
+250
+00:12:38,624 --> 00:12:43,538
+So it's showing these, that again, the
+normal group is the reference group so
+
+251
+00:12:43,538 --> 00:12:45,956
+it doesn't get a beta co-effecient.
+
+252
+00:12:45,956 --> 00:12:47,594
+Now, I get an effect for age.
+
+253
+00:12:47,594 --> 00:12:50,870
+And now I get what are age adjusted beta
+coefficients,
+
+254
+00:12:50,870 --> 00:12:52,380
+these have now been adjusted for age.
+
+255
+00:12:52,380 --> 00:12:54,000
+Interestingly, these are made of data.
+
+256
+00:12:54,000 --> 00:12:56,240
+And so, in the process of making up the
+data,
+
+257
+00:12:56,240 --> 00:12:57,600
+I've built in something a little funny.
+
+258
+00:12:57,600 --> 00:13:00,130
+Which is that the deficient group after
+you adjust for age,
+
+259
+00:13:00,130 --> 00:13:05,170
+actually looks like it has more, a higher
+cognitive score than the normal group.
+
+260
+00:13:05,170 --> 00:13:09,980
+So, once maybe that group was totally full
+of much older people, which will count for
+
+261
+00:13:09,980 --> 00:13:13,690
+the fact that their much older than their,
+their deficient.
+
+262
+00:13:13,690 --> 00:13:17,590
+Their deficiency in vitamin D is actually
+associated with a greater a DSST score.
+
+263
+00:13:17,590 --> 00:13:21,580
+That's a quirk, I think, of the fact that
+I made up the data, certainly.
+
+264
+00:13:21,580 --> 00:13:23,180
+So, that's the final model.
+
+265
+00:13:23,180 --> 00:13:28,860
+But what's great about this is now I can
+report age adjusted means for
+
+266
+00:13:28,860 --> 00:13:31,260
+those groups.
+
+267
+00:13:31,260 --> 00:13:32,839
+And this is just showing the picture here.
+
+268
+00:13:32,839 --> 00:13:36,530
+Again, this is showing the slopes in each
+of the three groups.
+
+269
+00:13:36,530 --> 00:13:40,480
+For the relationship between a age and
+DSST score.
+
+270
+00:13:40,480 --> 00:13:42,600
+So that you can see that in all three
+groups,
+
+271
+00:13:42,600 --> 00:13:46,840
+certainly age is we've built this into the
+model.
+
+272
+00:13:46,840 --> 00:13:48,410
+This is just kind of showing you the
+model.
+
+273
+00:13:48,410 --> 00:13:53,385
+So, age, as age goes up, you go down in
+your cognitive function, for sure.
+
+274
+00:13:53,385 --> 00:13:56,992
+Interestingly, as I mentioned though, once
+you account for age the deficient group.
+
+275
+00:13:56,992 --> 00:13:59,790
+Thus, this blue line, actually send seems
+to across all
+
+276
+00:13:59,790 --> 00:14:03,569
+different ages have a little bit higher of
+a, of a cognitive score.
+
+277
+00:14:03,569 --> 00:14:07,370
+Might be quirk of my made up data.
+
+278
+00:14:07,370 --> 00:14:10,300
+And I can calculate these age adjusted
+means the, the easiest way to
+
+279
+00:14:10,300 --> 00:14:14,350
+calculate the age adjusted mean is just to
+imagine that everybody has the same age.
+
+280
+00:14:14,350 --> 00:14:16,230
+You have to pick an age to plug into the
+model.
+
+281
+00:14:16,230 --> 00:14:20,990
+So, say let's plug in the mean age for the
+whole data set which is here 55 years old.
+
+282
+00:14:20,990 --> 00:14:24,700
+So, I can get the expected average DSST
+value.
+
+283
+00:14:24,700 --> 00:14:26,050
+For a vitamin deficient,
+
+284
+00:14:26,050 --> 00:14:31,140
+D deficient person who's 55 years old by
+plugging all that into the model.
+
+285
+00:14:31,140 --> 00:14:33,660
+So, we can just plug in this model to find
+the expected DSST score for
+
+286
+00:14:33,660 --> 00:14:36,832
+somebody who's vitamin D deficient and is
+55 years old.
+
+287
+00:14:36,832 --> 00:14:40,660
+So, we're fixing age so that age is the
+same across these three groups,
+
+288
+00:14:40,660 --> 00:14:44,233
+that person has an expected score of 36.
+
+289
+00:14:44,233 --> 00:14:46,641
+Somebody whose insufficient whose at 55
+years old,
+
+290
+00:14:46,641 --> 00:14:50,647
+based on this model is predicted to have a
+DSST score of 29.1.
+
+291
+00:14:50,647 --> 00:14:54,553
+And for the normal group, a 55 year old is
+actually predicted to be lower and
+
+292
+00:14:54,553 --> 00:14:57,210
+have a DSST score of 27.7.
+
+293
+00:14:57,210 --> 00:14:58,921
+Again, probably a quirk of my made up
+data.
+
+294
+00:14:58,921 --> 00:15:01,801
+But, it's nice to have these age adjusted
+means cause you can then record
+
+295
+00:15:01,801 --> 00:15:04,811
+the unadjusted means and the age adjusted
+means.
+
+296
+00:15:04,811 --> 00:15:06,825
+So, you can see it totally flipped the
+relationship here once we
+
+297
+00:15:06,825 --> 00:15:08,132
+had accounted for age.
+
+298
+00:15:08,132 --> 00:15:11,930
+And that might be something funny in my
+made up data.

@@ -1,0 +1,1241 @@
+1
+00:00:00,000 --> 00:00:06,050
+[BLANK_AUDIO]
+
+2
+00:00:06,050 --> 00:00:08,810
+In this next module, I'm going to give you
+an overview of
+
+3
+00:00:08,810 --> 00:00:11,690
+prediction modeling by walking you through
+a real example.
+
+4
+00:00:13,850 --> 00:00:16,710
+So this example is from the British
+Medical Journal.
+
+5
+00:00:16,710 --> 00:00:21,590
+The goal here was to identify predictors
+of delirium in the intensive care unit.
+
+6
+00:00:21,590 --> 00:00:24,840
+So some people in the intensive care unit
+will become delirious, and
+
+7
+00:00:24,840 --> 00:00:27,900
+it's important to be able to predict who's
+most at risk of that.
+
+8
+00:00:27,900 --> 00:00:30,350
+They actually developed a prediction model
+here.
+
+9
+00:00:30,350 --> 00:00:35,850
+They had 1,600 patients from an intensive
+care unit in one hospital.
+
+10
+00:00:35,850 --> 00:00:38,660
+That's the data that was used to fit the
+model.
+
+11
+00:00:38,660 --> 00:00:42,560
+They fit a logistic regression model,
+because the outcome is binary, delirium or
+
+12
+00:00:42,560 --> 00:00:47,280
+no delirium Now the reason that I picked
+this particular example to show you is
+
+13
+00:00:47,280 --> 00:00:51,000
+because they did a really great job on
+what's called validation.
+
+14
+00:00:51,000 --> 00:00:55,430
+Whenever we do a prediction model, it's
+always going to be overly optimistic,
+
+15
+00:00:55,430 --> 00:00:59,820
+it's going to be well fit to the data,
+that we use to fit the model, and
+
+16
+00:00:59,820 --> 00:01:03,340
+so, any measures of accuracy, of how good
+the fit is,
+
+17
+00:01:03,340 --> 00:01:06,620
+are going to be orally optimistic if we
+just look at the patients.
+
+18
+00:01:06,620 --> 00:01:08,510
+That were used to fit the model.
+
+19
+00:01:08,510 --> 00:01:12,060
+There are things that we can do to adjust
+for that overoptimism.
+
+20
+00:01:12,060 --> 00:01:14,100
+So one of them is called internal
+validation.
+
+21
+00:01:14,100 --> 00:01:17,290
+I'm going to talk about this yeah, in
+great detail in a future module, but
+
+22
+00:01:17,290 --> 00:01:19,680
+just to to, get across the basic idea,
+
+23
+00:01:19,680 --> 00:01:25,500
+there are ways to get a better gauge of
+the, of how accurate are model is.
+
+24
+00:01:25,500 --> 00:01:28,810
+Using only the data that we started with
+it's something called
+
+25
+00:01:28,810 --> 00:01:32,790
+internal validation and again we'll get to
+that a little bit later, a little bit
+
+26
+00:01:32,790 --> 00:01:37,430
+easier to understand we can just take the
+model we fit on these 1600 patients and
+
+27
+00:01:37,430 --> 00:01:39,750
+we can take that model and apply it to new
+patients.
+
+28
+00:01:39,750 --> 00:01:42,530
+That's what predictive modeling is
+supposed to be about is Supposed to be
+
+29
+00:01:42,530 --> 00:01:44,910
+about predicting things for new people.
+
+30
+00:01:44,910 --> 00:01:51,140
+So, in this case, the author's temporarily
+validated, meaning that they took
+
+31
+00:01:51,140 --> 00:01:55,890
+549 new patients from the same hospital,
+and they applied the model to them.
+
+32
+00:01:55,890 --> 00:01:58,220
+So, what do I mean by applying the model?
+
+33
+00:01:58,220 --> 00:02:02,010
+They take the logistic regression they,
+model they get at the end of the day.
+
+34
+00:02:02,010 --> 00:02:05,960
+They use the values from the new patients
+to plug into that
+
+35
+00:02:05,960 --> 00:02:10,090
+logistic regression model and get out a
+predicted probability of delirium for
+
+36
+00:02:10,090 --> 00:02:11,740
+each one of those new patients.
+
+37
+00:02:11,740 --> 00:02:14,920
+And then they can say how well did our
+model predict who was
+
+38
+00:02:14,920 --> 00:02:16,310
+actually going to get delirium or not.
+
+39
+00:02:17,420 --> 00:02:22,280
+They not only did that but they then
+externally validated the model meaning
+
+40
+00:02:22,280 --> 00:02:25,400
+that they applied the model to patients
+from other hospitals.
+
+41
+00:02:25,400 --> 00:02:28,450
+So this is getting at whether how
+generalizable the model is.
+
+42
+00:02:28,450 --> 00:02:31,980
+They took 894 patients from four other
+hospitals and
+
+43
+00:02:31,980 --> 00:02:34,740
+they applied the model there and saw how
+accurate it was for
+
+44
+00:02:34,740 --> 00:02:37,420
+those totally new patients from different
+hospitals.
+
+45
+00:02:38,850 --> 00:02:41,930
+I'm now just going to kind of walk you
+through the actual statistical methods
+
+46
+00:02:41,930 --> 00:02:43,050
+section from the statement.
+
+47
+00:02:43,050 --> 00:02:44,530
+This is going to show you how they did,
+
+48
+00:02:44,530 --> 00:02:47,190
+how they went about their model building
+process.
+
+49
+00:02:47,190 --> 00:02:49,760
+And I think it's actually important that
+you be able to read these sections.
+
+50
+00:02:49,760 --> 00:02:52,070
+I'll kind of walk you through it and talk
+you through.
+
+51
+00:02:52,070 --> 00:02:56,200
+So first of all they say, we used
+univariate logistic regression.
+
+52
+00:02:56,200 --> 00:02:59,640
+Okay so, this is what I call a univariate
+screen,
+
+53
+00:02:59,640 --> 00:03:03,770
+you can take our outcome here is delirium.
+
+54
+00:03:03,770 --> 00:03:08,680
+And what you can do is just simply run a
+univariate logistic regression
+
+55
+00:03:08,680 --> 00:03:10,930
+that contains only one predictor at a
+time.
+
+56
+00:03:10,930 --> 00:03:12,790
+So you take each of your candidate
+predictors,
+
+57
+00:03:12,790 --> 00:03:17,440
+you put it in a model, one at at time,
+with delirium as the outcome.
+
+58
+00:03:17,440 --> 00:03:21,480
+And you see whether or not this predictor
+has a significant Relationship with
+
+59
+00:03:21,480 --> 00:03:24,860
+the outcome, if they're, if we haven't
+adjusted for anything.
+
+60
+00:03:24,860 --> 00:03:29,270
+And so they assess the association between
+each potential predictor, and, and
+
+61
+00:03:29,270 --> 00:03:33,320
+delirium, using this univariate
+regression, and then which one
+
+62
+00:03:33,320 --> 00:03:36,620
+of these variables are we going to move on
+to the multivariate regression.
+
+63
+00:03:36,620 --> 00:03:39,800
+Well in this case they said we're going to
+exclude anything, any of
+
+64
+00:03:39,800 --> 00:03:43,780
+these predictors that have a p value above
+.15 in the univariate analysis, so
+
+65
+00:03:43,780 --> 00:03:45,180
+if you run this regression.
+
+66
+00:03:45,180 --> 00:03:48,670
+And P is greater than .145 and we're not
+going to bother with this predictor any
+
+67
+00:03:48,670 --> 00:03:53,320
+more, we're just going to drop it now
+because it's not related to the [UNKNOWN].
+
+68
+00:03:53,320 --> 00:03:56,830
+They also excluded variables that had a
+prevalence below 10% so
+
+69
+00:03:56,830 --> 00:04:00,560
+if there was a particular predictor that
+was a binary predictor and
+
+70
+00:04:00,560 --> 00:04:07,480
+only 10% of the population or less had
+that, had the positive value on that one.
+
+71
+00:04:07,480 --> 00:04:10,460
+Since so few people had it they thought
+that it's not going to be a good predictor
+
+72
+00:04:10,460 --> 00:04:11,620
+because it's just so rare.
+
+73
+00:04:11,620 --> 00:04:13,090
+So they screened those out as well.
+
+74
+00:04:15,340 --> 00:04:17,980
+Then whatever predictors were left, after
+this initial screen,
+
+75
+00:04:17,980 --> 00:04:20,640
+they're going to move forward to a
+multivariate logistic regression.
+
+76
+00:04:20,640 --> 00:04:24,220
+So they just put them all into a
+multivariate logistic regression.
+
+77
+00:04:24,220 --> 00:04:25,740
+The outcome is delirium, and
+
+78
+00:04:25,740 --> 00:04:28,640
+whatever predictors made it through that
+screen are now in the model.
+
+79
+00:04:28,640 --> 00:04:32,290
+And then they're going to prune the model,
+using backward elimination.
+
+80
+00:04:33,780 --> 00:04:36,470
+Any variables that have a P value over
+0.10,
+
+81
+00:04:36,470 --> 00:04:39,840
+are going to be taken out of the model,
+any P variables that
+
+82
+00:04:39,840 --> 00:04:43,040
+have a P less that 0.10 are going to be
+retained in the model.
+
+83
+00:04:43,040 --> 00:04:45,190
+Now backward elimination could be done
+manually,
+
+84
+00:04:45,190 --> 00:04:47,370
+meaning that somebody goes through and
+looks at the p values, and
+
+85
+00:04:47,370 --> 00:04:51,180
+takes out the variables that are higher
+than that, or it can also be done au,
+
+86
+00:04:51,180 --> 00:04:53,990
+automatically, with an automatic algorithm
+in the computer.
+
+87
+00:04:55,320 --> 00:04:58,840
+And then they're just saying they did this
+to Come,
+
+88
+00:04:58,840 --> 00:05:01,390
+come up with independent risk factors for
+delirium.
+
+89
+00:05:01,390 --> 00:05:04,660
+None of that is very specific, so we don't
+need to pay attention to it.
+
+90
+00:05:05,970 --> 00:05:07,600
+We then estimated,
+
+91
+00:05:07,600 --> 00:05:12,760
+how good is our model at discriminating
+who will get delirium and who will not.
+
+92
+00:05:12,760 --> 00:05:15,760
+And what did they use as a measure of
+predictive ability?
+
+93
+00:05:15,760 --> 00:05:18,280
+They used the area under the ROC curve.
+
+94
+00:05:18,280 --> 00:05:20,980
+We've Seen that in logistic regression.
+
+95
+00:05:20,980 --> 00:05:25,340
+The area under the ROC curve tell us,
+tells us how well our model does at
+
+96
+00:05:25,340 --> 00:05:28,480
+classifying people and that's what we
+want to know here.
+
+97
+00:05:28,480 --> 00:05:31,600
+So, that's going to be our measure of
+model performance.
+
+98
+00:05:31,600 --> 00:05:36,840
+Now, the problem is that whenever you
+build a model,that area under ROC
+
+99
+00:05:36,840 --> 00:05:40,060
+curve is always going to be overly
+optimistic for
+
+100
+00:05:40,060 --> 00:05:42,230
+the sample that you used to build the
+model.
+
+101
+00:05:43,230 --> 00:05:46,410
+You're always fitting to noise in your
+particular sample, so
+
+102
+00:05:46,410 --> 00:05:48,810
+it's going to look a little better than it
+really is.
+
+103
+00:05:48,810 --> 00:05:52,210
+So what they did to try and adjust for
+that is they used something
+
+104
+00:05:52,210 --> 00:05:56,060
+called the bootstrapping, which we talked
+about in earlier module.
+
+105
+00:05:56,060 --> 00:05:58,110
+We used the bootstrapping to adjust for
+
+106
+00:05:58,110 --> 00:06:03,520
+overiftting, that is, To try to assess
+like how optimistic is our model?
+
+107
+00:06:03,520 --> 00:06:06,350
+How overly optimistic is our model?
+
+108
+00:06:06,350 --> 00:06:09,780
+And they, to do this they do 200 random
+bootstrap samples.
+
+109
+00:06:09,780 --> 00:06:14,540
+So, this is just sampling with replacement
+from that original sample of 1613 patients
+
+110
+00:06:14,540 --> 00:06:17,610
+and when they did this [UNKNOWN] sampling,
+
+111
+00:06:17,610 --> 00:06:22,140
+what they were able to do Was to shrink
+the area under the,
+
+112
+00:06:22,140 --> 00:06:25,440
+our c curve so they were to kind of
+correct for that overoptimism.
+
+113
+00:06:25,440 --> 00:06:28,250
+And they also did something called
+shrinkage of
+
+114
+00:06:28,250 --> 00:06:30,190
+the regression coefficients because again,
+
+115
+00:06:30,190 --> 00:06:34,980
+when you [COUGH] a [COUGH] model like this
+You're going to be overly optimistic, that
+
+116
+00:06:34,980 --> 00:06:37,760
+means your data coefficients are going to
+be a little bit bias, a little bit too
+
+117
+00:06:37,760 --> 00:06:40,990
+high, you can do something like multiply
+them all by .9 to shrink them
+
+118
+00:06:40,990 --> 00:06:44,710
+all a little bit to correct for that bias,
+and that's what they did here.
+
+119
+00:06:46,600 --> 00:06:48,680
+So just to summarize again.
+
+120
+00:06:48,680 --> 00:06:51,860
+The steps that they took, and, everybody
+going to be a little different, but
+
+121
+00:06:51,860 --> 00:06:54,010
+this is what they took and one potential
+approaches,
+
+122
+00:06:54,010 --> 00:06:56,880
+that they did a univariate screen,
+univariate logistic regressions.
+
+123
+00:06:56,880 --> 00:07:00,720
+If the p value is greater than .15 or the
+predictor was fairly rare in the sample,
+
+124
+00:07:00,720 --> 00:07:02,930
+they screened it out, they didn't move it
+forward.
+
+125
+00:07:02,930 --> 00:07:05,620
+Everybody el, all the rest of the
+predictors they moved forward into
+
+126
+00:07:05,620 --> 00:07:07,670
+a mulitvariate logistic regression.
+
+127
+00:07:07,670 --> 00:07:10,750
+They pruned that regression with backward
+elimination and
+
+128
+00:07:10,750 --> 00:07:13,870
+they removed anything with a p value
+greater than .10 from the model.
+
+129
+00:07:13,870 --> 00:07:15,380
+Everything else was retained.
+
+130
+00:07:15,380 --> 00:07:18,420
+That then becomes their model, their final
+model.
+
+131
+00:07:18,420 --> 00:07:21,430
+If they look at the area under the ROC
+curve from that model,
+
+132
+00:07:21,430 --> 00:07:24,640
+Which is just calculated based on the
+people in their own sample, it's
+
+133
+00:07:24,640 --> 00:07:29,640
+going to be a little bit over-optimistic
+and there's a way to adjust for that.
+
+134
+00:07:29,640 --> 00:07:32,650
+And one of those is something called
+bootstrapping validation and
+
+135
+00:07:32,650 --> 00:07:34,190
+that's what they did here.
+
+136
+00:07:34,190 --> 00:07:38,860
+Basically they're able to adjust for that
+optimism to shrink the area under
+
+137
+00:07:38,860 --> 00:07:41,520
+the curve a little bit and shrink the beta
+co-efficient a little bit.
+
+138
+00:07:41,520 --> 00:07:44,770
+I'm not going to go into all the details
+here because we'll be talking about this
+
+139
+00:07:44,770 --> 00:07:49,120
+In an upcoming module, but here's the
+final model they came up with.
+
+140
+00:07:49,120 --> 00:07:52,740
+After the the shrinkage of the, the
+selection process in
+
+141
+00:07:52,740 --> 00:07:56,110
+shrinking the beta coefficients a little
+bit for, to correct for over optimism.
+
+142
+00:07:56,110 --> 00:07:57,770
+Now here's the final model.
+
+143
+00:07:57,770 --> 00:07:59,210
+Now, it's a little complicated but
+
+144
+00:07:59,210 --> 00:08:03,890
+you can imagine that this could be
+programmed into a little app on an iPhone.
+
+145
+00:08:03,890 --> 00:08:08,580
+And you could pretty easily plug a
+patient's values into this model and
+
+146
+00:08:08,580 --> 00:08:09,910
+it's a logistic regression model.
+
+147
+00:08:09,910 --> 00:08:12,160
+So what are you going to get out when you
+plug out, in their values?
+
+148
+00:08:12,160 --> 00:08:14,600
+You're going to get out a predictive
+probability.
+
+149
+00:08:14,600 --> 00:08:17,956
+This will give you their predicted
+probability for delirium.
+
+150
+00:08:17,956 --> 00:08:20,077
+[NOISE]
+
+151
+00:08:20,077 --> 00:08:24,830
+And again, you probably don't want to
+calculate this by hand, but
+
+152
+00:08:24,830 --> 00:08:26,690
+there could be a little app or something
+that you plug in.
+
+153
+00:08:26,690 --> 00:08:30,060
+So, if you knew a person's age Their score
+on this particular test,
+
+154
+00:08:30,060 --> 00:08:34,010
+something about coma, infection, etcetera.
+
+155
+00:08:34,010 --> 00:08:38,530
+You would plug in a new person's actual
+values for each of these variables,
+
+156
+00:08:38,530 --> 00:08:42,130
+multiplied by their beta coefficient,
+that's their weight in this score,
+
+157
+00:08:42,130 --> 00:08:46,200
+this model And you'd come up with some
+kind of final score.
+
+158
+00:08:46,200 --> 00:08:49,820
+And of course for predictive probabilities
+we're doing something, you know?
+
+159
+00:08:49,820 --> 00:08:51,970
+E raise to this over one plus E raised to
+that.
+
+160
+00:08:51,970 --> 00:08:56,070
+Here you can see that it, they have it,
+they, they're calculating the risk of
+
+161
+00:08:56,070 --> 00:08:59,710
+delirium as one over this, so they made it
+a little easier by trans,
+
+162
+00:09:00,730 --> 00:09:05,080
+translating this into so that you only
+have to do one over one plus E.
+
+163
+00:09:05,080 --> 00:09:06,420
+In any case you can plug into this.
+
+164
+00:09:06,420 --> 00:09:07,670
+You can get a predicted probability.
+
+165
+00:09:07,670 --> 00:09:08,770
+You can take a new patient.
+
+166
+00:09:08,770 --> 00:09:11,160
+It doesn't have to be a patient that was
+used to fit the model.
+
+167
+00:09:11,160 --> 00:09:13,690
+You can take a new patient whatever their
+values are for
+
+168
+00:09:13,690 --> 00:09:15,190
+these variables you plug in.
+
+169
+00:09:15,190 --> 00:09:17,990
+You get out their predicted probability of
+delirium.
+
+170
+00:09:17,990 --> 00:09:20,790
+Hopefully that predicted probability lines
+up pretty well with who
+
+171
+00:09:20,790 --> 00:09:21,719
+actually got delirium.
+
+172
+00:09:23,650 --> 00:09:26,380
+And how well does this model do?
+
+173
+00:09:26,380 --> 00:09:30,270
+Well, we can calculate an area under the
+ROC curve to get at that.
+
+174
+00:09:30,270 --> 00:09:33,740
+So when they just calculate the area under
+the ROC curve that just comes out of some,
+
+175
+00:09:33,740 --> 00:09:37,700
+you plug this into your statistical
+package, you plug your 1600 people in,
+
+176
+00:09:37,700 --> 00:09:39,460
+you fit the model you ask for the ROC
+curve.
+
+177
+00:09:39,460 --> 00:09:42,240
+What you're going to get out is the ROC
+curve based on
+
+178
+00:09:42,240 --> 00:09:45,690
+the predicted probabilities the original
+people in your data set.
+
+179
+00:09:45,690 --> 00:09:49,270
+So you're fitting the model With those
+people then you're applying the model to
+
+180
+00:09:49,270 --> 00:09:51,040
+those people and then you're getting an
+ROC curve.
+
+181
+00:09:51,040 --> 00:09:54,300
+When they did that it came out that they
+had an ROC curve area under
+
+182
+00:09:54,300 --> 00:09:55,530
+the ROC curve of 87%.
+
+183
+00:09:55,530 --> 00:09:57,150
+That's pretty good.
+
+184
+00:09:57,150 --> 00:10:00,030
+But again it might be overly optimistic.
+
+185
+00:10:00,030 --> 00:10:03,240
+So what they did was they adjusted that
+ROC curve estimate by
+
+186
+00:10:03,240 --> 00:10:07,070
+doing bootstrapping and again we'll go
+into the details of that later.
+
+187
+00:10:07,070 --> 00:10:11,100
+You can see that when they did that the
+ROC curve value only went down 1%,
+
+188
+00:10:11,100 --> 00:10:13,442
+so now it's, it's 86%.
+
+189
+00:10:13,442 --> 00:10:16,820
+So that's telling you that there wasn't,
+there wasn't too much optimism here.
+
+190
+00:10:16,820 --> 00:10:19,280
+The, the original estimate was pretty
+good.
+
+191
+00:10:19,280 --> 00:10:20,700
+This is a pretty robust model.
+
+192
+00:10:20,700 --> 00:10:24,590
+It only fell a little bit when we made
+this adjustment.
+
+193
+00:10:25,600 --> 00:10:29,310
+They then did Temporal and External
+validation.
+
+194
+00:10:29,310 --> 00:10:30,780
+So actually taking new patients.
+
+195
+00:10:30,780 --> 00:10:33,790
+And this is really what you want to do is
+to take your model and say that it
+
+196
+00:10:33,790 --> 00:10:39,250
+could be applied to new patients and still
+Have similarly good predictive ability.
+
+197
+00:10:39,250 --> 00:10:42,200
+So they took new patients from the same
+hospital.
+
+198
+00:10:42,200 --> 00:10:45,210
+They plugged that values into that little
+formula I showed you to get out of
+
+199
+00:10:45,210 --> 00:10:46,710
+predictive probability.
+
+200
+00:10:46,710 --> 00:10:50,937
+And then use those predictive
+probabilities to draw an [UNKNOWN] curve.
+
+201
+00:10:50,937 --> 00:10:52,794
+the area under that curve was actually
+really good.
+
+202
+00:10:52,794 --> 00:10:53,767
+It was eighty nine percent.
+
+203
+00:10:53,767 --> 00:10:55,180
+So it didn't go down at all.
+
+204
+00:10:55,180 --> 00:10:57,930
+When we talked about patients from the
+same hospital.
+
+205
+00:10:57,930 --> 00:11:01,040
+When the model was then applied to new
+patients from other hospitals who
+
+206
+00:11:01,040 --> 00:11:04,800
+might be a little bit different in their
+characteristics, right.
+
+207
+00:11:04,800 --> 00:11:07,270
+This is what we call external validation.
+
+208
+00:11:07,270 --> 00:11:10,350
+Then they calculated those predicted
+probabilities from, for
+
+209
+00:11:10,350 --> 00:11:12,450
+those patients they made their ROC curve.
+
+210
+00:11:12,450 --> 00:11:16,560
+The area under that ROC curve went down a
+little bit as you would expect for
+
+211
+00:11:16,560 --> 00:11:18,900
+an entirely new patient population.
+
+212
+00:11:18,900 --> 00:11:20,090
+But it was still very high.
+
+213
+00:11:20,090 --> 00:11:22,310
+It was 84%, so it didn't go down a lot.
+
+214
+00:11:22,310 --> 00:11:24,208
+So this is showing me that the model is
+fairly robust.
+
+215
+00:11:24,208 --> 00:11:29,920
+Now interesting, the authors noted in
+their paper that they
+
+216
+00:11:29,920 --> 00:11:35,080
+also went to the nurses and physicians and
+just asked them to predict on their own,
+
+217
+00:11:35,080 --> 00:11:38,860
+without any formula, who do you think is
+going to get delirium?
+
+218
+00:11:38,860 --> 00:11:42,480
+And, how did the nurses and physicians do
+with that prediction?
+
+219
+00:11:42,480 --> 00:11:44,890
+Well, their area under the curve wasn't
+50%,
+
+220
+00:11:44,890 --> 00:11:50,000
+but it was Pretty close to 50 %, and the
+confidence interval does even cross 50%.
+
+221
+00:11:50,000 --> 00:11:52,060
+So they're probably doing a little bit
+better than chance, but
+
+222
+00:11:52,060 --> 00:11:53,150
+not much better than chance.
+
+223
+00:11:53,150 --> 00:11:56,570
+So, this is saying, just using sort of
+clinical judgment to guess who's going to
+
+224
+00:11:56,570 --> 00:12:00,840
+get delirium or not doesn't do very well,
+whereas plugging into this
+
+225
+00:12:00,840 --> 00:12:04,240
+predictive model Can get you a much, much
+better prediction.
+
+226
+00:12:06,780 --> 00:12:10,600
+And they have a nice graphic here, so I
+thought it was just worth sharing.
+
+227
+00:12:10,600 --> 00:12:13,460
+So what they did is here is the ROC curve
+for everybody.
+
+228
+00:12:13,460 --> 00:12:16,600
+So if you take the predicted probabilities
+based on the model for
+
+229
+00:12:16,600 --> 00:12:21,310
+everybody from the original From the new
+patients from the same hospital, and
+
+230
+00:12:21,310 --> 00:12:25,550
+from the patients from the new hospitals,
+and you put all of those together into
+
+231
+00:12:25,550 --> 00:12:29,480
+an RO seeker, that's a lot of predicted
+probabilities represented here.
+
+232
+00:12:29,480 --> 00:12:32,360
+You can see that the area under the curve,
+since they were all high,
+
+233
+00:12:32,360 --> 00:12:36,610
+is going to be high and, what they then do
+is just to say okay,
+
+234
+00:12:36,610 --> 00:12:38,880
+we can define some particular risk groups.
+
+235
+00:12:38,880 --> 00:12:41,560
+So we'll say that people who have a
+predicted probability of
+
+236
+00:12:41,560 --> 00:12:43,990
+greater than 60% based on the model.
+
+237
+00:12:43,990 --> 00:12:46,220
+That becomes the very high risk group.
+
+238
+00:12:46,220 --> 00:12:50,500
+Now it turns out that, that, that getting
+above that threshold is hard, and so
+
+239
+00:12:50,500 --> 00:12:55,030
+the sensitivity for that if you made it
+above the very high risk group,
+
+240
+00:12:55,030 --> 00:12:58,990
+the sensitivity here is only 30% but the
+specificity is great.
+
+241
+00:12:58,990 --> 00:13:03,590
+So if you find somebody who has a, pretty
+good probability in this model,
+
+242
+00:13:03,590 --> 00:13:07,340
+greater than 60%, you're pretty sure that
+they are very likely to get delirious.
+
+243
+00:13:07,340 --> 00:13:10,600
+You're not going to catch everybody, who's
+going to become delirious, but
+
+244
+00:13:10,600 --> 00:13:13,570
+you're going to, you're not going to have
+very many false positives, so
+
+245
+00:13:13,570 --> 00:13:15,100
+that's a great group to focus on.
+
+246
+00:13:16,180 --> 00:13:18,060
+They defined a high risk group,
+
+247
+00:13:18,060 --> 00:13:21,000
+which was predicted probabilities between
+40 and 60%.
+
+248
+00:13:21,000 --> 00:13:24,210
+That had better sensitivity without too
+much drop off in specificity.
+
+249
+00:13:24,210 --> 00:13:27,240
+So they might use both of these you know
+to kind of screen for
+
+250
+00:13:27,240 --> 00:13:30,290
+patients who are likely to get this
+condition.
+
+251
+00:13:30,290 --> 00:13:32,760
+If they then went down to moderate risk,
+20 to 40%,
+
+252
+00:13:32,760 --> 00:13:36,140
+this sensitivity becomes better and as
+you'd expect, the specificity drops off.
+
+253
+00:13:36,140 --> 00:13:37,820
+There's always that trade off.
+
+254
+00:13:37,820 --> 00:13:41,355
+They may define low risk as anybody who
+got a probability between 0 and
+
+255
+00:13:41,355 --> 00:13:46,700
+20% that has low sensitivity as you'd
+expect in low specificity.
+
+256
+00:13:46,700 --> 00:13:49,000
+So probably that group you, we're,
+going to just say we're,
+
+257
+00:13:49,000 --> 00:13:53,030
+we're not expecting them to get (no
+period) delirium.
+
+258
+00:13:53,030 --> 00:13:54,720
+Although some of them will still will.
+
+259
+00:13:54,720 --> 00:13:59,090
+So that's kind of a nice way to just, to
+make this clinically applicable because
+
+260
+00:13:59,090 --> 00:14:03,440
+people can look at, could stratify people
+on their risks based on this model.

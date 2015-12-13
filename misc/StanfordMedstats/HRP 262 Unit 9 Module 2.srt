@@ -1,0 +1,1553 @@
+1
+00:00:02,793 --> 00:00:04,529
+[BLANK_AUDIO].
+
+2
+00:00:04,529 --> 00:00:06,275
+In this next module,
+
+3
+00:00:06,275 --> 00:00:11,573
+I'm going to show you how to fit a mixed
+model with random effects.
+
+4
+00:00:11,573 --> 00:00:15,477
+So I'm just going to use that mock data
+set on depression scores that we
+
+5
+00:00:15,477 --> 00:00:16,770
+used last week.
+
+6
+00:00:16,770 --> 00:00:20,475
+I had six subjects and they had their
+depression scores measured over time and
+
+7
+00:00:20,475 --> 00:00:24,120
+I plotted each individual subject on the
+graph you see here.
+
+8
+00:00:24,120 --> 00:00:27,450
+I went ahead and took those data and put
+them into a mixed model.
+
+9
+00:00:28,520 --> 00:00:32,080
+And here's the predicted values from that
+mixed model.
+
+10
+00:00:32,080 --> 00:00:35,650
+And what you can see is that we've
+essentially fit a linear regression line
+
+11
+00:00:35,650 --> 00:00:37,270
+for each person.
+
+12
+00:00:37,270 --> 00:00:42,556
+What this model includes is both a random
+intercept and a random slope.
+
+13
+00:00:42,556 --> 00:00:45,362
+And by including random intercept and a
+random slope,
+
+14
+00:00:45,362 --> 00:00:49,274
+I am able to get subject specific
+intercepts and subject specific slopes.
+
+15
+00:00:49,274 --> 00:00:52,979
+Now you might wonder how that's possible
+because if you thought about how you
+
+16
+00:00:52,979 --> 00:00:55,772
+would do that, you might think well then
+I'm going to need to
+
+17
+00:00:55,772 --> 00:00:58,394
+put a beta coefficient in the model for
+each subject for
+
+18
+00:00:58,394 --> 00:01:01,643
+their intercept as well as a, a beta
+coefficient for their slope and
+
+19
+00:01:01,643 --> 00:01:04,715
+that's going to obviously eat up all of
+our degrees of freedom.
+
+20
+00:01:04,715 --> 00:01:09,086
+But what mixed models cleverly do is they
+actually say,
+
+21
+00:01:09,086 --> 00:01:15,224
+we're going to get subject specific
+intercepts by assuming that the intercepts
+
+22
+00:01:15,224 --> 00:01:20,528
+follow a normal distribution with some
+mean, and some variance.
+
+23
+00:01:20,528 --> 00:01:23,714
+Remember, normal distributions have just
+two parameters, so
+
+24
+00:01:23,714 --> 00:01:27,136
+we can get a whole distribution of
+intercepts by estimating only just
+
+25
+00:01:27,136 --> 00:01:30,980
+those two parameters, the mean and the
+variance of these intercepts.
+
+26
+00:01:30,980 --> 00:01:33,780
+That allows us to get this whole
+distribution of intercepts.
+
+27
+00:01:33,780 --> 00:01:35,780
+And that's what we mean by a random
+intercept.
+
+28
+00:01:35,780 --> 00:01:38,952
+So when I put a random intercept in the
+model, I am estimating the mean and
+
+29
+00:01:38,952 --> 00:01:42,080
+the variance for this whole distribution
+of intercepts.
+
+30
+00:01:42,080 --> 00:01:43,780
+And the same with the slopes.
+
+31
+00:01:43,780 --> 00:01:46,525
+To get such x specific slopes, I'm
+going to assume that
+
+32
+00:01:46,525 --> 00:01:50,680
+those slopes following normal distribution
+with some mean and some variance.
+
+33
+00:01:50,680 --> 00:01:53,510
+And all I have to estimate therefore is
+the mean and
+
+34
+00:01:53,510 --> 00:01:55,810
+the variance of that normal distribution.
+
+35
+00:01:55,810 --> 00:01:59,650
+So, that's called adding a random slope to
+the model.
+
+36
+00:01:59,650 --> 00:02:02,430
+And that allows us to get the picture you
+see here.
+
+37
+00:02:02,430 --> 00:02:05,483
+And, of course at the end of the day we're
+going to get
+
+38
+00:02:05,483 --> 00:02:07,540
+some overall regression lines.
+
+39
+00:02:07,540 --> 00:02:11,635
+So we have a mean intercept and we have a
+mean beta and so, here's the mean of
+
+40
+00:02:11,635 --> 00:02:16,010
+the intercept and the mean beta as
+represented by the slope of that line.
+
+41
+00:02:16,010 --> 00:02:17,340
+And that, this alpha and
+
+42
+00:02:17,340 --> 00:02:20,560
+this beta is probably what we're going to
+end up reporting in our paper.
+
+43
+00:02:20,560 --> 00:02:23,992
+But by explicitly modeling the variance in
+the intercepts and
+
+44
+00:02:23,992 --> 00:02:26,962
+the variance of this flows, that's going
+to allow us
+
+45
+00:02:26,962 --> 00:02:30,420
+to get our standard errors correct and our
+p values correct.
+
+46
+00:02:31,480 --> 00:02:35,050
+It essentially accounts for the
+correlation within subject here.
+
+47
+00:02:37,800 --> 00:02:39,580
+Alright, so again, what's a random effect?
+
+48
+00:02:39,580 --> 00:02:43,470
+A random effect is we're assuming that
+there is a distribution.
+
+49
+00:02:43,470 --> 00:02:45,732
+If I had add a random intercept into the
+model,
+
+50
+00:02:45,732 --> 00:02:48,980
+we're assuming that there's a distribution
+of intercepts, and
+
+51
+00:02:48,980 --> 00:02:52,650
+every person's intercept is a random
+variable from that distribution.
+
+52
+00:02:55,150 --> 00:02:56,650
+So what I'm estimating, and
+
+53
+00:02:56,650 --> 00:03:00,130
+I'm going to be using the in this module,
+beta not rather than alpha for
+
+54
+00:03:00,130 --> 00:03:04,400
+the intercept so by data not here I'm, I'm
+referring to the intercept.
+
+55
+00:03:04,400 --> 00:03:07,780
+So I'm assuming that the intercepts,
+following normal distribution, and
+
+56
+00:03:07,780 --> 00:03:09,808
+I just have to estimate these two
+parameters,
+
+57
+00:03:09,808 --> 00:03:12,330
+the mean of that distribution and the
+variability.
+
+58
+00:03:12,330 --> 00:03:15,770
+This variability essentially represents
+the variation in
+
+59
+00:03:15,770 --> 00:03:19,410
+depression score between subjects at base
+line.
+
+60
+00:03:19,410 --> 00:03:24,033
+And that sounds a lot like the between
+subject variance that we estimated when we
+
+61
+00:03:24,033 --> 00:03:28,670
+did a univariate repeated measures ANOVA,
+and it, it essentially is.
+
+62
+00:03:28,670 --> 00:03:32,245
+So, just estimating that between subjects
+variance will go a long way in
+
+63
+00:03:32,245 --> 00:03:35,410
+accounting for the women subject
+correlation.
+
+64
+00:03:35,410 --> 00:03:38,840
+Now generally this, we're going to have to
+estimate this between subjects variants
+
+65
+00:03:38,840 --> 00:03:41,320
+but generally it's considered a nuisance
+variable.
+
+66
+00:03:41,320 --> 00:03:45,672
+So we're not necessarily going to report
+it in our paper or make any story out of
+
+67
+00:03:45,672 --> 00:03:49,700
+it but it will allow us to get our
+standard errors and our p values correct.
+
+68
+00:03:52,960 --> 00:03:56,326
+Now to start here, what I thought I would
+do is to just start with a model that had
+
+69
+00:03:56,326 --> 00:03:58,540
+only fixed effects and build from there.
+
+70
+00:03:58,540 --> 00:04:00,421
+So if the model has only fixed effects,
+
+71
+00:04:00,421 --> 00:04:04,190
+I'm fitting just a regular ordinary least
+squares regression.
+
+72
+00:04:04,190 --> 00:04:07,990
+And so you can see the model contains only
+fixed effects so
+
+73
+00:04:07,990 --> 00:04:09,300
+this is a regular linear regression.
+
+74
+00:04:09,300 --> 00:04:11,173
+We get our standard error term.
+
+75
+00:04:11,173 --> 00:04:14,363
+And the outcome here is depression for at
+different time points.
+
+76
+00:04:16,290 --> 00:04:20,070
+The error terms are assumed as with
+regular linear regression assumed to be
+
+77
+00:04:20,070 --> 00:04:24,130
+normally distributed with a mean of zero
+and some variance for the error terms.
+
+78
+00:04:24,130 --> 00:04:26,660
+We always have to estimate that in linear
+regression.
+
+79
+00:04:26,660 --> 00:04:30,390
+That's assumed to be homogenous and
+independent, and all, and all of that.
+
+80
+00:04:30,390 --> 00:04:33,190
+But that is what we call the mean squared
+error.
+
+81
+00:04:33,190 --> 00:04:37,090
+That's the unexplained variance after we
+fit this linear regression model.
+
+82
+00:04:37,090 --> 00:04:39,880
+That's what we try to minimize when we fit
+the regression line.
+
+83
+00:04:39,880 --> 00:04:43,660
+And then we're going to have to estimate
+also we have to estimate that
+
+84
+00:04:43,660 --> 00:04:48,090
+error variance that goes into calculating
+our standard errors and p values.
+
+85
+00:04:48,090 --> 00:04:52,600
+We also have to estimate the intercept and
+the beta for time.
+
+86
+00:04:54,910 --> 00:04:57,310
+And just to recall the picture of linear
+regression,
+
+87
+00:04:57,310 --> 00:05:01,910
+regular linear regression, that error
+variance that we’re estimating essentially
+
+88
+00:05:01,910 --> 00:05:07,540
+represents the average scatter around the
+line at any given value for, for time.
+
+89
+00:05:07,540 --> 00:05:11,100
+And that's called the mean squared error
+and we're trying to minimize that.
+
+90
+00:05:12,950 --> 00:05:16,170
+So I went ahead and sent just a regular
+linear regression.
+
+91
+00:05:16,170 --> 00:05:19,300
+And, you can see that there were three
+parameters that I had to estimate.
+
+92
+00:05:19,300 --> 00:05:23,279
+This residual error term and then the
+intercept and the beta for time.
+
+93
+00:05:24,400 --> 00:05:29,190
+Just went ahead and, and applied this
+model to our depression data and
+
+94
+00:05:29,190 --> 00:05:31,270
+fit it in SAS and here's the result I got.
+
+95
+00:05:31,270 --> 00:05:32,271
+So the value for
+
+96
+00:05:32,271 --> 00:05:37,184
+the unexplained variability, the variance
+of the error, was 59.4.
+
+97
+00:05:37,184 --> 00:05:40,490
+The value for the intercept comes out to
+be 24.9.
+
+98
+00:05:40,490 --> 00:05:44,144
+All that means is that in these six
+subjectsm on average of base line,
+
+99
+00:05:44,144 --> 00:05:47,609
+their average value for depression score
+is about 24.9, and
+
+100
+00:05:47,609 --> 00:05:52,082
+the beta coefficient for time is negative
+.557 meaning that they're going down
+
+101
+00:05:52,082 --> 00:05:55,390
+every month about a half point in their
+depression scores.
+
+102
+00:05:57,770 --> 00:06:00,760
+Where would I find all of this in just the
+output from SAS
+
+103
+00:06:00,760 --> 00:06:05,115
+from a regular linear regression so you
+know where to find the intercept and
+
+104
+00:06:05,115 --> 00:06:08,040
+the beta for time, those are down there,
+but where do
+
+105
+00:06:08,040 --> 00:06:13,150
+you find that residual error term which we
+don't usually pay that close attention to?
+
+106
+00:06:13,150 --> 00:06:15,440
+That you can find under the analysis of
+variance table,
+
+107
+00:06:15,440 --> 00:06:16,930
+that is the mean squared errors.
+
+108
+00:06:16,930 --> 00:06:18,460
+So here's the mean squared error,
+
+109
+00:06:18,460 --> 00:06:21,590
+again that represents the unexplained
+variability.
+
+110
+00:06:21,590 --> 00:06:24,632
+Notice that our standard error at this
+point is too high, it's .727.
+
+111
+00:06:24,632 --> 00:06:28,414
+That's going to obviously going to shrink
+once we account for the within
+
+112
+00:06:28,414 --> 00:06:32,678
+subject correlation, and the p value is
+obviously also going to be too high.
+
+113
+00:06:32,678 --> 00:06:36,250
+Pay attention to that as we start adding
+random things to the model.
+
+114
+00:06:38,660 --> 00:06:42,370
+I'm going to start by adding a random
+intercept into the model but
+
+115
+00:06:42,370 --> 00:06:44,330
+keeping time as a fixed term for now.
+
+116
+00:06:45,640 --> 00:06:48,210
+So, my mixed models have both fixed and
+random effects.
+
+117
+00:06:48,210 --> 00:06:51,072
+So, now we have a mixed model because we
+have a random effect and
+
+118
+00:06:51,072 --> 00:06:54,000
+we have a fixed effect and we still have
+the error term as always.
+
+119
+00:06:56,340 --> 00:06:59,904
+My residual variance is still going to be
+assumed to be normally distributed with
+
+120
+00:06:59,904 --> 00:07:04,160
+mean of zero and some unexplained
+variability that I have to estimate.
+
+121
+00:07:04,160 --> 00:07:08,060
+But now, for my intercept, I'm going to
+actually have to estimate two parameters.
+
+122
+00:07:08,060 --> 00:07:11,900
+The mean for the population and the
+variance.
+
+123
+00:07:11,900 --> 00:07:15,670
+I'm treating the intercept as a random
+variable with a probability distribution
+
+124
+00:07:15,670 --> 00:07:18,726
+which means I have two parameters to
+estimate instead of one.
+
+125
+00:07:18,726 --> 00:07:23,270
+again, this variance that we're estimating
+here is very comparable to the between
+
+126
+00:07:23,270 --> 00:07:27,560
+subjects variance that we estimated in
+univariate repeated measures ANOVA.
+
+127
+00:07:28,860 --> 00:07:33,610
+And of course we have to estimate the data
+for time as well.
+
+128
+00:07:33,610 --> 00:07:34,273
+I went ahead and
+
+129
+00:07:34,273 --> 00:07:37,690
+fit this in a mixed model and I'm showing
+you the predicted values here because I
+
+130
+00:07:37,690 --> 00:07:41,570
+think the picture just kind of says it all
+about what a random intercept means.
+
+131
+00:07:41,570 --> 00:07:44,898
+So what you can see here is that we have a
+random intercept, but
+
+132
+00:07:44,898 --> 00:07:46,250
+we have a fixed slope.
+
+133
+00:07:46,250 --> 00:07:49,900
+Everybody has the exact same slope but the
+intercepts vary.
+
+134
+00:07:51,130 --> 00:07:54,257
+So the mean population intercept gets
+estimated again at 24.9 but
+
+135
+00:07:54,257 --> 00:07:57,225
+then we're also estimating the variation
+in those intercepts and
+
+136
+00:07:57,225 --> 00:08:00,460
+we're allowing there to be the variability
+there.
+
+137
+00:08:00,460 --> 00:08:03,150
+Again, I think this picture just really
+sort of captures the whole concept.
+
+138
+00:08:04,520 --> 00:08:07,730
+Let me show you the numbers now that go
+with the model that I fit.
+
+139
+00:08:09,690 --> 00:08:11,480
+So here's the model that I fit.
+
+140
+00:08:11,480 --> 00:08:13,230
+I had four parameters to estimate.
+
+141
+00:08:13,230 --> 00:08:16,720
+I went ahead and estimated those and got
+some numbers out of SAS.
+
+142
+00:08:16,720 --> 00:08:21,787
+So, the residual variance, which before
+was about 59, is now reduced to 18.9.
+
+143
+00:08:21,787 --> 00:08:24,751
+So that's gone down a huge amount because
+a lot of the variability in
+
+144
+00:08:24,751 --> 00:08:28,176
+depression score just had to do with the
+fact that we had different subjects.
+
+145
+00:08:28,176 --> 00:08:28,971
+Once I account for
+
+146
+00:08:28,971 --> 00:08:32,250
+the subjects, the unexplained variability
+is greatly reduced.
+
+147
+00:08:32,250 --> 00:08:35,520
+Very akin to what we did in repeated
+measures univariate ANOVA.
+
+148
+00:08:38,280 --> 00:08:43,056
+The variability in the intercepts turned
+out to have a value of 44.6.
+
+149
+00:08:43,056 --> 00:08:46,216
+So that captured, sort of, subsumed, most
+of
+
+150
+00:08:46,216 --> 00:08:51,974
+the unexplained variability got subsumed
+into the variability for the intercepts.
+
+151
+00:08:51,974 --> 00:08:56,010
+The average intercept, the mean for the
+intercept doesn't change.
+
+152
+00:08:56,010 --> 00:08:57,830
+It's the same as what we got out of linear
+regression.
+
+153
+00:08:57,830 --> 00:09:00,800
+It's still exactly 24.9, so that doesn't
+change at all.
+
+154
+00:09:00,800 --> 00:09:02,840
+And the beta for time also doesn't change
+at all.
+
+155
+00:09:02,840 --> 00:09:05,823
+It's still negative .557.
+
+156
+00:09:05,823 --> 00:09:09,528
+Let me just show you where to find these
+things in the output from
+
+157
+00:09:09,528 --> 00:09:10,582
+PROP MIXED in SAS.
+
+158
+00:09:10,582 --> 00:09:14,950
+So the variance for the intercepts is up
+here.
+
+159
+00:09:14,950 --> 00:09:15,540
+You can see that.
+
+160
+00:09:15,540 --> 00:09:19,356
+And this is the between subject
+variability at baseline.
+
+161
+00:09:19,356 --> 00:09:22,530
+The residual variance is here, 18.9.
+
+162
+00:09:22,530 --> 00:09:26,114
+Now, you'll notice that a lot of the
+variability in depressions courses is
+
+163
+00:09:26,114 --> 00:09:29,810
+explained by the differences between
+subjects making calculating how much of
+
+164
+00:09:29,810 --> 00:09:32,050
+it, it's about 69% of that variability and
+
+165
+00:09:32,050 --> 00:09:36,760
+depression scores was actually explained
+by the differences between subjects.
+
+166
+00:09:36,760 --> 00:09:39,826
+Because prop MIXED mixed models actually
+use
+
+167
+00:09:39,826 --> 00:09:42,780
+a maximum likelihood estimation method.
+
+168
+00:09:42,780 --> 00:09:47,410
+We are going to get AIC fit statistics as
+before, so that's nice.
+
+169
+00:09:47,410 --> 00:09:49,340
+I'll show you that in the model.
+
+170
+00:09:49,340 --> 00:09:52,460
+We get the exact same intercept in beta as
+in the regular linear regression, so
+
+171
+00:09:52,460 --> 00:09:53,560
+that didn't change.
+
+172
+00:09:53,560 --> 00:09:56,192
+However, if you look carefully at the
+standard error,
+
+173
+00:09:56,192 --> 00:09:59,229
+the standard error from regular linear
+regression was .72.
+
+174
+00:09:59,229 --> 00:10:03,763
+It's gone down a huge amount here because
+our residual error has gone down.
+
+175
+00:10:03,763 --> 00:10:04,915
+And as a result, of course,
+
+176
+00:10:04,915 --> 00:10:08,230
+our p value also went down although it's
+still not statistically significant.
+
+177
+00:10:11,664 --> 00:10:16,279
+Now I went ahead and fit a model where I
+made the intercepts fixed again but
+
+178
+00:10:16,279 --> 00:10:18,760
+this time made a random effect for time.
+
+179
+00:10:18,760 --> 00:10:21,900
+I just want to show you what that means
+conceptually.
+
+180
+00:10:21,900 --> 00:10:24,840
+This is not a typical model that we'd run
+but I can run this model and
+
+181
+00:10:24,840 --> 00:10:28,220
+show you conceptually what, what it's
+going to look like.
+
+182
+00:10:28,220 --> 00:10:33,320
+So this is going to have I'm going to have
+to estimate a variance for
+
+183
+00:10:33,320 --> 00:10:36,480
+the slopes and an average for the slopes.
+
+184
+00:10:36,480 --> 00:10:38,840
+So I went ahead and did that on this
+depression score data.
+
+185
+00:10:38,840 --> 00:10:40,810
+I'm going to show you the predicted
+values,
+
+186
+00:10:40,810 --> 00:10:44,670
+because I think again the picture is
+really helpful here.
+
+187
+00:10:44,670 --> 00:10:48,550
+So here's the predicted values, so what
+you can see is that it's clear.
+
+188
+00:10:48,550 --> 00:10:49,630
+That I have a fixed effect for
+
+189
+00:10:49,630 --> 00:10:51,860
+the intercept because there's only a
+single intercept.
+
+190
+00:10:51,860 --> 00:10:55,010
+Everybody shares one single intercept.
+
+191
+00:10:55,010 --> 00:10:57,970
+However, you can see that there's
+variation in the slopes.
+
+192
+00:10:57,970 --> 00:11:01,340
+And it's even really clear from this
+picture that the variance,
+
+193
+00:11:01,340 --> 00:11:03,860
+that the slopes you know, follow a normal
+distribution.
+
+194
+00:11:03,860 --> 00:11:06,610
+It looks like they follow kind of a nice,
+normal distribution here.
+
+195
+00:11:06,610 --> 00:11:10,435
+It wasn't a huge amount of variability in
+the slopes between different subjects but
+
+196
+00:11:10,435 --> 00:11:12,750
+some variability is estimated here.
+
+197
+00:11:12,750 --> 00:11:14,778
+And again, the picture just kind of shows
+it,
+
+198
+00:11:14,778 --> 00:11:17,150
+this is what it means to have a random
+effect for time.
+
+199
+00:11:19,060 --> 00:11:21,975
+And then I went ahead and actually put
+numbers, fit that in SAS and
+
+200
+00:11:21,975 --> 00:11:24,410
+actually get numbers out just to show you.
+
+201
+00:11:24,410 --> 00:11:30,160
+So the residual variance now bounced back
+up to 40, because actually a lot of,
+
+202
+00:11:30,160 --> 00:11:35,700
+it was really important to have the random
+effect for the intercept in here.
+
+203
+00:11:35,700 --> 00:11:39,700
+I've taken that out now and so some of my
+unexplained variability has come back in.
+
+204
+00:11:41,250 --> 00:11:43,960
+The variability in time slopes between
+subjects actually turns out to
+
+205
+00:11:43,960 --> 00:11:45,250
+be relatively small.
+
+206
+00:11:45,250 --> 00:11:48,642
+We kind of saw that in the original
+picture that I showed you of the subjects,
+
+207
+00:11:48,642 --> 00:11:52,320
+and it looks like most of them are kind of
+drifting a little bit downward over time.
+
+208
+00:11:52,320 --> 00:11:55,850
+So there's not a huge amount of
+variability in the pattern of changes and
+
+209
+00:11:55,850 --> 00:11:59,370
+depression scores over time between the
+different subjects.
+
+210
+00:11:59,370 --> 00:12:02,772
+The intercept here is still stays at 24.9,
+the beta for
+
+211
+00:12:02,772 --> 00:12:06,149
+time still stays at negative .557, those
+don't change.
+
+212
+00:12:07,280 --> 00:12:11,120
+Alright, so that model's clearly not a
+great model but again it makes a good
+
+213
+00:12:11,120 --> 00:12:15,190
+picture and then I went ahead and fit the
+model with both of those being random.
+
+214
+00:12:15,190 --> 00:12:17,082
+A random intercept and a random time
+slope.
+
+215
+00:12:17,082 --> 00:12:19,994
+So now we've got some additional
+parameters that we have to fit but
+
+216
+00:12:19,994 --> 00:12:23,426
+before I show you the numbers there, I
+again want to show you the picture because
+
+217
+00:12:23,426 --> 00:12:25,590
+I think the picture is very helpful.
+
+218
+00:12:25,590 --> 00:12:29,543
+So now you can see that I clearly have
+variability of the intercepts here but
+
+219
+00:12:29,543 --> 00:12:32,500
+I also am allowing some variability in the
+slopes.
+
+220
+00:12:32,500 --> 00:12:36,050
+You'll notice that there isnt a huge
+amount of variability in the slopes.
+
+221
+00:12:36,050 --> 00:12:39,011
+So there's a big amount of variability at
+base line in terms of the baseline
+
+222
+00:12:39,011 --> 00:12:41,564
+depression score in terms of the
+intercept.
+
+223
+00:12:41,564 --> 00:12:45,920
+But most people are following a fairly
+simple trajectory with the exception of
+
+224
+00:12:45,920 --> 00:12:50,540
+this one purple line, that person felt
+followed a more steep trajectory, but
+
+225
+00:12:50,540 --> 00:12:52,310
+the slopes are pretty close.
+
+226
+00:12:52,310 --> 00:12:55,083
+You can see there isn't a heck of a lot of
+variability in the slopes in,
+
+227
+00:12:55,083 --> 00:12:55,800
+in this data set.
+
+228
+00:12:57,710 --> 00:13:00,608
+Alright, so I went ahead and actually fit
+the model and
+
+229
+00:13:00,608 --> 00:13:03,175
+I just want to show you the numbers that
+came out.
+
+230
+00:13:03,175 --> 00:13:06,880
+So first of all, the error term, the error
+variance is now down to 16.6.
+
+231
+00:13:06,880 --> 00:13:09,440
+We've explained away a lot of that
+unexplained variability.
+
+232
+00:13:10,750 --> 00:13:13,975
+The variance for the intercepts is at 53,
+so
+
+233
+00:13:13,975 --> 00:13:17,050
+again a very big variability in the
+intercepts.
+
+234
+00:13:18,140 --> 00:13:21,680
+The variance for the time slopes is pretty
+small, is only 0.41, so
+
+235
+00:13:21,680 --> 00:13:25,515
+that's also matching the picture and
+showing you that there wasn't a heck of
+
+236
+00:13:25,515 --> 00:13:29,280
+a lot of variability in people's slopes
+over time.
+
+237
+00:13:29,280 --> 00:13:32,480
+Everybody was kind of staying very
+flattered with just going down a little.
+
+238
+00:13:32,480 --> 00:13:37,420
+The beta for the intercept, and for time,
+don't change at all as before.
+
+239
+00:13:37,420 --> 00:13:42,280
+And then there's one other additional
+parameter that we have to estimate here.
+
+240
+00:13:42,280 --> 00:13:46,240
+So we have to estimate the covariance now
+that we have a random effect for
+
+241
+00:13:46,240 --> 00:13:48,286
+the intercept and a random effect for
+
+242
+00:13:48,286 --> 00:13:52,670
+time, we have to actually estimate the
+covariance between those.
+
+243
+00:13:52,670 --> 00:13:54,669
+And that here comes out to be 1.99.
+
+244
+00:13:54,669 --> 00:13:57,694
+I'll show you where to find that in SAS
+[UNKNOWN] in just a second here.
+
+245
+00:13:57,694 --> 00:14:02,194
+But I'll just remind you that as I
+mentioned in an earlier module,
+
+246
+00:14:02,194 --> 00:14:03,394
+the matrix for
+
+247
+00:14:03,394 --> 00:14:08,430
+the random effects, that will also have a
+covariance matrix that goes with it.
+
+248
+00:14:08,430 --> 00:14:11,960
+And we have to specify that covariant
+structure, that's called the g matrix.
+
+249
+00:14:11,960 --> 00:14:15,362
+So, I'll show you when I show you how to
+program this in SAS that we do have to
+
+250
+00:14:15,362 --> 00:14:19,300
+specify that covariance matrix structure,
+I usually set it unstructured.
+
+251
+00:14:19,300 --> 00:14:21,090
+But we do to get this additional
+covariance and
+
+252
+00:14:21,090 --> 00:14:23,320
+this is one additional parameter we're
+estimating here.
+
+253
+00:14:24,600 --> 00:14:26,830
+Where do I actually find these things in
+SAS?
+
+254
+00:14:26,830 --> 00:14:30,290
+So the variance for the intercept, the one
+here's representing the intercept.
+
+255
+00:14:30,290 --> 00:14:32,180
+The two is representing the time effects.
+
+256
+00:14:32,180 --> 00:14:35,110
+So the variance for the intercept turns
+out to be 53.
+
+257
+00:14:35,110 --> 00:14:40,180
+The covariance between the intercept and
+the time slope is the negative 1.99.
+
+258
+00:14:40,180 --> 00:14:45,630
+The variance for the time slope again is
+very small.
+
+259
+00:14:45,630 --> 00:14:49,271
+And then the residual variance is 16.63.
+
+260
+00:14:49,271 --> 00:14:52,715
+We're getting AIC Fit Statistics as
+before, and
+
+261
+00:14:52,715 --> 00:14:57,394
+then we get our same intercept and data
+coefficient as before.
+
+262
+00:14:57,394 --> 00:15:00,474
+The Standard Error's actually gone up a
+little bit compared with
+
+263
+00:15:00,474 --> 00:15:03,274
+when we had just a random intercept
+because it turns out
+
+264
+00:15:03,274 --> 00:15:05,906
+here that the model with the only the
+random intercept is
+
+265
+00:15:05,906 --> 00:15:10,120
+only slightly better than the model that
+also includes the random effect for time.
+
+266
+00:15:10,120 --> 00:15:11,040
+I'm going to show you that in a minute.
+
+267
+00:15:12,950 --> 00:15:14,820
+So how do we choose between all these
+different models?
+
+268
+00:15:14,820 --> 00:15:16,758
+So clearly the model with all fixed
+effects,
+
+269
+00:15:16,758 --> 00:15:18,798
+which is just a regular linear regression,
+and
+
+270
+00:15:18,798 --> 00:15:22,640
+doesn't handle the correlation within
+subjects, clearly that's not a good model.
+
+271
+00:15:22,640 --> 00:15:24,370
+We can all agree on that.
+
+272
+00:15:24,370 --> 00:15:27,240
+But then, how do I know, should I include
+the random intercept?
+
+273
+00:15:27,240 --> 00:15:29,187
+Should I include the random time slope?
+
+274
+00:15:29,187 --> 00:15:30,114
+Should I include both?
+
+275
+00:15:30,114 --> 00:15:31,500
+How do I know that?
+
+276
+00:15:31,500 --> 00:15:36,350
+Well one of the ways to choose the model,
+is to look at the AIC statistic.
+
+277
+00:15:36,350 --> 00:15:38,534
+So now that we're doing maximum
+likelihood,
+
+278
+00:15:38,534 --> 00:15:41,166
+actually restricted maximum likelihood
+estimation,
+
+279
+00:15:41,166 --> 00:15:44,480
+we're going to get likelihood statistics
+in AIC statistics again.
+
+280
+00:15:44,480 --> 00:15:48,385
+So just to remind you, the AIC, is it just
+it takes the negative 2
+
+281
+00:15:48,385 --> 00:15:54,052
+log likelihood value and it penalizes it
+for the number of parameters in the model.
+
+282
+00:15:54,052 --> 00:15:59,070
+Values that are smaller indicate better
+fit, and greater parsimony.
+
+283
+00:16:00,300 --> 00:16:04,710
+But I shouldn't know that sometimes we're
+going to see AIC values that actually turn
+
+284
+00:16:04,710 --> 00:16:06,180
+out to be negative.
+
+285
+00:16:06,180 --> 00:16:08,640
+We want values that are closer to zero.
+
+286
+00:16:08,640 --> 00:16:12,080
+So we want the absolute value of the AIC
+to be smallest.
+
+287
+00:16:12,080 --> 00:16:14,380
+So just remember that when we get to those
+negative values.
+
+288
+00:16:14,380 --> 00:16:17,010
+So values closer to zero are better,
+better fit.
+
+289
+00:16:18,140 --> 00:16:21,150
+So what, I went ahead and compared the AIC
+from our four models.
+
+290
+00:16:21,150 --> 00:16:23,200
+Where we had all fixed, this was a regular
+linear regression,
+
+291
+00:16:23,200 --> 00:16:26,060
+doesn't do anything to account for the
+correlation within subjects.
+
+292
+00:16:26,060 --> 00:16:27,250
+Clearly that's a bad model.
+
+293
+00:16:27,250 --> 00:16:29,387
+That's, that's the worst AIC of all of
+them.
+
+294
+00:16:29,387 --> 00:16:34,002
+Then I have the only the random intercept,
+the random intercept only model,
+
+295
+00:16:34,002 --> 00:16:36,194
+that one actually had the best AIC.
+
+296
+00:16:36,194 --> 00:16:37,806
+When I had only time effect random and
+
+297
+00:16:37,806 --> 00:16:41,498
+intercept fixed, I didn't do very well at
+all because it really didn't account for
+
+298
+00:16:41,498 --> 00:16:44,720
+the between subject variability very well
+at all.
+
+299
+00:16:44,720 --> 00:16:47,526
+When I put both random in I actually
+didn't do as well as
+
+300
+00:16:47,526 --> 00:16:49,240
+with just the random intercept.
+
+301
+00:16:49,240 --> 00:16:52,080
+And you'll see that sometimes, that
+sometimes it's sufficient to just put
+
+302
+00:16:52,080 --> 00:16:55,220
+the random intercept and then you actually
+get a better model fit that way.
+
+303
+00:16:55,220 --> 00:16:56,912
+So the best model turned out to be this
+one,
+
+304
+00:16:56,912 --> 00:16:59,121
+where we allowed a random intercept which
+accounted for
+
+305
+00:16:59,121 --> 00:17:01,999
+the fact that different subjects have
+different depression scores.
+
+306
+00:17:03,000 --> 00:17:06,490
+But it turned out that it looks like the
+pattern, the trajectory of changes in
+
+307
+00:17:06,490 --> 00:17:09,470
+depression scores over time was fairly
+similar among the different subjects here.
+
+308
+00:17:12,030 --> 00:17:13,885
+And I actually do want to show you the
+code so
+
+309
+00:17:13,885 --> 00:17:17,660
+you know exactly where what I'm talking
+about how I got these models.
+
+310
+00:17:17,660 --> 00:17:23,200
+So, in proc mixed, we would be adding a
+random statement.
+
+311
+00:17:23,200 --> 00:17:26,920
+And if I only want the random intercept, I
+would just put random and
+
+312
+00:17:26,920 --> 00:17:28,390
+then an int for intercept.
+
+313
+00:17:30,410 --> 00:17:33,060
+If I want to get the random intercept and
+the random slope for
+
+314
+00:17:33,060 --> 00:17:35,763
+time, I would put int and then whatever my
+time variable is,
+
+315
+00:17:35,763 --> 00:17:39,740
+I would name that here, that's the same
+variable I named in the model.
+
+316
+00:17:39,740 --> 00:17:42,926
+Now because we've got more than one random
+effect in the model,
+
+317
+00:17:42,926 --> 00:17:45,404
+we do now have to specify the covariance
+matrix for
+
+318
+00:17:45,404 --> 00:17:48,700
+the random effects which in SAS is called
+the G matrix.
+
+319
+00:17:48,700 --> 00:17:52,063
+I will typically set this to be
+unstructured because, you know,
+
+320
+00:17:52,063 --> 00:17:54,514
+there's very few parameters to estimate
+here so,
+
+321
+00:17:54,514 --> 00:17:57,090
+the unstructure doesn't really cost you
+too much.
+
+322
+00:17:57,090 --> 00:17:59,427
+So I will usually set that as
+unstructured.
+
+323
+00:17:59,427 --> 00:17:59,927
+[BLANK_AUDIO]

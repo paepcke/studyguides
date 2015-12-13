@@ -1,0 +1,2066 @@
+1
+00:00:00,000 --> 00:00:05,410
+[BLANK_AUDIO].
+
+2
+00:00:05,410 --> 00:00:08,320
+In this next module, I'm going to give you
+some strategies for
+
+3
+00:00:08,320 --> 00:00:09,990
+dealing with repeated events.
+
+4
+00:00:11,460 --> 00:00:15,520
+So up until now we've been dealing with
+the situation where we were
+
+5
+00:00:15,520 --> 00:00:18,910
+just modeling the time until the first
+event.
+
+6
+00:00:18,910 --> 00:00:22,750
+And that makes perfect sense in the
+context of survival analysis.
+
+7
+00:00:22,750 --> 00:00:26,570
+Remember that these methods were developed
+around survival.
+
+8
+00:00:26,570 --> 00:00:31,290
+Since death presumably can only happen
+once, the survival analysis methods
+
+9
+00:00:31,290 --> 00:00:35,210
+really were kind of first modeled around
+time to first event.
+
+10
+00:00:35,210 --> 00:00:38,100
+However, there are lots of binary events
+that
+
+11
+00:00:38,100 --> 00:00:41,760
+could repeat during the time course of a
+single study.
+
+12
+00:00:41,760 --> 00:00:44,600
+So for example, if you're looking at
+fractures, women or
+
+13
+00:00:44,600 --> 00:00:47,110
+men could have multiple fractures during a
+study.
+
+14
+00:00:47,110 --> 00:00:50,290
+Or heart attacks, people could have
+multiple heart attacks or
+
+15
+00:00:50,290 --> 00:00:53,140
+depression episodes or disability
+episodes.
+
+16
+00:00:53,140 --> 00:00:55,640
+Or pregnancies, depending on how long
+you're following people,
+
+17
+00:00:55,640 --> 00:01:00,150
+all of those things could repeat a number
+of times across many subjects.
+
+18
+00:01:00,150 --> 00:01:01,820
+How do we deal with those repeated events?
+
+19
+00:01:04,120 --> 00:01:07,060
+So there's a bunch of ways people have
+come up with for
+
+20
+00:01:07,060 --> 00:01:08,292
+dealing with repeated events.
+
+21
+00:01:08,292 --> 00:01:10,240
+I'm going to go over basically three of
+the,
+
+22
+00:01:10,240 --> 00:01:12,990
+the main strategies that are used to
+handle them.
+
+23
+00:01:12,990 --> 00:01:16,140
+So separate models, counting process
+models, and conditional models.
+
+24
+00:01:16,140 --> 00:01:17,930
+I'll go each, over each one of these in
+turn.
+
+25
+00:01:20,080 --> 00:01:22,910
+Just have a little tiny data set to work
+with here.
+
+26
+00:01:22,910 --> 00:01:24,990
+Here is a very small example data set.,
+
+27
+00:01:24,990 --> 00:01:26,300
+It only has two subjects in it but
+
+28
+00:01:26,300 --> 00:01:28,890
+it will give you sense of how the data
+would be structured.
+
+29
+00:01:28,890 --> 00:01:30,960
+So, for example, there's subject number
+one.
+
+30
+00:01:30,960 --> 00:01:33,590
+ID number one has three observations in
+
+31
+00:01:33,590 --> 00:01:37,240
+this data set because that person started
+the study and
+
+32
+00:01:37,240 --> 00:01:41,350
+then, five months into the study, they had
+the event, whatever the event is here.
+
+33
+00:01:41,350 --> 00:01:43,290
+But then we allowed them to continue in
+the study.
+
+34
+00:01:43,290 --> 00:01:44,520
+We didn't stop them,
+
+35
+00:01:44,520 --> 00:01:48,120
+end them at the time of event, we allow
+them to continue in the study.
+
+36
+00:01:48,120 --> 00:01:53,690
+The next interval of interest goes, starts
+at five, and from five on,
+
+37
+00:01:53,690 --> 00:01:57,890
+they then again have another event at 25
+months into the study.
+
+38
+00:01:57,890 --> 00:02:00,640
+And then we start the clock again at 25
+months, and
+
+39
+00:02:00,640 --> 00:02:03,450
+from 25 months to the end of the study
+which occurred at 36 months,
+
+40
+00:02:03,450 --> 00:02:06,790
+they did not have another event so they
+are just censored at the end of the study.
+
+41
+00:02:06,790 --> 00:02:09,650
+Subject two again has multiple
+observations because they had
+
+42
+00:02:09,650 --> 00:02:10,840
+multiple events.
+
+43
+00:02:10,840 --> 00:02:14,497
+So they had an event at 19 months into the
+study and then again at 25 months, and
+
+44
+00:02:14,497 --> 00:02:15,610
+then at 29 months, and
+
+45
+00:02:15,610 --> 00:02:19,050
+they were finally censored at 36 months
+when the study actually ended.
+
+46
+00:02:19,050 --> 00:02:23,660
+These are made up data, but this was what
+a real data set might look like.
+
+47
+00:02:23,660 --> 00:02:25,530
+So the first strategy, in a way,
+
+48
+00:02:25,530 --> 00:02:28,180
+is just the simplest strategy that you
+could think of.
+
+49
+00:02:28,180 --> 00:02:31,410
+So one strategy would be simply to run a
+new
+
+50
+00:02:31,410 --> 00:02:35,570
+Cox regression model every time you know,
+you get to a new set of events.
+
+51
+00:02:35,570 --> 00:02:38,600
+So you could run a Cox regression model up
+until the time
+
+52
+00:02:38,600 --> 00:02:40,570
+to first event for everybody.
+
+53
+00:02:40,570 --> 00:02:44,030
+And then you could run a whole separate
+model among everybody who
+
+54
+00:02:44,030 --> 00:02:45,390
+had a first event.
+
+55
+00:02:45,390 --> 00:02:48,770
+You could then do a new Cox regression
+that represents their time to
+
+56
+00:02:48,770 --> 00:02:49,980
+the second event.
+
+57
+00:02:49,980 --> 00:02:54,730
+And then if people, enough people had a
+second event, you could again run a Cox
+
+58
+00:02:54,730 --> 00:02:59,630
+regression model that looked at just the
+data of everybody who had a second event,
+
+59
+00:02:59,630 --> 00:03:02,760
+up until the, they time that they had a
+third event and so on.
+
+60
+00:03:02,760 --> 00:03:06,730
+So, you can repeat this as you know, many
+times as you need to.
+
+61
+00:03:06,730 --> 00:03:11,570
+Now of course, the obvious problem with
+this strategy is that, well first of
+
+62
+00:03:11,570 --> 00:03:15,040
+all you're running separate models, so
+you're going to get separate datas for
+
+63
+00:03:15,040 --> 00:03:18,260
+the time to first event, time to second
+event, time to third event, etc.
+
+64
+00:03:18,260 --> 00:03:22,060
+Now that might be legitimate if, in fact,
+the risk factors for
+
+65
+00:03:22,060 --> 00:03:26,330
+having a first event differ from the risk
+factors for having a second event.
+
+66
+00:03:26,330 --> 00:03:28,900
+So you can imagine for something like a
+heart attack.
+
+67
+00:03:28,900 --> 00:03:32,570
+Perhaps, the risk factors for having a
+first heart attack could be different for
+
+68
+00:03:32,570 --> 00:03:35,020
+the risk factors for having a second heart
+attack.
+
+69
+00:03:35,020 --> 00:03:38,180
+So it might make sense if you're dealing
+with something where those risk
+
+70
+00:03:38,180 --> 00:03:40,230
+factors could be very different.
+
+71
+00:03:40,230 --> 00:03:43,410
+Of course, the problem here is that you're
+going to getting increasingly smaller and
+
+72
+00:03:43,410 --> 00:03:44,580
+smaller sample sizes.
+
+73
+00:03:44,580 --> 00:03:48,460
+So your risk set, after you run the first
+model, your risk set is then
+
+74
+00:03:48,460 --> 00:03:52,360
+only people who had a first event and that
+might be only a small number of people.
+
+75
+00:03:52,360 --> 00:03:56,010
+Or, if you keep going, eventually at some
+event, the fourth, the fifth,
+
+76
+00:03:56,010 --> 00:03:59,580
+you're going to have too few people to run
+another whole another model.
+
+77
+00:04:01,380 --> 00:04:04,570
+But, let me just show you what this would
+look like in terms of,
+
+78
+00:04:04,570 --> 00:04:06,400
+the likelihood function.
+
+79
+00:04:06,400 --> 00:04:10,630
+It's going to be very simple because
+again, we would just run separate models
+
+80
+00:04:10,630 --> 00:04:15,300
+so we would sort of have Cox model one,
+and we would do a likelihood for that.
+
+81
+00:04:15,300 --> 00:04:17,960
+So that's going to be up to the time until
+the first event,
+
+82
+00:04:17,960 --> 00:04:20,900
+so we're going to have two events in this
+model.
+
+83
+00:04:20,900 --> 00:04:23,660
+So both subject one and subject two had an
+event.
+
+84
+00:04:23,660 --> 00:04:26,750
+So subject one had an event at five months
+into the study.
+
+85
+00:04:26,750 --> 00:04:30,470
+So at that time, I don't know what the
+predictor is here.
+
+86
+00:04:30,470 --> 00:04:33,740
+Let's just call it x1 for subject one,
+whatever their value is for weight or
+
+87
+00:04:33,740 --> 00:04:36,490
+blood pressure or smoking, whatever x is.
+
+88
+00:04:36,490 --> 00:04:39,050
+So they're the one who had the event at
+five months into the study.
+
+89
+00:04:39,050 --> 00:04:40,830
+Who was at risk at five months into the
+study?
+
+90
+00:04:40,830 --> 00:04:45,540
+Well, both subject one and subject two
+were at risk, so they are,
+
+91
+00:04:45,540 --> 00:04:46,770
+they each get a term in the model.
+
+92
+00:04:47,890 --> 00:04:51,060
+At 19 months into the study, subject two
+had an event while, because there's
+
+93
+00:04:51,060 --> 00:04:54,950
+only two people here, there, subject two
+was the only person at risk, so they,
+
+94
+00:04:54,950 --> 00:04:58,068
+that would actually go to one, but the
+likelihood would look like that.
+
+95
+00:04:58,068 --> 00:05:02,090
+Cox model two, the second model, would
+take now, and
+
+96
+00:05:02,090 --> 00:05:05,520
+look at the time from the first event to
+the second event.
+
+97
+00:05:05,520 --> 00:05:10,280
+So for example, Subject one, you would now
+start a new model where you'd count their
+
+98
+00:05:10,280 --> 00:05:14,075
+baseline as the, five months into the
+study is their kind of new baseline and
+
+99
+00:05:14,075 --> 00:05:16,490
+then they would end at 20 months into the
+study.
+
+100
+00:05:16,490 --> 00:05:19,700
+So it you know, you kind of start the
+clock over again.
+
+101
+00:05:19,700 --> 00:05:24,210
+And now they have an, a second event 20
+months after they had the first event.
+
+102
+00:05:24,210 --> 00:05:28,780
+Subject two has their second event six
+months after they had their first event.
+
+103
+00:05:28,780 --> 00:05:34,600
+So Subject two actually has an event
+before Subject one in this schematic.
+
+104
+00:05:35,690 --> 00:05:39,210
+So, the likelihood term would contain a
+term for, for
+
+105
+00:05:39,210 --> 00:05:41,840
+event six months into the study now.
+
+106
+00:05:41,840 --> 00:05:44,020
+There's six months since the first event.
+
+107
+00:05:44,020 --> 00:05:46,780
+Person two would be in the numerator here
+for
+
+108
+00:05:46,780 --> 00:05:52,450
+the first term in the likelihood, yeah,
+and both of them are at risk at that time,
+
+109
+00:05:52,450 --> 00:05:56,300
+and then there's only one person at risk
+for the second event.
+
+110
+00:05:56,300 --> 00:05:58,940
+So, that, just looks like that.
+
+111
+00:05:58,940 --> 00:06:00,710
+So that's the idea, totally separate
+models.
+
+112
+00:06:00,710 --> 00:06:02,560
+Starting the clock for every new event.
+
+113
+00:06:04,610 --> 00:06:08,450
+That, of course, doesn't in any way use
+all the data at once.
+
+114
+00:06:08,450 --> 00:06:11,450
+So a strategy that would use all the data
+at once that would come up with
+
+115
+00:06:11,450 --> 00:06:14,128
+a single beta rather than multiple betas.
+
+116
+00:06:14,128 --> 00:06:17,130
+The, sort of the simplest strategy that
+uses all of the data at once is to
+
+117
+00:06:17,130 --> 00:06:19,580
+do what is called a counting process
+model.
+
+118
+00:06:19,580 --> 00:06:23,870
+You allow the subjects to contribute
+multiple observations in the data.
+
+119
+00:06:23,870 --> 00:06:28,860
+So, each person is at risk as long as they
+are observed in the study,
+
+120
+00:06:28,860 --> 00:06:30,320
+even if they've already had an event.
+
+121
+00:06:30,320 --> 00:06:33,060
+Up until now, the moment somebody had an
+event they were sort of out of the risk
+
+122
+00:06:33,060 --> 00:06:34,350
+set, they were dropped from the risk set.
+
+123
+00:06:34,350 --> 00:06:36,560
+But now we're allowing people to recur in
+the risk set,
+
+124
+00:06:36,560 --> 00:06:39,930
+to recur in those denominators in a
+likelihood function.
+
+125
+00:06:39,930 --> 00:06:45,120
+They can occur in the partial likelihood
+function in the numerator multiple times.
+
+126
+00:06:45,120 --> 00:06:48,930
+The problem that this brings up is that we
+are now counting the same
+
+127
+00:06:48,930 --> 00:06:53,210
+person multiple times, as if they were
+independent people, and so
+
+128
+00:06:53,210 --> 00:06:57,850
+we've got a problem where we no longer
+have independence of observation.
+
+129
+00:06:57,850 --> 00:07:02,040
+But we can correct for that fairly simply,
+we can correct for those correlations
+
+130
+00:07:02,040 --> 00:07:06,720
+within person using those robust standard
+errors that I talked about earlier.
+
+131
+00:07:06,720 --> 00:07:08,090
+So that's fairly easy to correct for.
+
+132
+00:07:09,110 --> 00:07:14,198
+So the counting process model, what would
+that look like in terms of the likelihood.
+
+133
+00:07:14,198 --> 00:07:18,620
+So in the counting process model, what
+we're doing, here's Subject one,
+
+134
+00:07:18,620 --> 00:07:20,200
+here's Subject two, here's time.
+
+135
+00:07:21,200 --> 00:07:24,620
+And here's say, five months into the
+study, 19 months into the study.
+
+136
+00:07:24,620 --> 00:07:30,415
+So, person one is in the study, they have
+the events at five months, 25 months.
+
+137
+00:07:30,415 --> 00:07:32,610
+25 months would be out here so
+
+138
+00:07:32,610 --> 00:07:35,020
+they have an event here, and they have an
+event here.
+
+139
+00:07:35,020 --> 00:07:37,607
+And then they're censored 36 months into
+the study.
+
+140
+00:07:37,607 --> 00:07:43,007
+Subject two on the other hand, they're
+also censored at 36,
+
+141
+00:07:43,007 --> 00:07:48,626
+but they have an event at 19 months and
+then again at 25 months.
+
+142
+00:07:48,626 --> 00:07:50,869
+And then again at 29 months.
+
+143
+00:07:50,869 --> 00:07:52,700
+So they have three events in this study.
+
+144
+00:07:53,800 --> 00:07:55,430
+How would the likelihood term be set up?
+
+145
+00:07:55,430 --> 00:07:56,450
+Well every time there's an event,
+
+146
+00:07:56,450 --> 00:07:58,270
+we're going to have a new term in the
+likelihood.
+
+147
+00:07:58,270 --> 00:07:59,510
+So in this case we're going to have one,
+
+148
+00:07:59,510 --> 00:08:02,068
+two, three, four, five terms in the terms
+in the likelihood.
+
+149
+00:08:02,068 --> 00:08:05,008
+The first term in the likelihood happens
+at the first event time which is
+
+150
+00:08:05,008 --> 00:08:06,510
+five months into the study.
+
+151
+00:08:06,510 --> 00:08:09,978
+At five months into the study there are
+two people at risk, so
+
+152
+00:08:09,978 --> 00:08:11,690
+Subject one and Subject two.
+
+153
+00:08:11,690 --> 00:08:13,250
+They're, they're both in the denominator,
+and
+
+154
+00:08:13,250 --> 00:08:15,770
+Subject one is the one who had the event,
+so they'd go in the numerator.
+
+155
+00:08:15,770 --> 00:08:19,500
+At 19 months into the study, the next
+event occurs.
+
+156
+00:08:19,500 --> 00:08:25,350
+That event occurs in Subject two, so we
+get something that looks like this.
+
+157
+00:08:25,350 --> 00:08:29,380
+Notice that again people are repeating, so
+we have to account for that correlation.
+
+158
+00:08:29,380 --> 00:08:32,390
+With those robust standard error
+estimates.
+
+159
+00:08:32,390 --> 00:08:35,000
+And at 25 months into this study, we have
+both Subject one and
+
+160
+00:08:35,000 --> 00:08:39,350
+Subject two are having the event, we have
+to put in the likelihood account for ties.
+
+161
+00:08:39,350 --> 00:08:42,420
+We'd have to do one of those methods for
+accounting for ties, but we'd again have
+
+162
+00:08:42,420 --> 00:08:46,860
+another term in the likelihood which would
+allow both of those, both Subject one and
+
+163
+00:08:46,860 --> 00:08:50,950
+Subject two to have the event and then the
+final term in the likelihood.
+
+164
+00:08:50,950 --> 00:08:52,580
+Again everybody is at risk.
+
+165
+00:08:52,580 --> 00:08:56,036
+Everybody remains at risk through the
+whole study period at least up until,
+
+166
+00:08:56,036 --> 00:08:58,230
+as long as we're following them.
+
+167
+00:08:58,230 --> 00:09:00,910
+So that's the idea of the counting process
+model.
+
+168
+00:09:00,910 --> 00:09:04,010
+You come up with a single beta that
+represented the effect of
+
+169
+00:09:04,010 --> 00:09:05,380
+whatever the predictor is here.
+
+170
+00:09:07,460 --> 00:09:08,840
+Okay, yet another strategy.
+
+171
+00:09:08,840 --> 00:09:11,310
+So there's one called the conditional
+model.
+
+172
+00:09:11,310 --> 00:09:14,770
+The conditional model is actually very
+similar to the counting process model.
+
+173
+00:09:14,770 --> 00:09:16,270
+So we're going to count people multiple
+times.
+
+174
+00:09:16,270 --> 00:09:19,460
+They're going to be allowed to reappear in
+the risk set even after they've
+
+175
+00:09:19,460 --> 00:09:20,790
+had an event.
+
+176
+00:09:20,790 --> 00:09:24,470
+However, we're going to do one additional
+thing in the conditional model,
+
+177
+00:09:24,470 --> 00:09:28,990
+which is we're going to stratify on which
+event number you're on.
+
+178
+00:09:28,990 --> 00:09:32,390
+So that we're only comparing people who
+are on their first event to
+
+179
+00:09:32,390 --> 00:09:34,280
+other people who are on their first event.
+
+180
+00:09:34,280 --> 00:09:37,730
+We're only comparing people who are on
+their second event to other people who
+
+181
+00:09:37,730 --> 00:09:39,310
+are on their second event.
+
+182
+00:09:39,310 --> 00:09:44,210
+This recognizes the fact that the baseline
+hazard for the first event is probably
+
+183
+00:09:44,210 --> 00:09:48,500
+different or could be different from the
+baseline hazard for the second event.
+
+184
+00:09:48,500 --> 00:09:52,370
+So once you've had a heart attack already,
+your risk of having your first heart
+
+185
+00:09:52,370 --> 00:09:55,580
+attack may be very different than your
+risk for having a second heart attack.
+
+186
+00:09:55,580 --> 00:09:59,460
+Once you've had a first heart attack,
+possibly, your baseline hazard for
+
+187
+00:09:59,460 --> 00:10:00,870
+heart attack goes up.
+
+188
+00:10:00,870 --> 00:10:04,460
+And so we want to compare only people who
+are on the same event number.
+
+189
+00:10:04,460 --> 00:10:05,570
+So, we're going to stratify.
+
+190
+00:10:05,570 --> 00:10:07,320
+That's easy to do in the Cox regression
+model because we
+
+191
+00:10:07,320 --> 00:10:10,130
+can do that stratification that I talked
+about last week.
+
+192
+00:10:10,130 --> 00:10:12,980
+We can stratify on which event number
+you're on.
+
+193
+00:10:12,980 --> 00:10:16,210
+And the way, again, since we're having
+multiple people recur in
+
+194
+00:10:16,210 --> 00:10:19,530
+the data set here, we have correlations,
+we're going to correct for
+
+195
+00:10:19,530 --> 00:10:22,580
+those correlations in our data using the
+robust standard errors again.
+
+196
+00:10:24,370 --> 00:10:26,430
+Now there's two variations in the
+modelers.
+
+197
+00:10:26,430 --> 00:10:29,290
+Kind of two different ways of counting
+time in this model.
+
+198
+00:10:29,290 --> 00:10:32,290
+So I'll show you both ways, you can see
+both ways in the literature.
+
+199
+00:10:32,290 --> 00:10:34,630
+You can just count time from baseline,
+
+200
+00:10:34,630 --> 00:10:38,220
+the way we did it in the counting process
+model or, you can
+
+201
+00:10:38,220 --> 00:10:42,980
+restart the clock every time there's a new
+event, and count time since last event.
+
+202
+00:10:42,980 --> 00:10:45,310
+And I'll show you the difference of those,
+it'll be the easiest way again,
+
+203
+00:10:45,310 --> 00:10:48,010
+to see the difference is to draw the
+picture and
+
+204
+00:10:48,010 --> 00:10:50,890
+see how that's reflected in the likelihood
+function.
+
+205
+00:10:50,890 --> 00:10:53,670
+So if I choose time since baseline, what's
+my picture again?
+
+206
+00:10:53,670 --> 00:10:59,710
+So again, my picture here, here's Subject
+one, here's Subject two,
+
+207
+00:10:59,710 --> 00:11:03,660
+here's 36 months when both are censored,
+and we're
+
+208
+00:11:03,660 --> 00:11:07,900
+counting time since baseline now, so it's
+basically the same picture we had before.
+
+209
+00:11:07,900 --> 00:11:13,350
+Here's an event happening here, another
+event and something looks like that.
+
+210
+00:11:13,350 --> 00:11:15,920
+What's the likelihood function going to
+look like here then?
+
+211
+00:11:15,920 --> 00:11:19,620
+So now we are stratifying on which event
+you're on.
+
+212
+00:11:19,620 --> 00:11:24,330
+So it's kind of probably helpful if we
+actually add to our data set
+
+213
+00:11:24,330 --> 00:11:29,230
+the strata number, the event number that
+you're on.
+
+214
+00:11:29,230 --> 00:11:30,330
+So just to keep track here.
+
+215
+00:11:30,330 --> 00:11:31,990
+So this is the first event.
+
+216
+00:11:31,990 --> 00:11:34,820
+This person is on the first event, now
+they're on the second event.
+
+217
+00:11:34,820 --> 00:11:36,210
+Now they would be on the third event.
+
+218
+00:11:36,210 --> 00:11:37,870
+They were at risk for the third event.
+
+219
+00:11:37,870 --> 00:11:40,380
+Person two is at risk for the first event,
+and then at risk for
+
+220
+00:11:40,380 --> 00:11:41,710
+the second event, and then the third.
+
+221
+00:11:41,710 --> 00:11:42,750
+And then they are at risk for
+
+222
+00:11:42,750 --> 00:11:46,590
+a fourth event because they actually have
+three events.
+
+223
+00:11:46,590 --> 00:11:50,100
+So we can add, we'd have to add a variable
+in
+
+224
+00:11:50,100 --> 00:11:54,350
+the model that reflected which event
+you're on, which event number you're on.
+
+225
+00:11:54,350 --> 00:11:55,870
+What's the likelihood going to look like
+though?
+
+226
+00:11:55,870 --> 00:11:58,640
+So again, we're only going to compare
+people who are on event one to
+
+227
+00:11:58,640 --> 00:12:00,360
+other people who are on event one.
+
+228
+00:12:00,360 --> 00:12:03,520
+So when the first event happens at five
+months into the study,
+
+229
+00:12:03,520 --> 00:12:08,210
+both Subject one and Subject two are both
+at risk for having their first event.
+
+230
+00:12:08,210 --> 00:12:11,340
+So they are both going to be included in
+the denominator here.
+
+231
+00:12:13,330 --> 00:12:15,659
+The one who has the event is of course
+Subject one so they are in the numerator.
+
+232
+00:12:17,480 --> 00:12:19,840
+Now we go and look at the next event that
+occurs.
+
+233
+00:12:19,840 --> 00:12:23,070
+So the next event that occurs, it occurs
+at 19 months.
+
+234
+00:12:23,070 --> 00:12:28,050
+Subject one is at risk for their second
+event at that time.
+
+235
+00:12:28,050 --> 00:12:30,750
+But subject two is at risk for their first
+event.
+
+236
+00:12:30,750 --> 00:12:33,790
+So, in fact, because this is such a small
+data set that
+
+237
+00:12:33,790 --> 00:12:35,080
+we don't have anybody else in the risk
+set.
+
+238
+00:12:35,080 --> 00:12:39,910
+So the only person at risk is Subject two
+for their first event.
+
+239
+00:12:39,910 --> 00:12:42,100
+And Subject two has an event at 19 months.
+
+240
+00:12:42,100 --> 00:12:45,230
+So Subject one is not included in the
+denominator now,
+
+241
+00:12:45,230 --> 00:12:49,770
+at nine, this event at 19 months because
+this is stratified on event number.
+
+242
+00:12:49,770 --> 00:12:50,570
+So this for.
+
+243
+00:12:50,570 --> 00:12:52,580
+This is a first event strata.
+
+244
+00:12:52,580 --> 00:12:53,870
+This is a first event strata.
+
+245
+00:12:55,800 --> 00:12:56,930
+All right?
+
+246
+00:12:56,930 --> 00:12:58,520
+Now we get to the second event.
+
+247
+00:12:58,520 --> 00:13:00,330
+Now they're both at risk for the second
+event.
+
+248
+00:13:00,330 --> 00:13:04,950
+So the next events that occur are at 25
+months into the study and
+
+249
+00:13:04,950 --> 00:13:09,310
+just to make this simple, let's say we had
+measured it a little bit more finely just
+
+250
+00:13:09,310 --> 00:13:13,549
+to make this easy let's say Subject one
+has the amount of 25.01 and
+
+251
+00:13:13,549 --> 00:13:17,457
+Subject two has the amount of 25.1 months
+so we don't have to deal with ties.
+
+252
+00:13:17,457 --> 00:13:22,390
+So, [SOUND] now we're on a strata for the
+second event.
+
+253
+00:13:22,390 --> 00:13:25,040
+The next event that occurs is at 25 months
+into the study.
+
+254
+00:13:25,040 --> 00:13:27,230
+Subject one has the event.
+
+255
+00:13:27,230 --> 00:13:31,960
+Both Subject one and Subject two are at
+risk of having the event at that time.
+
+256
+00:13:31,960 --> 00:13:33,600
+So the likelihood term would look like
+that.
+
+257
+00:13:34,780 --> 00:13:39,870
+Now, however, when the next second event
+occurs in Subject two because I've
+
+258
+00:13:39,870 --> 00:13:42,310
+jiggered the time a little bit here and
+this, let's say you know for
+
+259
+00:13:42,310 --> 00:13:46,510
+sure that the second event happened second
+in Subject two.
+
+260
+00:13:46,510 --> 00:13:51,220
+Well at the time they had their second
+event, the, Subject one was no longer at
+
+261
+00:13:51,220 --> 00:13:53,620
+risk of the second event, so the
+likelihood term would look like that.
+
+262
+00:13:53,620 --> 00:13:54,250
+And, so on.
+
+263
+00:13:54,250 --> 00:13:57,720
+So you get the idea, we're stratifying on
+event time.
+
+264
+00:14:00,930 --> 00:14:04,900
+So, a slightly different way of running
+the conditional model is to instead of
+
+265
+00:14:04,900 --> 00:14:09,580
+counting time from baseline, is to the
+count the time since the last event.
+
+266
+00:14:09,580 --> 00:14:13,900
+And I started to draw it here to show you
+the, the slight difference here.
+
+267
+00:14:13,900 --> 00:14:16,640
+So if we count the time since last event,
+
+268
+00:14:16,640 --> 00:14:20,770
+we restart the clock every time a person
+joins a new event strata.
+
+269
+00:14:20,770 --> 00:14:23,640
+And again, it's good, probably here to put
+the strata for
+
+270
+00:14:23,640 --> 00:14:27,140
+the event number; which number event
+people are on.
+
+271
+00:14:27,140 --> 00:14:28,712
+That's like a new variable in my data set.
+
+272
+00:14:30,120 --> 00:14:34,280
+So for event one, person one is at risk
+for event one from zero to five months
+
+273
+00:14:34,280 --> 00:14:37,490
+into the study and person two has their
+first event 19 months into the study.
+
+274
+00:14:37,490 --> 00:14:38,720
+Then we restart the clock.
+
+275
+00:14:38,720 --> 00:14:43,140
+So now it actually takes 20 months for the
+first person, for
+
+276
+00:14:43,140 --> 00:14:45,790
+subject one to have the event again.
+
+277
+00:14:45,790 --> 00:14:48,894
+So we start the clock again at zero and
+they have their event,
+
+278
+00:14:48,894 --> 00:14:50,820
+their second event at 20 months.
+
+279
+00:14:50,820 --> 00:14:54,397
+Subject two here, if we restart the clock
+at 19 months,
+
+280
+00:14:54,397 --> 00:14:58,850
+only took six months to arrive at, to have
+their second event.
+
+281
+00:14:58,850 --> 00:15:01,630
+So that would be slightly different in the
+likelihood then,
+
+282
+00:15:01,630 --> 00:15:04,650
+because if you think about the likelihood
+now, the terms for
+
+283
+00:15:04,650 --> 00:15:08,260
+event one are actually going to look the
+same as before.
+
+284
+00:15:08,260 --> 00:15:12,870
+So, we have a term where Subject one has
+the event.
+
+285
+00:15:12,870 --> 00:15:14,710
+Both subjects are at risk at five months,
+
+286
+00:15:14,710 --> 00:15:20,500
+we multiply that by only Subject two is at
+risk at 19 months.
+
+287
+00:15:22,280 --> 00:15:25,660
+Then we get terms in likelihood for the
+second event time, again,
+
+288
+00:15:25,660 --> 00:15:29,730
+we're stratified on event time here, but
+now, the first person to
+
+289
+00:15:29,730 --> 00:15:34,560
+have an event is Subject two, because they
+have that event only six months later.
+
+290
+00:15:34,560 --> 00:15:39,140
+And remember, I kind of said, let's
+pretend that Subject one had
+
+291
+00:15:39,140 --> 00:15:43,230
+an event at 25.1 months, and subject two
+had the event at 25 months, so
+
+292
+00:15:43,230 --> 00:15:46,120
+that we could say subject one was second
+in having the event.
+
+293
+00:15:46,120 --> 00:15:48,650
+Well, now, because we restarted the clock,
+and
+
+294
+00:15:48,650 --> 00:15:53,700
+Subject two had a second event faster,
+they get the first term in the likelihood,
+
+295
+00:15:53,700 --> 00:15:57,130
+so their term, now they're going to be in
+the numerator of the risk.
+
+296
+00:15:57,130 --> 00:16:01,320
+You can see how that changes the
+likelihood function, so like that, and
+
+297
+00:16:01,320 --> 00:16:05,530
+then Subject one gets the next term in the
+likelihood and
+
+298
+00:16:05,530 --> 00:16:08,450
+of course, only the simple things are they
+are the only ones at risk, and
+
+299
+00:16:08,450 --> 00:16:11,710
+then we keep going with event three and
+event four etc.
+
+300
+00:16:11,710 --> 00:16:14,790
+So, you can see how that slightly changes
+the likelihood to count time
+
+301
+00:16:14,790 --> 00:16:15,650
+since last event.
+
+302
+00:16:15,650 --> 00:16:19,250
+And you'll get slightly different answers
+depending on how you count time.
+
+303
+00:16:19,250 --> 00:16:21,510
+Depending on the situation,
+
+304
+00:16:21,510 --> 00:16:24,600
+you may prefer, is conceptually one over
+the other.
+
+305
+00:16:24,600 --> 00:16:30,140
+So, that's, those are several different
+methods for handling repeated events.
+
+306
+00:16:31,270 --> 00:16:33,960
+So now I'm just going to show you an
+example from the literature where they
+
+307
+00:16:33,960 --> 00:16:36,780
+had a repeated event and they tried
+modeling it with several of
+
+308
+00:16:36,780 --> 00:16:39,260
+these different strategies to compare
+them.
+
+309
+00:16:39,260 --> 00:16:40,450
+So here's what the data looked like.
+
+310
+00:16:40,450 --> 00:16:42,720
+They drew a nice little graphic of their
+data.
+
+311
+00:16:42,720 --> 00:16:44,740
+The event here was disability.
+
+312
+00:16:44,740 --> 00:16:48,230
+And obviously, episodes of disability are
+something that can repeat.
+
+313
+00:16:48,230 --> 00:16:51,300
+What you're seeing on the graph here is
+that, for example, this first person
+
+314
+00:16:51,300 --> 00:16:55,140
+didn't have any episodes of disability,
+but they died somewhere during the study.
+
+315
+00:16:55,140 --> 00:17:00,160
+Subject two, right here was, never had any
+episodes of disability.
+
+316
+00:17:00,160 --> 00:17:03,870
+Subject three had a bout of disability
+starting at about 69,
+
+317
+00:17:03,870 --> 00:17:06,760
+looks like about 69 months into the study.
+
+318
+00:17:06,760 --> 00:17:10,270
+And this whole thing here is considered a,
+a one episode of disability,
+
+319
+00:17:10,270 --> 00:17:13,660
+all these dots, so every, essentially
+month they're having disability.
+
+320
+00:17:13,660 --> 00:17:15,920
+Those kind of run together into one
+episode.
+
+321
+00:17:15,920 --> 00:17:19,710
+Subject four has an episode of disability
+that lasts from about 12
+
+322
+00:17:19,710 --> 00:17:21,760
+to about 13 months, or maybe 11 to 13
+months.
+
+323
+00:17:23,140 --> 00:17:27,160
+They have another repeated episode of
+disability later on in the study.
+
+324
+00:17:27,160 --> 00:17:33,060
+And Subject five has one, two, three, four
+bouts of disability.
+
+325
+00:17:33,060 --> 00:17:34,690
+And this was a much was a much larger data
+set.
+
+326
+00:17:34,690 --> 00:17:38,660
+So this is just just five subjects
+pictured out of a much larger data set.
+
+327
+00:17:40,580 --> 00:17:44,570
+The authors were actually nice to show the
+actual structure of the data.
+
+328
+00:17:44,570 --> 00:17:46,550
+What does it look like in the data set?
+
+329
+00:17:46,550 --> 00:17:47,880
+That can often be very useful.
+
+330
+00:17:47,880 --> 00:17:50,240
+And they were trying to illustrate the
+principle of how to apply some of
+
+331
+00:17:50,240 --> 00:17:51,750
+these different strategies.
+
+332
+00:17:51,750 --> 00:17:53,970
+So they shared their data structure.
+
+333
+00:17:53,970 --> 00:17:57,300
+So this, this data set here that you see
+corresponds to
+
+334
+00:17:57,300 --> 00:17:59,020
+the picture on the previous slide.
+
+335
+00:17:59,020 --> 00:18:01,210
+So subjects one, two and three don't
+repeat but
+
+336
+00:18:01,210 --> 00:18:04,370
+subject four has multiple observations in
+the data set because they
+
+337
+00:18:04,370 --> 00:18:07,230
+have multiple bouts of disabilities, same
+with subject five.
+
+338
+00:18:08,330 --> 00:18:13,960
+The start and end time shows you the time
+from baseline to for
+
+339
+00:18:13,960 --> 00:18:18,810
+Subject one they died at 20 months into
+the study so they were censored then.
+
+340
+00:18:18,810 --> 00:18:22,460
+They only ever, the interval represents
+which event number are they on.
+
+341
+00:18:22,460 --> 00:18:25,700
+They only were at risk for event, one
+event the first event.
+
+342
+00:18:25,700 --> 00:18:28,680
+They never, they never had a first event.
+
+343
+00:18:28,680 --> 00:18:33,260
+This is a total time in this interval, the
+number of previous events here was zero,
+
+344
+00:18:33,260 --> 00:18:36,410
+and the predictor we're going to care
+about is gender here,
+
+345
+00:18:36,410 --> 00:18:39,240
+so zero means that they were a male, one
+is female.
+
+346
+00:18:40,710 --> 00:18:42,450
+So let's go down to one of the more
+interesting ones, so
+
+347
+00:18:42,450 --> 00:18:45,810
+subject four, who repeats, they start the
+study, zero is baseline.
+
+348
+00:18:45,810 --> 00:18:48,630
+Ten months into the study they have an
+event, so that's their, that's
+
+349
+00:18:48,630 --> 00:18:52,150
+interval one, because that's their, when
+they were at risk for the first event.
+
+350
+00:18:52,150 --> 00:18:55,950
+That interval, the time in that interval
+they spent in that interval was ten months
+
+351
+00:18:55,950 --> 00:18:57,128
+and this person is a female.
+
+352
+00:18:57,128 --> 00:19:00,010
+They've had zero previous events at that
+point.
+
+353
+00:19:00,010 --> 00:19:03,120
+Their next interval they have a bout of
+disability that actually last from,
+
+354
+00:19:03,120 --> 00:19:04,360
+about ten to 14 months.
+
+355
+00:19:04,360 --> 00:19:07,200
+So they, they, their next at risk for
+having disability,
+
+356
+00:19:07,200 --> 00:19:11,190
+once they get out of that particular
+episode of, disability, they were again at
+
+357
+00:19:11,190 --> 00:19:15,600
+risk of disability from 14 months and then
+at 46 months they have an event.
+
+358
+00:19:15,600 --> 00:19:18,570
+That's the second enroll because that's
+the time period at which they were ri,
+
+359
+00:19:18,570 --> 00:19:20,960
+at risk for a second bout of disability.
+
+360
+00:19:20,960 --> 00:19:24,945
+That time interval lasted 32 months, from
+14 months to 46 months.
+
+361
+00:19:24,945 --> 00:19:27,741
+Now they've had one previous event and
+they're still female and
+
+362
+00:19:27,741 --> 00:19:32,810
+then their, the last thing that happened
+was they became at risk again.
+
+363
+00:19:32,810 --> 00:19:35,800
+Their, their second bout of disability
+stopped at 53 months.
+
+364
+00:19:35,800 --> 00:19:37,420
+They became at risk again.
+
+365
+00:19:37,420 --> 00:19:40,980
+And then, 72 months into the study, the
+study ended, and they were censored.
+
+366
+00:19:40,980 --> 00:19:42,425
+So that has a value of censored.
+
+367
+00:19:42,425 --> 00:19:43,770
+That's their third interval.
+
+368
+00:19:43,770 --> 00:19:46,910
+That third interval lasted 19 months
+before they were censored.
+
+369
+00:19:46,910 --> 00:19:48,470
+At that point, they were on their third
+event.
+
+370
+00:19:48,470 --> 00:19:51,420
+So they, they were at risk for this, this
+thirdof event since they already had
+
+371
+00:19:51,420 --> 00:19:53,910
+two previous events, and, of course,
+they're still female.
+
+372
+00:19:53,910 --> 00:19:55,600
+That's the data structure, how they set it
+up.
+
+373
+00:19:57,040 --> 00:20:01,110
+And then they ran a bunch of different
+models looking at
+
+374
+00:20:01,110 --> 00:20:04,800
+the outcome of either bathing disability
+episodes, bathing disability, or
+
+375
+00:20:04,800 --> 00:20:06,985
+other disability other than bathing
+disability.
+
+376
+00:20:06,985 --> 00:20:10,210
+When, and they looked at one particular
+predictor, which was gender, so
+
+377
+00:20:10,210 --> 00:20:11,702
+they compare women versus men.
+
+378
+00:20:11,702 --> 00:20:16,720
+They're going to get hazard ratios for the
+risk of disability for women versus men.
+
+379
+00:20:17,910 --> 00:20:20,840
+They used a whole bunch of different
+models to show what happens if
+
+380
+00:20:20,840 --> 00:20:24,130
+you handle the repeated events in slightly
+different ways.
+
+381
+00:20:24,130 --> 00:20:26,870
+And in fact there were more models than
+I'm showing in this table.
+
+382
+00:20:26,870 --> 00:20:29,860
+I've compacted this table just to focus on
+the ones that we've talked about in
+
+383
+00:20:29,860 --> 00:20:30,820
+this module.
+
+384
+00:20:30,820 --> 00:20:33,120
+They went into other types of models as
+well.
+
+385
+00:20:33,120 --> 00:20:36,130
+But this is the ones that are relevant to
+this module.
+
+386
+00:20:36,130 --> 00:20:40,050
+They ran a Cox regression model where they
+adjusted the time to
+
+387
+00:20:40,050 --> 00:20:43,880
+the first disability event, and they
+compared again women to men.
+
+388
+00:20:43,880 --> 00:20:46,830
+So, that's this result right here.
+
+389
+00:20:46,830 --> 00:20:50,090
+So what you'll see is that the hazard
+ratio that they came up with if they
+
+390
+00:20:50,090 --> 00:20:53,720
+compared women versus men for time to
+first event is that the,
+
+391
+00:20:53,720 --> 00:20:59,490
+the women were, had a 30% higher rate of
+the time to, to first bathing disability.
+
+392
+00:20:59,490 --> 00:21:01,860
+However, for other disabilities, it was
+fairly null.
+
+393
+00:21:01,860 --> 00:21:03,860
+There didn't seem to be a gender
+difference.
+
+394
+00:21:03,860 --> 00:21:07,270
+So that's ignoring all of the stuff that
+happened after that
+
+395
+00:21:07,270 --> 00:21:09,460
+first bout of disability, which is a lot
+to ignore.
+
+396
+00:21:11,110 --> 00:21:13,950
+They then ran the Cox regression model
+accommodating,
+
+397
+00:21:13,950 --> 00:21:17,420
+incorporating the repeated events in a
+number of different ways.
+
+398
+00:21:17,420 --> 00:21:21,250
+So they did the counting process model,
+which I talked about,
+
+399
+00:21:21,250 --> 00:21:24,220
+they then did a modified version of the
+counting process model.
+
+400
+00:21:24,220 --> 00:21:28,470
+What they've done here is they've adjusted
+for the number of previous events, so
+
+401
+00:21:28,470 --> 00:21:32,670
+they adjusted for this previous event's
+variable.
+
+402
+00:21:32,670 --> 00:21:35,810
+They just put it in the model as another
+co-variant.
+
+403
+00:21:35,810 --> 00:21:39,230
+Now the one thing that happens when you do
+that is you are assuming proportional
+
+404
+00:21:39,230 --> 00:21:40,570
+hazards here.
+
+405
+00:21:40,570 --> 00:21:44,130
+But it, in a way is very similar to
+stratifying on the event number which is
+
+406
+00:21:44,130 --> 00:21:46,390
+what the conditional models do.
+
+407
+00:21:46,390 --> 00:21:49,720
+So they adjusted rather than stratified
+for the event number and that's what you
+
+408
+00:21:49,720 --> 00:21:54,320
+are seeing on the second row here and then
+they did the two different conditional
+
+409
+00:21:54,320 --> 00:21:59,180
+models counting times and space line and
+counting time since last event.
+
+410
+00:21:59,180 --> 00:22:02,980
+And what you can see is that in the first
+counting process model where
+
+411
+00:22:02,980 --> 00:22:07,340
+they didn't adjust for which event you
+were on, for event number.
+
+412
+00:22:07,340 --> 00:22:11,740
+They did get a slightly higher hazard
+ratio for men versus women for bathing.
+
+413
+00:22:11,740 --> 00:22:13,210
+But for other disability, it's,
+
+414
+00:22:13,210 --> 00:22:16,280
+that was very similar to some of the other
+ones you're seeing here.
+
+415
+00:22:16,280 --> 00:22:21,604
+When they adjust for event number, you get
+hazard ratios of 1.37 and 1.39.
+
+416
+00:22:21,604 --> 00:22:22,170
+And then for
+
+417
+00:22:22,170 --> 00:22:25,640
+the conditional models, you're getting
+hazard ratios in that ballpark.
+
+418
+00:22:25,640 --> 00:22:29,740
+So for conditional model A, when we
+stratify an event number, and
+
+419
+00:22:29,740 --> 00:22:33,160
+we get a hazard ratio of 1.35, and a
+slightly lower for
+
+420
+00:22:33,160 --> 00:22:37,270
+other disability of 1.25, and when you do
+time since last event,
+
+421
+00:22:37,270 --> 00:22:39,120
+it attenuates just a little bit, 1.27 and
+1.18.
+
+422
+00:22:39,120 --> 00:22:43,870
+But you can see that they're all
+relatively within the same ballpark.
+
+423
+00:22:44,900 --> 00:22:49,290
+The time to first event model actually
+gets a pretty similar answer for
+
+424
+00:22:49,290 --> 00:22:53,300
+bathing disabilities, but it gets a very
+different answer for other disabilities.
+
+425
+00:22:53,300 --> 00:22:57,530
+All of the other ways of handling repeated
+events were significant or very close to
+
+426
+00:22:57,530 --> 00:23:02,320
+significant with men, women having more a
+higher rate of disability than men.
+
+427
+00:23:02,320 --> 00:23:05,640
+That wasn't true when we adjusted time to
+first event.
+
+428
+00:23:05,640 --> 00:23:08,360
+So you kind of missed something if you did
+only time to
+
+429
+00:23:08,360 --> 00:23:11,060
+first event on the other disability
+outcome.
+
+430
+00:23:11,060 --> 00:23:15,130
+So again, those are a couple of different
+ways to handle repeated events in
+
+431
+00:23:15,130 --> 00:23:16,690
+your Cox regression model.
+
+432
+00:23:16,690 --> 00:23:21,770
+[BLANK_AUDIO]

@@ -1,0 +1,232 @@
+1
+00:00:00,130 --> 00:00:04,402
+Welcome back, today we're going to talk
+about setting up SAS.
+
+2
+00:00:04,402 --> 00:00:05,604
+In a few minutes time,
+
+3
+00:00:05,604 --> 00:00:08,909
+Ram is going to run through how to set up
+the SAS remote server.
+
+4
+00:00:08,909 --> 00:00:11,233
+But first, there are a few things I think
+we need to cover.
+
+5
+00:00:11,233 --> 00:00:16,039
+I want to talk about the options for those
+who do not want to use the remote server.
+
+6
+00:00:16,039 --> 00:00:18,344
+Sometimes the server can be a little bit
+slow,
+
+7
+00:00:18,344 --> 00:00:22,733
+especially during the biostat labs and the
+night before homework assignments are due.
+
+8
+00:00:22,733 --> 00:00:24,311
+While many students in the MS epidemiology
+and
+
+9
+00:00:24,311 --> 00:00:26,750
+clinical research track did not have
+problems with the remote server.
+
+10
+00:00:28,490 --> 00:00:31,860
+You may choose to buy your own copy of SAS
+enterprise guide.
+
+11
+00:00:31,860 --> 00:00:35,480
+For those of you with PCs you can purchase
+SAS enterprise guide from
+
+12
+00:00:35,480 --> 00:00:37,283
+Stanford University for $50.
+
+13
+00:00:37,283 --> 00:00:39,983
+There will be a separate PowerPoint
+presentation for
+
+14
+00:00:39,983 --> 00:00:42,390
+those of you who want to setup your own
+version.
+
+15
+00:00:43,430 --> 00:00:46,450
+For those of you with a Mac, things get a
+little more complicated,
+
+16
+00:00:46,450 --> 00:00:50,920
+SAS only runs on Windows, so we strongly
+suggest that you use the server.
+
+17
+00:00:50,920 --> 00:00:54,780
+If you really, really want your own copy
+of SAS on your Mac, please come talk to
+
+18
+00:00:54,780 --> 00:00:58,200
+us during the first class lecture and we
+will talk you out of it.
+
+19
+00:00:58,200 --> 00:00:58,860
+Enjoy the lecture.
+
+20
+00:00:58,860 --> 00:01:01,830
+>> Now I will show you how to
+
+21
+00:01:01,830 --> 00:01:03,960
+set up access to the SAS server on your
+own computer.
+
+22
+00:01:05,400 --> 00:01:08,099
+The first step is to contact us to get
+authorized for server access.
+
+23
+00:01:09,180 --> 00:01:12,580
+Once we authorize you, you need to set up
+the VPN connection.
+
+24
+00:01:12,580 --> 00:01:14,980
+If you have Windows, follow this link.
+
+25
+00:01:14,980 --> 00:01:17,150
+If you have Mac, follow this link.
+
+26
+00:01:17,150 --> 00:01:20,020
+That should have all the instructions you
+need for setting up a VPN connection.
+
+27
+00:01:21,890 --> 00:01:25,630
+Once you have the VPN set up, you need to
+connect to the VPN.
+
+28
+00:01:25,630 --> 00:01:29,710
+If you have Windows, log into the Cisco
+client that you just set up.
+
+29
+00:01:29,710 --> 00:01:33,400
+If you have a Mac, log in through the
+network settings on your own computer;
+
+30
+00:01:33,400 --> 00:01:36,640
+this is located under system preferences.
+
+31
+00:01:36,640 --> 00:01:40,577
+Once you connect to the VPN, go to
+sunac.standford.edu and log in.
+
+32
+00:01:40,577 --> 00:01:45,021
+Now you need to set up the server
+connection, following this link and
+
+33
+00:01:45,021 --> 00:01:47,330
+scroll down to step 2, option 2.
+
+34
+00:01:47,330 --> 00:01:51,800
+Specify if you have Windows or Mac, and
+click Launch RDP Desktop.
+
+35
+00:01:51,800 --> 00:01:54,270
+This'll download a file that'll let you
+connect to the server.
+
+36
+00:01:54,270 --> 00:01:55,500
+Now you're all set up to connect to the
+server.
+
+37
+00:01:58,140 --> 00:02:01,460
+Whenever you want to connect to the
+server, you need to do three things.
+
+38
+00:02:01,460 --> 00:02:02,960
+First you need to connect to the VPN.
+
+39
+00:02:02,960 --> 00:02:09,689
+If you have Windows, use the Cisco client
+to connect to su-vpn.Stanford.edu.
+
+40
+00:02:09,689 --> 00:02:14,130
+If you have Mac, use the network settings
+to connect to the Stanford VPN you set
+
+41
+00:02:14,130 --> 00:02:16,420
+up and enter your password.
+
+42
+00:02:16,420 --> 00:02:18,771
+The next step is to go to
+sunac.Stanford.edu and log in.
+
+43
+00:02:19,860 --> 00:02:23,390
+And finally watch the RDP desktop profile
+that you downloaded, and
+
+44
+00:02:23,390 --> 00:02:24,147
+enter in your credentials.
+
+45
+00:02:25,210 --> 00:02:29,820
+Make sure to type win\ before your
+username, once you log in, you'll be
+
+46
+00:02:29,820 --> 00:02:32,860
+connected to the remote server and you'll
+be able to run SAS Enterprise Guide.
+
+47
+00:02:34,800 --> 00:02:38,160
+Whenever you're finished using the server,
+please make sure to log off.
+
+48
+00:02:38,160 --> 00:02:38,910
+If you stay logged in for
+
+49
+00:02:38,910 --> 00:02:42,550
+too long, you'll hog the server resources
+and you might lose unsaved information.

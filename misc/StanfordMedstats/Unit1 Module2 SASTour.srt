@@ -1,0 +1,263 @@
+1
+00:00:01,260 --> 00:00:02,420
+Welcome back.
+
+2
+00:00:02,420 --> 00:00:06,240
+In this module, we'll give you a tour of
+how SAS is laid out.
+
+3
+00:00:06,240 --> 00:00:10,760
+SAS is a tool that allows users to code,
+point and click, and analyze data.
+
+4
+00:00:10,760 --> 00:00:12,630
+It's relatively user friendly.
+
+5
+00:00:12,630 --> 00:00:14,020
+For this class,
+
+6
+00:00:14,020 --> 00:00:17,120
+you most likely will be using SAS
+Enterprise Guide on a remote server.
+
+7
+00:00:18,590 --> 00:00:21,230
+>> Let's start by opening SAS Enterprise
+Guide.
+
+8
+00:00:21,230 --> 00:00:24,379
+You first click start, and then click SAS
+Enterprise Guide.
+
+9
+00:00:31,030 --> 00:00:34,538
+The first thing you' will see is a Welcome
+to SAS Enterprise Guide screen.
+
+10
+00:00:34,538 --> 00:00:38,470
+Here, you will have the choice of opening
+a project or creating projects.
+
+11
+00:00:38,470 --> 00:00:41,000
+In this case, we are going to open an
+existing project so
+
+12
+00:00:41,000 --> 00:00:42,770
+that we can explain how SAS is set up.
+
+13
+00:00:45,870 --> 00:00:48,640
+In essence, a project is just a record of
+everything that you do in
+
+14
+00:00:48,640 --> 00:00:50,930
+SAS during a specific analysis.
+
+15
+00:00:50,930 --> 00:00:52,950
+It keeps track of the data sets that are
+used,
+
+16
+00:00:52,950 --> 00:00:55,760
+the particular tasks that you have run,
+and the results that you've output.
+
+17
+00:00:57,480 --> 00:01:00,630
+Here's the main screen, which is called
+the workspace.
+
+18
+00:01:00,630 --> 00:01:03,300
+On the left of the screen, you have a
+project tree.
+
+19
+00:01:03,300 --> 00:01:06,250
+The project tree shows you a view of the
+project you are working on.
+
+20
+00:01:06,250 --> 00:01:08,200
+When you import data, run tasks and
+
+21
+00:01:08,200 --> 00:01:11,790
+analyze your data, you will see new icons
+added to this area.
+
+22
+00:01:11,790 --> 00:01:15,890
+In essence, it is simply a hierarchical
+view of the project you are working on.
+
+23
+00:01:15,890 --> 00:01:21,010
+You can easily reorder, rename, delete and
+edit the individual items in your project.
+
+24
+00:01:23,240 --> 00:01:27,010
+The Process Flow window is considered a
+relationship window.
+
+25
+00:01:27,010 --> 00:01:31,570
+It takes the components of the project
+tree, and creates a web of interactions.
+
+26
+00:01:31,570 --> 00:01:33,480
+Arrows are added between different icons.
+
+27
+00:01:33,480 --> 00:01:37,730
+For example, if you've imported a dataset
+and run a specific analysis,
+
+28
+00:01:37,730 --> 00:01:40,760
+a line will be drawn from the data to the
+new analysis icon.
+
+29
+00:01:42,600 --> 00:01:46,620
+I'm quickly going to show you how to
+change the format of SAS Enterprise Guide.
+
+30
+00:01:46,620 --> 00:01:49,850
+Right now, we're in single view, which is
+the standard for SAS.
+
+31
+00:01:49,850 --> 00:01:54,540
+If you go to View > Workspace Layout, and
+then click Side by Side,
+
+32
+00:01:58,520 --> 00:02:02,370
+you will get your process flow on the left
+and your output data on the right.
+
+33
+00:02:05,850 --> 00:02:07,645
+>> So here we have a data set.
+
+34
+00:02:07,645 --> 00:02:10,020
+A data set is just like a spread sheet
+that you are probably used to
+
+35
+00:02:10,020 --> 00:02:10,790
+seeing in Excel.
+
+36
+00:02:12,010 --> 00:02:14,100
+In SAS, we typically use separate columns
+for
+
+37
+00:02:14,100 --> 00:02:18,460
+different variables, and we have separate
+rows for different subjects.
+
+38
+00:02:18,460 --> 00:02:22,310
+In this dataset, each row is a different
+person in our study.
+
+39
+00:02:22,310 --> 00:02:23,520
+Reading across the columns,
+
+40
+00:02:23,520 --> 00:02:26,720
+we have all the different variables that
+we measured for that individual person.
+
+41
+00:02:28,030 --> 00:02:32,710
+For example, here we have a record for a
+70 year old woman,
+
+42
+00:02:32,710 --> 00:02:36,100
+with ID number 161, and these are all the
+measurements that we recorded.
+
+43
+00:02:37,330 --> 00:02:41,100
+SAS allows us to explore our dataset, run
+statistical tests, and
+
+44
+00:02:41,100 --> 00:02:42,670
+create graphics to visualize our data.
+
+45
+00:02:44,140 --> 00:02:46,480
+So, why use SAS instead of Excel?
+
+46
+00:02:46,480 --> 00:02:49,140
+While Excel can perform advanced analysis,
+
+47
+00:02:49,140 --> 00:02:51,040
+it does not keep a clear record of what
+you've done.
+
+48
+00:02:52,650 --> 00:02:53,740
+When you conduct research,
+
+49
+00:02:53,740 --> 00:02:56,439
+it's really important that your methods
+are reproducible and well documented.
+
+50
+00:02:57,610 --> 00:03:01,150
+SAS provides a systematic way to keep
+track of all the steps in your analysis,
+
+51
+00:03:01,150 --> 00:03:02,840
+so you know exactly what was done to your
+data.
+
+52
+00:03:04,410 --> 00:03:06,330
+When we run a statistical analysis,
+
+53
+00:03:06,330 --> 00:03:08,450
+we frequently work with datasets that has
+hundreds or
+
+54
+00:03:08,450 --> 00:03:13,000
+even thousands of rows, which can make it
+very cumbersome in programs like Excel.
+
+55
+00:03:13,000 --> 00:03:15,130
+With SAS, we can use code or the point and
+
+56
+00:03:15,130 --> 00:03:17,531
+click interface to handle all these big
+datasets with ease.

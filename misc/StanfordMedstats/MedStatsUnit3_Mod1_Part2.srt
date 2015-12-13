@@ -1,0 +1,875 @@
+1
+00:00:00,480 --> 00:00:05,010
+Some other empirical probabilities which
+are interesting to look at,
+
+2
+00:00:05,010 --> 00:00:07,350
+we have really good data in the US on
+cancer.
+
+3
+00:00:08,350 --> 00:00:10,000
+And so, we can say things like,
+
+4
+00:00:10,000 --> 00:00:14,780
+what's the probability that a US male will
+develop cancer in his lifetime.
+
+5
+00:00:14,780 --> 00:00:19,040
+It turns out to be 44.8%, so that's pretty
+high, right?
+
+6
+00:00:19,040 --> 00:00:23,600
+The probability then a man dies from
+cancer is 23.1%.
+
+7
+00:00:23,600 --> 00:00:26,100
+We can also look at the statistics for
+individual cancers.
+
+8
+00:00:26,100 --> 00:00:29,220
+The probability that a man develops
+prostate,
+
+9
+00:00:29,220 --> 00:00:31,540
+prostate cancer in his lifetime is at
+16.2%.
+
+10
+00:00:31,540 --> 00:00:34,930
+So, about a third of all those cancers
+that men
+
+11
+00:00:34,930 --> 00:00:36,330
+are developing are prostate cancers.
+
+12
+00:00:36,330 --> 00:00:37,065
+And by the way, the,
+
+13
+00:00:37,065 --> 00:00:41,500
+the, the overall probability of cancer
+does not include non-melanoma skin cancer.
+
+14
+00:00:41,500 --> 00:00:44,186
+So, this is excluding non-melanoma skin
+cancer.
+
+15
+00:00:44,186 --> 00:00:48,560
+Notice though, that the probability of
+developing prostate cancer, 16%.
+
+16
+00:00:48,560 --> 00:00:51,450
+But the probability of dying from prostate
+cancer is much, much lower.
+
+17
+00:00:51,450 --> 00:00:55,110
+That tells you a lot of those prostate
+cancers are not killing the men.
+
+18
+00:00:56,150 --> 00:00:57,320
+Compare that to lung cancer.
+
+19
+00:00:57,320 --> 00:00:58,210
+So, the probability for
+
+20
+00:00:58,210 --> 00:01:02,472
+a man of developing lung cancer in the US
+in his lifetime is 7.8%.
+
+21
+00:01:02,472 --> 00:01:06,270
+The probability from dying from lung
+cancer however is 6.7%.
+
+22
+00:01:06,270 --> 00:01:07,000
+Those are very close.
+
+23
+00:01:07,000 --> 00:01:10,220
+So, most people who get lung cancer are
+dying from it.
+
+24
+00:01:10,220 --> 00:01:11,810
+We can see the same statistics for women.
+
+25
+00:01:11,810 --> 00:01:16,180
+Interestingly, women have slightly lower
+chances of getting cancer or
+
+26
+00:01:16,180 --> 00:01:16,988
+dying from cancer.
+
+27
+00:01:16,988 --> 00:01:19,030
+38% and 19%.
+
+28
+00:01:19,030 --> 00:01:21,560
+That's largely because of smoking and
+drinking.
+
+29
+00:01:21,560 --> 00:01:24,960
+More men smoke and drink, and those are
+linked to cancer.
+
+30
+00:01:24,960 --> 00:01:27,180
+Breast cancer is the most common cancer
+for women.
+
+31
+00:01:27,180 --> 00:01:31,180
+Her lifetime risk of getting breast cancer
+is 12 point 12%.
+
+32
+00:01:31,180 --> 00:01:33,860
+But her lifetime risk of dying from breast
+cancer is much lower.
+
+33
+00:01:33,860 --> 00:01:38,030
+Only 2.8%, sort of similar to the prostate
+cancer for men.
+
+34
+00:01:38,030 --> 00:01:42,500
+In contrast, a woman's lifetime risk of
+developing lung cancer is 6.4%,
+
+35
+00:01:42,500 --> 00:01:43,840
+slightly lower than for the men.
+
+36
+00:01:43,840 --> 00:01:48,285
+But that's, that gap is narrowing as more
+women are smoking relative to man.
+
+37
+00:01:48,285 --> 00:01:51,560
+And her probability of dying from lung
+cancer is 5%.
+
+38
+00:01:51,560 --> 00:01:52,820
+So again, it's a very,
+
+39
+00:01:52,820 --> 00:01:55,618
+lung cancer is a very deadly cancer,
+compared with breast cancer.
+
+40
+00:01:55,618 --> 00:02:00,962
+So now, let's do some actual calculations
+of some theoretical probabilities.
+
+41
+00:02:00,962 --> 00:02:04,560
+I'm going to show you a few examples of
+how to use what
+
+42
+00:02:04,560 --> 00:02:07,970
+are called the counting methods for
+calculating probability.
+
+43
+00:02:07,970 --> 00:02:12,940
+These apply when you have situations where
+all the outcomes are equally likely.
+
+44
+00:02:12,940 --> 00:02:16,100
+And we're literally going to be counting
+up all possible outcomes.
+
+45
+00:02:16,100 --> 00:02:16,637
+And we're going to be
+
+46
+00:02:16,637 --> 00:02:19,730
+counting the ones that fulfill the event
+that we're interested in.
+
+47
+00:02:19,730 --> 00:02:22,570
+And so, literally that's why it's called
+the counting method.
+
+48
+00:02:22,570 --> 00:02:25,989
+Things that have equally likely outcomes
+are things like cards.
+
+49
+00:02:25,989 --> 00:02:28,320
+When you draw a card out of deck of card,
+
+50
+00:02:28,320 --> 00:02:30,790
+all the cards have an equal likelihood of
+being picked.
+
+51
+00:02:30,790 --> 00:02:31,970
+Or, if you're rolling the dice,
+
+52
+00:02:31,970 --> 00:02:34,830
+all the sides of the dice have an equal
+likelihood of coming up.
+
+53
+00:02:34,830 --> 00:02:37,500
+So, these counting methods are for this
+type of situation.
+
+54
+00:02:37,500 --> 00:02:38,690
+So, let's just practice these.
+
+55
+00:02:38,690 --> 00:02:41,020
+Again, these, I think these are fun to
+calculate.
+
+56
+00:02:41,020 --> 00:02:43,100
+So, they're great for gambling too.
+
+57
+00:02:43,100 --> 00:02:46,841
+So, a lot of, you know, if you really want
+to know how to calculate poker
+
+58
+00:02:46,841 --> 00:02:50,182
+probabilities, you need to know the
+counting methods.
+
+59
+00:02:50,182 --> 00:02:54,052
+If, again, if the outcomes are equally
+likely to occur, we,
+
+60
+00:02:54,052 --> 00:02:56,549
+we say is that the probability of A
+occurring?
+
+61
+00:02:56,549 --> 00:02:59,050
+You're, you're going to put in the
+denominator,
+
+62
+00:02:59,050 --> 00:03:02,670
+you're going to count out the total number
+of possible outcomes.
+
+63
+00:03:02,670 --> 00:03:05,920
+And then, you're going to put in the
+numerator out of all those total number of
+
+64
+00:03:05,920 --> 00:03:09,480
+outcomes, which of those outcomes includes
+A occurring?
+
+65
+00:03:09,480 --> 00:03:11,110
+So, we're literally going to count those
+out,
+
+66
+00:03:11,110 --> 00:03:13,640
+both in the numerator and the denominator.
+
+67
+00:03:13,640 --> 00:03:15,740
+And these counting methods are pretty
+challenging.
+
+68
+00:03:15,740 --> 00:03:18,390
+They're also sometimes called permutations
+and combinations.
+
+69
+00:03:18,390 --> 00:03:19,960
+Some of you may have done these before.
+
+70
+00:03:19,960 --> 00:03:21,970
+Most people find them to be pretty
+challenging.
+
+71
+00:03:21,970 --> 00:03:25,730
+I'm just going to, in this module, give
+you a few basic examples.
+
+72
+00:03:25,730 --> 00:03:27,380
+If you want to delve into more details,
+
+73
+00:03:27,380 --> 00:03:30,381
+there's an optional module which will go
+further into the counting methods.
+
+74
+00:03:30,381 --> 00:03:33,312
+So, here's the first example.
+
+75
+00:03:33,312 --> 00:03:36,190
+We're going to calculate the following
+probabilities.
+
+76
+00:03:36,190 --> 00:03:40,390
+And note that all of these are what we
+call with replacement examples.
+
+77
+00:03:40,390 --> 00:03:44,430
+So, when you roll a die, if you roll a die
+once and
+
+78
+00:03:44,430 --> 00:03:49,210
+you get a six, and then you roll the die
+again, you can still get a six again.
+
+79
+00:03:49,210 --> 00:03:51,150
+If you roll the die again, you can get a
+six again.
+
+80
+00:03:51,150 --> 00:03:54,070
+So, all your outcomes are allowed to
+repeat.
+
+81
+00:03:54,070 --> 00:03:57,270
+This is in contrast to something like, if
+you've got a deck of cards.
+
+82
+00:03:57,270 --> 00:04:02,180
+If you draw the red you know, the ace of
+diamonds out of the deck,
+
+83
+00:04:02,180 --> 00:04:04,630
+if somebody's already drawn that card, it
+doesn't repeat.
+
+84
+00:04:04,630 --> 00:04:06,850
+There isn't another ace of diamonds in the
+deck.
+
+85
+00:04:06,850 --> 00:04:09,160
+So, that would be without replacement.
+
+86
+00:04:09,160 --> 00:04:12,490
+But things like dice and coins have
+replacement.
+
+87
+00:04:12,490 --> 00:04:13,470
+You can keep rolling heads.
+
+88
+00:04:13,470 --> 00:04:15,410
+You can keep rolling sixes.
+
+89
+00:04:15,410 --> 00:04:18,930
+So, what's the probability of getting one
+six when you roll a die?
+
+90
+00:04:18,930 --> 00:04:20,100
+So, that one's not too hard.
+
+91
+00:04:20,100 --> 00:04:22,940
+So, again, we're going to use the counting
+methods here.
+
+92
+00:04:22,940 --> 00:04:25,320
+So, think about what's my numerator and
+what's my denominator.
+
+93
+00:04:25,320 --> 00:04:28,870
+So, how many possible outcomes are there
+when you roll a die?
+
+94
+00:04:28,870 --> 00:04:30,100
+So there's six possible outcomes.
+
+95
+00:04:30,100 --> 00:04:32,880
+One, two, three, four, five, or six,
+that's our denominator.
+
+96
+00:04:32,880 --> 00:04:37,270
+How many outcomes are there that involve
+getting a six?
+
+97
+00:04:37,270 --> 00:04:39,120
+Well, there's only one way you can get a
+six, right?
+
+98
+00:04:39,120 --> 00:04:42,360
+So, there's one six out of six, so the
+probability here is one out of six.
+
+99
+00:04:42,360 --> 00:04:44,600
+So, that one's pretty straight forward.
+
+100
+00:04:44,600 --> 00:04:48,690
+The second question is what's the
+probability of getting two sixes when you
+
+101
+00:04:48,690 --> 00:04:50,530
+roll 2 dice or you roll, you know,
+
+102
+00:04:50,530 --> 00:04:54,390
+the same dice twice what's the probability
+that you're going to get 2 sixes?
+
+103
+00:04:54,390 --> 00:04:56,220
+So, this one is slightly more challenging.
+
+104
+00:04:56,220 --> 00:05:00,360
+I want to start with the, again, the
+counting method way of solving this.
+
+105
+00:05:00,360 --> 00:05:03,959
+There's actually more than one way to
+solve this, I'll show you both.
+
+106
+00:05:03,959 --> 00:05:06,400
+That's one of the, the hard things about
+probability is.
+
+107
+00:05:06,400 --> 00:05:08,190
+There is many ways you can get the right
+answer.
+
+108
+00:05:08,190 --> 00:05:12,050
+So, it's often tricky to know which one is
+the, is the most efficient.
+
+109
+00:05:12,050 --> 00:05:13,480
+So, let's start with the counting method,
+though.
+
+110
+00:05:13,480 --> 00:05:16,410
+So, what's the probability of getting two
+sixes when rolling two dice?
+
+111
+00:05:16,410 --> 00:05:21,680
+So, our denominator here is going to be
+all possible outcomes that can occur,
+
+112
+00:05:21,680 --> 00:05:23,050
+when I roll two dice.
+
+113
+00:05:23,050 --> 00:05:24,990
+So, what can happen when I roll two dice?
+
+114
+00:05:24,990 --> 00:05:26,740
+Well, let's draw out a little tree to help
+us with this.
+
+115
+00:05:26,740 --> 00:05:31,580
+So, when I roll a die once, there are six
+possible outcomes,
+
+116
+00:05:31,580 --> 00:05:33,870
+each with equal likelihood of occurring.
+
+117
+00:05:33,870 --> 00:05:38,150
+Those outcomes are you going to get a 1, a
+2, a 3, a 4, a 5, or a 6.
+
+118
+00:05:38,150 --> 00:05:42,010
+So that any of those can occur on the
+first roll.
+
+119
+00:05:42,010 --> 00:05:44,810
+Whatever happens on the first roll,
+
+120
+00:05:44,810 --> 00:05:47,360
+I'm allowed on the second roll to have all
+of these repeat.
+
+121
+00:05:47,360 --> 00:05:49,400
+I can get a 1, a 2, a 3, a 4, a 5, a 6.
+
+122
+00:05:49,400 --> 00:05:51,420
+So, let's say I get a 1 in the first roll.
+
+123
+00:05:51,420 --> 00:05:55,392
+Then, I could get a 1, 2, 3, 4, 5, or 6 on
+the second roll.
+
+124
+00:05:55,392 --> 00:05:58,066
+1, 2, 3, 4, 5, or 6.
+
+125
+00:05:58,066 --> 00:06:02,160
+If I toll a 5 on the first roll, roll of
+the die,
+
+126
+00:06:02,160 --> 00:06:06,760
+I could again get 1, 2, 3, 4, 5, or 6 on
+the second roll.
+
+127
+00:06:06,760 --> 00:06:10,200
+You can draw out these little trees just
+to kind of help you enumerate all
+
+128
+00:06:10,200 --> 00:06:11,092
+the possibilities.
+
+129
+00:06:11,092 --> 00:06:14,020
+I'm not going to draw out the full tree
+here, but you start to get the idea there.
+
+130
+00:06:14,020 --> 00:06:15,588
+Six possibilities on the first roll.
+
+131
+00:06:15,588 --> 00:06:19,580
+There are six possibilities on the second
+roll, because everything repeats.
+
+132
+00:06:19,580 --> 00:06:20,922
+So, if you drew or
+
+133
+00:06:20,922 --> 00:06:24,540
+drew out all these branches, you have to
+make all the possible branches here.
+
+134
+00:06:24,540 --> 00:06:26,720
+You would could that there are 36
+branches.
+
+135
+00:06:26,720 --> 00:06:27,630
+Well, how do we get that?
+
+136
+00:06:27,630 --> 00:06:29,560
+There are 6 possibilities on the first
+roll,
+
+137
+00:06:29,560 --> 00:06:32,450
+times another 6 possibilities on the
+second roll.
+
+138
+00:06:32,450 --> 00:06:35,810
+So, my denominator will be 36 here.
+
+139
+00:06:35,810 --> 00:06:40,360
+There are 36 possible outcomes when I roll
+two dice.
+
+140
+00:06:40,360 --> 00:06:43,726
+And I'll just point out here that notice
+when I'm counting, here's 1, 1, here's 1,
+
+141
+00:06:43,726 --> 00:06:44,673
+2, somewhere down another branch, we'll
+have the outcome 2, 1.
+
+142
+00:06:44,673 --> 00:06:49,786
+So, I'm counting getting a 1 first and a 2
+second as different than
+
+143
+00:06:49,786 --> 00:06:55,590
+getting a 2 first and then a one second.
+
+144
+00:06:55,590 --> 00:07:00,130
+That means that we're, what, we call in
+probability considering order.
+
+145
+00:07:00,130 --> 00:07:03,600
+And all you have to know is that if you
+consider order in the denominator,
+
+146
+00:07:03,600 --> 00:07:05,530
+you're going to consider it in the
+numerator.
+
+147
+00:07:05,530 --> 00:07:06,770
+So, you have to be consistent.
+
+148
+00:07:06,770 --> 00:07:09,920
+So, there's 36 possible outcomes here.
+
+149
+00:07:09,920 --> 00:07:12,750
+How many of those outcomes involve getting
+2 sixes?
+
+150
+00:07:12,750 --> 00:07:15,120
+Well, there's only one way you can get 2
+sixes.
+
+151
+00:07:15,120 --> 00:07:17,340
+You have to get a six and you have to get
+a six again.
+
+152
+00:07:17,340 --> 00:07:20,030
+There's only 1 branch if you did the
+entire tree.
+
+153
+00:07:20,030 --> 00:07:22,713
+So that probabilities going to be 1 out of
+36.
+
+154
+00:07:22,713 --> 00:07:28,790
+Finally, what's the probability of getting
+a sum of 6 when rolling two dice?
+
+155
+00:07:28,790 --> 00:07:31,880
+So, what is, what I mean by sum of 6, so
+that is you roll 2 dice.
+
+156
+00:07:31,880 --> 00:07:35,090
+And what's the probability that if you add
+up the values from both of
+
+157
+00:07:35,090 --> 00:07:37,610
+those rules that that value will equal 6.
+
+158
+00:07:37,610 --> 00:07:41,170
+So, notice that our denominator is going
+to be the same here.
+
+159
+00:07:41,170 --> 00:07:45,860
+There are 36 possible things that can
+happen when you roll two dice.
+
+160
+00:07:45,860 --> 00:07:48,230
+So, the denominator is the same.
+
+161
+00:07:48,230 --> 00:07:51,020
+But to get the numerator here, there's no
+way
+
+162
+00:07:51,020 --> 00:07:54,401
+to get the numerator other than just to
+count out all the ways that you can get 6.
+
+163
+00:07:54,401 --> 00:07:56,210
+You can get a 6 by rolling a 1 and then a
+5.
+
+164
+00:07:56,210 --> 00:07:59,880
+You can get a 6 by rolling a 5 and then a
+1.
+
+165
+00:07:59,880 --> 00:08:02,490
+You can get a 6 by rolling a 3 and a 3.
+
+166
+00:08:02,490 --> 00:08:08,870
+You can get 6 by rolling a 2 and a 4, or
+by rolling a 4 and 2.
+
+167
+00:08:08,870 --> 00:08:12,680
+So again, that the numbers on both of dice
+have to add up to 6.
+
+168
+00:08:12,680 --> 00:08:14,906
+Those are all the possible you should get
+a sum of 6.
+
+169
+00:08:14,906 --> 00:08:16,071
+I've enumerated them.
+
+170
+00:08:16,071 --> 00:08:17,238
+I've written them out.
+
+171
+00:08:17,238 --> 00:08:18,700
+There is five of them.
+
+172
+00:08:18,700 --> 00:08:21,210
+So, the probability of getting a sum of 6
+is 5 out of 36.
+
+173
+00:08:21,210 --> 00:08:27,770
+And notice, to solve the, the numerator in
+this particular problem,
+
+174
+00:08:27,770 --> 00:08:30,050
+there wasn't any formula I could rely on.
+
+175
+00:08:30,050 --> 00:08:31,950
+There's no formula I can give you.
+
+176
+00:08:31,950 --> 00:08:34,180
+You just literally have to think it out.
+
+177
+00:08:34,180 --> 00:08:37,410
+And again, that's what's really
+challenging about probability problems,
+
+178
+00:08:37,410 --> 00:08:40,760
+is that I can't give you a pat formula
+that works for everything.
+
+179
+00:08:40,760 --> 00:08:44,280
+In all of the problems, you really have to
+think about the problem, what's going on.
+
+180
+00:08:44,280 --> 00:08:48,100
+And that's the great part about it,
+because it really makes your brain work.
+
+181
+00:08:48,100 --> 00:08:49,540
+But students find that challenging,
+
+182
+00:08:49,540 --> 00:08:52,190
+because they want me to just give them
+some kind of formula they can plug into.
+
+183
+00:08:52,190 --> 00:08:53,340
+Well, that's not going to be the case
+here.
+
+184
+00:08:53,340 --> 00:08:55,850
+You're actually going to have to really
+think.
+
+185
+00:08:55,850 --> 00:08:57,070
+So, that's the first type of example.
+
+186
+00:08:57,070 --> 00:08:59,829
+This is with a replacement, the dice can
+repeat.

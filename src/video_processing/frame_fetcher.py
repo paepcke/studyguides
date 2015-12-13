@@ -15,6 +15,7 @@ prevFrame_ = np.empty([])
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--rerun', action='store_true', dest='rerun', default=False)
+parser.add_argument('--rerun-all', action='store_true', dest='rerun_all', default=False)
 parser.add_argument('--continue-after', action="store", dest="continue_after", default="")
 parser.add_argument('--verbose', action='store_true', dest='verbose', default=False)
 args = parser.parse_args()
@@ -142,7 +143,7 @@ last_good_video = '../../data/video_lectures/08-07-slr-improvements.mp4'
 
 if args.rerun:
   videos = fetch_videos(constants.VIDEO_REL_PATH)
-  shouldProcess = False
+  shouldProcess = False or args.rerun_all
   for video in videos:
     if shouldProcess:
       if args.verbose:

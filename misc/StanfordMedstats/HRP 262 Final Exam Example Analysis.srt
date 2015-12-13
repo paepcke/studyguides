@@ -1,0 +1,4757 @@
+1
+00:00:00,000 --> 00:00:05,531
+[BLANK_AUDIO]
+
+2
+00:00:05,531 --> 00:00:09,466
+In this next module, I'm going to walk you
+through a real data analysis experience,
+
+3
+00:00:09,466 --> 00:00:13,900
+to help you synthesize all of the things
+that you've learned in this course.
+
+4
+00:00:13,900 --> 00:00:17,320
+And, as the example data, I'm going to use
+the data set from the final exam,
+
+5
+00:00:17,320 --> 00:00:19,380
+since you've all just had to grapple with
+that data.
+
+6
+00:00:21,810 --> 00:00:24,870
+I've laid out a series of steps here that
+I think you should take,
+
+7
+00:00:24,870 --> 00:00:27,540
+when you're doing a real data analysis.
+
+8
+00:00:27,540 --> 00:00:29,170
+And these are really just guidelines, but
+
+9
+00:00:29,170 --> 00:00:34,520
+you'll see that the emphasis, is to make
+sure, that you spend ample time
+
+10
+00:00:34,520 --> 00:00:39,520
+doing things like checking your data set,
+understanding your variables,
+
+11
+00:00:39,520 --> 00:00:44,940
+thinking about missing data, exploring
+simple relationships, graphing, graphing,
+
+12
+00:00:44,940 --> 00:00:47,800
+graphing and just really understanding
+what you've got in your data.
+
+13
+00:00:47,800 --> 00:00:51,430
+You really need to do all of that before
+you jump to the model building.
+
+14
+00:00:51,430 --> 00:00:53,620
+So that's the emphasis of this list.
+
+15
+00:00:53,620 --> 00:00:57,880
+I also want to remind you, that we always
+want to document all of our steps.
+
+16
+00:00:57,880 --> 00:01:00,460
+We're striving for a reproducible
+research.
+
+17
+00:01:00,460 --> 00:01:03,760
+Which means that I could hand my code to
+somebody else, and
+
+18
+00:01:03,760 --> 00:01:07,390
+they would be able to recreate the steps
+that I used in my analysis, and
+
+19
+00:01:07,390 --> 00:01:10,910
+also reproduce the tables and figures in
+my paper.
+
+20
+00:01:10,910 --> 00:01:13,430
+So now, I'm going to walk you through,
+each of these steps in turn,
+
+21
+00:01:13,430 --> 00:01:15,287
+as applied to this example data set.
+
+22
+00:01:17,230 --> 00:01:20,860
+So, first thing we're going to do is
+going to prep the data set, just make sure
+
+23
+00:01:20,860 --> 00:01:24,740
+we've got the variable names that we want
+formatting the variables correctly,
+
+24
+00:01:24,740 --> 00:01:27,670
+importing the data set into SASS or
+whatever statistical program that
+
+25
+00:01:27,670 --> 00:01:30,260
+you're using, making any new variables
+that we need.
+
+26
+00:01:32,330 --> 00:01:36,620
+I asked the authors of this original
+paper, this was a data set from a cluster,
+
+27
+00:01:36,620 --> 00:01:40,760
+randomized trial, and I this was a paper
+that was published in BMJ open.
+
+28
+00:01:40,760 --> 00:01:42,710
+I asked the authors to send me the data.
+
+29
+00:01:42,710 --> 00:01:47,098
+They had indicated that the data were
+available.
+
+30
+00:01:47,098 --> 00:01:48,720
+They sent it to me in the long format.
+
+31
+00:01:48,720 --> 00:01:52,790
+It was also sent to me with variable names
+that were in Italian.
+
+32
+00:01:52,790 --> 00:01:57,160
+So first thing I went through and did, was
+fortunately the data dictionary was in
+
+33
+00:01:57,160 --> 00:02:00,520
+English, so I was able to go through and
+rename all of my variable names into
+
+34
+00:02:00,520 --> 00:02:03,409
+something in English to make it easier for
+myself.
+
+35
+00:02:04,500 --> 00:02:08,000
+These data were collected as part of a
+cluster randomized trial, so
+
+36
+00:02:08,000 --> 00:02:11,000
+there were six pregnancy clinics, three
+were randomized to
+
+37
+00:02:11,000 --> 00:02:15,090
+be intervention clinics, three were
+randomized to be control clinics.
+
+38
+00:02:15,090 --> 00:02:20,560
+They enrolled women from within each of
+those clinics, a total of 89 women women
+
+39
+00:02:20,560 --> 00:02:23,960
+enrolled into the in, intervention clinics
+received lifestyle counseling to
+
+40
+00:02:23,960 --> 00:02:28,240
+help them lose their pregnancy weight
+faster after the birth of their babies.
+
+41
+00:02:28,240 --> 00:02:32,490
+And women in the control groups didn't get
+anything.
+
+42
+00:02:32,490 --> 00:02:39,100
+And the primary outcome of that trial was
+the mother's weight loss postpartum.
+
+43
+00:02:39,100 --> 00:02:42,610
+However the authors went back, and they
+did a secondary analysis.
+
+44
+00:02:42,610 --> 00:02:45,350
+These data set represent that secondary
+analysis.
+
+45
+00:02:45,350 --> 00:02:51,460
+They were able to get data on the birth on
+the weights of the babies up until
+
+46
+00:02:51,460 --> 00:02:56,420
+four years of age, on 64 of the original
+89 infants from the original trial.
+
+47
+00:02:58,290 --> 00:03:03,590
+I went ahead and took this data set, and
+also converted it into the broad form of
+
+48
+00:03:03,590 --> 00:03:08,900
+the data, so it was sent to me in the long
+form, I used a proc transpose in SASS.
+
+49
+00:03:08,900 --> 00:03:12,460
+When you use proc transpose, you can
+change one outcome variable,
+
+50
+00:03:12,460 --> 00:03:16,170
+one repeated measures outcome variable at
+a time into the broad form, and
+
+51
+00:03:16,170 --> 00:03:18,070
+then you have to merge the data sets.
+
+52
+00:03:18,070 --> 00:03:20,750
+But I went ahead and did that, because
+there are a few things, like, I want to
+
+53
+00:03:20,750 --> 00:03:24,290
+get correlation matrices where I'm
+going to need the broad form of the data.
+
+54
+00:03:24,290 --> 00:03:25,470
+I also went through, and
+
+55
+00:03:25,470 --> 00:03:29,610
+there were a few binary variables that
+were coded as 1,2 rather than 1, 0.
+
+56
+00:03:29,610 --> 00:03:32,190
+I prefer them as 1,0, so I recoded those.
+
+57
+00:03:32,190 --> 00:03:34,160
+But the data set was pretty clean.
+
+58
+00:03:34,160 --> 00:03:36,980
+There wasn't a huge amount to do in terms
+of prep.
+
+59
+00:03:36,980 --> 00:03:40,690
+The next thing we're going to do, is we're
+going to check the data set for
+
+60
+00:03:40,690 --> 00:03:44,040
+data errors and also if there are
+outliers, extreme values, we want to
+
+61
+00:03:44,040 --> 00:03:48,220
+learn about those early, even if those are
+not errors, if those are real values.
+
+62
+00:03:48,220 --> 00:03:53,510
+It turns out that, that, the these data
+again were from a published paper, so
+
+63
+00:03:53,510 --> 00:03:55,720
+as you might expect or you would hope.
+
+64
+00:03:55,720 --> 00:03:58,700
+The data set when the author sent it to
+me, was quite clean.
+
+65
+00:03:58,700 --> 00:04:01,430
+So you'll see that I didnt' have to spend
+a lot of time on checking the data set
+
+66
+00:04:01,430 --> 00:04:03,530
+here, though I didn't find anything that
+was worrisome,
+
+67
+00:04:03,530 --> 00:04:05,626
+it looked like a nice clean data set.
+
+68
+00:04:05,626 --> 00:04:08,520
+If you're dealing with your own real data,
+it's probably not going to be this clean.
+
+69
+00:04:08,520 --> 00:04:11,060
+These have sort of been pre-cleaned for
+us.
+
+70
+00:04:11,060 --> 00:04:11,780
+So I went ahead and
+
+71
+00:04:11,780 --> 00:04:17,000
+just got basic statistics, like the number
+max and min, for all of the variables.
+
+72
+00:04:17,000 --> 00:04:20,800
+I'm looking to see if there's anything
+outside of the range that I would expect.
+
+73
+00:04:20,800 --> 00:04:24,850
+I'm looking to see how many babies have
+these values.
+
+74
+00:04:24,850 --> 00:04:26,250
+For each of these variables.
+
+75
+00:04:26,250 --> 00:04:28,240
+Again, everything looks pretty clean,
+
+76
+00:04:28,240 --> 00:04:30,100
+I didn't find anything that looks
+worrisome here.
+
+77
+00:04:31,730 --> 00:04:32,860
+There's a lot of variables here,
+
+78
+00:04:32,860 --> 00:04:36,980
+I'm using the broad form of the data to
+generate these statistics.
+
+79
+00:04:36,980 --> 00:04:39,990
+So there's a lot of variables because I've
+got the variable for
+
+80
+00:04:39,990 --> 00:04:41,300
+each one of the time points.
+
+81
+00:04:41,300 --> 00:04:45,880
+The babies were measured about ten times
+in the first year of life they had
+
+82
+00:04:45,880 --> 00:04:49,720
+their weights and heights measured, and
+they were measured also at their
+
+83
+00:04:49,720 --> 00:04:53,940
+second birthday, at the third birthday,
+and at their fourth birthdays for
+
+84
+00:04:53,940 --> 00:04:59,340
+a total of about 13 weight length
+measurements per baby.
+
+85
+00:04:59,340 --> 00:05:04,120
+What you can see is that the birth weight
+is we, weight length z
+
+86
+00:05:05,630 --> 00:05:10,280
+one of the outcomes was to translate that
+weight into a z score that adjusted the,
+
+87
+00:05:10,280 --> 00:05:14,610
+you know, the z score takes into account
+how long or how tall the baby is.
+
+88
+00:05:14,610 --> 00:05:19,240
+So, that's, that's sort of like a baby
+BMI, and into a z score.
+
+89
+00:05:19,240 --> 00:05:22,740
+You can see that at the, at birth we had
+63 measurements out of 64 so
+
+90
+00:05:22,740 --> 00:05:26,050
+one baby was actually missing the birth
+weight.
+
+91
+00:05:26,050 --> 00:05:29,440
+You can see there's a lot of the interim
+measurements are missing small amounts of
+
+92
+00:05:29,440 --> 00:05:34,060
+data, because not every baby had every
+measurement, so just keep that in the back
+
+93
+00:05:34,060 --> 00:05:37,930
+of your mind, but again, I won't spend a
+lot of time on checking the data here,
+
+94
+00:05:37,930 --> 00:05:39,260
+because everything looks pretty clean.
+
+95
+00:05:40,530 --> 00:05:44,280
+They also had, so there were three outcome
+variables that I looked at.
+
+96
+00:05:44,280 --> 00:05:49,180
+So the weight for length z-score, that's a
+z-score, adjusted for height.
+
+97
+00:05:49,180 --> 00:05:53,360
+The authors also had provided a BMI
+z-score.
+
+98
+00:05:53,360 --> 00:05:57,790
+But that was only available for the
+infants after they turned two years of
+
+99
+00:05:57,790 --> 00:06:03,608
+age, and that's because this conversion to
+a z-score is based on population norms,
+
+100
+00:06:03,608 --> 00:06:08,100
+and they only, there is only a conversion
+after the babies are older than two.
+
+101
+00:06:08,100 --> 00:06:12,640
+So they are, there's not a calculation for
+it prior to two years of age.
+
+102
+00:06:12,640 --> 00:06:15,720
+So we only have that available for three
+time points,
+
+103
+00:06:15,720 --> 00:06:19,580
+the 11th, 12th and 13th measurements in
+this data set.
+
+104
+00:06:20,750 --> 00:06:23,800
+And I also looked at weight in kilograms
+as an outcome.
+
+105
+00:06:23,800 --> 00:06:26,195
+Again that was measured at all 13 time
+points.
+
+106
+00:06:26,195 --> 00:06:33,675
+Few things to notice, the the max of 24.3
+kilograms, this is at the fourth birthday,
+
+107
+00:06:33,675 --> 00:06:36,530
+that, that's a little high but it's
+probably a real baby.
+
+108
+00:06:36,530 --> 00:06:40,920
+But we'll see when we graph it that, that
+baby actually stands out a little bit as
+
+109
+00:06:40,920 --> 00:06:43,000
+having a little bit higher then everybody
+else.
+
+110
+00:06:43,000 --> 00:06:44,290
+But again, I don't think it's an error,
+
+111
+00:06:44,290 --> 00:06:47,050
+I think it's just an extreme value that
+we'll need to consider.
+
+112
+00:06:48,490 --> 00:06:50,250
+So, data set looks pretty clean.
+
+113
+00:06:50,250 --> 00:06:54,220
+I then went ahead and went through each
+variable, and asked for
+
+114
+00:06:54,220 --> 00:06:57,460
+univariate statistics and histograms on
+each variable separately.
+
+115
+00:06:57,460 --> 00:07:00,830
+So that I could just understand the
+variables in my data set.
+
+116
+00:07:00,830 --> 00:07:06,000
+I also examined correlation structures,
+using, using the broad form of the data.
+
+117
+00:07:06,000 --> 00:07:09,300
+Because I know we're going to be doing
+dealing with repeated measures
+
+118
+00:07:09,300 --> 00:07:10,920
+outcome here.
+
+119
+00:07:10,920 --> 00:07:12,930
+we, it's important to understand the
+correlation or
+
+120
+00:07:12,930 --> 00:07:16,280
+covariant structure of those repeated
+measures outcomes.
+
+121
+00:07:17,320 --> 00:07:20,220
+Now at the end of the day, we ended up
+using a random effects.
+
+122
+00:07:20,220 --> 00:07:23,550
+I ended up using a random effects model
+for this data, and
+
+123
+00:07:23,550 --> 00:07:27,330
+you don't actually have to do much in
+terms of specifying the, within
+
+124
+00:07:27,330 --> 00:07:31,710
+subject correlation across time points,
+when you do the random effects model.
+
+125
+00:07:31,710 --> 00:07:33,836
+But if we were doing a generalized
+estimating equation, or
+
+126
+00:07:33,836 --> 00:07:35,281
+a proc mixed with a repeated statement,
+
+127
+00:07:35,281 --> 00:07:38,310
+we would really need to understand those
+correlation structures.
+
+128
+00:07:38,310 --> 00:07:40,600
+So they were important enough that I
+tackled them early.
+
+129
+00:07:41,630 --> 00:07:45,930
+So first of all I went through and took,
+for all my variables that are not my
+
+130
+00:07:45,930 --> 00:07:51,450
+repeated measures variables I went ahead
+and asked for my simple statistics.
+
+131
+00:07:51,450 --> 00:07:54,090
+Yeah, in SASS, you can do that with a proc
+univariate.
+
+132
+00:07:54,090 --> 00:07:56,660
+I'm just, going to go through these
+quickly.
+
+133
+00:07:56,660 --> 00:08:00,860
+So one thing to notice is that on the
+group variable.
+
+134
+00:08:00,860 --> 00:08:07,330
+The original trial enrolled 89 women, but
+only 64 women provided data about their,
+
+135
+00:08:07,330 --> 00:08:11,190
+their infant's weight trajectory over time
+because, again,
+
+136
+00:08:11,190 --> 00:08:13,500
+this is a second-degree analysis.
+
+137
+00:08:13,500 --> 00:08:16,090
+So it turned out that the women who had
+been in the intervention group,
+
+138
+00:08:16,090 --> 00:08:18,060
+that's group equals one is the
+intervention.
+
+139
+00:08:19,200 --> 00:08:23,110
+You know, they're probably a little bit
+more motivated, because more of
+
+140
+00:08:23,110 --> 00:08:27,760
+them provided that follow up data on their
+infants than women from the control group.
+
+141
+00:08:27,760 --> 00:08:30,785
+So we have slightly more women from the
+intervention group here,
+
+142
+00:08:30,785 --> 00:08:32,710
+and you just going to keep that in mind.
+
+143
+00:08:34,180 --> 00:08:37,399
+There was about half of them had smoked at
+some time during their lives.
+
+144
+00:08:38,550 --> 00:08:41,790
+They exclusively breast fed for an average
+of three months.
+
+145
+00:08:41,790 --> 00:08:45,804
+They introduced solids at almost five
+months.
+
+146
+00:08:45,804 --> 00:08:48,660
+Most of them, 89% were employed.
+
+147
+00:08:48,660 --> 00:08:51,420
+About 3% had an abnormally high birth
+weight.
+
+148
+00:08:51,420 --> 00:08:55,240
+And about 17 to 18% had a low birth
+weight.
+
+149
+00:08:55,240 --> 00:09:00,470
+There's only 42% girls so slightly fewer
+girls in this data set than boys.
+
+150
+00:09:00,470 --> 00:09:02,540
+The average maternal age was about 29.
+
+151
+00:09:02,540 --> 00:09:05,450
+The, the pre-pregnancy BMI was about 22.
+
+152
+00:09:05,450 --> 00:09:08,610
+So this is a relatively light group of
+women.
+
+153
+00:09:08,610 --> 00:09:11,308
+They're not on average overweight.
+
+154
+00:09:11,308 --> 00:09:16,240
+About 12% would be considered having a,
+not a, a high birth weight, but
+
+155
+00:09:16,240 --> 00:09:18,460
+sort of being bigger than normal at birth.
+
+156
+00:09:18,460 --> 00:09:22,940
+The average maternal weight gain was about
+15 kilograms, just you know,
+
+157
+00:09:22,940 --> 00:09:25,310
+30, 35 pounds, and so on and so forth.
+
+158
+00:09:27,690 --> 00:09:31,500
+So I went ahead and just looked at the
+simple variables, then I went and
+
+159
+00:09:31,500 --> 00:09:35,390
+looked at the covariance and correlation
+structures of my three outcome variables,
+
+160
+00:09:35,390 --> 00:09:38,630
+my weight for length z-score which was
+measured at 13 time points.
+
+161
+00:09:38,630 --> 00:09:41,321
+My weight in kilograms also mentioned at
+13 time points, and
+
+162
+00:09:41,321 --> 00:09:43,930
+my BMI z-score which is only measured at
+three time points.
+
+163
+00:09:45,670 --> 00:09:49,610
+So you can see this is a little unwieldy,
+this is the weight for length z-score.
+
+164
+00:09:49,610 --> 00:09:53,520
+So they've been adjusted for how big, how
+long the baby or tall the baby is,
+
+165
+00:09:53,520 --> 00:09:57,320
+as well as converted into a z-score, into
+a standard deviation unit.
+
+166
+00:09:57,320 --> 00:10:00,210
+The pattern's a little bit harder to see
+with the z-scores,
+
+167
+00:10:00,210 --> 00:10:03,370
+than it will be with the weights in
+kilograms.
+
+168
+00:10:03,370 --> 00:10:07,743
+But you can see, for example the weight
+for length z-score at time point one,
+
+169
+00:10:07,743 --> 00:10:11,100
+that's the birth weight, birth weight for
+length z-score.
+
+170
+00:10:11,100 --> 00:10:13,670
+It has some correlation with the next time
+they were measured, and
+
+171
+00:10:13,670 --> 00:10:15,790
+then some correlation with the third time
+they were measured, but
+
+172
+00:10:15,790 --> 00:10:17,900
+pretty much falls off after there.
+
+173
+00:10:17,900 --> 00:10:21,080
+So just because you started a little above
+average at birth,
+
+174
+00:10:21,080 --> 00:10:23,090
+doesn't mean you're going to be above
+average forever.
+
+175
+00:10:23,090 --> 00:10:25,973
+And you can see the general pattern is
+that, you know,
+
+176
+00:10:25,973 --> 00:10:29,548
+adjacent time points tend to be more
+correlated to one another, and
+
+177
+00:10:29,548 --> 00:10:32,620
+then there's some drop off as you get
+farther in time, and
+
+178
+00:10:32,620 --> 00:10:37,260
+sometimes even the correlations are
+negative as you get further in time.
+
+179
+00:10:37,260 --> 00:10:39,910
+Remember that these time points are not
+evenly spaced.
+
+180
+00:10:39,910 --> 00:10:42,492
+The first ten measurements are all within
+the first year, so
+
+181
+00:10:42,492 --> 00:10:44,150
+they were measured quite frequently.
+
+182
+00:10:44,150 --> 00:10:47,680
+Measurements measurement ten corresponds
+to the first birthday.
+
+183
+00:10:47,680 --> 00:10:50,270
+Measurement 11 corresponds to the second
+birthday.
+
+184
+00:10:50,270 --> 00:10:52,580
+Measurement 12 corresponds to the third
+birthday, and
+
+185
+00:10:52,580 --> 00:10:55,550
+measurement 13 corresponds to the, around
+the fourth birthday.
+
+186
+00:10:55,550 --> 00:10:56,941
+So you'll notice there's a,
+
+187
+00:10:56,941 --> 00:11:00,051
+kind of a high amount of correlation once
+you get past the first year.
+
+188
+00:11:00,051 --> 00:11:07,389
+There's a fair amount of correlation
+between, say you know, ten, 11 and 12.
+
+189
+00:11:07,389 --> 00:11:10,054
+As we get over here this is the
+correlations between weights ten,
+
+190
+00:11:10,054 --> 00:11:10,788
+11, and 12.
+
+191
+00:11:10,788 --> 00:11:14,522
+So by the time you're one years old,
+you're, it's pretty, if you're a big
+
+192
+00:11:14,522 --> 00:11:19,150
+baby at one you're might, more likely to
+be a big baby at two, three, and four so.
+
+193
+00:11:19,150 --> 00:11:20,650
+You can see some correlations there.
+
+194
+00:11:20,650 --> 00:11:24,300
+So, the adjacent high points tend to be
+more correlated.
+
+195
+00:11:24,300 --> 00:11:27,120
+Maybe stronger correlations after the
+first year of birth.
+
+196
+00:11:27,120 --> 00:11:29,970
+There's no clear correlation structure
+here, although maybe something like
+
+197
+00:11:29,970 --> 00:11:33,120
+an autoregressive or an independent would
+be appropriate.
+
+198
+00:11:33,120 --> 00:11:34,916
+Unstructured's probably not going to work
+here,
+
+199
+00:11:34,916 --> 00:11:36,790
+because we have far too many time points.
+
+200
+00:11:36,790 --> 00:11:41,231
+Exchangeable seems wrong as well, because
+it doesn't look exchangeable to me.
+
+201
+00:11:41,231 --> 00:11:44,018
+The weights, if you just look at the
+weights in kilograms,
+
+202
+00:11:44,018 --> 00:11:46,935
+the correlation structure is a little bit
+easier to discern.
+
+203
+00:11:46,935 --> 00:11:50,447
+I think this one looks nice and
+autoaggressive, because you can see this
+
+204
+00:11:50,447 --> 00:11:54,637
+clear pattern, that if you weighed a lot
+at time point one, the correlation with
+
+205
+00:11:54,637 --> 00:11:58,851
+time point 2, 3, 4, 5, 6, 7, 8, it kind of
+nicely goes down overtime.
+
+206
+00:11:58,851 --> 00:12:02,790
+You can kind of see that, and if you look
+at week two the correlations again also go
+
+207
+00:12:02,790 --> 00:12:06,732
+down over time, and you'll see this
+general pattern, so something like, again,
+
+208
+00:12:06,732 --> 00:12:10,336
+like an autoregressive or independent
+would be most appropriate here.
+
+209
+00:12:10,336 --> 00:12:12,673
+The BMIs, these scores, there's only a few
+of those,
+
+210
+00:12:12,673 --> 00:12:14,690
+you could model that one as an
+unstructured.
+
+211
+00:12:14,690 --> 00:12:15,800
+Or maybe an,
+
+212
+00:12:15,800 --> 00:12:21,600
+again, an autoregressive further of apart
+time points seem to be less correlated.
+
+213
+00:12:21,600 --> 00:12:23,370
+As you might expect with repeated measures
+data.
+
+214
+00:12:25,080 --> 00:12:26,080
+I looked at histograms.
+
+215
+00:12:26,080 --> 00:12:27,550
+Again, this is the group variable.
+
+216
+00:12:27,550 --> 00:12:30,690
+You can that there's more intervention
+women who provided these data than
+
+217
+00:12:30,690 --> 00:12:31,470
+control women.
+
+218
+00:12:31,470 --> 00:12:35,664
+So we need to at least think about that in
+our interpretation of the findings.
+
+219
+00:12:35,664 --> 00:12:40,525
+just, you know, few things for fun, so,
+about more than half the women had smoked
+
+220
+00:12:40,525 --> 00:12:45,456
+sometime in their life, the maternal age
+was centered around 29, these are first
+
+221
+00:12:45,456 --> 00:12:51,160
+time mothers, and most of the women were
+employed, a lot were edu, highly educated.
+
+222
+00:12:51,160 --> 00:12:55,650
+The maternal weight kind of centered
+around 60 kilograms.
+
+223
+00:12:55,650 --> 00:13:00,560
+There's a few heavier women out to the
+tail here for maternal BMI.
+
+224
+00:13:00,560 --> 00:13:04,570
+Maternal weight gain during pregnancy
+follows a nice normal distribution.
+
+225
+00:13:04,570 --> 00:13:07,870
+They also, the author's also provided that
+as a categorical variable.
+
+226
+00:13:09,900 --> 00:13:13,610
+Most women exclusively breast fed their
+babies for about five months.
+
+227
+00:13:13,610 --> 00:13:15,180
+There's some variation on that.
+
+228
+00:13:15,180 --> 00:13:17,330
+Partial breastfeeding went up to 30
+months,
+
+229
+00:13:17,330 --> 00:13:20,870
+that's continuing to breast feed after
+you've introduced solid foods.
+
+230
+00:13:22,350 --> 00:13:25,370
+Birth weight looks nice and normal,
+gestational age has
+
+231
+00:13:25,370 --> 00:13:28,090
+a left tail because some of the weight
+babies were born a little early.
+
+232
+00:13:29,440 --> 00:13:30,330
+And then I went ahead and
+
+233
+00:13:30,330 --> 00:13:35,030
+graphed all of the outcome variables at
+each time point, in separate histograms.
+
+234
+00:13:35,030 --> 00:13:36,149
+What I'm looking for
+
+235
+00:13:36,149 --> 00:13:40,260
+here is, we're going to be running linear
+models, linear mixed models.
+
+236
+00:13:40,260 --> 00:13:44,115
+And so we want the outcome variable to be
+at least reasonably normally distributed,
+
+237
+00:13:44,115 --> 00:13:46,665
+and you can see that this is for weight,
+so the weights,
+
+238
+00:13:46,665 --> 00:13:50,032
+it doesn't look like a perfect normal
+distribution, I've shown you a,
+
+239
+00:13:50,032 --> 00:13:53,000
+a sampling of the different time points
+here.
+
+240
+00:13:53,000 --> 00:13:56,160
+But looks probably close enough, good
+enough for running linear models.
+
+241
+00:13:56,160 --> 00:13:59,910
+Here's weights at the first birthday, the
+second, third, and fourth birthdays.
+
+242
+00:13:59,910 --> 00:14:04,480
+It's not perfectly normally distributed,
+but good enough to run our linear models.
+
+243
+00:14:04,480 --> 00:14:07,250
+And here's the one baby who had a little
+bit of a higher weight.
+
+244
+00:14:07,250 --> 00:14:10,214
+At the fourth birthday, it's a little bit
+of an outlier there,
+
+245
+00:14:10,214 --> 00:14:11,450
+that we need to think about.
+
+246
+00:14:12,850 --> 00:14:15,207
+The weight for life z-scores, I also
+looked at those,
+
+247
+00:14:15,207 --> 00:14:18,170
+they also look reasonably, normally
+distributed, good enough to,
+
+248
+00:14:18,170 --> 00:14:19,540
+to be able to run linear models.
+
+249
+00:14:21,230 --> 00:14:25,350
+So, after you kind of get a feel for all
+the different variables in your data set,
+
+250
+00:14:25,350 --> 00:14:27,610
+then, we need to think about missing data.
+
+251
+00:14:29,590 --> 00:14:32,010
+So, I just wanted to just first quantify
+the missing data.
+
+252
+00:14:32,010 --> 00:14:34,503
+So, I ran a little macro.
+
+253
+00:14:34,503 --> 00:14:37,975
+And all that macro is doing is, it's
+identifying for each measurement,
+
+254
+00:14:37,975 --> 00:14:41,730
+there's different missing data at
+different measurements for these babies.
+
+255
+00:14:41,730 --> 00:14:46,270
+At each different measurement for the
+weight for life z-score, I asked for
+
+256
+00:14:46,270 --> 00:14:49,069
+SASS just to to save the, the number of,
+
+257
+00:14:49,069 --> 00:14:53,071
+to save a new data set with all the babies
+who were missing data, for
+
+258
+00:14:53,071 --> 00:14:57,124
+that outcome for that time point, and then
+just to print them out to me.
+
+259
+00:14:57,124 --> 00:15:00,646
+It's just a quick way to get a sense of
+how many babies are missing data at
+
+260
+00:15:00,646 --> 00:15:03,596
+each time point, missing outcome data at
+each time point.
+
+261
+00:15:03,596 --> 00:15:07,602
+And so, this is just a sampling of what I
+came up with.
+
+262
+00:15:07,602 --> 00:15:09,010
+So this is the first time point.
+
+263
+00:15:09,010 --> 00:15:12,870
+One maybe was missing a weight for length
+z-score score at birth.
+
+264
+00:15:12,870 --> 00:15:15,810
+You would hope you could get that data
+point but for
+
+265
+00:15:15,810 --> 00:15:18,550
+whatever reason they didn't have it, but
+that baby did have it for
+
+266
+00:15:18,550 --> 00:15:23,290
+the second measurement so their only
+missing that first one.
+
+267
+00:15:23,290 --> 00:15:24,990
+There was actually 21 babies who
+
+268
+00:15:24,990 --> 00:15:26,550
+were missing that second week for length
+z-score.
+
+269
+00:15:26,550 --> 00:15:30,370
+Well, probably not every baby comes in
+right after they're born for
+
+270
+00:15:30,370 --> 00:15:34,090
+another checkup, or somehow that data, the
+mothers didn't collect that data.
+
+271
+00:15:34,090 --> 00:15:38,000
+So we're missing the most number of babies
+for that second time point,
+
+272
+00:15:38,000 --> 00:15:42,140
+but remember these babies were measured up
+to ten times in the first year of life.
+
+273
+00:15:42,140 --> 00:15:45,330
+So it's probably okay if there a few of
+babies here and
+
+274
+00:15:45,330 --> 00:15:48,980
+there are missing various of these interim
+measurements.
+
+275
+00:15:48,980 --> 00:15:52,610
+I went through and counted how many babies
+were missing weight for
+
+276
+00:15:52,610 --> 00:15:55,310
+length z-scores at each one of these time
+periods, and I've written them out here.
+
+277
+00:15:56,370 --> 00:15:58,080
+It's good that the later time points,
+
+278
+00:15:58,080 --> 00:16:02,020
+which represent the older ages, there
+aren't that many missing data points.
+
+279
+00:16:02,020 --> 00:16:04,380
+Because almost everybody, well everybody,
+probably goes in for
+
+280
+00:16:04,380 --> 00:16:08,490
+their first birthday checkup, their second
+birthday checkup and so on.
+
+281
+00:16:08,490 --> 00:16:10,880
+They may not get all of their checkups
+within the first year.
+
+282
+00:16:13,240 --> 00:16:16,010
+So it's just good to know the pattern of
+missing data to have an understanding of
+
+283
+00:16:16,010 --> 00:16:16,550
+what's there.
+
+284
+00:16:16,550 --> 00:16:19,220
+And then we have to think about how we're
+going to handle missing data for
+
+285
+00:16:19,220 --> 00:16:21,220
+this particular example.
+
+286
+00:16:21,220 --> 00:16:25,363
+So first of all, the more important
+missing data are actually not available to
+
+287
+00:16:25,363 --> 00:16:27,070
+us in this data set.
+
+288
+00:16:27,070 --> 00:16:30,910
+So remember that the original randomized
+trial had 89 women in it.
+
+289
+00:16:30,910 --> 00:16:34,840
+Only 64 of those women were able to
+provide data on their babies.
+
+290
+00:16:34,840 --> 00:16:38,140
+So we actually had, essentially, 25
+dropouts.
+
+291
+00:16:38,140 --> 00:16:42,610
+And that could have a lot of influence
+because you can imagine that perhaps
+
+292
+00:16:42,610 --> 00:16:48,130
+the mothers who were most embarrassed
+about by their baby's weight gains or,
+
+293
+00:16:48,130 --> 00:16:49,220
+you know, were most,
+
+294
+00:16:49,220 --> 00:16:51,330
+were least concerned about their baby's
+weight gains, or something.
+
+295
+00:16:51,330 --> 00:16:52,870
+There's something, there could be some
+bias,
+
+296
+00:16:52,870 --> 00:16:55,100
+in terms of who actually provides that
+followup data.
+
+297
+00:16:55,100 --> 00:16:57,140
+The fact that the women weren't willing to
+provide it, or
+
+298
+00:16:57,140 --> 00:16:59,130
+didn't have it, might say something.
+
+299
+00:16:59,130 --> 00:17:00,550
+So we need to consider that.
+
+300
+00:17:00,550 --> 00:17:03,080
+This is a secondary end point from the
+clinical trial.
+
+301
+00:17:03,080 --> 00:17:05,670
+Therefore we're not going to be using
+intention to treat analysis, so
+
+302
+00:17:05,670 --> 00:17:09,640
+we don't necessarily need to include those
+dropouts in any way in some kind of
+
+303
+00:17:09,640 --> 00:17:11,760
+intention to treat analysis.
+
+304
+00:17:11,760 --> 00:17:14,140
+However we should explore what's different
+about the dropouts,
+
+305
+00:17:14,140 --> 00:17:18,420
+try to do, if we had these data, we could
+try to do some sensitivity analyses,
+
+306
+00:17:18,420 --> 00:17:20,940
+where we said if everybody that dropped
+out, you know,
+
+307
+00:17:20,940 --> 00:17:24,120
+their babies had abnormally high weight
+gain, how would that affect the results?
+
+308
+00:17:24,120 --> 00:17:27,580
+We could do some kind of sensitivity
+analysis if we had those data,
+
+309
+00:17:27,580 --> 00:17:30,260
+we actually don't have them, so we're
+really not going to be able to do
+
+310
+00:17:30,260 --> 00:17:34,420
+much here, although ideally if this was
+our data set, we would be able to.
+
+311
+00:17:34,420 --> 00:17:39,810
+On the other hand, the missing interim
+data, the fact that at a given time point,
+
+312
+00:17:39,810 --> 00:17:43,730
+some babies are missing data for given
+measurement.
+
+313
+00:17:43,730 --> 00:17:47,240
+That actually I'm not going to worry so
+much about for this dataset.
+
+314
+00:17:47,240 --> 00:17:51,240
+All of the babies have a large number of
+weight measurements.
+
+315
+00:17:51,240 --> 00:17:54,370
+And just if there missing one or two
+during their first year of life,
+
+316
+00:17:54,370 --> 00:17:58,700
+that doesn't in all impede my ability to
+draw a growth curve for them.
+
+317
+00:17:58,700 --> 00:18:00,620
+They can measure one baby, you know?
+
+318
+00:18:00,620 --> 00:18:03,960
+Was supposed to be measured here, here and
+maybe missed the third measurement and
+
+319
+00:18:03,960 --> 00:18:07,180
+then, you know, missed the fifth
+measurement and so
+
+320
+00:18:07,180 --> 00:18:10,370
+on, but, you know, has the majority of the
+measurements, I'm going to be able to
+
+321
+00:18:10,370 --> 00:18:13,940
+draw a nice growth curve for that baby
+even missing a few interim measurements.
+
+322
+00:18:13,940 --> 00:18:15,200
+So it's not going to be a big deal,
+
+323
+00:18:15,200 --> 00:18:17,759
+I'm not going to actually try to fill in
+that missing data in any way.
+
+324
+00:18:18,930 --> 00:18:22,570
+And remember the mixed models handle the
+missing data just fine.
+
+325
+00:18:22,570 --> 00:18:24,930
+Again, it's just going to, if the baby
+doesn't have data for
+
+326
+00:18:24,930 --> 00:18:27,410
+that time point, it's just going to leave
+it out.
+
+327
+00:18:27,410 --> 00:18:29,050
+But the babies, doesn't,
+
+328
+00:18:29,050 --> 00:18:32,420
+you don't need to have complete data in
+order to be included in those models.
+
+329
+00:18:32,420 --> 00:18:34,990
+So we're not going to worry too much about
+the missing interim data,
+
+330
+00:18:34,990 --> 00:18:38,420
+although it's important to understand how
+much of that missing data we have.
+
+331
+00:18:40,400 --> 00:18:43,440
+The next thing I did was to explore simple
+relationships,
+
+332
+00:18:43,440 --> 00:18:48,110
+simple bivariate relationships between the
+different variables in my data set
+
+333
+00:18:48,110 --> 00:18:52,150
+relationships between the variables in my
+data set and the outcome variables.
+
+334
+00:18:52,150 --> 00:18:55,400
+As well as to start thinking about some of
+the assumption that
+
+335
+00:18:55,400 --> 00:18:56,850
+we're going to have here.
+
+336
+00:18:56,850 --> 00:18:57,970
+Among the assumptions we have,
+
+337
+00:18:57,970 --> 00:19:01,260
+we need a normally distributed outcome, we
+already kind of looked at that.
+
+338
+00:19:01,260 --> 00:19:07,160
+We also need to think about what is the
+shape of the growth curve over time?
+
+339
+00:19:07,160 --> 00:19:09,300
+It's probably not going to be linear, so
+
+340
+00:19:09,300 --> 00:19:13,970
+we can't just throw time into our model
+and and that's good enough.
+
+341
+00:19:13,970 --> 00:19:15,550
+We don't want to fit straight lines here.
+
+342
+00:19:15,550 --> 00:19:18,340
+We're probably going to need to fit either
+something quadratic or
+
+343
+00:19:18,340 --> 00:19:19,770
+cubic, something more complicated.
+
+344
+00:19:19,770 --> 00:19:22,970
+So we really need to think about the shape
+of that growth trajectory for these data.
+
+345
+00:19:24,260 --> 00:19:28,330
+So I went ahead and ran some correlation
+matrices
+
+346
+00:19:28,330 --> 00:19:32,440
+between the variables that are not
+repeated measures variables.
+
+347
+00:19:32,440 --> 00:19:35,500
+Just of interest to see what variables
+tend to go together.
+
+348
+00:19:35,500 --> 00:19:37,280
+So some interesting things.
+
+349
+00:19:37,280 --> 00:19:40,510
+If you look the luckily there's not too
+much going on with group,
+
+350
+00:19:40,510 --> 00:19:42,950
+we're hoping the two groups are relatively
+balanced.
+
+351
+00:19:42,950 --> 00:19:44,550
+It looks like they are reasonably
+balanced,
+
+352
+00:19:44,550 --> 00:19:48,710
+there's not huge correlations with any
+confounders in our data set.
+
+353
+00:19:48,710 --> 00:19:52,450
+What's interesting to me is that if you
+look at the ever smoking variable,
+
+354
+00:19:52,450 --> 00:19:56,460
+women who have ever smoked gained more
+weight during pregnancy.
+
+355
+00:19:56,460 --> 00:19:59,450
+They were higher in their weights before
+pregnancy.
+
+356
+00:19:59,450 --> 00:20:01,900
+And again, gained more weight during
+pregnancy.
+
+357
+00:20:01,900 --> 00:20:05,740
+They were less likely to breastfeed, they
+introduced solids earlier.
+
+358
+00:20:05,740 --> 00:20:08,910
+So even though you tend to think of women
+wanting to smoke to
+
+359
+00:20:08,910 --> 00:20:11,490
+keep their weight down, in fact, that
+correlated with higher weight and
+
+360
+00:20:11,490 --> 00:20:17,040
+probably ever smoking is some kind of
+proxy here for socioeconomic status.
+
+361
+00:20:17,040 --> 00:20:21,290
+So the women who have ever smoke generally
+tend to be less healthy in general.
+
+362
+00:20:21,290 --> 00:20:25,360
+More educated women, exclusively breastfed
+for longer.
+
+363
+00:20:25,360 --> 00:20:28,350
+They also tended to be a little bit older,
+as you might expect.
+
+364
+00:20:30,680 --> 00:20:33,550
+Partial and exclusive breastfeeding tend
+to go together, you know,
+
+365
+00:20:33,550 --> 00:20:35,760
+there's a lot of things we can look at
+here.
+
+366
+00:20:35,760 --> 00:20:39,849
+employment, you're more likely to be a
+little bit older if you were employed.
+
+367
+00:20:41,850 --> 00:20:42,390
+And so on.
+
+368
+00:20:42,390 --> 00:20:44,130
+We can look at, you know this is an
+interesting pattern.
+
+369
+00:20:44,130 --> 00:20:47,550
+So ever smoking seems to correlate with
+some kind of worse health habits.
+
+370
+00:20:47,550 --> 00:20:51,180
+Being more educated tends to correlate
+with better things, as you might expect.
+
+371
+00:20:52,720 --> 00:20:55,800
+The, maternal age again correlates with
+the education and
+
+372
+00:20:55,800 --> 00:20:58,555
+employment, as you might expect.
+
+373
+00:20:58,555 --> 00:21:02,030
+The ever smoking again correlates with
+maternal weight, so
+
+374
+00:21:02,030 --> 00:21:03,560
+you can see all kinds of these patterns.
+
+375
+00:21:03,560 --> 00:21:06,650
+So it's just good to get a sense of how
+the variables go together in
+
+376
+00:21:06,650 --> 00:21:07,270
+this data set.
+
+377
+00:21:09,380 --> 00:21:10,270
+I then went ahead and
+
+378
+00:21:10,270 --> 00:21:14,460
+graphed the growth trajectory for each
+baby individually over time.
+
+379
+00:21:14,460 --> 00:21:16,050
+And I've done this separately for girls
+and
+
+380
+00:21:16,050 --> 00:21:21,070
+boys, this is equivalent to figure two of
+the BMJ open paper,
+
+381
+00:21:21,070 --> 00:21:24,410
+the authors actually showed this graph
+because I think it is important.
+
+382
+00:21:24,410 --> 00:21:26,980
+It gives you the shape of the growth
+trajectories over time.
+
+383
+00:21:26,980 --> 00:21:31,030
+What's interesting is that, you'll notice
+that the girls have more variation in
+
+384
+00:21:31,030 --> 00:21:34,410
+their growth over time than the boys for
+whatever reason in this data set.
+
+385
+00:21:34,410 --> 00:21:36,800
+You'll also notice that there is this one
+baby,
+
+386
+00:21:36,800 --> 00:21:41,270
+this one girl who had a little bit of a
+higher, weight gain over time.
+
+387
+00:21:41,270 --> 00:21:42,640
+She is in the control group.
+
+388
+00:21:42,640 --> 00:21:46,640
+So that could artificially make the
+control group look like they're having,
+
+389
+00:21:46,640 --> 00:21:47,880
+you know, more weight gain over time.
+
+390
+00:21:47,880 --> 00:21:49,210
+So we will need to consider that.
+
+391
+00:21:51,480 --> 00:21:55,370
+The shape of the growth curves over time
+is clearly not linear, right?
+
+392
+00:21:55,370 --> 00:21:56,770
+It is not a straight line.
+
+393
+00:21:56,770 --> 00:22:00,850
+As you would expect, that baby growth
+would not follow a straight line.
+
+394
+00:22:00,850 --> 00:22:02,730
+So we're going to need to consider that in
+the modeling.
+
+395
+00:22:02,730 --> 00:22:03,710
+When we're building our models,
+
+396
+00:22:03,710 --> 00:22:06,650
+we're not going to just be putting age in
+as a linear term.
+
+397
+00:22:06,650 --> 00:22:10,550
+We are probably going to need to consider
+cubics and quadratics here.
+
+398
+00:22:10,550 --> 00:22:13,970
+The other thing that you might do is, you
+might say well, if you kind of look,
+
+399
+00:22:13,970 --> 00:22:19,770
+there's this high growth rate up until the
+first year of age and
+
+400
+00:22:19,770 --> 00:22:21,960
+you know, that looks like a little bit of
+a complicated shape.
+
+401
+00:22:21,960 --> 00:22:25,860
+It might be okay to model it as linear,
+you can see after the first year of age,
+
+402
+00:22:25,860 --> 00:22:27,970
+it looks more linear, maybe not perfectly
+linear.
+
+403
+00:22:27,970 --> 00:22:29,300
+Same thing over here.
+
+404
+00:22:29,300 --> 00:22:33,330
+So you could also think about breaking up
+the data set into two time periods and
+
+405
+00:22:33,330 --> 00:22:34,840
+modeling those time periods separately.
+
+406
+00:22:34,840 --> 00:22:36,600
+That might be another way to handle the
+data.
+
+407
+00:22:36,600 --> 00:22:38,430
+The fact that there are definitely not
+linear.
+
+408
+00:22:38,430 --> 00:22:40,080
+[BLANK_AUDIO]
+
+409
+00:22:40,080 --> 00:22:41,100
+That was the weights.
+
+410
+00:22:41,100 --> 00:22:42,900
+The weights makes the prettiest graphic.
+
+411
+00:22:42,900 --> 00:22:45,020
+The weight for length Z score.
+
+412
+00:22:45,020 --> 00:22:47,270
+Remember this is a Z score.
+
+413
+00:22:47,270 --> 00:22:50,160
+And so it has a little bit funnier pattern
+every time.
+
+414
+00:22:50,160 --> 00:22:54,100
+It's really hard to discern for these
+individual growth lines.
+
+415
+00:22:54,100 --> 00:22:55,870
+Exactly what's going on with the Z score.
+
+416
+00:22:55,870 --> 00:22:59,180
+So you could easily be a standard
+deviation above
+
+417
+00:22:59,180 --> 00:23:02,060
+average at birth, that doesn't necessarily
+mean you're going to be
+
+418
+00:23:02,060 --> 00:23:05,450
+a standard deviation above average by the
+time you're one years old.
+
+419
+00:23:05,450 --> 00:23:07,450
+And you can see there's a lot of kind of
+going back and
+
+420
+00:23:07,450 --> 00:23:09,220
+forth, a lot of variation here.
+
+421
+00:23:09,220 --> 00:23:11,920
+So it's messy in the first year of life,
+
+422
+00:23:11,920 --> 00:23:15,160
+you can see a lot more kind of going back
+and forth in the first year of life.
+
+423
+00:23:16,700 --> 00:23:20,640
+The BMI Z scores were only available after
+the kids turned two, and so
+
+424
+00:23:20,640 --> 00:23:24,330
+you can see we only have it measured at
+three time points but again it's
+
+425
+00:23:24,330 --> 00:23:27,878
+hard just in this individual growth line
+to see exactly what the pattern is there.
+
+426
+00:23:27,878 --> 00:23:30,570
+We're probably going to need to do some
+mean plot to get a sense of the pattern.
+
+427
+00:23:31,690 --> 00:23:33,530
+So I went ahead and did some mean plots,
+and
+
+428
+00:23:33,530 --> 00:23:35,140
+so I'm actually going to show you here.
+
+429
+00:23:35,140 --> 00:23:38,950
+I'm plotting, this is, what you see on
+this screen are the girls only.
+
+430
+00:23:38,950 --> 00:23:41,620
+So I did girls and boys separately, just
+to start with.
+
+431
+00:23:41,620 --> 00:23:45,950
+I plotted the mean, weight for lengths, Z
+score the means, BMI Z score and
+
+432
+00:23:45,950 --> 00:23:48,190
+the mean weight at every visit.
+
+433
+00:23:48,190 --> 00:23:50,220
+And I"m treating time as categorical here.
+
+434
+00:23:50,220 --> 00:23:52,740
+But the blue line is the control group.
+
+435
+00:23:54,330 --> 00:23:55,910
+Then the red line is the intervention.
+
+436
+00:23:55,910 --> 00:23:58,720
+And interestingly enough, we do seem to
+
+437
+00:23:58,720 --> 00:24:02,100
+see some separation between the control
+group and the intervention group.
+
+438
+00:24:02,100 --> 00:24:04,110
+Even in some of the earlier time points,
+and
+
+439
+00:24:04,110 --> 00:24:07,690
+then especially at the later time points
+by the time they are four.
+
+440
+00:24:07,690 --> 00:24:09,690
+You see that also for the BMI's, and
+
+441
+00:24:09,690 --> 00:24:13,230
+you see that also for the weeks in
+absolute values.
+
+442
+00:24:13,230 --> 00:24:15,520
+So, little bit of a separation here and
+here.
+
+443
+00:24:15,520 --> 00:24:18,340
+So it does look like the control group
+seems to be gaining a little bit more
+
+444
+00:24:18,340 --> 00:24:20,830
+weight over time than the intervention
+group, at least for the girls.
+
+445
+00:24:22,940 --> 00:24:29,410
+Interestingly if you look at the boys, we
+don't see as strong of a pattern for
+
+446
+00:24:29,410 --> 00:24:30,530
+the boys.
+
+447
+00:24:30,530 --> 00:24:33,590
+In fact you can see that the intervention
+group was a little heavier than
+
+448
+00:24:33,590 --> 00:24:36,790
+the control group at the early time
+points, although it switches over by
+
+449
+00:24:36,790 --> 00:24:39,439
+the end, but those are really highly
+overlapping graphs.
+
+450
+00:24:40,600 --> 00:24:43,260
+So, you, it makes you wonder these are,
+there's very, this is
+
+451
+00:24:43,260 --> 00:24:47,660
+only 64 babies though, and there's, you
+know, more boys than girls here.
+
+452
+00:24:47,660 --> 00:24:49,590
+So, there's not a huge number of boys and
+girls.
+
+453
+00:24:49,590 --> 00:24:52,660
+The numbers are small, but it does make
+you wonder if there's maybe some gender
+
+454
+00:24:52,660 --> 00:24:55,530
+interaction where the women who get the
+intervention,
+
+455
+00:24:55,530 --> 00:25:00,840
+the counseling, somehow we're more worried
+about their girl's growth trajectories or
+
+456
+00:25:00,840 --> 00:25:04,310
+it could just be chance that it happened
+to show up in the girls but not the boys.
+
+457
+00:25:04,310 --> 00:25:06,950
+You see a little bit of separation on the
+weight where the control group is
+
+458
+00:25:06,950 --> 00:25:10,070
+a little bit higher but again those lines
+are highly overlapping, so it doesn't look
+
+459
+00:25:10,070 --> 00:25:14,260
+as like there's as much going on with the
+boys but this could just be chance.
+
+460
+00:25:14,260 --> 00:25:16,110
+I will later consider a gender
+interaction.
+
+461
+00:25:18,230 --> 00:25:19,430
+I then combine the boys and
+
+462
+00:25:19,430 --> 00:25:24,265
+the girls together to get enough, and here
+to see what's really going on.
+
+463
+00:25:24,265 --> 00:25:27,420
+Then you do see that it doesn't look like
+there's much difference between
+
+464
+00:25:27,420 --> 00:25:30,290
+the control, and the intervention group at
+the early time points.
+
+465
+00:25:30,290 --> 00:25:32,820
+But again at the end at, at the second,
+third, and
+
+466
+00:25:32,820 --> 00:25:35,310
+fourth birthday, you do start to see some
+separation for
+
+467
+00:25:35,310 --> 00:25:39,410
+the Z scores, for the weight, and also for
+the BMI Z scores.
+
+468
+00:25:39,410 --> 00:25:40,960
+And it, in, you know in fact the authors
+did
+
+469
+00:25:40,960 --> 00:25:45,170
+find a statistically significant
+difference at the later time points.
+
+470
+00:25:45,170 --> 00:25:46,400
+So we're seeing a little something here,
+
+471
+00:25:46,400 --> 00:25:49,460
+it's not a huge effect, but a little bit
+of separation.
+
+472
+00:25:49,460 --> 00:25:50,870
+And just to contrast it,
+
+473
+00:25:50,870 --> 00:25:56,690
+I went ahead and ran the same, graphic for
+height just to show you.
+
+474
+00:25:56,690 --> 00:25:57,720
+Here's the graphic for height.
+
+475
+00:25:57,720 --> 00:26:01,600
+And you'll see that the two groups are
+really overlapping for height.
+
+476
+00:26:01,600 --> 00:26:05,940
+So the separation you're seeing for weight
+might actually mean something you know,
+
+477
+00:26:05,940 --> 00:26:08,010
+real clinically here.
+
+478
+00:26:08,010 --> 00:26:10,980
+The other thing to consider is what's the
+shape of the curves.
+
+479
+00:26:10,980 --> 00:26:14,840
+It looks like, you know, again you're
+probably getting, certainly not linear.
+
+480
+00:26:14,840 --> 00:26:18,500
+You're probably even for the Z score is
+going to need quadratic, at least, and
+
+481
+00:26:18,500 --> 00:26:19,170
+maybe a cubic.
+
+482
+00:26:21,810 --> 00:26:24,310
+I then went ahead and did scatter plots
+rather than mean plots.
+
+483
+00:26:24,310 --> 00:26:26,310
+I think the scatter plots are actually a
+little bit nicer.
+
+484
+00:26:26,310 --> 00:26:28,400
+You can really see the shape of things.
+
+485
+00:26:28,400 --> 00:26:32,580
+So, what I'm graphing here is, here's age,
+in months, on my x-axis.
+
+486
+00:26:32,580 --> 00:26:36,540
+This is the weight in kilograms, on my
+y-axis.
+
+487
+00:26:36,540 --> 00:26:39,620
+And I'm graphing a separate line for each
+clinic because one of
+
+488
+00:26:39,620 --> 00:26:41,320
+the the things that we're going to need to
+worry about for
+
+489
+00:26:41,320 --> 00:26:45,250
+this data set, is the fact that we have a
+cluster randomized trial.
+
+490
+00:26:45,250 --> 00:26:49,080
+And we had reanimization by clinic rather
+than by individual.
+
+491
+00:26:49,080 --> 00:26:52,210
+So there's some potential that different
+clinics have different road
+
+492
+00:26:52,210 --> 00:26:56,380
+trajectories because maybe their serving
+slightly different populations.
+
+493
+00:26:56,380 --> 00:26:59,760
+So we needed to keep that in mind, we need
+to look for clinic effects here.
+
+494
+00:26:59,760 --> 00:27:01,050
+So, I've done this graph.
+
+495
+00:27:01,050 --> 00:27:05,550
+And what I did was to go ahead, the blue
+lines represent the control clinics,
+
+496
+00:27:05,550 --> 00:27:07,160
+that was clinics three, four and six.
+
+497
+00:27:07,160 --> 00:27:09,480
+And the red lines represent the
+intervention clinics,
+
+498
+00:27:09,480 --> 00:27:10,440
+which is one, two and five.
+
+499
+00:27:10,440 --> 00:27:13,860
+And interestingly, you can see that there
+doesn't appear to be a huge amount of
+
+500
+00:27:13,860 --> 00:27:18,080
+variation between the different clinics,
+but the blue lines do tend to be a little
+
+501
+00:27:18,080 --> 00:27:21,820
+bit higher on weight, especially at the
+later time points and the red clinics,
+
+502
+00:27:21,820 --> 00:27:24,170
+which are the intervention ones do tend to
+be a little bit lower.
+
+503
+00:27:24,170 --> 00:27:28,080
+And there seems to be most of the
+variation between different clinics seems
+
+504
+00:27:28,080 --> 00:27:30,750
+to correlate with whether or not you're in
+the intervention or the control.
+
+505
+00:27:32,660 --> 00:27:34,470
+Again, you're going to look at the shape
+of that graphic.
+
+506
+00:27:34,470 --> 00:27:37,960
+I would say that that looks like a cubic
+shape to me.
+
+507
+00:27:37,960 --> 00:27:39,730
+It's not linear, clearly.
+
+508
+00:27:39,730 --> 00:27:40,710
+It's not quadratic.
+
+509
+00:27:40,710 --> 00:27:46,230
+It's probably cubic, it's kind of going
+like this, so it's more of a cubic.
+
+510
+00:27:46,230 --> 00:27:48,930
+I then went ahead and did the same scatter
+plots for the three outputs.
+
+511
+00:27:48,930 --> 00:27:52,532
+This is girls and boys combined, and I
+graphed a red line for
+
+512
+00:27:52,532 --> 00:27:56,510
+the intervention group, a blue line for
+the control group again.
+
+513
+00:27:56,510 --> 00:27:58,499
+And you can see again that there seems to
+be some separation at
+
+514
+00:27:58,499 --> 00:28:00,995
+these later time points where the control
+were beginning a little bit more of
+
+515
+00:28:00,995 --> 00:28:03,340
+a time in the red group seems to be going
+down.
+
+516
+00:28:03,340 --> 00:28:07,594
+Now you can see that for weight, for
+length Z score this is for
+
+517
+00:28:07,594 --> 00:28:10,940
+the BMI Z scores and this is for weight
+overall.
+
+518
+00:28:10,940 --> 00:28:12,430
+It's not a huge effect, but
+
+519
+00:28:12,430 --> 00:28:14,720
+there does seem to be something, a little
+something going on.
+
+520
+00:28:14,720 --> 00:28:16,970
+Some separation at the later time points.
+
+521
+00:28:16,970 --> 00:28:18,820
+Notice that on the weight graph,
+
+522
+00:28:18,820 --> 00:28:23,040
+we've got this one girl, who was in the
+control group, who is a little bit higher.
+
+523
+00:28:23,040 --> 00:28:26,830
+You can imagine that she could potentially
+be pull, pulling this blue line up,
+
+524
+00:28:26,830 --> 00:28:29,350
+she could be having a lot of influence on
+that line.
+
+525
+00:28:29,350 --> 00:28:32,690
+So we're going to need to consider how
+much influence she's having on
+
+526
+00:28:32,690 --> 00:28:34,460
+the estimates, and we'll do that later on.
+
+527
+00:28:34,460 --> 00:28:37,540
+All right, so
+
+528
+00:28:37,540 --> 00:28:41,180
+I looked at all the shapes of the growth
+trajectories over time, by clinic.
+
+529
+00:28:41,180 --> 00:28:44,670
+My intervention group, my individual, and
+then just for
+
+530
+00:28:44,670 --> 00:28:48,420
+fun, I'll also went through and try to see
+is there anything else,
+
+531
+00:28:48,420 --> 00:28:50,740
+is there any other predictors in my
+variable obese,
+
+532
+00:28:50,740 --> 00:28:55,760
+in my data set besides intervention group
+that correlate with baby weight gain?
+
+533
+00:28:55,760 --> 00:28:59,000
+And this is data from a randomized trial.
+
+534
+00:28:59,000 --> 00:29:02,260
+Actually, the groups ended up being fairly
+balanced on all the covariants.
+
+535
+00:29:02,260 --> 00:29:04,410
+So we're probably not going to have to
+adjust for any confounding here.
+
+536
+00:29:04,410 --> 00:29:06,210
+So this is just out of curiosity, to see,
+
+537
+00:29:06,210 --> 00:29:09,330
+is there anything else that predicts baby
+weight gain over time?
+
+538
+00:29:09,330 --> 00:29:12,360
+I looked at the early time periods, this
+is using the broad from the data set,
+
+539
+00:29:12,360 --> 00:29:14,120
+I looked just at the early time periods.
+
+540
+00:29:14,120 --> 00:29:17,140
+If you look at the early time periods, the
+things that correlate with the baby's
+
+541
+00:29:17,140 --> 00:29:21,170
+weight tends to be how much weight the
+mother's gained during pregnancy and
+
+542
+00:29:21,170 --> 00:29:24,650
+how big the babies were at birth, that
+makes sense.
+
+543
+00:29:24,650 --> 00:29:29,760
+The later time periods, so when the baby
+was one, she was three and four.
+
+544
+00:29:29,760 --> 00:29:33,395
+Interestingly it does appear that there is
+some correlation with the age
+
+545
+00:29:33,395 --> 00:29:35,240
+at which solid foods are introduced.
+
+546
+00:29:35,240 --> 00:29:40,880
+So, introducing your solid food later is
+correlated with having being
+
+547
+00:29:40,880 --> 00:29:43,760
+a little bit of a light baby, you know,
+
+548
+00:29:43,760 --> 00:29:47,690
+at least up until the second year, second
+or third year of age.
+
+549
+00:29:47,690 --> 00:29:52,879
+So that's interesting, when you introduce
+solid foods might have some effect.
+
+550
+00:29:52,879 --> 00:29:56,980
+So in the exclusive breastfeeding assuming
+to have some correlation whereas
+
+551
+00:29:56,980 --> 00:30:01,014
+the babies that were exclusively breastfed
+for longer tend to be a little bit
+
+552
+00:30:01,014 --> 00:30:05,448
+lighter at least into their, you know,
+again, third or fourth year of life.
+
+553
+00:30:05,448 --> 00:30:07,765
+I went ahead and did some graphs just for
+fun.
+
+554
+00:30:07,765 --> 00:30:09,565
+So this was looking at the early solids.
+
+555
+00:30:09,565 --> 00:30:14,436
+So if you were in the green line they
+introduced the solids the earliest age.
+
+556
+00:30:14,436 --> 00:30:18,310
+The blue line represents introduced the
+solids at the latest age.
+
+557
+00:30:18,310 --> 00:30:21,020
+And you can see there does seem to be
+something going on,
+
+558
+00:30:21,020 --> 00:30:23,895
+although the lines are converging a little
+bit by the fourth year of age.
+
+559
+00:30:23,895 --> 00:30:24,747
+So at least in the second and
+
+560
+00:30:24,747 --> 00:30:26,907
+third year of life it seems to have some
+influence on the weight gain.
+
+561
+00:30:26,907 --> 00:30:30,253
+I'll show you later this actually does
+turn out to be a statistically
+
+562
+00:30:30,253 --> 00:30:31,587
+significant difference.
+
+563
+00:30:31,587 --> 00:30:34,696
+I also look at maternal weight gain
+because that seems to correlate,
+
+564
+00:30:34,696 --> 00:30:36,769
+at least with the earlier time points, and
+
+565
+00:30:36,769 --> 00:30:40,458
+interestingly you do see some separation
+where the women who gained the most
+
+566
+00:30:40,458 --> 00:30:44,030
+weight during pregnancy, their babies do
+seem to be a little bit bigger,
+
+567
+00:30:44,030 --> 00:30:48,430
+at least in weight overall across time
+periods, so we can look at that as well.
+
+568
+00:30:48,430 --> 00:30:50,040
+Again we're probably not going to have to
+adjust for
+
+569
+00:30:50,040 --> 00:30:52,370
+these things because they're well-balanced
+between the two groups.
+
+570
+00:30:54,480 --> 00:30:58,880
+The next thing we'd want to do is make our
+formal descriptive table one for our
+
+571
+00:30:58,880 --> 00:31:02,210
+paper and any descriptive graphics that
+we're going to want to make for our paper.
+
+572
+00:31:02,210 --> 00:31:06,770
+You, we've already made the graphics, so
+I'll just show you the table one.
+
+573
+00:31:06,770 --> 00:31:10,966
+I got lazy here and the authors had
+actually prepared a table one already so
+
+574
+00:31:10,966 --> 00:31:12,872
+I didn't bother to recreate it.
+
+575
+00:31:12,872 --> 00:31:16,406
+I trust that they've done a good job in
+compiling these data.
+
+576
+00:31:16,406 --> 00:31:19,451
+The things to pay attention to is that we
+do have slightly more numbers,
+
+577
+00:31:19,451 --> 00:31:22,430
+37 in the intervention group and 27 in the
+control group.
+
+578
+00:31:22,430 --> 00:31:26,900
+However, if you look across at the
+different, potential confounders,
+
+579
+00:31:26,900 --> 00:31:31,160
+it really does look like it's still fairly
+well balanced between the two groups.
+
+580
+00:31:31,160 --> 00:31:33,960
+So there's probably not a lot we're going
+to have to do in terms of worrying about
+
+581
+00:31:33,960 --> 00:31:36,480
+adjusting for confounding in our final
+models.
+
+582
+00:31:36,480 --> 00:31:40,190
+And that's the nice thing about randomized
+trials, you often get things that are very
+
+583
+00:31:40,190 --> 00:31:43,580
+nice and balanced, and you don't have to
+worry about adjusting for confounding.
+
+584
+00:31:44,774 --> 00:31:47,974
+We can also prepare some formal graphics
+here as well.
+
+585
+00:31:47,974 --> 00:31:51,785
+For this is on paper obviously lends
+itself to graphing so
+
+586
+00:31:51,785 --> 00:31:56,643
+we'd prepare some formal graphics as the
+authors did to present in the paper.
+
+587
+00:31:56,643 --> 00:32:00,406
+The next thing we're going to do is test
+the main hypotheses.
+
+588
+00:32:00,406 --> 00:32:05,770
+Step seven and eight are kind of very
+similar here because again,
+
+589
+00:32:05,770 --> 00:32:09,110
+I don't think we're going to be doing much
+in the way of adjusting for confounding.
+
+590
+00:32:09,110 --> 00:32:13,370
+So I'm just going to reiterate here to
+test the main hypothesis, for
+
+591
+00:32:13,370 --> 00:32:16,360
+repeated measures data I'm really going to
+want to look at graphics.
+
+592
+00:32:16,360 --> 00:32:18,108
+So I've already shown you these graphics.
+
+593
+00:32:18,108 --> 00:32:21,453
+I'll just remind you then before we jump
+to building the final models,
+
+594
+00:32:21,453 --> 00:32:23,695
+the shape of the graphics does not look
+linear.
+
+595
+00:32:23,695 --> 00:32:26,895
+Girls look to have a little bit of a
+bigger effect than boys,
+
+596
+00:32:26,895 --> 00:32:29,700
+I'm going to look at that in my final
+models.
+
+597
+00:32:29,700 --> 00:32:34,490
+Here's the overall, it does appear that
+there is some benefit for the control for
+
+598
+00:32:34,490 --> 00:32:38,570
+the intervention group at the later time
+points compared with the control group.
+
+599
+00:32:38,570 --> 00:32:42,560
+I am going to have to worry about
+within-clinic effects, that,
+
+600
+00:32:42,560 --> 00:32:43,990
+if there's any correlation within clinic.
+
+601
+00:32:43,990 --> 00:32:47,080
+But as I showed you already it doesn't
+look like there's a huge amount of
+
+602
+00:32:47,080 --> 00:32:50,410
+variation between the different clinics
+and most of the variation seems to be
+
+603
+00:32:50,410 --> 00:32:54,010
+explained by whether or not you're an
+intervention clinic or a control clinic,
+
+604
+00:32:54,010 --> 00:32:56,770
+so it may turn out that there's not a lot
+we have to worry about there.
+
+605
+00:32:58,020 --> 00:33:00,390
+And then I already showed you these
+graphics as well.
+
+606
+00:33:00,390 --> 00:33:03,800
+All of these graphics are setting me up
+for being able to build my final models.
+
+607
+00:33:06,070 --> 00:33:08,710
+So now we'll jump into building the final
+models.
+
+608
+00:33:08,710 --> 00:33:11,210
+We're normally going to have to worry
+about confounders, but
+
+609
+00:33:11,210 --> 00:33:14,780
+again, the covariates were well balanced
+between the two groups,
+
+610
+00:33:14,780 --> 00:33:17,160
+even in the secondary data analysis, so
+
+611
+00:33:17,160 --> 00:33:19,580
+I'm actually not going to bother to try
+adjusting for any confounders.
+
+612
+00:33:19,580 --> 00:33:23,420
+I also have explored the data enough to
+know that none of
+
+613
+00:33:23,420 --> 00:33:28,522
+the covariates are terribly great
+predictors of weight gain over time.
+
+614
+00:33:28,522 --> 00:33:30,529
+I'm going to look for an interaction with
+gender,
+
+615
+00:33:30,529 --> 00:33:33,528
+just because in the pictures it did look
+like the effect was bigger in girls.
+
+616
+00:33:33,528 --> 00:33:35,276
+I am at least going to test that.
+
+617
+00:33:35,276 --> 00:33:39,374
+And I'm going to need to think about in my
+building these models here,
+
+618
+00:33:39,374 --> 00:33:43,541
+the main thing I'm going to need to be
+thinking about is how am I modeling,
+
+619
+00:33:43,541 --> 00:33:46,388
+how am I dealing with the repeated
+measures, and
+
+620
+00:33:46,388 --> 00:33:49,690
+how am I dealing with the within-clinic
+correlation?
+
+621
+00:33:49,690 --> 00:33:51,910
+So it's really about dealing with the
+correlations.
+
+622
+00:33:51,910 --> 00:33:55,370
+Do I need to have a random intercept and a
+random slope?
+
+623
+00:33:55,370 --> 00:33:58,490
+I'm going to be looking at models that
+sometimes include a random slope,
+
+624
+00:33:58,490 --> 00:34:00,840
+sometimes don't include a random slope,
+and
+
+625
+00:34:00,840 --> 00:34:03,430
+those are the things that I'm going to be
+comparing here.
+
+626
+00:34:03,430 --> 00:34:06,160
+So I'm going to start, remember I had
+three outcomes here.
+
+627
+00:34:06,160 --> 00:34:08,530
+I'm going to mostly focus on the
+weight-for-length Z score,
+
+628
+00:34:08,530 --> 00:34:12,500
+my general process for the BMI Z score and
+the weight, or
+
+629
+00:34:12,500 --> 00:34:13,940
+is, is pretty much the same.
+
+630
+00:34:13,940 --> 00:34:17,470
+So rather than show all of that, I'm just
+going to show the process for
+
+631
+00:34:17,470 --> 00:34:19,420
+the weight-for-length Z score.
+
+632
+00:34:19,420 --> 00:34:23,540
+Here is the picture that corresponds to
+the model that I am about to build.
+
+633
+00:34:23,540 --> 00:34:26,130
+Okay, so I'm going to build a model for
+this data set.
+
+634
+00:34:26,130 --> 00:34:28,820
+You can see weight-for-length Z score
+because of the Z score is not
+
+635
+00:34:28,820 --> 00:34:30,520
+necessarily going to increase over time.
+
+636
+00:34:30,520 --> 00:34:32,600
+However, it doesn't look like it's flat
+over time.
+
+637
+00:34:32,600 --> 00:34:36,010
+Babies do seem to go up or down in their Z
+scores.
+
+638
+00:34:36,010 --> 00:34:38,510
+And you do see at the later, the earlier
+time points,
+
+639
+00:34:38,510 --> 00:34:41,470
+you're not seeing much difference between
+the control and the intervention group,
+
+640
+00:34:41,470 --> 00:34:43,100
+but in the later time points you certainly
+are.
+
+641
+00:34:44,110 --> 00:34:46,930
+I went ahead and ran a mixed model and I,
+the authors of
+
+642
+00:34:46,930 --> 00:34:50,550
+this paper chose to use random effects
+rather than a repeated statement.
+
+643
+00:34:50,550 --> 00:34:54,880
+I think that's a good choice because of
+the fact that we have two sources of
+
+644
+00:34:54,880 --> 00:35:01,172
+correlation here, our observations are
+clustered within
+
+645
+00:35:01,172 --> 00:35:06,310
+individuals, and the individuals are then
+clustered within clinics because this
+
+646
+00:35:06,310 --> 00:35:07,590
+is a cluster randomized trial.
+
+647
+00:35:07,590 --> 00:35:11,880
+And so we would call this a multi-level, a
+three-level model essentially,
+
+648
+00:35:11,880 --> 00:35:15,455
+because we've got repeated measurements on
+the same subject but
+
+649
+00:35:15,455 --> 00:35:18,645
+then we also have individuals clustered
+within clinics.
+
+650
+00:35:18,645 --> 00:35:22,667
+So this is well-handled by a random
+effects model because we can put in
+
+651
+00:35:22,667 --> 00:35:26,281
+random effects for the individual subject
+specific slopes and
+
+652
+00:35:26,281 --> 00:35:29,572
+intercepts, as well as random effects for
+the clinics.
+
+653
+00:35:29,572 --> 00:35:35,840
+So we could also test if we need to put in
+clinic specific intercepts and slopes.
+
+654
+00:35:35,840 --> 00:35:37,683
+So that's what I'm doing here.
+
+655
+00:35:37,683 --> 00:35:40,564
+I already know that I'm going to need by
+the,
+
+656
+00:35:40,564 --> 00:35:43,806
+just by the picture that I'm going to need
+quadratic and
+
+657
+00:35:43,806 --> 00:35:48,900
+cubic terms if I'm modeling all the time
+periods from zero to four years.
+
+658
+00:35:48,900 --> 00:35:50,880
+I'm going to need to put in a group by age
+term.
+
+659
+00:35:50,880 --> 00:35:58,290
+I also did consider putting in a group by,
+I also tried group by age by
+
+660
+00:35:58,290 --> 00:36:02,370
+age because maybe the quadratic function
+might be different between the groups.
+
+661
+00:36:02,370 --> 00:36:06,570
+That turns out to be not significant and
+the group by age cubed also turns out to
+
+662
+00:36:06,570 --> 00:36:09,035
+be non-significant, so I ended up with as
+the authors did,
+
+663
+00:36:09,035 --> 00:36:13,700
+just ending up with a group by age term to
+quantify the effect of the intervention.
+
+664
+00:36:13,700 --> 00:36:15,850
+Of course I'll need mean effects for those
+as well.
+
+665
+00:36:17,300 --> 00:36:20,040
+I asked for confidence limits, I'm setting
+my degrees of freedom at
+
+666
+00:36:20,040 --> 00:36:23,348
+this particular method of doing it, and
+then I'm putting in a random statement for
+
+667
+00:36:23,348 --> 00:36:25,489
+clinic as well as a random statement for
+individual.
+
+668
+00:36:25,489 --> 00:36:29,321
+And I'm starting by allowing there to be
+subject-specific intercepts,
+
+669
+00:36:29,321 --> 00:36:32,670
+subject-specific slopes and
+clinic-specific intercepts and
+
+670
+00:36:32,670 --> 00:36:34,149
+clinic-specific slopes.
+
+671
+00:36:34,149 --> 00:36:40,569
+And when I run that model I get an AIC of
+1692.
+
+672
+00:36:40,569 --> 00:36:44,606
+And you can see, however, when you look at
+the covariance parameter estimates for
+
+673
+00:36:44,606 --> 00:36:46,864
+clinic they are all very, very close to
+zero.
+
+674
+00:36:46,864 --> 00:36:50,544
+So what this is telling you is that there
+isn't a lot of variation within clinic
+
+675
+00:36:50,544 --> 00:36:52,520
+between the different clinics.
+
+676
+00:36:52,520 --> 00:36:55,190
+So there probably isn't a lot of the,
+
+677
+00:36:55,190 --> 00:36:57,710
+the correlations within clinics are
+probably really, really small.
+
+678
+00:36:57,710 --> 00:37:00,150
+There isn't a lot of difference between
+the different clinics.
+
+679
+00:37:00,150 --> 00:37:04,860
+So that might suggest to us that we don't
+need clinic-specific effects.
+
+680
+00:37:07,170 --> 00:37:10,650
+So I went ahead and I dropped the random
+slope for clinic.
+
+681
+00:37:10,650 --> 00:37:14,570
+I left in the, random intercept for
+clinic, but
+
+682
+00:37:14,570 --> 00:37:16,630
+I took out the random slope for clinic.
+
+683
+00:37:16,630 --> 00:37:19,600
+And when I did that, my AIC did get
+slightly better at 1690.2,
+
+684
+00:37:19,600 --> 00:37:23,870
+and this was actually the best model that
+I found.
+
+685
+00:37:23,870 --> 00:37:26,160
+So this is that final model that I ended
+up going with.
+
+686
+00:37:26,160 --> 00:37:29,820
+I allowed there to be a, intercept, random
+intercept for
+
+687
+00:37:29,820 --> 00:37:33,470
+clinic, but not a random slope for clinic.
+
+688
+00:37:33,470 --> 00:37:38,660
+I then went ahead and said do we need the
+random slope for individual.
+
+689
+00:37:38,660 --> 00:37:41,520
+And, and you can see that even here we
+probably don't even need
+
+690
+00:37:41,520 --> 00:37:42,600
+the random intercept for clinic,
+
+691
+00:37:42,600 --> 00:37:46,950
+because again, that variation between
+clinics is almost zero at baseline.
+
+692
+00:37:46,950 --> 00:37:48,930
+I left it in anyway, it doesn't make a
+huge difference here.
+
+693
+00:37:50,530 --> 00:37:55,622
+I went ahead then, however, and dropped,
+the random effect for slope for
+
+694
+00:37:55,622 --> 00:37:59,150
+the subject, the subject-specific slopes.
+
+695
+00:37:59,150 --> 00:38:02,540
+That turns out to be a bad idea, because
+the AIC goes way up.
+
+696
+00:38:02,540 --> 00:38:05,930
+And the reason is that there really is a
+lot of variation in
+
+697
+00:38:05,930 --> 00:38:08,360
+the growth trajectories over time for
+different individuals.
+
+698
+00:38:08,360 --> 00:38:10,920
+So we really want to keep that random
+slope in the model.
+
+699
+00:38:13,190 --> 00:38:14,740
+And that's, this is just the results from
+that model,
+
+700
+00:38:14,740 --> 00:38:18,029
+you can see it has a really high AIC, so
+probably not the best model here.
+
+701
+00:38:19,470 --> 00:38:22,370
+So here's my final model for the weight
+for length Z score.
+
+702
+00:38:22,370 --> 00:38:26,221
+So you can see that indeed there's a
+significant, here's the p value,
+
+703
+00:38:26,221 --> 00:38:30,833
+there's a significant effect for time,
+there's a significant quadratic effect for
+
+704
+00:38:30,833 --> 00:38:33,440
+time, and a significant cubic effect for
+time.
+
+705
+00:38:33,440 --> 00:38:35,080
+So we're going to keep all of those in.
+
+706
+00:38:35,080 --> 00:38:39,160
+However, the group by age term, which is
+what we really care about,
+
+707
+00:38:39,160 --> 00:38:41,030
+that p value is not significant.
+
+708
+00:38:41,030 --> 00:38:43,280
+It does favor the intervention group, it's
+negative,
+
+709
+00:38:43,280 --> 00:38:46,790
+saying that the intervention group has
+less weight gain over time,
+
+710
+00:38:46,790 --> 00:38:48,360
+however it's not statistically
+significant.
+
+711
+00:38:48,360 --> 00:38:51,310
+Well, this probably has to do with the
+fact that the majority of the time points
+
+712
+00:38:51,310 --> 00:38:53,120
+are early, and at those time points,
+
+713
+00:38:53,120 --> 00:38:54,899
+it doesn't look to be a huge difference
+between the groups.
+
+714
+00:38:57,460 --> 00:38:58,790
+I then went ahead and did test for
+
+715
+00:38:58,790 --> 00:39:02,960
+a gender interaction to see if the girls
+whose mothers had the intervention did
+
+716
+00:39:02,960 --> 00:39:08,130
+better than the boys and so I put a group
+by age by gender term in the model.
+
+717
+00:39:08,130 --> 00:39:10,880
+But however it came out to be totally
+non-significant.
+
+718
+00:39:10,880 --> 00:39:11,640
+So even though it,
+
+719
+00:39:11,640 --> 00:39:14,870
+there is some suggestion that the girls
+did better if their mothers were the,
+
+720
+00:39:14,870 --> 00:39:17,680
+in the intervention group, I didn't see
+anything in modeling.
+
+721
+00:39:17,680 --> 00:39:22,090
+We have very low statistical power here to
+detect the generate, gender interaction.
+
+722
+00:39:22,090 --> 00:39:23,800
+So what we saw could have just been
+chance,
+
+723
+00:39:23,800 --> 00:39:27,770
+and I'm certainly not going to factor it
+into my final model.
+
+724
+00:39:27,770 --> 00:39:31,520
+So then I went ahead and put together a
+table two, similar to what the authors
+
+725
+00:39:31,520 --> 00:39:37,150
+have in the paper that reports the beta
+coefficients for my weight-for-length
+
+726
+00:39:37,150 --> 00:39:42,190
+Z score model, for my weight in kilograms
+model, and my BMI Z score model.
+
+727
+00:39:42,190 --> 00:39:46,030
+And you can see that the weight in
+kilograms, the group
+
+728
+00:39:46,030 --> 00:39:50,308
+by age term approaches statistical
+significance but doesn't quite make it.
+
+729
+00:39:50,308 --> 00:39:54,402
+The BMI Z scores, which were only measured
+in those later time points,
+
+730
+00:39:54,402 --> 00:39:57,474
+does make statistical significance because
+again,
+
+731
+00:39:57,474 --> 00:40:01,794
+we did see some separation between the two
+groups at the later time points.
+
+732
+00:40:01,794 --> 00:40:06,403
+And just for fun, I thought it would be
+very useful for your understanding of
+
+733
+00:40:06,403 --> 00:40:10,651
+what these models are doing to go ahead
+and generate some graphics that
+
+734
+00:40:10,651 --> 00:40:15,137
+actually graph the predicted values for
+the individuals in the data set.
+
+735
+00:40:15,137 --> 00:40:19,044
+So if you take, if you fit a model, you
+can ask your computer to calculate
+
+736
+00:40:19,044 --> 00:40:23,613
+predicted values for everybody in the data
+set and output them and then graph those.
+
+737
+00:40:23,613 --> 00:40:26,560
+And that's really, that picture will show
+you what,
+
+738
+00:40:26,560 --> 00:40:29,263
+what we've modeled, what the model looks
+like.
+
+739
+00:40:29,263 --> 00:40:30,920
+So I went ahead and did this.
+
+740
+00:40:30,920 --> 00:40:35,600
+So here on the left-hand side, this is the
+observed weight growth trajectories for
+
+741
+00:40:35,600 --> 00:40:37,300
+the, for the girls.
+
+742
+00:40:37,300 --> 00:40:43,180
+And then I went and got the predicted
+values for the girls out of my model,
+
+743
+00:40:43,180 --> 00:40:47,340
+the model that I just showed you on for,
+where the outcome was weight.
+
+744
+00:40:47,340 --> 00:40:50,250
+This had a cubic term in it as well as a
+quadratic.
+
+745
+00:40:50,250 --> 00:40:51,330
+And you can see that indeed, and
+
+746
+00:40:51,330 --> 00:40:53,780
+then I just went ahead and got the
+predictive values at each time point for
+
+747
+00:40:53,780 --> 00:40:57,220
+each woman, for each girl, and I just
+connected those lines here.
+
+748
+00:40:57,220 --> 00:41:00,650
+And you can see that it indeed does appear
+to have a nice cubic shape to it.
+
+749
+00:41:00,650 --> 00:41:04,750
+And it's basically a smoothed-over version
+of the observed data.
+
+750
+00:41:04,750 --> 00:41:06,740
+And then, just to show you, in fact,
+
+751
+00:41:06,740 --> 00:41:11,380
+what we modeled was we modeled each growth
+trajectory as a nice smooth cubic.
+
+752
+00:41:11,380 --> 00:41:15,523
+So I also went ahead and, rather than just
+connecting the dots for each girl, I just,
+
+753
+00:41:15,523 --> 00:41:19,340
+you know, connected them as a cubic, which
+is essentially what the model is.
+
+754
+00:41:19,340 --> 00:41:21,170
+So this is really kind of the model
+picture.
+
+755
+00:41:21,170 --> 00:41:22,830
+This is, this picture corresponds to the
+model.
+
+756
+00:41:22,830 --> 00:41:27,210
+This is what we've modeled, here with this
+next model, with this cubic term in it.
+
+757
+00:41:30,420 --> 00:41:33,700
+Let's just help you understand what's the
+difference between putting a linear term
+
+758
+00:41:33,700 --> 00:41:35,020
+in, a quadratic term, cubic term.
+
+759
+00:41:35,020 --> 00:41:36,120
+What does that really mean when we're
+
+760
+00:41:36,120 --> 00:41:38,320
+putting those complicated terms in the
+model?
+
+761
+00:41:38,320 --> 00:41:41,230
+I went ahead and got the pre-, I fit new
+models.
+
+762
+00:41:41,230 --> 00:41:44,330
+So I fit a new model where I only put in
+an age term, so
+
+763
+00:41:44,330 --> 00:41:46,110
+I only modeled ages linear.
+
+764
+00:41:46,110 --> 00:41:47,980
+And these are the predicted values from
+them all.
+
+765
+00:41:47,980 --> 00:41:51,480
+Well, you can see what we did was we fit a
+line for each person.
+
+766
+00:41:51,480 --> 00:41:56,383
+And then I also did the same thing where I
+only put a linear term in a quadratic, but
+
+767
+00:41:56,383 --> 00:41:58,180
+not a cubic term into the model and
+
+768
+00:41:58,180 --> 00:42:01,000
+you can see what we get is a quadratic
+shape at the end of the day, and
+
+769
+00:42:01,000 --> 00:42:03,940
+here's the smooth quadratic shape, which
+is really what the model fits.
+
+770
+00:42:03,940 --> 00:42:06,750
+Those clearly don't match the picture of
+the observed data, so
+
+771
+00:42:06,750 --> 00:42:08,090
+we definitely need that cubic term.
+
+772
+00:42:10,080 --> 00:42:11,630
+And I did the same thing just to show you,
+observed and
+
+773
+00:42:11,630 --> 00:42:14,000
+predicted for weight for boys, you get the
+same idea.
+
+774
+00:42:14,000 --> 00:42:15,990
+We, we model the cubic.
+
+775
+00:42:15,990 --> 00:42:18,660
+I think these predicted graphics are
+really helpful.
+
+776
+00:42:18,660 --> 00:42:21,930
+I also did an observed versus a predicted,
+by clinic.
+
+777
+00:42:21,930 --> 00:42:26,220
+So here's the observed values, when I
+graphed by clinic, blue lines for
+
+778
+00:42:26,220 --> 00:42:29,184
+the control clinics, red lines for the
+intervention clinics.
+
+779
+00:42:29,184 --> 00:42:32,630
+Here's the fitted model, the predicted
+values for my fitted model and
+
+780
+00:42:32,630 --> 00:42:35,020
+you can see that clear cubic shape.
+
+781
+00:42:35,020 --> 00:42:38,922
+And, the, blue clinics are predicted to
+
+782
+00:42:38,922 --> 00:42:42,833
+have little bit higher weight gain over
+time.
+
+783
+00:42:42,833 --> 00:42:46,294
+And then again, just to kind of get to the
+sense of what we mean by quadratic and
+
+784
+00:42:46,294 --> 00:42:49,437
+cubic, I took out the cubic term and what
+you can see is that if I take out
+
+785
+00:42:49,437 --> 00:42:53,141
+the cubic term, then my model is actually
+fit a quadratic function, not a cubic.
+
+786
+00:42:53,141 --> 00:42:56,276
+And if I take out the quadratic term you
+can see that my model has fit
+
+787
+00:42:56,276 --> 00:42:59,639
+just a line for each clinic, which is
+clearly not the right shape, but
+
+788
+00:42:59,639 --> 00:43:02,660
+that's what the quadratic, cubic and
+linear terms all mean.
+
+789
+00:43:04,790 --> 00:43:07,547
+We're of course going to want to do some
+model checks on our models, so
+
+790
+00:43:07,547 --> 00:43:09,713
+I went ahead and asked for the residuals
+for my models.
+
+791
+00:43:09,713 --> 00:43:11,767
+You can get that even out of proc mixed.
+
+792
+00:43:11,767 --> 00:43:14,816
+You can see that we want the residuals to
+be reasonably, normally distributed.
+
+793
+00:43:14,816 --> 00:43:16,169
+That looks pretty good.
+
+794
+00:43:16,169 --> 00:43:20,034
+You can plot the residuals and, you know
+across time and things, and look for
+
+795
+00:43:20,034 --> 00:43:20,773
+any patterns.
+
+796
+00:43:20,773 --> 00:43:26,056
+It looks like we're, we're meeting the
+assumptions pretty well here.
+
+797
+00:43:26,056 --> 00:43:29,927
+I then went ahead and limited the analysis
+just to the later time points when
+
+798
+00:43:29,927 --> 00:43:32,024
+the babies were two, three, and four.
+
+799
+00:43:32,024 --> 00:43:35,513
+We already saw that there seems to be more
+separation at those time points.
+
+800
+00:43:35,513 --> 00:43:38,425
+And so here's the picture that goes with
+that, here's the observed data,
+
+801
+00:43:38,425 --> 00:43:40,435
+which I've, this graph I've already showed
+you.
+
+802
+00:43:40,435 --> 00:43:42,487
+I then went ahead and fit a model.
+
+803
+00:43:42,487 --> 00:43:48,119
+So in this model, for weight-for-length Z
+score, I took the same basic model but
+
+804
+00:43:48,119 --> 00:43:52,301
+cut the only model for the later time
+points after the second,
+
+805
+00:43:52,301 --> 00:43:56,940
+including the second, third, and fourth
+birthday visits.
+
+806
+00:43:56,940 --> 00:44:00,980
+And when you do that, you do see that as
+we saw with the BMI Z scores,
+
+807
+00:44:00,980 --> 00:44:03,720
+the BMI Z scores were only available for
+the later time.
+
+808
+00:44:03,720 --> 00:44:05,090
+We did have a separation between the
+groups.
+
+809
+00:44:05,090 --> 00:44:08,120
+We see the same thing when we look at the
+weight-for-length Z scores,
+
+810
+00:44:08,120 --> 00:44:10,440
+limited to the second, third, and fourth
+birthdays.
+
+811
+00:44:10,440 --> 00:44:14,040
+We do get a significant result here as the
+authors reported in the paper.
+
+812
+00:44:14,040 --> 00:44:16,770
+Now interestingly, if we're only looking
+at these last three time points,
+
+813
+00:44:16,770 --> 00:44:19,640
+we probably don't need this age cubed term
+anymore.
+
+814
+00:44:19,640 --> 00:44:22,290
+You know, you look at that, well, maybe
+it's a little bit cubic,
+
+815
+00:44:22,290 --> 00:44:25,290
+but we may not need to actually fully
+model that as a cubic.
+
+816
+00:44:25,290 --> 00:44:28,940
+So I went ahead and dropped the cubic
+term, from the model.
+
+817
+00:44:28,940 --> 00:44:32,470
+So here is my observed and my predicted
+when I include the cubic term.
+
+818
+00:44:32,470 --> 00:44:35,240
+This is the predicted on the right here.
+
+819
+00:44:35,240 --> 00:44:35,980
+This is the observed.
+
+820
+00:44:38,160 --> 00:44:41,660
+I actually then went ahead, and this is a
+you know, if I really show you it,
+
+821
+00:44:41,660 --> 00:44:44,652
+here is if I just grab a smoothing line on
+the predicted values.
+
+822
+00:44:44,652 --> 00:44:46,980
+Here is if I actually graft that cubic one
+on the predicted values.
+
+823
+00:44:46,980 --> 00:44:49,740
+As you can see maybe we don't need that
+much curvature.
+
+824
+00:44:49,740 --> 00:44:51,980
+And I went ahead and dropped the cubic
+term, and so
+
+825
+00:44:51,980 --> 00:44:54,490
+the quadratic term, the AIC turned out to
+be sufficient.
+
+826
+00:44:54,490 --> 00:44:56,754
+We didn't really need that quadra, the
+cubic term anymore.
+
+827
+00:44:56,754 --> 00:44:58,882
+But you can see it didn't make a huge
+difference on the P value for
+
+828
+00:44:58,882 --> 00:44:59,638
+the group by age term.
+
+829
+00:44:59,638 --> 00:45:01,673
+It's still statistically significant.
+
+830
+00:45:01,673 --> 00:45:02,958
+Here's the observed versus.
+
+831
+00:45:02,958 --> 00:45:06,646
+I predicted, when I have the quadratic
+term.
+
+832
+00:45:06,646 --> 00:45:09,512
+So, I'm showing you now this is the
+predictive where I'm just fitting
+
+833
+00:45:09,512 --> 00:45:12,712
+a smoothing line to the predicted values,
+and if I actually fit the quadratic to
+
+834
+00:45:12,712 --> 00:45:15,524
+those predicted values you can see that
+nice quadratic shape there.
+
+835
+00:45:15,524 --> 00:45:19,830
+That sufficient to capture, the content of
+the data here.
+
+836
+00:45:21,120 --> 00:45:24,590
+I also limited the weight outcome to 24 to
+48 months.
+
+837
+00:45:24,590 --> 00:45:26,940
+Again, the group by age is also
+statistically significant.
+
+838
+00:45:26,940 --> 00:45:29,040
+I only went up to the quadratic for
+weight, as well.
+
+839
+00:45:29,040 --> 00:45:33,160
+So, we do get a nice separation at these
+later time points.
+
+840
+00:45:33,160 --> 00:45:37,930
+Just for fun, I also looked at some other
+predictors of weight gain over time.
+
+841
+00:45:37,930 --> 00:45:39,630
+So this is looking at the BMI Z scores.
+
+842
+00:45:39,630 --> 00:45:42,780
+These are again, only two, three, and four
+years of age.
+
+843
+00:45:42,780 --> 00:45:45,640
+We already saw that maybe the age at which
+you introduce solids to
+
+844
+00:45:45,640 --> 00:45:48,490
+the baby might have an influence on their
+weight gain trajectory over time.
+
+845
+00:45:48,490 --> 00:45:52,430
+And, indeed, if you look at SolidAge.
+
+846
+00:45:52,430 --> 00:45:57,630
+Now this is, SolidAge is the age at which,
+the month at which the baby was introduced
+
+847
+00:45:57,630 --> 00:46:02,150
+to solid foods, which is usually somewhere
+around 4, 5, 6, 7 months.
+
+848
+00:46:02,150 --> 00:46:04,630
+And you can see now that the main effect
+for
+
+849
+00:46:04,630 --> 00:46:07,610
+solid age is, solid age is statistically
+significant.
+
+850
+00:46:07,610 --> 00:46:11,619
+because remember, that this were starting
+baseline here, is two years of age, so
+
+851
+00:46:11,619 --> 00:46:13,670
+this is way after SolidAge.
+
+852
+00:46:13,670 --> 00:46:18,300
+The SolidAge foods have been introduced
+but the baseline of this analysis,
+
+853
+00:46:18,300 --> 00:46:22,300
+which is at three years of age, the babies
+who were fed solid foods back
+
+854
+00:46:22,300 --> 00:46:27,240
+earlier or later when, at a later age when
+they were
+
+855
+00:46:27,240 --> 00:46:31,900
+young they are tracking about a half
+standard deviation less in BMI Z score.
+
+856
+00:46:31,900 --> 00:46:34,490
+Or and it is statistically significant at
+two years of age.
+
+857
+00:46:34,490 --> 00:46:37,820
+Some solid food interdiction seems to have
+some influence here.
+
+858
+00:46:37,820 --> 00:46:44,110
+And then they continued, there continued
+to be some significant effect here.
+
+859
+00:46:44,110 --> 00:46:50,990
+So, what's interesting is that the babies
+who, had gotten their solids at a later
+
+860
+00:46:50,990 --> 00:46:55,690
+age they at two years they are lighter by
+about half a standard deviation.
+
+861
+00:46:55,690 --> 00:46:59,480
+But they are actually catching up with the
+other babies a little bit over time.
+
+862
+00:46:59,480 --> 00:47:03,442
+So, what you can see is that the SolidAge
+by age.
+
+863
+00:47:03,442 --> 00:47:06,748
+This interaction, i, what's happening is
+that’s positive, so
+
+864
+00:47:06,748 --> 00:47:09,416
+the later you were introduced to solids as
+your goal for
+
+865
+00:47:09,416 --> 00:47:13,300
+being two years old, to three years old
+[INAUDIBLE] to four years old.
+
+866
+00:47:13,300 --> 00:47:15,470
+You are actually catching up for
+
+867
+00:47:15,470 --> 00:47:19,760
+gaining a little bit more weight relative
+to the ones who got solid at younger age,
+
+868
+00:47:19,760 --> 00:47:23,400
+but you started at two years at being, as
+being quite a bit lighter.
+
+869
+00:47:23,400 --> 00:47:25,770
+So, there's a little bit of the curves
+coming together there.
+
+870
+00:47:28,092 --> 00:47:31,670
+All right, so the other thing that I just
+wanted to throw in for learning purposes
+
+871
+00:47:31,670 --> 00:47:36,440
+here, was we have modeled this, we had a
+proc mixed with random statements.
+
+872
+00:47:36,440 --> 00:47:37,970
+That actually handles the data really well
+here,
+
+873
+00:47:37,970 --> 00:47:39,850
+because you can put in two random
+statements, one for
+
+874
+00:47:39,850 --> 00:47:41,500
+clinic and one for subject.
+
+875
+00:47:41,500 --> 00:47:46,900
+But, I also wanted to illustrate, the fact
+that you could also model these data with
+
+876
+00:47:46,900 --> 00:47:51,140
+a generalized estimating equation or with
+a proc mixed with a repeated statement.
+
+877
+00:47:51,140 --> 00:47:52,310
+And I wanted to try to,
+
+878
+00:47:52,310 --> 00:47:56,050
+again, say what difference between those
+three approaches are.
+
+879
+00:47:56,050 --> 00:47:59,370
+So, I went ahead and re-ran the exact same
+model,
+
+880
+00:47:59,370 --> 00:48:03,280
+except I did it in proc mixed with a
+repeated statement.
+
+881
+00:48:03,280 --> 00:48:08,440
+And then I asked [INAUDIBLE] to generate
+the predicted values from those models.
+
+882
+00:48:08,440 --> 00:48:10,490
+And they're very informative, to look at
+these graphics.
+
+883
+00:48:10,490 --> 00:48:16,340
+This is the predicted values, and I'm
+graphing here by clinic,
+
+884
+00:48:16,340 --> 00:48:18,460
+so predicted values by clinic.
+
+885
+00:48:19,700 --> 00:48:23,820
+And this is from my proc mixed with the
+random statement.
+
+886
+00:48:25,680 --> 00:48:30,370
+So, what you can see is, well gee, each
+clinic is allowed,
+
+887
+00:48:30,370 --> 00:48:33,550
+all the clinics have different
+trajectories of growth over time.
+
+888
+00:48:33,550 --> 00:48:37,970
+All the individuals are predicted to have
+different growth trajectories over time.
+
+889
+00:48:37,970 --> 00:48:42,320
+There is variation, so a specific
+individual has a different predicted
+
+890
+00:48:42,320 --> 00:48:47,545
+value even two individuals who are, are
+from the same intervention group,
+
+891
+00:48:47,545 --> 00:48:49,800
+they 're predicted to have different
+values over time.
+
+892
+00:48:49,800 --> 00:48:51,860
+So, you get variation, you get scatter.
+
+893
+00:48:51,860 --> 00:48:52,620
+Now look over here.
+
+894
+00:48:52,620 --> 00:48:56,270
+Here, is the predicted values by clinic
+
+895
+00:48:59,610 --> 00:49:02,910
+from a proc mixed with a repeated
+statement.
+
+896
+00:49:03,960 --> 00:49:08,190
+Might use I think an autoregressive
+correlation structure.
+
+897
+00:49:08,190 --> 00:49:09,520
+And, what do you see here.
+
+898
+00:49:09,520 --> 00:49:10,540
+These are the predicted values.
+
+899
+00:49:10,540 --> 00:49:13,920
+So, there is no subject specific
+variability, that's the whole point.
+
+900
+00:49:13,920 --> 00:49:17,660
+That the random effect builds in the
+subject specific variability.
+
+901
+00:49:17,660 --> 00:49:19,030
+There's no variation.
+
+902
+00:49:19,030 --> 00:49:22,080
+So, from the proc mix with the repeated
+statement,
+
+903
+00:49:22,080 --> 00:49:23,740
+you're getting a marginal model.
+
+904
+00:49:23,740 --> 00:49:28,060
+So every, anybody who's in the, any of the
+intervention clinics is,
+
+905
+00:49:28,060 --> 00:49:30,810
+projected to have a specific value at each
+of the time points.
+
+906
+00:49:30,810 --> 00:49:31,490
+And everybody who is in
+
+907
+00:49:31,490 --> 00:49:34,590
+the intervention clinics is projected to
+have a specific value.
+
+908
+00:49:34,590 --> 00:49:38,340
+At specific time points and there's no
+variation built into that.
+
+909
+00:49:38,340 --> 00:49:40,750
+We're not allowing subjects to vary from
+that.
+
+910
+00:49:40,750 --> 00:49:43,570
+So, you can pictorially see the difference
+between those two models.
+
+911
+00:49:43,570 --> 00:49:45,660
+You can clearly see that the proc mix or
+
+912
+00:49:45,660 --> 00:49:47,310
+the repeated statement is a marginal
+model.
+
+913
+00:49:47,310 --> 00:49:50,350
+And then I also ran a generalized
+estimating equation which is basically
+
+914
+00:49:50,350 --> 00:49:52,660
+doing the same thing as the proc mixed
+with the repeated statement.
+
+915
+00:49:52,660 --> 00:49:54,430
+It's also fitting a marginal model.
+
+916
+00:49:54,430 --> 00:49:56,020
+So, you don't get any subject specific
+effects.
+
+917
+00:49:56,020 --> 00:49:58,400
+Everybody is predicted to lie right on
+that line.
+
+918
+00:50:00,140 --> 00:50:02,870
+And I just did it as again, looking at the
+weights.
+
+919
+00:50:02,870 --> 00:50:05,460
+So, here's the predictive value of the
+weights on the left hand side,
+
+920
+00:50:05,460 --> 00:50:07,350
+from the proc mixed with the repeated
+statement.
+
+921
+00:50:07,350 --> 00:50:09,720
+Again, it's a marginal model, we're
+predicting.
+
+922
+00:50:09,720 --> 00:50:11,555
+Two lines, your getting two lines here,
+
+923
+00:50:11,555 --> 00:50:15,350
+because remember my model has intervention
+group and control group in it.
+
+924
+00:50:15,350 --> 00:50:16,890
+So you're clearing seeing some difference.
+
+925
+00:50:17,940 --> 00:50:19,920
+For the this is with the intervention
+group.
+
+926
+00:50:19,920 --> 00:50:21,090
+This would be the control group.
+
+927
+00:50:21,090 --> 00:50:22,990
+But everybody's projected to lie on that
+line.
+
+928
+00:50:22,990 --> 00:50:25,000
+Only, the only thing you're allowed to
+vary on is.
+
+929
+00:50:25,000 --> 00:50:26,630
+Whether you're intervention or control.
+
+930
+00:50:26,630 --> 00:50:29,060
+On the right side, here's the proc mixed
+with the random statement.
+
+931
+00:50:29,060 --> 00:50:32,710
+And again, you can see that we're allowing
+subject specific growth curve.
+
+932
+00:50:32,710 --> 00:50:35,520
+So, that's the difference between proc
+mixed with the repeated statement, and
+
+933
+00:50:35,520 --> 00:50:37,129
+proc mixed with a random statement.
+
+934
+00:50:39,780 --> 00:50:42,640
+And the generalized estimating equation,
+again, it's marginal model, so
+
+935
+00:50:42,640 --> 00:50:44,670
+it looks just like the proc mixed with the
+repeated statement.
+
+936
+00:50:46,930 --> 00:50:49,540
+So, the next thing we'd want to do is to
+do some sensitivity analyses.
+
+937
+00:50:49,540 --> 00:50:51,680
+The real sensitivity analyses that would
+be best for
+
+938
+00:50:51,680 --> 00:50:54,620
+this data set would be to probe those 25
+dropouts, and
+
+939
+00:50:54,620 --> 00:50:56,800
+see what influence those might have had on
+the analysis.
+
+940
+00:50:56,800 --> 00:50:58,370
+We don't have those data.
+
+941
+00:50:58,370 --> 00:51:00,610
+So, the only sensitivity analysis I went
+ahead and
+
+942
+00:51:00,610 --> 00:51:05,650
+did was to just notice that there was this
+one baby in the control group, this girl,
+
+943
+00:51:05,650 --> 00:51:09,260
+who was quite a bit heavier and could be
+pulling the blue line up.
+
+944
+00:51:09,260 --> 00:51:11,930
+It might be having a lot of influence on
+our estimates.
+
+945
+00:51:11,930 --> 00:51:14,870
+So, I went ahead and ran the model with
+her and then ran the model without her
+
+946
+00:51:14,870 --> 00:51:17,940
+just to see how much influence she might
+be having on the estimates.
+
+947
+00:51:17,940 --> 00:51:20,349
+We wouldn't want one baby to be completely
+pulling that line up.
+
+948
+00:51:21,690 --> 00:51:25,500
+So, when I ran the model with her, you've
+already seen these estimates.
+
+949
+00:51:25,500 --> 00:51:28,542
+The group by age term had a P value of
+0.005.
+
+950
+00:51:28,542 --> 00:51:31,310
+So, fairly statistically significant.
+
+951
+00:51:31,310 --> 00:51:35,183
+When I remove that outlier, it still
+remains statistically significant, but
+
+952
+00:51:35,183 --> 00:51:37,857
+you can see that some of the effect is a
+little bit less.
+
+953
+00:51:37,857 --> 00:51:40,662
+So my data coefficient was negative .035.
+
+954
+00:51:40,662 --> 00:51:44,451
+And this for weight so that corresponds to
+
+955
+00:51:44,451 --> 00:51:49,520
+.035 kilograms less per ages and months,
+for months.
+
+956
+00:51:49,520 --> 00:51:52,300
+The effect size is a little bit lower when
+we take that girl out,
+
+957
+00:51:52,300 --> 00:51:56,310
+and also the p-value is still significant,
+but you know, a little bit higher.
+
+958
+00:51:56,310 --> 00:51:58,240
+So, she is having some influence on the
+estimates,
+
+959
+00:51:58,240 --> 00:52:01,730
+although taking her out doesn't completely
+we don't completely lose the effect.
+
+960
+00:52:01,730 --> 00:52:04,330
+We still seem to have the effect even if
+she's not in there.
+
+961
+00:52:06,380 --> 00:52:10,770
+So, you want to do some analysis like that
+to probe potentially influential values.
+
+962
+00:52:10,770 --> 00:52:12,010
+And then, finally,
+
+963
+00:52:12,010 --> 00:52:14,430
+we're going to want to create some formal
+graphics that summarize the findings.
+
+964
+00:52:14,430 --> 00:52:16,920
+I've already shown you a ton of graphics
+and easily, a lot of,
+
+965
+00:52:16,920 --> 00:52:20,530
+a number of those graphics could be
+formalized to include in the paper.
+
+966
+00:52:20,530 --> 00:52:23,570
+I'll just show you the graphic that the
+authors actually chose to include in
+
+967
+00:52:23,570 --> 00:52:24,820
+their paper.
+
+968
+00:52:24,820 --> 00:52:29,070
+Here is the observe that I like to show
+observe along with projected, predicted.
+
+969
+00:52:29,070 --> 00:52:32,532
+So, here is my observed graphs that I
+already showed you for the week.
+
+970
+00:52:32,532 --> 00:52:34,690
+For length score, and for the BMI Z score,
+
+971
+00:52:34,690 --> 00:52:40,670
+what the authors showed in their paper was
+the fitted curves from their mixed models.
+
+972
+00:52:40,670 --> 00:52:44,590
+For this is the, control group in the
+dotted line.
+
+973
+00:52:44,590 --> 00:52:48,050
+And this is the intervention group in the
+smooth line.
+
+974
+00:52:48,050 --> 00:52:50,510
+This is for the weight for length z-score.
+
+975
+00:52:50,510 --> 00:52:52,850
+And this is for the BMI Z score.
+
+976
+00:52:55,110 --> 00:52:59,610
+So these are kind of the [INAUDIBLE] the
+smooth version of the observed graphs.
+
+977
+00:52:59,610 --> 00:53:02,890
+And, this is exactly what the model fits,
+the model fits for weight length score,
+
+978
+00:53:02,890 --> 00:53:04,710
+we fit cubits, as you can see,
+
+979
+00:53:04,710 --> 00:53:08,370
+those are cleric cubits with the control
+grouping a little higher.
+
+980
+00:53:08,370 --> 00:53:09,685
+The Z score for
+
+981
+00:53:09,685 --> 00:53:13,050
+BMI, we fit a quadratic, and the control
+group ends up a little bit higher.
+
+982
+00:53:13,050 --> 00:53:15,730
+So, those are just their, they're showing
+the fit graph, they're showing.
+
+983
+00:53:15,730 --> 00:53:18,520
+That the model projects the control group
+to be a little bit higher than
+
+984
+00:53:18,520 --> 00:53:19,850
+the intervention group.
+
+985
+00:53:19,850 --> 00:53:23,360
+The dots you're seeing on these graphics,
+I think, are not the prettiest thing, but
+
+986
+00:53:23,360 --> 00:53:27,310
+they're showing the mean value for all,
+for the weight for
+
+987
+00:53:27,310 --> 00:53:30,320
+length score or the BMI Z score in the
+intervention and control groups.
+
+988
+00:53:30,320 --> 00:53:32,700
+So, those are the observed values, the
+lines are the fitted values.
+
+989
+00:53:32,700 --> 00:53:35,400
+So, that's one possible graphic that you
+could present, and again,
+
+990
+00:53:35,400 --> 00:53:37,480
+I've shown you a number of other graphics.
+
+991
+00:53:37,480 --> 00:53:39,470
+That would make nice pictures for the
+paper.
+
+992
+00:53:39,470 --> 00:53:44,830
+[BLANK_AUDIO]

@@ -1,0 +1,1349 @@
+1
+00:00:05,470 --> 00:00:08,630
+In this next module I'm going to tell you
+more about propensity scores.
+
+2
+00:00:08,630 --> 00:00:10,840
+So we already talked about how to
+calculate them,
+
+3
+00:00:10,840 --> 00:00:12,400
+now I'm going to show you how to use them.
+
+4
+00:00:13,910 --> 00:00:18,530
+So there's three ways to use propensity
+scores: stratification, matching, and
+
+5
+00:00:18,530 --> 00:00:19,830
+statistical adjustment.
+
+6
+00:00:19,830 --> 00:00:21,679
+I'm going to show an example of each of
+these.
+
+7
+00:00:22,910 --> 00:00:24,770
+So first of all stratification.
+
+8
+00:00:24,770 --> 00:00:29,490
+We can stratify a propensity score the way
+we would stratify on any confounder.
+
+9
+00:00:29,490 --> 00:00:31,970
+So, for example, in the rehabilitation
+study,
+
+10
+00:00:31,970 --> 00:00:35,140
+the author stratified on quintiles of
+propensity score.
+
+11
+00:00:35,140 --> 00:00:37,950
+So people who were in the lowest quintile
+were only compared to
+
+12
+00:00:37,950 --> 00:00:41,020
+others who were in the lowest quintile of
+propensity score.
+
+13
+00:00:41,020 --> 00:00:43,883
+Because we've done stratification, the
+Mantel-Haenzel methods apply.
+
+14
+00:00:45,160 --> 00:00:47,830
+And you can see there, they had a nice
+figure in their paper.
+
+15
+00:00:47,830 --> 00:00:51,910
+Again, we were in this study comparing
+rehabilitation to getting no
+
+16
+00:00:51,910 --> 00:00:55,670
+rehabilitation in nursing homes.
+
+17
+00:00:55,670 --> 00:00:57,850
+And what you can see in this figure here,
+
+18
+00:00:57,850 --> 00:01:01,970
+is they're showing you the relative risk
+of getting discharged to the community.
+
+19
+00:01:01,970 --> 00:01:02,950
+That's a good outcome.
+
+20
+00:01:02,950 --> 00:01:04,310
+That means you got out of the nursing
+home.
+
+21
+00:01:04,310 --> 00:01:05,380
+That's what we want.
+
+22
+00:01:05,380 --> 00:01:08,490
+Over here, we see the quintiles of
+propensity scores.
+
+23
+00:01:08,490 --> 00:01:12,150
+So there was obviously five quintiles from
+lowest to highest.
+
+24
+00:01:12,150 --> 00:01:16,730
+And then they show you overall, what is
+the relative risk for
+
+25
+00:01:16,730 --> 00:01:20,530
+comparing rehabilitation to no
+rehabilitation for community discharge.
+
+26
+00:01:20,530 --> 00:01:24,660
+So because we done the stratified
+analysis, we can apply the Mantel Haenszel
+
+27
+00:01:24,660 --> 00:01:29,080
+methods, we can calculate the Mantel
+Haenszel summary risk ratio and
+
+28
+00:01:29,080 --> 00:01:30,650
+that's what this 1.58 is.
+
+29
+00:01:30,650 --> 00:01:35,550
+That's the overall, the summary, so after
+adjusting for quintile of propensity
+
+30
+00:01:35,550 --> 00:01:40,600
+scores, rehabilitation, indeed, was still
+associated with significant benefit.
+
+31
+00:01:40,600 --> 00:01:46,750
+The relative risk is 1.58, meaning that
+they were 58% more likely to be discharged
+
+32
+00:01:46,750 --> 00:01:50,590
+to the community if they had gotten the
+rehabilitation versus if they had not.
+
+33
+00:01:51,620 --> 00:01:54,550
+Now, there was something else interesting
+in their analysis however which you
+
+34
+00:01:54,550 --> 00:01:56,120
+can see in the picture here.
+
+35
+00:01:56,120 --> 00:01:58,160
+So they found a significant interaction.
+
+36
+00:01:58,160 --> 00:02:00,540
+In other words the [UNKNOWN] test here.
+
+37
+00:02:00,540 --> 00:02:02,790
+Would have come out statistically
+significant.
+
+38
+00:02:02,790 --> 00:02:04,890
+And you can see that in the picture.
+
+39
+00:02:04,890 --> 00:02:08,530
+So if you look at the lowest quintiles of
+rehabilitation,
+
+40
+00:02:08,530 --> 00:02:12,670
+these are the people who are the least
+likely to get rehabilitation.
+
+41
+00:02:12,670 --> 00:02:14,188
+There indeed seems to be a benefit.
+
+42
+00:02:14,188 --> 00:02:15,000
+50 percent, 50 percent,
+
+43
+00:02:15,000 --> 00:02:19,620
+even a doubling of your chances of getting
+out of the nursing home.
+
+44
+00:02:19,620 --> 00:02:24,860
+However, if you look at the two highest
+quintiles of propensity scores,
+
+45
+00:02:24,860 --> 00:02:27,660
+these are the people who are the most
+likely to get rehabilitation.
+
+46
+00:02:27,660 --> 00:02:31,100
+There was much less benefit, particularly
+in the highest quintile.
+
+47
+00:02:31,100 --> 00:02:34,920
+The the relative risk here was 0.9, no
+benefit.
+
+48
+00:02:34,920 --> 00:02:36,480
+So what is that telling you?
+
+49
+00:02:36,480 --> 00:02:40,340
+So that's telling you how we decide who
+gets rehabilitation is
+
+50
+00:02:40,340 --> 00:02:41,520
+really screwed up, right?
+
+51
+00:02:41,520 --> 00:02:45,790
+Because the people who are most likely to
+benefit from the rehabilitation,
+
+52
+00:02:45,790 --> 00:02:49,400
+are actually the people who are least
+likely to get it.
+
+53
+00:02:49,400 --> 00:02:52,830
+So that's a really interesting insight
+that came out of
+
+54
+00:02:52,830 --> 00:02:54,340
+using the propensity scores.
+
+55
+00:02:55,610 --> 00:02:57,970
+So that was stratification.
+
+56
+00:02:57,970 --> 00:03:00,150
+Now propensity score matching.
+
+57
+00:03:00,150 --> 00:03:03,630
+So propensity score matching works in the
+following.
+
+58
+00:03:03,630 --> 00:03:06,770
+We often do a one to one matching, so you
+would find somebody, say in
+
+59
+00:03:06,770 --> 00:03:11,280
+the Ross group, who had a propensity score
+of point six and then you would try to
+
+60
+00:03:11,280 --> 00:03:14,860
+find somebody in the mechanical valve who
+had a similar propensity score.
+
+61
+00:03:14,860 --> 00:03:16,910
+We can't always match them exactly.
+
+62
+00:03:16,910 --> 00:03:20,560
+But how do we actually achieve this
+matching in practice?
+
+63
+00:03:20,560 --> 00:03:22,100
+In practice there are,
+
+64
+00:03:22,100 --> 00:03:24,490
+there are a couple of different algorithms
+that might be used.
+
+65
+00:03:24,490 --> 00:03:27,000
+I'm just going to mention the
+nearest-neighbor one.
+
+66
+00:03:27,000 --> 00:03:29,950
+It does take some work to actually match
+these,
+
+67
+00:03:29,950 --> 00:03:34,110
+because you can imagine that there are
+often cases where there's only
+
+68
+00:03:34,110 --> 00:03:36,950
+a match within a certain range, not an
+exact match.
+
+69
+00:03:36,950 --> 00:03:39,050
+So, how does the nearest-neighbor matching
+algorithm as
+
+70
+00:03:39,050 --> 00:03:40,340
+an example, how does that work?
+
+71
+00:03:40,340 --> 00:03:42,270
+That's what they used in the Ross study.
+
+72
+00:03:42,270 --> 00:03:43,780
+So, here's what they did.
+
+73
+00:03:43,780 --> 00:03:47,700
+First of all, remember we had only 406
+mechanical valve patients.
+
+74
+00:03:47,700 --> 00:03:49,570
+We had about 900 Ross patients.
+
+75
+00:03:49,570 --> 00:03:52,180
+So what they did is they tried to find a,
+
+76
+00:03:52,180 --> 00:03:55,410
+to match a Ross patient to a every
+mechanical valve patient.
+
+77
+00:03:55,410 --> 00:03:59,330
+So they first randomly ordered the
+mechanical valve patients.
+
+78
+00:03:59,330 --> 00:04:03,350
+Then they start with the first one who
+came up on top on that random ordering.
+
+79
+00:04:03,350 --> 00:04:07,310
+They look at the propensity score, and
+they try to find, they go through all of
+
+80
+00:04:07,310 --> 00:04:11,400
+the patients of the Ross patients, who are
+all still available at this time.
+
+81
+00:04:11,400 --> 00:04:16,320
+And they find the person with the closest
+propensity score from the Ross group.
+
+82
+00:04:16,320 --> 00:04:18,530
+So, maybe on that very first person,
+there's a, you know,
+
+83
+00:04:18,530 --> 00:04:21,480
+the mechanical valve person has a
+propensity score of 0.4,
+
+84
+00:04:21,480 --> 00:04:25,694
+the Ross, they can find a Ross patient
+with a propensity score of 0.41.
+
+85
+00:04:25,694 --> 00:04:26,610
+Pretty close.
+
+86
+00:04:26,610 --> 00:04:28,280
+And then they keep going down the list,
+and
+
+87
+00:04:28,280 --> 00:04:31,920
+of course there's fewer and fewer choices
+out of that Ross list eventually.
+
+88
+00:04:31,920 --> 00:04:34,890
+So as they go down the list, they may have
+to allow the valves,
+
+89
+00:04:36,080 --> 00:04:39,940
+the the differences between the two, the
+two to be a little bit bigger and bigger.
+
+90
+00:04:39,940 --> 00:04:44,480
+And in fact they let it go up to as big a
+difference as 25 percent, so they would
+
+91
+00:04:44,480 --> 00:04:48,875
+allow a match that where the mechanical
+valve say, had a propensity score of
+
+92
+00:04:48,875 --> 00:04:53,753
+0.2 and the Ross patient had a propensity
+score as big as .55, 55 percent.
+
+93
+00:04:53,753 --> 00:04:58,430
+And after, once they couldn't find the
+way, any matches within 25 percent,
+
+94
+00:04:58,430 --> 00:05:01,690
+then the patient was left unmatched and
+they were excluded.
+
+95
+00:05:01,690 --> 00:05:05,370
+They were just, they simply didn't have a
+close enough match in the data set.
+
+96
+00:05:05,370 --> 00:05:08,240
+And in fact, even with a fairly liberal
+criteria of a 25 percent difference,
+
+97
+00:05:08,240 --> 00:05:15,060
+they can only find matches for 253 of the
+original 406 mechanical valve patients.
+
+98
+00:05:15,060 --> 00:05:19,410
+So they ended up in the match cohort with
+a data set of about 500 total people.
+
+99
+00:05:19,410 --> 00:05:22,520
+Whereas in the original cohort, there was
+about 1,300.
+
+100
+00:05:22,520 --> 00:05:25,100
+So, a lot of people that couldn't be
+matched here.
+
+101
+00:05:26,200 --> 00:05:29,360
+Then they took the match cohort and they
+ran a survival analysis.
+
+102
+00:05:29,360 --> 00:05:32,160
+So this is just a Kaplan-Meyer curve so
+it's unadjusted.
+
+103
+00:05:32,160 --> 00:05:35,590
+In blue we have the Ross patients in red.
+
+104
+00:05:35,590 --> 00:05:37,170
+We have the mechanical valve patients,
+
+105
+00:05:37,170 --> 00:05:40,510
+the smaller dotted lines is to represent
+confidence intervals.
+
+106
+00:05:40,510 --> 00:05:43,320
+You can see the confidence intervals are
+highly overlapping.
+
+107
+00:05:43,320 --> 00:05:44,330
+There weren't that many deaths.
+
+108
+00:05:44,330 --> 00:05:48,200
+So there was a 97 percent survival in the
+Mechanical Valve versus 95
+
+109
+00:05:48,200 --> 00:05:53,000
+percent in the Ross procedure, the p value
+is completely non significant.
+
+110
+00:05:53,000 --> 00:05:56,660
+So remember that Ross patients, in
+previous studies,
+
+111
+00:05:56,660 --> 00:06:00,660
+had been shown to do better in terms of
+survival but once we account for
+
+112
+00:06:00,660 --> 00:06:02,410
+all these differences between Ross
+patients and
+
+113
+00:06:02,410 --> 00:06:05,840
+Mechanical Valve patients They actually
+don't seem to have any survival benefit.
+
+114
+00:06:05,840 --> 00:06:07,020
+If anything they do a little worse.
+
+115
+00:06:08,320 --> 00:06:11,600
+And this is just showing the results from
+a cox regression.
+
+116
+00:06:11,600 --> 00:06:16,480
+So, they then took the matched cohort and
+they ran it in a regression analysis,
+
+117
+00:06:16,480 --> 00:06:19,890
+which is going to give us a fairly similar
+answer to the Kaplan Myer, but
+
+118
+00:06:19,890 --> 00:06:21,580
+they adjusted for a few things.
+
+119
+00:06:21,580 --> 00:06:23,990
+You can see there were very few deaths.
+
+120
+00:06:23,990 --> 00:06:28,310
+But the hazard ratio comparing Ross to
+mechanical valve came out to be 1.86.
+
+121
+00:06:28,310 --> 00:06:29,670
+So hazard ratio is just very,
+
+122
+00:06:29,670 --> 00:06:32,880
+is a type of relative risk, so we can
+interpret it in the normal way.
+
+123
+00:06:32,880 --> 00:06:37,340
+The same p value from Cox regression, same
+as the log rank test, came out to be 0.29.
+
+124
+00:06:37,340 --> 00:06:39,020
+So, no differences between the groups,
+
+125
+00:06:39,020 --> 00:06:40,740
+if anything, the Ross patients are doing
+worse.
+
+126
+00:06:42,720 --> 00:06:44,610
+Now, you have to make some choices with
+the matching.
+
+127
+00:06:44,610 --> 00:06:46,930
+Because not everybody's going to have a
+perfect match.
+
+128
+00:06:46,930 --> 00:06:49,260
+So you have to allow some inexactness in
+the matching.
+
+129
+00:06:49,260 --> 00:06:51,860
+But if you allow it to be too far apart,
+like if
+
+130
+00:06:51,860 --> 00:06:55,832
+you allow somebody with a score of .2 to
+be matched to somebody with a score of .9,
+
+131
+00:06:55,832 --> 00:06:58,920
+obviously there's, you're going to bring
+back in the confounding.
+
+132
+00:06:58,920 --> 00:07:02,230
+So the more inexact you're matching, the
+more the confounding.
+
+133
+00:07:02,230 --> 00:07:07,120
+However you have to trade that off between
+having incomplete matching.
+
+134
+00:07:07,120 --> 00:07:10,830
+So they weren't able to find matches for
+about 150 patients in the raw study.Um,
+
+135
+00:07:10,830 --> 00:07:16,950
+they already had, made the matching up to
+25 percent difference between patients.
+
+136
+00:07:16,950 --> 00:07:18,360
+And that's pretty big.
+
+137
+00:07:18,360 --> 00:07:19,770
+So, they cut it off there,
+
+138
+00:07:19,770 --> 00:07:24,500
+but if you make it to exact, if you
+require the matching to be too perfect,
+
+139
+00:07:24,500 --> 00:07:26,780
+then a lot of people are going to be
+thrown out of the data set.
+
+140
+00:07:26,780 --> 00:07:28,350
+That's going to decrease your sample size
+and
+
+141
+00:07:28,350 --> 00:07:30,610
+your statistical power as well as
+generalizability.
+
+142
+00:07:30,610 --> 00:07:32,280
+So, there's a trade off between those two.
+
+143
+00:07:33,490 --> 00:07:38,300
+Alright, so then the other thing to point
+out here is we have matched data.
+
+144
+00:07:38,300 --> 00:07:39,820
+We have matched pairs.
+
+145
+00:07:39,820 --> 00:07:43,080
+So of course, when I told you that when we
+have matched pairs,
+
+146
+00:07:43,080 --> 00:07:44,720
+then you have a correlation in your data.
+
+147
+00:07:44,720 --> 00:07:47,660
+So you should probably analyze the data as
+matched pairs and
+
+148
+00:07:47,660 --> 00:07:49,450
+take into account that correlation.
+
+149
+00:07:49,450 --> 00:07:52,540
+I'll just note that there is some on-going
+debate about this issue
+
+150
+00:07:52,540 --> 00:07:54,040
+in the statistical literature.
+
+151
+00:07:54,040 --> 00:07:58,890
+For now, I'd say, you're on the side of
+actually accounting for the correlation.
+
+152
+00:07:58,890 --> 00:08:03,380
+The debate is around the fact that, people
+can, two people can have the same, or
+
+153
+00:08:03,380 --> 00:08:05,690
+very similar propensity scores, but
+
+154
+00:08:05,690 --> 00:08:09,320
+they have very different underlying
+characteristics, so they really may not be
+
+155
+00:08:09,320 --> 00:08:13,580
+that correlated on Most of the factors
+that determine the propensity score.
+
+156
+00:08:13,580 --> 00:08:17,050
+So the final thing that we can do with the
+propensity scores is
+
+157
+00:08:17,050 --> 00:08:20,920
+just put them into a regression model like
+we do with any other confounder.
+
+158
+00:08:20,920 --> 00:08:24,230
+The nice thing about the propensity scores
+is it's only one variable as opposed to
+
+159
+00:08:24,230 --> 00:08:27,230
+a whole set of confounders that we might
+have to adjust for.
+
+160
+00:08:27,230 --> 00:08:30,280
+So it's a little bit more efficient.
+
+161
+00:08:30,280 --> 00:08:32,870
+And it would look like we're going to
+take, make a regression model,
+
+162
+00:08:32,870 --> 00:08:33,470
+here's our outcome.
+
+163
+00:08:33,470 --> 00:08:35,920
+We're going to have the treatment as the
+main predictor in the model, but
+
+164
+00:08:35,920 --> 00:08:39,430
+we're only going to adjust for propensity,
+or maybe a couple of other covariates for
+
+165
+00:08:39,430 --> 00:08:42,180
+some reason we might additionally want to
+adjust for.
+
+166
+00:08:42,180 --> 00:08:46,420
+That's going to be a parsimonious model,
+as opposed to if we had taken
+
+167
+00:08:46,420 --> 00:08:50,130
+all the original co-founders that went
+into calculating this propensity score and
+
+168
+00:08:50,130 --> 00:08:51,089
+adjusted for those.
+
+169
+00:08:52,100 --> 00:08:55,800
+Now I'll tell you that, if you run the
+model where you adjust for
+
+170
+00:08:55,800 --> 00:08:57,450
+propesity score, and then you go and
+
+171
+00:08:57,450 --> 00:09:02,860
+run the same model, except you have your
+treatment variable in there,
+
+172
+00:09:02,860 --> 00:09:06,550
+and instead of propensity score, you put
+in that original set of covariates.
+
+173
+00:09:06,550 --> 00:09:08,690
+That you used to calculate the propensity
+score.
+
+174
+00:09:08,690 --> 00:09:09,900
+Might be a big set.
+
+175
+00:09:09,900 --> 00:09:13,310
+But assuming that you have enough degrees
+of freedom to fit that in your model,
+
+176
+00:09:13,310 --> 00:09:16,510
+you'll actually get very similar results
+for the treatment effect.
+
+177
+00:09:16,510 --> 00:09:19,900
+So in other words, adjusting for the
+propensity score has a very similar effect
+
+178
+00:09:19,900 --> 00:09:23,060
+as adjusting for all the original co,
+confounders that
+
+179
+00:09:23,060 --> 00:09:26,260
+went into the propensity score, as it
+might not surprise you to hear that.
+
+180
+00:09:26,260 --> 00:09:28,009
+But it is more efficient, because it's
+only one number.
+
+181
+00:09:29,430 --> 00:09:31,010
+Now, when we the propensity score in the
+model,
+
+182
+00:09:31,010 --> 00:09:33,790
+all of the usual assumptions apply, it's a
+continuous variable so
+
+183
+00:09:33,790 --> 00:09:36,090
+therefore, we're assuming that it's linear
+in the logit.
+
+184
+00:09:36,090 --> 00:09:38,230
+We're going to want to check that
+assumption.
+
+185
+00:09:38,230 --> 00:09:41,650
+If we just throw it in the model, we're
+also assuming it doesn't interact with
+
+186
+00:09:41,650 --> 00:09:45,660
+the treatment we saw in the rehabilitation
+example that there was an interaction.
+
+187
+00:09:45,660 --> 00:09:47,810
+Between the treatment and the propensity
+score, so
+
+188
+00:09:47,810 --> 00:09:50,860
+if there's some reason to suspect that we
+might want to test, add
+
+189
+00:09:50,860 --> 00:09:55,000
+an interaction term in the model between
+the propensity score and the treatment.
+
+190
+00:09:55,000 --> 00:09:56,100
+And see if there's an interaction,
+
+191
+00:09:56,100 --> 00:09:57,940
+if there's some reason to suspect there
+would be one.
+
+192
+00:09:59,420 --> 00:10:02,570
+And as I mentioned before, statistical
+adjustment with a propensity score is
+
+193
+00:10:02,570 --> 00:10:05,430
+actually very similar to adjusting for all
+the covariants that were used to
+
+194
+00:10:05,430 --> 00:10:09,380
+Calculate the propensity score but the
+benefit really is efficiency so
+
+195
+00:10:09,380 --> 00:10:13,030
+if you don't have a with a small sample
+size, don't have a lot of events, and
+
+196
+00:10:13,030 --> 00:10:16,420
+you can't put too many confounders into
+the model, you can't estimate too
+
+197
+00:10:16,420 --> 00:10:19,910
+many parameters, that propensity score
+again is only one variable.
+
+198
+00:10:21,260 --> 00:10:25,680
+Just to give an example in that raw study
+In addition to the matched analysis I
+
+199
+00:10:25,680 --> 00:10:28,350
+already showed you, they also did an
+unmatched analysis.
+
+200
+00:10:28,350 --> 00:10:31,630
+They took the original cohort, remember we
+have propensity scores on everybody,
+
+201
+00:10:31,630 --> 00:10:33,830
+even people who we weren't able to find
+matches for.
+
+202
+00:10:33,830 --> 00:10:35,680
+And they ran a regression analysis.
+
+203
+00:10:35,680 --> 00:10:38,200
+This just happens to be cox regression,
+but That doesn't matter,
+
+204
+00:10:38,200 --> 00:10:40,300
+our outcome here is death.
+
+205
+00:10:40,300 --> 00:10:42,860
+We put the treatment in as a predictor in
+the model,
+
+206
+00:10:42,860 --> 00:10:45,850
+cause that's what we care about, and then
+we adjust for the propensity score.
+
+207
+00:10:45,850 --> 00:10:49,660
+So the propensity score becomes a
+continuous predictor in this model.
+
+208
+00:10:49,660 --> 00:10:52,430
+Now here's what's really interesting, when
+they did this they start,
+
+209
+00:10:52,430 --> 00:10:55,200
+they stuck with the unmatched cohort, the
+effect for
+
+210
+00:10:55,200 --> 00:10:59,010
+the Ross procedure versus the mechanical
+valve, the hazard ratio,
+
+211
+00:10:59,010 --> 00:11:03,420
+the relative risk for death was 3.64 and
+it actually was statistically significant.
+
+212
+00:11:03,420 --> 00:11:07,740
+So in the, this analysis, even after
+adjusting for propensity score,
+
+213
+00:11:07,740 --> 00:11:12,350
+the Ross procedure actually looks more
+harmful than the mechanical valve.
+
+214
+00:11:12,350 --> 00:11:16,300
+Now, this was a secondary analysis, the
+matched analysis was the main one, and
+
+215
+00:11:16,300 --> 00:11:20,510
+the authors thought, perhaps this was
+driven by the fact, this finding was
+
+216
+00:11:20,510 --> 00:11:25,170
+driven by the fact that, if you look at
+the distribution of propensity scores, for
+
+217
+00:11:25,170 --> 00:11:29,680
+the Ross patients, it was pretty skewed,
+it had a long right T And
+
+218
+00:11:29,680 --> 00:11:33,290
+so, that's skewness might be driving this
+hazard ratio.
+
+219
+00:11:33,290 --> 00:11:35,510
+There may not have been any matches, any,
+
+220
+00:11:35,510 --> 00:11:41,390
+anybody similar to all of these people in
+the tail, may not have had any similar,
+
+221
+00:11:41,390 --> 00:11:45,610
+people in the mechanical valve group, and
+you can't really adjust there for, for it.
+
+222
+00:11:45,610 --> 00:11:50,570
+So we saw in the match analysis that there
+was probably just Some people who
+
+223
+00:11:50,570 --> 00:11:52,180
+don't have a good comparator,
+
+224
+00:11:52,180 --> 00:11:56,540
+therefore you can't really completely
+adjust for confounding here.
+
+225
+00:11:56,540 --> 00:11:58,530
+And so something's going on that's a
+little funny.
+
+226
+00:11:58,530 --> 00:12:04,080
+But if anything, the Ross procedure is
+worse then the Now I've told
+
+227
+00:12:04,080 --> 00:12:08,260
+you that propensity scores do not take
+care of unmeasured or
+
+228
+00:12:08,260 --> 00:12:12,040
+residual confounding in the same way that
+randomization does.
+
+229
+00:12:12,040 --> 00:12:14,810
+So to try to deal with a mis-measured
+confounders especially if there's
+
+230
+00:12:14,810 --> 00:12:17,520
+something really important counfounders
+that for whatever reason if you're doing
+
+231
+00:12:17,520 --> 00:12:21,920
+the retrospective core study, maybe those
+data points, variables worked.
+
+232
+00:12:21,920 --> 00:12:24,140
+Measured originally, you just don't have
+access to them.
+
+233
+00:12:25,510 --> 00:12:28,990
+something, people will do something called
+a propensity score calibration.
+
+234
+00:12:28,990 --> 00:12:32,440
+I'm just going to briefly mention it here
+just so you're aware of it.
+
+235
+00:12:32,440 --> 00:12:33,900
+So you could go and
+
+236
+00:12:33,900 --> 00:12:38,740
+take a subset of the original sample and
+measure more carefully.
+
+237
+00:12:38,740 --> 00:12:42,650
+Detailed information on the confounders
+that you care about on that sub-sample.
+
+238
+00:12:42,650 --> 00:12:48,220
+And you can use that information then to
+exprapolate back to the entire sample,
+
+239
+00:12:48,220 --> 00:12:52,270
+without having to measure the more
+detailed confounders on everybody.
+
+240
+00:12:52,270 --> 00:12:53,870
+Of course saves you time and money.
+
+241
+00:12:53,870 --> 00:12:57,280
+So you use this information to
+statistically adjust for
+
+242
+00:12:57,280 --> 00:13:00,290
+these additional confounders in the
+propensity score estimates of
+
+243
+00:13:00,290 --> 00:13:02,590
+the full datas that we calibrate those.
+
+244
+00:13:02,590 --> 00:13:06,080
+So taking into account that you know,
+there's a certain profile of
+
+245
+00:13:06,080 --> 00:13:10,090
+person You go and measure the confounders
+on some people.
+
+246
+00:13:10,090 --> 00:13:13,490
+We can predict the values of the
+confounders for the rest of the data set.
+
+247
+00:13:13,490 --> 00:13:17,820
+We can use that to therefore adjust the
+propensity score accordingly.
+
+248
+00:13:17,820 --> 00:13:22,610
+Then these corrected calibrated propensity
+scores would be used in further analyses.
+
+249
+00:13:22,610 --> 00:13:25,390
+And they've taken into account these other
+confounders to some extent.
+
+250
+00:13:26,500 --> 00:13:28,160
+I just want to end here with a little
+summary of,
+
+251
+00:13:28,160 --> 00:13:31,920
+what are the advantages and disadvantages
+of propensity scores?
+
+252
+00:13:31,920 --> 00:13:34,400
+So first of all, one thing I really like
+about the propensity scores is it
+
+253
+00:13:34,400 --> 00:13:39,310
+just forces the researcher to think about
+the problem of confounding by indication.
+
+254
+00:13:39,310 --> 00:13:43,470
+For observational treatment studies this
+is such a red herring that anything that
+
+255
+00:13:43,470 --> 00:13:47,980
+gets the research really, researcher to
+focus on that carefully is, is good.
+
+256
+00:13:49,110 --> 00:13:52,100
+We've already talked about where we can
+reduce a large set of confounders to
+
+257
+00:13:52,100 --> 00:13:55,760
+a single intuitive variable which is very
+helpful.
+
+258
+00:13:55,760 --> 00:13:59,880
+We can figure out, it reveals when there
+are subjects that really,
+
+259
+00:13:59,880 --> 00:14:01,180
+truly can't be compared.
+
+260
+00:14:01,180 --> 00:14:05,120
+Or even whole groups, whole treatment
+groups that you really can't compare.
+
+261
+00:14:06,160 --> 00:14:09,700
+It optimizes stratification and matching
+as we talked about.
+
+262
+00:14:09,700 --> 00:14:11,590
+And, it makes statistical adjustment for
+
+263
+00:14:11,590 --> 00:14:14,320
+a large set of confounders possible when
+you don't.
+
+264
+00:14:14,320 --> 00:14:18,290
+Really have enough data to fit a
+regression model on so many variables.
+
+265
+00:14:20,280 --> 00:14:22,390
+Now the disadvantages of propensity scores
+are,
+
+266
+00:14:22,390 --> 00:14:26,160
+as I keep saying, they're inferior to
+randomization.
+
+267
+00:14:26,160 --> 00:14:31,370
+So they don't solve the problem of either
+residual or unmeasured confounding.
+
+268
+00:14:31,370 --> 00:14:36,060
+However they might give researchers or
+readers a False sense of security,
+
+269
+00:14:36,060 --> 00:14:40,460
+because you kind of feel like you've dealt
+with this confounding pretty well and
+
+270
+00:14:40,460 --> 00:14:44,810
+you might forget about the fact that it
+doesn't totally take care of confounding.
+
+271
+00:14:44,810 --> 00:14:46,810
+So you might get a false sense of
+security.
+
+272
+00:14:46,810 --> 00:14:48,610
+It's not as good as a randomized trial,
+and
+
+273
+00:14:48,610 --> 00:14:50,210
+don't, don't let your reader think it is.
+
+274
+00:14:51,210 --> 00:14:54,920
+also, as I've mentioned, you don't really
+get a different answer.
+
+275
+00:14:54,920 --> 00:14:59,300
+There's not too much benefit over
+traditional statistical adjustment.
+
+276
+00:14:59,300 --> 00:15:03,830
+In other words, if you just threw all of
+the confounders into a regression model,
+
+277
+00:15:03,830 --> 00:15:04,510
+and adjusted for
+
+278
+00:15:04,510 --> 00:15:09,640
+them, you'd probably get the same beta and
+p value for the treatment effect.
+
+279
+00:15:09,640 --> 00:15:13,190
+As if you just put the one propensity
+score into that regression model.
+
+280
+00:15:13,190 --> 00:15:16,080
+So adjusting, statistically adjusting in a
+regression model for
+
+281
+00:15:16,080 --> 00:15:19,660
+that propensity score doesn't really gain
+you much unless You're limited in
+
+282
+00:15:19,660 --> 00:15:22,340
+how many confounders you can put in your
+model.

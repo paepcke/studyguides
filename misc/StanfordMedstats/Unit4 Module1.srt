@@ -1,0 +1,226 @@
+1
+00:00:00,730 --> 00:00:01,810
+Welcome back.
+In
+
+2
+00:00:01,810 --> 00:00:04,630
+this module we're going to introduce you
+to SAS macros.
+
+3
+00:00:04,630 --> 00:00:08,480
+in SAS, macros are actually an advanced
+and a little bit challenging topic.
+
+4
+00:00:08,480 --> 00:00:12,020
+In your HRP courses you won't really need
+to make your own macros, but
+
+5
+00:00:12,020 --> 00:00:13,570
+you'll be given macros that you'll need to
+be using.
+
+6
+00:00:14,580 --> 00:00:15,940
+>> Once you jump over the learning curve,
+and
+
+7
+00:00:15,940 --> 00:00:20,010
+discover the power of macros, you'll be
+tempted to write, and use your own.
+
+8
+00:00:20,010 --> 00:00:21,980
+In this module, we'll just run you through
+the basics.
+
+9
+00:00:23,420 --> 00:00:25,690
+>> A macro is basically a way to repeat a
+chunk of code.
+
+10
+00:00:25,690 --> 00:00:29,430
+Let's say you've written some code that
+you need to use a bunch of times.
+
+11
+00:00:29,430 --> 00:00:31,750
+Instead of copying out that code each time
+you need it,
+
+12
+00:00:31,750 --> 00:00:35,630
+and tweaking the variables each time, you
+can write a macro instead.
+
+13
+00:00:35,630 --> 00:00:36,520
+Let's look at a quick example.
+
+14
+00:00:37,690 --> 00:00:41,030
+>> Suppose you have a number of separate
+data sets, which each have a variable for
+
+15
+00:00:41,030 --> 00:00:42,820
+weight and a variable for height.
+
+16
+00:00:42,820 --> 00:00:45,930
+For each data set, we want to calculate a
+new variable for BMI.
+
+17
+00:00:45,930 --> 00:00:48,950
+Which is equal to weight divided by height
+squared.
+
+18
+00:00:48,950 --> 00:00:51,290
+Here's the code for how we could do that
+using data steps.
+
+19
+00:00:52,700 --> 00:00:55,550
+>> So we could write out a separate data
+step for each data set.
+
+20
+00:00:55,550 --> 00:01:00,140
+We could copy, and paste this code, and
+change the file names by hand.
+
+21
+00:01:04,210 --> 00:01:05,360
+This can get pretty cumbersome.
+
+22
+00:01:05,360 --> 00:01:07,590
+Especially if you have to do this multiple
+times.
+
+23
+00:01:07,590 --> 00:01:08,800
+Instead, let's use a macro.
+
+24
+00:01:10,640 --> 00:01:12,710
+In that sense, a macro is a function.
+
+25
+00:01:12,710 --> 00:01:14,290
+All you need to do is give it information,
+and
+
+26
+00:01:14,290 --> 00:01:17,040
+it will use that information to run some
+code.
+
+27
+00:01:17,040 --> 00:01:20,120
+In the next module, I'll show you how to
+make a macro, but for
+
+28
+00:01:20,120 --> 00:01:22,290
+now I'll show you what it can do.
+
+29
+00:01:22,290 --> 00:01:24,740
+We made this macro called makeBMI,
+
+30
+00:01:24,740 --> 00:01:27,000
+that will automatically add a new variable
+for BMI.
+
+31
+00:01:28,030 --> 00:01:30,930
+All we need to do is tell sass the
+original data set,
+
+32
+00:01:30,930 --> 00:01:33,870
+which is group one which will be modified
+and
+
+33
+00:01:33,870 --> 00:01:38,150
+a new data set group one underscore BMI,
+or the output will be saved.
+
+34
+00:01:39,830 --> 00:01:44,500
+Now, when I run this sass will use the
+makeBMI macro function I created earlier.
+
+35
+00:01:44,500 --> 00:01:49,110
+It'll read in the group1 data set, add in
+the bmi variable, and then save everything
+
+36
+00:01:49,110 --> 00:01:53,030
+in a new data set called group one
+underscore BMI all in the word library.
+
+37
+00:01:54,810 --> 00:01:57,950
+As you can see, this macro did exactly the
+same thing as that little chunk of code I
+
+38
+00:01:57,950 --> 00:01:58,540
+showed you earlier.
+
+39
+00:01:58,540 --> 00:01:59,920
+Here.
+
+40
+00:01:59,920 --> 00:02:02,060
+But now if I want to do this for multiple
+data sets,
+
+41
+00:02:02,060 --> 00:02:04,560
+I can just repeat the macro function
+instead of repeating all of that code.
+
+42
+00:02:06,970 --> 00:02:12,590
+>> Once we run these, you'll see that Sass
+added a new BMI variable for
+
+43
+00:02:12,590 --> 00:02:13,810
+each of these data sets.
+
+44
+00:02:13,810 --> 00:02:15,470
+Once we ran the macro.
+
+45
+00:02:15,470 --> 00:02:18,400
+And we didn't have to go in and tweak the
+code at all.
+
+46
+00:02:18,400 --> 00:02:19,350
+In the next few modules,
+
+47
+00:02:19,350 --> 00:02:21,890
+we're going to show you the details of how
+to make the macros and
+
+48
+00:02:21,890 --> 00:02:22,940
+how to use them correctly.

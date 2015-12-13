@@ -1,0 +1,1511 @@
+1
+00:00:00,000 --> 00:00:05,440
+[BLANK_AUDIO]
+
+2
+00:00:05,440 --> 00:00:09,020
+In this next module, I'm going to tell you
+about several different methods for
+
+3
+00:00:09,020 --> 00:00:10,990
+testing the proportional hazards
+assumption.
+
+4
+00:00:12,740 --> 00:00:17,080
+So, remember that now that we're dealing
+with things over time,
+
+5
+00:00:17,080 --> 00:00:21,270
+the hazard rate can actually change over
+time.
+
+6
+00:00:21,270 --> 00:00:26,080
+So, we have to test whether or not the
+relative difference between the hazard
+
+7
+00:00:26,080 --> 00:00:31,140
+rates of different groups, whether or not
+that's reasonably constant over time.
+
+8
+00:00:31,140 --> 00:00:34,190
+So, you can imagine here's two hazard
+functions over time.
+
+9
+00:00:34,190 --> 00:00:35,470
+For two groups.
+
+10
+00:00:35,470 --> 00:00:38,230
+When we calculate a single hazard ratio,
+
+11
+00:00:38,230 --> 00:00:41,370
+representing the relative difference
+between these two groups,
+
+12
+00:00:41,370 --> 00:00:44,630
+we're assuming that it's reasonably
+constant over time, that is, that sort of
+
+13
+00:00:44,630 --> 00:00:47,930
+the distance between these two lines
+doesn't change too much over time.
+
+14
+00:00:49,060 --> 00:00:49,880
+That's the assumption.
+
+15
+00:00:50,900 --> 00:00:53,880
+You can imagine a situation where, because
+again,
+
+16
+00:00:53,880 --> 00:00:56,420
+the hazard rates are allowed to kind of do
+anything over time.
+
+17
+00:00:56,420 --> 00:00:59,020
+Maybe the hazard rate for one group looks
+like this.
+
+18
+00:00:59,020 --> 00:01:01,740
+And the hazard rate over time for another
+group looks like this.
+
+19
+00:01:01,740 --> 00:01:06,530
+Now clearly the hazard ratio very early in
+the study is very close together,
+
+20
+00:01:06,530 --> 00:01:07,250
+very small.
+
+21
+00:01:07,250 --> 00:01:10,500
+Whereas it's huge later on in time.
+
+22
+00:01:10,500 --> 00:01:14,476
+And so, clearly it would be kind of unfair
+to just report a single hazard ratio here,
+
+23
+00:01:14,476 --> 00:01:17,500
+because there's something interesting
+actually happening to
+
+24
+00:01:17,500 --> 00:01:18,889
+the hazard ratio over time.
+
+25
+00:01:18,889 --> 00:01:20,426
+So, it's going to to be important to
+
+26
+00:01:20,426 --> 00:01:23,390
+evaluate the proportional hazards
+assumption.
+
+27
+00:01:23,390 --> 00:01:25,430
+It's difficult to directly graph.
+
+28
+00:01:25,430 --> 00:01:29,000
+There are ways to try to directly graph
+the hazard functions over time for
+
+29
+00:01:29,000 --> 00:01:30,460
+differing groups.
+
+30
+00:01:30,460 --> 00:01:33,900
+They're not perfect, though, and they
+involve some assumption so we generally
+
+31
+00:01:33,900 --> 00:01:37,950
+try to get at the proportional hazard
+assumption with some indirect methods.
+
+32
+00:01:39,280 --> 00:01:40,750
+I'm going to give you four different ways
+to
+
+33
+00:01:40,750 --> 00:01:42,410
+evaluate the proportional hazards
+assumption.
+
+34
+00:01:42,410 --> 00:01:43,730
+There's actually even more than this.
+
+35
+00:01:44,870 --> 00:01:46,480
+Some of these we've already talked about,
+so
+
+36
+00:01:46,480 --> 00:01:49,350
+I already told you about the log, log
+plots.
+
+37
+00:01:49,350 --> 00:01:52,620
+So, remember this is, you're going to take
+the Kaplan-Meier survival estimates, and
+
+38
+00:01:52,620 --> 00:01:55,150
+you're going to take log, negative log of
+those estimates and then just.
+
+39
+00:01:55,150 --> 00:01:58,100
+Plot those over time, for different
+groups.
+
+40
+00:01:58,100 --> 00:02:01,530
+If the log negative plots, log negative
+log plots are parallel,
+
+41
+00:02:01,530 --> 00:02:04,890
+that implies that the hazard functions are
+also parallel.
+
+42
+00:02:04,890 --> 00:02:09,820
+And I like graphical methods for looking
+at the proportional hazards function.
+
+43
+00:02:09,820 --> 00:02:11,260
+Sometimes it's a little fuzzy.
+
+44
+00:02:11,260 --> 00:02:14,070
+I mean, clearly if you have something that
+looks like this, that's pretty good.
+
+45
+00:02:14,070 --> 00:02:15,570
+They're nice and parallel.
+
+46
+00:02:15,570 --> 00:02:18,990
+Clearly if you have something that looks
+likes this, they're not parallel.
+
+47
+00:02:18,990 --> 00:02:21,700
+Sometimes there's a little bit of
+interpretation involved because it's not
+
+48
+00:02:21,700 --> 00:02:24,790
+entirely clear you know is that parallel
+enough.
+
+49
+00:02:24,790 --> 00:02:28,290
+But you have to make some kind of
+judgement, but in general again I tend to
+
+50
+00:02:28,290 --> 00:02:32,460
+like graphical methods cause you can
+really see the picture of what's going on.
+
+51
+00:02:32,460 --> 00:02:35,280
+One of the drawbacks of the log-log plots
+is that sometimes you do get these
+
+52
+00:02:35,280 --> 00:02:36,750
+ones that are kind of ambiguous.
+
+53
+00:02:36,750 --> 00:02:40,160
+Another drawback is that if you've gotta
+continuous predictor,
+
+54
+00:02:40,160 --> 00:02:44,730
+you have to divide it up into categories
+in order to be able to make log-log plots.
+
+55
+00:02:44,730 --> 00:02:46,270
+So, a couple of drawbacks to that method.
+
+56
+00:02:47,790 --> 00:02:50,300
+I'll go over some examples of each of
+these in turn.
+
+57
+00:02:50,300 --> 00:02:52,940
+I'm just going to kind of introduce them
+quickly to you.
+
+58
+00:02:52,940 --> 00:02:56,120
+Second method that you can use is, you can
+actually include
+
+59
+00:02:56,120 --> 00:03:00,770
+an interaction between your co-variant and
+time in the model.
+
+60
+00:03:00,770 --> 00:03:04,410
+Because, that's what we mean by a
+violation of proportional hazards.
+
+61
+00:03:04,410 --> 00:03:06,610
+We mean that it's, the hazard ratio is
+actually.
+
+62
+00:03:06,610 --> 00:03:09,510
+Actually changing over time which is the
+same as saying that the data is
+
+63
+00:03:09,510 --> 00:03:10,787
+changing over time.
+
+64
+00:03:10,787 --> 00:03:14,870
+So if you put in an interaction between
+your co-variant in time, and that
+
+65
+00:03:14,870 --> 00:03:18,240
+turns out to be statistically significant
+that would tell you that the data, and
+
+66
+00:03:18,240 --> 00:03:20,270
+therefore the hazard ratio is changing
+over time.
+
+67
+00:03:20,270 --> 00:03:24,190
+So, that's another way to test and I'll go
+over each one of these in detail in just.
+
+68
+00:03:24,190 --> 00:03:26,130
+Giving a brief introduction here.
+
+69
+00:03:26,130 --> 00:03:29,500
+I already showed you that you can plot the
+Schoenfeld residuals against time to
+
+70
+00:03:29,500 --> 00:03:31,420
+check for proportional hazards.
+
+71
+00:03:31,420 --> 00:03:33,210
+That's again another plotting method.
+
+72
+00:03:33,210 --> 00:03:37,480
+And sometimes, people feel a little
+uncomfortable with plotting methods.
+
+73
+00:03:37,480 --> 00:03:40,750
+Again, I like them, but, you know,
+sometimes, you get something.
+
+74
+00:03:40,750 --> 00:03:43,770
+And, it looks like well, maybe there's a
+small pattern over time.
+
+75
+00:03:43,770 --> 00:03:47,790
+It's a little bit unclear, so sometimes if
+you would like a p value method,
+
+76
+00:03:47,790 --> 00:03:50,830
+that interaction with time is going to be
+a p value method.
+
+77
+00:03:50,830 --> 00:03:54,380
+You can also get kind of a p value out the
+Schoenfeld residuals.
+
+78
+00:03:54,380 --> 00:03:58,460
+You can take the Schoenfeld residuals and
+just run a linear regression,
+
+79
+00:03:58,460 --> 00:04:03,830
+where the Schoenfeld residuals are your
+outcome and time is your predictor.
+
+80
+00:04:03,830 --> 00:04:05,950
+And if that turns out to statistically
+significant,
+
+81
+00:04:05,950 --> 00:04:10,010
+that would indicate that, in fact that the
+slope here wasn't zero.
+
+82
+00:04:10,010 --> 00:04:12,280
+That the slope was something other than
+zero, so again,
+
+83
+00:04:12,280 --> 00:04:14,000
+if you want to p-value test, you can do
+that.
+
+84
+00:04:14,000 --> 00:04:15,790
+Let me go over each one of these now in
+turn.
+
+85
+00:04:16,850 --> 00:04:19,610
+Just to have some data here to work with,
+
+86
+00:04:19,610 --> 00:04:23,470
+recall that we had an example early in the
+AIDS epidemic.
+
+87
+00:04:23,470 --> 00:04:26,570
+100 people who were infected with HIV.
+
+88
+00:04:26,570 --> 00:04:32,560
+Some are IV drug users and some and we had
+different ages and both IV drug use and
+
+89
+00:04:32,560 --> 00:04:37,710
+age were very highly related to the rate
+of death here.
+
+90
+00:04:37,710 --> 00:04:39,910
+The hazard ratio for IV drug use was 2.5.
+
+91
+00:04:39,910 --> 00:04:43,460
+For every one year increase in age, it was
+1.096.
+
+92
+00:04:43,460 --> 00:04:46,910
+By fitting that Cox regression model, we
+estimated a single hazard ration.
+
+93
+00:04:46,910 --> 00:04:49,800
+So, we are saying that there is one hazard
+ratio, and
+
+94
+00:04:49,800 --> 00:04:51,730
+that it's relatively constant over time.
+
+95
+00:04:51,730 --> 00:04:55,190
+If we now wanted to check the proportional
+hazards assumption for
+
+96
+00:04:55,190 --> 00:04:58,020
+both of those variables, I could do some
+log-lot plots.
+
+97
+00:04:58,020 --> 00:05:00,450
+So, I next did some log-lot plots.
+
+98
+00:05:00,450 --> 00:05:04,560
+So over on the left hand side here is the
+log-lot plot for age.
+
+99
+00:05:04,560 --> 00:05:07,950
+Now because age is a continuous variable,
+if I want to do a log-lot plot.
+
+100
+00:05:07,950 --> 00:05:10,380
+Plot I"m actually going to have to chop
+age up into categories.
+
+101
+00:05:10,380 --> 00:05:15,870
+So, I divided this into less than 30, 30
+to 40 and greater than or equal to 40.
+
+102
+00:05:15,870 --> 00:05:18,930
+You can see, that these lines are nice and
+parallel.
+
+103
+00:05:18,930 --> 00:05:21,000
+Again, if I chopped up age slightly
+differently,
+
+104
+00:05:21,000 --> 00:05:22,340
+I might get slightly different results.
+
+105
+00:05:22,340 --> 00:05:27,250
+It's probably a good idea to try different
+groupings, but in terms of a log-lot plot,
+
+106
+00:05:27,250 --> 00:05:31,070
+this is about as parallel as, as real data
+gets so that looks.
+
+107
+00:05:31,070 --> 00:05:32,160
+Nice and reasonable.
+
+108
+00:05:32,160 --> 00:05:34,620
+That proportional hazards assumption
+appears to be met there.
+
+109
+00:05:36,090 --> 00:05:42,180
+For IV drug use, this is the drug users,
+and then this one is the non drug users.
+
+110
+00:05:43,480 --> 00:05:46,570
+What you'll notice here is that the drug
+users' line of
+
+111
+00:05:46,570 --> 00:05:48,790
+their plot ends really quickly into the
+study.
+
+112
+00:05:48,790 --> 00:05:53,370
+That's because all of them died all very
+quickly when, when they were HIV positive.
+
+113
+00:05:53,370 --> 00:05:56,730
+And we're also an IV drug user, they tend
+to die very quickly so
+
+114
+00:05:56,730 --> 00:05:58,930
+that line doesn't extend anymore.
+
+115
+00:05:58,930 --> 00:06:00,110
+But if you look at the two lines,
+
+116
+00:06:00,110 --> 00:06:04,710
+they look reasonable parallel it's perhaps
+they are separating a little bit over
+
+117
+00:06:04,710 --> 00:06:08,200
+time they're getting a little bit farther
+apart so they're not perfectly parallel.
+
+118
+00:06:08,200 --> 00:06:09,420
+But again as real data go,
+
+119
+00:06:09,420 --> 00:06:12,820
+that probably is very reasonable in terms
+of the proportional hazards assumption.
+
+120
+00:06:12,820 --> 00:06:16,650
+So both of those, I would say, meet the
+proportional hazards assumption.
+
+121
+00:06:16,650 --> 00:06:18,450
+Now, just to give you one that actually
+doesn't meet
+
+122
+00:06:18,450 --> 00:06:20,740
+the proportional hazards assumption, to
+show you what it would look like,
+
+123
+00:06:20,740 --> 00:06:24,640
+I'm going to introduce now another example
+from Hosmer and Lemeshow.
+
+124
+00:06:24,640 --> 00:06:28,070
+These were some data that were collected
+from a randomized trial, and
+
+125
+00:06:28,070 --> 00:06:30,060
+these were drug addicted people,
+
+126
+00:06:30,060 --> 00:06:34,260
+who were randomized to two different
+courses of treatment: a long.
+
+127
+00:06:34,260 --> 00:06:38,690
+A treatment plan and a short treatment
+plan, and there was, 628 was the n here.
+
+128
+00:06:38,690 --> 00:06:42,760
+The outcome here is time-to-relapse, so
+they're getting tre, treated for
+
+129
+00:06:42,760 --> 00:06:44,010
+their drug addiction.
+
+130
+00:06:44,010 --> 00:06:49,750
+As soon as they relapse and start using
+again, that's the, time-to-relapse here.
+
+131
+00:06:49,750 --> 00:06:52,920
+There were different predictors that they
+had, the one we're going to focus on, for
+
+132
+00:06:52,920 --> 00:06:56,690
+the purposes of this module, is just which
+treatment group they were randomized to?
+
+133
+00:06:56,690 --> 00:06:57,948
+There were other predictors as well.
+
+134
+00:06:57,948 --> 00:07:01,985
+Here's the Kaplan-Meier curve for the two
+randomization groups.
+
+135
+00:07:01,985 --> 00:07:04,980
+So, this top line here is the.
+
+136
+00:07:04,980 --> 00:07:08,350
+Those that were randomized to the longer
+course of treatment.
+
+137
+00:07:08,350 --> 00:07:10,174
+The bottom line here,
+
+138
+00:07:10,174 --> 00:07:15,656
+are those that were randomized to the
+shorter course of treatment.
+
+139
+00:07:15,656 --> 00:07:18,490
+And the log ring test here is significant.
+
+140
+00:07:18,490 --> 00:07:21,730
+It looks like there was an advantage here
+to be, to being randomized to
+
+141
+00:07:21,730 --> 00:07:24,760
+the long course because they're not
+relapsing quite as quickly.
+
+142
+00:07:24,760 --> 00:07:27,810
+I mean, it does look like a lot of people
+did relapse.
+
+143
+00:07:27,810 --> 00:07:31,280
+But the longer course seem to take a
+little bit longer at least to relapse.
+
+144
+00:07:31,280 --> 00:07:33,230
+It's hard to just look at the Kaplan–Meier
+plots and
+
+145
+00:07:33,230 --> 00:07:36,760
+make any inferences, about the
+proportional hazards assumption though.
+
+146
+00:07:36,760 --> 00:07:39,431
+You need to actually translate this into
+the log-log plot.
+
+147
+00:07:39,431 --> 00:07:43,443
+So, then [INAUDIBLE] data and tell, and
+plotted the log-lot plots for
+
+148
+00:07:43,443 --> 00:07:44,450
+the two groups.
+
+149
+00:07:45,490 --> 00:07:47,990
+So here's the log-lot plot for the two
+groups here.
+
+150
+00:07:47,990 --> 00:07:51,330
+And what you'll notice is that there does
+indeed a, a.
+
+151
+00:07:51,330 --> 00:07:53,712
+Seem to be some violation of proportional
+hazards, though,
+
+152
+00:07:53,712 --> 00:08:00,160
+the plot clearly crosses here, and then
+has some separation later on,
+
+153
+00:08:00,160 --> 00:08:03,810
+with the control group here being higher
+than the treatment group.
+
+154
+00:08:03,810 --> 00:08:07,210
+So, this plot, again if the lines crossed
+that's
+
+155
+00:08:07,210 --> 00:08:10,750
+usually an indication of a violation of
+proportional hazards, this one in
+
+156
+00:08:10,750 --> 00:08:15,330
+fact does violate proportional hazards
+using many methods to look at these data.
+
+157
+00:08:15,330 --> 00:08:18,240
+I just do, do want to point out that every
+now and then you'll see.
+
+158
+00:08:18,240 --> 00:08:20,970
+A log-lot plot that looks something like
+this,
+
+159
+00:08:22,270 --> 00:08:25,440
+where they kind of like seem to be
+crossing all over the place.
+
+160
+00:08:25,440 --> 00:08:26,540
+But be a little bit careful,
+
+161
+00:08:26,540 --> 00:08:30,460
+that doesn't necessarily mean you have a
+violation of the proportional hazards.
+
+162
+00:08:30,460 --> 00:08:32,190
+If they're just kind of crossing like
+this,
+
+163
+00:08:32,190 --> 00:08:35,020
+what that might mean is that there's
+actually no difference between the groups.
+
+164
+00:08:35,020 --> 00:08:37,720
+That capillary minor curves should also be
+really close.
+
+165
+00:08:37,720 --> 00:08:39,920
+And then of course, when there's no
+difference between the groups, the,
+
+166
+00:08:39,920 --> 00:08:41,930
+the plots might go back and forth a little
+bit.
+
+167
+00:08:41,930 --> 00:08:44,020
+But this really indicates no difference
+between the groups,
+
+168
+00:08:44,020 --> 00:08:46,300
+rather than a violation of proportional
+hazard.
+
+169
+00:08:46,300 --> 00:08:49,930
+So, just be aware that you might see
+plots, log-log plots that look like that.
+
+170
+00:08:51,480 --> 00:08:55,010
+So, the second way to test a proportional
+hazards assumption is actually just to
+
+171
+00:08:55,010 --> 00:08:58,300
+enter in to your Cox Regression model an
+interaction.
+
+172
+00:08:58,300 --> 00:09:02,150
+Between time and that the co-variate that
+you're trying to test this assumption for.
+
+173
+00:09:03,580 --> 00:09:06,160
+So, it's going to look something like
+this.
+
+174
+00:09:06,160 --> 00:09:09,590
+So, you're going to take your covariate of
+interest, I've labelled it x here,
+
+175
+00:09:09,590 --> 00:09:13,379
+whether this be age or treatment group or
+IV drug use.
+
+176
+00:09:14,570 --> 00:09:17,800
+You interact that co-variant with time,
+and
+
+177
+00:09:17,800 --> 00:09:21,930
+then you're going to have a beta in the
+model that represents the interaction.
+
+178
+00:09:21,930 --> 00:09:25,070
+If that interaction beta is statistically
+significant,
+
+179
+00:09:25,070 --> 00:09:28,210
+that would indicate that indeed the beta.
+
+180
+00:09:28,210 --> 00:09:30,640
+For your predictor is changing over time,
+and
+
+181
+00:09:30,640 --> 00:09:33,180
+therefore that you have violated
+proportional hazards, and
+
+182
+00:09:33,180 --> 00:09:37,090
+you can see that here, I can just factor
+out the x from both of these.
+
+183
+00:09:37,090 --> 00:09:40,430
+So, what this is saying is that that this
+is significantly different from zero,
+
+184
+00:09:40,430 --> 00:09:44,140
+this interaction beta, then the beta for
+
+185
+00:09:44,140 --> 00:09:47,460
+x, whatever x is here, is not static over
+time.
+
+186
+00:09:47,460 --> 00:09:50,010
+It's increasing or decreasing with time.
+
+187
+00:09:51,200 --> 00:09:54,300
+This is again the time interaction
+coefficient.
+
+188
+00:09:54,300 --> 00:09:57,320
+And again, you're looking for statistical
+significance here.
+
+189
+00:09:57,320 --> 00:10:01,850
+Keep in mind that as with any p-value
+tests, a really huge sample is going to be
+
+190
+00:10:01,850 --> 00:10:04,230
+likely to make everything is going to come
+out significant, or
+
+191
+00:10:04,230 --> 00:10:07,010
+a really small sample might miss
+statistical significance.
+
+192
+00:10:07,010 --> 00:10:08,780
+So, keep in mind that with any p value
+test,
+
+193
+00:10:08,780 --> 00:10:12,950
+you always have to think about how to
+sample size factor into this.
+
+194
+00:10:12,950 --> 00:10:16,050
+That's why I often prefer these graphical
+methods.
+
+195
+00:10:16,050 --> 00:10:21,160
+Now notice that if the interaction term,
+if that comes out to be negative,
+
+196
+00:10:21,160 --> 00:10:25,220
+that indicates that beta is decreasing
+linearly with time.
+
+197
+00:10:25,220 --> 00:10:28,400
+Whereas if this term turns out to be
+positive, that would indicate that your
+
+198
+00:10:28,400 --> 00:10:32,910
+beta for the co-variate interest is
+increasing linearly with time.
+
+199
+00:10:32,910 --> 00:10:34,998
+By just putting this time.
+
+200
+00:10:34,998 --> 00:10:38,820
+By variable co-variant interaction term in
+the model.
+
+201
+00:10:38,820 --> 00:10:41,430
+It not only evaluates proportional
+hazards, but
+
+202
+00:10:41,430 --> 00:10:46,040
+it could be one way to deal with
+proportional hazard violations.
+
+203
+00:10:46,040 --> 00:10:49,290
+So, it it turns out that you're violating
+the proportional hazard assumption,
+
+204
+00:10:49,290 --> 00:10:50,450
+you could leave.
+
+205
+00:10:50,450 --> 00:10:52,000
+That interaction term in the model.
+
+206
+00:10:52,000 --> 00:10:57,990
+It is assuming a particular form, for the
+change in the hazard ratio over time.
+
+207
+00:10:57,990 --> 00:11:02,460
+It's assuming that your beta is always
+going up or always going down by the same
+
+208
+00:11:02,460 --> 00:11:06,950
+amount over time, so that may be true for
+some cases where there's a violation of
+
+209
+00:11:06,950 --> 00:11:09,780
+proportional hazards, and it may not be
+true for others.
+
+210
+00:11:09,780 --> 00:11:13,250
+But, it is something to think about that
+it could be one way to correct, for
+
+211
+00:11:13,250 --> 00:11:15,120
+violations of proportional hazards.
+
+212
+00:11:15,120 --> 00:11:16,070
+As well as to test for it.
+
+213
+00:11:16,070 --> 00:11:19,880
+So, let me just give some examples of what
+I mean here.
+
+214
+00:11:20,900 --> 00:11:22,220
+So, I ran two models.
+
+215
+00:11:22,220 --> 00:11:25,610
+The first model is from the HIV data, and
+
+216
+00:11:25,610 --> 00:11:28,760
+I put age in the model, which we already
+saw with the log-log plot,
+
+217
+00:11:28,760 --> 00:11:31,910
+looked like it, you know, didn't violate
+proportional hazards at all.
+
+218
+00:11:31,910 --> 00:11:34,690
+And then I put in interaction between age
+and time.
+
+219
+00:11:34,690 --> 00:11:38,460
+The p-value for this interaction term is
+clearly non-significant, so
+
+220
+00:11:38,460 --> 00:11:41,340
+it doesn't look like there's any violation
+of proportional hazards here.
+
+221
+00:11:42,370 --> 00:11:46,260
+The second model here, I fit on the drug
+treatment,
+
+222
+00:11:46,260 --> 00:11:49,890
+that randomized trial data set was 628
+people.
+
+223
+00:11:49,890 --> 00:11:51,990
+I put into the model the.
+
+224
+00:11:51,990 --> 00:11:52,680
+Treatment randomization,
+
+225
+00:11:52,680 --> 00:11:55,750
+whether you were assigned to the long
+course of treatment or the short course.
+
+226
+00:11:55,750 --> 00:11:58,850
+And then an interaction between your
+treatment group and time.
+
+227
+00:11:58,850 --> 00:12:01,140
+And you'll notice that the interaction
+between treatment, and
+
+228
+00:12:01,140 --> 00:12:04,470
+time was clearly statistically
+significant.
+
+229
+00:12:04,470 --> 00:12:09,120
+So, that's indicating that in fact we do
+violate proportional hazards here.
+
+230
+00:12:09,120 --> 00:12:12,198
+So, we already had evidence from the
+log-log plot of evaluation of
+
+231
+00:12:12,198 --> 00:12:13,680
+proportional hazards.
+
+232
+00:12:13,680 --> 00:12:17,850
+This is contributing to us believing that
+indeed we are this variable,
+
+233
+00:12:17,850 --> 00:12:20,560
+the treatment variable, does violate
+proportional hazards.
+
+234
+00:12:21,890 --> 00:12:26,760
+I've already mentioned that the Schoenfeld
+residuals, if proportional hazards is met,
+
+235
+00:12:26,760 --> 00:12:30,720
+will have no pattern over time when you
+plot them over time.
+
+236
+00:12:30,720 --> 00:12:34,490
+So, if you see a distinct pattern when you
+plot the Schoenfeld residuals against
+
+237
+00:12:34,490 --> 00:12:36,660
+time for a particular co-variant,
+
+238
+00:12:36,660 --> 00:12:40,770
+that would indicate a violation of
+proportional hazards.
+
+239
+00:12:40,770 --> 00:12:42,120
+And I'll just give a couple examples,
+
+240
+00:12:42,120 --> 00:12:45,980
+I've actually shown this a little bit
+already but here's an example,
+
+241
+00:12:45,980 --> 00:12:51,610
+I plotted for the HIV data the Schoenfeld
+residuals for age against time.
+
+242
+00:12:51,610 --> 00:12:52,630
+And remember.
+
+243
+00:12:52,630 --> 00:12:56,600
+That we only get a Schoenfeld residual for
+every person who had an event.
+
+244
+00:12:56,600 --> 00:12:58,500
+So, there's a hundred people in this data
+set, but
+
+245
+00:12:58,500 --> 00:13:02,520
+we actually have less than a hundred data
+points on the graph.
+
+246
+00:13:02,520 --> 00:13:03,980
+We plot those against time.
+
+247
+00:13:03,980 --> 00:13:06,920
+It looks you know, right around, it looks
+like you know,
+
+248
+00:13:06,920 --> 00:13:11,970
+when I fit a line to these data, it's nice
+the slope is very close to zero.
+
+249
+00:13:11,970 --> 00:13:16,120
+So that would indicate that there's no
+pattern with time,
+
+250
+00:13:16,120 --> 00:13:18,740
+no violation of proportional hazards here.
+
+251
+00:13:18,740 --> 00:13:22,190
+In contrast, let me take the data from
+that randomized trial of
+
+252
+00:13:22,190 --> 00:13:23,910
+drug addiction treatment.
+
+253
+00:13:23,910 --> 00:13:29,540
+I am plotting the Schoenfeld residuals
+here, for treatment group against time.
+
+254
+00:13:29,540 --> 00:13:33,940
+It's a little hard to see because this is
+a binary variable, and
+
+255
+00:13:33,940 --> 00:13:36,990
+therefore we kind of get just two stripes
+of residuals, but when I fit a nice
+
+256
+00:13:36,990 --> 00:13:41,770
+smooth line to these plots, into these
+dots, what you see is that I do, indeed.
+
+257
+00:13:41,770 --> 00:13:45,040
+Have some pattern over time where the
+Schoenfeld residuals appear to be
+
+258
+00:13:45,040 --> 00:13:46,410
+increasing with time.
+
+259
+00:13:46,410 --> 00:13:50,670
+So that, again, would suggest that we have
+a violation of proportional hazards for
+
+260
+00:13:50,670 --> 00:13:51,520
+this variable.
+
+261
+00:13:52,800 --> 00:13:56,150
+Now, very related to the Schoenfeld
+residual plots is we
+
+262
+00:13:56,150 --> 00:14:00,020
+can regress the Schoenfeld residuals
+against time in a linear regression.
+
+263
+00:14:00,020 --> 00:14:03,600
+And again, I, I like the plotting methods,
+but if you're kind of.
+
+264
+00:14:03,600 --> 00:14:06,530
+If you get a plot and you're kind of
+unsure from the plot.
+
+265
+00:14:06,530 --> 00:14:09,330
+You can additionally run a linear
+regression, to see whether or
+
+266
+00:14:09,330 --> 00:14:11,410
+not, at least in a linear regression.
+
+267
+00:14:11,410 --> 00:14:15,390
+The slope of this line, is significantly
+different than zero.
+
+268
+00:14:15,390 --> 00:14:18,240
+So, here is the one for age, from the HIV
+data, against time.
+
+269
+00:14:18,240 --> 00:14:21,210
+I mean it's clear from the graphic here
+that there's no pattern across time.
+
+270
+00:14:21,210 --> 00:14:24,070
+So, we probably don't need to additionally
+run the regression here.
+
+271
+00:14:24,070 --> 00:14:25,270
+But you can do it.
+
+272
+00:14:25,270 --> 00:14:27,670
+The outcome will be the show and tell of
+residuals.
+
+273
+00:14:30,440 --> 00:14:31,730
+And my predictor will be time.
+
+274
+00:14:31,730 --> 00:14:34,040
+And this will be a regular older liner
+regression.
+
+275
+00:14:34,040 --> 00:14:35,730
+So I ran my linear regression.
+
+276
+00:14:35,730 --> 00:14:38,860
+I look at the data for time.
+
+277
+00:14:38,860 --> 00:14:42,250
+And clearly, the p value for time is
+totally non significant.
+
+278
+00:14:42,250 --> 00:14:44,010
+This looks like a really, really flat
+life.
+
+279
+00:14:44,010 --> 00:14:47,980
+So, no violation of proportional hazards
+apparent here.
+
+280
+00:14:47,980 --> 00:14:50,680
+In contrast, I can take the Shoenfeld
+residuals for
+
+281
+00:14:50,680 --> 00:14:54,220
+that treatment group in the drug addiction
+treatments.
+
+282
+00:14:54,220 --> 00:14:56,880
+Study, and I can regress that against
+time, so
+
+283
+00:14:56,880 --> 00:15:03,060
+I'd have my residuals again, and time as
+the predictor in a linear regression,
+
+284
+00:15:03,060 --> 00:15:07,540
+and if I go and look at the beta and the
+p-value here for this regression,
+
+285
+00:15:07,540 --> 00:15:10,830
+the p-value for time is clearly
+statistically significant.
+
+286
+00:15:10,830 --> 00:15:15,460
+So, that would again point to the fact
+that proportional hazards, is violated for
+
+287
+00:15:15,460 --> 00:15:16,600
+this treatment variable.
+
+288
+00:15:18,460 --> 00:15:21,530
+So, again there's many different ways to
+test for proportional hazards,
+
+289
+00:15:21,530 --> 00:15:25,150
+sometimes it's just really clear from the
+log log plot and you can stop there.
+
+290
+00:15:25,150 --> 00:15:27,400
+Sometimes you look at the log-log plot and
+you're not sure.
+
+291
+00:15:27,400 --> 00:15:30,060
+So you might want to try some of these
+other methods.
+
+292
+00:15:30,060 --> 00:15:33,320
+But just to summarize we could examine the
+law log-log plots.
+
+293
+00:15:33,320 --> 00:15:36,140
+Parallel lines mean we have proportional
+hazards.
+
+294
+00:15:36,140 --> 00:15:37,060
+Crossing lines, or
+
+295
+00:15:37,060 --> 00:15:40,180
+nearly crossing lines, tell us that we
+violate proportional hazards.
+
+296
+00:15:40,180 --> 00:15:43,130
+The drawback here, is was that we could
+only use categorical predictors or
+
+297
+00:15:43,130 --> 00:15:45,940
+we'd have to chop our continuous
+predictors into some sort of
+
+298
+00:15:45,940 --> 00:15:47,580
+category just to be able to do those
+plots.
+
+299
+00:15:48,890 --> 00:15:51,730
+We can also include an interaction with
+time in the model,
+
+300
+00:15:51,730 --> 00:15:55,270
+if that interaction time is non
+significant, then there's no apparent
+
+301
+00:15:55,270 --> 00:15:59,240
+violation of proportional hazards, if we
+get a significant interaction coefficient
+
+302
+00:15:59,240 --> 00:16:02,230
+that would indicate a violation of
+proportional hazards.
+
+303
+00:16:02,230 --> 00:16:06,630
+And in fact, there may be, it may turn out
+that that's a way to correct for
+
+304
+00:16:06,630 --> 00:16:07,930
+the violation of proportional hazard,
+
+305
+00:16:07,930 --> 00:16:09,930
+is just to leave that interaction term in
+the model.
+
+306
+00:16:09,930 --> 00:16:10,590
+That's going to work for
+
+307
+00:16:10,590 --> 00:16:13,800
+some situations but not for all, because
+that then is assuming that
+
+308
+00:16:13,800 --> 00:16:17,150
+there's a particular way in which the
+hazard ratio is changing over time.
+
+309
+00:16:18,640 --> 00:16:21,298
+We can plot the Schoenfeld residuals
+against time and look for
+
+310
+00:16:21,298 --> 00:16:22,810
+non-random patterns, non-random.
+
+311
+00:16:22,810 --> 00:16:25,940
+Patterns would indicate violations of
+proportional hazards,
+
+312
+00:16:25,940 --> 00:16:29,670
+and then finally we could actually take
+those Shoenfeld residuals and
+
+313
+00:16:29,670 --> 00:16:32,150
+regress them against time in a linear
+regression.
+
+314
+00:16:32,150 --> 00:16:36,220
+If our time variable turns out to be
+statistically significant that would
+
+315
+00:16:36,220 --> 00:16:39,940
+indicate a violation of proportional
+hazards whereas non-significance would
+
+316
+00:16:39,940 --> 00:16:43,170
+indicate no evidence of a, a violation of
+that assumption.

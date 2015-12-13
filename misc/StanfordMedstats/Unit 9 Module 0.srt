@@ -1,0 +1,518 @@
+1
+00:00:08,029 --> 00:00:11,190
+Welcome to week nine of statistics in
+medicine.
+
+2
+00:00:11,190 --> 00:00:12,700
+This is the final week of the course.
+
+3
+00:00:12,700 --> 00:00:15,130
+So, congratulations on making it this far.
+
+4
+00:00:15,130 --> 00:00:18,358
+This week we're going to continue our
+discussion of regression.
+
+5
+00:00:18,358 --> 00:00:21,000
+We're going to move beyond linear
+regression and
+
+6
+00:00:21,000 --> 00:00:23,465
+talk about some more sophisticated
+regression models.
+
+7
+00:00:23,465 --> 00:00:28,950
+Specifically, I'm going to be talking
+about logistic regression and
+
+8
+00:00:28,950 --> 00:00:30,400
+cox regression.
+
+9
+00:00:30,400 --> 00:00:33,400
+These are some more advanced statistical
+models that are just a little bit
+
+10
+00:00:33,400 --> 00:00:36,380
+more complicated than linear regression.
+
+11
+00:00:36,380 --> 00:00:39,890
+I'm also going to keep talking about some
+basic concepts of
+
+12
+00:00:39,890 --> 00:00:46,095
+regression modelling that apply to all
+regression models.
+
+13
+00:00:46,095 --> 00:00:52,370
+We've covered a lot of this big
+statistical chart now.
+
+14
+00:00:52,370 --> 00:00:56,090
+Last week we talked about linear
+correlation and linear regression.
+
+15
+00:00:56,090 --> 00:01:00,240
+This week we're going to talk about
+logistic regression.
+
+16
+00:01:00,240 --> 00:01:02,890
+This is the regression technique that's
+used when you
+
+17
+00:01:02,890 --> 00:01:05,450
+have a binary outcome variable.
+
+18
+00:01:05,450 --> 00:01:09,520
+The basic logistic regression model that
+we're going to talk about this week is for
+
+19
+00:01:09,520 --> 00:01:12,800
+independent, when you have independent
+observations.
+
+20
+00:01:12,800 --> 00:01:17,590
+I'm going to briefly mention this week
+that there is an alternative test when you
+
+21
+00:01:17,590 --> 00:01:20,000
+have correlated observation.
+
+22
+00:01:20,000 --> 00:01:24,110
+And you want to do regression modeling
+with a binary outcome variable.
+
+23
+00:01:24,110 --> 00:01:26,360
+That's something called conditional
+logistic regression.
+
+24
+00:01:26,360 --> 00:01:30,460
+I'm just going to point it out, I won't go
+into any details about the model.
+
+25
+00:01:30,460 --> 00:01:34,100
+I also want to point out now that there's
+something called GEE models,
+
+26
+00:01:34,100 --> 00:01:37,979
+which can also be used when you have
+correlated observations and
+
+27
+00:01:37,979 --> 00:01:40,740
+a binary outcome variable.
+
+28
+00:01:40,740 --> 00:01:41,810
+I'll also point out to you.
+
+29
+00:01:41,810 --> 00:01:45,970
+We talked last week about linear
+regression with independent observations.
+
+30
+00:01:45,970 --> 00:01:50,690
+What about the situation when you have a
+continuous outcome variable.
+
+31
+00:01:50,690 --> 00:01:52,480
+You want to do regression analysis but
+
+32
+00:01:52,480 --> 00:01:54,670
+your observations are correlated in some
+way.
+
+33
+00:01:54,670 --> 00:01:57,050
+Then you're going to need some more
+sophisticated models,
+
+34
+00:01:57,050 --> 00:02:00,270
+called either mixed models or GEE models.
+
+35
+00:02:00,270 --> 00:02:02,310
+Both of those will work in that situation.
+
+36
+00:02:02,310 --> 00:02:05,810
+Again, I'm not going to go into any
+details, of those models.
+
+37
+00:02:05,810 --> 00:02:07,420
+They're beyond the scope of this course.
+
+38
+00:02:07,420 --> 00:02:09,090
+But I'll just point them out to you, so
+
+39
+00:02:09,090 --> 00:02:12,820
+that you know that there is a test
+available in those situations.
+
+40
+00:02:12,820 --> 00:02:15,990
+And you can take a more advanced
+statistical course to learn about
+
+41
+00:02:15,990 --> 00:02:17,210
+the details of those.
+
+42
+00:02:17,210 --> 00:02:22,440
+This week I'm also going to talk in great
+detail about Cox regression.
+
+43
+00:02:22,440 --> 00:02:25,570
+That's the regression analysis technique
+that you're going to use when you
+
+44
+00:02:25,570 --> 00:02:27,250
+have time-to-event outcomes.
+
+45
+00:02:27,250 --> 00:02:29,490
+So when you're doing survival analysis.
+
+46
+00:02:29,490 --> 00:02:36,400
+The teaser for this week comes from a 2009
+study that made headlines.
+
+47
+00:02:38,000 --> 00:02:41,860
+The study found that eating a lot of red
+meat was linked to
+
+48
+00:02:41,860 --> 00:02:43,970
+an increased risk of death.
+
+49
+00:02:43,970 --> 00:02:46,420
+An increased mortality risk.
+
+50
+00:02:46,420 --> 00:02:48,020
+Again, the study made a lot of headlines.
+
+51
+00:02:48,020 --> 00:02:51,310
+I'm quoting here from nbcnews.com, they
+write.
+
+52
+00:02:51,310 --> 00:02:53,120
+The largest study of it's kind,
+
+53
+00:02:53,120 --> 00:02:56,357
+finds that older Americans who eat large
+amounts of red meat and
+
+54
+00:02:56,357 --> 00:03:00,260
+processed meats face a greater risk of
+death from heart disease and cancer.
+
+55
+00:03:00,260 --> 00:03:03,400
+So they found that there was the people
+who were eating a lot of
+
+56
+00:03:03,400 --> 00:03:07,845
+red meat were at an increased risk of
+dying from heart disease and cancer.
+
+57
+00:03:07,845 --> 00:03:12,730
+But, this was an observational study, and
+it turns out that
+
+58
+00:03:12,730 --> 00:03:18,790
+people who eat a lot of red meat tend to
+do a lot of other unhealthy things.
+
+59
+00:03:18,790 --> 00:03:22,690
+So, red meat eating clusters pretty
+heavily with un,
+
+60
+00:03:22,690 --> 00:03:24,575
+other unhealthy behaviors.
+
+61
+00:03:24,575 --> 00:03:27,766
+And this is an example that I actually
+showed you
+
+62
+00:03:27,766 --> 00:03:32,360
+before in week two of the course when I
+was talking about confounding.
+
+63
+00:03:32,360 --> 00:03:35,410
+So this is a very good example of
+confounding.
+
+64
+00:03:35,410 --> 00:03:39,458
+I showed you this table on the second week
+of this course.
+
+65
+00:03:39,458 --> 00:03:42,626
+This is the descriptive table, the table
+one,
+
+66
+00:03:42,626 --> 00:03:45,022
+just on the men, from this particular
+study.
+
+67
+00:03:45,022 --> 00:03:52,940
+The researchers divided the men up into
+five quintiles of red meat intake.
+
+68
+00:03:52,940 --> 00:03:56,485
+So Q1 are the men who are eating the
+lowest amount of red meat.
+
+69
+00:03:56,485 --> 00:04:01,540
+Q5 is the men who, were eating the highest
+amount of red meat.
+
+70
+00:04:01,540 --> 00:04:03,600
+And this table just shows you,
+descriptively,
+
+71
+00:04:03,600 --> 00:04:08,291
+what are the characteristics of the men in
+those five quintiles.
+
+72
+00:04:08,291 --> 00:04:12,210
+If study this table carefully and we look
+at it in some detail again in week two of
+
+73
+00:04:12,210 --> 00:04:17,300
+this course, what you'll see is that all
+the sort of bad risk factors for
+
+74
+00:04:17,300 --> 00:04:22,870
+health go up as you go up the red meat
+intake quintiles.
+
+75
+00:04:22,870 --> 00:04:24,463
+For example, if you look at BMI.
+
+76
+00:04:24,463 --> 00:04:28,237
+In Q1, the BMI, the average BMI is 25.9.
+
+77
+00:04:28,237 --> 00:04:36,229
+It Q2 it's 26.7, in Q3, it's 27.1, in Q4,
+it's 27.6, in Q5, it's 28.3.
+
+78
+00:04:36,229 --> 00:04:40,669
+So as you go up across those quintiles,
+BMI goes up.
+
+79
+00:04:40,669 --> 00:04:44,870
+Smoking also goes up as you go across the
+quintiles.
+
+80
+00:04:44,870 --> 00:04:47,511
+Education and physical activity go down.
+
+81
+00:04:47,511 --> 00:04:50,170
+Fruit and vegetable intake go down.
+
+82
+00:04:50,170 --> 00:04:52,300
+Calories go up.
+
+83
+00:04:52,300 --> 00:04:54,660
+Again, all the kinds of things that are
+not great for
+
+84
+00:04:54,660 --> 00:04:59,640
+our health tend to be more common in
+people who eat a lot of red meat.
+
+85
+00:04:59,640 --> 00:05:03,320
+People who eat a lot of red meat just have
+a lot of risky health behaviors.
+
+86
+00:05:03,320 --> 00:05:08,450
+The problem is, this is an observational
+study.
+
+87
+00:05:08,450 --> 00:05:09,720
+These risk factors cluster.
+
+88
+00:05:09,720 --> 00:05:13,230
+So how do we isolate the effect of red
+meat
+
+89
+00:05:13,230 --> 00:05:18,020
+eating from all of these other variables
+that cluster with red meat eating?
+
+90
+00:05:18,020 --> 00:05:22,210
+That's what we're going to try to do with
+regression analysis.
+
+91
+00:05:22,210 --> 00:05:25,520
+That's what regression analysis is set up
+to try to do, is trying to isolate
+
+92
+00:05:25,520 --> 00:05:29,410
+the effect of one variable independent of
+all these other things that go.
+
+93
+00:05:29,410 --> 00:05:31,269
+All these other confounders that go with
+it.
+
+94
+00:05:32,300 --> 00:05:34,230
+And indeed, that's what the authors did in
+this study.
+
+95
+00:05:34,230 --> 00:05:39,190
+As I said they did find that red meat
+eating was
+
+96
+00:05:39,190 --> 00:05:42,765
+linked to an increase risk of death from
+heart disease and cancer.
+
+97
+00:05:42,765 --> 00:05:48,820
+But, it might surprise you to learn that
+they also found that
+
+98
+00:05:48,820 --> 00:05:54,458
+red meat eating was linked to an increased
+risk of death from injuries and accidents.
+
+99
+00:05:54,458 --> 00:05:58,381
+That's things like car accidents and
+firearm deaths.
+
+100
+00:05:58,381 --> 00:06:02,750
+You might wonder, how is it that eating
+red meat would increase your
+
+101
+00:06:02,750 --> 00:06:04,790
+risk of dying in a car accident?
+
+102
+00:06:04,790 --> 00:06:09,560
+It doesn't seem like there'd be a causal
+link there, yet that's, they can show,
+
+103
+00:06:09,560 --> 00:06:14,810
+in this study that, the, that red meat
+eating is linked to this type of death,
+
+104
+00:06:14,810 --> 00:06:16,650
+as well as heart disease and cancer.
+
+105
+00:06:16,650 --> 00:06:22,930
+This is going to get into the issue of how
+good can we really adjust from,
+
+106
+00:06:22,930 --> 00:06:23,540
+for confounding.
+
+107
+00:06:23,540 --> 00:06:26,310
+How good can we really isolate one.
+
+108
+00:06:26,310 --> 00:06:28,730
+Risk factor from a cluster of risk
+factors.
+
+109
+00:06:28,730 --> 00:06:33,660
+We'll get to this particular example
+towards the end of this week and
+
+110
+00:06:33,660 --> 00:06:39,566
+I'll give you sort of of a punch line on
+that one.

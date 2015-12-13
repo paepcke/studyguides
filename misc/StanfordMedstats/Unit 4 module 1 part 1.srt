@@ -1,0 +1,919 @@
+1
+00:00:07,410 --> 00:00:11,670
+In this next module, we're going to talk
+about probability distributions.
+
+2
+00:00:11,670 --> 00:00:13,460
+I'll also call these probability
+functions.
+
+3
+00:00:14,870 --> 00:00:19,440
+So first of all, a probability function,
+or a probability distribution It just
+
+4
+00:00:19,440 --> 00:00:22,470
+gives the probabilities of all possible
+outcomes.
+
+5
+00:00:22,470 --> 00:00:27,010
+So last week we calculated the probability
+of a particular outcome.
+
+6
+00:00:27,010 --> 00:00:29,960
+if you calculate the probability of all
+possible outcomes of if somebody
+
+7
+00:00:29,960 --> 00:00:33,805
+gives you that, those to you, then you
+have a probability distribution.
+
+8
+00:00:33,805 --> 00:00:37,720
+y You can think of it as a mathematical
+function.
+
+9
+00:00:37,720 --> 00:00:41,370
+A mathematical function that takes the
+possible outcomes x and
+
+10
+00:00:41,370 --> 00:00:43,550
+maps them to a probability p of x, so
+
+11
+00:00:43,550 --> 00:00:46,800
+we could think of this as a mathematical
+function that is helpful in some cases.
+
+12
+00:00:48,090 --> 00:00:52,910
+The probabilities when you have the full
+distribution they have to add up to one.
+
+13
+00:00:52,910 --> 00:00:58,360
+Otherwise you know, if you are mutually
+exclusive, exhaustive Outcome.
+
+14
+00:00:58,360 --> 00:01:00,090
+Their probability have to add up to one.
+
+15
+00:01:00,090 --> 00:01:01,680
+So that's thing, one thing you can check,
+
+16
+00:01:01,680 --> 00:01:03,400
+that you calculated probabilities
+correctly.
+
+17
+00:01:03,400 --> 00:01:06,930
+Though if you calculated all of them, they
+have to sum up to one.
+
+18
+00:01:06,930 --> 00:01:11,150
+Now I am going to be talking a little bit
+about continuous probability functions,
+
+19
+00:01:11,150 --> 00:01:15,160
+continuous mathematical functions in this,
+this week.
+
+20
+00:01:15,160 --> 00:01:18,090
+When you're talking about continuous
+probability functions, summing up or
+
+21
+00:01:18,090 --> 00:01:21,340
+adding up to 1 actually means integrating.
+
+22
+00:01:21,340 --> 00:01:24,790
+That is involving a little bit of
+calculus.
+
+23
+00:01:24,790 --> 00:01:26,810
+So I don't want to scare you.
+
+24
+00:01:26,810 --> 00:01:30,130
+But if you, if you want to see a little
+bit of calculus,
+
+25
+00:01:30,130 --> 00:01:32,810
+I will be providingt hat this week.
+
+26
+00:01:32,810 --> 00:01:36,890
+If you have never had Calculus before, or
+integrals are just going to throw you for
+
+27
+00:01:36,890 --> 00:01:38,320
+a loop, don't worry about it.
+
+28
+00:01:38,320 --> 00:01:41,260
+All we're talking about here is if we have
+some kind of mathematical function, so
+
+29
+00:01:41,260 --> 00:01:44,260
+here's just a continuous mathematical
+function.
+
+30
+00:01:44,260 --> 00:01:48,420
+When I say integrate, all I mean is that
+you're calculating,
+
+31
+00:01:48,420 --> 00:01:52,425
+you're figuring out the exact value for
+the area under a curve.
+
+32
+00:01:52,425 --> 00:01:54,740
+So if you could do that, just by,
+
+33
+00:01:54,740 --> 00:01:58,770
+kind of, measuring this area under the
+curve, you wouldn't need integrals.
+
+34
+00:01:58,770 --> 00:02:00,100
+But what the integrals do for us is,
+
+35
+00:02:00,100 --> 00:02:02,980
+they calculate precisely what is this area
+under the curve.
+
+36
+00:02:02,980 --> 00:02:04,690
+So that's all an integral does.
+
+37
+00:02:04,690 --> 00:02:07,780
+If you don't want to see the integrals,
+they're optional, you can just, kind of,
+
+38
+00:02:07,780 --> 00:02:08,625
+ignore them.
+
+39
+00:02:08,625 --> 00:02:12,280
+But every time you see integral, just
+think of area under the curve.
+
+40
+00:02:12,280 --> 00:02:14,820
+For those of you who have a background in
+calculus and
+
+41
+00:02:14,820 --> 00:02:19,090
+are a little more interested in seeing A
+little bit of calculus tied in here.
+
+42
+00:02:19,090 --> 00:02:21,520
+The reason I'm going to throw up these
+integrals here is just so
+
+43
+00:02:21,520 --> 00:02:24,970
+you can see precisely how things are
+calculated and also to give you
+
+44
+00:02:24,970 --> 00:02:28,160
+a little bit of an appreciation for what
+calculus is useful for.
+
+45
+00:02:28,160 --> 00:02:33,620
+So, I didn't really appreciate calculus
+until I took statistics.
+
+46
+00:02:33,620 --> 00:02:35,880
+Once I saw how calculus was so
+
+47
+00:02:35,880 --> 00:02:40,900
+useful in statistics, it gave me this new
+found appreciation for calculus.
+
+48
+00:02:40,900 --> 00:02:44,000
+And my mother is a retired calculus
+professor, so
+
+49
+00:02:44,000 --> 00:02:46,180
+I grew up with calculus all around me, and
+
+50
+00:02:46,180 --> 00:02:49,550
+I really didn't appreciate it until I saw
+how it was applied to statistics.
+
+51
+00:02:49,550 --> 00:02:51,970
+So that's why I'm going to throw in just a
+little bit of calculus here.
+
+52
+00:02:51,970 --> 00:02:54,919
+Again, if integrels scare you, just think
+area under the curve.
+
+53
+00:02:56,850 --> 00:03:00,020
+Probability functions can be discrete or
+continuous, and discrete,
+
+54
+00:03:00,020 --> 00:03:02,840
+this is the same distinction we talked
+about in the first week of the course, so,
+
+55
+00:03:02,840 --> 00:03:05,460
+discrete means you can only take on
+certain values.
+
+56
+00:03:05,460 --> 00:03:09,260
+So, these would be things like whole
+numbers, counts, you're either dead or
+
+57
+00:03:09,260 --> 00:03:12,330
+alive, treatment or placebo, you throw in
+dice, die, can only be,
+
+58
+00:03:12,330 --> 00:03:15,190
+the outcomes are only, can be one, two,
+three, four, five, and six.
+
+59
+00:03:15,190 --> 00:03:17,590
+So, can only have discrete values.
+
+60
+00:03:17,590 --> 00:03:20,520
+That's of course as up close to
+continuous.
+
+61
+00:03:20,520 --> 00:03:24,620
+Continuous variables can take on any value
+in a given range.
+
+62
+00:03:24,620 --> 00:03:27,800
+So any, to say any number between 1 and 6.
+
+63
+00:03:27,800 --> 00:03:30,960
+You can take on 1.2, 1.235.
+
+64
+00:03:30,960 --> 00:03:32,870
+So these are the things like blood
+pressure,
+
+65
+00:03:32,870 --> 00:03:35,380
+the instantaneous speed of a car.
+
+66
+00:03:35,380 --> 00:03:39,290
+So continuous things have an infinite
+number of possible values.
+
+67
+00:03:40,570 --> 00:03:44,970
+For the most part this week, I'm going to
+focus on a lot of discreet examples,
+
+68
+00:03:44,970 --> 00:03:49,010
+because they're easier to deal to with,
+they're easier to get your head around.
+
+69
+00:03:49,010 --> 00:03:53,840
+We can then take, kind of understand it,
+using the discrete, examples.
+
+70
+00:03:53,840 --> 00:03:57,970
+And we can, then kind of generalize,
+extend it to the continuous case.
+
+71
+00:03:57,970 --> 00:04:01,370
+Whenever I'm talking about the continuous
+case I"ll be throwing in that little bit
+
+72
+00:04:01,370 --> 00:04:04,129
+of calculus, little bit of integrals this
+week.
+
+73
+00:04:04,129 --> 00:04:05,290
+But I'll try to focus mostly on
+
+74
+00:04:05,290 --> 00:04:07,000
+the discrete case because it's easier to
+grasp.
+
+75
+00:04:09,240 --> 00:04:11,010
+So let's just take a simple example.
+
+76
+00:04:11,010 --> 00:04:12,680
+Here's a discrete probability function.
+
+77
+00:04:12,680 --> 00:04:15,310
+When you roll a die, there are six
+possible outcomes.
+
+78
+00:04:15,310 --> 00:04:17,480
+So I'm just putting those on the x-axis.
+
+79
+00:04:17,480 --> 00:04:18,810
+They each correspond.
+
+80
+00:04:18,810 --> 00:04:22,030
+Each of those outcomes corresponds to a
+probability that happens to be
+
+81
+00:04:22,030 --> 00:04:23,099
+the same for all of them.
+
+82
+00:04:23,099 --> 00:04:24,620
+Just one sixth probability.
+
+83
+00:04:24,620 --> 00:04:26,380
+So we can draw that out in a graphic.
+
+84
+00:04:26,380 --> 00:04:29,095
+The Y variable here, variable here is the
+probability.
+
+85
+00:04:29,095 --> 00:04:32,920
+So, that's a very simple probability
+distribution.
+
+86
+00:04:32,920 --> 00:04:36,470
+Notice that those probabilities add up to
+one.
+
+87
+00:04:36,470 --> 00:04:38,110
+Right?
+One of those things has to happen so
+
+88
+00:04:38,110 --> 00:04:39,460
+they sum up to one.
+
+89
+00:04:39,460 --> 00:04:41,860
+So, all your probability distributions
+have to add up to one.
+
+90
+00:04:43,520 --> 00:04:46,140
+We can write those same probabilities in a
+table.
+
+91
+00:04:46,140 --> 00:04:48,740
+So, this week sometimes I'll be giving you
+a table that looks like this.
+
+92
+00:04:48,740 --> 00:04:49,890
+So, you have x.
+
+93
+00:04:49,890 --> 00:04:51,670
+Those are the possible outcomes.
+
+94
+00:04:51,670 --> 00:04:52,610
+P of x, those are the,
+
+95
+00:04:52,610 --> 00:04:56,330
+the, the probabilities that correspond to
+each of the possible outcomes.
+
+96
+00:04:56,330 --> 00:05:00,040
+Another name we call this table, a
+probability mass function.
+
+97
+00:05:00,040 --> 00:05:02,970
+It just shows you how each of the outcomes
+maps to a probability.
+
+98
+00:05:02,970 --> 00:05:06,880
+We call it a probability mass function
+cause each outcome has a,
+
+99
+00:05:06,880 --> 00:05:08,740
+probability mass associated with it.
+
+100
+00:05:08,740 --> 00:05:11,960
+Notice that they all add up to 1.
+
+101
+00:05:11,960 --> 00:05:14,460
+So sometimes we talk about the probability
+mass function,
+
+102
+00:05:14,460 --> 00:05:17,550
+that is the probability of any particular
+value.
+
+103
+00:05:17,550 --> 00:05:22,420
+Sometimes we are actually more interested
+in the probability of a range of values,
+
+104
+00:05:22,420 --> 00:05:25,420
+and when we're talking about the
+probability of a range of values.
+
+105
+00:05:25,420 --> 00:05:29,144
+We call that a cumulative distribution
+function.
+
+106
+00:05:29,144 --> 00:05:32,800
+And, by convention, cumulative functions
+always start with the lowest value and
+
+107
+00:05:32,800 --> 00:05:33,430
+go to the highest.
+
+108
+00:05:33,430 --> 00:05:36,680
+So here's that same, example of rolling a
+dice,
+
+109
+00:05:36,680 --> 00:05:39,030
+presented as a cumulative distribution
+function.
+
+110
+00:05:39,030 --> 00:05:42,330
+So now we're not talking about the
+probability of getting exactly 1 but
+
+111
+00:05:42,330 --> 00:05:44,274
+the probability of getting 1 or less.
+
+112
+00:05:44,274 --> 00:05:48,850
+Which is 1/6th, the probability of getting
+2 or less is 2/6th, the probability of
+
+113
+00:05:48,850 --> 00:05:52,660
+getting 3 or less is 3/6th and then all
+the way up to the probability of
+
+114
+00:05:52,660 --> 00:05:56,510
+getting 6 or less is 100% because when you
+roll the dice, you have to get 6 or less.
+
+115
+00:05:56,510 --> 00:06:00,800
+So again, this is just a way to describe
+the probability of ranges of values and
+
+116
+00:06:00,800 --> 00:06:02,750
+by convention we always talk about.
+
+117
+00:06:02,750 --> 00:06:06,540
+The probability of getting something or
+less than that.
+
+118
+00:06:06,540 --> 00:06:07,870
+The probability is to the left.
+
+119
+00:06:09,790 --> 00:06:13,640
+So let me just write that same cumulative
+distribution function out in a table.
+
+120
+00:06:13,640 --> 00:06:16,690
+Nothing profound here, again we're just
+showing this is the probability of
+
+121
+00:06:16,690 --> 00:06:20,220
+getting one or less, two or less, three or
+less, etc.
+
+122
+00:06:20,220 --> 00:06:22,440
+We call that a cumulative distribution
+function.
+
+123
+00:06:22,440 --> 00:06:25,760
+This is especially important when you get
+to the continuous case, because you're
+
+124
+00:06:25,760 --> 00:06:29,295
+always talking about ranges of values when
+you're doing a continuous function.
+
+125
+00:06:29,295 --> 00:06:33,650
+Here's another example of a simple
+probability distribution.
+
+126
+00:06:33,650 --> 00:06:38,630
+So, last week I showed you these this
+information on blood types.
+
+127
+00:06:38,630 --> 00:06:40,400
+And this is really a probability
+distribution,
+
+128
+00:06:40,400 --> 00:06:44,430
+it's just presented in whole numbers out
+of 100, but you can get out of this,
+
+129
+00:06:44,430 --> 00:06:47,590
+the frequency probability of each of these
+different blood types.
+
+130
+00:06:47,590 --> 00:06:52,430
+There's actually 2 variables here, there's
+RH, status as well as blood type.
+
+131
+00:06:52,430 --> 00:06:55,380
+So we can make this even simpler by
+collapsing it down to just
+
+132
+00:06:55,380 --> 00:06:57,250
+the probability distribution for blood
+type.
+
+133
+00:06:58,520 --> 00:07:04,230
+So 45% of people have O blood type, 40%
+have A, 11% have B, 4% have AB.
+
+134
+00:07:04,230 --> 00:07:07,400
+Notice that those add up to 100%.
+
+135
+00:07:07,400 --> 00:07:09,960
+You have to be in one of those categories
+of blood type.
+
+136
+00:07:09,960 --> 00:07:12,640
+So that's yet another discrete probability
+function.
+
+137
+00:07:15,270 --> 00:07:19,160
+Let's see how we can actually use these
+probability functions.
+
+138
+00:07:19,160 --> 00:07:21,140
+So here's a little practice problem.
+
+139
+00:07:21,140 --> 00:07:25,400
+Suppose that in a particular hospital, in
+the emergency room of that hospital,
+
+140
+00:07:25,400 --> 00:07:29,960
+the number of patients seen in any given
+hour is represented here by x, and
+
+141
+00:07:29,960 --> 00:07:30,710
+x can vary.
+
+142
+00:07:30,710 --> 00:07:34,020
+In one hour it might be nine patients, and
+in another hour it might be ten patients.
+
+143
+00:07:34,020 --> 00:07:37,632
+And let's suppose that somebody has
+observed this emergency room for
+
+144
+00:07:37,632 --> 00:07:41,010
+a while and they've figured out the
+probability distribution for X and
+
+145
+00:07:41,010 --> 00:07:44,510
+this is our, obviously an artificial
+example because we're saying that there's
+
+146
+00:07:44,510 --> 00:07:48,510
+always between nine and 13 patients coming
+into this emergency room.
+
+147
+00:07:48,510 --> 00:07:50,150
+I'm making it a simplified example.
+
+148
+00:07:50,150 --> 00:07:54,030
+So, imagine that somehow it's, it's always
+that strict.
+
+149
+00:07:54,030 --> 00:07:55,210
+But somebody's observed and
+
+150
+00:07:55,210 --> 00:07:58,304
+they've figured out that 30% of the time
+it's 9 patients,
+
+151
+00:07:58,304 --> 00:08:01,850
+30% of the time it's 10 patients, 20% of
+the time it's 11, 10% 12 and 10% 13.
+
+152
+00:08:01,850 --> 00:08:03,900
+And that's the all the possible outcomes.
+
+153
+00:08:05,440 --> 00:08:08,290
+Notice that those sum up to 1.
+
+154
+00:08:08,290 --> 00:08:12,450
+If we listed out all the outcomes then the
+probabilities have to sum up to 1.
+
+155
+00:08:12,450 --> 00:08:15,810
+So now we can answer some simple questions
+based on this.
+
+156
+00:08:15,810 --> 00:08:17,450
+Probability distribution.
+
+157
+00:08:17,450 --> 00:08:20,470
+And notice that this is a lot easier than
+what we did last week, right?
+
+158
+00:08:20,470 --> 00:08:23,250
+Where I made you calculate those
+probabilities, now I'm just giving them to
+
+159
+00:08:23,250 --> 00:08:26,950
+you and it's pretty easy to pick the
+probabiltiies off the chart.
+
+160
+00:08:26,950 --> 00:08:28,270
+So for example if I say,
+
+161
+00:08:28,270 --> 00:08:32,540
+what's the probability that in a given
+hour exactly 13 patients arrive?
+
+162
+00:08:32,540 --> 00:08:33,950
+You'd just look in, in the table.
+
+163
+00:08:33,950 --> 00:08:35,360
+Well, it's 10%.
+
+164
+00:08:35,360 --> 00:08:36,910
+You just grab that right out the table.
+
+165
+00:08:36,910 --> 00:08:40,640
+What's the probability that at least 12
+patients arrive?
+
+166
+00:08:40,640 --> 00:08:43,060
+So now we're talking about a range of
+values.
+
+167
+00:08:43,060 --> 00:08:46,640
+So that's the probability that either 12
+or 13 arrive.
+
+168
+00:08:46,640 --> 00:08:48,440
+So we would just add those two up.
+
+169
+00:08:48,440 --> 00:08:52,220
+So the probability that at least 12
+patients arrive is 20 percent.
+
+170
+00:08:52,220 --> 00:08:55,310
+What's the probability that at most 11
+patients that arrive.
+
+171
+00:08:55,310 --> 00:08:59,960
+Well at most 11 would be 9 or 10, or 11 so
+I add up those probabilties and
+
+172
+00:08:59,960 --> 00:09:02,288
+that turns out to be 80%.
+
+173
+00:09:02,288 --> 00:09:05,750
+There's 80% chance that at most 11
+patients arrive.
+
+174
+00:09:05,750 --> 00:09:09,430
+And this would be a really useful piece of
+information.
+
+175
+00:09:09,430 --> 00:09:10,940
+For people in an emergency room.
+
+176
+00:09:10,940 --> 00:09:12,430
+If you were the head of the emergency
+room,
+
+177
+00:09:12,430 --> 00:09:16,540
+you need to know about how many patients
+you're expecting to come in,
+
+178
+00:09:16,540 --> 00:09:19,910
+in any given hour, in order to staff the
+emergency room correctly.
+
+179
+00:09:19,910 --> 00:09:21,440
+So this has practical applications.
+
+180
+00:09:24,530 --> 00:09:27,290
+Some of the important discrete
+distributions that you'll encounter in
+
+181
+00:09:27,290 --> 00:09:30,250
+medical research are the binomial
+distributions.
+
+182
+00:09:30,250 --> 00:09:34,150
+So these are distributions that are used
+in many, many cases.
+
+183
+00:09:34,150 --> 00:09:35,010
+They are very general.
+
+184
+00:09:35,010 --> 00:09:38,175
+The one that I just showed are a very
+specific case, the binomial, is
+
+185
+00:09:38,175 --> 00:09:43,380
+something that generalizes to any time you
+have a binary outcome a yes no outcome.
+
+186
+00:09:43,380 --> 00:09:47,050
+So whenever you have data that's dead or
+alive, treated or
+
+187
+00:09:47,050 --> 00:09:50,100
+untreated, smoker or non-smoker, that
+follows a binomial.
+
+188
+00:09:50,100 --> 00:09:53,310
+So that binomial distribution which we are
+going to talk about.
+
+189
+00:09:53,310 --> 00:09:57,940
+In a module this week underlines a lot of
+the important statistics,
+
+190
+00:09:57,940 --> 00:09:59,770
+in medical research.
+
+191
+00:09:59,770 --> 00:10:03,200
+Another important discrete distribution
+that comes up in medical research is
+
+192
+00:10:03,200 --> 00:10:04,460
+the Poisson distribution.
+
+193
+00:10:04,460 --> 00:10:08,490
+And this is a distribution when you have
+things that are counts, so like how many
+
+194
+00:10:08,490 --> 00:10:12,950
+cases of disease are Occurring in a given
+area, those are counts.
+
+195
+00:10:12,950 --> 00:10:15,280
+Counts follow a Poisson distribution.

@@ -1,0 +1,1240 @@
+1
+00:00:00,000 --> 00:00:05,460
+[BLANK_AUDIO]
+
+2
+00:00:05,460 --> 00:00:06,610
+In this next module,
+
+3
+00:00:06,610 --> 00:00:09,880
+I'm going to show you how to analyze
+time-independent predictors, that is,
+
+4
+00:00:09,880 --> 00:00:14,130
+predictors that don't change over time,
+using generalized estimating equations.
+
+5
+00:00:14,130 --> 00:00:19,710
+So first of all, what do I mean by a
+time-independent predictor?
+
+6
+00:00:19,710 --> 00:00:23,490
+So you can probably guess what that is,
+but the easiest way to see it.
+
+7
+00:00:23,490 --> 00:00:25,230
+To see what a time interdependent
+predictor is,
+
+8
+00:00:25,230 --> 00:00:27,272
+is to just look at the long form of the
+data.
+
+9
+00:00:27,272 --> 00:00:29,890
+As I've got in this box over here.
+
+10
+00:00:29,890 --> 00:00:34,900
+If your predictor of interest has the same
+value for every time point.
+
+11
+00:00:34,900 --> 00:00:37,960
+Within an individual then that is a time
+independent predictor.
+
+12
+00:00:37,960 --> 00:00:39,310
+It is not changing over time.
+
+13
+00:00:39,310 --> 00:00:43,390
+So for example, I've been using the spine
+bone density example.
+
+14
+00:00:43,390 --> 00:00:45,650
+Here's a person, ID number one.
+
+15
+00:00:45,650 --> 00:00:48,180
+Her bone density, her outcome is changing
+over time.
+
+16
+00:00:48,180 --> 00:00:50,110
+Her time value is changing over time.
+
+17
+00:00:50,110 --> 00:00:51,630
+But her group, which group she's in,
+
+18
+00:00:51,630 --> 00:00:56,250
+whether black, blue or red, is the same at
+every time point.
+
+19
+00:00:56,250 --> 00:00:58,080
+So you can see it in the data set.
+
+20
+00:00:58,080 --> 00:01:01,980
+If her group were to change then that
+would be a time changing predictor.
+
+21
+00:01:01,980 --> 00:01:05,000
+Of course the case of time independent
+predictors is easier so
+
+22
+00:01:05,000 --> 00:01:06,320
+we're going to start there.
+
+23
+00:01:07,880 --> 00:01:11,680
+So, in this data set, I had actually
+grouped women into whether or
+
+24
+00:01:11,680 --> 00:01:15,250
+not they got their periods back or didn't
+and these are static groups.
+
+25
+00:01:15,250 --> 00:01:17,060
+I didn't allow the groups to change over
+time.
+
+26
+00:01:18,460 --> 00:01:20,720
+I've shown you these pictures before the
+red group and
+
+27
+00:01:20,720 --> 00:01:23,750
+the black group improve more that the blue
+group over time.
+
+28
+00:01:23,750 --> 00:01:24,930
+You've already seen that.
+
+29
+00:01:24,930 --> 00:01:28,100
+I now want to fit a GEE model to these
+data.
+
+30
+00:01:30,530 --> 00:01:32,600
+So what's the model that we're going to
+fit?
+
+31
+00:01:32,600 --> 00:01:35,070
+So my outcome here is bone density.
+
+32
+00:01:35,070 --> 00:01:36,850
+I'm going to have an intercept in this
+model.
+
+33
+00:01:36,850 --> 00:01:39,170
+I'm essentially fitting a linear model.
+
+34
+00:01:39,170 --> 00:01:42,540
+My model is going to have very similar to
+what we had in
+
+35
+00:01:42,540 --> 00:01:45,640
+the repeated measures ANOVA, it's going to
+have time in it.
+
+36
+00:01:45,640 --> 00:01:47,520
+That represents a time effect.
+
+37
+00:01:47,520 --> 00:01:52,090
+It's going to have a variable for the main
+effect for which group you're in.
+
+38
+00:01:52,090 --> 00:01:56,460
+And essentially like the group effect in
+repeated measures ANOVA.
+
+39
+00:01:56,460 --> 00:01:59,210
+And then you have to interact any
+variables,
+
+40
+00:01:59,210 --> 00:02:02,250
+any time independent variables that you're
+interested in seeing.
+
+41
+00:02:02,250 --> 00:02:06,530
+What their effect is on the change in bone
+density over time,
+
+42
+00:02:06,530 --> 00:02:11,330
+you have to put an interaction with those
+variables, with time into the model.
+
+43
+00:02:11,330 --> 00:02:13,300
+And you have to remember to put that in.
+
+44
+00:02:13,300 --> 00:02:15,410
+So for, when we're talking about
+time-independent predictors,
+
+45
+00:02:15,410 --> 00:02:18,550
+you must include an interaction term with
+time if you want to
+
+46
+00:02:18,550 --> 00:02:19,740
+get it within subjects effect.
+
+47
+00:02:19,740 --> 00:02:23,830
+That is if you want to see what's the
+effect of group on the changes over time.
+
+48
+00:02:23,830 --> 00:02:28,820
+And usually that's what we care about so
+that's the model that I fit to these data.
+
+49
+00:02:30,740 --> 00:02:33,060
+And let me just show you the results.
+
+50
+00:02:33,060 --> 00:02:36,140
+I chose an exchangeable correlation matrix
+to start with because I've
+
+51
+00:02:36,140 --> 00:02:39,760
+already looked at the correlation matrix
+for these data.
+
+52
+00:02:39,760 --> 00:02:43,200
+And either exchangeable or autoregressive,
+when we just had time in the model,
+
+53
+00:02:43,200 --> 00:02:46,340
+both of those seemed to do, pretty close
+to one another.
+
+54
+00:02:46,340 --> 00:02:49,120
+So we just started with the simpler one,
+the exchangeable correlation matrix.
+
+55
+00:02:49,120 --> 00:02:50,410
+So it's the same data set,
+
+56
+00:02:50,410 --> 00:02:53,730
+that I showed you in the last module,
+where I was showing you that we have,
+
+57
+00:02:53,730 --> 00:02:56,650
+indeed, significant changes in bone
+density over time.
+
+58
+00:02:56,650 --> 00:03:00,200
+Now we want to see whether that differs by
+which of these groups you're in.
+
+59
+00:03:00,200 --> 00:03:05,290
+So I'm going to just walk you though, how
+to interpret all of these coefficients.
+
+60
+00:03:05,290 --> 00:03:07,300
+All of these parameters from the model.
+
+61
+00:03:07,300 --> 00:03:12,040
+So starting with the intercept, what does
+the intercept represent here?
+
+62
+00:03:12,040 --> 00:03:15,990
+So the reference group, I've chosen the
+reference group to be the blue group.
+
+63
+00:03:18,330 --> 00:03:21,060
+They are the ones that had the lowest bone
+density and the lowest bone
+
+64
+00:03:21,060 --> 00:03:25,640
+density changes over time, so it just made
+sense to make them the reference group.
+
+65
+00:03:25,640 --> 00:03:28,970
+The intercept of course represents when
+everything else in the model is
+
+66
+00:03:28,970 --> 00:03:29,950
+set to zero.
+
+67
+00:03:29,950 --> 00:03:32,750
+So, because we have time in the model that
+mean that
+
+68
+00:03:32,750 --> 00:03:37,590
+the intercept represents a base line value
+when time is equal to zero.
+
+69
+00:03:37,590 --> 00:03:41,400
+The intercept also represents the
+reference group for
+
+70
+00:03:41,400 --> 00:03:44,390
+all the group variables so it's
+representing the blue group.
+
+71
+00:03:44,390 --> 00:03:47,840
+So the intercept represents the value for
+
+72
+00:03:47,840 --> 00:03:52,220
+the spine bone density for the blue group
+at baseline.
+
+73
+00:03:52,220 --> 00:03:55,720
+So if you remember from last week, the
+blue group actually started with
+
+74
+00:03:55,720 --> 00:03:58,350
+a little bit lower bone density than the
+other two groups.
+
+75
+00:03:58,350 --> 00:03:59,120
+It was right around 0.93.
+
+76
+00:03:59,120 --> 00:04:03,910
+So that's the baseline average spine bone
+density in the blue group.
+
+77
+00:04:05,250 --> 00:04:06,580
+And that's highly significant.
+
+78
+00:04:06,580 --> 00:04:08,960
+All that means that it's highly
+significant is that they didn't have
+
+79
+00:04:08,960 --> 00:04:12,350
+a bone density of zero which clearly we
+wouldn't expect that.
+
+80
+00:04:12,350 --> 00:04:14,880
+Obviously they're going to have a bone
+density something other than zero.
+
+81
+00:04:16,610 --> 00:04:21,680
+Alright, then we get to the time
+coefficient, the parameter for time here.
+
+82
+00:04:21,680 --> 00:04:26,270
+The time effect from the GE model has a
+slightly different interpretation than
+
+83
+00:04:26,270 --> 00:04:30,390
+the time effect that we saw with the
+repeated measures ANOVA.
+
+84
+00:04:30,390 --> 00:04:35,700
+What the time effect represents here, is
+the time effect for the blue group.
+
+85
+00:04:35,700 --> 00:04:37,330
+This is the change over time,
+
+86
+00:04:37,330 --> 00:04:41,780
+the rate of change in bone density over
+time, for only the blue group.
+
+87
+00:04:41,780 --> 00:04:43,840
+If you'll remember from the ANOVA.
+
+88
+00:04:43,840 --> 00:04:48,200
+The time effect in the repeated measures
+ANOVA was sort of an average of the change
+
+89
+00:04:48,200 --> 00:04:49,740
+in time for all the groups.
+
+90
+00:04:49,740 --> 00:04:51,800
+So, that's not the case with the
+regression.
+
+91
+00:04:51,800 --> 00:04:55,880
+With the regression this is just the time
+effect for the blue group, this is
+
+92
+00:04:55,880 --> 00:05:01,320
+representing the rate in change in spine
+bone density over time for the blue group.
+
+93
+00:05:01,320 --> 00:05:04,630
+Now we know if you saw the picture, go
+back to the picture,
+
+94
+00:05:04,630 --> 00:05:08,160
+they basically were pretty static over
+time, they basically kind of stayed flat,
+
+95
+00:05:08,160 --> 00:05:10,150
+they went down a little and went back up a
+little back.
+
+96
+00:05:10,150 --> 00:05:12,946
+We're assuming a line, we're fitting
+lines, so
+
+97
+00:05:12,946 --> 00:05:15,590
+if we fit a line to those data that I just
+showed you.
+
+98
+00:05:15,590 --> 00:05:18,550
+We're going to get something around a rate
+of change of zero which is exactly
+
+99
+00:05:18,550 --> 00:05:20,120
+what we get here.
+
+100
+00:05:20,120 --> 00:05:22,311
+The rate of change is essentially zero.
+
+101
+00:05:22,311 --> 00:05:24,768
+It the p value is totally non-significant.
+
+102
+00:05:24,768 --> 00:05:27,080
+That tells you that the rate of change for
+
+103
+00:05:27,080 --> 00:05:30,980
+the blue group in spine bone density does
+not differ from zero.
+
+104
+00:05:30,980 --> 00:05:33,770
+Well, clearly we can see that from the
+picture they stayed right about the same.
+
+105
+00:05:34,950 --> 00:05:37,990
+Alright, so that's the time effect from a
+GEE model.
+
+106
+00:05:37,990 --> 00:05:39,110
+Then we get to the group effect.
+
+107
+00:05:39,110 --> 00:05:41,460
+And there's two groups here: the black
+group and the red group.
+
+108
+00:05:41,460 --> 00:05:44,990
+And again, this is being compared to the
+reference group of, of blue.
+
+109
+00:05:44,990 --> 00:05:47,630
+So what does the main effect for the black
+group and
+
+110
+00:05:47,630 --> 00:05:49,190
+the main effect for the red group?
+
+111
+00:05:49,190 --> 00:05:52,730
+This is akin to the group effect from
+repeated measures ANOVA.
+
+112
+00:05:52,730 --> 00:05:56,020
+But they mean, again, something slightly
+different than what
+
+113
+00:05:56,020 --> 00:05:58,260
+the group effect meant in repeated
+measures ANOVA.
+
+114
+00:05:58,260 --> 00:06:00,750
+So if you remember from repeated measure
+ANOVA,
+
+115
+00:06:00,750 --> 00:06:03,970
+the group effect was sort of an average
+across all time periods.
+
+116
+00:06:03,970 --> 00:06:08,010
+Across all time periods is the black group
+greater than the blue group for example.
+
+117
+00:06:08,010 --> 00:06:11,620
+In generalized estimating equations in the
+regression model,
+
+118
+00:06:11,620 --> 00:06:17,510
+the groups effects only, are only
+pertinent to base line.
+
+119
+00:06:17,510 --> 00:06:19,370
+So when time is equal to zero.
+
+120
+00:06:19,370 --> 00:06:22,830
+When everything else set in the model is,
+is set to zero.
+
+121
+00:06:22,830 --> 00:06:27,170
+You're going to bring in the interaction
+effects once your time is
+
+122
+00:06:27,170 --> 00:06:28,480
+something other than zero.
+
+123
+00:06:28,480 --> 00:06:33,120
+So, the main effect for group in the GEE
+model is
+
+124
+00:06:33,120 --> 00:06:37,640
+the difference at baseline between the
+black group and the reference group, and
+
+125
+00:06:37,640 --> 00:06:39,740
+the red group and the reference group.
+
+126
+00:06:39,740 --> 00:06:42,890
+So remember, if you remember from last
+week, that the black group and
+
+127
+00:06:42,890 --> 00:06:45,600
+the red group both were a little bit
+higher in bone density at
+
+128
+00:06:45,600 --> 00:06:48,590
+baseline than the blue group.
+
+129
+00:06:48,590 --> 00:06:54,490
+And there were both around 0.03, 0.04 more
+than the blue group.
+
+130
+00:06:54,490 --> 00:06:59,150
+So, if we add together the intercept and
+the main effect for the black group,
+
+131
+00:06:59,150 --> 00:07:02,840
+that would give you the average bone
+density for the black group at base line.
+
+132
+00:07:02,840 --> 00:07:06,300
+Notice that the P values are totally non
+significant, saying that there is,
+
+133
+00:07:06,300 --> 00:07:09,530
+that at baseline, there was some slight
+differences between the groups in
+
+134
+00:07:09,530 --> 00:07:11,650
+bone density, but it was not a significant
+difference.
+
+135
+00:07:13,180 --> 00:07:15,920
+The blue group again is the reference
+group, so that's just set, fixed at zero.
+
+136
+00:07:17,120 --> 00:07:19,290
+Then we get the time by group interaction.
+
+137
+00:07:19,290 --> 00:07:23,240
+And what the time by group interaction
+represents is the rate of change,
+
+138
+00:07:24,240 --> 00:07:26,970
+the difference in the rate of change in
+bone density over time for
+
+139
+00:07:26,970 --> 00:07:29,500
+the black group versus the blue group.
+
+140
+00:07:29,500 --> 00:07:33,670
+And the time by red group interaction
+would represent the difference in the rate
+
+141
+00:07:33,670 --> 00:07:37,260
+of change over time in spine bone density
+for the red group versus the blue group.
+
+142
+00:07:37,260 --> 00:07:40,320
+So the rate of change for the blue group
+was right around zero.
+
+143
+00:07:40,320 --> 00:07:46,240
+For the black group it's going to be this
+0.0108 plus the negative 0.0007.
+
+144
+00:07:46,240 --> 00:07:50,950
+So you would add the time effect plus the
+time by
+
+145
+00:07:50,950 --> 00:07:54,710
+black effect to get the rate of change for
+the black group.
+
+146
+00:07:54,710 --> 00:07:57,920
+Because this coefficient represents the
+difference in rate of
+
+147
+00:07:57,920 --> 00:08:00,780
+changes between the black and the, the
+reference group.
+
+148
+00:08:00,780 --> 00:08:01,840
+So.
+
+149
+00:08:01,840 --> 00:08:05,220
+You know, the black group was going up
+about one
+
+150
+00:08:05,220 --> 00:08:08,960
+percent more over time per year than the
+blue group.
+
+151
+00:08:08,960 --> 00:08:13,250
+The time, we set the time to be years so
+that this is a rate of change per year.
+
+152
+00:08:13,250 --> 00:08:15,940
+The red group was also very similar,
+
+153
+00:08:15,940 --> 00:08:19,628
+was going up just slightly more than the
+black group.
+
+154
+00:08:19,628 --> 00:08:21,640
+0.014.
+
+155
+00:08:21,640 --> 00:08:24,180
+And notice that both of these are
+statistically significant.
+
+156
+00:08:24,180 --> 00:08:27,640
+That's telling you that the rate of change
+in bone density is higher in
+
+157
+00:08:27,640 --> 00:08:30,320
+those two groups compared with the
+reference group.
+
+158
+00:08:30,320 --> 00:08:33,010
+All of that is very similar to what we saw
+in the picture.
+
+159
+00:08:33,010 --> 00:08:36,370
+But now we have P values and effect sizes
+to go with them.
+
+160
+00:08:36,370 --> 00:08:39,010
+We are assuming here, so go back to the
+picture here,
+
+161
+00:08:39,010 --> 00:08:43,638
+we are assuming what we have done
+essentially here is to fit straight lines.
+
+162
+00:08:43,638 --> 00:08:47,070
+We have assumed that there is a linear
+rate of change over time for
+
+163
+00:08:47,070 --> 00:08:49,990
+all of these three groups, so we fit
+straight lines to them.
+
+164
+00:08:49,990 --> 00:08:54,140
+So just keep in mind that if the changes
+over time were not linear.
+
+165
+00:08:54,140 --> 00:08:57,130
+If they were quadratic or something, we
+would have to take that into account.
+
+166
+00:08:57,130 --> 00:09:01,310
+But linear seems like a good choice here,
+they, they look pretty close to lines.
+
+167
+00:09:01,310 --> 00:09:06,350
+So that was with if I used the
+exchangeable correlation matrix.
+
+168
+00:09:06,350 --> 00:09:07,110
+I'm just going to show you
+
+169
+00:09:07,110 --> 00:09:09,370
+what the exchangeable correlation ends up
+being here.
+
+170
+00:09:09,370 --> 00:09:14,150
+It estimates the same correlation of about
+0.976 5 at all the time periods.
+
+171
+00:09:14,150 --> 00:09:18,320
+The QIC for this model comes out to be
+133.4.
+
+172
+00:09:18,320 --> 00:09:21,280
+I then just for fun also used
+
+173
+00:09:21,280 --> 00:09:26,350
+an auto-regressive correlation matrix just
+to see if it made any difference.
+
+174
+00:09:26,350 --> 00:09:28,990
+So here's the results from the
+auto-regressive correlation matrix.
+
+175
+00:09:28,990 --> 00:09:31,840
+You can see we get the basically the same
+results.
+
+176
+00:09:31,840 --> 00:09:34,800
+The changes over time in the blue, black
+group and
+
+177
+00:09:34,800 --> 00:09:37,240
+the red group are significantly different
+from the blue group.
+
+178
+00:09:37,240 --> 00:09:40,990
+Pretty much all of the same answers,
+slightly, slightly different estimate.
+
+179
+00:09:40,990 --> 00:09:42,460
+But basically the same answer.
+
+180
+00:09:43,890 --> 00:09:47,450
+and, if you go and look at the working
+correlation matrix, so
+
+181
+00:09:47,450 --> 00:09:50,570
+what you'll see is you get two correlation
+coefficients.
+
+182
+00:09:50,570 --> 00:09:54,475
+This one and then you square 0.9999 you
+get 0.9998 so
+
+183
+00:09:54,475 --> 00:09:57,240
+we only, cost us only one degree of
+freedom.
+
+184
+00:09:57,240 --> 00:10:00,780
+The QIC is just slightly smaller than what
+we saw with the exchangeable, but
+
+185
+00:10:00,780 --> 00:10:03,130
+I would say either one of those would be a
+good fit.
+
+186
+00:10:03,130 --> 00:10:04,890
+And going to give very comparable answers.
+
+187
+00:10:07,210 --> 00:10:08,570
+I also just wanted to show you so
+
+188
+00:10:08,570 --> 00:10:12,160
+I've now shown you a time independent
+predictor that's a categorical predictor.
+
+189
+00:10:12,160 --> 00:10:16,030
+I wanted to also show you a continuous
+time independent predictor so
+
+190
+00:10:16,030 --> 00:10:18,130
+you have that example as well.
+
+191
+00:10:18,130 --> 00:10:22,950
+So, I used an example here that comes from
+another, version of my runners data set,
+
+192
+00:10:22,950 --> 00:10:25,984
+but this is from a larger sample from that
+runners data set.
+
+193
+00:10:25,984 --> 00:10:28,640
+A sample of a 125 women.
+
+194
+00:10:28,640 --> 00:10:33,320
+And I want to look whether or not a
+woman's base line calcium intake
+
+195
+00:10:33,320 --> 00:10:38,440
+was related to her subsequent changes in
+spine bone density over time.
+
+196
+00:10:38,440 --> 00:10:42,670
+And, so notice that calcium is something
+that could be a time changing predictor.
+
+197
+00:10:42,670 --> 00:10:46,070
+I could have measured it and in fact did
+measure it at multiple time points.
+
+198
+00:10:46,070 --> 00:10:50,740
+But for the purposes of this model, I'm
+only using the baseline calcium intake,
+
+199
+00:10:50,740 --> 00:10:54,720
+sort of their first measure of how much
+calcium they eat.
+
+200
+00:10:54,720 --> 00:10:58,140
+And so this is actually I'm making this
+into a time independent predictor.
+
+201
+00:10:58,140 --> 00:11:01,170
+You'll see why there's maybe some
+advantages to that when we get to
+
+202
+00:11:01,170 --> 00:11:02,704
+a later module.
+
+203
+00:11:02,704 --> 00:11:08,580
+I used here, not the absolute calcium
+intake but I use the calcium residuals.
+
+204
+00:11:08,580 --> 00:11:12,170
+So I did a regression where calcium was
+the outcome,
+
+205
+00:11:12,170 --> 00:11:16,000
+calories was the predictor, and so I get
+the residuals from that regression.
+
+206
+00:11:16,000 --> 00:11:19,670
+Those residuals represent whether or not a
+women has a high or
+
+207
+00:11:19,670 --> 00:11:23,260
+low calcium diet for her caloric intake.
+
+208
+00:11:23,260 --> 00:11:25,370
+And I put those in standard deviation
+units.
+
+209
+00:11:25,370 --> 00:11:27,990
+So everything here is in standard
+deviation units.
+
+210
+00:11:29,170 --> 00:11:32,920
+So the model that I fit, the outcome is
+bone density again.
+
+211
+00:11:32,920 --> 00:11:36,140
+I have an intercept in the model, I have a
+beta for time.
+
+212
+00:11:36,140 --> 00:11:39,820
+And then I have a beta for your baseline
+calcium, that's the main effect for
+
+213
+00:11:39,820 --> 00:11:41,970
+the time independent predictor of calcium.
+
+214
+00:11:41,970 --> 00:11:44,280
+And then I've got that interaction with
+timing again.
+
+215
+00:11:44,280 --> 00:11:46,850
+You have to put that interaction with time
+in to see what,
+
+216
+00:11:46,850 --> 00:11:49,860
+what is the effect of calcium on the
+changes over time.
+
+217
+00:11:49,860 --> 00:11:54,430
+So I've got a baseline calcium value
+interacting with time.
+
+218
+00:11:54,430 --> 00:11:58,080
+I went ahead and fit that to these 125
+women, fit that model.
+
+219
+00:11:58,080 --> 00:11:58,870
+And here's the results.
+
+220
+00:11:58,870 --> 00:12:00,900
+So let me just walk you through what all
+these results mean.
+
+221
+00:12:02,470 --> 00:12:05,940
+So, first of all the intercept, what does
+the intercept actually represent here?
+
+222
+00:12:05,940 --> 00:12:09,200
+So again the intercept is the value when
+everything else in
+
+223
+00:12:09,200 --> 00:12:10,910
+the model is set to zero.
+
+224
+00:12:10,910 --> 00:12:13,370
+So this would be so time would be set to
+zero.
+
+225
+00:12:13,370 --> 00:12:15,480
+So this would represent baseline.
+
+226
+00:12:15,480 --> 00:12:18,630
+And remember that calcium is in standard
+deviation units.
+
+227
+00:12:18,630 --> 00:12:23,070
+So a value of zero here represents that
+you have the average calcium intake for
+
+228
+00:12:23,070 --> 00:12:24,060
+the sample.
+
+229
+00:12:24,060 --> 00:12:26,250
+So a woman with the average calcium
+intake.
+
+230
+00:12:26,250 --> 00:12:30,020
+For this sample at baseline had a spine
+bone density on average of about 0.9888.
+
+231
+00:12:30,020 --> 00:12:33,480
+The value for
+
+232
+00:12:33,480 --> 00:12:37,560
+time, which is again is in years here,
+that does come out to be significant.
+
+233
+00:12:37,560 --> 00:12:40,262
+it comes out to be about 0.0035.
+
+234
+00:12:40,262 --> 00:12:44,460
+This would represent the rate of change in
+spine bone density.
+
+235
+00:12:44,460 --> 00:12:46,850
+For a woman whose calcium intake is
+average,
+
+236
+00:12:46,850 --> 00:12:49,870
+who has a standard deviation of calcium
+intake of zero.
+
+237
+00:12:49,870 --> 00:12:51,620
+So if you're kind of average calcium
+intake,
+
+238
+00:12:51,620 --> 00:12:56,950
+you're going up about 0.0035 units of
+spine bone density per year,
+
+239
+00:12:56,950 --> 00:13:00,770
+and that is highly significant, so that is
+a significant increase over time.
+
+240
+00:13:00,770 --> 00:13:03,760
+If you're at the average calcium intake
+for the sample.
+
+241
+00:13:03,760 --> 00:13:05,910
+The main effect for calcium.
+
+242
+00:13:05,910 --> 00:13:09,550
+You can see is very close to zero, is not
+statistically significant.
+
+243
+00:13:09,550 --> 00:13:12,970
+What that is telling you is that if you
+had a higher calcium intake and
+
+244
+00:13:12,970 --> 00:13:16,680
+base line that was uncorrelated to your
+baseline bone density.
+
+245
+00:13:18,080 --> 00:13:23,210
+However, if you had a high calcium intake
+at baseline that predicted that
+
+246
+00:13:23,210 --> 00:13:26,830
+your changes in spine bone density over
+time in the rest of
+
+247
+00:13:26,830 --> 00:13:29,800
+the study would be significantly positive.
+
+248
+00:13:29,800 --> 00:13:32,710
+So if you were one standard deviation
+above average in
+
+249
+00:13:32,710 --> 00:13:37,990
+calcium intake that predicts that your
+rate of change in spine bone density would
+
+250
+00:13:37,990 --> 00:13:43,050
+be about 0.0018 higher than somebody who
+had just the average rate of change.
+
+251
+00:13:43,050 --> 00:13:46,280
+So someone with the average calcium
+intake,
+
+252
+00:13:46,280 --> 00:13:50,380
+their rate of change is going to be 0.0035
+per year.
+
+253
+00:13:50,380 --> 00:13:53,916
+Somebody who has, is one standard
+deviation above average in
+
+254
+00:13:53,916 --> 00:13:58,472
+Calcium intake at baseline, meaning that
+they kind of have a high calcium diet,
+
+255
+00:13:58,472 --> 00:14:02,747
+their rate of change is predicted to be
+0.0035 plus 0.0018.
+
+256
+00:14:02,747 --> 00:14:05,760
+So, that comes out to be about .0053 per
+year.
+
+257
+00:14:05,760 --> 00:14:10,280
+And the difference between the average
+intake and
+
+258
+00:14:10,280 --> 00:14:13,170
+one standard deviation above is indeed
+statistically significant.
+
+259
+00:14:13,170 --> 00:14:16,340
+So your having a high calcium intake
+predicts a higher change in
+
+260
+00:14:16,340 --> 00:14:17,870
+bone density over time.

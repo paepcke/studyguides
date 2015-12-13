@@ -1,0 +1,661 @@
+1
+00:00:01,640 --> 00:00:04,078
+The correct model here is B,
+
+2
+00:00:04,078 --> 00:00:12,570
+the exposure seconds is equal to 49 minus
+0.6 times the years since 1930.
+
+3
+00:00:12,570 --> 00:00:16,514
+The reason I'm doing it as years since
+1930 is because on my graphic I'm
+
+4
+00:00:16,514 --> 00:00:23,567
+not given, my y-axis here doesn't go at X
+equals zero, it goes at x equals 1937.
+
+5
+00:00:23,567 --> 00:00:24,859
+So it's just easier for
+
+6
+00:00:24,859 --> 00:00:30,949
+me to estimate the equation of that line,
+using years since 1937 as my x variable.
+
+7
+00:00:30,949 --> 00:00:32,530
+You can see I'm very close to 50 here so
+
+8
+00:00:32,530 --> 00:00:36,810
+I'm guessing that that intercept is at
+about 49, so that's my intercept.
+
+9
+00:00:36,810 --> 00:00:37,960
+How do I get the slope here?
+
+10
+00:00:37,960 --> 00:00:39,758
+Well slope is rise over one, run, so
+
+11
+00:00:39,758 --> 00:00:44,320
+we're going to just calculate the change
+in y over the change in x.
+
+12
+00:00:44,320 --> 00:00:48,082
+So the change in y in this graph we're
+going from about just kind of
+
+13
+00:00:48,082 --> 00:00:51,970
+estimating 49 maybe down to about 10 here.
+
+14
+00:00:51,970 --> 00:00:55,644
+So I'm going to say that's roughly about
+39 we're going down so it's negative.
+
+15
+00:00:55,644 --> 00:00:59,739
+X changes from 1937 to 2000 so that's a 63
+unit change in X so that's going to give
+
+16
+00:00:59,739 --> 00:01:05,500
+us a slope of about negative 0.6 so that's
+where I got the slope here.
+
+17
+00:01:05,500 --> 00:01:10,370
+Just kind of eyeballing this graphic here.
+
+18
+00:01:10,370 --> 00:01:14,640
+Which Pearson's coefficient looks the most
+reasonable?
+
+19
+00:01:14,640 --> 00:01:16,900
+So actually, it's D, negative 0.3.
+
+20
+00:01:16,900 --> 00:01:20,705
+You can see that's there an awful lot of
+scatter around this line.
+
+21
+00:01:20,705 --> 00:01:23,300
+This is really not a high correlation at
+all.
+
+22
+00:01:23,300 --> 00:01:25,092
+So the correct answer is negative 0.3,
+
+23
+00:01:25,092 --> 00:01:29,603
+it's negative certainly, because there our
+line is going down.
+
+24
+00:01:29,603 --> 00:01:32,600
+But a negative 0.5 is actually too big
+here.
+
+25
+00:01:32,600 --> 00:01:34,500
+So negative 0.3 is the correct answer.
+
+26
+00:01:34,500 --> 00:01:35,910
+There is a little bit of correlation.
+
+27
+00:01:35,910 --> 00:01:38,807
+So it's not 0.01 here.
+
+28
+00:01:38,807 --> 00:01:40,350
+But it's, it's very weak.
+
+29
+00:01:40,350 --> 00:01:41,911
+So it's point, negative 0.3.
+
+30
+00:01:44,750 --> 00:01:47,250
+The correct answer to this is, is B.
+
+31
+00:01:47,250 --> 00:01:50,470
+Actually, linear regression is probably
+not totally appropriate here.
+
+32
+00:01:50,470 --> 00:01:52,102
+We have a fairly small sample size, and
+
+33
+00:01:52,102 --> 00:01:56,660
+we're violating probably two of the
+assumptions of linear regression.
+
+34
+00:01:56,660 --> 00:01:59,676
+So you can see that we have a lot of
+zeroes in terms of the alcohol
+
+35
+00:01:59,676 --> 00:02:02,380
+exposure time in the movies.
+
+36
+00:02:02,380 --> 00:02:04,300
+If you have a lot of zeros like that, if
+we were to put this in
+
+37
+00:02:04,300 --> 00:02:06,220
+a histogram you're going to get this kind
+of huge zeros and
+
+38
+00:02:06,220 --> 00:02:09,870
+then it's probably going to be a right
+skewed distribution.
+
+39
+00:02:09,870 --> 00:02:13,440
+It's definitely not going to be normal and
+we've got a fairly small sample size here.
+
+40
+00:02:13,440 --> 00:02:16,430
+Also we're violating homogeneity of
+variances.
+
+41
+00:02:16,430 --> 00:02:18,365
+You see that there was actually a lot of
+variance in,
+
+42
+00:02:18,365 --> 00:02:20,480
+in the movies alcohol exposure early, in
+early years and
+
+43
+00:02:20,480 --> 00:02:24,962
+then it was kind of lessened between and
+then there seems to be more at the end.
+
+44
+00:02:24,962 --> 00:02:27,910
+That may just reflect, you know, how many
+movies are captured at each time point,
+
+45
+00:02:27,910 --> 00:02:32,050
+but it does look like there's some
+difference in in the variances there.
+
+46
+00:02:32,050 --> 00:02:39,260
+The correct linear regression equation
+here is C.
+
+47
+00:02:39,260 --> 00:02:42,560
+It's going to be a dummy coded re,
+regression equation because we
+
+48
+00:02:42,560 --> 00:02:47,029
+have a categorical predictor so our
+alchemist logs here are P.
+
+49
+00:02:47,029 --> 00:02:49,945
+We're going to have some intercept which
+will represent the mean in
+
+50
+00:02:49,945 --> 00:02:51,940
+the reference group.
+
+51
+00:02:51,940 --> 00:02:55,226
+And then we're going to have a beta for
+the infrequent drinkers, and a beta for
+
+52
+00:02:55,226 --> 00:02:58,095
+the occasional or regular drinkers.
+
+53
+00:02:58,095 --> 00:03:00,125
+And what is it mean to dummy code?
+
+54
+00:03:00,125 --> 00:03:03,547
+So again, when we dummy code what we're
+doing is we're saying we've got
+
+55
+00:03:03,547 --> 00:03:09,380
+a categorical predictor where you want to
+represent that with two binary variables.
+
+56
+00:03:09,380 --> 00:03:13,460
+So here's my drinking category that I've
+got my occasional regular drinkers.
+
+57
+00:03:13,460 --> 00:03:15,100
+I've got my infrequent drinkers.
+
+58
+00:03:15,100 --> 00:03:17,720
+And then I'm making the never drinkers the
+reference group.
+
+59
+00:03:17,720 --> 00:03:18,880
+That's somewhat arbitrary.
+
+60
+00:03:18,880 --> 00:03:22,530
+But that was the only correct answer I
+gave you.
+
+61
+00:03:22,530 --> 00:03:25,190
+So you had to use that one as the
+reference group.
+
+62
+00:03:25,190 --> 00:03:28,120
+Then I'm making two new variables.
+
+63
+00:03:28,120 --> 00:03:29,170
+A binary variable.
+
+64
+00:03:29,170 --> 00:03:31,710
+Which is you're an infrequent drinker or
+you're not.
+
+65
+00:03:31,710 --> 00:03:35,038
+And a binary variable which says you're an
+occasional or regular drinker, or
+
+66
+00:03:35,038 --> 00:03:36,370
+you're not.
+
+67
+00:03:36,370 --> 00:03:39,472
+So that means the occasional or regular
+drinkers will be a one on that variable,
+
+68
+00:03:39,472 --> 00:03:41,750
+and the other two will be zeroes.
+
+69
+00:03:41,750 --> 00:03:45,656
+The, infrequent drinkers will get a one on
+the infrequent variable, and
+
+70
+00:03:45,656 --> 00:03:48,360
+the other two will get zeros.
+
+71
+00:03:48,360 --> 00:03:51,605
+And the never group by default, they're
+the ones that get a zero for
+
+72
+00:03:51,605 --> 00:03:57,050
+the infrequent variable and a zero for
+that occasional, regular category.
+
+73
+00:03:57,050 --> 00:04:04,880
+So they actually, their mean will be
+captured in the intercept.
+
+74
+00:04:04,880 --> 00:04:08,150
+The correct answer here is negative 1.35.
+
+75
+00:04:08,150 --> 00:04:09,190
+Where did I get that from?
+
+76
+00:04:09,190 --> 00:04:12,750
+So I'm going to go to the graphic for the
+occasional regular drinkers.
+
+77
+00:04:12,750 --> 00:04:13,938
+And I'm looking for the slope for
+
+78
+00:04:13,938 --> 00:04:16,580
+the people without depression, that's the
+solid line.
+
+79
+00:04:16,580 --> 00:04:21,197
+Well that lines goes from about a positive
+0.1 down to a negative,
+
+80
+00:04:21,197 --> 00:04:24,330
+about negative 1.25.
+
+81
+00:04:24,330 --> 00:04:26,082
+So what's the slope?
+
+82
+00:04:26,082 --> 00:04:30,329
+Well, the change in y here, it goes down
+1.35.
+
+83
+00:04:30,329 --> 00:04:34,361
+X goes from never a drinker to occasional
+drinker, remember this is quoted as
+
+84
+00:04:34,361 --> 00:04:38,780
+a 01 variable so the change in x is just
+going to be one.
+
+85
+00:04:38,780 --> 00:04:40,749
+So, our slope is negative 1.35.
+
+86
+00:04:40,749 --> 00:04:44,277
+It's just the difference in the means
+between the reference group,
+
+87
+00:04:44,277 --> 00:04:49,160
+the never drinker group and the occasional
+regular drinker group.
+
+88
+00:04:49,160 --> 00:04:52,393
+For this question, notice, I didn't ask, I
+didn't specify which graph for
+
+89
+00:04:52,393 --> 00:04:53,957
+you to look at.
+
+90
+00:04:53,957 --> 00:04:57,349
+That's because the intercept represents
+the mean for the never drinkers and
+
+91
+00:04:57,349 --> 00:05:00,640
+you can see the never drinkers on both
+graphics.
+
+92
+00:05:00,640 --> 00:05:03,570
+The never drinkers have a mean of 0.1.
+
+93
+00:05:03,570 --> 00:05:07,440
+So the intercept here is going to be
+positive 0.1 or the, depth A here.
+
+94
+00:05:07,440 --> 00:05:13,600
+So one of the main conclusions from this
+picture that we an draw is B.
+
+95
+00:05:13,600 --> 00:05:16,904
+The alcohol drinking seems to be
+associated with a smaller decrease in
+
+96
+00:05:16,904 --> 00:05:21,453
+inflammation in the depressed group, than
+in the nondepressed group.
+
+97
+00:05:21,453 --> 00:05:25,300
+The nondepressed people seem to get a
+better benefit from alcohol.
+
+98
+00:05:25,300 --> 00:05:27,106
+There's actually an interaction going on
+here and
+
+99
+00:05:27,106 --> 00:05:29,100
+that's what this graphic illustrates.
+
+100
+00:05:31,410 --> 00:05:33,446
+So, the correct model here is D.
+
+101
+00:05:33,446 --> 00:05:37,982
+This is a, Model, linear regression model
+that has just a categorical predictor in
+
+102
+00:05:37,982 --> 00:05:39,935
+the model that's been dummy coded, so
+
+103
+00:05:39,935 --> 00:05:46,401
+if you find the 4.4 in our little table
+here, the outcome is visual reception.
+
+104
+00:05:46,401 --> 00:05:48,695
+We're talking about the unadjusted beta,
+so
+
+105
+00:05:48,695 --> 00:05:53,090
+the only thing that's in the model is the
+categorical variable.
+
+106
+00:05:53,090 --> 00:05:55,590
+It's a three-level categorical variable.
+
+107
+00:05:55,590 --> 00:05:59,592
+You are either exclusively formula fed,
+partially breast fed, or exclusively, or
+
+108
+00:05:59,592 --> 00:06:02,040
+almost exclusively breast fed.
+
+109
+00:06:02,040 --> 00:06:03,740
+So there's three categories.
+
+110
+00:06:03,740 --> 00:06:06,120
+So, our visual reception scores are
+outcome.
+
+111
+00:06:06,120 --> 00:06:09,011
+That's going to be equal to some intercept
+plus the beta for
+
+112
+00:06:09,011 --> 00:06:14,210
+the exclusive breast feeders plus the beta
+for the partial breast feeders.
+
+113
+00:06:14,210 --> 00:06:18,632
+And, I'm assuming, that the, and it tells
+us in the table that the reference group
+
+114
+00:06:18,632 --> 00:06:25,220
+is the formula fed group so, that's why,
+they, those are captured in the intercept.
+
+115
+00:06:25,220 --> 00:06:27,359
+The correct answer here is B.
+
+116
+00:06:28,577 --> 00:06:32,861
+the, again, we're talking about this value
+of 4.4.
+
+117
+00:06:32,861 --> 00:06:37,700
+It's saying that, on average, it's a, a
+yes/no variable here.
+
+118
+00:06:37,700 --> 00:06:39,284
+You're either exclusively breast fed, and
+
+119
+00:06:39,284 --> 00:06:42,760
+that's being compared to the reference
+group of exclusively formula fed.
+
+120
+00:06:42,760 --> 00:06:46,472
+So, on average, the exclusively breast fed
+babies score 4.4 points higher in
+
+121
+00:06:46,472 --> 00:06:50,520
+visual reception, compared with the
+formula fed babies.
+
+122
+00:06:50,520 --> 00:06:54,090
+That's what the the value of that beta
+coefficient means, the beta coefficient,
+
+123
+00:06:54,090 --> 00:06:56,691
+the 95 percent confidence interval here
+goes from 0.7 to 8.2,
+
+124
+00:06:56,691 --> 00:06:59,649
+it does not cross the null value of zero,
+therefore we know that this is
+
+125
+00:06:59,649 --> 00:07:05,400
+a statistically significant result, so
+again the correct answer is B.
+
+126
+00:07:05,400 --> 00:07:09,420
+So the correct answer here is A.
+
+127
+00:07:09,420 --> 00:07:12,836
+Much of the apparent relationship between
+exclusive breastfeeding and
+
+128
+00:07:12,836 --> 00:07:17,720
+infant cognitive function was actually due
+to confounding by other variables.
+
+129
+00:07:18,840 --> 00:07:22,887
+And you can see that here in all of these
+different, models and
+
+130
+00:07:22,887 --> 00:07:26,050
+all these different outcomes.
+
+131
+00:07:26,050 --> 00:07:29,314
+You can see, for example, for the visual
+reception score goes from 4.4 down to
+
+132
+00:07:29,314 --> 00:07:32,700
+2.4 when adjusted for these potential
+confounders.
+
+133
+00:07:32,700 --> 00:07:34,900
+So there's a big drop in the data and
+that's true across all of
+
+134
+00:07:34,900 --> 00:07:38,380
+the different datas That are measuring
+cognitive function here.
+
+135
+00:07:38,380 --> 00:07:40,270
+Not just the visual reception score.
+
+136
+00:07:40,270 --> 00:07:45,010
+The correct answer here is A.
+
+137
+00:07:45,010 --> 00:07:48,780
+Breast milk DHA was treated as a
+continuous variable.
+
+138
+00:07:48,780 --> 00:07:53,040
+So these beta coefficients represent the
+change in cognitive score for
+
+139
+00:07:53,040 --> 00:07:55,820
+every 1% increase in DHA.
+
+140
+00:07:55,820 --> 00:07:59,832
+There's actually a clue here in the table,
+because if you read carefully you can see
+
+141
+00:07:59,832 --> 00:08:03,372
+it says continuous, and if you read the
+fine print it tells you that it's,
+
+142
+00:08:03,372 --> 00:08:09,200
+the units here are per a 1% increase in
+fatty acid concentration.

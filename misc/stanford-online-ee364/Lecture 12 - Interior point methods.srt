@@ -1,0 +1,9699 @@
+1
+00:00:00,310 --> 00:00:02,690
+And let me first say a little bit about
+how all this,
+
+2
+00:00:02,690 --> 00:00:06,100
+how everything fits together, how all, all
+the computational stuff fits together?
+
+3
+00:00:07,654 --> 00:00:10,950
+So we, one way to view it, is you start
+with this.
+
+4
+00:00:10,950 --> 00:00:14,400
+You start with solving quadratic equations
+with linear equality constraints.
+
+5
+00:00:14,400 --> 00:00:16,950
+How do you minimize a quadratic with
+linear equality constraints?
+
+6
+00:00:16,950 --> 00:00:17,689
+What does it reduce to?
+
+7
+00:00:19,680 --> 00:00:21,300
+Is linear equations, right?
+
+8
+00:00:21,300 --> 00:00:22,860
+And then we, I we know how to solve linear
+equations.
+
+9
+00:00:22,860 --> 00:00:25,100
+Actually know quite a lot about how to
+solve linear equations.
+
+10
+00:00:25,100 --> 00:00:25,850
+Okay?
+
+11
+00:00:25,850 --> 00:00:28,130
+All right, so that's just like done.
+
+12
+00:00:28,130 --> 00:00:29,030
+Right?
+
+13
+00:00:29,030 --> 00:00:31,710
+Well, one way to view Newton's method is
+this.
+
+14
+00:00:31,710 --> 00:00:36,160
+I ask you to, to minimize a smooth
+function subject to equality constraints.
+
+15
+00:00:36,160 --> 00:00:38,920
+And what it effectively does, if you look
+above, you look at,
+
+16
+00:00:38,920 --> 00:00:40,990
+say what is Newton's method doing.
+
+17
+00:00:40,990 --> 00:00:44,180
+You could even write it so it was clear,
+this is what it's doing.
+
+18
+00:00:44,180 --> 00:00:46,750
+The answer is it's solving a sequence,
+
+19
+00:00:46,750 --> 00:00:52,970
+a short sequence of quadratic equality
+constrained minimization problems, right?
+
+20
+00:00:52,970 --> 00:00:56,080
+I mean maybe, I mean if you were to
+profile Newton's method,
+
+21
+00:00:56,080 --> 00:00:58,210
+what you'd find is it's solving linear
+equations.
+
+22
+00:00:58,210 --> 00:01:02,300
+But the linear equations it's solving are
+actually solving a equality constrained
+
+23
+00:01:02,300 --> 00:01:03,960
+quadratic minimization problem, right?
+
+24
+00:01:03,960 --> 00:01:09,920
+So, so then you could say well we have now
+extended we, we can now solve
+
+25
+00:01:09,920 --> 00:01:15,750
+smooth equality constrained problems by
+reducing that to solving a sequence.
+
+26
+00:01:15,750 --> 00:01:16,410
+Right?
+
+27
+00:01:16,410 --> 00:01:18,300
+In fact not a long sequence, right?
+
+28
+00:01:18,300 --> 00:01:22,560
+But a sequence of quadratic equality
+constrained problems which in
+
+29
+00:01:22,560 --> 00:01:24,400
+turn are linear algebra.
+
+30
+00:01:24,400 --> 00:01:25,480
+Already got this?
+
+31
+00:01:25,480 --> 00:01:26,230
+Well, guess what?
+
+32
+00:01:26,230 --> 00:01:29,460
+Now we're going to go to inequality
+constrained problems, and
+
+33
+00:01:29,460 --> 00:01:30,310
+here's, guess how we're going to do it?
+
+34
+00:01:30,310 --> 00:01:33,070
+We're going to take an inequality
+constraint problem, and we're going to
+
+35
+00:01:33,070 --> 00:01:40,150
+reduce that to solving a short sequence of
+smooth minimization problems.
+
+36
+00:01:40,150 --> 00:01:40,830
+Okay?
+
+37
+00:01:40,830 --> 00:01:42,200
+So now you have a stack.
+
+38
+00:01:42,200 --> 00:01:43,360
+Right?
+And the stack'll look like this.
+
+39
+00:01:43,360 --> 00:01:47,876
+You have an inequality constraint problem,
+you will solve it by solving a ten,
+
+40
+00:01:47,876 --> 00:01:50,490
+20, [INAUDIBLE] number doesn't matter,
+right?
+
+41
+00:01:50,490 --> 00:01:52,900
+But it's not like a gigantic number,
+right?
+
+42
+00:01:52,900 --> 00:01:56,330
+You going to solve ten, 20 smooth
+minimization problems.
+
+43
+00:01:56,330 --> 00:01:57,850
+How are you going to solve those?
+
+44
+00:01:57,850 --> 00:02:01,130
+Each of those is going to be reduced to
+solving, again,
+
+45
+00:02:01,130 --> 00:02:04,100
+a modest number of quadratic equality
+problems.
+
+46
+00:02:04,100 --> 00:02:04,980
+Everybody got this?
+
+47
+00:02:04,980 --> 00:02:06,540
+And solving a quadratic equality problem,
+
+48
+00:02:06,540 --> 00:02:09,020
+that's actually something we have an
+actual method for.
+
+49
+00:02:09,020 --> 00:02:10,360
+It's called linear algebra.
+
+50
+00:02:10,360 --> 00:02:13,850
+Everybody, so this is the whole big, this
+is the full, big picture.
+
+51
+00:02:13,850 --> 00:02:17,910
+Actually, you wanted, you could put
+something on top.
+
+52
+00:02:17,910 --> 00:02:21,020
+And the on top would be the kind of stuff
+that CVX does.
+
+53
+00:02:21,020 --> 00:02:24,925
+That, that takes your original problem,
+which you may have all sorts of
+
+54
+00:02:24,925 --> 00:02:27,145
+non-differentiable functions and things
+like that.
+
+55
+00:02:27,145 --> 00:02:32,820
+And automatically does the transforms to a
+problem which you can handle, that has,
+
+56
+00:02:32,820 --> 00:02:36,050
+for example, smooth constraints and smooth
+objective.
+
+57
+00:02:36,050 --> 00:02:36,988
+Right?
+So, for
+
+58
+00:02:36,988 --> 00:02:39,246
+example, convert your problem to an lp.
+
+59
+00:02:39,246 --> 00:02:42,470
+In an lp all your objectives and your
+constraints are smooth.
+
+60
+00:02:42,470 --> 00:02:43,610
+Everybody see, what I'm saying?
+
+61
+00:02:43,610 --> 00:02:45,260
+And now you see the entire stack.
+
+62
+00:02:45,260 --> 00:02:46,210
+Right, that, that's it.
+
+63
+00:02:46,210 --> 00:02:47,580
+That's the whole stack.
+
+64
+00:02:47,580 --> 00:02:48,100
+Okay?
+
+65
+00:02:48,100 --> 00:02:48,950
+So, okay.
+
+66
+00:02:48,950 --> 00:02:51,080
+So that's the big picture.
+
+67
+00:02:51,080 --> 00:02:54,390
+And that's what we're going to do today,
+or part of today.
+
+68
+00:02:54,390 --> 00:02:55,220
+All right.
+
+69
+00:02:55,220 --> 00:02:59,950
+So, we're going to start with this
+problem, inequality constraint.
+
+70
+00:02:59,950 --> 00:03:03,382
+And you know, the, the, the equality
+constraints are just going to float along
+
+71
+00:03:03,382 --> 00:03:06,090
+everywhere we go, and I, you can even
+almost ignore them.
+
+72
+00:03:06,090 --> 00:03:10,120
+And it's even, when I look at examples,
+I'll probably ignore the Ax equals b.
+
+73
+00:03:10,120 --> 00:03:13,540
+But it just floats along, and, and doesn't
+really hurt anybody.
+
+74
+00:03:13,540 --> 00:03:15,150
+Besides, we can handle it, right?
+
+75
+00:03:15,150 --> 00:03:19,590
+In fact, it's the Ax equals b that
+persists at all levels of the stack.
+
+76
+00:03:19,590 --> 00:03:21,120
+Right?
+When you go down the Newton's method,
+
+77
+00:03:21,120 --> 00:03:22,690
+it's just linear equations, right?
+
+78
+00:03:23,700 --> 00:03:26,800
+Each iteration of Newton's method, it, it,
+it fills in a row of, okay,
+
+79
+00:03:26,800 --> 00:03:29,610
+if we take image is linear, so, linear, or
+another way to say it is,
+
+80
+00:03:29,610 --> 00:03:34,680
+if you write the, if you write the
+linearize me method on, that,
+
+81
+00:03:34,680 --> 00:03:38,700
+when you have Ax equals b, and you call
+that method on Ax equals b, very simple.
+
+82
+00:03:38,700 --> 00:03:39,970
+It just returns itself.
+
+83
+00:03:39,970 --> 00:03:42,658
+'Kay, so, and that persists all the way to
+the bottom of the stack.
+
+84
+00:03:42,658 --> 00:03:46,670
+Okay, so we're going to make, we'll make
+some assumptions.
+
+85
+00:03:46,670 --> 00:03:49,660
+We'll assume that A is [COUGH] is full
+rank.
+
+86
+00:03:49,660 --> 00:03:50,300
+Right?
+So we don't
+
+87
+00:03:50,300 --> 00:03:52,770
+have redundant quality constraints.
+
+88
+00:03:52,770 --> 00:03:55,490
+And we'll assume that there's a, there's a
+solution.
+
+89
+00:03:55,490 --> 00:03:58,670
+Right?
+That there is an x that satisfies this.
+
+90
+00:03:58,670 --> 00:04:00,680
+And we'll assume a strict feasibility.
+
+91
+00:04:00,680 --> 00:04:02,490
+I mean, you don't even need a lot of this
+stuff.
+
+92
+00:04:02,490 --> 00:04:05,930
+But just, these are sledgehammer
+assumptions.
+
+93
+00:04:05,930 --> 00:04:10,590
+and, by the way, this is the, this is the,
+I mean this is so.
+
+94
+00:04:10,590 --> 00:04:13,650
+This is actually the Slater condition
+essentially, here.
+
+95
+00:04:13,650 --> 00:04:16,070
+You don't need any Slater conditions for
+equality constraints, right?
+
+96
+00:04:16,070 --> 00:04:20,720
+Because the reduced slate, the modified
+Slater condition says you
+
+97
+00:04:20,720 --> 00:04:24,490
+can ignore actually equality, linear
+equality constraints.
+
+98
+00:04:24,490 --> 00:04:26,540
+Well, that's the only kind of equality
+constraints you can have, and
+
+99
+00:04:26,540 --> 00:04:27,570
+linear inequality constraints.
+
+100
+00:04:27,570 --> 00:04:28,870
+So, we ignore those entirely.
+
+101
+00:04:31,150 --> 00:04:36,050
+And this says simply that, that the oh,
+that the domain the interior of
+
+102
+00:04:36,050 --> 00:04:38,290
+the domain, actually intersects, well,
+actually, sorry,
+
+103
+00:04:38,290 --> 00:04:40,650
+the domain is open because we're assuming
+they're differential.
+
+104
+00:04:40,650 --> 00:04:41,890
+Right?
+So, but, so,
+
+105
+00:04:41,890 --> 00:04:45,530
+since the domain intersects the equality
+constraint.
+
+106
+00:04:45,530 --> 00:04:48,370
+And, and this says things like strong
+duality holds, and, and
+
+107
+00:04:48,370 --> 00:04:50,310
+the dual optimum is attained.
+
+108
+00:04:50,310 --> 00:04:52,410
+Okay.
+So what are examples?
+
+109
+00:04:52,410 --> 00:04:57,340
+Well, linear programs, quadratic programs,
+QCQPs geometric programs, right?
+
+110
+00:04:57,340 --> 00:05:00,230
+Geometric programs, all the functions are
+things like log sum x.
+
+111
+00:05:01,360 --> 00:05:02,680
+Entropy maximization.
+
+112
+00:05:02,680 --> 00:05:06,010
+So you say you want to maximize entropy
+you get something like this right, so
+
+113
+00:05:06,010 --> 00:05:07,770
+that, that's a problem looks like that.
+
+114
+00:05:08,850 --> 00:05:10,700
+That's asking to maximize entropy or
+
+115
+00:05:10,700 --> 00:05:15,180
+minimizing negative entropy, and Fx less
+than g and Ax equals b.
+
+116
+00:05:15,180 --> 00:05:18,620
+You can even interpret, if you interpret x
+say as a probability vector,
+
+117
+00:05:18,620 --> 00:05:19,820
+it doesn't have to be normalized here,
+
+118
+00:05:19,820 --> 00:05:24,249
+but assuming it were, this says please
+find me the maximum entropy distribution.
+
+119
+00:05:25,450 --> 00:05:29,610
+That matches certain expectations exactly,
+and
+
+120
+00:05:29,610 --> 00:05:32,930
+satisfies inequalities on other
+expectations.
+
+121
+00:05:32,930 --> 00:05:34,480
+That, that, that's what this problem is.
+
+122
+00:05:34,480 --> 00:05:36,105
+That's one way to interpret it.
+
+123
+00:05:36,105 --> 00:05:38,630
+Okay.
+And this, this'll work.
+
+124
+00:05:38,630 --> 00:05:39,139
+This is fine.
+
+125
+00:05:40,590 --> 00:05:45,620
+oh, as I said you may use one of the
+transformations the kind of
+
+126
+00:05:45,620 --> 00:05:50,620
+ones that CVX would use to take a problem
+with non-differentiable objectives
+
+127
+00:05:50,620 --> 00:05:55,140
+constraints and transform it in fact in a
+completely mechanical way
+
+128
+00:05:55,140 --> 00:05:58,470
+to a problem that doesn't have, that where
+all the constraints are smooth.
+
+129
+00:05:58,470 --> 00:06:02,190
+Like for example, you transform it to an
+SOCP or to an LP.
+
+130
+00:06:02,190 --> 00:06:02,850
+Right?
+
+131
+00:06:02,850 --> 00:06:05,755
+Okay.
+now, [UNKNOWN] programs, things like
+
+132
+00:06:05,755 --> 00:06:10,350
+SDPs and SOCPs are actually better handled
+as problems with generalized inequalities
+
+133
+00:06:10,350 --> 00:06:14,450
+although they will work here too provided
+you express them in a smooth way.
+
+134
+00:06:14,450 --> 00:06:17,230
+There's actually, there's some really cool
+smooth ways to write down
+
+135
+00:06:17,230 --> 00:06:18,320
+SDPs for example.
+
+136
+00:06:21,140 --> 00:06:23,370
+We've already seen the log barrier, but
+
+137
+00:06:23,370 --> 00:06:26,770
+the key is to start with your original
+problem and do something really weird.
+
+138
+00:06:26,770 --> 00:06:27,332
+It's this.
+
+139
+00:06:27,332 --> 00:06:30,550
+We're going to take the inequality
+constraints and
+
+140
+00:06:30,550 --> 00:06:32,520
+were going to put them in the objective,
+and what we are going to do,
+
+141
+00:06:32,520 --> 00:06:36,860
+is we're going to take I minus, that is
+the indicator function of R minus.
+
+142
+00:06:36,860 --> 00:06:40,590
+So that's a function that looks like this:
+it's zero and
+
+143
+00:06:40,590 --> 00:06:43,350
+then it goes to plus infinity, if you go
+positive.
+
+144
+00:06:43,350 --> 00:06:44,120
+Okay?
+
+145
+00:06:44,120 --> 00:06:47,990
+And that simply says, it, it says that if
+you take fi of x, and
+
+146
+00:06:47,990 --> 00:06:54,120
+if it's less than 0 this returns 0, and if
+it is positive it returns plus infinity.
+
+147
+00:06:54,120 --> 00:06:59,010
+A plus infinity and an objective is
+basically saying it's infinitely bad
+
+148
+00:06:59,010 --> 00:07:00,370
+which is to say it's unacceptable.
+
+149
+00:07:00,370 --> 00:07:01,440
+Right?
+So this is the,
+
+150
+00:07:01,440 --> 00:07:03,580
+the right, that's the idea.
+
+151
+00:07:03,580 --> 00:07:04,260
+Okay?
+
+152
+00:07:04,260 --> 00:07:09,280
+So now you can't apply Newton's method to
+this directly,
+
+153
+00:07:09,280 --> 00:07:12,510
+because this is like big time
+non-differentiable.
+
+154
+00:07:12,510 --> 00:07:13,680
+Right?
+because you've got this thing that
+
+155
+00:07:13,680 --> 00:07:15,350
+goes like up to plus infinity.
+
+156
+00:07:15,350 --> 00:07:16,270
+Okay?
+
+157
+00:07:16,270 --> 00:07:19,780
+So so what we're going to do instead,
+
+158
+00:07:19,780 --> 00:07:22,370
+is we're going to make a surrogate that's
+smooth.
+
+159
+00:07:22,370 --> 00:07:24,590
+Okay, and the surrogate that's smooth is
+the log barrier, so
+
+160
+00:07:24,590 --> 00:07:28,480
+you'll form 1 over t minus log minus f.
+
+161
+00:07:28,480 --> 00:07:30,220
+These are functions that look like this.
+
+162
+00:07:30,220 --> 00:07:30,720
+Okay?
+
+163
+00:07:30,720 --> 00:07:32,580
+They, they look just like that.
+
+164
+00:07:32,580 --> 00:07:34,040
+Right?
+These are, and these are increasing val,
+
+165
+00:07:34,040 --> 00:07:39,390
+so this, this one that hugs this, the true
+function closer is with a higher t.
+
+166
+00:07:39,390 --> 00:07:40,490
+Higher value of t.
+
+167
+00:07:40,490 --> 00:07:41,150
+Okay?
+
+168
+00:07:41,150 --> 00:07:47,110
+So, now this one, that problem, that's
+Newton ready.
+
+169
+00:07:47,110 --> 00:07:51,090
+Right, that's ready for Newton with the
+equality constraints, because it's smooth.
+
+170
+00:07:51,090 --> 00:07:51,910
+Right?
+
+171
+00:07:51,910 --> 00:07:52,560
+And not only that,
+
+172
+00:07:52,560 --> 00:07:56,450
+at least visually, the approximation
+improves as t goes to infinity.
+
+173
+00:07:56,450 --> 00:08:00,820
+So, it looks like we have something that
+will do the right thing.
+
+174
+00:08:00,820 --> 00:08:01,980
+Everybody got this?
+
+175
+00:08:01,980 --> 00:08:06,020
+Now, before we go any farther, I want to
+point out,
+
+176
+00:08:06,020 --> 00:08:09,469
+when people tell stories like this, you
+should be deeply skeptical,
+
+177
+00:08:09,469 --> 00:08:12,800
+because usually stuff like this doesn't
+work, right?
+
+178
+00:08:12,800 --> 00:08:16,880
+This is like, you're sitting there and you
+come along and it, it's not working.
+
+179
+00:08:16,880 --> 00:08:17,690
+And someone says, what's wrong?
+
+180
+00:08:17,690 --> 00:08:19,550
+You say, oh, I can't solve Ax equals b.
+
+181
+00:08:20,930 --> 00:08:23,140
+And the person says, well why?
+
+182
+00:08:23,140 --> 00:08:29,210
+And, and you say, that's because my matrix
+a is is singular.
+
+183
+00:08:29,210 --> 00:08:30,910
+And you go, oh, well, gee, that's too bad.
+
+184
+00:08:30,910 --> 00:08:32,260
+And then you say, what does it represent?
+
+185
+00:08:32,260 --> 00:08:34,430
+You say, oh, it's a measurement apparatus,
+something like that.
+
+186
+00:08:34,430 --> 00:08:36,800
+And you say, oh, is it that apparatus on
+the desk over there?
+
+187
+00:08:36,800 --> 00:08:38,260
+And you go, yeah, give me a hammer.
+
+188
+00:08:38,260 --> 00:08:41,950
+And you just tap the desk next to it, and
+you say, a is now non-singular.
+
+189
+00:08:41,950 --> 00:08:44,970
+Everyone understand what I just said,
+right?
+
+190
+00:08:44,970 --> 00:08:49,120
+So, because if you take a, if you take a,
+a singular matrix, And you perturb,
+
+191
+00:08:49,120 --> 00:08:52,460
+if you take a random perturb, in fact,
+take any entry generically,
+
+192
+00:08:52,460 --> 00:08:56,810
+take the sixth, seventh entry, and add 1e
+minus 19 to it, and
+
+193
+00:08:56,810 --> 00:09:00,250
+with probability 1, the matrix is now non
+singular.
+
+194
+00:09:00,250 --> 00:09:01,590
+Everybody following this?
+
+195
+00:09:01,590 --> 00:09:03,140
+Right?
+Okay, so the question is, you know,
+
+196
+00:09:03,140 --> 00:09:04,290
+does that solve the problem?
+
+197
+00:09:05,290 --> 00:09:08,830
+The answer is, well, no, of course it
+doesn't solve the problem.
+
+198
+00:09:08,830 --> 00:09:10,920
+The matrix is now non-singular.
+
+199
+00:09:10,920 --> 00:09:15,050
+But it still has a condition num-, it has
+a condition number of like 10 to the 19.
+
+200
+00:09:15,050 --> 00:09:20,340
+So all the problems you were going to have
+when it had a condition number infinity,
+
+201
+00:09:20,340 --> 00:09:20,930
+are still there.
+
+202
+00:09:20,930 --> 00:09:21,980
+Everybody following this?
+
+203
+00:09:21,980 --> 00:09:23,620
+Right?
+So people who just come along and,
+
+204
+00:09:23,620 --> 00:09:24,870
+like, perturb your problem.
+
+205
+00:09:24,870 --> 00:09:29,010
+So look at this, someone says I want to
+solve a problem that's my true,
+
+206
+00:09:29,010 --> 00:09:30,800
+this is my true irritation function here.
+
+207
+00:09:30,800 --> 00:09:32,350
+It express how I feel about each fi.
+
+208
+00:09:32,350 --> 00:09:36,160
+I mean, it, it expresses the semantics of
+a hard constraint.
+
+209
+00:09:36,160 --> 00:09:39,970
+It says if fi is negative or 0, I'm just
+totally cool with it.
+
+210
+00:09:39,970 --> 00:09:41,230
+Tot, totally cool.
+
+211
+00:09:41,230 --> 00:09:43,320
+I, it's neutral, it means nothing to me.
+
+212
+00:09:43,320 --> 00:09:48,340
+But if it's 1e minus not, you know, minus
+19, that's completely unacceptable.
+
+213
+00:09:48,340 --> 00:09:50,240
+That's what the semantics is, right?
+
+214
+00:09:50,240 --> 00:09:53,700
+And someone says oh, yeah, no problem
+gimme some sandpaper.
+
+215
+00:09:53,700 --> 00:09:57,720
+I'll just go down to this corner down here
+and I'll just sand it off.
+
+216
+00:09:57,720 --> 00:10:00,587
+I'll start with some number 80 sandpaper
+then I'll go to 120, and
+
+217
+00:10:00,587 --> 00:10:01,680
+some 400 and you know.
+
+218
+00:10:01,680 --> 00:10:05,200
+Everybody know what I'm saying, right?
+
+219
+00:10:05,200 --> 00:10:07,650
+You sand if off and somebody says what did
+you just do and you go,
+
+220
+00:10:07,650 --> 00:10:10,180
+oh yeah, your function's now
+differentiable.
+
+221
+00:10:10,180 --> 00:10:11,690
+And it's no different from, I mean, for
+
+222
+00:10:11,690 --> 00:10:13,540
+all practical purposes, the same as what
+you had before.
+
+223
+00:10:13,540 --> 00:10:15,060
+Everybody following this?
+
+224
+00:10:15,060 --> 00:10:17,270
+And you go, go ahead.
+
+225
+00:10:17,270 --> 00:10:19,630
+Let, let's apply your Newton method on it.
+
+226
+00:10:19,630 --> 00:10:21,750
+Tech, technically that's correct, isn't
+it?
+
+227
+00:10:21,750 --> 00:10:25,510
+I mean, if you take something that looks
+like that, if I sand the bottom off.
+
+228
+00:10:25,510 --> 00:10:28,690
+I have to sand the sides a little bit too,
+to make it a barrier, right?
+
+229
+00:10:28,690 --> 00:10:30,410
+I mean, actually, this does it effectively
+right here.
+
+230
+00:10:30,410 --> 00:10:34,380
+I don't have to use sandpaper, it's just,
+I just use, I, I used 1 over t,
+
+231
+00:10:34,380 --> 00:10:35,910
+I take t equals 10 to the 9.
+
+232
+00:10:35,910 --> 00:10:36,740
+Everybody following this?
+
+233
+00:10:38,220 --> 00:10:38,960
+Okay.
+
+234
+00:10:38,960 --> 00:10:40,320
+And what's the problem with that?
+
+235
+00:10:41,410 --> 00:10:44,900
+Like the guy who bangs the hammer next to
+the, you know, the sensor suite?
+
+236
+00:10:46,470 --> 00:10:47,720
+What, what's the problem with this?
+
+237
+00:10:50,010 --> 00:10:52,340
+Why can't it, why aren't we just done
+here, or
+
+238
+00:10:52,340 --> 00:10:53,950
+why should you be deeply skeptical?
+
+239
+00:10:53,950 --> 00:10:58,910
+So your suspicion is, though it may, it's
+actually true that if I take
+
+240
+00:10:58,910 --> 00:11:04,880
+t equals 10 to the 9, I get a pretty good
+approximation of i minus, right?
+
+241
+00:11:04,880 --> 00:11:07,140
+One, one that one could even argue is,
+
+242
+00:11:07,140 --> 00:11:09,780
+is close enough for for any practical
+purpose.
+
+243
+00:11:09,780 --> 00:11:11,550
+That, that, that's actually true.
+
+244
+00:11:11,550 --> 00:11:15,880
+But the problem is that that function is
+actually just about the worst thing in
+
+245
+00:11:15,880 --> 00:11:17,290
+the world for Newton's method, right?
+
+246
+00:11:17,290 --> 00:11:19,820
+Because it, because it's not close to
+quadratic or
+
+247
+00:11:19,820 --> 00:11:23,420
+another way to say it is, it's third
+derivative is big, right?
+
+248
+00:11:23,420 --> 00:11:24,190
+Or, it's non-quadratic.
+
+249
+00:11:24,190 --> 00:11:26,060
+I mean, or, or it's, here's another one.
+
+250
+00:11:26,060 --> 00:11:30,634
+It's second derivative changes wildly when
+you get near the barrier.
+
+251
+00:11:30,634 --> 00:11:31,790
+Right?
+
+252
+00:11:31,790 --> 00:11:33,110
+And that's another way,
+
+253
+00:11:33,110 --> 00:11:35,150
+of course, of saying the derivative is big
+or something, right?
+
+254
+00:11:35,150 --> 00:11:39,630
+So, so that says Newton's method will
+work, and it will take 10 to the 9 steps.
+
+255
+00:11:39,630 --> 00:11:41,080
+Okay?
+Everybody following this?
+
+256
+00:11:41,080 --> 00:11:42,180
+All right.
+So, I'm just saying,
+
+257
+00:11:42,180 --> 00:11:45,780
+you should be very skeptical about things
+like this, right?
+
+258
+00:11:45,780 --> 00:11:46,894
+because it just doesn't work that way,
+
+259
+00:11:46,894 --> 00:11:49,290
+when usually when someone walks up to you,
+and you say, having a problem?
+
+260
+00:11:49,290 --> 00:11:50,130
+And they say, oh, no problem.
+
+261
+00:11:50,130 --> 00:11:52,590
+We'll just appro, we'll just smooth this,
+we'll sand this thing off, and
+
+262
+00:11:52,590 --> 00:11:54,400
+now it's differentiable.
+
+263
+00:11:54,400 --> 00:11:56,320
+And, and then, they walk away.
+
+264
+00:11:56,320 --> 00:11:57,330
+You should be suspicious.
+
+265
+00:11:57,330 --> 00:12:00,740
+I want to say that, we have seen this
+story be,
+
+266
+00:12:00,740 --> 00:12:05,490
+you have seen this story before, in a
+different context.
+
+267
+00:12:05,490 --> 00:12:07,820
+And so let me tell you the context you saw
+it in.
+
+268
+00:12:07,820 --> 00:12:08,840
+It was this.
+
+269
+00:12:08,840 --> 00:12:11,930
+This is the function that really captures
+how we care about constraints.
+
+270
+00:12:11,930 --> 00:12:13,830
+It's this thing here, right?
+
+271
+00:12:13,830 --> 00:12:16,620
+But do you remember what happens in a
+Lagrange Duality?
+
+272
+00:12:16,620 --> 00:12:20,690
+You approximate this function by this,
+right?
+
+273
+00:12:20,690 --> 00:12:23,060
+And the slope there is lambda i.
+
+274
+00:12:23,060 --> 00:12:23,990
+Okay?
+
+275
+00:12:23,990 --> 00:12:26,870
+Now the point is, nobody would be tempted
+to look at that and
+
+276
+00:12:26,870 --> 00:12:29,470
+say, yeah, that's a pretty good
+approximation, right?
+
+277
+00:12:29,470 --> 00:12:35,050
+So, but the shock was that Lagrange
+Duality kind of worked in some sense,
+
+278
+00:12:35,050 --> 00:12:40,080
+that, that an approximation this bad of
+this thing actually yielded something,
+
+279
+00:12:40,080 --> 00:12:44,590
+but at a high level, it's the same thing,
+the same, or the same story is behind
+
+280
+00:12:44,590 --> 00:12:49,270
+Lagrange Duality, that's behind well, the
+logarithmic barrier, right?
+
+281
+00:12:49,270 --> 00:12:51,120
+because it, the story starts this way.
+
+282
+00:12:51,120 --> 00:12:53,730
+This is what you care about, this thing.
+
+283
+00:12:53,730 --> 00:12:56,470
+And then you say, let's replace it with
+something.
+
+284
+00:12:56,470 --> 00:12:58,750
+In Lagrange Duality, you replace it with
+something that's linear.
+
+285
+00:12:58,750 --> 00:13:01,830
+And people say, wow, that is a crappy
+approximation.
+
+286
+00:13:01,830 --> 00:13:05,522
+And you go, yeah, but I'm leaving open the
+following possibility, I can change,
+
+287
+00:13:05,522 --> 00:13:07,480
+I can wiggle the lambdas, right?
+
+288
+00:13:07,480 --> 00:13:12,550
+That, that's, that's the secret in
+Lagrange Duality, right?
+
+289
+00:13:12,550 --> 00:13:16,050
+What was weird was Lagrange Duality ended
+up having like a really good ending.
+
+290
+00:13:16,050 --> 00:13:16,560
+Right?
+
+291
+00:13:16,560 --> 00:13:20,550
+So you can, this is, all I'm saying the
+story is the same.
+
+292
+00:13:20,550 --> 00:13:24,760
+Here instead of saying we're going to
+replace it with, with a, a linear thing,
+
+293
+00:13:24,760 --> 00:13:28,130
+and wiggle with the slope, we're actually
+going to replace it with something that
+
+294
+00:13:28,130 --> 00:13:33,330
+actually plausibly is, or might be, an
+actual approximation of this function.
+
+295
+00:13:33,330 --> 00:13:37,260
+By the way, all this hints that duality is
+going to pop right out of what we're
+
+296
+00:13:37,260 --> 00:13:40,610
+doing, and you shouldn't be surprised,
+because the stories start the same way.
+
+297
+00:13:40,610 --> 00:13:43,780
+In fact, at an abstract enough level, the
+stories are exactly the same.
+
+298
+00:13:43,780 --> 00:13:46,250
+You replace the true irritation function,
+
+299
+00:13:46,250 --> 00:13:49,370
+which is this thing, with some kind of
+smooth approximation.
+
+300
+00:13:49,370 --> 00:13:52,930
+In Lagrange Duality, it's the smoothest
+thing you can get.
+
+301
+00:13:52,930 --> 00:13:53,870
+It's a line.
+
+302
+00:13:53,870 --> 00:13:55,460
+Here, it's some log barrier.
+
+303
+00:13:55,460 --> 00:13:56,680
+Okay.
+
+304
+00:13:56,680 --> 00:13:57,990
+All right.
+
+305
+00:13:57,990 --> 00:14:00,890
+Oh, so let's look at the log barrier
+function.
+
+306
+00:14:00,890 --> 00:14:03,230
+Well, it's convex and we know that.
+
+307
+00:14:03,230 --> 00:14:06,590
+And its derivatives, let's work out what
+these are, right?
+
+308
+00:14:06,590 --> 00:14:09,850
+So the gradient of this is, well,
+
+309
+00:14:09,850 --> 00:14:13,760
+the gradient of, of minus log minus f is
+this thing, right?
+
+310
+00:14:13,760 --> 00:14:16,640
+And remember, fi of x is negative, so that
+that's, this is a positive, so
+
+311
+00:14:16,640 --> 00:14:20,120
+you, whenever you see minus fi of x, it's
+a positive number.
+
+312
+00:14:20,120 --> 00:14:23,300
+Okay?
+So, this says, this says that the gradient
+
+313
+00:14:23,300 --> 00:14:30,870
+of the log barrier is a positive scaled
+sum of the gradients of the functions.
+
+314
+00:14:30,870 --> 00:14:33,120
+Remember that, it's going to come up.
+
+315
+00:14:33,120 --> 00:14:34,540
+That's what it is, right?
+
+316
+00:14:34,540 --> 00:14:36,230
+Oh, and what are the scale factors?
+
+317
+00:14:36,230 --> 00:14:39,640
+Depends on how close you are, how tight
+that, what margin you have.
+
+318
+00:14:39,640 --> 00:14:43,758
+That's the margin, minus fi is the margin
+in the inequality, 1 fi less than zero,
+
+319
+00:14:43,758 --> 00:14:46,050
+it's minus 0.2, your margin is 0.2.
+
+320
+00:14:46,050 --> 00:14:46,750
+Right?
+
+321
+00:14:46,750 --> 00:14:49,570
+Fi can increase 0.2, before you're
+infeasible.
+
+322
+00:14:49,570 --> 00:14:50,390
+Everybody got this?
+
+323
+00:14:50,390 --> 00:14:52,290
+So that's the, this is one over the
+margin.
+
+324
+00:14:52,290 --> 00:14:55,450
+So the scale factor's in front are the on
+over the margin's.
+
+325
+00:14:55,450 --> 00:14:57,800
+Okay?
+And the Hessian looks like this
+
+326
+00:14:57,800 --> 00:15:02,606
+that's just for reference, because we're
+not actually going to use that.
+
+327
+00:15:02,606 --> 00:15:04,404
+But just so you know what it is.
+
+328
+00:15:04,404 --> 00:15:04,970
+Right?
+
+329
+00:15:04,970 --> 00:15:07,890
+By the way, you see here a set of rank 1
+terms, and
+
+330
+00:15:07,890 --> 00:15:10,230
+then the actual the sum of the Hessians.
+
+331
+00:15:10,230 --> 00:15:11,590
+Okay.
+
+332
+00:15:11,590 --> 00:15:12,630
+All right.
+
+333
+00:15:12,630 --> 00:15:18,440
+So, if I take a problem and I minimize
+here.
+
+334
+00:15:18,440 --> 00:15:21,240
+Oh, by the way, we had to draw the
+picture.
+
+335
+00:15:21,240 --> 00:15:25,020
+We were minimizing f0 plus phi of x.
+
+336
+00:15:25,020 --> 00:15:27,910
+Yeah, that's the same thing as minimizing
+tf0 plus phi.
+
+337
+00:15:27,910 --> 00:15:29,280
+Why do we do that?
+
+338
+00:15:29,280 --> 00:15:32,180
+It, because the self-concordance stuff
+will work out later better or
+
+339
+00:15:32,180 --> 00:15:33,300
+something, but it doesn't matter.
+
+340
+00:15:33,300 --> 00:15:34,668
+I mean, in fact, most people,
+
+341
+00:15:34,668 --> 00:15:39,920
+put their 1 over t there and by the way
+they call it capit too.
+
+342
+00:15:39,920 --> 00:15:43,248
+So it doesn't matter, you'd figure these
+things out.
+
+343
+00:15:43,248 --> 00:15:48,195
+okay, so this says we are going to
+minimize tf0 plus phi, so
+
+344
+00:15:48,195 --> 00:15:49,950
+it's Ax equal to b.
+
+345
+00:15:49,950 --> 00:15:51,540
+That's total, we're totally ready for
+
+346
+00:15:51,540 --> 00:15:55,110
+Newton here, so we know exactly how they
+compute that no, not a problem.
+
+347
+00:15:55,110 --> 00:15:55,810
+Right?
+
+348
+00:15:55,810 --> 00:15:59,720
+Now, we do expect that when t gets
+gigantic you know,
+
+349
+00:15:59,720 --> 00:16:02,700
+this is Newton's going to have some
+trouble.
+
+350
+00:16:02,700 --> 00:16:03,338
+We'll get to that.
+
+351
+00:16:03,338 --> 00:16:04,810
+Okay.
+
+352
+00:16:04,810 --> 00:16:09,870
+So this thing is, it, it turns out that
+you can show that the log barrier is
+
+353
+00:16:09,870 --> 00:16:15,050
+strictly convex, as long as the feasible
+set is bounded.
+
+354
+00:16:15,050 --> 00:16:15,610
+Right?
+
+355
+00:16:15,610 --> 00:16:18,900
+And it, and we're going to just assume
+that, the feasible set is bounded, and
+
+356
+00:16:18,900 --> 00:16:21,804
+then that says that the log barrier is
+strictly convex, so
+
+357
+00:16:21,804 --> 00:16:23,380
+that this is a unique point.
+
+358
+00:16:23,380 --> 00:16:26,320
+And in fact, if you minimize this, that's
+called x star of t.
+
+359
+00:16:27,860 --> 00:16:29,310
+And it's a path, right?
+
+360
+00:16:29,310 --> 00:16:33,070
+Because for each t, you get a minimizer,
+right?
+
+361
+00:16:33,070 --> 00:16:35,710
+And it's called, that's called the central
+path.
+
+362
+00:16:35,710 --> 00:16:38,770
+The path of central point [INAUDIBLE]
+points or something like that.
+
+363
+00:16:38,770 --> 00:16:39,980
+That's a central path.
+
+364
+00:16:39,980 --> 00:16:43,650
+And, so the picture would look something
+like this.
+
+365
+00:16:43,650 --> 00:16:45,570
+We start with an LP.
+
+366
+00:16:45,570 --> 00:16:48,920
+Here's one inequality, two, three, four,
+five, six, seven, whatever it is, six
+
+367
+00:16:48,920 --> 00:16:54,350
+inequalities, and these dashed curves show
+you the level sets of, of the barrier.
+
+368
+00:16:54,350 --> 00:16:56,060
+Right?
+And then it goes up to plus infinity, so
+
+369
+00:16:56,060 --> 00:16:57,630
+you should be visualizing that,
+
+370
+00:16:57,630 --> 00:17:00,760
+that the barrier goes up to plus infinity
+at the boundaries.
+
+371
+00:17:00,760 --> 00:17:01,260
+Okay?
+
+372
+00:17:02,320 --> 00:17:07,570
+And then, what we're doing is we're adding
+we're adding t times
+
+373
+00:17:07,570 --> 00:17:13,140
+c to the, to the point, minimizing, and so
+that's sort of the analytic center.
+
+374
+00:17:13,140 --> 00:17:14,500
+That's the point that actually,
+
+375
+00:17:14,500 --> 00:17:19,060
+the analytic center maximize, minimizes
+the sum of the negative log margins.
+
+376
+00:17:19,060 --> 00:17:23,260
+That maximizes the product of the margins,
+so it's a point deep inside the set.
+
+377
+00:17:23,260 --> 00:17:24,320
+That's the analytic center.
+
+378
+00:17:24,320 --> 00:17:26,450
+So it starts here which equals zero.
+
+379
+00:17:26,450 --> 00:17:33,640
+And then as you crank up, as you crank up
+the scale factor in front of the c.
+
+380
+00:17:33,640 --> 00:17:36,390
+It says minimize the barrier function.
+
+381
+00:17:36,390 --> 00:17:41,350
+But also start putting a stro-, now it
+says start minimizing t times c.
+
+382
+00:17:41,350 --> 00:17:43,160
+C is the actual obj-, c transpose x,
+
+383
+00:17:43,160 --> 00:17:46,120
+c transpose x is the actual objective you
+want to minimize, right?
+
+384
+00:17:46,120 --> 00:17:48,220
+So, so what happens is very interesting.
+
+385
+00:17:48,220 --> 00:17:52,540
+Oh, what happens is the more you crank up
+t, the closer you come to
+
+386
+00:17:52,540 --> 00:17:57,780
+minimizing C transpose X, but you will
+never leave the feasible region.
+
+387
+00:17:57,780 --> 00:17:58,502
+Right?
+In fact
+
+388
+00:17:58,502 --> 00:18:01,380
+you'll never leave the strictly feasible
+region.
+
+389
+00:18:01,380 --> 00:18:06,080
+The reason is the barrier which is by the
+way this is why it is called a barrier.
+
+390
+00:18:06,080 --> 00:18:10,490
+The barrier goes up to plus infinity and
+no matter how big t is,
+
+391
+00:18:10,490 --> 00:18:15,170
+you'll move in the direction minus c tran,
+minus c, but at some point, you'll get to
+
+392
+00:18:15,170 --> 00:18:19,530
+the point where it's no longer worth it to
+get close to the boundary and you'll stop.
+
+393
+00:18:19,530 --> 00:18:20,280
+Everybody got this?
+
+394
+00:18:20,280 --> 00:18:22,650
+So the central path might look like that.
+
+395
+00:18:22,650 --> 00:18:26,180
+I mean, it's kind of silly, because it's
+an lp in two variables or
+
+396
+00:18:26,180 --> 00:18:29,055
+something, but anyway, that's, that's what
+the central path looks like here.
+
+397
+00:18:29,055 --> 00:18:31,320
+Okay.
+
+398
+00:18:31,320 --> 00:18:33,860
+And that's the that's the idea.
+
+399
+00:18:33,860 --> 00:18:36,080
+Okay?
+So that's [INAUDIBLE].
+
+400
+00:18:36,080 --> 00:18:42,270
+Now, it turns out if you're on the central
+path surprise, surprise,
+
+401
+00:18:42,270 --> 00:18:47,060
+you get for free dual, dual points for the
+original problem.
+
+402
+00:18:47,060 --> 00:18:48,520
+So, let's see how that works?
+
+403
+00:18:48,520 --> 00:18:55,354
+If you're on the central path, it means
+you minimize tf0,
+
+404
+00:18:55,354 --> 00:18:59,500
+plus sum minus log, minus fi of x.
+
+405
+00:18:59,500 --> 00:19:01,650
+So, you minimize this thing.
+
+406
+00:19:01,650 --> 00:19:04,160
+Now, let's take the gradient of that,
+right now.
+
+407
+00:19:04,160 --> 00:19:10,340
+Well, you get t grad f, f0, and then you
+get the derivative of this.
+
+408
+00:19:10,340 --> 00:19:11,890
+I'm going to ignore the second term,
+
+409
+00:19:11,890 --> 00:19:16,130
+which is the e the equality constraint
+Lagrange multiplier part.
+
+410
+00:19:16,130 --> 00:19:16,710
+That's this thing.
+
+411
+00:19:16,710 --> 00:19:17,450
+I mean, that just works.
+
+412
+00:19:18,540 --> 00:19:21,280
+And this thing, the gradient of that is
+this thing right here.
+
+413
+00:19:23,280 --> 00:19:28,400
+Now you stare at that for a minute, and
+you realize, hm, that's interesting.
+
+414
+00:19:28,400 --> 00:19:30,880
+It's, in fact, the first thing we're
+going to do just for
+
+415
+00:19:30,880 --> 00:19:35,250
+fun, is we're going to take this t and put
+it back over here.
+
+416
+00:19:35,250 --> 00:19:37,760
+You know, frankly, it probably should have
+been there anyway.
+
+417
+00:19:37,760 --> 00:19:39,520
+Right?
+So we're going to get rid of that t and
+
+418
+00:19:39,520 --> 00:19:41,480
+we're going to divide this by t as well.
+
+419
+00:19:41,480 --> 00:19:41,980
+Okay?
+
+420
+00:19:43,530 --> 00:19:44,200
+Okay, like that.
+
+421
+00:19:45,200 --> 00:19:45,890
+That's what we're going to do.
+
+422
+00:19:45,890 --> 00:19:49,340
+And now you look at this and you say, hey,
+that's interesting.
+
+423
+00:19:49,340 --> 00:19:51,500
+On the central path, here's,
+
+424
+00:19:51,500 --> 00:19:56,390
+when you compute a point on the central
+path, strangely, you have the following.
+
+425
+00:19:56,390 --> 00:20:02,770
+You have the gradient plus a non-negative
+weighted sum of the gradient,
+
+426
+00:20:02,770 --> 00:20:04,200
+this is the gradient of the objective,
+
+427
+00:20:04,200 --> 00:20:08,680
+plus a non-negative weighted sum of the
+gradients of the constraint functions, And
+
+428
+00:20:08,680 --> 00:20:12,510
+then plus a transposed times an equality
+constraint dual variable that's zero.
+
+429
+00:20:12,510 --> 00:20:16,340
+That should sound familiar, because guess
+what?
+
+430
+00:20:16,340 --> 00:20:18,690
+That's actually Lagrange duality.
+
+431
+00:20:18,690 --> 00:20:25,060
+Because look at this, it says that if you
+formed, if we take these numbers here
+
+432
+00:20:25,060 --> 00:20:32,010
+to be the lambdas, and we take this to be
+nu here, then this thing reads
+
+433
+00:20:32,010 --> 00:20:38,830
+gran f of 0 plus sum lambda i grad f of i,
+plus A transpose nu equals 0.
+
+434
+00:20:38,830 --> 00:20:46,750
+But the first, this first term, is exactly
+the gradient of this with respect to x.
+
+435
+00:20:46,750 --> 00:20:47,460
+Right?
+
+436
+00:20:47,460 --> 00:20:50,260
+So, that's what it says.
+
+437
+00:20:50,260 --> 00:20:52,140
+So this says something amazing.
+
+438
+00:20:52,140 --> 00:20:56,530
+This says that if you compute a central
+point, whether you like it or
+
+439
+00:20:56,530 --> 00:21:00,688
+not, what pops out are dual variables.
+
+440
+00:21:00,688 --> 00:21:01,350
+Okay?
+
+441
+00:21:01,350 --> 00:21:02,550
+Now remember that in, you know,
+
+442
+00:21:02,550 --> 00:21:07,310
+a lot of cases it's not easy to find dual
+variables, right?
+
+443
+00:21:07,310 --> 00:21:10,720
+I mean, if you take like an LP, which
+works here, right?
+
+444
+00:21:10,720 --> 00:21:15,490
+Most, you can't just pick some positive
+vector and some other vector.
+
+445
+00:21:15,490 --> 00:21:17,430
+I mean, there's equality constraints that
+have to hold.
+
+446
+00:21:17,430 --> 00:21:21,020
+It's like a transpose lambda plus c equals
+0.
+
+447
+00:21:21,020 --> 00:21:23,900
+So the fact is that, if you just pick a
+lambda and
+
+448
+00:21:23,900 --> 00:21:26,850
+an LP, it's not going to be dual feasible.
+
+449
+00:21:26,850 --> 00:21:30,980
+Or another way to say it is, you would
+say, here's my positive lambda and
+
+450
+00:21:30,980 --> 00:21:32,870
+my nu, please tell me my lower bound.
+
+451
+00:21:32,870 --> 00:21:35,070
+And it will come back and go, I got a
+lower bound for you,
+
+452
+00:21:35,070 --> 00:21:38,950
+it's minus infinity, which is the, which
+is the universal lower bound, right?
+
+453
+00:21:38,950 --> 00:21:42,020
+You don't even have to hear the question,
+before you can give that as a lower bound.
+
+454
+00:21:42,020 --> 00:21:42,530
+Right?
+
+455
+00:21:42,530 --> 00:21:45,450
+So, so what's at, so it's not trivial to
+
+456
+00:21:45,450 --> 00:21:49,640
+say that it's not to find dual feasible
+points or anything like that.
+
+457
+00:21:49,640 --> 00:21:50,500
+But this does it, right?
+
+458
+00:21:50,500 --> 00:21:53,510
+So you, any point on the central path
+gives you a dual feasible point.
+
+459
+00:21:53,510 --> 00:21:55,580
+Well, if you have a dual feasible point,
+
+460
+00:21:55,580 --> 00:21:58,840
+you should have a strong urge to do the
+following.
+
+461
+00:21:59,970 --> 00:22:01,320
+If you have a dual feasible point,
+
+462
+00:22:01,320 --> 00:22:07,250
+you should think, that gives me a lower
+bound on the optimal value of the problem.
+
+463
+00:22:07,250 --> 00:22:09,030
+So let's evaluate the lower bound.
+
+464
+00:22:09,030 --> 00:22:10,150
+Let's find out what it is?
+
+465
+00:22:10,150 --> 00:22:11,310
+So, let's do that.
+
+466
+00:22:12,470 --> 00:22:17,480
+Well, so, we'll take, this, this dual
+feasible pair, and let's,
+
+467
+00:22:17,480 --> 00:22:20,070
+let's work, it says simply that that's
+dual feasible.
+
+468
+00:22:20,070 --> 00:22:22,180
+Well, I mean, this is true, even if it's
+not dual feasible.
+
+469
+00:22:22,180 --> 00:22:25,050
+Dual feasible means that this thing is
+bigger than minus infinity and
+
+470
+00:22:25,050 --> 00:22:26,370
+therefore nontrivial.
+
+471
+00:22:26,370 --> 00:22:28,880
+Right?
+So, let's work out what g is.
+
+472
+00:22:28,880 --> 00:22:31,420
+Well, it's just L evaluated at these
+points.
+
+473
+00:22:31,420 --> 00:22:37,600
+But that's, that's f0 of x star of t and
+then plus sum lambda i star fi.
+
+474
+00:22:37,600 --> 00:22:43,350
+But lambda i star is actually 1 over fi of
+x star times t.
+
+475
+00:22:43,350 --> 00:22:43,870
+They cancel.
+
+476
+00:22:45,100 --> 00:22:46,960
+This is just m over t.
+
+477
+00:22:46,960 --> 00:22:48,040
+It's nothing more.
+
+478
+00:22:48,040 --> 00:22:48,840
+Right?
+
+479
+00:22:48,840 --> 00:22:50,710
+And so you get this.
+
+480
+00:22:50,710 --> 00:22:54,570
+And it's actually extraordinary, this,
+that's g.
+
+481
+00:22:54,570 --> 00:23:00,810
+And the duality gap, x, x star is of
+course, strictly primal feasible.
+
+482
+00:23:00,810 --> 00:23:03,940
+Right?
+And it's got the value f0 of x star.
+
+483
+00:23:03,940 --> 00:23:07,470
+But it says that when you center, if you
+do analytic centering, you get two things.
+
+484
+00:23:07,470 --> 00:23:13,270
+You get a point which has an objective
+value f0 of x star of t,
+
+485
+00:23:13,270 --> 00:23:16,620
+but you also get dual variables that
+certify,
+
+486
+00:23:17,660 --> 00:23:22,869
+that this number is a lower bound on the
+optimal value.
+
+487
+00:23:24,120 --> 00:23:28,872
+M the, the gap, people call that the
+duality gap, is exactly m over t.
+
+488
+00:23:28,872 --> 00:23:29,678
+Okay?
+
+489
+00:23:29,678 --> 00:23:33,650
+Everybody, it's crazy, I mean, it's just
+arithmetic here.
+
+490
+00:23:33,650 --> 00:23:34,320
+I mean, not arithmetic, I mean,
+
+491
+00:23:34,320 --> 00:23:37,450
+it's, it's completely, there's nothing
+complicated here, right?
+
+492
+00:23:37,450 --> 00:23:40,710
+Just take some derivatives, make a few
+observations, and that's it.
+
+493
+00:23:40,710 --> 00:23:48,820
+So that says, if you minimize tf0 plus
+this log barrier of x,
+
+494
+00:23:48,820 --> 00:23:53,730
+subject to Ax equals b, then it says two
+things will come, you will, when you
+
+495
+00:23:53,730 --> 00:23:57,630
+write the Newton method or whatever from
+that, there'll be two return things.
+
+496
+00:23:58,880 --> 00:24:02,910
+An x, which is strictly feasible, and a
+du-, and
+
+497
+00:24:02,910 --> 00:24:07,760
+a pair of dual feasible vectors lambda and
+mu and
+
+498
+00:24:07,760 --> 00:24:14,170
+the associated gap between the upper bound
+on the objected value which is f, fx0,
+
+499
+00:24:14,170 --> 00:24:20,400
+f0 of x star, and the gap which is g of
+lambda star nu star,
+
+500
+00:24:20,400 --> 00:24:23,760
+the difference between those two will be
+exactly m over t.
+
+501
+00:24:24,910 --> 00:24:25,610
+Okay?
+
+502
+00:24:25,610 --> 00:24:27,950
+So, that's cool.
+
+503
+00:24:27,950 --> 00:24:33,940
+By the way, what this says is we now know
+that this kind of hand waving intuition
+
+504
+00:24:33,940 --> 00:24:38,160
+about, you know, we, we looked at this, we
+looked at this thing.
+
+505
+00:24:38,160 --> 00:24:40,440
+And I looked at this and I said, oh, hey,
+look at that.
+
+506
+00:24:40,440 --> 00:24:41,520
+If t gets bigger,
+
+507
+00:24:41,520 --> 00:24:44,470
+you get a better approximation to the true
+thing we care about, right?
+
+508
+00:24:44,470 --> 00:24:47,090
+And I said, so, I mean this sounds
+reasonable,
+
+509
+00:24:47,090 --> 00:24:49,860
+if we take t big, you're getting close to
+the original problem.
+
+510
+00:24:49,860 --> 00:24:50,670
+Right?
+
+511
+00:24:50,670 --> 00:24:54,400
+So, that's all hand waving and I can make
+up other stories like that and
+
+512
+00:24:54,400 --> 00:24:55,090
+they're totally wrong.
+
+513
+00:24:56,110 --> 00:25:00,860
+This means it's actually completely
+correct and it's very specific.
+
+514
+00:25:00,860 --> 00:25:07,080
+It says that if you, calculate x star of
+t, that is, so you minimize this func-,
+
+515
+00:25:07,080 --> 00:25:09,820
+you minimize this objective, subject to
+that equality constraint.
+
+516
+00:25:09,820 --> 00:25:12,230
+Which we know how to do using Newton's
+method.
+
+517
+00:25:12,230 --> 00:25:13,780
+Then it says the following.
+
+518
+00:25:13,780 --> 00:25:18,750
+It says if you do that, then you will have
+computed a solution to
+
+519
+00:25:18,750 --> 00:25:22,570
+the original problem which is at most, m
+over t suboptimal.
+
+520
+00:25:22,570 --> 00:25:23,410
+Everybody got that?
+
+521
+00:25:23,410 --> 00:25:27,810
+Obviously now if t goes to as t gets
+bigger, you're done.
+
+522
+00:25:27,810 --> 00:25:29,870
+So, couple more interpretations.
+
+523
+00:25:29,870 --> 00:25:32,760
+This is actually probably the dominant
+modern interpretation.
+
+524
+00:25:33,980 --> 00:25:39,900
+So the modern interpretation of, of, of,
+if you look at interior point method,
+
+525
+00:25:39,900 --> 00:25:42,620
+if you go, you know, pull some book or
+something like that, I don't know.
+
+526
+00:25:43,710 --> 00:25:45,210
+This is the way the story would go.
+
+527
+00:25:45,210 --> 00:25:50,380
+They would say, here are the, here are the
+KKT conditions for
+
+528
+00:25:50,380 --> 00:25:51,710
+an inequality constraint problem.
+
+529
+00:25:51,710 --> 00:25:55,800
+Well you better have that, that's primal
+feasibility.
+
+530
+00:25:55,800 --> 00:25:56,300
+Right?
+
+531
+00:25:57,680 --> 00:25:59,820
+You have to this, right, that, that's
+another one.
+
+532
+00:26:01,220 --> 00:26:06,095
+And you have to have the following, here,
+you have to have complement,
+
+533
+00:26:06,095 --> 00:26:09,650
+complementary, and that says this, right?
+
+534
+00:26:09,650 --> 00:26:13,210
+That, that's equal to 0, so i equals 1 to
+m.
+
+535
+00:26:13,210 --> 00:26:14,630
+Right?
+And this says that for
+
+536
+00:26:14,630 --> 00:26:18,390
+each constraint, either the Lagrange
+multiplier is 0.
+
+537
+00:26:18,390 --> 00:26:19,450
+Right?
+
+538
+00:26:19,450 --> 00:26:24,680
+Would, and that would, that must occur if
+that constraint is, has margin, right?
+
+539
+00:26:24,680 --> 00:26:26,630
+If fi is actually negative, right?
+
+540
+00:26:26,630 --> 00:26:28,110
+Then the Lagrange multiplier has to be 0.
+
+541
+00:26:28,110 --> 00:26:30,010
+And you know that for many, many reasons,
+right?
+
+542
+00:26:31,130 --> 00:26:35,620
+Or, that if the Lagrange multiplier is
+positive, the only other
+
+543
+00:26:35,620 --> 00:26:39,970
+option it says that constraint must be
+tight and tight means fi is 0.
+
+544
+00:26:39,970 --> 00:26:42,110
+So this is complementary slackness, I
+think is.
+
+545
+00:26:42,110 --> 00:26:46,090
+Well it's both, yeah that complementary or
+complementary slackness.
+
+546
+00:26:46,090 --> 00:26:48,927
+Okay?
+So and we look at this and
+
+547
+00:26:48,927 --> 00:26:52,160
+then you have to have this.
+
+548
+00:26:52,160 --> 00:26:53,110
+Right?
+
+549
+00:26:53,110 --> 00:26:55,300
+And so here's what's really cool.
+
+550
+00:26:55,300 --> 00:27:00,710
+When you center with parameter t, here's
+what you get.
+
+551
+00:27:00,710 --> 00:27:04,730
+You get something, you get an x, x star of
+t, that satisfies this.
+
+552
+00:27:04,730 --> 00:27:10,220
+As a matter of fact, it satisfies the fi
+of x is strictly less than 0.
+
+553
+00:27:10,220 --> 00:27:11,870
+Right?
+Because you're minimizing the sum of
+
+554
+00:27:11,870 --> 00:27:14,100
+the minus logs and blah, blah, blah,
+right?
+
+555
+00:27:14,100 --> 00:27:15,130
+Okay.
+So you get this,
+
+556
+00:27:15,130 --> 00:27:16,830
+even with a little margin.
+
+557
+00:27:16,830 --> 00:27:20,980
+You get a lambda that's strictly positive,
+because it's, I forget what it is,
+
+558
+00:27:20,980 --> 00:27:27,520
+it's mi, it's 1 over t times minus fi, and
+the fi's, well, okay, that's never 0.
+
+559
+00:27:27,520 --> 00:27:29,910
+Okay, so you get, you get, you get,
+
+560
+00:27:29,910 --> 00:27:35,840
+you get, satisfy this strictly, this
+strictly you satisfy this exactly.
+
+561
+00:27:35,840 --> 00:27:39,240
+And here, instead of a complimentary
+slackness with 0,
+
+562
+00:27:39,240 --> 00:27:45,380
+the product of all the lambdas and minus
+f's are 1 over t.
+
+563
+00:27:45,380 --> 00:27:46,110
+Okay.
+
+564
+00:27:46,110 --> 00:27:49,070
+Well, I mean, you can check, because we
+defined lambda,
+
+565
+00:27:49,070 --> 00:27:53,430
+remember we defined lambda as, like, 1
+over t times minus fi.
+
+566
+00:27:53,430 --> 00:27:57,230
+So that says that, that says that lambda
+fi is, like, 1 over t.
+
+567
+00:27:57,230 --> 00:28:00,088
+So, so what it's there and now you can see
+and argue again.
+
+568
+00:28:00,088 --> 00:28:02,300
+If' t gets big, you know,
+
+569
+00:28:02,300 --> 00:28:08,160
+it says so, you're almost there, it's sort
+of these you check off.
+
+570
+00:28:08,160 --> 00:28:10,140
+Right?
+So you get all of these.
+
+571
+00:28:10,140 --> 00:28:13,000
+And the only thing here is a set of zero
+you get 1 over t.
+
+572
+00:28:13,000 --> 00:28:15,280
+And then the idea is we let t go to
+infinity.
+
+573
+00:28:15,280 --> 00:28:17,850
+And, we're now satisfying the KKT
+conditions.
+
+574
+00:28:17,850 --> 00:28:19,160
+So that's, that's kind of the idea.
+
+575
+00:28:19,160 --> 00:28:21,090
+Oh, and you would hear,
+
+576
+00:28:21,090 --> 00:28:24,800
+so, if you actually find yourself hearing
+somebody talking about these things.
+
+577
+00:28:24,800 --> 00:28:26,630
+I mean, I hope you don't, but if you do.
+
+578
+00:28:26,630 --> 00:28:29,740
+Somewhere then this will be referred to
+when you
+
+579
+00:28:29,740 --> 00:28:33,419
+replace the complementarity condition
+lambda i,
+
+580
+00:28:33,419 --> 00:28:38,230
+fi equals 0 with a 1 over t which
+traditionally they would called kappa.
+
+581
+00:28:38,230 --> 00:28:41,500
+Those are referred to as the modified KKT
+conditions, and
+
+582
+00:28:41,500 --> 00:28:43,960
+so that story goes like this.
+
+583
+00:28:43,960 --> 00:28:46,200
+Here is the problem, here the KKT
+conditions.
+
+584
+00:28:46,200 --> 00:28:49,780
+We modify the KKT condition so that 0
+becomes a kappa and
+
+585
+00:28:49,780 --> 00:28:53,860
+now we say we're going to apply a Newton's
+step to the modified KKT condition.
+
+586
+00:28:53,860 --> 00:28:56,600
+And guess what that It's the Newton step
+for the problem we just looked at.
+
+587
+00:28:56,600 --> 00:28:57,280
+So, okay.
+
+588
+00:28:57,280 --> 00:28:58,430
+Everybody got this?
+
+589
+00:28:58,430 --> 00:28:59,520
+So that's it, okay.
+
+590
+00:28:59,520 --> 00:29:01,930
+And you can get some other
+interpretations.
+
+591
+00:29:01,930 --> 00:29:03,180
+You don't need to know any of these
+things, but
+
+592
+00:29:03,180 --> 00:29:06,040
+they're just kind of cool to help
+understand what it is.
+
+593
+00:29:06,040 --> 00:29:06,540
+Here's one.
+
+594
+00:29:07,770 --> 00:29:10,220
+So let's forget the equality constraints.
+
+595
+00:29:10,220 --> 00:29:13,300
+Let's suppose you're minimizing you are
+minimizing f0
+
+596
+00:29:13,300 --> 00:29:17,862
+subject fi versus 0 that's the log barrier
+so let's center.
+
+597
+00:29:17,862 --> 00:29:18,540
+You can think of it this way.
+
+598
+00:29:18,540 --> 00:29:24,050
+I like to think of it as tf0, that's the
+potential of a force field and
+
+599
+00:29:24,050 --> 00:29:26,229
+the force field is minus t times the
+gradient.
+
+600
+00:29:27,490 --> 00:29:28,830
+Right?
+So it's, it's actually a,
+
+601
+00:29:28,830 --> 00:29:32,290
+a potential, and then, minus log minus fi,
+
+602
+00:29:32,290 --> 00:29:35,410
+that's the barrier term associated with fi
+less than 0.
+
+603
+00:29:35,410 --> 00:29:38,080
+That's, that's actually the potential of
+this force field,
+
+604
+00:29:38,080 --> 00:29:44,730
+the force field which is 1 over fi times
+gradient of fi.
+
+605
+00:29:44,730 --> 00:29:45,550
+Right?
+
+606
+00:29:45,550 --> 00:29:48,400
+And then the optimality condition for
+minimizing, this is that.
+
+607
+00:29:48,400 --> 00:29:50,890
+And that's that all the forces balance.
+
+608
+00:29:50,890 --> 00:29:51,470
+Right?
+
+609
+00:29:51,470 --> 00:29:55,490
+So, and I mean, it's dumb, it's saying
+like, look, let's minimize, you know,
+
+610
+00:29:55,490 --> 00:29:57,970
+this potential plus these potentials, and
+
+611
+00:29:57,970 --> 00:30:00,875
+each of these is a logarithmic potential
+associated with one constraint.
+
+612
+00:30:00,875 --> 00:30:03,390
+Okay?
+So it's like a force field interpretation,
+
+613
+00:30:03,390 --> 00:30:07,450
+and for a liner program, you get something
+even cooler, a very simple interpretation.
+
+614
+00:30:08,720 --> 00:30:10,490
+The objective is just something like that,
+tc.
+
+615
+00:30:10,490 --> 00:30:15,210
+And if you like you could think of it like
+This,
+
+616
+00:30:15,210 --> 00:30:19,320
+I have a constant force field in the
+direction minus C.
+
+617
+00:30:19,320 --> 00:30:23,670
+It's live gravity except it's, the
+magnitude is t and I can turn it up.
+
+618
+00:30:23,670 --> 00:30:25,340
+So I can turn gravity up and up and up.
+
+619
+00:30:25,340 --> 00:30:29,270
+And it is constant force field, it just
+pointing the direction minus C and
+
+620
+00:30:29,270 --> 00:30:31,752
+I have the ability to turn up gravity,
+okay.
+
+621
+00:30:31,752 --> 00:30:36,660
+Now, the other planes the Ai, those
+things.
+
+622
+00:30:36,660 --> 00:30:39,210
+The, it turns out that the,
+
+623
+00:30:39,210 --> 00:30:44,420
+this is the thing whose, that's the force
+field associated with the logarith,
+
+624
+00:30:44,420 --> 00:30:48,100
+logarithmic barrier associated with just
+Ai transpose x minus b is less than 0.
+
+625
+00:30:48,100 --> 00:30:51,030
+Or, a i transpose x is less than b, right?
+
+626
+00:30:51,030 --> 00:30:52,110
+That's the force field.
+
+627
+00:30:52,110 --> 00:30:53,420
+It's a beautiful force field.
+
+628
+00:30:53,420 --> 00:30:57,660
+It ports, it always points away from the
+plane, and
+
+629
+00:30:57,660 --> 00:30:59,800
+it's actually a beautiful thing.
+
+630
+00:30:59,800 --> 00:31:03,290
+It's with exactly an inverse distance
+magnitude, right?
+
+631
+00:31:03,290 --> 00:31:06,550
+So, for example, if that's a linear
+inequality that says please stay on
+
+632
+00:31:06,550 --> 00:31:08,580
+this side of the linear inequality,
+
+633
+00:31:08,580 --> 00:31:14,650
+it says that the force field here will
+point away from this thing,
+
+634
+00:31:14,650 --> 00:31:17,918
+and in magnitude be inversely proportional
+to how close you are.
+
+635
+00:31:17,918 --> 00:31:21,660
+Okay, so as you move closer, you get a
+very strong repulsive force.
+
+636
+00:31:21,660 --> 00:31:23,770
+Right?
+So, it means like you've sprayed these
+
+637
+00:31:23,770 --> 00:31:27,150
+planes with some repulsive stuff, I don't
+know [INAUDIBLE], I don't know.
+
+638
+00:31:27,150 --> 00:31:30,220
+Actually I don't think there's anything in
+physics that actually does this.
+
+639
+00:31:30,220 --> 00:31:31,800
+But you can pretend like there is.
+
+640
+00:31:31,800 --> 00:31:33,160
+Right?
+So, by the way,
+
+641
+00:31:33,160 --> 00:31:35,230
+it's not correct that you spray it with
+charge.
+
+642
+00:31:35,230 --> 00:31:39,180
+There's, there's no physical thing that
+will actually make that analogy right,
+
+643
+00:31:39,180 --> 00:31:41,230
+so at least that I know of.
+
+644
+00:31:41,230 --> 00:31:42,920
+So, that's it.
+
+645
+00:31:42,920 --> 00:31:45,930
+And now you can actually visualize what
+the force field is, it is very simple.
+
+646
+00:31:45,930 --> 00:31:49,180
+For example, at this point you are
+actually being acted on
+
+647
+00:31:49,180 --> 00:31:53,860
+by five five things right, five forces,
+but the,
+
+648
+00:31:53,860 --> 00:31:57,040
+the force field is pretty much in that
+direction, because, because you
+
+649
+00:31:57,040 --> 00:32:01,400
+are right up under the shadow of a very
+strong one and so that's dominating.
+
+650
+00:32:01,400 --> 00:32:05,010
+Right, and so what happens now is the
+analytic center
+
+651
+00:32:05,010 --> 00:32:07,970
+is when you got all these repulsive fields
+all around you and
+
+652
+00:32:07,970 --> 00:32:11,080
+you retreat to the center where all these
+forces balance.
+
+653
+00:32:11,080 --> 00:32:13,010
+Okay, and now they all, all they are
+balance.
+
+654
+00:32:13,010 --> 00:32:14,850
+I mean, that's, that's this, this point.
+
+655
+00:32:14,850 --> 00:32:16,310
+I mean, actually here it's not the
+analytic center,
+
+656
+00:32:16,310 --> 00:32:19,070
+we have turned t up a little bit, it's t
+equals 1.
+
+657
+00:32:19,070 --> 00:32:20,460
+Right?
+
+658
+00:32:20,460 --> 00:32:21,970
+And so it goes minus c.
+
+659
+00:32:21,970 --> 00:32:27,850
+And when you, makes this thing bigger,
+right you move to a new equilibrium point.
+
+660
+00:32:27,850 --> 00:32:28,550
+Okay?
+So.
+
+661
+00:32:29,850 --> 00:32:31,000
+I, this doesn't do anything.
+
+662
+00:32:31,000 --> 00:32:34,310
+It's just a way to think of all this
+stuff, right.
+
+663
+00:32:34,310 --> 00:32:37,890
+I mean, otherwise it's just too fast, you
+know, so, it, and
+
+664
+00:32:37,890 --> 00:32:40,688
+I mean, it's actually not a bad way to
+think about what these things are doing.
+
+665
+00:32:40,688 --> 00:32:43,286
+Right?
+
+666
+00:32:43,286 --> 00:32:47,150
+So, okay.
+
+667
+00:32:47,150 --> 00:32:49,090
+Now we get to the barrier method.
+
+668
+00:32:49,090 --> 00:32:54,050
+So, oh, and let me say, let me give a
+little bit of preamble.
+
+669
+00:32:54,050 --> 00:32:58,700
+Okay, so simply choosing a big, a big
+enough t, and
+
+670
+00:32:58,700 --> 00:33:02,430
+minimizing using Newton's method, That's
+called, it actually isn't called, but
+
+671
+00:33:02,430 --> 00:33:04,930
+I decided to call it that, the umt.
+
+672
+00:33:04,930 --> 00:33:07,290
+That's unconstrained minimization
+technique, and I,
+
+673
+00:33:07,290 --> 00:33:09,990
+I'll tell you why I decided to call it
+that.
+
+674
+00:33:09,990 --> 00:33:12,530
+It's because it's a weird, retro,
+historical reference.
+
+675
+00:33:12,530 --> 00:33:14,780
+Okay, so that's the unconstrained
+minimization technique.
+
+676
+00:33:14,780 --> 00:33:17,650
+Weirdly, it actually works fine.
+
+677
+00:33:17,650 --> 00:33:19,580
+So it's actually an awfully good way,
+
+678
+00:33:19,580 --> 00:33:24,940
+if you're solving lps, But to some
+relatively low accuracy, so
+
+679
+00:33:24,940 --> 00:33:28,540
+t doesn't have to be gigantic, it's an
+excellent method, you're right.
+
+680
+00:33:28,540 --> 00:33:30,930
+Newton method, and you go at it.
+
+681
+00:33:30,930 --> 00:33:31,930
+It just works, right.
+
+682
+00:33:31,930 --> 00:33:34,800
+Everybody, so, it just works, right?
+
+683
+00:33:34,800 --> 00:33:39,040
+And it just always, you know you get the
+minimum, you get the duality gap.
+
+684
+00:33:39,040 --> 00:33:41,380
+It returns primal point, dual point,
+everything, and
+
+685
+00:33:41,380 --> 00:33:43,330
+the gap is exactly m over t.
+
+686
+00:33:43,330 --> 00:33:47,580
+And if you wanted that to be 1e minus 3,
+or 0.01.
+
+687
+00:33:47,580 --> 00:33:50,230
+Right, depending on your application,
+that's exactly what it will be.
+
+688
+00:33:50,230 --> 00:33:51,280
+Everybody see what I'm saying?
+
+689
+00:33:51,280 --> 00:33:52,890
+Works pretty well.
+
+690
+00:33:52,890 --> 00:33:58,160
+now, it doesn't if you ask for a high
+accuracy, or something like that.
+
+691
+00:33:58,160 --> 00:33:59,470
+Then it doesn't, it, it doesn't work.
+
+692
+00:33:59,470 --> 00:34:03,200
+Hey, we all, it works, it just takes
+10,000 iterations,
+
+693
+00:34:03,200 --> 00:34:06,440
+if you implement it in infinite precision
+arithmetic.
+
+694
+00:34:06,440 --> 00:34:07,450
+So.
+
+695
+00:34:07,450 --> 00:34:10,290
+okay.
+So there's actually a,
+
+696
+00:34:10,290 --> 00:34:14,680
+a method And it's a, it's a general idea,
+and, and so the other name for
+
+697
+00:34:14,680 --> 00:34:20,200
+the barrier method, by the way, from the
+'60s, is SUMT, SUMT.
+
+698
+00:34:20,200 --> 00:34:23,820
+That's sequential unconstrained
+minimization technique.
+
+699
+00:34:23,820 --> 00:34:26,790
+Beautiful name, right, because it says
+exactly what it is.
+
+700
+00:34:26,790 --> 00:34:30,120
+Well, except we added the equality
+constraints.
+
+701
+00:34:30,120 --> 00:34:33,620
+But, for all practical purposes, those
+aren't, you know, so.
+
+702
+00:34:34,790 --> 00:34:36,070
+Equality constraints don't hurt you.
+
+703
+00:34:37,130 --> 00:34:39,720
+There the unconstrained referred to no
+inequality constraints.
+
+704
+00:34:39,720 --> 00:34:40,330
+Everybody got that?
+
+705
+00:34:40,330 --> 00:34:41,230
+So that's a beautiful thing.
+
+706
+00:34:41,230 --> 00:34:43,860
+There's a book written on this like 1969,
+
+707
+00:34:43,860 --> 00:34:47,010
+Sequential Unconstrained Minimization
+Technique.
+
+708
+00:34:47,010 --> 00:34:49,520
+Okay, so, and if you, if you just fix t
+and
+
+709
+00:34:49,520 --> 00:34:52,420
+solve it once, that's now, I decided to
+call it UMT.
+
+710
+00:34:53,420 --> 00:34:55,400
+Okay, so all right.
+
+711
+00:34:55,400 --> 00:35:00,330
+So, that the sequential method, that's the
+barrier method and that works like this.
+
+712
+00:35:00,330 --> 00:35:04,440
+So you are, you are, you are start with
+some, some point it's feasible here and
+
+713
+00:35:04,440 --> 00:35:08,580
+what you are going to do is the following
+and some point T, you know that's
+
+714
+00:35:08,580 --> 00:35:11,860
+parameter MU this is a very simple method
+and you are going to do the following.
+
+715
+00:35:11,860 --> 00:35:16,960
+You are going to compute X star of t by
+minimizing this thing subject to
+
+716
+00:35:16,960 --> 00:35:19,880
+a equals b then you going to update.
+
+717
+00:35:19,880 --> 00:35:23,820
+That's going to be your new value of x and
+then you're going to quit if m over t,
+
+718
+00:35:23,820 --> 00:35:26,640
+which is exactly the gap is less than
+epsilon, right.
+
+719
+00:35:26,640 --> 00:35:27,520
+And then you would return.
+
+720
+00:35:27,520 --> 00:35:31,940
+By the way, both x and the and the dual
+points, right, because.
+
+721
+00:35:31,940 --> 00:35:34,400
+That's what you should return if you write
+a solver,
+
+722
+00:35:34,400 --> 00:35:36,430
+you should return the dual points as well.
+
+723
+00:35:36,430 --> 00:35:38,050
+Okay, and you increase t.
+
+724
+00:35:38,050 --> 00:35:43,280
+Now the key here is that you use Newton's
+method
+
+725
+00:35:43,280 --> 00:35:47,920
+to minimize this starting from the last
+point.
+
+726
+00:35:47,920 --> 00:35:49,520
+That's the key.
+
+727
+00:35:49,520 --> 00:35:50,530
+Okay?
+
+728
+00:35:50,530 --> 00:35:52,780
+So that, that's, that's the key here.
+
+729
+00:35:52,780 --> 00:35:53,500
+Right?
+
+730
+00:35:53,500 --> 00:35:56,470
+And there's a name for this and there's
+beautiful pictures for this.
+
+731
+00:35:56,470 --> 00:35:59,220
+Like, so for example, another way to,
+another name for
+
+732
+00:35:59,220 --> 00:36:02,800
+methods like this, this method, in fact a
+method like this.
+
+733
+00:36:02,800 --> 00:36:06,850
+Another name for this, beautiful name, is
+path-following method.
+
+734
+00:36:06,850 --> 00:36:07,620
+For optimization.
+
+735
+00:36:07,620 --> 00:36:12,330
+Absolutely beautiful because, you know,
+here's, here's the central path,
+
+736
+00:36:12,330 --> 00:36:15,670
+right, going into your solution, right?
+
+737
+00:36:15,670 --> 00:36:18,040
+And a path following method says you're
+here.
+
+738
+00:36:18,040 --> 00:36:19,760
+That's a certain value of t.
+
+739
+00:36:19,760 --> 00:36:22,220
+Let's take you know, mu equals 1.1.
+
+740
+00:36:22,220 --> 00:36:26,560
+Okay, then, what happens is, you, starting
+from this point,
+
+741
+00:36:26,560 --> 00:36:29,220
+you apply Newton's method and you bump
+around for
+
+742
+00:36:29,220 --> 00:36:34,850
+a bit and then you end up there, and, and
+this is, this is, x star of t, and
+
+743
+00:36:34,850 --> 00:36:40,140
+this is x star mu t, right, that's the new
+point, and
+
+744
+00:36:40,140 --> 00:36:43,440
+you can see what you're doing, you're sort
+of following this path.
+
+745
+00:36:43,440 --> 00:36:44,240
+Right?
+
+746
+00:36:44,240 --> 00:36:48,380
+So, and, there's an, actually, there's a
+name for these methods and it's actually,
+
+747
+00:36:48,380 --> 00:36:51,080
+it's actually there's a very good thing to
+know about these, these methods.
+
+748
+00:36:53,220 --> 00:36:58,470
+So, actually there's a beautiful to the
+name for a, let me describe,
+
+749
+00:36:58,470 --> 00:37:00,780
+this is something, this is something
+again, you don't need to know this, but
+
+750
+00:37:00,780 --> 00:37:01,920
+it's actually a very good thing for
+
+751
+00:37:01,920 --> 00:37:03,940
+you to know if you do any kind of math or
+anything like that.
+
+752
+00:37:05,230 --> 00:37:11,810
+There's a, a general family of methods
+for, for solving a hard problem, right.
+
+753
+00:37:11,810 --> 00:37:16,810
+And it's called a homotopy method, 'kay,
+and the way it works is very simple.
+
+754
+00:37:16,810 --> 00:37:21,270
+You have a hard, something you want to
+solve like a set of equations, or for that
+
+755
+00:37:21,270 --> 00:37:25,640
+matter, an optimization problem, but you
+have a set of equations you want to solve.
+
+756
+00:37:25,640 --> 00:37:26,890
+And they're hard to solve.
+
+757
+00:37:26,890 --> 00:37:29,550
+So what you do is you introduce a,
+
+758
+00:37:29,550 --> 00:37:35,090
+a parameter into the equations, that, it's
+a knob that you turn, 'kay.
+
+759
+00:37:35,090 --> 00:37:36,840
+And it has to be continuous or,
+
+760
+00:37:36,840 --> 00:37:41,570
+as you turn the knob, the, the equations
+deform continuously.
+
+761
+00:37:41,570 --> 00:37:45,890
+And now the traditional ranges of these
+values for the knob are zero and one, and
+
+762
+00:37:45,890 --> 00:37:49,650
+so the idea is, when the knob is all the
+way up at one,
+
+763
+00:37:49,650 --> 00:37:51,850
+you got the problem you wanted to solve.
+
+764
+00:37:51,850 --> 00:37:53,550
+That's the traditional parameter value.
+
+765
+00:37:53,550 --> 00:37:56,750
+When it's zero, the idea is it starts from
+a simple problem.
+
+766
+00:37:56,750 --> 00:37:58,620
+Everybody following this, right?
+
+767
+00:37:58,620 --> 00:37:59,370
+And then the,
+
+768
+00:37:59,370 --> 00:38:01,840
+now, the method I'll describe, the
+homotopy method, is very simple.
+
+769
+00:38:01,840 --> 00:38:02,570
+Here's what you do.
+
+770
+00:38:02,570 --> 00:38:05,870
+You set your knob to zero, you know the
+solution already.
+
+771
+00:38:05,870 --> 00:38:08,224
+Then you set the knob to 0.05.
+
+772
+00:38:08,224 --> 00:38:08,841
+Okay?
+
+773
+00:38:08,841 --> 00:38:14,470
+Well, the problem is now close to an easy
+one, and you knew the solution for
+
+774
+00:38:14,470 --> 00:38:18,160
+the easy one, so you use something like a
+Newton method to try to find it.
+
+775
+00:38:18,160 --> 00:38:21,439
+By the way, what would you do, if you, if
+Newton method failed to find that point?
+
+776
+00:38:23,500 --> 00:38:27,730
+Yeah, you'd back off, instead of 0.05,
+you'd go to 0.025, right?
+
+777
+00:38:27,730 --> 00:38:30,150
+Now, in this, in this particular case, you
+don't have to,
+
+778
+00:38:30,150 --> 00:38:32,640
+because no matter how you set this thing,
+it's going to work.
+
+779
+00:38:32,640 --> 00:38:34,120
+Although it might take too many Newton
+steps, so
+
+780
+00:38:34,120 --> 00:38:36,824
+you might do something like, I'll set it
+0.05.
+
+781
+00:38:36,824 --> 00:38:41,250
+If I don't converge in 15 steps, screw it,
+I'm going to back off.
+
+782
+00:38:41,250 --> 00:38:43,930
+It means I, I, it means I stepped too
+aggressively along the path.
+
+783
+00:38:43,930 --> 00:38:45,440
+Everybody following this?
+
+784
+00:38:45,440 --> 00:38:46,060
+Okay.
+
+785
+00:38:46,060 --> 00:38:50,800
+So, then you're at 0.05 and you set, now
+you set data equals 0.1 and
+
+786
+00:38:50,800 --> 00:38:53,750
+you apply Newton method again and
+hopefully you get there.
+
+787
+00:38:53,750 --> 00:38:54,460
+Everybody following this?
+
+788
+00:38:54,460 --> 00:38:56,000
+And so, and then there's a beautiful book,
+
+789
+00:38:56,000 --> 00:39:00,020
+I think the subtitle of the book on this
+is Pathways oh, something like,
+
+790
+00:39:00,020 --> 00:39:04,120
+homotopy methods, subtitle is Pathways to
+Solutions.
+
+791
+00:39:04,120 --> 00:39:06,170
+I mean, come on, that's like too cool,
+right?
+
+792
+00:39:06,170 --> 00:39:08,270
+This is a homotopy method, right?
+
+793
+00:39:08,270 --> 00:39:11,290
+It's, it's when, but there's a difference
+between a general homotopy method, and
+
+794
+00:39:11,290 --> 00:39:14,430
+a general homotopy method, when you
+increase that parameter,
+
+795
+00:39:14,430 --> 00:39:17,760
+you're actually not sure you can actually
+solve the problem, and
+
+796
+00:39:17,760 --> 00:39:20,430
+there in a general homotopy method goes
+like this.
+
+797
+00:39:20,430 --> 00:39:25,610
+If, you know, if not solve problem, right?
+
+798
+00:39:26,840 --> 00:39:31,390
+Then it says, back off back off the
+parameter increase.
+
+799
+00:39:31,390 --> 00:39:33,050
+Everybody understand that one line?
+
+800
+00:39:33,050 --> 00:39:33,610
+Okay.
+
+801
+00:39:33,610 --> 00:39:35,500
+So that's a general homotopy.
+
+802
+00:39:35,500 --> 00:39:37,290
+Here, you can't fail.
+
+803
+00:39:37,290 --> 00:39:41,290
+Right, because we can set t equals 10 to
+the 9.
+
+804
+00:39:41,290 --> 00:39:43,650
+And at least in theory we can fail.
+
+805
+00:39:43,650 --> 00:39:46,730
+Now there's a practical idea of failure
+that might be that it takes more than ten,
+
+806
+00:39:46,730 --> 00:39:48,170
+20 newton steps, right?
+
+807
+00:39:48,170 --> 00:39:49,710
+So I just mention that.
+
+808
+00:39:49,710 --> 00:39:52,240
+Okay, so here it, so it's extremely
+simple.
+
+809
+00:39:53,590 --> 00:39:54,620
+That's the idea.
+
+810
+00:39:54,620 --> 00:39:58,190
+Now, mu, that's, that's the amount by
+which you increase.
+
+811
+00:39:58,190 --> 00:39:59,360
+Oh, sorry, the,
+
+812
+00:39:59,360 --> 00:40:04,470
+the typical homotopy method the
+traditional parameter range zero to one.
+
+813
+00:40:04,470 --> 00:40:07,026
+Zero, zero is your problem, one is done.
+
+814
+00:40:07,026 --> 00:40:13,000
+' Kay, so our, our parameter range is like
+zero, infinity, okay, or one, infinity.
+
+815
+00:40:13,000 --> 00:40:16,640
+Something like that, okay, so that's, but
+so what that that's the difference, but
+
+816
+00:40:16,640 --> 00:40:18,850
+I thought it, I thought I'd mention it,
+right.
+
+817
+00:40:18,850 --> 00:40:21,120
+Okay, so now what we do here.
+
+818
+00:40:21,120 --> 00:40:25,430
+Is, you're going to increase t, which is
+actually a measure of inverse gap.
+
+819
+00:40:25,430 --> 00:40:28,630
+You're going to increase t by a factor of
+mu.
+
+820
+00:40:28,630 --> 00:40:33,800
+Now, if you're really sort of follow the
+idea of, you know a homotopy method
+
+821
+00:40:33,800 --> 00:40:37,920
+following the central path towards the
+solution, you know, Pathway to Solution,
+
+822
+00:40:37,920 --> 00:40:44,540
+if you really kind of follow that image,
+you would think of mu as being 1.05 Right?
+
+823
+00:40:44,540 --> 00:40:46,850
+That you, you'd increase mu 5%, you know,
+
+824
+00:40:46,850 --> 00:40:51,480
+start, and you'd hope for a couple Newton
+steps and it's all over, right?
+
+825
+00:40:51,480 --> 00:40:53,680
+That, that would be, and there's actually
+a name for methods like that.
+
+826
+00:40:53,680 --> 00:40:56,920
+Those are called short step path following
+methods.
+
+827
+00:40:56,920 --> 00:40:59,860
+Okay, so you Google that, you'll find 50
+papers.
+
+828
+00:40:59,860 --> 00:41:00,460
+Okay?
+
+829
+00:41:00,460 --> 00:41:04,930
+Their long step ones is where you're much
+more aggressive in updating the parameter.
+
+830
+00:41:06,520 --> 00:41:11,970
+And the choice of that mu, which is how
+much you update the parameter value that,
+
+831
+00:41:11,970 --> 00:41:14,790
+that's sort of like how aggressively you
+update, there's a tradeoff.
+
+832
+00:41:14,790 --> 00:41:17,970
+If you make mu tiny Then presumably every
+time you
+
+833
+00:41:17,970 --> 00:41:21,370
+are solving the new problem is basically
+the same as the problem you just solve.
+
+834
+00:41:21,370 --> 00:41:24,140
+You're you're within the range of
+quadratic convergence, you do one step.
+
+835
+00:41:24,140 --> 00:41:26,640
+And the fact there are methods based on
+that they're called,
+
+836
+00:41:26,640 --> 00:41:30,130
+those are the short step path following
+methods and they choose mu so
+
+837
+00:41:30,130 --> 00:41:33,270
+small that you are always in the range of
+quadratic convergence, right.
+
+838
+00:41:33,270 --> 00:41:36,140
+So that, so literally one Newton step.
+
+839
+00:41:36,140 --> 00:41:37,030
+Increase mu.
+
+840
+00:41:37,030 --> 00:41:38,430
+One Newton step, increase mu.
+
+841
+00:41:39,450 --> 00:41:41,980
+So that's, that, these are short step
+methods.
+
+842
+00:41:41,980 --> 00:41:45,330
+Long step methods don't do that, right?
+
+843
+00:41:45,330 --> 00:41:50,090
+And it turns out actually that as a
+practical matter different values of
+
+844
+00:41:50,090 --> 00:41:52,450
+mu are actually better.
+
+845
+00:41:52,450 --> 00:41:55,350
+10, 20, 30, I mean, actually fairly
+aggressive ones, even 100 or something.
+
+846
+00:41:55,350 --> 00:41:56,090
+Okay?
+
+847
+00:41:56,090 --> 00:41:56,810
+Okay.
+You're going to,
+
+848
+00:41:56,810 --> 00:42:02,010
+if you're going to stop At at duality gap
+epsilon, your duality gap,
+
+849
+00:42:02,010 --> 00:42:05,690
+when you finish centering, is always
+exactly m over t, right?
+
+850
+00:42:05,690 --> 00:42:09,180
+If t has been increased by mu each time,
+you just take the log, you know,
+
+851
+00:42:09,180 --> 00:42:13,170
+base mu, whatever it is, and that tells
+you, you know exactly the number of
+
+852
+00:42:13,170 --> 00:42:16,560
+outer iterations to achieve duality gap
+plus an epsilon is this, right?
+
+853
+00:42:16,560 --> 00:42:19,340
+So, gets, and kind of a beautiful thing.
+
+854
+00:42:19,340 --> 00:42:25,210
+You can see that if mu is 1.05, that's a
+small thing in the bottom, right?
+
+855
+00:42:25,210 --> 00:42:27,160
+And you take a lot of iterations.
+
+856
+00:42:27,160 --> 00:42:31,340
+If mu is 100, it's a lot fewer outer
+iterations, right?
+
+857
+00:42:31,340 --> 00:42:33,970
+because actually every time you do an
+outer iter, sorry,
+
+858
+00:42:33,970 --> 00:42:36,740
+an outer iteration, outer iteration is a
+centering.
+
+859
+00:42:36,740 --> 00:42:37,930
+So every time you do a centering,
+
+860
+00:42:37,930 --> 00:42:41,030
+your duality gap goes down exactly by a
+factor of mu.
+
+861
+00:42:41,030 --> 00:42:45,020
+So if mu is 100, that says, you start with
+a duality gap of, you know, 100.
+
+862
+00:42:45,020 --> 00:42:50,100
+Next step it's 1, then it's 0.01, 1e minus
+4, 1e minus x, okay, that kind of thing.
+
+863
+00:42:50,100 --> 00:42:50,860
+Right.
+
+864
+00:42:50,860 --> 00:42:55,280
+On the other hand, with mu as 100, You,
+you, you got some,
+
+865
+00:42:55,280 --> 00:42:59,360
+you got some serious Newton heavy lifting
+to do, right, because you're starting from
+
+866
+00:42:59,360 --> 00:43:03,160
+one problem, but the, it's not that close
+to the prob, to the next problem, and so
+
+867
+00:43:03,160 --> 00:43:05,850
+you, you know, who knows how many Newton
+steps you're going to have?
+
+868
+00:43:05,850 --> 00:43:09,730
+And in fact, what happens in a general
+homotopy method, which is,
+
+869
+00:43:09,730 --> 00:43:12,340
+what you don't want to happen is the
+following.
+
+870
+00:43:12,340 --> 00:43:16,170
+As you approach the target, the problems
+get harder.
+
+871
+00:43:16,170 --> 00:43:19,660
+This is what screws you, and this is, by
+the way, why it doesn't work to just go
+
+872
+00:43:19,660 --> 00:43:23,700
+sand something off in any way you like, so
+that's, that's a, that's what happens.
+
+873
+00:43:23,700 --> 00:43:27,150
+If you just go ahead, great idea, homotopy
+method, you don't have to know anything.
+
+874
+00:43:27,150 --> 00:43:29,470
+Let me have your problem, I'll just sand
+these things off,
+
+875
+00:43:29,470 --> 00:43:32,100
+I have a parameter that controls how much
+sand paper I use.
+
+876
+00:43:32,100 --> 00:43:33,980
+Well, actually it's the grit of the sand
+paper, right?
+
+877
+00:43:33,980 --> 00:43:37,270
+So I start with 80, I go to 120, I go to
+400,
+
+878
+00:43:37,270 --> 00:43:39,590
+I go to 8, you know this kind of thing.
+
+879
+00:43:39,590 --> 00:43:40,890
+I guess they don't make grit.
+
+880
+00:43:40,890 --> 00:43:43,060
+They probably do make grit for like
+lacquers and
+
+881
+00:43:43,060 --> 00:43:45,690
+thing like that in the thousands right,
+but okay.
+
+882
+00:43:45,690 --> 00:43:49,490
+So, then you know, the problem,
+
+883
+00:43:49,490 --> 00:43:53,545
+the down fault of a completely general
+homotopy method is very simple.
+
+884
+00:43:53,545 --> 00:43:55,480
+It's that as you increase,
+
+885
+00:43:55,480 --> 00:43:59,060
+as you get closer to the solution, the
+problems get harder and harder.
+
+886
+00:43:59,060 --> 00:44:01,680
+So, you're increasing mu, let's go from
+zero to one.
+
+887
+00:44:01,680 --> 00:44:04,080
+You know, let, let's take a parameter
+theta going from zero to one,
+
+888
+00:44:04,080 --> 00:44:05,390
+that's the traditional range.
+
+889
+00:44:05,390 --> 00:44:07,875
+You know, I go from zero to 0.1 no
+problem.
+
+890
+00:44:07,875 --> 00:44:09,730
+0.2, 0.3, now I start getting to 0.9,
+
+891
+00:44:09,730 --> 00:44:12,190
+and instead of two Newton steps, it's now
+taking 20.
+
+892
+00:44:12,190 --> 00:44:14,940
+And now I go to 0.92 because I've had to
+back off and
+
+893
+00:44:14,940 --> 00:44:17,510
+it's taking 100 Newton steps and you can
+see this is not going well.
+
+894
+00:44:17,510 --> 00:44:20,690
+So that's the downfall of why just
+constructing a general purpose
+
+895
+00:44:20,690 --> 00:44:22,220
+homotopy fails.
+
+896
+00:44:22,220 --> 00:44:25,670
+Okay, we're going to see something amazing
+happens here.
+
+897
+00:44:25,670 --> 00:44:28,460
+And it's very specific to the log barrier
+and so on.
+
+898
+00:44:28,460 --> 00:44:32,330
+Okay, so, this is the number, total number
+of,
+
+899
+00:44:32,330 --> 00:44:36,090
+of, of of outer steps you're going to do,
+obviously.
+
+900
+00:44:37,090 --> 00:44:40,970
+And then, you're going to multiply this by
+the number of
+
+901
+00:44:40,970 --> 00:44:46,330
+Newton steps required to solve the
+centering problem here when t is
+
+902
+00:44:46,330 --> 00:44:50,540
+mu times the previous t starting from the
+solution when it was t.
+
+903
+00:44:50,540 --> 00:44:51,310
+Okay?
+
+904
+00:44:51,310 --> 00:44:57,590
+Now, if you use the classical analysis,
+Something bad happens, right?
+
+905
+00:44:57,590 --> 00:45:02,910
+If you go back to the classifal classical
+Kantorovich analysis of Newton's method,
+
+906
+00:45:02,910 --> 00:45:07,150
+you will actually find that these problems
+are getting harder.
+
+907
+00:45:07,150 --> 00:45:10,860
+Well, okay, they wouldn't assert that,
+because they understood well that they
+
+908
+00:45:10,860 --> 00:45:14,400
+were simply producing an upper bound on
+the number of steps, which is valid.
+
+909
+00:45:15,430 --> 00:45:20,110
+I guess they would un, they would stay at
+the, the correct way to say it is.
+
+910
+00:45:20,110 --> 00:45:24,220
+The complexity and that the upper bound is
+growing.
+
+911
+00:45:24,220 --> 00:45:29,790
+Right, so what happens is when t gets very
+big here, L gets big.
+
+912
+00:45:29,790 --> 00:45:31,080
+The Lipschitz condition, we and
+
+913
+00:45:31,080 --> 00:45:34,060
+we know that because you know what you're
+really doing is you are placing something
+
+914
+00:45:34,060 --> 00:45:36,778
+looks like this, where something that's
+curve, you know look like that.
+
+915
+00:45:36,778 --> 00:45:42,475
+L is going to get really big and the
+prediction is, is that as you increase t,
+
+916
+00:45:42,475 --> 00:45:46,420
+sure, the problems get harder and harder
+and
+
+917
+00:45:46,420 --> 00:45:50,382
+like, first you're doing 10 Newton steps,
+then 50 then 100, then it all falls apart.
+
+918
+00:45:50,382 --> 00:45:52,530
+Everybody following this?
+
+919
+00:45:52,530 --> 00:45:54,760
+Okay, so that's the classical analysis.
+
+920
+00:45:54,760 --> 00:45:57,620
+But let's, let's take a pause and let's
+just run the method and
+
+921
+00:45:57,620 --> 00:45:59,310
+see what it looks like.
+
+922
+00:45:59,310 --> 00:46:00,690
+So here's the method.
+
+923
+00:46:00,690 --> 00:46:04,680
+Here's an inequality form lp, and what's
+crazy about it, so
+
+924
+00:46:04,680 --> 00:46:06,720
+this is, you know, 50 variables, right?
+
+925
+00:46:07,804 --> 00:46:09,630
+And here, here it is,
+
+926
+00:46:09,630 --> 00:46:12,450
+and now, you have to understand, I have to
+explain exactly what these are.
+
+927
+00:46:12,450 --> 00:46:15,910
+This shows duality gap, and these are like
+little staircase plots.
+
+928
+00:46:15,910 --> 00:46:16,650
+And when I, what I have to,
+
+929
+00:46:16,650 --> 00:46:20,470
+what you have to understand is, I'm
+counting Newton iterations here, and so
+
+930
+00:46:20,470 --> 00:46:25,480
+the width of a tread is the number of
+Newton steps required, right?
+
+931
+00:46:25,480 --> 00:46:27,350
+So I don't know, let's look at this one.
+
+932
+00:46:27,350 --> 00:46:31,120
+This one is, that's 20, that's, that's
+like, I don't know,
+
+933
+00:46:31,120 --> 00:46:32,980
+eight Newton steps, right?
+
+934
+00:46:32,980 --> 00:46:33,730
+These things.
+
+935
+00:46:33,730 --> 00:46:38,150
+This is for mu equals 50, and that's where
+mu equals 150.
+
+936
+00:46:38,150 --> 00:46:43,540
+Okay, now the height of one these stairs
+is when you finished entering,
+
+937
+00:46:43,540 --> 00:46:47,780
+you just reduce the duality gap always
+exactly by mu by a factor of mu, so
+
+938
+00:46:47,780 --> 00:46:51,300
+on a log duality gap plot, you go down by
+a fixed amount.
+
+939
+00:46:51,300 --> 00:46:55,730
+So the height of the stairs in each case
+is exactly the same as log mu,
+
+940
+00:46:55,730 --> 00:46:57,660
+well it's mu on a log plot.
+
+941
+00:46:57,660 --> 00:46:59,090
+Everybody's got this?
+
+942
+00:46:59,090 --> 00:47:01,900
+Okay, so now you can see, mu equals 2.
+
+943
+00:47:01,900 --> 00:47:05,490
+By the way, we'll see that if you're doing
+complexity theory, right, so
+
+944
+00:47:05,490 --> 00:47:07,770
+you want to prove that it's a polynomial
+type method,
+
+945
+00:47:07,770 --> 00:47:11,370
+it will suggest taking like mu equals
+1.01.
+
+946
+00:47:11,370 --> 00:47:13,940
+What do you, what would it look like if it
+was 1.01 here?
+
+947
+00:47:15,800 --> 00:47:19,200
+Well, first of all it would be one Newton
+step for sure every time, right, and
+
+948
+00:47:19,200 --> 00:47:22,840
+it would be a, this would be like a little
+staircase going like that, right.
+
+949
+00:47:22,840 --> 00:47:25,040
+And it would go you know, it would work,
+okay.
+
+950
+00:47:25,040 --> 00:47:29,710
+And, you know, but so what's weird here,
+so now you can see everything.
+
+951
+00:47:29,710 --> 00:47:35,520
+Here's mu equals 2 and you can see that
+this, the,
+
+952
+00:47:35,520 --> 00:47:38,660
+the, the treads are short, meaning you're
+not making, you're taking two,
+
+953
+00:47:38,660 --> 00:47:42,500
+three steps, I don't know here you crank
+this up to 50 and 150,
+
+954
+00:47:42,500 --> 00:47:47,550
+and you're taking like eight Newton steps,
+but you're making a big progress in gap.
+
+955
+00:47:47,550 --> 00:47:49,010
+Right, so, right.
+
+956
+00:47:49,010 --> 00:47:50,020
+Now, here's what's weird.
+
+957
+00:47:50,020 --> 00:47:51,950
+Let's just focus on this guy like right
+here.
+
+958
+00:47:53,890 --> 00:47:56,490
+You just reduce the duality gap by a
+factor of 10 to the 8.
+
+959
+00:47:56,490 --> 00:47:59,650
+Okay, for all practical purposes, you just
+solved that LP.
+
+960
+00:47:59,650 --> 00:48:02,408
+That is an LP with 50 variables.
+
+961
+00:48:02,408 --> 00:48:03,650
+'Kay?
+
+962
+00:48:03,650 --> 00:48:04,810
+With 100 constraints.
+
+963
+00:48:04,810 --> 00:48:10,210
+That's a polyhedron that has got a
+absolutely gigantic number of vertices.
+
+964
+00:48:10,210 --> 00:48:10,890
+Right?
+
+965
+00:48:10,890 --> 00:48:12,289
+Our 50 is a big place.
+
+966
+00:48:13,430 --> 00:48:14,430
+Okay?
+
+967
+00:48:14,430 --> 00:48:18,495
+This says, you just solved the LP in 30
+steps.
+
+968
+00:48:18,495 --> 00:48:20,640
+Okay?
+
+969
+00:48:20,640 --> 00:48:22,220
+Now, that's ridiculous.
+
+970
+00:48:22,220 --> 00:48:23,620
+I just want to point that out.
+
+971
+00:48:23,620 --> 00:48:27,800
+That means you're in 50 dimensional space.
+
+972
+00:48:27,800 --> 00:48:32,050
+You actually stopped and asked for
+directions 30 times.
+
+973
+00:48:32,050 --> 00:48:33,460
+And said excuse me, which way should I go?
+
+974
+00:48:33,460 --> 00:48:36,540
+And the answer came back from some Newton
+thing, or something like that.
+
+975
+00:48:36,540 --> 00:48:39,260
+Which is like go in that direction, right?
+
+976
+00:48:39,260 --> 00:48:39,970
+That's what you did.
+
+977
+00:48:39,970 --> 00:48:42,070
+30 steps later,
+
+978
+00:48:42,070 --> 00:48:47,420
+you've found your way to one of the, who
+knows how many vertices this is.
+
+979
+00:48:47,420 --> 00:48:48,780
+But the answer's a lot.
+
+980
+00:48:48,780 --> 00:48:51,060
+You found you're very close to the
+vicinity of the optimum.
+
+981
+00:48:51,060 --> 00:48:51,820
+Everyone following this?
+
+982
+00:48:51,820 --> 00:48:56,720
+So that's that would be like in R3 asking
+for
+
+983
+00:48:56,720 --> 00:49:02,460
+directions like twice or one and a, I
+mean, you are asking for
+
+984
+00:49:02,460 --> 00:49:06,790
+directions in a substantially fewer number
+than the dimension.
+
+985
+00:49:06,790 --> 00:49:10,580
+So everybody realize how ridiculous this
+is.
+
+986
+00:49:10,580 --> 00:49:13,830
+Right that's an R50.
+
+987
+00:49:13,830 --> 00:49:14,720
+Here's what's cool.
+
+988
+00:49:14,720 --> 00:49:18,060
+Guess what this plot looks like if you do
+this with 50,000 variables?
+
+989
+00:49:19,070 --> 00:49:20,028
+They look exactly the same.
+
+990
+00:49:20,028 --> 00:49:22,189
+They're the same.
+
+991
+00:49:22,189 --> 00:49:23,570
+'Kay, they look exactly like this.
+
+992
+00:49:24,910 --> 00:49:26,910
+It's the same thing, it's weird.
+
+993
+00:49:26,910 --> 00:49:32,520
+Now, this is like a plot of the number of
+iterations you need as you vary mu.
+
+994
+00:49:32,520 --> 00:49:34,190
+And something pretty weird happens.
+
+995
+00:49:34,190 --> 00:49:36,540
+If you make mu too small, over here.
+
+996
+00:49:36,540 --> 00:49:38,380
+Sure you're going to take a lotta steps.
+
+997
+00:49:38,380 --> 00:49:41,370
+By the way if we continued this, this
+starts going up like that.
+
+998
+00:49:41,370 --> 00:49:42,810
+Okay?
+
+999
+00:49:42,810 --> 00:49:47,640
+But this is very cool because what's
+happening across this range of mu,
+
+1000
+00:49:47,640 --> 00:49:51,120
+this is super good news because mu is an
+algorithm parameter, right?
+
+1001
+00:49:51,120 --> 00:49:52,010
+And it's super good news,
+
+1002
+00:49:52,010 --> 00:49:55,160
+because it means the good performance
+persists across a wide range.
+
+1003
+00:49:55,160 --> 00:49:57,840
+Now, what, what's happening here is very
+interesting.
+
+1004
+00:49:57,840 --> 00:49:58,630
+As you vary mu,
+
+1005
+00:49:58,630 --> 00:50:04,800
+as you increase mu, what's going to happen
+is the treads get, are getting wider.
+
+1006
+00:50:04,800 --> 00:50:10,320
+But the stairs are getting taller, because
+you get more, you get you get
+
+1007
+00:50:10,320 --> 00:50:14,840
+more duality gap reduction every time you
+center, it takes you more Newton steps.
+
+1008
+00:50:14,840 --> 00:50:19,590
+Miraculously, you multiply these two
+effects out and it's constant,
+
+1009
+00:50:19,590 --> 00:50:24,730
+everybody see this and that's just a
+ridiculous number, I mean 30, 30 steps.
+
+1010
+00:50:24,730 --> 00:50:28,530
+These are in fact the numbers that you
+have been seeing for the whole quarter.
+
+1011
+00:50:29,720 --> 00:50:32,080
+If you pay attention, you probably don't.
+
+1012
+00:50:32,080 --> 00:50:35,870
+But if you paid attention to things like
+what's reported when Sedumi and
+
+1013
+00:50:35,870 --> 00:50:40,330
+SDPT3 run is, you can now actually
+understand many,
+
+1014
+00:50:40,330 --> 00:50:42,900
+most of the columns of what's being
+printed out.
+
+1015
+00:50:42,900 --> 00:50:44,090
+I don't know if you've noticed, but
+
+1016
+00:50:44,090 --> 00:50:47,800
+if you give the super duper easy problem,
+it's 10, 10 iterations.
+
+1017
+00:50:47,800 --> 00:50:49,290
+Usually it's 25.
+
+1018
+00:50:49,290 --> 00:50:51,310
+It can be 30, and if you give it some
+weird things,
+
+1019
+00:50:51,310 --> 00:50:54,940
+some SOCP right on the boundary and it,
+you know, whatever, it can take 40.
+
+1020
+00:50:54,940 --> 00:50:58,490
+I don't know if you've been watching, but
+that's, that's what this is.
+
+1021
+00:50:58,490 --> 00:50:59,090
+Right.
+By the way,
+
+1022
+00:50:59,090 --> 00:51:02,170
+a bunch of the other entries being printed
+out, you should also understand,
+
+1023
+00:51:02,170 --> 00:51:06,050
+because things like primal residual, dual
+residual, things like that, so, okay.
+
+1024
+00:51:06,050 --> 00:51:07,350
+Everybody.
+
+1025
+00:51:07,350 --> 00:51:10,110
+So this is actually pretty cool stuff.
+
+1026
+00:51:10,110 --> 00:51:12,290
+All right, so here's a GP.
+
+1027
+00:51:12,290 --> 00:51:13,310
+Guess what?
+
+1028
+00:51:13,310 --> 00:51:15,310
+Looks the same, 'kay.
+
+1029
+00:51:15,310 --> 00:51:15,860
+The same.
+
+1030
+00:51:15,860 --> 00:51:19,570
+This is with log sum x, bunch of log sum,
+that's, that's a geometric program.
+
+1031
+00:51:20,730 --> 00:51:22,000
+Here's a bunch of LPs.
+
+1032
+00:51:22,000 --> 00:51:23,700
+I think this is the problem you're
+going to solve, and
+
+1033
+00:51:23,700 --> 00:51:24,780
+this is what it looks like.
+
+1034
+00:51:24,780 --> 00:51:26,870
+This is, for each one, You get a bunch,
+
+1035
+00:51:26,870 --> 00:51:30,810
+you get 100 instances for each problem,
+size, and you solve it.
+
+1036
+00:51:32,040 --> 00:51:36,870
+so, this here is a problem with,
+
+1037
+00:51:36,870 --> 00:51:43,360
+I guess 1000 constraints, and 1000 and
+2000 variables, okay.
+
+1038
+00:51:43,360 --> 00:51:46,700
+And you can see by the way, in all of
+these simulations,
+
+1039
+00:51:46,700 --> 00:51:49,970
+the absolute maximum number of iterations
+was something like 30.
+
+1040
+00:51:49,970 --> 00:51:51,600
+I was at 31.
+
+1041
+00:51:51,600 --> 00:51:53,120
+That's it, okay?
+
+1042
+00:51:53,120 --> 00:51:55,930
+Everybody, this is kind of the scaling.
+
+1043
+00:51:55,930 --> 00:51:58,380
+By the way, this scaling law continues.
+
+1044
+00:51:58,380 --> 00:52:00,350
+Oh and I should tell you how this works.
+
+1045
+00:52:00,350 --> 00:52:02,780
+The theory, we'll get to it in a minute,
+
+1046
+00:52:02,780 --> 00:52:07,100
+the theory says this thing scales like the
+square root.
+
+1047
+00:52:07,100 --> 00:52:10,140
+That's the best bound known to date.
+
+1048
+00:52:10,140 --> 00:52:11,600
+Okay?
+It says that as you get bigger and
+
+1049
+00:52:11,600 --> 00:52:13,350
+bigger, the problem goes like square root.
+
+1050
+00:52:13,350 --> 00:52:14,490
+That's enough, by the way,
+
+1051
+00:52:14,490 --> 00:52:18,690
+for our polynomial time complexity
+theorists to be happy or something, right?
+
+1052
+00:52:18,690 --> 00:52:19,630
+So that's fine.
+
+1053
+00:52:19,630 --> 00:52:20,950
+This is the scaling.
+
+1054
+00:52:20,950 --> 00:52:23,230
+And I'll tell you a little, let me just
+tell you a little bit about,
+
+1055
+00:52:23,230 --> 00:52:27,790
+about this, and we'll, we're going to quit
+here for today, but I,
+
+1056
+00:52:27,790 --> 00:52:29,410
+I want, I want to say a little bit about
+it.
+
+1057
+00:52:29,410 --> 00:52:30,940
+You see these pictures?
+
+1058
+00:52:30,940 --> 00:52:31,540
+Guess what.
+
+1059
+00:52:32,680 --> 00:52:34,290
+The pictures look the same.
+
+1060
+00:52:34,290 --> 00:52:41,850
+If these are anything, lps qps actually,
+we'll see later,
+
+1061
+00:52:41,850 --> 00:52:46,100
+we'll extend this to do semi defininte
+programs, things like that, sdps, sopcs.
+
+1062
+00:52:47,160 --> 00:52:49,850
+It doesn't matter if it's a problem from
+signal processing,
+
+1063
+00:52:49,850 --> 00:52:53,230
+from control, from finance, from machine
+learning.
+
+1064
+00:52:53,230 --> 00:52:55,890
+They all look the same.
+
+1065
+00:52:55,890 --> 00:52:58,156
+And, I was going to say something about
+this,
+
+1066
+00:52:58,156 --> 00:53:04,020
+this thing, this thing, this empirical
+thing, continues.
+
+1067
+00:53:04,020 --> 00:53:11,550
+Because I have a friend In Glasgow who
+solved an LP in exactly this form with,
+
+1068
+00:53:11,550 --> 00:53:16,650
+I think it was something like a billion
+variables, on some gigantic, ridiculous,
+
+1069
+00:53:16,650 --> 00:53:21,190
+gigantic machine, one of these IBM blue
+jean things or, right?
+
+1070
+00:53:21,190 --> 00:53:21,690
+Okay?
+
+1071
+00:53:23,040 --> 00:53:24,920
+I just, go ahead, I said, what method do
+you use?
+
+1072
+00:53:24,920 --> 00:53:27,840
+He said just standard, standard method.
+
+1073
+00:53:27,840 --> 00:53:29,760
+And I said, how many iterations does it
+take.
+
+1074
+00:53:29,760 --> 00:53:30,470
+And the number?
+
+1075
+00:53:30,470 --> 00:53:34,060
+>> [INAUDIBLE]
+>> Eh, you're close.
+
+1076
+00:53:34,060 --> 00:53:35,550
+It's 24.
+This is the amateur,
+
+1077
+00:53:35,550 --> 00:53:39,570
+what you're seeing here is the amateur
+implementation that's, you know.
+
+1078
+00:53:39,570 --> 00:53:43,890
+By the way, all these implementations you
+can find on, I mean,
+
+1079
+00:53:43,890 --> 00:53:45,710
+on the book website you can find our code.
+
+1080
+00:53:45,710 --> 00:53:50,110
+So the pedagogical amateur implementation
+gets 30, the really cool ones get 21, 24.
+
+1081
+00:53:50,110 --> 00:53:51,000
+So just 24 steps.
+
+1082
+00:53:51,000 --> 00:53:52,460
+It was identical.
+
+1083
+00:53:52,460 --> 00:53:54,380
+Right?
+Now, I should add something about this.
+
+1084
+00:53:54,380 --> 00:53:58,690
+This is the number of steps, but the
+number of, the time for
+
+1085
+00:53:58,690 --> 00:54:01,100
+a step is not constant, you know, duh.
+
+1086
+00:54:01,100 --> 00:54:03,890
+Because a step is actually solving a least
+squares problem.
+
+1087
+00:54:03,890 --> 00:54:04,420
+Everyone agreed?
+
+1088
+00:54:04,420 --> 00:54:06,570
+Because it's solving a Newton system.
+
+1089
+00:54:06,570 --> 00:54:07,470
+What's a Newton system?
+
+1090
+00:54:07,470 --> 00:54:11,380
+It's solving a least squared, it's
+minimizing a convex quadratic, that's,
+
+1091
+00:54:11,380 --> 00:54:13,540
+is another name for that, it's called
+solving a least squares problem.
+
+1092
+00:54:13,540 --> 00:54:14,800
+Everybody following this?
+
+1093
+00:54:14,800 --> 00:54:16,710
+Right.
+So the difference between this guy who
+
+1094
+00:54:16,710 --> 00:54:21,600
+solved a billion variable problem and us
+solving a 100 variable problem, you know,
+
+1095
+00:54:21,600 --> 00:54:24,582
+that's like over here [LAUGH] somewhere is
+considerable.
+
+1096
+00:54:24,582 --> 00:54:29,070
+I, I solved my 100 variable problem in
+100, 100 microseconds, and
+
+1097
+00:54:29,070 --> 00:54:34,190
+oh, each iteration for him, by the way,
+took something like 90 minutes, okay.
+
+1098
+00:54:34,190 --> 00:54:38,590
+And the lights in Glasgow dimmed while it
+was running, okay.
+
+1099
+00:54:38,590 --> 00:54:42,480
+And the downstream river like, was like,
+really hot or something like that,
+
+1100
+00:54:42,480 --> 00:54:46,740
+so, but the point was, it was just 24 of
+those, so it was 24 times 90 minutes.
+
+1101
+00:54:46,740 --> 00:54:47,920
+Ever, right?
+
+1102
+00:54:47,920 --> 00:54:48,800
+So, so actually,
+
+1103
+00:54:48,800 --> 00:54:52,100
+this is actually super duper interesting,
+because what it says is the following.
+
+1104
+00:54:52,100 --> 00:54:53,220
+It's kind of weird.
+
+1105
+00:54:53,220 --> 00:54:56,600
+It makes full circle with the whole
+course, back to least squares, right?
+
+1106
+00:54:56,600 --> 00:54:59,620
+So, when you come into this class, you
+know about least squares.
+
+1107
+00:54:59,620 --> 00:55:01,430
+I mean, everybody knows about least
+squares.
+
+1108
+00:55:01,430 --> 00:55:02,580
+And you shouldn't make fun of least
+squares,
+
+1109
+00:55:02,580 --> 00:55:06,710
+because like all sorts of crap is made to
+run really well with least squares.
+
+1110
+00:55:06,710 --> 00:55:10,960
+All sorts of image processing, like pretty
+much all of actual statistics that's used.
+
+1111
+00:55:10,960 --> 00:55:12,170
+I mean, right?
+
+1112
+00:55:12,170 --> 00:55:15,710
+All of control, all sorts of stuff, is
+least squares.
+
+1113
+00:55:15,710 --> 00:55:18,890
+I mean, you, you throw in regularization
+and some other tricks,
+
+1114
+00:55:18,890 --> 00:55:21,830
+you fiddle with the weights, you can make
+a lot of stuff happen and it,
+
+1115
+00:55:21,830 --> 00:55:24,160
+basically 20th century engineering was
+done with least squares.
+
+1116
+00:55:24,160 --> 00:55:25,030
+Okay?
+Period.
+
+1117
+00:55:25,030 --> 00:55:25,850
+And a lot of now, too.
+
+1118
+00:55:25,850 --> 00:55:27,650
+Everybody on board with this?
+
+1119
+00:55:27,650 --> 00:55:29,000
+And then you say, well, why do you take
+this class?
+
+1120
+00:55:29,000 --> 00:55:30,800
+And you go.
+
+1121
+00:55:30,800 --> 00:55:35,640
+Well, you know, that's, that's traces back
+to, to Gauss.
+
+1122
+00:55:35,640 --> 00:55:37,760
+We're going to learn that you can do kind
+of the same stuff but
+
+1123
+00:55:37,760 --> 00:55:40,570
+now have inequalities and constraints and
+you can really say what you want.
+
+1124
+00:55:40,570 --> 00:55:41,590
+Everybody following?
+
+1125
+00:55:41,590 --> 00:55:44,070
+I mean, that's kind of what the class is
+about, right?
+
+1126
+00:55:44,070 --> 00:55:45,000
+Here's the joke.
+
+1127
+00:55:45,000 --> 00:55:48,400
+At the end of the class, someone says,
+okay, fine, I, I, I believe it.
+
+1128
+00:55:48,400 --> 00:55:50,240
+I can do monotone regression now.
+
+1129
+00:55:50,240 --> 00:55:54,390
+I can solve all sorts of sick, sick things
+and, you know, crazy machine learning
+
+1130
+00:55:54,390 --> 00:55:57,080
+things, with, I don't know, all sorts of
+weird hinged losses I.
+
+1131
+00:55:57,080 --> 00:55:57,740
+You know.
+
+1132
+00:55:57,740 --> 00:56:01,080
+You can do signal processing and compress
+sensing, all this crazy stuff.
+
+1133
+00:56:01,080 --> 00:56:05,860
+I can do finance, with like, three halves,
+power, transaction cost, model.
+
+1134
+00:56:05,860 --> 00:56:07,140
+All this crazy stuff.
+
+1135
+00:56:07,140 --> 00:56:09,420
+And, someone goes, whoa, that's cool.
+
+1136
+00:56:09,420 --> 00:56:10,760
+How do you solve it?
+
+1137
+00:56:10,760 --> 00:56:12,260
+And, you know what this says?
+
+1138
+00:56:12,260 --> 00:56:17,330
+The answer is, you solve 20 least squares
+problems.
+
+1139
+00:56:17,330 --> 00:56:18,290
+Everybody got that?
+
+1140
+00:56:18,290 --> 00:56:23,450
+So what that says is, if you, if you're
+solving, you know,
+
+1141
+00:56:23,450 --> 00:56:27,570
+the classical, you know, older,
+mathematical engineer's sitting there,
+
+1142
+00:56:27,570 --> 00:56:31,430
+what are you doing, lqr, I don't know,
+Kalman filter.
+
+1143
+00:56:31,430 --> 00:56:32,850
+And then, what are you doing?
+
+1144
+00:56:32,850 --> 00:56:35,700
+Well, I'm adjusting some things, like
+covariance matrices or
+
+1145
+00:56:35,700 --> 00:56:37,810
+weights or costs or something like that.
+
+1146
+00:56:37,810 --> 00:56:40,010
+They're tweaking it to make it work.
+
+1147
+00:56:40,010 --> 00:56:41,000
+Right?
+
+1148
+00:56:41,000 --> 00:56:43,060
+So, then they'd say, well, what are you
+doing, and
+
+1149
+00:56:43,060 --> 00:56:45,170
+you go, I'm doing convex optimization.
+
+1150
+00:56:45,170 --> 00:56:48,140
+I don't have to say these things are
+between zero and one,
+
+1151
+00:56:48,140 --> 00:56:50,500
+or I don't have to tweak things to make it
+between zero and one.
+
+1152
+00:56:50,500 --> 00:56:52,590
+I can just say I want these variables
+between zero and one.
+
+1153
+00:56:52,590 --> 00:56:53,880
+Everybody following the story?
+
+1154
+00:56:53,880 --> 00:56:56,200
+Okay, and they go, huh, how do you do
+that?
+
+1155
+00:56:56,200 --> 00:56:58,720
+And I go, by solving 20 least squares
+problems.
+
+1156
+00:57:00,080 --> 00:57:02,370
+So, it's kind of embarrassing that they're
+so close.
+
+1157
+00:57:05,310 --> 00:57:08,540
+Now, so far we have assumed that you
+started with a point that was feasible and
+
+1158
+00:57:08,540 --> 00:57:11,720
+we are going to fix that now and we are
+going to fix it first in the absolutely
+
+1159
+00:57:11,720 --> 00:57:15,310
+classical way this is from 1948 or
+something like that.
+
+1160
+00:57:15,310 --> 00:57:18,800
+So, the question is how do you find a
+feasible point if you don't know one.
+
+1161
+00:57:18,800 --> 00:57:20,970
+And lots of answers.
+
+1162
+00:57:20,970 --> 00:57:24,930
+Here's one way, is, what we want to do is
+find a point, x,
+
+1163
+00:57:24,930 --> 00:57:28,180
+that satisfies the inequalities, and the
+Ax equals b.
+
+1164
+00:57:28,180 --> 00:57:31,890
+And the truth is, if we really want to
+initiate a barrier method,
+
+1165
+00:57:31,890 --> 00:57:34,540
+these inequalities have to be straight,
+right?
+
+1166
+00:57:34,540 --> 00:57:39,010
+So, not, it's not good enough to do this,
+because the log barrier domain is these
+
+1167
+00:57:39,010 --> 00:57:42,800
+things straight, or another way to say it
+is, if you're using a barrier method,
+
+1168
+00:57:42,800 --> 00:57:45,950
+Slater better hold, the Slater constraint
+qualification better hold.
+
+1169
+00:57:45,950 --> 00:57:48,150
+You better have a point that's strictly
+feasible.
+
+1170
+00:57:49,610 --> 00:57:53,030
+Okay, so here's your basic one, 1948, goes
+like this.
+
+1171
+00:57:53,030 --> 00:57:57,420
+You introduce a new variable, s, and you
+minimize over x and
+
+1172
+00:57:57,420 --> 00:58:02,930
+s, s, subject to fi of x less than s and
+Ax equals b.
+
+1173
+00:58:02,930 --> 00:58:04,170
+That's it.
+
+1174
+00:58:04,170 --> 00:58:05,030
+Okay?
+
+1175
+00:58:05,030 --> 00:58:08,250
+And, and if you look at this, you'll
+realize immediately this is nothing but
+
+1176
+00:58:08,250 --> 00:58:10,830
+the epigraph formulation for minimizing
+the max.
+
+1177
+00:58:10,830 --> 00:58:13,250
+You're minimizing max Fi.
+
+1178
+00:58:13,250 --> 00:58:14,110
+Right?
+That's what this says.
+
+1179
+00:58:15,380 --> 00:58:20,540
+So, what happens is clear, if you solve
+this problem, oh, let's discuss it.
+
+1180
+00:58:20,540 --> 00:58:25,470
+For this problem you have, you can easily
+get a strictly feasible point.
+
+1181
+00:58:25,470 --> 00:58:31,655
+Right, so what you is you pick any x in
+the domain of' fi, right.
+
+1182
+00:58:33,120 --> 00:58:36,000
+You need, oh, you can actually relax the
+ax equals b or
+
+1183
+00:58:36,000 --> 00:58:39,080
+whatever something like that but you can
+handle that as well,
+
+1184
+00:58:39,080 --> 00:58:41,310
+let's let's even get the equality
+constraint for now.
+
+1185
+00:58:41,310 --> 00:58:45,490
+Right, but you simply take a point x then
+what you do is you choose s
+
+1186
+00:58:45,490 --> 00:58:48,380
+say the max of' f'i of' x plus 1.
+
+1187
+00:58:48,380 --> 00:58:53,400
+And now, everyone of these inequality
+holds with at least a gap of one in there.
+
+1188
+00:58:53,400 --> 00:58:57,670
+Okay, so that gives you that gives you a
+strictly feasible point.
+
+1189
+00:58:57,670 --> 00:59:02,020
+So, you solve this method, you solve this
+problem using say a barrier method and
+
+1190
+00:59:02,020 --> 00:59:03,090
+what will happen is this.
+
+1191
+00:59:03,090 --> 00:59:06,710
+If the optimal s is positive you're done.
+
+1192
+00:59:06,710 --> 00:59:11,080
+Right, because you now will have a
+certificate Proving that there is
+
+1193
+00:59:11,080 --> 00:59:14,060
+no point that satisfies fi of x less than
+0.
+
+1194
+00:59:14,060 --> 00:59:15,600
+And in fact, the optimality conditions
+here,
+
+1195
+00:59:15,600 --> 00:59:18,480
+you could reconstruct a dual certificate,
+and actually,
+
+1196
+00:59:18,480 --> 00:59:21,270
+a theorem of the alternatives, an
+alternative certificate, right?
+
+1197
+00:59:23,830 --> 00:59:24,780
+So that's the case.
+
+1198
+00:59:24,780 --> 00:59:27,720
+Otherwise, it, you can terminate the
+minute s is negative.
+
+1199
+00:59:27,720 --> 00:59:30,670
+Right, because if s is negative, you break
+here, and
+
+1200
+00:59:30,670 --> 00:59:33,660
+you've computed a point that's feasible
+that's strictly feasible.
+
+1201
+00:59:33,660 --> 00:59:36,380
+And then you go, you switch to the barrier
+method.
+
+1202
+00:59:36,380 --> 00:59:41,780
+Okay?
+So this is completely it's classical.
+
+1203
+00:59:41,780 --> 00:59:43,100
+Okay.
+
+1204
+00:59:43,100 --> 00:59:44,190
+There's variations on it.
+
+1205
+00:59:44,190 --> 00:59:46,570
+In fact, I think on your current
+assignment,
+
+1206
+00:59:46,570 --> 00:59:49,280
+where you're implementing one, there's
+even a more sophisticated variation where
+
+1207
+00:59:49,280 --> 00:59:51,140
+you take into account the equality
+constraint.
+
+1208
+00:59:51,140 --> 00:59:52,050
+So.
+
+1209
+00:59:52,050 --> 00:59:53,400
+Okay.
+
+1210
+00:59:53,400 --> 00:59:55,540
+Here's a very interesting alternative.
+
+1211
+00:59:55,540 --> 00:59:57,420
+Now, these are called phase one methods.
+
+1212
+00:59:57,420 --> 01:00:01,310
+I, I guess I should mention that, that the
+idea is there's phase one and phase two.
+
+1213
+01:00:01,310 --> 01:00:03,660
+In phase one, you determine a feasible
+point and
+
+1214
+01:00:03,660 --> 01:00:08,900
+then in phase two you then find an optimal
+point starting from a feasible point.
+
+1215
+01:00:08,900 --> 01:00:10,040
+Right?
+So those are called phase one,
+
+1216
+01:00:10,040 --> 01:00:10,810
+phase two methods.
+
+1217
+01:00:12,388 --> 01:00:15,716
+actually, most modern methods use a
+different thing which combines both of
+
+1218
+01:00:15,716 --> 01:00:16,369
+them at once.
+
+1219
+01:00:17,620 --> 01:00:21,490
+So, here's another variation, instead of
+minimizing the maximum of
+
+1220
+01:00:21,490 --> 01:00:25,020
+the functions in phase one, you minimize
+the sum of the violations.
+
+1221
+01:00:25,020 --> 01:00:28,660
+So, if you take a look at this problem
+here, s is,
+
+1222
+01:00:28,660 --> 01:00:30,755
+should be interpreted this way.
+
+1223
+01:00:30,755 --> 01:00:36,030
+Si is something like a violation in f.
+
+1224
+01:00:36,030 --> 01:00:39,270
+it's, it's, it's how much extra slack you
+have to add to
+
+1225
+01:00:39,270 --> 01:00:42,160
+that inequality to allow it to be true, or
+something like that.
+
+1226
+01:00:42,160 --> 01:00:42,730
+Right?
+
+1227
+01:00:42,730 --> 01:00:46,620
+So here you're minimizing 1 to the sum of
+the s's, and
+
+1228
+01:00:46,620 --> 01:00:50,220
+this is clearly, this is exactly
+equivalent to this.
+
+1229
+01:00:50,220 --> 01:00:56,570
+You are minimizing here sum of fi of x
+
+1230
+01:00:56,570 --> 01:00:59,495
+plus it's exactly that, so it's sum of the
+positive part.
+
+1231
+01:00:59,495 --> 01:01:00,660
+Right?
+
+1232
+01:01:00,660 --> 01:01:06,460
+By now you should have a guess as to what
+that's going to do, right?
+
+1233
+01:01:06,460 --> 01:01:10,010
+Because in your head you should see this
+and
+
+1234
+01:01:10,010 --> 01:01:12,180
+I guess if you are machine learning you
+call that hinge loss or
+
+1235
+01:01:12,180 --> 01:01:15,900
+something but whatever it is it, it should
+mean something to you.
+
+1236
+01:01:15,900 --> 01:01:19,620
+What you would expect, and this is exactly
+correct.
+
+1237
+01:01:19,620 --> 01:01:24,030
+Is that when you solve this problem well,
+if,
+
+1238
+01:01:24,030 --> 01:01:27,200
+if there's a feasible point, the, you
+know, you'll get every point here.
+
+1239
+01:01:27,200 --> 01:01:31,100
+But if it's infeasible, something very
+interesting happens.
+
+1240
+01:01:31,100 --> 01:01:35,210
+You might get a few points up here.
+
+1241
+01:01:35,210 --> 01:01:40,620
+Or another way to say it is you have a
+sparse, you have sparse violations, right?
+
+1242
+01:01:40,620 --> 01:01:45,260
+So that's what this will, this will give
+you sparse violations, that's the idea.
+
+1243
+01:01:45,260 --> 01:01:46,870
+So here's a quick example,
+
+1244
+01:01:46,870 --> 01:01:50,980
+we have a set of 100 linear inequalities
+of 50 variables here, right.
+
+1245
+01:01:50,980 --> 01:01:54,790
+So it's infeasible, so there's no point it
+satisfies all 100 inequalities.
+
+1246
+01:01:54,790 --> 01:01:59,360
+If you apply the standard phase one method
+this is the margin, here, right.
+
+1247
+01:01:59,360 --> 01:02:03,920
+So, if you are above zero, that means
+your, you satisfy the inequality.
+
+1248
+01:02:03,920 --> 01:02:07,251
+Well, what you have done in the, in the
+original, in the basic phase one,
+
+1249
+01:02:07,251 --> 01:02:11,390
+the mini max phase one, what you do is you
+push all of them this way and
+
+1250
+01:02:11,390 --> 01:02:13,360
+the result is congratulations.
+
+1251
+01:02:13,360 --> 01:02:16,850
+But you didn't satisfy, you didn't push
+the margins, all the margins positive.
+
+1252
+01:02:16,850 --> 01:02:18,220
+There is no point with that.
+
+1253
+01:02:18,220 --> 01:02:23,530
+But what's happened is of course all the,
+all the margins have piled up on the,
+
+1254
+01:02:23,530 --> 01:02:25,430
+on the line where you're pushing, right?
+
+1255
+01:02:25,430 --> 01:02:28,380
+And so that ended up being, you know,
+minus 0.2.
+
+1256
+01:02:28,380 --> 01:02:33,460
+So the point is, here, you got 50 out of
+your 100 linear inequalities are violated.
+
+1257
+01:02:33,460 --> 01:02:34,840
+And actually there's a couple down here,
+so
+
+1258
+01:02:34,840 --> 01:02:37,420
+it's probably more than half are violated.
+
+1259
+01:02:37,420 --> 01:02:38,140
+Something like that.
+
+1260
+01:02:38,140 --> 01:02:39,750
+Well, I guess it's here.
+
+1261
+01:02:39,750 --> 01:02:40,420
+Yeah, 51.
+
+1262
+01:02:40,420 --> 01:02:41,330
+Okay?
+
+1263
+01:02:41,330 --> 01:02:43,280
+So 51 inequalities are violated.
+
+1264
+01:02:44,510 --> 01:02:47,220
+When you do the sum, this sum, of
+inequalities,
+
+1265
+01:02:47,220 --> 01:02:51,380
+like the sum of violations method, you get
+something very interesting.
+
+1266
+01:02:51,380 --> 01:02:52,910
+And you can sort of see what happens.
+
+1267
+01:02:52,910 --> 01:02:54,670
+So, by the way, how should we.
+
+1268
+01:02:54,670 --> 01:02:58,040
+What that says is that, many of them,
+right?
+
+1269
+01:02:58,040 --> 01:02:59,510
+Are, are satisfied.
+
+1270
+01:02:59,510 --> 01:03:00,960
+Right?
+There's a big bump right there.
+
+1271
+01:03:00,960 --> 01:03:02,450
+That's a whole bunch of things that ended
+up right there.
+
+1272
+01:03:02,450 --> 01:03:03,680
+It was just as easy.
+
+1273
+01:03:03,680 --> 01:03:04,590
+And you have a, you know,
+
+1274
+01:03:04,590 --> 01:03:08,770
+you have a handful out here that are the
+ones you cannot satisfy, and so on.
+
+1275
+01:03:08,770 --> 01:03:16,960
+Now, this does not compute the point that
+violates the fewest inequalities, right?
+
+1276
+01:03:16,960 --> 01:03:20,830
+It doesn't do that it's a heuristic for
+that but you can see what it does.
+
+1277
+01:03:20,830 --> 01:03:21,490
+Everybody got this?
+
+1278
+01:03:21,490 --> 01:03:22,030
+Okay.
+And by the way,
+
+1279
+01:03:22,030 --> 01:03:25,410
+how would you interpret, what would you
+say about that inequality right there?
+
+1280
+01:03:25,410 --> 01:03:27,710
+It's an easy to satisfy inequality.
+
+1281
+01:03:27,710 --> 01:03:30,940
+So, not only is it easy to satisfy, it's
+easy to satisfy with a bunch of margin,
+
+1282
+01:03:30,940 --> 01:03:33,620
+doesn't really cost anything, so it's
+done.
+
+1283
+01:03:33,620 --> 01:03:34,200
+Okay.
+
+1284
+01:03:34,200 --> 01:03:40,210
+By the way, there's no incentive what so
+ever for a margin to move to the right.
+
+1285
+01:03:40,210 --> 01:03:44,440
+None what so ever because the slope of the
+hinge loss is zero.
+
+1286
+01:03:44,440 --> 01:03:45,670
+Once you've satisfied it.
+
+1287
+01:03:45,670 --> 01:03:47,300
+Right?
+So, you know,
+
+1288
+01:03:47,300 --> 01:03:50,450
+you could put a small slope on that, if
+you cared, right?
+
+1289
+01:03:50,450 --> 01:03:51,220
+So, okay.
+
+1290
+01:03:52,880 --> 01:03:55,262
+This is quite, it's actually, it's got a,
+a ton of uses.
+
+1291
+01:03:55,262 --> 01:03:58,127
+Uum, I mean, for example, in, in
+engineering design,
+
+1292
+01:03:58,127 --> 01:04:01,290
+if you throw together a problem with a
+whole bunch of inequalities, a whole bunch
+
+1293
+01:04:01,290 --> 01:04:08,590
+of specifications, and it's infeasible it
+doesn't really help you to get a phase one
+
+1294
+01:04:08,590 --> 01:04:13,460
+solution that violates like all of your
+100 inequalities by some small amount.
+
+1295
+01:04:13,460 --> 01:04:16,670
+It's actually quite interesting to get one
+that satisfies like almost all
+
+1296
+01:04:16,670 --> 01:04:20,610
+the constraints but a few, so it hand
+selects a few, and it kind of guides you
+
+1297
+01:04:20,610 --> 01:04:23,280
+and tells you which of the constraints
+you're going to have to give up on, or
+
+1298
+01:04:23,280 --> 01:04:26,020
+it suggests which ones you could give up
+on.
+
+1299
+01:04:26,020 --> 01:04:26,520
+Okay.
+
+1300
+01:04:29,170 --> 01:04:36,040
+so, there's an, a very interesting thing
+occurs when you're doing phase one,
+
+1301
+01:04:36,040 --> 01:04:40,130
+and it has to do with the the complexity
+analysis of it.
+
+1302
+01:04:40,130 --> 01:04:44,830
+And in fact, this is the, the Achilles
+heel of the complexity analysis of
+
+1303
+01:04:44,830 --> 01:04:49,509
+all these interior point methods, so if,
+if you do real complexity analysis
+
+1304
+01:04:51,770 --> 01:04:55,480
+this is and, and you want to look and see
+kind of where the fraud is
+
+1305
+01:04:55,480 --> 01:04:59,630
+in complexity analysis of, of into your
+point methods.
+
+1306
+01:04:59,630 --> 01:05:02,780
+Look for a constant that tells you have
+feasible the problem is right,
+
+1307
+01:05:02,780 --> 01:05:06,180
+because the basically it, it's a bit, it's
+a bit fishy.
+
+1308
+01:05:07,955 --> 01:05:08,670
+so.
+
+1309
+01:05:08,670 --> 01:05:11,470
+But let me explain what the idea is.
+
+1310
+01:05:11,470 --> 01:05:14,890
+Here what you do is you construct a family
+of linear inequalities like this.
+
+1311
+01:05:14,890 --> 01:05:17,770
+Now the, the fact is, if you have a bunch
+of linear inequalities, and
+
+1312
+01:05:17,770 --> 01:05:21,690
+you run a phase one method actually, two
+interesting things happen.
+
+1313
+01:05:21,690 --> 01:05:25,400
+If the inequalities have a giant feasible
+set, it'll take like ten steps,
+
+1314
+01:05:25,400 --> 01:05:27,430
+and you'll have a feasible point and
+you'll stop.
+
+1315
+01:05:27,430 --> 01:05:31,530
+So if the feasible set is gigantic, You'll
+terminate very quickly,
+
+1316
+01:05:31,530 --> 01:05:33,240
+because there's just tons of feasible
+points.
+
+1317
+01:05:33,240 --> 01:05:35,320
+You'll find one real quickly, 'kay?
+
+1318
+01:05:35,320 --> 01:05:37,020
+Now the flip side also occurs.
+
+1319
+01:05:37,020 --> 01:05:39,920
+It's completely symmetric, and it goes
+like this.
+
+1320
+01:05:39,920 --> 01:05:43,780
+If the inequalities are wildly infeasible,
+right, which,
+
+1321
+01:05:43,780 --> 01:05:49,160
+by the way would mean what in terms of the
+dual or alternative problem?
+
+1322
+01:05:49,160 --> 01:05:53,190
+It'd be feasible, and its feasible set
+would be big, right?
+
+1323
+01:05:53,190 --> 01:05:57,170
+So to be wildly infeasible, right, means
+that the dual
+
+1324
+01:05:57,170 --> 01:06:01,960
+inequalities are not only feasible, but
+have like a giant feasible set.
+
+1325
+01:06:01,960 --> 01:06:02,570
+Okay?
+Right?
+
+1326
+01:06:02,570 --> 01:06:06,320
+What that means is there's tons of
+certificates proving those things
+
+1327
+01:06:06,320 --> 01:06:07,050
+are infeasible.
+
+1328
+01:06:07,050 --> 01:06:07,970
+Everybody following this?
+
+1329
+01:06:07,970 --> 01:06:11,990
+This is all completely hand waving, but
+it's actually Good to know.
+
+1330
+01:06:11,990 --> 01:06:14,500
+Okay?
+So, in that case also,
+
+1331
+01:06:14,500 --> 01:06:18,110
+phase one terminates very quickly because
+it terminates when it
+
+1332
+01:06:18,110 --> 01:06:19,860
+produces a certificate of infeasibility.
+
+1333
+01:06:19,860 --> 01:06:22,170
+So again, eight, ten iterations.
+
+1334
+01:06:22,170 --> 01:06:23,920
+20, you know, if it's a challenging one.
+
+1335
+01:06:23,920 --> 01:06:24,768
+Everybody following us?
+
+1336
+01:06:24,768 --> 01:06:31,160
+So, but right, if you now make a parameter
+That takes you,
+
+1337
+01:06:31,160 --> 01:06:35,950
+that perturbs the problem and makes it go
+from feasible to infeasible, right?
+
+1338
+01:06:35,950 --> 01:06:39,800
+And you tune that parameter right at the
+phase transition
+
+1339
+01:06:39,800 --> 01:06:43,550
+between feasible and infeasible.
+
+1340
+01:06:43,550 --> 01:06:46,470
+That's where it actually gets hard to
+solve, right?
+
+1341
+01:06:46,470 --> 01:06:47,640
+And this is actually intrinsic.
+
+1342
+01:06:47,640 --> 01:06:49,550
+I mean, there's nothing you can do about
+this, right?
+
+1343
+01:06:49,550 --> 01:06:53,050
+This, this is, it's sort of obv, it's
+intuitively obvious and so on.
+
+1344
+01:06:53,050 --> 01:06:54,810
+So so what happens,
+
+1345
+01:06:54,810 --> 01:07:00,640
+it turns out is it's extremely difficult
+to create a problem that will actually
+
+1346
+01:07:00,640 --> 01:07:05,850
+be hard for a phase one to determine
+feasibility or infeasibility, right?
+
+1347
+01:07:05,850 --> 01:07:06,667
+If you just generate,
+
+1348
+01:07:06,667 --> 01:07:10,010
+anything that will come up in practice
+will be totally will work just fine.
+
+1349
+01:07:10,010 --> 01:07:11,728
+It'll be ten, 20 steps, it'll be all over.
+
+1350
+01:07:11,728 --> 01:07:12,256
+Right?
+
+1351
+01:07:12,256 --> 01:07:14,660
+[INAUDIBLE] period, right?
+
+1352
+01:07:14,660 --> 01:07:16,490
+Actually there are some pathologies but
+
+1353
+01:07:16,490 --> 01:07:19,740
+their, that's it's a, it, that's a
+different story, right?
+
+1354
+01:07:19,740 --> 01:07:23,490
+It's a pathology and it's your fault
+anyway or something like that.
+
+1355
+01:07:23,490 --> 01:07:24,600
+If you're using barrier.
+
+1356
+01:07:24,600 --> 01:07:28,240
+It, the general pathology is that you
+don't, Slater is not satisfied and
+
+1357
+01:07:28,240 --> 01:07:29,060
+that will do the trick.
+
+1358
+01:07:29,060 --> 01:07:29,610
+Right?
+
+1359
+01:07:29,610 --> 01:07:33,008
+But using other methods that don't care
+about Slater, it,
+
+1360
+01:07:33,008 --> 01:07:37,070
+you get you get the same thing like this.
+
+1361
+01:07:38,190 --> 01:07:41,500
+so, what happens, So the only way to do
+this is to very carefully construct it,
+
+1362
+01:07:41,500 --> 01:07:42,860
+and you can see what's happening here,
+right?
+
+1363
+01:07:42,860 --> 01:07:44,488
+The number of steps is taking you.
+
+1364
+01:07:44,488 --> 01:07:46,960
+And that's 25 or 30 or something like
+that.
+
+1365
+01:07:46,960 --> 01:07:49,320
+It's a bit high, but you know, doesn't
+matter.
+
+1366
+01:07:49,320 --> 01:07:54,070
+This is infeasible and then this is
+feasible, and if you zoom in right as you
+
+1367
+01:07:54,070 --> 01:07:58,191
+transition between them, you get something
+like this, right.
+
+1368
+01:07:58,191 --> 01:08:01,770
+So, now, let's think about what these
+mean, right.
+
+1369
+01:08:01,770 --> 01:08:06,000
+This is saying well, it's now taking 80
+steps, here, to work this out,
+
+1370
+01:08:06,000 --> 01:08:09,010
+that's because this problem is infeasible.
+
+1371
+01:08:09,010 --> 01:08:13,200
+But it's infeasible in like the seventh
+digit, right?
+
+1372
+01:08:13,200 --> 01:08:18,180
+This problem is feasible in the seventh
+digit, right?
+
+1373
+01:08:18,180 --> 01:08:23,020
+So you know, in, in some sense this is of
+no interest what so
+
+1374
+01:08:23,020 --> 01:08:25,460
+ever in any practical application.
+
+1375
+01:08:25,460 --> 01:08:29,380
+Right.
+If your problem is feasible in the seventh
+
+1376
+01:08:29,380 --> 01:08:33,260
+digit, you, you've got a problem, you have
+a serious, practical, I mean,
+
+1377
+01:08:33,260 --> 01:08:34,440
+it's not going to work, basic.
+
+1378
+01:08:34,440 --> 01:08:36,740
+Whatever, whatever you think you're
+going to use it for
+
+1379
+01:08:36,740 --> 01:08:38,210
+is not going to work, right.
+
+1380
+01:08:38,210 --> 01:08:41,100
+And the same for infeasibility, right, so.
+
+1381
+01:08:42,240 --> 01:08:44,470
+But this is just to show you what, what
+happens here.
+
+1382
+01:08:44,470 --> 01:08:50,270
+So let's do the complexity analysis via
+self concordance.
+
+1383
+01:08:50,270 --> 01:08:55,380
+Right, and so, the assumptions are that
+the, well, the sub level sets are bounded.
+
+1384
+01:08:55,380 --> 01:08:57,740
+In fact, that follows from self
+concordance, in fact.
+
+1385
+01:08:57,740 --> 01:08:59,220
+No, not quite.
+
+1386
+01:08:59,220 --> 01:09:02,150
+If you have a bounded feasible set.
+
+1387
+01:09:02,150 --> 01:09:06,204
+And we'll assume that tf0 plus phi is
+self-concordant.
+
+1388
+01:09:06,204 --> 01:09:10,360
+And sometimes you assume this, for
+example, for t bigger than 1, right?
+
+1389
+01:09:10,360 --> 01:09:12,490
+This actually, we're going to increase t
+so
+
+1390
+01:09:12,490 --> 01:09:17,890
+it, if it's true for any value of t and
+above, there will be, it'll be true.
+
+1391
+01:09:17,890 --> 01:09:21,180
+For example, if f0's concordant,
+self-concordant, this is true for
+
+1392
+01:09:21,180 --> 01:09:22,850
+t bigger than or equal to 1, right?
+
+1393
+01:09:22,850 --> 01:09:24,340
+If phi is self-concordant and f0 is.
+
+1394
+01:09:25,560 --> 01:09:29,810
+Now this would hold for things like linear
+programs, QPs,
+
+1395
+01:09:29,810 --> 01:09:33,610
+QCQPs geometric programs, things like
+that.
+
+1396
+01:09:34,690 --> 01:09:36,170
+Now there are some cases where it isn't.
+
+1397
+01:09:36,170 --> 01:09:40,225
+Here is one, Here is the maximum entropy
+problem, right, and it is that it's not
+
+1398
+01:09:40,225 --> 01:09:44,420
+self-concordant, but it turns out it's
+really easy to make itself concordant and
+
+1399
+01:09:44,420 --> 01:09:47,980
+actually when you think about it, you'd
+realize its even the right thing to do.
+
+1400
+01:09:47,980 --> 01:09:51,550
+One of the problems is there is an
+implicit constraint here that Xi is bigger
+
+1401
+01:09:51,550 --> 01:09:52,370
+than or equal to zero.
+
+1402
+01:09:52,370 --> 01:09:56,090
+That's the domain of the entropy function
+here, okay?
+
+1403
+01:09:56,090 --> 01:09:57,140
+And it turns out,
+
+1404
+01:09:57,140 --> 01:10:02,180
+all you have to do is add that and you're
+back in self-concordance land, right?
+
+1405
+01:10:02,180 --> 01:10:05,930
+The, the reason is, to the function here,
+
+1406
+01:10:05,930 --> 01:10:08,240
+remember negative entropy is not
+self-concordant.
+
+1407
+01:10:08,240 --> 01:10:14,530
+Negative entropy plus t times the minus
+sum
+
+1408
+01:10:14,530 --> 01:10:18,640
+log xi, that is self-concordant, right.
+
+1409
+01:10:18,640 --> 01:10:23,418
+So when you add this constraint, this
+thing is self-concordant, right?
+
+1410
+01:10:23,418 --> 01:10:28,190
+So, or sorry, tf0 plus 5 is
+self-concordant for this reformulation,
+
+1411
+01:10:28,190 --> 01:10:34,570
+and in fact, what it means is that xi
+equals 0 is a problem here, right.
+
+1412
+01:10:34,570 --> 01:10:38,430
+And what this says is you better make it
+explicit, because that's actually not
+
+1413
+01:10:38,430 --> 01:10:44,100
+a barrier for it, that's not a function
+that goes to infinity as x goes to zero.
+
+1414
+01:10:44,100 --> 01:10:48,720
+Right, so this says go ahead and make it,
+call it
+
+1415
+01:10:48,720 --> 01:10:53,840
+out explicitly instead of implicitly and
+actually then the formulation works.
+
+1416
+01:10:53,840 --> 01:10:55,310
+Okay.
+
+1417
+01:10:55,310 --> 01:11:00,180
+oh, and I should say, before we can even
+start the complexity analysis I should
+
+1418
+01:11:00,180 --> 01:11:02,194
+start with a general comment.
+
+1419
+01:11:02,194 --> 01:11:06,926
+The barrier method works extremely well
+even when f0 and
+
+1420
+01:11:06,926 --> 01:11:10,830
+tf0 plus phi are not self concordant,
+right?
+
+1421
+01:11:10,830 --> 01:11:15,560
+So, works perfectly well but if you really
+want to understand why, I mean,
+
+1422
+01:11:15,560 --> 01:11:19,020
+if you really want to understand why it
+has to do with self-concordance, and
+
+1423
+01:11:19,020 --> 01:11:20,120
+things like that so.
+
+1424
+01:11:20,120 --> 01:11:21,100
+Okay.
+
+1425
+01:11:21,100 --> 01:11:23,710
+So I'll go over the idea of this actually
+it's a,
+
+1426
+01:11:23,710 --> 01:11:26,570
+it's, it's, it's a bit complicated, so
+I'll say just a few things about it,
+
+1427
+01:11:26,570 --> 01:11:29,950
+and then this, this is something that
+you'll want to go figure out for yourself.
+
+1428
+01:11:31,090 --> 01:11:33,500
+So what happens is we, we know the number
+of outer steps.
+
+1429
+01:11:33,500 --> 01:11:36,590
+That's easy.
+That's just basically log 1 over epsilon,
+
+1430
+01:11:36,590 --> 01:11:38,640
+right, because you, you've, you,
+
+1431
+01:11:38,640 --> 01:11:42,670
+you divide The duality gap by a factor mu
+every outer one.
+
+1432
+01:11:42,670 --> 01:11:45,330
+So the question is, how many Newton steps
+does it take?
+
+1433
+01:11:45,330 --> 01:11:47,250
+And the answer is very simple.
+
+1434
+01:11:47,250 --> 01:11:55,120
+You are going to minimize mu t f0 of x,
+right, plus phi of x.
+
+1435
+01:11:55,120 --> 01:11:57,090
+We're going to minimize this.
+
+1436
+01:11:57,090 --> 01:12:03,360
+Starting from the minimizer of t f0 of x
+plus phi of x.
+
+1437
+01:12:03,360 --> 01:12:06,930
+That's what we're going to do, right,
+because we're, we've minimized this.
+
+1438
+01:12:06,930 --> 01:12:09,300
+That's x star of t, right.
+
+1439
+01:12:09,300 --> 01:12:13,080
+And then we're going to increment t by
+multiplying it by mu, and
+
+1440
+01:12:13,080 --> 01:12:15,210
+then we're going to minimize this
+function.
+
+1441
+01:12:15,210 --> 01:12:17,650
+So starting from the minimizer of this
+function,
+
+1442
+01:12:17,650 --> 01:12:19,950
+we're going to find the minimizer of that.
+
+1443
+01:12:19,950 --> 01:12:23,815
+And Newton's the complexity analysis of
+Newton's method via
+
+1444
+01:12:23,815 --> 01:12:27,060
+self-concordance tells you that the number
+of steps is less than or equal to this.
+
+1445
+01:12:27,060 --> 01:12:32,700
+It's a constant times the starting value
+of this function.
+
+1446
+01:12:32,700 --> 01:12:36,900
+That's this here minus, if,
+
+1447
+01:12:36,900 --> 01:12:40,090
+well if you put a plus there, that's minus
+the final value.
+
+1448
+01:12:40,090 --> 01:12:43,390
+So x is the current point, x is the
+minimizer of this.
+
+1449
+01:12:43,390 --> 01:12:46,020
+X plus is the minimizer of this, it's for
+
+1450
+01:12:46,020 --> 01:12:49,841
+the new value of t which is mu times the
+old t, okay.
+
+1451
+01:12:49,841 --> 01:12:53,680
+So it says, you simply say it's the
+starting function value minus
+
+1452
+01:12:53,680 --> 01:12:58,380
+the final one and then multiply it by a
+constant and then plus C, where C is six.
+
+1453
+01:12:58,380 --> 01:12:58,900
+Right?
+
+1454
+01:12:58,900 --> 01:13:01,450
+Or log log1 over epsilon, whichever,
+right?
+
+1455
+01:13:01,450 --> 01:13:02,700
+So that's what it is.
+
+1456
+01:13:02,700 --> 01:13:05,200
+Okay, so we have to bound this.
+
+1457
+01:13:05,200 --> 01:13:10,180
+Now, we already know what's going to come
+to our rescue here
+
+1458
+01:13:10,180 --> 01:13:12,530
+because it looks like al it looks like a
+weird,
+
+1459
+01:13:12,530 --> 01:13:15,850
+circular thing that's completely useless,
+because it says.
+
+1460
+01:13:15,850 --> 01:13:17,490
+It says how many Newton steps it take and
+
+1461
+01:13:17,490 --> 01:13:21,190
+it says oh, no problem it's your function
+value minus your final function value.
+
+1462
+01:13:21,190 --> 01:13:22,560
+And you say well how do you find the final
+function value,
+
+1463
+01:13:22,560 --> 01:13:25,890
+you say use Newton's method but then if
+you run Newton's method you don't know
+
+1464
+01:13:25,890 --> 01:13:27,830
+how many steps it is in, it's all silly
+and
+
+1465
+01:13:27,830 --> 01:13:32,080
+of course what's going to come to your
+rescue is duality, right, of course.
+
+1466
+01:13:32,080 --> 01:13:34,950
+Right, so I, I'll go over a little bit of
+this.
+
+1467
+01:13:34,950 --> 01:13:37,590
+It's probably a bit too complicated to do
+in lecture, so
+
+1468
+01:13:37,590 --> 01:13:41,310
+it's it's the kind of thing you'll have to
+work out on your own.
+
+1469
+01:13:41,310 --> 01:13:43,750
+And I'll just say a couple of things here.
+
+1470
+01:13:43,750 --> 01:13:49,570
+So here, when x is the minimizer of this,
+and we define, if you remember
+
+1471
+01:13:49,570 --> 01:13:55,360
+lambda i to be 1 over t times minus fi of
+x,
+
+1472
+01:13:55,360 --> 01:14:00,190
+right, and these are dual fea, these are
+dual feasible points, right.
+
+1473
+01:14:00,190 --> 01:14:04,740
+And in fact that once it give you the
+duality gap exactly m over t, okay.
+
+1474
+01:14:04,740 --> 01:14:06,640
+So, now we simply go through and
+
+1475
+01:14:06,640 --> 01:14:09,850
+make various substitutions and I will say
+a very little bit about each one but
+
+1476
+01:14:09,850 --> 01:14:13,830
+won't go into too, too many horrible
+details here.
+
+1477
+01:14:13,830 --> 01:14:19,395
+So this says for example, that you can
+represent the, you can take phi of x here,
+
+1478
+01:14:19,395 --> 01:14:26,060
+right and write it, you can write phi of
+x, here which is the minus
+
+1479
+01:14:26,060 --> 01:14:32,490
+sum log minus fi and you can write that as
+minus sum log
+
+1480
+01:14:32,490 --> 01:14:37,340
+minus fi actually has the form 1 over ti
+lambda i.
+
+1481
+01:14:37,340 --> 01:14:43,050
+And if you're listening, and if I said it
+right, which is not clear
+
+1482
+01:14:43,050 --> 01:14:48,030
+then the minuses go away and that's like
+sum log ti lambda i.
+
+1483
+01:14:48,030 --> 01:14:48,730
+Right?
+
+1484
+01:14:48,730 --> 01:14:52,110
+That you shove into this.
+
+1485
+01:14:52,110 --> 01:14:57,890
+Right?
+This thing is, that's minus, minus sum log
+
+1486
+01:14:57,890 --> 01:15:02,480
+minus fi of x plus, and you put those in
+and you get this thing like that.
+
+1487
+01:15:03,510 --> 01:15:07,520
+The mu is pushed in and then taken out
+here, right, because the mu is this,
+
+1488
+01:15:07,520 --> 01:15:11,470
+you just take the mu out and you get m log
+mu, and that, that accounts for it.
+
+1489
+01:15:11,470 --> 01:15:12,110
+Okay?
+
+1490
+01:15:12,110 --> 01:15:14,260
+So by the way, we've already used duality.
+
+1491
+01:15:14,260 --> 01:15:17,780
+This is where we, this is where, if you
+wonder where the duality came in, come in,
+
+1492
+01:15:17,780 --> 01:15:20,020
+it comes in right there when we do this.
+
+1493
+01:15:20,020 --> 01:15:26,670
+Okay, so in the next step, you simply use
+the fact that, you know, log logx
+
+1494
+01:15:27,710 --> 01:15:33,050
+is here, is less than or equal to x minus
+1, so we do this here.
+
+1495
+01:15:33,050 --> 01:15:34,240
+This is log that.
+
+1496
+01:15:34,240 --> 01:15:35,820
+We write that out here.
+
+1497
+01:15:35,820 --> 01:15:37,280
+And now a pattern starts emerging.
+
+1498
+01:15:37,280 --> 01:15:43,120
+You see mu tf0 of x plus minus mu t time
+sum lambda ifi of x plus.
+
+1499
+01:15:43,120 --> 01:15:44,520
+And you say, oh, hey.
+
+1500
+01:15:44,520 --> 01:15:50,960
+That is the dual function evaluated at,
+that's the dual function evaluated.
+
+1501
+01:15:50,960 --> 01:15:55,280
+Or that's, sorry, that's the Lagrangian
+evaluated at x plus.
+
+1502
+01:15:55,280 --> 01:15:58,240
+Right, so, okay so then, and then it has
+to be less than or
+
+1503
+01:15:58,240 --> 01:16:02,360
+equal to the dual function, the dual
+function there,
+
+1504
+01:16:02,360 --> 01:16:07,310
+because that is the minimum of this over
+all x and in fact it's minimized by x.
+
+1505
+01:16:07,310 --> 01:16:11,360
+So you get something like this, here and
+now you're,
+
+1506
+01:16:11,360 --> 01:16:16,330
+you're very close because F0 of x minus g
+of lambda v, lambda nu,
+
+1507
+01:16:16,330 --> 01:16:21,690
+sorry, this thing that is exactly the
+duality gap, it's exactly m over t,
+
+1508
+01:16:21,690 --> 01:16:25,690
+the t goes away, and you end up with a
+very, very simple expression like that.
+
+1509
+01:16:25,690 --> 01:16:26,440
+Right?
+
+1510
+01:16:26,440 --> 01:16:30,120
+Now, mu is bigger than 1, and if you plot
+this function for mu bigger than 1,
+
+1511
+01:16:30,120 --> 01:16:31,830
+it looks like this.
+
+1512
+01:16:31,830 --> 01:16:35,400
+Right, so here's, here's mu equals 1, and
+what it is,
+
+1513
+01:16:35,400 --> 01:16:39,190
+it starts quadratic And then it kind of
+ends up going kind of linearly.
+
+1514
+01:16:39,190 --> 01:16:42,150
+I mean, it's a little sublinear because of
+the log, right.
+
+1515
+01:16:42,150 --> 01:16:43,280
+But basically it's linear.
+
+1516
+01:16:43,280 --> 01:16:43,998
+But it looks like that.
+
+1517
+01:16:43,998 --> 01:16:49,740
+Okay actually, here's the really cool
+thing about it.
+
+1518
+01:16:49,740 --> 01:16:54,250
+When it finishes, something really weird
+happened.
+
+1519
+01:16:54,250 --> 01:16:55,420
+Everything went away.
+
+1520
+01:16:55,420 --> 01:16:58,670
+It has nothing whatsoever to do with the
+dimension,
+
+1521
+01:16:58,670 --> 01:17:02,640
+the number of inequalities comes in as m
+up here.
+
+1522
+01:17:02,640 --> 01:17:04,910
+So, it's very simple.
+
+1523
+01:17:04,910 --> 01:17:08,060
+It's just proportional to m and mu, that's
+your parameter.
+
+1524
+01:17:08,060 --> 01:17:11,300
+And notice that this does, this predicts,
+actually, in some ways,
+
+1525
+01:17:11,300 --> 01:17:12,420
+we're already done.
+
+1526
+01:17:12,420 --> 01:17:15,770
+Right, because what this says now is it
+says that the number,
+
+1527
+01:17:15,770 --> 01:17:20,350
+the complexity of incrementing t by fixed
+factor mu and
+
+1528
+01:17:20,350 --> 01:17:24,680
+then using Newton's Method to minimize,
+doesn't get harder as t gets bigger.
+
+1529
+01:17:24,680 --> 01:17:28,120
+That already says this everything's there
+it has nothing to do with t, nothing.
+
+1530
+01:17:28,120 --> 01:17:28,760
+Everything went away.
+
+1531
+01:17:30,240 --> 01:17:31,590
+And it even tells you more.
+
+1532
+01:17:31,590 --> 01:17:32,690
+It tells you that, for
+
+1533
+01:17:32,690 --> 01:17:38,010
+example, if mu were kept small this number
+would be very small, right?
+
+1534
+01:17:39,030 --> 01:17:40,380
+It would be like, you know, one.
+
+1535
+01:17:40,380 --> 01:17:41,920
+And there's names for those methods.
+
+1536
+01:17:41,920 --> 01:17:46,099
+You can choose mu so that in fact one
+Newton step will suffice.
+
+1537
+01:17:47,170 --> 01:17:47,680
+Right?
+
+1538
+01:17:47,680 --> 01:17:50,570
+That would be even less aggressive, I
+don't know if you remember our,
+
+1539
+01:17:50,570 --> 01:17:56,584
+our, our examples, where we had things
+that looked like this here.
+
+1540
+01:17:56,584 --> 01:17:57,825
+Right?
+
+1541
+01:17:57,825 --> 01:18:00,890
+So something like that, mu equals 2,
+that's pretty aggressive, but if you
+
+1542
+01:18:00,890 --> 01:18:06,070
+had mu equals like 1.05, it would just be
+one Newton step per, per iteration, right?
+
+1543
+01:18:06,070 --> 01:18:09,670
+It'd take you a long time, But it will be
+one newton step per iteration and
+
+1544
+01:18:09,670 --> 01:18:15,720
+that's actually predicted exactly by this
+by this right here.
+
+1545
+01:18:15,720 --> 01:18:16,341
+Right, so
+
+1546
+01:18:16,341 --> 01:18:20,518
+and then it says as mu gets bigger you pay
+approximately linearly okay.
+
+1547
+01:18:20,518 --> 01:18:25,110
+So, now you're ready for the final
+assembly, because that's our,
+
+1548
+01:18:25,110 --> 01:18:30,500
+incredibly simple and by the way notice
+completely explicit bound.
+
+1549
+01:18:30,500 --> 01:18:35,790
+It's not one of these nonsense western
+bounds, right, that has all sorts
+
+1550
+01:18:35,790 --> 01:18:39,340
+of constants you don't know, you don't,
+you know, you'd never be able to know or
+
+1551
+01:18:39,340 --> 01:18:42,170
+anything like, you could never evaluate,
+and it just makes you feel good,
+
+1552
+01:18:42,170 --> 01:18:45,930
+because, oh, but you see it's a polynomial
+or something, and then that's good.
+
+1553
+01:18:45,930 --> 01:18:47,260
+Everybody know what I'm talking about?
+
+1554
+01:18:47,260 --> 01:18:49,400
+So this is completely explicit.
+
+1555
+01:18:49,400 --> 01:18:51,180
+It's just, it's a number right there.
+
+1556
+01:18:51,180 --> 01:18:55,920
+I mean whenever gamma's 11, if you do the
+fancy analysis, it's more if you don't.
+
+1557
+01:18:55,920 --> 01:18:59,640
+C is six just six period, right five six,
+okay.
+
+1558
+01:19:00,970 --> 01:19:03,860
+this, is the number of outer steps.
+
+1559
+01:19:03,860 --> 01:19:08,120
+That's the upper bound on the number of
+Newton steps required to do to actually
+
+1560
+01:19:08,120 --> 01:19:10,370
+carry out the centering.
+
+1561
+01:19:10,370 --> 01:19:11,870
+And you get really cool stuff.
+
+1562
+01:19:11,870 --> 01:19:14,320
+This thing starts when mu is near one.
+
+1563
+01:19:14,320 --> 01:19:16,300
+This thing is like quadratic.
+
+1564
+01:19:16,300 --> 01:19:17,940
+Then it accelerates to linear.
+
+1565
+01:19:17,940 --> 01:19:19,090
+That's this term.
+
+1566
+01:19:19,090 --> 01:19:20,490
+This term is really cool.
+
+1567
+01:19:20,490 --> 01:19:25,400
+It's got a 1 over log mu in it, so as mu
+gets close to 1,
+
+1568
+01:19:25,400 --> 01:19:29,790
+this thing gets big, and of course, this
+thing getting big makes perfect sense.
+
+1569
+01:19:29,790 --> 01:19:32,410
+That says you're going to do a lot of
+outer iterations, but
+
+1570
+01:19:32,410 --> 01:19:34,660
+each one is going to be super, duper
+cheap.
+
+1571
+01:19:34,660 --> 01:19:35,310
+Right?
+
+1572
+01:19:35,310 --> 01:19:38,760
+So, okay, so, you multiply the two
+together, and
+
+1573
+01:19:38,760 --> 01:19:40,330
+you get a function that looks like this.
+
+1574
+01:19:40,330 --> 01:19:41,420
+So that's.
+
+1575
+01:19:41,420 --> 01:19:45,090
+That's what, and this is, I'm evaluating,
+I'm using our bound,
+
+1576
+01:19:45,090 --> 01:19:49,100
+which is pretty poor, I think it's 1 over
+gamma's 365 or something like that.
+
+1577
+01:19:49,100 --> 01:19:52,440
+And this is for like 100 inequalities and
+stuff like that, but
+
+1578
+01:19:52,440 --> 01:19:55,220
+the point is that it actually kind of
+gives you, it tells you something.
+
+1579
+01:19:55,220 --> 01:19:59,750
+It says, for example, that you should use
+mu equals 1.02.
+
+1580
+01:19:59,750 --> 01:20:00,930
+There you go.
+
+1581
+01:20:00,930 --> 01:20:04,680
+You should increase you should increase
+the homotopy parameter by 2% each
+
+1582
+01:20:04,680 --> 01:20:06,710
+step each time.
+
+1583
+01:20:07,760 --> 01:20:09,750
+And this says you'll absolutely do, for
+
+1584
+01:20:09,750 --> 01:20:14,962
+sure, less than 10,000 Newton steps, okay,
+right, total.
+
+1585
+01:20:14,962 --> 01:20:15,530
+Right.
+
+1586
+01:20:15,530 --> 01:20:20,800
+Now, we know, I mean, empirically, you're
+going to do 20, maybe 30 or 40, right.
+
+1587
+01:20:20,800 --> 01:20:22,310
+So, something's off here.
+
+1588
+01:20:22,310 --> 01:20:23,571
+By the way, if you re-plot.
+
+1589
+01:20:24,590 --> 01:20:29,680
+This using not the upper bound, but in
+fact the typical values,
+
+1590
+01:20:29,680 --> 01:20:32,600
+I don't know if you remember that, but you
+can just change this value of gamma,
+
+1591
+01:20:32,600 --> 01:20:34,960
+I think you can change it to like one or
+something like that.
+
+1592
+01:20:35,990 --> 01:20:37,230
+It turns out if you do that,
+
+1593
+01:20:37,230 --> 01:20:39,990
+you actually start getting predictions
+that are completely reasonable.
+
+1594
+01:20:39,990 --> 01:20:42,830
+You get, you should set mu equals 50 or
+100 or something like that.
+
+1595
+01:20:42,830 --> 01:20:45,420
+Of course it depends on m and all that
+kind of stuff.
+
+1596
+01:20:45,420 --> 01:20:48,280
+So so it actually does predict everything.
+
+1597
+01:20:48,280 --> 01:20:50,310
+But most importantly, it give,
+
+1598
+01:20:50,310 --> 01:20:53,830
+it just gives you a bound that doesn't
+depend on anything that you don't know.
+
+1599
+01:20:53,830 --> 01:20:55,650
+You know everything in this bound.
+
+1600
+01:20:57,170 --> 01:20:59,840
+Now the numbers are big, but you know it's
+a bound.
+
+1601
+01:21:00,840 --> 01:21:01,340
+Okay.
+
+1602
+01:21:03,020 --> 01:21:07,370
+Now if you go back here, and you look at
+this thing, this thing, and
+
+1603
+01:21:07,370 --> 01:21:10,830
+you ask yourself the question, I'll
+minimize mu.
+
+1604
+01:21:12,040 --> 01:21:12,790
+Right?
+
+1605
+01:21:12,790 --> 01:21:14,880
+I mean, of course, m is fixed.
+
+1606
+01:21:16,130 --> 01:21:19,930
+Your initial gap, that's m over t0
+epsilon, that's, that's something that's,
+
+1607
+01:21:19,930 --> 01:21:20,740
+that's known.
+
+1608
+01:21:20,740 --> 01:21:21,930
+So for a mixed m and
+
+1609
+01:21:21,930 --> 01:21:27,220
+fixed, you know, other thing, the Newton
+parameters fix fix gamma and c,
+
+1610
+01:21:27,220 --> 01:21:31,660
+and what you do now is you optimize over
+mu, and here's what you get approximately.
+
+1611
+01:21:31,660 --> 01:21:35,190
+It says that mu should be 1 plus 1 over
+square root m.
+
+1612
+01:21:35,190 --> 01:21:36,420
+Right?
+Now, in practice,
+
+1613
+01:21:36,420 --> 01:21:37,665
+you would never do this, right.
+
+1614
+01:21:37,665 --> 01:21:39,820
+You'd have mu equals 100 or something like
+that.
+
+1615
+01:21:39,820 --> 01:21:43,600
+And I'll, in fact, I'll, later I'll tell
+you,
+
+1616
+01:21:43,600 --> 01:21:47,200
+in fact, what, you know, how, how this is
+really done.
+
+1617
+01:21:47,200 --> 01:21:49,390
+Someone already hinted at it earlier.
+
+1618
+01:21:49,390 --> 01:21:53,430
+Mu is actually adap, I mean, t is actually
+adap, mu is adapted every step, right.
+
+1619
+01:21:53,430 --> 01:21:59,210
+But, roughly so, this is if you do that,
+and if you work out what happens,
+
+1620
+01:21:59,210 --> 01:22:04,930
+it turns out that the total number of
+steps is, it's O of square root m, right?
+
+1621
+01:22:04,930 --> 01:22:09,690
+So this is, and this is sort of the
+crowning achievement, right,
+
+1622
+01:22:09,690 --> 01:22:13,450
+of the complexity analysis of interior
+point methods.
+
+1623
+01:22:13,450 --> 01:22:14,570
+And this is for the barrier method, but
+
+1624
+01:22:14,570 --> 01:22:16,370
+it's true for every other interior point
+method.
+
+1625
+01:22:16,370 --> 01:22:18,438
+It's just O of square root m.
+
+1626
+01:22:18,438 --> 01:22:24,900
+Right whereas as a practical matter its
+observed that its actually [INAUDIBLE] and
+
+1627
+01:22:24,900 --> 01:22:28,740
+much more specifically its like 20 to 80
+is what the number is.
+
+1628
+01:22:28,740 --> 01:22:32,460
+Okay okay, so that's the, that's sort of
+the, the,
+
+1629
+01:22:32,460 --> 01:22:35,520
+the crowing achievement of the complexity
+analysis.
+
+1630
+01:22:36,800 --> 01:22:38,290
+Okay.
+
+1631
+01:22:38,290 --> 01:22:43,770
+Now, what's interesting that this number
+of course is multiplied by the cost of a,
+
+1632
+01:22:43,770 --> 01:22:44,500
+of a, of a Newton step.
+
+1633
+01:22:44,500 --> 01:22:48,210
+But a Newton step is a least squares
+problem, so
+
+1634
+01:22:48,210 --> 01:22:50,500
+you have to solve a least squares problem
+every step.
+
+1635
+01:22:50,500 --> 01:22:51,790
+So it's actually quite interesting.
+
+1636
+01:22:51,790 --> 01:22:54,780
+It basically says, so the bottom line is,
+
+1637
+01:22:54,780 --> 01:22:58,130
+if someone says give me the executive
+summary, Interior point methods.
+
+1638
+01:22:58,130 --> 01:22:59,430
+You'd say, oh, no problem.
+
+1639
+01:22:59,430 --> 01:23:02,000
+Again, this is a, as a practical matter,
+it would be something like this,
+
+1640
+01:23:02,000 --> 01:23:06,220
+you'd say, it can solve a convex problem
+with constraints.
+
+1641
+01:23:06,220 --> 01:23:10,950
+It'll take about, some, a few tens of
+iterations, each iteration is
+
+1642
+01:23:10,950 --> 01:23:15,780
+solving a least squares problem that
+inherits its structure from your problem.
+
+1643
+01:23:15,780 --> 01:23:17,140
+Everybody get that?
+
+1644
+01:23:17,140 --> 01:23:19,870
+So, that's, that's the executive summary.
+
+1645
+01:23:19,870 --> 01:23:21,420
+What's bizarre is that's also true for
+
+1646
+01:23:21,420 --> 01:23:25,405
+a lot of other optimization methods that
+we won't look at in this course.
+
+1647
+01:23:25,405 --> 01:23:26,070
+Right.
+So
+
+1648
+01:23:26,070 --> 01:23:29,140
+a lot of other methods like operator
+splitting and other things.
+
+1649
+01:23:29,140 --> 01:23:30,790
+Same story, same story, right?
+
+1650
+01:23:30,790 --> 01:23:33,770
+It's also kind of interesting because it
+puts it all in perspective, right?
+
+1651
+01:23:33,770 --> 01:23:36,900
+It says that after a century or
+
+1652
+01:23:36,900 --> 01:23:42,510
+more of people using least squares and
+twiddling weights to make things happen,
+
+1653
+01:23:42,510 --> 01:23:45,980
+you, it says that's basically what an
+interior point method is doing.
+
+1654
+01:23:45,980 --> 01:23:49,790
+It's solving 20 least squares problems,
+but then it solves an lp or
+
+1655
+01:23:49,790 --> 01:23:54,110
+some complicated other fitting problem you
+have, and it did exactly what you wanted.
+
+1656
+01:23:54,110 --> 01:23:57,990
+Right, so, it's an, I think it's a very
+interesting observation.
+
+1657
+01:24:00,538 --> 01:24:05,770
+Okay, so our last topic is to generalize
+in to your
+
+1658
+01:24:05,770 --> 01:24:10,910
+point methods to we' re just going to
+generalize it to generalize inequalities.
+
+1659
+01:24:10,910 --> 01:24:16,000
+Right and you could have guessed that
+everything was set up to do this.
+
+1660
+01:24:16,000 --> 01:24:18,650
+Right, so it is actually only one thing we
+have to do I'll,
+
+1661
+01:24:18,650 --> 01:24:19,889
+I'll see what that is in a minute.
+
+1662
+01:24:21,770 --> 01:24:26,030
+So everything is setup to, to have kind of
+very powerful notation.
+
+1663
+01:24:26,030 --> 01:24:28,040
+So that the notation suggests what we
+should do, and
+
+1664
+01:24:28,040 --> 01:24:30,170
+there's only one thing we'll, we'll really
+have to do.
+
+1665
+01:24:30,170 --> 01:24:31,810
+So here's a generalized problem and
+
+1666
+01:24:31,810 --> 01:24:35,050
+the difference here is that these
+functions return vectors.
+
+1667
+01:24:36,270 --> 01:24:39,620
+And then those, those vectors are not just
+less than zero.
+
+1668
+01:24:39,620 --> 01:24:43,030
+They're, well, they're less than zero with
+respect to a cone, Ki.
+
+1669
+01:24:43,030 --> 01:24:45,358
+Right?
+Now if the cone is like the non-negative
+
+1670
+01:24:45,358 --> 01:24:48,810
+[UNKNOWN], this is a kind of a fancy way
+to have ordinary inequalities.
+
+1671
+01:24:48,810 --> 01:24:49,960
+So it's not interesting.
+
+1672
+01:24:49,960 --> 01:24:52,345
+It is very interesting when Ki is
+something like, for
+
+1673
+01:24:52,345 --> 01:24:54,220
+a example positive semi definite cone.
+
+1674
+01:24:54,220 --> 01:25:00,350
+Right, because then this, I mean really
+that's the most significant example
+
+1675
+01:25:00,350 --> 01:25:04,700
+of a generalized convex problem, right, is
+something like semi-definite programming.
+
+1676
+01:25:04,700 --> 01:25:09,890
+Right, so, all right, so, we have to
+reinvent everything to work in this case.
+
+1677
+01:25:09,890 --> 01:25:12,010
+Actually, it's going to be shockingly
+easy, right.
+
+1678
+01:25:12,010 --> 01:25:13,648
+There's only one, one real thing we have
+to do.
+
+1679
+01:25:13,648 --> 01:25:21,160
+Okay so, The main thing we have to do is
+to work out what the log is, right?
+
+1680
+01:25:21,160 --> 01:25:24,160
+Because, in fact, what we, I mean, what we
+want to do is to,
+
+1681
+01:25:24,160 --> 01:25:30,190
+we want to write down tf0 of x plus sum
+
+1682
+01:25:30,190 --> 01:25:35,780
+minus log minus fi of x, right, that's,
+and then we want to say, minimize that.
+
+1683
+01:25:35,780 --> 01:25:39,310
+We're going to call that x star of t, and
+then when you minimize that then
+
+1684
+01:25:39,310 --> 01:25:44,280
+t times equal, whoop, then we want to say,
+t times equals mu.
+
+1685
+01:25:44,280 --> 01:25:47,200
+Okay, and that's, in fact, we want to run
+the exact same algorithm we had before.
+
+1686
+01:25:47,200 --> 01:25:50,620
+And only one minor problem here is that
+this makes no sense.
+
+1687
+01:25:50,620 --> 01:25:52,690
+Right, so you'd, you have the logarithm of
+a vector.
+
+1688
+01:25:53,740 --> 01:25:59,530
+Okay, so, that's the only thing we have to
+do is generalize the log to vectors.
+
+1689
+01:25:59,530 --> 01:26:01,880
+Now, by the way, you can almost guess what
+this is going to be.
+
+1690
+01:26:01,880 --> 01:26:05,230
+Like, what do you imagine is the
+generalization of
+
+1691
+01:26:05,230 --> 01:26:10,100
+log to positive semi-definite matrices?
+
+1692
+01:26:10,100 --> 01:26:12,755
+I mean, you get three guesses and the
+first two don't count.
+
+1693
+01:26:12,755 --> 01:26:14,224
+>> Log det?
+
+1694
+01:26:14,224 --> 01:26:15,510
+>> Yeah, of course, it's log det.
+
+1695
+01:26:15,510 --> 01:26:18,370
+So it's going to turn out to be log det,
+so that wasn't so hard.
+
+1696
+01:26:18,370 --> 01:26:21,550
+Now, by the way, for the second order
+cone, it's, it's less obvious what it is.
+
+1697
+01:26:21,550 --> 01:26:24,940
+But yeah, it's going to turn out to be our
+friend log det, right?
+
+1698
+01:26:24,940 --> 01:26:27,852
+And that's going to be good, because
+that's self concordant, and
+
+1699
+01:26:27,852 --> 01:26:30,660
+all sorts of other stuff, so, so if you
+were just looking at semi
+
+1700
+01:26:30,660 --> 01:26:34,320
+definite programming, it would be obvious
+what, you know, what it would be.
+
+1701
+01:26:34,320 --> 01:26:34,960
+It's log det.
+
+1702
+01:26:36,460 --> 01:26:39,620
+So let's, let's, let's take a look at what
+you, what you need to do.
+
+1703
+01:26:39,620 --> 01:26:42,640
+Okay, so you have the idea, you have the
+generalized logarithm, and
+
+1704
+01:26:42,640 --> 01:26:45,770
+a generalized logarithm for a cone, it's
+something like this.
+
+1705
+01:26:45,770 --> 01:26:48,850
+It says that the domain is the interior of
+the cone.
+
+1706
+01:26:48,850 --> 01:26:52,510
+I mean, that's the same as the domain of
+log is r plus plus, right?
+
+1707
+01:26:52,510 --> 01:26:53,660
+It's positive numbers.
+
+1708
+01:26:53,660 --> 01:26:59,340
+Well, the domain of log det capital X is
+positive is,
+
+1709
+01:26:59,340 --> 01:27:02,210
+is S plus, is Sn sub plus plus, right?
+
+1710
+01:27:02,210 --> 01:27:04,594
+A set of definite positive matrices,
+right?
+
+1711
+01:27:04,594 --> 01:27:05,330
+So it's the same.
+
+1712
+01:27:05,330 --> 01:27:06,630
+And, let's see.
+
+1713
+01:27:06,630 --> 01:27:09,030
+This says, well, it's concave, right?
+
+1714
+01:27:09,030 --> 01:27:13,350
+So we're going to require it to be
+concave, like log, right?
+
+1715
+01:27:13,350 --> 01:27:14,719
+We'll say a little bit more about that in
+a minute.
+
+1716
+01:27:16,140 --> 01:27:17,230
+And that's, that's the idea.
+
+1717
+01:27:17,230 --> 01:27:21,733
+So, so it has to, the domain is exactly
+the interior of the cone just like log.
+
+1718
+01:27:21,733 --> 01:27:27,480
+Okay, and then here's the interesting
+one.along any line it has to be the log.
+
+1719
+01:27:27,480 --> 01:27:31,320
+So it has to look, if you restrict to a
+line it looks like a log.
+
+1720
+01:27:32,530 --> 01:27:35,400
+that essentially exactly what happens for
+log det, right?
+
+1721
+01:27:35,400 --> 01:27:38,200
+If you restrict it to a line, that's a
+line going through the origin.
+
+1722
+01:27:38,200 --> 01:27:39,420
+It actually looks like the log.
+
+1723
+01:27:39,420 --> 01:27:40,750
+It's exactly the log.
+
+1724
+01:27:40,750 --> 01:27:43,630
+So, okay, so it has to have the following
+form.
+
+1725
+01:27:43,630 --> 01:27:47,470
+If you scale it, it's an additive term.
+
+1726
+01:27:47,470 --> 01:27:49,720
+But there's a coefficient in front called
+theta.
+
+1727
+01:27:49,720 --> 01:27:51,680
+That's actually going to play a big role.
+
+1728
+01:27:51,680 --> 01:27:54,130
+It's called the degree of the, of the
+logarithm.
+
+1729
+01:27:54,130 --> 01:27:56,370
+And we'll see what's going to be obvious
+things.
+
+1730
+01:27:56,370 --> 01:27:59,364
+So here's the non-negative orthant, just
+to make sure this all makes sense.
+
+1731
+01:27:59,364 --> 01:28:03,510
+[COUGH] And here we take the logarithm on
+the non-negative orthant is
+
+1732
+01:28:03,510 --> 01:28:04,130
+the sum of the logs.
+
+1733
+01:28:04,130 --> 01:28:05,570
+I mean this is kind of dumb, but fine.
+
+1734
+01:28:07,020 --> 01:28:11,470
+And then you check that if I, if I scale a
+vector, right, what happens?
+
+1735
+01:28:11,470 --> 01:28:14,590
+If I scale a vector, I scale every
+component.
+
+1736
+01:28:14,590 --> 01:28:20,430
+And so what happens is basically what,
+what comes out is theta, if I scale by s,
+
+1737
+01:28:20,430 --> 01:28:26,650
+what comes out is n log s, because each of
+these contributes a that e,
+
+1738
+01:28:26,650 --> 01:28:30,430
+well, you add something which is log s,
+and then you get n times it.
+
+1739
+01:28:30,430 --> 01:28:32,100
+So the degree is n.
+
+1740
+01:28:32,100 --> 01:28:35,610
+By the way, there's a beautiful
+interpretation of what degree is.
+
+1741
+01:28:35,610 --> 01:28:36,460
+It actually, it,
+
+1742
+01:28:36,460 --> 01:28:41,470
+has to do with the geometry Of the set,
+and it's the maximum num,
+
+1743
+01:28:41,470 --> 01:28:45,670
+it's something like the maximum number of
+scalar constraints that are active.
+
+1744
+01:28:45,670 --> 01:28:48,360
+We're not going to look into this here,
+but and that's true for
+
+1745
+01:28:48,360 --> 01:28:53,750
+the non-negative orthant, when you get
+down to the 0.0 you've got like
+
+1746
+01:28:53,750 --> 01:28:56,410
+n planes coming in, and that's why theta
+is n.
+
+1747
+01:28:57,950 --> 01:28:58,450
+Okay.
+
+1748
+01:29:00,080 --> 01:29:01,600
+For the positive semi definite cone,
+
+1749
+01:29:01,600 --> 01:29:05,540
+we take log det and sure enough,
+everything works there.
+
+1750
+01:29:05,540 --> 01:29:08,870
+The theta is n.
+
+1751
+01:29:08,870 --> 01:29:10,440
+that, that's a surprising theta,
+
+1752
+01:29:10,440 --> 01:29:15,240
+because the dimension of the positive
+definite cone is nn plus 1 over 2.
+
+1753
+01:29:15,240 --> 01:29:16,610
+So if you really call that n.
+
+1754
+01:29:17,700 --> 01:29:21,820
+I mean, if you call that n, then basically
+it says data is square root n.
+
+1755
+01:29:21,820 --> 01:29:24,310
+For second-order cone this is the,
+
+1756
+01:29:24,310 --> 01:29:29,180
+the log, the logarithm for a second-order
+cone, is actually interesting.
+
+1757
+01:29:29,180 --> 01:29:30,030
+It's this.
+
+1758
+01:29:30,030 --> 01:29:35,540
+It's actually the log of, and then you
+simply form this quadratic form.
+
+1759
+01:29:35,540 --> 01:29:38,150
+What's a bit shocking about this and would
+kind of make you nervous,
+
+1760
+01:29:38,150 --> 01:29:41,350
+it takes you a while to get used to this a
+bit more spsoticated is the following.
+
+1761
+01:29:41,350 --> 01:29:44,230
+This is a quadratic form.
+
+1762
+01:29:44,230 --> 01:29:45,240
+That's a quadratic form.
+
+1763
+01:29:46,280 --> 01:29:48,480
+What's the signature of a quadratic form?
+
+1764
+01:29:48,480 --> 01:29:50,640
+Is it positive semi-definite, negative
+semi-definite, what is it?
+
+1765
+01:29:52,360 --> 01:29:52,910
+Convex?
+
+1766
+01:29:52,910 --> 01:29:53,530
+Concave?
+
+1767
+01:29:56,710 --> 01:29:57,550
+You should be able to see it.
+
+1768
+01:29:58,600 --> 01:29:59,410
+Just look right at it.
+
+1769
+01:30:00,470 --> 01:30:01,780
+It's diagonal.
+
+1770
+01:30:01,780 --> 01:30:03,510
+And what, what's the diagonal matrix look
+like?
+
+1771
+01:30:06,980 --> 01:30:09,440
+It's got a bunch of minus 1s, and how
+about the last entry?
+
+1772
+01:30:10,590 --> 01:30:12,350
+It's plus 1.
+
+1773
+01:30:12,350 --> 01:30:15,140
+So, this is a quadratic form.
+
+1774
+01:30:15,140 --> 01:30:17,148
+But it's not concave.
+
+1775
+01:30:17,148 --> 01:30:19,880
+It's not convex.
+
+1776
+01:30:19,880 --> 01:30:24,290
+'Kay, so this doesn't, everyone See what
+I'm saying here?
+
+1777
+01:30:24,290 --> 01:30:25,680
+So you have to get used to this.
+
+1778
+01:30:27,350 --> 01:30:27,870
+This is right.
+
+1779
+01:30:29,080 --> 01:30:33,370
+so, and the low, but the log of that, is
+actually concave.
+
+1780
+01:30:34,420 --> 01:30:36,250
+Okay?
+So this this is one of
+
+1781
+01:30:36,250 --> 01:30:39,150
+those small subtleties, it's, but it's
+actually worth knowing.
+
+1782
+01:30:40,950 --> 01:30:44,030
+This is it, it's not, this is, this is not
+obvious here.
+
+1783
+01:30:44,030 --> 01:30:47,420
+And by the way that definitely does not
+come from one of
+
+1784
+01:30:47,420 --> 01:30:48,950
+your composition rules, right.
+
+1785
+01:30:48,950 --> 01:30:49,810
+Because you're, because,
+
+1786
+01:30:49,810 --> 01:30:54,220
+because the argument to log here is
+neither convex nor concave.
+
+1787
+01:30:54,220 --> 01:30:57,690
+Right, so this comes from the structure of
+this particular thing.
+
+1788
+01:30:57,690 --> 01:30:58,690
+Okay, so that.
+
+1789
+01:30:58,690 --> 01:31:02,470
+And actually if you look at it, it's
+actually really cool what it represents.
+
+1790
+01:31:02,470 --> 01:31:07,206
+It, that represents the margin in the
+second-order cone, right?
+
+1791
+01:31:07,206 --> 01:31:13,450
+Because second-order cone says that the
+sum of these things is less than that.
+
+1792
+01:31:13,450 --> 01:31:15,320
+And so this is the margin.
+
+1793
+01:31:15,320 --> 01:31:19,010
+It's how, in fact, probably it's close to
+a distance to
+
+1794
+01:31:19,010 --> 01:31:22,700
+how far you are from the boundary if this
+is the second-order cone.
+
+1795
+01:31:22,700 --> 01:31:23,820
+Going up like this.
+
+1796
+01:31:23,820 --> 01:31:25,340
+This is probably something like the
+distance.
+
+1797
+01:31:25,340 --> 01:31:26,380
+I mean, you might normalize it or
+
+1798
+01:31:26,380 --> 01:31:28,100
+something like that, but that's what it
+is.
+
+1799
+01:31:28,100 --> 01:31:28,790
+Okay.
+
+1800
+01:31:28,790 --> 01:31:30,400
+Everybody, got this.
+
+1801
+01:31:30,400 --> 01:31:31,500
+So, that, that's the idea.
+
+1802
+01:31:31,500 --> 01:31:36,300
+And the log of that is concave and
+satisfies this and its degree is two.
+
+1803
+01:31:37,820 --> 01:31:39,040
+Period.
+
+1804
+01:31:39,040 --> 01:31:39,540
+Okay.
+
+1805
+01:31:41,570 --> 01:31:43,540
+Okay, so here's some properties.
+
+1806
+01:31:43,540 --> 01:31:45,810
+And these are, some of these are easy.
+
+1807
+01:31:45,810 --> 01:31:49,320
+Most of them are, actually, they're pretty
+easy to show.
+
+1808
+01:31:49,320 --> 01:31:53,500
+First is the generalized logarithm is, is
+actually monotone.
+
+1809
+01:31:53,500 --> 01:31:56,310
+Right, so, monotone, if you remember,
+
+1810
+01:31:56,310 --> 01:32:00,650
+means that if one thing is bigger than
+another Then the function value of
+
+1811
+01:32:00,650 --> 01:32:02,960
+the first is bigger than the function
+value of the second.
+
+1812
+01:32:02,960 --> 01:32:05,510
+log is obviously monotone right?
+
+1813
+01:32:05,510 --> 01:32:08,900
+So, but in fact to express that in terms
+of the derivative,
+
+1814
+01:32:08,900 --> 01:32:14,340
+it's that the gradient should be
+non-negative in the dual inequality.
+
+1815
+01:32:14,340 --> 01:32:17,670
+Right?
+So just to that's what it is.
+
+1816
+01:32:17,670 --> 01:32:19,190
+So this says it's monotone.
+
+1817
+01:32:19,190 --> 01:32:25,630
+And what this says is that y transpose
+times the the gradient is just theta.
+
+1818
+01:32:25,630 --> 01:32:27,350
+It's constant, right?
+
+1819
+01:32:27,350 --> 01:32:31,230
+That follows from this log thing and the
+homogeni, that homogeneity property.
+
+1820
+01:32:32,440 --> 01:32:35,290
+So for non-negative orthan, the gradient
+is that.
+
+1821
+01:32:36,560 --> 01:32:37,760
+It's monotone.
+
+1822
+01:32:37,760 --> 01:32:39,140
+Here.
+
+1823
+01:32:39,140 --> 01:32:41,390
+and, I mean, this is, this is always
+positive.
+
+1824
+01:32:41,390 --> 01:32:45,650
+Here, in the dual inequality which is the
+same as our plus to the M And, and
+
+1825
+01:32:45,650 --> 01:32:46,960
+you get exactly that.
+
+1826
+01:32:46,960 --> 01:32:48,560
+Y transpose this is just n.
+
+1827
+01:32:49,720 --> 01:32:55,140
+For positive semi-definite cone, the
+gradient is, I mean, with some conventions
+
+1828
+01:32:55,140 --> 01:32:59,280
+about how you represent the gradient of a
+matrix, the gradient is the inverse.
+
+1829
+01:32:59,280 --> 01:33:00,380
+Right?
+That, well,
+
+1830
+01:33:00,380 --> 01:33:02,140
+I mean actually that's kind of the analog
+of log.
+
+1831
+01:33:02,140 --> 01:33:04,020
+Derivative log is one over, so for
+
+1832
+01:33:04,020 --> 01:33:08,230
+log debt it should, by aesthetics, be
+something like one over.
+
+1833
+01:33:08,230 --> 01:33:09,720
+So it's the inverse.
+
+1834
+01:33:09,720 --> 01:33:12,490
+You have to be very careful as to what
+exactly you mean by this though, but.
+
+1835
+01:33:12,490 --> 01:33:13,170
+So that's what it is.
+
+1836
+01:33:13,170 --> 01:33:16,770
+So the gradient of log det is the inverse.
+
+1837
+01:33:16,770 --> 01:33:20,750
+The inner product right of y in the
+gradient, well the inner product of
+
+1838
+01:33:20,750 --> 01:33:24,360
+two matrices the natural inner product is
+trace of the product.
+
+1839
+01:33:24,360 --> 01:33:27,641
+And guess what trace of y times the
+inverse is n, right?
+
+1840
+01:33:27,641 --> 01:33:28,920
+Which is theta.
+
+1841
+01:33:28,920 --> 01:33:29,520
+Okay?
+
+1842
+01:33:29,520 --> 01:33:34,720
+So, for the second order cone, the
+gradient looks like.
+
+1843
+01:33:34,720 --> 01:33:36,230
+That, that's the gradient.
+
+1844
+01:33:38,120 --> 01:33:41,230
+And so that's, that's the gradient, and in
+fact,
+
+1845
+01:33:41,230 --> 01:33:44,400
+if you work out y transpose times the
+gradient of y, you get 2.
+
+1846
+01:33:44,400 --> 01:33:45,110
+Okay?
+
+1847
+01:33:45,110 --> 01:33:46,960
+So this is the, the idea.
+
+1848
+01:33:46,960 --> 01:33:49,650
+These, these are the main logarithms we're
+going to use.
+
+1849
+01:33:49,650 --> 01:33:54,190
+There are actually some exotic other
+logarithms for other sets that people use,
+
+1850
+01:33:54,190 --> 01:33:58,010
+and it, it's, although they, they give
+better complexity results in some cases,
+
+1851
+01:33:58,010 --> 01:34:01,200
+it's not at all clear that they have any
+use in practice, I mean, any,
+
+1852
+01:34:01,200 --> 01:34:02,790
+to give any advantage at all.
+
+1853
+01:34:02,790 --> 01:34:03,290
+Okay.
+
+1854
+01:34:05,330 --> 01:34:08,080
+Now we can form, now we can continue this,
+the analogy.
+
+1855
+01:34:10,330 --> 01:34:14,300
+So, we're going to first talk about the
+logarithmic barrier for
+
+1856
+01:34:14,300 --> 01:34:16,090
+a set of generalized inequalities.
+
+1857
+01:34:16,090 --> 01:34:17,240
+It's the same thing.
+
+1858
+01:34:17,240 --> 01:34:20,595
+You simply form minus sum log minus i.
+
+1859
+01:34:20,595 --> 01:34:25,770
+By the way if these cones were all the
+same, or we could even write this as log
+
+1860
+01:34:25,770 --> 01:34:32,390
+sum i, that would be very cool, overloaded
+notation, right, very evolved notation.
+
+1861
+01:34:32,390 --> 01:34:32,940
+Right?
+
+1862
+01:34:32,940 --> 01:34:37,560
+Because if you, in fact, you could even
+write, just log there, so
+
+1863
+01:34:37,560 --> 01:34:40,530
+it would look exactly the same as for the
+scale, as for
+
+1864
+01:34:40,530 --> 01:34:44,020
+the scalar inequality case, right, and
+then it would be overloaded.
+
+1865
+01:34:44,020 --> 01:34:47,920
+Meaning log has a different meaning
+depending on the type of its argument.
+
+1866
+01:34:47,920 --> 01:34:52,640
+If it's scalar, it's your old friend, log,
+and if it's something in a cone, it refers
+
+1867
+01:34:52,640 --> 01:34:59,560
+unambiguously to some logarithmic some
+generalized logarithm for that cone.
+
+1868
+01:34:59,560 --> 01:35:03,640
+Right, so for example, log of a matrix
+would then be interpreted as log det.
+
+1869
+01:35:03,640 --> 01:35:05,130
+So anyway, that's what this is.
+
+1870
+01:35:05,130 --> 01:35:06,270
+That's just a barrier function.
+
+1871
+01:35:08,200 --> 01:35:09,490
+It's convex.
+
+1872
+01:35:09,490 --> 01:35:10,970
+Why is it convex?
+
+1873
+01:35:10,970 --> 01:35:14,160
+Well, I mean, again, you needed all those
+properties.
+
+1874
+01:35:14,160 --> 01:35:16,570
+You use the following.
+
+1875
+01:35:16,570 --> 01:35:19,850
+These things are concave, and they're
+increasing.
+
+1876
+01:35:19,850 --> 01:35:20,990
+That's convex.
+
+1877
+01:35:20,990 --> 01:35:21,840
+So this thing,
+
+1878
+01:35:21,840 --> 01:35:26,930
+here, is actually by the composition rule,
+that's actually going to be concave.
+
+1879
+01:35:26,930 --> 01:35:29,850
+Sum is concave, minus turns it to convex.
+
+1880
+01:35:29,850 --> 01:35:31,490
+Okay?
+It's just the same as before.
+
+1881
+01:35:31,490 --> 01:35:38,316
+It's the same reason minus sum log minus
+fi is convex in x, 'kay?
+
+1882
+01:35:38,316 --> 01:35:43,090
+So the central path is then simply this.
+
+1883
+01:35:43,090 --> 01:35:51,230
+It is the set of minimizers of tf0 plus Fi
+of X subject to X equals b.
+
+1884
+01:35:51,230 --> 01:35:52,090
+That's the central path.
+
+1885
+01:35:52,090 --> 01:35:53,650
+So it's identical, right.
+
+1886
+01:35:53,650 --> 01:35:59,550
+It's the same thing and properly
+generalizes, right, that if, if all the,
+
+1887
+01:35:59,550 --> 01:36:05,999
+if these were all simply r plus then this
+would reduce to what we have already seen.
+
+1888
+01:36:07,310 --> 01:36:08,410
+Okay.
+
+1889
+01:36:08,410 --> 01:36:11,120
+Well then, let's, everything else just
+works, right, so
+
+1890
+01:36:11,120 --> 01:36:16,410
+if you write down what it means to
+minimize this thing, well, that's simple.
+
+1891
+01:36:16,410 --> 01:36:20,630
+It says that the gradient of this plus nu
+times,
+
+1892
+01:36:20,630 --> 01:36:23,750
+here, h plus A transpose nu is 0 and Ax
+equals b.
+
+1893
+01:36:23,750 --> 01:36:25,400
+Those are the kkt conditions.
+
+1894
+01:36:25,400 --> 01:36:28,380
+And so you get something like that.
+
+1895
+01:36:29,570 --> 01:36:31,250
+Not, I called it w, not nu.
+
+1896
+01:36:31,250 --> 01:36:32,770
+Okay, so this is the condition.
+
+1897
+01:36:33,920 --> 01:36:34,690
+It's a bit harder, but
+
+1898
+01:36:34,690 --> 01:36:39,840
+you stare at it for a while, and you get
+something pretty cool here.
+
+1899
+01:36:39,840 --> 01:36:42,970
+What you realize, and you divide by t, and
+then what you
+
+1900
+01:36:42,970 --> 01:36:48,240
+realize is that you take lambda i star and
+that's going to be this thing.
+
+1901
+01:36:48,240 --> 01:36:50,730
+But remember we have the following
+property,
+
+1902
+01:36:50,730 --> 01:36:58,000
+the gradient of the generalized logarithm
+is dual positive.
+
+1903
+01:36:58,000 --> 01:37:03,460
+Right, that's the same as saying for a
+log, right it's derivative is, is
+
+1904
+01:37:03,460 --> 01:37:07,640
+dual positive, but that's silly, because
+it is the dual of r plus is r plus, right.
+
+1905
+01:37:07,640 --> 01:37:12,180
+So you, and here we are using the fact
+that it's dual positive here.
+
+1906
+01:37:12,180 --> 01:37:12,860
+Okay?
+
+1907
+01:37:12,860 --> 01:37:19,560
+And then what this says is that if you
+minimize, if you center here,
+
+1908
+01:37:19,560 --> 01:37:23,540
+then basically, it says that you minimize
+this Lagrangian here,
+
+1909
+01:37:23,540 --> 01:37:26,970
+where lambda star is this thing, nu star
+is that,
+
+1910
+01:37:26,970 --> 01:37:32,420
+that's identical to the other case, and
+you work out the duality gap.
+
+1911
+01:37:32,420 --> 01:37:37,900
+And, you get the same to end up taking the
+gradient of this
+
+1912
+01:37:37,900 --> 01:37:42,060
+transpose this thing and you know what you
+get, you get the sum of the thetas.
+
+1913
+01:37:42,060 --> 01:37:45,810
+So, it's just, and as the calculation's
+identical and you get this.
+
+1914
+01:37:45,810 --> 01:37:48,082
+What's really cool about this is, so
+
+1915
+01:37:48,082 --> 01:37:52,200
+this is the analogue of' m over t that
+you've have seen up till now for
+
+1916
+01:37:52,200 --> 01:37:57,170
+the scalar inequality case and in fact the
+scalar inequality case is a simple case,
+
+1917
+01:37:57,170 --> 01:38:02,211
+you just say [COUGH] that you're, you have
+a problem, you have Fi less than zero, but
+
+1918
+01:38:02,211 --> 01:38:05,264
+that's a scalar, then you'd say well
+,we'll,
+
+1919
+01:38:05,264 --> 01:38:10,530
+the generalize logarithm will uses the
+logarithm and it has degree one.
+
+1920
+01:38:10,530 --> 01:38:14,900
+And so, you sum up 1 m times and you get m
+over t.
+
+1921
+01:38:14,900 --> 01:38:18,600
+So, what it says is that this is what
+plays the role of the,
+
+1922
+01:38:18,600 --> 01:38:23,280
+what was m over t and in fact it's really
+cool it says sum of theta you,
+
+1923
+01:38:23,280 --> 01:38:26,790
+you can even think of that is something
+like as the effective number of
+
+1924
+01:38:26,790 --> 01:38:31,560
+scaler constraints that's a excellent way
+to think of what theta means.
+
+1925
+01:38:31,560 --> 01:38:39,320
+Okay, so, so from now on an lmi roughly
+speaking counts as n scalar inequalities.
+
+1926
+01:38:39,320 --> 01:38:42,500
+A second order cones, counts as 2, right?
+
+1927
+01:38:42,500 --> 01:38:43,740
+A scalar inequality is 1.
+
+1928
+01:38:43,740 --> 01:38:45,400
+Everybody see this?
+
+1929
+01:38:45,400 --> 01:38:48,240
+So, you could actually then take a
+problem, a cone problem, and
+
+1930
+01:38:48,240 --> 01:38:52,470
+say this has 237 effective scalar
+inequalities.
+
+1931
+01:38:52,470 --> 01:38:56,860
+That's simply the number here that plays
+the role of what's just m in, for
+
+1932
+01:38:56,860 --> 01:38:59,650
+example, all the inequalities were scalar.
+
+1933
+01:38:59,650 --> 01:39:00,250
+Okay?
+
+1934
+01:39:00,250 --> 01:39:01,127
+Everybody got this.
+
+1935
+01:39:01,127 --> 01:39:03,500
+So it's kind of, it's actually cool.
+
+1936
+01:39:03,500 --> 01:39:09,540
+Okay, so we get two semi-definite
+programs.
+
+1937
+01:39:09,540 --> 01:39:12,170
+So here, I mean this is the most important
+case.
+
+1938
+01:39:12,170 --> 01:39:14,470
+So here is one in inequality form.
+
+1939
+01:39:14,470 --> 01:39:17,720
+We're going to minimize c transpose x,
+subject to f of x is less than or
+
+1940
+01:39:17,720 --> 01:39:19,450
+equal to 0.
+
+1941
+01:39:19,450 --> 01:39:25,260
+The logarithmic barrier is log det of
+minus F of x inverse.
+
+1942
+01:39:25,260 --> 01:39:31,010
+Right, so the inverse is the same as
+putting a minus in front of log det here.
+
+1943
+01:39:31,010 --> 01:39:34,740
+The central path is it, to get x star of
+t,
+
+1944
+01:39:34,740 --> 01:39:39,340
+you minimize t times the objective plus
+this thing.
+
+1945
+01:39:39,340 --> 01:39:44,540
+And, if you take the gradient of that you
+get here, tci minus,
+
+1946
+01:39:44,540 --> 01:39:46,480
+this is the partial derivative with
+respect to xi.
+
+1947
+01:39:46,480 --> 01:39:53,450
+And, this thing is, well, the gradient of
+this is like minus f of x inverse.
+
+1948
+01:39:53,450 --> 01:39:54,080
+Right?
+
+1949
+01:39:54,080 --> 01:39:58,350
+And then you would, if you want to know
+what is like partial f,
+
+1950
+01:39:58,350 --> 01:40:01,890
+partial xi, this is very rough, but that's
+fi.
+
+1951
+01:40:01,890 --> 01:40:05,650
+And so you'd put trace fi times this, and
+
+1952
+01:40:05,650 --> 01:40:08,650
+you get this, this, this inequality here,
+this equality here.
+
+1953
+01:40:08,650 --> 01:40:10,320
+Right.
+So that, that's the optimality condition.
+
+1954
+01:40:11,965 --> 01:40:17,790
+You get a dual feasible point, because
+this thing here if I multiply
+
+1955
+01:40:17,790 --> 01:40:22,920
+by minus 1 over t that's dual feasible and
+I get to a point Z that satisfies that.
+
+1956
+01:40:22,920 --> 01:40:29,040
+This is the inequality form STP and the
+dual is the equality form here and
+
+1957
+01:40:29,040 --> 01:40:32,070
+I, if I simply minimize this function
+using like Newton method.
+
+1958
+01:40:32,070 --> 01:40:35,280
+I get now a, a dual feasible point.
+
+1959
+01:40:35,280 --> 01:40:38,430
+And the duality gap is, it's really cool.
+
+1960
+01:40:38,430 --> 01:40:39,450
+You just work out what it is.
+
+1961
+01:40:39,450 --> 01:40:43,640
+That's the, that's the dual objective,
+primal objective.
+
+1962
+01:40:43,640 --> 01:40:45,060
+You subtract them.
+
+1963
+01:40:45,060 --> 01:40:47,990
+That gives you the duality gap, and that
+turns out to be
+
+1964
+01:40:47,990 --> 01:40:53,290
+just using this formula here, P over T
+where P is the size of the lmi.
+
+1965
+01:40:53,290 --> 01:40:55,450
+Right, so, that's it.
+
+1966
+01:40:55,450 --> 01:41:00,130
+So, I mean, these are yeah, it's kind of,
+I mean, this stuff,
+
+1967
+01:41:00,130 --> 01:41:03,570
+I guess it's been well-known for maybe 15
+years now, 20, or something like that.
+
+1968
+01:41:03,570 --> 01:41:06,800
+But 20 years ago, not that many people
+knew about this kind of stuff.
+
+1969
+01:41:06,800 --> 01:41:08,020
+And a lotta people didn't.
+
+1970
+01:41:09,470 --> 01:41:11,530
+So now we have the barrier method.
+
+1971
+01:41:12,820 --> 01:41:14,190
+Here's a hint.
+
+1972
+01:41:14,190 --> 01:41:15,270
+It's identical.
+
+1973
+01:41:15,270 --> 01:41:16,710
+And so it's exactly the same.
+
+1974
+01:41:16,710 --> 01:41:18,190
+There's only one change.
+
+1975
+01:41:18,190 --> 01:41:20,880
+I mean, what's happening is different.
+
+1976
+01:41:20,880 --> 01:41:25,550
+The only difference is that this used to
+be m and now it's theta i.
+
+1977
+01:41:25,550 --> 01:41:28,960
+Right, so, that's, that's all it is is the
+sum of the orders.
+
+1978
+01:41:28,960 --> 01:41:34,410
+So otherwise it's absolutely identical to
+the other barrier method.
+
+1979
+01:41:34,410 --> 01:41:36,885
+And of course it was set up that way.
+
+1980
+01:41:36,885 --> 01:41:37,850
+Right, so that it would work out.
+
+1981
+01:41:37,850 --> 01:41:38,670
+It didn't just happen.
+
+1982
+01:41:40,030 --> 01:41:40,920
+And that's it.
+
+1983
+01:41:40,920 --> 01:41:45,310
+And the number of outer iterations is the
+same except that instead of m, you have,
+
+1984
+01:41:45,310 --> 01:41:48,030
+of course, the sum i over theta i.
+
+1985
+01:41:48,030 --> 01:41:53,040
+And, actually all this, all the complexity
+analysis holds immediately.
+
+1986
+01:41:53,040 --> 01:41:54,350
+The, it all just works.
+
+1987
+01:41:54,350 --> 01:41:56,540
+It's, it's all exactly the same.
+
+1988
+01:41:56,540 --> 01:41:59,910
+Right, so you have polynomial time,
+complexity for
+
+1989
+01:41:59,910 --> 01:42:02,850
+solving STPs and things like that.
+
+1990
+01:42:02,850 --> 01:42:07,266
+Okay, so let's look at some examples.
+
+1991
+01:42:07,266 --> 01:42:12,920
+now, when you look at these your first
+impression is that it's the wrong
+
+1992
+01:42:12,920 --> 01:42:15,578
+figure that's been included, because it
+looks exactly like the other one.
+
+1993
+01:42:15,578 --> 01:42:18,058
+Right?
+
+1994
+01:42:18,058 --> 01:42:21,280
+So but it's, it's not, I mean, it's not.
+
+1995
+01:42:21,280 --> 01:42:23,380
+I mean they are, these things all do look
+the same, right?
+
+1996
+01:42:23,380 --> 01:42:24,970
+So I guess that's good.
+
+1997
+01:42:24,970 --> 01:42:28,060
+So it means its it's exactly the same,
+these plots look the same,
+
+1998
+01:42:28,060 --> 01:42:28,830
+this looks the same.
+
+1999
+01:42:28,830 --> 01:42:33,400
+By the way, this would also up here start
+going up, like that, right?
+
+2000
+01:42:33,400 --> 01:42:35,380
+So, they look the same.
+
+2001
+01:42:36,610 --> 01:42:38,660
+As for example LP.
+
+2002
+01:42:38,660 --> 01:42:42,220
+So that, actually, so it's a, a very nice
+set of generalizations and
+
+2003
+01:42:42,220 --> 01:42:47,630
+overloadings of meaning and things like
+that, because it's not just that the code,
+
+2004
+01:42:47,630 --> 01:42:50,330
+if it was written nicely, would look
+identical.
+
+2005
+01:42:51,520 --> 01:42:54,720
+It's more than that, actually the way it
+all works would be the same.
+
+2006
+01:42:54,720 --> 01:42:58,459
+In fact, even the empirical the way it
+would work empirically would be the same.
+
+2007
+01:43:00,640 --> 01:43:02,390
+So let's just take a look at one of these.
+
+2008
+01:43:03,610 --> 01:43:10,350
+Here is a semi-definite program with 100
+variables and, and
+
+2009
+01:43:10,350 --> 01:43:13,730
+a single LMI constraint in, in, with 100
+by 100 matrices.
+
+2010
+01:43:13,730 --> 01:43:19,530
+Right, so if you want to picture something
+like that, you're bounding some covariance
+
+2011
+01:43:19,530 --> 01:43:23,630
+or something matrix or something like that
+with a 100 variables or something.
+
+2012
+01:43:23,630 --> 01:43:26,520
+It's not an, it's, it's not a simple
+problem.
+
+2013
+01:43:26,520 --> 01:43:30,020
+It's one that 25 years ago absolutely no
+one would have any idea it could be solved
+
+2014
+01:43:30,020 --> 01:43:36,750
+by any method, right, let alone by
+something like 20 steps.
+
+2015
+01:43:36,750 --> 01:43:39,970
+Of some quite simple method that's
+probably only like 15 lines or
+
+2016
+01:43:39,970 --> 01:43:40,780
+something like that.
+
+2017
+01:43:42,000 --> 01:43:44,690
+so, it, it's quite a complicated problem.
+
+2018
+01:43:44,690 --> 01:43:48,070
+And hear you can that you are actually,
+these, with this very
+
+2019
+01:43:48,070 --> 01:43:52,310
+simple barrier method, you're solving
+things in like 20, 30 steps.
+
+2020
+01:43:52,310 --> 01:43:54,880
+Right?
+So real methods would do it in 20 or
+
+2021
+01:43:54,880 --> 01:43:56,200
+18 or something like that.
+
+2022
+01:43:57,640 --> 01:43:59,390
+Each step is solving a Newton system.
+
+2023
+01:44:01,560 --> 01:44:06,870
+Any guesses, just for fun just to, just to
+see what
+
+2024
+01:44:06,870 --> 01:44:10,830
+the complexity of a, the computational
+complexity of a Newton step is here?
+
+2025
+01:44:10,830 --> 01:44:11,810
+Turns out it's the end of the fourth.
+
+2026
+01:44:13,660 --> 01:44:16,840
+That's still pretty good, though, right,
+for a, for a semi-definite program.
+
+2027
+01:44:16,840 --> 01:44:17,420
+It's end of the fourth.
+
+2028
+01:44:17,420 --> 01:44:19,720
+It turns out that it's actually not
+solving the Newton system,
+
+2029
+01:44:19,720 --> 01:44:21,190
+which is order n cubed.
+
+2030
+01:44:21,190 --> 01:44:25,360
+It's actually assembling the Hessian in
+the general case costs n to the 4th.
+
+2031
+01:44:25,360 --> 01:44:28,650
+So, that's, that, that actually what the
+complication complexity is.
+
+2032
+01:44:28,650 --> 01:44:29,940
+That's still quite good, right?
+
+2033
+01:44:31,850 --> 01:44:33,710
+Does it, it could have been, like the dual
+has,
+
+2034
+01:44:33,710 --> 01:44:36,760
+whatever 5000 variables that would be into
+the 6th, or something.
+
+2035
+01:44:36,760 --> 01:44:39,760
+So you'd have n squared variables, and
+then you apply Newton's method to that,
+
+2036
+01:44:39,760 --> 01:44:40,710
+you get n to the 6.
+
+2037
+01:44:40,710 --> 01:44:42,590
+Right, so, okay.
+
+2038
+01:44:42,590 --> 01:44:48,214
+So anyway, so these are, this is all like
+it's very impressive that the stuff works.
+
+2039
+01:44:48,214 --> 01:44:52,596
+So here is a family of SDPs, it's like the
+family of LPs.
+
+2040
+01:44:52,596 --> 01:44:59,210
+And for each of these you saw that's
+actually very specific SDP.
+
+2041
+01:44:59,210 --> 01:45:01,640
+But for each of these, you solve 100
+random instances and
+
+2042
+01:45:01,640 --> 01:45:03,970
+actually, it's not at all clear what
+happened out here to 1000,
+
+2043
+01:45:03,970 --> 01:45:08,580
+but I guess it suggests that it, it's
+being reported honestly.
+
+2044
+01:45:08,580 --> 01:45:11,690
+But it's, probably that's some numerical
+issue or something like that,
+
+2045
+01:45:11,690 --> 01:45:16,250
+but, you, it'd be nicer if it just looked
+like, like it did for the LPs and kind of
+
+2046
+01:45:16,250 --> 01:45:20,550
+just go like this, right, that, that would
+be the, that would be better, right?
+
+2047
+01:45:20,550 --> 01:45:21,057
+So.
+
+2048
+01:45:21,057 --> 01:45:24,180
+Okay, so it's the same sort of thing.
+
+2049
+01:45:25,810 --> 01:45:29,930
+I, I should say that SDP is still kind of
+an an op,
+
+2050
+01:45:29,930 --> 01:45:35,200
+it's, no one has, I, it's not completely
+nailed yet, how to solve SDPs.
+
+2051
+01:45:36,720 --> 01:45:39,070
+it, there are plenty of sort of SDP
+solvers,
+
+2052
+01:45:39,070 --> 01:45:42,370
+there are all sorts of special ones for
+different structures and things like that.
+
+2053
+01:45:42,370 --> 01:45:43,950
+People solve very big ones.
+
+2054
+01:45:43,950 --> 01:45:47,510
+For example, people who work on
+combinatorial optimization you need to
+
+2055
+01:45:47,510 --> 01:45:52,720
+do STP bounds, they solve big ones but
+there has not emerged what you have for
+
+2056
+01:45:52,720 --> 01:45:58,980
+things like LP and SOCP which are simply,
+kind of the best methods that just work.
+
+2057
+01:45:58,980 --> 01:46:00,230
+This has not emerged.
+
+2058
+01:46:00,230 --> 01:46:04,720
+So it's something people have been looking
+at for maybe 20 years now and
+
+2059
+01:46:04,720 --> 01:46:10,440
+it'd be really good if someone to, were to
+like, figure out good, universal methods.
+
+2060
+01:46:10,440 --> 01:46:11,010
+So.
+
+2061
+01:46:11,010 --> 01:46:14,740
+That was a hint, or a suggestion, a plea?
+
+2062
+01:46:14,740 --> 01:46:15,830
+One of, one of those.
+
+2063
+01:46:15,830 --> 01:46:18,000
+So okay.
+
+2064
+01:46:18,000 --> 01:46:20,680
+So the last thing I want to talk about
+today.
+
+2065
+01:46:22,550 --> 01:46:26,516
+Our primal dual in interior point methods,
+right?
+
+2066
+01:46:26,516 --> 01:46:31,290
+So, in fact, the barrier method is not
+really used.
+
+2067
+01:46:31,290 --> 01:46:33,790
+Actually it is, in a few weird places,
+right?
+
+2068
+01:46:33,790 --> 01:46:36,150
+And in fact, it's even simpler.
+
+2069
+01:46:36,150 --> 01:46:41,790
+A barrier method with a fixed value of t
+is used in a few real time things, right,
+
+2070
+01:46:41,790 --> 01:46:44,890
+where you don't need high res, high
+resolution, and
+
+2071
+01:46:44,890 --> 01:46:47,430
+you just use Newton's method to solve
+something like that.
+
+2072
+01:46:47,430 --> 01:46:49,160
+But generally speaking, people don't do
+this.
+
+2073
+01:46:49,160 --> 01:46:51,070
+What they really do is they don't even
+distinguish between inner and
+
+2074
+01:46:51,070 --> 01:46:52,400
+outer iterations.
+
+2075
+01:46:52,400 --> 01:46:56,590
+It's equivalent to changing, another way
+to say it is you change t every step
+
+2076
+01:46:56,590 --> 01:47:01,560
+of every, for every, you do, every one is
+a Newton step.
+
+2077
+01:47:01,560 --> 01:47:03,660
+And you change t every single time.
+
+2078
+01:47:03,660 --> 01:47:08,120
+Instead of, you know, we go like eight
+steps, satisfy a convergence criterion,
+
+2079
+01:47:08,120 --> 01:47:10,560
+then it's, you know, t times equals mu.
+
+2080
+01:47:10,560 --> 01:47:13,240
+And in fact the way real ones work is they
+do a little bit of work to
+
+2081
+01:47:13,240 --> 01:47:16,300
+update t every single step, right?
+
+2082
+01:47:16,300 --> 01:47:18,860
+So that's one way.
+
+2083
+01:47:18,860 --> 01:47:20,210
+And they also.
+
+2084
+01:47:21,430 --> 01:47:28,130
+But however each step, always nothing but
+solving a set of linearized KKT.
+
+2085
+01:47:28,130 --> 01:47:30,990
+So the questions look like basically
+identical.
+
+2086
+01:47:30,990 --> 01:47:33,420
+And they use infeasible start.
+
+2087
+01:47:33,420 --> 01:47:35,230
+Infeasible start Newton type things.
+
+2088
+01:47:35,230 --> 01:47:38,020
+So you start, you don't have a phase one
+and phase two.
+
+2089
+01:47:38,020 --> 01:47:41,070
+So these are kind of the standard,
+standard methods.
+
+2090
+01:47:41,070 --> 01:47:44,402
+But the cost per iteration is identical to
+the barrier method and things like that.
+
+2091
+01:47:44,402 --> 01:47:47,420
+So they're not, they would have kind of
+some minor advantages, but
+
+2092
+01:47:47,420 --> 01:47:52,559
+not, not, not huge, huge big advantages.

@@ -1,0 +1,1863 @@
+1
+00:00:00,000 --> 00:00:01,720
+Well, of course say, I don't think an
+odds, so
+
+2
+00:00:01,720 --> 00:00:06,562
+I want to go one step further and
+translate the odds into a probability.
+
+3
+00:00:06,562 --> 00:00:07,919
+Well, here are the odds,
+
+4
+00:00:07,919 --> 00:00:12,256
+the odds is just a probability divided by
+1 minus the probability.
+
+5
+00:00:12,256 --> 00:00:15,104
+So, we can actually solve for p here.
+
+6
+00:00:15,104 --> 00:00:18,853
+So, to solve for p, for example, for this
+first one.
+
+7
+00:00:18,853 --> 00:00:23,380
+I'm going to multiply both sides of my
+equation by 1 minus p.
+
+8
+00:00:23,380 --> 00:00:30,460
+Then, I'm going to get the p is equal to
+8.33 minus 8.33p.
+
+9
+00:00:30,460 --> 00:00:32,180
+I can add that negative,
+
+10
+00:00:32,180 --> 00:00:37,100
+that 8.33p, I'm going to add 8.33p to both
+sides of the equation here.
+
+11
+00:00:37,100 --> 00:00:46,730
+Then, I'm going to get 9.33p is equal to
+8.33.
+
+12
+00:00:46,730 --> 00:00:50,930
+Now, to isolate p, I'm going to divide
+both sides of the equation by 9.33.
+
+13
+00:00:50,930 --> 00:00:55,640
+A general formula here, is you would do p
+is equal to the odds
+
+14
+00:00:55,640 --> 00:01:01,620
+divided by 1 plus the odds.
+
+15
+00:01:01,620 --> 00:01:04,220
+And when you do that 8.33 divided by 9.33.
+
+16
+00:01:04,220 --> 00:01:06,530
+Notice that's always going to be a number
+between zero and one.
+
+17
+00:01:06,530 --> 00:01:07,760
+So, that's going to give you a
+probability.
+
+18
+00:01:07,760 --> 00:01:09,390
+That comes out to be 89%.
+
+19
+00:01:09,390 --> 00:01:12,680
+So, the predictive probability for
+somebody who does zero hours per week of
+
+20
+00:01:12,680 --> 00:01:15,960
+homework, is that they have an 89% chance
+of being book smart.
+
+21
+00:01:15,960 --> 00:01:17,650
+Less homework, more chance of being book
+smart.
+
+22
+00:01:17,650 --> 00:01:18,935
+When you do this for
+
+23
+00:01:18,935 --> 00:01:23,010
+10 hours per week, you get 85% is the
+predicted probability of being book smart.
+
+24
+00:01:23,010 --> 00:01:25,280
+For somebody else 50 hours per week,
+they're only, you know,
+
+25
+00:01:25,280 --> 00:01:30,460
+54% chance of their predicted probability
+of being book smart is only 54%.
+
+26
+00:01:30,460 --> 00:01:33,140
+Again, none of this is statistically
+significant.
+
+27
+00:01:33,140 --> 00:01:35,210
+But just in terms of the effect sizes
+here.
+
+28
+00:01:35,210 --> 00:01:37,950
+These would be the predicted
+probabilities.
+
+29
+00:01:37,950 --> 00:01:40,470
+So, out of a logistic regression model,
+you can predict, for
+
+30
+00:01:40,470 --> 00:01:42,750
+a particular person, their probability,
+
+31
+00:01:42,750 --> 00:01:47,820
+given their characteristics, of having a
+particular outcome.
+
+32
+00:01:47,820 --> 00:01:51,150
+You can also say just how good of a job
+does
+
+33
+00:01:51,150 --> 00:01:56,090
+the model do of predicting an outcome?
+
+34
+00:01:56,090 --> 00:01:59,280
+You measure this with something called the
+area under the curve,
+
+35
+00:01:59,280 --> 00:02:00,990
+the area under the ROC curve.
+
+36
+00:02:00,990 --> 00:02:03,950
+And the area under the curve, for logistic
+regression,
+
+37
+00:02:03,950 --> 00:02:08,400
+is analogous to the r squared that we got
+out of linear regression.
+
+38
+00:02:08,400 --> 00:02:12,520
+It's a measure of model fit and how good
+your predictive power is.
+
+39
+00:02:13,770 --> 00:02:15,890
+Remember that when we did linear
+regression,
+
+40
+00:02:15,890 --> 00:02:18,775
+sometimes you could over fit your model
+and get really good r
+
+41
+00:02:18,775 --> 00:02:22,519
+squareds that actually didn't mean that
+you had great predictive power.
+
+42
+00:02:22,519 --> 00:02:24,670
+It just meant that you have an over fit
+model.
+
+43
+00:02:24,670 --> 00:02:26,620
+Same thing principle applies here.
+
+44
+00:02:26,620 --> 00:02:30,370
+Sometimes a really good area under the
+curve reflects over fitting rather than
+
+45
+00:02:30,370 --> 00:02:31,750
+good predictive ability.
+
+46
+00:02:31,750 --> 00:02:33,230
+So, just kind of keep that in mind.
+
+47
+00:02:33,230 --> 00:02:36,640
+I just want to briefly review the ROC
+curve.
+
+48
+00:02:36,640 --> 00:02:38,570
+So, let me give you the big picture first.
+
+49
+00:02:38,570 --> 00:02:39,740
+So, this is an ROC curve.
+
+50
+00:02:39,740 --> 00:02:40,840
+This is the ROC curve for
+
+51
+00:02:40,840 --> 00:02:46,340
+the model we just fit, homework hours
+predicting book smart, street smart.
+
+52
+00:02:46,340 --> 00:02:48,450
+This is actually a really bad ROC curve,
+
+53
+00:02:48,450 --> 00:02:51,040
+because homework is not very predictive of
+the outcome here.
+
+54
+00:02:51,040 --> 00:02:53,490
+It's not significantly related.
+
+55
+00:02:53,490 --> 00:02:56,520
+On ROC curve, here's the diagonal line.
+
+56
+00:02:56,520 --> 00:02:58,698
+If you look at the diagonal line here,
+
+57
+00:02:58,698 --> 00:03:03,510
+the diagonoal line on the ROC curve means
+no predictive ability.
+
+58
+00:03:03,510 --> 00:03:06,030
+So, if your model falls right near this
+line,
+
+59
+00:03:06,030 --> 00:03:09,030
+that means that your model has no
+predictive ability really.
+
+60
+00:03:09,030 --> 00:03:10,620
+And that's essentially what's happening
+here.
+
+61
+00:03:10,620 --> 00:03:12,240
+Here's our ROC curve in blue.
+
+62
+00:03:12,240 --> 00:03:15,760
+It's not doing much better than the, the
+line.
+
+63
+00:03:15,760 --> 00:03:19,530
+This line represents chance that you're,
+you're just flipping a coin to
+
+64
+00:03:19,530 --> 00:03:22,690
+determine whether or not somebody has the
+outcome or not.
+
+65
+00:03:22,690 --> 00:03:24,880
+So, we're not doing much better than
+chance here.
+
+66
+00:03:24,880 --> 00:03:27,880
+An area under the curve of 50% means no
+predictive ability.
+
+67
+00:03:27,880 --> 00:03:32,150
+The area, an area under the curve of 60%
+is, which is what we have here,
+
+68
+00:03:32,150 --> 00:03:34,600
+you can see that here, is really not much
+better than that.
+
+69
+00:03:34,600 --> 00:03:37,495
+What is the ROC curve though?
+
+70
+00:03:37,495 --> 00:03:40,302
+What we're looking for on the ROC curve,
+you know you have really good
+
+71
+00:03:40,302 --> 00:03:42,880
+predictive ability when you get a curve
+that looks like this.
+
+72
+00:03:42,880 --> 00:03:47,150
+Where that is an area under the curve is
+going to be close to 100%.
+
+73
+00:03:47,150 --> 00:03:50,430
+The ROC curve is what it actually is,
+
+74
+00:03:50,430 --> 00:03:55,060
+is you're graphing sensitivity against 1
+minus the specificity.
+
+75
+00:03:55,060 --> 00:03:59,340
+High values close to 100% is really good
+predictive power,
+
+76
+00:03:59,340 --> 00:04:01,360
+assuming you're not over fitting.
+
+77
+00:04:01,360 --> 00:04:05,570
+Values closer to 50% are poor or no
+predictive power.
+
+78
+00:04:05,570 --> 00:04:09,250
+So, that's the general picture of ROC
+curve.
+
+79
+00:04:09,250 --> 00:04:11,710
+And this, my computer just, you know,
+
+80
+00:04:11,710 --> 00:04:15,130
+when I did the logistic regression, it
+spits this curve out for me automatically.
+
+81
+00:04:15,130 --> 00:04:17,090
+So, I didn't have to do any work to get
+it.
+
+82
+00:04:17,090 --> 00:04:19,680
+But just to give you a little detail about
+where it comes from.
+
+83
+00:04:19,680 --> 00:04:21,910
+So, you can sort of understand that.
+
+84
+00:04:21,910 --> 00:04:27,490
+Let me show you how this ROC curve is
+drawn using this particular example.
+
+85
+00:04:27,490 --> 00:04:33,180
+Again, my logistic regression model gives
+me out a predictive probability for
+
+86
+00:04:33,180 --> 00:04:34,470
+every person.
+
+87
+00:04:34,470 --> 00:04:37,860
+In this case, the predictive probability
+for a given person, only depends on
+
+88
+00:04:37,860 --> 00:04:41,800
+the number of hours of homework that they
+reported doing every week.
+
+89
+00:04:41,800 --> 00:04:43,680
+So, if you did zero hours of homework,
+
+90
+00:04:43,680 --> 00:04:46,010
+you were predicted an 89% predicted
+probability.
+
+91
+00:04:46,010 --> 00:04:49,780
+If you did 50 hours of homework, you have
+a 54% of predicted probability, and so on.
+
+92
+00:04:49,780 --> 00:04:53,420
+What we can do is we can calculate the
+predicted probability.
+
+93
+00:04:53,420 --> 00:04:54,750
+And again, the computer's doing this for
+me.
+
+94
+00:04:54,750 --> 00:04:56,630
+That we can calculate the predicted
+probability for
+
+95
+00:04:56,630 --> 00:04:58,330
+every person in the data set.
+
+96
+00:04:58,330 --> 00:05:00,610
+And some of these will be ties because
+there's some people that have
+
+97
+00:05:00,610 --> 00:05:04,040
+the same homework time and that's the same
+predictive probability.
+
+98
+00:05:04,040 --> 00:05:07,250
+So, I'm just showing here some of the
+predicted probabilities from my data set.
+
+99
+00:05:07,250 --> 00:05:10,050
+I'm not showing all, I'm showing I've
+lined up
+
+100
+00:05:10,050 --> 00:05:12,910
+the predicted probabilities from the
+lowest in the data set, to the highest.
+
+101
+00:05:12,910 --> 00:05:14,540
+And I'm not showing the ones in between.
+
+102
+00:05:14,540 --> 00:05:16,830
+I'm just showing the lowest and the
+highest.
+
+103
+00:05:16,830 --> 00:05:17,892
+Just to illustrate.
+
+104
+00:05:17,892 --> 00:05:19,037
+What you then do is,
+
+105
+00:05:19,037 --> 00:05:23,076
+again, there are C curve is based on
+sensitivity and specificity.
+
+106
+00:05:23,076 --> 00:05:25,510
+But we have a continuous predictor here.
+
+107
+00:05:25,510 --> 00:05:26,940
+So, it's that you know,
+
+108
+00:05:26,940 --> 00:05:31,754
+I have a test and you either pass the test
+or you fail the test.
+
+109
+00:05:31,754 --> 00:05:35,865
+To get sensitivity and specificity from a
+continuous predictor,
+
+110
+00:05:35,865 --> 00:05:39,510
+we're going to have a range of
+sensitivities and specificities.
+
+111
+00:05:39,510 --> 00:05:42,500
+The ROC is set up by doing the following.
+
+112
+00:05:42,500 --> 00:05:45,500
+You take the person with the lowest
+predicted probability in your data set.
+
+113
+00:05:45,500 --> 00:05:48,160
+You make that lowest predicted
+probability.
+
+114
+00:05:48,160 --> 00:05:52,664
+The cut-off for being classified, in this
+case, as book smart.
+
+115
+00:05:52,664 --> 00:05:56,092
+So, you say everybody who has a predicted
+probability of,
+
+116
+00:05:56,092 --> 00:06:02,250
+of 0.52 or higher, is going to be called
+book smart.
+
+117
+00:06:02,250 --> 00:06:06,032
+Well, since everybody in your data set has
+a predictive probability of .52 or
+
+118
+00:06:06,032 --> 00:06:09,950
+higher, everybody in your data set is
+going to be classified as book smart.
+
+119
+00:06:09,950 --> 00:06:12,350
+So, we can actually make a little two by
+two table here.
+
+120
+00:06:12,350 --> 00:06:19,400
+If our test is, if your predictive
+probability is greater than 0.52,
+
+121
+00:06:19,400 --> 00:06:23,860
+greater than or equal to 0.52, you're
+going to be classified as book smart.
+
+122
+00:06:23,860 --> 00:06:26,480
+That's a, that is a positive test.
+
+123
+00:06:26,480 --> 00:06:29,078
+Then, all 48, there's 48 people here.
+
+124
+00:06:29,078 --> 00:06:31,622
+All 48 are going to be classified as book
+smart.
+
+125
+00:06:31,622 --> 00:06:34,930
+You're classified as street smart if
+you're
+
+126
+00:06:34,930 --> 00:06:38,360
+below 0.52 on this particular cut off.
+
+127
+00:06:38,360 --> 00:06:42,520
+That means nobody will be classified as
+street smart to start here.
+
+128
+00:06:42,520 --> 00:06:46,150
+And this there, we can actually then
+compare that to their true value for
+
+129
+00:06:46,150 --> 00:06:49,430
+book smart or streets smart.
+
+130
+00:06:49,430 --> 00:06:53,575
+So, in my data set, out of 48, there were
+40 book smarts people, and
+
+131
+00:06:53,575 --> 00:06:55,960
+8 streets smart people.
+
+132
+00:06:55,960 --> 00:06:59,550
+If we count them all as book smart
+according to our test,
+
+133
+00:07:01,360 --> 00:07:07,088
+then we are going to have perfect
+sensitivity and 0 specificity.
+
+134
+00:07:07,088 --> 00:07:10,370
+So, we've, we've captured everybody who is
+book smart.
+
+135
+00:07:10,370 --> 00:07:13,040
+If you make the test predict the
+probability 0.52 or
+
+136
+00:07:13,040 --> 00:07:15,580
+higher, we're going to capture everybody
+who's book smart, but
+
+137
+00:07:15,580 --> 00:07:17,530
+we're going to capture nobody who's street
+smart.
+
+138
+00:07:17,530 --> 00:07:21,940
+We're going to misclassify all of them, so
+our specificity's going to be 0.
+
+139
+00:07:21,940 --> 00:07:24,090
+We represent that on the ROC curve right
+here.
+
+140
+00:07:24,090 --> 00:07:27,705
+So, this is 100% sensitivity, and
+
+141
+00:07:27,705 --> 00:07:33,130
+0 percent specificity, because remember
+we're graphing 1 minus 0.
+
+142
+00:07:33,130 --> 00:07:34,490
+1 minus the specificity.
+
+143
+00:07:34,490 --> 00:07:37,440
+So, 1 minus 0 gives us a 1.0 value here.
+
+144
+00:07:37,440 --> 00:07:39,424
+So, we end up here on the curve.
+
+145
+00:07:39,424 --> 00:07:40,890
+Then, we do this again.
+
+146
+00:07:40,890 --> 00:07:44,740
+Now, we move up our cutoff for classifying
+people as book smart or
+
+147
+00:07:44,740 --> 00:07:48,760
+street smart to the next predicted
+probability level, which is 0.54.
+
+148
+00:07:48,760 --> 00:07:52,820
+So now we say, everybody who is 0.54 or
+
+149
+00:07:52,820 --> 00:07:56,264
+higher on their predicted probability,
+we're going to call you book smart.
+
+150
+00:07:56,264 --> 00:08:01,170
+And, in fact, when we do this,
+
+151
+00:08:01,170 --> 00:08:07,620
+that is going to capture most everybody
+has 0.54 or higher, but not everybody.
+
+152
+00:08:07,620 --> 00:08:09,064
+So, that's our positive test.
+
+153
+00:08:09,064 --> 00:08:13,143
+Our negative test, now, there are a few
+who are below 0.54.
+
+154
+00:08:13,143 --> 00:08:17,700
+They're going to be counted as having a
+negative on this test.
+
+155
+00:08:17,700 --> 00:08:24,060
+So, we end up with classifying 46 people
+as book smart according to our test.
+
+156
+00:08:24,060 --> 00:08:27,770
+But two were classifying as street smart
+according to our test.
+
+157
+00:08:27,770 --> 00:08:30,610
+We can actually look at the true value,
+who was actually book smart and
+
+158
+00:08:30,610 --> 00:08:32,120
+who was street smart.
+
+159
+00:08:32,120 --> 00:08:34,805
+We had 40 in our set who considered
+themselves book smart.
+
+160
+00:08:34,805 --> 00:08:41,160
+And in fact, we ended up with 38 out of
+the 40 who
+
+161
+00:08:41,160 --> 00:08:45,850
+are book smart were correctly classified
+as book smart, and two were misclassified.
+
+162
+00:08:45,850 --> 00:08:48,800
+The two who had predicted probabilities
+less than 0.54 were actually out of
+
+163
+00:08:48,800 --> 00:08:50,260
+the book smart group.
+
+164
+00:08:50,260 --> 00:08:54,380
+And we misclassified 8, the 8 street smart
+people as book smart again.
+
+165
+00:08:54,380 --> 00:08:59,080
+So our specificity remains at 0.
+
+166
+00:08:59,080 --> 00:09:03,400
+Our sensitivity is now 38 out of 40 or
+95%.
+
+167
+00:09:03,400 --> 00:09:06,852
+So, we're not, we're no longer have
+perfect sensitivity.
+
+168
+00:09:06,852 --> 00:09:11,850
+That's going to move us down to the chart
+here to sensitivity of 95% and
+
+169
+00:09:11,850 --> 00:09:14,950
+we're continuing to have a specificity of
+zero.
+
+170
+00:09:14,950 --> 00:09:18,420
+And we go on and do this for all the
+observe, all the predicted
+
+171
+00:09:18,420 --> 00:09:21,530
+probabilities in our data set, and that's
+what defines this curve here.
+
+172
+00:09:21,530 --> 00:09:24,190
+And again, if we have no predictive
+ability,
+
+173
+00:09:24,190 --> 00:09:27,450
+you're going to end up right along that
+line as we do here.
+
+174
+00:09:27,450 --> 00:09:34,260
+So, that's the ROC curve that tells us how
+good we're, how predictive our model is.
+
+175
+00:09:34,260 --> 00:09:36,460
+The other thing that's often more useful
+or
+
+176
+00:09:36,460 --> 00:09:39,880
+more commonly used from the logistic
+regression model is just to
+
+177
+00:09:39,880 --> 00:09:43,316
+say what's the relationship between the
+predictor and the outcome.
+
+178
+00:09:43,316 --> 00:09:45,250
+And this case homework and book smart.
+
+179
+00:09:45,250 --> 00:09:50,160
+And as I mentioned earlier the, the beta
+coefficient from logistic regression,
+
+180
+00:09:50,160 --> 00:09:53,620
+what happens is is if you exponentiate
+that beta coeffecient from
+
+181
+00:09:53,620 --> 00:09:58,280
+logistic regression, when you exponentiate
+that, that gives you an odds ratio.
+
+182
+00:09:58,280 --> 00:10:03,660
+So, we can take this beta for homework
+here and we can exponentiate it.
+
+183
+00:10:03,660 --> 00:10:07,630
+And so we can raise that to point,
+negative 0.0389.
+
+184
+00:10:07,630 --> 00:10:10,949
+When you do that, you come out with a
+value of 0.96, so
+
+185
+00:10:10,949 --> 00:10:13,780
+that's the odds ratio here.
+
+186
+00:10:13,780 --> 00:10:16,960
+I'll show you in a minute why you can
+interpret the beta like this.
+
+187
+00:10:16,960 --> 00:10:23,390
+But what this means is we have quantified
+the relationship between homework time and
+
+188
+00:10:23,390 --> 00:10:25,620
+your odds of being book smart.
+
+189
+00:10:25,620 --> 00:10:31,100
+And you would read this odds ratio of 0.96
+to say that there is
+
+190
+00:10:31,100 --> 00:10:36,700
+a 4% decrease in your odds of being book
+smart for
+
+191
+00:10:36,700 --> 00:10:41,068
+everyone one hour more that you spend on
+homework per week.
+
+192
+00:10:41,068 --> 00:10:44,944
+So, if I just exponentiate that beta, the
+units here are, is,
+
+193
+00:10:44,944 --> 00:10:47,240
+are, one hour of homework per week.
+
+194
+00:10:47,240 --> 00:10:50,710
+Notice now, we've done an odds ratio for a
+continuous predictor.
+
+195
+00:10:50,710 --> 00:10:52,410
+You can get that in a logistic regression.
+
+196
+00:10:52,410 --> 00:10:54,510
+So now, we're talking about the increase
+odds for
+
+197
+00:10:54,510 --> 00:10:56,934
+a one unit increase in the continous
+predictor.
+
+198
+00:10:56,934 --> 00:10:57,809
+Everything up to now,
+
+199
+00:10:57,809 --> 00:11:01,250
+when we've done odds ratios is we've
+talking about a binary predictor.
+
+200
+00:11:01,250 --> 00:11:02,960
+You're either in this group or your not.
+
+201
+00:11:02,960 --> 00:11:06,800
+But now, we can get odds ratios for
+continuous predictors.
+
+202
+00:11:06,800 --> 00:11:08,075
+Well, how does that translate?
+
+203
+00:11:08,075 --> 00:11:11,630
+How does that beta become an odds ratio?
+
+204
+00:11:11,630 --> 00:11:12,850
+Exactly how does that work?
+
+205
+00:11:12,850 --> 00:11:14,030
+So, let me show you that now.
+
+206
+00:11:14,030 --> 00:11:19,610
+How do we get from beta to odds ratios?
+
+207
+00:11:19,610 --> 00:11:20,780
+Well, what is an odds ratio?
+
+208
+00:11:20,780 --> 00:11:25,800
+If I want to know the odds ratio for being
+book smart for the exposure here, which
+
+209
+00:11:25,800 --> 00:11:29,710
+is more homework time compared to less
+homework time, what is the odds ratio?
+
+210
+00:11:29,710 --> 00:11:31,710
+An odds ratio is a ratio of two odds.
+
+211
+00:11:31,710 --> 00:11:35,560
+So, my odds ratio here would be the odds
+of being book smart for
+
+212
+00:11:35,560 --> 00:11:40,520
+somebody who does more homework compared
+with the odds of being book smart for
+
+213
+00:11:40,520 --> 00:11:43,470
+somebody who spends less time on homework.
+
+214
+00:11:43,470 --> 00:11:46,110
+And if we're just going with the units
+that I've used here,
+
+215
+00:11:46,110 --> 00:11:47,830
+the difference between the numerator and
+
+216
+00:11:47,830 --> 00:11:50,990
+the denominator, I could make it a
+one-hour difference in homework time.
+
+217
+00:11:50,990 --> 00:11:52,440
+So, what's my odds ratio for
+
+218
+00:11:52,440 --> 00:11:55,710
+a one-hour change, a one-hour increase in
+homework time?
+
+219
+00:11:55,710 --> 00:11:58,840
+How does that affect my odds of being book
+book smart.
+
+220
+00:11:58,840 --> 00:11:59,850
+Well, now I can just fill in.
+
+221
+00:11:59,850 --> 00:12:03,390
+I fit a model that tells me that predicted
+odds of being book smart for
+
+222
+00:12:03,390 --> 00:12:04,400
+a given homework level.
+
+223
+00:12:04,400 --> 00:12:07,400
+So, I can just plug in that model.
+
+224
+00:12:07,400 --> 00:12:10,808
+So, what's the odds of being book smart
+for somebody who does a 1 hour of
+
+225
+00:12:10,808 --> 00:12:14,410
+homework, compared with somebody who does
+zero hours of homework?
+
+226
+00:12:14,410 --> 00:12:17,460
+The odds, which I can put in the
+numerator.
+
+227
+00:12:17,460 --> 00:12:20,770
+So, I fit the model that says the log odds
+is alpha plus
+
+228
+00:12:20,770 --> 00:12:22,348
+beta homework times the amount of
+homework.
+
+229
+00:12:22,348 --> 00:12:25,142
+If I exponentiate that, remember, I get
+the odds.
+
+230
+00:12:25,142 --> 00:12:26,522
+So, the odds of being book smart, for
+
+231
+00:12:26,522 --> 00:12:30,299
+somebody who does one hour of homework, I
+can put that in the numerator.
+
+232
+00:12:30,299 --> 00:12:32,449
+I can compare that to the odds of being
+book smart for
+
+233
+00:12:32,449 --> 00:12:34,619
+somebody who does no homework.
+
+234
+00:12:34,619 --> 00:12:36,349
+So now, I've made a ratio of two odds.
+
+235
+00:12:36,349 --> 00:12:39,015
+The odds for somebody who does one hour of
+homework, divided by the odds for
+
+236
+00:12:39,015 --> 00:12:40,966
+somebody who does no homework.
+
+237
+00:12:40,966 --> 00:12:42,874
+And then, we can simplify this a little
+bit,
+
+238
+00:12:42,874 --> 00:12:46,107
+what you'll notice right away is you have
+to know a little bit about how
+
+239
+00:12:46,107 --> 00:12:50,365
+exponentials work to know how I leap from
+here to here.
+
+240
+00:12:50,365 --> 00:12:52,289
+But if you have e to raised to alpha plus
+beta,
+
+241
+00:12:52,289 --> 00:12:56,043
+that's the same as e raised to alpha times
+e raised to beta.
+
+242
+00:12:56,043 --> 00:12:58,735
+Well, notice there, they both have the
+same intercepts.
+
+243
+00:12:58,735 --> 00:13:00,500
+So, those intercepts are going to cancel.
+
+244
+00:13:00,500 --> 00:13:02,210
+That's the nice thing here.
+
+245
+00:13:02,210 --> 00:13:03,100
+Those cancel.
+
+246
+00:13:03,100 --> 00:13:10,042
+And if we simplify this, it just turns out
+that we are left with with e beta times 1.
+
+247
+00:13:10,042 --> 00:13:12,242
+And the numerator divided by e raised to
+the 0.
+
+248
+00:13:12,242 --> 00:13:15,770
+And the denominator, that's just e raised
+to beta homework.
+
+249
+00:13:15,770 --> 00:13:17,840
+And that's the odds ratio.
+
+250
+00:13:17,840 --> 00:13:21,200
+You take the beta for homework, you
+exponentiate it, you get the odds
+
+251
+00:13:21,200 --> 00:13:25,500
+ratio in the, in the actual value here for
+the beta was negative 0.039.
+
+252
+00:13:25,500 --> 00:13:28,862
+Again, if I exponentiate that, I get an
+odds ratio of 0.96.
+
+253
+00:13:28,862 --> 00:13:33,010
+So, the odds ratio 0.96 means that for
+every one-hour increase in
+
+254
+00:13:33,010 --> 00:13:37,020
+homework per week, your odds of believing
+yourself book smart decreases by 4%.
+
+255
+00:13:37,020 --> 00:13:38,660
+Of course, and it wasn't significant here.
+
+256
+00:13:38,660 --> 00:13:44,030
+I want to just extend this logic to show
+how not only can we get
+
+257
+00:13:44,030 --> 00:13:49,610
+odds ratios out of logistic regression, we
+can get multivariate adjusted odds ratios.
+
+258
+00:13:49,610 --> 00:13:52,040
+So, just as we made the leap from linear
+regression,
+
+259
+00:13:52,040 --> 00:13:54,590
+simple linear regressions to
+multi-variable linear regression.
+
+260
+00:13:54,590 --> 00:13:56,979
+We can do the same thing for logistic
+regression.
+
+261
+00:13:56,979 --> 00:13:59,960
+It's very easy to add additional
+predictors to the right side of
+
+262
+00:13:59,960 --> 00:14:00,570
+the equation.
+
+263
+00:14:00,570 --> 00:14:03,690
+We can have a bunch of predictors just
+like this.
+
+264
+00:14:03,690 --> 00:14:06,840
+That's our multi-variable logistic
+regression equation.
+
+265
+00:14:06,840 --> 00:14:08,095
+And here's some examples.
+
+266
+00:14:08,095 --> 00:14:11,410
+Imagine that we did a study where we're
+looking at lung cancer.
+
+267
+00:14:11,410 --> 00:14:17,280
+And let's say for the first logistic
+regression model we fit, we put in as
+
+268
+00:14:17,280 --> 00:14:21,290
+predictors a binary predictor for smoking
+and a binary predictor for drinking.
+
+269
+00:14:21,290 --> 00:14:23,540
+So, we looked at smoking, yes or no.
+
+270
+00:14:23,540 --> 00:14:25,080
+And drinking, yes or no.
+
+271
+00:14:25,080 --> 00:14:26,470
+Those are two binary variables.
+
+272
+00:14:26,470 --> 00:14:27,890
+So, that's one model we could fit.
+
+273
+00:14:27,890 --> 00:14:30,520
+And that's a simpler model, so I'm
+going to start there.
+
+274
+00:14:30,520 --> 00:14:31,030
+The beta for
+
+275
+00:14:31,030 --> 00:14:35,980
+smoking would then represent the effect of
+smoking adjusted for drinking.
+
+276
+00:14:35,980 --> 00:14:40,740
+The beta for drinking represents the
+effect of drinking adjusted for smoking.
+
+277
+00:14:40,740 --> 00:14:44,427
+We can make it slightly more complicated
+by also adding an additional variable,
+
+278
+00:14:44,427 --> 00:14:46,265
+additional predictor in the model.
+
+279
+00:14:46,265 --> 00:14:48,120
+Let's add also age.
+
+280
+00:14:48,120 --> 00:14:51,510
+We could then get the effect of smoking
+adjusted for
+
+281
+00:14:51,510 --> 00:14:55,800
+both drinking and age, the effect of
+drinking adjusted for both smoking and
+
+282
+00:14:55,800 --> 00:14:58,730
+age, and the effect of age adjusted for
+both smoking and drinking.
+
+283
+00:15:00,420 --> 00:15:04,570
+Let me show you now, exactly what I mean
+by adjusted for,
+
+284
+00:15:04,570 --> 00:15:07,330
+when I keep using that term adjusted for,
+what does that really mean?
+
+285
+00:15:07,330 --> 00:15:11,250
+That means that if I fix everything else
+in the model,
+
+286
+00:15:11,250 --> 00:15:14,860
+it's the isolated effect of smoking, or
+the isolated effect of drinking.
+
+287
+00:15:14,860 --> 00:15:16,970
+So, let me show you that mathematically
+now.
+
+288
+00:15:16,970 --> 00:15:18,478
+I think that's helpful.
+
+289
+00:15:18,478 --> 00:15:21,464
+I'm going to start with the binary
+predictor,
+
+290
+00:15:21,464 --> 00:15:23,960
+the model with the two binary predictors,
+because it's simpler.
+
+291
+00:15:23,960 --> 00:15:26,740
+Again, what's an odds ratio?
+
+292
+00:15:26,740 --> 00:15:29,330
+It's the odds of a disease, say lung
+cancer, for
+
+293
+00:15:29,330 --> 00:15:32,920
+an exposed group, compared with the odds
+of disease for an unexposed group.
+
+294
+00:15:32,920 --> 00:15:36,237
+If I have just a binary predictor of say,
+exposed and unexposed drinker, and
+
+295
+00:15:36,237 --> 00:15:39,910
+non-drinker and smoker, and non-smoker,
+that's what an odds ratio is.
+
+296
+00:15:39,910 --> 00:15:44,100
+My logistic regression model, models the
+odds of disease for given people.
+
+297
+00:15:44,100 --> 00:15:48,270
+So, I can put in the numerator, the odds
+of disease for, say, a drinker, and
+
+298
+00:15:48,270 --> 00:15:52,480
+I can put in the denominator, the odds of
+disease, lung cancer here, for
+
+299
+00:15:52,480 --> 00:15:53,060
+a non-drinker.
+
+300
+00:15:53,060 --> 00:15:54,430
+And that's what I've done here.
+
+301
+00:15:54,430 --> 00:15:58,083
+So, my model, my first model had alcohol
+and smoking.
+
+302
+00:15:58,083 --> 00:15:59,730
+Two binary predictors in it.
+
+303
+00:15:59,730 --> 00:16:03,830
+So, if I want to know the odds ratio for
+drinking, adjusted for
+
+304
+00:16:03,830 --> 00:16:08,160
+smoking, I can just say, let me compare in
+the numerator the odds for
+
+305
+00:16:08,160 --> 00:16:10,910
+a drinker, and in the denominator, the
+odds for a non drinker.
+
+306
+00:16:10,910 --> 00:16:14,330
+So there, I put a 1 for drinking in the
+numerator and a 0 for
+
+307
+00:16:14,330 --> 00:16:15,730
+drinking in the denominator.
+
+308
+00:16:15,730 --> 00:16:17,030
+Now, I'm comparing the odds for
+
+309
+00:16:17,030 --> 00:16:22,390
+lung cancer for a drinker, compared with
+the odds of cancer for a non-drinker.
+
+310
+00:16:22,390 --> 00:16:24,160
+Now, I've also got smoking in the model.
+
+311
+00:16:24,160 --> 00:16:25,580
+So, I have to put in something for
+smoking.
+
+312
+00:16:25,580 --> 00:16:26,920
+But what if I hold it fixed?
+
+313
+00:16:26,920 --> 00:16:31,970
+So, what if I say I'm only comparing a
+drinking smoker to a non-drinking smoker?
+
+314
+00:16:31,970 --> 00:16:36,302
+So, I put in a 1 for smoking for both the
+numerator and the denominator.
+
+315
+00:16:36,302 --> 00:16:37,704
+I hold smoking fixed.
+
+316
+00:16:37,704 --> 00:16:42,830
+It actually wouldn't matter if I chose to
+compare a drinking non-smoker to
+
+317
+00:16:42,830 --> 00:16:44,660
+a drinking non-smoker.
+
+318
+00:16:44,660 --> 00:16:48,211
+I just have to hold smoking fixed for both
+the numerator and the denominator.
+
+319
+00:16:48,211 --> 00:16:49,020
+I have it the same.
+
+320
+00:16:49,020 --> 00:16:52,840
+If I make it the same, what you can show
+is again, the intercepts cancel.
+
+321
+00:16:52,840 --> 00:16:58,870
+And now, as long as I hold smoking fixed
+the the smoking beta's cancel.
+
+322
+00:16:58,870 --> 00:17:00,260
+What I am left with?
+
+323
+00:17:00,260 --> 00:17:05,846
+Well, if I simplify this, I just have e
+raised to beta alcohol, e raised to the 0.
+
+324
+00:17:05,846 --> 00:17:07,210
+And the denominator is 1.
+
+325
+00:17:07,210 --> 00:17:12,450
+So, I can show that the odds ratio for
+drinking, if I hold smoking fix is just,
+
+326
+00:17:12,450 --> 00:17:16,270
+all I do is take the beta for alcohol and
+exponentiate it.
+
+327
+00:17:16,270 --> 00:17:19,490
+That gives me the odds ratio for lung
+cancer for
+
+328
+00:17:19,490 --> 00:17:21,540
+a drinker compared to a non-drinker.
+
+329
+00:17:21,540 --> 00:17:24,120
+And again, where I've held smoking
+constant.
+
+330
+00:17:25,210 --> 00:17:28,630
+Notice that this will be the odd ratio for
+drinking.
+
+331
+00:17:28,630 --> 00:17:31,780
+If I compare two smokers or if I compare
+two non-smokers.
+
+332
+00:17:31,780 --> 00:17:35,260
+So, I'm assuming that the effect of
+drinking is the same in
+
+333
+00:17:35,260 --> 00:17:37,004
+smokers and non-smokers.
+
+334
+00:17:37,004 --> 00:17:41,070
+I can use the same logic to show you that
+this works for
+
+335
+00:17:41,070 --> 00:17:42,610
+a continuous predictor as well.
+
+336
+00:17:42,610 --> 00:17:44,310
+So, here's a continuous predictor.
+
+337
+00:17:44,310 --> 00:17:48,190
+For a continuous predictor, I'm going to
+comparing again the odds of disease for
+
+338
+00:17:48,190 --> 00:17:50,580
+somebody with the higher level of the
+continuous predictor,
+
+339
+00:17:50,580 --> 00:17:54,425
+compared to somebody with the lower level.
+
+340
+00:17:54,425 --> 00:17:59,290
+For example, imagine that I've got my
+second model here that's got alcohol,
+
+341
+00:17:59,290 --> 00:18:01,810
+smoking and age in the model.
+
+342
+00:18:01,810 --> 00:18:03,220
+Age is a continuous predictor.
+
+343
+00:18:03,220 --> 00:18:07,400
+If I want to compare in the numerator, an
+older person, the odds of lung cancer for
+
+344
+00:18:07,400 --> 00:18:10,620
+an older person, compared with the odds of
+smoking for
+
+345
+00:18:10,620 --> 00:18:12,690
+a younger person in the denominator.
+
+346
+00:18:12,690 --> 00:18:13,950
+This will give me the odds ratio for
+
+347
+00:18:13,950 --> 00:18:18,348
+an increase in age, how much does age
+effect my odds of lung cancer.
+
+348
+00:18:18,348 --> 00:18:22,800
+I'm again going to hold all the other
+variables in the model here, alcohol and
+
+349
+00:18:22,800 --> 00:18:23,990
+smoking, I'm going to hold those fixes.
+
+350
+00:18:23,990 --> 00:18:27,915
+So say, I have two drinking smokers, and
+I'm comparing a drinking smoker who's
+
+351
+00:18:27,915 --> 00:18:31,210
+29 years old to drinking smoker who's only
+19 years old.
+
+352
+00:18:31,210 --> 00:18:33,660
+That's a ten unit jump in age, and
+
+353
+00:18:33,660 --> 00:18:39,370
+you'll see it wouldn't really matter if I
+had put in 40 and 30, or 50 and 40.
+
+354
+00:18:39,370 --> 00:18:43,020
+Any ten unit jump in the age is going to
+give me the same answer here.
+
+355
+00:18:43,020 --> 00:18:45,140
+You'll notice that lots of things cancel
+out.
+
+356
+00:18:45,140 --> 00:18:46,110
+That's the great thing here.
+
+357
+00:18:46,110 --> 00:18:49,420
+So, we fix all the other variables, they
+all cancel out.
+
+358
+00:18:49,420 --> 00:18:51,900
+So, we're left with that the beta for age.
+
+359
+00:18:51,900 --> 00:18:54,985
+In this case, if we and if you solve it
+here.
+
+360
+00:18:54,985 --> 00:18:59,600
+Beta, e raised to beta times 29, minus e
+raised to 19.
+
+361
+00:18:59,600 --> 00:19:02,369
+That's the same as e raised to beta age
+times 10.
+
+362
+00:19:02,369 --> 00:19:06,263
+So, what this tells us is that if I
+multiply the beta for age times 10, and
+
+363
+00:19:06,263 --> 00:19:12,113
+then exponentiate, I will get the odds
+ratio for a 10 unit jump in age.
+
+364
+00:19:12,113 --> 00:19:16,013
+So, this would give me, for a 10 unit jump
+in age, a decade increase in age,
+
+365
+00:19:16,013 --> 00:19:20,694
+what's the increase in my odds of getting
+lung cancer?
+
+366
+00:19:20,694 --> 00:19:22,814
+If I wanted to do it for a one unit
+increase in age,
+
+367
+00:19:22,814 --> 00:19:26,934
+I would just take the beta for age and
+exponentiate it directly.
+
+368
+00:19:26,934 --> 00:19:29,684
+That would give the odds ratio for a one
+unit increase in age.
+
+369
+00:19:29,684 --> 00:19:31,712
+It doesn't really matter what you pick for
+the units of age, but
+
+370
+00:19:31,712 --> 00:19:34,211
+you want to pick something that's sort of
+meaningful.
+
+371
+00:19:34,211 --> 00:19:35,341
+[INAUDIBLE].
+
+372
+00:19:35,341 --> 00:19:38,060
+A one unit or a ten unit increase is
+probably reasonable.
+
+373
+00:19:38,060 --> 00:19:40,344
+That gives you the odds ratio for that
+unit jump.
+
+374
+00:19:40,344 --> 00:19:41,016
+You can see that for
+
+375
+00:19:41,016 --> 00:19:44,884
+a continuous predictor, the magnitude of
+the odds ratio will depend on the units.
+
+376
+00:19:44,884 --> 00:19:48,076
+It's not on what units you choose will not
+affect the p value, but
+
+377
+00:19:48,076 --> 00:19:52,180
+it will affect how big or small that odds
+ratio looks.
+
+378
+00:19:52,180 --> 00:19:55,012
+Just keep that in mind, you always have to
+give the units in your table so
+
+379
+00:19:55,012 --> 00:19:57,455
+people know how to interpret that.
+
+380
+00:19:57,455 --> 00:20:02,729
+This is the odds ratio for age, adjusted
+for smoking and alcohol.
+
+381
+00:20:02,729 --> 00:20:06,202
+Which means that we've held smoking and
+alcohol fixed.
+
+382
+00:20:06,202 --> 00:20:09,082
+So, that is, if we're looking at 2 people
+who have the same level of smoking and
+
+383
+00:20:09,082 --> 00:20:11,962
+alcohol, and the only difference between
+them is a 10 unit difference in age,
+
+384
+00:20:11,962 --> 00:20:14,980
+this would the effect of that age.
+
+385
+00:20:14,980 --> 00:20:18,116
+So, just to summarize, the practical
+interpretation here is if you
+
+386
+00:20:18,116 --> 00:20:21,812
+take the beta, the slope, from a logistic
+regression for any of your exposures,
+
+387
+00:20:21,812 --> 00:20:27,958
+your predictors, and you exponentiate it,
+you get the odds ratio for that exposure.
+
+388
+00:20:27,958 --> 00:20:31,318
+And you would interpret that as that's in
+the increase in the odds of
+
+389
+00:20:31,318 --> 00:20:34,798
+your outcome for every one unit increase
+in the exposure adjusted for
+
+390
+00:20:34,798 --> 00:20:39,785
+controlling for other variable, all the
+other variables.
+
+391
+00:20:39,785 --> 00:20:42,685
+All the other predictors that are in the
+model.
+
+392
+00:20:42,685 --> 00:20:49,006
+And we'll practice looking at an example
+of how to use this in, in the next module.
+
+393
+00:20:49,006 --> 00:20:52,923
+Just to tell you, most computer packages
+when you run a logistic regression.
+
+394
+00:20:52,923 --> 00:20:56,328
+You don't actually won't even have to do
+the exponentiation.
+
+395
+00:20:56,328 --> 00:20:59,619
+Most computer packages automatically give
+you the odds ratio.
+
+396
+00:20:59,619 --> 00:21:03,381
+So again, out of a logistic regression,
+
+397
+00:21:03,381 --> 00:21:09,581
+we get these multivariate adjusted odds
+ratios.

@@ -1,0 +1,1437 @@
+1
+00:00:05,180 --> 00:00:08,220
+In this next module, I'm going to tell you
+about receiver operator
+
+2
+00:00:08,220 --> 00:00:11,760
+characteristic curves, and their role in
+logistic regression.
+
+3
+00:00:11,760 --> 00:00:16,420
+First of all, just a little historical
+background here.
+
+4
+00:00:16,420 --> 00:00:19,910
+The term receiver operator characteristic
+did not arise in
+
+5
+00:00:19,910 --> 00:00:24,310
+the context of logistic regression, it
+actually originated during World War II.
+
+6
+00:00:24,310 --> 00:00:28,990
+So, people had to interpret radar signal
+[INAUDIBLE] blips on the radar screen and
+
+7
+00:00:28,990 --> 00:00:33,210
+had to determine is this an enemy plane or
+is this a friendly plane?
+
+8
+00:00:33,210 --> 00:00:36,760
+The receiver operator characteristics
+referred to
+
+9
+00:00:36,760 --> 00:00:40,830
+the operator's capability to correctly
+distinguish between those two.
+
+10
+00:00:40,830 --> 00:00:42,730
+And of course it would be very important.
+
+11
+00:00:42,730 --> 00:00:44,600
+Had to correctly distinguish those.
+
+12
+00:00:44,600 --> 00:00:49,010
+There will be bad consequences if you
+misidentify a friendly plane as
+
+13
+00:00:49,010 --> 00:00:51,380
+being an enemy plane, you might shoot it
+down.
+
+14
+00:00:51,380 --> 00:00:55,710
+And if you misidentify an enemy plane as
+being a friendly plane,
+
+15
+00:00:55,710 --> 00:00:58,150
+then you might miss an important threat.
+
+16
+00:00:58,150 --> 00:01:00,880
+So there's a tradeoff between those two.
+
+17
+00:01:00,880 --> 00:01:03,710
+And that's esse, essentially what's
+represented in the ROC curve.
+
+18
+00:01:03,710 --> 00:01:08,370
+So let me just go through how an ROC curve
+works.
+
+19
+00:01:08,370 --> 00:01:11,420
+An ROC curve has on the y axis,
+sensitivity.
+
+20
+00:01:12,430 --> 00:01:17,601
+And sensitivity is a value that ranges
+between 0 % And 100%.
+
+21
+00:01:17,601 --> 00:01:22,060
+This tells you how good you are at
+detecting enemy planes.
+
+22
+00:01:22,060 --> 00:01:24,360
+So if there's 50 enemy planes out there,
+and
+
+23
+00:01:24,360 --> 00:01:29,790
+you correctly identify 45 of them, then
+your sensitivity would be 90%.
+
+24
+00:01:29,790 --> 00:01:33,540
+This tells you whether or not you're
+missing a lot of those enemy planes.
+
+25
+00:01:34,660 --> 00:01:36,740
+On the x axis, we have specificity.
+
+26
+00:01:36,740 --> 00:01:39,720
+We actually have 1 - specificity.
+
+27
+00:01:39,720 --> 00:01:44,200
+That's probably for historical reasons
+that is was originally set up that way and
+
+28
+00:01:44,200 --> 00:01:47,060
+we just kind of kept that as the tradition
+so it's actually 1 -
+
+29
+00:01:47,060 --> 00:01:51,810
+specificity but specificity has to do with
+false positives.
+
+30
+00:01:51,810 --> 00:01:56,530
+So how good are you at not, labeling
+friendly planes?
+
+31
+00:01:56,530 --> 00:01:57,240
+As enemy planes.
+
+32
+00:01:57,240 --> 00:02:01,140
+In other words, avoiding shooting down
+friendly planes.
+
+33
+00:02:01,140 --> 00:02:04,080
+Of course we want to correctly identify
+the friendly planes,
+
+34
+00:02:04,080 --> 00:02:06,710
+to avoid consequences like shooting them
+down.
+
+35
+00:02:06,710 --> 00:02:09,560
+So if there are 50 friendly planes, and
+
+36
+00:02:09,560 --> 00:02:14,940
+you misidentify one of them as an enemy
+plane, but get 49 of them correct,
+
+37
+00:02:14,940 --> 00:02:17,180
+then your specificity would be 49 out of
+50, or 98%.
+
+38
+00:02:17,180 --> 00:02:23,780
+And the ROC curve Represents the trade
+
+39
+00:02:23,780 --> 00:02:28,790
+off between sensitivity and specificity,
+so your, you can change your threshold for
+
+40
+00:02:28,790 --> 00:02:32,880
+how stringent you want to be about false
+positives or false negatives.
+
+41
+00:02:32,880 --> 00:02:33,870
+You might really,
+
+42
+00:02:33,870 --> 00:02:38,560
+really care about at all costs, avoiding
+down shooting friendly planes for example.
+
+43
+00:02:38,560 --> 00:02:41,450
+Then you would want your specificity to be
+really high, but
+
+44
+00:02:41,450 --> 00:02:43,100
+that would cost you some sensitivity.
+
+45
+00:02:43,100 --> 00:02:45,770
+You might end up missing Some enemy
+planes.
+
+46
+00:02:45,770 --> 00:02:49,550
+And similarly, for some reason you might
+decide that shooting down all the enemy
+
+47
+00:02:49,550 --> 00:02:53,500
+planes is actually more important than
+misidentifying a friendly plane, and
+
+48
+00:02:53,500 --> 00:02:56,380
+then you would want you sensitivity to be
+high at the cost of some specifity.
+
+49
+00:02:57,400 --> 00:03:00,320
+And that's just charted here, those
+different thresholds can be represented.
+
+50
+00:03:00,320 --> 00:03:02,070
+So depending on where you put your
+thresholds,
+
+51
+00:03:02,070 --> 00:03:05,200
+you're going to get different values on
+this curve.
+
+52
+00:03:05,200 --> 00:03:09,150
+So imagine that you just wanted to make
+sure that you caught all enemy planes.
+
+53
+00:03:09,150 --> 00:03:12,830
+You could just say I'm going to shoot down
+all planes that up here on the radar.
+
+54
+00:03:12,830 --> 00:03:19,410
+You, your sensitivity then Would be 100%
+right, but your specificity would be 0 so
+
+55
+00:03:19,410 --> 00:03:23,740
+1 - the specificity would also be 100%, so
+in other words if you just said I'm going
+
+56
+00:03:23,740 --> 00:03:28,120
+shoot down all planes you would be up here
+in this in this curve you'd put a dot
+
+57
+00:03:28,120 --> 00:03:32,990
+there or you might say, I'm just not going
+to shoot down any planes, I'm just going
+
+58
+00:03:32,990 --> 00:03:37,880
+to pretend everything is friendly And
+basically ignore it on the radar screen,
+
+59
+00:03:37,880 --> 00:03:42,030
+and then I would have perfect specificity
+because I wouldn't accidentally shoot
+
+60
+00:03:42,030 --> 00:03:44,500
+down any friendly planes, but I would miss
+all the enemy planes.
+
+61
+00:03:44,500 --> 00:03:46,090
+So I would have zero sensitivity.
+
+62
+00:03:46,090 --> 00:03:50,110
+So I'd be over here at the bottom left
+hand corner.
+
+63
+00:03:50,110 --> 00:03:52,320
+1 - 100%, of course 0%.
+
+64
+00:03:52,320 --> 00:03:56,910
+So those kind of represent the Streams and
+then you can chart everything in between.
+
+65
+00:03:56,910 --> 00:04:01,480
+Now if you were really bad at
+differentiating you
+
+66
+00:04:01,480 --> 00:04:06,700
+would end up with a straight line here
+between those two points.
+
+67
+00:04:06,700 --> 00:04:08,940
+So in other words if you were just
+guessing.
+
+68
+00:04:08,940 --> 00:04:11,910
+You looked at the plane and you were just
+going to make a Totally random guess,
+
+69
+00:04:11,910 --> 00:04:14,480
+this is how you would do in terms of
+trading off sensitivity and
+
+70
+00:04:14,480 --> 00:04:16,940
+specificity, be on this, diagonal line.
+
+71
+00:04:16,940 --> 00:04:19,910
+What we are hoping for, is that you are
+somewhere better than that.
+
+72
+00:04:19,910 --> 00:04:24,640
+So this would be, I'm going to show you a
+really good ROC curve to start with.
+
+73
+00:04:24,640 --> 00:04:29,560
+So this is somebody who does a really good
+job, they, the sensitivity Is
+
+74
+00:04:30,580 --> 00:04:36,070
+almost always 100%, and the specificity is
+almost always 100%.
+
+75
+00:04:36,070 --> 00:04:42,450
+So you, again, 0% on 1 - spec- specificity
+represents perfect specificity.
+
+76
+00:04:42,450 --> 00:04:45,570
+So if you're really, really good at
+distinguishing, you're going to,
+
+77
+00:04:45,570 --> 00:04:52,380
+you're going to be somewhere where You're
+very close, to the y axis there.
+
+78
+00:04:52,380 --> 00:04:53,890
+Now, if you're not so
+
+79
+00:04:53,890 --> 00:04:56,580
+good at distinguishing, you're going to
+look something more like this.
+
+80
+00:04:56,580 --> 00:05:00,680
+So maybe just a little better than chance,
+but not much better than chance.
+
+81
+00:05:00,680 --> 00:05:05,090
+And then clearly, there's a big tradeoff
+here between sensitivity and specificity.
+
+82
+00:05:05,090 --> 00:05:08,920
+So we're hoping for a very, fat ROC curve.
+
+83
+00:05:08,920 --> 00:05:11,540
+That would indicate good accuracy.
+
+84
+00:05:11,540 --> 00:05:15,490
+Realistically, in medical examples, we
+tend to see something more like this.
+
+85
+00:05:15,490 --> 00:05:18,140
+And that's actually a very good one.
+
+86
+00:05:18,140 --> 00:05:22,270
+And kind of a more typical one might be
+something like this.
+
+87
+00:05:24,920 --> 00:05:28,590
+We can quantify how good our accuracy is
+by actually just
+
+88
+00:05:28,590 --> 00:05:30,490
+Calculating the area under the curve.
+
+89
+00:05:30,490 --> 00:05:32,290
+The area under the curve if you have or
+
+90
+00:05:32,290 --> 00:05:35,750
+if know better than chance would be 50%
+that's a diagonal line.
+
+91
+00:05:35,750 --> 00:05:39,554
+As you do better than that you might get
+up to the range of 70,
+
+92
+00:05:39,554 --> 00:05:43,950
+80 90%, ROC area under the curve.
+
+93
+00:05:43,950 --> 00:05:45,810
+And we're looking for, you know, in that
+range.
+
+94
+00:05:48,870 --> 00:05:51,920
+Just to illustrate exactly how we
+calculate an ROC curve,
+
+95
+00:05:51,920 --> 00:05:53,750
+I'm going to go back to an example that,
+
+96
+00:05:53,750 --> 00:05:58,060
+that we looked at earlier, which was, from
+data on my Stamford students.
+
+97
+00:05:58,060 --> 00:06:01,890
+I had asked them whether or not they
+considered themselves to be book smart or
+
+98
+00:06:01,890 --> 00:06:05,220
+street smart as a binary outcome variable.
+
+99
+00:06:05,220 --> 00:06:08,440
+And I wondered if the amount that would be
+related to the amount of
+
+100
+00:06:08,440 --> 00:06:10,540
+homework that they would do every week.
+
+101
+00:06:10,540 --> 00:06:13,790
+I had kind of thought that maybe if you
+considered yourself book smart you'd
+
+102
+00:06:13,790 --> 00:06:15,950
+someone who did a lot of homework.
+
+103
+00:06:15,950 --> 00:06:19,400
+In fact, when we looked at these data, it
+turns out to be negative.
+
+104
+00:06:19,400 --> 00:06:22,610
+So, the more homework you do, the less
+likely you are to be,
+
+105
+00:06:22,610 --> 00:06:24,150
+to consider yourself book smart.
+
+106
+00:06:24,150 --> 00:06:26,980
+So perhaps, people who think they're book
+smart feel like they
+
+107
+00:06:26,980 --> 00:06:29,860
+can get away with doing less homework,
+something like that.
+
+108
+00:06:29,860 --> 00:06:33,000
+however, this was clearly not
+statistically signifigant.
+
+109
+00:06:33,000 --> 00:06:35,400
+So there is not a strong relationship
+here.
+
+110
+00:06:35,400 --> 00:06:38,150
+Although it's slightly negative in terms
+of effect size.
+
+111
+00:06:38,150 --> 00:06:40,880
+This was the logistic regression equation
+that we came out with,
+
+112
+00:06:42,100 --> 00:06:43,800
+when we estimated alpha and beta.
+
+113
+00:06:43,800 --> 00:06:45,460
+Again, not statistically significant.
+
+114
+00:06:47,390 --> 00:06:51,220
+I'm going to now show you the ROC curve
+that goes with that model.
+
+115
+00:06:51,220 --> 00:06:53,830
+So this model contains homework, predictin
+whether you or
+
+116
+00:06:53,830 --> 00:06:57,110
+not you think yourself, to be book smart
+or street smart.
+
+117
+00:06:57,110 --> 00:07:00,240
+You can see that this is a really bad ROC
+curve.
+
+118
+00:07:00,240 --> 00:07:03,950
+We have not done well at classifying
+people as one or the other.
+
+119
+00:07:03,950 --> 00:07:05,980
+because homework doesn't really do a good
+job.
+
+120
+00:07:05,980 --> 00:07:07,950
+It's not that strongly related.
+
+121
+00:07:07,950 --> 00:07:09,150
+So the, again,
+
+122
+00:07:09,150 --> 00:07:14,030
+I said that 50%, our area under the curve
+means you're no better than chance.
+
+123
+00:07:14,030 --> 00:07:16,900
+Here, you can see that we have an area
+under the curve,
+
+124
+00:07:16,900 --> 00:07:20,920
+which the computer has calculated for us
+to be 60%.
+
+125
+00:07:20,920 --> 00:07:25,980
+And that's really Pretty poor its not
+really much better then chance a that's
+
+126
+00:07:25,980 --> 00:07:29,050
+not unexpected given that our predictor in
+this
+
+127
+00:07:29,050 --> 00:07:32,750
+logistic regression model a was not
+statistically significant.
+
+128
+00:07:32,750 --> 00:07:36,660
+Now the key here is that we may have we
+only have one predictor in this model.
+
+129
+00:07:36,660 --> 00:07:39,810
+But you can imagine that you might have a
+model with many predictors.
+
+130
+00:07:39,810 --> 00:07:44,160
+And this is trying to quantify, if you use
+many predictors at once,
+
+131
+00:07:44,160 --> 00:07:49,380
+how good does that do in terms of the
+accuracy of classifying people.
+
+132
+00:07:49,380 --> 00:07:53,570
+ROC curves are often used in the context
+of prediction models.
+
+133
+00:07:53,570 --> 00:07:56,660
+Clinical prediction rules, which we're
+going to talk about.
+
+134
+00:07:56,660 --> 00:07:59,950
+Later in this course, and you want to know
+how well you're able to
+
+135
+00:07:59,950 --> 00:08:03,605
+classify patients as having a condition or
+not having a condition.
+
+136
+00:08:03,605 --> 00:08:05,180
+60% not so good.
+
+137
+00:08:05,180 --> 00:08:09,400
+All right, where does this ROC curve
+actually come from?
+
+138
+00:08:09,400 --> 00:08:10,290
+How do we calculate it?
+
+139
+00:08:10,290 --> 00:08:13,230
+And you notice what we're doing here is
+that we have a Series,
+
+140
+00:08:13,230 --> 00:08:14,720
+sensitivies and specificities.
+
+141
+00:08:14,720 --> 00:08:17,950
+And if you've ever dealt with sensitivity
+and specificity before,
+
+142
+00:08:17,950 --> 00:08:21,680
+you prbabably saw it in the context of a
+single two by two table.
+
+143
+00:08:21,680 --> 00:08:25,660
+In other words, you saw something like
+there's, the, the true positives.
+
+144
+00:08:25,660 --> 00:08:27,890
+And then there's the test positives.
+
+145
+00:08:27,890 --> 00:08:31,250
+And people either have the disease or they
+don't and they either test positive or
+
+146
+00:08:31,250 --> 00:08:32,060
+they don't.
+
+147
+00:08:32,060 --> 00:08:36,790
+And you could calculate sensitivity and
+specificity from this 2 x 2 table.
+
+148
+00:08:36,790 --> 00:08:40,380
+Well, now we're talking about a series of
+sensitivities and specificities.
+
+149
+00:08:40,380 --> 00:08:41,840
+So how is it that they were having.
+
+150
+00:08:41,840 --> 00:08:44,570
+Many many sensitivities and specificities.
+
+151
+00:08:44,570 --> 00:08:48,520
+Well, the idea here is that there are,
+that homework is a continuous predictor.
+
+152
+00:08:48,520 --> 00:08:51,910
+And again, if you had many predictors in
+your logistic regression model.
+
+153
+00:08:51,910 --> 00:08:57,800
+You'd have, you'd have many facets, and
+many potential, cutoffs for test positive.
+
+154
+00:08:57,800 --> 00:08:59,920
+So what does it mean to test positive?
+
+155
+00:08:59,920 --> 00:09:01,170
+Well, it depends.
+
+156
+00:09:01,170 --> 00:09:05,160
+I could say I'm going to make test
+positive be, you know,
+
+157
+00:09:05,160 --> 00:09:06,890
+10 hours per week of homework.
+
+158
+00:09:06,890 --> 00:09:09,580
+That is, if you exceeded 10 hours per week
+of homework,
+
+159
+00:09:09,580 --> 00:09:14,060
+then I'm going to classify you as being
+somebody who is likely to be street smart.
+
+160
+00:09:14,060 --> 00:09:17,310
+Or maybe I'm going to make that set
+threshold 30 hours.
+
+161
+00:09:17,310 --> 00:09:17,880
+In other words,
+
+162
+00:09:17,880 --> 00:09:21,530
+I'm going to calculate multiple different
+sensitivities and specificities.
+
+163
+00:09:21,530 --> 00:09:25,730
+That's what each of those dots represent,
+for, with different cutoffs.
+
+164
+00:09:25,730 --> 00:09:26,830
+for homework.
+
+165
+00:09:26,830 --> 00:09:30,430
+And in fact, what we use, since there
+might be multiple predictors in the model,
+
+166
+00:09:30,430 --> 00:09:33,880
+is not actual different cutoffs from
+homework, but different cutoffs of
+
+167
+00:09:33,880 --> 00:09:38,530
+predicted probabilities from the logistic
+regression model.
+
+168
+00:09:38,530 --> 00:09:42,990
+So we're going to do is we're going to
+calculate everyone's predicted probability
+
+169
+00:09:42,990 --> 00:09:48,260
+of being book smart in this case, based on
+the regression model And based on their
+
+170
+00:09:48,260 --> 00:09:51,550
+values of homework, or whatever other
+predictors we might decide to throw in,
+
+171
+00:09:51,550 --> 00:09:54,660
+we're going to calculate everybody's
+predictive probabilities, and
+
+172
+00:09:54,660 --> 00:09:58,400
+then were going to make the cut off for
+classifying somebody as book smart for
+
+173
+00:09:58,400 --> 00:09:59,490
+as, for test positive,
+
+174
+00:09:59,490 --> 00:10:03,960
+we're going to make the cut off being
+above a certain predictive probability.
+
+175
+00:10:03,960 --> 00:10:07,325
+So maybe if you have a predictive
+probability of being book smart Smart of
+
+176
+00:10:07,325 --> 00:10:11,140
+60%, we're going to call you book smart
+and maybe if you
+
+177
+00:10:11,140 --> 00:10:13,720
+predicted probabilities lower than that
+we're going to call you street smart, so
+
+178
+00:10:13,720 --> 00:10:17,960
+we're going to use different predictive
+probabilities as the threshold in order to
+
+179
+00:10:17,960 --> 00:10:20,020
+get multiple sensitivity and
+
+180
+00:10:20,020 --> 00:10:24,020
+specificity marks, thats the, the set up
+here, that's the idea.
+
+181
+00:10:25,760 --> 00:10:29,670
+All right, just to remind you, how do we
+calculate a person's predictive
+
+182
+00:10:29,670 --> 00:10:34,390
+probability from the regression model,
+where does that come from So, hopefully,
+
+183
+00:10:34,390 --> 00:10:36,570
+you remember that it looks something like
+this.
+
+184
+00:10:36,570 --> 00:10:42,680
+The person's predicted probability has
+this e over 1 + e function.
+
+185
+00:10:42,680 --> 00:10:45,030
+And in this case, we only have a single
+beta in the model.
+
+186
+00:10:45,030 --> 00:10:47,048
+We're plugging in their homework time.
+
+187
+00:10:47,048 --> 00:10:51,040
+So a p, a person's predicted probability
+is a function of alpha beta, and
+
+188
+00:10:51,040 --> 00:10:52,990
+the actual amount of homework that they
+do.
+
+189
+00:10:52,990 --> 00:10:56,490
+And again, we could have more betas in, in
+a regression model.
+
+190
+00:10:56,490 --> 00:10:57,820
+In this case, we only have a single.
+
+191
+00:10:57,820 --> 00:11:00,230
+A single predictor.
+
+192
+00:11:00,230 --> 00:11:01,190
+So just to give an example,
+
+193
+00:11:01,190 --> 00:11:05,030
+if you're someone who does 50 hours per
+week of homework, that's a lot.
+
+194
+00:11:05,030 --> 00:11:06,850
+We would plug in that 50.
+
+195
+00:11:06,850 --> 00:11:10,660
+Where does that p = e over 1 + e, where
+does that come from?
+
+196
+00:11:10,660 --> 00:11:13,710
+I'm going to kind of re-drive it here just
+to, to jog your memory so
+
+197
+00:11:13,710 --> 00:11:16,030
+you remember where this comes from So
+
+198
+00:11:16,030 --> 00:11:20,120
+I'm going to plug the 50 into my original
+logistic regression model,
+
+199
+00:11:20,120 --> 00:11:25,420
+I come out with the logit for this person
+and the predicted logit is 0.17.
+
+200
+00:11:25,420 --> 00:11:28,110
+I don't think in logits, you probably
+don't either's, so
+
+201
+00:11:28,110 --> 00:11:31,340
+we'll going to go a little further, we're
+going to exponentiate both sides of
+
+202
+00:11:31,340 --> 00:11:34,410
+that equation, which is what I've done
+here, E raised to 0.17,
+
+203
+00:11:34,410 --> 00:11:39,860
+that's going to give me the odds P over 1-
+p is of course is the odds,
+
+204
+00:11:39,860 --> 00:11:44,570
+that's the odds of being book smart, the
+predicted odds of being book smart for
+
+205
+00:11:44,570 --> 00:11:47,470
+that person, and then of course I don't
+think an odd either, so
+
+206
+00:11:47,470 --> 00:11:50,410
+we want to translate that back to a
+probability so remember to get back to
+
+207
+00:11:50,410 --> 00:11:54,720
+a probability we can do odds divided by 1
+plus odd, that's essentially what this
+
+208
+00:11:54,720 --> 00:11:59,350
+term over here represents, this e is the
+odds, 1 plus e is 1 plus the odds.
+
+209
+00:11:59,350 --> 00:12:02,580
+So that turns out to be here 1.19, divided
+by 2.19.
+
+210
+00:12:02,580 --> 00:12:06,840
+So this person has a predicted probability
+of being book smart of 54%.
+
+211
+00:12:06,840 --> 00:12:11,210
+Since they do a lot of homework, we're
+actually giving them a relatively low
+
+212
+00:12:11,210 --> 00:12:15,400
+probability of being book smart because of
+the inverse relationship here.
+
+213
+00:12:15,400 --> 00:12:17,120
+Now, as you know.
+
+214
+00:12:17,120 --> 00:12:19,290
+That, of my Stanford students in general,
+
+215
+00:12:19,290 --> 00:12:22,630
+about 80% of them would classify
+themselves as book smart.
+
+216
+00:12:22,630 --> 00:12:27,010
+So our predictive probability of 54% is
+low in this context because most Stanford
+
+217
+00:12:27,010 --> 00:12:30,690
+students actually would be very likely to
+classify themselves as book smart.
+
+218
+00:12:30,690 --> 00:12:34,520
+Something on the order of 80 %.So that's
+how to do the predicted probability for
+
+219
+00:12:34,520 --> 00:12:35,220
+one person.
+
+220
+00:12:35,220 --> 00:12:38,160
+So now I'm going to actually walk you
+through the mechanics of
+
+221
+00:12:38,160 --> 00:12:42,750
+how to calculate all the points of the ROC
+curve.
+
+222
+00:12:42,750 --> 00:12:46,970
+I actually had a computer do this for me
+because it's a little tedious.
+
+223
+00:12:46,970 --> 00:12:51,110
+So here are the data put in a table form
+that the,
+
+224
+00:12:51,110 --> 00:12:54,740
+the computer used to plot the ROC curve
+for me.
+
+225
+00:12:54,740 --> 00:12:55,640
+So what's happening here?
+
+226
+00:12:55,640 --> 00:12:59,060
+What we were doing again is that we are
+putting the threshold for
+
+227
+00:12:59,060 --> 00:13:02,590
+test positive at different levels of
+predicted probability.
+
+228
+00:13:02,590 --> 00:13:06,640
+We're going to start with the lowest value
+for predicted probability in my data set.
+
+229
+00:13:06,640 --> 00:13:10,940
+So the person who did the most homework
+had a predicted probability based on
+
+230
+00:13:10,940 --> 00:13:15,150
+the logistic regression model of 52% of
+being book smart.
+
+231
+00:13:16,180 --> 00:13:20,850
+And we can represent this row of data as a
+2 x 2 table.
+
+232
+00:13:20,850 --> 00:13:24,330
+And calculate sensitivity and specificity
+accordingly.
+
+233
+00:13:24,330 --> 00:13:29,410
+So We have, in this data set, we have some
+people who are truly book smart, and
+
+234
+00:13:29,410 --> 00:13:31,790
+some people who are truly not book smart.
+
+235
+00:13:31,790 --> 00:13:33,490
+This is self classification.
+
+236
+00:13:33,490 --> 00:13:36,850
+My Stanford students tend to consider
+themselves to be book smart, so
+
+237
+00:13:36,850 --> 00:13:39,805
+I actually had 50 people in this data set.
+
+238
+00:13:39,805 --> 00:13:42,530
+two people didn't answer, there was
+missing data.
+
+239
+00:13:42,530 --> 00:13:46,400
+But 40 out of 48 considered themselves to
+be book smart.
+
+240
+00:13:46,400 --> 00:13:48,520
+And only eight considered themselves to be
+street smart.
+
+241
+00:13:50,340 --> 00:13:53,990
+So those are my, those are the actual
+classifications.
+
+242
+00:13:53,990 --> 00:13:56,310
+Then, what I'm going to do is I am going
+to say,
+
+243
+00:13:56,310 --> 00:14:00,740
+I'm going to classify everybody who has a
+predictive probability of 52% or higher.
+
+244
+00:14:00,740 --> 00:14:05,630
+I'm going to classify them in my test as
+being book smart.
+
+245
+00:14:05,630 --> 00:14:06,495
+So this is my, my.
+
+246
+00:14:06,495 --> 00:14:10,520
+[UNKNOWN] now whether or you've met 52% or
+you were higher than that.
+
+247
+00:14:10,520 --> 00:14:12,320
+Well that includes everybody in the data
+set.
+
+248
+00:14:12,320 --> 00:14:17,450
+In other words, I'm just going to classify
+everybody as being book smart according to
+
+249
+00:14:17,450 --> 00:14:18,630
+my test.
+
+250
+00:14:18,630 --> 00:14:21,950
+That means I am going to get everybody who
+is book smart correct.
+
+251
+00:14:21,950 --> 00:14:24,600
+But I'm also going to get everybody who's
+street smart wrong.
+
+252
+00:14:26,570 --> 00:14:30,600
+That easy to, to see that all that data is
+an irrocio in terms of correct since I
+
+253
+00:14:30,600 --> 00:14:34,600
+got forty book smart people correctly
+identified as book smart.
+
+254
+00:14:34,600 --> 00:14:36,560
+However, on the incorrect column,
+
+255
+00:14:36,560 --> 00:14:40,660
+all eight street smart have been
+mis-classified as book smart
+
+256
+00:14:40,660 --> 00:14:43,210
+What does that mean in terms of my
+sensitivity and specificity?
+
+257
+00:14:43,210 --> 00:14:44,830
+Well, my sensitivity, of course, is 100%,
+40 out of 40.
+
+258
+00:14:44,830 --> 00:14:49,070
+My specificity, however, is 0%.
+
+259
+00:14:49,070 --> 00:14:53,880
+I've got zero out of eight of the
+negatives correctly classified here.
+
+260
+00:14:53,880 --> 00:14:57,636
+So, where am I going to put a point on my
+ROC curve?
+
+261
+00:14:57,636 --> 00:15:00,705
+So lets go now over to the ROC curve and
+
+262
+00:15:00,705 --> 00:15:05,515
+we can see that were going to be at 100%
+sensitivity.
+
+263
+00:15:05,515 --> 00:15:09,165
+And, 0% specificity, but 1 - 0% puts me
+at.
+
+264
+00:15:09,165 --> 00:15:14,160
+100% for one minus specificity so I am in
+the upper right hand corner I've
+
+265
+00:15:14,160 --> 00:15:16,120
+put a point in the upper right hand corner
+there.
+
+266
+00:15:17,980 --> 00:15:20,030
+Now I'm going to change my threshold for
+
+267
+00:15:20,030 --> 00:15:23,800
+the test positives I'm going to now say
+I'm going to make a new rule.
+
+268
+00:15:23,800 --> 00:15:28,050
+I'm going to go to my data set, the next
+highest predicted probability was 54%.
+
+269
+00:15:28,050 --> 00:15:31,530
+So what if I put the, the threshold, the
+cutoff there?
+
+270
+00:15:31,530 --> 00:15:35,040
+So now I'm going to say everybody who has
+a predictive probability of 54% or
+
+271
+00:15:35,040 --> 00:15:38,040
+higher is going to be Is going to test
+positive.
+
+272
+00:15:38,040 --> 00:15:40,510
+Is going to be classified as book smart.
+
+273
+00:15:40,510 --> 00:15:43,660
+The actual number of people who are book
+smart doesn't change, so
+
+274
+00:15:43,660 --> 00:15:46,170
+the rows will be the same here.
+
+275
+00:15:46,170 --> 00:15:50,320
+But now, I'm going to classify some people
+as being street smart.
+
+276
+00:15:50,320 --> 00:15:53,810
+And in fact, I got out of the 40 people
+who are book smart,
+
+277
+00:15:53,810 --> 00:15:56,850
+I'm going to misclassify Two of them.
+
+278
+00:15:56,850 --> 00:16:01,430
+But this doesn't change the classification
+at all for the eight who are street smart.
+
+279
+00:16:01,430 --> 00:16:05,040
+For whatever reason, they are all having
+predictive probabilities above 54%.
+
+280
+00:16:05,040 --> 00:16:08,580
+So now I make a new 2 x 2 table and
+
+281
+00:16:08,580 --> 00:16:11,890
+I can calculate sensitivity and
+specificity on this new 2 x 2 table.
+
+282
+00:16:11,890 --> 00:16:13,500
+And the computer's actually here,
+
+283
+00:16:13,500 --> 00:16:17,120
+has gone through and figured out all these
+numbers for me.
+
+284
+00:16:17,120 --> 00:16:19,739
+So I've now classified 38 correctly.
+
+285
+00:16:20,760 --> 00:16:24,040
+I've classified 8 of the street smart
+people incorrectly and
+
+286
+00:16:24,040 --> 00:16:28,680
+2 of the book smart people incorrectly,
+that gives me a sensitivity of about 95%
+
+287
+00:16:28,680 --> 00:16:35,010
+38 divided by 40 and then for specificity
+I'm still at 0%, so how do
+
+288
+00:16:36,490 --> 00:16:43,090
+I go represent this on the graph Well now
+I'm only ay 95% sensitivity which is here,
+
+289
+00:16:43,090 --> 00:16:50,520
+this line here, and I'm at still
+continuing to be at a zero specificity,
+
+290
+00:16:50,520 --> 00:16:53,910
+so that would put me here on the graph,
+that's the next point on this graph here.
+
+291
+00:16:54,940 --> 00:16:57,800
+Now, in fact, as I go through and
+
+292
+00:16:57,800 --> 00:17:04,020
+do this logic For increasing, predicted
+probabilities for a little while.
+
+293
+00:17:04,020 --> 00:17:08,390
+What you'll notice is that, changing that
+threshold, I,
+
+294
+00:17:08,390 --> 00:17:13,960
+I remain at a sensitivity of 95%, and a
+specificity of 0% for a while.
+
+295
+00:17:13,960 --> 00:17:16,630
+That's this straight line here.
+
+296
+00:17:16,630 --> 00:17:19,580
+They don't change until somewhere in the
+middle here,
+
+297
+00:17:19,580 --> 00:17:23,080
+I haven't presented all the data just to
+be able to put this all on one slide, so
+
+298
+00:17:23,080 --> 00:17:24,540
+somewhere in the middle this changes and
+
+299
+00:17:24,540 --> 00:17:31,068
+I reach a specificity of about 25% while
+I'm still at a sensitivity Of 95%.
+
+300
+00:17:31,068 --> 00:17:34,510
+And then we keep going through an
+increasing of the threshold,
+
+301
+00:17:34,510 --> 00:17:37,070
+increasing the predictive probability
+cutoff.
+
+302
+00:17:37,070 --> 00:17:40,390
+And that is going to get us this ROC
+curve.

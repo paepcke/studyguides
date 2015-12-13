@@ -1,0 +1,1030 @@
+1
+00:00:07,300 --> 00:00:08,500
+In this next module,
+
+2
+00:00:08,500 --> 00:00:12,800
+I'm going to show you the distribution of
+some common statistics.
+
+3
+00:00:12,800 --> 00:00:16,065
+A mean, an odds ratio, and a correlation
+coefficient.
+
+4
+00:00:16,065 --> 00:00:21,710
+In order to illustrate all of these, I'm
+going to use some example data.
+
+5
+00:00:21,710 --> 00:00:23,330
+Some made up hypothetical data.
+
+6
+00:00:23,330 --> 00:00:25,185
+These are actually computer generated
+data.
+
+7
+00:00:25,185 --> 00:00:28,900
+I have the computer generate some data,
+and
+
+8
+00:00:28,900 --> 00:00:31,910
+it's loosely based on a real example in
+the literature.
+
+9
+00:00:31,910 --> 00:00:35,480
+About that, that study was looking at
+middle age and
+
+10
+00:00:35,480 --> 00:00:39,420
+older European men, and it was looking at
+Vitamin D levels and cognitive function.
+
+11
+00:00:39,420 --> 00:00:42,830
+So I loosely based my made up data on that
+study.
+
+12
+00:00:42,830 --> 00:00:45,590
+But it's just nice to have some toy data
+play with this week.
+
+13
+00:00:47,510 --> 00:00:50,640
+There's 2 statistics that we're going to
+look at from my hypothetical data.
+
+14
+00:00:50,640 --> 00:00:56,780
+I chose a sample of 100, so my sample size
+here is 100 in my hypothetical data.
+
+15
+00:00:56,780 --> 00:00:59,359
+We're going to look at the Vitamin D
+levels in those 100 men.
+
+16
+00:01:01,030 --> 00:01:04,190
+And we're going to look at the correlation
+between Vitamin D and
+
+17
+00:01:04,190 --> 00:01:05,740
+cognitive function in those 100 men.
+
+18
+00:01:05,740 --> 00:01:09,350
+And cognitive function was measured by a
+particular test,
+
+19
+00:01:09,350 --> 00:01:12,080
+the Digit Symbol Substitution Test.
+
+20
+00:01:12,080 --> 00:01:15,020
+And for the purposes of generating this
+made-up data,
+
+21
+00:01:15,020 --> 00:01:18,360
+I assumed that the true mean vitamin D in
+all middle-aged and
+
+22
+00:01:18,360 --> 00:01:21,690
+older European men is somewhere around 62
+nanomoles per liter, and
+
+23
+00:01:21,690 --> 00:01:25,244
+the true correlation coefficient between
+vitamin D and IQ function.
+
+24
+00:01:25,244 --> 00:01:29,165
+The cognitive function was 0.15, which was
+a very weak correlation.
+
+25
+00:01:29,165 --> 00:01:33,459
+So let me just illustrate for you this
+hypothetical, made-up data.
+
+26
+00:01:33,459 --> 00:01:35,870
+So, in the sample, I have a sample of a
+100 men, and
+
+27
+00:01:35,870 --> 00:01:37,230
+I've got their vitamin D levels.
+
+28
+00:01:37,230 --> 00:01:40,340
+And I've plotted those vitamin d levels
+here in histogram.
+
+29
+00:01:40,340 --> 00:01:44,110
+So, notice that the vitamin D levels in
+the sample follow a right
+
+30
+00:01:44,110 --> 00:01:45,175
+skew distribution.
+
+31
+00:01:45,175 --> 00:01:46,150
+That makes sense for
+
+32
+00:01:46,150 --> 00:01:48,990
+something like vitamin D because you can't
+get lower than zero.
+
+33
+00:01:48,990 --> 00:01:52,770
+But, you know, vitamin D can get quite
+high in a handful of people.
+
+34
+00:01:52,770 --> 00:01:54,690
+So you get this tail up to the right.
+
+35
+00:01:54,690 --> 00:01:58,800
+The mean vitamin D turned out to be 63
+nanomoles per liter in my sample.
+
+36
+00:01:58,800 --> 00:02:02,540
+And the standard deviation was 33
+nanomoles per liter.
+
+37
+00:02:02,540 --> 00:02:05,810
+Here's a graph showing the correlation
+between the vitamin D levels and
+
+38
+00:02:05,810 --> 00:02:10,320
+this cognitive test, the DSST score higher
+values on
+
+39
+00:02:10,320 --> 00:02:13,540
+that cognitive test mean that are
+cognitive function.
+
+40
+00:02:13,540 --> 00:02:16,630
+You can see that there's a small, very
+weak,
+
+41
+00:02:16,630 --> 00:02:20,110
+positive correlation between vitamin D
+levels and cognitive score.
+
+42
+00:02:20,110 --> 00:02:24,910
+And I built this into my made up data, a
+very small weak correlation here.
+
+43
+00:02:24,910 --> 00:02:28,589
+You can actually calculate a statistic
+that quantifies that correlation.
+
+44
+00:02:28,589 --> 00:02:30,410
+It's called the correlation coefficient
+and
+
+45
+00:02:30,410 --> 00:02:33,130
+it comes out here to be a value of 0.15.
+
+46
+00:02:33,130 --> 00:02:36,450
+Some of you may have heard of correlation
+[INAUDIBLE] coefficients before.
+
+47
+00:02:36,450 --> 00:02:40,020
+If you haven't, a correlation coefficient
+is this nice little measure because its
+
+48
+00:02:40,020 --> 00:02:40,690
+unit less.
+
+49
+00:02:40,690 --> 00:02:43,890
+Its a value that ranges from negative one
+to positive one.
+
+50
+00:02:43,890 --> 00:02:45,700
+If you're at zero or
+
+51
+00:02:45,700 --> 00:02:49,588
+somewhere close to zero, that means those
+two variables are uncorrelated.
+
+52
+00:02:49,588 --> 00:02:51,726
+You're measuring the correlation between
+two variables.
+
+53
+00:02:51,726 --> 00:02:53,356
+So zero would mean uncorrelated.
+
+54
+00:02:53,356 --> 00:02:56,810
+Positive 1 would be perfect positive
+correlation.
+
+55
+00:02:56,810 --> 00:03:01,210
+Negative 1 would mean perfect inverse
+correlation, that is that if vitamin D
+
+56
+00:03:01,210 --> 00:03:06,500
+levels went up and cognitive function went
+down, and anything in between positive one
+
+57
+00:03:06,500 --> 00:03:11,290
+and zero or negative one and zero is some
+kind of in between amount of correlation.
+
+58
+00:03:11,290 --> 00:03:16,155
+So 0.15 is pretty close to zero so it's a
+small, it's a very weak correlation.
+
+59
+00:03:16,155 --> 00:03:18,990
+But the correlation coefficient in the
+sample of
+
+60
+00:03:18,990 --> 00:03:22,470
+a hundred came out to be 0.15 here.
+
+61
+00:03:22,470 --> 00:03:26,600
+So how would I figure out, what's the
+distribution of the mean here?
+
+62
+00:03:26,600 --> 00:03:28,800
+So we're going to use the mean Vitamin D
+as my example.
+
+63
+00:03:28,800 --> 00:03:31,180
+What's the distribution of the mean?
+
+64
+00:03:31,180 --> 00:03:33,160
+How can I figure that out?
+
+65
+00:03:33,160 --> 00:03:36,820
+Well, I'm first going to figure it out by
+running a computer simulation.
+
+66
+00:03:37,880 --> 00:03:39,650
+So, here's how the computer simulation
+works.
+
+67
+00:03:39,650 --> 00:03:42,490
+I'm going to tell the computer that
+there's some
+
+68
+00:03:42,490 --> 00:03:46,180
+large population of men European men.
+
+69
+00:03:46,180 --> 00:03:49,710
+And I'm going to tell the computer the
+distribution of vitamin D in
+
+70
+00:03:49,710 --> 00:03:51,410
+this large population.
+
+71
+00:03:51,410 --> 00:03:54,680
+And I'm going to tell the computer it's a
+right skewed distribution.
+
+72
+00:03:54,680 --> 00:03:56,530
+So vitamin D follows a right skewed
+distribution.
+
+73
+00:03:56,530 --> 00:03:57,670
+It has a standard deviation of 33.
+
+74
+00:03:57,670 --> 00:04:01,482
+And let's say that the true mean value in
+the the population is 62 [INAUDIBLE]
+
+75
+00:04:01,482 --> 00:04:02,540
+nanomoles per liter.
+
+76
+00:04:02,540 --> 00:04:04,540
+It doesn't matter too much what I pick
+there.
+
+77
+00:04:04,540 --> 00:04:06,790
+But lets say I'm going to pick the value
+of 62.
+
+78
+00:04:06,790 --> 00:04:09,540
+So I tell the computer, this is the
+population you're sampling from.
+
+79
+00:04:09,540 --> 00:04:13,915
+And then I have the computer sample a
+random sample of
+
+80
+00:04:13,915 --> 00:04:17,730
+100 virtual men from this underlying
+population.
+
+81
+00:04:17,730 --> 00:04:19,850
+Each of those men is going to have a
+vitamin D level.
+
+82
+00:04:21,550 --> 00:04:24,460
+I take those vitamin D levels and I
+average them to calculate the mean.
+
+83
+00:04:24,460 --> 00:04:27,580
+Vitamin D level for that sample of 100.
+
+84
+00:04:27,580 --> 00:04:30,580
+Then I'm going to repeat the experiment
+over and over and over again.
+
+85
+00:04:30,580 --> 00:04:32,440
+Again this is the though experiment.
+
+86
+00:04:32,440 --> 00:04:37,095
+I'm going to select a different random
+sample of 100 men, calculate their mean.
+
+87
+00:04:37,095 --> 00:04:38,660
+Then I'm going to do that again and
+
+88
+00:04:38,660 --> 00:04:42,298
+again and again, to get a sense of the
+distribution of the means.
+
+89
+00:04:42,298 --> 00:04:45,607
+I've arbitrarily decided to do that 10,000
+times.
+
+90
+00:04:45,607 --> 00:04:47,100
+Again, 10,000's a pretty large number but
+
+91
+00:04:47,100 --> 00:04:49,670
+not so large that it will hang my
+computer.
+
+92
+00:04:49,670 --> 00:04:52,750
+Then, then we can explore the distribution
+of those 10,000 means.
+
+93
+00:04:52,750 --> 00:04:55,600
+We can actually look at the distribution
+of the statistic here and
+
+94
+00:04:55,600 --> 00:04:57,310
+the statistic here is a sample mean.
+
+95
+00:04:57,310 --> 00:05:02,130
+[SOUND] So here's the results of this
+computer simulation.
+
+96
+00:05:02,130 --> 00:05:04,370
+What you are looking at is the histogram.
+
+97
+00:05:04,370 --> 00:05:06,230
+On the Y axis is the count.
+
+98
+00:05:06,230 --> 00:05:11,100
+Out of 10,000 times, how much did
+different outcomes, different means occur.
+
+99
+00:05:11,100 --> 00:05:13,710
+On the X axis is the mean vitamin D level.
+
+100
+00:05:13,710 --> 00:05:18,940
+So this represents the mean out of 100
+men, and in each sample of a hundred men.
+
+101
+00:05:18,940 --> 00:05:24,012
+So you can see that most often we got a
+mean of about 62,
+
+102
+00:05:24,012 --> 00:05:28,810
+somewhere around 62, because remember the
+true mean in the population is 62.
+
+103
+00:05:28,810 --> 00:05:30,390
+So that's not surprising.
+
+104
+00:05:30,390 --> 00:05:32,295
+What else can we say about this
+distribution?
+
+105
+00:05:32,295 --> 00:05:34,800
+Well, you might have noticed, and
+
+106
+00:05:34,800 --> 00:05:39,340
+this might have surprised you, that it
+turns out to be normal distribution.
+
+107
+00:05:39,340 --> 00:05:42,230
+The means follow a normal distribution.
+
+108
+00:05:42,230 --> 00:05:45,670
+This is a little surprising because
+remember, Vitamin D,
+
+109
+00:05:45,670 --> 00:05:49,860
+the trait followed a right skewed
+distribution.
+
+110
+00:05:49,860 --> 00:05:54,120
+The, that distribution, that underlying
+distribution is right skewed.
+
+111
+00:05:54,120 --> 00:05:59,035
+But, when we take the means, the means
+follow a normal distribution.
+
+112
+00:05:59,035 --> 00:06:04,500
+And we can prove this with a theorem
+called the central limit theorem.
+
+113
+00:06:04,500 --> 00:06:07,010
+For those of you who are interested in
+that,
+
+114
+00:06:07,010 --> 00:06:09,050
+there's an optional module on the central
+limit theorem.
+
+115
+00:06:09,050 --> 00:06:10,890
+But it turns out that when you take
+averages,
+
+116
+00:06:10,890 --> 00:06:14,260
+averages follow a normal distribution.
+
+117
+00:06:14,260 --> 00:06:16,900
+Conceptually, what's going here is
+
+118
+00:06:16,900 --> 00:06:19,120
+you can image your on this right skew
+distribution.
+
+119
+00:06:19,120 --> 00:06:23,340
+There's going to be a very few number of
+people who have very high values.
+
+120
+00:06:23,340 --> 00:06:27,950
+So you might get a man in a particular
+sample who has a value of 200 for example.
+
+121
+00:06:27,950 --> 00:06:31,750
+Well if you average that 200 in with 99
+other men,
+
+122
+00:06:31,750 --> 00:06:34,560
+that has the effect of bringing everything
+towards the center.
+
+123
+00:06:34,560 --> 00:06:41,138
+So that 200 really gets diluted, because
+you averaged it with 99 other men.
+
+124
+00:06:41,138 --> 00:06:43,790
+So it ends up when you take averages, it
+ends
+
+125
+00:06:43,790 --> 00:06:48,040
+up bringing everything towards the middle
+and it ends up forming a normal curve.
+
+126
+00:06:48,040 --> 00:06:52,180
+The mean of the means, I'm going to say
+that again, the mean of the means,
+
+127
+00:06:52,180 --> 00:06:55,060
+that's the, this is the mean of the means
+we're talking about here.
+
+128
+00:06:55,060 --> 00:06:58,400
+The mean of the means turned out to be 62
+nanomoles per liter.
+
+129
+00:06:58,400 --> 00:07:01,750
+Well, that's just the true value, the true
+mean, so that's not surprising.
+
+130
+00:07:01,750 --> 00:07:04,730
+The mean of the means is the true mean in
+the population.
+
+131
+00:07:04,730 --> 00:07:06,870
+Well that makes sense because if that's
+the true mean,
+
+132
+00:07:06,870 --> 00:07:10,140
+then most of our samples should hover
+around 62, the true mean.
+
+133
+00:07:11,280 --> 00:07:17,970
+The standard deviation of the means turns
+out to be 3.3 nanomoles per liter.
+
+134
+00:07:17,970 --> 00:07:22,191
+Now that's interesting, you remember that
+the, the standard deviation of the trait
+
+135
+00:07:22,191 --> 00:07:23,357
+was 33 nanomoles per liter [SOUND] but the
+standard deviation of the means which we
+
+136
+00:07:23,357 --> 00:07:30,304
+also called the standard error of the mean
+turns out to be 3.3.
+
+137
+00:07:30,304 --> 00:07:35,930
+It's exactly 33 divided by 10.
+
+138
+00:07:35,930 --> 00:07:38,940
+Well, the sample size here was 100, so
+what we're actually doing is,
+
+139
+00:07:38,940 --> 00:07:43,350
+we're dividing the standard deviation by
+the square root of n, and
+
+140
+00:07:43,350 --> 00:07:45,182
+that's what gives us the 3.3.
+
+141
+00:07:45,182 --> 00:07:48,830
+This 3.3, I didn't get by a mathematical
+theory though.
+
+142
+00:07:48,830 --> 00:07:52,955
+I just had the computer calculate the
+standard deviation from these
+
+143
+00:07:52,955 --> 00:07:54,560
+10,000 observations.
+
+144
+00:07:54,560 --> 00:07:58,860
+And it turns out to be 3.3.
+
+145
+00:07:58,860 --> 00:08:02,790
+So, the distribution of mean vitamin D
+that I got from this computer simulation.
+
+146
+00:08:02,790 --> 00:08:04,710
+I see that it's normally distributed.
+
+147
+00:08:04,710 --> 00:08:06,230
+The mean is equal to the true mean.
+
+148
+00:08:06,230 --> 00:08:08,000
+And the standard deviation, or
+
+149
+00:08:08,000 --> 00:08:12,020
+what we also call the standard error, is
+3.3 nanomoles per liter.
+
+150
+00:08:12,020 --> 00:08:15,570
+I got this all out of the computer
+simulation.
+
+151
+00:08:15,570 --> 00:08:17,250
+But the distribution of a sample mean,
+
+152
+00:08:17,250 --> 00:08:21,180
+in general, people have long ago worked
+out with mathematical theory.
+
+153
+00:08:21,180 --> 00:08:24,080
+And it turns out that if you're talking
+about sample means,
+
+154
+00:08:24,080 --> 00:08:27,040
+means that you calculate from data, they
+follow,
+
+155
+00:08:27,040 --> 00:08:30,509
+actually they don't exactly follow a
+normal distribution.
+
+156
+00:08:30,509 --> 00:08:32,220
+If you want to know more about why that
+is,
+
+157
+00:08:32,220 --> 00:08:34,910
+watch the optional module on the Central
+Limit Theorem.
+
+158
+00:08:34,910 --> 00:08:37,150
+It turns out they follow a T-distribution,
+but
+
+159
+00:08:37,150 --> 00:08:41,140
+remember that a T-distribution is
+essentially the same as a normal
+
+160
+00:08:41,140 --> 00:08:45,530
+distribution as long as you're talking
+about n's sample sizes at least of 100.
+
+161
+00:08:45,530 --> 00:08:48,450
+So since we have a sample size of over
+100, essentially it's,
+
+162
+00:08:48,450 --> 00:08:49,940
+it's on a normal distribution.
+
+163
+00:08:51,290 --> 00:08:53,060
+This means that if you're talking about
+sample means and
+
+164
+00:08:53,060 --> 00:08:54,430
+you're talking about small samples,
+
+165
+00:08:54,430 --> 00:08:57,710
+actually small samples you have to worry
+about it being on a T-distribution.
+
+166
+00:08:57,710 --> 00:08:59,590
+You'll have slightly fatter tails than the
+normal.
+
+167
+00:08:59,590 --> 00:09:02,890
+So it's not exactly, means don't exactly
+follow a normal distribution for
+
+168
+00:09:02,890 --> 00:09:03,430
+real data.
+
+169
+00:09:03,430 --> 00:09:06,560
+They usually follow a T but by the time
+you're talking about a sample size of
+
+170
+00:09:06,560 --> 00:09:09,730
+greater than 100 where, where it's
+interchangeable with the normal.
+
+171
+00:09:09,730 --> 00:09:11,540
+So I'm just going to call it a normal
+distribution.
+
+172
+00:09:13,060 --> 00:09:17,400
+In general, sample means the mean of the
+means is the true mean in the population.
+
+173
+00:09:17,400 --> 00:09:18,890
+Well, that make sense.
+
+174
+00:09:18,890 --> 00:09:22,110
+The standard error, somebody has worked
+out the formula for standard error,
+
+175
+00:09:22,110 --> 00:09:26,110
+the standard error of a mean is the
+standard deviation of the trait,
+
+176
+00:09:26,110 --> 00:09:28,500
+the variability of the trait like vitamin
+D,
+
+177
+00:09:28,500 --> 00:09:31,740
+divided by the square root of n, the
+number of people you're averaging over.
+
+178
+00:09:31,740 --> 00:09:32,960
+And let's remember,
+
+179
+00:09:32,960 --> 00:09:36,940
+we saw that that in fact works out with
+exactly what we saw in the simulation
+
+180
+00:09:36,940 --> 00:09:40,520
+because the standard deviation here was 33
+if I divide by the square root of 100.
+
+181
+00:09:40,520 --> 00:09:44,480
+I get exactly 3.3, exactly what came out
+in the simulation as well.
+
+182
+00:09:44,480 --> 00:09:47,980
+So both the simulation and mathematical
+theory are matching up.
+
+183
+00:09:51,200 --> 00:09:52,400
+So the standard error of a mean,
+
+184
+00:09:52,400 --> 00:09:56,210
+again, is the standard deviation of the
+trait divided by the square root of n.
+
+185
+00:09:56,210 --> 00:10:00,130
+So you can see some things about how
+standard error works just by
+
+186
+00:10:00,130 --> 00:10:00,980
+looking at the formula.
+
+187
+00:10:00,980 --> 00:10:02,490
+The formula gives us some insight here.
+
+188
+00:10:02,490 --> 00:10:04,890
+I don't, we're not worry about memorizing
+the formula but
+
+189
+00:10:04,890 --> 00:10:08,010
+look at the formula in terms of what is it
+telling us.
+
+190
+00:10:08,010 --> 00:10:13,030
+So standard error decreases as sample size
+goes up because sample sizes in
+
+191
+00:10:13,030 --> 00:10:13,830
+the denominator.
+
+192
+00:10:13,830 --> 00:10:16,610
+So bigger sample size means less standard
+error.
+
+193
+00:10:16,610 --> 00:10:17,950
+Well that makes sense.
+
+194
+00:10:17,950 --> 00:10:21,540
+As you sample more people you would expect
+the uncertainty to go down,
+
+195
+00:10:21,540 --> 00:10:22,740
+the imprecision to go down.
+
+196
+00:10:22,740 --> 00:10:25,720
+The variability of the static from sample
+to sample will go down if
+
+197
+00:10:25,720 --> 00:10:26,990
+you're sampling more people.
+
+198
+00:10:26,990 --> 00:10:29,290
+going to get closer to the true mean.
+
+199
+00:10:30,910 --> 00:10:35,420
+The standard error increases with greater
+trait variability, that, that s,
+
+200
+00:10:35,420 --> 00:10:37,890
+that standard deviation of the sample is
+in the numerator.
+
+201
+00:10:37,890 --> 00:10:40,380
+So if vitamin D were more variable,
+
+202
+00:10:40,380 --> 00:10:44,730
+that's going to cause more variation from
+in the statistic.
+
+203
+00:10:44,730 --> 00:10:46,380
+Right?
+It's going to cause more uncertainly.
+
+204
+00:10:46,380 --> 00:10:48,400
+So those are the two elements of standard
+error.
+
+205
+00:10:50,100 --> 00:10:51,260
+And just to illustrate those,
+
+206
+00:10:51,260 --> 00:10:55,830
+I did another simulation where I increased
+the sample sizes to 400.
+
+207
+00:10:55,830 --> 00:10:58,390
+So I did many, many, many samples of 400.
+
+208
+00:10:58,390 --> 00:11:00,820
+Notice to what happened to my normal
+curve, it shrunk.
+
+209
+00:11:00,820 --> 00:11:02,970
+It, the standard deviation went down.
+
+210
+00:11:02,970 --> 00:11:05,970
+The standard deviation in this situation
+came up to be 1.7.
+
+211
+00:11:05,970 --> 00:11:09,510
+My mathematical theory would predict that
+it would be 1.7.
+
+212
+00:11:09,510 --> 00:11:13,110
+If Vitamin D was more variable, let's say
+the standard deviation of Vitamin D in
+
+213
+00:11:13,110 --> 00:11:15,210
+the population was 40 rather than 33,
+
+214
+00:11:15,210 --> 00:11:18,240
+you can see that that causes this curve to
+widen.
+
+215
+00:11:18,240 --> 00:11:21,840
+The standard error goes up here, it goes
+up to four because if Vitamin D
+
+216
+00:11:21,840 --> 00:11:25,995
+is more variable we get more variations in
+the means from sample to sample.
+
+217
+00:11:25,995 --> 00:11:29,110
+So standard error again depends on the the
+variability of
+
+218
+00:11:29,110 --> 00:11:31,110
+the trait as well as the sample size.

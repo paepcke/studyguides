@@ -1,0 +1,2618 @@
+1
+00:00:05,900 --> 00:00:11,230
+In this next module I'm going to introduce
+Principal Components Analysis.
+
+2
+00:00:11,230 --> 00:00:16,580
+So Principal Components Analysis is
+basically a data reduction technique.
+
+3
+00:00:16,580 --> 00:00:20,380
+If you've got a sought of larger set of
+predictor variables,
+
+4
+00:00:20,380 --> 00:00:24,850
+many of which might be highly correlated,
+It can compress them,
+
+5
+00:00:24,850 --> 00:00:27,280
+that set of variables, into a smaller set
+of variables.
+
+6
+00:00:27,280 --> 00:00:32,990
+Fewer variables, without losing too much
+information from the original variables.
+
+7
+00:00:32,990 --> 00:00:37,100
+This is very useful to do prior to running
+a regression analysis.
+
+8
+00:00:37,100 --> 00:00:40,070
+Because if you've got a large set of
+predictors, a whole bunch of
+
+9
+00:00:40,070 --> 00:00:43,510
+different variables you've measured, and
+you just throw each one of those.
+
+10
+00:00:43,510 --> 00:00:45,860
+Predictors into a regression analysis.
+
+11
+00:00:45,860 --> 00:00:50,080
+You have a, you're increasing your chances
+of making a type one error,
+
+12
+00:00:50,080 --> 00:00:51,710
+that is of finding chance,
+
+13
+00:00:51,710 --> 00:00:56,010
+of things just by chance, you're
+increasing your risk of over-fitting.
+
+14
+00:00:56,010 --> 00:00:58,610
+So compressing your data set a little bit
+before putting it
+
+15
+00:00:58,610 --> 00:01:01,170
+into the regression analysis can be really
+helpful.
+
+16
+00:01:01,170 --> 00:01:05,700
+For that reason, Principle Components
+Analysis is just a really cool,
+
+17
+00:01:05,700 --> 00:01:09,780
+exploratory technique, as well, it just
+can help you understand.
+
+18
+00:01:09,780 --> 00:01:10,770
+Your data a little better,
+
+19
+00:01:10,770 --> 00:01:15,010
+to pick out relationships between groups
+of variables and discover patterns.
+
+20
+00:01:15,010 --> 00:01:20,500
+And you can kind of do the same thing just
+by looking at a correlation matrix, so
+
+21
+00:01:20,500 --> 00:01:23,360
+if you, ask for a correlation matrix of
+
+22
+00:01:23,360 --> 00:01:29,075
+all the correlation coefficients between
+all the pairs of variables in your data.
+
+23
+00:01:29,075 --> 00:01:30,690
+Uh,you can kind of scan that and
+
+24
+00:01:30,690 --> 00:01:33,810
+try to figure out which variables are
+related to one another.
+
+25
+00:01:33,810 --> 00:01:35,510
+And that's kind of effective but
+
+26
+00:01:35,510 --> 00:01:38,380
+correlation matrix can become unwieldy
+really fast.
+
+27
+00:01:38,380 --> 00:01:41,600
+So if you have just ten variables the
+correlation matrix is going to
+
+28
+00:01:41,600 --> 00:01:45,160
+have 45 correlation coefficients to scan
+through and
+
+29
+00:01:45,160 --> 00:01:47,730
+if you have more than that it's going to
+get bigger and bigger.
+
+30
+00:01:47,730 --> 00:01:51,970
+So principal components analysis actually
+is, kind of gives you a synopsis.
+
+31
+00:01:51,970 --> 00:01:53,640
+Of the correlation matrix.
+
+32
+00:01:53,640 --> 00:01:59,840
+It reduces the information, it synthesizes
+it a little bit, so it's easier to get to,
+
+33
+00:01:59,840 --> 00:02:03,460
+to figure out those kind of things like
+what variables are related and,
+
+34
+00:02:03,460 --> 00:02:06,220
+and what variables kind of cluster
+together.
+
+35
+00:02:06,220 --> 00:02:08,760
+So it's useful even just to understand
+your data better.
+
+36
+00:02:10,070 --> 00:02:14,400
+Let me just start with a very simple made
+up example.
+
+37
+00:02:14,400 --> 00:02:17,090
+I'm not going to go into all of the
+details yet
+
+38
+00:02:17,090 --> 00:02:18,550
+about Principal Component Analysis.
+
+39
+00:02:18,550 --> 00:02:21,200
+I want to just walk you through this first
+little toy example.
+
+40
+00:02:21,200 --> 00:02:26,510
+Quickly, just to motivate what you can get
+out of Principle Components Analysis.
+
+41
+00:02:26,510 --> 00:02:28,370
+So, here's some data I'm showing you.
+
+42
+00:02:28,370 --> 00:02:29,700
+Imagine I gave you this data set.
+
+43
+00:02:29,700 --> 00:02:31,090
+There's two variables.
+
+44
+00:02:31,090 --> 00:02:32,610
+There's a variable which I'm calling some.
+
+45
+00:02:32,610 --> 00:02:35,730
+That's on the y-axis and a variable that
+I'm calling first.
+
+46
+00:02:35,730 --> 00:02:36,760
+That's on the x-axis.
+
+47
+00:02:36,760 --> 00:02:39,590
+And, if you didn't know, I'm going to tell
+you in just a minute what these
+
+48
+00:02:39,590 --> 00:02:40,670
+variables are going to represent.
+
+49
+00:02:40,670 --> 00:02:41,880
+But if you didn't know.
+
+50
+00:02:41,880 --> 00:02:45,520
+What is the underlying structure here, you
+would look at these data and
+
+51
+00:02:45,520 --> 00:02:48,390
+you would try to figure out what is going
+on with the data,
+
+52
+00:02:48,390 --> 00:02:51,670
+and what is the relationship between these
+two variables.
+
+53
+00:02:51,670 --> 00:02:55,920
+Now I'm going to tell you what these data
+represent so you'll know the structure,
+
+54
+00:02:55,920 --> 00:02:58,730
+but in a minute we'll see that principles
+of components analysis can kind of
+
+55
+00:02:58,730 --> 00:03:03,140
+help us tease out the structure if we
+didnt know ahead of time...
+
+56
+00:03:03,140 --> 00:03:05,940
+So I just created this little data set on
+the computer.
+
+57
+00:03:05,940 --> 00:03:09,280
+By saying make x be the roll, I virtually
+rolled the die.
+
+58
+00:03:09,280 --> 00:03:11,460
+So make x be the roll of a single die.
+
+59
+00:03:11,460 --> 00:03:15,480
+So that's going to be a number from one to
+six, the roll of one die, and then y,
+
+60
+00:03:15,480 --> 00:03:20,390
+the variable that I'm calling sum here,
+that's going to be take the value you
+
+61
+00:03:20,390 --> 00:03:24,220
+got on x and then roll the die one more
+time and add the roll of the second die.
+
+62
+00:03:24,220 --> 00:03:28,590
+So this is going to become a number
+between a number between two and 12.
+
+63
+00:03:28,590 --> 00:03:32,680
+So x is embedded within y cause you're
+going to take the,
+
+64
+00:03:32,680 --> 00:03:35,760
+the value from of x, the roll of the first
+die and add it to the.
+
+65
+00:03:35,760 --> 00:03:39,160
+To the roll of the second die, and that's
+how you're going to come up with Y.
+
+66
+00:03:39,160 --> 00:03:40,920
+So X and Y are correlated here.
+
+67
+00:03:40,920 --> 00:03:45,440
+They have covariance, they're correlated
+because X is part of Y.
+
+68
+00:03:46,680 --> 00:03:49,980
+And notice that the variables here have
+been Z standardized as I've turned them
+
+69
+00:03:49,980 --> 00:03:50,510
+into Z squared.
+
+70
+00:03:50,510 --> 00:03:56,548
+So if you're actually looking at the, the
+axis here, it ranges from -1.5 to 1.5.
+
+71
+00:03:56,548 --> 00:03:59,358
+In both directions, and you know something
+comparable.
+
+72
+00:03:59,358 --> 00:04:02,030
+-2 to 2 in the other direction.
+
+73
+00:04:02,030 --> 00:04:03,410
+So these have been standardized.
+
+74
+00:04:03,410 --> 00:04:07,530
+You need to standardize your variables
+prior to running a PCA analysis.
+
+75
+00:04:08,660 --> 00:04:10,630
+If I ask the computer to give me the
+correlation coefficient,
+
+76
+00:04:10,630 --> 00:04:11,290
+it turns out to be .71.
+
+77
+00:04:11,290 --> 00:04:13,820
+That's not quite as useful as seeing.
+
+78
+00:04:13,820 --> 00:04:17,670
+They are squared so if square point seven
+one I get the R squared value and
+
+79
+00:04:17,670 --> 00:04:20,180
+that comes out to be exactly 50% and
+
+80
+00:04:20,180 --> 00:04:25,080
+what that's telling me is that 50% of the
+variblity in Y is,
+
+81
+00:04:25,080 --> 00:04:29,070
+comes from X, is explained by X and that
+makes perfect sense here right?
+
+82
+00:04:29,070 --> 00:04:31,090
+Because we rolled two die.
+
+83
+00:04:31,090 --> 00:04:35,730
+The variation, half of the variation comes
+from the variability of that first roll.
+
+84
+00:04:35,730 --> 00:04:38,740
+So half of the variation of the sum comes
+from that first roll.
+
+85
+00:04:38,740 --> 00:04:40,690
+That's what the R squared represents here.
+
+86
+00:04:40,690 --> 00:04:43,600
+They share 50% of their variants, these
+two variables.
+
+87
+00:04:43,600 --> 00:04:46,740
+And how can principal components be
+applied here.
+
+88
+00:04:47,810 --> 00:04:52,330
+So the way that principal components
+analysis is applied what we're going to do
+
+89
+00:04:52,330 --> 00:04:56,540
+is we're going to try to extract
+information from as much information as
+
+90
+00:04:56,540 --> 00:04:59,200
+we can from both of these variables.
+
+91
+00:04:59,200 --> 00:05:02,380
+We're going to try to actually come up
+with two new variables.
+
+92
+00:05:02,380 --> 00:05:05,720
+The first of which is going to extract as
+much information as possible and
+
+93
+00:05:05,720 --> 00:05:09,260
+the second of which is going to, is
+going to extract as much information as
+
+94
+00:05:09,260 --> 00:05:13,390
+possible from the leftover what we didn't
+capture in the first principle component.
+
+95
+00:05:13,390 --> 00:05:17,270
+But basically what we're going to do is
+imagine here that we draw an oval,
+
+96
+00:05:17,270 --> 00:05:20,180
+an ellipse around these data points.
+
+97
+00:05:20,180 --> 00:05:22,950
+And if I just asked you to.
+
+98
+00:05:22,950 --> 00:05:27,260
+Find the direction, the line which
+
+99
+00:05:27,260 --> 00:05:31,350
+represents the maximum variation in these
+data.
+
+100
+00:05:31,350 --> 00:05:34,400
+You could do that by just kind of finding
+the.
+
+101
+00:05:34,400 --> 00:05:36,460
+The axis of the ellipse that's the
+longest.
+
+102
+00:05:36,460 --> 00:05:38,630
+In order, that's what I'm going to do
+here.
+
+103
+00:05:38,630 --> 00:05:41,680
+I may not be drawing this perfectly right
+but something like that is going to be
+
+104
+00:05:41,680 --> 00:05:46,050
+the maximal, the biggest line you can draw
+in this ellipse.
+
+105
+00:05:46,050 --> 00:05:49,550
+That's going to represent the maximal
+variation in my data.
+
+106
+00:05:49,550 --> 00:05:52,400
+If I'm seeing this as sort of a cloud of.
+
+107
+00:05:52,400 --> 00:05:52,990
+Data points.
+
+108
+00:05:52,990 --> 00:05:56,200
+I want to find the line that represents
+the maximal spread in the data.
+
+109
+00:05:56,200 --> 00:05:57,070
+The maximal variation.
+
+110
+00:05:57,070 --> 00:05:59,650
+That's where more variation needs more
+information so
+
+111
+00:05:59,650 --> 00:06:00,770
+I am going to find that line.
+
+112
+00:06:00,770 --> 00:06:04,310
+This is what we call the first principal
+component, that line.
+
+113
+00:06:05,400 --> 00:06:09,250
+That is a new variable that contains
+information from both of the two original
+
+114
+00:06:09,250 --> 00:06:14,940
+variables and actually contains as much
+information as possible, and
+
+115
+00:06:14,940 --> 00:06:17,140
+what am I going to do with that?
+
+116
+00:06:17,140 --> 00:06:18,520
+Well, I'm just going to,
+
+117
+00:06:18,520 --> 00:06:23,350
+I'm going to show you that here on on
+again on this graphic here so this Again,
+
+118
+00:06:23,350 --> 00:06:26,620
+is the first...this is [UNKNOWN] fit on a
+computer so it's properly drawn.
+
+119
+00:06:26,620 --> 00:06:29,730
+So this is the first principal component,
+the line in blue.
+
+120
+00:06:29,730 --> 00:06:34,350
+And the computer found that by finding
+that line of maximal variation.
+
+121
+00:06:34,350 --> 00:06:38,130
+I've also shown you here in red the linear
+regression line
+
+122
+00:06:38,130 --> 00:06:38,910
+between these two variables.
+
+123
+00:06:38,910 --> 00:06:41,610
+I just want to show you that they're very
+close, these two things, but
+
+124
+00:06:41,610 --> 00:06:42,720
+not identical.
+
+125
+00:06:44,110 --> 00:06:45,410
+So then we take that.
+
+126
+00:06:45,410 --> 00:06:47,060
+First principle component.
+
+127
+00:06:47,060 --> 00:06:48,120
+What are we going to do with it?
+
+128
+00:06:48,120 --> 00:06:49,650
+Well that represents a new variable.
+
+129
+00:06:49,650 --> 00:06:51,310
+It's a line, so it's just one dimensional.
+
+130
+00:06:51,310 --> 00:06:54,140
+It is a single new variable that contains
+information from
+
+131
+00:06:54,140 --> 00:06:55,690
+the two original variables.
+
+132
+00:06:55,690 --> 00:06:59,420
+What I'm going to do next is I'm going to
+rotate my entire scatter plot
+
+133
+00:06:59,420 --> 00:07:03,250
+here such that the first principle
+component aligns with the x-axis.
+
+134
+00:07:03,250 --> 00:07:05,100
+This just makes it easier.
+
+135
+00:07:05,100 --> 00:07:08,780
+To deal with because we like we want to
+reference everything to
+
+136
+00:07:08,780 --> 00:07:09,920
+that first principle component.
+
+137
+00:07:09,920 --> 00:07:13,940
+Its easier to do that if we rotate to that
+first principle component ends up
+
+138
+00:07:13,940 --> 00:07:14,630
+on the x axis.
+
+139
+00:07:14,630 --> 00:07:17,990
+So that's all I've done on the right panel
+here.
+
+140
+00:07:17,990 --> 00:07:19,480
+So that's the first principle component.
+
+141
+00:07:19,480 --> 00:07:23,680
+The second principle component Is going to
+be a line perpendicular to
+
+142
+00:07:23,680 --> 00:07:27,770
+the first we always are going to choose a
+line perpendicular to the first principal
+
+143
+00:07:27,770 --> 00:07:31,660
+component now since we're in only two
+dimensions there is only one line that
+
+144
+00:07:31,660 --> 00:07:34,800
+is perpendicular to the first principal
+component here so that line and
+
+145
+00:07:34,800 --> 00:07:36,670
+we don't even have a choice we're just
+going to draw the line perpendicular.
+
+146
+00:07:36,670 --> 00:07:37,620
+Perpendicular.
+
+147
+00:07:37,620 --> 00:07:39,430
+But if you were in higher dimensions there
+would be,
+
+148
+00:07:39,430 --> 00:07:43,550
+you would choose the perpendicular line
+that captured, again, the most
+
+149
+00:07:43,550 --> 00:07:48,300
+variance in, in the left, in, left, most
+leftover variance in my data points.
+
+150
+00:07:48,300 --> 00:07:53,890
+So when I rotate this graph the first
+principal component becomes the x-axis.
+
+151
+00:07:53,890 --> 00:07:57,870
+The second principal component becomes the
+y axis.
+
+152
+00:07:57,870 --> 00:08:04,500
+So now you can visual
+
+153
+00:08:04,500 --> 00:08:12,710
+see the two components.
+
+154
+00:08:12,710 --> 00:08:15,135
+What are the principal component actually
+represent here.
+
+155
+00:08:15,135 --> 00:08:18,355
+[INAUDIBLE] When you rotate the axis here,
+
+156
+00:08:18,355 --> 00:08:22,110
+what you notice is they have equal
+variants.
+
+157
+00:08:22,110 --> 00:08:25,710
+So there's equal variance in principle
+component one as in
+
+158
+00:08:25,710 --> 00:08:28,070
+principle component two.
+
+159
+00:08:28,070 --> 00:08:31,630
+They're also uncorrelated as you can see
+because they're perpendicular.
+
+160
+00:08:31,630 --> 00:08:32,890
+So what have we actually done here?
+
+161
+00:08:32,890 --> 00:08:35,380
+What does first principle component
+represent here?
+
+162
+00:08:35,380 --> 00:08:38,190
+It essentially represents the roll of die
+one.
+
+163
+00:08:38,190 --> 00:08:41,090
+That was the overlap between the sum and
+the first variable.
+
+164
+00:08:41,090 --> 00:08:42,349
+It was the roll of die one.
+
+165
+00:08:43,400 --> 00:08:46,910
+Principle component two now, rather than
+representing the sum,
+
+166
+00:08:46,910 --> 00:08:51,600
+represents the separate independent role
+of the second die.
+
+167
+00:08:51,600 --> 00:08:53,400
+That's what we've extracted here.
+
+168
+00:08:53,400 --> 00:08:55,680
+So we've extracted some structure here.
+
+169
+00:08:55,680 --> 00:08:59,880
+We've totally separated that first roll
+and second roll of the die, and what
+
+170
+00:08:59,880 --> 00:09:03,250
+we find is, of course, as they're, they're
+equal things, they're rolls of die.
+
+171
+00:09:03,250 --> 00:09:05,060
+There have, they each have equal variance.
+
+172
+00:09:06,060 --> 00:09:09,070
+And if you're doing this in a computer
+program,
+
+173
+00:09:09,070 --> 00:09:11,180
+the computer program will tell you well
+the variance,
+
+174
+00:09:11,180 --> 00:09:14,630
+when you've done this technique, you'll
+say, what's the variance of each factor?
+
+175
+00:09:14,630 --> 00:09:19,170
+So it turns out factor and principal
+component I can use interchangeably.
+
+176
+00:09:19,170 --> 00:09:20,130
+In this lecture.
+
+177
+00:09:20,130 --> 00:09:23,710
+So, it turns out that remember, what was
+our original standard deviation.
+
+178
+00:09:23,710 --> 00:09:27,250
+The standard deviation of sum was equal to
+one and
+
+179
+00:09:27,250 --> 00:09:33,000
+the standard deviation of of first was
+also equal to one.
+
+180
+00:09:33,000 --> 00:09:34,490
+That's because I standardized the
+variables which we're
+
+181
+00:09:34,490 --> 00:09:37,440
+always going to do before Principle
+Components Analysis so the variants,
+
+182
+00:09:37,440 --> 00:09:40,220
+the standard deviations are one and
+therefore the variances are also one.
+
+183
+00:09:40,220 --> 00:09:43,298
+So the variance is also equal to one for
+both of those [SOUND].
+
+184
+00:09:44,790 --> 00:09:48,020
+So we have a total of a variance of two
+and when we.
+
+185
+00:09:48,020 --> 00:09:50,000
+Extract those two principle components,
+
+186
+00:09:50,000 --> 00:09:52,210
+it turns out that we have equal variance
+in each.
+
+187
+00:09:52,210 --> 00:09:55,010
+Because the variance of the roll of one
+die is equal to the variance of
+
+188
+00:09:55,010 --> 00:09:56,310
+the roll of a second die.
+
+189
+00:09:56,310 --> 00:09:57,250
+So we extract and
+
+190
+00:09:57,250 --> 00:10:01,710
+we found out here that each component
+explains exactly half the variance.
+
+191
+00:10:01,710 --> 00:10:05,040
+Now normally what you're going to see is
+that the first component is
+
+192
+00:10:05,040 --> 00:10:07,660
+going to explain more of the variance than
+the second component because
+
+193
+00:10:07,660 --> 00:10:08,810
+that's what we're after.
+
+194
+00:10:08,810 --> 00:10:12,600
+But in this case what we really had
+structurally underneath here was
+
+195
+00:10:12,600 --> 00:10:17,610
+just a roll of two die so each of those
+explains exactly half of the variance.
+
+196
+00:10:17,610 --> 00:10:19,900
+So that's just the kind of motivate that
+you can pull structure,
+
+197
+00:10:19,900 --> 00:10:23,180
+you can figure out and un-tingle
+correlated variables.
+
+198
+00:10:23,180 --> 00:10:25,720
+Using principle components analysis.
+
+199
+00:10:25,720 --> 00:10:29,700
+Now, I'm going to go through in more
+detail exactly what's going on with
+
+200
+00:10:29,700 --> 00:10:33,630
+a little bit more math,using some actual
+real data.
+
+201
+00:10:33,630 --> 00:10:37,330
+So this goes back to the data set that I
+was talking about earlier.
+
+202
+00:10:37,330 --> 00:10:40,730
+I have 91 young adolescent women runners.
+
+203
+00:10:40,730 --> 00:10:45,920
+And the, we measured a bunch of things on
+them included their fat mass, their
+
+204
+00:10:45,920 --> 00:10:50,019
+weight, their bone density, menstrual
+periods, things that were of interest.
+
+205
+00:10:51,320 --> 00:10:52,930
+I'm just showing two of the variables
+here.
+
+206
+00:10:52,930 --> 00:10:56,210
+It's really easy to illustrate principle
+components analysis in two dimensions.
+
+207
+00:10:56,210 --> 00:10:58,550
+It gets really tricky to draw things in
+more dimensions so
+
+208
+00:10:58,550 --> 00:11:02,230
+I'm going to stick for now, and we'll get
+to a higher dimension problem later, but
+
+209
+00:11:02,230 --> 00:11:05,410
+I'm going to stick for now to two
+variables, two dimensions.
+
+210
+00:11:05,410 --> 00:11:07,750
+So, I have two variables, fat mass and
+weight.
+
+211
+00:11:07,750 --> 00:11:10,530
+As you would expect, fat mass and weight
+are highly correlated.
+
+212
+00:11:10,530 --> 00:11:14,970
+Your fat mass is just exactly how much
+the, measured by DEXA, exactly how
+
+213
+00:11:14,970 --> 00:11:19,280
+many pounds or kilograms of fat you have
+versus things that are not fat.
+
+214
+00:11:19,280 --> 00:11:22,300
+When I plot these two variables in a
+scatterplot,
+
+215
+00:11:22,300 --> 00:11:23,650
+you'll notice that they're highly related.
+
+216
+00:11:23,650 --> 00:11:26,840
+The higher your weight, Is, weight is on
+the x-axis here, the higher your
+
+217
+00:11:26,840 --> 00:11:30,240
+fat mass is, and I, it's kind of arbitrary
+which one I put on x versus y.
+
+218
+00:11:30,240 --> 00:11:32,290
+We just know that these are highly
+correlated.
+
+219
+00:11:32,290 --> 00:11:35,640
+We, they have, when I calculated the
+correlation coefficient here, they have a,
+
+220
+00:11:35,640 --> 00:11:37,550
+a correlation of 0.86.
+
+221
+00:11:37,550 --> 00:11:41,710
+In a way, these two variables are almost
+completely redundant.
+
+222
+00:11:41,710 --> 00:11:45,640
+Right, there's fat mass and weight are
+very, going to be so
+
+223
+00:11:45,640 --> 00:11:48,540
+tied together because you have more fat
+mass you probably weigh more as well.
+
+224
+00:11:49,550 --> 00:11:52,590
+One of the things you might do when you
+see something like this is
+
+225
+00:11:52,590 --> 00:11:56,750
+you might say well okay when I go to do my
+regression analysis, I'm only going to
+
+226
+00:11:56,750 --> 00:11:59,560
+look at fat mass or I'm only going to look
+at weights since they're redundant,
+
+227
+00:11:59,560 --> 00:12:00,700
+I really only need one of those.
+
+228
+00:12:00,700 --> 00:12:01,880
+Variables.
+
+229
+00:12:01,880 --> 00:12:03,390
+And people do that but its,
+
+230
+00:12:03,390 --> 00:12:06,980
+you're losing some information when you
+just throw in one of the variables out.
+
+231
+00:12:06,980 --> 00:12:10,120
+You've bothered to measure it, you don't
+want to just throw it out.
+
+232
+00:12:10,120 --> 00:12:13,000
+Also what, more realistically people do is
+they put
+
+233
+00:12:13,000 --> 00:12:15,630
+fat mass into the regression equation and
+look at the pay value,
+
+234
+00:12:15,630 --> 00:12:17,790
+then they weight into the regression
+equation they look at the pay value and
+
+235
+00:12:17,790 --> 00:12:20,620
+they choose the one that's sort of highest
+and of course that increases your
+
+236
+00:12:20,620 --> 00:12:23,570
+chances of type 1 errors, so you got to be
+a little bit careful about that.
+
+237
+00:12:25,100 --> 00:12:26,470
+A better solution.
+
+238
+00:12:26,470 --> 00:12:30,960
+Would be to say, can I extract as much
+information as possible from these two
+
+239
+00:12:30,960 --> 00:12:33,040
+variables together, from both of these
+variables.
+
+240
+00:12:33,040 --> 00:12:36,600
+I want to create a new variable that
+contains information from
+
+241
+00:12:36,600 --> 00:12:37,620
+both fat mass and
+
+242
+00:12:37,620 --> 00:12:43,100
+weight, and extracts, as much information
+as is possible into this new variable.
+
+243
+00:12:43,100 --> 00:12:45,830
+More information than either variable
+alone.
+
+244
+00:12:45,830 --> 00:12:47,350
+And that's what we're going to do.
+
+245
+00:12:47,350 --> 00:12:49,150
+Essentially with principle components
+analysis.
+
+246
+00:12:50,250 --> 00:12:52,310
+So, we're going to create a new variable.
+
+247
+00:12:52,310 --> 00:12:56,280
+That new variable is going to be the
+original two variables -
+
+248
+00:12:56,280 --> 00:12:57,210
+fat mass and weight.
+
+249
+00:12:57,210 --> 00:12:58,890
+All that I mean by linear combination.
+
+250
+00:12:58,890 --> 00:13:01,780
+So we're going to call this variable a
+component, call it component one.
+
+251
+00:13:01,780 --> 00:13:02,560
+Yeah.
+
+252
+00:13:02,560 --> 00:13:05,440
+All I mean by linear combination is you're
+going to take a persons,
+
+253
+00:13:05,440 --> 00:13:09,280
+a woman's fat mass value and multiply it
+by some coefficient and
+
+254
+00:13:09,280 --> 00:13:12,780
+then some weight and then you're going to
+take her weight value, you're going to
+
+255
+00:13:12,780 --> 00:13:16,220
+multiply that by some weight coefficient
+and then you're going to add those up.
+
+256
+00:13:16,220 --> 00:13:20,260
+When you do that you come up with a single
+number that has elements of
+
+257
+00:13:20,260 --> 00:13:22,620
+both fat mass and weight in it.
+
+258
+00:13:22,620 --> 00:13:25,370
+And the goal in principal components
+analysis is to
+
+259
+00:13:25,370 --> 00:13:28,610
+extract to get the most information out of
+both of those two variables and
+
+260
+00:13:28,610 --> 00:13:31,890
+the way that we do that is that we find
+the Betas,
+
+261
+00:13:31,890 --> 00:13:36,590
+this is the weights, Beta of f fat mass
+and Beta weight here that give
+
+262
+00:13:36,590 --> 00:13:40,330
+the new variable component one the maximal
+possible variance,
+
+263
+00:13:40,330 --> 00:13:43,940
+that means captures as much of the
+information as is available in the data.
+
+264
+00:13:43,940 --> 00:13:44,460
+Beta.
+
+265
+00:13:44,460 --> 00:13:48,510
+>> So you literally could imagine, so I
+could just you know try,
+
+266
+00:13:48,510 --> 00:13:55,650
+here's component one, if I put in 0.5 for
+fat mass, and I put in you know 0.4 for
+
+267
+00:13:55,650 --> 00:13:59,390
+weights, and then I calculate that
+variable for everybody in my data set and
+
+268
+00:13:59,390 --> 00:14:02,120
+then I calculate the variance of that
+component one in the normal way we
+
+269
+00:14:02,120 --> 00:14:06,050
+calculate variants for a single variable,
+And then I do it again.
+
+270
+00:14:06,050 --> 00:14:07,835
+I try, oh, let me try something else.
+
+271
+00:14:07,835 --> 00:14:10,310
+[LAUGH] Now, I'm going to get a variance
+here.
+
+272
+00:14:10,310 --> 00:14:14,700
+Maybe I'm get a variance of 1.4, and then
+I try something else.
+
+273
+00:14:14,700 --> 00:14:16,760
+Let me try 0.3 for fat mass.
+
+274
+00:14:16,760 --> 00:14:19,075
+You can see that this is not an efficient
+way to solve this problem.
+
+275
+00:14:19,075 --> 00:14:22,780
+0.2 for weight and now, you know, maybe I
+get a variance of 1.5.
+
+276
+00:14:22,780 --> 00:14:25,650
+If I try all possible combinations.
+
+277
+00:14:25,650 --> 00:14:26,530
+Of the betas.
+
+278
+00:14:26,530 --> 00:14:30,360
+What, which one combinations is going to
+give me the highest variance for
+
+279
+00:14:30,360 --> 00:14:31,980
+this new variable?
+
+280
+00:14:31,980 --> 00:14:35,250
+Of course you don't want to try to do that
+out by trial and error.
+
+281
+00:14:35,250 --> 00:14:38,140
+But it sounds kind of like a maximization
+problem, so
+
+282
+00:14:38,140 --> 00:14:41,370
+we can do that out with a little bit of
+calculus or
+
+283
+00:14:41,370 --> 00:14:44,920
+a little bit of linear algebra, and that's
+exactly how it's done mathematically.
+
+284
+00:14:44,920 --> 00:14:47,360
+I'm not going to go into the details here,
+
+285
+00:14:47,360 --> 00:14:50,460
+but it basically involves a little bit of
+linear algebra, which is.
+
+286
+00:14:50,460 --> 00:14:54,990
+Beyond the scope of this course but all
+your trying to do
+
+287
+00:14:54,990 --> 00:14:59,050
+the end goal here is to get the betas that
+maximize the variance.
+
+288
+00:14:59,050 --> 00:15:02,190
+And rather than trying to actually do out
+the linear algebra here.
+
+289
+00:15:02,190 --> 00:15:06,010
+We can, in a way, solve this problem
+pictorially, with a picture.
+
+290
+00:15:06,010 --> 00:15:06,870
+And so now that's what we're going to do.
+
+291
+00:15:06,870 --> 00:15:07,900
+We're going to solve this problem with a
+picture.
+
+292
+00:15:07,900 --> 00:15:11,070
+What we're going to do is say, well hey,
+here's this scatterplot.
+
+293
+00:15:11,070 --> 00:15:16,420
+The, the lie, the Component one of the
+variant, the component that I can come
+
+294
+00:15:16,420 --> 00:15:20,210
+up with that has the maximum variance will
+correspond to [UNKNOWN] draw an ellipse.
+
+295
+00:15:20,210 --> 00:15:23,830
+Around my my scatter plot, my data points
+and
+
+296
+00:15:23,830 --> 00:15:30,310
+I find the direction of the of the ellipse
+that has the maximal spread.
+
+297
+00:15:31,430 --> 00:15:36,410
+That will correspond to the line of
+maximum variance.
+
+298
+00:15:36,410 --> 00:15:38,590
+This will be my first principal component.
+
+299
+00:15:41,090 --> 00:15:43,450
+I'm just trying to find the line that.
+
+300
+00:15:43,450 --> 00:15:47,180
+It represents the maximal spread of the
+data that is my first principal component,
+
+301
+00:15:47,180 --> 00:15:50,620
+that will correspond to giving the
+variable with the maximal possible
+
+302
+00:15:50,620 --> 00:15:54,980
+variance and then whatever the betas are
+that define this line would be
+
+303
+00:15:54,980 --> 00:15:56,949
+my weights to get component one.
+
+304
+00:15:58,000 --> 00:16:01,280
+So that's how we can find it sort of
+pictorially just conceptually what we're
+
+305
+00:16:01,280 --> 00:16:05,160
+doing is we're finding that line of
+maximum variance.
+
+306
+00:16:05,160 --> 00:16:09,530
+So that's the first principal component
+called pc1 here.
+
+307
+00:16:10,690 --> 00:16:15,530
+Now principal component one is just a
+Single variable.
+
+308
+00:16:15,530 --> 00:16:19,190
+It is, it's represented by a line, because
+it only has one dimension.
+
+309
+00:16:20,210 --> 00:16:21,720
+When you look at that line in a graphic,
+
+310
+00:16:21,720 --> 00:16:24,160
+you feel like you're in two dimensions,
+right?
+
+311
+00:16:24,160 --> 00:16:26,590
+Because, if I for
+
+312
+00:16:26,590 --> 00:16:29,950
+example, take this particular observation,
+this woman right here.
+
+313
+00:16:29,950 --> 00:16:32,330
+And I say, well what's for her value for
+principle component?
+
+314
+00:16:32,330 --> 00:16:33,860
+One, how am I going to find that?
+
+315
+00:16:33,860 --> 00:16:37,760
+To find that, what I'm asking is where
+does she lie along this line,
+
+316
+00:16:37,760 --> 00:16:42,180
+this line of maximum variances principle
+components one line.
+
+317
+00:16:42,180 --> 00:16:43,760
+Where does she lie on this line?
+
+318
+00:16:43,760 --> 00:16:47,070
+Well it's actually not obvious where she
+lies on this line, right?
+
+319
+00:16:47,070 --> 00:16:49,500
+Relative to the, to zero on this line.
+
+320
+00:16:49,500 --> 00:16:50,470
+Where does she lie on this line?
+
+321
+00:16:50,470 --> 00:16:53,370
+It's not obvious and I, you know, where
+does this woman lie?
+
+322
+00:16:53,370 --> 00:16:54,960
+What's her value for principle component
+one?
+
+323
+00:16:54,960 --> 00:16:56,650
+Where does she lie along this line?
+
+324
+00:16:56,650 --> 00:17:03,950
+It's not really obvious because we'd like
+to have our x-axis, so this is where,
+
+325
+00:17:03,950 --> 00:17:06,980
+its like we're on a coordinate space here
+but it's in the wrong direction.
+
+326
+00:17:06,980 --> 00:17:11,760
+We'd like to have our x-axis lined up
+horizontally we just, it's easier for
+
+327
+00:17:11,760 --> 00:17:15,730
+us to look at things where the x-axis
+corresponds to the horizontal directions.
+
+328
+00:17:15,730 --> 00:17:20,310
+So what I want to do is rotate this whole
+scatter plot such as the first
+
+329
+00:17:20,310 --> 00:17:24,320
+principal component that line of maximum
+variation lines up with the x-axis.
+
+330
+00:17:24,320 --> 00:17:27,470
+So that's what I've done, that's all that
+I'm doing in the right hand panel here.
+
+331
+00:17:27,470 --> 00:17:28,990
+We've just rotated the graphic.
+
+332
+00:17:28,990 --> 00:17:32,720
+And we can do this, we can rotate all
+these points just with a little bit of
+
+333
+00:17:32,720 --> 00:17:36,370
+linear algebra or we can just you know
+literally rotate the graph here.
+
+334
+00:17:36,370 --> 00:17:41,360
+So if I rotate this graphic it makes it
+really easy to see where what every
+
+335
+00:17:41,360 --> 00:17:44,690
+woman's value is for the part first
+principle component, so
+
+336
+00:17:44,690 --> 00:17:46,630
+I'll take this woman I've highlighted in
+black here.
+
+337
+00:17:46,630 --> 00:17:54,010
+So in the original scatter plot, she had a
+value of negative 1.74 for
+
+338
+00:17:54,010 --> 00:17:58,650
+her fat mass and negative 1.26 for her
+weights.
+
+339
+00:17:58,650 --> 00:18:02,240
+I should put the x value negative 1.26,
+
+340
+00:18:02,240 --> 00:18:07,820
+the y value is -1.74 So that was her
+coordinates in the original scatter plot.
+
+341
+00:18:07,820 --> 00:18:09,190
+When I rotate this graphic,
+
+342
+00:18:09,190 --> 00:18:13,970
+I'm now going to get her coordinates
+relative to the first principal component,
+
+343
+00:18:13,970 --> 00:18:18,090
+and also the second principal component
+which is just the perpendicular line here.
+
+344
+00:18:18,090 --> 00:18:22,220
+So, notice that when I rotate this
+graphic, she now has new coordinates.
+
+345
+00:18:22,220 --> 00:18:26,170
+So, now her x value is just her value on
+component one.
+
+346
+00:18:26,170 --> 00:18:28,095
+That x value actually turns out to be
+here.
+
+347
+00:18:28,095 --> 00:18:30,030
+-2.12.
+You can see that in
+
+348
+00:18:30,030 --> 00:18:35,420
+this new coordinate axis, she falls at
+about -2.1, for her x direction.
+
+349
+00:18:35,420 --> 00:18:37,420
+That's her value for principle component
+one.
+
+350
+00:18:37,420 --> 00:18:42,410
+In the Y direction, she falls at about
+-.34.
+
+351
+00:18:42,410 --> 00:18:47,700
+And that's here value for the second
+principle component.
+
+352
+00:18:47,700 --> 00:18:50,000
+And where did these values come from?
+
+353
+00:18:50,000 --> 00:18:52,620
+Well, this just came from me solving for
+those betas.
+
+354
+00:18:52,620 --> 00:18:56,960
+So when I solve for principal component
+one, the beta for
+
+355
+00:18:56,960 --> 00:19:03,300
+fat mass turned out to be .707, the beta
+for weight turned out to be .707.
+
+356
+00:19:03,300 --> 00:19:05,960
+So when I want to calculate her value.
+
+357
+00:19:05,960 --> 00:19:07,530
+For principal component one,
+
+358
+00:19:07,530 --> 00:19:10,380
+I'm just going to plug in her actual fat
+mass and weight.
+
+359
+00:19:10,380 --> 00:19:17,460
+So I weigh 0.707 times negative 1.26 plus
+0.707 times negative 1.74.
+
+360
+00:19:17,460 --> 00:19:22,660
+That gives me, when I calculate it out, a
+value of negative 2.12.
+
+361
+00:19:22,660 --> 00:19:27,740
+And so that will be her X value in this
+new graph or that will be her value for
+
+362
+00:19:27,740 --> 00:19:29,030
+principle component one.
+
+363
+00:19:30,160 --> 00:19:31,280
+What does it mean?
+
+364
+00:19:31,280 --> 00:19:33,750
+Well, this is in standard deviation units.
+
+365
+00:19:33,750 --> 00:19:35,820
+So she's about two standard deviations
+below normal on this
+
+366
+00:19:35,820 --> 00:19:36,730
+first principle component.
+
+367
+00:19:36,730 --> 00:19:40,620
+She's very light and petite compared to
+the rest of the sample because.
+
+368
+00:19:40,620 --> 00:19:43,950
+The first principle component here is
+representing some combination of
+
+369
+00:19:43,950 --> 00:19:46,710
+weight and fat mass.
+
+370
+00:19:46,710 --> 00:19:48,260
+That's the first principle component.
+
+371
+00:19:48,260 --> 00:19:51,510
+The second principle component is chosen
+to be
+
+372
+00:19:51,510 --> 00:19:55,440
+perpendicular to the first uh,principle
+component.
+
+373
+00:19:55,440 --> 00:19:58,710
+And so in two space, when we have just two
+dimensions,
+
+374
+00:19:58,710 --> 00:20:01,580
+there's only one possible line here, I've
+drawn it in, that's.
+
+375
+00:20:01,580 --> 00:20:03,630
+This is the second principle component.
+
+376
+00:20:03,630 --> 00:20:08,500
+And that becomes the Y axis in our new
+rotated space.
+
+377
+00:20:08,500 --> 00:20:11,440
+And they'll be some beta coefficients
+associated with that
+
+378
+00:20:11,440 --> 00:20:16,340
+if you plugged them in, you would get
+-0.34 for this particular woman.
+
+379
+00:20:16,340 --> 00:20:18,580
+So now we have just have two new
+variables.
+
+380
+00:20:18,580 --> 00:20:22,410
+Essentially we've got these by finding
+this line of maximum variation rotating,
+
+381
+00:20:22,410 --> 00:20:24,230
+so it lined up with the X axis.
+
+382
+00:20:24,230 --> 00:20:26,570
+And then finding the, the second principle
+component.
+
+383
+00:20:26,570 --> 00:20:32,210
+Is perpendicular to that, and now we have
+two new variables.
+
+384
+00:20:32,210 --> 00:20:35,420
+The first variable represents some
+combination of weight and fat mass,
+
+385
+00:20:35,420 --> 00:20:40,164
+the second variable represents any left
+over variability once you have done
+
+386
+00:20:40,164 --> 00:20:45,740
+principal of components one.
+
+387
+00:20:45,740 --> 00:20:48,010
+I just want to say a bit more about the
+second principal component.
+
+388
+00:20:48,010 --> 00:20:49,490
+And I have a clean graphic here.
+
+389
+00:20:49,490 --> 00:20:51,360
+So, when I'm in two dimensions,
+
+390
+00:20:51,360 --> 00:20:54,290
+there's only one line perpendicular to the
+first principle component.
+
+391
+00:20:54,290 --> 00:20:57,910
+So that's going to be the second principle
+component, and we're done.
+
+392
+00:20:57,910 --> 00:21:00,640
+However, that's, you know, usually it's
+more interesting than that.
+
+393
+00:21:00,640 --> 00:21:03,770
+So usually, if we're, so say, imagine
+you're in three dimensions.
+
+394
+00:21:03,770 --> 00:21:04,520
+What's the second going to,
+
+395
+00:21:04,520 --> 00:21:07,070
+principle component going to be when I
+start with three variables and I'm in.
+
+396
+00:21:07,070 --> 00:21:08,260
+Three dimensions.
+
+397
+00:21:08,260 --> 00:21:10,910
+Well that's going to be, I have to find
+the line of
+
+398
+00:21:10,910 --> 00:21:15,840
+maximum variation that is perpendicular to
+the first principal component.
+
+399
+00:21:15,840 --> 00:21:18,430
+And if I'm in three space, there's
+actually many lines I can choose from.
+
+400
+00:21:18,430 --> 00:21:23,270
+Imagine just kind of rotating 360 degrees
+around the first line in space.
+
+401
+00:21:23,270 --> 00:21:28,000
+You're going to find whatever direction
+where the, the remaining where the.
+
+402
+00:21:28,000 --> 00:21:30,320
+Remaining variance is the largest.
+
+403
+00:21:30,320 --> 00:21:32,330
+So you have the biggest spread of the
+data, I guess.
+
+404
+00:21:33,390 --> 00:21:35,190
+So it gets more interesting in multiple
+dimensions.
+
+405
+00:21:35,190 --> 00:21:37,940
+But you're always choosing principle
+components that are going to
+
+406
+00:21:37,940 --> 00:21:40,980
+be perpendicular to the la, to all the
+other ones.
+
+407
+00:21:40,980 --> 00:21:43,680
+So for example, if I went, if I was in
+really high space.
+
+408
+00:21:43,680 --> 00:21:47,030
+And I had wanted to go for a third
+principle component.
+
+409
+00:21:47,030 --> 00:21:49,790
+Then the principal component three is
+going to be the line of
+
+410
+00:21:49,790 --> 00:21:53,940
+maximal variation that's perpendicular to
+both principal component one and
+
+411
+00:21:53,940 --> 00:21:55,690
+two and you can keep going.
+
+412
+00:21:56,730 --> 00:21:59,390
+So you're going to come out with a whole
+set of principal components.
+
+413
+00:21:59,390 --> 00:22:00,090
+At the end of the day,
+
+414
+00:22:00,090 --> 00:22:05,660
+we may throw some of the ones that some of
+the lesser ones away in the end.
+
+415
+00:22:05,660 --> 00:22:06,410
+Now, but we end up with,
+
+416
+00:22:06,410 --> 00:22:08,970
+if we start with two variables, we end up
+with two principle components.
+
+417
+00:22:08,970 --> 00:22:09,900
+If we start with three variables,
+
+418
+00:22:09,900 --> 00:22:12,620
+we'll end up with three principle
+components and so on.
+
+419
+00:22:12,620 --> 00:22:16,040
+Now I just applied the principal
+components analysis to the simple data
+
+420
+00:22:16,040 --> 00:22:19,360
+set, where I just have weight and fat mass
+and I've rounded these values.
+
+421
+00:22:19,360 --> 00:22:20,970
+So here's some of the data.
+
+422
+00:22:20,970 --> 00:22:24,590
+Here was the weight and fatmass
+combinations for certain woman.
+
+423
+00:22:24,590 --> 00:22:28,480
+Here is their translation into principle
+component one and principle component two.
+
+424
+00:22:28,480 --> 00:22:29,760
+So all of these the.
+
+425
+00:22:29,760 --> 00:22:33,220
+Two variables when you fat mass get
+translated into two new variables,
+
+426
+00:22:33,220 --> 00:22:38,640
+principle component one and principle
+component two and again, we may decide,
+
+427
+00:22:38,640 --> 00:22:40,190
+and I'm going to show you in a minute,
+
+428
+00:22:40,190 --> 00:22:43,300
+that principle component one captures
+enough of the information of weight and
+
+429
+00:22:43,300 --> 00:22:45,430
+fat mass that we no longer need principle
+component number two and
+
+430
+00:22:45,430 --> 00:22:48,000
+we just kind of discard that and not take
+that.
+
+431
+00:22:48,000 --> 00:22:50,740
+For, future analyses for further analyses.
+
+432
+00:22:51,740 --> 00:22:53,380
+Now, these are just new variables,
+
+433
+00:22:53,380 --> 00:22:57,700
+every woman gets a new values on this, in
+this data set.
+
+434
+00:22:59,280 --> 00:23:04,110
+We can do statistics about these new
+variables, so here's some,
+
+435
+00:23:04,110 --> 00:23:07,930
+I ran some basic descriptor statistics
+about my new principle components.
+
+436
+00:23:07,930 --> 00:23:11,370
+And notice that I get standard deviations.
+
+437
+00:23:11,370 --> 00:23:14,450
+The standard deviation for principal
+component one is very high; for
+
+438
+00:23:14,450 --> 00:23:17,040
+principal component two, it's very, it's a
+lot lower.
+
+439
+00:23:17,040 --> 00:23:18,590
+And you can see that in a picture, right,
+
+440
+00:23:18,590 --> 00:23:22,760
+I mean, here's a huge amount of variation
+in x and very little variation in y.
+
+441
+00:23:24,710 --> 00:23:25,860
+Let me just square these,
+
+442
+00:23:25,860 --> 00:23:28,670
+because it's useful to talk about
+variances here, so if I square.
+
+443
+00:23:28,670 --> 00:23:30,990
+Where 1.36 the variants for
+
+444
+00:23:30,990 --> 00:23:36,170
+principle component one actually turns out
+to be 1.86 and the variants for
+
+445
+00:23:36,170 --> 00:23:39,640
+principle components so that's principle
+component one the variants for
+
+446
+00:23:39,640 --> 00:23:45,046
+principle component two if I square .378
+that comes out to be .14.
+
+447
+00:23:45,046 --> 00:23:49,050
+So how much variance did we start with in
+this problem.
+
+448
+00:23:49,050 --> 00:23:51,320
+Both variables were standardized, fat mass
+and weight.
+
+449
+00:23:51,320 --> 00:23:56,000
+So the variance for fat mass, was
+originally 1.0.
+
+450
+00:23:56,000 --> 00:23:58,240
+The variance for weight was originally
+1.0,
+
+451
+00:23:58,240 --> 00:24:00,110
+because these were standardized variables.
+
+452
+00:24:00,110 --> 00:24:01,640
+Standard deviations is one, so variance.
+
+453
+00:24:01,640 --> 00:24:02,190
+This one.
+
+454
+00:24:02,190 --> 00:24:06,740
+So the total variance we started with was
+2.0.
+
+455
+00:24:06,740 --> 00:24:08,220
+You add these two together.
+
+456
+00:24:09,430 --> 00:24:12,120
+What we've done is we've partitioned that
+variance into.
+
+457
+00:24:12,120 --> 00:24:15,500
+We've put a whole bunch of that variance
+in the principle component and very lean,
+
+458
+00:24:15,500 --> 00:24:18,660
+meaning there was very little left over
+for the second principle component.
+
+459
+00:24:18,660 --> 00:24:21,760
+We've we've now taken our, our 2.0, our
+variance of two,
+
+460
+00:24:21,760 --> 00:24:24,450
+and we've divided it into, almost all of
+it
+
+461
+00:24:24,450 --> 00:24:26,910
+went into the first principle component
+with a variance of 1.86.
+
+462
+00:24:26,910 --> 00:24:29,070
+Very little variance was left over, and
+
+463
+00:24:29,070 --> 00:24:34,440
+in fact if you just divide 1.86, divide
+that by 2.0, you'll see
+
+464
+00:24:34,440 --> 00:24:38,640
+that 93% of the variance is now explained
+by that first principle component.
+
+465
+00:24:38,640 --> 00:24:40,950
+Which means if I throw out the second
+principle component, and
+
+466
+00:24:40,950 --> 00:24:44,480
+I don't use it for further analyses, I've
+only lost 7% of the information.
+
+467
+00:24:44,480 --> 00:24:46,560
+Of the variance in my data.
+
+468
+00:24:46,560 --> 00:24:48,780
+So that's very useful to understand.
+
+469
+00:24:48,780 --> 00:24:52,400
+And next I also ran the Pearson's
+correlation coefficients,
+
+470
+00:24:52,400 --> 00:24:56,920
+the correlation matrix between my two new
+variables and what do you notice?
+
+471
+00:24:56,920 --> 00:24:59,210
+So the correlation is exactly zero.
+
+472
+00:24:59,210 --> 00:25:01,510
+They are completely uncorrelated.
+
+473
+00:25:01,510 --> 00:25:03,230
+And that's another nice feature.
+
+474
+00:25:03,230 --> 00:25:05,790
+We end up with at the end of the principle
+components analysis,
+
+475
+00:25:05,790 --> 00:25:09,950
+we've extracted, we've untangled those two
+variables.
+
+476
+00:25:09,950 --> 00:25:14,040
+So they're totally uncorrelated so
+principle component two.
+
+477
+00:25:14,040 --> 00:25:17,470
+Is representing sort of whatever we
+haven't.
+
+478
+00:25:17,470 --> 00:25:19,920
+Different information than principle
+component one.
+
+479
+00:25:19,920 --> 00:25:23,320
+Whatever we haven't explained in that
+first principle component.
+
+480
+00:25:23,320 --> 00:25:27,430
+And I just want to show you because you're
+going to see in your output from SAS or
+
+481
+00:25:27,430 --> 00:25:29,930
+whatever statistical program your using.
+
+482
+00:25:29,930 --> 00:25:31,470
+You're going to see the term eigenvalues,
+
+483
+00:25:31,470 --> 00:25:34,580
+don't get scared by that it's not a big
+deal.
+
+484
+00:25:34,580 --> 00:25:40,620
+The eigenvalue Is just the variants that
+each one of the new variables.
+
+485
+00:25:40,620 --> 00:25:43,364
+So, for example, the variants of principle
+[UNKNOWN] was 1.86.
+
+486
+00:25:43,364 --> 00:25:46,130
+For principle [UNKNOWN] one and two, it
+was .14.
+
+487
+00:25:46,130 --> 00:25:51,470
+The Eigenvalue is just the variance of
+those new variables.
+
+488
+00:25:51,470 --> 00:25:56,430
+And Eigenvalue's a term that comes form
+linear algebra, so what we did.
+
+489
+00:25:56,430 --> 00:25:59,720
+In order to get, or to do an principle
+components analysis is to
+
+490
+00:25:59,720 --> 00:26:03,250
+actually take the Eigenvectors of the
+correlation matrix so
+
+491
+00:26:03,250 --> 00:26:07,220
+you've applied some linear algebra to the
+correlation matrix, the term Eigenvalue is
+
+492
+00:26:07,220 --> 00:26:10,620
+in there because it's something we can do
+mathematically but it turns out that
+
+493
+00:26:10,620 --> 00:26:14,840
+that equals, at the end of the day, just a
+variance of each of those variables.
+
+494
+00:26:14,840 --> 00:26:18,330
+Somewhere later in the output at least in
+sash you see a little block that says
+
+495
+00:26:18,330 --> 00:26:22,450
+variance explained by each factor and you
+notice those are the exact same numbers so
+
+496
+00:26:22,450 --> 00:26:26,400
+it's it's giving you a better layperson's
+interpretation of those numbers,
+
+497
+00:26:26,400 --> 00:26:29,650
+you can find that is exactly the variance
+explained by each factor.
+
+498
+00:26:29,650 --> 00:26:33,710
+You notice that I'm sometimes switching
+between the terms factor and
+
+499
+00:26:33,710 --> 00:26:34,760
+principal component.
+
+500
+00:26:36,200 --> 00:26:40,570
+In fact, a lot of times when you want to
+do Principal Component Analysis,
+
+501
+00:26:40,570 --> 00:26:43,140
+you're actually going to run a factor
+analysis.
+
+502
+00:26:43,140 --> 00:26:45,636
+At least the algorithm in the computer.
+
+503
+00:26:45,636 --> 00:26:49,440
+It's, Its uh,principle components is often
+created as
+
+504
+00:26:49,440 --> 00:26:54,170
+a specific instance of a factor analysis
+so sometimes you'll see that you're
+
+505
+00:26:54,170 --> 00:26:57,260
+actually doing it within the factor
+analysis function so
+
+506
+00:26:57,260 --> 00:26:59,570
+you might get out things at the end of the
+day that are called factors.
+
+507
+00:26:59,570 --> 00:27:03,060
+So don't worry about the fact that I'm
+sort of flopping between those two terms.
+
+508
+00:27:03,060 --> 00:27:05,290
+All right, so what did we end up with at
+the end of the day?
+
+509
+00:27:05,290 --> 00:27:07,220
+We started with fat mass and weight.
+
+510
+00:27:07,220 --> 00:27:10,000
+Now we've got two new variables.
+
+511
+00:27:10,000 --> 00:27:11,020
+Two new components.
+
+512
+00:27:11,020 --> 00:27:12,340
+Principle components one and two.
+
+513
+00:27:12,340 --> 00:27:14,100
+What do those actually mean though?
+
+514
+00:27:14,100 --> 00:27:16,720
+It was easy to figure out what they meant
+for the dice example, but
+
+515
+00:27:16,720 --> 00:27:18,770
+what do they mean for this example?
+
+516
+00:27:18,770 --> 00:27:20,410
+That's where we have to do a little bit of
+thinking.
+
+517
+00:27:20,410 --> 00:27:23,140
+It's probably pretty easy to guess what
+they mean here because we
+
+518
+00:27:23,140 --> 00:27:24,780
+have such a simple example.
+
+519
+00:27:24,780 --> 00:27:27,260
+But in the next module, we're going to
+talk a little bit more about how to
+
+520
+00:27:27,260 --> 00:27:29,460
+figure out what the principle components
+mean.
+
+521
+00:27:29,460 --> 00:27:32,810
+So principal component one here is some
+combination of, you know,
+
+522
+00:27:32,810 --> 00:27:34,820
+your weight and your fat mass.
+
+523
+00:27:36,270 --> 00:27:38,990
+Of course, those two things are highly
+related, so
+
+524
+00:27:38,990 --> 00:27:41,210
+it probably relates the fact that you're
+going to have a higher
+
+525
+00:27:41,210 --> 00:27:44,870
+principal component one if you're kind of
+a bigger person, you have more body size,
+
+526
+00:27:44,870 --> 00:27:47,750
+because the bigger you are, just like
+tall.
+
+527
+00:27:47,750 --> 00:27:52,360
+Big boned, that's going to mean that you
+weigh more, and it's also going to mean
+
+528
+00:27:52,360 --> 00:27:54,360
+that you have more fat mass, because,
+just, the bigger you are,
+
+529
+00:27:54,360 --> 00:27:57,400
+even if you're really lean, you're just
+going to carry more fat mass.
+
+530
+00:27:57,400 --> 00:28:01,830
+It's also, there's also just a dimension
+of just how much body fat you carry for
+
+531
+00:28:01,830 --> 00:28:03,030
+a particular body size.
+
+532
+00:28:03,030 --> 00:28:05,550
+That's also encapsulated in this principal
+component one, so
+
+533
+00:28:05,550 --> 00:28:09,260
+you're, it means something about that
+you're both a bigger person.
+
+534
+00:28:09,260 --> 00:28:12,620
+And that you have more, you're carrying
+more body fat.
+
+535
+00:28:12,620 --> 00:28:16,850
+Well what is principal component two then
+probably relate to?
+
+536
+00:28:16,850 --> 00:28:18,140
+Well it likely, in this case,
+
+537
+00:28:18,140 --> 00:28:21,930
+relates to weight really is just fat mass
+plus lean mass.
+
+538
+00:28:21,930 --> 00:28:25,630
+So weight is, you know, one, fat mass is
+one part or weight.
+
+539
+00:28:25,630 --> 00:28:28,010
+The other part of weight that we're
+missing,
+
+540
+00:28:28,010 --> 00:28:30,060
+in a way it's like the dice example,
+right?
+
+541
+00:28:30,060 --> 00:28:32,340
+The fat mass plus the lean mass equals the
+weight.
+
+542
+00:28:32,340 --> 00:28:34,070
+So, the piece that we're missing in that.
+
+543
+00:28:34,070 --> 00:28:37,040
+Sum, that got you the total weight is the
+lean mass, so
+
+544
+00:28:37,040 --> 00:28:42,810
+probably a principle component two
+represents something about the lean mass,
+
+545
+00:28:42,810 --> 00:28:46,350
+so for a given body size and body fat
+level, there's going to be
+
+546
+00:28:46,350 --> 00:28:49,090
+some variation in the amount of lean mass,
+and that's capturing that.
+
+547
+00:28:49,090 --> 00:28:50,840
+There isn't a lot of variation though,
+
+548
+00:28:50,840 --> 00:28:53,940
+because remember there's not too much you
+know, variability left.
+
+549
+00:28:53,940 --> 00:28:54,950
+For a given body size and
+
+550
+00:28:54,950 --> 00:28:57,090
+body fat there's probably not going to be
+a whole heck of a lot of.
+
+551
+00:28:57,090 --> 00:28:57,820
+Variation lean mass.
+
+552
+00:28:57,820 --> 00:28:59,220
+So it has something to do with the lean
+mass.
+
+553
+00:28:59,220 --> 00:29:02,360
+And again, we're probably not even
+going to worry about this one.
+
+554
+00:29:02,360 --> 00:29:06,030
+For this example we're probably going to
+use principal component one for
+
+555
+00:29:06,030 --> 00:29:09,750
+the rest of our analyses because it
+captures almost all of the information.

@@ -1,0 +1,1406 @@
+1
+00:00:05,690 --> 00:00:06,363
+[BLANK_AUDIO]
+
+2
+00:00:06,363 --> 00:00:07,371
+In this next module,
+
+3
+00:00:07,371 --> 00:00:10,660
+I'm going to introduce you to Univariate
+repeated-measures ANOVA.
+
+4
+00:00:10,660 --> 00:00:13,930
+And, in this module, we're only going to
+look at the time effect.
+
+5
+00:00:13,930 --> 00:00:17,660
+So we're not going to complicate the
+picture by comparing groups quite yet.
+
+6
+00:00:19,620 --> 00:00:23,990
+So I've got here a very simple example
+data set with only six subjects in it.
+
+7
+00:00:23,990 --> 00:00:27,400
+I'm choosing a very simple data set,
+because I actually want to do out all of
+
+8
+00:00:27,400 --> 00:00:30,990
+the sum of squares, all the math on this
+to illustrate how it works.
+
+9
+00:00:30,990 --> 00:00:33,060
+So we're going to keep it small.
+
+10
+00:00:33,060 --> 00:00:33,700
+And, again, for
+
+11
+00:00:33,700 --> 00:00:37,620
+this module, we're going to be ignoring
+the distinction of what group you're in.
+
+12
+00:00:37,620 --> 00:00:40,100
+So, we're only going to be comparing,
+whether or
+
+13
+00:00:40,100 --> 00:00:42,080
+not, there's any differences over time.
+
+14
+00:00:42,080 --> 00:00:45,810
+That is time point 1, time point 2, time
+point 3, and time point 4.
+
+15
+00:00:45,810 --> 00:00:48,960
+So, this is six subjects and they've had
+something measured.
+
+16
+00:00:48,960 --> 00:00:52,810
+Let's say it's a score on a depression
+questionnaire.
+
+17
+00:00:52,810 --> 00:00:55,870
+They've had that measured at four time
+points.
+
+18
+00:00:55,870 --> 00:00:59,550
+And for a, an ANOVA analysis, what we're
+asking is whether or
+
+19
+00:00:59,550 --> 00:01:03,920
+not the mean depression score differs
+across the different time point periods.
+
+20
+00:01:06,740 --> 00:01:09,190
+It's a simple dataset, and of course we're
+going to want to plot it.
+
+21
+00:01:09,190 --> 00:01:12,830
+And since I only have six subjects, I
+might as well plot an individual line for
+
+22
+00:01:12,830 --> 00:01:14,820
+each subject, and that's what I've done
+here.
+
+23
+00:01:14,820 --> 00:01:18,130
+So this is the depression score over time
+for the six subjects.
+
+24
+00:01:18,130 --> 00:01:18,970
+And you can see,
+
+25
+00:01:18,970 --> 00:01:22,910
+well, they seem to be going down a little
+bit towards time point three.
+
+26
+00:01:22,910 --> 00:01:24,780
+And then, rebounding a little bit at time
+point four.
+
+27
+00:01:24,780 --> 00:01:27,640
+But there is some individual variability
+there.
+
+28
+00:01:31,090 --> 00:01:34,340
+Before we jump into actually how to
+calculate repeated measures ANOVA,
+
+29
+00:01:34,340 --> 00:01:37,430
+I just want to point out that there are
+some assumptions.
+
+30
+00:01:37,430 --> 00:01:39,120
+So, as with any linear model,
+
+31
+00:01:39,120 --> 00:01:42,510
+we are assuming that we have a normally
+distributed outcome.
+
+32
+00:01:42,510 --> 00:01:45,930
+So I'm going to assume that this
+depression score is reasonably normally
+
+33
+00:01:45,930 --> 00:01:46,950
+distributed here.
+
+34
+00:01:48,010 --> 00:01:51,510
+The other assumption of repeated measures
+ANOVA is analogous to
+
+35
+00:01:51,510 --> 00:01:53,580
+the homogeneity of variance assumption.
+
+36
+00:01:53,580 --> 00:01:56,120
+That we had when we did regular ANOVA.
+
+37
+00:01:56,120 --> 00:01:59,880
+Remember, that assumption was that the
+variances for each group were equal.
+
+38
+00:01:59,880 --> 00:02:01,520
+It gets a little more complicated, when,
+
+39
+00:02:01,520 --> 00:02:03,610
+when we jump to repeated measures, in
+ANOVA.
+
+40
+00:02:03,610 --> 00:02:08,100
+Because now, not only do the variances at
+each time point have to be equal.
+
+41
+00:02:08,100 --> 00:02:09,040
+But, we also,
+
+42
+00:02:09,040 --> 00:02:12,190
+because we've got correlation across the
+different time points,.
+
+43
+00:02:12,190 --> 00:02:16,240
+The other assumption is that we have equal
+correlation across the different
+
+44
+00:02:16,240 --> 00:02:17,020
+time points.
+
+45
+00:02:17,020 --> 00:02:19,326
+That's the same as an exchangeable
+correlation matrix.
+
+46
+00:02:19,326 --> 00:02:21,875
+So this is sometimes called Compound
+Symmetry.
+
+47
+00:02:21,875 --> 00:02:23,513
+But again, sort of analogous,
+
+48
+00:02:23,513 --> 00:02:26,600
+a more complicated version of
+homogeneative variances.
+
+49
+00:02:28,240 --> 00:02:30,210
+So let me spend just a little bit of time
+on that.
+
+50
+00:02:30,210 --> 00:02:34,490
+There are ways to correct for violations
+of this assumption as I'll show you.
+
+51
+00:02:34,490 --> 00:02:37,660
+But compound symmetry requires that the
+variances of
+
+52
+00:02:37,660 --> 00:02:40,480
+the outcome variable ought be the same at
+each time point.
+
+53
+00:02:40,480 --> 00:02:43,782
+Maybe that's, that's essentially
+homogenially the variances.
+
+54
+00:02:43,782 --> 00:02:47,148
+But it has this additional assumption that
+now that we have correlation across
+
+55
+00:02:47,148 --> 00:02:48,170
+time points.
+
+56
+00:02:48,170 --> 00:02:51,350
+We're assuming that the correlation
+between repeated measurements
+
+57
+00:02:51,350 --> 00:02:53,750
+are equal across different time points.
+
+58
+00:02:53,750 --> 00:02:56,350
+Regardless of the time interval between
+measurements.
+
+59
+00:02:56,350 --> 00:02:59,819
+And this often doesn't make sense because
+we're saying that time one and
+
+60
+00:02:59,819 --> 00:03:03,620
+time four are just as correlated as time
+three and time four.
+
+61
+00:03:03,620 --> 00:03:07,640
+When oftentimes, closer, measurements are
+going to be
+
+62
+00:03:07,640 --> 00:03:10,410
+more correlated with another than farther
+measurements.
+
+63
+00:03:10,410 --> 00:03:14,942
+But this is one of the assumptions of
+repeated measures ANOVA.
+
+64
+00:03:14,942 --> 00:03:18,050
+So how do we test those assumptions?
+
+65
+00:03:18,050 --> 00:03:21,040
+So we can look at the variances at each
+time point just visually.
+
+66
+00:03:21,040 --> 00:03:23,710
+So you can see that he variance in
+depressions course seems to be
+
+67
+00:03:23,710 --> 00:03:27,089
+a little bit bigger at time point one than
+at time point four, just visually.
+
+68
+00:03:28,230 --> 00:03:31,070
+So if I'm just looking at the variance at
+a given time point.
+
+69
+00:03:32,340 --> 00:03:34,370
+And we can also calculate those variances,
+
+70
+00:03:34,370 --> 00:03:37,910
+now are facing these various calculations
+on just six data points.
+
+71
+00:03:37,910 --> 00:03:40,432
+But we can calculate a variance with six
+data points.
+
+72
+00:03:40,432 --> 00:03:44,524
+So we can see that indeed we calculate the
+variances that indeed the variance at
+
+73
+00:03:44,524 --> 00:03:47,913
+time four was quite a bit smaller than the
+variance at time one.
+
+74
+00:03:47,913 --> 00:03:51,760
+So we're probably somewhat violating this
+compound symmetry assumption.
+
+75
+00:03:53,300 --> 00:03:56,270
+We also need to look at the correlation
+matrix.
+
+76
+00:03:56,270 --> 00:03:59,220
+To look at the correlation between
+depression scores across
+
+77
+00:03:59,220 --> 00:04:00,470
+different time points.
+
+78
+00:04:00,470 --> 00:04:03,200
+You could look at the covariance matrix
+but covariance is
+
+79
+00:04:03,200 --> 00:04:06,920
+somewhat dependent on unit, so I find it
+easier to look at the correlation matrix.
+
+80
+00:04:06,920 --> 00:04:09,980
+These are just Pearson correlation
+coefficients.
+
+81
+00:04:09,980 --> 00:04:14,370
+So you can see that time point one and
+time point two are very highly correlated.
+
+82
+00:04:14,370 --> 00:04:15,660
+However, time point one and
+
+83
+00:04:15,660 --> 00:04:19,650
+time point three are actually inversely
+correlated, and it.
+
+84
+00:04:19,650 --> 00:04:21,830
+So on.
+You could see that we're looking for
+
+85
+00:04:21,830 --> 00:04:22,890
+these all to be equal.
+
+86
+00:04:22,890 --> 00:04:24,710
+Clearly these are not equal here.
+
+87
+00:04:24,710 --> 00:04:27,240
+So we're probably violating compound
+symmetry.
+
+88
+00:04:29,430 --> 00:04:30,940
+An exchangeable correlation matrix,
+
+89
+00:04:30,940 --> 00:04:33,020
+compound symmetry would look like the
+following.
+
+90
+00:04:33,020 --> 00:04:36,120
+You would have basically had the same
+correlation between all pairs of
+
+91
+00:04:36,120 --> 00:04:37,270
+time points.
+
+92
+00:04:37,270 --> 00:04:40,230
+Again, somewhat unrealistic with real
+repeated measures data.
+
+93
+00:04:42,450 --> 00:04:44,660
+So those are the assumptions of repeated
+measures ANOVA.
+
+94
+00:04:44,660 --> 00:04:47,200
+Now let me jump into how it actually
+works.
+
+95
+00:04:50,240 --> 00:04:54,450
+Essentially, it's just like a regular
+ANOVA but there is one little twist.
+
+96
+00:04:54,450 --> 00:04:57,260
+There is the twist that you have to
+account for
+
+97
+00:04:57,260 --> 00:05:00,650
+the fact that you have different subjects,
+measured over time.
+
+98
+00:05:00,650 --> 00:05:02,870
+So it's accounting for a between subject
+difference and
+
+99
+00:05:02,870 --> 00:05:04,030
+I'll show you that in a minute.
+
+100
+00:05:04,030 --> 00:05:08,320
+But we're going to start with the null
+hypothesis here.
+
+101
+00:05:08,320 --> 00:05:11,070
+The null hypothesis is that the mean
+depression for
+
+102
+00:05:11,070 --> 00:05:15,450
+a time point one is equal to the mean
+depression for a time point two.
+
+103
+00:05:15,450 --> 00:05:16,910
+Is equal to the mean depression for
+
+104
+00:05:16,910 --> 00:05:19,970
+at times three and is equal to a mean
+depression four at times four.
+
+105
+00:05:19,970 --> 00:05:22,480
+And if you had more time points this would
+keep going.
+
+106
+00:05:22,480 --> 00:05:25,640
+So it's just like regular ANOVA in that we
+are assuming that the means of
+
+107
+00:05:25,640 --> 00:05:26,910
+all the different groups.
+
+108
+00:05:26,910 --> 00:05:29,762
+Are equal except group here is time point
+rather than,
+
+109
+00:05:29,762 --> 00:05:31,840
+you know different treatment groups.
+
+110
+00:05:31,840 --> 00:05:34,250
+So we're assuming that the means at all
+the different times are equal.
+
+111
+00:05:35,330 --> 00:05:38,960
+Now I'm going to start by actually
+analyzing these data with
+
+112
+00:05:38,960 --> 00:05:42,800
+a regular old ANOVA, not yet doing the
+repeated measures ANOVA.
+
+113
+00:05:42,800 --> 00:05:45,040
+To show you where the difference lies.
+
+114
+00:05:45,040 --> 00:05:47,620
+So imagine that you didn't know anything
+about reputed measures ANOVA, but
+
+115
+00:05:47,620 --> 00:05:48,870
+I gave you these data.
+
+116
+00:05:48,870 --> 00:05:52,630
+And I said, well just count times, the
+times as different groups and
+
+117
+00:05:52,630 --> 00:05:54,100
+run a regular ANOVA.
+
+118
+00:05:54,100 --> 00:05:54,710
+How would you do it?
+
+119
+00:05:56,460 --> 00:06:00,190
+So, this is sort of a nani, a naive or
+incorrect analysis.
+
+120
+00:06:00,190 --> 00:06:01,200
+But here's what it would look like.
+
+121
+00:06:02,200 --> 00:06:04,510
+I would have to use the long form of the
+data because I'm going to
+
+122
+00:06:04,510 --> 00:06:08,120
+be pretending for the moment that I have
+24 independent observations.
+
+123
+00:06:08,120 --> 00:06:09,760
+I am not accounting for
+
+124
+00:06:09,760 --> 00:06:12,820
+the fact that person one was measured at
+multiple time points.
+
+125
+00:06:12,820 --> 00:06:16,410
+So I'm just saying, well imagine I've got
+24 independent people.
+
+126
+00:06:16,410 --> 00:06:19,900
+And they're each measured at a different
+time point.
+
+127
+00:06:19,900 --> 00:06:20,710
+So I'm going to run this.
+
+128
+00:06:20,710 --> 00:06:23,360
+And the long form of the data to achieve
+that, I'll just show you the code here so
+
+129
+00:06:23,360 --> 00:06:24,710
+you can see what the model is.
+
+130
+00:06:24,710 --> 00:06:29,030
+I am putting in time as my categorical
+predictor, my outcome variable is score.
+
+131
+00:06:29,030 --> 00:06:33,060
+And I have no you know again, I am
+assuming 24 independent observations here.
+
+132
+00:06:35,060 --> 00:06:37,910
+This is going to compare the means from
+each time point as if they
+
+133
+00:06:37,910 --> 00:06:41,830
+were independent samples, so this is
+analogous to using a two sample t-test.
+
+134
+00:06:41,830 --> 00:06:43,950
+When a paired t-test would have been
+appropriate.
+
+135
+00:06:43,950 --> 00:06:45,910
+It's going to result in a loss of power.
+
+136
+00:06:48,450 --> 00:06:51,980
+So here's the, the incorrect, the one-way,
+incorrect one-way ANOVA.
+
+137
+00:06:51,980 --> 00:06:53,770
+And let me show you what we would do.
+
+138
+00:06:53,770 --> 00:06:57,790
+So again, this just, is just doing an
+ANOVA like we reviewed last week.
+
+139
+00:06:57,790 --> 00:07:00,710
+So I've got my four time points.
+
+140
+00:07:00,710 --> 00:07:03,950
+And I would calculate the mean for each
+time point.
+
+141
+00:07:03,950 --> 00:07:06,150
+And I've calculated the overall mean,
+okay?
+
+142
+00:07:06,150 --> 00:07:11,410
+So if I add up 31 plus 24 plus 14 plus 38
+plus 25 plus 30 divide by 6 I get 27.
+
+143
+00:07:11,410 --> 00:07:16,139
+If I add up all 24 observations and divide
+by 24, I get 27, and so on.
+
+144
+00:07:17,300 --> 00:07:20,160
+I would then calculate the sum of squares
+between time and
+
+145
+00:07:20,160 --> 00:07:21,670
+the sum of squares within time.
+
+146
+00:07:21,670 --> 00:07:24,184
+And the way we would do in an, a regular
+ANOVA.
+
+147
+00:07:24,184 --> 00:07:27,190
+So I calculated this sum of squares
+between times.
+
+148
+00:07:27,190 --> 00:07:32,410
+So, for example, the mean for the first
+time but it was actually 27.
+
+149
+00:07:32,410 --> 00:07:34,920
+That's equal to the mean for the overall.
+
+150
+00:07:34,920 --> 00:07:41,640
+So, 27 minus 27 squared would be the first
+element of the between time variance.
+
+151
+00:07:41,640 --> 00:07:45,630
+Then I would calculate, I would subtract
+the 28 from time point 2,
+
+152
+00:07:45,630 --> 00:07:47,680
+minus the 27 overall.
+
+153
+00:07:47,680 --> 00:07:50,370
+Then I take the 22.33 that's the average
+for
+
+154
+00:07:50,370 --> 00:07:52,650
+time point 3, subtract the mean overall.
+
+155
+00:07:52,650 --> 00:07:55,730
+And finally, the 30.83 minus 27, square
+that.
+
+156
+00:07:55,730 --> 00:07:59,050
+So this would give me the sum of squares
+between times.
+
+157
+00:07:59,050 --> 00:08:02,764
+That when you calculate it out comes out
+to be 224.79.
+
+158
+00:08:02,764 --> 00:08:05,580
+How would I calculate the sum of squares
+within?
+
+159
+00:08:05,580 --> 00:08:06,390
+This is a good review.
+
+160
+00:08:06,390 --> 00:08:08,910
+So the sum of squares within.
+
+161
+00:08:08,910 --> 00:08:11,430
+Again, think of the times just as groups
+here.
+
+162
+00:08:11,430 --> 00:08:13,490
+So I would take each individual.
+
+163
+00:08:13,490 --> 00:08:17,130
+I would compare their value at time point
+one to the overall mean for
+
+164
+00:08:17,130 --> 00:08:17,670
+time point one.
+
+165
+00:08:17,670 --> 00:08:19,880
+So for example, 31 minus 27 squared.
+
+166
+00:08:19,880 --> 00:08:22,060
+24 minus 27 squared.
+
+167
+00:08:22,060 --> 00:08:23,770
+14 minus 27 squared.
+
+168
+00:08:23,770 --> 00:08:24,710
+And so on.
+
+169
+00:08:24,710 --> 00:08:28,120
+I'm going to add up all of those squared
+differences, and
+
+170
+00:08:28,120 --> 00:08:33,080
+we're comparing each person to and each
+time point to the, the time point mean.
+
+171
+00:08:33,080 --> 00:08:35,340
+So 29 minus 28 etc.,
+
+172
+00:08:35,340 --> 00:08:38,000
+The way you would normally calculate a sum
+of squares within.
+
+173
+00:08:38,000 --> 00:08:40,700
+So that represents the unexplained
+variability, and
+
+174
+00:08:40,700 --> 00:08:43,480
+that comes out to be in this problem
+676.17.
+
+175
+00:08:43,480 --> 00:08:47,100
+If I add those up, I get the total
+variability here which is
+
+176
+00:08:47,100 --> 00:08:48,690
+about the total sum of squares, which is
+about 900.
+
+177
+00:08:48,690 --> 00:08:54,100
+So when I ran this in the computer I
+actually get my ANOVA tables out and
+
+178
+00:08:54,100 --> 00:08:55,040
+we can look at the results.
+
+179
+00:08:55,040 --> 00:08:57,480
+So my total sum of squares is about 900.
+
+180
+00:08:57,480 --> 00:09:00,830
+My sum of squares error, unexplained
+variability is 676.
+
+181
+00:09:00,830 --> 00:09:04,229
+My sum of squares due to different time
+points is 224.
+
+182
+00:09:04,229 --> 00:09:06,710
+I can then calculate an F statistic and a
+P value.
+
+183
+00:09:06,710 --> 00:09:10,057
+The P value comes out to be out 0.117.
+
+184
+00:09:10,057 --> 00:09:11,307
+All right so that's the incorrect way.
+
+185
+00:09:11,307 --> 00:09:12,984
+There's something we haven't accounted for
+
+186
+00:09:12,984 --> 00:09:15,659
+here, which is the fact that we have
+different subjects in the dataset.
+
+187
+00:09:17,470 --> 00:09:18,300
+So there is.
+
+188
+00:09:18,300 --> 00:09:23,020
+I'm now going to do this the correct way,
+running a repeated measures ANOVA.
+
+189
+00:09:23,020 --> 00:09:27,508
+And basically what's going to happen here
+is that we're going to explain away some
+
+190
+00:09:27,508 --> 00:09:30,529
+of this unaccounted for, this error
+variability.
+
+191
+00:09:30,529 --> 00:09:33,220
+This sum of squares error or sum of
+squares within.
+
+192
+00:09:33,220 --> 00:09:35,582
+Which was 700 and, 676.
+
+193
+00:09:35,582 --> 00:09:38,354
+That's going to be reduced by accounting
+for
+
+194
+00:09:38,354 --> 00:09:41,300
+the fact that we have the same subjects.
+
+195
+00:09:41,300 --> 00:09:44,070
+We're going to account for the differences
+between different subjects.
+
+196
+00:09:44,070 --> 00:09:47,340
+Almost as, as if subject was itself a
+grouping variable.
+
+197
+00:09:47,340 --> 00:09:50,660
+So we're going to end up reducing some of
+this variance.
+
+198
+00:09:50,660 --> 00:09:53,630
+If you reduce the unexplained variability,
+
+199
+00:09:53,630 --> 00:09:56,230
+your P values are going to get smaller,
+right?
+
+200
+00:09:56,230 --> 00:09:59,280
+So we, we can explain some of the
+variability by just the fact that we
+
+201
+00:09:59,280 --> 00:10:00,810
+have different subjects in the data set.
+
+202
+00:10:02,330 --> 00:10:04,530
+So let me now show you how you would
+incorporate that,
+
+203
+00:10:04,530 --> 00:10:05,830
+here's the fast code to do this.
+
+204
+00:10:06,960 --> 00:10:09,590
+So how do we now do this if we're actually
+doing this out by hand?
+
+205
+00:10:09,590 --> 00:10:12,520
+So the sum of squares between time stays
+the the same.
+
+206
+00:10:12,520 --> 00:10:13,500
+We already calculated that.
+
+207
+00:10:13,500 --> 00:10:16,130
+That's where you compare the mean for each
+time point to the overall mean.
+
+208
+00:10:18,500 --> 00:10:22,560
+But now we are going to additionally add a
+sum of squares between subject.
+
+209
+00:10:22,560 --> 00:10:24,230
+So how do we do that?
+
+210
+00:10:24,230 --> 00:10:27,500
+What you can recognize is that you can
+calculate a mean value for
+
+211
+00:10:27,500 --> 00:10:29,440
+each subject and I've done that already.
+
+212
+00:10:29,440 --> 00:10:31,678
+For example, subject one, over all four
+time periods,
+
+213
+00:10:31,678 --> 00:10:37,610
+averaged over all four time periods, their
+depression scored was 25.25.
+
+214
+00:10:37,610 --> 00:10:39,910
+Subject two's average was 26.
+
+215
+00:10:39,910 --> 00:10:43,460
+Subject three's average was 23, and so on.
+
+216
+00:10:43,460 --> 00:10:47,640
+We can calculate a sum of squares between
+subject then.
+
+217
+00:10:47,640 --> 00:10:50,340
+Again, kind of think of subject as being
+its own grouping.
+
+218
+00:10:50,340 --> 00:10:53,690
+A lot is explained by which subject you
+are.
+
+219
+00:10:53,690 --> 00:10:56,450
+So I'm going to take the mean for subject
+one, and
+
+220
+00:10:56,450 --> 00:11:00,450
+I'm going to subtract it from the overall
+mean, square that.
+
+221
+00:11:00,450 --> 00:11:01,580
+And then I'm going to do the same thing
+for
+
+222
+00:11:01,580 --> 00:11:04,010
+subject two and subject three, and so on.
+
+223
+00:11:04,010 --> 00:11:05,360
+So I've done that down here.
+
+224
+00:11:05,360 --> 00:11:09,730
+So, subtract each subject's individual
+mean from the overall mean, square those,
+
+225
+00:11:09,730 --> 00:11:10,680
+and add them up.
+
+226
+00:11:10,680 --> 00:11:13,940
+And then I have to multiply by 4 because
+again I need to end up with
+
+227
+00:11:13,940 --> 00:11:15,770
+the total number of sum of squares being
+24.
+
+228
+00:11:15,770 --> 00:11:21,080
+When I add that up I get a value of 276.
+
+229
+00:11:21,080 --> 00:11:25,790
+So, 276 out of that original 676
+unexplained sum of
+
+230
+00:11:25,790 --> 00:11:29,250
+squares was actually due to the fact that
+we have different subjects.
+
+231
+00:11:29,250 --> 00:11:31,870
+So my sum of squares within is going to
+get reduced.
+
+232
+00:11:31,870 --> 00:11:35,320
+Remember, the sum of squares always totals
+up to the same 900.
+
+233
+00:11:35,320 --> 00:11:38,570
+So now that I've explained some of the
+explained, unexplained variability.
+
+234
+00:11:38,570 --> 00:11:41,310
+I've now explained it by which subject you
+are.
+
+235
+00:11:41,310 --> 00:11:43,110
+I get to subtract that away.
+
+236
+00:11:43,110 --> 00:11:48,060
+So the unexplained variability has now
+gone down from about 676 to below 400.
+
+237
+00:11:48,060 --> 00:11:49,180
+So much less background noise.
+
+238
+00:11:49,180 --> 00:11:52,575
+Much less background variability.
+
+239
+00:11:53,820 --> 00:11:57,400
+So when we then get the results of this
+repeated measures ANOVA,
+
+240
+00:11:57,400 --> 00:12:02,450
+what you'll see is that you've got the
+224, that's the between time.
+
+241
+00:12:02,450 --> 00:12:05,980
+But we're going to only compare that to
+the error of 399.
+
+242
+00:12:05,980 --> 00:12:08,060
+The rest is a, is the between subjects
+difference.
+
+243
+00:12:08,060 --> 00:12:09,770
+I don't have that shown on this slide.
+
+244
+00:12:09,770 --> 00:12:13,473
+But the between subjects, we saw, was
+about 276.
+
+245
+00:12:13,473 --> 00:12:16,005
+So the total is still about 900.
+
+246
+00:12:16,005 --> 00:12:19,832
+But when I compare the between time sum of
+squares,
+
+247
+00:12:19,832 --> 00:12:22,611
+now to the background variability.
+
+248
+00:12:22,611 --> 00:12:25,926
+And I calculate my mean sum of squares by
+dividing by the degrees of freedom and
+
+249
+00:12:25,926 --> 00:12:27,570
+then calculating my F value,.
+
+250
+00:12:27,570 --> 00:12:29,780
+My P value gets smaller.
+
+251
+00:12:29,780 --> 00:12:34,840
+And that's what we would expect when we
+properly account for the correlation here.
+
+252
+00:12:34,840 --> 00:12:37,900
+With a time comparison is a within person
+comparison.
+
+253
+00:12:37,900 --> 00:12:39,280
+So when we properly account for
+
+254
+00:12:39,280 --> 00:12:42,480
+the correlation, we would expect the P
+values to get better to get smaller.
+
+255
+00:12:43,870 --> 00:12:46,360
+Now there's a little complication with
+this particular data set.
+
+256
+00:12:46,360 --> 00:12:49,420
+In that I've already alluded to the fact
+that,
+
+257
+00:12:49,420 --> 00:12:53,750
+we seem to violate compound symmetry here,
+that assumption of compound symmetry.
+
+258
+00:12:53,750 --> 00:12:59,050
+And at least in SAS, you get a, a measure
+that helps you to evaluate whether or
+
+259
+00:12:59,050 --> 00:13:00,610
+not you've met compound symmetry.
+
+260
+00:13:00,610 --> 00:13:02,970
+You get two, what are called epsilon's
+here.
+
+261
+00:13:02,970 --> 00:13:05,840
+Slightly different versions of this test.
+
+262
+00:13:05,840 --> 00:13:07,770
+So you get a value, and
+
+263
+00:13:07,770 --> 00:13:11,860
+if this value is equal to 1.0 that would
+mean compound symmetry is met.
+
+264
+00:13:17,720 --> 00:13:20,600
+If these values are very far from one that
+would indicate that you
+
+265
+00:13:20,600 --> 00:13:22,212
+have some violation of compound symmetry.
+
+266
+00:13:22,212 --> 00:13:26,240
+We kind of already know that we violated
+compound symmetry here because we looked
+
+267
+00:13:26,240 --> 00:13:28,750
+at the correlation matrix and the
+variances.
+
+268
+00:13:28,750 --> 00:13:29,760
+At different time points and
+
+269
+00:13:29,760 --> 00:13:33,780
+we looked pretty much like we violated
+them, that assumption.
+
+270
+00:13:33,780 --> 00:13:38,265
+If you violate the assumption of compound
+symmetry, there are ways to correct for
+
+271
+00:13:38,265 --> 00:13:41,742
+that, so these two additional P values you
+see pictured here.
+
+272
+00:13:41,742 --> 00:13:46,116
+Are difference statisticians ways of
+adjusting the P values for
+
+273
+00:13:46,116 --> 00:13:48,829
+that violation of compound symmetry.
+
+274
+00:13:48,829 --> 00:13:51,770
+And you can see that it makes the P values
+get higher.
+
+275
+00:13:51,770 --> 00:13:55,680
+And this is sort of analogous to, if you
+remember back to when we did t-tests.
+
+276
+00:13:55,680 --> 00:14:01,410
+We had the choice of using the unpooled
+variants or using the pooled variance.
+
+277
+00:14:01,410 --> 00:14:05,750
+The assumption for the pooled variance is
+that we had homogenized variances.
+
+278
+00:14:05,750 --> 00:14:08,020
+If the, the variances in the two groups
+were similar,
+
+279
+00:14:08,020 --> 00:14:12,590
+it is okay to pool them and the advantage
+was we got more statistical power.
+
+280
+00:14:12,590 --> 00:14:17,170
+Because we got to use all of the
+observations to estimate a single variant,
+
+281
+00:14:17,170 --> 00:14:21,900
+so it improved our degrees of freedom
+therefore decreases our P value.
+
+282
+00:14:21,900 --> 00:14:25,680
+If we had variances that differed between
+the two groups we had to
+
+283
+00:14:25,680 --> 00:14:27,422
+use the unpooled variance.
+
+284
+00:14:27,422 --> 00:14:31,196
+And the cost of that was that the number
+of people being used to
+
+285
+00:14:31,196 --> 00:14:34,552
+estimate either one of those variances was
+smaller.
+
+286
+00:14:34,552 --> 00:14:37,414
+So we had less degrees of freedom, and
+therefore you know we
+
+287
+00:14:37,414 --> 00:14:40,800
+have less statistical power, our P values
+tended to be bigger.
+
+288
+00:14:40,800 --> 00:14:42,250
+So same idea here.
+
+289
+00:14:42,250 --> 00:14:46,516
+The compound symmetry is kind of like
+assuming, using a pooled variance.
+
+290
+00:14:46,516 --> 00:14:48,836
+If we violate compound symmetry,
+
+291
+00:14:48,836 --> 00:14:53,313
+then we need to estimate individual
+variances in correlations.
+
+292
+00:14:53,313 --> 00:14:55,158
+And that's going to cost us some degrees
+of freedom,
+
+293
+00:14:55,158 --> 00:14:56,523
+it's going to make the P values go up.
+
+294
+00:14:56,523 --> 00:14:59,723
+So in this case I'm probably going to
+choose this G-G value.
+
+295
+00:14:59,723 --> 00:15:01,830
+It turns out to be 0.13 at the end of the
+day.
+
+296
+00:15:02,840 --> 00:15:06,360
+So for this data set, this small data set
+of just six people.
+
+297
+00:15:06,360 --> 00:15:09,160
+There does seem to be some difference in
+time point three compared to
+
+298
+00:15:09,160 --> 00:15:10,640
+the rest of the time points.
+
+299
+00:15:10,640 --> 00:15:14,000
+But it wasn't quite enough to trigger,
+statistical significance here.
+
+300
+00:15:14,000 --> 00:15:19,579
+[BLANK_AUDIO]

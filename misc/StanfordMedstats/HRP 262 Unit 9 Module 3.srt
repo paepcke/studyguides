@@ -1,0 +1,623 @@
+1
+00:00:05,200 --> 00:00:08,160
+In this next module, I'm going to show you
+how to fit a mixed model
+
+2
+00:00:08,160 --> 00:00:13,280
+with a time independent predictor, and
+this is very similar to what we did with
+
+3
+00:00:13,280 --> 00:00:17,040
+generalized estimating equations, the
+interpretation of the beta coefficients is
+
+4
+00:00:17,040 --> 00:00:19,930
+pretty similar so hopefully if you
+understood the material last week,
+
+5
+00:00:19,930 --> 00:00:21,259
+this module will be pretty easy.
+
+6
+00:00:23,150 --> 00:00:26,660
+I'm going to use this same data set, on
+bone density in women runners,
+
+7
+00:00:26,660 --> 00:00:29,070
+these 41 women runners, divided into the
+three groups.
+
+8
+00:00:29,070 --> 00:00:32,220
+You've seen these pictures before, so I
+won't explain them again.
+
+9
+00:00:32,220 --> 00:00:33,920
+I'm going to take that same data,.
+
+10
+00:00:33,920 --> 00:00:37,310
+And fit first in a random intercepts only
+model.
+
+11
+00:00:38,540 --> 00:00:42,170
+So in this model, I just allow the
+intercepts to be random.
+
+12
+00:00:42,170 --> 00:00:45,520
+And I did not put in a random time slope.
+
+13
+00:00:45,520 --> 00:00:50,520
+And, so what you'll see here is this is
+very similar to the results.
+
+14
+00:00:50,520 --> 00:00:53,930
+That we got out of the generalized
+estimating equation for these same data.
+
+15
+00:00:55,120 --> 00:00:57,560
+The effect for time.
+
+16
+00:00:57,560 --> 00:01:01,982
+The main effect for time is interpreted as
+the rate of change in time for the blue
+
+17
+00:01:01,982 --> 00:01:06,210
+group, and that's very close to 0 because
+the blue group is mostly flat here.
+
+18
+00:01:07,220 --> 00:01:12,615
+The intercept represents the baseline
+spinebone density
+
+19
+00:01:12,615 --> 00:01:14,700
+a- average score in the reference group,
+
+20
+00:01:14,700 --> 00:01:18,630
+in the blue group, as before, as with
+generalized estimating equations.
+
+21
+00:01:18,630 --> 00:01:23,290
+The main effect for the black group and
+the red group represent the difference at
+
+22
+00:01:23,290 --> 00:01:28,110
+baseline in the spine bone density in the
+black group versus the blue group and
+
+23
+00:01:28,110 --> 00:01:29,430
+in the red group versus the blue group.
+
+24
+00:01:29,430 --> 00:01:30,510
+So for example,.
+
+25
+00:01:30,510 --> 00:01:34,400
+The black group was about 0.03698 higher
+in bone density on average than
+
+26
+00:01:34,400 --> 00:01:36,990
+the blue group at baseline.
+
+27
+00:01:38,680 --> 00:01:41,170
+Those differences were not statistically
+significant,
+
+28
+00:01:41,170 --> 00:01:44,000
+just saying that at baseline the black and
+red groups were higher, but
+
+29
+00:01:44,000 --> 00:01:47,770
+they weren't statistically, that wasn't a
+statistically significant difference.
+
+30
+00:01:47,770 --> 00:01:49,250
+The blue group is the reference group.
+
+31
+00:01:49,250 --> 00:01:51,098
+And then we get what we care most about,
+
+32
+00:01:51,098 --> 00:01:54,730
+which is the interactions between the
+group variable and time.
+
+33
+00:01:54,730 --> 00:01:58,570
+And you can see that we get for
+
+34
+00:01:58,570 --> 00:02:04,420
+the black vi time interaction .01079 that
+would be interpreted at a .01079 increase.
+
+35
+00:02:04,420 --> 00:02:10,210
+In spine bone density which is measured in
+grams per centimeter squared.
+
+36
+00:02:10,210 --> 00:02:13,730
+However, the average spine bone density
+you know you can see
+
+37
+00:02:13,730 --> 00:02:15,590
+that it's very close to 1.0.
+
+38
+00:02:15,590 --> 00:02:18,830
+It's a little bit, just a hair under 1.0
+in this population.
+
+39
+00:02:18,830 --> 00:02:23,936
+And so that is very close to a better 1%
+increase in bone density, per year,
+
+40
+00:02:23,936 --> 00:02:24,710
+over time.
+
+41
+00:02:27,300 --> 00:02:31,025
+And the increase in the red group is just
+slightly higher at 0.
+
+42
+00:02:31,025 --> 00:02:34,260
+0.14 advance per centimeter squared per
+year.
+
+43
+00:02:34,260 --> 00:02:36,690
+And both of those are statistically
+significant.
+
+44
+00:02:36,690 --> 00:02:39,020
+And these are very, very similar
+estimates.
+
+45
+00:02:39,020 --> 00:02:41,400
+To what we've got for a, from the
+generalized estimate equations.
+
+46
+00:02:41,400 --> 00:02:44,960
+If you look at the P values and the data
+coefficients, you have to go,
+
+47
+00:02:44,960 --> 00:02:47,030
+like, to the third decimal place to see
+any difference.
+
+48
+00:02:48,150 --> 00:02:51,810
+I want to just point out the AIC, fit
+statistics here.
+
+49
+00:02:51,810 --> 00:02:55,630
+So, I wanted to point out, that, for
+whatever reason we ended up with
+
+50
+00:02:55,630 --> 00:02:59,150
+negative values for the the AIC, and that
+can happen sometime in [UNKNOWN].
+
+51
+00:02:59,150 --> 00:03:00,080
+Models.
+
+52
+00:03:00,080 --> 00:03:03,090
+When you have negative values for the AIC,
+even though their outputs are.
+
+53
+00:03:03,090 --> 00:03:04,740
+Smaller is better.
+
+54
+00:03:04,740 --> 00:03:06,150
+Closer to 0 is better.
+
+55
+00:03:06,150 --> 00:03:08,530
+So you want to be smaller in the absolute
+value.
+
+56
+00:03:08,530 --> 00:03:10,310
+So the value, we want to pay attention to.
+
+57
+00:03:10,310 --> 00:03:14,080
+Ignore the sign and just pay attention to
+the 410.6 here.
+
+58
+00:03:16,500 --> 00:03:17,930
+I just want to show you this [INAUDIBLE]
+code so
+
+59
+00:03:17,930 --> 00:03:19,480
+you know exactly what I'm doing here.
+
+60
+00:03:19,480 --> 00:03:20,720
+I have.
+
+61
+00:03:20,720 --> 00:03:24,330
+Fit a model with a random statement, but
+only a random intercept so far.
+
+62
+00:03:26,490 --> 00:03:29,990
+So I then went ahead and fed a model with
+both a random intercept and
+
+63
+00:03:29,990 --> 00:03:32,780
+a random slope just to see the comparison.
+
+64
+00:03:32,780 --> 00:03:36,180
+What you'll notice is that if you just
+kind of scan across the point
+
+65
+00:03:36,180 --> 00:03:39,240
+estimates for the beta coefficients and
+the P values,
+
+66
+00:03:39,240 --> 00:03:43,360
+nothing is material, materially different,
+they're all pretty similar.
+
+67
+00:03:43,360 --> 00:03:45,450
+We're still getting significant effects.
+
+68
+00:03:45,450 --> 00:03:49,608
+For the group by time effects the beta
+coefficients are very close to what we
+
+69
+00:03:49,608 --> 00:03:50,340
+got before.
+
+70
+00:03:50,340 --> 00:03:52,820
+So it didn't make a huge difference here.
+
+71
+00:03:52,820 --> 00:04:00,950
+But I want to point out that the AIC was
+about 410 before, it's now at 419.5.
+
+72
+00:04:00,950 --> 00:04:05,040
+And so we want to be smaller in the
+absolute value, so
+
+73
+00:04:05,040 --> 00:04:08,630
+actually, the random intercept only model
+is a much better fit.
+
+74
+00:04:08,630 --> 00:04:10,770
+Than the model with also a random slope.
+
+75
+00:04:10,770 --> 00:04:15,900
+The random intercept model only model was
+sufficient to capture the between
+
+76
+00:04:15,900 --> 00:04:19,000
+subject variability and account for the
+correlation within subject.
+
+77
+00:04:19,000 --> 00:04:22,560
+There wasn't a lot of variation in the
+slope over time here.
+
+78
+00:04:24,330 --> 00:04:28,410
+And again just to show you the code, I
+have put a random statement in.
+
+79
+00:04:28,410 --> 00:04:30,410
+Random effect for the intercept and for
+time and
+
+80
+00:04:30,410 --> 00:04:32,840
+I also had to specify the covariance
+matrix for
+
+81
+00:04:32,840 --> 00:04:34,750
+this g matrix of the random effects.
+
+82
+00:04:36,680 --> 00:04:39,650
+And then finally, I had also wanted to
+show you similar to what I showed last
+
+83
+00:04:39,650 --> 00:04:42,360
+week for generalized estimating equations
+that you can put
+
+84
+00:04:42,360 --> 00:04:45,990
+a continuous time-independent predictor in
+as well.
+
+85
+00:04:45,990 --> 00:04:50,880
+So, I took the baseline calcium in the
+diet for these women.
+
+86
+00:04:50,880 --> 00:04:55,230
+That was in Z scores, I had, taken the
+residual calcium to correct for
+
+87
+00:04:55,230 --> 00:04:59,840
+calories, and I put into, standardized
+units, so Z scores.
+
+88
+00:04:59,840 --> 00:05:02,730
+And we get very similar output again to
+what you saw in
+
+89
+00:05:02,730 --> 00:05:04,840
+the generalized estimating equations last
+week.
+
+90
+00:05:04,840 --> 00:05:08,050
+I ran this model with a random intercept
+only,
+
+91
+00:05:08,050 --> 00:05:10,640
+because that turned out to have the best
+model fit again.
+
+92
+00:05:10,640 --> 00:05:14,670
+This is from a larger data set, this data
+set has 125 women.
+
+93
+00:05:14,670 --> 00:05:16,940
+So more of that same,
+
+94
+00:05:16,940 --> 00:05:19,830
+more than the 41 women that were included
+in the other analysis.
+
+95
+00:05:19,830 --> 00:05:22,960
+But the random intercept model still
+turned out to be superior here.
+
+96
+00:05:22,960 --> 00:05:26,140
+Let me just walk you through how do I
+interpret all of this.
+
+97
+00:05:26,140 --> 00:05:28,120
+So the intercept is .9888.
+
+98
+00:05:28,120 --> 00:05:32,750
+So that would say that at base line, when
+time equals 0,
+
+99
+00:05:32,750 --> 00:05:37,270
+and at a calcium standardized residual
+square of 0, which would represent,
+
+100
+00:05:37,270 --> 00:05:40,200
+a Z square of 0 would represent the
+average calcium intake here.
+
+101
+00:05:40,200 --> 00:05:44,100
+So if you were at, have the average
+calcium intake at base line then at.
+
+102
+00:05:44,100 --> 00:05:46,680
+Based on your, spine bone density.
+
+103
+00:05:46,680 --> 00:05:47,970
+Was, on average, about .9888.
+
+104
+00:05:47,970 --> 00:05:51,640
+And of course that's significantly
+different than 0.
+
+105
+00:05:51,640 --> 00:05:52,940
+Because we don't have, you know?
+
+106
+00:05:52,940 --> 00:05:57,000
+You can't have a skeleton that has no,
+grams of calcium in it.
+
+107
+00:05:58,030 --> 00:06:03,220
+The time effect here is also statistically
+significant, it's .0035.
+
+108
+00:06:03,220 --> 00:06:06,628
+And this time effect would correspond to
+somebody with,
+
+109
+00:06:06,628 --> 00:06:09,090
+again, a calcium score, z score of 0.
+
+110
+00:06:09,090 --> 00:06:10,950
+So the average calcium intake.
+
+111
+00:06:10,950 --> 00:06:15,184
+They were going up about .0035 in grams
+per centimeter squared in
+
+112
+00:06:15,184 --> 00:06:17,750
+[UNKNOWN] over density over time.
+
+113
+00:06:17,750 --> 00:06:22,910
+It's a small effect but it is a real
+increase over time per year.
+
+114
+00:06:22,910 --> 00:06:27,000
+If the main effect for calcium here
+represents that
+
+115
+00:06:27,000 --> 00:06:32,000
+every one standard deviation unit higher
+than you were in calcium and.
+
+116
+00:06:32,000 --> 00:06:35,840
+Baseline corresponse is you would have a
+slightly lower spine bone
+
+117
+00:06:35,840 --> 00:06:40,040
+density although it's very, this data
+coefficient's very, very close to 0 and
+
+118
+00:06:40,040 --> 00:06:42,150
+it's not statistically significant.
+
+119
+00:06:42,150 --> 00:06:45,480
+In other words, your baseline calcium was
+not strongly related to
+
+120
+00:06:45,480 --> 00:06:48,300
+your baseline bone strength.
+
+121
+00:06:48,300 --> 00:06:51,990
+However, if you're eating a lot of calcium
+at a baseline.
+
+122
+00:06:51,990 --> 00:06:57,440
+If we interact with time, you'll see that
+there was a near-significant,
+
+123
+00:06:57,440 --> 00:07:01,350
+increase in spine bone density over time,
+if you had a high calcium diet.
+
+124
+00:07:01,350 --> 00:07:05,240
+So somebody who had a Z score of one, at
+baseline had a high calcium diet,
+
+125
+00:07:05,240 --> 00:07:11,110
+they were predicted to have a higher rate
+of change in bone density, over time.
+
+126
+00:07:11,110 --> 00:07:15,480
+So if you had the average in calcium, you
+were 0.003506.
+
+127
+00:07:15,480 --> 00:07:21,100
+Somebody who was at one standard deviation
+higher than average in calcium
+
+128
+00:07:21,100 --> 00:07:26,620
+would be predicted to have 0.001807 higher
+rate of change so yu can add those up and
+
+129
+00:07:27,670 --> 00:07:30,570
+they, they're rate of change would be
+about 0.005 rather than 0.0035, so
+
+130
+00:07:30,570 --> 00:07:33,670
+again, it's a small difference,.
+
+131
+00:07:33,670 --> 00:07:36,750
+But it is statistically significant so
+eating more calcium does seem to
+
+132
+00:07:36,750 --> 00:07:39,350
+positively affect your bone strength over
+time.

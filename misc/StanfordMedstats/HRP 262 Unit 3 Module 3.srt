@@ -1,0 +1,507 @@
+1
+00:00:05,020 --> 00:00:08,890
+So, I told you that Cox Regression only
+estimates hazard ratios.
+
+2
+00:00:08,890 --> 00:00:12,060
+It doesn't estimate the underlying
+survival curve.
+
+3
+00:00:12,060 --> 00:00:15,500
+However, I do want to let you know that it
+is possible to
+
+4
+00:00:15,500 --> 00:00:17,647
+pair up the results from a Cox regression.
+
+5
+00:00:17,647 --> 00:00:21,320
+With a non-parametric estimate of the
+survival curve so
+
+6
+00:00:21,320 --> 00:00:23,400
+that you can essentially get the best of
+both worlds.
+
+7
+00:00:25,280 --> 00:00:29,340
+So Cox regression estimates the effects of
+each predictor, the hazard ratios.
+
+8
+00:00:29,340 --> 00:00:34,530
+Without estimating that underlying hazard
+or survival function.
+
+9
+00:00:34,530 --> 00:00:36,790
+But you can take the results from the Cox
+regression.
+
+10
+00:00:36,790 --> 00:00:39,750
+Which tells you which tell you how much
+each predictor contributes to
+
+11
+00:00:39,750 --> 00:00:43,630
+the mortality rate or the rate of event.
+
+12
+00:00:43,630 --> 00:00:46,620
+And you can pair it up with the results
+from a non-parametric estimate of
+
+13
+00:00:46,620 --> 00:00:48,500
+the survival group such as a Kaplan Meyer.
+
+14
+00:00:48,500 --> 00:00:51,650
+And I'm just going to illustrate this with
+an example.
+
+15
+00:00:51,650 --> 00:00:52,680
+So this example,
+
+16
+00:00:52,680 --> 00:00:57,700
+a data set comes from Applied Survival
+Analysis by Hosmer and Lemeshow.
+
+17
+00:00:57,700 --> 00:01:02,430
+And it, they had some data from early in
+the AIDS epidemic on a sample size of 100.
+
+18
+00:01:02,430 --> 00:01:03,930
+Now this was early in the AIDS epidemic.
+
+19
+00:01:03,930 --> 00:01:06,740
+So as you'll see that that death rates
+were pretty high.
+
+20
+00:01:06,740 --> 00:01:08,380
+The outcome here is time to death.
+
+21
+00:01:08,380 --> 00:01:10,920
+And, we're just going to look at two
+predictors.
+
+22
+00:01:10,920 --> 00:01:14,910
+A person's age, and whether or not they
+were an IV drug user.
+
+23
+00:01:14,910 --> 00:01:18,800
+IV drug users were hit very hard early in
+the AIDS epidemic, of course.
+
+24
+00:01:19,830 --> 00:01:24,560
+So just to show you the effect of these
+two predictors using Kaplan-Meier curves.
+
+25
+00:01:24,560 --> 00:01:27,860
+What you're seeing over here on the right
+is the IV drug use.
+
+26
+00:01:29,910 --> 00:01:32,570
+So the bottom curve represents the IV drug
+users.
+
+27
+00:01:34,010 --> 00:01:37,600
+And the top curve is the non-drug users.
+
+28
+00:01:37,600 --> 00:01:42,120
+And you can see that survival overall was
+pretty poor for both groups.
+
+29
+00:01:42,120 --> 00:01:45,830
+But the IV drug users did much worse.
+
+30
+00:01:45,830 --> 00:01:49,480
+Their much higher risk group probably had
+a higher co-morbidities.
+
+31
+00:01:49,480 --> 00:01:51,150
+Age of course is a continuous predictor.
+
+32
+00:01:51,150 --> 00:01:52,650
+So it's hard to do in a Kaplan-Meier.
+
+33
+00:01:52,650 --> 00:01:56,180
+But you had, you can categorize age to
+make a Kaplan-Meier plot.
+
+34
+00:01:56,180 --> 00:01:58,320
+So that's what I've done on the left here.
+
+35
+00:01:58,320 --> 00:02:00,260
+So this is the greater than, or,
+
+36
+00:02:00,260 --> 00:02:04,030
+sorry, this, the, the ones who did the
+best is the young group.
+
+37
+00:02:04,030 --> 00:02:06,960
+So the less than 30 group had the, the
+best survival.
+
+38
+00:02:06,960 --> 00:02:10,620
+The worst survival was in the age group
+greater than or equal to 40.
+
+39
+00:02:10,620 --> 00:02:12,390
+So you can see that clearly,
+
+40
+00:02:12,390 --> 00:02:15,480
+age in IV drug users strongly related to
+survival here.
+
+41
+00:02:15,480 --> 00:02:17,750
+We can then run a Cox Regression model,
+
+42
+00:02:17,750 --> 00:02:20,430
+which models the effects of age and drug
+use.
+
+43
+00:02:20,430 --> 00:02:22,408
+And so I've done that now with this data
+set.
+
+44
+00:02:22,408 --> 00:02:25,040
+Notice there's no intercepts in the
+output.
+
+45
+00:02:25,040 --> 00:02:27,820
+Because, again, in a Cox regression we
+don't get any intercepts.
+
+46
+00:02:27,820 --> 00:02:30,630
+So you can see that both IV drug use and
+
+47
+00:02:30,630 --> 00:02:34,830
+age were highly significantly related to
+to death here.
+
+48
+00:02:34,830 --> 00:02:36,120
+We get hazard ratios.
+
+49
+00:02:36,120 --> 00:02:39,760
+So the hazard ratio for IV drug use is
+2.5.
+
+50
+00:02:39,760 --> 00:02:42,390
+So IV drug users were 2.5 fold,
+
+51
+00:02:42,390 --> 00:02:46,725
+had a mortality rate that was 2.5 fold
+higher than non-drug users.
+
+52
+00:02:46,725 --> 00:02:49,390
+The hazard ratio for age is 1.096.
+
+53
+00:02:49,390 --> 00:02:53,230
+Which looks small, but remember this is
+for every one year increase in age.
+
+54
+00:02:53,230 --> 00:02:56,940
+So just going up one year in age increased
+your mortality rate by almost 10%.
+
+55
+00:02:56,940 --> 00:02:58,540
+So that's actually a pretty big effect.
+
+56
+00:02:59,780 --> 00:03:01,870
+So those are the results from the Cox
+regression.
+
+57
+00:03:01,870 --> 00:03:07,360
+But what we can do is we can pair up the
+Cox regression model
+
+58
+00:03:07,360 --> 00:03:11,760
+with the Kaplan-Meier estimates of the
+survival curve.
+
+59
+00:03:11,760 --> 00:03:13,590
+And that's what I'll show you now.
+
+60
+00:03:13,590 --> 00:03:16,105
+So I actually want to show you what's
+right here first.
+
+61
+00:03:16,105 --> 00:03:18,300
+This is the Kaplan-Meier curve, survival
+curve for
+
+62
+00:03:18,300 --> 00:03:21,140
+the entire cohort, not stratified on
+anything.
+
+63
+00:03:21,140 --> 00:03:24,902
+So we, not taking into account age or
+anything, just the whole cohort.
+
+64
+00:03:24,902 --> 00:03:27,630
+The whole 100 people, that's the survival
+curve.
+
+65
+00:03:27,630 --> 00:03:30,720
+We compare that curve up again with the
+Cox Regression.
+
+66
+00:03:30,720 --> 00:03:33,000
+And that's what I'm showing you on the
+left here.
+
+67
+00:03:33,000 --> 00:03:36,400
+This is kind of results from the Cox
+regression model.
+
+68
+00:03:36,400 --> 00:03:37,900
+So, we take the estimates of Kaplan–Meier.
+
+69
+00:03:37,900 --> 00:03:40,880
+And then we factor in, how does age and
+
+70
+00:03:40,880 --> 00:03:44,860
+drug use, how do those affect the survival
+curve?
+
+71
+00:03:44,860 --> 00:03:47,980
+This curve I'm showing you on the left
+takes just the mean value of age and
+
+72
+00:03:47,980 --> 00:03:49,510
+the mean value of drug use.
+
+73
+00:03:49,510 --> 00:03:51,620
+Which will be a percentage.
+
+74
+00:03:51,620 --> 00:03:55,020
+And plugs those in and then draws a
+survival curve.
+
+75
+00:03:55,020 --> 00:03:58,450
+Since I'm taking the mean age and mean
+drug use value at the sample.
+
+76
+00:03:58,450 --> 00:04:02,000
+I'm going to get a curve that looks
+basically just like the Kaplan-Meier curve
+
+77
+00:04:02,000 --> 00:04:02,960
+for the overall cohort.
+
+78
+00:04:02,960 --> 00:04:04,110
+That's what I'm showing you here.
+
+79
+00:04:04,110 --> 00:04:05,740
+So that doesn't look particularly useful.
+
+80
+00:04:05,740 --> 00:04:09,540
+Because it looks, it's like, why not just
+use the Kaplan-Meier curve?
+
+81
+00:04:09,540 --> 00:04:14,040
+What's useful though is then, you can go
+in and rather than use the mean age.
+
+82
+00:04:14,040 --> 00:04:17,120
+You can plug in different values for age
+and drug use.
+
+83
+00:04:17,120 --> 00:04:19,615
+To get curves for different groups of
+people.
+
+84
+00:04:19,615 --> 00:04:21,515
+And that's what I've done next.
+
+85
+00:04:21,515 --> 00:04:25,150
+So here I'm showing you two different
+types of people.
+
+86
+00:04:25,150 --> 00:04:27,480
+I'm drawing the survival curve on the
+left.
+
+87
+00:04:27,480 --> 00:04:30,360
+Stay inside here, for somebody who is 55
+years old.
+
+88
+00:04:30,360 --> 00:04:32,000
+This is their predicted survival curve.
+
+89
+00:04:32,000 --> 00:04:34,850
+They're 55 years old, and they are an IV
+drug user.
+
+90
+00:04:34,850 --> 00:04:36,330
+Those are two hits against them.
+
+91
+00:04:36,330 --> 00:04:37,630
+They're very, very high risk.
+
+92
+00:04:37,630 --> 00:04:41,210
+And you can see that their surv, their
+predicted survival is that, for
+
+93
+00:04:41,210 --> 00:04:44,300
+that group, the predicted survival curve
+is very, very low.
+
+94
+00:04:44,300 --> 00:04:47,020
+That is, it's it drops extremely steeply.
+
+95
+00:04:47,020 --> 00:04:51,300
+In the middle line here, the solid line,
+is the predicted survival curve.
+
+96
+00:04:51,300 --> 00:04:55,680
+And the dotted lines represent the 95%
+confidence intervals around that.
+
+97
+00:04:55,680 --> 00:04:57,460
+You can also put those on.
+
+98
+00:04:57,460 --> 00:05:01,560
+So you can see that, you know, somebody,
+obviously because age and drug use were so
+
+99
+00:05:01,560 --> 00:05:05,940
+related to survival, that that person is
+predicted to die, to die very quickly.
+
+100
+00:05:05,940 --> 00:05:07,970
+For somebody who's younger and
+
+101
+00:05:07,970 --> 00:05:12,130
+is not an IV drug user, their survival
+probabilities look much better.
+
+102
+00:05:12,130 --> 00:05:13,940
+So, this is the predicted curve for
+
+103
+00:05:13,940 --> 00:05:17,500
+somebody age 22 who is not an IV drug
+user.
+
+104
+00:05:17,500 --> 00:05:19,930
+And again, these outer bounds, these
+dotted lines,
+
+105
+00:05:19,930 --> 00:05:22,610
+just represent the 95% confidence
+interval.
+
+106
+00:05:22,610 --> 00:05:23,430
+So, this is very nice.
+
+107
+00:05:23,430 --> 00:05:28,150
+Because now you have a way to actually get
+absolute predicted values for
+
+108
+00:05:28,150 --> 00:05:30,120
+survival probabilities for certain people.
+
+109
+00:05:30,120 --> 00:05:34,550
+And to draw nice graphics, which you can't
+get if you just use Cox regression alone.

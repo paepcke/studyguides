@@ -1,0 +1,2571 @@
+1
+00:00:06,510 --> 00:00:09,610
+In this next module, I'm going to show you
+how you can apply principal
+
+2
+00:00:09,610 --> 00:00:12,290
+components analysis to real data.
+
+3
+00:00:12,290 --> 00:00:16,320
+So, I'm going to use this example of 91
+women runners,
+
+4
+00:00:16,320 --> 00:00:18,890
+this data set that I've been referring to
+this week.
+
+5
+00:00:18,890 --> 00:00:21,000
+This was a data set I was looking at.
+
+6
+00:00:21,000 --> 00:00:23,490
+On potential predictors of bone density
+and
+
+7
+00:00:23,490 --> 00:00:26,160
+stress fractures in adolescents women
+runners and
+
+8
+00:00:26,160 --> 00:00:30,620
+this is a group that's at risk of low bone
+density and therefore a fracturing.
+
+9
+00:00:30,620 --> 00:00:33,620
+The researchers measured a number of
+variables.
+
+10
+00:00:33,620 --> 00:00:36,030
+So they looked at variables like body size
+and
+
+11
+00:00:36,030 --> 00:00:38,670
+composition that's strongly related to
+bone density.
+
+12
+00:00:38,670 --> 00:00:41,600
+Running performance because this is a
+group of runners.
+
+13
+00:00:41,600 --> 00:00:45,040
+Menstrual function, which is also linked
+to bone density as well as
+
+14
+00:00:45,040 --> 00:00:47,920
+things about diet and disordered eating.
+
+15
+00:00:47,920 --> 00:00:50,840
+I am going to focus on the subset of the
+variables just to keep this
+
+16
+00:00:50,840 --> 00:00:52,580
+exercise manageable.
+
+17
+00:00:52,580 --> 00:00:55,030
+I'll focus on these three categories and
+
+18
+00:00:55,030 --> 00:00:57,289
+some of the variables that were measured
+within those categories.
+
+19
+00:00:58,990 --> 00:01:00,560
+So I'm going to look at 11 variables.
+
+20
+00:01:00,560 --> 00:01:03,650
+I'm going to apply a principal components
+analysis to 11 variables.
+
+21
+00:01:03,650 --> 00:01:07,180
+And there, these variables are largely
+very correlated to one another.
+
+22
+00:01:07,180 --> 00:01:11,620
+So the variables that I'm going to look at
+Within body size and composition.
+
+23
+00:01:11,620 --> 00:01:15,370
+They performed a dexa on these women to
+measure their bone density and
+
+24
+00:01:15,370 --> 00:01:18,930
+as a part of dexa measurement, you can get
+other things like the android fat ratio,
+
+25
+00:01:18,930 --> 00:01:21,430
+which is a marker of visceral fat.
+
+26
+00:01:21,430 --> 00:01:23,330
+Your a precise measurement of fat mass,
+
+27
+00:01:23,330 --> 00:01:25,530
+you can get lean mass, of course you have
+BMI and height.
+
+28
+00:01:25,530 --> 00:01:29,650
+Of course, we've seen these variables
+before For and
+
+29
+00:01:29,650 --> 00:01:33,550
+they're also not unexpectedly highly
+correlated with one an other.
+
+30
+00:01:33,550 --> 00:01:35,930
+If you have more lean mass you're likely
+to have more fat mass etcetera.
+
+31
+00:01:37,090 --> 00:01:39,170
+There were also several measures of
+running performance and
+
+32
+00:01:39,170 --> 00:01:43,110
+training, general competitiveness, the
+best mile time, how many miles per
+
+33
+00:01:43,110 --> 00:01:47,540
+week the women ran and the pace at which
+they ran their intervals.
+
+34
+00:01:47,540 --> 00:01:51,670
+Again, not surprisingly correlated within
+that category.
+
+35
+00:01:51,670 --> 00:01:55,230
+There were several variables of menstrual
+function, I'll just use a few here for
+
+36
+00:01:55,230 --> 00:01:56,420
+this exercise.
+
+37
+00:01:56,420 --> 00:02:00,170
+Manarche age, that's the age at which a
+woman started menstruating,
+
+38
+00:02:00,170 --> 00:02:02,240
+the menstrual periods she had in the past
+year and
+
+39
+00:02:02,240 --> 00:02:04,700
+the average number of periods she had
+since menarche.
+
+40
+00:02:04,700 --> 00:02:06,720
+Again, all highly correlated.
+
+41
+00:02:06,720 --> 00:02:10,780
+Different categories here were also
+correlated with each other so for
+
+42
+00:02:10,780 --> 00:02:14,380
+example if you had a higher fat mass and
+you weighed more,
+
+43
+00:02:14,380 --> 00:02:19,300
+you tended to be not as Competitive and
+this could be bidirectional that is,
+
+44
+00:02:19,300 --> 00:02:22,400
+if you carry more fat, that might slow you
+down, but also if
+
+45
+00:02:22,400 --> 00:02:25,990
+you're more competitive and you're running
+more, that might lead you to be leaner.
+
+46
+00:02:25,990 --> 00:02:28,040
+But the pretty strong correlation between
+fat mass and
+
+47
+00:02:28,040 --> 00:02:31,880
+weight, the body composition measured and
+the performance measure.
+
+48
+00:02:31,880 --> 00:02:37,370
+And then, also fat mass was pretty highly
+correlated in weight Was pretty heavily
+
+49
+00:02:37,370 --> 00:02:41,200
+correlated with menstrual function, so
+women ,um, if you carry more fat now, so
+
+50
+00:02:41,200 --> 00:02:45,550
+you tend to have a more normal menstrual
+function ,uh, within this population.
+
+51
+00:02:45,550 --> 00:02:47,930
+So a lot correlations here, a lot of
+things are heavily correlated.
+
+52
+00:02:47,930 --> 00:02:50,180
+We're going to take these 11 variables and
+
+53
+00:02:50,180 --> 00:02:52,870
+put them in a Principal Components
+Analysis, and try to come up with
+
+54
+00:02:52,870 --> 00:02:56,680
+a smaller subset of variables that
+represents some of these constructs.
+
+55
+00:02:57,690 --> 00:02:59,260
+So here are the steps of ,uh,
+
+56
+00:02:59,260 --> 00:03:02,520
+Principal Components Analysis laid out,
+I'm going to take you through,
+
+57
+00:03:02,520 --> 00:03:06,840
+walk you through each one of these in turn
+applied to this particular dataset.
+
+58
+00:03:06,840 --> 00:03:07,790
+So let me do that now.
+
+59
+00:03:09,610 --> 00:03:11,830
+So the first thing that you need to do Is,
+
+60
+00:03:11,830 --> 00:03:14,800
+you need to impute any missing values in
+your data set.
+
+61
+00:03:14,800 --> 00:03:17,710
+This becomes very important because you're
+often doing a principal
+
+62
+00:03:17,710 --> 00:03:20,900
+components analysis on a large number of
+variables.
+
+63
+00:03:20,900 --> 00:03:23,200
+In this case 11, but it can be much larger
+than that.
+
+64
+00:03:24,280 --> 00:03:27,710
+If an observation is missing, even one
+data point.
+
+65
+00:03:27,710 --> 00:03:30,160
+From one variable in that set.
+
+66
+00:03:30,160 --> 00:03:32,920
+That observation will be thrown out of
+your analysis.
+
+67
+00:03:32,920 --> 00:03:35,250
+So you might think that your sample size
+is 500,
+
+68
+00:03:35,250 --> 00:03:40,050
+but when you apply the analysis if you're
+not careful, and a woman is missing a,
+
+69
+00:03:40,050 --> 00:03:42,370
+you know, different women are missing
+different values here and
+
+70
+00:03:42,370 --> 00:03:46,230
+there, you might, might end up with a
+Sample size for your analysis of only 200.
+
+71
+00:03:46,230 --> 00:03:48,720
+You can really weed down your sample size
+fast.
+
+72
+00:03:48,720 --> 00:03:52,060
+So you always need to fill in that missing
+data somehow.
+
+73
+00:03:52,060 --> 00:03:55,860
+Be very cognizant of missing values.
+
+74
+00:03:55,860 --> 00:03:58,680
+The other thing that you need to do is you
+need to standardize your
+
+75
+00:03:58,680 --> 00:04:01,610
+numeric variables ,so that they all have a
+mean of zero and a and
+
+76
+00:04:01,610 --> 00:04:04,940
+the standard deviation of one, we talked
+about that in an earlier module.
+
+77
+00:04:04,940 --> 00:04:08,940
+I just want to to make a quick note here
+that we're mostly dealing in
+
+78
+00:04:08,940 --> 00:04:12,270
+principle components analysis with numeric
+variables.
+
+79
+00:04:12,270 --> 00:04:16,170
+Principle components analysis is based on,
+as we saw in the last module,
+
+80
+00:04:16,170 --> 00:04:20,359
+the linear relationship, the linear
+correlation, between pairs of variables.
+
+81
+00:04:21,378 --> 00:04:24,440
+And so ,all of the assumptions of linear
+regression actually
+
+82
+00:04:24,440 --> 00:04:25,550
+technically apply here.
+
+83
+00:04:25,550 --> 00:04:30,200
+That is you're supposed to have,
+continuous normally distributed variables.
+
+84
+00:04:30,200 --> 00:04:34,780
+In practice sometimes we don't worry so
+much about those assumptions.
+
+85
+00:04:34,780 --> 00:04:35,770
+Just because we're,
+
+86
+00:04:35,770 --> 00:04:39,690
+at the end of the day your goal here may
+not be to calculate P values.
+
+87
+00:04:39,690 --> 00:04:41,520
+You may just want to exploring your data
+and
+
+88
+00:04:41,520 --> 00:04:44,280
+get a sense of which variables to go
+together.
+
+89
+00:04:44,280 --> 00:04:47,730
+For exploratory purposes it really doesn't
+matter if you violate those assumptions.
+
+90
+00:04:47,730 --> 00:04:49,630
+So you might even end up throwing in some,
+you know,
+
+91
+00:04:49,630 --> 00:04:52,695
+binary variables into the analysis.
+
+92
+00:04:52,695 --> 00:04:56,930
+Uh,but technically, the assumption is that
+you're dealing with normal distributed,
+
+93
+00:04:56,930 --> 00:04:57,820
+continuous variables.
+
+94
+00:04:57,820 --> 00:05:00,420
+So we're generally going to be dealing
+with numeric variables.
+
+95
+00:05:00,420 --> 00:05:01,900
+Those numeric variable need to be
+standardized.
+
+96
+00:05:01,900 --> 00:05:07,600
+The next thing that we are going to do is
+we are actually going to apply
+
+97
+00:05:07,600 --> 00:05:12,660
+the PCA and you can do this in most
+standard statistical packages you just
+
+98
+00:05:12,660 --> 00:05:17,090
+have to figure out how to click the right
+button so I Put my 11 variables into SAS.
+
+99
+00:05:17,090 --> 00:05:20,430
+I applied my, my principle, principle
+components analysis there.
+
+100
+00:05:20,430 --> 00:05:23,310
+And, I'll show you the result in just a
+minute.
+
+101
+00:05:23,310 --> 00:05:27,390
+But the first kind of decision point that
+you have to do in the analysis is that you
+
+102
+00:05:27,390 --> 00:05:31,400
+have to decide on how many components, how
+many variables to retain.
+
+103
+00:05:31,400 --> 00:05:33,200
+So we, we're starting with 11 variables.
+
+104
+00:05:33,200 --> 00:05:35,860
+We want to compress that to a smaller
+number.
+
+105
+00:05:35,860 --> 00:05:37,560
+I, at some point I have to decide.
+
+106
+00:05:37,560 --> 00:05:39,810
+Am I going to extract three variables?
+
+107
+00:05:39,810 --> 00:05:41,640
+Am I'm going to extract four, or five.
+
+108
+00:05:41,640 --> 00:05:44,230
+How many components am I actually going to
+keep?
+
+109
+00:05:44,230 --> 00:05:48,760
+And there's a number of different criteria
+that are used to make this decision.
+
+110
+00:05:48,760 --> 00:05:51,850
+There's no hard, and fast rule, and really
+a lot of times you
+
+111
+00:05:51,850 --> 00:05:55,760
+need to take into account your own
+particular data set, and the goals of your
+
+112
+00:05:55,760 --> 00:06:00,270
+analysis that really a lot that should
+drive how many components you retain.
+
+113
+00:06:00,270 --> 00:06:01,740
+But let me go through each of these
+different kind of
+
+114
+00:06:01,740 --> 00:06:04,080
+commonly used criteria in turn So
+
+115
+00:06:04,080 --> 00:06:08,870
+again I applied that principle [INAUDIBLE]
+analysis to my set of 11 variables.
+
+116
+00:06:08,870 --> 00:06:11,640
+When you apply PCA to 11 variables,
+
+117
+00:06:11,640 --> 00:06:16,040
+you will come out with 11 components, as
+you can see that I did here.
+
+118
+00:06:16,040 --> 00:06:19,100
+Here's one of the outputs that you get
+from your statistical package.
+
+119
+00:06:19,100 --> 00:06:20,150
+You get the Eigenvalues.
+
+120
+00:06:20,150 --> 00:06:23,380
+And remember that the Eigenvalues just
+represent How much
+
+121
+00:06:23,380 --> 00:06:27,030
+variance is explained by that particular
+component and
+
+122
+00:06:27,030 --> 00:06:30,550
+they've been ordered here from the highest
+to the lowest.
+
+123
+00:06:30,550 --> 00:06:32,490
+So very simple criteria for
+
+124
+00:06:32,490 --> 00:06:36,020
+deciding how many components to retain is
+to just at the eigenvalue.
+
+125
+00:06:36,020 --> 00:06:38,420
+Some people will say if the Eigenvalue is
+greater than one,
+
+126
+00:06:38,420 --> 00:06:39,360
+you keep those components.
+
+127
+00:06:39,360 --> 00:06:42,080
+Any Eigenvalues less than one, you get rid
+of those components.
+
+128
+00:06:42,080 --> 00:06:44,600
+So that, by that criteria, we would split
+it at four.
+
+129
+00:06:44,600 --> 00:06:49,600
+And the idea here is this, every variable
+that entered into the model,
+
+130
+00:06:49,600 --> 00:06:50,980
+has the variance of one.
+
+131
+00:06:50,980 --> 00:06:53,000
+So every single variable alone,
+
+132
+00:06:53,000 --> 00:06:56,850
+the original variables, each explain a
+variance of one.
+
+133
+00:06:56,850 --> 00:07:00,760
+If the Eigenvalue for the components is
+greater than one,
+
+134
+00:07:00,760 --> 00:07:04,920
+that means that they explain more of the
+variance than any single variable.
+
+135
+00:07:04,920 --> 00:07:07,920
+So then, it would seem like we're getting
+more information than a single variable
+
+136
+00:07:07,920 --> 00:07:09,870
+could give us, so it's worth keeping them.
+
+137
+00:07:09,870 --> 00:07:14,910
+But if your, Eigenvalue is less than one,
+then you're, that component contains less
+
+138
+00:07:14,910 --> 00:07:17,570
+information than a single variable and
+it's not worth keeping.
+
+139
+00:07:17,570 --> 00:07:21,100
+So that, is a rule that often people will
+use.
+
+140
+00:07:21,100 --> 00:07:22,970
+It has its advantages and disadvantages.
+
+141
+00:07:22,970 --> 00:07:25,020
+In the end of the day, in this particular
+example,
+
+142
+00:07:25,020 --> 00:07:28,800
+I did end up For several reasons, deciding
+to go with four components,
+
+143
+00:07:28,800 --> 00:07:32,950
+to retain four components, but that's one
+criteria that you can use.
+
+144
+00:07:32,950 --> 00:07:35,080
+It shouldn't be the only one you look at.
+
+145
+00:07:35,080 --> 00:07:36,240
+So that's just saying for
+
+146
+00:07:36,240 --> 00:07:39,850
+each individual component, does it explain
+enough variance to be worth keeping it?
+
+147
+00:07:39,850 --> 00:07:44,070
+You can also look at the cumulative
+variance explained by all the components.
+
+148
+00:07:44,070 --> 00:07:47,940
+So, the first component explains about 32%
+of the variance.
+
+149
+00:07:47,940 --> 00:07:49,795
+The.
+If you add in the second component That's
+
+150
+00:07:49,795 --> 00:07:53,000
+[UNKNOWN] is explaining an additional 20%
+of the variance.
+
+151
+00:07:53,000 --> 00:07:55,445
+So you get up to explaining about 50% of
+the variance,
+
+152
+00:07:55,445 --> 00:07:58,490
+51% of the variance of your original
+variables.
+
+153
+00:07:58,490 --> 00:08:00,813
+Adding a third component gets us to 64%.
+
+154
+00:08:02,250 --> 00:08:04,300
+Adding a fourth component gets us up to
+76%.
+
+155
+00:08:04,300 --> 00:08:06,380
+So by the time we get to four components,
+
+156
+00:08:06,380 --> 00:08:10,550
+we've explained 76% of the variance in the
+original 11 variables.
+
+157
+00:08:10,550 --> 00:08:12,290
+So, we've done pretty well.
+
+158
+00:08:12,290 --> 00:08:15,700
+Now, you could make an argument here that
+if you went up to five components,
+
+159
+00:08:15,700 --> 00:08:18,470
+you'd actually get yourself up to 84%,
+that's an 8% jump.
+
+160
+00:08:18,470 --> 00:08:23,110
+So it might be worth retaining that one
+last one, the fifth one.
+
+161
+00:08:23,110 --> 00:08:25,230
+After that you can see you don't gain that
+much.
+
+162
+00:08:25,230 --> 00:08:28,510
+By any additional components, you know,
+really diminishing returns.
+
+163
+00:08:28,510 --> 00:08:31,550
+You're getting five or three, two percent
+more explained.
+
+164
+00:08:31,550 --> 00:08:34,330
+So probably we're going to want to stop
+here in either four or five.
+
+165
+00:08:34,330 --> 00:08:38,240
+So that, the Eigenvalue ,uh, greater than
+one criteria is easy.
+
+166
+00:08:38,240 --> 00:08:39,800
+You can also look at the percent of
+variance,
+
+167
+00:08:39,800 --> 00:08:41,470
+total variance explained it again I'd say,
+you know,
+
+168
+00:08:41,470 --> 00:08:45,760
+I'd either stop at 76% or 84% is probably
+one of those is you know,
+
+169
+00:08:45,760 --> 00:08:49,930
+you're getting most of the weight of the,
+of explaining the total variance.
+
+170
+00:08:49,930 --> 00:08:52,100
+You're explaining the total variance in
+11.
+
+171
+00:08:52,100 --> 00:08:55,610
+From 11 variables in only five variables
+you just spend 84% of it so
+
+172
+00:08:55,610 --> 00:08:57,740
+that's pretty reasonable ,so you can look
+at that.
+
+173
+00:08:58,910 --> 00:09:01,870
+Another thing people commonly look at is
+something called the Scree plot.
+
+174
+00:09:01,870 --> 00:09:05,220
+All the Scree plot is it takes that data
+that I just showed you in table form and
+
+175
+00:09:05,220 --> 00:09:05,930
+it just plot it.
+
+176
+00:09:05,930 --> 00:09:09,760
+So here's the Eigenvalues and then on the,
+that's on the y axis.
+
+177
+00:09:09,760 --> 00:09:12,260
+On the x axis is, are the components.
+
+178
+00:09:12,260 --> 00:09:15,620
+They're just numbered from one to 11 in
+this case.
+
+179
+00:09:15,620 --> 00:09:18,350
+One is whatever one happened to have the
+highest Eigenvalue.
+
+180
+00:09:18,350 --> 00:09:21,660
+They're ordered from highest to lowest,
+and then we just connect the dots.
+
+181
+00:09:21,660 --> 00:09:24,230
+So it's a very simple plot to make.
+
+182
+00:09:24,230 --> 00:09:29,630
+And what you're looking for in this scree
+plot is essentially, a lot of scree plots,
+
+183
+00:09:29,630 --> 00:09:31,560
+I'll show you a made up one in a minute,
+
+184
+00:09:31,560 --> 00:09:34,760
+they kind of just, there's a steep
+decline.
+
+185
+00:09:34,760 --> 00:09:36,510
+And then they kind of level off.
+
+186
+00:09:36,510 --> 00:09:39,370
+And when you have this kind of inflection
+point,
+
+187
+00:09:39,370 --> 00:09:42,180
+we call that the elbow of this free plot.
+
+188
+00:09:42,180 --> 00:09:43,660
+And the idea would be that you're, you
+know,
+
+189
+00:09:43,660 --> 00:09:46,420
+you're explainig a lot of the variants and
+then suddenly you get down here and
+
+190
+00:09:46,420 --> 00:09:48,480
+there's not much more to explain and you
+level off.
+
+191
+00:09:48,480 --> 00:09:52,770
+And so you're going to retain Either ,ah,
+the number component that
+
+192
+00:09:52,770 --> 00:09:57,360
+marks the elbow or even one less than
+that, that's the typical way people do it.
+
+193
+00:09:57,360 --> 00:09:59,030
+Now ,this particular plot for
+
+194
+00:09:59,030 --> 00:10:02,620
+this particular data set, unfortunately it
+is not great.
+
+195
+00:10:02,620 --> 00:10:04,160
+It doesn't have a clear elbow.
+
+196
+00:10:04,160 --> 00:10:05,980
+So I can't say well, you know,
+
+197
+00:10:05,980 --> 00:10:11,510
+maybe say at component 3, maybe that's the
+elbow because it starts to level off.
+
+198
+00:10:11,510 --> 00:10:15,600
+But then, you know, it kind of goes
+steeply down from four to five.
+
+199
+00:10:15,600 --> 00:10:19,390
+So maybe, it levels off at four, five,
+maybe it levels off at six,
+
+200
+00:10:19,390 --> 00:10:20,330
+it's really hard.
+
+201
+00:10:20,330 --> 00:10:22,080
+There's no clear elbow here.
+
+202
+00:10:22,080 --> 00:10:25,820
+But you can see here you know your
+displaying less and less of the variance.
+
+203
+00:10:25,820 --> 00:10:30,020
+And at some point, definitely by, by six
+it's really leveled off.
+
+204
+00:10:30,020 --> 00:10:31,370
+So we're not going to want to keep six.
+
+205
+00:10:31,370 --> 00:10:33,710
+Maybe we'll keep five or four.
+
+206
+00:10:33,710 --> 00:10:35,830
+And you know, this one again I'm looking
+at the plot and
+
+207
+00:10:35,830 --> 00:10:37,500
+thinking maybe I'll see five or four but
+
+208
+00:10:37,500 --> 00:10:40,550
+there's, this is not a great scree plot in
+terms of getting easy to.
+
+209
+00:10:40,550 --> 00:10:41,400
+Interpret.
+
+210
+00:10:41,400 --> 00:10:44,320
+I'm going to show you the kind of a
+typical screen pot that you're hoping to
+
+211
+00:10:44,320 --> 00:10:48,010
+get that makes your life a little easier,
+doesn't always happen with real data but
+
+212
+00:10:48,010 --> 00:10:50,220
+here's a hypothetical screen pot that I
+made these up so
+
+213
+00:10:50,220 --> 00:10:55,380
+that makes life easy so this one had also
+11 total components so they're numbered on
+
+214
+00:10:55,380 --> 00:10:59,480
+the x axis from 1 to 11 and their
+Eigenvalues are Argument on the Y axis so
+
+215
+00:10:59,480 --> 00:11:02,430
+you can see that first component explained
+in a heck of a lot of the variants and
+
+216
+00:11:02,430 --> 00:11:05,850
+then there's very steeply you drop a to
+the next component and
+
+217
+00:11:05,850 --> 00:11:10,920
+you drop steeply to the next and then at
+four you clearly level off so the elbow.
+
+218
+00:11:10,920 --> 00:11:14,740
+For this one, for this reply, it's clearly
+at four.
+
+219
+00:11:14,740 --> 00:11:16,540
+And then, what people will do is they're
+e-,
+
+220
+00:11:16,540 --> 00:11:19,580
+they'll either choose the, they'll retain
+four components.
+
+221
+00:11:19,580 --> 00:11:22,390
+That is, we are the elbow stars, or
+they'll choose,
+
+222
+00:11:22,390 --> 00:11:26,230
+more commonly, one less than four, so
+they'll stop at three components.
+
+223
+00:11:26,230 --> 00:11:30,140
+So - if somebody were to get data that
+looked like this, they might end up
+
+224
+00:11:30,140 --> 00:11:33,800
+retaining three components or potentially
+four, but no more than that.
+
+225
+00:11:33,800 --> 00:11:38,080
+So that's the scree plot and again it's a
+little bit subjective but,
+
+226
+00:11:38,080 --> 00:11:41,610
+if you look at all of these criteria, the
+eigenvalue greater than one,
+
+227
+00:11:41,610 --> 00:11:44,510
+the total amount of variance explained in
+the scree plot, one of,
+
+228
+00:11:44,510 --> 00:11:48,180
+you know, the combination of looking at
+those should give you some sense.
+
+229
+00:11:48,180 --> 00:11:52,170
+Of where it would be best ,um, to, to make
+that cut off, but
+
+230
+00:11:52,170 --> 00:11:58,330
+also you need to consider the problem at
+hand because, in some cases,
+
+231
+00:11:58,330 --> 00:12:02,290
+you, there's, there might be a construct
+that's, you know the sixth component.
+
+232
+00:12:02,290 --> 00:12:03,790
+That doesn't explain much of the variance,
+but
+
+233
+00:12:03,790 --> 00:12:06,270
+it somehow that construct is of interest
+to you.
+
+234
+00:12:06,270 --> 00:12:09,560
+And you want to isolate it from the other
+variables so you might end up retaining
+
+235
+00:12:09,560 --> 00:12:13,168
+that one just because it's of particular
+interest for a particular problem.
+
+236
+00:12:13,168 --> 00:12:17,910
+So always ,make this judgment in the
+context of the particular problem,
+
+237
+00:12:17,910 --> 00:12:19,720
+the particular goals of your analysis.
+
+238
+00:12:21,600 --> 00:12:24,140
+Okay, so we've, applied the PCA.
+
+239
+00:12:24,140 --> 00:12:28,550
+In this case I decided to retain four
+components, but just out of curiosity I
+
+240
+00:12:28,550 --> 00:12:32,800
+also re-ran the model With five
+components, and I'll tell you that, what
+
+241
+00:12:32,800 --> 00:12:36,370
+the difference between those two was just
+so you, get a sense of how that works.
+
+242
+00:12:38,135 --> 00:12:39,980
+'kay, the next step that we're going to
+do,
+
+243
+00:12:39,980 --> 00:12:43,740
+is we're going to apply something called a
+Varimax rotation.
+
+244
+00:12:43,740 --> 00:12:46,460
+So we're going to take our retained
+components, apply this Varimax rotation.
+
+245
+00:12:46,460 --> 00:12:48,120
+Again, it's very easy to do in the
+computer,
+
+246
+00:12:48,120 --> 00:12:50,760
+all of the standard statistical packages
+have this build in, so
+
+247
+00:12:50,760 --> 00:12:54,820
+it doesn't involve us doing any rotation,
+or any linear algebra.
+
+248
+00:12:54,820 --> 00:12:59,850
+But the point of this ,is that it forces
+each variable.
+
+249
+00:12:59,850 --> 00:13:04,760
+So each of my original 11 variables, to
+load more strongly on one of
+
+250
+00:13:04,760 --> 00:13:08,340
+the components and to not load so strongly
+on the other components.
+
+251
+00:13:08,340 --> 00:13:11,210
+And I'll show you how this helps in
+minute, but that's going to make our
+
+252
+00:13:11,210 --> 00:13:14,220
+results more interpretable because it will
+be clear that, for example,
+
+253
+00:13:14,220 --> 00:13:19,050
+fat mass loads on principle component 1
+.So when I go to say, what does
+
+254
+00:13:19,050 --> 00:13:23,390
+principal component 1 mean, it'll be clear
+that it has something to do with fat mass.
+
+255
+00:13:23,390 --> 00:13:28,290
+So, this is a rotation in, that helps us,
+purely in terms of an interpretation.
+
+256
+00:13:28,290 --> 00:13:30,760
+If you didn't need to interpret the
+principal com, components for
+
+257
+00:13:30,760 --> 00:13:34,370
+some reason Your analysis wasn't focused
+on that then you wouldn't need to
+
+258
+00:13:34,370 --> 00:13:37,120
+apply this rotation, but for most examples
+in epidemiology, and
+
+259
+00:13:37,120 --> 00:13:40,100
+medicine we want to actually understand
+what those components mean.
+
+260
+00:13:40,100 --> 00:13:42,790
+So this is very, very helpful.It also
+guarantees us that at
+
+261
+00:13:42,790 --> 00:13:47,910
+the end of the day that our components
+will be uncorrelated with one another.
+
+262
+00:13:47,910 --> 00:13:49,970
+So let me just kind of show you how this
+works.
+
+263
+00:13:49,970 --> 00:13:54,330
+Again, I won't go into the linear algebra,
+but Here are the data so
+
+264
+00:13:54,330 --> 00:13:59,510
+I ran my principal component analysis on
+these 11 variables and
+
+265
+00:13:59,510 --> 00:14:03,870
+this is what I original get before I apply
+this very max rotation.
+
+266
+00:14:03,870 --> 00:14:06,810
+Now ,I just want to point something out
+here notice that it
+
+267
+00:14:06,810 --> 00:14:09,200
+says factor pattern Factor one and Factor
+2.
+
+268
+00:14:09,200 --> 00:14:11,260
+So, I've been talking about Principle
+Component 1 and
+
+269
+00:14:11,260 --> 00:14:15,220
+Principle Component 2, so where did
+factors suddenly jump out?
+
+270
+00:14:15,220 --> 00:14:19,320
+So, I'm just going to tell you that for
+the purposes of, today, I'm,
+
+271
+00:14:19,320 --> 00:14:24,270
+I'm going to be using factor and principle
+component interchangeably.
+
+272
+00:14:24,270 --> 00:14:28,250
+And the reason suddenly rising factor in
+our output rather than principle
+
+273
+00:14:28,250 --> 00:14:32,880
+component, is simply that because in a lot
+of their computer packages including SAS
+
+274
+00:14:32,880 --> 00:14:37,000
+which is what I used here, you often do
+your principle components
+
+275
+00:14:37,000 --> 00:14:41,980
+analysis from within something called a
+factor analysis so the algorithm for
+
+276
+00:14:41,980 --> 00:14:45,540
+principle components analysis is actually
+built in to the factor analysis.
+
+277
+00:14:45,540 --> 00:14:48,790
+If you want to do this varimax rotation,
+you usually have to do it.
+
+278
+00:14:48,790 --> 00:14:50,520
+Out of a factor analysis.
+
+279
+00:14:50,520 --> 00:14:53,160
+So, hence at the, what we get out of the
+end of the day the computer calls it
+
+280
+00:14:53,160 --> 00:14:56,090
+a factor rather than a principal,
+principal component, but
+
+281
+00:14:56,090 --> 00:14:58,122
+we're not going to distinguish between
+these two at all.
+
+282
+00:14:59,180 --> 00:15:02,110
+There is a, there are some differences
+between factor analysis and
+
+283
+00:15:02,110 --> 00:15:05,500
+principle components analysis, but what we
+are doing here is essentially doing
+
+284
+00:15:05,500 --> 00:15:09,310
+a principle components analysis just from
+within a factor analysis.
+
+285
+00:15:09,310 --> 00:15:11,030
+So what we, what do we get out here.
+
+286
+00:15:11,030 --> 00:15:15,810
+So we get these weights, so this, these
+are what we call the factor loadings what
+
+287
+00:15:15,810 --> 00:15:17,870
+you're seeing in this chart are the factor
+loadings.
+
+288
+00:15:17,870 --> 00:15:21,190
+So remember that each factor or principal
+component is
+
+289
+00:15:21,190 --> 00:15:26,370
+calculated by doing a linear combination
+of all of the original variables so
+
+290
+00:15:26,370 --> 00:15:28,870
+for example, you're going to take your
+android fat ratio.
+
+291
+00:15:28,870 --> 00:15:31,560
+For each woman you're going to multiply it
+times the factor loading, and
+
+292
+00:15:31,560 --> 00:15:34,000
+you can see here that the factor loading
+turned out to be 0.73.
+
+293
+00:15:34,000 --> 00:15:38,150
+So you take your android fat ratio, you
+multiply point, by 0.73.
+
+294
+00:15:38,150 --> 00:15:40,820
+Now, all of the factor loadings are
+going to come out to
+
+295
+00:15:40,820 --> 00:15:43,920
+be numbers between negative one and
+positive one.
+
+296
+00:15:43,920 --> 00:15:47,650
+So if something's very close to one, that
+means that that variable loads heavily.
+
+297
+00:15:47,650 --> 00:15:51,480
+On the component, if it's close to zero,
+it means it does not load heavily.
+
+298
+00:15:51,480 --> 00:15:55,490
+We would then take our, a woman's lean
+mass and we'd multiply it by .39.
+
+299
+00:15:55,490 --> 00:15:59,180
+We would add those together, so you would
+get her principal component 1 is going to
+
+300
+00:15:59,180 --> 00:16:09,180
+be equal to her android fat, ratio, times
+.73, + her lean mass times .39.
+
+301
+00:16:09,180 --> 00:16:17,170
++, her fat mass times .85 [SOUND] + her
+BMI times
+
+302
+00:16:17,170 --> 00:16:23,840
+.74 plus her height times .21 and so on.
+
+303
+00:16:23,840 --> 00:16:26,730
+I won't go through the whole thing, but
+what you come out with at the end of
+
+304
+00:16:26,730 --> 00:16:30,010
+the day is a linear combination of all the
+original variables.
+
+305
+00:16:30,010 --> 00:16:34,320
+But some of the variables are weeded much
+more heavily than others.
+
+306
+00:16:34,320 --> 00:16:37,580
+Now the problem when you look at the
+factor patterns here.
+
+307
+00:16:37,580 --> 00:16:38,840
+When you look at the factor loadings.
+
+308
+00:16:38,840 --> 00:16:41,350
+If you look at principle component 1, or
+Factor 1.
+
+309
+00:16:41,350 --> 00:16:45,280
+You'll notice that a lot of things load
+heavily on factor one.
+
+310
+00:16:45,280 --> 00:16:49,140
+So a lot of the body composition and body
+size, measurements have pretty high
+
+311
+00:16:49,140 --> 00:16:54,550
+weights and also, the performance measures
+have high negative weights,
+
+312
+00:16:54,550 --> 00:16:57,820
+meaning they're inversely related, they
+lower Factor 1.
+
+313
+00:16:57,820 --> 00:16:59,490
+So that makes it hard to interpret,
+
+314
+00:16:59,490 --> 00:17:04,229
+cause there's no clear, Factor 1 doesn't
+clearly represent any one construct.
+
+315
+00:17:05,390 --> 00:17:08,170
+But we can apply this Varimax rotation,
+and that's what I've done here.
+
+316
+00:17:08,170 --> 00:17:12,150
+And notice it becomes wonderfully clean,
+after you apply this Varimax rotation.
+
+317
+00:17:12,150 --> 00:17:13,750
+It's very useful.
+
+318
+00:17:13,750 --> 00:17:16,870
+So, what happens when you apply the
+rotation is that
+
+319
+00:17:16,870 --> 00:17:21,320
+each variable now loads strongly on one of
+the principal components but
+
+320
+00:17:21,320 --> 00:17:23,000
+does not load strongly on the other.
+
+321
+00:17:23,000 --> 00:17:25,480
+So if you look at the Android fat ratio,
+for example.
+
+322
+00:17:25,480 --> 00:17:28,000
+It has a weight, for principal component
+1, of 0.87.
+
+323
+00:17:28,000 --> 00:17:31,910
+So it has a stra, it's a strong part of
+principal component 1.
+
+324
+00:17:31,910 --> 00:17:34,808
+But then, for the rest of them, they're
+very, all the weights are close to zero,
+
+325
+00:17:34,808 --> 00:17:40,070
+0.1, 0.2, 0.3, those are all fairly low in
+the weighted sun.
+
+326
+00:17:40,070 --> 00:17:43,910
+What that's telling us is that most
+android fat,
+
+327
+00:17:43,910 --> 00:17:47,850
+android fat gets encapsulated mostly in
+principal component 1.
+
+328
+00:17:47,850 --> 00:17:53,220
+And then if you look down across, down the
+column here, across a principal component
+
+329
+00:17:53,220 --> 00:17:58,630
+you'll notice only a certain variables
+that load on principal component 1.
+
+330
+00:17:58,630 --> 00:18:00,290
+And they're all strongly related to one
+another.
+
+331
+00:18:00,290 --> 00:18:04,070
+So fat mass Loads strongly on principle
+component 1, as does BMI.
+
+332
+00:18:04,070 --> 00:18:08,420
+And I've highlighted everywhere where the
+factor loading is greater than .40.
+
+333
+00:18:08,420 --> 00:18:11,440
+That's a little bit of an arbitrary
+cutoff, but that's a pretty good.
+
+334
+00:18:11,440 --> 00:18:14,980
+To show you what, what strongly loads on
+each component.
+
+335
+00:18:14,980 --> 00:18:15,880
+So what does this tell you?
+
+336
+00:18:15,880 --> 00:18:18,300
+Now, if you look at lean mass it's got
+some relationship,
+
+337
+00:18:18,300 --> 00:18:21,130
+some it contributes something to principle
+component 1.
+
+338
+00:18:21,130 --> 00:18:22,520
+But it's pretty low.
+
+339
+00:18:22,520 --> 00:18:26,920
+And then the rest of them, and you, maybe
+mile time again, is a lit, you know,
+
+340
+00:18:26,920 --> 00:18:29,670
+contributing something inversely, but it,
+none of these are very strong.
+
+341
+00:18:29,670 --> 00:18:31,660
+And then the rest are pretty close to
+zero.
+
+342
+00:18:31,660 --> 00:18:33,000
+So principal component 1,
+
+343
+00:18:33,000 --> 00:18:36,200
+we can now say pretty clearly, we can
+interpret the meaning.
+
+344
+00:18:36,200 --> 00:18:39,780
+The meaning of principal component 1 is
+that it's body fatness.
+
+345
+00:18:39,780 --> 00:18:42,840
+So, it's largely representing body
+fatness.
+
+346
+00:18:42,840 --> 00:18:44,460
+How much fat are you carrying.
+
+347
+00:18:44,460 --> 00:18:45,210
+Android fat again.
+
+348
+00:18:45,210 --> 00:18:49,860
+It's viseral fat to people who, you know,
+tend to have belly fat.
+
+349
+00:18:49,860 --> 00:18:51,690
+And, BMI is very strongly related to fat.
+
+350
+00:18:51,690 --> 00:18:53,730
+So, all of these tell you about body fat.
+
+351
+00:18:53,730 --> 00:18:57,100
+So, now we can Clearly define the meaning
+of principle component 1 and
+
+352
+00:18:57,100 --> 00:18:57,740
+call it something.
+
+353
+00:18:57,740 --> 00:19:00,020
+It's representing body fatness.
+
+354
+00:19:00,020 --> 00:19:03,570
+If you look at principle component 2, if
+you look down this column,
+
+355
+00:19:03,570 --> 00:19:06,040
+you'll notice that most of these are
+pretty close to zero.
+
+356
+00:19:06,040 --> 00:19:09,430
+But you get to all of the measures of
+running performance and
+
+357
+00:19:09,430 --> 00:19:12,970
+competitiveness, and all of those have
+high weights on principle component 2.
+
+358
+00:19:12,970 --> 00:19:16,850
+So they are contributing a lot to
+principle component two.
+
+359
+00:19:16,850 --> 00:19:21,640
+So, my all time if it's, if you're faster
+then you're going to get a large,
+
+360
+00:19:21,640 --> 00:19:23,810
+that's going to increase your principle
+component 2.
+
+361
+00:19:23,810 --> 00:19:24,910
+If you run a lot of miles,
+
+362
+00:19:24,910 --> 00:19:27,150
+if you're running all your intervals at a
+faster pace.
+
+363
+00:19:27,150 --> 00:19:29,620
+All things that indicate competitiveness.
+
+364
+00:19:29,620 --> 00:19:33,130
+Now, something that's of, of real interest
+here, is this last one.
+
+365
+00:19:33,130 --> 00:19:36,980
+Notice that there's an additional thing
+that loads on principle component 2,
+
+366
+00:19:36,980 --> 00:19:38,470
+which is menarche age.
+
+367
+00:19:38,470 --> 00:19:42,660
+Menarche age clearly is not directly
+related, of course, all
+
+368
+00:19:42,660 --> 00:19:46,460
+the performance ones or the training ones,
+they all go together if that makes sense.
+
+369
+00:19:46,460 --> 00:19:50,580
+But menarche age also loads on principle
+component 2.
+
+370
+00:19:50,580 --> 00:19:55,100
+In fact it does not load on the principle
+component That loaded all the other
+
+371
+00:19:55,100 --> 00:19:56,990
+measures of menstrual function.
+
+372
+00:19:56,990 --> 00:20:00,250
+Which is really interesting and gives you
+kind of some insight here.
+
+373
+00:20:00,250 --> 00:20:02,870
+Because is what that's telling you is that
+,uh,
+
+374
+00:20:02,870 --> 00:20:05,170
+menarchy is the age of a woman's first
+period.
+
+375
+00:20:05,170 --> 00:20:09,800
+For this population, which is young
+adolescent woman runners,
+
+376
+00:20:09,800 --> 00:20:15,030
+menarchy age is more strongly tied to her
+running performance and
+
+377
+00:20:15,030 --> 00:20:18,530
+competitiveness than it is to menstrual
+function.
+
+378
+00:20:18,530 --> 00:20:19,140
+Later.
+
+379
+00:20:19,140 --> 00:20:22,160
+The, this is the rest of the menstrual
+variables are related to
+
+380
+00:20:22,160 --> 00:20:24,750
+how many periods she's having per year
+after Menarche.
+
+381
+00:20:24,750 --> 00:20:27,900
+So, interestingly all of the menstrual
+function variables don't load together.
+
+382
+00:20:27,900 --> 00:20:31,450
+Which is telling you something about,
+about this population.
+
+383
+00:20:31,450 --> 00:20:33,440
+So, I think that's really interesting.
+
+384
+00:20:33,440 --> 00:20:35,600
+So, that's Principal Component 2,
+primarily running performance.
+
+385
+00:20:35,600 --> 00:20:39,070
+But also Menarche is very tightly linked
+to running performance.
+
+386
+00:20:39,070 --> 00:20:42,469
+Those who start competing early in life,
+tend to have a late Menarche.
+
+387
+00:20:43,678 --> 00:20:46,990
+Principal component 3 is also very
+interesting because if you kind of
+
+388
+00:20:46,990 --> 00:20:51,240
+scroll down, fat mass has a little bit of
+a loading on it, but BMI, android fat,
+
+389
+00:20:51,240 --> 00:20:53,970
+not so much, and then we get down to lean
+mass and height.
+
+390
+00:20:53,970 --> 00:20:57,860
+Lean mass and height load very strongly on
+this principal component.
+
+391
+00:20:57,860 --> 00:21:00,230
+And then the rest of the variable
+contribute very little.
+
+392
+00:21:00,230 --> 00:21:05,180
+So this variable represents body size, how
+big you are.
+
+393
+00:21:05,180 --> 00:21:06,380
+If you're taller and
+
+394
+00:21:06,380 --> 00:21:11,330
+you're more muscular, you're going to get
+a bigger score on principal component 3.
+
+395
+00:21:11,330 --> 00:21:14,200
+So this represents body size.
+
+396
+00:21:14,200 --> 00:21:18,430
+And what's interesting here is that all of
+the measures that we had about body size
+
+397
+00:21:18,430 --> 00:21:23,790
+and composition previously conflated body
+fatness and body size.
+
+398
+00:21:23,790 --> 00:21:27,520
+That is, if you were a, a bigger person,
+
+399
+00:21:27,520 --> 00:21:30,830
+you were likely to carry more fat mass
+just because you were bigger.
+
+400
+00:21:30,830 --> 00:21:35,740
+So ,there was some component of body size
+as well as body fatness contained in
+
+401
+00:21:35,740 --> 00:21:38,590
+the variable fat mass, and similarly, you
+know,
+
+402
+00:21:38,590 --> 00:21:42,780
+BMI, if you're just a kind of a bigger
+person, you might have a bigger BMI.
+
+403
+00:21:42,780 --> 00:21:46,200
+That conflates body size and body fatness.
+
+404
+00:21:46,200 --> 00:21:50,380
+But now, remember we've come out with
+components variables that
+
+405
+00:21:50,380 --> 00:21:51,900
+are uncorrelated to one another.
+
+406
+00:21:51,900 --> 00:21:56,690
+So we've isolated body fat mass and mad
+that a separate construct.
+
+407
+00:21:56,690 --> 00:21:57,950
+From body size.
+
+408
+00:21:57,950 --> 00:22:01,800
+That's going to be really useful because
+we can then tease apart the effects,
+
+409
+00:22:01,800 --> 00:22:05,260
+separate the effects of a body size just
+kind of being a bigger boned person,
+
+410
+00:22:05,260 --> 00:22:07,550
+you got taller bigger person from body fat
+and
+
+411
+00:22:07,550 --> 00:22:11,610
+is how much fat you actually carry on
+your, on your body.
+
+412
+00:22:11,610 --> 00:22:14,090
+So that's nice, we're able to separate
+those constructs and
+
+413
+00:22:14,090 --> 00:22:16,540
+isolate them from one another, it was very
+very useful.
+
+414
+00:22:16,540 --> 00:22:18,110
+And then finally the.
+
+415
+00:22:18,110 --> 00:22:22,080
+Fourth principal component, I ended up
+calling menstrual regularity,
+
+416
+00:22:22,080 --> 00:22:24,460
+because if you look down, hardly anything
+loaded on it,
+
+417
+00:22:24,460 --> 00:22:29,410
+except these two, variables that were
+representing menstrual regularity,
+
+418
+00:22:29,410 --> 00:22:32,850
+which is the number of periods a women had
+in the past year, and the average number
+
+419
+00:22:32,850 --> 00:22:37,570
+of periods she's had per year since
+menarche, those loaded strongly there.
+
+420
+00:22:37,570 --> 00:22:41,780
+So this is very useful, because now we've
+got four variables that
+
+421
+00:22:41,780 --> 00:22:44,890
+represent different constructs, they are
+uncorrelated with one another.
+
+422
+00:22:44,890 --> 00:22:45,550
+Another.
+
+423
+00:22:45,550 --> 00:22:48,990
+And also we've gained some insight into
+sort of how things cluster, for
+
+424
+00:22:48,990 --> 00:22:52,680
+example that Menarche age is more strongly
+tied to running performance than it
+
+425
+00:22:52,680 --> 00:22:54,970
+is to menstrual regularity.
+
+426
+00:22:54,970 --> 00:22:55,820
+Alright.
+So
+
+427
+00:22:55,820 --> 00:22:58,910
+going through our steps here we've done
+the first couple of steps, we applied that
+
+428
+00:22:58,910 --> 00:23:02,070
+Varimax roation, we interpreted the
+meaning of the components by looking at
+
+429
+00:23:02,070 --> 00:23:05,820
+the rotated factor pattern, those pat,
+pattern, those factor loading.
+
+430
+00:23:06,840 --> 00:23:08,080
+And.
+And then the final thing we're going to
+
+431
+00:23:08,080 --> 00:23:12,150
+do is we may then want to take those
+components, those new variables,
+
+432
+00:23:12,150 --> 00:23:15,250
+those four new variables that we
+calculated and
+
+433
+00:23:15,250 --> 00:23:18,690
+do further statistics on those new
+variables.
+
+434
+00:23:18,690 --> 00:23:20,820
+We have four new variables in our data
+set.
+
+435
+00:23:20,820 --> 00:23:24,350
+We can use them to do further statistics,
+I just want to point out.
+
+436
+00:23:24,350 --> 00:23:27,650
+One additional thing is that I mentioned
+That I retained,
+
+437
+00:23:27,650 --> 00:23:28,920
+as you saw in the solution here.
+
+438
+00:23:28,920 --> 00:23:32,100
+I contained four components in my
+solution.
+
+439
+00:23:32,100 --> 00:23:34,980
+But what happens if I ask for five
+components?
+
+440
+00:23:34,980 --> 00:23:38,290
+What happens if I ask for five components
+is that we get a fifth,
+
+441
+00:23:38,290 --> 00:23:40,690
+all the same of the principal components
+stay the same.
+
+442
+00:23:40,690 --> 00:23:44,520
+Except the fifth component ends up
+representing menarche age.
+
+443
+00:23:44,520 --> 00:23:48,180
+So the menarche age gets separated out and
+becomes its
+
+444
+00:23:48,180 --> 00:23:52,190
+own component separate from menstrual
+regularity or running performance.
+
+445
+00:23:52,190 --> 00:23:53,650
+So that might be useful.
+
+446
+00:23:53,650 --> 00:23:55,880
+It's useful when it loads on running
+performance because it
+
+447
+00:23:55,880 --> 00:23:56,960
+gives me some insight.
+
+448
+00:23:56,960 --> 00:24:00,850
+But if I really care about menarche age as
+a seperate construct I might want to ask
+
+449
+00:24:00,850 --> 00:24:04,650
+for five components so that I can actually
+look at the effect of menarche age.
+
+450
+00:24:06,140 --> 00:24:10,150
+Okay, so now we're going to actually use
+these components, these new variables,
+
+451
+00:24:10,150 --> 00:24:12,760
+these four new variables, to do further
+statistics.
+
+452
+00:24:12,760 --> 00:24:19,180
+So what I did here, is that I wanted to do
+this, to do a logistic regression.
+
+453
+00:24:19,180 --> 00:24:23,370
+So what I have here is a binary outcome,
+stress fracture or no stress fracture.
+
+454
+00:24:23,370 --> 00:24:25,710
+These women fractured or they didn't.
+
+455
+00:24:25,710 --> 00:24:30,130
+So, I applied logistic regression
+analysis, and
+
+456
+00:24:30,130 --> 00:24:33,320
+my predictors are these four principal
+components: body fatness,
+
+457
+00:24:33,320 --> 00:24:36,130
+running performance, body size and
+menstrual function.
+
+458
+00:24:36,130 --> 00:24:37,480
+Newly calculated.
+
+459
+00:24:37,480 --> 00:24:39,880
+The computer, by the way, will calculate
+these for you.
+
+460
+00:24:39,880 --> 00:24:43,790
+You do not have to calculate out those
+linear combinations yourself for
+
+461
+00:24:43,790 --> 00:24:45,990
+every ,uh, observation in your data set.
+
+462
+00:24:45,990 --> 00:24:51,250
+You computer will calculate for you these
+values of these principal components.
+
+463
+00:24:51,250 --> 00:24:53,050
+For each woman in the data set and
+
+464
+00:24:53,050 --> 00:24:56,170
+it's very easy to get that on the computer
+you did and take those new variables and
+
+465
+00:24:56,170 --> 00:25:00,190
+apply them in something like a logistics
+regression as I done here.
+
+466
+00:25:00,190 --> 00:25:02,670
+Now, I'll just mention that because the
+principle components,
+
+467
+00:25:02,670 --> 00:25:04,810
+these four components are uncorrelated
+with one another.
+
+468
+00:25:04,810 --> 00:25:05,440
+Another.
+
+469
+00:25:05,440 --> 00:25:09,090
+I have thrown them all together into a
+multi variant logistic regression just so
+
+470
+00:25:09,090 --> 00:25:10,890
+I can put everything on one slide.
+
+471
+00:25:10,890 --> 00:25:14,660
+But in fact, were I to run separate
+logistic regressions with
+
+472
+00:25:14,660 --> 00:25:17,090
+only one principle component at a time,
+
+473
+00:25:17,090 --> 00:25:21,350
+I'm going to get the same result in terms
+of data coefficients and P values.
+
+474
+00:25:21,350 --> 00:25:23,580
+Because I, there's no adjustment here.
+
+475
+00:25:23,580 --> 00:25:27,540
+Since nothing is correlated, none of the
+variables are correlated to each other,
+
+476
+00:25:27,540 --> 00:25:29,840
+there's no, I don't really need to adjust
+for anything.
+
+477
+00:25:29,840 --> 00:25:31,400
+I could just run these separately.
+
+478
+00:25:31,400 --> 00:25:36,280
+Or I can pull them all into a single model
+just to save space on this slide.
+
+479
+00:25:36,280 --> 00:25:40,340
+But just note that's kind of important to
+know is that you don't really need to
+
+480
+00:25:40,340 --> 00:25:43,160
+do a multi-variate analysis now because we
+have already adjusted everything,
+
+481
+00:25:43,160 --> 00:25:45,640
+everything is separate, all the predictors
+are separate from one another.
+
+482
+00:25:46,670 --> 00:25:49,080
+But whats interesting now is to just look
+at the results that we got.
+
+483
+00:25:49,080 --> 00:25:52,580
+Okay, so principle component one, that was
+this body fatness,
+
+484
+00:25:52,580 --> 00:25:54,760
+how much body fat you are carrying.
+
+485
+00:25:54,760 --> 00:25:56,100
+Independent of your body size.
+
+486
+00:25:57,120 --> 00:26:00,910
+And what's interesting is if you recall
+from a earlier,.
+
+487
+00:26:00,910 --> 00:26:02,340
+Module.
+
+488
+00:26:02,340 --> 00:26:06,720
+I used the ,uh, body composition and body
+size variables.
+
+489
+00:26:06,720 --> 00:26:09,430
+And I tried to predict ,uh, stress
+fracture.
+
+490
+00:26:09,430 --> 00:26:11,730
+And what turned out was that if you were.
+
+491
+00:26:11,730 --> 00:26:15,070
+All the body size and body composition
+measures having higher values
+
+492
+00:26:15,070 --> 00:26:18,070
+was protective against stress fracture.
+
+493
+00:26:18,070 --> 00:26:19,430
+It wasn't significant for all of them but
+
+494
+00:26:19,430 --> 00:26:22,180
+all of them were in the protective
+direction and body fatness was this,
+
+495
+00:26:22,180 --> 00:26:26,130
+body fat, fat mass, that single variable
+was the strongest predictor.
+
+496
+00:26:26,130 --> 00:26:27,730
+Was the most protective.
+
+497
+00:26:27,730 --> 00:26:31,390
+And I mentioned then that, the, the reason
+that fat mass might be so
+
+498
+00:26:31,390 --> 00:26:36,500
+protective in this particular population
+Might have to do with the fact, that,
+
+499
+00:26:36,500 --> 00:26:39,670
+if you have more fat mass you're likely to
+have better menstrual function.
+
+500
+00:26:39,670 --> 00:26:42,500
+And having better menstrual function
+protects your bones.
+
+501
+00:26:43,600 --> 00:26:47,750
+So, what we've done now those is we've
+created separate constructs.
+
+502
+00:26:47,750 --> 00:26:51,060
+A separate variable that represents body
+fat that's independent of
+
+503
+00:26:51,060 --> 00:26:52,420
+menstrual function.
+
+504
+00:26:52,420 --> 00:26:55,940
+And when I put that into the model what
+you'll notice is that fat
+
+505
+00:26:55,940 --> 00:27:00,957
+body fatness per say without this
+mediation through menstral function has
+
+506
+00:27:00,957 --> 00:27:04,700
+some is still somewhat protective but its
+not statistically significant and
+
+507
+00:27:04,700 --> 00:27:06,380
+the beta is not very big.
+
+508
+00:27:06,380 --> 00:27:11,070
+In other words, most of the protective
+effective body fatness was probably due
+
+509
+00:27:11,070 --> 00:27:15,920
+to the the was probably due to its effect
+on menstrual function that is more fat.
+
+510
+00:27:15,920 --> 00:27:18,860
+Better menstrual function less stress
+fractures So, that's interesting.
+
+511
+00:27:18,860 --> 00:27:22,590
+We're able to kind of tease apart what's
+due to fat mass versus menstrual function.
+
+512
+00:27:23,600 --> 00:27:28,680
+The second parts of [UNKNOWN] being more
+competitive at running, running more, and
+
+513
+00:27:28,680 --> 00:27:31,950
+sort of not surprisingly, this one has a
+positive relationship with
+
+514
+00:27:31,950 --> 00:27:34,210
+stress fractures, so the beta here is
+point-nine, so
+
+515
+00:27:34,210 --> 00:27:39,570
+that's a fairly big affect size, and the
+p-value is statistically significant.
+
+516
+00:27:39,570 --> 00:27:42,830
+Obviously, if you run more, if you run
+harder You're just,
+
+517
+00:27:42,830 --> 00:27:45,100
+you have more opportunities to get a bone
+fracture.
+
+518
+00:27:46,420 --> 00:27:49,540
+The third principal component, was this
+body size, which is just kind of
+
+519
+00:27:49,540 --> 00:27:53,200
+how big boned, how tall, how big you are,
+not how fat you are,
+
+520
+00:27:53,200 --> 00:27:58,410
+but how big you are, and this one is all,
+not quite statistically significant.
+
+521
+00:27:58,410 --> 00:28:01,840
+The p value is about .07, so it didn't
+quite reach statistical significance, but
+
+522
+00:28:01,840 --> 00:28:04,520
+the beta is about the same size as the
+beta for running performance.
+
+523
+00:28:04,520 --> 00:28:05,670
+It's negative.
+
+524
+00:28:05,670 --> 00:28:09,800
+So that's saying being a little bit bigger
+is actually protective against fractures.
+
+525
+00:28:09,800 --> 00:28:12,900
+And this makes sense, because, if you have
+a bigger body,
+
+526
+00:28:12,900 --> 00:28:14,540
+you know we call it big boned right?
+
+527
+00:28:14,540 --> 00:28:15,980
+You, you tend to have stronger bones.
+
+528
+00:28:15,980 --> 00:28:17,810
+Your bone density tends to be higher.
+
+529
+00:28:17,810 --> 00:28:21,790
+So bigger bodies you tend to have, better
+bone density the stronger your
+
+530
+00:28:21,790 --> 00:28:23,310
+bones obviously, the less likely you are
+to...
+
+531
+00:28:23,310 --> 00:28:23,910
+To fractures.
+
+532
+00:28:23,910 --> 00:28:27,710
+So that makes sense and then finally,
+menstrual function.
+
+533
+00:28:27,710 --> 00:28:29,660
+This had a strong negative relationship.
+
+534
+00:28:29,660 --> 00:28:33,840
+So better menstral function was related to
+protection against stress fractures.
+
+535
+00:28:33,840 --> 00:28:37,890
+This one was the most significant and also
+had the biggest beta coefficient.
+
+536
+00:28:37,890 --> 00:28:41,980
+And that's well known that menstrual
+function is strongly related to
+
+537
+00:28:41,980 --> 00:28:45,500
+bone density and fractures in women
+runners.

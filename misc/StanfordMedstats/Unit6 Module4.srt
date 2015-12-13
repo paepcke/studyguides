@@ -1,0 +1,379 @@
+1
+00:00:00,240 --> 00:00:01,670
+Welcome back.
+
+2
+00:00:01,670 --> 00:00:02,410
+Now that we have cleaned and
+
+3
+00:00:02,410 --> 00:00:05,730
+repaired our data we are ready to look at
+the data to find any basic patterns.
+
+4
+00:00:07,060 --> 00:00:08,870
+Let's take a look at a histogram for the
+variable age.
+
+5
+00:00:11,660 --> 00:00:14,780
+I always like to start with goptions reset
+equals all.
+
+6
+00:00:14,780 --> 00:00:16,240
+Just to make sure that the settings used
+for
+
+7
+00:00:16,240 --> 00:00:17,780
+the previous graphs won't get carried
+over.
+
+8
+00:00:19,290 --> 00:00:21,220
+For our histogram, we're going to use proc
+sgplot.
+
+9
+00:00:21,220 --> 00:00:24,700
+This coach should be pretty familiar from
+the section on graphing.
+
+10
+00:00:26,890 --> 00:00:30,380
+As you can see we have a histogram for the
+variable age, with the title age in years.
+
+11
+00:00:30,380 --> 00:00:33,010
+Now looks like it's roughly normally
+distributed.
+
+12
+00:00:33,010 --> 00:00:37,180
+>> It would be pretty cumbersome if we had
+to repeat this code over and
+
+13
+00:00:37,180 --> 00:00:39,650
+over again for all the variables we
+want to analyze.
+
+14
+00:00:39,650 --> 00:00:42,830
+So let's create a macro so we can make our
+lives a little easier.
+
+15
+00:00:42,830 --> 00:00:45,760
+We'll start with the same code, just to
+make sure there aren't any errors.
+
+16
+00:00:45,760 --> 00:00:50,720
+We can then add percent macro at the top,
+and percent mend at the bottom.
+
+17
+00:00:54,260 --> 00:00:57,960
+Let's name this macro histogram, and put
+the parentheses after the title, so
+
+18
+00:00:57,960 --> 00:00:58,899
+that we create a function.
+
+19
+00:01:00,360 --> 00:01:02,330
+Since we're interested in multiple
+histograms for
+
+20
+00:01:02,330 --> 00:01:06,120
+all continuous variables in our dataset,
+we actually need a macro that allows us to
+
+21
+00:01:06,120 --> 00:01:09,430
+change the title and change the variable
+of interest.
+
+22
+00:01:09,430 --> 00:01:12,300
+In our code, let's find the title
+statement.
+
+23
+00:01:12,300 --> 00:01:17,720
+Instead of age, let's replace this with
+ampersand title period.
+
+24
+00:01:17,720 --> 00:01:20,970
+Remember how in our discussions on macros,
+ampersand and
+
+25
+00:01:20,970 --> 00:01:23,660
+period allow us to create a placeholder.
+
+26
+00:01:23,660 --> 00:01:26,290
+We need to do the same thing for age
+variable.
+
+27
+00:01:26,290 --> 00:01:32,320
+Let's replace age with ampersand variable
+period.
+
+28
+00:01:32,320 --> 00:01:33,620
+For both of these placeholders,
+
+29
+00:01:33,620 --> 00:01:36,940
+we need to put them in the function after
+the title of our macro.
+
+30
+00:01:36,940 --> 00:01:37,910
+So after histogram,
+
+31
+00:01:37,910 --> 00:01:43,450
+we put title, variable, now we're ready to
+run our macro.
+
+32
+00:01:45,880 --> 00:01:50,070
+>> With the macro run and stored in Sass,
+we're now ready to invoke the macro.
+
+33
+00:01:50,070 --> 00:01:52,460
+Here we invoke the macro three times.
+
+34
+00:01:52,460 --> 00:01:53,860
+Remember, you always start it with % and
+
+35
+00:01:53,860 --> 00:01:58,440
+then the name of the macro, which in this
+case is histogram and in the parentheses,
+
+36
+00:01:58,440 --> 00:02:00,530
+you include the values for the placeholder
+variables.
+
+37
+00:02:00,530 --> 00:02:04,680
+So you start out with a title and then the
+variable of interest.
+
+38
+00:02:04,680 --> 00:02:06,970
+Don't forget, the title has to be included
+in apostrophes.
+
+39
+00:02:08,210 --> 00:02:09,440
+So first we invoke the macro for
+
+40
+00:02:09,440 --> 00:02:12,830
+the weight variable, then for height, then
+for BMI.
+
+41
+00:02:14,380 --> 00:02:18,630
+As you can see we now have a histogram for
+weight, for height, and for
+
+42
+00:02:18,630 --> 00:02:20,270
+BMI, just like we wanted.
+
+43
+00:02:21,650 --> 00:02:23,225
+Now, let's take a look at some simple
+scatter plots.
+
+44
+00:02:25,400 --> 00:02:27,920
+Like before I'll start with G options
+reset equals all.
+
+45
+00:02:29,060 --> 00:02:31,960
+By now you should be pretty familiar with
+using proc gplot to make a scatterplot.
+
+46
+00:02:33,480 --> 00:02:35,490
+We'll set the title of age versus weight.
+
+47
+00:02:37,040 --> 00:02:40,730
+We'll make our labels so that we can
+include our units in the access labels.
+
+48
+00:02:43,160 --> 00:02:45,950
+Using a plot statement we specify the
+variables that we want to have in
+
+49
+00:02:45,950 --> 00:02:47,362
+the scatter plot.
+
+50
+00:02:47,362 --> 00:02:52,205
+We want to have age by weight so we have
+age asterisk weight underscore kg's.
+
+51
+00:02:53,600 --> 00:02:55,340
+Using a simple one statement,
+
+52
+00:02:55,340 --> 00:02:57,850
+we can specify how we want our symbols to
+appear in the scatter plot.
+
+53
+00:02:58,910 --> 00:03:01,750
+This will give us red triangles with a
+certain height as well
+
+54
+00:03:01,750 --> 00:03:02,640
+an interpolation line.
+
+55
+00:03:04,010 --> 00:03:07,530
+As you can see, we had a scatterplot of
+age by weight where
+
+56
+00:03:07,530 --> 00:03:11,380
+the symbols are red triangles and there's
+an interpolation line.
+
+57
+00:03:11,380 --> 00:03:13,550
+It gives us the labels we want, as well as
+the title.
+
+58
+00:03:13,550 --> 00:03:17,610
+>> [SOUND] Let's create a similar plot for
+age versus BMI.
+
+59
+00:03:20,310 --> 00:03:23,040
+As you can see the first part of our code
+is the same,
+
+60
+00:03:23,040 --> 00:03:26,870
+our title now is age versus BMI, and we
+use our labels to
+
+61
+00:03:26,870 --> 00:03:32,160
+specify BMI in kilograms over meters
+squared and age in years.
+
+62
+00:03:32,160 --> 00:03:36,060
+For axis one we specify an order zero to
+50 by five.
+
+63
+00:03:36,060 --> 00:03:37,800
+This will be our BMI range.
+
+64
+00:03:37,800 --> 00:03:43,720
+We specify plot as BMI*age, and we label
+our vertical axis as Axis one.
+
+65
+00:03:43,720 --> 00:03:45,760
+Let's take a look at the output.
+
+66
+00:03:47,210 --> 00:03:49,680
+Here you see our BMI distribution based on
+age.
+
+67
+00:03:49,680 --> 00:03:53,270
+>> Let's make a slight modification to
+this graph, so
+
+68
+00:03:53,270 --> 00:03:55,022
+we can see the subsets based on genders.
+
+69
+00:03:55,022 --> 00:04:00,047
+[SOUND] We'll change our title, and
+
+70
+00:04:00,047 --> 00:04:08,610
+in the plot statement we'll add BMI*age
+equals is female.
+
+71
+00:04:08,610 --> 00:04:11,100
+Now we'll get different symbols for males
+and females.
+
+72
+00:04:12,680 --> 00:04:15,880
+When we add in the symbol two statement
+with different settings,
+
+73
+00:04:15,880 --> 00:04:18,330
+we can have a different symbol for males
+and females in our graph.
+
+74
+00:04:19,770 --> 00:04:23,710
+It looks like males have a higher BMI than
+females, across all ages.
+
+75
+00:04:23,710 --> 00:04:26,980
+>> Just remember, this data is made up and
+there be values that are unrealistic.
+
+76
+00:04:29,860 --> 00:04:30,700
+>> Looking to the something,
+
+77
+00:04:30,700 --> 00:04:33,750
+except show different sub sets for
+diabetics and non-diabetics.
+
+78
+00:04:33,750 --> 00:04:43,370
+It looks like in our data set,
+
+79
+00:04:43,370 --> 00:04:46,750
+diabetics tend to have a higher BMI than
+non-diabetics.
+
+80
+00:04:46,750 --> 00:04:49,960
+>> Now that we've explored our data, we're
+ready to run our analysis.

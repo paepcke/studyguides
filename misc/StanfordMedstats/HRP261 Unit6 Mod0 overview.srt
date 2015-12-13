@@ -1,0 +1,239 @@
+1
+00:00:04,470 --> 00:00:07,480
+Welcome to week six of the course.
+
+2
+00:00:07,480 --> 00:00:11,720
+This week we're going to continue our
+discussion of building regression models.
+
+3
+00:00:14,200 --> 00:00:19,700
+So first of all, the specific steps that
+you take when
+
+4
+00:00:19,700 --> 00:00:25,290
+you're building a regression model depend
+heavily on the end goal of your analysis.
+
+5
+00:00:25,290 --> 00:00:29,210
+And we can divide those goals broadly into
+two groups.
+
+6
+00:00:29,210 --> 00:00:33,510
+Explanatory models and predictive models.
+
+7
+00:00:33,510 --> 00:00:37,310
+A lot of the things we've been talking
+about up to now have had to
+
+8
+00:00:37,310 --> 00:00:39,260
+do with explanatory models.
+
+9
+00:00:39,260 --> 00:00:40,860
+For example, testing for
+
+10
+00:00:40,860 --> 00:00:45,940
+confounding is most relevant in the
+context of explanatory models.
+
+11
+00:00:45,940 --> 00:00:50,490
+This week I'm going to focus on therefore
+the steps of variable selection for
+
+12
+00:00:50,490 --> 00:00:52,470
+explanatory models.
+
+13
+00:00:52,470 --> 00:00:57,550
+Next week however, I'm going to focus on
+predictive modeling.
+
+14
+00:00:57,550 --> 00:01:02,170
+You'll see that a lot of the choices you
+have to make are actually different for
+
+15
+00:01:02,170 --> 00:01:03,320
+predictive model, so
+
+16
+00:01:03,320 --> 00:01:06,530
+it's very important to know which one of
+those camps you're in.
+
+17
+00:01:06,530 --> 00:01:09,540
+I'm also going to talk a little bit today
+about missing data.
+
+18
+00:01:09,540 --> 00:01:11,400
+I alluded to missing data last week.
+
+19
+00:01:11,400 --> 00:01:15,400
+I'm going to give you some specific
+strategies for dealing with missing data.
+
+20
+00:01:15,400 --> 00:01:18,070
+Again, we're going to talk about variable
+selections specifically for
+
+21
+00:01:18,070 --> 00:01:20,300
+explanatory models this week.
+
+22
+00:01:20,300 --> 00:01:24,200
+And we're also going to talk quite a bit
+about something called propensity scores.
+
+23
+00:01:24,200 --> 00:01:28,420
+Propensity scores in essence are another
+data reduction technique, but
+
+24
+00:01:28,420 --> 00:01:32,410
+this is a data reduction technique
+specifically for your confounders.
+
+25
+00:01:32,410 --> 00:01:34,400
+And it has some really useful
+applications,
+
+26
+00:01:34,400 --> 00:01:35,750
+especially in treatment studies.
+
+27
+00:01:38,300 --> 00:01:43,650
+This week we're going to be talking about
+model building and variable selection and
+
+28
+00:01:43,650 --> 00:01:46,230
+there's a temptation when you're building
+models,
+
+29
+00:01:46,230 --> 00:01:48,830
+you're going to see that model building is
+a bit of an art.
+
+30
+00:01:48,830 --> 00:01:50,960
+There is not an exact science to it.
+
+31
+00:01:50,960 --> 00:01:53,620
+I can't tell you the three steps you have
+to do,
+
+32
+00:01:53,620 --> 00:01:58,610
+often different people will have slightly
+different ways of doing this.
+
+33
+00:01:58,610 --> 00:02:02,810
+And there's a temptation to do something
+which people have called P-value shopping.
+
+34
+00:02:02,810 --> 00:02:05,330
+And I just like this term P-value
+shopping.
+
+35
+00:02:05,330 --> 00:02:08,670
+I was looking to see if I could find a
+cartoon that somebody has
+
+36
+00:02:08,670 --> 00:02:11,840
+drawn on P-value shopping, I didn't quite
+find that but
+
+37
+00:02:11,840 --> 00:02:15,990
+I found a couple of other good cartoons on
+P-values shown here.
+
+38
+00:02:15,990 --> 00:02:20,200
+But basically the idea of P-value shopping
+is this, when their are many
+
+39
+00:02:20,200 --> 00:02:24,870
+decision points in building a model, there
+is some temptation to just say well,
+
+40
+00:02:24,870 --> 00:02:29,320
+especially if I've got a predictor that I
+really hope comes out to be significant.
+
+41
+00:02:29,320 --> 00:02:31,590
+There is some temptation to say well I'm
+going to try this model and
+
+42
+00:02:31,590 --> 00:02:35,650
+I'm going to try putting this confounder
+in and taking this confounder out and
+
+43
+00:02:35,650 --> 00:02:39,400
+I'm going to try changing how I'm modeling
+my predictor variable,
+
+44
+00:02:39,400 --> 00:02:43,360
+I'm going to try the model without this
+particular outlier.
+
+45
+00:02:43,360 --> 00:02:48,020
+I can try all these different things and
+of course the P-value for the predictor I
+
+46
+00:02:48,020 --> 00:02:51,650
+care about is going to change somewhat in
+all of these different models.
+
+47
+00:02:51,650 --> 00:02:55,650
+So the idea of P-value shopping is that
+you're going around and shopping until you
+
+48
+00:02:55,650 --> 00:03:00,740
+find the smallest one and, of course, that
+is not a great idea because that is
+
+49
+00:03:00,740 --> 00:03:03,860
+certainly going to increase our chances of
+making a type one error.
+
+50
+00:03:03,860 --> 00:03:06,410
+So we'll talk more about that later this
+week.

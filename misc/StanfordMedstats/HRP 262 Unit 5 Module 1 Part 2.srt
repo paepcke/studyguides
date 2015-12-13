@@ -1,0 +1,1607 @@
+1
+00:00:01,940 --> 00:00:04,660
+So I've told you what can go wrong if you
+
+2
+00:00:04,660 --> 00:00:08,850
+treat competing risks as censored in the
+Kaplan Meyer analysis.
+
+3
+00:00:08,850 --> 00:00:10,650
+But what's the correct thing to do?
+
+4
+00:00:10,650 --> 00:00:13,340
+When you want to do unadjusted analyses
+like Kaplan Meyer and
+
+5
+00:00:13,340 --> 00:00:16,210
+you have competing risks how can you
+handle it correctly?
+
+6
+00:00:16,210 --> 00:00:19,860
+So one very simple thing you can do is
+just to do the Kaplan Meyer estimate but
+
+7
+00:00:19,860 --> 00:00:23,150
+focus only on event free survival and
+
+8
+00:00:23,150 --> 00:00:27,340
+what this means is you treat all the
+competing risks as events.
+
+9
+00:00:27,340 --> 00:00:31,890
+So you're essentially modeling the
+probability of having any of the events as
+
+10
+00:00:31,890 --> 00:00:33,950
+opposed to being censored.
+
+11
+00:00:33,950 --> 00:00:37,280
+And this would be something like, rather
+than looking at cause specific mortality,
+
+12
+00:00:37,280 --> 00:00:38,940
+you just look at overall mortality.
+
+13
+00:00:38,940 --> 00:00:41,950
+You'll get the correct and valid estimate
+that way.
+
+14
+00:00:41,950 --> 00:00:43,780
+The problem with that, of course, is it's
+very limited.
+
+15
+00:00:43,780 --> 00:00:47,390
+There are cases where you really want to
+know about a particular event
+
+16
+00:00:47,390 --> 00:00:48,860
+within that group.
+
+17
+00:00:48,860 --> 00:00:52,500
+So for example if you're looking at a new
+cancer drug, you will want to,
+
+18
+00:00:52,500 --> 00:00:57,340
+may want to know specifically about the
+effect, of of the drug on progression of
+
+19
+00:00:57,340 --> 00:01:01,410
+the cancer, and you may care less about
+some of these other competing risks.
+
+20
+00:01:01,410 --> 00:01:04,020
+So what if you want to look at specific
+risks?
+
+21
+00:01:04,020 --> 00:01:07,820
+Then you have to use something called a
+cumulative incidence analysis.
+
+22
+00:01:07,820 --> 00:01:12,090
+And what this does essentially is Kaplan
+Meier estimates the probability
+
+23
+00:01:12,090 --> 00:01:13,530
+of survivals.
+
+24
+00:01:13,530 --> 00:01:17,450
+The cumul, cumulative incidence analysis
+instead looks at
+
+25
+00:01:17,450 --> 00:01:20,840
+the probability of failure, and by turning
+it around like that
+
+26
+00:01:20,840 --> 00:01:23,060
+we'll actually be able to get the correct
+estimates.
+
+27
+00:01:23,060 --> 00:01:26,840
+We're going to look at the cumulative risk
+of failure for
+
+28
+00:01:26,840 --> 00:01:29,000
+each of the competing events separately.
+
+29
+00:01:30,010 --> 00:01:34,420
+But let me just do a little review of what
+event-free survival would look like.
+
+30
+00:01:34,420 --> 00:01:38,320
+What do we mean by the Kaplan–Meier
+estimate of event-free survival?
+
+31
+00:01:38,320 --> 00:01:39,310
+It's quite straightforward.
+
+32
+00:01:39,310 --> 00:01:43,600
+What we're going to do is just count all
+of the competing risks as events.
+
+33
+00:01:43,600 --> 00:01:44,840
+And everything else is censored.
+
+34
+00:01:44,840 --> 00:01:46,340
+And do normal Kaplan–Meier estimates.
+
+35
+00:01:46,340 --> 00:01:49,250
+So let me review that here.
+
+36
+00:01:49,250 --> 00:01:52,030
+Because we're going to need the estimates
+of event-free survival in
+
+37
+00:01:52,030 --> 00:01:54,620
+the calculation of the cumulative
+incidences.
+
+38
+00:01:54,620 --> 00:01:57,500
+So it's worth me walking you through how
+you calculate this.
+
+39
+00:01:57,500 --> 00:01:59,030
+This is also a good review of
+Kaplan–Meier.
+
+40
+00:01:59,030 --> 00:02:03,840
+So what I've got here is I've got a simple
+little data set, a made up data set.
+
+41
+00:02:03,840 --> 00:02:08,180
+And I've got six people in the data set
+who had things happen at various times.
+
+42
+00:02:08,180 --> 00:02:11,760
+There are two outcomes, death from
+melanoma and death from other causes, and
+
+43
+00:02:11,760 --> 00:02:13,040
+then of course some people are censored.
+
+44
+00:02:14,130 --> 00:02:16,938
+Let me just show you how we would
+calculate the Kaplan-Meier estimate of
+
+45
+00:02:16,938 --> 00:02:17,950
+event-free survival.
+
+46
+00:02:17,950 --> 00:02:22,700
+So of course at time zero, everybody is
+still alive, nobody has died.
+
+47
+00:02:22,700 --> 00:02:25,570
+So our Kaplan-Meier estimate of survival
+probability is 100%.
+
+48
+00:02:25,570 --> 00:02:31,240
+Our cumulative incidence are, which is one
+minus the Kaplan-Meier estimate of,
+
+49
+00:02:31,240 --> 00:02:33,315
+survival, is going to be zero.
+
+50
+00:02:33,315 --> 00:02:35,320
+0%.
+So nobody has died yet.
+
+51
+00:02:35,320 --> 00:02:36,530
+So we don't have any, deaths yet.
+
+52
+00:02:37,530 --> 00:02:40,460
+At ten minutes into the study we had a
+death from melanoma.
+
+53
+00:02:40,460 --> 00:02:43,300
+There were six people at risk at that
+time.
+
+54
+00:02:43,300 --> 00:02:45,110
+One of them died from melanoma.
+
+55
+00:02:45,110 --> 00:02:47,888
+Five out of six remained alive.
+
+56
+00:02:47,888 --> 00:02:52,980
+So the Kaplan-Meier survival probability
+at time ten is going to be five six.
+
+57
+00:02:52,980 --> 00:02:56,180
+Meaning the cumulative, the cumulative
+chance of dying is one sixth,
+
+58
+00:02:56,180 --> 00:02:57,260
+one minus that.
+
+59
+00:02:57,260 --> 00:03:02,410
+At 20 months into the study, we have a
+death from a different cause
+
+60
+00:03:02,410 --> 00:03:06,110
+other than melanoma, but again, all the
+deaths are being lumped together here.
+
+61
+00:03:06,110 --> 00:03:08,700
+So, there were five people at risk at that
+time.
+
+62
+00:03:08,700 --> 00:03:12,410
+Four out of five survived without dying,
+in that interval.
+
+63
+00:03:12,410 --> 00:03:14,670
+So we are going to be multiplying four
+fifths,
+
+64
+00:03:14,670 --> 00:03:17,840
+that's the chance of surviving that
+particular time period.
+
+65
+00:03:17,840 --> 00:03:22,600
+But remember Kaplan-Meier estimates are
+cumulative so we also have to multiply by
+
+66
+00:03:22,600 --> 00:03:26,890
+the chance of surviving up until then so
+we are going to take the previous estimate
+
+67
+00:03:26,890 --> 00:03:31,560
+of survival five-sixths and multiply it
+times this four out of five.
+
+68
+00:03:31,560 --> 00:03:36,070
+When we do that, we see that we get a
+value of two-thirds.
+
+69
+00:03:36,070 --> 00:03:37,410
+Two-thirds probability of surviving.
+
+70
+00:03:37,410 --> 00:03:40,240
+The chance, the cumulative risk of dying,
+that is one-third.
+
+71
+00:03:40,240 --> 00:03:42,730
+30 Months into this study, we are going
+to,
+
+72
+00:03:42,730 --> 00:03:46,760
+we have at that point, We still have four
+people at risk.
+
+73
+00:03:46,760 --> 00:03:50,470
+Three out of four survived that interval,
+one dies from melanoma.
+
+74
+00:03:50,470 --> 00:03:53,950
+And we have to multiply that by the
+previous estimate,
+
+75
+00:03:53,950 --> 00:03:55,670
+Kaplan-Meier estimate of survival, which
+was two-thirds.
+
+76
+00:03:55,670 --> 00:03:58,512
+So take the three-fourths times the
+two-thirds.
+
+77
+00:03:58,512 --> 00:04:02,260
+The threes will cancel, and we come up
+with a value of one half probability of
+
+78
+00:04:02,260 --> 00:04:05,310
+survival up until 30 months, half chance
+of dying.
+
+79
+00:04:06,760 --> 00:04:09,280
+At 40 months into the study somebody is
+censored so
+
+80
+00:04:09,280 --> 00:04:11,370
+our probabilities do not change.
+
+81
+00:04:11,370 --> 00:04:15,450
+At fifty months into the study somebody
+dies from other causes.
+
+82
+00:04:15,450 --> 00:04:18,666
+That's at depth, at that point, there were
+two people left at risk.
+
+83
+00:04:18,666 --> 00:04:21,010
+One of them dies, one of them survives.
+
+84
+00:04:21,010 --> 00:04:23,580
+So the survival probability for that
+interval is one out of two.
+
+85
+00:04:23,580 --> 00:04:27,680
+We multiply that with our probability of
+our survival, up until now,
+
+86
+00:04:27,680 --> 00:04:32,670
+which was one half, we get a cumulative
+probability of survival of one-fourth, so
+
+87
+00:04:32,670 --> 00:04:35,190
+the chance of dying up until then is
+three-fourth.
+
+88
+00:04:35,190 --> 00:04:39,200
+The last thing that happens is a censoring
+so none of our probabilities change.
+
+89
+00:04:39,200 --> 00:04:42,740
+So that's what our Kaplan-Meier
+probabilities look like.
+
+90
+00:04:42,740 --> 00:04:45,690
+We can draw them on our typical
+Kaplan-Meier curve.
+
+91
+00:04:45,690 --> 00:04:49,170
+See how that curve drops if you're doing
+it in terms of survival.
+
+92
+00:04:49,170 --> 00:04:56,430
+Drops to five-sixths at ten and then drops
+again to two-thirds at 20.
+
+93
+00:04:56,430 --> 00:05:00,090
+And this is not well drawn to scale but,
+you get the idea.
+
+94
+00:05:00,090 --> 00:05:01,100
+Drops at 30.
+
+95
+00:05:01,100 --> 00:05:01,660
+Stays.
+
+96
+00:05:01,660 --> 00:05:06,020
+And drops again at 50 down to one quarter.
+
+97
+00:05:06,020 --> 00:05:07,180
+And then it looks something like that.
+
+98
+00:05:07,180 --> 00:05:10,090
+So not well drawn to scale, but it's going
+to look something like that.
+
+99
+00:05:10,090 --> 00:05:13,250
+The cumulative incidents is just one minus
+the survival curve.
+
+100
+00:05:13,250 --> 00:05:15,170
+That's going to start at zero percent.
+
+101
+00:05:15,170 --> 00:05:19,600
+And it leaps up to one sixth at ten months
+into the study.
+
+102
+00:05:19,600 --> 00:05:21,590
+And then up to a third.
+
+103
+00:05:21,590 --> 00:05:22,740
+And then up to a half.
+
+104
+00:05:22,740 --> 00:05:23,750
+And again not well drawn to scale.
+
+105
+00:05:23,750 --> 00:05:28,920
+Scale but you get the idea, stays at a
+half until we get to fifty months, and
+
+106
+00:05:28,920 --> 00:05:30,480
+then that jumps up to three quarters.
+
+107
+00:05:31,810 --> 00:05:35,140
+So something like that, again, not, not
+well drawn, but you get the idea.
+
+108
+00:05:35,140 --> 00:05:38,790
+So three quarters, three quarters chance
+of dying by the end of the study.
+
+109
+00:05:38,790 --> 00:05:39,900
+That's the Event-Free Survival.
+
+110
+00:05:39,900 --> 00:05:43,060
+And again, we're going to be using these
+estimates in just a minute
+
+111
+00:05:43,060 --> 00:05:45,680
+in the Cumulative Incidence calculation.
+
+112
+00:05:45,680 --> 00:05:48,500
+So how do I do the cumulative incidence
+calculation?
+
+113
+00:05:48,500 --> 00:05:52,860
+So first of all, the cumulative incidence
+analysis separates the competing risks
+
+114
+00:05:52,860 --> 00:05:53,940
+from the event of interest.
+
+115
+00:05:53,940 --> 00:05:55,190
+So we're going to look at them separately.
+
+116
+00:05:55,190 --> 00:05:58,930
+We're going to calculate cumulative
+incidence curve separately for each.
+
+117
+00:05:58,930 --> 00:06:00,490
+If there are no competing risks,
+
+118
+00:06:00,490 --> 00:06:03,744
+it turns out that this will be equivalent
+to Kaplan-Meier methods.
+
+119
+00:06:05,100 --> 00:06:08,550
+We're going to focus on the failure
+probabilities rather than
+
+120
+00:06:08,550 --> 00:06:09,780
+the survival probabilities.
+
+121
+00:06:09,780 --> 00:06:11,510
+That will allow us to get the math right
+here.
+
+122
+00:06:12,670 --> 00:06:14,490
+And each event goes into a separate bin.
+
+123
+00:06:14,490 --> 00:06:17,990
+We're going to calculate a separate curve
+for each event.
+
+124
+00:06:17,990 --> 00:06:21,500
+The reason that we can do the cumulative
+incidence analysis, why this works, is we
+
+125
+00:06:21,500 --> 00:06:26,550
+have a property, which we had something we
+learned about which said that the hazard
+
+126
+00:06:26,550 --> 00:06:31,560
+function, the hazard rate is equal to the
+density divided by the survival.
+
+127
+00:06:31,560 --> 00:06:34,250
+So remember, all this means is that to get
+the chance of dying in
+
+128
+00:06:34,250 --> 00:06:38,700
+a particular instance or in a particular
+interval of time.
+
+129
+00:06:38,700 --> 00:06:41,150
+That's the probability of dying in that
+interval,
+
+130
+00:06:41,150 --> 00:06:44,170
+divided by the probability of surviving up
+until then.
+
+131
+00:06:44,170 --> 00:06:46,415
+We had this mathematical relationship
+before.
+
+132
+00:06:46,415 --> 00:06:51,170
+So it's also true that the chance of dying
+in any particular interval, that's
+
+133
+00:06:51,170 --> 00:06:56,510
+the density, the probability density, is
+equal to the hazard times the survival.
+
+134
+00:06:56,510 --> 00:06:58,200
+Essentially, that's what we're going to be
+using,
+
+135
+00:06:58,200 --> 00:07:02,050
+this little relationship, in calculating
+the cumulative incident
+
+136
+00:07:02,050 --> 00:07:06,110
+We're going to calculate the chances of
+surviving up until a certain time.
+
+137
+00:07:06,110 --> 00:07:09,370
+We're going to calculate the hazard of
+dying within a given interval.
+
+138
+00:07:09,370 --> 00:07:10,640
+We're going to multiply those together.
+
+139
+00:07:10,640 --> 00:07:14,600
+That will give us the overall probability
+of dying within a particular interval
+
+140
+00:07:14,600 --> 00:07:16,760
+We can take those probability densities
+and
+
+141
+00:07:16,760 --> 00:07:20,730
+just add them up, and that will give us
+the cumulative incidents.
+
+142
+00:07:20,730 --> 00:07:22,520
+Accumulative risk of dying.
+
+143
+00:07:22,520 --> 00:07:23,530
+So that's the general idea.
+
+144
+00:07:23,530 --> 00:07:25,120
+Let me just walk you through an example.
+
+145
+00:07:26,890 --> 00:07:30,440
+So using the same data, I've laid out the
+chart already here.
+
+146
+00:07:30,440 --> 00:07:33,040
+What we're going to do we're going to look
+at melanoma and
+
+147
+00:07:33,040 --> 00:07:35,080
+death from other causes separately.
+
+148
+00:07:35,080 --> 00:07:37,800
+So, we just calculated the event-free
+survival probabilities.
+
+149
+00:07:37,800 --> 00:07:39,210
+So, let me fill those in now.
+
+150
+00:07:39,210 --> 00:07:42,189
+We just calculated these, so they should
+be fresh on your mind.
+
+151
+00:07:43,930 --> 00:07:46,910
+We're going to need those in order to be
+able to
+
+152
+00:07:46,910 --> 00:07:49,130
+calculate the cumulative incidences.
+
+153
+00:07:49,130 --> 00:07:52,730
+Then we're going to focus on melanoma to
+start with.
+
+154
+00:07:52,730 --> 00:07:55,980
+So we're going to ask, what's the hazard
+of melanoma?
+
+155
+00:07:55,980 --> 00:07:59,440
+So what is the change of getting a
+melanoma death
+
+156
+00:07:59,440 --> 00:08:02,850
+if you've already survived up until now
+out of everybody who's still surviving,
+
+157
+00:08:02,850 --> 00:08:06,090
+what's the chance that you die of melanoma
+in the next interval.
+
+158
+00:08:06,090 --> 00:08:09,960
+So obviously that won't pertain to time
+point zero, but
+
+159
+00:08:09,960 --> 00:08:13,530
+at time point ten we have indeed have a
+death from melanoma.
+
+160
+00:08:13,530 --> 00:08:15,390
+There were six people at risk.
+
+161
+00:08:15,390 --> 00:08:19,440
+One out of six of them, had a death from
+melanoma.
+
+162
+00:08:19,440 --> 00:08:23,880
+So the hazard out of everybody that was
+still alive at that time The hazard of
+
+163
+00:08:23,880 --> 00:08:26,420
+dying form melanoma was one out of six.
+
+164
+00:08:26,420 --> 00:08:31,170
+The density therefore is we're going to
+multiply the chance of
+
+165
+00:08:31,170 --> 00:08:33,370
+surviving the previous interval, so
+
+166
+00:08:33,370 --> 00:08:36,860
+we're actually going to be multiplying the
+hazard times the probability of sur,
+
+167
+00:08:36,860 --> 00:08:40,510
+the event free survival probability from
+the previous interval.
+
+168
+00:08:40,510 --> 00:08:44,110
+So we'll be multiplying the 1.0 times the
+1 sixth here, so
+
+169
+00:08:44,110 --> 00:08:46,380
+the density here turns out to be 1 sixth.
+
+170
+00:08:46,380 --> 00:08:48,570
+The cummulative incidences were just
+summing up the density.
+
+171
+00:08:48,570 --> 00:08:50,643
+So that's still 1/6.
+
+172
+00:08:50,643 --> 00:08:53,030
+We got to time point 20.
+
+173
+00:08:53,030 --> 00:08:56,240
+So now, we are going to say, alright.
+
+174
+00:08:56,240 --> 00:09:00,690
+In that interval, there was nobody who
+died from melanoma.
+
+175
+00:09:00,690 --> 00:09:04,190
+So the hazard for melanoma in that
+interval was actually zero.
+
+176
+00:09:04,190 --> 00:09:06,690
+So the melanoma density is also zero.
+
+177
+00:09:06,690 --> 00:09:08,544
+So we'd multiply zero times 5/6.
+
+178
+00:09:08,544 --> 00:09:09,610
+But that's just zero.
+
+179
+00:09:09,610 --> 00:09:11,910
+The cumulative incidence is we're adding
+up the density so
+
+180
+00:09:11,910 --> 00:09:17,420
+that remains at 1/6 at 30 months of the
+study we have another death of melanoma.
+
+181
+00:09:17,420 --> 00:09:21,500
+And so at that point there were one, two,
+three, four people at risk.
+
+182
+00:09:21,500 --> 00:09:24,160
+One of them developed or died from
+melanoma So
+
+183
+00:09:24,160 --> 00:09:27,990
+one out of four is the hazard, the chance
+that if you made it up until now,
+
+184
+00:09:27,990 --> 00:09:30,930
+you're going to now die from melanoma in
+this time interval.
+
+185
+00:09:30,930 --> 00:09:35,040
+The density therefore would be the
+probability, the ongoing survival
+
+186
+00:09:35,040 --> 00:09:38,560
+probability previously, which was two
+thirds times the hazard,
+
+187
+00:09:38,560 --> 00:09:42,120
+which is one fourth, we multiply those
+together to get the density.
+
+188
+00:09:42,120 --> 00:09:47,148
+That's going to give us a probability of,
+a density of one-sixth.
+
+189
+00:09:47,148 --> 00:09:51,880
+So a one-sixth chance that the, a person
+would die in this interval, overall.
+
+190
+00:09:51,880 --> 00:09:53,660
+Kind of a marginal probability.
+
+191
+00:09:53,660 --> 00:09:57,180
+We can then sum that to the cumulative
+incidence, which was that 1 sixth,
+
+192
+00:09:57,180 --> 00:09:59,990
+we add another one-sixth, we get
+two-sixth.
+
+193
+00:09:59,990 --> 00:10:03,530
+So there was a two-sixth cumulative chance
+of getting, of dying from melanoma.
+
+194
+00:10:03,530 --> 00:10:04,610
+Right here.
+
+195
+00:10:04,610 --> 00:10:06,900
+And now everything else doesn't involve
+melanoma.
+
+196
+00:10:06,900 --> 00:10:09,510
+So the hazard of melanoma for the rest of
+this is just zero.
+
+197
+00:10:09,510 --> 00:10:13,450
+So we just, the cumulative incidence
+remains at two-sixth.
+
+198
+00:10:13,450 --> 00:10:17,010
+So that's for melanoma.
+
+199
+00:10:17,010 --> 00:10:19,630
+We then turn to death from other causes.
+
+200
+00:10:19,630 --> 00:10:22,450
+So the first thing that that happens is
+the death from melanoma.
+
+201
+00:10:22,450 --> 00:10:25,410
+So there's no hazard of dying of other
+causes.
+
+202
+00:10:25,410 --> 00:10:27,050
+So all of that remains at zero.
+
+203
+00:10:27,050 --> 00:10:29,800
+Then we can adjust from other causes at 20
+month.
+
+204
+00:10:29,800 --> 00:10:34,680
+So at the point there were one, two,
+three, four, five people at risk.
+
+205
+00:10:34,680 --> 00:10:39,260
+One out of five had died of other causes,
+in that interval.
+
+206
+00:10:39,260 --> 00:10:41,630
+So those are out of everybody who survived
+up until then,
+
+207
+00:10:41,630 --> 00:10:43,410
+that's the hazard of dying in that
+interval.
+
+208
+00:10:43,410 --> 00:10:47,390
+We're going to multiply the hazard times
+the previous the event
+
+209
+00:10:47,390 --> 00:10:49,820
+free survival probability from the
+previous time interval.
+
+210
+00:10:49,820 --> 00:10:54,110
+So that's 5/6 times 1/5th which will give
+us a value also of 1/6th.
+
+211
+00:10:54,110 --> 00:10:56,330
+So our cumulative incidents is now 1/6th.
+
+212
+00:10:56,330 --> 00:10:59,530
+We're adding up the densities to get the
+cumulative of incidents.
+
+213
+00:10:59,530 --> 00:11:04,300
+Now we're going to go next thing that
+happens is there is a death from melanoma,
+
+214
+00:11:04,300 --> 00:11:06,600
+so that doesn't change anything here, and
+
+215
+00:11:06,600 --> 00:11:09,680
+then the censored, that doesn't change
+anything.
+
+216
+00:11:09,680 --> 00:11:12,720
+And, then we get another death from other
+causes at the point at which there's two
+
+217
+00:11:12,720 --> 00:11:15,450
+people left at risk, so 1/2 would
+
+218
+00:11:15,450 --> 00:11:19,350
+be the hazard there out of two people who
+survived up until now, one of them died.
+
+219
+00:11:19,350 --> 00:11:20,212
+so the hazard is 1/2.
+
+220
+00:11:20,212 --> 00:11:21,450
+We're multiplying.
+
+221
+00:11:21,450 --> 00:11:24,940
+By the event free survival probability
+from the previous interval which was
+
+222
+00:11:24,940 --> 00:11:30,920
+also one half, so one half times one half
+would give us one quarter.
+
+223
+00:11:30,920 --> 00:11:34,130
+And now we add our density.
+
+224
+00:11:34,130 --> 00:11:35,890
+We add that to the cumulative incidence.
+
+225
+00:11:35,890 --> 00:11:38,370
+So one-sixth, plus one-fourth.
+
+226
+00:11:38,370 --> 00:11:42,710
+Well, that's the same as 2 12ths plus 3
+12ths, or 5 12ths.
+
+227
+00:11:42,710 --> 00:11:45,100
+And then, the censoring, of course, don't
+change anything.
+
+228
+00:11:45,100 --> 00:11:48,500
+So, we end up with a cumulative
+probability of dying of other causes
+
+229
+00:11:48,500 --> 00:11:49,470
+of 5 12ths.
+
+230
+00:11:49,470 --> 00:11:53,360
+Now, what's important here, is that the
+overall probability of dying from
+
+231
+00:11:53,360 --> 00:11:57,500
+melanoma is 2 6th, the overall probability
+of dying from other things is 5 12ths,
+
+232
+00:11:57,500 --> 00:12:04,020
+if you add that up, that's 4 12ths plus 5
+12ths.
+
+233
+00:12:04,020 --> 00:12:07,180
+Which equals 9 twelfths which is also
+equal to 3 quarters,
+
+234
+00:12:07,180 --> 00:12:09,960
+that's exactly the total probability of
+
+235
+00:12:09,960 --> 00:12:13,700
+dying from anything that we've got from
+the event free survival analysis.
+
+236
+00:12:13,700 --> 00:12:15,670
+So this all adds up as it should.
+
+237
+00:12:16,670 --> 00:12:19,619
+Now let me just show you that if we did it
+the wrong way things will not add up.
+
+238
+00:12:20,820 --> 00:12:21,850
+So now we're going to do it the wrong way.
+
+239
+00:12:21,850 --> 00:12:23,510
+That was the right way to do cumulative
+incidence.
+
+240
+00:12:23,510 --> 00:12:26,410
+Now I'll just show you the wrong way to do
+it just to show you
+
+241
+00:12:26,410 --> 00:12:28,795
+things don't add up if we do it the wrong
+way.
+
+242
+00:12:28,795 --> 00:12:30,267
+So we do it the wrong way.
+
+243
+00:12:30,267 --> 00:12:34,279
+The wrong way of course is treating the
+competing risks as censored and
+
+244
+00:12:34,279 --> 00:12:36,798
+just running regular old Kaplan–Meier.
+
+245
+00:12:36,798 --> 00:12:41,240
+So, I've done this here for the
+Kaplan-Meier for melanoma specific death.
+
+246
+00:12:41,240 --> 00:12:42,600
+So, we start at 100%.
+
+247
+00:12:42,600 --> 00:12:45,580
+But somebody dies of melanoma at ten
+months.
+
+248
+00:12:45,580 --> 00:12:48,350
+So, their Kaplan-Meier survival estimate
+here would be 5/6.
+
+249
+00:12:48,350 --> 00:12:52,085
+One minus the Kaplan-Meier would
+supposedly give us
+
+250
+00:12:52,085 --> 00:12:54,120
+the cumulative incidents.
+
+251
+00:12:54,120 --> 00:12:57,270
+But it's not going to be the right
+cumalative incidents, as we'll see.
+
+252
+00:12:57,270 --> 00:12:59,380
+At 20 months, somebody dies from other
+causes.
+
+253
+00:12:59,380 --> 00:13:01,170
+We're counting that as a censoring now.
+
+254
+00:13:01,170 --> 00:13:03,150
+So that doesn't change anything.
+
+255
+00:13:03,150 --> 00:13:06,780
+Thirty months, we get another death from
+melanoma, so at that point,
+
+256
+00:13:06,780 --> 00:13:08,910
+there are four people at risk, so
+
+257
+00:13:08,910 --> 00:13:12,970
+three out of four survive without dying
+from melanoma in that interval.
+
+258
+00:13:12,970 --> 00:13:15,060
+We multiply that by the 5 6ths.
+
+259
+00:13:15,060 --> 00:13:16,952
+We get a value of 5 8ths.
+
+260
+00:13:18,110 --> 00:13:20,970
+And then the one minus that is 3/8 and
+
+261
+00:13:20,970 --> 00:13:24,410
+then everything else stays the same
+because there are no more melanoma events.
+
+262
+00:13:29,440 --> 00:13:31,819
+If we do the same thing for other death
+
+263
+00:13:33,630 --> 00:13:39,220
+The first death is a melanoma death, so
+that doesn't change for other deaths.
+
+264
+00:13:39,220 --> 00:13:43,650
+That person just is counted as censored,
+but at 20 months into the study,
+
+265
+00:13:43,650 --> 00:13:48,166
+then one there's five people at risk, four
+out of five don't die from other causes,
+
+266
+00:13:48,166 --> 00:13:50,410
+one out of five dies from other causes.
+
+267
+00:13:50,410 --> 00:13:54,680
+So now 1 5th chance if we minus from the
+Kaplan-Meier.
+
+268
+00:13:54,680 --> 00:13:59,050
+At 40 months, now it's a death from
+melanoma, so we treat that as a censoring.
+
+269
+00:13:59,050 --> 00:13:59,940
+Nothing changes.
+
+270
+00:13:59,940 --> 00:14:02,570
+The censoring itself doesn't change
+anything.
+
+271
+00:14:02,570 --> 00:14:05,850
+Then finally, at 50 months, we get another
+death from other causes.
+
+272
+00:14:05,850 --> 00:14:06,360
+At that point,
+
+273
+00:14:06,360 --> 00:14:12,620
+there is one out of two people at who has
+the death and one out of two who survives.
+
+274
+00:14:12,620 --> 00:14:16,250
+We're going to multiply that by our
+previous Kaplan-Meier survivor probability
+
+275
+00:14:16,250 --> 00:14:22,150
+of 4 5ths This gives us a probability if
+we multiply these together of 2 5ths.
+
+276
+00:14:22,150 --> 00:14:25,980
+And so, one minus that would be 3 5ths,
+and that will continue until the end.
+
+277
+00:14:27,210 --> 00:14:30,480
+We could plot these in little Kaplan-Meier
+curves.
+
+278
+00:14:30,480 --> 00:14:33,900
+We can plot those cumulative incidences,
+and if we do that,
+
+279
+00:14:33,900 --> 00:14:36,420
+we'll see that we end up with something
+that's a little funny.
+
+280
+00:14:38,840 --> 00:14:43,310
+Because it doesn't match the cumulative
+incidence calculations that we just,
+
+281
+00:14:43,310 --> 00:14:44,440
+just calculated.
+
+282
+00:14:44,440 --> 00:14:49,980
+And you can see that if we add up the 3
+8ths plus the 3 5ths,
+
+283
+00:14:49,980 --> 00:14:54,980
+that is going to give us something that is
+not equal to 3 4ths.
+
+284
+00:14:54,980 --> 00:15:01,280
+That's going to give us 15 40ths plus 24
+40ths which is 39 40ths,
+
+285
+00:15:01,280 --> 00:15:05,370
+so that's going to mean that the
+probability of dying is almost a 100%.
+
+286
+00:15:05,370 --> 00:15:09,070
+That seems wrong because actually two of
+the people here were censored And
+
+287
+00:15:09,070 --> 00:15:13,670
+clearly does not match the 75% that we got
+from the event-free survival analysis.
+
+288
+00:15:13,670 --> 00:15:18,110
+And we can, you can, if you actually draw
+this on a little graphic, so for
+
+289
+00:15:18,110 --> 00:15:20,570
+melanoma, I start at zero percent.
+
+290
+00:15:20,570 --> 00:15:22,650
+I go up to 1 6th.
+
+291
+00:15:22,650 --> 00:15:26,966
+And then I go up to 3/8ths.
+
+292
+00:15:26,966 --> 00:15:30,990
+If we compared that with the correct
+calculation,
+
+293
+00:15:30,990 --> 00:15:34,410
+what you'll see is that the correct
+calculation is in fact lower than that.
+
+294
+00:15:34,410 --> 00:15:37,110
+That was an over estimate of the
+cumulative incidence.
+
+295
+00:15:37,110 --> 00:15:39,639
+And same thing if we look at the incidence
+from other deaths.
+
+296
+00:15:43,960 --> 00:15:48,850
+It jumps up here to 1 5th and
+
+297
+00:15:48,850 --> 00:15:54,650
+then jumps up here to 3 5ths, and that
+also is
+
+298
+00:15:54,650 --> 00:16:00,690
+an over estimate of the cumulative
+incidents.
+
+299
+00:16:01,800 --> 00:16:04,910
+So if you compare that to the, the
+cumulative incidence that
+
+300
+00:16:04,910 --> 00:16:08,030
+we calculated the proper way, you'll see
+that that's, that, you know,
+
+301
+00:16:08,030 --> 00:16:09,950
+the proper curve is going to be lower than
+that.
+
+302
+00:16:11,100 --> 00:16:14,040
+So that would be the wrong way to do it
+and it shows you why you get the different
+
+303
+00:16:14,040 --> 00:16:16,960
+estimates and why the cumulative incidence
+is the correct way to do it.
+
+304
+00:16:16,960 --> 00:16:18,420
+And just one more example,
+
+305
+00:16:18,420 --> 00:16:23,160
+this was another paperwork Somebody was
+kind of illustrating this point.
+
+306
+00:16:23,160 --> 00:16:26,650
+So they're showing you here the
+Kaplan-Meier method.
+
+307
+00:16:26,650 --> 00:16:30,220
+The incorrect method versus the correct
+cumulative incidence method.
+
+308
+00:16:31,340 --> 00:16:34,540
+And this is the people who had kidney
+disease.
+
+309
+00:16:34,540 --> 00:16:39,090
+They could either die while on dialysis or
+they could get a transplant and
+
+310
+00:16:39,090 --> 00:16:41,260
+then they weren't at risk of dying from
+dialysis, or
+
+311
+00:16:41,260 --> 00:16:43,530
+they could survive this is the event for
+your survival meeting.
+
+312
+00:16:43,530 --> 00:16:45,350
+Neither of those things happened.
+
+313
+00:16:45,350 --> 00:16:48,330
+And you can see that the Kaplan–Meiers are
+clearly wrong,
+
+314
+00:16:48,330 --> 00:16:51,460
+because, those three things have to add up
+to a 100,
+
+315
+00:16:51,460 --> 00:16:56,050
+you know, 100% and two of the
+Kaplan–Meiers add up to more than a 100%.
+
+316
+00:16:56,050 --> 00:16:58,490
+Well, obviously we can't have higher than
+100% here.
+
+317
+00:16:58,490 --> 00:17:00,930
+So the correct analysis is the cumulative
+incidence.
+
+318
+00:17:00,930 --> 00:17:07,030
+And you can see how off the Kaplan–Meier
+estimates can be, as is illustrated here.
+
+319
+00:17:07,030 --> 00:17:08,080
+Now what about the multivariate situation?
+
+320
+00:17:08,080 --> 00:17:11,710
+I basically just set you up for the
+univariate, the unadjusted situation,
+
+321
+00:17:11,710 --> 00:17:14,080
+we just want to look at basic
+Kaplan-Meiers.
+
+322
+00:17:14,080 --> 00:17:16,180
+When we get to the multivariate case,
+
+323
+00:17:16,180 --> 00:17:20,460
+it kind of depends on what the point of
+your analysis is.
+
+324
+00:17:20,460 --> 00:17:23,900
+If you care about absolute probability,
+you are going to
+
+325
+00:17:23,900 --> 00:17:28,110
+get things wrong if you treat the
+competing risks as censored values.
+
+326
+00:17:28,110 --> 00:17:30,890
+However, there's a lot of situations where
+we're doing some kind of
+
+327
+00:17:30,890 --> 00:17:34,690
+explanatory analysis, and we don't really
+care about the absolute probabilities.
+
+328
+00:17:34,690 --> 00:17:37,620
+We just want to compare, say the treatment
+group to the control group.
+
+329
+00:17:37,620 --> 00:17:40,920
+It turns out that it's probably fine if
+the absolute probabilities don't matter.
+
+330
+00:17:40,920 --> 00:17:46,220
+To just treat the competing events as
+censored values in a Cox regression.
+
+331
+00:17:46,220 --> 00:17:49,920
+And the hazard ratios will probably be
+reasonable.
+
+332
+00:17:49,920 --> 00:17:52,770
+But, keep in mind that if you're doing
+some kind of predictive or
+
+333
+00:17:52,770 --> 00:17:56,820
+prognostic study and you're trying to
+actually get those absolute probabilities,
+
+334
+00:17:56,820 --> 00:18:00,580
+treating the competing events as censored
+will give you the wrong probability.
+
+335
+00:18:00,580 --> 00:18:05,700
+So if that's your goal, you need some kind
+of more sophisticated model that is
+
+336
+00:18:05,700 --> 00:18:08,530
+going to take into account the different
+competing risks.
+
+337
+00:18:08,530 --> 00:18:12,820
+One example of that is something called
+the sub, subdistribution hazards model.
+
+338
+00:18:12,820 --> 00:18:15,150
+There are a couple of different ways of
+handling that.
+
+339
+00:18:15,150 --> 00:18:19,370
+But you do need to think carefully if you
+care about those absolute probabilities to
+
+340
+00:18:19,370 --> 00:18:20,670
+make sure that you get them right.
+
+341
+00:18:20,670 --> 00:18:25,670
+[BLANK_AUDIO]

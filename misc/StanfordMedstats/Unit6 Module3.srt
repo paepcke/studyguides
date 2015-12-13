@@ -1,0 +1,299 @@
+1
+00:00:00,180 --> 00:00:02,640
+In our final analysis, we're interested in
+studying BMI.
+
+2
+00:00:03,650 --> 00:00:05,770
+We also want to chop up the continuous
+variables, so
+
+3
+00:00:05,770 --> 00:00:08,650
+that we can study them as categorical
+predictors.
+
+4
+00:00:08,650 --> 00:00:10,120
+Let's start by creating a new variable for
+BMI.
+
+5
+00:00:10,120 --> 00:00:15,390
+In our data set, we have weight in pounds
+and height in centimeters.
+
+6
+00:00:15,390 --> 00:00:18,000
+In order to calculate BMI, we need to take
+weight in
+
+7
+00:00:18,000 --> 00:00:21,900
+kilograms divided by height squared, where
+height is in meters.
+
+8
+00:00:21,900 --> 00:00:25,410
+So first, we need to convert pounds to
+kilograms and centimeters to meters.
+
+9
+00:00:26,440 --> 00:00:27,340
+Let's do this in a data step.
+
+10
+00:00:29,140 --> 00:00:31,220
+First, we create a new data set called
+BMI.
+
+11
+00:00:31,220 --> 00:00:34,140
+And we fill in the data from a clean
+diabetes data set.
+
+12
+00:00:35,400 --> 00:00:37,059
+Then, we create new variables for weight
+and height.
+
+13
+00:00:38,090 --> 00:00:41,570
+Since there is about 2.2 pounds for every
+kilogram,
+
+14
+00:00:41,570 --> 00:00:45,290
+if we divide weight in pounds by 2.2 we'll
+convert it to kilograms.
+
+15
+00:00:46,890 --> 00:00:49,880
+Likewise, since there's 100 centimeters
+per meter,
+
+16
+00:00:49,880 --> 00:00:53,710
+if we divide our original height by 100,
+we'll convert it to meters.
+
+17
+00:00:53,710 --> 00:00:57,750
+Then we use a drop statement to remove the
+variables in their original units,
+
+18
+00:00:57,750 --> 00:00:58,850
+since we don't need them anymore.
+
+19
+00:01:01,570 --> 00:01:04,010
+As you can see, we now have a new variable
+for weight and
+
+20
+00:01:04,010 --> 00:01:05,710
+height, now in the correct units.
+
+21
+00:01:05,710 --> 00:01:10,060
+Here we're going to continue working on
+our BMI dataset.
+
+22
+00:01:10,060 --> 00:01:12,430
+We'll use a set statement to fill in the
+data we just created.
+
+23
+00:01:13,670 --> 00:01:15,170
+Now we create a new variable for BMI.
+
+24
+00:01:16,570 --> 00:01:20,080
+BMI is equal to weight over height
+squared, where weight is in kilograms and
+
+25
+00:01:20,080 --> 00:01:21,650
+height is in meters.
+
+26
+00:01:21,650 --> 00:01:25,440
+One way to specify exponential in SAS, is
+by using a double asterisk.
+
+27
+00:01:25,440 --> 00:01:29,360
+So here in the denominator we have height,
+underscore meters, double asterisk 2.
+
+28
+00:01:29,360 --> 00:01:32,920
+Which means height squared, just like we
+want it.
+
+29
+00:01:32,920 --> 00:01:35,690
+We also want to reorder the variables in
+our dataset.
+
+30
+00:01:35,690 --> 00:01:37,040
+We can do this with a retain statement.
+
+31
+00:01:38,270 --> 00:01:41,730
+Remember a retain statement must come at
+the top of the data step, or
+
+32
+00:01:41,730 --> 00:01:42,750
+else it won't work correctly.
+
+33
+00:01:44,270 --> 00:01:48,220
+So first we'll have the diabetic outcome
+variable, followed by BMI.
+
+34
+00:01:48,220 --> 00:01:49,750
+Then weight, height and age.
+
+35
+00:01:49,750 --> 00:01:52,450
+And then the rest of the variables will
+remain in the dataset,
+
+36
+00:01:52,450 --> 00:01:53,475
+in their default order.
+
+37
+00:01:53,475 --> 00:01:57,340
+[SOUND].
+
+38
+00:01:57,340 --> 00:02:00,330
+As you can see, we now have a new variable
+for BMI.
+
+39
+00:02:00,330 --> 00:02:01,760
+And we've changed the order of the
+variables.
+
+40
+00:02:03,210 --> 00:02:05,170
+>> Now let's chop up our continuous
+variables, so
+
+41
+00:02:05,170 --> 00:02:08,010
+that we can study them as categorical
+predictors.
+
+42
+00:02:08,010 --> 00:02:11,380
+As you may recall, we showed you how you
+can do this using PROC RANKS.
+
+43
+00:02:11,380 --> 00:02:14,390
+This can create groups for continuous
+predictors.
+
+44
+00:02:14,390 --> 00:02:17,360
+Say we're interested in quartiles for age
+and BMI.
+
+45
+00:02:17,360 --> 00:02:19,210
+Let's take a look at the code.
+
+46
+00:02:19,210 --> 00:02:21,410
+This PROC RANK code might look familiar.
+
+47
+00:02:21,410 --> 00:02:24,370
+First we specify our original dataset,
+BMI.
+
+48
+00:02:24,370 --> 00:02:28,680
+And then we have to specify an output
+dataset using out equals, and
+
+49
+00:02:28,680 --> 00:02:32,610
+then the name, BMI_quartiles, in our case.
+
+50
+00:02:32,610 --> 00:02:35,690
+Then, the group statement allows us to
+create categories.
+
+51
+00:02:35,690 --> 00:02:38,078
+Groups equal 100 allows you to create
+percentiles.
+
+52
+00:02:38,078 --> 00:02:41,520
+And in our case, groups equals 4 creates
+quartiles.
+
+53
+00:02:41,520 --> 00:02:45,280
+We then need to specify the variables of
+interest using var.
+
+54
+00:02:45,280 --> 00:02:49,080
+Var analysis we included var, age and bmi.
+
+55
+00:02:49,080 --> 00:02:51,570
+It's important to remember a rank
+statement.
+
+56
+00:02:51,570 --> 00:02:56,080
+This will create separate variables that
+contain the categories for quartiles age,
+
+57
+00:02:56,080 --> 00:02:57,040
+and quartiles BMI.
+
+58
+00:02:57,040 --> 00:03:03,230
+Without these, our age and BMI variables
+would be replaced by the categories.
+
+59
+00:03:03,230 --> 00:03:04,790
+Lets run this code and take a look at the
+output.
+
+60
+00:03:05,930 --> 00:03:08,230
+As you can see, we now have two new
+variables.
+
+61
+00:03:08,230 --> 00:03:12,030
+The first variable is labeled ranks for
+variable age.
+
+62
+00:03:12,030 --> 00:03:15,350
+And the second is labeled ranks for
+variable BMI.
+
+63
+00:03:15,350 --> 00:03:17,430
+These categories can now be used in our
+analysis.

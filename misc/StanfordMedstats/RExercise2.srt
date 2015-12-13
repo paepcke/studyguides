@@ -1,0 +1,1537 @@
+1
+00:00:05,660 --> 00:00:07,280
+Welcome to the second R module.
+
+2
+00:00:07,280 --> 00:00:12,500
+In this video, I'll be walking through the
+solutions to the second R exercise.
+
+3
+00:00:12,500 --> 00:00:15,680
+You'll also be able to find a written
+version of these solutions on
+
+4
+00:00:15,680 --> 00:00:16,570
+the class website.
+
+5
+00:00:16,570 --> 00:00:22,590
+The first thing I'm going to do is to
+start Deducer.
+
+6
+00:00:22,590 --> 00:00:26,479
+In this exercise, we'll be using the same
+data set as in the previous exercise.
+
+7
+00:00:27,530 --> 00:00:31,952
+The data set's called mock class data, and
+it's provided to you in Excel form.
+
+8
+00:00:31,952 --> 00:00:34,774
+We see two familiar windows on the screen.
+
+9
+00:00:34,774 --> 00:00:37,596
+On the left we have the console window and
+
+10
+00:00:37,596 --> 00:00:40,501
+on the right we have the data viewer
+window.
+
+11
+00:00:40,501 --> 00:00:43,260
+Window.
+In order to open the class data,
+
+12
+00:00:43,260 --> 00:00:48,863
+I'm going to click on the Open Data icon
+on the Data Viewer window, and then I'm
+
+13
+00:00:48,863 --> 00:00:56,410
+going to navigate to where I have the mock
+class data set saved onto my computer.
+
+14
+00:00:56,410 --> 00:00:58,660
+For me, that's on the desktop.
+
+15
+00:00:58,660 --> 00:01:00,889
+So I'm going to select that and hit Open.
+
+16
+00:01:02,280 --> 00:01:06,740
+then Deducer prompts me, asks me which
+worksheet should be loaded.
+
+17
+00:01:06,740 --> 00:01:13,580
+Since our data only has one worksheet, I'm
+going to just click Okay.
+
+18
+00:01:13,580 --> 00:01:19,180
+And then we see that Deducer was able to
+load all of our data, I'm going to scroll
+
+19
+00:01:19,180 --> 00:01:23,665
+all the way to the right just to make sure
+everything was loaded, and scroll down.
+
+20
+00:01:23,665 --> 00:01:26,080
+I have 50 rows.
+
+21
+00:01:26,080 --> 00:01:26,980
+Excellent.
+
+22
+00:01:26,980 --> 00:01:28,930
+So now we're ready to start the exercise.
+
+23
+00:01:28,930 --> 00:01:34,100
+The first problem is asking us
+
+24
+00:01:34,100 --> 00:01:39,080
+whether those people who are varsity
+athletes in high school.
+
+25
+00:01:39,080 --> 00:01:42,080
+Currently exercise more than those people
+who
+
+26
+00:01:42,080 --> 00:01:45,330
+were not varsity athletes in high school.
+
+27
+00:01:45,330 --> 00:01:49,250
+And so, question 1A is asking us what
+statistical test we would use to
+
+28
+00:01:49,250 --> 00:01:50,690
+make this comparison and why.
+
+29
+00:01:52,450 --> 00:01:58,040
+And so, the thought process is that we are
+comparing two unrelated groups,
+
+30
+00:01:58,040 --> 00:02:03,330
+varsity athletes and non-varsity athletes
+on a continuous measure.
+
+31
+00:02:03,330 --> 00:02:05,770
+So that's the amount of exercise they
+have.
+
+32
+00:02:05,770 --> 00:02:10,800
+And so these 2 things taken together leads
+to the conclusion that we
+
+33
+00:02:10,800 --> 00:02:14,532
+want to use the 2 sample t-test, otherwise
+known as the independent samples.
+
+34
+00:02:14,532 --> 00:02:15,980
+T test.
+
+35
+00:02:15,980 --> 00:02:18,810
+Again the reason why we're using this test
+instead of the Paired T
+
+36
+00:02:18,810 --> 00:02:21,890
+test is that these two groups are not
+correlated.
+
+37
+00:02:21,890 --> 00:02:27,670
+Then the questions asks us to perform the
+statistical test,
+
+38
+00:02:27,670 --> 00:02:30,310
+report the P value for that test, and
+
+39
+00:02:30,310 --> 00:02:36,980
+to also plot, the relationship between
+each group.
+
+40
+00:02:36,980 --> 00:02:37,760
+That's 1-C.
+
+41
+00:02:37,760 --> 00:02:41,040
+We're just going to do both at the same
+time here.
+
+42
+00:02:41,040 --> 00:02:44,574
+So, the first step is to look at the
+consult window and
+
+43
+00:02:44,574 --> 00:02:49,260
+select Analysis, and two sample tests.
+
+44
+00:02:49,260 --> 00:02:53,210
+This brings up the two independent sample
+tests menu.
+
+45
+00:02:53,210 --> 00:02:56,410
+The first thing that we're going to do is
+to split up
+
+46
+00:02:56,410 --> 00:03:01,400
+our cohort into varsity athletes and
+non-varsity athletes in high school.
+
+47
+00:03:01,400 --> 00:03:05,435
+So, we're going to select varsity and drag
+that over to factor.
+
+48
+00:03:05,435 --> 00:03:09,046
+And then we're going to click on split.
+
+49
+00:03:09,046 --> 00:03:14,390
+I am going to select 0 into group 1 and 1
+into group 2.
+
+50
+00:03:14,390 --> 00:03:20,171
+Now in this situation it doesn't really
+matter on
+
+51
+00:03:20,171 --> 00:03:25,605
+where the 0 and 1 go, so I could have 0 in
+group 2 and 1 in group 1.
+
+52
+00:03:25,605 --> 00:03:28,975
+Boyd realized that this is a neat way
+[UNKNOWN]
+
+53
+00:03:28,975 --> 00:03:31,130
+said you had more that two Two levels.
+
+54
+00:03:31,130 --> 00:03:35,410
+This a neat way of selecting which two
+comparisons you wanted to make.
+
+55
+00:03:35,410 --> 00:03:37,402
+So we're going to hit okay.
+
+56
+00:03:37,402 --> 00:03:43,270
+In the outcomes box, I'm going to drag
+over the exercise variable.
+
+57
+00:03:43,270 --> 00:03:45,830
+Because that's what we're trying to
+compare.
+
+58
+00:03:45,830 --> 00:03:48,595
+In the lower left corner of the menu we
+see
+
+59
+00:03:48,595 --> 00:03:51,760
+See that the t-test is selected by
+default.
+
+60
+00:03:51,760 --> 00:03:52,440
+So that's good.
+
+61
+00:03:52,440 --> 00:03:55,330
+I'm going to click on the wrench here just
+because I want to,
+
+62
+00:03:55,330 --> 00:03:58,020
+or the gear here, because I want to see
+what options we have.
+
+63
+00:03:58,020 --> 00:04:04,020
+It seems like we have the option to run
+the t-test assuming unequal variances or
+
+64
+00:04:04,020 --> 00:04:04,950
+equal variances.
+
+65
+00:04:04,950 --> 00:04:08,247
+For now I'm going to leave this as unequal
+variances.
+
+66
+00:04:08,247 --> 00:04:10,870
+I hit Okay.
+
+67
+00:04:10,870 --> 00:04:15,280
+Then you also notice that there's a plots
+button here, so I'm going to click that
+
+68
+00:04:15,280 --> 00:04:20,890
+and click on horizontal, so that it
+generates a plot for us.
+
+69
+00:04:20,890 --> 00:04:25,910
+And I'm going to hit Okay, and then Run.
+
+70
+00:04:25,910 --> 00:04:27,680
+So notice, a few things happened.
+
+71
+00:04:27,680 --> 00:04:32,868
+One is that we have a window that shows
+two box plots, and
+
+72
+00:04:32,868 --> 00:04:36,430
+we'll address that in a moment.
+
+73
+00:04:36,430 --> 00:04:39,550
+What we also see on the left-hand side
+that there's an output in
+
+74
+00:04:39,550 --> 00:04:40,279
+the console window.
+
+75
+00:04:42,170 --> 00:04:46,580
+So spreading that out, we see a few
+things.
+
+76
+00:04:46,580 --> 00:04:50,755
+So we see that the mean of the mean level
+
+77
+00:04:50,755 --> 00:04:57,060
+of exercise for those people.
+
+78
+00:04:57,060 --> 00:04:59,550
+That have a 0 coded under varsity.
+
+79
+00:04:59,550 --> 00:05:03,815
+So in English that means the mean hours of
+exercise for
+
+80
+00:05:03,815 --> 00:05:06,942
+non-varsity athletes was found to be
+3.575.
+
+81
+00:05:06,942 --> 00:05:09,670
+So approximately 3.6.
+
+82
+00:05:09,670 --> 00:05:13,640
+And that the mean or the mean for varsity
+athletes or
+
+83
+00:05:13,640 --> 00:05:20,370
+the mean of level 1 for varsity was 4.55.
+
+84
+00:05:20,370 --> 00:05:24,510
+And so we know that, we see that there's a
+difference here in the means.
+
+85
+00:05:25,550 --> 00:05:30,938
+There's a difference Of about, you know
+one hour of exercise on average.
+
+86
+00:05:30,938 --> 00:05:35,690
+But then we look at the p value which is
+in the row below that.
+
+87
+00:05:35,690 --> 00:05:38,957
+And we notice that that p value is .21.
+
+88
+00:05:38,957 --> 00:05:44,402
+So our conclusion is that there's no
+statistically significant
+
+89
+00:05:44,402 --> 00:05:48,480
+difference Between the means of these two
+groups.
+
+90
+00:05:48,480 --> 00:05:51,745
+So, said another way, our conclusion is
+
+91
+00:05:51,745 --> 00:05:58,050
+that there's no statistically significant
+difference in the amount of exercise.
+
+92
+00:05:58,050 --> 00:06:02,170
+That people who are varsity athletes in
+high school.
+
+93
+00:06:02,170 --> 00:06:07,100
+Get right now versus non varsity athletes.
+
+94
+00:06:07,100 --> 00:06:11,940
+To reinforce that conclusion what we're
+going to do is look at our plot here.
+
+95
+00:06:11,940 --> 00:06:16,790
+It's always a good idea to visualize your
+data just to make sure.
+
+96
+00:06:16,790 --> 00:06:17,940
+You understand what's going on.
+
+97
+00:06:17,940 --> 00:06:20,540
+It can sort of act as a very good sanity
+check.
+
+98
+00:06:20,540 --> 00:06:25,540
+On the x-axis here we have exercise.
+
+99
+00:06:25,540 --> 00:06:30,550
+And on the y-axis we have our two groups,
+varsity and non-varsity athletes.
+
+100
+00:06:30,550 --> 00:06:34,280
+And we can tell that although the averages
+are different.
+
+101
+00:06:34,280 --> 00:06:39,380
+There's a significant amount of overlap in
+how the data is distributed.
+
+102
+00:06:39,380 --> 00:06:42,970
+And so it's not surprising that we came to
+
+103
+00:06:42,970 --> 00:06:47,490
+the result that we can not reject the
+null.
+
+104
+00:06:47,490 --> 00:06:50,520
+Moving on to problem two, now we're
+interested in comparing whether
+
+105
+00:06:50,520 --> 00:06:53,640
+students love math more, or whether
+students love writing more.
+
+106
+00:06:54,770 --> 00:06:58,680
+And the way we're going to do that in this
+data set is to compare the math
+
+107
+00:06:58,680 --> 00:07:01,217
+love variable and the writing love.
+
+108
+00:07:01,217 --> 00:07:03,890
+Of variable, pretty convenient.
+
+109
+00:07:03,890 --> 00:07:08,720
+And so the first part of this question
+asks us what
+
+110
+00:07:08,720 --> 00:07:13,040
+statistical test we would use to make this
+comparison and why.
+
+111
+00:07:13,040 --> 00:07:18,950
+Well, in this case, what we're going to do
+is we're going to use a paried t tes.
+
+112
+00:07:18,950 --> 00:07:21,690
+And the reason we're using a paried t test
+this time is
+
+113
+00:07:21,690 --> 00:07:24,950
+because these two variables actually are
+correlated.
+
+114
+00:07:24,950 --> 00:07:26,270
+They are related.
+
+115
+00:07:26,270 --> 00:07:31,980
+And they're related because the same
+student answered both questions.
+
+116
+00:07:31,980 --> 00:07:38,684
+So student A you can imagine would fill
+out writing love and math love.
+
+117
+00:07:38,684 --> 00:07:42,690
+And if student A really liked school he's
+going to, he or
+
+118
+00:07:42,690 --> 00:07:50,445
+she is going to score those two variables
+very highly and so they're related.
+
+119
+00:07:50,445 --> 00:07:55,010
+So the second part of this question asks
+us how this statistical test differs from
+
+120
+00:07:55,010 --> 00:07:57,130
+the test in question 1.
+
+121
+00:07:57,130 --> 00:08:00,700
+So in question 1 we used the independent
+samples T-test.
+
+122
+00:08:00,700 --> 00:08:03,230
+And in this question we're using the
+paired samples T-test.
+
+123
+00:08:03,230 --> 00:08:05,250
+Now how are these two different?
+
+124
+00:08:05,250 --> 00:08:08,940
+In question 1 if you remember what we were
+doing was we
+
+125
+00:08:08,940 --> 00:08:11,850
+were comparing the mean exercise values.
+
+126
+00:08:11,850 --> 00:08:16,460
+Or the mean exercise levels for two
+separate groups,
+
+127
+00:08:16,460 --> 00:08:19,380
+varsity athletes and non-varsity athletes.
+
+128
+00:08:19,380 --> 00:08:21,500
+So you can imagine what Deducer or
+
+129
+00:08:21,500 --> 00:08:26,050
+what R is doing in the background is that
+it's calculating the means separately for
+
+130
+00:08:26,050 --> 00:08:30,190
+both groups and it calculates a standard
+error for that mean.
+
+131
+00:08:30,190 --> 00:08:31,235
+Or a standard deviation.
+
+132
+00:08:31,235 --> 00:08:35,210
+And based on that variation it's able to
+compare these 2
+
+133
+00:08:35,210 --> 00:08:38,260
+means to say whether there's an actual
+difference.
+
+134
+00:08:38,260 --> 00:08:42,670
+In a paired t test because we want to
+maintain the correlation,
+
+135
+00:08:42,670 --> 00:08:46,660
+we want to maintain the relationship
+between the two variables,
+
+136
+00:08:46,660 --> 00:08:51,800
+writing love and math love, what our
+deducer's actually doing is that it's
+
+137
+00:08:51,800 --> 00:08:56,960
+taking the difference between math love
+and writing love and
+
+138
+00:08:56,960 --> 00:09:01,075
+seeing if that, if the mean of that
+difference is different than zero.
+
+139
+00:09:01,075 --> 00:09:03,790
+Let me say that a different way.
+
+140
+00:09:03,790 --> 00:09:07,450
+So in the first question, with the two
+samples What we're
+
+141
+00:09:07,450 --> 00:09:11,810
+doing is we're comparing the two means
+between each other.
+
+142
+00:09:11,810 --> 00:09:16,550
+And in this question we're calculating a
+difference between, between
+
+143
+00:09:16,550 --> 00:09:19,340
+the two variables and then we're comparing
+that mean difference with zero to
+
+144
+00:09:19,340 --> 00:09:22,430
+see if it's statistically significant.
+
+145
+00:09:22,430 --> 00:09:29,842
+To see if there's a statistically
+significant
+
+146
+00:09:29,842 --> 00:09:32,570
+difference.
+
+147
+00:09:32,570 --> 00:09:34,530
+Between that mean difference and zero.
+
+148
+00:09:34,530 --> 00:09:39,070
+So, third part of question two asks us to
+
+149
+00:09:39,070 --> 00:09:44,450
+perform this statistical test and to
+report the PRE for it and
+
+150
+00:09:44,450 --> 00:09:50,310
+to state on average how different are
+these quote-unquote love scores.
+
+151
+00:09:50,310 --> 00:09:52,300
+So let's do that.
+
+152
+00:09:52,300 --> 00:09:56,140
+I'm going to click Analysis.
+
+153
+00:09:56,140 --> 00:09:59,455
+And then go to the Paired Test option
+here.
+
+154
+00:09:59,455 --> 00:10:04,810
+And what I'm going to do is I'm going to
+select both Math Love and Writing Love.
+
+155
+00:10:06,140 --> 00:10:09,105
+And drag those into the boxes labeled
+first and second.
+
+156
+00:10:09,105 --> 00:10:14,980
+It doesn't matter in to which category you
+drag each variable.
+
+157
+00:10:14,980 --> 00:10:19,420
+Just keep in mind that the mean difference
+is going to be flipped.
+
+158
+00:10:19,420 --> 00:10:21,500
+The sign of the mean difference is going
+to be flipped,
+
+159
+00:10:21,500 --> 00:10:24,350
+in the output if you flip these two.
+
+160
+00:10:24,350 --> 00:10:27,870
+So, T-test is selected by default, so
+that's good.
+
+161
+00:10:27,870 --> 00:10:29,410
+And then I'm just going to hit run, and
+
+162
+00:10:29,410 --> 00:10:33,350
+we have our output in the console window
+here.
+
+163
+00:10:33,350 --> 00:10:40,010
+We notice that our p value is 0.098, which
+means that we cannot reject
+
+164
+00:10:40,010 --> 00:10:49,010
+the null hypothesis based on an alpha
+level of 0.05.
+
+165
+00:10:49,010 --> 00:10:52,520
+We would need the p value to be less than
+Than 0.05.
+
+166
+00:10:52,520 --> 00:10:56,830
+So, our conclusion is that there's no
+statistically significant difference
+
+167
+00:10:56,830 --> 00:11:03,410
+between how much people in this cohort
+like writing versus math.
+
+168
+00:11:03,410 --> 00:11:07,410
+Notice that we come to this conclusion
+even though
+
+169
+00:11:07,410 --> 00:11:12,500
+the mean difference between the two groups
+is about seven and a half points.
+
+170
+00:11:12,500 --> 00:11:20,250
+Which is illustrated a few lines below the
+p-value output.
+
+171
+00:11:20,250 --> 00:11:26,320
+Question three asks us for an assumption
+of the previous two tests.
+
+172
+00:11:26,320 --> 00:11:31,340
+And that we check this condition for the
+variable riding love visually.
+
+173
+00:11:31,340 --> 00:11:35,810
+And so what the question is implying is
+that the variables for
+
+174
+00:11:35,810 --> 00:11:40,080
+a T-test need to be normally distributed.
+
+175
+00:11:40,080 --> 00:11:43,512
+That's one of the assumptions of the
+T-test, it's a parametric test.
+
+176
+00:11:43,512 --> 00:11:49,400
+As a side note actually the paired T-test
+does not
+
+177
+00:11:49,400 --> 00:11:54,750
+assume normality for the variables, but it
+assumes normality for the difference.
+
+178
+00:11:54,750 --> 00:11:56,720
+Between the 2 variables.
+
+179
+00:11:56,720 --> 00:11:58,940
+So just keep that in mind.
+
+180
+00:11:58,940 --> 00:12:03,370
+So we want to check normality for the
+writing love variable.
+
+181
+00:12:03,370 --> 00:12:07,640
+And to do that what we're going to do is
+plot that variable.
+
+182
+00:12:07,640 --> 00:12:09,924
+So I'm going to select Plots, Plot
+Builder.
+
+183
+00:12:09,924 --> 00:12:14,230
+I'm going to drag down Histogram here and
+
+184
+00:12:14,230 --> 00:12:20,410
+select riding love, and just visually look
+at our output.
+
+185
+00:12:20,410 --> 00:12:24,080
+And so we notice that it doesn't look very
+normally distributed.
+
+186
+00:12:24,080 --> 00:12:29,890
+It actually looks pretty bimodal with a
+peak centering around 20% riding love,
+
+187
+00:12:29,890 --> 00:12:32,840
+and another peak around 70%.
+
+188
+00:12:32,840 --> 00:12:37,478
+So I would say that this doesn't look Very
+normal.
+
+189
+00:12:37,478 --> 00:12:41,645
+Question 4 leads us to then
+
+190
+00:12:41,645 --> 00:12:46,820
+investigate this relationship further by
+using a non parametric test.
+
+191
+00:12:46,820 --> 00:12:50,860
+So, question 4 asks us to
+
+192
+00:12:50,860 --> 00:12:55,970
+run the non parametric version of the test
+in question 1.
+
+193
+00:12:55,970 --> 00:12:58,079
+So, what statistical test will we use to.
+
+194
+00:12:58,079 --> 00:12:59,100
+To make this comparison.
+
+195
+00:12:59,100 --> 00:13:03,260
+Well the non-parametric version of the
+independent samples T-test is
+
+196
+00:13:03,260 --> 00:13:05,360
+called the Wilcoxon Rank Sum Test.
+
+197
+00:13:08,220 --> 00:13:13,120
+And it's asking us to perform this
+statistical test.
+
+198
+00:13:13,120 --> 00:13:18,120
+So I'm going to hit cancel here, and the
+way to do this would be to
+
+199
+00:13:18,120 --> 00:13:21,760
+go to Analysis and then go back to Two
+Sample Test.
+
+200
+00:13:21,760 --> 00:13:26,125
+You'll see that our variables are still
+where we left them,
+
+201
+00:13:26,125 --> 00:13:30,470
+exercises under the outcomes box, and
+varsity is in the factor box.
+
+202
+00:13:31,700 --> 00:13:34,145
+What we need to do here is to uncheck T
+test and
+
+203
+00:13:34,145 --> 00:13:40,924
+check Wilcoxon here because we want the
+Wilcoxon Rank Sum Test.
+
+204
+00:13:40,924 --> 00:13:44,706
+Then I'm going to hit Run.
+
+205
+00:13:44,706 --> 00:13:49,390
+You'll notice it generated a plot for me
+again because I didn't have it unchecked.
+
+206
+00:13:49,390 --> 00:13:53,570
+The plot should look identical to our
+previous plot.
+
+207
+00:13:55,590 --> 00:14:00,681
+We look at the p-value in the console
+window under the Wilcoxon rank sum test.
+
+208
+00:14:00,681 --> 00:14:06,730
+Heading, and we see that the p-value is
+equal to 0.19.
+
+209
+00:14:06,730 --> 00:14:09,750
+So this does not change our conclusion.
+
+210
+00:14:09,750 --> 00:14:11,990
+If you remember previously, we had a
+p-value of 0.21.
+
+211
+00:14:11,990 --> 00:14:15,440
+So it lowers it a little bit actually but,
+
+212
+00:14:15,440 --> 00:14:19,470
+it's still greater than 0.05, so we can
+not reject the null.
+
+213
+00:14:19,470 --> 00:14:24,420
+Question 5 is asking us
+
+214
+00:14:24,420 --> 00:14:28,981
+What menu option we would select to
+perform an ANOVA?
+
+215
+00:14:28,981 --> 00:14:32,470
+So, it's basically asking us how we would
+perform an ANOVA and Deducer and R.
+
+216
+00:14:32,470 --> 00:14:38,920
+Well, if you think about it, an ANOVA is
+
+217
+00:14:38,920 --> 00:14:42,580
+kind of like an extension of a t-test over
+multiple groups.
+
+218
+00:14:42,580 --> 00:14:47,629
+So it makes sense to have it near the
+T-test option.
+
+219
+00:14:47,629 --> 00:14:53,970
+So if we're hunting for this, I would go
+under Analysis and
+
+220
+00:14:53,970 --> 00:14:57,920
+try to look somewhere near the Two Sample
+Test.
+
+221
+00:14:57,920 --> 00:15:00,840
+And I notice that it says the K-Sample
+Test, well what is that?
+
+222
+00:15:00,840 --> 00:15:07,290
+So K-Sample Test actually just means
+multiple independent samples,
+
+223
+00:15:07,290 --> 00:15:09,270
+so K just being a random number.
+
+224
+00:15:09,270 --> 00:15:15,125
+So a random number of samples And to back
+this up we also see in the bottom
+
+225
+00:15:15,125 --> 00:15:20,830
+left-hand corner, the default test here is
+a one-way ANOVA.
+
+226
+00:15:20,830 --> 00:15:26,050
+So to run an ANOVA in Deducer even though
+we won't actually run one now,
+
+227
+00:15:26,050 --> 00:15:29,800
+you'd go to Analysis.
+
+228
+00:15:29,800 --> 00:15:34,110
+Select key sample test and then select
+your variables in this menu.
+
+229
+00:15:34,110 --> 00:15:38,220
+Moving on to question six.
+
+230
+00:15:38,220 --> 00:15:43,920
+So we're now interested in seeing whether
+there's a difference in whether one
+
+231
+00:15:43,920 --> 00:15:48,300
+considers themselves book smart or street
+smart.
+
+232
+00:15:48,300 --> 00:15:51,240
+Based upon whether you played a varsity
+sport in high school.
+
+233
+00:15:51,240 --> 00:15:57,555
+So, 6A asks us what statistical test we'd
+use in this situation.
+
+234
+00:15:57,555 --> 00:16:00,454
+What's different about this question.
+
+235
+00:16:00,454 --> 00:16:08,460
+Is that the variable for book smart or
+street smart is categorical, okay?
+
+236
+00:16:08,460 --> 00:16:13,100
+It's not a continuous variable here
+because there are only two options.
+
+237
+00:16:13,100 --> 00:16:15,919
+A categorical variable could have more
+than two levels.
+
+238
+00:16:15,919 --> 00:16:18,270
+So it just so happens that there are only
+two levels here.
+
+239
+00:16:18,270 --> 00:16:21,670
+It's yes book smart or no book smart.
+
+240
+00:16:21,670 --> 00:16:25,620
+Which means you consider yourself street
+smart.
+
+241
+00:16:25,620 --> 00:16:29,070
+And so in this situation we wouldn't want
+to use a T test.
+
+242
+00:16:29,070 --> 00:16:32,340
+We would want to use a chi-square test.
+
+243
+00:16:32,340 --> 00:16:33,840
+So let's do that.
+
+244
+00:16:33,840 --> 00:16:35,580
+So I'm going to close the plot here.
+
+245
+00:16:35,580 --> 00:16:42,510
+And in order to run a chi-square test I'm
+going to go to analysis.
+
+246
+00:16:42,510 --> 00:16:44,550
+And click on Contingency Tables.
+
+247
+00:16:44,550 --> 00:16:51,120
+And again it doesn't matter which
+variables I put into the row or column for
+
+248
+00:16:51,120 --> 00:16:55,471
+the chi squared test, so I'm going to drag
+over Varsity, as a row.
+
+249
+00:16:55,471 --> 00:17:01,091
+And I'm going to drag over IsBookSmart
+into the column section.
+
+250
+00:17:01,091 --> 00:17:06,164
+And, there are a bunch of menus on the
+right hand side, here.
+
+251
+00:17:06,164 --> 00:17:08,279
+Let's explore these for a second.
+
+252
+00:17:10,130 --> 00:17:14,940
+So cells allows us to ask for certain
+percentages.
+
+253
+00:17:14,940 --> 00:17:18,440
+Or certain values related to the
+Chi-Square test that we want.
+
+254
+00:17:18,440 --> 00:17:21,700
+For now I'm going to leave these
+unchecked.
+
+255
+00:17:21,700 --> 00:17:25,400
+Under statistics we can ask for different
+tests.
+
+256
+00:17:25,400 --> 00:17:28,490
+The Chi-Square test is selected by
+default, but
+
+257
+00:17:28,490 --> 00:17:31,880
+we also do the likelihood ratio test,
+Fisher's exact test.
+
+258
+00:17:31,880 --> 00:17:33,040
+And even do a Mantel-Haenszel test.
+
+259
+00:17:33,040 --> 00:17:35,680
+I'm going to leave all those unselected
+for now as well.
+
+260
+00:17:35,680 --> 00:17:42,050
+Results let's us save the results.
+
+261
+00:17:42,050 --> 00:17:44,810
+I'm going to also leave that blank.
+
+262
+00:17:44,810 --> 00:17:46,780
+It's good to know what these menus do.
+
+263
+00:17:46,780 --> 00:17:54,950
+I'm going to hit run for now and see what
+we have here.
+
+264
+00:17:54,950 --> 00:17:56,960
+So you see this two by two table.
+
+265
+00:17:56,960 --> 00:18:00,490
+You see that we have a Chi-squared
+statistic and
+
+266
+00:18:00,490 --> 00:18:03,690
+a p-value associated with that.
+
+267
+00:18:03,690 --> 00:18:10,390
+But what should jump out at you is the low
+number of cells in the.
+
+268
+00:18:10,390 --> 00:18:11,340
+First column here.
+
+269
+00:18:11,340 --> 00:18:17,060
+So because the cell numbers are low,
+
+270
+00:18:17,060 --> 00:18:21,170
+and because one of them is less than 5,
+
+271
+00:18:21,170 --> 00:18:26,160
+I suspect that maybe the chi square test
+is not the best test to use here.
+
+272
+00:18:26,160 --> 00:18:30,550
+And that we should instead be using the
+Fishers exact test.
+
+273
+00:18:30,550 --> 00:18:36,140
+Now I remember seeing that in the menus
+before, so I'm going to go select that.
+
+274
+00:18:36,140 --> 00:18:39,710
+So I'm going to click on Analysis, and
+then go to Contingency Tables.
+
+275
+00:18:39,710 --> 00:18:43,850
+The variables are still where we left
+them, but
+
+276
+00:18:43,850 --> 00:18:48,934
+I'm going to click on statistics and Also
+select Fisher's exact test.
+
+277
+00:18:48,934 --> 00:18:55,294
+Now the criteria for using Fisher's exact
+test is really a rule of thumb.
+
+278
+00:18:55,294 --> 00:18:59,958
+There's no hard and fast rule, or
+statistical rule,
+
+279
+00:18:59,958 --> 00:19:05,364
+I guess I should say, where you need to
+use Fisher's exact test.
+
+280
+00:19:05,364 --> 00:19:11,380
+But I guess it's more accurate to say that
+Fisher's exact test does a better job of
+
+281
+00:19:11,380 --> 00:19:17,170
+calculating the p-value when the expected
+cell values are less than five.
+
+282
+00:19:17,170 --> 00:19:19,290
+I'll say that again in a different way.
+
+283
+00:19:19,290 --> 00:19:24,987
+So, the Chi-Square test does not do a good
+job of approximating
+
+284
+00:19:24,987 --> 00:19:30,540
+the Key value of the relationship between
+two variables when the expected cell
+
+285
+00:19:30,540 --> 00:19:36,380
+value in any of the cells of the
+contingency table is less than five.
+
+286
+00:19:36,380 --> 00:19:40,040
+To illustrate that point, I'm going to
+also select the expected cell
+
+287
+00:19:40,040 --> 00:19:44,350
+counts by clicking on Cells and checking
+Expected.
+
+288
+00:19:44,350 --> 00:19:47,225
+going to hit Run.
+
+289
+00:19:47,225 --> 00:19:52,550
+You'll notice it generates the same table,
+as before,
+
+290
+00:19:52,550 --> 00:19:57,530
+but there's additional output this time
+because we had Fisher's exact selected.
+
+291
+00:19:57,530 --> 00:20:01,100
+We see that the chi squared p value is
+3.19, and
+
+292
+00:20:01,100 --> 00:20:05,320
+the Fisher's exact test p-value is .367
+You'll
+
+293
+00:20:05,320 --> 00:20:09,170
+see that the Fisher's exact test
+attenuates the relationship a little bit.
+
+294
+00:20:09,170 --> 00:20:14,070
+And that the Chi-Square test does not as
+good of
+
+295
+00:20:14,070 --> 00:20:16,015
+a job when the cell counts are low.
+
+296
+00:20:16,015 --> 00:20:18,450
+Let me scroll up a little bit here.
+
+297
+00:20:18,450 --> 00:20:23,310
+There are extra rows for the expected cell
+count, and
+
+298
+00:20:23,310 --> 00:20:29,080
+you'll notice that these are definitely
+less, that 3.67 is definitely less than 5.
+
+299
+00:20:29,080 --> 00:20:32,120
+So it's correct here to use the Fisher's
+exact test, or I guess I
+
+300
+00:20:32,120 --> 00:20:36,420
+should say it's more accurate to use the
+Fisher's exact test in this situation.
+
+301
+00:20:37,750 --> 00:20:41,200
+Our conclusion, of course, is that there's
+no relationship Between these two
+
+302
+00:20:41,200 --> 00:20:44,375
+variables, and that or said another way,
+there's no
+
+303
+00:20:44,375 --> 00:20:47,950
+relationship between whether you played a
+varsity sport in high school and
+
+304
+00:20:47,950 --> 00:20:54,290
+whether you consider yourself book smart
+based on the data in this data set.
+
+305
+00:20:54,290 --> 00:20:59,584
+The last question asks us to calculate the
+risk ratio and the odds ratio for For
+
+306
+00:20:59,584 --> 00:21:01,720
+this relationship.
+
+307
+00:21:01,720 --> 00:21:04,270
+This is just a bit of an, a review
+exercise here.
+
+308
+00:21:04,270 --> 00:21:09,570
+If your remember the risk ratio is defined
+as
+
+309
+00:21:09,570 --> 00:21:14,587
+A over A plus B, and C over C plus D.
+
+310
+00:21:14,587 --> 00:21:20,550
+Now the 2 by 2 here is arranged a little
+bit differently,
+
+311
+00:21:20,550 --> 00:21:26,730
+if we wanted to calculate the risk ratio
+for, the risk of...
+
+312
+00:21:26,730 --> 00:21:29,930
+This is a little funny saying it this way,
+
+313
+00:21:29,930 --> 00:21:33,840
+but it's the risk of considering yourself
+book smart.
+
+314
+00:21:33,840 --> 00:21:37,810
+Given that you played a varsity sport in
+high school What you
+
+315
+00:21:37,810 --> 00:21:42,480
+would need to do is flip the rows, and
+flip the columns,
+
+316
+00:21:42,480 --> 00:21:49,158
+such that the box in the uppe-, upper
+left-hand corner,
+
+317
+00:21:49,158 --> 00:21:55,330
+corresponds to yes booksmart, yes varsity,
+okay.
+
+318
+00:21:55,330 --> 00:22:02,280
+So the formula for this Is 25 over 29
+divided by 15 over 20.
+
+319
+00:22:02,280 --> 00:22:08,000
+And so that gives us a risk ratio of about
+1.15.
+
+320
+00:22:08,000 --> 00:22:09,520
+The odds ratio is defined as AD
+
+321
+00:22:09,520 --> 00:22:19,260
+over BC.
+
+322
+00:22:19,260 --> 00:22:23,805
+And in this case it would be the same if
+we flipped the rows and columns.
+
+323
+00:22:23,805 --> 00:22:29,930
+So, we can just do 25 times 5 divided by
+15 times 4.
+
+324
+00:22:29,930 --> 00:22:33,470
+To generate a value of 2.08.
+
+325
+00:22:33,470 --> 00:22:38,394
+And as a review, we see that the odds
+ratio in fact does.
+
+326
+00:22:38,394 --> 00:22:40,300
+Inflate the risk ratio.
+
+327
+00:22:40,300 --> 00:22:43,990
+And that's the end of the exercise.
+
+328
+00:22:43,990 --> 00:22:51,575
+And the end of this, our module video.

@@ -1,0 +1,527 @@
+1
+00:00:05,840 --> 00:00:09,160
+In this next module I'm going to briefly
+review the concept of
+
+2
+00:00:09,160 --> 00:00:11,060
+exact logistic regression.
+
+3
+00:00:11,060 --> 00:00:13,300
+I am actually going to spare you the math
+details on this one so
+
+4
+00:00:13,300 --> 00:00:15,860
+we'll just go over what it means
+conceptually.
+
+5
+00:00:15,860 --> 00:00:19,950
+We've already talked about exact tests
+within this course.
+
+6
+00:00:19,950 --> 00:00:21,530
+When are exact tests used?
+
+7
+00:00:21,530 --> 00:00:24,190
+They're used in the situation where you
+have sparse data.
+
+8
+00:00:24,190 --> 00:00:26,140
+Well it's the same thing here.
+
+9
+00:00:26,140 --> 00:00:29,470
+Logistic regression relies on maximum
+likelihood estimation,
+
+10
+00:00:29,470 --> 00:00:32,250
+as we talked about in the previous
+modules.
+
+11
+00:00:32,250 --> 00:00:35,078
+Maximum likelihood estimation is an
+asymptotic technique.
+
+12
+00:00:35,078 --> 00:00:40,880
+All that means is, that it requires sort
+of an, at least a moderate sample size.
+
+13
+00:00:40,880 --> 00:00:44,210
+Otherwise you're making some assumptions,
+some approximations, and
+
+14
+00:00:44,210 --> 00:00:48,860
+those will fall down when you have very
+small data sets, very sparse data.
+
+15
+00:00:48,860 --> 00:00:52,070
+So maybe you have a situation where some
+of the groups in your sample,
+
+16
+00:00:52,070 --> 00:00:53,539
+have a very low outcome rate.
+
+17
+00:00:54,680 --> 00:00:58,000
+Sparse data you might then need to turn to
+exact logistic regression.
+
+18
+00:00:58,000 --> 00:01:01,540
+And it's analogous to when you need to use
+Fisher's exact test rather then
+
+19
+00:01:01,540 --> 00:01:04,490
+the Chi-squared test, it's analogous to
+that situation.
+
+20
+00:01:04,490 --> 00:01:07,550
+I won't go through the details of how
+exactly logistic
+
+21
+00:01:07,550 --> 00:01:09,680
+regression works mathematically, but
+
+22
+00:01:09,680 --> 00:01:13,150
+basically it's very similar to what we did
+with the Fisher's exact test.
+
+23
+00:01:13,150 --> 00:01:16,950
+You're calculating all possible outcomes.
+
+24
+00:01:16,950 --> 00:01:19,010
+What you saw in all possible outcomes.
+
+25
+00:01:19,010 --> 00:01:22,040
+So you're looking at actually calculating
+exact probabilities rather
+
+26
+00:01:22,040 --> 00:01:22,999
+than approximating.
+
+27
+00:01:24,430 --> 00:01:27,930
+And actually I'm going to go back to the
+exact example that we
+
+28
+00:01:27,930 --> 00:01:29,680
+used with the Fisher's exact test.
+
+29
+00:01:29,680 --> 00:01:33,890
+So we had this example about Fisher's tea
+tasting experiment.
+
+30
+00:01:33,890 --> 00:01:37,630
+And you can analyze these data, as we did,
+with a Fisher's exact test.
+
+31
+00:01:37,630 --> 00:01:39,940
+There's a simple, binary predictor here.
+
+32
+00:01:39,940 --> 00:01:42,120
+So we don't really need to get
+complicated.
+
+33
+00:01:42,120 --> 00:01:42,950
+But I'll just show you,
+
+34
+00:01:42,950 --> 00:01:47,000
+these, that it can also be analyzed in the
+logistic regression framework.
+
+35
+00:01:47,000 --> 00:01:50,220
+There's no reason we couldn't put this
+into a logistic regression.
+
+36
+00:01:50,220 --> 00:01:51,510
+Our outcome here.
+
+37
+00:01:51,510 --> 00:01:55,250
+Is whether or not the milk was poured
+first.
+
+38
+00:01:55,250 --> 00:01:57,780
+The predictor here is what she guessed.
+
+39
+00:01:57,780 --> 00:02:00,800
+Does her, do her guesses actually predict
+the,
+
+40
+00:02:00,800 --> 00:02:04,120
+the correctly which cups have milk poured
+first?
+
+41
+00:02:04,120 --> 00:02:07,750
+So we can put this in the logistic
+regression framework but because
+
+42
+00:02:07,750 --> 00:02:11,290
+there are sparse data we're going to need
+to turn to this exact logistic regression.
+
+43
+00:02:11,290 --> 00:02:13,805
+So what is the logistic regression model
+going to be here?
+
+44
+00:02:13,805 --> 00:02:19,520
+Well either the outcome here is that it's
+either a milk poured first cup or its not.
+
+45
+00:02:22,370 --> 00:02:23,601
+This is the kind of the truth.
+
+46
+00:02:23,601 --> 00:02:26,570
+Is it a milk poured first cup or not?
+
+47
+00:02:26,570 --> 00:02:29,232
+That's the outcome.
+It either is or it isn't.
+
+48
+00:02:29,232 --> 00:02:33,120
+We're going to be monitoring the log odds
+of that as a function of alpha.
+
+49
+00:02:33,120 --> 00:02:34,230
+Plus and what's beta here?
+
+50
+00:02:34,230 --> 00:02:37,190
+Well beta, the predictor here, is whether,
+is whether her guess is correct.
+
+51
+00:02:37,190 --> 00:02:38,950
+She guessed it was or she didn't.
+
+52
+00:02:38,950 --> 00:02:40,470
+Guessed milk first.
+
+53
+00:02:41,520 --> 00:02:44,420
+So she either guesses that the milk is
+first or she doesn't.
+
+54
+00:02:44,420 --> 00:02:46,060
+Milk was poured first or she doesn't.
+
+55
+00:02:46,060 --> 00:02:49,360
+If she is a good, if she can really
+distinguish them, then this
+
+56
+00:02:49,360 --> 00:02:52,410
+beta should be significant because her
+guesses should predict whether or
+
+57
+00:02:52,410 --> 00:02:55,110
+not the, actually had milk poured first.
+
+58
+00:02:55,110 --> 00:02:56,460
+So it's a very simple logistic model.
+
+59
+00:02:56,460 --> 00:02:59,750
+We can throw this into the computer and
+actually get some outputs.
+
+60
+00:02:59,750 --> 00:03:03,700
+So first of all I'm going to show you the
+maximum likelihood estimation results.
+
+61
+00:03:03,700 --> 00:03:06,520
+So this is just running a regular logistic
+regression.
+
+62
+00:03:06,520 --> 00:03:08,850
+It'll do it in this case, even those it
+has sparse data,
+
+63
+00:03:08,850 --> 00:03:10,560
+it will estimate it for you.
+
+64
+00:03:10,560 --> 00:03:11,990
+The algorithm will solve.
+
+65
+00:03:11,990 --> 00:03:13,970
+You'll get some alphas and betas.
+
+66
+00:03:13,970 --> 00:03:15,710
+You'll get some p-values.
+
+67
+00:03:15,710 --> 00:03:19,040
+The one that we care most about is the
+p-value for the guessing milk first.
+
+68
+00:03:20,130 --> 00:03:22,730
+That tells us the null hypothesis here is
+that
+
+69
+00:03:22,730 --> 00:03:25,000
+she can't guess any better than chance.
+
+70
+00:03:25,000 --> 00:03:28,770
+And that tells us in this case she, we, as
+we saw before.
+
+71
+00:03:28,770 --> 00:03:30,840
+We don't have enough evidence to reject
+the null hypothesis.
+
+72
+00:03:30,840 --> 00:03:33,910
+We also get here an odds ratio estimate
+because we've done logistic regression.
+
+73
+00:03:33,910 --> 00:03:35,030
+We can get out an odds ratio.
+
+74
+00:03:35,030 --> 00:03:37,210
+The odds ratio here comes out to be nine.
+
+75
+00:03:37,210 --> 00:03:41,270
+Of course that just comes from three times
+three, divided by one times one.
+
+76
+00:03:41,270 --> 00:03:42,580
+That comes out to be nine.
+
+77
+00:03:42,580 --> 00:03:44,280
+We get these, confidence limits as well.
+
+78
+00:03:44,280 --> 00:03:46,570
+So just pay attention to those values.
+
+79
+00:03:46,570 --> 00:03:48,750
+That's the maximum likelihood estimation
+results.
+
+80
+00:03:48,750 --> 00:03:51,220
+However, the problem is that again,
+
+81
+00:03:51,220 --> 00:03:54,960
+maximum likelihood estimation falls down
+when you have very sparse data.
+
+82
+00:03:54,960 --> 00:03:58,630
+So now I'm going to show you the exact
+logistic regression results instead.
+
+83
+00:03:58,630 --> 00:04:02,310
+So here's what I get when I run this in an
+exact logistic regression which is
+
+84
+00:04:02,310 --> 00:04:05,900
+fairly easy to do in most computer
+packages.
+
+85
+00:04:05,900 --> 00:04:11,400
+So now I get that the estimate for guess
+milk is actually different
+
+86
+00:04:11,400 --> 00:04:16,140
+than we saw before and the p-value, the
+two-sided p-value is also quite different.
+
+87
+00:04:16,140 --> 00:04:18,540
+And the odds ratio is different and the
+confidence limit for
+
+88
+00:04:18,540 --> 00:04:19,260
+the odds ratio is different.
+
+89
+00:04:19,260 --> 00:04:22,020
+Notice that the confidence limit becomes
+much wider here.
+
+90
+00:04:22,020 --> 00:04:23,840
+The p-value becomes bigger.
+
+91
+00:04:23,840 --> 00:04:26,390
+In fact, the maximum likelihood
+estimation,
+
+92
+00:04:26,390 --> 00:04:29,230
+estimates were overly optimistic.
+
+93
+00:04:29,230 --> 00:04:32,700
+When we run the exact logistic regression,
+we get different inferences, and so
+
+94
+00:04:32,700 --> 00:04:35,980
+it's important with sparse data to
+remember to run those exact statistics,
+
+95
+00:04:35,980 --> 00:04:38,390
+otherwise you might be overly optimistic.
+
+96
+00:04:38,390 --> 00:04:41,170
+I just want to point out one thing that's
+very interesting here.
+
+97
+00:04:41,170 --> 00:04:44,380
+Notice that the two sided p-value from
+this exact logistic
+
+98
+00:04:44,380 --> 00:04:45,390
+regression comes out to be 0.4857.
+
+99
+00:04:45,390 --> 00:04:48,450
+You probably don't remember, but
+
+100
+00:04:48,450 --> 00:04:51,270
+if you go back to that module on the
+Fisher's exact test.
+
+101
+00:04:51,270 --> 00:04:56,510
+The Fisher's p-value, the Fisher's exact
+p-value came out
+
+102
+00:04:56,510 --> 00:04:59,720
+to be exactly the two sided one, came out
+to be 0.4857.
+
+103
+00:04:59,720 --> 00:05:02,940
+It came out to be exactly the same.
+
+104
+00:05:02,940 --> 00:05:03,960
+Well, that's a good check.
+
+105
+00:05:05,110 --> 00:05:07,870
+Fisher's exact test is an exact method.
+
+106
+00:05:07,870 --> 00:05:10,810
+That means it should be calculating
+exactly the probability.
+
+107
+00:05:10,810 --> 00:05:14,730
+Logistic, exact logistic regression, is
+also an exact method,
+
+108
+00:05:14,730 --> 00:05:17,050
+that means we should be calculating
+exactly the probability.
+
+109
+00:05:17,050 --> 00:05:19,430
+Well if we're calculating the exact
+probability in both cases,
+
+110
+00:05:19,430 --> 00:05:23,200
+we're going to hope that that exact
+probability comes out to be the same.
+
+111
+00:05:23,200 --> 00:05:25,790
+There's nothing fancy going on in this
+model, we're not adjusting for
+
+112
+00:05:25,790 --> 00:05:28,900
+any confounders, so we ought to get
+exactly the same p-value.
+
+113
+00:05:28,900 --> 00:05:31,100
+And indeed we do, which is kind of a good
+check.
+
+114
+00:05:31,100 --> 00:05:33,440
+That this method works as it should.

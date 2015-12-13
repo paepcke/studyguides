@@ -1,0 +1,376 @@
+1
+00:00:00,000 --> 00:00:05,901
+[BLANK_AUDIO].
+
+2
+00:00:05,901 --> 00:00:08,840
+In this next module I'm going to talk
+about the issue of missing data.
+
+3
+00:00:09,890 --> 00:00:12,883
+So, if you have missing data, if you
+didn't get
+
+4
+00:00:12,883 --> 00:00:17,660
+that repeated outcome measured at every
+time point, what's going to happen?
+
+5
+00:00:18,890 --> 00:00:23,060
+So if you're working on analyses that use
+the broad form of the data.
+
+6
+00:00:23,060 --> 00:00:26,550
+So literally when you put them into your
+computer package, it's running, and
+
+7
+00:00:26,550 --> 00:00:32,100
+it only runs in the broad form of the
+data, then any subjects we're missing,
+
+8
+00:00:32,100 --> 00:00:35,280
+even data on just one time point out of
+all the time points.
+
+9
+00:00:35,280 --> 00:00:38,900
+They're going to be completely omitted
+from that analysis unless you
+
+10
+00:00:38,900 --> 00:00:41,540
+impute those missing data points.
+
+11
+00:00:41,540 --> 00:00:45,440
+And so this would be things like the
+simple meas-, the simple strategies for
+
+12
+00:00:45,440 --> 00:00:48,720
+analyzing repeated measures, data that I
+have talked about.
+
+13
+00:00:48,720 --> 00:00:51,970
+ANCOVA, also repeated measures ANOVA, as
+we'll see.
+
+14
+00:00:51,970 --> 00:00:55,430
+Those are going to throw somebody out
+unless they have all of
+
+15
+00:00:55,430 --> 00:00:57,450
+the time points measured, or you do
+imputation.
+
+16
+00:00:57,450 --> 00:01:00,410
+So that's a little bit of a limitation of
+those methods.
+
+17
+00:01:00,410 --> 00:01:01,815
+You're going to have to do some
+imputation.
+
+18
+00:01:03,030 --> 00:01:07,820
+However, if you're working on analyses
+that used a long form of the data,
+
+19
+00:01:07,820 --> 00:01:12,070
+it turns out that that, those analyses are
+only going to
+
+20
+00:01:12,070 --> 00:01:15,560
+omit specific time points when a person
+wasn't measured.
+
+21
+00:01:15,560 --> 00:01:18,274
+So if a person was measured at time point
+one, two, and
+
+22
+00:01:18,274 --> 00:01:22,498
+four, but not time point three, they won't
+contribute to time point three.
+
+23
+00:01:22,498 --> 00:01:26,280
+But they will contribute to time points
+one, two, and four.
+
+24
+00:01:26,280 --> 00:01:28,910
+And so the more sophisticated analysis
+like GEE and
+
+25
+00:01:28,910 --> 00:01:31,280
+mixed models will handle missing data in
+that way.
+
+26
+00:01:31,280 --> 00:01:33,840
+And also that slope analysis I told you
+about earlier,
+
+27
+00:01:33,840 --> 00:01:35,680
+actually that handles missing data as
+well.
+
+28
+00:01:37,356 --> 00:01:40,680
+So just to illustrate why this is, take
+here,
+
+29
+00:01:40,680 --> 00:01:44,110
+here's the broad form of the data, and
+here's the long form of the data.
+
+30
+00:01:44,110 --> 00:01:47,470
+This is just some data we had on spine
+bone density.
+
+31
+00:01:47,470 --> 00:01:49,550
+And take for example subject number 25.
+
+32
+00:01:49,550 --> 00:01:53,660
+In the broad form of the data, she has
+spine one and
+
+33
+00:01:53,660 --> 00:01:55,920
+spine two, but not spine three.
+
+34
+00:01:55,920 --> 00:01:59,830
+If I go to run a repeated measures ANOVA
+on these data, because she's missing,
+
+35
+00:01:59,830 --> 00:02:03,380
+this row of data is missing one time
+point,
+
+36
+00:02:03,380 --> 00:02:06,000
+it will not be included in the repeated
+measures ANOVA.
+
+37
+00:02:06,000 --> 00:02:09,220
+She will just be completely kicked out of
+that analysis.
+
+38
+00:02:09,220 --> 00:02:12,660
+However, if you turn to, and look at the
+long form of data,
+
+39
+00:02:12,660 --> 00:02:18,130
+the same id number, 25, she now has three
+rows in the long form of the data.
+
+40
+00:02:18,130 --> 00:02:21,150
+She has a spine value for on-, for her
+first time period and
+
+41
+00:02:21,150 --> 00:02:24,180
+her second time period, again missing that
+third time period.
+
+42
+00:02:24,180 --> 00:02:27,510
+But, analyses that run on the long form of
+the data will be able to
+
+43
+00:02:27,510 --> 00:02:31,410
+include this row in the analysis, and this
+row.
+
+44
+00:02:31,410 --> 00:02:34,500
+And the only row that will get kicked out
+is this row.
+
+45
+00:02:34,500 --> 00:02:38,180
+So, she will only be left out when it
+comes to the third time point.
+
+46
+00:02:38,180 --> 00:02:41,210
+The one she actually missed, as opposed to
+all time points.
+
+47
+00:02:41,210 --> 00:02:45,060
+So that's the advantage of the analysis
+like GE in mixed models that run on
+
+48
+00:02:45,060 --> 00:02:46,190
+the long form in the data.
+
+49
+00:02:47,700 --> 00:02:50,950
+Now let's say that you want to work on the
+broad form of the data and
+
+50
+00:02:50,950 --> 00:02:52,940
+you need to fill in that missing data.
+
+51
+00:02:52,940 --> 00:02:55,640
+What's a way that you can impute the
+missing data?
+
+52
+00:02:55,640 --> 00:02:58,690
+So for repeated measures data, a very
+simple way to
+
+53
+00:02:58,690 --> 00:03:02,950
+impute missing data is to use what's
+called Last Observation Carried Forward.
+
+54
+00:03:02,950 --> 00:03:06,200
+And that's a very nice name because it's
+exactly what it sounds like.
+
+55
+00:03:06,200 --> 00:03:08,611
+So here's a little bit of an example data
+set.
+
+56
+00:03:08,611 --> 00:03:11,731
+There's just four subjects here, they all
+have depression scores and
+
+57
+00:03:11,731 --> 00:03:13,790
+at time points one, two, three, and four.
+
+58
+00:03:13,790 --> 00:03:18,220
+And you can see that subject one was
+missing the final two time points.
+
+59
+00:03:18,220 --> 00:03:20,410
+Last observation forward, carry forward,
+
+60
+00:03:20,410 --> 00:03:22,780
+we'll just carry the last observation
+forward.
+
+61
+00:03:22,780 --> 00:03:24,578
+So she's missing time point three,
+
+62
+00:03:24,578 --> 00:03:27,914
+we're going to carry forward there the 13
+from time point two.
+
+63
+00:03:27,914 --> 00:03:29,434
+And then she's missing the time point
+four, so
+
+64
+00:03:29,434 --> 00:03:31,570
+we'll carry forward that 13 again.
+
+65
+00:03:31,570 --> 00:03:34,380
+In this way, we have now filled in all of
+her values, so
+
+66
+00:03:34,380 --> 00:03:36,540
+she will not be kicked out of the
+analysis.
+
+67
+00:03:36,540 --> 00:03:40,020
+And it seems pretty reasonable, since the
+last time we saw her she was at 13,
+
+68
+00:03:40,020 --> 00:03:43,380
+to fill in the rest of the time points
+with 13.
+
+69
+00:03:43,380 --> 00:03:47,240
+That's a much better thing than dumping
+her out of the analysis completely.
+
+70
+00:03:47,240 --> 00:03:51,220
+Down here at subject four we just carry
+the 30 forward.
+
+71
+00:03:51,220 --> 00:03:53,350
+She missed only the second time point.
+
+72
+00:03:53,350 --> 00:03:54,560
+Since we need to fill in something for
+
+73
+00:03:54,560 --> 00:03:58,800
+the time point, we'll, second time point,
+we'll carry forward that value of 30.
+
+74
+00:03:58,800 --> 00:04:02,200
+So Last Observation Carried Forward is
+easy to implement,
+
+75
+00:04:02,200 --> 00:04:05,500
+it's easy to understand, and it does a
+pretty good job.
+
+76
+00:04:05,500 --> 00:04:08,550
+Again, it's much better to fill in just
+something on those missing data
+
+77
+00:04:08,550 --> 00:04:10,950
+points than to have the person kicked out
+altogether.
+
+78
+00:04:10,950 --> 00:04:15,469
+[BLANK_AUDIO]

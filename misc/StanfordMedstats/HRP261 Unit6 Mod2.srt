@@ -1,0 +1,1076 @@
+1
+00:00:04,760 --> 00:00:07,540
+In this next module I'm going to talk
+about strategies for
+
+2
+00:00:07,540 --> 00:00:09,030
+dealing with missing data.
+
+3
+00:00:10,090 --> 00:00:12,690
+So, first of all, this is a really
+important problem.
+
+4
+00:00:12,690 --> 00:00:14,570
+In the context of regression,
+
+5
+00:00:14,570 --> 00:00:18,780
+it's important that you understand that if
+you're putting a bunch of variables into
+
+6
+00:00:18,780 --> 00:00:24,100
+your regression model An observation that
+is missing just one data point on any
+
+7
+00:00:24,100 --> 00:00:30,140
+one of those variables will not be
+included in the logistic regression model.
+
+8
+00:00:30,140 --> 00:00:34,610
+That means you could start with a dataset
+that has 400 observations in it.
+
+9
+00:00:34,610 --> 00:00:38,190
+And you think you're running your
+regression on 400 people, but
+
+10
+00:00:38,190 --> 00:00:42,350
+in fact, because of a smattering of
+missing data here and there,
+
+11
+00:00:42,350 --> 00:00:47,040
+that when you run that logistic regression
+it actually might only include 200 people.
+
+12
+00:00:47,040 --> 00:00:50,180
+Because different people might be missing
+values on different variables,
+
+13
+00:00:50,180 --> 00:00:52,220
+all of a sudden a little bit of missing
+data here and
+
+14
+00:00:52,220 --> 00:00:54,160
+there over ten variables results in a
+huge.
+
+15
+00:00:54,160 --> 00:00:58,630
+Huge number of your sample being cut from
+the model.
+
+16
+00:00:58,630 --> 00:01:02,060
+So this can be a really big problem,
+especially if you're not aware of it.
+
+17
+00:01:02,060 --> 00:01:05,430
+And just to review the likelihood term in
+logistic regression and
+
+18
+00:01:05,430 --> 00:01:10,140
+kind of show you How come people are
+knocked out of
+
+19
+00:01:10,140 --> 00:01:12,030
+the regression if they're missing just one
+data point.
+
+20
+00:01:12,030 --> 00:01:15,490
+Just think about the likelihood term for
+logistic regression.
+
+21
+00:01:15,490 --> 00:01:19,080
+So here's a model that say has just three
+predictors in it.
+
+22
+00:01:19,080 --> 00:01:20,910
+But let's say this person and
+
+23
+00:01:20,910 --> 00:01:25,530
+remember every person in my data set gets
+one term in the logistic regression model.
+
+24
+00:01:25,530 --> 00:01:28,520
+Let's say this person has a value for
+predictor one and
+
+25
+00:01:28,520 --> 00:01:33,450
+has a value for predictor two, but they're
+missing data for predictor three.
+
+26
+00:01:33,450 --> 00:01:37,380
+Well, when the computer sees their
+likelihood term.
+
+27
+00:01:37,380 --> 00:01:41,290
+There's no there's nothing here for
+predictor three therefore there's no
+
+28
+00:01:41,290 --> 00:01:45,890
+number there the computer can't use this
+for the estimation problem.
+
+29
+00:01:45,890 --> 00:01:50,350
+And so they just effectively get thrown
+out so this can be a major problem and
+
+30
+00:01:50,350 --> 00:01:53,120
+this is where you really need to think
+about what do I do when I
+
+31
+00:01:53,120 --> 00:01:54,260
+have missing data.
+
+32
+00:01:56,560 --> 00:01:59,680
+So I'm just going to go some, through some
+possible strategies for
+
+33
+00:01:59,680 --> 00:02:01,710
+dealing with missing data.
+
+34
+00:02:01,710 --> 00:02:06,540
+So first of all imagine that you've got
+some variables in your dataset that aren't
+
+35
+00:02:06,540 --> 00:02:10,380
+necessarily that important you maybe
+there's there potential confounders and
+
+36
+00:02:10,380 --> 00:02:13,645
+you've collected that data but its not
+your primary predictor of interest,
+
+37
+00:02:13,645 --> 00:02:16,220
+it's not your primary outcome of interest.
+
+38
+00:02:16,220 --> 00:02:19,250
+But those variables are missing a huge
+amount of data.
+
+39
+00:02:19,250 --> 00:02:24,640
+40, 50, 60% of the observations in your
+data set don't have a value for
+
+40
+00:02:24,640 --> 00:02:25,270
+that variable.
+
+41
+00:02:25,270 --> 00:02:29,140
+The first thing you might consider doing
+is just not including that variable in
+
+42
+00:02:29,140 --> 00:02:30,330
+your analysis.
+
+43
+00:02:30,330 --> 00:02:33,480
+Especially if you've measured the same
+construct with other variables.
+
+44
+00:02:33,480 --> 00:02:36,520
+If there's other variables available to
+get at it.
+
+45
+00:02:36,520 --> 00:02:39,380
+It's worth considering, is there enough
+information here?
+
+46
+00:02:39,380 --> 00:02:41,000
+Is it really even worth it for me?
+
+47
+00:02:41,000 --> 00:02:41,910
+To use that variable.
+
+48
+00:02:41,910 --> 00:02:45,360
+If I use that variable, I'm going to have
+to impute those values.
+
+49
+00:02:45,360 --> 00:02:47,390
+That adds a lot of noise so,
+
+50
+00:02:47,390 --> 00:02:50,780
+I might just consider not even using that
+at all in my analysis.
+
+51
+00:02:52,530 --> 00:02:57,490
+Now consider the situation where you're
+doing some kind of observational study,
+
+52
+00:02:57,490 --> 00:03:00,830
+and you have a particular hypothesis that
+you're trying to test.
+
+53
+00:03:00,830 --> 00:03:04,250
+So, for example, I want to know, does
+having a high level of
+
+54
+00:03:04,250 --> 00:03:08,950
+mercury in the body Does that increase the
+risk of cardiovascular disease.
+
+55
+00:03:08,950 --> 00:03:10,710
+And I've got some data.
+
+56
+00:03:10,710 --> 00:03:13,680
+Not everybody has mercury measured and
+
+57
+00:03:13,680 --> 00:03:16,340
+not everybody has cardiovascular disease
+measured.
+
+58
+00:03:16,340 --> 00:03:18,990
+I've got some missing data on both of
+those variables.
+
+59
+00:03:18,990 --> 00:03:24,040
+Well, since that's completely what you
+care about, evaluating that association,
+
+60
+00:03:24,040 --> 00:03:27,920
+in that situation you probably just want
+to exclude observations that
+
+61
+00:03:27,920 --> 00:03:32,090
+are missing data on either the primary
+predictor or the primary outcome.
+
+62
+00:03:32,090 --> 00:03:36,650
+They really are going to non-informative
+for the hypothesis you care about.
+
+63
+00:03:36,650 --> 00:03:39,450
+And I mean, exclude them from the very
+beginning of your analysis so
+
+64
+00:03:39,450 --> 00:03:43,170
+your table one of your paper should not
+include those people.
+
+65
+00:03:43,170 --> 00:03:47,360
+You just say, we only analyze people who
+had measurements on both of
+
+66
+00:03:47,360 --> 00:03:50,870
+those things because those variable are
+just so important in that situation.
+
+67
+00:03:52,650 --> 00:03:57,250
+Another possibility, another situation is
+where, maybe you've
+
+68
+00:03:57,250 --> 00:04:02,410
+got some variables where they're not
+missing, you know, too much missing data.
+
+69
+00:04:02,410 --> 00:04:07,300
+There may be missing data on as much as
+10, 15% of the data set but
+
+70
+00:04:07,300 --> 00:04:08,940
+they're still pretty valuable.
+
+71
+00:04:08,940 --> 00:04:10,290
+You're not missing so much.
+
+72
+00:04:10,290 --> 00:04:13,250
+But they're also not the primary predictor
+of interest or
+
+73
+00:04:13,250 --> 00:04:15,090
+the primary outcome of interest.
+
+74
+00:04:15,090 --> 00:04:18,340
+They're variables that I care about, and I
+maybe want to include in my model.
+
+75
+00:04:18,340 --> 00:04:19,610
+Maybe they're confounders.
+
+76
+00:04:20,700 --> 00:04:24,010
+But they're not the most important
+variables in the data set.
+
+77
+00:04:24,010 --> 00:04:27,890
+However, if I want to put them in my
+model, and I don't fill in
+
+78
+00:04:27,890 --> 00:04:31,120
+that missing data, again, lots of
+observations are going to get Kicked out.
+
+79
+00:04:31,120 --> 00:04:32,850
+So I want to fill in something for
+
+80
+00:04:32,850 --> 00:04:36,370
+those missing values and that's where I'm
+going to do some kind of imputation.
+
+81
+00:04:36,370 --> 00:04:38,920
+I'm going to fill in the missing values so
+
+82
+00:04:38,920 --> 00:04:43,450
+that, that variable becomes complete and I
+don't have any missing data.
+
+83
+00:04:43,450 --> 00:04:44,460
+So that's another option and
+
+84
+00:04:44,460 --> 00:04:47,730
+I'm in a minute going to tell you about
+some specific ways you can impute the,
+
+85
+00:04:47,730 --> 00:04:49,660
+the missing values.
+
+86
+00:04:49,660 --> 00:04:53,690
+I just want to mention, however another
+scenario that tends to come up
+
+87
+00:04:53,690 --> 00:04:57,950
+more commonly within predictive models,
+but you could imagine a scenario where,
+
+88
+00:04:57,950 --> 00:05:00,860
+where you have this in explanatory models
+as well, but
+
+89
+00:05:00,860 --> 00:05:04,380
+sometimes, the missingness itself is
+informative.
+
+90
+00:05:04,380 --> 00:05:07,140
+In other words, whether or not somebody
+has a value.
+
+91
+00:05:07,140 --> 00:05:11,440
+On a particular variable, might tell you
+something about that person.
+
+92
+00:05:12,850 --> 00:05:15,710
+therefore, you might want to actually make
+missingness,
+
+93
+00:05:15,710 --> 00:05:18,580
+whether you are missing that value or not,
+a predictor in your model.
+
+94
+00:05:19,660 --> 00:05:22,870
+And an example of that, is the NetFlix
+pry.
+
+95
+00:05:22,870 --> 00:05:25,910
+So, probably most of you have heard of the
+Netflix price.
+
+96
+00:05:25,910 --> 00:05:29,190
+Netflix offered a million dollars to the
+team that could come up with
+
+97
+00:05:29,190 --> 00:05:33,570
+the best algorithm to predict a mo movie
+viewers' rating on
+
+98
+00:05:33,570 --> 00:05:37,550
+a future a new movie based on the ratings
+on all movies.
+
+99
+00:05:37,550 --> 00:05:42,340
+Well, you can imagine that many movie
+viewers watched a lot of movies but
+
+100
+00:05:42,340 --> 00:05:44,970
+didn't necessarily rate every single
+movie.
+
+101
+00:05:44,970 --> 00:05:48,290
+So some of their movies will have missing
+values because they
+
+102
+00:05:48,290 --> 00:05:49,810
+didn't bother to break that.
+
+103
+00:05:49,810 --> 00:05:54,220
+It turns out that that's in formula
+because people tend to rate a new
+
+104
+00:05:54,220 --> 00:05:59,590
+movie when they really like or when they
+really hate it and if they find so
+
+105
+00:05:59,590 --> 00:06:02,270
+sure about that they may not bother to do
+a review.
+
+106
+00:06:02,270 --> 00:06:05,730
+So actually that tells us something about
+how they felt about that movie.
+
+107
+00:06:05,730 --> 00:06:07,110
+So that variable, whether or
+
+108
+00:06:07,110 --> 00:06:10,370
+not they rated the movie at all becomes a
+predictor in the model.
+
+109
+00:06:10,370 --> 00:06:12,800
+Again, comes up more in the context of
+predictive model.
+
+110
+00:06:12,800 --> 00:06:17,900
+So here are some simple imputation schemes
+that you could use to
+
+111
+00:06:17,900 --> 00:06:19,800
+fill in missing data.
+
+112
+00:06:19,800 --> 00:06:23,490
+So one option is to use the mean of the
+sample.
+
+113
+00:06:23,490 --> 00:06:26,470
+So imagine I've got data say on height.
+
+114
+00:06:26,470 --> 00:06:30,260
+And, you know, lots of people have this
+variable, but
+
+115
+00:06:30,260 --> 00:06:33,460
+[UNKNOWN] come along down here, and a
+couple of people are missing height.
+
+116
+00:06:33,460 --> 00:06:36,420
+But height's important enough that I
+want to put it in my model, but
+
+117
+00:06:36,420 --> 00:06:38,640
+it's not my primary predictor of interest.
+
+118
+00:06:39,880 --> 00:06:42,440
+One strategy that's often good enough Is
+just to say,
+
+119
+00:06:42,440 --> 00:06:45,620
+well, what's a good guess for height for
+this person?
+
+120
+00:06:45,620 --> 00:06:49,540
+Well, I don't, I can just guess, that they
+have the mean of the sample.
+
+121
+00:06:49,540 --> 00:06:52,020
+So let's say the mean of the, the height
+of the sample was 65.
+
+122
+00:06:52,020 --> 00:06:55,110
+I'm just going to fill in a 65 for that
+person.
+
+123
+00:06:55,110 --> 00:07:00,320
+And in a situation where you're just
+missing, a handful of data points for
+
+124
+00:07:00,320 --> 00:07:01,320
+a variable.
+
+125
+00:07:01,320 --> 00:07:03,600
+And that variable's not one of the most
+important variables, but
+
+126
+00:07:03,600 --> 00:07:04,900
+you want to include it in your model.
+
+127
+00:07:04,900 --> 00:07:08,770
+Just filling in with something is better
+than not filling in,
+
+128
+00:07:08,770 --> 00:07:12,380
+because that's going to mean that this
+observation gets included in your
+
+129
+00:07:12,380 --> 00:07:15,010
+regression analysis when it otherwise
+would've been thrown out.
+
+130
+00:07:15,010 --> 00:07:21,960
+So filling in with the mean is often good
+enough.
+
+131
+00:07:21,960 --> 00:07:26,870
+And it's not the best thing that you can
+do, there are other potentially better
+
+132
+00:07:26,870 --> 00:07:31,160
+alternatives but it's very simple and easy
+to do and it's a lot better than
+
+133
+00:07:31,160 --> 00:07:34,950
+not filling in with anything and just
+having that observation kicked out.
+
+134
+00:07:34,950 --> 00:07:37,250
+So oftentimes if I've got variables where,
+you know,
+
+135
+00:07:37,250 --> 00:07:41,230
+one or two people are missing the value
+and I want to include it in my model and
+
+136
+00:07:41,230 --> 00:07:44,620
+it's not the most important variable I
+might just fill in with mean.
+
+137
+00:07:45,850 --> 00:07:47,710
+Slightly better strategy, little bit more
+work,
+
+138
+00:07:47,710 --> 00:07:52,260
+is to use linear regression to predict the
+missing values.
+
+139
+00:07:52,260 --> 00:07:55,910
+So remember we've got a dataset that may
+have other variables that
+
+140
+00:07:55,910 --> 00:07:57,360
+are related to height in it.
+
+141
+00:07:57,360 --> 00:08:01,360
+So, we might have weight on the person if,
+you know, they're young.
+
+142
+00:08:01,360 --> 00:08:03,460
+children, age might be important for
+height [UNKNOWN].
+
+143
+00:08:03,460 --> 00:08:06,770
+Other variables that could be used to
+predict height, we can make a linear
+
+144
+00:08:06,770 --> 00:08:12,210
+regression model and get a better guess
+at, what that persons value might be.
+
+145
+00:08:12,210 --> 00:08:15,560
+And I'm going to do this in the situation
+where I'm missing, you know,
+
+146
+00:08:15,560 --> 00:08:20,310
+maybe 10%, a bigger number of people are
+missing values on that variable.
+
+147
+00:08:20,310 --> 00:08:21,770
+And it's something pretty important to me
+and
+
+148
+00:08:21,770 --> 00:08:24,600
+I want to actually make those guesses a
+little more precise.
+
+149
+00:08:24,600 --> 00:08:29,650
+So just as an example here, again I have
+this data set on 91 women runners that I
+
+150
+00:08:29,650 --> 00:08:32,070
+used as an example last week.
+
+151
+00:08:32,070 --> 00:08:35,900
+Mile time was a variable that I cared a
+lot about because this told me
+
+152
+00:08:35,900 --> 00:08:39,820
+something about how fast of a runner they
+were, so this is their best mile time.
+
+153
+00:08:39,820 --> 00:08:42,750
+But for whatever reason, ten out of 91
+women,
+
+154
+00:08:42,750 --> 00:08:45,770
+were missing variable, the variable mile
+time.
+
+155
+00:08:45,770 --> 00:08:47,450
+They hadn't reported a best mile time.
+
+156
+00:08:47,450 --> 00:08:51,290
+Maybe they'd never run a mile
+competitively.
+
+157
+00:08:51,290 --> 00:08:53,610
+So for whatever reason, I'm missing a fair
+amount.
+
+158
+00:08:53,610 --> 00:08:56,280
+And I care about this variable enough.
+
+159
+00:08:56,280 --> 00:08:58,780
+But I'm going to do a linear regression.
+
+160
+00:08:58,780 --> 00:09:02,500
+So, the, if I'd wanted to use the mean,
+though, just to show you,
+
+161
+00:09:02,500 --> 00:09:05,830
+one thing I could have done was just to
+take the mean time in here,
+
+162
+00:09:05,830 --> 00:09:10,590
+which was 6:16, among the 81 women who
+actually had reported times.
+
+163
+00:09:10,590 --> 00:09:14,780
+And I could assign all ten women, the mean
+the, value, of 6:16.
+
+164
+00:09:14,780 --> 00:09:17,790
+Again by filling in that, those data
+points,
+
+165
+00:09:17,790 --> 00:09:20,160
+that means I'm not going to throw those
+women out of the model.
+
+166
+00:09:20,160 --> 00:09:24,840
+So that really gains with something with
+ten out of 91 is a fairly big
+
+167
+00:09:24,840 --> 00:09:28,750
+percentage missing this value, if I plug
+in that 6:16s all of them, notice that
+
+168
+00:09:28,750 --> 00:09:32,330
+it's going to shrink the variance with
+that variable just a little bit.
+
+169
+00:09:32,330 --> 00:09:36,140
+And also I happen to have in this dataset
+other data that could be
+
+170
+00:09:36,140 --> 00:09:37,740
+informed about the mild times.
+
+171
+00:09:37,740 --> 00:09:41,090
+So why not in this case, dual linear
+regression.
+
+172
+00:09:41,090 --> 00:09:44,890
+So I said about linear regression, I had
+data about their 5K times, so
+
+173
+00:09:44,890 --> 00:09:47,890
+some of them were going to cross-country
+runners They'd only run a 5K but
+
+174
+00:09:47,890 --> 00:09:52,070
+haven't run a track mile a some women had
+every almost all the women had
+
+175
+00:09:52,070 --> 00:09:56,120
+reported how many miles they run per week
+and their pace for speed workout.
+
+176
+00:09:56,120 --> 00:09:59,070
+so we had pretty good coverage on those
+two variables not
+
+177
+00:09:59,070 --> 00:10:00,730
+everybody reported a 5K time.
+
+178
+00:10:02,060 --> 00:10:04,230
+We I fill a linear regression model.
+
+179
+00:10:04,230 --> 00:10:07,620
+And I use that to say well based on a
+woman's how fast somebody runs,
+
+180
+00:10:07,620 --> 00:10:08,720
+how much they run.
+
+181
+00:10:08,720 --> 00:10:10,130
+How fast they run in a 5k time.
+
+182
+00:10:10,130 --> 00:10:12,740
+I can predict their mile time.
+
+183
+00:10:12,740 --> 00:10:17,990
+So I get a bunch of predicted mile times
+for women who were missing that variable,
+
+184
+00:10:17,990 --> 00:10:20,960
+and I filled in the missing data with
+their predicted mile time.
+
+185
+00:10:20,960 --> 00:10:25,100
+This is going to be a better guess obvious
+because it's based on some information.
+
+186
+00:10:25,100 --> 00:10:29,250
+In this case just to note another thing
+that there were I think
+
+187
+00:10:29,250 --> 00:10:32,610
+about three women who also didn't have a
+5K time.
+
+188
+00:10:32,610 --> 00:10:35,550
+So I couldn't use this model to predict
+their mile time because they were
+
+189
+00:10:35,550 --> 00:10:37,290
+missing the 5K time.
+
+190
+00:10:37,290 --> 00:10:41,910
+So what I did was then run another linear
+regression where I just used the mileage
+
+191
+00:10:41,910 --> 00:10:47,900
+and their speed for their speed for
+interval work to predict their mile time.
+
+192
+00:10:47,900 --> 00:10:49,900
+So this is a little, not as good of a
+prediction but
+
+193
+00:10:49,900 --> 00:10:52,620
+since I didn't have the 5K times so this
+is the best I could do.
+
+194
+00:10:52,620 --> 00:10:55,590
+So, I kind of did an iterative process
+where I did more than one
+
+195
+00:10:55,590 --> 00:11:00,060
+linear regression depending on which data
+points I had available for each women.
+
+196
+00:11:00,060 --> 00:11:03,580
+So you, this, using linear regression's
+not too hard to do.
+
+197
+00:11:03,580 --> 00:11:06,650
+And it's a pretty good way to, to fill in
+missing data.
+
+198
+00:11:08,738 --> 00:11:13,630
+I just want to point out another technique
+that you can use to impute missing data.
+
+199
+00:11:13,630 --> 00:11:17,160
+This is commonly used because it is a
+little bit more robust than
+
+200
+00:11:17,160 --> 00:11:19,730
+the simpler techniques that I just talked
+about.
+
+201
+00:11:19,730 --> 00:11:22,220
+So if you've gotta a, a data set that
+you're looking at.
+
+202
+00:11:22,220 --> 00:11:24,200
+Where the missing data are really
+important and
+
+203
+00:11:24,200 --> 00:11:28,700
+this often comes up say when you're doing
+a randomized trial and if you've,
+
+204
+00:11:28,700 --> 00:11:32,510
+a lot of people got lost to follow up and
+you're not sure what their outcomes were.
+
+205
+00:11:32,510 --> 00:11:35,380
+That's pretty important because usually in
+a randomized trial we like to
+
+206
+00:11:35,380 --> 00:11:38,530
+track exactly what happened to everybody
+who was randomized.
+
+207
+00:11:38,530 --> 00:11:43,530
+So in that case you might to get the most
+robust way of filling in
+
+208
+00:11:43,530 --> 00:11:47,090
+imputing those missing data so multiple
+imputation does pretty well.
+
+209
+00:11:47,090 --> 00:11:49,890
+It's a little bit more work however
+because it works likes this.
+
+210
+00:11:49,890 --> 00:11:52,000
+Basically you're saying I'm making a
+guess.
+
+211
+00:11:52,000 --> 00:11:54,240
+This missing value I'm filling it in with
+a guess.
+
+212
+00:11:54,240 --> 00:11:58,250
+So why not instead of filling it in with a
+single guess which might be wrong?
+
+213
+00:11:58,250 --> 00:12:02,320
+Why not fill it in with a range of
+possible guesses?
+
+214
+00:12:02,320 --> 00:12:06,180
+To do that, I'm actually going to have to
+create multiple datasets,
+
+215
+00:12:06,180 --> 00:12:08,260
+hence the name multiple imputation.
+
+216
+00:12:08,260 --> 00:12:12,030
+I'm going to have to create more than one
+dataset with different values for
+
+217
+00:12:12,030 --> 00:12:16,800
+those missing data, and then I'm going to
+analyze them separately and
+
+218
+00:12:16,800 --> 00:12:19,030
+at the end of the day, I'm just going to
+combine those results.
+
+219
+00:12:19,030 --> 00:12:22,710
+So I'm going to run separate logistic
+regressions on all of those datasets and
+
+220
+00:12:22,710 --> 00:12:25,460
+then I'm going to average the beta that I
+
+221
+00:12:25,460 --> 00:12:27,510
+get from all those different logistic
+regressions.
+
+222
+00:12:27,510 --> 00:12:30,490
+So again, it's more work but it's a good
+choice if the missing data
+
+223
+00:12:30,490 --> 00:12:33,900
+really matter because this is a little bit
+more robust than the simple techniques.
+
+224
+00:12:33,900 --> 00:12:38,950
+[BLANK_AUDIO]

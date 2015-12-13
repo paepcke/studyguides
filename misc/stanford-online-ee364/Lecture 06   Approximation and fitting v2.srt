@@ -1,0 +1,8580 @@
+1
+00:00:00,920 --> 00:00:03,895
+Part one of the course was basically well,
+
+2
+00:00:03,895 --> 00:00:10,790
+all the analysis and the mathematics
+behind convex optimization.
+
+3
+00:00:10,790 --> 00:00:13,616
+Right?
+So convex analysis, the basics there.
+
+4
+00:00:13,616 --> 00:00:17,048
+The most important thing there you need to
+know are things like convexity of
+
+5
+00:00:17,048 --> 00:00:19,322
+a whole bunch of atoms.
+
+6
+00:00:19,322 --> 00:00:21,478
+And a lot of, and a lot of these
+composition rules, and
+
+7
+00:00:21,478 --> 00:00:24,220
+other rules, these are good to know about.
+
+8
+00:00:24,220 --> 00:00:26,060
+Right?
+Then there was a section on
+
+9
+00:00:26,060 --> 00:00:31,922
+the anatomy of the anatomy of optimization
+problems, and some of them had names.
+
+10
+00:00:31,922 --> 00:00:34,217
+Right?
+Like, you have linear programs and
+
+11
+00:00:34,217 --> 00:00:39,384
+second-order com programs, and geometric
+programs, and things like that.
+
+12
+00:00:39,384 --> 00:00:39,989
+Right?
+
+13
+00:00:39,989 --> 00:00:43,384
+In some sense, those names matter less and
+less.
+
+14
+00:00:43,384 --> 00:00:47,328
+You should know that already, because with
+things like CVX a lot of
+
+15
+00:00:47,328 --> 00:00:54,580
+the transformation of a problem that has
+no name into some problem that has a name.
+
+16
+00:00:54,580 --> 00:00:58,960
+It can be automated or is part, at least
+partially automated.
+
+17
+00:00:58,960 --> 00:01:00,337
+Still you need to know the name so
+
+18
+00:01:00,337 --> 00:01:04,510
+that, I don't know you can talk to other
+people, but that's the idea.
+
+19
+00:01:04,510 --> 00:01:06,430
+And then of course there's duality, so
+
+20
+00:01:06,430 --> 00:01:09,835
+when duality is sort of a big field by
+itself.
+
+21
+00:01:09,835 --> 00:01:12,785
+And it's, it's really nothing but an
+organized way to come up
+
+22
+00:01:12,785 --> 00:01:17,440
+with lower bounds for problems, period,
+that, that's what it is.
+
+23
+00:01:17,440 --> 00:01:18,736
+In fact it's quite a trivial way,
+
+24
+00:01:18,736 --> 00:01:22,260
+in some sense, to come up with them but
+it's an organized way.
+
+25
+00:01:22,260 --> 00:01:24,275
+And what is shocking is that in for
+
+26
+00:01:24,275 --> 00:01:27,850
+convex problems, it's generally speaking,
+not always, but that,
+
+27
+00:01:27,850 --> 00:01:35,060
+these are little minor details without
+with a with a constraint qualification.
+
+28
+00:01:35,060 --> 00:01:36,320
+It's sharp, right?
+
+29
+00:01:36,320 --> 00:01:38,952
+So that these lower bounds are actually
+sharp but
+
+30
+00:01:38,952 --> 00:01:42,840
+then we'll see lots of advantage, we'll
+see lots of uses.
+
+31
+00:01:42,840 --> 00:01:44,972
+You will see, by the way, if you look, if
+you take other courses,
+
+32
+00:01:44,972 --> 00:01:48,000
+you'll see examples where people use
+duality all the time.
+
+33
+00:01:48,000 --> 00:01:49,100
+They wont even say it.
+
+34
+00:01:49,100 --> 00:01:51,000
+Right?
+I mean, you take a wireless course and
+
+35
+00:01:51,000 --> 00:01:52,950
+there you're trying to figure out how to
+do,
+
+36
+00:01:52,950 --> 00:01:56,370
+you know, assign powers to channels or
+whatever.
+
+37
+00:01:56,370 --> 00:01:59,425
+And they'll call it something else like
+water filling or something.
+
+38
+00:01:59,425 --> 00:02:03,800
+But now that you know the secret, you'll
+just look at it and say, oh.
+
+39
+00:02:03,800 --> 00:02:06,720
+That's that, that's called duality, right?
+
+40
+00:02:06,720 --> 00:02:09,587
+Or you take a information theory course,
+they're telling you about how to
+
+41
+00:02:09,587 --> 00:02:13,820
+allocate bits to something, and you look
+at it and you go, that's duality.
+
+42
+00:02:13,820 --> 00:02:16,060
+So, okay.
+
+43
+00:02:16,060 --> 00:02:19,964
+Duality also has, there's a lot of
+aesthetics in duality where it's useful to
+
+44
+00:02:19,964 --> 00:02:25,154
+recognize that problems that can at first
+look very different.
+
+45
+00:02:25,154 --> 00:02:27,570
+Or actually intimately related, right?
+
+46
+00:02:27,570 --> 00:02:30,831
+So and this will come up when we look at
+applications a lot.
+
+47
+00:02:30,831 --> 00:02:33,463
+so, for example, it'll be weird things
+like, again, if, if you're in
+
+48
+00:02:33,463 --> 00:02:36,330
+statistics or if you have taken some
+advanced machine learning courses,
+
+49
+00:02:36,330 --> 00:02:39,063
+you would know things like this.
+
+50
+00:02:39,063 --> 00:02:41,930
+But you get weird things where You know
+duality of certain you get maximum
+
+51
+00:02:41,930 --> 00:02:44,030
+liklihood estimation problems.
+
+52
+00:02:44,030 --> 00:02:46,325
+The duals are things that look like
+maximum entropy or
+
+53
+00:02:46,325 --> 00:02:49,089
+Colback-Liberg divergents type things
+right.
+
+54
+00:02:49,089 --> 00:02:53,322
+And so I by the way if you don't know what
+I'm talking about that's fine.
+
+55
+00:02:53,322 --> 00:02:55,530
+I'm being very obscure now, but I just,
+
+56
+00:02:55,530 --> 00:03:01,473
+I want to just point that this is going to
+permeate lots of things you've seen.
+
+57
+00:03:01,473 --> 00:03:04,440
+And actually in various areas it's
+completely well known.
+
+58
+00:03:04,440 --> 00:03:06,722
+I mean people know these things, okay.
+
+59
+00:03:06,722 --> 00:03:10,480
+So now we're going to start another
+section of the course.
+
+60
+00:03:10,480 --> 00:03:13,165
+It's the middle section and honestly this
+is the payoff.
+
+61
+00:03:13,165 --> 00:03:16,970
+So I mean the truth is you've already seen
+enough.
+
+62
+00:03:16,970 --> 00:03:18,950
+You're already being paid right now.
+
+63
+00:03:18,950 --> 00:03:20,210
+I mean, homework is now fun.
+
+64
+00:03:20,210 --> 00:03:21,210
+It's useful and so on.
+
+65
+00:03:21,210 --> 00:03:23,900
+Well, that's my opinion.
+
+66
+00:03:23,900 --> 00:03:24,845
+You're the one doing it.
+
+67
+00:03:24,845 --> 00:03:30,040
+But I still say it's fun, and it's useful,
+and stuff like that.
+
+68
+00:03:30,040 --> 00:03:31,370
+This is really the payoff for the course.
+
+69
+00:03:31,370 --> 00:03:32,470
+Right?
+That what we're going to do is for
+
+70
+00:03:32,470 --> 00:03:34,200
+the next couple of weeks.
+
+71
+00:03:34,200 --> 00:03:37,499
+We're just going to look at various
+application areas, you know, one by one.
+
+72
+00:03:37,499 --> 00:03:40,901
+And we'll look at some topics, some will
+be obvious our first,
+
+73
+00:03:40,901 --> 00:03:45,139
+our first topic here is going to be
+totally obvious.
+
+74
+00:03:45,139 --> 00:03:47,060
+Actually some will be less obvious.
+
+75
+00:03:47,060 --> 00:03:48,741
+I mean we'll look at some weird
+geometrical ones,
+
+76
+00:03:48,741 --> 00:03:50,791
+some ones in statistics and stuff like
+that, and they'll be,
+
+77
+00:03:50,791 --> 00:03:53,133
+they won't be totally obvious.
+
+78
+00:03:53,133 --> 00:03:56,211
+Actually watch out because some of the
+most useful material is in
+
+79
+00:03:56,211 --> 00:03:58,460
+the totally obvious stuff.
+
+80
+00:03:58,460 --> 00:04:00,378
+Like the stuff we're about to do.
+
+81
+00:04:00,378 --> 00:04:04,192
+Is shockingly elementary and unbelievably
+useful.
+
+82
+00:04:04,192 --> 00:04:05,270
+So so this is it.
+
+83
+00:04:05,270 --> 00:04:05,952
+This is also,
+
+84
+00:04:05,952 --> 00:04:11,045
+by the way the material that's not in any
+traditional course on this material.
+
+85
+00:04:11,045 --> 00:04:14,045
+Right, because the traditional course
+segues immediately from
+
+86
+00:04:14,045 --> 00:04:16,865
+convex analysis to basically deadly,
+boring, long,
+
+87
+00:04:16,865 --> 00:04:20,970
+complicated proofs of complexity of
+algorythms.
+
+88
+00:04:20,970 --> 00:04:23,355
+Right, so, this is the part that's
+missing, so.
+
+89
+00:04:23,355 --> 00:04:25,227
+OK, so we're going to start in,
+
+90
+00:04:25,227 --> 00:04:30,650
+by the way these problems have been
+categorized into gross areas.
+
+91
+00:04:30,650 --> 00:04:32,810
+This is approximation and fitting, but
+
+92
+00:04:32,810 --> 00:04:37,860
+we're going to see that this'll overlap of
+course with things like statistics.
+
+93
+00:04:37,860 --> 00:04:40,881
+I mean obv- duh, a lot of statistics is
+basically fitting models,
+
+94
+00:04:40,881 --> 00:04:43,900
+which is in some sense approximating data.
+
+95
+00:04:45,230 --> 00:04:48,402
+So we'll see connections between these
+things right, you shouldn't be
+
+96
+00:04:48,402 --> 00:04:51,834
+surprised also I should add that in the
+lectures here we're just going to cover
+
+97
+00:04:51,834 --> 00:04:55,006
+some of the high level stuff there's a lot
+more material in the book and
+
+98
+00:04:55,006 --> 00:04:58,074
+you should absolutely read it, well, put
+it, let me put it another way we
+
+99
+00:04:58,074 --> 00:05:01,818
+will hold you absolutely responsible for
+everything in the book so We'll exercise
+
+100
+00:05:01,818 --> 00:05:09,560
+a reasonable fraction, a reasonable
+fraction of it, through the homework.
+
+101
+00:05:09,560 --> 00:05:11,672
+Not all, because it's just too much, but
+
+102
+00:05:11,672 --> 00:05:17,582
+we will work with, our working assumption
+is that you will have read all of it, so.
+
+103
+00:05:17,582 --> 00:05:24,794
+OK, so, we'll start with just this very
+general idea of approximation and fitting.
+
+104
+00:05:24,794 --> 00:05:27,354
+And we'll start with norm approximation
+and
+
+105
+00:05:27,354 --> 00:05:32,488
+then something which is a vague dual of
+it, lease norm problems.
+
+106
+00:05:32,488 --> 00:05:35,704
+And then something that combines kind of
+both regularized approximation and
+
+107
+00:05:35,704 --> 00:05:38,290
+then we'll look at robust approximation.
+
+108
+00:05:38,290 --> 00:05:40,990
+And this is sort of this is relatively
+new.
+
+109
+00:05:40,990 --> 00:05:43,940
+This is stuff from the last of couple
+years, or Last decade or
+
+110
+00:05:43,940 --> 00:05:46,488
+something like that, so okay.
+
+111
+00:05:46,488 --> 00:05:50,870
+So norm approximation.
+
+112
+00:05:50,870 --> 00:05:53,700
+Well, I mean in simplest case it's just
+this.
+
+113
+00:05:53,700 --> 00:05:56,210
+We minimize the norm of ax minus b, right?
+
+114
+00:05:56,210 --> 00:06:00,840
+And you have your data is a matrix a,.
+
+115
+00:06:00,840 --> 00:06:03,090
+Usually with M bigger than N.
+
+116
+00:06:03,090 --> 00:06:04,350
+So it's taller than.
+
+117
+00:06:04,350 --> 00:06:06,480
+It, it's a, it's a tall matrix.
+
+118
+00:06:06,480 --> 00:06:08,506
+A skinny matrix.
+
+119
+00:06:08,506 --> 00:06:09,710
+and, and the norm.
+
+120
+00:06:09,710 --> 00:06:11,570
+This is just any old norm on our end.
+
+121
+00:06:11,570 --> 00:06:13,225
+Right.
+So, when you instantiate or
+
+122
+00:06:13,225 --> 00:06:16,200
+specify the norm, it becomes a specific
+problem.
+
+123
+00:06:16,200 --> 00:06:17,970
+Right.
+It becomes, you know, regression or
+
+124
+00:06:17,970 --> 00:06:20,410
+some least squares, that kind of thing.
+
+125
+00:06:20,410 --> 00:06:24,440
+Okay, and, now when we are doing this if x
+star is the minimum of this, and
+
+126
+00:06:24,440 --> 00:06:30,351
+I should warn you right now the minimum
+does not have to be unique.
+
+127
+00:06:30,351 --> 00:06:34,505
+You know that of course for the two norm,
+if a is per rank its unique, right, but
+
+128
+00:06:34,505 --> 00:06:39,207
+in fact you know, for other norms it's
+absolutely false.
+
+129
+00:06:39,207 --> 00:06:43,562
+So do one norm minimization many norm
+minimization It's incredibly common that
+
+130
+00:06:43,562 --> 00:06:46,304
+there are multiple optimizers.
+
+131
+00:06:46,304 --> 00:06:49,030
+[COUGH] So here, this just, this notation,
+it doesn, I don't mean,
+
+132
+00:06:49,030 --> 00:06:53,222
+I don't mean to suggest that there's a
+unique one, because there need not be.
+
+133
+00:06:53,222 --> 00:06:54,794
+Okay.
+
+134
+00:06:54,794 --> 00:06:57,440
+So what's an interpretation, well there's
+lots of interpretations.
+
+135
+00:06:57,440 --> 00:06:58,590
+The first one is geometric.
+
+136
+00:06:58,590 --> 00:07:00,302
+Basically what it says is.
+
+137
+00:07:00,302 --> 00:07:06,030
+Vectors of the form Ax, or x varies,
+sweeps out the range of A.
+
+138
+00:07:06,030 --> 00:07:07,770
+Right, so that's a subspace.
+
+139
+00:07:07,770 --> 00:07:11,304
+Then it says, then it says you have a
+fixed vector b, and so the question, and
+
+140
+00:07:11,304 --> 00:07:16,530
+then you have the, the distance as
+measured by the norm between b and Ax.
+
+141
+00:07:16,530 --> 00:07:18,870
+And so, basically what you're saying is.
+
+142
+00:07:18,870 --> 00:07:23,024
+Please, this basically says the optimal
+value of this thing is literally,
+
+143
+00:07:23,024 --> 00:07:27,390
+it is literally the distance of b to the
+range of a.
+
+144
+00:07:28,900 --> 00:07:31,824
+So solving this problem is the same as
+saying find me
+
+145
+00:07:31,824 --> 00:07:36,890
+the distance under the norm, norm here, of
+b to the range of a.
+
+146
+00:07:36,890 --> 00:07:38,267
+So that, that's what you're doing.
+
+147
+00:07:38,267 --> 00:07:40,130
+So that's what it is.
+
+148
+00:07:40,130 --> 00:07:45,083
+And if, and you say find a, a point
+closest to this right?
+
+149
+00:07:45,083 --> 00:07:51,234
+And here I didn't put v so it's not
+technically wrong.
+
+150
+00:07:51,234 --> 00:07:53,786
+If I had put any article in here it would
+have been A and
+
+151
+00:07:53,786 --> 00:07:56,758
+then it would have been correct so.
+
+152
+00:07:56,758 --> 00:08:01,740
+Okay now another fit ano, another way this
+comes up is in estimation.
+
+153
+00:08:01,740 --> 00:08:03,230
+So in estimation it goes like this.
+
+154
+00:08:03,230 --> 00:08:05,442
+It says, I, I, I want to estimate some
+parameters x.
+
+155
+00:08:05,442 --> 00:08:06,441
+Okay?
+And what I have is I
+
+156
+00:08:06,441 --> 00:08:08,042
+have linear measurements of x.
+
+157
+00:08:08,042 --> 00:08:16,100
+That's y equals a x, but they're corrupted
+with noise.
+
+158
+00:08:16,100 --> 00:08:17,940
+And that's the, so I add v.
+
+159
+00:08:17,940 --> 00:08:18,910
+Right?
+
+160
+00:08:18,910 --> 00:08:20,998
+And so now, if I asked you to guess x,
+
+161
+00:08:20,998 --> 00:08:24,990
+interestingly, implicitly, you're guessing
+v.
+
+162
+00:08:24,990 --> 00:08:26,770
+That's really what you're doing.
+
+163
+00:08:26,770 --> 00:08:32,325
+Because when you guess x, then y minus Ax
+is v.
+
+164
+00:08:32,325 --> 00:08:35,982
+Right, and so the problem of guessing X is
+the same as guessing V,
+
+165
+00:08:35,982 --> 00:08:42,060
+and we'll see that this is exactly the
+statistical interpretation as well.
+
+166
+00:08:42,060 --> 00:08:44,320
+Right?
+So you're basically guessing that, and so
+
+167
+00:08:44,320 --> 00:08:47,100
+what we're doing is something like this.
+
+168
+00:08:47,100 --> 00:08:48,420
+We're intuitively here.
+
+169
+00:08:48,420 --> 00:08:50,441
+We'll do it quite differently when we do
+statistics, but
+
+170
+00:08:50,441 --> 00:08:52,285
+here we're saying intuitively.
+
+171
+00:08:52,285 --> 00:08:57,690
+That among possible v's, smaller is more
+plausible.
+
+172
+00:08:57,690 --> 00:09:00,820
+Smaller v in norm is more plausible than
+larger v.
+
+173
+00:09:00,820 --> 00:09:02,320
+Alright?
+So that's the implicit assumption here.
+
+174
+00:09:02,320 --> 00:09:07,884
+And in that case, you would say that
+solving this problem would
+
+175
+00:09:07,884 --> 00:09:15,590
+give you something like the most plausible
+value of x.
+
+176
+00:09:15,590 --> 00:09:18,386
+Right?
+Because it's the one where the implicit,
+
+177
+00:09:18,386 --> 00:09:25,050
+when you are implicitly guessing v, it is
+smallest, as measured by the norm, right?
+
+178
+00:09:25,050 --> 00:09:27,320
+So that, tells you about pla-
+plausibility.
+
+179
+00:09:27,320 --> 00:09:29,580
+It's, it's the least implausible or
+something.
+
+180
+00:09:29,580 --> 00:09:30,588
+Okay.
+
+181
+00:09:30,588 --> 00:09:32,640
+Another one is optimal design.
+
+182
+00:09:32,640 --> 00:09:35,685
+So here, x is a set of design perameters.
+
+183
+00:09:35,685 --> 00:09:38,255
+That, that you can fiddle with.
+
+184
+00:09:38,255 --> 00:09:41,390
+These can be a force profile for a
+vehicle.
+
+185
+00:09:41,390 --> 00:09:42,440
+It could be all.
+
+186
+00:09:42,440 --> 00:09:44,130
+It could be all sorts of things.
+
+187
+00:09:44,130 --> 00:09:45,000
+Right?
+
+188
+00:09:45,000 --> 00:09:46,540
+Then you have a linear process.
+
+189
+00:09:46,540 --> 00:09:51,232
+So, X causes the results, AX, and you have
+a target, which is B,
+
+190
+00:09:51,232 --> 00:09:54,690
+that you want to hit.
+
+191
+00:09:54,690 --> 00:09:58,644
+If you can hit it, fantastic, but if you
+can't.
+
+192
+00:09:58,644 --> 00:10:01,602
+You have to get you have to compromise and
+simply get close and
+
+193
+00:10:01,602 --> 00:10:04,328
+then how do you determine what your
+happiness level is or
+
+194
+00:10:04,328 --> 00:10:08,794
+really we should say your irritation level
+right.
+
+195
+00:10:08,794 --> 00:10:13,070
+So how irritated will you be if you want b
+little b.
+
+196
+00:10:13,070 --> 00:10:14,390
+And get a x.
+
+197
+00:10:14,390 --> 00:10:15,530
+And we'll measure that by a norm.
+
+198
+00:10:15,530 --> 00:10:17,740
+So the norm encodes your irritation level.
+
+199
+00:10:17,740 --> 00:10:23,390
+And then it says, and the best design is,
+is obtained by solving this problem here.
+
+200
+00:10:23,390 --> 00:10:27,710
+Because it gets you closest to what you
+want, measured by your irritation.
+
+201
+00:10:27,710 --> 00:10:29,465
+And we're measuring irritation by a norm.
+
+202
+00:10:29,465 --> 00:10:30,540
+Everybody got this?
+
+203
+00:10:30,540 --> 00:10:33,595
+So these I mean Don't over interpret what
+I'm saying,
+
+204
+00:10:33,595 --> 00:10:37,370
+because what I'm saying is completely
+trivial.
+
+205
+00:10:37,370 --> 00:10:41,080
+So, if you think for a second 'Oh, I
+better go think about this' or
+
+206
+00:10:41,080 --> 00:10:44,970
+something, you're over interpretting it.
+
+207
+00:10:44,970 --> 00:10:46,195
+And that's going to continue by the way
+for
+
+208
+00:10:46,195 --> 00:10:48,290
+a few more things I'm going to say about
+this, so.
+
+209
+00:10:48,290 --> 00:10:51,566
+It really is this simple.
+
+210
+00:10:51,566 --> 00:10:53,768
+Okay.
+
+211
+00:10:53,768 --> 00:10:55,244
+okay.
+
+212
+00:10:55,244 --> 00:10:58,450
+Now, let's instantiate some specific
+examples.
+
+213
+00:10:58,450 --> 00:11:01,490
+If you take the 2-norm, you get least
+squares, right?
+
+214
+00:11:01,490 --> 00:11:03,120
+And what is the analytical solution of it?
+
+215
+00:11:03,120 --> 00:11:04,695
+I mean, you know, if, if A, if A is full
+rank,
+
+216
+00:11:04,695 --> 00:11:09,360
+you know, it's a just a least square, so
+it's A transpose A inverse A transpose B.
+
+217
+00:11:09,360 --> 00:11:11,390
+Right, so that's your least squares
+solution.
+
+218
+00:11:11,390 --> 00:11:15,010
+Oh, and in that case I should say that the
+project has lots of names.
+
+219
+00:11:15,010 --> 00:11:17,150
+It's called regression in statistics.
+
+220
+00:11:17,150 --> 00:11:21,145
+I guess it's called least-squares fitting
+everywhere else.
+
+221
+00:11:21,145 --> 00:11:25,216
+Okay, so that's the so there's probably
+some other names in specific fields for
+
+222
+00:11:25,216 --> 00:11:29,168
+this, but I can't remember what they are
+right now.
+
+223
+00:11:29,168 --> 00:11:32,161
+Okay, but interestingly.
+
+224
+00:11:32,161 --> 00:11:33,804
+We can do other things.
+
+225
+00:11:33,804 --> 00:11:35,076
+If you take an infinite norm,
+
+226
+00:11:35,076 --> 00:11:38,974
+then it's called, it's actually got lots
+of name actually.
+
+227
+00:11:38,974 --> 00:11:42,016
+If you minimize the norm of AX minus B
+infinite,
+
+228
+00:11:42,016 --> 00:11:46,980
+it's called Chebyshev approximation is one
+name.
+
+229
+00:11:46,980 --> 00:11:50,522
+Another name is mini max, mini max
+fitting.
+
+230
+00:11:50,522 --> 00:11:51,320
+Right?
+
+231
+00:11:51,320 --> 00:11:55,030
+And It's actually quite interesting, what
+minimax fitting is.
+
+232
+00:11:55,030 --> 00:11:56,492
+And it has it's uses.
+
+233
+00:11:56,492 --> 00:11:59,688
+It basically says I want to fit a model,
+but
+
+234
+00:11:59,688 --> 00:12:05,130
+what I care about is the absolute maximum
+error.
+
+235
+00:12:05,130 --> 00:12:08,170
+Not the, well, not the sum of the squares.
+
+236
+00:12:08,170 --> 00:12:10,320
+I care about the absolute maximum.
+
+237
+00:12:10,320 --> 00:12:10,830
+Right?
+
+238
+00:12:10,830 --> 00:12:12,460
+And that would be minimax fitting.
+
+239
+00:12:12,460 --> 00:12:15,528
+It's got lots of applications.
+
+240
+00:12:15,528 --> 00:12:23,480
+Interestingly, least squares is used by
+zillions of applications.
+
+241
+00:12:23,480 --> 00:12:24,430
+Right?
+It's the basis.
+
+242
+00:12:24,430 --> 00:12:26,890
+It's the workhorse of giant fields.
+
+243
+00:12:26,890 --> 00:12:30,310
+Pretty much it's the workhorse in
+statistics.
+
+244
+00:12:30,310 --> 00:12:31,580
+Right?
+I mean, pretty much, right?
+
+245
+00:12:31,580 --> 00:12:35,570
+I mean, all the advanced stuff people do,
+that's coming on line a bit, but.
+
+246
+00:12:35,570 --> 00:12:38,390
+Bottom line is most people are doing
+regressions, right?
+
+247
+00:12:38,390 --> 00:12:39,710
+And if you're snickering,
+
+248
+00:12:39,710 --> 00:12:44,140
+making fun of how unsophisticated people
+are in statistics, don't.
+
+249
+00:12:44,140 --> 00:12:46,450
+Because for example, control is the same
+way.
+
+250
+00:12:46,450 --> 00:12:47,440
+All of control.
+
+251
+00:12:47,440 --> 00:12:50,610
+You know, I mean there are some advanced
+control methods, that's fine.
+
+252
+00:12:50,610 --> 00:12:51,800
+Are they working?
+
+253
+00:12:51,800 --> 00:12:53,030
+Yes, they're working.
+
+254
+00:12:53,030 --> 00:12:55,008
+But the bottom line is that most control
+is kind of least,
+
+255
+00:12:55,008 --> 00:12:56,880
+is variations on least squares.
+
+256
+00:12:56,880 --> 00:13:00,128
+Signal processing, image processing,
+again, don't make fun of them,
+
+257
+00:13:00,128 --> 00:13:02,150
+it's mostly least squares.
+
+258
+00:13:02,150 --> 00:13:04,375
+Are there more advanced methods coming
+online?
+
+259
+00:13:04,375 --> 00:13:07,760
+Absolutely, right, but mostly, it's done
+by least squares.
+
+260
+00:13:07,760 --> 00:13:16,040
+So, interestingly, what you find is, this
+is, is discussed almost not at all.
+
+261
+00:13:16,040 --> 00:13:18,010
+In any standard curriculum.
+
+262
+00:13:18,010 --> 00:13:21,845
+Bottom line is that the modern, the modern
+viewpoint in my opinion, is,
+
+263
+00:13:21,845 --> 00:13:25,095
+that turns out we're going to find out
+later computationally,
+
+264
+00:13:25,095 --> 00:13:28,453
+this is no harder than that.
+
+265
+00:13:28,453 --> 00:13:29,832
+Shocking isn't it?
+
+266
+00:13:29,832 --> 00:13:32,610
+It's absolutely no harder.
+
+267
+00:13:32,610 --> 00:13:33,360
+Right?
+
+268
+00:13:33,360 --> 00:13:36,832
+But no one knows it, because everyone in
+this room has been exposed to this,
+
+269
+00:13:36,832 --> 00:13:39,370
+probably in multiple contexts.
+
+270
+00:13:39,370 --> 00:13:41,436
+Right?
+In some class on [UNKNOWN] series,
+
+271
+00:13:41,436 --> 00:13:46,770
+on some class on linear algebra, probably
+in other classes, you've seen this.
+
+272
+00:13:46,770 --> 00:13:50,008
+And probably no one has seen this I'm
+guessing.
+
+273
+00:13:50,008 --> 00:13:50,835
+So, okay.
+
+274
+00:13:52,770 --> 00:13:55,175
+So, anyway, back to the main thread here.
+
+275
+00:13:55,175 --> 00:13:59,580
+That this, of course you can solve this
+problem as a linear program.
+
+276
+00:13:59,580 --> 00:14:01,824
+Now, that may or may not be relevant, but
+
+277
+00:14:01,824 --> 00:14:06,610
+because may times, in automatic system
+will do this for you.
+
+278
+00:14:06,610 --> 00:14:10,010
+But, nevertheless, it can be written as an
+LP.
+
+279
+00:14:10,010 --> 00:14:12,548
+What there is not, is there is not a
+formula like that, and
+
+280
+00:14:12,548 --> 00:14:17,136
+that's why we don't teach it, in some of
+the more traditional courses.
+
+281
+00:14:17,136 --> 00:14:18,428
+Alright, so, okay.
+
+282
+00:14:18,428 --> 00:14:20,830
+Here's another very interesting one.
+
+283
+00:14:20,830 --> 00:14:22,501
+It also has a very long history.
+
+284
+00:14:22,501 --> 00:14:25,415
+If the sum of absolute value sum of
+absolute residuals approximation,
+
+285
+00:14:25,415 --> 00:14:27,205
+you use norm one.
+
+286
+00:14:27,205 --> 00:14:30,100
+That says minimize this.
+
+287
+00:14:30,100 --> 00:14:32,920
+That's extremely interesting.
+
+288
+00:14:32,920 --> 00:14:36,270
+Again, no formula, you can solve it as an
+LP.
+
+289
+00:14:36,270 --> 00:14:40,890
+We'll find out later, the computational
+effort, of solving this, and this.
+
+290
+00:14:40,890 --> 00:14:41,760
+It's basically the same.
+
+291
+00:14:41,760 --> 00:14:42,520
+It's the same.
+
+292
+00:14:42,520 --> 00:14:43,570
+There's no difference.
+
+293
+00:14:43,570 --> 00:14:44,540
+Right?
+I mean, is that,
+
+294
+00:14:44,540 --> 00:14:48,810
+there's an aesthetic difference if you're
+locked in the 19th century aesthetic.
+
+295
+00:14:48,810 --> 00:14:52,880
+There's a big aesthetic difference, but,
+computationally, none.
+
+296
+00:14:52,880 --> 00:14:55,070
+This is really interesting this one.
+
+297
+00:14:55,070 --> 00:14:59,426
+It's an example, of what we're going to
+see later is a robust Estimator.
+
+298
+00:14:59,426 --> 00:15:02,846
+The properties are shocking and it's
+actually things like that are form
+
+299
+00:15:02,846 --> 00:15:06,608
+the basis of actually a lot of modern
+statistics and a lot, machine learning and
+
+300
+00:15:06,608 --> 00:15:11,541
+a lot of other things so we'll, we'll,
+we'll see that.
+
+301
+00:15:11,541 --> 00:15:15,209
+So it's quite different and you know these
+are not new.
+
+302
+00:15:15,209 --> 00:15:16,958
+Well the fact that this is Chebyshev and
+
+303
+00:15:16,958 --> 00:15:21,390
+I'm not sure, I'm sure there's a Russian
+name we can attach to this.
+
+304
+00:15:21,390 --> 00:15:24,070
+And it would be traced to the 30's and
+40's.
+
+305
+00:15:24,070 --> 00:15:26,702
+In fact, at Moscow State University, I'll
+check with my friends and
+
+306
+00:15:26,702 --> 00:15:30,561
+find out, what the correct name is, but
+there is shirley one.
+
+307
+00:15:30,561 --> 00:15:34,930
+and, so these are not new things.
+
+308
+00:15:34,930 --> 00:15:37,170
+It just kind of languished in obsurity,
+until the last decade, now,
+
+309
+00:15:37,170 --> 00:15:39,315
+they're the height of fashion, of course.
+
+310
+00:15:39,315 --> 00:15:42,863
+Depending, in various fields.
+
+311
+00:15:42,863 --> 00:15:43,460
+Okay.
+
+312
+00:15:43,460 --> 00:15:47,727
+So now, we're going to look at, sort of
+the generalization of norm.
+
+313
+00:15:48,902 --> 00:15:50,258
+minimization.
+
+314
+00:15:50,258 --> 00:15:51,340
+What we'll do is this.
+
+315
+00:15:51,340 --> 00:15:53,017
+We're going to, just to make the notation
+easier,
+
+316
+00:15:53,017 --> 00:15:54,870
+we're going to introduce a x minus b.
+
+317
+00:15:54,870 --> 00:15:55,980
+We're going to call that the residual.
+
+318
+00:15:55,980 --> 00:15:57,505
+Assign a name to it, r.
+
+319
+00:15:57,505 --> 00:15:59,110
+Okay?
+
+320
+00:15:59,110 --> 00:16:01,706
+And then what you'll want to do is
+essentially you want all the entries of
+
+321
+00:16:01,706 --> 00:16:03,130
+r small.
+
+322
+00:16:03,130 --> 00:16:06,530
+In fact, if you get all the entries of r
+zero, that'd be ideal, right?
+
+323
+00:16:06,530 --> 00:16:08,069
+Because you'd have I don't know,
+
+324
+00:16:08,069 --> 00:16:11,622
+it'd mean you got exactly what you wanted,
+Ax equals b.
+
+325
+00:16:11,622 --> 00:16:12,934
+Right?
+
+326
+00:16:12,934 --> 00:16:14,414
+So, but let's, assuming that's not the
+case,
+
+327
+00:16:14,414 --> 00:16:17,800
+you're going to have to compromise, and
+you can't have all the residuals zero.
+
+328
+00:16:17,800 --> 00:16:20,850
+Right?
+So what we'll do is we'll penalize values
+
+329
+00:16:20,850 --> 00:16:23,170
+of r by function phi.
+
+330
+00:16:23,170 --> 00:16:24,630
+That's just a function from r to r.
+
+331
+00:16:24,630 --> 00:16:25,360
+Okay?
+
+332
+00:16:25,360 --> 00:16:26,680
+That's just, that's it.
+
+333
+00:16:26,680 --> 00:16:29,000
+And so, we're going to minimize the sum of
+the penalties.
+
+334
+00:16:29,000 --> 00:16:32,950
+You know, you could divide by M and get
+the average penalty.
+
+335
+00:16:32,950 --> 00:16:34,888
+I mean, it wouldn't make, it wouldn't
+change the problem, but
+
+336
+00:16:34,888 --> 00:16:37,090
+give you a better interpretation or
+something.
+
+337
+00:16:37,090 --> 00:16:39,201
+OK?
+So, now you can choose phi and
+
+338
+00:16:39,201 --> 00:16:42,340
+please don't over-interpret what I'm
+going to say because
+
+339
+00:16:42,340 --> 00:16:48,256
+you're going to want to but it really is
+as trivial as I'm saying.
+
+340
+00:16:48,256 --> 00:16:50,270
+So here it is.
+
+341
+00:16:50,270 --> 00:16:56,734
+You use phi to shape how irritated you are
+with the residual of a certain size,
+
+342
+00:16:56,734 --> 00:16:59,974
+that's it, okay?
+
+343
+00:16:59,974 --> 00:17:04,222
+So for example if you take phi is the
+square function then that tells you
+
+344
+00:17:04,222 --> 00:17:06,820
+something like this.
+
+345
+00:17:06,820 --> 00:17:08,830
+If a residual is why, I'll ask you.
+
+346
+00:17:08,830 --> 00:17:11,970
+If phi is the square function this is li
+squares.
+
+347
+00:17:11,970 --> 00:17:17,590
+And, and that implicitly says that if a
+residual is small, how irritated are you?
+
+348
+00:17:17,590 --> 00:17:18,980
+Yeah, very little.
+
+349
+00:17:18,980 --> 00:17:19,689
+Everyone got that?
+
+350
+00:17:19,689 --> 00:17:22,152
+So the very means it's small, it's small
+squared.
+
+351
+00:17:22,152 --> 00:17:23,148
+Okay.
+
+352
+00:17:23,148 --> 00:17:26,810
+Now, in least squares, if a residual is
+big, how much does it irritate you?
+
+353
+00:17:26,810 --> 00:17:29,440
+[COUGH] Very much, thank you.
+
+354
+00:17:29,440 --> 00:17:30,050
+Very much.
+
+355
+00:17:30,050 --> 00:17:32,410
+And the very is not casual, right?
+
+356
+00:17:32,410 --> 00:17:33,788
+It's not, so.
+
+357
+00:17:33,788 --> 00:17:34,972
+All right.
+
+358
+00:17:34,972 --> 00:17:37,310
+So, I mean, and that's kind of the idea
+behind these squares.
+
+359
+00:17:37,310 --> 00:17:38,641
+Right?
+That, that, that, you know,
+
+360
+00:17:38,641 --> 00:17:41,660
+if a residual is small and you're like you
+know, fine.
+
+361
+00:17:41,660 --> 00:17:43,395
+If it's big, not cool.
+
+362
+00:17:43,395 --> 00:17:44,720
+Right?
+
+363
+00:17:44,720 --> 00:17:46,840
+So, all right.
+
+364
+00:17:46,840 --> 00:17:48,690
+And just, don't over interpret this.
+
+365
+00:17:48,690 --> 00:17:49,574
+Right?
+By the way,
+
+366
+00:17:49,574 --> 00:17:52,958
+we'll have multiple other interpretations
+when we do statistics about densities and
+
+367
+00:17:52,958 --> 00:17:54,910
+all sorts of crazy stuff.
+
+368
+00:17:54,910 --> 00:17:55,830
+Maximum likelihood.
+
+369
+00:17:55,830 --> 00:17:58,692
+But for now Take everything sophisticated
+out of your mind, and
+
+370
+00:17:58,692 --> 00:18:00,720
+we're just doing this way.
+
+371
+00:18:00,720 --> 00:18:03,570
+Now if I take phi as the absolute, I get
+L1.
+
+372
+00:18:03,570 --> 00:18:04,380
+Let's talk about that.
+
+373
+00:18:04,380 --> 00:18:08,556
+If I take in L1, an absolute value
+penalty, then if a residual is small,
+
+374
+00:18:08,556 --> 00:18:11,870
+how much does it irritate you?
+
+375
+00:18:11,870 --> 00:18:12,740
+Let's compare.
+
+376
+00:18:12,740 --> 00:18:13,400
+How.
+
+377
+00:18:13,400 --> 00:18:14,110
+If you.
+
+378
+00:18:14,110 --> 00:18:18,640
+If you compare that to the square, how
+much does it irritate you?
+
+379
+00:18:18,640 --> 00:18:19,740
+More.
+Much more.
+
+380
+00:18:19,740 --> 00:18:21,322
+Right?
+So, in least squares,
+
+381
+00:18:21,322 --> 00:18:25,170
+a small residual that irritates you very
+little.
+
+382
+00:18:25,170 --> 00:18:26,440
+I'm going to try and say it correctly.
+
+383
+00:18:26,440 --> 00:18:29,680
+And, but an L1 norm, right?
+
+384
+00:18:29,680 --> 00:18:33,328
+And here at, in the absolute value, it
+says you're irritated a little bit, but
+
+385
+00:18:33,328 --> 00:18:36,200
+relatively speaking, that's a lot.
+
+386
+00:18:36,200 --> 00:18:38,420
+I mean, compared to squares, right?
+
+387
+00:18:38,420 --> 00:18:40,807
+How about this: with absolute value,
+
+388
+00:18:40,807 --> 00:18:47,046
+if you've got a big residual, how
+irritating is that in the least squares?
+
+389
+00:18:47,046 --> 00:18:48,330
+Very.
+
+390
+00:18:48,330 --> 00:18:50,250
+And in absolute value?
+
+391
+00:18:53,000 --> 00:18:55,300
+It's irritating, without the very.
+
+392
+00:18:55,300 --> 00:18:57,160
+Everybody got this?
+
+393
+00:18:57,160 --> 00:18:59,176
+Okay, I mean look this, this, I know this
+is,
+
+394
+00:18:59,176 --> 00:19:04,170
+sounds, it really is this dumb, you'll,
+you'll, it really is trust, trust me.
+
+395
+00:19:04,170 --> 00:19:06,572
+But this is unbelievably useful right?
+
+396
+00:19:06,572 --> 00:19:11,530
+Because I think that what has not been
+recognized Until relatively recently and
+
+397
+00:19:11,530 --> 00:19:17,300
+is not by any means fully recognized now
+is the following fact.
+
+398
+00:19:17,300 --> 00:19:22,490
+That (?) is the one case where you get
+some silly 19th century formula, right.
+
+399
+00:19:22,490 --> 00:19:25,060
+But all the other things we're talking
+about you can solve just as easily.
+
+400
+00:19:25,060 --> 00:19:28,320
+Right, and so people haven't looked at
+them, so, all right.
+
+401
+00:19:28,320 --> 00:19:29,880
+So let's look at some things.
+
+402
+00:19:29,880 --> 00:19:32,303
+Well we just talked about the quadratic in
+detail.
+
+403
+00:19:32,303 --> 00:19:33,600
+here, let's do something else.
+
+404
+00:19:33,600 --> 00:19:34,620
+Here's dead zone linear.
+
+405
+00:19:34,620 --> 00:19:36,120
+That's this function right here.
+
+406
+00:19:36,120 --> 00:19:38,175
+Look at this it's, it's, it's linear.
+
+407
+00:19:38,175 --> 00:19:41,990
+And then it's got a dead, what's, we will
+call it dead zone, in the middle.
+
+408
+00:19:41,990 --> 00:19:44,034
+So between plus and minus 0.25.
+
+409
+00:19:44,034 --> 00:19:46,274
+Someone, you should articulate,
+
+410
+00:19:46,274 --> 00:19:52,010
+what does that mean about how you care
+about residuals?
+
+411
+00:19:52,010 --> 00:19:53,440
+Aye, and this case is very specific.
+
+412
+00:19:53,440 --> 00:19:55,870
+If it's less than some threshold, it
+doesn't irritate you at all.
+
+413
+00:19:55,870 --> 00:19:58,660
+And, and in particular, that goes two
+ways.
+
+414
+00:19:58,660 --> 00:20:00,737
+It means that a residual of point, of,
+
+415
+00:20:00,737 --> 00:20:05,490
+of 0.001 is absolutely no better than a
+residual of 0.25 here.
+
+416
+00:20:05,490 --> 00:20:06,640
+None.
+
+417
+00:20:06,640 --> 00:20:07,260
+Right?
+
+418
+00:20:07,260 --> 00:20:10,055
+By the way, there's plenty of applications
+of this and it doesn't, it doesn't,
+
+419
+00:20:10,055 --> 00:20:13,877
+you know you can think, they're going to
+to come you like pretty quickly.
+
+420
+00:20:13,877 --> 00:20:17,240
+You make, if you have like a, an analog
+digital converter and you,
+
+421
+00:20:17,240 --> 00:20:21,252
+you'd make a measurement then you know,
+being off by something less than your LSB,
+
+422
+00:20:21,252 --> 00:20:25,380
+your least significant bit.
+
+423
+00:20:25,380 --> 00:20:27,780
+It's not better, I mean, it's, you're not
+better, it's just,
+
+424
+00:20:27,780 --> 00:20:31,320
+all you know is this value, signal value
+is, in some interval.
+
+425
+00:20:31,320 --> 00:20:33,270
+You don't know anything else.
+
+426
+00:20:33,270 --> 00:20:34,690
+Okay.
+
+427
+00:20:34,690 --> 00:20:37,560
+And the fact that it's linear, once you go
+outside the dead zone.
+
+428
+00:20:37,560 --> 00:20:42,390
+Let's talk about how much you care about
+large residuals.
+
+429
+00:20:42,390 --> 00:20:45,020
+So you'd say look, who likes large
+residuals?
+
+430
+00:20:45,020 --> 00:20:45,570
+No one.
+
+431
+00:20:45,570 --> 00:20:47,030
+I don't like large residuals.
+
+432
+00:20:47,030 --> 00:20:50,340
+But you don't go nuts about it as with a
+quadratic.
+
+433
+00:20:50,340 --> 00:20:51,350
+That would be the explanation.
+
+434
+00:20:51,350 --> 00:20:52,420
+Everybody got this?
+
+435
+00:20:52,420 --> 00:20:55,272
+By the way, we're anthropomorphizing all
+of these, but
+
+436
+00:20:55,272 --> 00:20:59,698
+what we're going to find out is this does
+exactly what you want.
+
+437
+00:20:59,698 --> 00:21:01,214
+So okay.
+
+438
+00:21:01,214 --> 00:21:02,193
+So.
+
+439
+00:21:02,193 --> 00:21:03,000
+Here's another weird one.
+
+440
+00:21:03,000 --> 00:21:06,847
+Here's log barrier with a, with a, limit
+a.
+
+441
+00:21:06,847 --> 00:21:08,270
+So there's just an expression here.
+
+442
+00:21:08,270 --> 00:21:09,130
+It doesn't matter what it is.
+
+443
+00:21:09,130 --> 00:21:10,110
+Well, I can tell you what it is.
+
+444
+00:21:10,110 --> 00:21:14,960
+It matches the quadratic almost perfectly
+over plus, minus, you know.
+
+445
+00:21:14,960 --> 00:21:16,370
+Over a, over a pretty big range.
+
+446
+00:21:16,370 --> 00:21:19,510
+It matches the quadratic very closey.
+
+447
+00:21:19,510 --> 00:21:23,110
+But then what happens, it excellerates and
+goes up to plus infinity.
+
+448
+00:21:23,110 --> 00:21:25,050
+Someone explain that to me.
+
+449
+00:21:25,050 --> 00:21:28,263
+It means, I am, I do not even want to
+discuss the possibility of residual more
+
+450
+00:21:28,263 --> 00:21:30,910
+that plus or minus one.
+
+451
+00:21:30,910 --> 00:21:33,324
+I won't allow it, right.
+
+452
+00:21:33,324 --> 00:21:37,110
+But for smaller residuals, it's just like
+Lee's Squares, okay?
+
+453
+00:21:37,110 --> 00:21:40,560
+So, these are the idea.
+
+454
+00:21:40,560 --> 00:21:45,052
+Now, the whole point of this is that then
+you would craft your own.
+
+455
+00:21:45,052 --> 00:21:46,890
+Your on penalty function.
+
+456
+00:21:46,890 --> 00:21:47,910
+And let's just try one.
+
+457
+00:21:47,910 --> 00:21:50,200
+So as I'm doing least squares fitting or
+aggression.
+
+458
+00:21:50,200 --> 00:21:53,580
+So I, I just want to minimize, I want ax
+to equal b.
+
+459
+00:21:53,580 --> 00:22:01,280
+But suppose I said that, I care about,
+take the residual r, and then over fit.
+
+460
+00:22:01,280 --> 00:22:05,700
+Let's say that being above is okay.
+
+461
+00:22:05,700 --> 00:22:06,550
+I don't want to be below.
+
+462
+00:22:06,550 --> 00:22:10,590
+I, I really on, I, I'm, I care four times
+as much about being below.
+
+463
+00:22:10,590 --> 00:22:12,884
+So you could interview me and you could
+say, tell me about the residuals and
+
+464
+00:22:12,884 --> 00:22:16,660
+the model and the data that you want to
+fit, and I'd say, well I want it to fit.
+
+465
+00:22:16,660 --> 00:22:18,256
+And some, then someone would ask,
+
+466
+00:22:18,256 --> 00:22:21,910
+well what about, how do you care about big
+residuals?
+
+467
+00:22:21,910 --> 00:22:23,935
+And you'd say I don't like them.
+
+468
+00:22:23,935 --> 00:22:26,185
+I don't, of course I don't like them.
+
+469
+00:22:26,185 --> 00:22:29,300
+You say, but, I mean, will you go way out
+of your way?
+
+470
+00:22:29,300 --> 00:22:30,530
+To not have biggers.
+
+471
+00:22:30,530 --> 00:22:33,120
+And you go, no, if we have to have some
+big ones we'll have some big ones, 'kay?
+
+472
+00:22:33,120 --> 00:22:36,716
+Everybody, you should get, you should, we
+just, we just nailed, by the way,
+
+473
+00:22:36,716 --> 00:22:40,400
+the asymptotics of the, of the penalty
+function.
+
+474
+00:22:40,400 --> 00:22:42,980
+And then you'd say, well tell me about
+under and over fitting.
+
+475
+00:22:42,980 --> 00:22:44,461
+Is it symmetric?
+
+476
+00:22:44,461 --> 00:22:45,600
+You know what under and over fitting is?
+
+477
+00:22:45,600 --> 00:22:47,614
+It means you look at an entry of b, and
+you look at a, an entry of a x,
+
+478
+00:22:47,614 --> 00:22:49,505
+and you compare the numbers.
+
+479
+00:22:49,505 --> 00:22:50,500
+Right?
+
+480
+00:22:50,500 --> 00:22:53,200
+If you say I don't care I mean above
+below, doesn't matter to me.
+
+481
+00:22:53,200 --> 00:22:57,397
+But suppose you said no actually there's
+asymmetry there.
+
+482
+00:22:57,397 --> 00:23:03,455
+It's much worse to under estimate so if AX
+is less than B, that's bad.
+
+483
+00:23:03,455 --> 00:23:05,180
+Right.
+
+484
+00:23:05,180 --> 00:23:05,770
+How bad.
+
+485
+00:23:05,770 --> 00:23:08,650
+You know, got a reasonable factor or
+something.
+
+486
+00:23:08,650 --> 00:23:09,980
+You know.
+It's five times worse.
+
+487
+00:23:09,980 --> 00:23:12,620
+By the way, there's a bigger picture here
+which actually fits with all of
+
+488
+00:23:12,620 --> 00:23:13,890
+optimization.
+
+489
+00:23:13,890 --> 00:23:20,593
+That the idea is, not to focus on the
+algorithm, that produces x.
+
+490
+00:23:20,593 --> 00:23:26,380
+What you do is your tools are, is the
+problem.
+
+491
+00:23:26,380 --> 00:23:27,615
+You formulate phi, and
+
+492
+00:23:27,615 --> 00:23:32,920
+the optimization will carry out your
+wishes to the extent that it can.
+
+493
+00:23:32,920 --> 00:23:33,950
+Right, so that's the idea.
+
+494
+00:23:33,950 --> 00:23:37,455
+So you should express your wishes in
+fitting.
+
+495
+00:23:37,455 --> 00:23:39,291
+By setting a penalty function or
+
+496
+00:23:39,291 --> 00:23:44,070
+something like that, then let optimization
+sort out the details.
+
+497
+00:23:44,070 --> 00:23:44,750
+Everybody see what I'm saying?
+
+498
+00:23:44,750 --> 00:23:48,215
+And these are totally obvious things, but
+believe me, they have not been in,
+
+499
+00:23:48,215 --> 00:23:51,845
+they have not been internalized by the
+vast majority of people doing kind of
+
+500
+00:23:51,845 --> 00:23:55,950
+mathematically sophisticated things.
+
+501
+00:23:55,950 --> 00:23:56,850
+So let's look at it.
+
+502
+00:23:56,850 --> 00:23:57,500
+Here's an example.
+
+503
+00:23:57,500 --> 00:23:58,010
+Very simple.
+
+504
+00:23:58,010 --> 00:24:02,274
+We just generate a random data problem
+with 100 measurements,
+
+505
+00:24:02,274 --> 00:24:06,410
+30 parameters that we want to esitmate.
+
+506
+00:24:06,410 --> 00:24:09,370
+These are, and then we'll, we just solve
+various problems.
+
+507
+00:24:09,370 --> 00:24:10,010
+We'll do one.
+
+508
+00:24:10,010 --> 00:24:12,200
+We'll do an L1 norm.
+
+509
+00:24:12,200 --> 00:24:15,180
+We'll do, least squares of regression.
+
+510
+00:24:15,180 --> 00:24:19,397
+We'll do a dead zone linear, and we'll do
+this this, this.
+
+511
+00:24:19,397 --> 00:24:21,170
+Analytic center or what, what did I call
+it?
+
+512
+00:24:21,170 --> 00:24:22,210
+I forget what I just called it.
+
+513
+00:24:22,210 --> 00:24:22,810
+Log barrier.
+
+514
+00:24:22,810 --> 00:24:23,760
+Okay. Yeah. Log barrier.
+
+515
+00:24:23,760 --> 00:24:24,720
+So we'll do log barrier.
+
+516
+00:24:25,860 --> 00:24:28,150
+By the way the name of the point is the
+analytic center.
+
+517
+00:24:28,150 --> 00:24:29,160
+We'll get to that later, but.
+
+518
+00:24:29,160 --> 00:24:29,840
+Okay.
+
+519
+00:24:29,840 --> 00:24:31,690
+So and what's plotted here.
+
+520
+00:24:31,690 --> 00:24:32,900
+Let me explain what's plotted.
+
+521
+00:24:32,900 --> 00:24:34,650
+This function here.
+
+522
+00:24:34,650 --> 00:24:35,500
+So each of these.
+
+523
+00:24:35,500 --> 00:24:37,680
+That, that's one norm two norm.
+
+524
+00:24:37,680 --> 00:24:38,370
+Well square.
+
+525
+00:24:38,370 --> 00:24:40,560
+Right.
+Dead zone linear log barrier.
+
+526
+00:24:40,560 --> 00:24:44,107
+And you see the actual function plotted on
+some scale here.
+
+527
+00:24:44,107 --> 00:24:48,385
+so, this function tells you kind of your
+irritation at having a residual of
+
+528
+00:24:48,385 --> 00:24:50,668
+that level, okay?
+
+529
+00:24:50,668 --> 00:24:53,788
+And then what's shown in here is the
+histogram of
+
+530
+00:24:53,788 --> 00:24:56,910
+residuals that you get, right?
+
+531
+00:24:56,910 --> 00:24:59,280
+So you get different Xs in each case,
+right?
+
+532
+00:24:59,280 --> 00:25:01,643
+And you get different histograms.
+
+533
+00:25:01,643 --> 00:25:03,255
+We'll start with least squares because
+this would be the most,
+
+534
+00:25:03,255 --> 00:25:05,238
+this is kind of the starting point for
+everything.
+
+535
+00:25:05,238 --> 00:25:09,258
+Here they are well its kind of nice you
+get a bunch of get a bunch that are at
+
+536
+00:25:09,258 --> 00:25:12,474
+here you have a few that are big not so
+big you know and but
+
+537
+00:25:12,474 --> 00:25:21,490
+there all bunched in here okay let's look
+at the L1 case you get something bizzare.
+
+538
+00:25:21,490 --> 00:25:26,937
+And it is completely explained intuitively
+by what we talked about.
+
+539
+00:25:26,937 --> 00:25:30,270
+The first you see that catches you eye is
+that's a different scale.
+
+540
+00:25:30,270 --> 00:25:36,448
+You got this giant pile of x;s, sorry of
+residuals that are flat zero.
+
+541
+00:25:36,448 --> 00:25:41,365
+And by the way, it's not that their small,
+their actually zero.
+
+542
+00:25:41,365 --> 00:25:45,966
+Okay so I will give an intuitive
+explanation for
+
+543
+00:25:45,966 --> 00:25:54,170
+this the incentive to drive a residual to
+0 holds up until it's 0.
+
+544
+00:25:54,170 --> 00:25:57,040
+So if you're if a residual is at this
+value there is
+
+545
+00:25:57,040 --> 00:26:01,450
+still a strong incentive to reduce it
+okay, now that's completely false for
+
+546
+00:26:01,450 --> 00:26:08,650
+quadratic because the smaller a residual
+becomes The less incentive there is.
+
+547
+00:26:08,650 --> 00:26:10,390
+An incentive is just a slope of this
+thing.
+
+548
+00:26:10,390 --> 00:26:12,994
+It tells you, it says; you know, how much
+would you,
+
+549
+00:26:12,994 --> 00:26:17,120
+how much benefit would i get in reducing
+the objective?
+
+550
+00:26:17,120 --> 00:26:19,187
+But to make that residual slightly smaller
+and
+
+551
+00:26:19,187 --> 00:26:23,770
+the answer in these squares is you have a
+diminishing residual benefit, right.
+
+552
+00:26:23,770 --> 00:26:26,195
+Here it holds up, to the very end.
+
+553
+00:26:26,195 --> 00:26:29,510
+Okay and the result is, a whole bunch of
+them become 0.
+
+554
+00:26:29,510 --> 00:26:33,020
+By the way, for those of you, who've take
+machine learning class,
+
+555
+00:26:33,020 --> 00:26:38,430
+the statistics class, whole bunch of
+classes, you will recognize this.
+
+556
+00:26:38,430 --> 00:26:41,622
+You should already have heard about
+things, like L1 and sparsity and
+
+557
+00:26:41,622 --> 00:26:43,330
+things like that.
+
+558
+00:26:43,330 --> 00:26:44,140
+We're going to see.
+
+559
+00:26:44,140 --> 00:26:46,526
+You're going to have in your head, burned
+a connection between.
+
+560
+00:26:46,526 --> 00:26:52,419
+L 1 in sparsity where things are actually
+0.
+
+561
+00:26:52,419 --> 00:26:55,281
+And in fact it turns out not l 1 it's just
+the point it turns out that
+
+562
+00:26:55,281 --> 00:26:57,220
+the point is here.
+
+563
+00:26:57,220 --> 00:26:59,012
+So the one we looked at before our,
+
+564
+00:26:59,012 --> 00:27:03,206
+our asymmetric one we'd have the same
+property all right.
+
+565
+00:27:03,206 --> 00:27:05,789
+But the other interesting thing is this is
+look at that there is a residual up
+
+566
+00:27:05,789 --> 00:27:07,545
+here which is like 1.8.
+
+567
+00:27:07,545 --> 00:27:14,100
+And you didn't get that in the L2, one,
+right?
+
+568
+00:27:14,100 --> 00:27:18,380
+Because 1 point 8 is a big residual and in
+this square, you care about that a lot.
+
+569
+00:27:18,380 --> 00:27:19,790
+One point 8, squared.
+
+570
+00:27:19,790 --> 00:27:23,466
+Right?
+And so, again i'm anthropomorphising, but
+
+571
+00:27:23,466 --> 00:27:28,970
+in these squares, pushing these down here.
+
+572
+00:27:28,970 --> 00:27:31,851
+Was a good tradeoff in terms that these
+things split and moved all around here and
+
+573
+00:27:31,851 --> 00:27:32,625
+so on, in that sort so,
+
+574
+00:27:32,625 --> 00:27:37,030
+I mean this is just all anti amorphization
+of all of this, but this is the idea.
+
+575
+00:27:37,030 --> 00:27:38,006
+Okay?
+
+576
+00:27:38,006 --> 00:27:40,690
+Here's dead zone linear.
+
+577
+00:27:40,690 --> 00:27:42,400
+And you see something very, very
+interesting.
+
+578
+00:27:42,400 --> 00:27:45,620
+That if your residual is between plus, and
+minus, and half.
+
+579
+00:27:45,620 --> 00:27:46,650
+We don't carry at all.
+
+580
+00:27:47,790 --> 00:27:50,826
+One half, a re, a residual of one half is,
+
+581
+00:27:50,826 --> 00:27:56,790
+in terms of the rotation, no better, no
+worse, than 0.
+
+582
+00:27:56,790 --> 00:28:02,900
+That dead zone, dead zone linear says,
+there's an incentive to reduce a residual.
+
+583
+00:28:02,900 --> 00:28:07,630
+The incentive entirely disappears once a
+residual's hit one half, right?
+
+584
+00:28:07,630 --> 00:28:09,410
+And in fact, that's what's happened,
+right?
+
+585
+00:28:09,410 --> 00:28:13,601
+So these are sort of residuals that, well,
+you know, why not?
+
+586
+00:28:13,601 --> 00:28:16,080
+But they weren't, they weren't forced to
+be between there, right?
+
+587
+00:28:16,080 --> 00:28:17,650
+They just happened this way.
+
+588
+00:28:17,650 --> 00:28:20,080
+And here, is the log barrier.
+
+589
+00:28:20,080 --> 00:28:24,690
+And sure enough, as required, they've all
+been crushed down here.
+
+590
+00:28:25,840 --> 00:28:27,016
+So now let's,
+
+591
+00:28:27,016 --> 00:28:34,680
+let me introduce some really cool stuff
+you can make cool Frankenstein like.
+
+592
+00:28:34,680 --> 00:28:37,893
+We can, we can cut up penalties and resew
+them together and
+
+593
+00:28:37,893 --> 00:28:42,860
+make you know, things that I guess don't
+come up, obviously.
+
+594
+00:28:42,860 --> 00:28:46,100
+Here's a The very famous one is the Huber
+penalty function.
+
+595
+00:28:46,100 --> 00:28:48,510
+The Huber penalty function is this.
+
+596
+00:28:48,510 --> 00:28:54,720
+It's quadratic up to a threshold,
+whereupon it, it transitions to linear.
+
+597
+00:28:54,720 --> 00:28:58,280
+And so this is the Huber function here
+with threshold m.
+
+598
+00:28:58,280 --> 00:29:01,510
+Actually it's a very important function,
+and
+
+599
+00:29:01,510 --> 00:29:08,480
+you know, for, I would say 80% of where
+people use these squares right now.
+
+600
+00:29:08,480 --> 00:29:10,092
+My guess is that in 80% of those cases,
+
+601
+00:29:10,092 --> 00:29:13,680
+the application would be improved, the
+performance in whatever the application,
+
+602
+00:29:13,680 --> 00:29:17,470
+would be improved if it was replaced with
+a Hubert.
+
+603
+00:29:17,470 --> 00:29:18,265
+And no one knows that.
+
+604
+00:29:18,265 --> 00:29:20,570
+Alright so, I mean people know that.
+
+605
+00:29:20,570 --> 00:29:23,210
+People do advanced statistics, they always
+do this kind of stuff.
+
+606
+00:29:23,210 --> 00:29:26,019
+Right, but in lots and lots of other
+areas.
+
+607
+00:29:26,019 --> 00:29:28,114
+They don't know that.
+
+608
+00:29:28,114 --> 00:29:32,550
+So that's the Huber function, and first
+let's just talk through what it means.
+
+609
+00:29:32,550 --> 00:29:34,990
+So the Huber function says something like
+this.
+
+610
+00:29:34,990 --> 00:29:36,264
+If you are below the threshold,
+
+611
+00:29:36,264 --> 00:29:40,440
+if a residual is below the threshold, it's
+identical to least squares.
+
+612
+00:29:40,440 --> 00:29:42,618
+Basically says it's least squares, but
+
+613
+00:29:42,618 --> 00:29:47,990
+if you go over the threshold, it's
+radically different from least squares.
+
+614
+00:29:47,990 --> 00:29:50,980
+And what can you say about a Huber penalty
+as opposed to least squares.
+
+615
+00:29:54,100 --> 00:29:55,440
+It looks like an l1.
+
+616
+00:29:55,440 --> 00:29:59,600
+And it is a penalty that it, it's more
+relaxed.
+
+617
+00:29:59,600 --> 00:30:00,850
+So you would say something.
+
+618
+00:30:00,850 --> 00:30:01,750
+You could just guess this.
+
+619
+00:30:01,750 --> 00:30:04,300
+You would say that if you do Huber.
+
+620
+00:30:04,300 --> 00:30:05,720
+Approximation, let's say.
+
+621
+00:30:05,720 --> 00:30:07,490
+You'll end up with something like this.
+
+622
+00:30:07,490 --> 00:30:08,930
+Compared to lee squares, it will be,
+
+623
+00:30:08,930 --> 00:30:11,954
+it's going to be lee, if everything, if
+all the residuals are in the threshold,
+
+624
+00:30:11,954 --> 00:30:16,740
+in below the threshold, it's just lee,
+it's exactly the same as lee squares.
+
+625
+00:30:16,740 --> 00:30:19,795
+But what it'll do is it's going to be much
+more relaxed about
+
+626
+00:30:19,795 --> 00:30:22,400
+having a couple Of outliers.
+
+627
+00:30:22,400 --> 00:30:25,210
+[COUGH] So it will actually allow a couple
+of outliers.
+
+628
+00:30:25,210 --> 00:30:26,486
+It's not going to like it, but
+
+629
+00:30:26,486 --> 00:30:30,500
+it's not going to go insane like least
+squares will, and it won't.
+
+630
+00:30:30,500 --> 00:30:31,900
+It won't actually ruin everything else or
+
+631
+00:30:31,900 --> 00:30:35,050
+won't increase all sorts of other things
+to try to to improve one.
+
+632
+00:30:35,050 --> 00:30:35,606
+Okay.
+So
+
+633
+00:30:35,606 --> 00:30:37,200
+it turns out this is a robust estimator.
+
+634
+00:30:37,200 --> 00:30:38,170
+We'll see lots of.
+
+635
+00:30:38,170 --> 00:30:40,462
+We'll see lots of this in the future, but
+it's a robust estimator.
+
+636
+00:30:40,462 --> 00:30:44,288
+It works unbelievably well.
+
+637
+00:30:44,288 --> 00:30:47,320
+And so let me show you the kind of thing
+it works on.
+
+638
+00:30:47,320 --> 00:30:51,720
+So, here's a, here's a picture [COUGH]
+with, you know, 42 points, okay?
+
+639
+00:30:51,720 --> 00:30:55,752
+So, 40 points are obviously scattered on
+that line, you know, on the line, and
+
+640
+00:30:55,752 --> 00:30:57,695
+these are two.
+
+641
+00:30:57,695 --> 00:31:01,497
+You know obvious outliers, okay, so, and
+we just made the data.
+
+642
+00:31:01,497 --> 00:31:02,618
+This is just plotted so
+
+643
+00:31:02,618 --> 00:31:07,180
+you can see it, you know, obviously for
+fitting data in two dimensions.
+
+644
+00:31:07,180 --> 00:31:10,254
+You don't need any fancy combi-, you use
+your eyeball to do it, so
+
+645
+00:31:10,254 --> 00:31:12,772
+that's not what this is for.
+
+646
+00:31:12,772 --> 00:31:15,681
+Okay, but this is just to illustrate what
+happened.
+
+647
+00:31:15,681 --> 00:31:18,474
+Okay, so there is your data, if you do the
+least squares fit,
+
+648
+00:31:18,474 --> 00:31:21,970
+you get this dash line here, everybody see
+that?
+
+649
+00:31:21,970 --> 00:31:23,890
+And the discussion is extremely simple.
+
+650
+00:31:23,890 --> 00:31:28,900
+It's basically, look, that is so big that
+when you square it, it's gigantic.
+
+651
+00:31:28,900 --> 00:31:32,124
+It's extremely irritating and least
+squares will actually bend the fit to
+
+652
+00:31:32,124 --> 00:31:34,308
+reduce that big number which you're
+squaring, and
+
+653
+00:31:34,308 --> 00:31:37,900
+it will take a hit on all those other
+numbers.
+
+654
+00:31:37,900 --> 00:31:38,444
+Everybody.
+
+655
+00:31:38,444 --> 00:31:39,537
+Got that?
+
+656
+00:31:39,537 --> 00:31:42,037
+And by the way, in your head, you can take
+these two things and
+
+657
+00:31:42,037 --> 00:31:44,120
+you can move them this way.
+
+658
+00:31:44,120 --> 00:31:45,610
+You can make them much worse.
+
+659
+00:31:45,610 --> 00:31:48,618
+I can make the least, I can make the least
+square thing, actually flip over and
+
+660
+00:31:48,618 --> 00:31:50,414
+have the wrong slope.
+
+661
+00:31:50,414 --> 00:31:51,370
+Okay?
+
+662
+00:31:51,370 --> 00:31:55,082
+Now, by the way, if you think, I mean of
+course in our plotting a silly data with
+
+663
+00:31:55,082 --> 00:31:58,555
+like one vari, ih, ih, It's goofy, right?
+
+664
+00:31:58,555 --> 00:32:00,610
+But the point is this.
+
+665
+00:32:00,610 --> 00:32:03,574
+You get this same thing when you are
+fitting things like things in
+
+666
+00:32:03,574 --> 00:32:05,498
+dimension in, in high, very high
+dimension,
+
+667
+00:32:05,498 --> 00:32:10,590
+like dimension 100 [COUGH] at which point
+by the way your eyeball is no good.
+
+668
+00:32:10,590 --> 00:32:11,770
+Just for the record.
+
+669
+00:32:11,770 --> 00:32:16,560
+Right?
+[LAUGH] So and it's at.
+
+670
+00:32:16,560 --> 00:32:18,890
+So, so the Huber fit is that.
+
+671
+00:32:18,890 --> 00:32:21,029
+Is the dark line here, right.
+
+672
+00:32:21,029 --> 00:32:24,741
+And it's false to say that it's
+unaffected, that it's actually false,
+
+673
+00:32:24,741 --> 00:32:29,820
+because I can also show you a fit where I
+remove these two, right.
+
+674
+00:32:29,820 --> 00:32:33,800
+And then, and that black line would move
+very slightly, OK.
+
+675
+00:32:33,800 --> 00:32:37,420
+So, and and, and, would then fit those
+things perfectly.
+
+676
+00:32:37,420 --> 00:32:40,520
+By the way, that's also a standard two
+step procedure in that wire.
+
+677
+00:32:40,520 --> 00:32:43,500
+Your first use something like a Huber or
+Robust estimator.
+
+678
+00:32:43,500 --> 00:32:48,660
+To guess which are the outliers, remove
+them and refit.
+
+679
+00:32:48,660 --> 00:32:52,153
+So, that's, that there's a whole, I mean a
+whole lot of stuff on this.
+
+680
+00:32:52,153 --> 00:32:55,250
+So this is this is this.
+
+681
+00:32:55,250 --> 00:33:01,670
+By the way, these, this thing works so
+well for a lot of sort of practical data.
+
+682
+00:33:01,670 --> 00:33:04,828
+You know, people blabber on and on about
+things like big data and stuff like that.
+
+683
+00:33:04,828 --> 00:33:10,456
+So, things like these, these robust
+estimators are absolutely critical in,
+
+684
+00:33:10,456 --> 00:33:14,180
+in a situation like that, right?
+
+685
+00:33:14,180 --> 00:33:16,674
+Because when you have a billion pieces of
+data, and,
+
+686
+00:33:16,674 --> 00:33:18,820
+you know, a thousand of them are complete
+and
+
+687
+00:33:18,820 --> 00:33:24,690
+utter nonsense, there's outliers that can
+render Lee squares utterly useless.
+
+688
+00:33:24,690 --> 00:33:26,745
+And these things will just power through
+it.
+
+689
+00:33:26,745 --> 00:33:29,385
+in, actually in Shocking ways where you
+can a problem,
+
+690
+00:33:29,385 --> 00:33:33,800
+we'll have some more word problems on
+this, but it'll be shocking.
+
+691
+00:33:33,800 --> 00:33:40,170
+You take something, you add in outliers at
+the 10, 10% of the data will be outliers.
+
+692
+00:33:40,170 --> 00:33:43,600
+20, 30, I mean, there's usually a
+threshold point where it fails.
+
+693
+00:33:43,600 --> 00:33:47,280
+But you can get just absolutely, and it.
+
+694
+00:33:47,280 --> 00:33:48,897
+A lot of times, you have to double check,
+
+695
+00:33:48,897 --> 00:33:51,670
+that what you're looking at is the right
+thing.
+
+696
+00:33:51,670 --> 00:33:55,400
+You think, you've maybe used the true
+parameter, not the estimated one.
+
+697
+00:33:55,400 --> 00:33:57,060
+These things work so well.
+
+698
+00:33:57,060 --> 00:33:57,730
+So, well and
+
+699
+00:33:57,730 --> 00:34:03,260
+this is something that you know, that's
+implicit in a lot of modern statistics.
+
+700
+00:34:03,260 --> 00:34:07,090
+It's implicit in a lot of gene learning
+and things like that.
+
+701
+00:34:07,090 --> 00:34:08,798
+So, but it's a very good thing for,
+
+702
+00:34:08,798 --> 00:34:13,500
+in my opinion, everyone should know about
+this, these kind of things.
+
+703
+00:34:15,590 --> 00:34:21,138
+So we'll look now at something likes like
+the dual of the approximation problems and
+
+704
+00:34:21,138 --> 00:34:25,242
+non-approximation problem and that's at
+least norm problem and
+
+705
+00:34:25,242 --> 00:34:29,422
+the basic idea is, is this here you have a
+quality constraint so
+
+706
+00:34:29,422 --> 00:34:34,514
+in this case a is not generically tall its
+generically wide So, A is a wide matrix,
+
+707
+00:34:34,514 --> 00:34:44,523
+and this says that I have something like M
+equality constraints on X.
+
+708
+00:34:44,523 --> 00:34:47,730
+Presumably not enough to completely
+constrain x.
+
+709
+00:34:47,730 --> 00:34:49,180
+I mean then it's a silly problem.
+
+710
+00:34:49,180 --> 00:34:50,674
+It has one feasible point.
+
+711
+00:34:50,674 --> 00:34:54,394
+And then among the x's that satisfy ax
+equals b we're going to choose the one
+
+712
+00:34:54,394 --> 00:34:57,866
+that has minimum norm and you've probably
+seen this in some class if
+
+713
+00:34:57,866 --> 00:35:04,449
+you took 263 this was the least norm
+problem it was the two norm there.
+
+714
+00:35:07,030 --> 00:35:08,955
+So what's the interpretation of this, and
+
+715
+00:35:08,955 --> 00:35:12,890
+of course I should say something here when
+I say equals argmin.
+
+716
+00:35:12,890 --> 00:35:15,644
+If this norm is strictly convex, and that
+would be the case for
+
+717
+00:35:15,644 --> 00:35:19,200
+example, for two norms, then it's unique
+of course.
+
+718
+00:35:19,200 --> 00:35:22,010
+But it can easily be not unique.
+
+719
+00:35:22,010 --> 00:35:25,215
+Right?
+So we should say something like well,
+
+720
+00:35:25,215 --> 00:35:30,020
+one notation would be x star is in ard
+min.
+
+721
+00:35:30,020 --> 00:35:31,626
+Because one, one and, one,
+
+722
+00:35:31,626 --> 00:35:37,141
+notational convention is that argmin
+returns the set of minimizers.
+
+723
+00:35:37,141 --> 00:35:41,160
+So by x star equals argmin, we just mean
+it's a minimizer.
+
+724
+00:35:41,160 --> 00:35:44,021
+So the geometric interpretation is this.
+
+725
+00:35:44,021 --> 00:35:47,948
+We have an affine set that's generically
+given by the set of x,
+
+726
+00:35:47,948 --> 00:35:50,838
+such that a equals b.
+
+727
+00:35:50,838 --> 00:35:55,190
+So we have this affine set, and what we
+want to do is find the point.
+
+728
+00:35:55,190 --> 00:35:58,230
+Closest to zero in that set right.
+
+729
+00:35:58,230 --> 00:36:01,834
+And a simple completly elementary
+variation on this is where we
+
+730
+00:36:01,834 --> 00:36:06,390
+project a point in a non zero point on to
+that set.
+
+731
+00:36:06,390 --> 00:36:07,180
+So that's the idea.
+
+732
+00:36:07,180 --> 00:36:11,235
+Its a projection of zero onto the affine
+set.
+
+733
+00:36:11,235 --> 00:36:12,918
+Estimation is this.
+
+734
+00:36:12,918 --> 00:36:18,180
+The idea in the estimation interpretation
+is something like this.
+
+735
+00:36:18,180 --> 00:36:23,946
+We interpret B equals AX to mean that we
+have M perfect linear measurements.
+
+736
+00:36:23,946 --> 00:36:26,788
+So there, there's, there's no noise.
+
+737
+00:36:26,788 --> 00:36:28,730
+Nothing, they're perfect.
+
+738
+00:36:28,730 --> 00:36:31,124
+And then, but we have N parameters to
+estimate, and
+
+739
+00:36:31,124 --> 00:36:34,550
+we have more parameters than we have
+measurements.
+
+740
+00:36:34,550 --> 00:36:36,242
+Right?
+So, I have 150 parameters to estimate,
+
+741
+00:36:36,242 --> 00:36:40,070
+I have 50 measurements or 100 measurement,
+something like that.
+
+742
+00:36:40,070 --> 00:36:43,970
+And that leaves me basically 50 unknown
+dimensions or something like that.
+
+743
+00:36:43,970 --> 00:36:46,150
+So ax equals b in that case.
+
+744
+00:36:46,150 --> 00:36:49,000
+We interpret as the set of parameter
+values that are consistent with
+
+745
+00:36:49,000 --> 00:36:51,220
+the perfect measurements, right?
+
+746
+00:36:51,220 --> 00:36:52,750
+So this, if you were to put a comment
+here,
+
+747
+00:36:52,750 --> 00:36:56,950
+you would say something like consistent
+with measurements like, like this, right?
+
+748
+00:36:56,950 --> 00:36:59,085
+And, and then the assumption is the
+measurements are perfect.
+
+749
+00:36:59,085 --> 00:37:00,840
+Right?
+
+750
+00:37:00,840 --> 00:37:02,110
+So that would be that.
+
+751
+00:37:02,110 --> 00:37:05,260
+And then the interpretation of minimizing
+the norm is
+
+752
+00:37:05,260 --> 00:37:08,900
+you then choose most plausible.
+
+753
+00:37:08,900 --> 00:37:12,050
+Choose the most plausible point.
+
+754
+00:37:12,050 --> 00:37:12,780
+Right?
+
+755
+00:37:12,780 --> 00:37:16,330
+And here implicit is the following idea.
+
+756
+00:37:16,330 --> 00:37:20,670
+That the larger X is the less plausible it
+is.
+
+757
+00:37:20,670 --> 00:37:21,970
+Right.
+So that's the idea.
+
+758
+00:37:21,970 --> 00:37:25,687
+In other words, you're in some situation
+where there many parameter values
+
+759
+00:37:25,687 --> 00:37:29,463
+consistent with the measurements, so
+nobody, anybody who chooses X with AX B
+
+760
+00:37:29,463 --> 00:37:35,935
+can not say to another person who chooses
+another X to satisfy A, they're wrong.
+
+761
+00:37:35,935 --> 00:37:38,777
+What, what one can do then is just talk
+about which is more plausible or
+
+762
+00:37:38,777 --> 00:37:40,580
+something like that.
+
+763
+00:37:40,580 --> 00:37:43,180
+And so the idea is that the norm is here
+used as a surrogate for
+
+764
+00:37:43,180 --> 00:37:45,500
+I should say implausibility.
+
+765
+00:37:45,500 --> 00:37:49,760
+Cause the larger the norm the less
+plausible it is.
+
+766
+00:37:49,760 --> 00:37:53,108
+And by the way, we'll connect this
+possibly even later today,
+
+767
+00:37:53,108 --> 00:37:57,518
+we'll connect this to a statistical
+interpretation.
+
+768
+00:37:57,518 --> 00:37:59,040
+Another one is design.
+
+769
+00:37:59,040 --> 00:38:01,372
+So here, you think of x as a bunch of
+design variables,
+
+770
+00:38:01,372 --> 00:38:03,546
+these are inputs for example.
+
+771
+00:38:03,546 --> 00:38:07,680
+This could be forces that you apply to a
+vehicle or something like that right.
+
+772
+00:38:07,680 --> 00:38:10,966
+It could be voltages or current drives
+that you're going to send to a motor or,
+
+773
+00:38:10,966 --> 00:38:15,048
+or current drives that you're going to
+send to an antennae.
+
+774
+00:38:15,048 --> 00:38:18,554
+Right something like that.
+
+775
+00:38:18,554 --> 00:38:22,070
+Then ax gives you something like the
+result right?
+
+776
+00:38:22,070 --> 00:38:23,660
+So this, this gives you the result so
+
+777
+00:38:23,660 --> 00:38:27,910
+and it might be something like this that
+you choose 150 forces to apply.
+
+778
+00:38:27,910 --> 00:38:30,388
+Maybe at different times different
+accuators.
+
+779
+00:38:30,388 --> 00:38:33,829
+But actually all you care about are maybe
+six or eight things at the end.
+
+780
+00:38:33,829 --> 00:38:37,000
+For example the position and momentum at
+some final target time.
+
+781
+00:38:37,000 --> 00:38:38,590
+Something like that, right?
+
+782
+00:38:38,590 --> 00:38:41,384
+In which case Ax gives you the result.
+
+783
+00:38:41,384 --> 00:38:43,932
+Of the action X.
+
+784
+00:38:43,932 --> 00:38:47,070
+Then B, is actually your desired action.
+
+785
+00:38:47,070 --> 00:38:49,870
+So, any X that satisfies A equals B, is
+valid.
+
+786
+00:38:49,870 --> 00:38:51,274
+It says, find me a set of forces,
+
+787
+00:38:51,274 --> 00:38:54,460
+that will take my spacecraft, move it over
+to here, 12 seconds later and
+
+788
+00:38:54,460 --> 00:38:58,780
+arrive here, you know, with this position
+and momenteum.
+
+789
+00:38:58,780 --> 00:39:01,158
+Right?
+So, that would be, lots of X's do that.
+
+790
+00:39:01,158 --> 00:39:05,600
+And here what you're doing is you're
+saying please find me an efficient one.
+
+791
+00:39:05,600 --> 00:39:06,720
+One that minimizes a norm.
+
+792
+00:39:06,720 --> 00:39:08,610
+Could be two norm.
+
+793
+00:39:08,610 --> 00:39:09,450
+Could be one norm.
+
+794
+00:39:09,450 --> 00:39:13,410
+One norm would be closer to fuel usage in
+a lot of cases.
+
+795
+00:39:13,410 --> 00:39:14,370
+Something like that.
+
+796
+00:39:14,370 --> 00:39:17,084
+It could be infinity norm.
+
+797
+00:39:17,084 --> 00:39:19,192
+It could be anything, in fact.
+
+798
+00:39:19,192 --> 00:39:24,604
+Okay so this is just interpretations of
+the problem minimizing the norm
+
+799
+00:39:24,604 --> 00:39:30,064
+of a of x subject to ax equals b,
+equalities, right?
+
+800
+00:39:30,064 --> 00:39:34,700
+Oh I should say that one nice thing about
+our approach to these, which is to
+
+801
+00:39:34,700 --> 00:39:41,164
+simply look at these and simply say,
+that's a convex problem, period.
+
+802
+00:39:41,164 --> 00:39:42,862
+Right?
+One nice thing is, you can mix and
+
+803
+00:39:42,862 --> 00:39:44,656
+match, if all of sudden somebody comes
+back and
+
+804
+00:39:44,656 --> 00:39:47,893
+says, oh dear, I need to add some
+constraints, here.
+
+805
+00:39:47,893 --> 00:39:50,660
+Like for example, the X's have to between
+plus and minus 1.
+
+806
+00:39:50,660 --> 00:39:53,000
+It's not a big deal for us, we just add
+these constraints.
+
+807
+00:39:53,000 --> 00:39:55,180
+Right?
+So, okay.
+
+808
+00:39:55,180 --> 00:39:56,995
+I'm not showing them here, just for
+simplicity.
+
+809
+00:39:56,995 --> 00:39:59,310
+Okay.
+
+810
+00:39:59,310 --> 00:40:02,176
+Let's look at some specific examples of
+least norm problems.
+
+811
+00:40:02,176 --> 00:40:03,040
+Here's one.
+
+812
+00:40:03,040 --> 00:40:04,804
+Most famous one is you take the two norm,
+and
+
+813
+00:40:04,804 --> 00:40:09,205
+in fact, what you really minimized is not
+the norm but the two norms squared.
+
+814
+00:40:09,205 --> 00:40:11,120
+The, not the two norm, but the two norms
+squared.
+
+815
+00:40:11,120 --> 00:40:14,501
+And this is the same, because minimizing
+two norm squared and two norm is the same.
+
+816
+00:40:14,501 --> 00:40:16,443
+Has the same solution.
+
+817
+00:40:16,443 --> 00:40:19,320
+And this, the optimality conditions, you
+work them out.
+
+818
+00:40:19,320 --> 00:40:20,770
+The KKT conditions are linear.
+
+819
+00:40:20,770 --> 00:40:22,452
+They're a set of linear equations.
+
+820
+00:40:22,452 --> 00:40:25,236
+So you can solve them exactly, and there's
+a formula for it.
+
+821
+00:40:25,236 --> 00:40:27,950
+If A is full rank and all that kind of
+stuff, and you've seen that in 263 or
+
+822
+00:40:27,950 --> 00:40:30,370
+some other linear algebra course.
+
+823
+00:40:30,370 --> 00:40:32,486
+Right?
+So and that's why this is, this is,
+
+824
+00:40:32,486 --> 00:40:35,280
+of course, extremely widely used.
+
+825
+00:40:35,280 --> 00:40:36,120
+Right because it.
+
+826
+00:40:36,120 --> 00:40:38,240
+Fits fits, it's fits everything, right?
+
+827
+00:40:38,240 --> 00:40:41,526
+Looks like it's simple, fits the 19th
+century, you know, formula model and
+
+828
+00:40:41,526 --> 00:40:43,530
+all that kind of stuff.
+
+829
+00:40:43,530 --> 00:40:47,160
+Okay now you can do other things, which is
+actually quite interesting.
+
+830
+00:40:47,160 --> 00:40:48,170
+You can do things like this.
+
+831
+00:40:48,170 --> 00:40:52,029
+You can actually take the L1 norm, and
+this is a very interesting problem.
+
+832
+00:40:52,029 --> 00:40:58,255
+This says minimize the norm of x1, subject
+to ax equals b.
+
+833
+00:40:58,255 --> 00:41:04,366
+Okay, and this is something actually
+that's quite in Vogue right now and
+
+834
+00:41:04,366 --> 00:41:09,800
+has been for maybe 5, maybe 10 years now.
+
+835
+00:41:09,800 --> 00:41:12,180
+It has no analytical solution, in general.
+
+836
+00:41:12,180 --> 00:41:15,010
+Well, except for very silly cases.
+
+837
+00:41:15,010 --> 00:41:16,350
+Has no analytical solution.
+
+838
+00:41:16,350 --> 00:41:19,720
+So, it's got various names.
+
+839
+00:41:19,720 --> 00:41:21,340
+This one's Basis Pursuit.
+
+840
+00:41:21,340 --> 00:41:25,250
+And let me ask you, in view of the
+discussion we had last time.
+
+841
+00:41:25,250 --> 00:41:30,078
+The last time, we talked about a penalty
+function, and how the shape of the fenal-,
+
+842
+00:41:30,078 --> 00:41:36,280
+penalty function has an influence on the
+distribution of residuals.
+
+843
+00:41:36,280 --> 00:41:40,050
+That discussion transposes perfectly to
+this situation.
+
+844
+00:41:40,050 --> 00:41:42,494
+Right, so here, the idea is that if you
+have a penalty function,
+
+845
+00:41:42,494 --> 00:41:46,340
+here the penalty is embarrassingly simple,
+it's the absolute value.
+
+846
+00:41:46,340 --> 00:41:49,668
+But what it does is, that's going to shape
+the distribution of Xs,
+
+847
+00:41:49,668 --> 00:41:51,460
+what I would like to know from you,
+
+848
+00:41:51,460 --> 00:41:58,140
+is what do you image this solutions of the
+basis pursuit problem look like.
+
+849
+00:41:58,140 --> 00:42:00,480
+What you would expect and turns out,
+
+850
+00:42:00,480 --> 00:42:07,310
+in fact, to be true, is that when you
+solve this problem, most of the x's are 0.
+
+851
+00:42:07,310 --> 00:42:08,912
+Okay?
+And, I mean there's various ways,
+
+852
+00:42:08,912 --> 00:42:11,720
+you will observe this as a, as an
+empirical observation and
+
+853
+00:42:11,720 --> 00:42:16,912
+in fact, you can prove various things
+about that and so on and so forth.
+
+854
+00:42:16,912 --> 00:42:24,405
+so, in fact, this is a heuristic for
+getting a sparse solution of Ax equals b.
+
+855
+00:42:24,405 --> 00:42:25,380
+Right?
+
+856
+00:42:25,380 --> 00:42:28,924
+So okay, and this is going to be a theme.
+
+857
+00:42:28,924 --> 00:42:32,360
+It's going to kind of follow us through
+the rest of the course and so on.
+
+858
+00:42:32,360 --> 00:42:34,119
+So, okay.
+
+859
+00:42:34,119 --> 00:42:38,116
+And we'll see a lot about this.
+
+860
+00:42:38,116 --> 00:42:40,462
+Okay so well, we've already been talking
+about this but
+
+861
+00:42:40,462 --> 00:42:45,470
+the least penalty problem says that you,
+you choose a penalty function phi, here.
+
+862
+00:42:45,470 --> 00:42:48,214
+And then you minimize the sum of the
+penalties subject to a, x over b,
+
+863
+00:42:48,214 --> 00:42:50,895
+and then you would, you would choose.
+
+864
+00:42:50,895 --> 00:42:56,776
+Phi, to shape to get an x that you'd like,
+right?
+
+865
+00:42:56,776 --> 00:42:59,863
+And by the way, this is, there's,
+something quite interesting about it,
+
+866
+00:42:59,863 --> 00:43:02,901
+because it has something to do with how,
+people don't talk about it a lot but
+
+867
+00:43:02,901 --> 00:43:07,630
+there's the question of, sort of, the
+entire design flow.
+
+868
+00:43:07,630 --> 00:43:12,310
+How do you use, like convex optimization,
+this kind of thing?
+
+869
+00:43:12,310 --> 00:43:15,787
+And in fact there's this big trend across
+many fields to move away from
+
+870
+00:43:15,787 --> 00:43:18,181
+something that's a direct solution, that
+says oh,
+
+871
+00:43:18,181 --> 00:43:24,241
+you know I want a sparse solution, so
+here's what you should do with the data.
+
+872
+00:43:24,241 --> 00:43:27,310
+Towards one, where you put one level of
+indirection in between.
+
+873
+00:43:27,310 --> 00:43:29,650
+And what you do is you form an
+optimization problem.
+
+874
+00:43:29,650 --> 00:43:33,322
+And what the user does, is mess with the
+optimization problem and
+
+875
+00:43:33,322 --> 00:43:38,675
+then you let some numerical method, work
+out the actual solution.
+
+876
+00:43:38,675 --> 00:43:39,580
+Right?
+
+877
+00:43:39,580 --> 00:43:43,560
+So, this is a big trend, across many, many
+fields, right?
+
+878
+00:43:43,560 --> 00:43:48,472
+Like, for example, it's like control
+signal processing, even statistics.
+
+879
+00:43:48,472 --> 00:43:51,200
+You move away from this idea of.
+
+880
+00:43:51,200 --> 00:43:53,500
+Here's how you, here's what you to do the
+data.
+
+881
+00:43:53,500 --> 00:43:57,400
+And instead, what the designer of a method
+is really doing is
+
+882
+00:43:57,400 --> 00:44:01,600
+actualy designing an optimizaton problem.
+
+883
+00:44:01,600 --> 00:44:03,480
+He changed perimeters here and there.
+
+884
+00:44:03,480 --> 00:44:05,030
+Somethings to smooth, there's some,
+
+885
+00:44:05,030 --> 00:44:09,540
+if somethings not smooth enough, you add a
+little regulization and you crank that up.
+
+886
+00:44:09,540 --> 00:44:12,900
+But, your not You as the user are not
+actually figuring out exactly how to
+
+887
+00:44:12,900 --> 00:44:16,760
+transform your data into your estimate or
+something.
+
+888
+00:44:16,760 --> 00:44:17,500
+Everybody see what I'm saying?
+
+889
+00:44:17,500 --> 00:44:18,270
+So this is the, so
+
+890
+00:44:18,270 --> 00:44:22,800
+this is a very big, it's a big picture
+observation, but it's, it's happened.
+
+891
+00:44:22,800 --> 00:44:26,536
+It's prevalent.
+
+892
+00:44:26,536 --> 00:44:28,150
+Okay.
+
+893
+00:44:28,150 --> 00:44:33,610
+Well, the parent of these two problems,
+least norm and then norm approximation.
+
+894
+00:44:33,610 --> 00:44:35,500
+Is is just regularized approximating and
+
+895
+00:44:35,500 --> 00:44:38,578
+in fact there's even a more general parent
+and the the basic idea is to
+
+896
+00:44:38,578 --> 00:44:41,818
+regularization is its kind of ubiquitous
+across lots of fields and it
+
+897
+00:44:41,818 --> 00:44:48,325
+its basic the correct way that I think to
+think of it is its a bicriterian problem.
+
+898
+00:44:48,325 --> 00:44:53,410
+And it basically says I care about two
+norms, each of which I would like small.
+
+899
+00:44:53,410 --> 00:44:55,040
+Right?
+So the norms are.
+
+900
+00:44:55,040 --> 00:44:57,100
+This is the most traditional setting.
+
+901
+00:44:57,100 --> 00:45:01,550
+The first one is something like AX minus
+B.
+
+902
+00:45:01,550 --> 00:45:04,742
+That can have lots of interpretations
+depending on if you're doing
+
+903
+00:45:04,742 --> 00:45:08,040
+a statistical model or, or data fitting.
+
+904
+00:45:08,040 --> 00:45:09,010
+This is your misfit.
+
+905
+00:45:10,030 --> 00:45:13,690
+X is your model, Ax-b norm is the measure
+of how well your model agrees with
+
+906
+00:45:13,690 --> 00:45:16,460
+the data you have obvserved.
+
+907
+00:45:16,460 --> 00:45:19,156
+That's that's that's so that's something
+like misfit.
+
+908
+00:45:19,156 --> 00:45:21,205
+Or fit.
+
+909
+00:45:21,205 --> 00:45:25,405
+Norm x, is basically how big are your how
+big are your model parameters, and we'll
+
+910
+00:45:25,405 --> 00:45:31,574
+talk in a minute about why would it would
+be that you would want small parameters.
+
+911
+00:45:31,574 --> 00:45:33,208
+And actually there's some very good
+reasons why you
+
+912
+00:45:33,208 --> 00:45:34,685
+would want small parameters.
+
+913
+00:45:34,685 --> 00:45:37,373
+Well, like many good ideas, it can be
+justified from like,
+
+914
+00:45:37,373 --> 00:45:41,155
+five different completely different points
+of view.
+
+915
+00:45:41,155 --> 00:45:43,850
+So let's look at some of them.
+
+916
+00:45:43,850 --> 00:45:45,880
+So the idea here essentially you're
+saying, you know what?
+
+917
+00:45:45,880 --> 00:45:47,640
+What I want is I want a good fit.
+
+918
+00:45:47,640 --> 00:45:50,440
+I want Ax to be about b.
+
+919
+00:45:50,440 --> 00:45:52,030
+But I want to do it efficiently.
+
+920
+00:45:52,030 --> 00:45:53,220
+I want x to be small.
+
+921
+00:45:53,220 --> 00:45:55,028
+So this is the essential idea.
+
+922
+00:45:55,028 --> 00:45:56,041
+Right.
+
+923
+00:45:56,041 --> 00:45:58,121
+Oh, and again, these ideas are all very
+simple so
+
+924
+00:45:58,121 --> 00:46:01,950
+if you're not following, don't
+over-interpret what I'm saying.
+
+925
+00:46:01,950 --> 00:46:04,650
+What I'm saying is so simple that there
+are no subtleties here, none.
+
+926
+00:46:07,700 --> 00:46:08,739
+So when would this come up?
+
+927
+00:46:09,990 --> 00:46:14,433
+Well, an estimation, it might be something
+like this.
+
+928
+00:46:14,433 --> 00:46:19,525
+You'd say, well I happen to know, what I'm
+observing is y equals Ax, so Ax minus y or
+
+929
+00:46:19,525 --> 00:46:22,869
+Ax minus v, Ax minus v if v is what I
+measured is v, and so
+
+930
+00:46:22,869 --> 00:46:31,700
+this is something like the norm of that,
+this thing, and you know that's small.
+
+931
+00:46:31,700 --> 00:46:34,090
+But I had prior knowledge that x is small,
+right?
+
+932
+00:46:34,090 --> 00:46:38,120
+So that's what this term does for me.
+
+933
+00:46:38,120 --> 00:46:39,440
+Right?
+So that's what that says.
+
+934
+00:46:40,522 --> 00:46:43,170
+You can have optimal design.
+
+935
+00:46:43,170 --> 00:46:47,510
+You could say actually I don't insist that
+ax = b.
+
+936
+00:46:47,510 --> 00:46:49,040
+I will give up on ax = b.
+
+937
+00:46:49,040 --> 00:46:51,636
+I will simply get close enough.
+
+938
+00:46:51,636 --> 00:46:52,930
+Close enough?
+
+939
+00:46:52,930 --> 00:46:54,150
+Well there's applied criteria here in
+problems.
+
+940
+00:46:54,150 --> 00:46:55,671
+So you have a whole pretail-optimal curve,
+and
+
+941
+00:46:55,671 --> 00:46:59,300
+you would determine where to operate on
+that curve once you see the curve.
+
+942
+00:46:59,300 --> 00:47:02,650
+Then you'll look at it and say, okay fine,
+I, I don't need to, dot, I mean if I'm,
+
+943
+00:47:02,650 --> 00:47:06,380
+if I'm within three millimeters, that's
+actually fine.
+
+944
+00:47:06,380 --> 00:47:08,300
+Especially if that allows me to use,
+
+945
+00:47:08,300 --> 00:47:12,930
+you know, one quarter the fuel I might've
+used otherwise, right?
+
+946
+00:47:12,930 --> 00:47:13,894
+Something like that.
+
+947
+00:47:13,894 --> 00:47:17,836
+Okay so there, the idea is you're willing
+You don't even, you,
+
+948
+00:47:17,836 --> 00:47:22,850
+you know, you're willing to not have a x
+equals b.
+
+949
+00:47:22,850 --> 00:47:24,813
+You're, you'll get up a little bit on
+that.
+
+950
+00:47:24,813 --> 00:47:27,511
+And hopefully you'll take as a benefit for
+
+951
+00:47:27,511 --> 00:47:32,650
+not doing that exactly a small inefficient
+small x, right?
+
+952
+00:47:32,650 --> 00:47:33,693
+So that's the idea.
+
+953
+00:47:33,693 --> 00:47:38,210
+Another interpretation is this.
+
+954
+00:47:38,210 --> 00:47:40,220
+Is a robust approximation.
+
+955
+00:47:40,220 --> 00:47:42,150
+And this is something we're going to talk
+about later.
+
+956
+00:47:42,150 --> 00:47:46,200
+This is quite a modern interpretation, and
+it's extremely important.
+
+957
+00:47:47,670 --> 00:47:49,900
+And the idea is something like this.
+
+958
+00:47:49,900 --> 00:47:52,000
+You really just want to fit a model, so
+
+959
+00:47:52,000 --> 00:47:55,590
+you really want norm x minus b to be
+small.
+
+960
+00:47:55,590 --> 00:47:56,650
+That's really what you want.
+
+961
+00:47:56,650 --> 00:47:57,178
+Problem is, you don't quite know A.
+Right?
+
+962
+00:47:57,178 --> 00:47:58,324
+This is extremely typical. Right? That the
+As are measured or
+
+963
+00:47:58,324 --> 00:48:00,260
+something like that, you don't quite know
+what they are.
+
+964
+00:48:00,260 --> 00:48:04,678
+And by the way, it's, this can happen in a
+design setting,
+
+965
+00:48:04,678 --> 00:48:09,526
+it can happen in an estimation setting.
+
+966
+00:48:09,526 --> 00:48:10,709
+Right?
+
+967
+00:48:10,709 --> 00:48:15,746
+In a design setting, someone, you say, you
+know what I do know, I know the moment of
+
+968
+00:48:15,746 --> 00:48:20,369
+inert-, you know, I the moment of inertia,
+I know the mass of the vehicle, the CGI,
+
+969
+00:48:20,369 --> 00:48:27,470
+I know all these things pretty well, but
+actually only about 1%.
+
+970
+00:48:27,470 --> 00:48:28,670
+No better than that.
+
+971
+00:48:28,670 --> 00:48:33,776
+And what that says is, if I apply a bunch
+of control surface deviations to
+
+972
+00:48:33,776 --> 00:48:39,510
+an aircraft, and I ask where will it be in
+22 seconds?
+
+973
+00:48:39,510 --> 00:48:42,480
+The answer is actually technically, you
+don't know, right?
+
+974
+00:48:42,480 --> 00:48:44,330
+Because, I don't know there's plenty of
+air.
+
+975
+00:48:44,330 --> 00:48:44,904
+And you know, and
+
+976
+00:48:44,904 --> 00:48:48,200
+I mean, hopefully you have a pretty good
+idea of where it's going to be right?
+
+977
+00:48:48,200 --> 00:48:51,118
+Because otherwise, your, your in deep
+trouble.
+
+978
+00:48:51,118 --> 00:48:52,414
+But the point is that there's really like
+a,
+
+979
+00:48:52,414 --> 00:48:54,800
+a cloud of where it might be, depending on
+what you do.
+
+980
+00:48:54,800 --> 00:48:56,240
+Everybody see what I'm saying?
+
+981
+00:48:56,240 --> 00:48:58,800
+It should be a tight cloud, one hopes,
+right, but
+
+982
+00:48:58,800 --> 00:49:04,140
+the fact of the matter is you don't know
+exactly, what's going to happen.
+
+983
+00:49:04,140 --> 00:49:06,325
+Right?
+So, this is, that's the idea.
+
+984
+00:49:06,325 --> 00:49:10,975
+Okay, so then you say, well, what's
+interesting about this,
+
+985
+00:49:10,975 --> 00:49:19,170
+is how much is your X effected by changes
+in A and that we can even work out.
+
+986
+00:49:19,170 --> 00:49:20,970
+I mean this is going to be an intuitive
+one.
+
+987
+00:49:20,970 --> 00:49:22,871
+We'll look at this more carefully later.
+
+988
+00:49:22,871 --> 00:49:27,886
+But so what you do is you think of "A" as
+being sort of the nominal one, and
+
+989
+00:49:27,886 --> 00:49:35,740
+delta is a matrix, presumably small, which
+is basically your error in "A".
+
+990
+00:49:35,740 --> 00:49:37,450
+So this is, this is what you have, right?
+
+991
+00:49:37,450 --> 00:49:40,990
+So for an aircraft, this is the nominal
+model.
+
+992
+00:49:40,990 --> 00:49:44,470
+That assumes that your estimate of the
+mass moment of inertia, you know,
+
+993
+00:49:44,470 --> 00:49:47,950
+blah blah blah, all these things, are
+perfect.
+
+994
+00:49:47,950 --> 00:49:50,085
+Right?
+They're, they're double precision perfect.
+
+995
+00:49:50,085 --> 00:49:51,150
+Right?
+
+996
+00:49:51,150 --> 00:49:54,978
+This is basically a very, these are
+variations due to the fact that you know,
+
+997
+00:49:54,978 --> 00:49:57,414
+these things are manufactured, things vary
+by 1%,
+
+998
+00:49:57,414 --> 00:50:00,900
+you know all sorts of things happen.
+
+999
+00:50:00,900 --> 00:50:02,215
+Right?
+That's what the delta is here.
+
+1000
+00:50:02,215 --> 00:50:05,071
+And if you look at this equation, we're
+going to work this out but
+
+1001
+00:50:05,071 --> 00:50:09,965
+it's very, very simple, what you get is Ax
+minus b and then plus delta x.
+
+1002
+00:50:09,965 --> 00:50:12,872
+And what you see very clearly is the
+following, is that these,
+
+1003
+00:50:12,872 --> 00:50:15,130
+the errors in A multiply x.
+
+1004
+00:50:15,130 --> 00:50:21,950
+And so, for example, suppose I chose x to
+be zero.
+
+1005
+00:50:21,950 --> 00:50:25,490
+How much would that be affected by model
+errors, by the delta?
+
+1006
+00:50:25,490 --> 00:50:27,380
+Not at all.
+Right, and you can see immediately.
+
+1007
+00:50:27,380 --> 00:50:28,600
+I mean, this is very intuitive.
+
+1008
+00:50:28,600 --> 00:50:29,680
+The basic idea is.
+
+1009
+00:50:29,680 --> 00:50:32,760
+Oh, by the way these are sometimes called
+multiplicative errors.
+
+1010
+00:50:32,760 --> 00:50:34,544
+That's a.
+That's a name you will hear, and
+
+1011
+00:50:34,544 --> 00:50:35,624
+it makes perfect sense,
+
+1012
+00:50:35,624 --> 00:50:39,650
+because it's an error in A which then
+multiplies your choice X.
+
+1013
+00:50:39,650 --> 00:50:41,135
+So it's a multiplicative error, and for
+
+1014
+00:50:41,135 --> 00:50:43,850
+a multiplicative error, it's, it's, it is
+in your in.
+
+1015
+00:50:43,850 --> 00:50:47,030
+If you want to be least, less sensitive to
+a multiplicative error.
+
+1016
+00:50:47,030 --> 00:50:48,390
+Then here's what you want.
+
+1017
+00:50:48,390 --> 00:50:51,050
+You want x to be small the thing that
+everybody see this.
+
+1018
+00:50:51,050 --> 00:50:54,265
+And so this is why a small x would be
+preferable.
+
+1019
+00:50:54,265 --> 00:50:55,086
+right?
+That it,
+
+1020
+00:50:55,086 --> 00:50:59,090
+it would be that it would be less
+sensitive to errors in a.
+
+1021
+00:50:59,090 --> 00:51:00,995
+That was a long description.
+
+1022
+00:51:00,995 --> 00:51:03,275
+I, it's not, it's not supposed to be
+fancier that what I just said, but
+
+1023
+00:51:03,275 --> 00:51:04,806
+that's the idea.
+
+1024
+00:51:04,806 --> 00:51:09,159
+And I can give you yet another
+interpretation of it.
+
+1025
+00:51:09,159 --> 00:51:11,135
+I mean, in some sense all these
+interpretations come around to
+
+1026
+00:51:11,135 --> 00:51:12,160
+the same thing.
+
+1027
+00:51:12,160 --> 00:51:13,700
+Another one is this.
+
+1028
+00:51:13,700 --> 00:51:18,520
+You have y equals you have a model like
+this estimation.
+
+1029
+00:51:18,520 --> 00:51:20,580
+You have y equals ax plus v.
+
+1030
+00:51:20,580 --> 00:51:25,034
+But the truth is, you really have
+something like this, right?
+
+1031
+00:51:25,034 --> 00:51:28,826
+You really have a non-linear model.
+
+1032
+00:51:28,826 --> 00:51:30,308
+However, near, you do,
+
+1033
+00:51:30,308 --> 00:51:35,570
+near where you're looking right now, y
+equals a x plus v works.
+
+1034
+00:51:35,570 --> 00:51:37,662
+That's provided x is small.
+
+1035
+00:51:37,662 --> 00:51:39,846
+OK, so the idea there is this,
+
+1036
+00:51:39,846 --> 00:51:47,310
+this sort of tells you your nominal error
+based on your say linearized model.
+
+1037
+00:51:49,160 --> 00:51:52,104
+This says please have x small, because the
+smaller x is,
+
+1038
+00:51:52,104 --> 00:51:55,790
+the more accurate, the more I trust.
+
+1039
+00:51:55,790 --> 00:51:58,190
+My linearized model, right?
+
+1040
+00:51:58,190 --> 00:52:03,020
+And if fact, in that case, the term that
+constrains X, either via regularization or
+
+1041
+00:52:03,020 --> 00:52:08,170
+as an additive term in regularization, or
+as a constraint.
+
+1042
+00:52:08,170 --> 00:52:10,720
+If it's a constraint, it's called a Trust
+Region Constraint,
+
+1043
+00:52:10,720 --> 00:52:14,860
+which is a beautiful term, because it
+basically says please estimate X.
+
+1044
+00:52:14,860 --> 00:52:16,134
+I want norm AX minus B small, but
+
+1045
+00:52:16,134 --> 00:52:19,900
+I want norm X small, and someone says why
+do you want norm X small?
+
+1046
+00:52:19,900 --> 00:52:21,070
+Do you care, and you go, actually no,
+
+1047
+00:52:21,070 --> 00:52:23,630
+I don't care at all how big the parameter
+is.
+
+1048
+00:52:23,630 --> 00:52:26,438
+The problem is I have to add that there
+because if X gets bigger,
+
+1049
+00:52:26,438 --> 00:52:29,100
+my model AX is no longer accurate.
+
+1050
+00:52:29,100 --> 00:52:29,702
+Everybody.
+
+1051
+00:52:29,702 --> 00:52:31,191
+Getting this?
+
+1052
+00:52:31,191 --> 00:52:34,709
+It's pretty straight forward.
+
+1053
+00:52:34,709 --> 00:52:35,251
+Okay.
+
+1054
+00:52:35,251 --> 00:52:36,198
+Alright.
+
+1055
+00:52:36,198 --> 00:52:39,450
+Let's look at some simple cases.
+
+1056
+00:52:39,450 --> 00:52:42,440
+I mean so, how do you solve it by criteria
+and problem?
+
+1057
+00:52:42,440 --> 00:52:43,260
+You sclarize.
+
+1058
+00:52:43,260 --> 00:52:44,810
+Right, this is the simplest method.
+
+1059
+00:52:44,810 --> 00:52:48,410
+So, you take the norm of Ax minus B plus
+gamma norm x.
+
+1060
+00:52:48,410 --> 00:52:51,300
+And for us that's a convex problem, no big
+deal, we solve it, okay?
+
+1061
+00:52:51,300 --> 00:52:52,740
+So that's fine.
+
+1062
+00:52:52,740 --> 00:52:55,030
+And, and gamma is a positive parameter.
+
+1063
+00:52:55,030 --> 00:52:57,170
+You sweep it from zero to infinity.
+
+1064
+00:52:57,170 --> 00:53:00,208
+And at the two extremes you would get you
+could get the extreme points by
+
+1065
+00:53:00,208 --> 00:53:03,698
+solving a constrained problem or something
+like that.
+
+1066
+00:53:03,698 --> 00:53:04,251
+Okay.
+And so
+
+1067
+00:53:04,251 --> 00:53:07,069
+this traces out the, the trade off curve.
+
+1068
+00:53:07,069 --> 00:53:10,690
+a, a very And the very traditional method
+is to square the two.
+
+1069
+00:53:10,690 --> 00:53:14,110
+You get the same trade off curve and by
+the way that's something you
+
+1070
+00:53:14,110 --> 00:53:18,070
+want to check right that in fact the the
+curve of solutions here parameterized by
+
+1071
+00:53:18,070 --> 00:53:24,142
+delta identical to the curve of solutions
+brown tries by gamma here.
+
+1072
+00:53:24,142 --> 00:53:25,224
+Right?
+
+1073
+00:53:25,224 --> 00:53:28,963
+So, in fact you can even work out how
+delta and gamma are related.
+
+1074
+00:53:28,963 --> 00:53:31,544
+Right? [COUGH]. And it's not totally
+straightforward and
+
+1075
+00:53:31,544 --> 00:53:34,528
+it has to do with the particular problem.
+
+1076
+00:53:34,528 --> 00:53:36,783
+But these are 2 parameterizations.
+
+1077
+00:53:36,783 --> 00:53:38,384
+Okay.
+so, if these are 2 norms, and
+
+1078
+00:53:38,384 --> 00:53:41,634
+the reason generally one square's a norm,
+I mean there's several reasons, but
+
+1079
+00:53:41,634 --> 00:53:43,684
+the most tradition one is when you square
+a 2 norm,
+
+1080
+00:53:43,684 --> 00:53:45,634
+you get a quadratic function, which is
+nice and
+
+1081
+00:53:45,634 --> 00:53:51,820
+smooth, and you know the derivative is
+linear, and you, you know, and then.
+
+1082
+00:53:51,820 --> 00:53:55,400
+Then all your, you have a formula for the
+answer right?
+
+1083
+00:53:55,400 --> 00:53:56,045
+Okay.
+So,
+
+1084
+00:53:56,045 --> 00:53:59,280
+most famous there is is taken off
+regularization.
+
+1085
+00:53:59,280 --> 00:54:02,412
+Oh, and I should say in statistics it's
+called Ridge Regression,
+
+1086
+00:54:02,412 --> 00:54:04,640
+is the name in Statistics.
+
+1087
+00:54:04,640 --> 00:54:05,540
+There's maybe another one.
+
+1088
+00:54:05,540 --> 00:54:06,793
+But it's called Ridge Regression.
+
+1089
+00:54:06,793 --> 00:54:10,590
+And this just turns into a single least
+squared.
+
+1090
+00:54:10,590 --> 00:54:13,692
+I mean you can solve this analytically of
+coarse, it's Two norms, right, so, and
+
+1091
+00:54:13,692 --> 00:54:16,606
+the solution, you can either make it,
+stack it and make a big (?) problem, or
+
+1092
+00:54:16,606 --> 00:54:20,916
+you just get, sort of an analytical
+solution like that, OK.
+
+1093
+00:54:20,916 --> 00:54:26,311
+Now, the horrible reason to use this, the,
+the, the one that, that, I don't like
+
+1094
+00:54:26,311 --> 00:54:31,457
+at all, and is in fact probably the most
+Common use of regularization is
+
+1095
+00:54:31,457 --> 00:54:40,600
+someone says, "What are you doing?", you
+say, "I'm adding regularization." Why?
+
+1096
+00:54:40,600 --> 00:54:43,570
+And you would say, "because without it, I
+was getting numerical,
+
+1097
+00:54:43,570 --> 00:54:48,120
+my solver was sending complaints to me."
+Right, so, everybody see that.
+
+1098
+00:54:48,120 --> 00:54:51,450
+If you add Delta here, this just, now
+works perfectly.
+
+1099
+00:54:51,450 --> 00:54:52,370
+It has to work perfectly.
+
+1100
+00:54:52,370 --> 00:54:53,410
+You can never get a complaint.
+
+1101
+00:54:53,410 --> 00:54:57,600
+It says, inverse condition number big or
+you know, numerical.
+
+1102
+00:54:57,600 --> 00:54:59,100
+It's not going to happen.
+
+1103
+00:54:59,100 --> 00:55:00,880
+Can't get something singular working
+position.
+
+1104
+00:55:02,300 --> 00:55:07,070
+So let's look at an example and this
+example actually it's, it's very simple.
+
+1105
+00:55:07,070 --> 00:55:09,209
+But it's, it's going to be an example of,
+
+1106
+00:55:09,209 --> 00:55:14,320
+it's meant to illustrate exactly what I
+talked about earlier.
+
+1107
+00:55:14,320 --> 00:55:17,820
+This idea of a design flow, right.
+
+1108
+00:55:17,820 --> 00:55:19,990
+How do you use these things, right?
+
+1109
+00:55:19,990 --> 00:55:22,530
+And this will be one from, you know,
+control, if you like.
+
+1110
+00:55:22,530 --> 00:55:24,662
+This could just as well be statistics, it
+could just as well be,
+
+1111
+00:55:24,662 --> 00:55:26,190
+you know anything else.
+
+1112
+00:55:26,190 --> 00:55:29,730
+It could be image processing, video
+process, it can be anything.
+
+1113
+00:55:29,730 --> 00:55:31,660
+And you can construct a similar story.
+
+1114
+00:55:31,660 --> 00:55:33,430
+Right?
+It could be finance.
+
+1115
+00:55:33,430 --> 00:55:35,530
+Right?
+So, let's look at this.
+
+1116
+00:55:35,530 --> 00:55:36,860
+Here's the idea.
+
+1117
+00:55:36,860 --> 00:55:41,005
+I have a convolution system, so so I have
+I apply an input.
+
+1118
+00:55:41,005 --> 00:55:44,920
+u, scalar input over various time
+intervals.
+
+1119
+00:55:44,920 --> 00:55:46,530
+It could be a force I apply to something.
+
+1120
+00:55:46,530 --> 00:55:48,530
+It doesn't matter what it is, right?
+
+1121
+00:55:48,530 --> 00:55:52,706
+And something I call the output is a
+convolution of the input with some
+
+1122
+00:55:52,706 --> 00:55:58,900
+convolution kernel, or in EE dialect,
+that's called an impulse response.
+
+1123
+00:55:58,900 --> 00:56:02,988
+But that's dialect, the standard term in
+convolution kernel.
+
+1124
+00:56:02,988 --> 00:56:03,842
+Kay?
+
+1125
+00:56:03,842 --> 00:56:08,120
+So and in mixed company you should always
+say convolution.
+
+1126
+00:56:08,120 --> 00:56:08,650
+Okay.
+
+1127
+00:56:08,650 --> 00:56:14,400
+So the input design problem is choose this
+input u so that y does something you want.
+
+1128
+00:56:14,400 --> 00:56:17,400
+And this is just going to be a very simple
+example to
+
+1129
+00:56:17,400 --> 00:56:21,508
+show what a typical design flow looks
+like.
+
+1130
+00:56:21,508 --> 00:56:22,390
+Here it is.
+
+1131
+00:56:22,390 --> 00:56:26,830
+What I want to do is I'm given a desired
+trajectory, and I want to track it.
+
+1132
+00:56:26,830 --> 00:56:27,470
+That's it.
+
+1133
+00:56:27,470 --> 00:56:29,965
+So, and, and I, I want to make.
+
+1134
+00:56:29,965 --> 00:56:32,876
+I, I have to give a measure for
+mistracking, and so
+
+1135
+00:56:32,876 --> 00:56:34,935
+I'm going to call that J track, and if,
+
+1136
+00:56:34,935 --> 00:56:41,800
+if you can't think of anything, if nothing
+immediately comes to mind.
+
+1137
+00:56:41,800 --> 00:56:45,280
+Then you should just use the squares, just
+as through historical, and
+
+1138
+00:56:45,280 --> 00:56:50,996
+to follow in a historical tradition, and
+what, I mean it's not a bad thing, right?
+
+1139
+00:56:50,996 --> 00:56:51,770
+I mean.
+
+1140
+00:56:51,770 --> 00:56:56,136
+By the way, if I were to make this the sum
+of the absolute values it's,
+
+1141
+00:56:56,136 --> 00:57:02,795
+it would change the result and you can
+even kind of guess what would.
+
+1142
+00:57:02,795 --> 00:57:06,435
+Happen when you, when you do that, right.
+
+1143
+00:57:06,435 --> 00:57:08,250
+If I were to make this the Infinity norm,
+
+1144
+00:57:08,250 --> 00:57:12,810
+right, that you would call that something
+like mini max tracking error.
+
+1145
+00:57:12,810 --> 00:57:14,173
+You might give a name like that, and
+
+1146
+00:57:14,173 --> 00:57:16,810
+you would get different results as well,
+right.
+
+1147
+00:57:16,810 --> 00:57:20,065
+So, but here we just take the squares and
+make it simple.
+
+1148
+00:57:20,065 --> 00:57:24,810
+OK, Now, at the same time, I want you not
+so big.
+
+1149
+00:57:24,810 --> 00:57:25,641
+Right?
+So I'm going to
+
+1150
+00:57:25,641 --> 00:57:28,510
+introduce an objective called the, the
+magnitude, J mag.
+
+1151
+00:57:28,510 --> 00:57:35,110
+And these are, oh by the way, if you look
+at these, they're quadratic forms.
+
+1152
+00:57:35,110 --> 00:57:36,090
+Right?
+So, so far.
+
+1153
+00:57:36,090 --> 00:57:37,285
+Right?
+because that, they're, they're square,
+
+1154
+00:57:37,285 --> 00:57:38,830
+they're squares, the sums of squares.
+
+1155
+00:57:38,830 --> 00:57:42,803
+And I'll take an input vary, this just
+tells you how.
+
+1156
+00:57:42,803 --> 00:57:46,180
+well, you shouldn't say smooth, how wiggly
+the signal is, or something like that.
+
+1157
+00:57:46,180 --> 00:57:48,598
+And it's going to be the sum of the
+difference,
+
+1158
+00:57:48,598 --> 00:57:51,192
+of the first differences, here.
+
+1159
+00:57:51,192 --> 00:57:53,357
+Right?
+and, and now I can ask some questions,
+
+1160
+00:57:53,357 --> 00:57:58,400
+like when would J track be 0, which is its
+minimum possible value?
+
+1161
+00:57:58,400 --> 00:58:01,856
+It means you have, your y is equal to y
+desired, and you, yes, and a good name for
+
+1162
+00:58:01,856 --> 00:58:07,140
+that is you might, you might say that you
+interpolate The desired thing.
+
+1163
+00:58:07,140 --> 00:58:09,402
+Or you might say you achieve perfect
+tracking,
+
+1164
+00:58:09,402 --> 00:58:14,090
+meaning that the output absolutely tracks
+what it is that you required.
+
+1165
+00:58:14,090 --> 00:58:16,450
+OK, so that would be that.
+
+1166
+00:58:16,450 --> 00:58:21,183
+When would the input magnitude objective
+term be zero?
+
+1167
+00:58:21,183 --> 00:58:24,371
+When u equals zero, okay?
+
+1168
+00:58:24,371 --> 00:58:25,835
+So, in which case, by the way,
+
+1169
+00:58:25,835 --> 00:58:30,490
+your tracking error would simply be some
+wide desired squared, right?
+
+1170
+00:58:30,490 --> 00:58:32,510
+Because your output would be zero at that
+point.
+
+1171
+00:58:32,510 --> 00:58:33,990
+Okay, and how about input variation?
+
+1172
+00:58:33,990 --> 00:58:35,285
+When would that be zero?
+
+1173
+00:58:35,285 --> 00:58:37,500
+Constant, exactly.
+
+1174
+00:58:37,500 --> 00:58:41,010
+So, if you were to crank up.
+
+1175
+00:58:41,010 --> 00:58:44,970
+The coefficient on input variation, very
+high.
+
+1176
+00:58:44,970 --> 00:58:49,520
+You would expect to see inputs that were
+constant right?
+
+1177
+00:58:49,520 --> 00:58:52,860
+And at the same time, they're attempting
+to track and things like that, okay?
+
+1178
+00:58:52,860 --> 00:58:54,520
+And you could go on and on.
+
+1179
+00:58:54,520 --> 00:58:58,720
+For example you could have a second finite
+difference which would be something like
+
+1180
+00:58:58,720 --> 00:59:04,500
+a smoothness measure and that would be
+something like UT plus 1 minus 2 UT.
+
+1181
+00:59:04,500 --> 00:59:06,070
+Plus UT minus one.
+
+1182
+00:59:06,070 --> 00:59:06,840
+That's.
+
+1183
+00:59:06,840 --> 00:59:09,380
+I, I don't know if you recognize that but
+it's the all.
+
+1184
+00:59:09,380 --> 00:59:13,600
+It's the famous, you know, minus one two
+one, in a tridiagonal matrix or something.
+
+1185
+00:59:13,600 --> 00:59:15,200
+It's a second difference.
+
+1186
+00:59:15,200 --> 00:59:15,700
+Right?
+
+1187
+00:59:15,700 --> 00:59:16,253
+And then.
+And
+
+1188
+00:59:16,253 --> 00:59:18,990
+that would give you something smooth, and
+when would that be zero by the way?
+
+1189
+00:59:18,990 --> 00:59:19,780
+Linear.
+Exactly.
+
+1190
+00:59:19,780 --> 00:59:21,800
+So if you, you look like that or that.
+
+1191
+00:59:21,800 --> 00:59:22,372
+That would be zero.
+
+1192
+00:59:22,372 --> 00:59:23,219
+Right.
+
+1193
+00:59:23,219 --> 00:59:24,440
+So.
+
+1194
+00:59:24,440 --> 00:59:25,510
+Okay, great.
+
+1195
+00:59:25,510 --> 00:59:29,100
+So, what we'll do is we'll just make this
+a regularized least squares problem.
+
+1196
+00:59:29,100 --> 00:59:33,053
+We'll take the tracking error plus delta
+times the derivative error plus ETA
+
+1197
+00:59:33,053 --> 00:59:35,420
+times the magnitude error.
+
+1198
+00:59:35,420 --> 00:59:37,840
+And I mean this is a least squares
+problem, right?
+
+1199
+00:59:37,840 --> 00:59:39,390
+So I mean you, we just solve it, right?
+
+1200
+00:59:39,390 --> 00:59:40,130
+This is the idea.
+
+1201
+00:59:40,130 --> 00:59:41,460
+We get a least squares problem.
+
+1202
+00:59:41,460 --> 00:59:44,064
+And then the idea now is that delta and
+
+1203
+00:59:44,064 --> 00:59:51,340
+eta are knobs that you will fiddle with to
+get something that you like right?
+
+1204
+00:59:51,340 --> 00:59:53,308
+And you could, you could do this in a
+formal way and
+
+1205
+00:59:53,308 --> 00:59:57,020
+actually do ten values of each I mean its
+a trivial problem.
+
+1206
+00:59:57,020 --> 00:59:58,740
+You can do ten values of each.
+
+1207
+00:59:58,740 --> 01:00:00,378
+And then just make a, a big ten by ten
+matrix, and
+
+1208
+01:00:00,378 --> 01:00:03,774
+actually plot all these things, look at
+'em, whatever you like.
+
+1209
+01:00:03,774 --> 01:00:06,798
+You could have two big knobs in front of
+you that labeled, you know, delta and
+
+1210
+01:00:06,798 --> 01:00:10,870
+ada are two sliders or whatever on some
+user interface.
+
+1211
+01:00:10,870 --> 01:00:13,510
+And, and you could fiddle with them and
+see what you like, right?
+
+1212
+01:00:13,510 --> 01:00:14,262
+So that's the idea.
+
+1213
+01:00:14,262 --> 01:00:15,826
+Okay.
+
+1214
+01:00:15,826 --> 01:00:16,940
+So.
+
+1215
+01:00:16,940 --> 01:00:17,570
+Quick example.
+
+1216
+01:00:17,570 --> 01:00:24,460
+Here, here is some, here are, three per
+retail optimal solutions, right?
+
+1217
+01:00:24,460 --> 01:00:27,640
+So the first one has delta equals zero and
+that means we have, we,
+
+1218
+01:00:27,640 --> 01:00:31,640
+we're putting zero penalty on the
+uh,variation in u.
+
+1219
+01:00:31,640 --> 01:00:33,592
+Right?
+So, fine.
+
+1220
+01:00:33,592 --> 01:00:37,350
+We're and we're putting a small weight on
+the sides of u.
+
+1221
+01:00:37,350 --> 01:00:38,345
+That's eta, small.
+
+1222
+01:00:38,345 --> 01:00:41,080
+And here's the input and the output.
+
+1223
+01:00:41,080 --> 01:00:43,480
+And two things are plotted in the output
+you can't see,
+
+1224
+01:00:43,480 --> 01:00:47,240
+there's a dashed curve here, which shows
+you the desired one.
+
+1225
+01:00:47,240 --> 01:00:49,220
+The desired one is just this kind of
+square wave thing,
+
+1226
+01:00:49,220 --> 01:00:52,930
+that was dialect that goes like, that
+jumps up and then jumps down.
+
+1227
+01:00:52,930 --> 01:00:53,570
+Right?
+
+1228
+01:00:53,570 --> 01:00:55,090
+Like that.
+So that, that's the desired one.
+
+1229
+01:00:55,090 --> 01:00:58,415
+And you can see if you look at this that
+we're tracking quite well.
+
+1230
+01:00:58,415 --> 01:01:02,420
+Well you can see there's little errors
+right at the transitions and so on.
+
+1231
+01:01:02,420 --> 01:01:06,880
+And this is the input that does the trick,
+over here right, so that's the input.
+
+1232
+01:01:06,880 --> 01:01:10,166
+And you can see the input gets its high as
+you know, almost five positive and
+
+1233
+01:01:10,166 --> 01:01:15,500
+it jerks down to like minus oh, I don't
+know, seven and a half or eight there.
+
+1234
+01:01:15,500 --> 01:01:17,910
+Okay, so that's, that's it.
+
+1235
+01:01:17,910 --> 01:01:21,590
+And you can also see that the input Is
+quite wiggly, right?
+
+1236
+01:01:21,590 --> 01:01:22,752
+So, fine.
+
+1237
+01:01:22,752 --> 01:01:27,132
+That is just one point down the trade-off
+curve, right?
+
+1238
+01:01:27,132 --> 01:01:29,526
+Then you'd say, well, in the second, in
+the middle,
+
+1239
+01:01:29,526 --> 01:01:32,946
+what we're going to do is we're still
+going to have no derivative error but
+
+1240
+01:01:32,946 --> 01:01:36,620
+we're going to crank up eta and we expect.
+
+1241
+01:01:36,620 --> 01:01:39,320
+So that means we're going to add more
+penalty.
+
+1242
+01:01:39,320 --> 01:01:40,370
+To, the size.
+
+1243
+01:01:40,370 --> 01:01:42,760
+And so what we expect is the size of u to
+come down.
+
+1244
+01:01:42,760 --> 01:01:45,670
+And by the way we're going to pay for
+that, in tracking error.
+
+1245
+01:01:45,670 --> 01:01:46,204
+Right?
+So, and
+
+1246
+01:01:46,204 --> 01:01:49,340
+indeed if you look on the right, you can
+see here, you know, the tracking error
+
+1247
+01:01:49,340 --> 01:01:54,669
+probably is mostly accumulated around
+these end points and it's pretty small.
+
+1248
+01:01:54,669 --> 01:01:56,500
+Here you can see, there's some pretty.
+
+1249
+01:01:56,500 --> 01:01:58,875
+You can actually see some pretty
+substantial tracking error.
+
+1250
+01:01:58,875 --> 01:02:00,105
+Here.
+
+1251
+01:02:00,105 --> 01:02:03,150
+Everybody got this?
+
+1252
+01:02:03,150 --> 01:02:07,856
+The difference is, look at this, instead
+we've, we've basically halved the input.
+
+1253
+01:02:07,856 --> 01:02:08,468
+Right?
+
+1254
+01:02:08,468 --> 01:02:14,260
+So with half the input, you know, and so
+if this good enough for you, great.
+
+1255
+01:02:14,260 --> 01:02:15,285
+I mean this is kind of the idea.
+
+1256
+01:02:15,285 --> 01:02:16,410
+Right?
+
+1257
+01:02:16,410 --> 01:02:22,556
+And finally, in the, in the last one what
+we are going to do is we are going to.
+
+1258
+01:02:22,556 --> 01:02:27,656
+Add we're going to now turn on a bunch of
+smoothing regularization and,
+
+1259
+01:02:27,656 --> 01:02:32,624
+again, you pay for it in terms of
+tracking.
+
+1260
+01:02:32,624 --> 01:02:34,410
+Maybe this is good enough for you, maybe
+not, and now, but
+
+1261
+01:02:34,410 --> 01:02:36,566
+you can see immediately what happens.
+
+1262
+01:02:36,566 --> 01:02:42,520
+Things like these, which rack up a big
+bill in the derivative.
+
+1263
+01:02:42,520 --> 01:02:43,910
+Cost function.
+
+1264
+01:02:43,910 --> 01:02:47,460
+Now we're smoothed out, and you get
+something like this.
+
+1265
+01:02:47,460 --> 01:02:50,410
+Okay, so anyway this is, so this is not
+supposed to be complicated.
+
+1266
+01:02:50,410 --> 01:02:51,350
+This is not complicated.
+
+1267
+01:02:51,350 --> 01:02:53,950
+It is simple, but the idea is this is what
+you do.
+
+1268
+01:02:53,950 --> 01:02:58,000
+And you would typically sit there and turn
+knobs, and see what you like.
+
+1269
+01:02:58,000 --> 01:03:00,510
+Right?
+And this could be any applicationary.
+
+1270
+01:03:00,510 --> 01:03:01,952
+Right?
+This could be image processing,
+
+1271
+01:03:01,952 --> 01:03:05,200
+where you turn a knob and you go, no no
+no, it got too smoothed.
+
+1272
+01:03:05,200 --> 01:03:06,900
+And then you crank it down the other way.
+
+1273
+01:03:06,900 --> 01:03:08,750
+And now some of the noise comes back.
+
+1274
+01:03:08,750 --> 01:03:11,520
+And then, you turn another knob and, this
+is how this goes.
+
+1275
+01:03:11,520 --> 01:03:14,544
+So let's look at another area, it's it's
+also very simple bicriterion problem,
+
+1276
+01:03:14,544 --> 01:03:17,440
+it's signal reconstructions, quite
+straightforward.
+
+1277
+01:03:17,440 --> 01:03:18,136
+It's this.
+
+1278
+01:03:18,136 --> 01:03:23,610
+What I have is I have, I'm given a
+corrupted signal.
+
+1279
+01:03:23,610 --> 01:03:25,940
+That's x you know corrupted okay.
+
+1280
+01:03:25,940 --> 01:03:29,478
+And what I would like to do is to come up
+with xhat which is supposed to be
+
+1281
+01:03:29,478 --> 01:03:33,199
+an estimate of this corrupt of well its an
+estimate of the signal before it
+
+1282
+01:03:33,199 --> 01:03:36,510
+was corrupted okay?
+
+1283
+01:03:36,510 --> 01:03:39,100
+And that's what I'm going to do and so I
+at.
+
+1284
+01:03:39,100 --> 01:03:41,344
+I want x to be close to x corrupted, but
+
+1285
+01:03:41,344 --> 01:03:46,240
+I don't want it to be equal to it because
+it's been corrupted.
+
+1286
+01:03:46,240 --> 01:03:48,688
+And what I'm going to do is I'm going to
+have a second function here,
+
+1287
+01:03:48,688 --> 01:03:51,600
+which is known as, it's got lots of names.
+
+1288
+01:03:51,600 --> 01:03:53,808
+It's a regularize, it's a regularization
+function, or
+
+1289
+01:03:53,808 --> 01:03:56,625
+sometimes people call it a smoothing
+regularizer.
+
+1290
+01:03:56,625 --> 01:04:00,950
+Okay, and so that's this function phi of
+x, x hat.
+
+1291
+01:04:00,950 --> 01:04:03,900
+And the idea is that by looking at a
+trade-off between these,
+
+1292
+01:04:03,900 --> 01:04:05,552
+I'm going to do some, it's a, this is,
+
+1293
+01:04:05,552 --> 01:04:11,765
+this is a principled way to do smoothing
+or something like that to smooth a signal.
+
+1294
+01:04:11,765 --> 01:04:15,410
+Alright, and the model is something like
+this.
+
+1295
+01:04:15,410 --> 01:04:16,938
+You have some unknown signal.
+
+1296
+01:04:16,938 --> 01:04:24,240
+You observe a corrupted version and then
+you're going to solve this problem.
+
+1297
+01:04:24,240 --> 01:04:26,812
+And examples would be something like this
+you know.
+
+1298
+01:04:26,812 --> 01:04:31,356
+So simple quadratic smoothing would be you
+simply take the differences squared like
+
+1299
+01:04:31,356 --> 01:04:34,568
+we did in the previous example.
+
+1300
+01:04:34,568 --> 01:04:39,600
+the, some of the absolute values, that's
+called the total variation regularizer.
+
+1301
+01:04:39,600 --> 01:04:41,944
+Right?
+So that's, that's completely standard so
+
+1302
+01:04:41,944 --> 01:04:45,040
+that, that's actually a standard term.
+
+1303
+01:04:45,040 --> 01:04:47,171
+Let's look at an example.
+
+1304
+01:04:47,171 --> 01:04:49,180
+I, simple example, right?
+
+1305
+01:04:49,180 --> 01:04:51,373
+So here's some signal, it's 4,000, you
+know, time samples, or
+
+1306
+01:04:51,373 --> 01:04:52,900
+whatever you like here.
+
+1307
+01:04:52,900 --> 01:04:55,552
+This is the original signal, and this is
+the corrupted one, and
+
+1308
+01:04:55,552 --> 01:04:59,660
+I mean this one's kind of goofy because,
+you know, take in the signal.
+
+1309
+01:04:59,660 --> 01:05:01,964
+You've added some, and you can see that
+the,
+
+1310
+01:05:01,964 --> 01:05:06,124
+the difference between the signal and, and
+the, the corruption you can see
+
+1311
+01:05:06,124 --> 01:05:12,560
+that the corruption is very like high
+frequency or something like that again.
+
+1312
+01:05:12,560 --> 01:05:13,140
+So that's.
+
+1313
+01:05:13,140 --> 01:05:15,184
+So it's kind of obvious, right?
+
+1314
+01:05:15,184 --> 01:05:19,940
+So here what you do now is we simply use a
+quadratic smoother and
+
+1315
+01:05:19,940 --> 01:05:25,582
+what you would get would be things like
+this.
+
+1316
+01:05:25,582 --> 01:05:27,500
+So this is with a little bit of smoothing.
+
+1317
+01:05:27,500 --> 01:05:29,060
+This is what you'd reconstruct.
+
+1318
+01:05:29,060 --> 01:05:32,865
+This would be substantially more and even
+more still.
+
+1319
+01:05:32,865 --> 01:05:34,070
+Right?
+
+1320
+01:05:34,070 --> 01:05:35,560
+So, that's the idea.
+
+1321
+01:05:35,560 --> 01:05:39,130
+And, you know, you might say, that's a
+little bit too much, and
+
+1322
+01:05:39,130 --> 01:05:42,110
+then that's just about right.
+
+1323
+01:05:42,110 --> 01:05:45,917
+Now, unfortunately, for smoothing problems
+like this,
+
+1324
+01:05:45,917 --> 01:05:51,235
+there really aren't any particularly good
+ways to choose.
+
+1325
+01:05:51,235 --> 01:05:51,900
+You.
+
+1326
+01:05:51,900 --> 01:05:55,071
+The level of smoothing you do except maybe
+aesthetically.
+
+1327
+01:05:55,071 --> 01:05:57,820
+I mean, you have to have some side
+information.
+
+1328
+01:05:57,820 --> 01:05:58,320
+Right?
+
+1329
+01:05:58,320 --> 01:06:02,300
+Or you could have some cases where you
+actually knew what the exact signal was.
+
+1330
+01:06:02,300 --> 01:06:02,990
+Right?
+So that.
+
+1331
+01:06:02,990 --> 01:06:06,546
+Then, then you could actually do
+reasonable things like cross validation.
+
+1332
+01:06:06,546 --> 01:06:08,950
+Here's one, [COUGH] and this is much more
+modern.
+
+1333
+01:06:08,950 --> 01:06:11,488
+By the way, total variation reconstruction
+this is very,
+
+1334
+01:06:11,488 --> 01:06:14,110
+this is introduced maybe only in the
+1990s.
+
+1335
+01:06:14,110 --> 01:06:16,418
+So this is pretty, relatively recent.
+
+1336
+01:06:16,418 --> 01:06:18,758
+And it's, it's actually quite interesting
+and
+
+1337
+01:06:18,758 --> 01:06:23,611
+quite stunning, in fact I've tried to get
+some audio recordings of this.
+
+1338
+01:06:23,611 --> 01:06:27,870
+I mean I haven't tried that hard and I
+should because they're amazing.
+
+1339
+01:06:27,870 --> 01:06:29,135
+I put em on course website or
+
+1340
+01:06:29,135 --> 01:06:33,494
+something like that or if, anyway but I'll
+explain that in a minute.
+
+1341
+01:06:33,494 --> 01:06:34,720
+So here's a picture.
+
+1342
+01:06:34,720 --> 01:06:36,840
+What I have is, here's the original
+signal.
+
+1343
+01:06:36,840 --> 01:06:40,270
+Eh, it's got a smooth components but
+these, these kind of jumps every so often.
+
+1344
+01:06:40,270 --> 01:06:41,650
+I mean this is all just made up.
+
+1345
+01:06:41,650 --> 01:06:44,810
+Right, so this is just to illustrate, what
+happens, right?
+
+1346
+01:06:44,810 --> 01:06:46,550
+So here we have this signal.
+
+1347
+01:06:46,550 --> 01:06:50,310
+And so you'd, and then we add this high
+frequency noise to it, like that.
+
+1348
+01:06:50,310 --> 01:06:52,720
+So that's the corrupted state, right?
+
+1349
+01:06:52,720 --> 01:06:55,480
+Now, one of the problems here is that you
+don't have this
+
+1350
+01:06:55,480 --> 01:06:58,540
+frequency scale separation, right?
+
+1351
+01:06:58,540 --> 01:07:02,780
+Because the original signal has these
+jumps.
+
+1352
+01:07:02,780 --> 01:07:04,109
+And a jump.
+
+1353
+01:07:04,109 --> 01:07:05,553
+Again, if you know about Fourier analysis
+and
+
+1354
+01:07:05,553 --> 01:07:08,770
+all that kind of stuff roughly is going to
+contain a lot of high frequencies.
+
+1355
+01:07:08,770 --> 01:07:10,363
+So you don't have the spectral separation
+of the underlying signal and
+
+1356
+01:07:10,363 --> 01:07:11,506
+the noise here.
+
+1357
+01:07:11,506 --> 01:07:16,365
+And the result is if you do quadratic
+smoothing,
+
+1358
+01:07:16,365 --> 01:07:22,050
+which in fact is a linear operation.
+
+1359
+01:07:22,050 --> 01:07:24,230
+It's just a low pass filter, frankly, is
+what it is.
+
+1360
+01:07:24,230 --> 01:07:25,710
+And what you get is this.
+
+1361
+01:07:25,710 --> 01:07:31,990
+If you do some low pass filtering, well
+sure, this gets, this gets moved out.
+
+1362
+01:07:31,990 --> 01:07:33,530
+That gets attenuated.
+
+1363
+01:07:33,530 --> 01:07:35,630
+But you can see as you crank it up to
+smooth out more,
+
+1364
+01:07:35,630 --> 01:07:38,470
+you can see exactly what's happening here.
+
+1365
+01:07:38,470 --> 01:07:42,050
+That a transition that in fact was a
+single value.
+
+1366
+01:07:42,050 --> 01:07:43,076
+Has now, widened, and
+
+1367
+01:07:43,076 --> 01:07:47,900
+now it's taking place over, ooh that's a
+lot, you know, 50 or something, right?
+
+1368
+01:07:47,900 --> 01:07:49,418
+So, a transition that was,
+
+1369
+01:07:49,418 --> 01:07:54,430
+that, that went in like one time sample,
+is now happening over 50.
+
+1370
+01:07:54,430 --> 01:07:54,990
+Right?
+
+1371
+01:07:54,990 --> 01:07:58,760
+So, by the way if this were audio This
+would bake, make something sound very
+
+1372
+01:07:58,760 --> 01:08:03,800
+muffled if that was a, if this was the
+attack caused by a drum, right?
+
+1373
+01:08:03,800 --> 01:08:05,200
+Someone hits a snare drum.
+
+1374
+01:08:05,200 --> 01:08:06,892
+You will get something that looks like
+that.
+
+1375
+01:08:06,892 --> 01:08:10,845
+And if you smooth it, like this, and
+instead of the attack, you know rising and
+
+1376
+01:08:10,845 --> 01:08:12,969
+with tin samples, you know 48 kilohertz,
+or
+
+1377
+01:08:12,969 --> 01:08:16,332
+something like that instead of 10 samples
+that goes at a thousand and
+
+1378
+01:08:16,332 --> 01:08:22,765
+It just, it sounds like a thud, it doesn't
+sound like a drum anymore.
+
+1379
+01:08:22,765 --> 01:08:23,790
+Okay?
+
+1380
+01:08:23,790 --> 01:08:24,660
+So, alright.
+
+1381
+01:08:24,660 --> 01:08:29,430
+But let's do total variation de-noising.
+
+1382
+01:08:29,430 --> 01:08:32,480
+Right?
+So, total variation de-noising does this.
+
+1383
+01:08:32,480 --> 01:08:35,160
+Actually, we can see a lot of things here
+that you would predict.
+
+1384
+01:08:36,760 --> 01:08:37,950
+So, the first is this.
+
+1385
+01:08:37,950 --> 01:08:41,815
+This is where you have put a lot of total
+variation de-noising.
+
+1386
+01:08:41,815 --> 01:08:42,980
+In.
+
+1387
+01:08:42,980 --> 01:08:45,130
+And you're beginning to see something
+pretty cool.
+
+1388
+01:08:45,130 --> 01:08:51,018
+When you crank up something which is
+basically the L1 norm of the difference,
+
+1389
+01:08:51,018 --> 01:08:55,431
+of x hat, t plus 1 and x hat t.
+
+1390
+01:08:55,431 --> 01:08:57,587
+Again You should start now and
+
+1391
+01:08:57,587 --> 01:09:02,900
+by the end of the course it should be
+completely engrained and second nature but
+
+1392
+01:09:02,900 --> 01:09:10,410
+you want to make connections between
+things like L1 and sparcity, right?
+
+1393
+01:09:10,410 --> 01:09:13,710
+that's the very simplified model but it
+should really be kinks and
+
+1394
+01:09:13,710 --> 01:09:15,410
+sparcity, right?
+
+1395
+01:09:15,410 --> 01:09:16,598
+So let's look at L1 and
+
+1396
+01:09:16,598 --> 01:09:22,580
+sparcity When someone says please minimize
+you know Well, it's part of it right?
+
+1397
+01:09:22,580 --> 01:09:24,490
+If they say please minimize this, right?
+
+1398
+01:09:24,490 --> 01:09:28,340
+What you would expect is that if the
+coefficient in front of this is
+
+1399
+01:09:28,340 --> 01:09:34,020
+high enough right, that a whole lot of
+these numbers will be zero.
+
+1400
+01:09:34,020 --> 01:09:36,344
+And that says if you do total variation.
+
+1401
+01:09:36,344 --> 01:09:37,221
+Denoising.
+
+1402
+01:09:37,221 --> 01:09:40,088
+You should expect a [NOISE] piecewise
+constant signal,
+
+1403
+01:09:40,088 --> 01:09:42,930
+because a piecewise constant signal is.
+
+1404
+01:09:42,930 --> 01:09:43,840
+That's what is means.
+
+1405
+01:09:43,840 --> 01:09:44,900
+This is like a derivative.
+
+1406
+01:09:44,900 --> 01:09:46,073
+This first difference, and
+
+1407
+01:09:46,073 --> 01:09:50,070
+if you have sparse derivative, [NOISE] it
+means you're piecewise constant.
+
+1408
+01:09:50,070 --> 01:09:51,450
+Everybody got that?
+
+1409
+01:09:51,450 --> 01:09:56,740
+By the way, if this were the second
+difference, and I put an L1 norm.
+
+1410
+01:09:56,740 --> 01:09:57,540
+And I minimized.
+
+1411
+01:09:58,630 --> 01:10:00,929
+What would you expect to see?
+
+1412
+01:10:00,929 --> 01:10:04,860
+Piece-wise linear, exactly.
+
+1413
+01:10:04,860 --> 01:10:09,172
+ANd if I took the third difference, what
+would you get?
+
+1414
+01:10:09,172 --> 01:10:13,680
+Piecewise quadratic, and by the way those
+would be splines just for the record.
+
+1415
+01:10:13,680 --> 01:10:16,720
+You get splines.
+
+1416
+01:10:16,720 --> 01:10:18,280
+Okay?
+So this is sort of the idea.
+
+1417
+01:10:18,280 --> 01:10:21,180
+Now here what's happened is you are
+tracking this.
+
+1418
+01:10:21,180 --> 01:10:21,730
+Right?
+
+1419
+01:10:21,730 --> 01:10:23,575
+But what's happened is your regularization
+is so
+
+1420
+01:10:23,575 --> 01:10:26,030
+high that things like that just got
+constant.
+
+1421
+01:10:26,030 --> 01:10:27,744
+Right?
+You've, you've lost the fact that this is
+
+1422
+01:10:27,744 --> 01:10:28,760
+varying here.
+
+1423
+01:10:28,760 --> 01:10:29,550
+Right.
+
+1424
+01:10:29,550 --> 01:10:31,180
+Oh, I should add also kind of a cool
+thing.
+
+1425
+01:10:31,180 --> 01:10:33,340
+If you do this on images.
+
+1426
+01:10:33,340 --> 01:10:35,870
+It's a gray scale or color stuff.
+
+1427
+01:10:35,870 --> 01:10:39,120
+You get very cool stuff things start
+looking cartoonish, right.
+
+1428
+01:10:39,120 --> 01:10:40,599
+Because, you have a whole bunch of,
+
+1429
+01:10:40,599 --> 01:10:43,506
+you have, you have whole regions where it
+was one color or one shade or
+
+1430
+01:10:43,506 --> 01:10:47,710
+their was some gradient, it's just like
+now replaced flat.
+
+1431
+01:10:47,710 --> 01:10:50,188
+So, I think you can even imagine what this
+looks like, right?
+
+1432
+01:10:50,188 --> 01:10:51,471
+>> Mm-hmm.
+
+1433
+01:10:51,471 --> 01:10:52,640
+>> So, right, this is for that.
+
+1434
+01:10:52,640 --> 01:10:56,580
+So, if you do tele variation
+Regularization on an image.
+
+1435
+01:10:56,580 --> 01:11:01,190
+What happens is, as you, at, at first you
+have a million pixels.
+
+1436
+01:11:01,190 --> 01:11:04,330
+You're probably going to have a million
+grayscale values, right?
+
+1437
+01:11:04,330 --> 01:11:06,190
+I mean there'd be no reason for any of
+them to repeat, right?
+
+1438
+01:11:06,190 --> 01:11:07,650
+If they do, it's an accident.
+
+1439
+01:11:07,650 --> 01:11:09,954
+You turn up total variation regulization
+on an image, and
+
+1440
+01:11:09,954 --> 01:11:12,160
+they'll jump down dramatically.
+
+1441
+01:11:12,160 --> 01:11:15,121
+And after awhile you'll only have a
+thousand and then you keep turning it and
+
+1442
+01:11:15,121 --> 01:11:18,190
+at some point you'll like ten gray levels,
+right.
+
+1443
+01:11:18,190 --> 01:11:20,242
+And, by the way, it will still be
+completely recognizable as the,
+
+1444
+01:11:20,242 --> 01:11:21,880
+as the image you wanted, right?
+
+1445
+01:11:21,880 --> 01:11:26,870
+But, anyway, so, I'm just saying, these
+things apply to everything, right.
+
+1446
+01:11:26,870 --> 01:11:28,179
+You'll, you'll see these all over the
+place.
+
+1447
+01:11:28,179 --> 01:11:33,368
+So, here you can see, this is where we
+might probably have not enough.
+
+1448
+01:11:33,368 --> 01:11:38,328
+Total variation regularization because you
+can see there's also squigglies there, and
+
+1449
+01:11:38,328 --> 01:11:42,190
+this is kind of the proverbial just
+enough.
+
+1450
+01:11:42,190 --> 01:11:43,650
+Right?
+Something like that.
+
+1451
+01:11:45,750 --> 01:11:46,590
+Finally, there's a big thing.
+
+1452
+01:11:46,590 --> 01:11:50,191
+We, we, we'll look at this idea of robust
+approximation.
+
+1453
+01:11:50,191 --> 01:11:53,320
+So here, and we've already seen a little
+bit of this hints at it.
+
+1454
+01:11:53,320 --> 01:11:54,770
+Right?
+So the idea is.
+
+1455
+01:11:54,770 --> 01:11:56,366
+You want to minimize let's say norm AX
+minus B,
+
+1456
+01:11:56,366 --> 01:11:58,380
+but the problem is you don't know A.
+
+1457
+01:11:58,380 --> 01:12:04,080
+Now, I should add this issue is universal
+in actually in all optimization problems.
+
+1458
+01:12:04,080 --> 01:12:06,253
+Right that, that you have data in an
+optimization problem, and,
+
+1459
+01:12:06,253 --> 01:12:10,080
+you know, we can talk a little bit about
+some generic things to say about data.
+
+1460
+01:12:10,080 --> 01:12:14,746
+You know, when data, when values that are
+zero, one, minus one.
+
+1461
+01:12:14,746 --> 01:12:17,950
+Sometimes 2 minus 2, one half, things like
+that.
+
+1462
+01:12:17,950 --> 01:12:19,680
+Those are probably really those numbers,
+right?
+
+1463
+01:12:19,680 --> 01:12:22,290
+Because it may be some, coefficient that
+makes sense.
+
+1464
+01:12:22,290 --> 01:12:25,050
+Like you're basically saying, you know,
+this thing's equal to that.
+
+1465
+01:12:25,050 --> 01:12:26,980
+And that would reveal itself as a one and
+a minus one.
+
+1466
+01:12:26,980 --> 01:12:30,600
+And those really, really probably are ze,
+one and minus one.
+
+1467
+01:12:30,600 --> 01:12:34,390
+Any other constant other than the ones I
+just named, and maybe a handful of others.
+
+1468
+01:12:34,390 --> 01:12:36,890
+Generically speaking, they have a
+provenance.
+
+1469
+01:12:36,890 --> 01:12:38,670
+And you can trace it back.
+
+1470
+01:12:38,670 --> 01:12:42,489
+And they trace back to models of things or
+measurements or experts or
+
+1471
+01:12:42,489 --> 01:12:49,330
+econometric models or mechanics or physics
+models or something like that, right.
+
+1472
+01:12:49,330 --> 01:12:51,446
+And in fact, if you trace them all the way
+back you'd say,
+
+1473
+01:12:51,446 --> 01:12:55,620
+oh you know that came from a finite
+element calculation and blah, blah, blah.
+
+1474
+01:12:55,620 --> 01:12:56,990
+And by the way.
+
+1475
+01:12:56,990 --> 01:13:00,850
+That means that those numbers are suspect,
+right?
+
+1476
+01:13:00,850 --> 01:13:06,090
+I mean, they could be accurate to three
+significant figures, maybe five, right?
+
+1477
+01:13:06,090 --> 01:13:08,322
+Maybe one, right?
+
+1478
+01:13:08,322 --> 01:13:12,220
+Or in economics the signs is suspect,
+right?
+
+1479
+01:13:12,220 --> 01:13:16,330
+[LAUGH] Or something like that, I mean you
+just don't You know, right?
+
+1480
+01:13:16,330 --> 01:13:17,860
+There's places where it's dominated.
+
+1481
+01:13:17,860 --> 01:13:20,060
+I mean, you know, there's extremes here,
+right?
+
+1482
+01:13:20,060 --> 01:13:22,735
+So, alright, so, the point is,
+
+1483
+01:13:22,735 --> 01:13:30,300
+in all these cases, you have, there is
+error in the data, right?
+
+1484
+01:13:30,300 --> 01:13:36,420
+And there are ways to handle it simply.
+
+1485
+01:13:36,420 --> 01:13:38,425
+Simple methods that we've seen one
+already.
+
+1486
+01:13:38,425 --> 01:13:41,480
+Regularization is essentially a method to
+choose Xs
+
+1487
+01:13:41,480 --> 01:13:45,580
+that are not extremely vulnerable to
+changes in a.
+
+1488
+01:13:45,580 --> 01:13:50,739
+For example, that's a very simple example
+of a robust optimization problem, but
+
+1489
+01:13:50,739 --> 01:13:54,332
+there are plenty others, right?
+
+1490
+01:13:54,332 --> 01:13:56,612
+By the way, how is parameter.
+
+1491
+01:13:56,612 --> 01:13:58,626
+>> Variation handled in real life.
+
+1492
+01:13:58,626 --> 01:14:01,986
+So what do you think is by far the most
+prevalent method for
+
+1493
+01:14:01,986 --> 01:14:06,748
+handling the fact that your parameters are
+not known?
+
+1494
+01:14:06,748 --> 01:14:10,038
+In real, now in real life I'm talking
+about when people actually solve things.
+
+1495
+01:14:10,038 --> 01:14:11,158
+>> Ignore it.
+
+1496
+01:14:11,158 --> 01:14:11,910
+>> What?
+
+1497
+01:14:11,910 --> 01:14:13,140
+Ignore it thank you.
+
+1498
+01:14:13,140 --> 01:14:14,140
+That is absolutely correct.
+
+1499
+01:14:14,140 --> 01:14:15,560
+That is by far the prevalent method.
+
+1500
+01:14:15,560 --> 01:14:17,649
+Now.
+That's okay, in my opinion,
+
+1501
+01:14:17,649 --> 01:14:23,710
+provided you do one thing, which is, which
+then takes, makes this okay.
+
+1502
+01:14:23,710 --> 01:14:25,340
+What would that one thing be to do.
+
+1503
+01:14:25,340 --> 01:14:29,920
+It's the least that you could do.
+
+1504
+01:14:29,920 --> 01:14:33,092
+So you just solved a problem, you assumed
+that all your data was accurate,
+
+1505
+01:14:33,092 --> 01:14:36,000
+they are double precision numbers.
+
+1506
+01:14:36,000 --> 01:14:38,810
+You got them from, you know, Bob or
+whatever, some other intern.
+
+1507
+01:14:38,810 --> 01:14:39,430
+It doesn't matter.
+
+1508
+01:14:39,430 --> 01:14:41,585
+You got the model, and you did it.
+
+1509
+01:14:41,585 --> 01:14:45,170
+What should you do now?
+
+1510
+01:14:45,170 --> 01:14:50,140
+Generate a new A, with the entries changed
+by a plausible amount.
+
+1511
+01:14:50,140 --> 01:14:50,945
+Everybody got this?
+
+1512
+01:14:50,945 --> 01:14:52,770
+Right?
+
+1513
+01:14:52,770 --> 01:14:56,861
+And you just simply test the, the X you
+found before.
+
+1514
+01:14:56,861 --> 01:14:57,921
+With the new A.
+
+1515
+01:14:57,921 --> 01:15:01,119
+And if things are way off now then you
+know that you
+
+1516
+01:15:01,119 --> 01:15:04,561
+cannot ignore safely robustness.
+
+1517
+01:15:04,561 --> 01:15:08,131
+Everybody got this I mean its incredibly
+simple but its unbelievebly importing its
+
+1518
+01:15:08,131 --> 01:15:11,850
+actually shocking to me how many people
+don't do this.
+
+1519
+01:15:11,850 --> 01:15:12,412
+Right, so.
+But
+
+1520
+01:15:12,412 --> 01:15:14,200
+it's, this is just completely standard.
+
+1521
+01:15:14,200 --> 01:15:15,481
+If you come up and say, oh,
+
+1522
+01:15:15,481 --> 01:15:20,430
+wow, I've got a fantastic, a fantastic
+four sequence to land an airplane.
+
+1523
+01:15:20,430 --> 01:15:21,430
+You gotta see this.
+
+1524
+01:15:21,430 --> 01:15:22,885
+It's just, it's unbelievable.
+
+1525
+01:15:22,885 --> 01:15:24,240
+Yeah, it's like no.
+
+1526
+01:15:24,240 --> 01:15:27,860
+People don't even notice it, when they're,
+oh yeah, and you say, okay fine.
+
+1527
+01:15:27,860 --> 01:15:28,830
+Here it is.
+
+1528
+01:15:28,830 --> 01:15:31,900
+You absolutely have to go back.
+
+1529
+01:15:31,900 --> 01:15:35,500
+And change the model change the total mass
+move the center of gravity and
+
+1530
+01:15:35,500 --> 01:15:39,720
+resimulate the same thing with these
+changed parameters.
+
+1531
+01:15:39,720 --> 01:15:42,840
+And you have to do ten hundred of these
+after which by the way you know absolutly
+
+1532
+01:15:42,840 --> 01:15:45,529
+nothing I might add technically.
+
+1533
+01:15:45,529 --> 01:15:47,670
+But I mean from a.
+
+1534
+01:15:47,670 --> 01:15:49,520
+Strict point of view, right?
+
+1535
+01:15:49,520 --> 01:15:51,200
+But at least you've done the common sense
+check.
+
+1536
+01:15:51,200 --> 01:15:52,780
+Everybody got this, right?
+
+1537
+01:15:52,780 --> 01:15:58,111
+If you, if you come and say, I've got a
+trading strategy, it's unbelievable.
+
+1538
+01:15:58,111 --> 01:15:59,100
+[LAUGH] And they go, really?
+
+1539
+01:15:59,100 --> 01:16:02,540
+And you go, oh my God you should see what
+it did last year, unbelievable.
+
+1540
+01:16:02,540 --> 01:16:04,590
+Then you'd say well did you try it on the
+year before?
+
+1541
+01:16:04,590 --> 01:16:08,543
+The main method, traditional method used
+for handling uncertainty in data is to
+
+1542
+01:16:08,543 --> 01:16:12,083
+ignore it, and I'd say that's actually a
+perfectly respectable option,
+
+1543
+01:16:12,083 --> 01:16:18,250
+provided you do a posterior analysis of
+the effect of the variations.
+
+1544
+01:16:18,250 --> 01:16:20,520
+Then it's totally legit.
+
+1545
+01:16:20,520 --> 01:16:23,425
+Assuming the posterior analysis reveals
+that it works fine.
+
+1546
+01:16:23,425 --> 01:16:24,750
+Okay.
+
+1547
+01:16:24,750 --> 01:16:28,446
+Now the next step is to have a heuristic
+that kind of is a heuristic for
+
+1548
+01:16:28,446 --> 01:16:34,200
+making sure that things don't get too
+wacky when the parameters change.
+
+1549
+01:16:34,200 --> 01:16:36,700
+That'd be like regularization, absolutely
+fine.
+
+1550
+01:16:36,700 --> 01:16:40,270
+Again, you'd do a posterior analysis to
+understand if it works.
+
+1551
+01:16:40,270 --> 01:16:43,310
+And the new thing, this has been coming
+up.
+
+1552
+01:16:43,310 --> 01:16:45,456
+Maybe in the last, could be 20 years, but,
+and
+
+1553
+01:16:45,456 --> 01:16:50,580
+it was done by a handful of esoteric, you
+know, work by academics.
+
+1554
+01:16:50,580 --> 01:16:54,340
+It's now coming on mainli, main,
+mainstream, it's this.
+
+1555
+01:16:54,340 --> 01:16:55,940
+You simply take into account,
+
+1556
+01:16:55,940 --> 01:16:59,528
+the uncertainty directly in the problem
+statement.
+
+1557
+01:16:59,528 --> 01:17:03,980
+Umk, and so that, these are called robe,
+that's roboz optimization.
+
+1558
+01:17:03,980 --> 01:17:05,320
+And this is a special case.
+
+1559
+01:17:05,320 --> 01:17:07,740
+Okay, now were jumping back to the
+specific.
+
+1560
+01:17:07,740 --> 01:17:11,650
+That was the background, were jumping back
+to the specific problem were looking at.
+
+1561
+01:17:11,650 --> 01:17:14,888
+So you have to have a model for how A
+varies.
+
+1562
+01:17:14,888 --> 01:17:17,524
+Right?
+And in one it's to, it's stochastic.
+
+1563
+01:17:17,524 --> 01:17:21,920
+You would say A is random and you would
+describe it's distribution.
+
+1564
+01:17:21,920 --> 01:17:23,540
+And the distribution could even be finite.
+
+1565
+01:17:23,540 --> 01:17:27,220
+Like, you just say it's got 25 values with
+these probabilities, right?
+
+1566
+01:17:27,220 --> 01:17:30,637
+By the way, that's an extremely reasonable
+thing to do because what you do is,
+
+1567
+01:17:30,637 --> 01:17:33,850
+if you track the providence of a and it
+came from other measurements in data,
+
+1568
+01:17:33,850 --> 01:17:35,941
+then what you do is you'd go back to
+someone there,
+
+1569
+01:17:35,941 --> 01:17:41,810
+it's like cross validation or something if
+you know what that is.
+
+1570
+01:17:41,810 --> 01:17:45,220
+But you'd go back and you'd say, here's a
+model for my chemical process.
+
+1571
+01:17:45,220 --> 01:17:46,910
+And you'd go great how'd you get it?
+
+1572
+01:17:46,910 --> 01:17:49,100
+And you'd go from data, I fit it from
+data.
+
+1573
+01:17:49,100 --> 01:17:50,430
+And you go, you know what?
+
+1574
+01:17:50,430 --> 01:17:53,410
+Fit me, a separate model for every day of
+the week.
+
+1575
+01:17:53,410 --> 01:17:55,762
+I'd like to, I'd like you to fit a model
+for your chemical process for
+
+1576
+01:17:55,762 --> 01:17:59,470
+Monday, Tuesday, Wednesday, Thursday,
+Friday, Saturday, Sunday, right?
+
+1577
+01:17:59,470 --> 01:18:00,555
+So you get seven models now.
+
+1578
+01:18:00,555 --> 01:18:01,620
+Right?
+
+1579
+01:18:01,620 --> 01:18:05,130
+By the way, if you look at these, A, so
+now you have A Monday and A Tuesday, A.
+
+1580
+01:18:05,130 --> 01:18:08,413
+By the way, if they are all completely
+different, you should just turn around and
+
+1581
+01:18:08,413 --> 01:18:11,240
+go away, because basically, you're hosed.
+
+1582
+01:18:11,240 --> 01:18:11,960
+There's nothing you can do.
+
+1583
+01:18:11,960 --> 01:18:16,990
+There's nothing intelligent, there's not a
+place for us to be doing anything, right?
+
+1584
+01:18:16,990 --> 01:18:18,720
+Basically means it's.
+
+1585
+01:18:18,720 --> 01:18:20,710
+There's no consistency and it doesn't make
+any sense.
+
+1586
+01:18:20,710 --> 01:18:21,740
+Okay, fine.
+
+1587
+01:18:21,740 --> 01:18:26,710
+So hopefully all the entries of A Monday,
+Tuesday, Wednesday, they're close.
+
+1588
+01:18:26,710 --> 01:18:30,532
+In a worst case in a worst case robust
+fitting or
+
+1589
+01:18:30,532 --> 01:18:35,670
+approximation problem, you'd do this.
+
+1590
+01:18:35,670 --> 01:18:38,806
+You would say I'm not going to use a
+statistic model, instead what I'm going to
+
+1591
+01:18:38,806 --> 01:18:41,207
+do is I'm simply going to, I'm going to
+have a set of values of a and
+
+1592
+01:18:41,207 --> 01:18:45,380
+I'm going to judge my fit by the worse
+case, right?
+
+1593
+01:18:45,380 --> 01:18:47,430
+And by the way there's everything in
+between these two, right?
+
+1594
+01:18:47,430 --> 01:18:50,006
+So these are just two and, and this
+incredible you know,
+
+1595
+01:18:50,006 --> 01:18:54,490
+complete nonsense silly relegous words
+between people who You know.
+
+1596
+01:18:54,490 --> 01:18:56,660
+I mean, and, and it makes no sense out of
+a context.
+
+1597
+01:18:56,660 --> 01:18:57,260
+Right.
+
+1598
+01:18:57,260 --> 01:18:58,924
+In, in any particular context,
+
+1599
+01:18:58,924 --> 01:19:03,532
+it makes tons of sense as to discuss what
+would be a reasonable robustness model but
+
+1600
+01:19:03,532 --> 01:19:08,834
+it outside of a context-free, it makes no
+sense whatsoever.
+
+1601
+01:19:08,834 --> 01:19:09,600
+Right.
+
+1602
+01:19:09,600 --> 01:19:11,200
+Mostly what you do.
+
+1603
+01:19:11,200 --> 01:19:11,844
+Oh, and this.
+Oh,
+
+1604
+01:19:11,844 --> 01:19:16,428
+this is sometimes called a minimax minimax
+fitting.
+
+1605
+01:19:16,428 --> 01:19:18,740
+This that doesn't have a name.
+
+1606
+01:19:18,740 --> 01:19:20,850
+Yeah it does.
+It's called stochastic optimization.
+
+1607
+01:19:20,850 --> 01:19:21,765
+But okay.
+
+1608
+01:19:21,765 --> 01:19:23,112
+So that's the idea.
+
+1609
+01:19:23,112 --> 01:19:27,021
+now, to sol, solving these problems is
+tractable only in special cases.
+
+1610
+01:19:27,021 --> 01:19:30,063
+I mean in, in a lotta cases it's not
+tractable at all.
+
+1611
+01:19:30,063 --> 01:19:30,747
+But some are.
+
+1612
+01:19:30,747 --> 01:19:33,369
+Here's, here's a super duper simple
+example.
+
+1613
+01:19:33,369 --> 01:19:37,270
+We have a matrix, which has a one
+parameter variation.
+
+1614
+01:19:37,270 --> 01:19:39,445
+It has the form a 0 plus u a 1.
+
+1615
+01:19:39,445 --> 01:19:42,810
+And U varies between, let's say 1 and
+minus 1.
+
+1616
+01:19:42,810 --> 01:19:44,030
+Something like that, right?
+
+1617
+01:19:44,030 --> 01:19:47,385
+So, basically in matrix space, you have a
+little line segment, right, and
+
+1618
+01:19:47,385 --> 01:19:50,220
+you hope it's not a giant one, right?
+
+1619
+01:19:50,220 --> 01:19:51,424
+But it's a little line segment and
+
+1620
+01:19:51,424 --> 01:19:54,960
+of course, in a more realistic one, it's
+varying in a ball, I don't know.
+
+1621
+01:19:54,960 --> 01:19:57,550
+But this has a line segment, that's it,
+right?
+
+1622
+01:19:57,550 --> 01:19:58,050
+Okay.
+
+1623
+01:20:00,190 --> 01:20:04,390
+And you can actually easily imagine where
+the dominant variation is one line, right?
+
+1624
+01:20:04,390 --> 01:20:06,379
+Cause it could be some process that you
+run, and
+
+1625
+01:20:06,379 --> 01:20:11,430
+in fact to first order it's mostly
+affected by say ambient temperature.
+
+1626
+01:20:11,430 --> 01:20:15,839
+And so the ambient temperature goes from
+you know 10 C to 35.
+
+1627
+01:20:15,839 --> 01:20:17,780
+And that changes the model.
+
+1628
+01:20:17,780 --> 01:20:19,519
+Right?
+And I mean things like this happen all
+
+1629
+01:20:19,519 --> 01:20:20,360
+the time.
+
+1630
+01:20:20,360 --> 01:20:21,188
+Alright.
+So,
+
+1631
+01:20:21,188 --> 01:20:25,140
+what you do here is in this case you can
+solve all these problems.
+
+1632
+01:20:25,140 --> 01:20:25,747
+All of em.
+
+1633
+01:20:25,747 --> 01:20:29,000
+And so, here are, this shows you a couple
+of the solutions.
+
+1634
+01:20:29,000 --> 01:20:33,140
+So x nom, simply ignores it entirely,
+minimizes this.
+
+1635
+01:20:33,140 --> 01:20:35,452
+And then what you do is, you take this x
+and
+
+1636
+01:20:35,452 --> 01:20:41,180
+I calculate the norm here as a function of
+u and that's plotted here.
+
+1637
+01:20:41,180 --> 01:20:43,480
+So, this is x nom, and the nominal point
+is right here and
+
+1638
+01:20:43,480 --> 01:20:47,844
+look at that, of course by definition it
+has to get the lowest value.
+
+1639
+01:20:47,844 --> 01:20:50,185
+This is the nominal value Sure enough, it
+does.
+
+1640
+01:20:50,185 --> 01:20:51,170
+Gets the lowest value.
+
+1641
+01:20:51,170 --> 01:20:51,740
+It's right there.
+
+1642
+01:20:51,740 --> 01:20:55,930
+But then you see as u changes, you start
+paying for it right?
+
+1643
+01:20:55,930 --> 01:20:57,100
+By rising cost.
+
+1644
+01:20:57,100 --> 01:20:58,358
+Okay, so here's sto,
+
+1645
+01:20:58,358 --> 01:21:04,350
+the ex stochastic, that minimizes the
+average, over the interval minus 1, 1.
+
+1646
+01:21:04,350 --> 01:21:08,003
+So over here to here, that gives you this
+one here.
+
+1647
+01:21:08,003 --> 01:21:09,010
+' Sorry.
+
+1648
+01:21:09,010 --> 01:21:10,105
+This one here.
+
+1649
+01:21:10,105 --> 01:21:10,840
+this, this one here.
+
+1650
+01:21:10,840 --> 01:21:12,770
+This is x stochastic, right?
+
+1651
+01:21:12,770 --> 01:21:17,475
+And you can see that it, you pay for it in
+nominal performance, right?
+
+1652
+01:21:17,475 --> 01:21:21,210
+because at the ver, you get a, at the
+very, the stochastic one dips not as well.
+
+1653
+01:21:21,210 --> 01:21:23,220
+So the nominal performance is a little bit
+worse.
+
+1654
+01:21:23,220 --> 01:21:27,165
+But now as u varies out to be 0.7 minus
+0.8.
+
+1655
+01:21:27,165 --> 01:21:28,965
+You're actually doing much better.
+
+1656
+01:21:28,965 --> 01:21:30,020
+Okay?
+
+1657
+01:21:30,020 --> 01:21:32,690
+So everybody, I mean this is kind of
+clear, but that's, that's the idea.
+
+1658
+01:21:32,690 --> 01:21:36,490
+And the final one shows worst case.
+
+1659
+01:21:36,490 --> 01:21:38,290
+And that's this last one.
+
+1660
+01:21:38,290 --> 01:21:39,260
+It's very flat.
+
+1661
+01:21:39,260 --> 01:21:42,390
+You've paid for the cost in nominal cost.
+
+1662
+01:21:42,390 --> 01:21:44,401
+You do much worse than if it's nominal.
+
+1663
+01:21:44,401 --> 01:21:48,610
+But if you look at the mini max over minus
+1, 1 you do very well, right.
+
+1664
+01:21:48,610 --> 01:21:50,180
+So this is to illustrate.
+
+1665
+01:21:50,180 --> 01:21:51,008
+Very simple thing.
+
+1666
+01:21:51,008 --> 01:21:54,942
+Okay,.
+
+1667
+01:21:54,942 --> 01:21:57,770
+So we can also handle I mean some.
+
+1668
+01:21:57,770 --> 01:22:00,661
+As an example of another thing that has an
+analytical solution would be
+
+1669
+01:22:00,661 --> 01:22:02,880
+stochastic robust least squares.
+
+1670
+01:22:02,880 --> 01:22:05,100
+So let's work that out, this is absolutely
+traditional.
+
+1671
+01:22:05,100 --> 01:22:06,835
+It's kind of cool actually.
+
+1672
+01:22:06,835 --> 01:22:08,950
+And it relates to something we were
+talking about earlier.
+
+1673
+01:22:08,950 --> 01:22:09,610
+It's this.
+
+1674
+01:22:09,610 --> 01:22:13,042
+Suppose your matrix A, has the form A bar,
+a nominal one, plus U,
+
+1675
+01:22:13,042 --> 01:22:18,925
+where U is random, zero mean, and has
+expected value, U transposed U is P.
+
+1676
+01:22:18,925 --> 01:22:21,550
+Okay?
+
+1677
+01:22:21,550 --> 01:22:25,149
+So we want to minimize the expected value
+of the square of the two norm of
+
+1678
+01:22:25,149 --> 01:22:26,810
+this thing.
+
+1679
+01:22:26,810 --> 01:22:29,125
+And the, of course the expectations over
+the distributions of U.
+
+1680
+01:22:29,125 --> 01:22:30,430
+Here, right?
+
+1681
+01:22:30,430 --> 01:22:32,180
+So, you just work that out.
+
+1682
+01:22:32,180 --> 01:22:36,716
+I mean, you expand this thing the ter-,
+the cross terms, like here, the-,
+
+1683
+01:22:36,716 --> 01:22:40,748
+there's, when you expand quadratic,
+[COUGH] there's a cross term,
+
+1684
+01:22:40,748 --> 01:22:46,310
+which is x transpose, u transpose, a bar x
+minus b.
+
+1685
+01:22:46,310 --> 01:22:48,930
+You take the expected value over u, u has
+zero mean.
+
+1686
+01:22:48,930 --> 01:22:49,490
+Those go away.
+
+1687
+01:22:49,490 --> 01:22:52,910
+So the cross terms drop out in the
+expectation here, right?
+
+1688
+01:22:52,910 --> 01:22:57,470
+Leaving you with the nominal cost, plus
+this thing, and you get that, and
+
+1689
+01:22:57,470 --> 01:22:59,800
+it's super cool.
+
+1690
+01:23:00,810 --> 01:23:02,110
+You recognize that immediately.
+
+1691
+01:23:02,110 --> 01:23:03,501
+That's regularization.
+
+1692
+01:23:03,501 --> 01:23:06,255
+It's quadratic regularization.
+
+1693
+01:23:06,255 --> 01:23:10,905
+And in fact, it's even cooler, it
+basically says, if you do Tikhonov.
+
+1694
+01:23:10,905 --> 01:23:13,992
+Regularization like this, which you can
+claim to be doing,
+
+1695
+01:23:13,992 --> 01:23:18,234
+is you're actually minimizing this, which
+is super cool.
+
+1696
+01:23:18,234 --> 01:23:22,995
+And you say, you're minimizing this thing
+where, instead of thinking of the matrix
+
+1697
+01:23:22,995 --> 01:23:29,030
+a as fixed, you're actually taking into
+account that every entry varies.
+
+1698
+01:23:29,030 --> 01:23:31,370
+They're all independent and have a
+variance which is,
+
+1699
+01:23:31,370 --> 01:23:34,040
+I don't know, something like delta over n.
+
+1700
+01:23:34,040 --> 01:23:35,666
+I mean, you can figure out what it is.
+
+1701
+01:23:35,666 --> 01:23:38,300
+Right everybody got this so its actually
+super cool.
+
+1702
+01:23:38,300 --> 01:23:45,130
+So if you do taken off regularization or,
+or, or ridge regression.
+
+1703
+01:23:45,130 --> 01:23:47,139
+I guess if you're in statistics you do
+ridge regression and
+
+1704
+01:23:47,139 --> 01:23:49,260
+you don't have to justify it to anybody.
+
+1705
+01:23:49,260 --> 01:23:51,570
+But if, if you're in a field where they
+don't have a special name for
+
+1706
+01:23:51,570 --> 01:23:54,720
+taking off regularization and they ask
+what are you doing.
+
+1707
+01:23:54,720 --> 01:23:56,952
+You could say, oh, I'm doing robust
+squares.
+
+1708
+01:23:56,952 --> 01:24:00,262
+I'm taking into account minor variations
+in the A's.
+
+1709
+01:24:00,262 --> 01:24:01,344
+Everybody got it?
+
+1710
+01:24:01,344 --> 01:24:03,288
+Now we can do some worst case ones.
+
+1711
+01:24:03,288 --> 01:24:07,536
+I'm not going to go into the details here,
+because they're quite hairy.
+
+1712
+01:24:07,536 --> 01:24:11,496
+This is quite near, this is something
+that's 15-20 years old.
+
+1713
+01:24:11,496 --> 01:24:14,106
+So, let's do the case where the matrix A
+actually is at,
+
+1714
+01:24:14,106 --> 01:24:16,752
+lies in an ellipsoid of matrices.
+
+1715
+01:24:16,752 --> 01:24:18,967
+Again, completely reasonable.
+
+1716
+01:24:18,967 --> 01:24:22,267
+And what we really want to minimize is the
+worst case so
+
+1717
+01:24:22,267 --> 01:24:26,917
+its going to be a weird thing if you like
+its a game or something like that or
+
+1718
+01:24:26,917 --> 01:24:31,192
+it, it, its like the basically you, you
+commit to x first and then your
+
+1719
+01:24:31,192 --> 01:24:40,590
+opponent will then choose the worst
+possible a That's what this is, right?
+
+1720
+01:24:40,590 --> 01:24:43,050
+So this is something like that.
+
+1721
+01:24:43,050 --> 01:24:48,330
+And there turns out something like this
+you can solve exactly.
+
+1722
+01:24:48,330 --> 01:24:49,480
+Right?
+So if you work it out, and
+
+1723
+01:24:49,480 --> 01:24:52,630
+again I'm not going to go through any of
+the details because they're quite hairy,
+
+1724
+01:24:52,630 --> 01:24:55,520
+and since it doesn't really.
+
+1725
+01:24:55,520 --> 01:24:58,055
+Matter I mean you should go back over and
+check it.
+
+1726
+01:24:58,055 --> 01:24:59,810
+It turns out that here when, one,
+
+1727
+01:24:59,810 --> 01:25:04,760
+when the opponent is calculating what's
+the worst thing I should do?
+
+1728
+01:25:04,760 --> 01:25:07,950
+They've committed to x and I'm going to
+find the x, you end up solving this
+
+1729
+01:25:07,950 --> 01:25:12,520
+problem, and that is a non-convex problem
+if I ever saw one, right?
+
+1730
+01:25:12,520 --> 01:25:18,010
+Because the objective, because you're
+maximizing a quadratic, right?
+
+1731
+01:25:18,010 --> 01:25:20,790
+A convex quadratic, right?
+
+1732
+01:25:20,790 --> 01:25:23,958
+Now you haven't seen this yet, maybe you
+did or something but it's maybe time for
+
+1733
+01:25:23,958 --> 01:25:28,341
+you to know this, so I'm going to say it,
+this is an excuse to let you know.
+
+1734
+01:25:28,341 --> 01:25:33,197
+There are some generic, non-convex
+problems that can be solved, okay?
+
+1735
+01:25:33,197 --> 01:25:38,025
+And the simplest one has a very simple and
+short description length.
+
+1736
+01:25:38,025 --> 01:25:45,335
+Any optimization problem involving 2
+quadratics can be solved globally.
+
+1737
+01:25:45,335 --> 01:25:46,400
+Okay?
+
+1738
+01:25:46,400 --> 01:25:47,760
+Everybody got that?
+
+1739
+01:25:47,760 --> 01:25:49,140
+That's in the appendix of the book.
+
+1740
+01:25:49,140 --> 01:25:52,990
+You should read it, or remember what I
+just said, okay?
+
+1741
+01:25:52,990 --> 01:25:55,820
+Because it actually comes up in a whole
+bunch of different applications, right?
+
+1742
+01:25:55,820 --> 01:25:58,335
+So, and, and that's convexity, not
+convexity.
+
+1743
+01:25:58,335 --> 01:26:01,720
+And you know lot, by the way, you know
+this already.
+
+1744
+01:26:01,720 --> 01:26:05,136
+If I walked up to you and I said oh, you
+know, please help me solve, you know,
+
+1745
+01:26:05,136 --> 01:26:08,630
+this problem A is symmetric you know,
+right.
+
+1746
+01:26:10,170 --> 01:26:11,240
+Something like that.
+
+1747
+01:26:11,240 --> 01:26:15,639
+I said please maximize this thing, right?
+
+1748
+01:26:15,639 --> 01:26:17,930
+How do you maximize that, subject to that?
+
+1749
+01:26:17,930 --> 01:26:22,410
+Well, that, that sure is no convex
+optimization problem right, because this
+
+1750
+01:26:22,410 --> 01:26:29,110
+thing is not concave, unless A is negative
+definite, negative semi-definite, right?
+
+1751
+01:26:29,110 --> 01:26:31,750
+There's no way, that's never a convex
+constraint.
+
+1752
+01:26:31,750 --> 01:26:32,870
+Right?
+That's a sphere.
+
+1753
+01:26:32,870 --> 01:26:33,488
+Right?
+So,
+
+1754
+01:26:33,488 --> 01:26:37,620
+that's a hideously, [COUGH] non-complex
+problem.
+
+1755
+01:26:37,620 --> 01:26:38,570
+But everyone here, know the answer.
+
+1756
+01:26:38,570 --> 01:26:39,950
+Knows this can be solved.
+
+1757
+01:26:39,950 --> 01:26:41,770
+This is basically an item value problem.
+
+1758
+01:26:41,770 --> 01:26:44,712
+Right?
+The answer is the largest igon vector,
+
+1759
+01:26:44,712 --> 01:26:46,570
+corresponding.
+
+1760
+01:26:46,570 --> 01:26:48,170
+It's the largest Igonvalue, blah, blah,
+blah.
+
+1761
+01:26:48,170 --> 01:26:48,842
+Everybody got that?
+
+1762
+01:26:48,842 --> 01:26:51,400
+So, [COUGH], alright.
+
+1763
+01:26:51,400 --> 01:26:53,620
+This fits the thing I'm saying here.
+
+1764
+01:26:53,620 --> 01:26:58,250
+That is an optimization problem, and it
+involves exactly 2 quadratic functions.
+
+1765
+01:26:58,250 --> 01:27:00,610
+The general statement is this.
+
+1766
+01:27:00,610 --> 01:27:06,182
+Any optimization problem with exactly 2
+quadratic functions can be solved exactly.
+
+1767
+01:27:06,182 --> 01:27:08,720
+And so, what that says is you know someone
+says what are you doing,
+
+1768
+01:27:08,720 --> 01:27:11,290
+I'm taking class on convex optimization.
+
+1769
+01:27:11,290 --> 01:27:12,110
+Oh is it interesting?
+
+1770
+01:27:12,110 --> 01:27:15,550
+I, I don't know, and then they,, then you
+say well, are all problems convex?
+
+1771
+01:27:15,550 --> 01:27:17,220
+You go oh no, no, no.
+
+1772
+01:27:17,220 --> 01:27:23,010
+The someone says, name the widely used,
+useful problem, that's not convex.
+
+1773
+01:27:23,010 --> 01:27:26,134
+The first thing you shouldn't mention, I
+would hope,
+
+1774
+01:27:26,134 --> 01:27:31,479
+would be things like singular value
+decomposition PCA eigenvalues.
+
+1775
+01:27:31,479 --> 01:27:33,280
+Okay?
+We know what this is?
+
+1776
+01:27:33,280 --> 01:27:35,738
+This says those are convex.
+
+1777
+01:27:35,738 --> 01:27:39,950
+Sorry so I mean its kind of weird and
+obscure right.
+
+1778
+01:27:39,950 --> 01:27:42,790
+But, and the reason by the way is that the
+duals of
+
+1779
+01:27:42,790 --> 01:27:46,575
+these problems have zero duality gap so.
+
+1780
+01:27:46,575 --> 01:27:47,770
+Anyway, right.
+
+1781
+01:27:47,770 --> 01:27:50,250
+So this, that was just my weird little
+aside, but this is an advanced thing,
+
+1782
+01:27:50,250 --> 01:27:53,738
+this is not a simple thing, but it's an
+extremely good thing to know.
+
+1783
+01:27:53,738 --> 01:27:58,637
+Alright, so, if you include these, you'd
+be very hard pressed to find problems,
+
+1784
+01:27:58,637 --> 01:28:02,897
+any problem you can solve that is not
+convex if you include these, so, and
+
+1785
+01:28:02,897 --> 01:28:07,880
+that is an open challenge so, so okay.
+
+1786
+01:28:09,565 --> 01:28:16,010
+So, this one, actually can be solved by
+solving its dual, which is this SDP.
+
+1787
+01:28:16,010 --> 01:28:18,600
+Doesn't matter, the fact is a zero duality
+gap.
+
+1788
+01:28:18,600 --> 01:28:19,552
+[COUGH] Right?
+
+1789
+01:28:19,552 --> 01:28:23,696
+so, okay, now it's fine, because you want
+to minimize over choice x,
+
+1790
+01:28:23,696 --> 01:28:30,592
+this thing, but this thing has just been
+expressed as a minimization function.
+
+1791
+01:28:30,592 --> 01:28:34,480
+Right, and therefore you minimize both at
+the same time.
+
+1792
+01:28:34,480 --> 01:28:36,748
+You solve this sdp and you solve,
+
+1793
+01:28:36,748 --> 01:28:43,554
+you actually solve exactly this robust
+least squarest problem, right?
+
+1794
+01:28:43,554 --> 01:28:44,800
+>> Here, what this is, is the following.
+
+1795
+01:28:44,800 --> 01:28:47,970
+Is we have a, I mean this is a very simple
+thing we actually have.
+
+1796
+01:28:47,970 --> 01:28:50,610
+It's a two dimensional ellipsoid.
+
+1797
+01:28:50,610 --> 01:28:54,268
+I guess you might even call it an ellipse
+or something like that of A matrices.
+
+1798
+01:28:54,268 --> 01:28:57,650
+You commit to X, and then we find the.
+
+1799
+01:28:57,650 --> 01:28:59,020
+We'll find like the worst.
+
+1800
+01:28:59,020 --> 01:29:03,268
+In fact, what we'll actually plot here is
+a histogram of the residuals.
+
+1801
+01:29:03,268 --> 01:29:04,120
+Right?
+
+1802
+01:29:04,120 --> 01:29:07,272
+Now here we'll take U uniformly
+distributed on the unit disk.
+
+1803
+01:29:07,272 --> 01:29:09,110
+Okay?
+And we'll take several values of x.
+
+1804
+01:29:09,110 --> 01:29:12,134
+The first is, suppose you just completely
+ignore uncertainty, and
+
+1805
+01:29:12,134 --> 01:29:15,800
+you solve the least-risk problem
+minimized, A0 x minus B.
+
+1806
+01:29:15,800 --> 01:29:18,090
+That's the nominal problem.
+
+1807
+01:29:18,090 --> 01:29:22,450
+You minimize that, and you get this
+distribution of residuates.
+
+1808
+01:29:22,450 --> 01:29:24,490
+Right?
+So, they're all over the place.
+
+1809
+01:29:24,490 --> 01:29:27,680
+And, you know, some of the residuals are
+four and five.
+
+1810
+01:29:27,680 --> 01:29:28,220
+By the way,
+
+1811
+01:29:28,220 --> 01:29:33,070
+how would you describe what happened in
+this situation over here on the left?
+
+1812
+01:29:33,070 --> 01:29:34,920
+Dumb luck, that's exactly what it is.
+
+1813
+01:29:34,920 --> 01:29:36,388
+Right?
+You committed to an x,
+
+1814
+01:29:36,388 --> 01:29:39,972
+and in fact, there are a's that make the
+residuals smaller than you thought it
+
+1815
+01:29:39,972 --> 01:29:42,410
+was going to be.
+
+1816
+01:29:42,410 --> 01:29:43,660
+Okay, so that's just dumb luck.
+
+1817
+01:29:43,660 --> 01:29:44,705
+But you pay for it over here.
+
+1818
+01:29:44,705 --> 01:29:46,250
+Okay.
+
+1819
+01:29:46,250 --> 01:29:47,812
+Now you turn on Tikhonov regularization.
+
+1820
+01:29:47,812 --> 01:29:49,130
+And you can even imagine.
+
+1821
+01:29:49,130 --> 01:29:51,420
+I mean, one can even make a cartoon of
+this, right?
+
+1822
+01:29:51,420 --> 01:29:54,300
+You can imagine turning off the Tikhonov
+regularization knob.
+
+1823
+01:29:54,300 --> 01:29:56,090
+When it's zero, you get this distribution.
+
+1824
+01:29:56,090 --> 01:29:57,204
+Kay?
+As I turn it up,
+
+1825
+01:29:57,204 --> 01:30:02,900
+what happens is that distribution will end
+up looking like this.
+
+1826
+01:30:02,900 --> 01:30:05,460
+So this is sort of the best looking one,
+the Tikhonov regularization one, and
+
+1827
+01:30:05,460 --> 01:30:08,830
+you can see it does exactly what it was
+supposed to do.
+
+1828
+01:30:08,830 --> 01:30:11,142
+Right?
+Taking off regularization as something
+
+1829
+01:30:11,142 --> 01:30:14,854
+like a heuristic, for, it's a heuristic
+for giving you a robust solution, and
+
+1830
+01:30:14,854 --> 01:30:19,890
+you can see, and here robustness we're
+going to make it very vague.
+
+1831
+01:30:19,890 --> 01:30:23,530
+You get a tighter distribution of
+residuals, okay?
+
+1832
+01:30:23,530 --> 01:30:27,090
+In fact, the expected value of this
+distribution is smaller than this one.
+
+1833
+01:30:27,090 --> 01:30:29,375
+I mean, I'm not going to work it out
+because it's too simple here.
+
+1834
+01:30:29,375 --> 01:30:32,495
+But you can see it simply, from a
+robustance point of view,
+
+1835
+01:30:32,495 --> 01:30:34,930
+a better solution, okay?
+
+1836
+01:30:34,930 --> 01:30:38,990
+So this shows you exactly what people have
+known for, I don't know, 50, 100 years.
+
+1837
+01:30:38,990 --> 01:30:40,712
+That you had, you had regularization.
+
+1838
+01:30:40,712 --> 01:30:44,996
+And one interpretation of regularization
+is to make your solution more robust to
+
+1839
+01:30:44,996 --> 01:30:46,855
+variation here.
+
+1840
+01:30:46,855 --> 01:30:48,310
+Okay.
+
+1841
+01:30:48,310 --> 01:30:50,785
+Now, the exact Robust lead squares,
+
+1842
+01:30:50,785 --> 01:30:55,885
+the one that minimizes the worst-case
+residual over this, over this ellipsoid of
+
+1843
+01:30:55,885 --> 01:31:02,620
+matrices, is the one you obtain by solving
+this this SDP here.
+
+1844
+01:31:02,620 --> 01:31:04,092
+Right, so you solve that SDP there, and
+
+1845
+01:31:04,092 --> 01:31:07,230
+you get the following distribution of
+residuals right here.
+
+1846
+01:31:07,230 --> 01:31:10,800
+And this is, right there, that is, that's
+the number.
+
+1847
+01:31:10,800 --> 01:31:12,128
+Right?
+That, that is the optimal,
+
+1848
+01:31:12,128 --> 01:31:15,345
+that's the globally optimal number for the
+best you can do.
+
+1849
+01:31:15,345 --> 01:31:16,250
+Right?
+
+1850
+01:31:16,250 --> 01:31:19,352
+And so this is kind of the idea, and I
+think these distributions sort of explain,
+
+1851
+01:31:19,352 --> 01:31:22,219
+everything, right, about what you're, what
+you're trying to do here, and
+
+1852
+01:31:22,219 --> 01:31:25,080
+what robust optimization does.
+
+1853
+01:31:25,080 --> 01:31:26,930
+Right?
+So this is the kind of, thi-, this is,
+
+1854
+01:31:26,930 --> 01:31:28,243
+this the idea.
+
+1855
+01:31:29,792 --> 01:31:33,888
+Notice that when you I mean we can
+anthropomorphize this a little bit, but
+
+1856
+01:31:33,888 --> 01:31:38,240
+one thing interesting to notice is that
+all of, all of these, everything over here
+
+1857
+01:31:38,240 --> 01:31:41,504
+in either the Tikhonov regular rise or the
+nominal solution,
+
+1858
+01:31:41,504 --> 01:31:49,592
+all of those are cases where by dumb luck
+you did better than the robustly squares.
+
+1859
+01:31:49,592 --> 01:31:52,829
+Right, so, and what's interesting though,
+
+1860
+01:31:52,829 --> 01:31:57,975
+when you typically push the worst case
+regial down usually an effect is
+
+1861
+01:31:57,975 --> 01:32:05,310
+that actually the best case actually goes
+the other way.
+
+1862
+01:32:05,310 --> 01:32:07,419
+Right, and, I mean this is sort of natural
+but
+
+1863
+01:32:07,419 --> 01:32:10,580
+again, what I'm saying now is extremly
+vague.
+
+1864
+01:32:10,580 --> 01:32:12,684
+These would not be arguments you would be
+allowed to make.
+
+1865
+01:32:12,684 --> 01:32:17,000
+In public but it's just something to point
+out.

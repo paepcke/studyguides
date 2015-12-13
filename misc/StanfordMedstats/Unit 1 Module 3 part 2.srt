@@ -1,0 +1,490 @@
+1
+00:00:01,520 --> 00:00:04,140
+Now we're talking about the different
+shapes of the distribution as
+
+2
+00:00:04,140 --> 00:00:08,240
+a left-skewed or right-skewed, so let me
+just summarize this.
+
+3
+00:00:08,240 --> 00:00:10,910
+So left-skewed means that you have a left
+tail.
+
+4
+00:00:10,910 --> 00:00:14,365
+So you have a few extreme values that are
+low to the left.
+
+5
+00:00:14,365 --> 00:00:16,210
+Right-skewed means you have a right tail,
+so
+
+6
+00:00:16,210 --> 00:00:18,500
+a few extreme values that are high to the
+right.
+
+7
+00:00:18,500 --> 00:00:20,470
+And of course symmetric means just what it
+sounds like,
+
+8
+00:00:20,470 --> 00:00:22,791
+you have a nice symmetric distribution.
+
+9
+00:00:22,791 --> 00:00:26,870
+There's a special type of symmetric
+distribution called a bell curve or
+
+10
+00:00:26,870 --> 00:00:30,340
+a normal distribution that we're going to
+talk about a lot in this course.
+
+11
+00:00:30,340 --> 00:00:33,600
+So I'm just going to introduce it now to
+just get you thinking about it.
+
+12
+00:00:33,600 --> 00:00:37,400
+So a bell curve is just what it sounds
+like, it follows the shape of a bell.
+
+13
+00:00:37,400 --> 00:00:41,630
+It turns out to be very important in
+statistics for a number of reasons.
+
+14
+00:00:41,630 --> 00:00:43,390
+So I'll just say a little bit more about
+it now.
+
+15
+00:00:43,390 --> 00:00:46,520
+So the reason it's important is, for
+
+16
+00:00:46,520 --> 00:00:51,550
+one thing, it has sort of a predictable
+behavior that makes it very useful.
+
+17
+00:00:51,550 --> 00:00:54,580
+So it turns out that if you're on a
+perfect normal curve
+
+18
+00:00:54,580 --> 00:00:59,430
+that 68% of your observations will fall
+somewhere between one standard
+
+19
+00:00:59,430 --> 00:01:02,915
+deviation below the mean to one standard
+deviation above the mean.
+
+20
+00:01:02,915 --> 00:01:09,865
+95% of your observations will fall within
+two standard deviations of the mean and
+
+21
+00:01:09,865 --> 00:01:13,150
+99.7% will fall within three standard
+deviations of the mean.
+
+22
+00:01:13,150 --> 00:01:15,120
+If you don't know what a standard
+deviation is,
+
+23
+00:01:15,120 --> 00:01:19,170
+don't worry we're going to talk about that
+in an upcoming module this week.
+
+24
+00:01:19,170 --> 00:01:20,820
+But, it has nice predictable behavior so
+
+25
+00:01:20,820 --> 00:01:23,310
+that's very useful for calculating
+statistics.
+
+26
+00:01:24,460 --> 00:01:28,320
+Another reason the normal distribution
+comes up a lot is that many traits that we
+
+27
+00:01:28,320 --> 00:01:31,420
+might measure in a population follow a
+normal distribution.
+
+28
+00:01:31,420 --> 00:01:33,590
+There's lots of traits that don't follow a
+normal distribution but
+
+29
+00:01:33,590 --> 00:01:36,720
+there's a number that actually follow a
+normal distribution.
+
+30
+00:01:36,720 --> 00:01:40,940
+So things like IQ and height tend to fall
+on a bell curve.
+
+31
+00:01:40,940 --> 00:01:43,700
+So that's another reason it comes up a
+lot.
+
+32
+00:01:43,700 --> 00:01:47,620
+Finally, the most important reason that
+the normal distribution is so
+
+33
+00:01:47,620 --> 00:01:53,240
+important in statistics is actually that
+statistics themselves tend
+
+34
+00:01:53,240 --> 00:01:55,360
+to follow a normal distribution.
+
+35
+00:01:55,360 --> 00:01:57,410
+And this is a bit of a tricky concept.
+
+36
+00:01:57,410 --> 00:02:00,330
+But it's something that I want to plant in
+your head now because we're going to
+
+37
+00:02:00,330 --> 00:02:03,420
+be talking about this in great detail in a
+couple of weeks.
+
+38
+00:02:03,420 --> 00:02:07,780
+So it turns out that statistics, things we
+measure from our data like means and
+
+39
+00:02:07,780 --> 00:02:10,450
+odds ratios and regression coefficients.
+
+40
+00:02:10,450 --> 00:02:13,430
+Those also have a distribution.
+
+41
+00:02:13,430 --> 00:02:17,830
+And it's a tricky concept because, if you
+think, like I'm, I do a study.
+
+42
+00:02:17,830 --> 00:02:19,820
+I measure one mean in my sample.
+
+43
+00:02:19,820 --> 00:02:23,080
+How does a single mean have a
+distribution?
+
+44
+00:02:23,080 --> 00:02:25,800
+Well, it's something that is a theoretical
+construct.
+
+45
+00:02:25,800 --> 00:02:29,540
+But, it turns out that that distribution
+if often a normal distribution.
+
+46
+00:02:29,540 --> 00:02:33,460
+And, that's really the reason that the
+normal distribution is so so
+
+47
+00:02:33,460 --> 00:02:34,498
+important in statistics.
+
+48
+00:02:34,498 --> 00:02:38,540
+So I'm going to end here with just
+
+49
+00:02:38,540 --> 00:02:42,370
+showing you some histograms of the data
+from my Stanford students.
+
+50
+00:02:42,370 --> 00:02:44,950
+I think it's always fun to look at
+histograms of real data.
+
+51
+00:02:44,950 --> 00:02:45,580
+So for
+
+52
+00:02:45,580 --> 00:02:50,540
+example, I asked my students to rate their
+optimism on a scale from 0 to a 100.
+
+53
+00:02:50,540 --> 00:02:51,750
+And you can see that, you know,
+
+54
+00:02:51,750 --> 00:02:54,910
+most of my students are feeling pretty
+optimistic when they took this survey.
+
+55
+00:02:54,910 --> 00:02:56,690
+I did have a handful.
+
+56
+00:02:56,690 --> 00:03:00,630
+Out to the left, we would describe this as
+having a bit of a left skew.
+
+57
+00:03:00,630 --> 00:03:03,560
+There were a some students who were more
+on the pessimistic range.
+
+58
+00:03:03,560 --> 00:03:06,920
+[SOUND] I asked them about their daily
+fruit and
+
+59
+00:03:06,920 --> 00:03:09,220
+vegetable consumption and servings per
+day.
+
+60
+00:03:09,220 --> 00:03:11,950
+And you're suppose to ear five servings of
+fruits and vegetables per day.
+
+61
+00:03:11,950 --> 00:03:13,320
+Not everyone was meeting that.
+
+62
+00:03:13,320 --> 00:03:15,870
+But in general my students are pretty
+healthy.
+
+63
+00:03:15,870 --> 00:03:17,170
+They were doing a pretty good job.
+
+64
+00:03:17,170 --> 00:03:21,246
+I even have students eating six, eight,
+ten fruits or vegetables a day.
+
+65
+00:03:21,246 --> 00:03:26,110
+Interestingly, this distribution would
+have been a nice normal curve except that
+
+66
+00:03:26,110 --> 00:03:27,150
+we're missing the left tail, right?
+
+67
+00:03:27,150 --> 00:03:31,280
+There wasn't anybody who was eating no
+fruits and vegetables everyday,
+
+68
+00:03:31,280 --> 00:03:35,050
+which is a good thing and so we're missing
+a little bit of a left tail there.
+
+69
+00:03:35,050 --> 00:03:36,480
+If we would have had some people eating
+none,
+
+70
+00:03:36,480 --> 00:03:37,760
+this would've made sort of a bell curve.
+
+71
+00:03:40,080 --> 00:03:41,350
+Here's another interesting variable.
+
+72
+00:03:41,350 --> 00:03:45,210
+I asked them how many, how much homework
+they did in hours per week and
+
+73
+00:03:45,210 --> 00:03:48,660
+you can see that there was a wide eye.
+
+74
+00:03:48,660 --> 00:03:50,370
+I got a wide set of answers here.
+
+75
+00:03:50,370 --> 00:03:53,190
+So for those of you who're out there for a
+full-time student you'll
+
+76
+00:03:53,190 --> 00:03:55,730
+be very interested in how much homework my
+students were doing.
+
+77
+00:03:55,730 --> 00:03:57,100
+To be fair,
+
+78
+00:03:57,100 --> 00:04:00,830
+I asked some of the students this question
+at the very beginning of the year.
+
+79
+00:04:00,830 --> 00:04:03,802
+So, maybe some of them didn't have any
+homework yet but
+
+80
+00:04:03,802 --> 00:04:05,584
+that the homework by the way coming in
+later.
+
+81
+00:04:05,584 --> 00:04:09,170
+I had a lot of students reporting 0 to 5
+hours of homework per week but
+
+82
+00:04:09,170 --> 00:04:12,830
+then I have a really big right skew, a big
+right tail here with
+
+83
+00:04:12,830 --> 00:04:16,380
+some students reporting as many as 40
+hours per week of homework.
+
+84
+00:04:16,380 --> 00:04:19,600
+[SOUND] I ask my students about alcohol
+drinking,
+
+85
+00:04:19,600 --> 00:04:22,250
+how many alcoholic drinks do you drink per
+week?
+
+86
+00:04:22,250 --> 00:04:24,740
+My students are fairly light drinkers, as
+you can see.
+
+87
+00:04:24,740 --> 00:04:26,390
+I don't tend to teach undergraduates.
+
+88
+00:04:26,390 --> 00:04:29,720
+I mostly teach graduate students and
+medical students and doctors.
+
+89
+00:04:29,720 --> 00:04:31,110
+And they were fairly light drinkers.
+
+90
+00:04:31,110 --> 00:04:34,600
+The heaviest drinking I had reported here
+was 7 or 8 drinks per week.
+
+91
+00:04:34,600 --> 00:04:38,820
+And most people are drinking just zero to
+three drinks per week.
+
+92
+00:04:38,820 --> 00:04:43,180
+Finally a question I always like to ask my
+students is how they feel about math.
+
+93
+00:04:43,180 --> 00:04:47,064
+And, I ask them to rate their feelings
+about math on a scale of 0 to 100.
+
+94
+00:04:47,064 --> 00:04:51,180
+0 being really horrible feelings about
+math, and 100 being they love math,
+
+95
+00:04:51,180 --> 00:04:53,480
+they go home every day and do math just
+for fun.
+
+96
+00:04:53,480 --> 00:04:58,290
+And so, you can see there is a wide range
+of feelings about math in my students.
+
+97
+00:04:58,290 --> 00:05:00,610
+A lot of the students tend to be
+favorable.
+
+98
+00:05:00,610 --> 00:05:03,140
+But I definitely have some people in the
+unfavorable range.
+
+99
+00:05:03,140 --> 00:05:07,270
+And interestingly enough, this variable of
+all of the ones that I've shown you so
+
+100
+00:05:07,270 --> 00:05:10,130
+far, turns out to be the closest to a
+normal distribution.
+
+101
+00:05:10,130 --> 00:05:12,620
+And certainly not a perfect normal
+[INAUDIBLE] distribution.
+
+102
+00:05:12,620 --> 00:05:13,650
+A perfect normal curve.
+
+103
+00:05:13,650 --> 00:05:17,440
+But it's actually the closest of the
+variables that I've shown you so far.

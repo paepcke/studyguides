@@ -1,0 +1,959 @@
+1
+00:00:00,330 --> 00:00:02,210
+What's interesting about this particular
+example,
+
+2
+00:00:02,210 --> 00:00:06,320
+one of the reasons I like to actually use
+this example, is that
+
+3
+00:00:06,320 --> 00:00:11,730
+the authors made a point of illustrating
+something called residual confounding.
+
+4
+00:00:11,730 --> 00:00:15,710
+And it's very important as we start
+talking about statistical adjustment for
+
+5
+00:00:15,710 --> 00:00:18,570
+confounding, it's really important to keep
+in the back of
+
+6
+00:00:18,570 --> 00:00:22,070
+your mind That adjustment for confounding
+is not a panacea.
+
+7
+00:00:22,070 --> 00:00:28,470
+You cannot adjust away all confounding and
+that is kind of well illustrated here.
+
+8
+00:00:28,470 --> 00:00:32,360
+So, this first regression analysis was
+actually included in
+
+9
+00:00:32,360 --> 00:00:34,870
+the paper just as an illustration of
+residual confounding.
+
+10
+00:00:34,870 --> 00:00:35,990
+What they did,
+
+11
+00:00:35,990 --> 00:00:40,340
+in that very first regression analysis is
+they model age crudely.
+
+12
+00:00:40,340 --> 00:00:46,130
+They put into their regression as a
+predictor you're either younger than 35 or
+
+13
+00:00:46,130 --> 00:00:47,110
+you're 35 and older.
+
+14
+00:00:47,110 --> 00:00:50,250
+So they model age as a binary predictor.
+
+15
+00:00:51,760 --> 00:00:55,100
+When they do that, we are indeed
+attenuating the odds ratio.
+
+16
+00:00:55,100 --> 00:01:01,690
+It's going from 0.8 to 0.87, but we are
+not completely wiping out the effect
+
+17
+00:01:01,690 --> 00:01:05,590
+of confounding by maternal age and that's
+illustrated as well by the second
+
+18
+00:01:05,590 --> 00:01:11,040
+regression analysis because this also
+includes age as a binary predictor.
+
+19
+00:01:11,040 --> 00:01:12,060
+But it also adjusts for
+
+20
+00:01:12,060 --> 00:01:15,015
+all the other things we're eventually
+going to adjust for, race and parity.
+
+21
+00:01:15,015 --> 00:01:19,330
+What this shows you is that just putting
+age in
+
+22
+00:01:19,330 --> 00:01:24,280
+as a binary predictior does not take away
+all of the confounding.
+
+23
+00:01:24,280 --> 00:01:28,250
+When and the last model, the authors
+finally put in
+
+24
+00:01:28,250 --> 00:01:32,910
+the exact year of maternal age, then, all
+of the confounding is removed.
+
+25
+00:01:34,140 --> 00:01:37,610
+But this is illustrating the point that
+when you put in predictors that
+
+26
+00:01:37,610 --> 00:01:39,490
+are imprecisely measured.
+
+27
+00:01:39,490 --> 00:01:43,928
+Which is, often times we're not measuring
+things precisely,
+
+28
+00:01:43,928 --> 00:01:48,120
+then there were going to be some leftover
+confounding.
+
+29
+00:01:48,120 --> 00:01:50,400
+Finally, at the end here, they were
+actually,
+
+30
+00:01:50,400 --> 00:01:53,050
+I mean age is one of the things you are
+able to measure precisely.
+
+31
+00:01:53,050 --> 00:01:53,840
+You can get birth dates.
+
+32
+00:01:53,840 --> 00:01:57,690
+So once they finally put in age as a exact
+birth date,
+
+33
+00:01:57,690 --> 00:02:03,070
+the exact age, then finally they were able
+to adjust away for all confounding.
+
+34
+00:02:03,070 --> 00:02:04,390
+But for most predictors, for
+
+35
+00:02:04,390 --> 00:02:07,340
+most confounders, we don't measure them
+precisely.
+
+36
+00:02:07,340 --> 00:02:09,060
+And we don't measure the predictors
+precisely and
+
+37
+00:02:09,060 --> 00:02:11,780
+the outcomes precisely in a lot of cases.
+
+38
+00:02:11,780 --> 00:02:16,930
+So the problem here is that, because
+there's error in the various measurements,
+
+39
+00:02:16,930 --> 00:02:20,680
+statistical adjustment is imperfect, and
+that's what we call residual confounding.
+
+40
+00:02:20,680 --> 00:02:22,310
+And it comes up a lot.
+
+41
+00:02:22,310 --> 00:02:27,100
+You really cannot completely wipe out
+confounding, simply by adjusting for
+
+42
+00:02:27,100 --> 00:02:29,630
+variables in multiple regression.
+
+43
+00:02:29,630 --> 00:02:33,380
+Unless you had somehow measured the
+variables completely with zero error.
+
+44
+00:02:33,380 --> 00:02:36,750
+We did it probably in the last example.
+
+45
+00:02:36,750 --> 00:02:38,890
+Down's syndrome is pretty easy to measure,
+to get,
+
+46
+00:02:38,890 --> 00:02:40,550
+I mean that's it's a very easy one to
+measure.
+
+47
+00:02:40,550 --> 00:02:41,840
+We could probably get a good gauge of
+that.
+
+48
+00:02:41,840 --> 00:02:46,200
+Smoking is relatively easy to measure
+although, you know,
+
+49
+00:02:46,200 --> 00:02:49,576
+there might be some confounding, some
+leftover confounding with smoking.
+
+50
+00:02:49,576 --> 00:02:53,580
+Because it's, we're not going to measure
+that, totally precisely.
+
+51
+00:02:53,580 --> 00:02:55,380
+But age is going to be measured precisely.
+
+52
+00:02:55,380 --> 00:02:58,250
+So we were able to wipe out most of the
+confounding in that example but I'll
+
+53
+00:02:58,250 --> 00:03:03,440
+just tell you that, residual confounding
+comes up a lot with observational studies.
+
+54
+00:03:03,440 --> 00:03:05,240
+You say oh, I've adjusted for smoking.
+
+55
+00:03:05,240 --> 00:03:06,600
+I've adjusted for age.
+
+56
+00:03:06,600 --> 00:03:07,930
+Therefore I've taken care of those.
+
+57
+00:03:07,930 --> 00:03:08,630
+They're all done with.
+
+58
+00:03:08,630 --> 00:03:10,270
+They can't be any confounding by those.
+
+59
+00:03:10,270 --> 00:03:11,680
+But in fact, that's not true.
+
+60
+00:03:11,680 --> 00:03:14,900
+If you measured your confounders at all
+imperfectly, or
+
+61
+00:03:14,900 --> 00:03:17,240
+if you measured your predictors, your
+outcome at all imperfectly,
+
+62
+00:03:17,240 --> 00:03:21,430
+it's impossible to completely adjust away
+all the confounding.
+
+63
+00:03:21,430 --> 00:03:26,400
+In most cases you end up with some
+leftover or residual confounding.
+
+64
+00:03:26,400 --> 00:03:32,112
+And my favorite example to illustrate that
+is, an example that
+
+65
+00:03:32,112 --> 00:03:36,880
+was in the American archive, the Archives
+of Internal Medicine a few years back.
+
+66
+00:03:36,880 --> 00:03:39,850
+Made a lot of headlines in the news media.
+
+67
+00:03:39,850 --> 00:03:44,800
+I've shown this table before, I just love
+this table as an illustration of why
+
+68
+00:03:44,800 --> 00:03:47,980
+confounding occurs, and why we have to
+worry about confounding.
+
+69
+00:03:47,980 --> 00:03:50,765
+This was a study that was looking at, I'm
+just showing you the men here,
+
+70
+00:03:50,765 --> 00:03:55,080
+was looking at red meat eating and whether
+or not it related to mortality.
+
+71
+00:03:55,080 --> 00:03:58,440
+And they classified men into different
+quintiles of red meat eating,
+
+72
+00:03:58,440 --> 00:04:01,030
+Q5 being the highest red meat eater.
+
+73
+00:04:01,030 --> 00:04:05,440
+And I've shown this before, but if you
+look carefully at this table, all the,
+
+74
+00:04:05,440 --> 00:04:09,640
+the risk factors for for, you know, all
+the bad health behaviors and
+
+75
+00:04:09,640 --> 00:04:13,510
+risk factors go up as you go up across the
+different quintiles.
+
+76
+00:04:13,510 --> 00:04:16,020
+So, you go up, your BMI increases.
+
+77
+00:04:16,020 --> 00:04:19,310
+As you eat more red meat, you, you're more
+likely to be a current smoker.
+
+78
+00:04:19,310 --> 00:04:22,760
+You're less likely to exercise, you're
+more likely to eat a lot of calories.
+
+79
+00:04:22,760 --> 00:04:24,890
+So basically, people who eat a lot of,
+
+80
+00:04:24,890 --> 00:04:30,230
+especially men here, who eat a lot of red
+meat, tend to be risky in many ways.
+
+81
+00:04:30,230 --> 00:04:32,700
+They have, they just have bad health
+habits.
+
+82
+00:04:32,700 --> 00:04:35,870
+Maybe they're more risk-takers in general.
+
+83
+00:04:35,870 --> 00:04:38,950
+So this paper was attempting to say,
+
+84
+00:04:38,950 --> 00:04:44,990
+what is the precise effect of actually
+eating red meat with mortality.
+
+85
+00:04:44,990 --> 00:04:47,180
+And so they said we're going to try to
+adjust away for all these [UNKNOWN].
+
+86
+00:04:47,180 --> 00:04:48,480
+We're going to throw BMI in the model.
+
+87
+00:04:48,480 --> 00:04:49,950
+We're going to throw smoking in the model.
+
+88
+00:04:49,950 --> 00:04:51,260
+We're going to throw exercise in the
+model.
+
+89
+00:04:51,260 --> 00:04:53,380
+We're going to try to adjust away for all
+those things.
+
+90
+00:04:53,380 --> 00:04:58,230
+So I'm going to show the, the results of
+this from this study.
+
+91
+00:04:58,230 --> 00:05:03,540
+So this is showing you the mortality
+risks.
+
+92
+00:05:03,540 --> 00:05:04,810
+These are relative risks.
+
+93
+00:05:04,810 --> 00:05:05,930
+Something called hazard ratios.
+
+94
+00:05:05,930 --> 00:05:09,190
+This actually came out of Cox regression
+and not logistic regression but
+
+95
+00:05:09,190 --> 00:05:11,780
+Residual compounding applies to all types
+of regression.
+
+96
+00:05:11,780 --> 00:05:14,890
+So what you're seeing here is that for,
+let's start with overall mortality.
+
+97
+00:05:14,890 --> 00:05:16,740
+And actually, let me zoom in a little bit
+here so
+
+98
+00:05:16,740 --> 00:05:19,230
+that it's easier on the small screens to
+see this.
+
+99
+00:05:19,230 --> 00:05:22,390
+So we're going to start with all cause
+mortality.
+
+100
+00:05:22,390 --> 00:05:24,980
+The reference group is the lowest red meat
+eaters.
+
+101
+00:05:24,980 --> 00:05:28,000
+The Q5 is the highest red meat eaters.
+
+102
+00:05:28,000 --> 00:05:31,660
+And they're show you the risks, the
+relative risks, this is called a hazard
+
+103
+00:05:31,660 --> 00:05:36,100
+ratio, but just like a risk ratio, as you
+go up across the different quintile.
+
+104
+00:05:36,100 --> 00:05:38,570
+So the basic model into adjusted for too
+many things and
+
+105
+00:05:38,570 --> 00:05:43,150
+indeed, you're seeing a nice increase in
+mortality as you eating more, red meat.
+
+106
+00:05:43,150 --> 00:05:45,170
+Then they do an adjusted model.
+
+107
+00:05:45,170 --> 00:05:45,910
+They're trying to adjust for
+
+108
+00:05:45,910 --> 00:05:48,520
+all these things that are all different
+about heavy red meat eaters.
+
+109
+00:05:49,578 --> 00:05:52,240
+And what you'll notice is that as we
+adjust,
+
+110
+00:05:52,240 --> 00:05:56,090
+with especially in that last Q5 quintile.
+
+111
+00:05:56,090 --> 00:05:59,030
+That when you adjust, you started at 1.48,
+when you adjust for
+
+112
+00:05:59,030 --> 00:06:02,730
+all these things, indeed, indeed the,
+effect gets attenuated.
+
+113
+00:06:02,730 --> 00:06:04,200
+It gets closer to one.
+
+114
+00:06:04,200 --> 00:06:06,040
+So it, it's really, after you adjust for
+
+115
+00:06:06,040 --> 00:06:10,160
+everything, a 31% increase in your
+mortality risk or rate.
+
+116
+00:06:11,420 --> 00:06:14,340
+And then, but what's interesting here is
+you might've just stopped there and
+
+117
+00:06:14,340 --> 00:06:16,600
+said, okay wow, we adjusted for BMI, we
+adjusted for exercise.
+
+118
+00:06:16,600 --> 00:06:18,470
+You know, the, the others did a great job
+adjusting for
+
+119
+00:06:18,470 --> 00:06:20,120
+everything they possibly could.
+
+120
+00:06:20,120 --> 00:06:21,410
+This was a nicely done study.
+
+121
+00:06:21,410 --> 00:06:22,980
+And you might just stop there and say,.
+
+122
+00:06:22,980 --> 00:06:27,130
+I've adjusted for everything, and it's
+still, an elevated risk.
+
+123
+00:06:27,130 --> 00:06:28,670
+It's still statistically signifigant.
+
+124
+00:06:28,670 --> 00:06:29,390
+Aha.
+
+125
+00:06:29,390 --> 00:06:30,710
+Red meat eating is bad for you.
+
+126
+00:06:30,710 --> 00:06:32,910
+And that's, indeed, what the conclusion of
+this study was.
+
+127
+00:06:32,910 --> 00:06:35,100
+It was widely reported in the media.
+
+128
+00:06:35,100 --> 00:06:39,510
+What's, interesting, though, is if you
+delve in to the specific causes of death.
+
+129
+00:06:39,510 --> 00:06:42,130
+If you look at cancer mortality.
+
+130
+00:06:42,130 --> 00:06:43,970
+Okay, cancer mortality elevated,
+
+131
+00:06:43,970 --> 00:06:47,830
+also elevated in that heavy red meat
+eating group.
+
+132
+00:06:47,830 --> 00:06:51,320
+And again adjusting for the confounding
+does tend to make that effect somewhat but
+
+133
+00:06:51,320 --> 00:06:54,124
+it still remains after adjustment.
+
+134
+00:06:54,124 --> 00:06:55,735
+1.22 for cancer mortality.
+
+135
+00:06:55,735 --> 00:06:59,760
+1.27 for cardiovascular disease mortality,
+but
+
+136
+00:06:59,760 --> 00:07:01,930
+here is where it really gets interesting.
+
+137
+00:07:01,930 --> 00:07:06,240
+So they also put in there mortality from
+injuries and sudden death.
+
+138
+00:07:06,240 --> 00:07:09,620
+They also looked at that, that's a
+category of,
+
+139
+00:07:09,620 --> 00:07:11,310
+of things that people might die from.
+
+140
+00:07:11,310 --> 00:07:14,610
+So this includes things like gunshot
+wounds and car accidents.
+
+141
+00:07:14,610 --> 00:07:16,490
+Those would probably be the most common.
+
+142
+00:07:16,490 --> 00:07:22,220
+So whats interesting here [LAUGH] is that
+if you look at the risk ratio,
+
+143
+00:07:22,220 --> 00:07:25,900
+the relative risk here between high red
+meat eating compared to
+
+144
+00:07:25,900 --> 00:07:30,250
+the reference group of low red meat eaters
+It's also elevated.
+
+145
+00:07:30,250 --> 00:07:34,560
+It's this, and the magnitude is almost
+identical to the increase in risk for
+
+146
+00:07:34,560 --> 00:07:37,200
+cardiovascular disease and for cancer.
+
+147
+00:07:37,200 --> 00:07:40,810
+So that's really interesting, because if
+you start to make up a causal story here,
+
+148
+00:07:40,810 --> 00:07:44,600
+how does red meat eating, heavy red meat
+eating.
+
+149
+00:07:44,600 --> 00:07:49,540
+How does that increase your risk of car
+accidents and gun shot wounds?
+
+150
+00:07:49,540 --> 00:07:53,840
+Well, the, the logical answer to that is
+it probably doesn't.
+
+151
+00:07:53,840 --> 00:07:55,600
+So what we're seeing here,
+
+152
+00:07:57,020 --> 00:08:00,690
+this 1.26 is almost certainly the result
+of residual confounding.
+
+153
+00:08:00,690 --> 00:08:05,830
+Heavy red meat eaters tend to be people
+who have a lot of risky behaviors.
+
+154
+00:08:05,830 --> 00:08:08,010
+They probably take a lot of chances.
+
+155
+00:08:08,010 --> 00:08:11,560
+They might own guns and, you know, drive
+too fast.
+
+156
+00:08:11,560 --> 00:08:13,210
+Might drink while driving and
+
+157
+00:08:13,210 --> 00:08:15,860
+the kinds of things that increase your
+things of this type of death.
+
+158
+00:08:16,980 --> 00:08:19,960
+And notice that when we adjust for
+confounding here, there's no change.
+
+159
+00:08:19,960 --> 00:08:23,050
+So you had 1.24 before adjustment for all
+the confounders.
+
+160
+00:08:23,050 --> 00:08:24,610
+And 1.26 after you adjust.
+
+161
+00:08:24,610 --> 00:08:28,400
+That's telling you that there's just
+something inherently risky about red meat
+
+162
+00:08:28,400 --> 00:08:33,740
+eaters that we are unable to capture with
+the confounders that we've measured here.
+
+163
+00:08:33,740 --> 00:08:39,340
+And that leads me to believe that the the
+relationships detected
+
+164
+00:08:39,340 --> 00:08:41,350
+here between cancer mortality and
+
+165
+00:08:41,350 --> 00:08:45,270
+cardiovascular mortality which are about
+the same magnitude, 1.27 and 1.22.
+
+166
+00:08:45,270 --> 00:08:50,240
+that that, those also might be due to
+residual confounding.
+
+167
+00:08:50,240 --> 00:08:53,270
+Heavy red meat eaters just do a lot of
+things bad and
+
+168
+00:08:53,270 --> 00:08:56,580
+that increases their risk of mortality,
+but it might not be that
+
+169
+00:08:56,580 --> 00:09:01,510
+it's because red meat eating per se has a
+direct effect on mortality.
+
+170
+00:09:01,510 --> 00:09:06,540
+All other deaths also, which is sort of a
+catch-all category, also is elevated in
+
+171
+00:09:06,540 --> 00:09:09,350
+a way that makes you suspicious that there
+might be residual confounding.
+
+172
+00:09:09,350 --> 00:09:12,850
+Some people actually wrote letters to the
+editor on this particular one
+
+173
+00:09:12,850 --> 00:09:15,430
+worried about the issue of residual
+confounding.
+
+174
+00:09:16,660 --> 00:09:20,690
+And just to help you recognize when there
+might be
+
+175
+00:09:20,690 --> 00:09:25,100
+residual confounding if you're talking
+about a binary predictor, like you know,
+
+176
+00:09:25,100 --> 00:09:27,220
+you're a high red meat eater or you're
+not.
+
+177
+00:09:27,220 --> 00:09:29,880
+Incomplete adjustment for
+
+178
+00:09:29,880 --> 00:09:35,430
+confounding can generate spurious relative
+risks in the range of 0.6 to 1.6.
+
+179
+00:09:35,430 --> 00:09:38,330
+So notice the, the relative risk we were
+talking about with
+
+180
+00:09:38,330 --> 00:09:43,010
+the red meat eating example was about 1.2,
+1.3, in that range.
+
+181
+00:09:43,010 --> 00:09:46,680
+So these are small effect sizes.
+
+182
+00:09:46,680 --> 00:09:48,440
+For the down syndrome example.
+
+183
+00:09:48,440 --> 00:09:51,080
+The, the effect size was 0.8.
+
+184
+00:09:51,080 --> 00:09:54,465
+So, those were both within the range of
+0.6 to 1.6.
+
+185
+00:09:54,465 --> 00:09:57,730
+So people, statisticians have done
+simulations where they actually
+
+186
+00:09:57,730 --> 00:10:03,020
+show that residual confounding can cause
+spurious associations in that
+
+187
+00:10:03,020 --> 00:10:06,546
+general relative risk range, 0.6 to 1.6.
+
+188
+00:10:06,546 --> 00:10:12,260
+In other words, if you see an effect size
+of two or three in your data set,
+
+189
+00:10:12,260 --> 00:10:16,250
+that is usually beyond what residual
+confounding can cause.
+
+190
+00:10:16,250 --> 00:10:19,208
+So residual confounding is kind of limited
+in its scope, but
+
+191
+00:10:19,208 --> 00:10:23,920
+if you pick up a lot of observational
+studies, and papers, and the literature.
+
+192
+00:10:23,920 --> 00:10:27,980
+You will see plenty of risk ratios and
+odds ratios that are 1.3, 0.8, 1.2, 4.
+
+193
+00:10:27,980 --> 00:10:34,690
+These are the, the, when the effect sizes
+are these,
+
+194
+00:10:34,690 --> 00:10:38,030
+this small, this is where you start to
+worry that there might be residual
+
+195
+00:10:38,030 --> 00:10:41,520
+confounding that can completely explain
+the association that you're seeing.
+
+196
+00:10:42,540 --> 00:10:46,590
+I've given you examples here where the
+residual, failure to,
+
+197
+00:10:46,590 --> 00:10:51,510
+to completely perfectly adjust for
+confounding, creates spirious association.
+
+198
+00:10:51,510 --> 00:10:53,530
+however, it can also go in the other
+direction.
+
+199
+00:10:53,530 --> 00:10:56,545
+Residual confounding might also obscure
+relationships.
+
+200
+00:10:56,545 --> 00:11:01,150
+It's causing you to miss associations so
+you might end up with a risk ratio of one,
+
+201
+00:11:01,150 --> 00:11:05,170
+when the true risk rate is 0.8 because of
+residual confounding.
+
+202
+00:11:05,170 --> 00:11:08,040
+Those examples are much more harder to,
+find.
+
+203
+00:11:08,040 --> 00:11:09,036
+They're much harder to uncover.
+
+204
+00:11:09,036 --> 00:11:11,850
+But they can happen So just keep in mind
+that it can go either way.

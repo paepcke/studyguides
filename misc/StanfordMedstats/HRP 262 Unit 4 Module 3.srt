@@ -1,0 +1,896 @@
+1
+00:00:00,000 --> 00:00:05,280
+[BLANK_AUDIO]
+
+2
+00:00:05,280 --> 00:00:06,350
+In this next module,
+
+3
+00:00:06,350 --> 00:00:10,180
+I'm going to show you how to code time
+changing predictors in SAS.
+
+4
+00:00:10,180 --> 00:00:14,070
+And we'll also do something similar in the
+lab, but this'll serve as an introduction.
+
+5
+00:00:14,070 --> 00:00:16,933
+[BLANK_AUDIO]
+
+6
+00:00:16,933 --> 00:00:21,824
+So going back to made up data set that I
+made you write the likelihood for, so
+
+7
+00:00:21,824 --> 00:00:25,328
+this was a data set which was looking at
+time to death, and
+
+8
+00:00:25,328 --> 00:00:31,000
+weight was measured at baseline, 3 months,
+6 months and 9 months into the study.
+
+9
+00:00:31,000 --> 00:00:35,820
+And I, the code, the way these variables
+are coded, is w0, w3, w6 and w9.
+
+10
+00:00:35,820 --> 00:00:37,370
+I've named those variables that.
+
+11
+00:00:38,730 --> 00:00:41,350
+I told you that I actually, this is a mock
+data set and
+
+12
+00:00:41,350 --> 00:00:43,650
+these estimates are kind of unstable, but
+I still went ahead and
+
+13
+00:00:43,650 --> 00:00:47,460
+put this data into SAS and [INAUDIBLE] Cox
+regressions with different predictors,
+
+14
+00:00:47,460 --> 00:00:49,700
+different forms of a predictor in the
+model.
+
+15
+00:00:49,700 --> 00:00:51,220
+So, when I chose baseline weight, so
+
+16
+00:00:51,220 --> 00:00:53,900
+that as I just put w0 in as my predictor
+in the model.
+
+17
+00:00:53,900 --> 00:00:55,100
+I got a hazard ratio of 2.7.
+
+18
+00:00:55,100 --> 00:00:58,900
+When I use the average weight, which
+doesn't exist in this data set, but
+
+19
+00:00:58,900 --> 00:01:00,790
+I made a new variable average weight and
+
+20
+00:01:00,790 --> 00:01:03,040
+I just averaged whatever weights they had
+available.
+
+21
+00:01:03,040 --> 00:01:07,300
+So, add up these four and divide by four
+for an example, when I, with that,
+
+22
+00:01:07,300 --> 00:01:11,102
+that in as a static predictor in my model,
+I get a hazard ratio of 1.2.
+
+23
+00:01:11,102 --> 00:01:15,854
+And as I told you before, when I then
+model the weight as a time-changing
+
+24
+00:01:15,854 --> 00:01:19,940
+variable, allowing it to change over time,
+I got a hazard ratio of 8.8.
+
+25
+00:01:19,940 --> 00:01:23,310
+But how did I actually, do this,
+
+26
+00:01:23,310 --> 00:01:26,800
+how did I actually get a time-changing
+predictor to run in SAS?
+
+27
+00:01:26,800 --> 00:01:27,960
+I'm going to show you the code now.
+
+28
+00:01:27,960 --> 00:01:32,333
+So first of all, if you wanted to use a
+time static, a, a non
+
+29
+00:01:32,333 --> 00:01:36,870
+time-changing predictor, like baseline
+weight like, w0, that's very easy to code.
+
+30
+00:01:36,870 --> 00:01:40,448
+You just put the variable in as a
+predictor on the model line.
+
+31
+00:01:40,448 --> 00:01:43,450
+If I wanted to put an average weight,
+again, average weight doesn't change, so
+
+32
+00:01:43,450 --> 00:01:45,600
+I would just use the variable average
+weight.
+
+33
+00:01:45,600 --> 00:01:46,760
+That's easy.
+
+34
+00:01:46,760 --> 00:01:50,890
+But for a time dependent predictor, it's
+slightly more complicated.
+
+35
+00:01:50,890 --> 00:01:54,180
+So here's what the code looks like that I
+used to calculate that
+
+36
+00:01:54,180 --> 00:01:55,880
+hazard ratio of 8.8.
+
+37
+00:01:55,880 --> 00:01:59,350
+So, I'm putting in, one of the things that
+you're allowed to
+
+38
+00:01:59,350 --> 00:02:04,580
+do in proc phreg in SAS is that you are
+allowed to create variables on the fly.
+
+39
+00:02:04,580 --> 00:02:07,970
+This is really the only way that you could
+code time changing predictors.
+
+40
+00:02:07,970 --> 00:02:11,430
+You're allowed to name a variable that
+doesn't exist in the data set.
+
+41
+00:02:11,430 --> 00:02:13,750
+There's no variable in the data set called
+weight.
+
+42
+00:02:13,750 --> 00:02:16,324
+I'm allowed to just name it on the model
+line,
+
+43
+00:02:16,324 --> 00:02:20,217
+as one of the predictors on the model
+line, and then define it below.
+
+44
+00:02:20,217 --> 00:02:22,960
+So I'm allowed to just make up variables
+on the fly and
+
+45
+00:02:22,960 --> 00:02:27,070
+define them of, below, and that's what I
+have to do for time changing predictors.
+
+46
+00:02:27,070 --> 00:02:30,140
+So I made up a variable weight, and then I
+defined weight.
+
+47
+00:02:30,140 --> 00:02:32,420
+And basically I said, this time,
+
+48
+00:02:32,420 --> 00:02:37,580
+whenever I say time in this code, below
+the model line, that means the event time.
+
+49
+00:02:37,580 --> 00:02:41,290
+So whatever event time we're on, whatever
+event time we are on in drawing out
+
+50
+00:02:41,290 --> 00:02:46,370
+the likelihood, we're going to be
+comparing that time to, we're going to be
+
+51
+00:02:46,370 --> 00:02:48,940
+using if then statements to figure out
+which weight we should be using.
+
+52
+00:02:48,940 --> 00:02:52,550
+So, if the event time is less than three,
+
+53
+00:02:52,550 --> 00:02:56,940
+then the weight that we want to use the
+value we want to use for weight, for
+
+54
+00:02:56,940 --> 00:03:01,180
+this predictor variable weight, for that
+event time, is w0, the base line weight.
+
+55
+00:03:01,180 --> 00:03:06,130
+because that was the most recent weight,
+if we're below 3 months in the study.
+
+56
+00:03:06,130 --> 00:03:08,740
+If the event time is between 3 and 6
+months,
+
+57
+00:03:08,740 --> 00:03:12,470
+then we can use w3, the weight that was
+measured at 3 months.
+
+58
+00:03:12,470 --> 00:03:16,640
+So now my value for those variable weight
+changes, when I'm plugging into
+
+59
+00:03:16,640 --> 00:03:20,560
+the likelihood function changes, to the
+weight measured at 3 months.
+
+60
+00:03:20,560 --> 00:03:22,280
+And then I do a series of if then
+statements,
+
+61
+00:03:22,280 --> 00:03:25,860
+so if the event happens between 6 and 9,
+I'll use the weight from the 6 months,
+
+62
+00:03:25,860 --> 00:03:30,740
+if the event time is after then or equal
+to 9, I use the weight from 9 months.
+
+63
+00:03:30,740 --> 00:03:32,060
+That's the general set up of a code.
+
+64
+00:03:32,060 --> 00:03:36,230
+Again, you are going to be, when you put
+down time here, you mean the event time.
+
+65
+00:03:36,230 --> 00:03:38,260
+So let me go into this in just a tiny bit
+more detail.
+
+66
+00:03:38,260 --> 00:03:41,320
+What is SAS actually doing behind the
+scenes here?
+
+67
+00:03:41,320 --> 00:03:46,410
+So what SAS is doing is, whenever you name
+a time-dependent variable, what it has to
+
+68
+00:03:46,410 --> 00:03:53,170
+do is it has to create for that variable,
+a variable for each event time.
+
+69
+00:03:53,170 --> 00:03:56,460
+So you can imagine it's basically creating
+a temporary data set.
+
+70
+00:03:56,460 --> 00:03:58,120
+In this case, we had three events, so
+
+71
+00:03:58,120 --> 00:04:04,190
+the variable weight actually has three
+columns, three variables, in the data set.
+
+72
+00:04:04,190 --> 00:04:08,160
+So weight, there is going to be a weight
+at the first event time, 2 months into
+
+73
+00:04:08,160 --> 00:04:11,660
+the study, a weight at the second event
+time which was 8 months into the study and
+
+74
+00:04:11,660 --> 00:04:14,940
+weight at the third event time which was
+10 months into the study.
+
+75
+00:04:14,940 --> 00:04:16,990
+If we had 10 event times,
+
+76
+00:04:16,990 --> 00:04:20,780
+there would be 10 columns in this
+temporary data set that SAS is creating.
+
+77
+00:04:20,780 --> 00:04:24,208
+So weight is a multi-column variable.
+
+78
+00:04:24,208 --> 00:04:27,940
+How does SAS figure out what to put in
+each of these columns?
+
+79
+00:04:27,940 --> 00:04:30,150
+That's where my if and statements come in.
+
+80
+00:04:30,150 --> 00:04:32,760
+So weight for the first event time.
+
+81
+00:04:32,760 --> 00:04:35,940
+Remember the first event time here
+happened at 2 months into the study.
+
+82
+00:04:35,940 --> 00:04:39,430
+So when time was 2, what were all the
+weights for people?
+
+83
+00:04:39,430 --> 00:04:42,710
+So SAS goes to the if and statements to
+figure that out.
+
+84
+00:04:42,710 --> 00:04:45,830
+So it says, okay, if the event time was
+less than 3, oh, yes.
+
+85
+00:04:45,830 --> 00:04:47,496
+Check.
+The event time was less than 3, so
+
+86
+00:04:47,496 --> 00:04:48,790
+2 is less than three.
+
+87
+00:04:48,790 --> 00:04:53,460
+Then I need to use for the val, variable
+weight the w0, the baseline weight.
+
+88
+00:04:53,460 --> 00:04:55,130
+So that's what I filled in here.
+
+89
+00:04:55,130 --> 00:04:57,980
+All of the baseline weights for all of my
+subjects.
+
+90
+00:04:57,980 --> 00:04:59,540
+SAS then goes to the next event time.
+
+91
+00:04:59,540 --> 00:05:03,460
+So the next event time occurred at 8
+months into the study.
+
+92
+00:05:03,460 --> 00:05:05,600
+And it goes in through these if then
+statements.
+
+93
+00:05:05,600 --> 00:05:06,620
+Is time less than 3?
+
+94
+00:05:06,620 --> 00:05:08,910
+No.
+Is time between 3 and 6?
+
+95
+00:05:08,910 --> 00:05:09,740
+No.
+
+96
+00:05:09,740 --> 00:05:11,170
+Is time between 6 and 9?
+
+97
+00:05:11,170 --> 00:05:12,760
+Yes.
+8 is between 6 and
+
+98
+00:05:12,760 --> 00:05:14,818
+9, so we're now on this row here.
+
+99
+00:05:14,818 --> 00:05:20,480
+So if ti, the event time is between 6 and
+9, then use the value for w6.
+
+100
+00:05:20,480 --> 00:05:25,460
+So we're going to use the weight that was
+measured 6 months into the study, so
+
+101
+00:05:25,460 --> 00:05:26,800
+that's what I plug into this column.
+
+102
+00:05:26,800 --> 00:05:29,350
+Some of the people were no longer
+available 6 months into the study so
+
+103
+00:05:29,350 --> 00:05:31,420
+they just have a missing value.
+
+104
+00:05:31,420 --> 00:05:34,960
+Then the final event happened at 10 months
+into the study.
+
+105
+00:05:34,960 --> 00:05:39,950
+So SAS creates another column here, and
+goes to the code.
+
+106
+00:05:39,950 --> 00:05:42,290
+If time is less than 3, no.
+
+107
+00:05:42,290 --> 00:05:43,750
+If time is between 3 and 6, no.
+
+108
+00:05:43,750 --> 00:05:45,520
+If time is between 6 and 9, no.
+
+109
+00:05:45,520 --> 00:05:47,440
+If time is greater than or equal to 9,
+yes.
+
+110
+00:05:47,440 --> 00:05:48,510
+10 is greater than 9.
+
+111
+00:05:48,510 --> 00:05:50,900
+So then we use the weight w9.
+
+112
+00:05:50,900 --> 00:05:55,870
+We, so I filled in, in this column, the
+values for the 9 month weight for
+
+113
+00:05:55,870 --> 00:05:58,790
+those subjects who, who had a 9 month
+weight.
+
+114
+00:05:58,790 --> 00:06:01,010
+So SAS creates this temporary data set, so
+
+115
+00:06:01,010 --> 00:06:04,580
+that it can use in the likelihood for the
+first event time this column, for
+
+116
+00:06:04,580 --> 00:06:08,040
+the second event time this column, and for
+the third event time this column.
+
+117
+00:06:08,040 --> 00:06:09,480
+That's what SAS is doing behind the scenes
+and
+
+118
+00:06:09,480 --> 00:06:12,810
+that, you're going to kind of need to know
+that in order to be able to
+
+119
+00:06:12,810 --> 00:06:16,640
+think out exactly how to code your time
+changing predictors.
+
+120
+00:06:16,640 --> 00:06:18,340
+You really do have to think it out
+carefully.
+
+121
+00:06:19,550 --> 00:06:24,190
+Just to give you one more example, so I
+showed you this example when we
+
+122
+00:06:24,190 --> 00:06:27,490
+were talking again in the module about
+time-dependent predictors,
+
+123
+00:06:27,490 --> 00:06:29,920
+what those look like in the likelihood
+function.
+
+124
+00:06:29,920 --> 00:06:33,400
+So we have seven subjects numbered 1
+through 7,
+
+125
+00:06:33,400 --> 00:06:36,760
+and the outcome here was time to fracture
+the stress fracture.
+
+126
+00:06:36,760 --> 00:06:38,950
+We have their various times in this study.
+
+127
+00:06:38,950 --> 00:06:41,380
+Some of the women took oral
+contraceptives.
+
+128
+00:06:41,380 --> 00:06:44,580
+So we have a date which they started a
+time in the study which they started oral
+
+129
+00:06:44,580 --> 00:06:46,400
+contraceptives and which they stopped.
+
+130
+00:06:46,400 --> 00:06:50,760
+So subject six never started them and
+therefore never stopped them.
+
+131
+00:06:50,760 --> 00:06:54,350
+Subject 2 started oral contraceptives 10
+months into the study but
+
+132
+00:06:54,350 --> 00:06:57,380
+stopped them at 11 months into the study,
+and so on.
+
+133
+00:06:57,380 --> 00:06:58,110
+And I already show you,
+
+134
+00:06:58,110 --> 00:07:00,860
+showed you what the likelihood would look
+like for these data.
+
+135
+00:07:00,860 --> 00:07:03,910
+But how would I actually enter these data
+into SAS, and
+
+136
+00:07:03,910 --> 00:07:08,190
+code tells SAS to model this as a time
+changing predictor.
+
+137
+00:07:08,190 --> 00:07:09,360
+What would the code look like?
+
+138
+00:07:11,170 --> 00:07:15,110
+So I went ahead for this little, little
+data set and wrote out some code.
+
+139
+00:07:15,110 --> 00:07:19,100
+So our model here is time and our element
+here is fracture, so
+
+140
+00:07:19,100 --> 00:07:23,330
+this zero is the censored value, and I've
+created another variable on the fly, so
+
+141
+00:07:23,330 --> 00:07:26,080
+I'm just noticing in my data set there's
+no variable called called onoc.
+
+142
+00:07:26,080 --> 00:07:31,320
+But I'm making up a new variable which I'm
+calling onoc, or on oral contraceptives.
+
+143
+00:07:31,320 --> 00:07:33,370
+And then I have to define it below.
+
+144
+00:07:33,370 --> 00:07:37,290
+Again, whenever I say time, I mean the
+current event time.
+
+145
+00:07:37,290 --> 00:07:40,330
+So, if they never started oc, so
+
+146
+00:07:40,330 --> 00:07:42,990
+if startoc is equal to 0, then they can
+never be on oc.
+
+147
+00:07:42,990 --> 00:07:45,210
+So if they never started oral
+contraceptives, I know for
+
+148
+00:07:45,210 --> 00:07:46,240
+sure that they can't be on them.
+
+149
+00:07:46,240 --> 00:07:49,375
+So I've decided to just put a code right
+out there that says if they never starts
+
+150
+00:07:49,375 --> 00:07:52,390
+oc's, if that's a missing value, then they
+can't be on oc's.
+
+151
+00:07:52,390 --> 00:07:53,790
+So onoc's equals 0.
+
+152
+00:07:53,790 --> 00:07:56,020
+They're not on oc's.
+
+153
+00:07:56,020 --> 00:07:59,000
+Else if, if that's not the case, if they
+did start them,
+
+154
+00:07:59,000 --> 00:08:04,290
+then the time at which they started oc's
+is less than the event time.
+
+155
+00:08:04,290 --> 00:08:07,334
+So, meaning that they've already started
+them.
+
+156
+00:08:07,334 --> 00:08:11,594
+And, there, the time that they ended oc's
+is greater than the current event time,
+
+157
+00:08:11,594 --> 00:08:12,920
+then they would be onoc.
+
+158
+00:08:12,920 --> 00:08:15,480
+So let me give you an example.
+
+159
+00:08:15,480 --> 00:08:21,720
+If we looked at the woman who fractured at
+6 months into the study.
+
+160
+00:08:21,720 --> 00:08:23,100
+So our time co-event being here at 6
+months.
+
+161
+00:08:23,100 --> 00:08:28,116
+So we're in, thinking about the, sort of
+this is the onoc value for
+
+162
+00:08:28,116 --> 00:08:30,310
+time 6, the event time 6.
+
+163
+00:08:30,310 --> 00:08:34,406
+If you go through the data set, well this
+person has never started oc's, so
+
+164
+00:08:34,406 --> 00:08:36,667
+she gets a value of, of zero for onoc's.
+
+165
+00:08:36,667 --> 00:08:42,145
+The second person subject 2, is not on
+oc's at that time, because their
+
+166
+00:08:42,145 --> 00:08:48,010
+startOC is 10, their stopoc is 11, so if
+you look at the code, time now is 6.
+
+167
+00:08:48,010 --> 00:08:49,980
+You know, their startoc is 10.
+
+168
+00:08:49,980 --> 00:08:54,770
+Well, 10 is not less than 6, so right away
+then, onoc is not going to work at this,
+
+169
+00:08:54,770 --> 00:08:57,110
+and this condition is not fulfilled.
+
+170
+00:08:57,110 --> 00:09:02,700
+Then I have if otherwise, if the start is
+greater than the 6,
+
+171
+00:09:02,700 --> 00:09:04,320
+so is startoc greater than 6?
+
+172
+00:09:04,320 --> 00:09:06,010
+Yes.
+If either one of those is true,
+
+173
+00:09:06,010 --> 00:09:06,590
+then you're not onoc's.
+
+174
+00:09:06,590 --> 00:09:09,170
+If you haven't started them yet, you can't
+be on them.
+
+175
+00:09:09,170 --> 00:09:14,113
+So if I go through the logic here for this
+one, then she's going to get a value of 0.
+
+176
+00:09:14,113 --> 00:09:19,050
+The next one, she started at 0 and stopped
+at 12, so we go back to the logic here.
+
+177
+00:09:20,080 --> 00:09:25,242
+So she started oc, so we go here, else if
+start oc, so now our time is again,
+
+178
+00:09:25,242 --> 00:09:30,010
+the event time 6 months, she started oc's
+at 0 months into the study.
+
+179
+00:09:30,010 --> 00:09:32,552
+She ended oc's at 12 months into the
+study, so
+
+180
+00:09:32,552 --> 00:09:37,435
+0 is less than 6, yes and 12 is greater
+than 0, and 12 is greater than 6, sorry.
+
+181
+00:09:37,435 --> 00:09:40,840
+12 is greater than 6, yes, so then she
+gets a value of onoc's is equal to 1.
+
+182
+00:09:40,840 --> 00:09:42,610
+So she'd get a value of 1.
+
+183
+00:09:42,610 --> 00:09:48,100
+And you keep going, so Subject 7, 1 is
+clearly less than 6.
+
+184
+00:09:48,100 --> 00:09:54,650
+And 7 is greater than 6, so she would also
+get a value of, of 1 for onoc's.
+
+185
+00:09:54,650 --> 00:09:58,200
+And this one would get 1, this one would
+get 0, and this one would get 1.
+
+186
+00:09:58,200 --> 00:10:01,770
+So, at event time 6, those would be the
+women on oc's.
+
+187
+00:10:01,770 --> 00:10:05,810
+When we then run this model in SAS, we're
+going to get a hazard ratio that
+
+188
+00:10:05,810 --> 00:10:10,700
+represents when you're actually taking or
+have recently taken oral contraceptives,
+
+189
+00:10:10,700 --> 00:10:12,950
+how much does that protect you against
+fracture?
+
+190
+00:10:12,950 --> 00:10:18,130
+[BLANK_AUDIO]

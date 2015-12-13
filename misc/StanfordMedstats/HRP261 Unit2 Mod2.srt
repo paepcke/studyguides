@@ -1,0 +1,678 @@
+1
+00:00:05,050 --> 00:00:08,300
+In this next module, I'm going to talk
+about mediating variables.
+
+2
+00:00:10,860 --> 00:00:15,660
+So a mediating variable, a mediator looks
+a lot like a confounder.
+
+3
+00:00:15,660 --> 00:00:19,400
+Like a confounder it has to be associated,
+both with the protector and
+
+4
+00:00:19,400 --> 00:00:21,300
+the outcome variables.
+
+5
+00:00:21,300 --> 00:00:26,120
+Unlike a confounder however, it is on the
+causal pathway between the predictor and
+
+6
+00:00:26,120 --> 00:00:27,280
+the outcome.
+
+7
+00:00:27,280 --> 00:00:32,830
+So it helps to explain why a predictor and
+an outcome are causally related.
+
+8
+00:00:32,830 --> 00:00:37,420
+So that's different than a confounder
+because it's on the causal pathway.
+
+9
+00:00:37,420 --> 00:00:40,690
+I just want to point out though that
+mediation and confounding, mediator
+
+10
+00:00:40,690 --> 00:00:44,430
+variables and confounding variables are
+actually identical statistically.
+
+11
+00:00:44,430 --> 00:00:46,640
+The way that we're going to identify them,
+
+12
+00:00:46,640 --> 00:00:50,640
+what they do statistically is actually the
+same.
+
+13
+00:00:50,640 --> 00:00:55,190
+So we're really only distinguishing these,
+on conceptual grounds.
+
+14
+00:00:55,190 --> 00:00:58,950
+Statistically, they're going to look the
+same, but because we know more information
+
+15
+00:00:58,950 --> 00:01:02,830
+about the problem, we know about the
+biology or about the clinical problem.
+
+16
+00:01:02,830 --> 00:01:04,760
+We can make a judgment call as to whether
+or
+
+17
+00:01:04,760 --> 00:01:07,200
+not one is a confounder versus a mediator.
+
+18
+00:01:07,200 --> 00:01:12,130
+So for example in the case I gave in an
+earlier module about lung cancer and
+
+19
+00:01:12,130 --> 00:01:17,660
+drinking and smoking, we decided that
+smoking was a confounder.
+
+20
+00:01:17,660 --> 00:01:21,420
+Smoking is not on a causal pathway between
+drinking and lung cancer, so
+
+21
+00:01:21,420 --> 00:01:24,630
+it's not the case that if you drink, that
+causes you to smoke more.
+
+22
+00:01:24,630 --> 00:01:27,680
+And that's, then smoking increases your
+risk of lung cancer.
+
+23
+00:01:27,680 --> 00:01:30,900
+So there's no causal relationship between
+drinking and smoking.
+
+24
+00:01:30,900 --> 00:01:33,430
+Smoking just happens to be related to both
+of them,
+
+25
+00:01:33,430 --> 00:01:36,240
+there's in fact no causal relationship
+between drinking and
+
+26
+00:01:36,240 --> 00:01:40,510
+lung cancer, the relationship we're seeing
+is purely driven by smoking.
+
+27
+00:01:40,510 --> 00:01:42,480
+So that would be an example of a
+confounder.
+
+28
+00:01:42,480 --> 00:01:46,590
+An example of a mediator would be if you
+look at the relationship between
+
+29
+00:01:46,590 --> 00:01:52,270
+obesity and heart disease, and you look at
+the mediating variable of blood pressure.
+
+30
+00:01:52,270 --> 00:01:55,540
+So obesity probably is causatively related
+to heart disease.
+
+31
+00:01:55,540 --> 00:01:59,060
+Disease and then the variable blood
+pressure might be
+
+32
+00:01:59,060 --> 00:02:02,430
+a mediator of that relationship, if it
+might be one of the things that
+
+33
+00:02:02,430 --> 00:02:06,410
+explains why obesity raises your risk of
+heart disease.
+
+34
+00:02:06,410 --> 00:02:09,570
+So obesity causes you to have higher blood
+pressure.
+
+35
+00:02:09,570 --> 00:02:12,130
+Higher blood pressure puts strain on your
+heart and
+
+36
+00:02:12,130 --> 00:02:13,900
+increases your risk of heart disease.
+
+37
+00:02:13,900 --> 00:02:17,630
+So, that would be considered a mediating
+variable rather than a confounder.
+
+38
+00:02:17,630 --> 00:02:21,840
+It's not causing a spurious association to
+appear between obesity and heart disease.
+
+39
+00:02:21,840 --> 00:02:25,220
+Rather obesity does have a causal
+relationship, is just one of
+
+40
+00:02:25,220 --> 00:02:30,280
+the ways that the relationship between
+obesity and heart disease is mediated.
+
+41
+00:02:30,280 --> 00:02:32,330
+It's one of the things that explains it.
+
+42
+00:02:32,330 --> 00:02:34,620
+But again statistically, you're going to
+look the same.
+
+43
+00:02:34,620 --> 00:02:37,090
+So it's all conceptually how we
+distinguish those.
+
+44
+00:02:37,090 --> 00:02:42,220
+I'm just going to give you a couple of
+examples of what mediation looks like,
+
+45
+00:02:42,220 --> 00:02:45,190
+and say a little bit about how we identify
+mediators statistically.
+
+46
+00:02:46,200 --> 00:02:48,000
+So when people are talking of mediation,
+
+47
+00:02:48,000 --> 00:02:51,480
+they love to draw these nice little path
+diagrams and little flow diagrams.
+
+48
+00:02:51,480 --> 00:02:53,700
+So I think those are nice, I always like a
+good picture.
+
+49
+00:02:53,700 --> 00:02:58,130
+So here's a, an example I picked out of a
+recent article on the literature, and
+
+50
+00:02:58,130 --> 00:03:02,410
+was looking at physical activity as the
+predictor, and eating self-regulation,
+
+51
+00:03:02,410 --> 00:03:06,169
+how well can you self-regulate in terms of
+eating as the outcome variable.
+
+52
+00:03:07,180 --> 00:03:11,070
+And if you look at physical activity,
+people who exercise a lot and
+
+53
+00:03:11,070 --> 00:03:14,330
+you look at people's ability to self
+regulate their eating,
+
+54
+00:03:14,330 --> 00:03:18,610
+in fact you do find an association between
+that predictor and that outcome.
+
+55
+00:03:18,610 --> 00:03:22,400
+And they do appear to be causally related,
+not really through confounders but
+
+56
+00:03:22,400 --> 00:03:25,460
+one seems to have effects on the other.
+
+57
+00:03:25,460 --> 00:03:28,590
+Now, there might be a lot of.
+
+58
+00:03:28,590 --> 00:03:32,640
+There are variables here though, that help
+to explain how physical
+
+59
+00:03:32,640 --> 00:03:37,530
+activity regulates eating, and that's what
+this picture is showing here.
+
+60
+00:03:37,530 --> 00:03:40,040
+I'm going to just put this in statistical
+terms for a minute.
+
+61
+00:03:40,040 --> 00:03:45,130
+So, here, look at this, this arrow right
+here, which says the total effects path C.
+
+62
+00:03:45,130 --> 00:03:49,450
+So, this is, image that I were to was to
+try to relate physical activity and
+
+63
+00:03:49,450 --> 00:03:52,030
+eating self-regulation with some kind of
+statistical test.
+
+64
+00:03:52,030 --> 00:03:55,510
+Let's say I did a regression, and I get,
+I'm going to just make up a,
+
+65
+00:03:55,510 --> 00:03:59,020
+you know, a regression coefficient here
+for hypothetical.
+
+66
+00:03:59,020 --> 00:04:03,120
+Just to make it easy, a number that we can
+deal with, but imagine that you.
+
+67
+00:04:03,120 --> 00:04:03,980
+You run a regression.
+
+68
+00:04:03,980 --> 00:04:05,210
+Physical activity's the predictor.
+
+69
+00:04:05,210 --> 00:04:06,750
+Eating self-regulation is the outcome.
+
+70
+00:04:06,750 --> 00:04:10,150
+And the beta coefficient from that
+regression comes out to be 1.0,
+
+71
+00:04:10,150 --> 00:04:12,650
+showing there is a statistically
+significant relationship here.
+
+72
+00:04:12,650 --> 00:04:14,290
+That's the magnitude 1.0.
+
+73
+00:04:14,290 --> 00:04:17,770
+So we then though, that's our simple
+model.
+
+74
+00:04:17,770 --> 00:04:21,530
+We then go and say well maybe there are
+things that explain the relationship.
+
+75
+00:04:21,530 --> 00:04:24,900
+Mediate the relationship between physical
+activity and eating self-regulation and
+
+76
+00:04:24,900 --> 00:04:26,764
+here's an example.
+
+77
+00:04:26,764 --> 00:04:31,300
+Perhaps you exercise a lot you improve
+your body image which in
+
+78
+00:04:31,300 --> 00:04:35,070
+turn help you to regulate your eating
+better.
+
+79
+00:04:35,070 --> 00:04:39,560
+So let's say I then add to my regression
+model a variable for
+
+80
+00:04:39,560 --> 00:04:42,660
+this dysfunctional body image investment,
+body image basically.
+
+81
+00:04:42,660 --> 00:04:45,200
+And let's say the beta for that comes out
+to be 0.25.
+
+82
+00:04:45,200 --> 00:04:51,160
+And when I put that in the model, my beta
+of the direct effect of between
+
+83
+00:04:51,160 --> 00:04:55,140
+physical activity and self regulation goes
+down, say it goes down to 0.75.
+
+84
+00:04:55,140 --> 00:04:59,360
+You notice how this body image is kind of
+looking like a confounder.
+
+85
+00:04:59,360 --> 00:05:03,740
+Because when I put it in the model, the
+relationship between physical activity and
+
+86
+00:05:03,740 --> 00:05:05,080
+eating self-regulation gets extenuated.
+
+87
+00:05:05,080 --> 00:05:09,230
+But it's not a confounder, it's just
+explaining some of this relationship.
+
+88
+00:05:09,230 --> 00:05:13,510
+And, then, let's say I add depressive mood
+to the model,
+
+89
+00:05:13,510 --> 00:05:17,150
+so if you exercise more that improves your
+mood that pretty well established and
+
+90
+00:05:17,150 --> 00:05:18,570
+maybe if you have better mood.
+
+91
+00:05:18,570 --> 00:05:21,450
+That helps to improve your eating self
+regulation.
+
+92
+00:05:21,450 --> 00:05:25,570
+So let's say I've dumped depressive mood
+now, as another co variable in the model.
+
+93
+00:05:25,570 --> 00:05:28,550
+I'm not saying the beta coefficient for
+that, also comes out to 0.25,
+
+94
+00:05:28,550 --> 00:05:32,450
+and my relationship between physical
+activity and
+
+95
+00:05:32,450 --> 00:05:34,380
+eating self regulation goes down even
+more.
+
+96
+00:05:34,380 --> 00:05:35,580
+Let's say I'm making this you know,
+
+97
+00:05:35,580 --> 00:05:38,060
+very simple numbers, but lets say it goes
+to 0.5.
+
+98
+00:05:38,060 --> 00:05:43,530
+So essentially when I adjust for mood and
+body image, I've cut down, I attenuated
+
+99
+00:05:43,530 --> 00:05:46,898
+my data coefficient between physical
+activity and eating self regulation.
+
+100
+00:05:46,898 --> 00:05:47,730
+To my 50%.
+
+101
+00:05:47,730 --> 00:05:52,540
+That leftover effect of physical activity
+we're going to call the direct effect.
+
+102
+00:05:52,540 --> 00:05:54,390
+So I'm going to put this on this dotted
+line.
+
+103
+00:05:54,390 --> 00:05:58,510
+That's maybe the, what we, we, maybe we
+have, accounted for
+
+104
+00:05:58,510 --> 00:05:59,960
+all possible mediators.
+
+105
+00:05:59,960 --> 00:06:03,270
+But when we account for the mediators we
+know about, that's what's left over.
+
+106
+00:06:03,270 --> 00:06:06,880
+So we would call these the direct effects
+of physical activity
+
+107
+00:06:06,880 --> 00:06:07,450
+on eating self-regulation.
+
+108
+00:06:07,450 --> 00:06:11,010
+So somehow physical activity directly
+affects your eating.
+
+109
+00:06:11,010 --> 00:06:17,030
+You can imagine exercise certainly has
+very profound impact on appetite hormones.
+
+110
+00:06:17,030 --> 00:06:20,380
+So that might be sort of a direct effect
+on eating self regulation or
+
+111
+00:06:20,380 --> 00:06:22,170
+something of that nature.
+
+112
+00:06:22,170 --> 00:06:25,740
+But when we put these other things in the
+model, we explain away some of
+
+113
+00:06:25,740 --> 00:06:28,250
+the relationship between physical activity
+and eating self regulation.
+
+114
+00:06:28,250 --> 00:06:31,340
+Because these other variables are
+mediators.
+
+115
+00:06:31,340 --> 00:06:33,910
+So the rest of the relationship between
+physical activity and
+
+116
+00:06:33,910 --> 00:06:37,300
+eating self regulation, was driven by the
+changes on body image and
+
+117
+00:06:37,300 --> 00:06:39,030
+the changes on depressive mood.
+
+118
+00:06:39,030 --> 00:06:44,170
+But depression and body image are not
+confounders, because they're just one of
+
+119
+00:06:44,170 --> 00:06:49,420
+the ways that physical activity is able to
+influence eating self regulation.
+
+120
+00:06:52,260 --> 00:06:56,610
+Just to illustrate one more example of
+what mediation looks like, so imagine
+
+121
+00:06:56,610 --> 00:07:01,420
+we've got a predictor a parental education
+that's my X my predictor variable and
+
+122
+00:07:01,420 --> 00:07:06,380
+my outcome here my Y is the BMI or waist
+circumference of the child.
+
+123
+00:07:06,380 --> 00:07:09,730
+So there's an idea that if you have more
+educated parents it does turn out that
+
+124
+00:07:09,730 --> 00:07:13,895
+they tend to have, children who are less
+at risk for obesity.
+
+125
+00:07:13,895 --> 00:07:16,540
+And you can imagine that there's a number
+of ways that,
+
+126
+00:07:16,540 --> 00:07:19,320
+number of ways that this relationship
+might get mediated.
+
+127
+00:07:19,320 --> 00:07:21,520
+So again you know you can model this and
+
+128
+00:07:21,520 --> 00:07:25,710
+if you just put physic parental education
+into the model, you'll find a big
+
+129
+00:07:25,710 --> 00:07:30,400
+relationship between parental education
+and the child's weight or over weightness.
+
+130
+00:07:30,400 --> 00:07:33,390
+But if you start adding other things into
+the model there is a lot of
+
+131
+00:07:33,390 --> 00:07:35,190
+things that can explain that relationship.
+
+132
+00:07:35,190 --> 00:07:37,850
+So for example parents who are more
+educated,
+
+133
+00:07:37,850 --> 00:07:41,860
+they might be more likely to put their
+kids in sports, that helps reduce the BMI.
+
+134
+00:07:41,860 --> 00:07:44,550
+Parents who are more educated might be
+more likely to encourage their kids to
+
+135
+00:07:44,550 --> 00:07:48,160
+eat breakfast, and that might help keep
+the BMI low.
+
+136
+00:07:48,160 --> 00:07:50,410
+They might be less likely to push sugary
+drinks and
+
+137
+00:07:50,410 --> 00:07:52,210
+that keeps the BMI low and so on.
+
+138
+00:07:52,210 --> 00:07:56,920
+So again, if you adjust for these other
+variables, they will
+
+139
+00:07:56,920 --> 00:08:01,470
+appear to reduce the relationship between
+parental education and child BMI.
+
+140
+00:08:01,470 --> 00:08:06,200
+But in fact, that's because they're on the
+causal pathway between those two things,
+
+141
+00:08:06,200 --> 00:08:08,620
+so that's a mediation.

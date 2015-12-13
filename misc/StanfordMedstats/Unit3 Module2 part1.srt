@@ -1,0 +1,262 @@
+1
+00:00:02,220 --> 00:00:02,900
+Hi, welcome back.
+
+2
+00:00:02,900 --> 00:00:06,560
+In this module, we are going to show you
+how to use proc univariate.
+
+3
+00:00:06,560 --> 00:00:09,260
+This procedure is useful for getting
+descriptive statistics for
+
+4
+00:00:09,260 --> 00:00:10,240
+the columns in your data.
+
+5
+00:00:11,730 --> 00:00:14,320
+So here, we have the basic syntax for the
+proc univariate.
+
+6
+00:00:15,360 --> 00:00:17,960
+>> Remember, you always start your code
+with proc and
+
+7
+00:00:17,960 --> 00:00:19,050
+then the name of your procedure.
+
+8
+00:00:20,270 --> 00:00:22,950
+Then, you must specify the data set to
+work on.
+
+9
+00:00:22,950 --> 00:00:25,290
+Obviously, it's the heart disease data set
+I imported earlier.
+
+10
+00:00:26,700 --> 00:00:27,450
+In the next line of code,
+
+11
+00:00:27,450 --> 00:00:30,780
+you specify which variable you want to
+perform your univariate analysis.
+
+12
+00:00:31,850 --> 00:00:35,090
+Remember, SAS procedures work on data one
+column at a time.
+
+13
+00:00:35,090 --> 00:00:37,060
+So unless we specify something else,
+
+14
+00:00:37,060 --> 00:00:40,880
+SAS will run proc univariate on all of the
+columns in our data set.
+
+15
+00:00:40,880 --> 00:00:41,950
+Let's take a look at the column for h.
+
+16
+00:00:41,950 --> 00:00:45,135
+Make sure to end your procedure with a run
+statement.
+
+17
+00:00:45,135 --> 00:00:45,920
+[SOUND].
+
+18
+00:00:45,920 --> 00:00:47,650
+>> Now, let's run the code, and look at
+the output.
+
+19
+00:00:49,440 --> 00:00:50,100
+As you can see,
+
+20
+00:00:50,100 --> 00:00:53,850
+SAS provides lots of information about the
+distribution of your data.
+
+21
+00:00:53,850 --> 00:00:55,350
+Here, we have the sample size.
+
+22
+00:00:55,350 --> 00:00:59,150
+This is the number of non missing values
+that proc univariate, was able to read for
+
+23
+00:00:59,150 --> 00:00:59,870
+the age variable.
+
+24
+00:01:00,940 --> 00:01:03,210
+Here, we have the Mean, Median, and Mode.
+
+25
+00:01:03,210 --> 00:01:06,620
+So that you have estimates for the central
+tendency of your data.
+
+26
+00:01:06,620 --> 00:01:09,690
+proc univariate also reports, the standard
+deviation.
+
+27
+00:01:09,690 --> 00:01:12,560
+Variants and range so you can estimate the
+spread of your data.
+
+28
+00:01:12,560 --> 00:01:15,290
+Down here at the bottom is some
+information on
+
+29
+00:01:15,290 --> 00:01:17,480
+the various quartiles of distribution for
+age.
+
+30
+00:01:17,480 --> 00:01:21,300
+>> If you wanted to look at more than one
+variable, we can specify that in the code.
+
+31
+00:01:21,300 --> 00:01:23,945
+Let's take a look at some more columns.
+
+32
+00:01:23,945 --> 00:01:26,020
+[SOUND].
+
+33
+00:01:26,020 --> 00:01:28,430
+If you scroll down through the output, you
+can see the results for
+
+34
+00:01:28,430 --> 00:01:30,460
+each variable we listed in the code.
+
+35
+00:01:30,460 --> 00:01:32,410
+As you can see, we first get the output
+for
+
+36
+00:01:32,410 --> 00:01:36,540
+the variable age, Next we get the output
+for the variable CPK.
+
+37
+00:01:36,540 --> 00:01:41,216
+And finally we get the output for the
+variable called follow up.
+
+38
+00:01:43,520 --> 00:01:45,640
+It will be nice if we could visualize this
+data.
+
+39
+00:01:45,640 --> 00:01:46,630
+Let's go back into the code.
+
+40
+00:01:48,830 --> 00:01:50,300
+Here, we had a histogram statement.
+
+41
+00:01:52,870 --> 00:01:54,710
+Now, SAS will give us a histogram of our
+data.
+
+42
+00:01:57,410 --> 00:01:59,699
+The age variable looks roughly normally
+distributed.
+
+43
+00:01:59,699 --> 00:02:06,040
+[BLANK_AUDIO]
+It looks like
+
+44
+00:02:06,040 --> 00:02:07,590
+these other variables aren't really that
+normal.
+
+45
+00:02:10,000 --> 00:02:11,090
+Let's run a statistical test for
+
+46
+00:02:11,090 --> 00:02:14,780
+normality, to see if the age variable
+actually falls in normal distribution.
+
+47
+00:02:18,520 --> 00:02:20,920
+As you can see, we have to specific a test
+for normality and.
+
+48
+00:02:20,920 --> 00:02:21,920
+In the first line of code.
+
+49
+00:02:23,610 --> 00:02:27,680
+These kinds of options are pretty
+[UNKNOWN] for this specific procedure.
+
+50
+00:02:27,680 --> 00:02:30,490
+So, I'll probably try the online test
+documentation if I am not sure how
+
+51
+00:02:30,490 --> 00:02:31,105
+to enter the code.
+
+52
+00:02:31,105 --> 00:02:36,770
+[SOUND]
+Here, the p value is greater than 0.05.
+
+53
+00:02:36,770 --> 00:02:38,810
+So, we can't reject the null hypothesis.
+
+54
+00:02:38,810 --> 00:02:40,080
+The age is normally distributed.
+
+55
+00:02:40,080 --> 00:02:43,675
+You'll learn about more about these Tests
+of Normality in your HRP
+
+56
+00:02:43,675 --> 00:02:45,130
+bio-statistic courses.
+
+57
+00:02:45,130 --> 00:02:48,030
+But for now, just know that you can run
+these tests using proc univariate.

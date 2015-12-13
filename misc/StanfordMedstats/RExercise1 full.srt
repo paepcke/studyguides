@@ -1,0 +1,1712 @@
+1
+00:00:04,440 --> 00:00:06,080
+Welcome to the first R module.
+
+2
+00:00:06,080 --> 00:00:10,390
+In this video, we'll be going over the
+solutions to the first R exercise.
+
+3
+00:00:10,390 --> 00:00:11,014
+If you prefer,
+
+4
+00:00:11,014 --> 00:00:14,880
+there's also a written version of these
+solutions on the class website.
+
+5
+00:00:16,680 --> 00:00:19,326
+Now, this first R exercise was really
+designed to get you to
+
+6
+00:00:19,326 --> 00:00:22,310
+explore the different options and deducer.
+
+7
+00:00:22,310 --> 00:00:25,390
+So if you found yourself struggling a
+little bit, don't worry.
+
+8
+00:00:25,390 --> 00:00:26,860
+It's going to get easier from here.
+
+9
+00:00:26,860 --> 00:00:30,585
+So, the first step is actually not
+question one.
+
+10
+00:00:30,585 --> 00:00:34,790
+The first thing we need to do is open up
+deducer.
+
+11
+00:00:34,790 --> 00:00:39,564
+So to do that, I'm going to click this
+short cut.
+
+12
+00:00:39,564 --> 00:00:42,150
+And there are two windows here.
+
+13
+00:00:42,150 --> 00:00:45,498
+There's the console window on the left,
+and the data viewer window on the.
+
+14
+00:00:45,498 --> 00:00:48,138
+On the right, in order to open up my data,
+
+15
+00:00:48,138 --> 00:00:54,627
+which is provided to you as an Excel file
+on the class website.
+
+16
+00:00:54,627 --> 00:00:59,255
+I'm going to click on the Open Data icon
+on the Data Viewer window,
+
+17
+00:00:59,255 --> 00:01:03,840
+on the right hand side of the screen.
+
+18
+00:01:03,840 --> 00:01:07,740
+This will allow you to navigate to
+wherever you have that Excel file saved.
+
+19
+00:01:07,740 --> 00:01:11,445
+In my case, it happens to be on the
+desktop, and I’m going to select it and
+
+20
+00:01:11,445 --> 00:01:13,090
+open it.
+
+21
+00:01:13,090 --> 00:01:15,064
+Because our data is only on one worksheet,
+the first one,
+
+22
+00:01:15,064 --> 00:01:16,810
+I’m just going to click OK here.
+
+23
+00:01:16,810 --> 00:01:23,520
+And I see that deducer was able to To load
+in the data correctly.
+
+24
+00:01:23,520 --> 00:01:27,840
+I'm going to scroll to the right, make
+sure everything is there, good.
+
+25
+00:01:27,840 --> 00:01:31,110
+I'm going to scroll down, to make sure I
+have 50 rows.
+
+26
+00:01:31,110 --> 00:01:33,200
+Great.
+So at this point we are now ready to
+
+27
+00:01:33,200 --> 00:01:35,050
+start the exercise.
+
+28
+00:01:35,050 --> 00:01:37,714
+The first question reads that varsity,
+
+29
+00:01:37,714 --> 00:01:42,410
+the variable varsity is currently stored
+as type double.
+
+30
+00:01:42,410 --> 00:01:45,845
+We want to change this continuous variable
+to a categorical variable.
+
+31
+00:01:45,845 --> 00:01:49,950
+R denotes categorical variables as
+factors.
+
+32
+00:01:49,950 --> 00:01:52,850
+The way we're going to do this is using
+the Data Viewer window on the right
+
+33
+00:01:52,850 --> 00:01:54,140
+hand side.
+
+34
+00:01:54,140 --> 00:01:56,604
+I'm going to click on Variable View here,
+
+35
+00:01:56,604 --> 00:02:00,933
+which will list all the variables in a
+column.
+
+36
+00:02:00,933 --> 00:02:04,865
+Along with their type, and something
+called factor levels.
+
+37
+00:02:04,865 --> 00:02:09,800
+And so, [COUGH] I'm going to go to
+Varsity,
+
+38
+00:02:09,800 --> 00:02:16,390
+click on Type, and then select Factor.
+
+39
+00:02:16,390 --> 00:02:20,355
+And notice when I do this, that the factor
+levels column gets populated for
+
+40
+00:02:20,355 --> 00:02:22,170
+that variable.
+
+41
+00:02:22,170 --> 00:02:26,670
+It shows two factor levels, level zero and
+level one.
+
+42
+00:02:26,670 --> 00:02:31,030
+And that's because varsity only has two
+values in it.
+
+43
+00:02:31,030 --> 00:02:32,705
+I do want to caution you, that,
+
+44
+00:02:32,705 --> 00:02:38,096
+when you're doing variable conversions in
+deducer like I did just now.
+
+45
+00:02:38,096 --> 00:02:41,170
+That you don't go back and forth too many
+times.
+
+46
+00:02:41,170 --> 00:02:46,976
+Because deducer will make assumptions
+about what types of variables you want.
+
+47
+00:02:46,976 --> 00:02:49,870
+And what you want certain values to be.
+
+48
+00:02:49,870 --> 00:02:54,760
+So just be aware, that deducer makes
+certain assumptions.
+
+49
+00:02:54,760 --> 00:03:00,190
+And to always check your data, after
+changing anything.
+
+50
+00:03:00,190 --> 00:03:03,000
+For questions two we want to sort two
+different variables.
+
+51
+00:03:03,000 --> 00:03:07,540
+Varsity and writing login different
+orders.
+
+52
+00:03:07,540 --> 00:03:11,490
+So, first we want to sort varsity in
+ascending order.
+
+53
+00:03:11,490 --> 00:03:15,255
+And then writing log in descending order.
+
+54
+00:03:15,255 --> 00:03:17,820
+Okay, so the way I'm going to do that.
+
+55
+00:03:17,820 --> 00:03:20,853
+I'm going to click back to Data View for
+now.
+
+56
+00:03:20,853 --> 00:03:23,505
+The way I'm going to do this is by going
+now to the Console window on
+
+57
+00:03:23,505 --> 00:03:27,610
+the left hand side here, and then clicking
+on Data, then Sort.
+
+58
+00:03:27,610 --> 00:03:34,450
+This brings up a new window, the Sort Data
+frame, and what this allows
+
+59
+00:03:34,450 --> 00:03:45,020
+us to do Is sort data in either ascending
+or descending order.
+
+60
+00:03:45,020 --> 00:03:47,901
+So I'm going to click on Varsity, and then
+move it over.
+
+61
+00:03:47,901 --> 00:03:50,760
+And then also move over WritingLove.
+
+62
+00:03:50,760 --> 00:03:54,040
+You can also just drag these variables
+over, and
+
+63
+00:03:54,040 --> 00:04:01,147
+varsity is in ascending order, or
+increasing here, and that's what we want.
+
+64
+00:04:01,147 --> 00:04:04,451
+But we want WritingLove in decreasing
+order, so what I'm going to do is
+
+65
+00:04:04,451 --> 00:04:09,270
+highlight WritingLove, and then click the
+button on the left here.
+
+66
+00:04:09,270 --> 00:04:11,910
+And that will change writing love to
+decreasing, as you see.
+
+67
+00:04:11,910 --> 00:04:17,850
+Now, before I hit OK, it's important to
+visualize what's going to happen.
+
+68
+00:04:17,850 --> 00:04:20,660
+So, we know varsity only has two levels,
+right?
+
+69
+00:04:20,660 --> 00:04:23,880
+Or two different values, zero and one.
+
+70
+00:04:23,880 --> 00:04:26,652
+And so what this is going to do is
+organize varsity,
+
+71
+00:04:26,652 --> 00:04:32,092
+such that all the zeros are on top, and
+the ones are all on the bottom.
+
+72
+00:04:32,092 --> 00:04:35,446
+And then for each category.
+
+73
+00:04:35,446 --> 00:04:38,562
+So, within all the rows for which varsity
+is zero,
+
+74
+00:04:38,562 --> 00:04:45,250
+writing love is going to be organized in
+descending order in decreasing order.
+
+75
+00:04:45,250 --> 00:04:50,745
+And then again for varsity, for rows that
+have a varsity value of one.
+
+76
+00:04:50,745 --> 00:04:55,620
+Writing love is, once again, going to be
+ordered in decreasing value.
+
+77
+00:04:55,620 --> 00:04:58,212
+So we should see a jump, in WritingLove,
+
+78
+00:04:58,212 --> 00:05:03,795
+in the values of writing love when varsity
+changes from zero to one.
+
+79
+00:05:03,795 --> 00:05:05,905
+Okay, so I'm going to hit OK.
+
+80
+00:05:05,905 --> 00:05:09,460
+And we'll see if that actually happens.
+
+81
+00:05:09,460 --> 00:05:10,270
+Great.
+
+82
+00:05:10,270 --> 00:05:12,440
+So the data changed here.
+
+83
+00:05:12,440 --> 00:05:16,350
+[COUGH].
+We see Varsity.
+
+84
+00:05:16,350 --> 00:05:20,140
+So as you can see here, all the zeros were
+grouped together.
+
+85
+00:05:20,140 --> 00:05:23,504
+And all the ones were grouped together
+for, the varsity variable, and
+
+86
+00:05:23,504 --> 00:05:28,690
+all the zeroes were put first because we
+wanted varsity in ascending order.
+
+87
+00:05:28,690 --> 00:05:31,755
+We want them to go from zero to one.
+
+88
+00:05:31,755 --> 00:05:36,011
+And the other thing I want you to notice
+is that the row numbers on
+
+89
+00:05:36,011 --> 00:05:43,880
+the left-hand side here are all jumbled
+up, because the original row numbers.
+
+90
+00:05:43,880 --> 00:05:48,000
+Stuck with each row as it was sorted by R.
+
+91
+00:05:48,000 --> 00:05:50,574
+So then let's keep that in mind,
+
+92
+00:05:50,574 --> 00:05:57,740
+that varsity switches from 0 to 1 between
+ID 31 and 30, here.
+
+93
+00:05:57,740 --> 00:06:00,310
+And then go look at what happened to
+WritingLove.
+
+94
+00:06:00,310 --> 00:06:05,270
+So I'm going to scroll to the right, and
+we see that WritingLove is sorted in
+
+95
+00:06:05,270 --> 00:06:11,719
+descending order until we hit between row
+31 and 30 here.
+
+96
+00:06:11,719 --> 00:06:13,923
+Where it goes from 20 to 19 to 10, and
+
+97
+00:06:13,923 --> 00:06:19,410
+then there's two cells With missing values
+denoted as na.
+
+98
+00:06:19,410 --> 00:06:22,680
+And then we start over at 98.
+
+99
+00:06:22,680 --> 00:06:26,750
+And then, again WritingLove is sorted in
+descending value.
+
+100
+00:06:26,750 --> 00:06:32,210
+So, I'd like to talk a little bit about
+missing values, in R.
+
+101
+00:06:32,210 --> 00:06:35,955
+So, note that missing values are denoted
+as NA.
+
+102
+00:06:35,955 --> 00:06:39,660
+The important distinction here, between R
+and
+
+103
+00:06:39,660 --> 00:06:47,846
+other statistical programming packages,
+like for example, SAS or STATA.
+
+104
+00:06:47,846 --> 00:06:53,702
+Or SPSS, whatever you might use, is that
+na is not given a value in r.
+
+105
+00:06:53,702 --> 00:06:58,460
+In those other packages missing values are
+given either a very, very,
+
+106
+00:06:58,460 --> 00:07:05,060
+very large positive value, or a very,
+very, very large negative value.
+
+107
+00:07:05,060 --> 00:07:09,820
+And there are reasons for this, but it's
+important to know that in r,
+
+108
+00:07:09,820 --> 00:07:15,980
+missing is just missing and it's not given
+a large value.
+
+109
+00:07:15,980 --> 00:07:18,887
+Moving on to question three, question
+three reads, filter the data,
+
+110
+00:07:18,887 --> 00:07:21,520
+such that you create a dataset.
+
+111
+00:07:21,520 --> 00:07:26,417
+With only records of students who have
+MathLove scores greater than or
+
+112
+00:07:26,417 --> 00:07:28,500
+equal to 70.
+
+113
+00:07:28,500 --> 00:07:31,998
+So what we're going to do is go to the
+Console window, go to Data, and
+
+114
+00:07:31,998 --> 00:07:34,319
+then select Subset.
+
+115
+00:07:35,690 --> 00:07:37,229
+What this is going to allow us to do,
+
+116
+00:07:37,229 --> 00:07:41,340
+is to create an expression that selects
+only for those students.
+
+117
+00:07:41,340 --> 00:07:43,900
+So first I'm going to double click on
+Mathlove, and
+
+118
+00:07:43,900 --> 00:07:49,310
+when I do that you'll see Mathlove
+populate the subset expression box.
+
+119
+00:07:49,310 --> 00:07:53,590
+And then we have all these logical
+operators over here.
+
+120
+00:07:53,590 --> 00:07:56,494
+And, we're going to want to select the
+greater than or
+
+121
+00:07:56,494 --> 00:08:00,725
+equal to button, for greater than or equal
+to 70.
+
+122
+00:08:00,725 --> 00:08:04,340
+And then we can simply type in 7,0, and
+hit OK.
+
+123
+00:08:04,340 --> 00:08:09,530
+So what did this do?
+
+124
+00:08:09,530 --> 00:08:11,759
+It essentially created a new dataset.
+
+125
+00:08:11,759 --> 00:08:16,600
+For students or IDs that satisfy that
+condition.
+
+126
+00:08:16,600 --> 00:08:22,211
+If we go to the Data Viewer window now, on
+the right hand side, and under Dataset.
+
+127
+00:08:22,211 --> 00:08:26,006
+We click the drop-down menu, we see that
+there are two options now,
+
+128
+00:08:26,006 --> 00:08:32,310
+Mock Class Data, which was our original
+dataset, and now mock.class.data.sub.
+
+129
+00:08:32,310 --> 00:08:34,050
+And selecting that second dataset,
+
+130
+00:08:34,050 --> 00:08:38,165
+we see that it's a truncated version of
+our original dataset.
+
+131
+00:08:38,165 --> 00:08:42,675
+And if we scroll over to the right, we
+notice that all the values for
+
+132
+00:08:42,675 --> 00:08:47,293
+Mathlove are greater than or equal to 70.
+
+133
+00:08:51,220 --> 00:08:55,436
+Question four reads click on Extras,
+Extras then Data Summary, for
+
+134
+00:08:55,436 --> 00:09:00,020
+a quick summary of all the variables in
+your dataset.
+
+135
+00:09:00,020 --> 00:09:02,915
+How many missing values does Carter have?
+
+136
+00:09:02,915 --> 00:09:09,260
+Okay, so I'm going to go back to our
+original dataset, mock.class.data.
+
+137
+00:09:09,260 --> 00:09:12,185
+And then I'm going to follow the
+instructions and
+
+138
+00:09:12,185 --> 00:09:19,270
+go to Extras, actually extras is not an
+option on the Console window right now.
+
+139
+00:09:19,270 --> 00:09:22,560
+So this is actually a good example of
+something you might encounter.
+
+140
+00:09:22,560 --> 00:09:26,160
+The way to deal with this is to click on
+Packages and Data.
+
+141
+00:09:26,160 --> 00:09:27,090
+Click on Package Manager.
+
+142
+00:09:27,090 --> 00:09:29,070
+And then select Deducer Extras here.
+
+143
+00:09:29,070 --> 00:09:33,492
+And if you followed the instructions in
+
+144
+00:09:33,492 --> 00:09:41,990
+the installation video these should
+already be selected.
+
+145
+00:09:41,990 --> 00:09:43,570
+Okay, now that we do that.
+
+146
+00:09:43,570 --> 00:09:46,370
+We see that extras pops up here in the
+Console window.
+
+147
+00:09:46,370 --> 00:09:49,340
+So that'll allow us to select Data
+Summary.
+
+148
+00:09:49,340 --> 00:09:54,060
+And then it'll allow us to select our
+Dataset.
+
+149
+00:09:54,060 --> 00:09:55,339
+I'll hit Run.
+
+150
+00:09:55,339 --> 00:10:01,386
+Now, if I spread this out a little bit, it
+makes a little more sense.
+
+151
+00:10:01,386 --> 00:10:03,996
+And we can see that it gives us summary
+information for
+
+152
+00:10:03,996 --> 00:10:06,590
+all the variables in our Dataset.
+
+153
+00:10:06,590 --> 00:10:10,330
+Now, to specifically answer the question
+about how many missing values we have in
+
+154
+00:10:10,330 --> 00:10:12,278
+the variable Carter.
+
+155
+00:10:12,278 --> 00:10:15,028
+I go to, affine carter, I go to that, and
+then I look at NA's, or
+
+156
+00:10:15,028 --> 00:10:17,910
+number of missings, in other words.
+
+157
+00:10:17,910 --> 00:10:23,382
+And I see that we have 12 missing values
+in the variable carter.
+
+158
+00:10:23,382 --> 00:10:30,180
+The next question asks us to create a
+histogram.
+
+159
+00:10:30,180 --> 00:10:33,025
+In dark blue for the variable, coffee.
+
+160
+00:10:33,025 --> 00:10:39,050
+And so what I'm going to do is go to Plots
+and select Plot B uilder.
+
+161
+00:10:39,050 --> 00:10:41,534
+I'm going to click on Histogram and
+
+162
+00:10:41,534 --> 00:10:46,430
+actually drag it down to this space right
+here.
+
+163
+00:10:46,430 --> 00:10:47,582
+I'm going to let go and
+
+164
+00:10:47,582 --> 00:10:53,171
+then again I'm going to click on coffee
+and drag it to the Variable window.
+
+165
+00:10:53,171 --> 00:10:58,100
+And once you drag the variable coffee over
+variable will turn green.
+
+166
+00:10:58,100 --> 00:10:59,333
+I'll hit OK.
+
+167
+00:10:59,333 --> 00:11:05,720
+And this is going to plot a histogram of
+coffee drinking.
+
+168
+00:11:05,720 --> 00:11:08,204
+Now, I want this histogram to be in blue,
+and
+
+169
+00:11:08,204 --> 00:11:13,190
+this template that it offered me didn't
+offer me that choice.
+
+170
+00:11:13,190 --> 00:11:15,926
+So what I'm going to do is Delete this for
+now, and
+
+171
+00:11:15,926 --> 00:11:19,530
+then select the Geometric Elements tab.
+
+172
+00:11:19,530 --> 00:11:23,730
+And then I'm going to select histogram
+from here.
+
+173
+00:11:23,730 --> 00:11:26,770
+Now this is going to offer me a few more
+options as you can see.
+
+174
+00:11:26,770 --> 00:11:30,635
+I'm going to drag coffee over again under
+X.
+
+175
+00:11:30,635 --> 00:11:34,765
+This represents the variable you want
+across the X axis you'll see the X
+
+176
+00:11:34,765 --> 00:11:37,640
+turn green once I did that.
+
+177
+00:11:37,640 --> 00:11:43,070
+And then, this option allows me to set the
+Fill and the Color.
+
+178
+00:11:43,070 --> 00:11:45,510
+Color just means the color of the line.
+
+179
+00:11:45,510 --> 00:11:51,560
+So I'm going to click on Color, and then
+select some kind of blue, hit OK.
+
+180
+00:11:51,560 --> 00:11:53,195
+And I'll do the same thing for Color.
+
+181
+00:11:53,195 --> 00:11:55,370
+And then I'll hit OK.
+
+182
+00:11:55,370 --> 00:12:00,050
+And then you'll see that it now plots me a
+histogram of coffee drinking, in blue.
+
+183
+00:12:00,050 --> 00:12:04,632
+Moving on, now we want to create a scatter
+plot of hours of exercise, or
+
+184
+00:12:04,632 --> 00:12:10,670
+in other words a variable exercise, versus
+hours of homework.
+
+185
+00:12:10,670 --> 00:12:12,950
+One reason you might want to do this,
+
+186
+00:12:12,950 --> 00:12:17,731
+is to see what the distribution is for
+people.
+
+187
+00:12:17,731 --> 00:12:22,519
+Or rather with what happens to the amount
+of time you spend exercising as
+
+188
+00:12:22,519 --> 00:12:28,170
+the amount of time you spend on homework
+increases, right.
+
+189
+00:12:28,170 --> 00:12:30,835
+So you can imagine that if that was your
+question,
+
+190
+00:12:30,835 --> 00:12:35,507
+this might be a first step into looking at
+that relationship.
+
+191
+00:12:35,507 --> 00:12:38,952
+So what I'm going to do is first let me
+exit out of this plot builder,
+
+192
+00:12:38,952 --> 00:12:43,653
+I'm going to go to Plot Builder again,
+Plots, Plot Builder.
+
+193
+00:12:43,653 --> 00:12:47,560
+And then from templates I'm going to
+select Scatter Smooth.
+
+194
+00:12:47,560 --> 00:12:50,662
+So again what I'm going to do is, simply
+click here and
+
+195
+00:12:50,662 --> 00:12:53,635
+drag this down into this space.
+
+196
+00:12:53,635 --> 00:12:57,380
+Okay, and I have two options here.
+
+197
+00:12:57,380 --> 00:13:00,955
+I can drag a variable onto the x amount of
+the y, and as you've probably guessed,
+
+198
+00:13:00,955 --> 00:13:05,570
+that means that I can specify what
+variables I want on what axis.
+
+199
+00:13:05,570 --> 00:13:08,047
+But this question, it doesn't really
+matter.
+
+200
+00:13:08,047 --> 00:13:14,505
+I'm just going to move exercise to the x
+axis, and homework to the y axis.
+
+201
+00:13:14,505 --> 00:13:19,190
+The questions specifies that they want a
+smoothed curve.
+
+202
+00:13:19,190 --> 00:13:20,975
+So I'm just going to leave that there.
+
+203
+00:13:20,975 --> 00:13:24,620
+And I'm going to hit OK, great.
+
+204
+00:13:24,620 --> 00:13:26,760
+And so now we see this relationship.
+
+205
+00:13:26,760 --> 00:13:30,934
+So as you can see here the trend line is
+pretty flat.
+
+206
+00:13:30,934 --> 00:13:33,828
+I wouldn't say there's a really dramatic
+trend at all.
+
+207
+00:13:33,828 --> 00:13:36,032
+There might be a slight trend or
+
+208
+00:13:36,032 --> 00:13:42,492
+small correlation between having a lot of
+homework and exercising less.
+
+209
+00:13:42,492 --> 00:13:47,140
+But again, that would be a very weak
+effect here.
+
+210
+00:13:47,140 --> 00:13:51,320
+And I don't notice any egregious outliers,
+as well.
+
+211
+00:13:51,320 --> 00:13:54,512
+So, these are all things you sort of want
+to keep in mind as you look at
+
+212
+00:13:54,512 --> 00:13:56,850
+these different plots.
+
+213
+00:13:56,850 --> 00:13:58,074
+Moving on to question seven,
+
+214
+00:13:58,074 --> 00:14:02,310
+question seven is asking us to create a
+histogram for the variable milk.
+
+215
+00:14:02,310 --> 00:14:05,180
+And then it gives us a little more
+information, so
+
+216
+00:14:05,180 --> 00:14:08,270
+let's, let's just do that first.
+
+217
+00:14:08,270 --> 00:14:10,145
+So I'm going to go to Plots and Plot
+Builder again.
+
+218
+00:14:10,145 --> 00:14:16,194
+Drag down histogram, drag over milk,
+whoops.
+
+219
+00:14:16,194 --> 00:14:17,566
+Hit OK.
+
+220
+00:14:17,566 --> 00:14:21,096
+And now I see this histogram for milk.
+
+221
+00:14:21,096 --> 00:14:22,700
+I'm going to continue the questions now.
+
+222
+00:14:22,700 --> 00:14:25,986
+So, the question says, you notice that's
+there's one person who
+
+223
+00:14:25,986 --> 00:14:32,095
+indicated [COUGH] 50 which seems like an
+outlier compared to the rest of your data.
+
+224
+00:14:32,095 --> 00:14:36,225
+After going back to the data collection
+forms you verify in fact that 50
+
+225
+00:14:36,225 --> 00:14:41,430
+was miscoded and that the true value
+should have been five.
+
+226
+00:14:41,430 --> 00:14:42,760
+This happens all the time.
+
+227
+00:14:44,030 --> 00:14:49,040
+You decide to fix this problem, by
+creating a new variable called milk fixed.
+
+228
+00:14:49,040 --> 00:14:54,226
+And so presumably now, that's our
+exercise.
+
+229
+00:14:54,226 --> 00:14:58,750
+To create a milk fixed variable that
+removes or
+
+230
+00:14:58,750 --> 00:15:05,010
+recodes, this value 50 into the value 5.
+
+231
+00:15:05,010 --> 00:15:08,850
+The way I'm going to do this is first to
+close the Plot Builder window.
+
+232
+00:15:08,850 --> 00:15:13,024
+Then I'm going to go to data, and select
+recode variable.
+
+233
+00:15:15,980 --> 00:15:18,866
+And what I'm going to do is first drag
+over Milk,
+
+234
+00:15:18,866 --> 00:15:23,429
+then I'm going to highlight Milk and
+select Target.
+
+235
+00:15:23,429 --> 00:15:27,300
+And then it's going to ask me to recode
+Milk into something, so
+
+236
+00:15:27,300 --> 00:15:32,688
+I want to recode this variable into Milk
+Fixed, hit OK.
+
+237
+00:15:32,688 --> 00:15:36,200
+So now you see that this changed the
+notations in this window.
+
+238
+00:15:36,200 --> 00:15:38,920
+Now it says milk into milkFixed, okay?
+
+239
+00:15:38,920 --> 00:15:43,204
+I'm going to select Define Recode, so this
+is sort of the rule for
+
+240
+00:15:43,204 --> 00:15:50,980
+what I want, or how I want to recode this
+original value variable of milk.
+
+241
+00:15:50,980 --> 00:15:59,210
+So what I can do here is simply type in
+50, here, and 5 here, and select Add.
+
+242
+00:15:59,210 --> 00:16:03,580
+So, what this is saying is when milk
+equals 50,
+
+243
+00:16:03,580 --> 00:16:09,875
+change that into five, for milk fixed,
+okay.
+
+244
+00:16:09,875 --> 00:16:12,630
+Were going to hit OK, hit OK hm-mm.
+
+245
+00:16:12,630 --> 00:16:16,326
+So I'm going to scroll overall the way to
+the right here and
+
+246
+00:16:16,326 --> 00:16:21,359
+you see that there's this new variable,
+milk fixed.
+
+247
+00:16:23,230 --> 00:16:28,500
+And I'm going to scroll down, actually let
+me go find that 50 first.
+
+248
+00:16:28,500 --> 00:16:30,366
+Where is that guy, row 30.
+
+249
+00:16:30,366 --> 00:16:35,610
+Okay, subject 30, or patient 30.
+
+250
+00:16:35,610 --> 00:16:41,210
+And I'm going to scroll over to milkFixed,
+and I notice that when I go to
+
+251
+00:16:41,210 --> 00:16:50,290
+patient 30 and I look at this value that
+it's indeed recoded as fixed.
+
+252
+00:16:50,290 --> 00:16:53,070
+Now, how do I know that nothing else has
+changed?
+
+253
+00:16:53,070 --> 00:16:57,558
+Well, I don't really unless I run some
+tests, but just as a sanity check let me
+
+254
+00:16:57,558 --> 00:17:04,320
+compare the first three values with the
+first three values for each variable.
+
+255
+00:17:04,320 --> 00:17:08,784
+So the first three values for milk are 16,
+0 and 4, first three variables for
+
+256
+00:17:08,784 --> 00:17:14,800
+milkFixed are the first three values I
+should say, are 16, 0 and 4.
+
+257
+00:17:14,800 --> 00:17:16,956
+So, you know, you should always check.
+
+258
+00:17:16,956 --> 00:17:20,388
+What the, you should always check the
+composition of
+
+259
+00:17:20,388 --> 00:17:24,890
+your variables after making a change like
+this.
+
+260
+00:17:24,890 --> 00:17:31,730
+But for this exercise, I'm pretty
+satisfied that my recoding worked.
+
+261
+00:17:31,730 --> 00:17:34,178
+Moving on to question eight, question
+eight is asking for
+
+262
+00:17:34,178 --> 00:17:36,460
+the mean, the standard deviation.
+
+263
+00:17:36,460 --> 00:17:39,970
+The median number of hours of sleep in
+this Dataset.
+
+264
+00:17:39,970 --> 00:17:42,818
+So, that's a lot to ask for.
+
+265
+00:17:42,818 --> 00:17:47,806
+but, there's a really handy function in
+this program that allows us to
+
+266
+00:17:47,806 --> 00:17:50,720
+generate all three.
+
+267
+00:17:50,720 --> 00:17:54,395
+So, what I'm going to do is go to
+Analysis, and
+
+268
+00:17:54,395 --> 00:18:00,020
+then Descriptive, and then drag over
+Sleep.
+
+269
+00:18:00,020 --> 00:18:01,025
+going to hit Continue.
+
+270
+00:18:01,025 --> 00:18:08,420
+And then I can select what I want, what
+sort of descriptive variables I want.
+
+271
+00:18:08,420 --> 00:18:11,090
+I'm going to select Median and also drag
+that over.
+
+272
+00:18:12,792 --> 00:18:17,412
+So now if I hit Run, I'm going to get the
+mean, the standard deviation,
+
+273
+00:18:17,412 --> 00:18:24,790
+the number of valid records for that
+variable and the median for sleep.
+
+274
+00:18:24,790 --> 00:18:29,894
+And indeed, in the Console window we see
+that the output is 6.97 for
+
+275
+00:18:29,894 --> 00:18:37,560
+mean sleep standard deviation of 0.7 and
+the median is seven hours.
+
+276
+00:18:37,560 --> 00:18:41,028
+The next question is asking us to perform
+
+277
+00:18:41,028 --> 00:18:49,040
+a stratified analysis of mean outlook on
+life by alcohol consumption.
+
+278
+00:18:49,040 --> 00:18:52,176
+Or set a different way, what's the mean
+score for outlook on life for
+
+279
+00:18:52,176 --> 00:18:54,758
+each amount of alcohol consumed.
+
+280
+00:18:54,758 --> 00:18:59,854
+The way I'm going to do this is to go to
+Analysis and then Descriptives.
+
+281
+00:18:59,854 --> 00:19:02,854
+And then I'm going to move sleep back over
+here,
+
+282
+00:19:02,854 --> 00:19:07,060
+because we're not interested in that
+anymore.
+
+283
+00:19:07,060 --> 00:19:08,790
+And instead select Optimism.
+
+284
+00:19:08,790 --> 00:19:12,308
+And what I'm going to stratify by, is
+alcohol.
+
+285
+00:19:12,308 --> 00:19:17,654
+Because what we want to see is the sort of
+mean of optimism, or different val,
+
+286
+00:19:17,654 --> 00:19:25,070
+different descriptive values for optimism
+by level of alcohol intake.
+
+287
+00:19:25,070 --> 00:19:29,220
+So I'm going to drag alcohol to the
+Stratify By window, click Continue.
+
+288
+00:19:29,220 --> 00:19:33,723
+And I'm pretty happy with this, I don't
+really need to see standard deviation.
+
+289
+00:19:33,723 --> 00:19:37,363
+But mean and median are good things to
+look at, so
+
+290
+00:19:37,363 --> 00:19:42,410
+I'm going to keep those and hit Run, okay.
+
+291
+00:19:42,410 --> 00:19:47,350
+Now, I'm going to widen this window a
+little bit, and I see that for
+
+292
+00:19:47,350 --> 00:19:54,815
+each value of alcohol, the program
+calculated the mean optimism.
+
+293
+00:19:54,815 --> 00:19:58,404
+The number of optimism records that had,
+
+294
+00:19:58,404 --> 00:20:05,520
+that alcohol value as well as the median
+optimism for that value.
+
+295
+00:20:05,520 --> 00:20:09,348
+And so, to get back to the question the
+questions specifically asks the mean
+
+296
+00:20:09,348 --> 00:20:13,520
+score for those who indicated that they
+had five drinks.
+
+297
+00:20:13,520 --> 00:20:22,350
+So I'm going to go to alcohol 5, mean
+optimism is 74.5.
+
+298
+00:20:22,350 --> 00:20:27,620
+The next question asks us, how many people
+consider themselves street smart?
+
+299
+00:20:27,620 --> 00:20:31,810
+Now, just faced with that question, you
+might not know where to begin.
+
+300
+00:20:31,810 --> 00:20:34,395
+But, to phrase that a different way,
+that's like saying,
+
+301
+00:20:34,395 --> 00:20:38,762
+what's the frequency of people who
+consider themselves street smart.
+
+302
+00:20:38,762 --> 00:20:41,130
+And that sounds a little more statistical.
+
+303
+00:20:41,130 --> 00:20:44,595
+Basically that gives you a hint that we
+want to go to Analysis and
+
+304
+00:20:44,595 --> 00:20:47,401
+select Frequencies, okay?
+
+305
+00:20:47,401 --> 00:20:52,950
+Then I'm going to move over the
+IsBookSmart variable, and hit OK.
+
+306
+00:20:52,950 --> 00:20:56,554
+So, this gives me, an output that
+generates frequencies for
+
+307
+00:20:56,554 --> 00:20:59,813
+the different values of IsBookSmart.
+
+308
+00:20:59,813 --> 00:21:07,665
+Now, IsBookSmart is binary, it's either
+YesBookSmart or NoBookSmart.
+
+309
+00:21:07,665 --> 00:21:08,491
+In the case of no,
+
+310
+00:21:08,491 --> 00:21:12,992
+it means that you're street smart, that's
+how the question was phrased.
+
+311
+00:21:12,992 --> 00:21:17,240
+And so we see that there are nine people
+who consider themselves street smart in
+
+312
+00:21:17,240 --> 00:21:19,600
+this dataset.
+
+313
+00:21:19,600 --> 00:21:23,680
+And 40 people who consider themselves
+booksmart in this dataset.
+
+314
+00:21:23,680 --> 00:21:29,560
+Just by convention, I should mention, that
+0 means no, and 1 means yes.
+
+315
+00:21:29,560 --> 00:21:36,790
+That is sort of coding convention.
+
+316
+00:21:36,790 --> 00:21:41,680
+The next question asks us to create a box
+Plot for the variable fruit veg.
+
+317
+00:21:41,680 --> 00:21:45,550
+And, it asks us what the black dot in the
+figure represents.
+
+318
+00:21:45,550 --> 00:21:47,294
+Well, first, we need to generate the
+figure.
+
+319
+00:21:47,294 --> 00:21:49,846
+So that's what I'm going to do, as you
+probably guessed,
+
+320
+00:21:49,846 --> 00:21:54,158
+the way I'm going to do that is by going
+to Plots > Plot Builder.
+
+321
+00:21:54,158 --> 00:22:00,595
+And then selecting, simple box plot, and
+dragging that down here.
+
+322
+00:22:00,595 --> 00:22:06,770
+And then selecting the variable, fruitveg,
+right here.
+
+323
+00:22:06,770 --> 00:22:11,728
+And dragging that into the variable box,
+clicking OK, and, here we go.
+
+324
+00:22:11,728 --> 00:22:16,115
+Let me expand this a little bit.
+
+325
+00:22:16,115 --> 00:22:19,295
+So here's the box plot.
+
+326
+00:22:19,295 --> 00:22:21,614
+It looks a little trivial by itself.
+
+327
+00:22:21,614 --> 00:22:26,461
+It's not giving me too much information,
+but the black dot.
+
+328
+00:22:26,461 --> 00:22:27,928
+So what does the black dot represent?
+
+329
+00:22:27,928 --> 00:22:32,968
+It's defined usually in box plots as data
+points that are either more than one and
+
+330
+00:22:32,968 --> 00:22:36,936
+a half times the interquartile range.
+
+331
+00:22:36,936 --> 00:22:43,100
+The interquartile range is basically the
+length of the rectangle.
+
+332
+00:22:43,100 --> 00:22:47,330
+The interquartile range represents
+everything from
+
+333
+00:22:47,330 --> 00:22:53,140
+the 25th percentile to the 75th percentile
+of the data.
+
+334
+00:22:53,140 --> 00:23:01,390
+So if your 1.5 times that range, then
+you're usually considered an outlier.
+
+335
+00:23:01,390 --> 00:23:07,364
+So, I'd say that that black dot represents
+an outlier in our dataset.
+
+336
+00:23:07,364 --> 00:23:11,828
+The last question in the exercise asks us
+to reexamine the relationship of
+
+337
+00:23:11,828 --> 00:23:17,760
+mean outlook on life by alcohol
+consumption, using a group box plot.
+
+338
+00:23:17,760 --> 00:23:20,684
+So, I'm going to stay in the Plot Builder
+window,
+
+339
+00:23:20,684 --> 00:23:26,620
+the way I'm going to do that is to select
+Group Box plot and drag that down.
+
+340
+00:23:26,620 --> 00:23:30,020
+Under Variable, I'm going to move
+Optimism, and
+
+341
+00:23:30,020 --> 00:23:34,860
+then under Group, I'm going to move
+alcohol.
+
+342
+00:23:34,860 --> 00:23:39,882
+And the reason I'm going to do that is
+because I want to look at the values for
+
+343
+00:23:39,882 --> 00:23:44,840
+optimism for each different alcohol group.
+
+344
+00:23:44,840 --> 00:23:47,304
+All right, so then I hit OK,
+
+345
+00:23:47,304 --> 00:23:54,978
+first I might need to Delete the simple
+box plot from before.
+
+346
+00:23:54,978 --> 00:23:59,906
+And then I see this box plot, that is
+stratified by
+
+347
+00:23:59,906 --> 00:24:07,170
+all the different values for alcohol in
+the dataset.
+
+348
+00:24:07,170 --> 00:24:12,370
+And if there was some sort of trend let's
+say between optimism and alcohol.
+
+349
+00:24:12,370 --> 00:24:14,317
+If you drank more, maybe you were more or
+
+350
+00:24:14,317 --> 00:24:17,390
+less optimistic about your outlook on
+life.
+
+351
+00:24:17,390 --> 00:24:22,370
+You would see this box plot, this visual
+will show you that.
+
+352
+00:24:22,370 --> 00:24:26,506
+But in this figure we don't really see any
+sort of trend like that.
+
+353
+00:24:26,506 --> 00:24:30,536
+But it's just a nice way, it's another way
+of visualizing that text heavy data,
+
+354
+00:24:30,536 --> 00:24:33,488
+that we were looking at before.
+
+355
+00:24:33,488 --> 00:24:37,480
+So that concludes the exercise.
+
+356
+00:24:37,480 --> 00:24:40,786
+One last note I want to make is that there
+are a lot of different ways you
+
+357
+00:24:40,786 --> 00:24:43,918
+could have approached these problems.
+
+358
+00:24:43,918 --> 00:24:47,398
+And you might have found, let's say the
+mean or the median for a variable,
+
+359
+00:24:47,398 --> 00:24:53,075
+in a different way than I showed in this
+video, or that I wrote in the solutions.
+
+360
+00:24:53,075 --> 00:24:54,830
+And that's absolutely fine.
+
+361
+00:24:54,830 --> 00:25:00,220
+There are many, many different ways of
+arriving at the answer.
+
+362
+00:25:00,220 --> 00:25:03,790
+This is just one example, or one
+suggestion, of how to do that.
+
+363
+00:25:03,790 --> 00:25:07,870
+And that concludes this
+
+364
+00:25:07,870 --> 00:25:13,829
+first R video module.

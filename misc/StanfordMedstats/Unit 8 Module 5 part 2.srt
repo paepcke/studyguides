@@ -1,0 +1,272 @@
+1
+00:00:00,750 --> 00:00:01,707
+Again, why is this useful?
+
+2
+00:00:01,707 --> 00:00:03,070
+We're just getting back out the means.
+
+3
+00:00:03,070 --> 00:00:06,674
+It doesn't seem all that interesting, but
+because it's useful because we can then
+
+4
+00:00:06,674 --> 00:00:10,013
+throw other things into the multi-variable
+regression model to adjust for
+
+5
+00:00:10,013 --> 00:00:15,070
+that, those covariance and confounders or
+to get better predictions.
+
+6
+00:00:15,070 --> 00:00:18,138
+For example, let's say I was to throw age
+into the model to try to
+
+7
+00:00:18,138 --> 00:00:22,480
+get age-adjusted means for each of those
+vitamin D groups.
+
+8
+00:00:22,480 --> 00:00:24,670
+Age being a potential confounder here.
+
+9
+00:00:24,670 --> 00:00:26,689
+So to adjust for age, I'm just going to
+throw age into the model.
+
+10
+00:00:26,689 --> 00:00:27,729
+Nothing tricky.
+
+11
+00:00:27,729 --> 00:00:31,729
+And here's the model that comes out when I
+add age to the model.
+
+12
+00:00:31,729 --> 00:00:35,694
+So it's showing me that again, the normal
+group is the reference group, so
+
+13
+00:00:35,694 --> 00:00:38,849
+it doesn't get a beta coefficient.
+
+14
+00:00:38,849 --> 00:00:43,820
+Now I get an effect for age, and now I get
+what are age-adjusted beta coefficients.
+
+15
+00:00:43,820 --> 00:00:45,280
+These have now been adjusted for age.
+
+16
+00:00:45,280 --> 00:00:47,142
+Interestingly, these are made up data, and
+so
+
+17
+00:00:47,142 --> 00:00:50,082
+in the process of making up the data, I
+built in something a little funny,
+
+18
+00:00:50,082 --> 00:00:52,483
+which is that the deficient group after
+you adjust for age,
+
+19
+00:00:52,483 --> 00:00:58,150
+actually looks like it has more, a higher
+cognitive score than the normal group.
+
+20
+00:00:58,150 --> 00:01:02,040
+So once, maybe that group was totally full
+of much older people.
+
+21
+00:01:02,040 --> 00:01:03,000
+And once you account for
+
+22
+00:01:03,000 --> 00:01:06,456
+the fact that they're much older, then
+their, their deficient their deficiency of
+
+23
+00:01:06,456 --> 00:01:10,520
+vitamin D is actually associated with a
+greater DSST score.
+
+24
+00:01:10,520 --> 00:01:14,079
+That's a quirk, I think, of the fact that
+I made up the data a certain way.
+
+25
+00:01:14,079 --> 00:01:16,110
+So that's the final model.
+
+26
+00:01:16,110 --> 00:01:19,119
+But what's great about this, is now I can
+report age-adjusted means for
+
+27
+00:01:19,119 --> 00:01:20,492
+those groups.
+
+28
+00:01:20,492 --> 00:01:21,962
+And this is just showing the picture here.
+
+29
+00:01:21,962 --> 00:01:25,826
+Again, this is showing the slopes in each
+of the three groups, for the relationship
+
+30
+00:01:25,826 --> 00:01:31,432
+between age and DSST scores here, so that
+you can see that in all three groups.
+
+31
+00:01:31,432 --> 00:01:34,407
+Certainly age is when we built this in,
+
+32
+00:01:34,407 --> 00:01:38,402
+in the model, this is just kind of showing
+you the model, so
+
+33
+00:01:38,402 --> 00:01:46,325
+age, as age goes up, you go down in your
+cognitive function, for sure.
+
+34
+00:01:46,325 --> 00:01:48,722
+Interestingly, as I mentioned, though,
+once you account for
+
+35
+00:01:48,722 --> 00:01:51,824
+age, the deficient group, that's this blue
+line, actually seems to, across all
+
+36
+00:01:51,824 --> 00:01:56,450
+different ages, have a little bit higher
+of a, of a, of a cognitive score.
+
+37
+00:01:56,450 --> 00:02:00,320
+Might be a quirk of my made up data.
+
+38
+00:02:00,320 --> 00:02:02,450
+And I can calculate these age-adjusted
+means.
+
+39
+00:02:02,450 --> 00:02:05,411
+The easiest way to calculate the
+age-adjusted means is just to imagine that
+
+40
+00:02:05,411 --> 00:02:07,300
+everybody has the same age.
+
+41
+00:02:07,300 --> 00:02:09,460
+You have to pick an age to plug into the
+model, so let's say,
+
+42
+00:02:09,460 --> 00:02:13,820
+let's plug in the mean age for the whole
+data set, which was here, 55 years old.
+
+43
+00:02:13,820 --> 00:02:17,924
+So I can get the expected average DSST
+value for a vitamin deficient,
+
+44
+00:02:17,924 --> 00:02:24,230
+D deficient person who's 55 years old by
+plugging all that into the model.
+
+45
+00:02:24,230 --> 00:02:26,782
+So we can just plug in this model to find
+out the expected DSST score for
+
+46
+00:02:26,782 --> 00:02:29,920
+somebody who's vitamin D deficient and is
+55 years old.
+
+47
+00:02:29,920 --> 00:02:34,370
+So we're fixing age so that age is the
+same across these three groups.
+
+48
+00:02:34,370 --> 00:02:37,350
+That person has an expected score of 36.
+
+49
+00:02:37,350 --> 00:02:41,310
+Somebody who is insufficient who's at 55
+years old based on this model is
+
+50
+00:02:41,310 --> 00:02:44,830
+predicted to have a DSST score of 29.1.
+
+51
+00:02:44,830 --> 00:02:47,992
+And for the normal group, a 55 year old is
+actually predicted to be lower and
+
+52
+00:02:47,992 --> 00:02:50,100
+a have a DSST score 27.7.
+
+53
+00:02:50,100 --> 00:02:52,300
+Again, probably a quirk of my made-up
+data.
+
+54
+00:02:52,300 --> 00:02:54,100
+But it's nice to have these age-adjusted
+means,
+
+55
+00:02:54,100 --> 00:02:56,935
+because you can then report the unadjusted
+means and the age-adjusted means, so
+
+56
+00:02:56,935 --> 00:02:58,960
+you can see it totally flipped the
+relationship here,
+
+57
+00:02:58,960 --> 00:03:01,585
+once we accounted for age.
+
+58
+00:03:01,585 --> 00:03:04,520
+And that might be something funny in my
+made-up data.

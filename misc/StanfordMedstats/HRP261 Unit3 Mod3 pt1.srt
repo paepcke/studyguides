@@ -1,0 +1,2190 @@
+1
+00:00:06,280 --> 00:00:10,470
+In the last couple of modules, I told you
+about the logistic regression model and
+
+2
+00:00:10,470 --> 00:00:15,420
+how do we interpret the alphas and betas
+from logistic regression models.
+
+3
+00:00:15,420 --> 00:00:17,360
+In this module we're going to take one
+step back and
+
+4
+00:00:17,360 --> 00:00:20,100
+ask the question, where did that alpha and
+beta come from?
+
+5
+00:00:20,100 --> 00:00:23,230
+So you put some data into the computer, it
+spits out some numbers.
+
+6
+00:00:23,230 --> 00:00:27,390
+How is the computer actually estimating
+alpha and beta?
+
+7
+00:00:27,390 --> 00:00:31,290
+This is important to understand because
+it's important to have some concept of
+
+8
+00:00:31,290 --> 00:00:34,440
+what is the likelihood function that will
+provide you insight into
+
+9
+00:00:34,440 --> 00:00:38,040
+the logistic regression model as well as
+other regression models late,
+
+10
+00:00:38,040 --> 00:00:41,090
+that we'll see later on, such as clock
+regression.
+
+11
+00:00:41,090 --> 00:00:44,220
+I'll warn you that the module, this module
+is not for the faint of heart.
+
+12
+00:00:44,220 --> 00:00:46,480
+There is going to be a lot of math and
+some calculus.
+
+13
+00:00:46,480 --> 00:00:47,580
+Just bear with me.
+
+14
+00:00:47,580 --> 00:00:49,800
+I'm just expecting you to be able to
+follow my logic,
+
+15
+00:00:49,800 --> 00:00:54,890
+not necessarily to be able to calculate
+maximum likelihood estimation on your own.
+
+16
+00:00:54,890 --> 00:01:00,090
+I just want to start by reminding you
+about the estimation process that was used
+
+17
+00:01:00,090 --> 00:01:03,680
+to estimate the parameters, the alphas and
+the betas, in linear regression.
+
+18
+00:01:03,680 --> 00:01:07,380
+So just as a quick review here, remember,
+linear regression we
+
+19
+00:01:07,380 --> 00:01:10,365
+might have some continuous predictor and a
+continuous outcome.
+
+20
+00:01:10,365 --> 00:01:12,920
+We can represent them as a scatterplot.
+
+21
+00:01:12,920 --> 00:01:18,610
+And we're trying to find the line that
+best fits the points on the plot.
+
+22
+00:01:18,610 --> 00:01:21,980
+So, somewhere there is a line that best
+fits these points.
+
+23
+00:01:21,980 --> 00:01:26,675
+So we can define that line, by defining an
+intercept and a slope,
+
+24
+00:01:26,675 --> 00:01:27,400
+an alpha and a beta.
+
+25
+00:01:27,400 --> 00:01:31,340
+How did we actually estimate alpha and
+beta in linear regression?
+
+26
+00:01:31,340 --> 00:01:33,160
+Again, I didn't make you do it by hand.
+
+27
+00:01:33,160 --> 00:01:35,270
+But if you, what is the computer actually
+doing?
+
+28
+00:01:35,270 --> 00:01:38,160
+So the technique that was used to estimate
+the parameters in
+
+29
+00:01:38,160 --> 00:01:41,650
+linear regression is something called
+least squares estimation.
+
+30
+00:01:41,650 --> 00:01:46,070
+And just briefly, what that is, is you see
+all these points here.
+
+31
+00:01:46,070 --> 00:01:49,430
+You're trying again to find the line that
+kind of goes through, you know,
+
+32
+00:01:49,430 --> 00:01:51,440
+best goes through those by the best fit
+line.
+
+33
+00:01:51,440 --> 00:01:52,580
+And what do we mean by best fit?
+
+34
+00:01:52,580 --> 00:01:57,970
+We want to find the line that minimizes
+the distance from all
+
+35
+00:01:57,970 --> 00:02:01,290
+the individual points to the line, has the
+least distance.
+
+36
+00:02:01,290 --> 00:02:04,330
+So for example, each point has some
+distance from the line,
+
+37
+00:02:04,330 --> 00:02:05,480
+they're not exactly on the line.
+
+38
+00:02:09,480 --> 00:02:10,720
+That would be the best fit line, so
+
+39
+00:02:10,720 --> 00:02:13,120
+we want to find the alpha and the beta
+that accomplishes that.
+
+40
+00:02:14,330 --> 00:02:17,110
+Now, notice that some of the distances
+from the line are negative,
+
+41
+00:02:17,110 --> 00:02:19,090
+they're the below, and some are positive,
+and
+
+42
+00:02:19,090 --> 00:02:23,960
+so if we try to do this without squaring,
+we'd end up kind of canceling things out.
+
+43
+00:02:23,960 --> 00:02:27,380
+So the reason there's a square here, is
+that the square gets rid of the negatives.
+
+44
+00:02:27,380 --> 00:02:29,970
+But we define something called the sum of
+squares error.
+
+45
+00:02:29,970 --> 00:02:34,510
+We can make this function or this
+equation, that just says the following.
+
+46
+00:02:34,510 --> 00:02:39,130
+We want to actually add up the squared
+distances for, from the line.
+
+47
+00:02:39,130 --> 00:02:42,470
+So, if I were to make an equation that
+adds up the square distances from
+
+48
+00:02:42,470 --> 00:02:46,190
+the line, I would take i equals 1 to n, n
+being your total sample size.
+
+49
+00:02:46,190 --> 00:02:50,800
+I take the actual values for Y, the actual
+observed values for Y for
+
+50
+00:02:50,800 --> 00:02:57,110
+every observation in your data set, and
+then I would subtract the value
+
+51
+00:02:57,110 --> 00:03:01,210
+on the line, so for example, somebody who
+has an X value here of ten,
+
+52
+00:03:01,210 --> 00:03:04,980
+they have an observed value, but they also
+have a predicted value from the line.
+
+53
+00:03:04,980 --> 00:03:06,850
+That would be here.
+
+54
+00:03:06,850 --> 00:03:08,940
+Now just to keep it general, for
+
+55
+00:03:08,940 --> 00:03:10,770
+the moment I'm just going to use alpha and
+beta.
+
+56
+00:03:10,770 --> 00:03:12,690
+We don't know what alpha and beta are yet.
+
+57
+00:03:12,690 --> 00:03:13,870
+That's what we're trying to solve for.
+
+58
+00:03:13,870 --> 00:03:16,180
+So we're going to try to find the alpha
+and
+
+59
+00:03:16,180 --> 00:03:19,690
+beta that minimizes the square distance.
+
+60
+00:03:19,690 --> 00:03:24,930
+But what we're getting here is, what is
+the predicted value for y?
+
+61
+00:03:24,930 --> 00:03:27,840
+Well, based on our line here, the
+predicted value for
+
+62
+00:03:27,840 --> 00:03:31,990
+Y for a given person, as you plug in their
+X value into the equation.
+
+63
+00:03:31,990 --> 00:03:35,545
+Again I'm leaving alpha and beta general
+because we're going to solve for them, but
+
+64
+00:03:35,545 --> 00:03:39,840
+it's going to be whatever alpha plus beta
+times the X value for that particular
+
+65
+00:03:39,840 --> 00:03:45,070
+person that would be their predicted value
+which we sometimes represent as Yi hat.
+
+66
+00:03:45,070 --> 00:03:48,840
+So, we're going to add all of those things
+up.
+
+67
+00:03:48,840 --> 00:03:54,280
+In fact we're going to square, those
+distances from the line,
+
+68
+00:03:54,280 --> 00:03:56,690
+for the reasons I mentioned, to avoid
+negative.
+
+69
+00:03:56,690 --> 00:04:00,580
+So that would be, that is the sum of
+squares of the error.
+
+70
+00:04:00,580 --> 00:04:06,620
+So that is the square, the total squared
+distance of all the points from the line.
+
+71
+00:04:06,620 --> 00:04:12,350
+Now, we want to find the alpha and beta
+that minimize the distance from the line.
+
+72
+00:04:12,350 --> 00:04:17,682
+So, this is a minimization problem, which
+gets us into a little bit of calculus.
+
+73
+00:04:17,682 --> 00:04:20,870
+Not going to go through the calculus here
+but I'll just set it up for you.
+
+74
+00:04:20,870 --> 00:04:22,350
+So there's some alpha or some beta.
+
+75
+00:04:22,350 --> 00:04:23,420
+We're going to, I'll just look at beta.
+
+76
+00:04:23,420 --> 00:04:28,026
+Now we're trying to find for example the
+beta that minimizes this sum squared of
+
+77
+00:04:28,026 --> 00:04:32,110
+errors term that has, that gives us the
+least distance from the line basically.
+
+78
+00:04:32,110 --> 00:04:33,140
+And there's some function.
+
+79
+00:04:33,140 --> 00:04:36,570
+We could take this function here and we
+could graph it.
+
+80
+00:04:36,570 --> 00:04:38,570
+And I'm just making a real simple graphic
+here, but
+
+81
+00:04:38,570 --> 00:04:41,370
+imagine it looks something like this.
+
+82
+00:04:41,370 --> 00:04:44,460
+There is some minimum point, and we want
+to solve for
+
+83
+00:04:44,460 --> 00:04:47,450
+the beta that gives us the least distance
+from the line.
+
+84
+00:04:47,450 --> 00:04:48,340
+The least sum of square zero.
+
+85
+00:04:48,340 --> 00:04:49,315
+We want to solve for that point.
+
+86
+00:04:49,315 --> 00:04:52,970
+Well how do you solve, well how do you do
+a minimization problem?
+
+87
+00:04:52,970 --> 00:04:56,490
+What you do of course is that you
+recognize that,
+
+88
+00:04:56,490 --> 00:05:00,930
+the slope with the tangent line, which is
+just another way of saying the derivative,
+
+89
+00:05:00,930 --> 00:05:04,210
+at the lowest point, that will equal to
+zero.
+
+90
+00:05:04,210 --> 00:05:06,990
+The slope here will, of the tangent line
+here will equal to zero.
+
+91
+00:05:06,990 --> 00:05:10,890
+In other words, the derivative of this
+function, if I take the derivative of this
+
+92
+00:05:10,890 --> 00:05:15,100
+function, I take the derivative of that
+and I'm not going to write it out here,
+
+93
+00:05:15,100 --> 00:05:19,400
+but I take the derivative with respective
+data of that function and then I set it
+
+94
+00:05:19,400 --> 00:05:23,830
+equal to zero and then I solve for either
+alpha or beta one at a time.
+
+95
+00:05:23,830 --> 00:05:25,950
+That's how I can get the alpha and the
+beta.
+
+96
+00:05:25,950 --> 00:05:28,330
+So this was a technique called least
+squares regression and
+
+97
+00:05:28,330 --> 00:05:29,730
+that worked for linear regression.
+
+98
+00:05:30,730 --> 00:05:33,800
+However, it turns out that that method
+doesn't work in
+
+99
+00:05:33,800 --> 00:05:37,500
+the case where our outcome variable is not
+normally distributed.
+
+100
+00:05:37,500 --> 00:05:41,250
+So we need to move to something which
+sometimes people call generalized linear
+
+101
+00:05:41,250 --> 00:05:45,140
+models, which just means that we want to
+generalize the ordinary linear
+
+102
+00:05:45,140 --> 00:05:47,080
+regression equation.
+
+103
+00:05:47,080 --> 00:05:50,570
+So that we allow outcome variables that
+are not normally distributed such as
+
+104
+00:05:50,570 --> 00:05:51,470
+binary variables.
+
+105
+00:05:52,900 --> 00:05:58,160
+And one example of a generalized linear
+model is the logistic regression model.
+
+106
+00:05:58,160 --> 00:06:00,160
+And so what does the generalized linear
+model look like?
+
+107
+00:06:00,160 --> 00:06:03,870
+Well, the right hand side of the equation
+looks exactly the same as we
+
+108
+00:06:03,870 --> 00:06:04,579
+saw with linear regression.
+
+109
+00:06:08,840 --> 00:06:09,660
+Something like that.
+
+110
+00:06:09,660 --> 00:06:11,020
+We have some alphas and some betas.
+
+111
+00:06:12,140 --> 00:06:13,580
+Same linear function.
+
+112
+00:06:13,580 --> 00:06:14,780
+The only thing is that,
+
+113
+00:06:14,780 --> 00:06:17,310
+in the right hand side of the equation, we
+no longer have Yi.
+
+114
+00:06:17,310 --> 00:06:19,510
+We no have, no longer have something
+that's continuous and
+
+115
+00:06:19,510 --> 00:06:22,870
+normally distributed, so we have to have
+some kind of link function.
+
+116
+00:06:22,870 --> 00:06:25,850
+This is sometimes called the systematic
+component that linear function,
+
+117
+00:06:25,850 --> 00:06:26,890
+then we have a link function,
+
+118
+00:06:26,890 --> 00:06:30,330
+which in the case of logistic regression,
+the link function was the logit.
+
+119
+00:06:31,940 --> 00:06:37,460
+But that link function allows us to bring
+in these other types of outcome variables.
+
+120
+00:06:37,460 --> 00:06:40,890
+However, we then need some way to estimate
+the alphas and the betas and
+
+121
+00:06:40,890 --> 00:06:43,790
+we can't use least squares regression
+anymore.
+
+122
+00:06:43,790 --> 00:06:48,920
+So we use something instead called maximum
+likelihood estimation,
+
+123
+00:06:48,920 --> 00:06:50,010
+to estimate alpha and beta.
+
+124
+00:06:50,010 --> 00:06:52,780
+So, it's just a yet, a different
+estimation thing.
+
+125
+00:06:52,780 --> 00:06:56,430
+A different estimation technique, similar
+to least squares regression but it's a,
+
+126
+00:06:56,430 --> 00:06:59,960
+it's different mathematically, called
+maximum likelihood estimation.
+
+127
+00:07:01,160 --> 00:07:03,550
+Just some examples of generalized linear
+models.
+
+128
+00:07:03,550 --> 00:07:06,460
+So logistic regression is a generalized
+linear model.
+
+129
+00:07:06,460 --> 00:07:09,090
+An outcome variable that we have would be
+a proportion.
+
+130
+00:07:09,090 --> 00:07:11,480
+This is when we have a proportion rather
+than you know,
+
+131
+00:07:11,480 --> 00:07:12,860
+something again normally distributed.
+
+132
+00:07:12,860 --> 00:07:15,250
+The distribution we have here is a
+binomial.
+
+133
+00:07:15,250 --> 00:07:17,670
+The link function, which is what's key
+here,
+
+134
+00:07:17,670 --> 00:07:20,790
+is the logit function, but there's other
+types of
+
+135
+00:07:20,790 --> 00:07:23,730
+generalizing your models that we're not
+talking about in this class.
+
+136
+00:07:23,730 --> 00:07:25,830
+There's something called Poisson
+regression.
+
+137
+00:07:25,830 --> 00:07:28,550
+So this is where you have an outcome
+variable that are counts.
+
+138
+00:07:28,550 --> 00:07:29,500
+That's often like, you know,
+
+139
+00:07:29,500 --> 00:07:32,900
+the number of cases of disease in a
+certain area of the country.
+
+140
+00:07:32,900 --> 00:07:34,600
+That could be a count variable.
+
+141
+00:07:34,600 --> 00:07:37,390
+The distribution here is something called
+a Poisson distribution.
+
+142
+00:07:37,390 --> 00:07:40,550
+That's a pro-, that's a discrete
+probability distribution.
+
+143
+00:07:40,550 --> 00:07:43,250
+And the link function that gets used here
+is the natural log.
+
+144
+00:07:43,250 --> 00:07:45,290
+So that's another type of generalized
+linear model.
+
+145
+00:07:46,360 --> 00:07:50,540
+And you can also kind of think of linear
+regression in term, in these terms.
+
+146
+00:07:50,540 --> 00:07:51,960
+The outcome variable is continuous.
+
+147
+00:07:51,960 --> 00:07:53,960
+The distribution is normal.
+
+148
+00:07:53,960 --> 00:07:56,030
+For the linear regression, the function,
+
+149
+00:07:56,030 --> 00:07:57,700
+the link function is just the identity
+function.
+
+150
+00:07:57,700 --> 00:07:59,970
+That just means that we don't transform y
+in any way.
+
+151
+00:07:59,970 --> 00:08:01,500
+It just stays the same.
+
+152
+00:08:01,500 --> 00:08:03,020
+That's what we do in linear regression.
+
+153
+00:08:04,360 --> 00:08:07,770
+So as I alluded to, when you have
+generalized linear models,
+
+154
+00:08:07,770 --> 00:08:09,450
+instead of using least squares estimation,
+
+155
+00:08:09,450 --> 00:08:12,870
+you're going to use something called
+maximum likelihood estimation to
+
+156
+00:08:12,870 --> 00:08:15,650
+estimate the parameters, in other words
+the alpha and the betas.
+
+157
+00:08:16,770 --> 00:08:20,830
+Now I'm going to introduce you to maximum
+likelihood estimation with
+
+158
+00:08:20,830 --> 00:08:22,210
+a simple little problem.
+
+159
+00:08:22,210 --> 00:08:24,390
+So we're going to start with a really
+simple problem so
+
+160
+00:08:24,390 --> 00:08:27,500
+that you can just get the logic of maximum
+likelihood estimation.
+
+161
+00:08:27,500 --> 00:08:29,690
+So we'll start with a very simple little
+coin problem.
+
+162
+00:08:29,690 --> 00:08:30,800
+Okay, so here's the problem.
+
+163
+00:08:31,820 --> 00:08:35,560
+You have a coin, and you know for some
+reason that it's biased.
+
+164
+00:08:35,560 --> 00:08:38,540
+You know that, somebody's told you this is
+not a fair coin.
+
+165
+00:08:38,540 --> 00:08:42,750
+But your job is to kind of figure out
+what's the probability of
+
+166
+00:08:42,750 --> 00:08:45,410
+heads in this biased, this non-fair coin.
+
+167
+00:08:45,410 --> 00:08:47,440
+In a fair coin, the p would be, here would
+be 0.5.
+
+168
+00:08:47,440 --> 00:08:50,140
+But for some reason we know that it's not
+equal to 0.5, or
+
+169
+00:08:50,140 --> 00:08:54,950
+it might not be equal to 0.5, and you want
+to guess at what p is, okay?
+
+170
+00:08:56,470 --> 00:08:59,052
+You want an estimate, there's an unknown
+perimeter here.
+
+171
+00:08:59,052 --> 00:09:03,240
+The unknown perimeter is p, that's the
+probability of the coin coming out heads.
+
+172
+00:09:03,240 --> 00:09:06,760
+You want to estimate that, so this is a
+parameter estimation problem.
+
+173
+00:09:06,760 --> 00:09:09,880
+There is some true parameter p, some true
+probability that the coin will
+
+174
+00:09:09,880 --> 00:09:12,840
+come out heads, you want to estimate that
+probability.
+
+175
+00:09:12,840 --> 00:09:15,880
+So we can use maximum likelihood
+estimation here.
+
+176
+00:09:15,880 --> 00:09:17,120
+So what are we going to do?
+
+177
+00:09:17,120 --> 00:09:18,740
+If want to solve this problem,
+
+178
+00:09:18,740 --> 00:09:21,160
+what we're probably going to do is start
+flipping the coin, right.
+
+179
+00:09:21,160 --> 00:09:24,540
+So the best way to kind of guess, at what
+a fairness of a coin is,
+
+180
+00:09:24,540 --> 00:09:27,870
+is to actually start flipping it and
+counting up how many heads we get.
+
+181
+00:09:27,870 --> 00:09:30,640
+I'm going to make this probably really
+simple and assume that we're
+
+182
+00:09:30,640 --> 00:09:33,400
+kind of lazy here where we're just
+going to flip the coin ten times.
+
+183
+00:09:33,400 --> 00:09:34,940
+We flip the coin ten times.
+
+184
+00:09:34,940 --> 00:09:36,700
+The coin comes up heads seven times.
+
+185
+00:09:36,700 --> 00:09:37,620
+Okay?
+
+186
+00:09:37,620 --> 00:09:38,490
+At that point,
+
+187
+00:09:38,490 --> 00:09:43,320
+given the data that you've collected, what
+would you guess that p would be here?
+
+188
+00:09:45,080 --> 00:09:49,910
+I think most of us could sort of
+intuitively in agree that the best guess
+
+189
+00:09:49,910 --> 00:09:50,622
+here is 0.7.
+
+190
+00:09:50,622 --> 00:09:51,370
+Why 0.7?
+
+191
+00:09:51,370 --> 00:09:53,940
+Well, I flipped the coin ten times, seven
+times it came out heads.
+
+192
+00:09:53,940 --> 00:09:59,470
+My best guess is that the coin is biased
+towards heads, with a p of about 0.7.
+
+193
+00:09:59,470 --> 00:10:01,800
+Now, of course, you'd probably want to
+flip the coin more times and
+
+194
+00:10:01,800 --> 00:10:04,290
+collect more data, but I mean, trying to
+keep the problem real simple here.
+
+195
+00:10:04,290 --> 00:10:07,280
+I think we can all agree intuitively that
+given the data that you saw,
+
+196
+00:10:07,280 --> 00:10:11,236
+the best guess for the estimate of p is
+0.7.
+
+197
+00:10:11,236 --> 00:10:14,130
+So that's very intuitive, but
+
+198
+00:10:14,130 --> 00:10:18,020
+what we're going to do now is we're
+going to solve for that parameter.
+
+199
+00:10:18,020 --> 00:10:22,140
+We're going to estimate that parameter
+using maximum likelihood estimation.
+
+200
+00:10:22,140 --> 00:10:25,260
+And I'll show you that you get the 0.7 out
+in the end,
+
+201
+00:10:25,260 --> 00:10:28,720
+but this will kind of make you believe
+that the math is correct.
+
+202
+00:10:29,795 --> 00:10:32,760
+Alright, so when we're doing maximum
+likelihood estimation the first thing
+
+203
+00:10:32,760 --> 00:10:35,530
+that we have to do is build a likelihood
+function.
+
+204
+00:10:35,530 --> 00:10:39,000
+So we're going to be maximizing a function
+and that function that
+
+205
+00:10:39,000 --> 00:10:41,700
+we're going to be maximizing is called a
+likelihood function.
+
+206
+00:10:41,700 --> 00:10:46,750
+All the likelihood function is, is the
+probability of your data.
+
+207
+00:10:46,750 --> 00:10:49,540
+So, whatever you see in your data, it's
+the probability of that.
+
+208
+00:10:50,770 --> 00:10:55,550
+And, we can do that pretty easily here,
+because it's a very simple case.
+
+209
+00:10:55,550 --> 00:10:57,000
+We flipped the coin ten times.
+
+210
+00:10:57,000 --> 00:10:58,050
+We saw seven heads.
+
+211
+00:10:58,050 --> 00:11:03,130
+What's the probability of that as a
+function of our unknown parameter p?
+
+212
+00:11:03,130 --> 00:11:04,900
+So keeping p general here.
+
+213
+00:11:04,900 --> 00:11:08,410
+What is the probability of seeing seven
+heads in ten coin tosses?
+
+214
+00:11:08,410 --> 00:11:10,570
+And we're going to calculate the exact
+probability of that.
+
+215
+00:11:10,570 --> 00:11:12,950
+We're not going to be calculating
+cumulative probabilities here.
+
+216
+00:11:12,950 --> 00:11:16,250
+We're going to calculate the exact
+probability of exactly what our
+
+217
+00:11:16,250 --> 00:11:17,030
+outcome was.
+
+218
+00:11:17,030 --> 00:11:19,080
+Exactly 7 heads in 10 coin tosses.
+
+219
+00:11:20,300 --> 00:11:24,210
+So, hopefully you recognize that if we're
+looking at, we're talking about
+
+220
+00:11:24,210 --> 00:11:29,160
+the number of heads in coin tosses, but
+that's a binomial random variable.
+
+221
+00:11:29,160 --> 00:11:32,070
+In this case, we have, we did ten flips.
+
+222
+00:11:32,070 --> 00:11:33,500
+So our N is ten.
+
+223
+00:11:33,500 --> 00:11:37,150
+And as I mentioned, we're going to keep
+our p, the chance of a heads.
+
+224
+00:11:37,150 --> 00:11:38,580
+We're going to keep that as an unknown.
+
+225
+00:11:38,580 --> 00:11:40,110
+We're going to keep it general as p.
+
+226
+00:11:40,110 --> 00:11:44,070
+So we are on a binomial distribution, with
+an N of ten.
+
+227
+00:11:45,230 --> 00:11:47,310
+And a p that's just unknown at that point.
+
+228
+00:11:47,310 --> 00:11:48,900
+This is what we're trying to estimate,
+that p.
+
+229
+00:11:50,530 --> 00:11:54,652
+Well how would I write out the probability
+of getting exactly seven heads in
+
+230
+00:11:54,652 --> 00:11:56,420
+ten coin tosses then?
+
+231
+00:11:56,420 --> 00:12:00,410
+Well I'm just going to rely on my binomial
+formula here.
+
+232
+00:12:00,410 --> 00:12:02,100
+Here so we know we're in a binomial
+distribution.
+
+233
+00:12:02,100 --> 00:12:06,870
+And the probability of exactly seven heads
+in ten coin tosses is going to be 10 to 7.
+
+234
+00:12:06,870 --> 00:12:10,210
+Whatever p is, whatever that value is
+raised to the 7th.
+
+235
+00:12:10,210 --> 00:12:12,167
+And then one minus p raised to the third.
+
+236
+00:12:12,167 --> 00:12:13,517
+And you can do out the 10 to 7,
+
+237
+00:12:13,517 --> 00:12:16,750
+10 factorial, divided by 7 factorial,
+divided by three type trails.
+
+238
+00:12:16,750 --> 00:12:19,230
+So that is my likelihood function.
+
+239
+00:12:19,230 --> 00:12:20,420
+That's the likelihood function here.
+
+240
+00:12:21,600 --> 00:12:25,454
+It's the probability of our data as a
+function of our unknown parameter.
+
+241
+00:12:25,454 --> 00:12:27,140
+That's the parameter we're going to try to
+estimate.
+
+242
+00:12:29,100 --> 00:12:32,210
+This is called the likelihood function and
+it gives us the probability of our data,
+
+243
+00:12:32,210 --> 00:12:35,280
+again as a function of our unknown
+parameter.
+
+244
+00:12:35,280 --> 00:12:40,030
+Alright, now we want to find the p, the
+value of p,
+
+245
+00:12:40,030 --> 00:12:43,000
+that maximizes the probability of our
+data.
+
+246
+00:12:43,000 --> 00:12:45,130
+Right?
+That maximizes the likelihood function.
+
+247
+00:12:45,130 --> 00:12:45,740
+Why is that?
+
+248
+00:12:45,740 --> 00:12:47,960
+Well, we saw our data, right?
+
+249
+00:12:47,960 --> 00:12:50,800
+That's what we actually saw in our
+experiment.
+
+250
+00:12:50,800 --> 00:12:55,860
+So we want to find the value of p that
+makes our data what we actually
+
+251
+00:12:55,860 --> 00:12:57,640
+saw the most likely.
+
+252
+00:12:57,640 --> 00:12:59,790
+So we want to maximize this function.
+
+253
+00:12:59,790 --> 00:13:03,690
+This is a function and we can maximize it
+using calculus.
+
+254
+00:13:03,690 --> 00:13:06,810
+Alright, so how do you maximize a
+function?
+
+255
+00:13:06,810 --> 00:13:08,740
+So this involves a little bit of calculus.
+
+256
+00:13:08,740 --> 00:13:11,630
+So kind of, we're going to go through kind
+of three steps of how to
+
+257
+00:13:11,630 --> 00:13:12,850
+maximize the function here.
+
+258
+00:13:12,850 --> 00:13:17,860
+So first of all, I'm going to do one
+little transformation at the beginning.
+
+259
+00:13:17,860 --> 00:13:20,140
+I'm going to start with the likelihood
+function and
+
+260
+00:13:20,140 --> 00:13:23,060
+then I'm going to take a log of the
+likelihood function.
+
+261
+00:13:23,060 --> 00:13:26,630
+I can take natural log or just any log of
+the likelihood function.
+
+262
+00:13:26,630 --> 00:13:30,030
+So here is my likelihood function and I'm
+going to take a log of it.
+
+263
+00:13:30,030 --> 00:13:33,570
+You know, why would I want to take a log
+here.
+
+264
+00:13:33,570 --> 00:13:38,280
+Well, it turns out that the maximum point
+on the likelihood function is
+
+265
+00:13:38,280 --> 00:13:43,790
+always going to be equal to the maximum
+point on the natural log of that function.
+
+266
+00:13:43,790 --> 00:13:46,650
+So that's a nice thing to know, because it
+turns out to
+
+267
+00:13:46,650 --> 00:13:52,080
+be easier just to deal with the natural
+log function than the original likelihood.
+
+268
+00:13:52,080 --> 00:13:53,420
+So why would I want to take a log,
+
+269
+00:13:53,420 --> 00:13:56,060
+well it turns out that logs have nice
+mathematical properties.
+
+270
+00:13:56,060 --> 00:14:04,760
+So, remember that the log of a product,
+say a times b times c, is the sum of logs.
+
+271
+00:14:04,760 --> 00:14:07,080
+So if I have a likelihood function that's
+a product,
+
+272
+00:14:07,080 --> 00:14:10,720
+which is usually the case, I have things
+multiplied together.
+
+273
+00:14:10,720 --> 00:14:15,060
+It's nice to take a log here, again any
+log, a natural log, or log ten.
+
+274
+00:14:15,060 --> 00:14:18,320
+It's nice to take a log here, because it
+makes it into a sum.
+
+275
+00:14:18,320 --> 00:14:22,130
+And if you remember way back to calculus,
+if it was a while ago for
+
+276
+00:14:22,130 --> 00:14:26,430
+you, that was easier to take derivatives
+of things added together,
+
+277
+00:14:26,430 --> 00:14:29,210
+than it was to take derivatives of things
+multiplied together.
+
+278
+00:14:29,210 --> 00:14:31,880
+Multiplied things, you had to get into
+something called the product rule,
+
+279
+00:14:31,880 --> 00:14:34,370
+which was a little tricky.
+
+280
+00:14:34,370 --> 00:14:36,930
+So we're first going to take a look just
+to make it easier to take the derivitive.
+
+281
+00:14:36,930 --> 00:14:41,230
+And the log function has the same maximum
+point as the original function.
+
+282
+00:14:41,230 --> 00:14:44,020
+So next thing we're going to do is to,
+we're going to take the derivative,
+
+283
+00:14:44,020 --> 00:14:49,400
+with respect to p, with respect to the
+unknown.
+
+284
+00:14:49,400 --> 00:14:52,630
+So why are we taking the derivative?
+
+285
+00:14:52,630 --> 00:14:56,720
+Well, the derivative, remember, is
+going to help us to maximize the function.
+
+286
+00:14:56,720 --> 00:15:01,880
+So if we've got, in this case, our
+function is a function of p.
+
+287
+00:15:01,880 --> 00:15:05,800
+Our likelihood function is a function of
+p, so we could graph it like this.
+
+288
+00:15:05,800 --> 00:15:08,640
+We know that somewhere it has some maximum
+point.
+
+289
+00:15:08,640 --> 00:15:10,180
+We want to find that maximum point.
+
+290
+00:15:10,180 --> 00:15:12,800
+Where does p make our data the most
+likely?
+
+291
+00:15:12,800 --> 00:15:17,420
+Well, if we take the derivative, that
+gives us the slope of the tangent line.
+
+292
+00:15:17,420 --> 00:15:19,760
+The maximum point is going to occur where
+the slope of
+
+293
+00:15:19,760 --> 00:15:20,790
+the tangent line is equal to zero.
+
+294
+00:15:20,790 --> 00:15:23,460
+So we're going to take the derivative,
+with respect to p, and
+
+295
+00:15:23,460 --> 00:15:26,510
+then we're gonnaset that derivative equal,
+we'll call that y prime,
+
+296
+00:15:26,510 --> 00:15:29,580
+we're going to set that equal to zero, and
+we're going to solve for p.
+
+297
+00:15:29,580 --> 00:15:32,990
+Because the point at which the derivative
+is equal to zero will be the maximum point
+
+298
+00:15:32,990 --> 00:15:33,620
+of that function.
+
+299
+00:15:33,620 --> 00:15:38,080
+So that's how we're going to find the p
+that makes our data the most likely.
+
+300
+00:15:38,080 --> 00:15:41,260
+And I've just summarized everything I've
+just said on a slide written out in
+
+301
+00:15:41,260 --> 00:15:43,110
+case you need to see those written out.
+
+302
+00:15:44,200 --> 00:15:47,540
+Alright, so now going back here, here is
+our likelihood function.
+
+303
+00:15:47,540 --> 00:15:49,340
+This is the function that we want to
+maximize.
+
+304
+00:15:49,340 --> 00:15:52,650
+We want to find the value of p that
+maximizes this function, so I'm just
+
+305
+00:15:52,650 --> 00:15:56,450
+going to walk you through the steps,
+applied to this particular function now.
+
+306
+00:15:56,450 --> 00:15:59,250
+So again, first step we're going to do is
+we're going to take a log.
+
+307
+00:15:59,250 --> 00:16:02,820
+You're going to see why in a minute, and
+it's going to be a good day to take logs.
+
+308
+00:16:02,820 --> 00:16:08,905
+So, if we take the log of this function,
+what's going to happen?
+
+309
+00:16:08,905 --> 00:16:15,630
+Well, remember the log of a product is the
+sum of logs.
+
+310
+00:16:15,630 --> 00:16:17,820
+So this is going to end up being the
+natural log.
+
+311
+00:16:17,820 --> 00:16:21,530
+I'm just going to write K here as, this 10
+choose 7 is just a number.
+
+312
+00:16:21,530 --> 00:16:24,450
+I know when I take the derivative that
+constants go away, so
+
+313
+00:16:24,450 --> 00:16:27,680
+I'm going to save myself time by just
+writing log of a constant.
+
+314
+00:16:27,680 --> 00:16:30,160
+So that was multiplied by this is
+multiplied by that, so
+
+315
+00:16:30,160 --> 00:16:35,360
+we can break this up into, then natural
+log of p raised to the seventh.
+
+316
+00:16:35,360 --> 00:16:42,210
+Plus, again, we're breaking things up into
+sums, the natural log of 1 minus p cubed.
+
+317
+00:16:42,210 --> 00:16:46,060
+Now what's nice also about logs, so again,
+we're broke it up into a sum because when
+
+318
+00:16:46,060 --> 00:16:47,880
+you take the logs, the log of a product is
+the sum of logs.
+
+319
+00:16:47,880 --> 00:16:53,380
+So what's also nice about logs is that the
+powers come down in front of the logs,
+
+320
+00:16:53,380 --> 00:16:55,980
+so hopefully you remember how to deal with
+logs.
+
+321
+00:16:55,980 --> 00:17:01,100
+So we can then realize that we end up with
+some constant plus 7
+
+322
+00:17:01,100 --> 00:17:05,720
+times the natural log of p, plus 3 times
+the natural log of 1 minus p.
+
+323
+00:17:05,720 --> 00:17:07,870
+Okay, so if we apply logs,
+
+324
+00:17:07,870 --> 00:17:12,105
+we end up with a simpler function where
+things are not multiplied together.
+
+325
+00:17:12,105 --> 00:17:13,410
+Okay.
+Step two,
+
+326
+00:17:13,410 --> 00:17:16,660
+we're going to take the derivative of the
+log likelihood function.
+
+327
+00:17:16,660 --> 00:17:17,290
+So how do I do that?
+
+328
+00:17:17,290 --> 00:17:18,670
+I'm going to take the derivative for
+
+329
+00:17:18,670 --> 00:17:21,940
+respect to p or unknown, of the log
+likelihood function.
+
+330
+00:17:21,940 --> 00:17:23,600
+That's this function here.
+
+331
+00:17:23,600 --> 00:17:25,870
+So I'm just taking the derivative of this
+function.
+
+332
+00:17:25,870 --> 00:17:28,200
+Well, what happens when I take the
+derivative of constant, so
+
+333
+00:17:28,200 --> 00:17:29,740
+the align k is a constant.
+
+334
+00:17:29,740 --> 00:17:32,230
+The derivative of constant, if you
+remember, is just zero.
+
+335
+00:17:33,750 --> 00:17:35,170
+Alright, now the next term.
+
+336
+00:17:35,170 --> 00:17:37,520
+The 7 natural log of p.
+
+337
+00:17:37,520 --> 00:17:39,422
+How do I get the derivative of that
+function?
+
+338
+00:17:39,422 --> 00:17:45,000
+Well the 7 natural log of p, you have to
+remember a little bit of calculus here,
+
+339
+00:17:45,000 --> 00:17:51,340
+the derivative of, of the natural log of x
+is 1 over x.
+
+340
+00:17:51,340 --> 00:17:55,440
+So I've got my 7, my coefficient in front
+and then the p goes in
+
+341
+00:17:55,440 --> 00:17:59,640
+the denominator because the derivative of
+the natural log is 1 over that value so
+
+342
+00:17:59,640 --> 00:18:03,120
+we end up with the derivative and the
+natural log of p is one over p.
+
+343
+00:18:03,120 --> 00:18:04,850
+So I get 7 over p there.
+
+344
+00:18:05,940 --> 00:18:06,560
+Finally.
+
+345
+00:18:06,560 --> 00:18:12,980
+For the last term, I'm going to get, again
+same idea my coefficient is 3.
+
+346
+00:18:12,980 --> 00:18:16,480
+I'm not going to write the sign yet
+because that's going to change but
+
+347
+00:18:16,480 --> 00:18:19,440
+my coefficient is 3 and I've got something
+natural log of something,
+
+348
+00:18:19,440 --> 00:18:20,620
+that's going to go on the denominator.
+
+349
+00:18:20,620 --> 00:18:21,840
+That's the one minus p.
+
+350
+00:18:21,840 --> 00:18:25,780
+Now, what I just put in the denominator
+however is itself a function.
+
+351
+00:18:25,780 --> 00:18:26,990
+It's one minus p.
+
+352
+00:18:26,990 --> 00:18:29,480
+So we have to do something called the
+chain rule.
+
+353
+00:18:29,480 --> 00:18:32,320
+This is again making you jog your memory a
+little on calculus.
+
+354
+00:18:32,320 --> 00:18:34,770
+We have to take the derivative of what's
+inside those parentheses.
+
+355
+00:18:34,770 --> 00:18:37,000
+So the derivative of one minus p.
+
+356
+00:18:37,000 --> 00:18:38,540
+Well, what's the derivative of one minus
+p.
+
+357
+00:18:38,540 --> 00:18:39,890
+The derivative of one is zero.
+
+358
+00:18:39,890 --> 00:18:42,530
+The derivative of negative p, is just
+going to be negative 1.
+
+359
+00:18:42,530 --> 00:18:46,220
+So we end up with just a, that means we
+just ending up with a negative here.
+
+360
+00:18:46,220 --> 00:18:48,450
+So that's the derivative of the log
+likelihood function.
+
+361
+00:18:48,450 --> 00:18:50,730
+Again, I'm not expecting you to take
+derivatives in this class, but
+
+362
+00:18:50,730 --> 00:18:53,990
+just to follow my logic and hopefully
+remember a little bit back to calculus,
+
+363
+00:18:53,990 --> 00:18:56,490
+and believe that what I've done here is
+correct.
+
+364
+00:18:56,490 --> 00:18:57,860
+So now we've got the derivative function.
+
+365
+00:18:57,860 --> 00:18:59,240
+We're going to set that equal to zero.
+
+366
+00:18:59,240 --> 00:19:05,270
+So I am going to say that, that
+derivative, is equal to zero Because zer-,
+
+367
+00:19:05,270 --> 00:19:07,990
+when the derivative is equal to zero,
+that's going to be the maximum point.
+
+368
+00:19:07,990 --> 00:19:10,750
+So I'm going to take the 7 over p minus 3
+over 1 minus p.
+
+369
+00:19:10,750 --> 00:19:14,150
+I'm going to set that equal to zero, and
+then I'm just going to solve for p.
+
+370
+00:19:14,150 --> 00:19:15,930
+So how do I solve for p here?
+
+371
+00:19:15,930 --> 00:19:19,810
+Well, I can add 3 over 1 minus p to both
+sides
+
+372
+00:19:19,810 --> 00:19:23,600
+of the equation to get rid of the negative
+there.
+
+373
+00:19:23,600 --> 00:19:27,960
+Then I can cross multiply, so we end up
+with cross multiplying here, so
+
+374
+00:19:27,960 --> 00:19:32,260
+we're going to end up with 7 times 1 minus
+p is equal to 3p.
+
+375
+00:19:32,260 --> 00:19:35,110
+I can then distribute the 7 out, it's just
+a little algebra.
+
+376
+00:19:35,110 --> 00:19:38,840
+7 minus 7p, therefore is equal to 3p.
+
+377
+00:19:38,840 --> 00:19:44,820
+Then I'm going to add 7p to both sides of
+the equation, so I get 7 is equal to,
+
+378
+00:19:45,950 --> 00:19:49,655
+3p plus 7p is 10p, so I get that 7 is
+equal to 10p, so
+
+379
+00:19:49,655 --> 00:19:55,700
+then finally I get that p is equal to 7
+divided by 10, while hooray,
+
+380
+00:19:55,700 --> 00:19:59,660
+it came out to be exactly what we
+intuitively want it to be.
+
+381
+00:19:59,660 --> 00:20:03,890
+We already said that our best guess for p
+based on our data should be 0.7.
+
+382
+00:20:03,890 --> 00:20:06,850
+And indeed when we go through this whole
+logic,
+
+383
+00:20:06,850 --> 00:20:08,170
+of doing the likelihood function and
+
+384
+00:20:08,170 --> 00:20:13,969
+maximizing it, we get out what we should,
+that the best guess for p is 7 10ths.
+
+385
+00:20:13,969 --> 00:20:14,740
+0.7.
+
+386
+00:20:14,740 --> 00:20:20,090
+So this is just to kind of help you
+hopefully to believe, that the maximum
+
+387
+00:20:20,090 --> 00:20:24,030
+likelihood estimation works, and it gives
+you what you would expect, and hopefully
+
+388
+00:20:24,030 --> 00:20:28,230
+you can understand sort of the basic logic
+of getting to that parameter estimate.
+
+389
+00:20:29,760 --> 00:20:33,880
+again, I've written out a neat slide
+[LAUGH] with the equations just in
+
+390
+00:20:33,880 --> 00:20:36,670
+case you didn't follow my writing on the
+other page.
+
+391
+00:20:36,670 --> 00:20:37,680
+This is just available for
+
+392
+00:20:37,680 --> 00:20:40,265
+you if you need to pause the video and go
+through the slide that,
+
+393
+00:20:40,265 --> 00:20:43,150
+the derations on your own with a little
+bit of deep writing.
+
+394
+00:20:44,820 --> 00:20:48,724
+Okay, so again, maximum likelihood
+estimation here for
+
+395
+00:20:48,724 --> 00:20:50,004
+the parameter p is 0.7.
+
+396
+00:20:50,004 --> 00:20:51,670
+We've managed to prove the obvious but
+
+397
+00:20:51,670 --> 00:20:54,870
+hopefully it makes you believe in maximum
+likelihood estimation.
+
+398
+00:20:54,870 --> 00:20:58,950
+And of course the point is many times it's
+not obvious what your best guess for
+
+399
+00:20:58,950 --> 00:20:59,540
+the parameters.
+
+400
+00:20:59,540 --> 00:21:02,790
+Usually our data is very complicated, and
+the probability,
+
+401
+00:21:02,790 --> 00:21:06,460
+the likelihood function of our data is
+something extremely complicated, and
+
+402
+00:21:06,460 --> 00:21:08,350
+we need a computer to solve for the
+parameters.
+
+403
+00:21:09,840 --> 00:21:14,220
+We use maximum likelihood estimation in
+logistic regression to estimate, alpha and
+
+404
+00:21:14,220 --> 00:21:15,700
+the betas.
+
+405
+00:21:15,700 --> 00:21:18,620
+And I just want to point out, one other
+thing here is
+
+406
+00:21:18,620 --> 00:21:22,740
+that the massive likely estimem-, hood
+estimation technique is really cool.
+
+407
+00:21:22,740 --> 00:21:27,800
+Because, the first derivative, helps us to
+find the point estimates,
+
+408
+00:21:27,800 --> 00:21:29,885
+the actual point estimates for alpha and
+beta.
+
+409
+00:21:29,885 --> 00:21:34,620
+Then, however, if you take the second
+derivative, that gets you,
+
+410
+00:21:34,620 --> 00:21:38,980
+is very directly related to the standard
+era, er, error of the alphas and
+
+411
+00:21:38,980 --> 00:21:43,390
+the betas, to get you the variance of the
+standard errors of those point estimates.
+
+412
+00:21:43,390 --> 00:21:46,630
+And, of course, when we do logistic
+regression, we don't,
+
+413
+00:21:46,630 --> 00:21:48,860
+we don't only need the alpha and the beta
+value.
+
+414
+00:21:48,860 --> 00:21:52,110
+We also need a p value and a confidence
+interval to go with those.
+
+415
+00:21:52,110 --> 00:21:53,450
+That comes out of the standard error.
+
+416
+00:21:53,450 --> 00:21:53,980
+.
+
+417
+00:21:53,980 --> 00:21:57,580
+Well, the nice thing is that the standard
+error falls right out of
+
+418
+00:21:57,580 --> 00:21:59,640
+the maximum likelihood estimation
+techniques.
+
+419
+00:21:59,640 --> 00:22:03,050
+So, they kind, they all kind of come with
+their own standard error.
+
+420
+00:22:03,050 --> 00:22:05,720
+I will not go through the math of getting
+the variance of the standard error.
+
+421
+00:22:05,720 --> 00:22:07,880
+We will let the computer do it for us.
+
+422
+00:22:07,880 --> 00:22:11,370
+But just know that it comes right out of
+maximum likelihood estimation.
+
+423
+00:22:11,370 --> 00:22:14,580
+I want to put one more point with this
+simple coin example.
+
+424
+00:22:14,580 --> 00:22:18,620
+What is the actual value of the likelihood
+at its maximum.
+
+425
+00:22:18,620 --> 00:22:22,110
+So if we take the p that we've estimated
+it and we plug it back into the likelihood
+
+426
+00:22:22,110 --> 00:22:25,990
+function, we can actually calculate the
+probability of our data.
+
+427
+00:22:25,990 --> 00:22:31,050
+So in this case, at the maximum value for
+p, the 0.7, if I plug that back into
+
+428
+00:22:31,050 --> 00:22:35,800
+the likelihood function, so I'm just
+plugging in 0.7 wherever we saw p before.
+
+429
+00:22:35,800 --> 00:22:40,716
+It turns out that we get that the r data a
+probability of coming out.
+
+430
+00:22:40,716 --> 00:22:42,160
+Seven out of ten heads.
+
+431
+00:22:42,160 --> 00:22:44,610
+That probability was 26.7%.
+
+432
+00:22:44,610 --> 00:22:48,810
+Now, notice, that's not totally a high
+probability.
+
+433
+00:22:48,810 --> 00:22:50,240
+We could have easily gotten six cents.
+
+434
+00:22:50,240 --> 00:22:52,810
+We could have easily gotten eight.
+
+435
+00:22:52,810 --> 00:22:55,240
+But at 0.7, whatever we plug in here for
+
+436
+00:22:55,240 --> 00:22:58,640
+p, 0.7 gives us the highest value of this
+probability.
+
+437
+00:22:58,640 --> 00:23:01,290
+If I was to plug in 0.65, I would get a
+lower probability.
+
+438
+00:23:01,290 --> 00:23:04,040
+If I was to plug in 0.8, I would get a
+lower probability.
+
+439
+00:23:04,040 --> 00:23:08,600
+So 0.7 gives us the highest probability
+for our data, and we can plug back into
+
+440
+00:23:08,600 --> 00:23:12,220
+the likelihood function to figure out
+exactly what that probability is.
+
+441
+00:23:12,220 --> 00:23:14,600
+Well, we're going to be doing that later
+on.
+
+442
+00:23:14,600 --> 00:23:18,440
+This is a simple example where the
+probability of our data,
+
+443
+00:23:18,440 --> 00:23:21,800
+the value of the likelihood is, is a
+reasonable probability.
+
+444
+00:23:21,800 --> 00:23:25,930
+You'll see that when we, do this, for
+really complicated examples,
+
+445
+00:23:25,930 --> 00:23:28,820
+the probability of our data, that is, that
+is most,
+
+446
+00:23:28,820 --> 00:23:33,640
+highest, probability, might be something
+like 1 times 10 to the negative 20th.
+
+447
+00:23:33,640 --> 00:23:36,130
+There might be a really small probability
+just because there's so
+
+448
+00:23:36,130 --> 00:23:38,190
+many possible different outcomes.
+
+449
+00:23:38,190 --> 00:23:41,170
+That at it's maximum point the probability
+might still be very small.
+
+450
+00:23:42,720 --> 00:23:44,730
+I'll just warn you that you're going to
+see that later.
+
+451
+00:23:45,970 --> 00:23:47,340
+Then the other thing that we're going to
+be
+
+452
+00:23:47,340 --> 00:23:50,950
+calculating is something called the
+negative two log likelihood.
+
+453
+00:23:50,950 --> 00:23:54,610
+So all this is, is you take that
+likelihood value that we just calculated.
+
+454
+00:23:54,610 --> 00:23:56,720
+And then you take negative two log of it.
+
+455
+00:23:56,720 --> 00:24:00,010
+It has some uses that we're going to see
+later, but just note for
+
+456
+00:24:00,010 --> 00:24:03,250
+now that when I plug in this probability
+and take negative two log of that,
+
+457
+00:24:03,250 --> 00:24:06,920
+I get a kind of a whole number, and so I'm
+taking something that might be
+
+458
+00:24:06,920 --> 00:24:10,070
+a really small decimal place and turning
+it into a nice whole number.
+
+459
+00:24:10,070 --> 00:24:11,510
+It's easier to deal with.
+
+460
+00:24:11,510 --> 00:24:15,250
+The negative two log likelihood also has
+some other useful mathematical properties
+
+461
+00:24:15,250 --> 00:24:16,250
+that we'll see soon.

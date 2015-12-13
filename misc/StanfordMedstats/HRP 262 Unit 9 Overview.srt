@@ -1,0 +1,605 @@
+1
+00:00:00,400 --> 00:00:04,200
+[BLANK_AUDIO].
+
+2
+00:00:04,200 --> 00:00:06,650
+Welcome to Unit 9.
+
+3
+00:00:06,650 --> 00:00:08,960
+This is the final unit of the course, so
+
+4
+00:00:08,960 --> 00:00:11,727
+after this all you have left is the final
+exam.
+
+5
+00:00:11,727 --> 00:00:14,960
+This week I'm going to introduce you to
+the use of mixed models for
+
+6
+00:00:14,960 --> 00:00:16,920
+analyzing repeated measures data.
+
+7
+00:00:20,080 --> 00:00:23,680
+Last week we talked about the use of
+generalized estimating equations for
+
+8
+00:00:23,680 --> 00:00:26,030
+analyzing repeated measures data.
+
+9
+00:00:26,030 --> 00:00:28,860
+This week, I'm going to take those same
+data, and show you
+
+10
+00:00:28,860 --> 00:00:32,160
+how analyze them using a different
+technique, called the mixed model.
+
+11
+00:00:33,180 --> 00:00:34,766
+The good news is that whether or
+
+12
+00:00:34,766 --> 00:00:38,853
+not you choose to analyze your data with a
+generalized estimating equation, or
+
+13
+00:00:38,853 --> 00:00:43,090
+a mixed model, for most cases, you're
+going to get fairly similar results.
+
+14
+00:00:43,090 --> 00:00:46,810
+The answer ought to be the same, even if
+there are slight differences in,
+
+15
+00:00:46,810 --> 00:00:49,160
+say, the point apex, and the P values.
+
+16
+00:00:50,430 --> 00:00:53,960
+I tend to, if I've got a continuous
+outcome, I tend to prefer the mixed model.
+
+17
+00:00:53,960 --> 00:00:55,360
+If I've got a discreet outcome,
+
+18
+00:00:55,360 --> 00:00:57,660
+I tend to prefer the generalized
+estimating equations.
+
+19
+00:00:57,660 --> 00:01:00,856
+There are slight advantages to each of
+those, for each of those cases.
+
+20
+00:01:00,856 --> 00:01:03,325
+[BLANK_AUDIO].
+
+21
+00:01:03,325 --> 00:01:05,437
+Before we jump into the discussion of
+mixed models,
+
+22
+00:01:05,437 --> 00:01:07,550
+I just wanted to point one thing out.
+
+23
+00:01:07,550 --> 00:01:09,566
+We have been mostly focusing on,
+
+24
+00:01:09,566 --> 00:01:13,760
+all of our examples have centered on
+repeated-measures over time.
+
+25
+00:01:13,760 --> 00:01:15,110
+So, longitudinal data.
+
+26
+00:01:15,110 --> 00:01:16,520
+That's the focus of this course.
+
+27
+00:01:17,830 --> 00:01:18,570
+I wanted to point out,
+
+28
+00:01:18,570 --> 00:01:21,540
+however, that if you had a different kind
+of repeated measure.
+
+29
+00:01:21,540 --> 00:01:25,870
+Where you had repeated measures over
+conditions, rather than time,
+
+30
+00:01:25,870 --> 00:01:30,070
+that the general approaches to analyzing
+the data would be the same.
+
+31
+00:01:30,070 --> 00:01:32,977
+So again, we've been focusing on you've
+got the same subject
+
+32
+00:01:32,977 --> 00:01:36,600
+measurement measured at different time
+points, like in a cohort study.
+
+33
+00:01:36,600 --> 00:01:40,490
+But what if you had a situation where you
+had the same subject measured not over
+
+34
+00:01:40,490 --> 00:01:43,880
+time, but in different, say, experimental
+conditions.
+
+35
+00:01:43,880 --> 00:01:47,050
+So imagine you did a study where you were
+measuring people's brain activity in
+
+36
+00:01:47,050 --> 00:01:48,190
+the laboratory.
+
+37
+00:01:48,190 --> 00:01:51,635
+When you have them exercise, and maybe
+when you have them drink alcohol, and
+
+38
+00:01:51,635 --> 00:01:54,180
+when you have them listen to music.
+
+39
+00:01:54,180 --> 00:01:58,410
+There is no time element there, but it's
+the same person at different,
+
+40
+00:01:58,410 --> 00:02:01,490
+under different conditions rather than at
+different times.
+
+41
+00:02:01,490 --> 00:02:05,090
+All the things we have talked about, where
+we were talking about time,
+
+42
+00:02:05,090 --> 00:02:09,090
+can be easily adapted to the case where we
+have different conditions.
+
+43
+00:02:09,090 --> 00:02:13,220
+And so what, how you would do that is that
+rather than having a mean effect for
+
+44
+00:02:13,220 --> 00:02:13,920
+timing the model,
+
+45
+00:02:13,920 --> 00:02:18,350
+wherever we've been seeing time in our
+models you replace that with a condition.
+
+46
+00:02:18,350 --> 00:02:21,110
+The condition will act sort of like the
+time effect.
+
+47
+00:02:21,110 --> 00:02:24,661
+If you have different groups you'd have a
+group effect, and you would also have
+
+48
+00:02:24,661 --> 00:02:28,490
+a group by condition interaction rather
+than a group by time interaction.
+
+49
+00:02:28,490 --> 00:02:30,250
+So, you can just kind of go through the
+code, and
+
+50
+00:02:30,250 --> 00:02:32,480
+replace wherever you see time, replace
+with condition.
+
+51
+00:02:33,480 --> 00:02:36,540
+The only slight difference that your
+going to have is that the correlation
+
+52
+00:02:36,540 --> 00:02:37,890
+structures may be different.
+
+53
+00:02:37,890 --> 00:02:41,607
+So when you have correlations over time,
+it tends to be that the further and
+
+54
+00:02:41,607 --> 00:02:46,750
+further apart you get in time, the less
+and less correlated observations are.
+
+55
+00:02:46,750 --> 00:02:51,614
+With conditions, there usually isn't some
+odd priority structure that you'd expect,
+
+56
+00:02:51,614 --> 00:02:55,500
+some operating pattern that you'd expect
+for the correlations.
+
+57
+00:02:55,500 --> 00:02:58,750
+So for that reason you're probably
+going to end up choosing something like
+
+58
+00:02:58,750 --> 00:03:02,150
+an exchangeable, or an unstructured
+correlation matrix rather than something
+
+59
+00:03:02,150 --> 00:03:05,550
+that you might choose when you were doing
+time, like an auto-regressive one.
+
+60
+00:03:08,670 --> 00:03:12,170
+All right, now let me just give you a very
+brief introduction to mixed models just to
+
+61
+00:03:12,170 --> 00:03:13,329
+set up the picture for you.
+
+62
+00:03:14,660 --> 00:03:17,380
+So recall that a couple of weeks ago we
+talked about something called
+
+63
+00:03:17,380 --> 00:03:18,910
+a slope analysis.
+
+64
+00:03:18,910 --> 00:03:22,560
+So this is where we fit separate linear
+regression lines for
+
+65
+00:03:22,560 --> 00:03:26,520
+each person based on their repeated
+measurements.
+
+66
+00:03:26,520 --> 00:03:28,040
+And it was a two step process, so
+
+67
+00:03:28,040 --> 00:03:32,750
+we took each person's individual slope
+from those individual linear regressions.
+
+68
+00:03:32,750 --> 00:03:35,849
+We stored those slopes, and then we used
+those slopes for further analyses.
+
+69
+00:03:36,960 --> 00:03:41,870
+Well, in a way, the slope analysis is kind
+of a poor man's mixed model.
+
+70
+00:03:41,870 --> 00:03:43,630
+So if you understood the slope analysis,
+
+71
+00:03:43,630 --> 00:03:45,780
+you're going to understand, the mixed
+models.
+
+72
+00:03:47,090 --> 00:03:50,110
+the, drawback of the slope analysis is
+that we
+
+73
+00:03:50,110 --> 00:03:52,850
+had to do it as a two step process.
+
+74
+00:03:52,850 --> 00:03:57,050
+But what if you could actually, in one
+single linear regression model,
+
+75
+00:03:57,050 --> 00:04:00,210
+fit a separate linear regression line for
+each subject?
+
+76
+00:04:00,210 --> 00:04:02,142
+That's essentially what a mixed model
+does, and
+
+77
+00:04:02,142 --> 00:04:04,550
+I'm showing you the picture of that here.
+
+78
+00:04:04,550 --> 00:04:07,150
+So we had some data last week where I had
+just six subjects, and
+
+79
+00:04:07,150 --> 00:04:10,000
+they had depression scores measured over
+time.
+
+80
+00:04:10,000 --> 00:04:14,010
+I am showing you here the predictive
+values from the mixed model for
+
+81
+00:04:14,010 --> 00:04:14,870
+those subjects.
+
+82
+00:04:14,870 --> 00:04:18,447
+And what you'll see, is that each subject
+has their own,
+
+83
+00:04:18,447 --> 00:04:22,608
+linear regression lines, so there's a
+predicted intercept, and
+
+84
+00:04:22,608 --> 00:04:26,115
+a predicted slope that's different for
+each subject.
+
+85
+00:04:26,115 --> 00:04:29,642
+So we're getting subject specific linear
+regression line.
+
+86
+00:04:29,642 --> 00:04:33,890
+Which is great, because this controls for
+the, within subject correlation.
+
+87
+00:04:35,780 --> 00:04:39,434
+Now, if I were actually to ask you to go
+out, and, accomplish this,
+
+88
+00:04:39,434 --> 00:04:43,340
+to fit subject specific linear regression
+lines, your first instinct,
+
+89
+00:04:43,340 --> 00:04:47,120
+might be to say, okay, well, I guess I
+could run a linear regression,
+
+90
+00:04:47,120 --> 00:04:49,703
+with my continuous outcome at my
+intercept, and
+
+91
+00:04:49,703 --> 00:04:54,390
+then I could actually fit separate
+coefficients for each subject, right?
+
+92
+00:04:54,390 --> 00:04:56,886
+If I want a subject specific intercept for
+
+93
+00:04:56,886 --> 00:04:59,950
+subject one, I would have to fit a beta
+for subject one.
+
+94
+00:04:59,950 --> 00:05:02,130
+And then if I wanted a, a slope for
+
+95
+00:05:02,130 --> 00:05:05,880
+subject one, I could fit a subject one
+times time interaction.
+
+96
+00:05:05,880 --> 00:05:08,840
+And then same thing if I wanted to fit one
+for subject two.
+
+97
+00:05:10,700 --> 00:05:15,461
+And the slope for subject two, and I would
+literally have to do this in the model for
+
+98
+00:05:15,461 --> 00:05:17,120
+every person in my data set.
+
+99
+00:05:17,120 --> 00:05:21,000
+Well, that would control for subject, and
+give me subject specific effects.
+
+100
+00:05:21,000 --> 00:05:23,700
+However, of course there's an obvious
+problem with this,
+
+101
+00:05:23,700 --> 00:05:26,960
+which is that you can see clearly that we
+don't have enough degrees of freedom.
+
+102
+00:05:26,960 --> 00:05:30,736
+This model's just going to blow up,
+because there's no way we can fit so
+
+103
+00:05:30,736 --> 00:05:31,795
+many parameters.
+
+104
+00:05:31,795 --> 00:05:35,920
+However, a mixed model kind of
+accomplishes this in a clever way.
+
+105
+00:05:35,920 --> 00:05:39,230
+So rather than fitting a specific
+parameter for each subject, or
+
+106
+00:05:39,230 --> 00:05:39,920
+two parameters for
+
+107
+00:05:39,920 --> 00:05:43,780
+each subject, which is clearly, we don't
+have enough degrees of freedom for.
+
+108
+00:05:43,780 --> 00:05:46,330
+What our next model does instead is very
+clever.
+
+109
+00:05:46,330 --> 00:05:50,411
+It says well, we can fit subject specific
+intercepts simply by
+
+110
+00:05:50,411 --> 00:05:54,940
+assuming that those intercepts follow a
+particular distribution.
+
+111
+00:05:54,940 --> 00:05:58,636
+We are going to assume that they follow a
+normal distribution, and
+
+112
+00:05:58,636 --> 00:06:02,926
+normal distributions have only two
+parameters, a mean, and a variance, so
+
+113
+00:06:02,926 --> 00:06:06,820
+we can estimate a whole set of
+subject-specific intercepts simply by
+
+114
+00:06:06,820 --> 00:06:10,830
+estimating just the two parameters of that
+normal distribution.
+
+115
+00:06:10,830 --> 00:06:13,639
+There'll be a mean intercept, which in
+this case is going to fall
+
+116
+00:06:13,639 --> 00:06:16,342
+somewhere around here, and then there'll
+be a variance for
+
+117
+00:06:16,342 --> 00:06:21,200
+the intercept, which will help us to
+define, the subject's specific intercepts.
+
+118
+00:06:21,200 --> 00:06:24,960
+That's if the variance is represented by
+the, different values at baseline here.
+
+119
+00:06:24,960 --> 00:06:27,770
+And we can do the same things for the
+slopes.
+
+120
+00:06:27,770 --> 00:06:33,400
+We can define a distribution of slopes,
+that again depends on only two parameters,
+
+121
+00:06:33,400 --> 00:06:35,780
+a mean and a variance.
+
+122
+00:06:35,780 --> 00:06:37,430
+If we fit that mean in the variance,
+
+123
+00:06:37,430 --> 00:06:40,050
+then we've got a whole set of subject
+specific slopes.
+
+124
+00:06:40,050 --> 00:06:43,210
+And in this way, with very few degrees of
+freedom is used,
+
+125
+00:06:43,210 --> 00:06:46,170
+we are able to fit subject specific
+regression lines.
+
+126
+00:06:46,170 --> 00:06:49,408
+And therefore, account for the within
+subject variability.
+
+127
+00:06:49,408 --> 00:06:51,430
+That's the general idea of mixed models.
+
+128
+00:06:51,430 --> 00:06:51,930
+[BLANK_AUDIO]

@@ -1,0 +1,1378 @@
+1
+00:00:05,700 --> 00:00:06,740
+In this next module,
+
+2
+00:00:06,740 --> 00:00:09,600
+I am going to tell you about how we
+evaluate predictive models.
+
+3
+00:00:09,600 --> 00:00:12,603
+And this is always going to involve some
+kind of validation.
+
+4
+00:00:12,603 --> 00:00:18,820
+So first of all, it's just what're some
+different measures of predictive accuracy?
+
+5
+00:00:18,820 --> 00:00:22,490
+So we saw with logistic regression that
+we're typically using the area under
+
+6
+00:00:22,490 --> 00:00:23,970
+the ROC curve.
+
+7
+00:00:23,970 --> 00:00:27,180
+But there are other, plenty of other
+measures of predictive accuracy.
+
+8
+00:00:27,180 --> 00:00:30,860
+So, if you just think about an individual
+observation for example.
+
+9
+00:00:30,860 --> 00:00:34,600
+So what we want to know, is how well does
+the model predict?
+
+10
+00:00:34,600 --> 00:00:39,052
+So, take a person's value from the
+predicted, predicted from the model, and
+
+11
+00:00:39,052 --> 00:00:41,070
+compare it to their actual observed value.
+
+12
+00:00:41,070 --> 00:00:42,340
+That's called a residual.
+
+13
+00:00:42,340 --> 00:00:45,910
+So a residual is a measure of predictive
+accuracy.
+
+14
+00:00:45,910 --> 00:00:49,900
+For a linear regression, the typical
+measure we use for
+
+15
+00:00:49,900 --> 00:00:53,210
+predictive accuracy is just to look at the
+residuals.
+
+16
+00:00:53,210 --> 00:00:57,950
+And the residuals are of course, our
+observed minus expected.
+
+17
+00:00:57,950 --> 00:00:59,810
+You want to know, kind of, what's the
+average residual?
+
+18
+00:01:00,910 --> 00:01:02,880
+But if you calculated the average
+residual,
+
+19
+00:01:02,880 --> 00:01:04,470
+it actually comes out to be zero, right?
+
+20
+00:01:04,470 --> 00:01:06,810
+Because some of the residuals are going to
+be positive and
+
+21
+00:01:06,810 --> 00:01:08,130
+some are going to be negative.
+
+22
+00:01:08,130 --> 00:01:10,190
+So the average will come out to be zero.
+
+23
+00:01:10,190 --> 00:01:15,210
+So what we instead use is to look at the
+standard deviation of the residuals.
+
+24
+00:01:15,210 --> 00:01:19,210
+That's will give you the average distance
+from the mean, and the mean here is zero.
+
+25
+00:01:19,210 --> 00:01:22,990
+So that will give you a sense of the
+average magnitude of the residuals.
+
+26
+00:01:22,990 --> 00:01:26,710
+That's also sometimes called the, the root
+mean square error.
+
+27
+00:01:26,710 --> 00:01:29,079
+But it's, all it is is the standard
+deviation of the residuals.
+
+28
+00:01:30,310 --> 00:01:32,730
+Again for logistic regression, we've seen
+already,
+
+29
+00:01:32,730 --> 00:01:35,790
+we can use the area under the ROC curve.
+
+30
+00:01:35,790 --> 00:01:37,310
+Now as I've already alluded to,
+
+31
+00:01:37,310 --> 00:01:40,660
+the problem with these measures is that
+they're going to be overly optimistic.
+
+32
+00:01:40,660 --> 00:01:43,832
+So, when you just run your model in a
+computer, you get out these measures.
+
+33
+00:01:43,832 --> 00:01:46,650
+The computer automatically calculates them
+for you.
+
+34
+00:01:46,650 --> 00:01:52,370
+That's going to based on how well the
+model predicts values for
+
+35
+00:01:52,370 --> 00:01:54,220
+the data in your data set.
+
+36
+00:01:54,220 --> 00:01:56,210
+Well that data was used to fit the model
+and so
+
+37
+00:01:56,210 --> 00:01:58,750
+we are going to have some over fitting
+going on.
+
+38
+00:01:58,750 --> 00:02:01,140
+And so, what is overfitting now?
+
+39
+00:02:01,140 --> 00:02:04,550
+Basically the idea is if you fit a model
+to a particular data set,
+
+40
+00:02:04,550 --> 00:02:09,170
+you're going to end up fitting some of the
+quirks of that data set, some noise.
+
+41
+00:02:09,170 --> 00:02:11,430
+That means that you can get really small
+residuals.
+
+42
+00:02:11,430 --> 00:02:15,290
+So you fit to, you're almost like, fitting
+to, for a particular people.
+
+43
+00:02:15,290 --> 00:02:18,410
+You can get really good predictive ability
+in that particular sample.
+
+44
+00:02:18,410 --> 00:02:21,135
+But if you've really overfit, you fit to a
+lot of noise.
+
+45
+00:02:21,135 --> 00:02:23,930
+Then when you apply to a new sample,
+
+46
+00:02:23,930 --> 00:02:26,820
+it will actually have very poor predictive
+ability.
+
+47
+00:02:26,820 --> 00:02:28,900
+And this is kind of best illustrated with
+a picture.
+
+48
+00:02:30,410 --> 00:02:31,540
+So, here is some data.
+
+49
+00:02:31,540 --> 00:02:34,030
+Okay, so I've got a, a scatter plot of
+some data that I have.
+
+50
+00:02:34,030 --> 00:02:36,240
+These are made up data, but to illustrate
+a point.
+
+51
+00:02:36,240 --> 00:02:38,650
+But I've got some data on my scatter plot.
+
+52
+00:02:38,650 --> 00:02:40,960
+And let's say I wanted to fit a linear
+regression to these models.
+
+53
+00:02:40,960 --> 00:02:43,730
+So this, if I fit a linear regression to
+these data points,
+
+54
+00:02:43,730 --> 00:02:46,260
+it's going to be a little bit what we call
+underfit, actually.
+
+55
+00:02:46,260 --> 00:02:48,830
+So the residuals are higher than they
+actually have to be.
+
+56
+00:02:48,830 --> 00:02:51,020
+We could do a little bit better in fitting
+this model.
+
+57
+00:02:51,020 --> 00:02:52,840
+because if you look at the pattern here,
+
+58
+00:02:52,840 --> 00:02:57,710
+What you'll notice is that it's actually
+is a quadratic and not a linear model.
+
+59
+00:02:57,710 --> 00:03:00,300
+So if we fit a linear model, notice that
+the residuals, which again,
+
+60
+00:03:00,300 --> 00:03:03,760
+is just the distance from any one of these
+points to the line.
+
+61
+00:03:03,760 --> 00:03:04,970
+The residuals are kind of big,
+
+62
+00:03:04,970 --> 00:03:09,110
+especially at the ends And in the middle,
+they're big in the negative direction.
+
+63
+00:03:09,110 --> 00:03:11,940
+So we have some, some distance from, from
+the line.
+
+64
+00:03:11,940 --> 00:03:14,045
+The, the predicted values are the values
+on the line.
+
+65
+00:03:14,045 --> 00:03:16,580
+And of course the first observed values
+are just these dots.
+
+66
+00:03:16,580 --> 00:03:18,180
+However, if we fit a better model,
+
+67
+00:03:18,180 --> 00:03:20,580
+we can get a glistening model by fitting a
+quadratic.
+
+68
+00:03:20,580 --> 00:03:22,710
+Which is what I've done in the second
+panel here.
+
+69
+00:03:22,710 --> 00:03:26,210
+What you'll notice is that the residuals,
+if you kind of got the average residual,
+
+70
+00:03:26,210 --> 00:03:28,650
+again that, this root mean squared error.
+
+71
+00:03:29,650 --> 00:03:31,530
+The root mean squared error here is
+going to be,
+
+72
+00:03:31,530 --> 00:03:33,330
+it is here, is going to be high.
+
+73
+00:03:33,330 --> 00:03:34,930
+because we're really kind of off.
+
+74
+00:03:34,930 --> 00:03:38,350
+The root mean squared error here, that is
+the average distance from the line,
+
+75
+00:03:38,350 --> 00:03:40,565
+the average residual, is going to be
+decent.
+
+76
+00:03:40,565 --> 00:03:42,010
+[SOUND].
+
+77
+00:03:42,010 --> 00:03:43,090
+going to be pretty good here.
+
+78
+00:03:43,090 --> 00:03:45,940
+And we still have some distance from the
+line, but we area a lot closer.
+
+79
+00:03:45,940 --> 00:03:47,400
+So, this is a good fitting model.
+
+80
+00:03:47,400 --> 00:03:49,850
+However, compare that to this model.
+
+81
+00:03:49,850 --> 00:03:51,610
+So, this is an overfit model.
+
+82
+00:03:51,610 --> 00:03:56,940
+So, what I did here was I fit a really
+complicated model to these data.
+
+83
+00:03:56,940 --> 00:04:00,970
+I'm almost kind of fitting the line to
+individual points.
+
+84
+00:04:00,970 --> 00:04:03,630
+Imagine how complicated this model would
+be if I actually had to
+
+85
+00:04:03,630 --> 00:04:05,810
+write out the model, like all the betas.
+
+86
+00:04:05,810 --> 00:04:06,680
+What are the betas here?
+
+87
+00:04:06,680 --> 00:04:08,300
+Well, there's going to be parameters or
+
+88
+00:04:08,300 --> 00:04:11,310
+betas for every little turn you see here,
+for where this turns.
+
+89
+00:04:11,310 --> 00:04:12,900
+For every different slope.
+
+90
+00:04:12,900 --> 00:04:15,020
+These will all be, all these little
+different lines in here.
+
+91
+00:04:15,020 --> 00:04:16,660
+This is going to be a hugely complicated
+model.
+
+92
+00:04:16,660 --> 00:04:19,330
+It's going to have tons of parameters on
+it, in it.
+
+93
+00:04:19,330 --> 00:04:20,770
+And this is when we run into overfitting.
+
+94
+00:04:20,770 --> 00:04:23,320
+When you fit a very complicated model,
+lots of parameters.
+
+95
+00:04:23,320 --> 00:04:27,320
+Many more, this is going to have as many
+parameters probably as there are points in
+
+96
+00:04:27,320 --> 00:04:27,890
+this data set.
+
+97
+00:04:27,890 --> 00:04:31,090
+Meaning again, we're kind of literally
+fitting to individual points.
+
+98
+00:04:31,090 --> 00:04:33,170
+However, if you look at this model and
+
+99
+00:04:33,170 --> 00:04:35,080
+you compare it to the dots in this scatter
+plot.
+
+100
+00:04:35,080 --> 00:04:38,990
+What you'll notice is my, my residuals are
+really, really small, now right?
+
+101
+00:04:38,990 --> 00:04:42,200
+So, all my little dots are only, we are
+really close to the line.
+
+102
+00:04:42,200 --> 00:04:43,930
+Sometimes they're right on the line.
+
+103
+00:04:43,930 --> 00:04:46,215
+So, my root mean squared error here.
+
+104
+00:04:46,215 --> 00:04:47,870
+[SOUND].
+
+105
+00:04:47,870 --> 00:04:52,700
+The average size of the residuals is
+going to be very small.
+
+106
+00:04:52,700 --> 00:04:53,810
+It's going to look great.
+
+107
+00:04:53,810 --> 00:04:56,940
+We're going to, if, I just kind of threw
+these data into my computer.
+
+108
+00:04:56,940 --> 00:04:58,100
+Fit this complicated model.
+
+109
+00:04:58,100 --> 00:05:00,050
+It's going to spit out to me the root
+means squared error.
+
+110
+00:05:00,050 --> 00:05:01,390
+It's going to look really small.
+
+111
+00:05:01,390 --> 00:05:02,720
+My p values are going to be great.
+
+112
+00:05:02,720 --> 00:05:05,620
+I'm going to feel like I've got this
+really, really great model.
+
+113
+00:05:05,620 --> 00:05:07,960
+It's going to look great in terms of
+predicitiveability.
+
+114
+00:05:07,960 --> 00:05:12,530
+My residuals predicted minus observed, are
+all really, really tiny.
+
+115
+00:05:12,530 --> 00:05:15,180
+Okay, so something's wrong here though,
+right?
+
+116
+00:05:15,180 --> 00:05:18,030
+What we're literally doing is fitting to
+noise.
+
+117
+00:05:18,030 --> 00:05:22,590
+And that means that it happens to be that
+this dot here happens to be up at 30, and
+
+118
+00:05:22,590 --> 00:05:23,590
+so this point went up.
+
+119
+00:05:23,590 --> 00:05:27,410
+On, the you know we fit a whole parameter
+to this guy, making this curve go up for
+
+120
+00:05:27,410 --> 00:05:28,760
+this one person.
+
+121
+00:05:28,760 --> 00:05:32,030
+But what am, what, I'm, when I look at the
+larger population.
+
+122
+00:05:32,030 --> 00:05:34,030
+This relationship isn't going to exist.
+
+123
+00:05:34,030 --> 00:05:36,690
+This is just due to the quirk of one
+person.
+
+124
+00:05:36,690 --> 00:05:40,890
+So what I did then to show this, was I
+actually took a new sample,
+
+125
+00:05:40,890 --> 00:05:44,050
+a brand new sample from the same
+underlying population.
+
+126
+00:05:44,050 --> 00:05:46,450
+And that's what I'm going to show you on
+this slide.
+
+127
+00:05:46,450 --> 00:05:47,550
+I took a brand new sample.
+
+128
+00:05:47,550 --> 00:05:48,630
+Those dots are shown in blue.
+
+129
+00:05:48,630 --> 00:05:50,660
+So all the red dots were my original
+sample.
+
+130
+00:05:50,660 --> 00:05:54,730
+The blue dots are now a new sample, but
+the same underlying population.
+
+131
+00:05:54,730 --> 00:05:59,151
+And then I compared the model fit from the
+very complicated model.
+
+132
+00:05:59,151 --> 00:06:01,290
+And the, the good fitting model, the good
+model.
+
+133
+00:06:02,360 --> 00:06:03,505
+So notice what happens now.
+
+134
+00:06:03,505 --> 00:06:07,390
+When apply this really, really complicated
+model to my new data set,
+
+135
+00:06:07,390 --> 00:06:09,770
+well all these little quirks that I fit in
+the original data set like I had,
+
+136
+00:06:09,770 --> 00:06:11,740
+I must have had one dot way down here.
+
+137
+00:06:11,740 --> 00:06:13,020
+There's this little peak here, but
+
+138
+00:06:13,020 --> 00:06:16,190
+I don't see the, the similar peak in this
+particular data set.
+
+139
+00:06:16,190 --> 00:06:17,770
+Now I've got really big residuals.
+
+140
+00:06:17,770 --> 00:06:20,210
+Notice how far my new data set is from
+this model.
+
+141
+00:06:20,210 --> 00:06:23,550
+This model is really bad at predicting in
+my new data set.
+
+142
+00:06:23,550 --> 00:06:27,020
+So the, our measure of predictive accuracy
+our root mean squared error here,
+
+143
+00:06:27,020 --> 00:06:28,810
+is going to be huge.
+
+144
+00:06:28,810 --> 00:06:31,410
+So all of a sudden it went from looking
+really great,
+
+145
+00:06:31,410 --> 00:06:33,120
+when we tested on our original data.
+
+146
+00:06:33,120 --> 00:06:35,830
+But when we tested it on new data, it's a
+really bad model.
+
+147
+00:06:35,830 --> 00:06:37,790
+That tells us it was over fit.
+
+148
+00:06:37,790 --> 00:06:40,690
+On the other hand our, re, our root mean
+squared error the,
+
+149
+00:06:40,690 --> 00:06:44,640
+kind of again the average distance from
+the line here, is similar to before.
+
+150
+00:06:44,640 --> 00:06:48,330
+Maybe a little bit higher, but it's still
+pretty close to what we saw before.
+
+151
+00:06:48,330 --> 00:06:51,150
+So, it's still very, very decent.
+
+152
+00:06:51,150 --> 00:06:52,890
+It didn't change much.
+
+153
+00:06:52,890 --> 00:06:54,995
+So, this is what we're going to be doing
+to kind of look for
+
+154
+00:06:54,995 --> 00:06:59,560
+over-fitting, is actually trying to apply
+a model that would fit on one set of data.
+
+155
+00:06:59,560 --> 00:07:00,680
+To a new set of data.
+
+156
+00:07:00,680 --> 00:07:03,840
+And seeing how does our measure of
+predicted accuracy hold up.
+
+157
+00:07:03,840 --> 00:07:07,000
+Does it crumble or it it pretty robust,
+does it stay pretty similar?
+
+158
+00:07:08,310 --> 00:07:10,190
+So how do we know if the model is overfit?
+
+159
+00:07:10,190 --> 00:07:11,350
+We have to validate.
+
+160
+00:07:11,350 --> 00:07:15,980
+Which means we have to apply the model to
+new data.
+
+161
+00:07:15,980 --> 00:07:17,840
+Or, to somehow be clever and
+
+162
+00:07:17,840 --> 00:07:21,510
+get to apply it to our original data set
+in a way I'll explain in a minute.
+
+163
+00:07:21,510 --> 00:07:22,960
+But we're going to have to do some kind of
+validation.
+
+164
+00:07:22,960 --> 00:07:26,020
+So the easiest kind of validation is
+external validation.
+
+165
+00:07:26,020 --> 00:07:29,240
+And I showed you some examples with the
+delirium data set.
+
+166
+00:07:29,240 --> 00:07:31,450
+We just get a completely new sample of
+data.
+
+167
+00:07:31,450 --> 00:07:32,800
+We apply the model.
+
+168
+00:07:32,800 --> 00:07:36,620
+And then we see how well the model did in
+terms of prediction on the new data.
+
+169
+00:07:36,620 --> 00:07:37,880
+That's the ideal case.
+
+170
+00:07:37,880 --> 00:07:41,170
+However it also costs a lot of money to
+get new data, right?
+
+171
+00:07:41,170 --> 00:07:46,080
+So it's often not possible to do external
+val, validation at least not right away.
+
+172
+00:07:46,080 --> 00:07:47,186
+Even though that's the ideal.
+
+173
+00:07:47,186 --> 00:07:52,070
+What ends of happening a lot more
+commonly, just for practical reasons.
+
+174
+00:07:52,070 --> 00:07:54,520
+Is that we do instead internal validation.
+
+175
+00:07:54,520 --> 00:07:57,870
+And this is going to use some kind of
+clever scheme,
+
+176
+00:07:57,870 --> 00:08:02,340
+that we end up using part of our original
+data set to fit the model.
+
+177
+00:08:02,340 --> 00:08:05,610
+And part of the data set to test the
+model.
+
+178
+00:08:05,610 --> 00:08:09,808
+And we never test the model on data that
+the model were fit.
+
+179
+00:08:09,808 --> 00:08:12,570
+So I'm going to show you a couple of
+different of ways that we can do that
+
+180
+00:08:12,570 --> 00:08:13,820
+in just a minute.
+
+181
+00:08:13,820 --> 00:08:16,740
+But first of all, just external validation
+is easy.
+
+182
+00:08:16,740 --> 00:08:19,470
+So it's exactly kind of what I showed
+before.
+
+183
+00:08:19,470 --> 00:08:22,690
+What we do is we call the data sets
+training data and test data.
+
+184
+00:08:22,690 --> 00:08:25,884
+So the training data are the data that are
+used to fit the model.
+
+185
+00:08:25,884 --> 00:08:28,726
+The test data are the data that are used
+to test the model.
+
+186
+00:08:28,726 --> 00:08:31,098
+And we don't want those two data sets to
+overlap.
+
+187
+00:08:31,098 --> 00:08:32,889
+We want them to be totally different.
+
+188
+00:08:32,889 --> 00:08:34,687
+And what you can see is that you know,
+
+189
+00:08:34,687 --> 00:08:38,070
+with this very complicated model that I
+fit to my training data here.
+
+190
+00:08:38,070 --> 00:08:42,112
+It looked great on the training data, but
+then when I tested it, it looked terrible.
+
+191
+00:08:42,112 --> 00:08:44,390
+So predictiveability just went away.
+
+192
+00:08:44,390 --> 00:08:46,650
+So that tells you that we had an over fit
+model.
+
+193
+00:08:47,750 --> 00:08:50,770
+however, when I do external validation on
+this model,
+
+194
+00:08:50,770 --> 00:08:53,470
+which is that I said this kind of simple
+one, that's a quadratic.
+
+195
+00:08:53,470 --> 00:08:55,860
+Which probably has, you know, two
+parameters in it.
+
+196
+00:08:55,860 --> 00:08:59,250
+It worked well on the training data, but
+it also worked well on the test data.
+
+197
+00:08:59,250 --> 00:09:03,020
+So that validates that this was a good
+model and it wasn't over fit.
+
+198
+00:09:04,490 --> 00:09:07,000
+Now there's a number of ways to do
+internal validation.
+
+199
+00:09:07,000 --> 00:09:10,290
+Which is to get to use the data you
+started with and not have to go out and
+
+200
+00:09:10,290 --> 00:09:10,962
+collect new data.
+
+201
+00:09:10,962 --> 00:09:12,822
+So I'm going to taken a three.
+
+202
+00:09:12,822 --> 00:09:16,060
+Split-sample, cross-validation and
+bootstrap validation.
+
+203
+00:09:16,060 --> 00:09:19,455
+And there's separate modules that we're
+going to get to soon about both
+
+204
+00:09:19,455 --> 00:09:21,020
+cross-validation and bootstrap validation.
+
+205
+00:09:21,020 --> 00:09:22,360
+So, I'll setup the idea here, and
+
+206
+00:09:22,360 --> 00:09:24,450
+then we'll go into more detail in a future
+module.
+
+207
+00:09:25,580 --> 00:09:27,920
+Now, split sample is actually pretty easy
+too.
+
+208
+00:09:27,920 --> 00:09:29,980
+Because with a split sample, all you're
+doing is saying,
+
+209
+00:09:29,980 --> 00:09:30,990
+I have got a big set of data.
+
+210
+00:09:30,990 --> 00:09:33,320
+They usually got, have a pretty large set
+of data.
+
+211
+00:09:33,320 --> 00:09:36,250
+I've got some, what I'm going to do is I'm
+going to split it into two.
+
+212
+00:09:36,250 --> 00:09:39,970
+I'm going to put some data aside and save
+it.
+
+213
+00:09:39,970 --> 00:09:42,380
+So that I can test my model on it.
+
+214
+00:09:42,380 --> 00:09:44,680
+And I'm going to count, use some of the
+model for the training data.
+
+215
+00:09:44,680 --> 00:09:48,790
+So I might say use 70% of my data for
+training the model.
+
+216
+00:09:48,790 --> 00:09:51,790
+And I hold out 30% of the data.
+
+217
+00:09:51,790 --> 00:09:55,090
+And when the models fit on the, the 70%,
+then I use it.
+
+218
+00:09:55,090 --> 00:09:57,540
+I test it on that 30% that was held out.
+
+219
+00:09:57,540 --> 00:10:00,530
+Of course, this requires that you have a
+big enough data set.
+
+220
+00:10:00,530 --> 00:10:03,860
+Where you can afford to essentially you
+know,
+
+221
+00:10:03,860 --> 00:10:06,710
+not use 30% of your sample or 50% of your
+sample.
+
+222
+00:10:06,710 --> 00:10:09,200
+How, whatever percentage you choose for
+fitting the model.
+
+223
+00:10:09,200 --> 00:10:10,300
+You have to have a big data set.
+
+224
+00:10:10,300 --> 00:10:12,970
+So, it's easy to do, but requires a lot of
+data.
+
+225
+00:10:12,970 --> 00:10:17,060
+A lot of times, we don't have data to
+spare.
+
+226
+00:10:17,060 --> 00:10:20,030
+And so we can use some kind of clever
+techniques.
+
+227
+00:10:20,030 --> 00:10:23,780
+That don't require, that allow us to use
+every data point for the model fitting.
+
+228
+00:10:23,780 --> 00:10:25,440
+And we can do something called
+cross-validation.
+
+229
+00:10:25,440 --> 00:10:27,840
+So there's a couple of different versions
+of cross-validation,
+
+230
+00:10:27,840 --> 00:10:29,088
+I'll just tell you about two.
+
+231
+00:10:29,088 --> 00:10:32,890
+So leave-one-out cross-validation, does
+the following.
+
+232
+00:10:32,890 --> 00:10:35,780
+You fit your model holding out just one
+observation.
+
+233
+00:10:35,780 --> 00:10:38,300
+So let's say have a data set with 100
+people in it.
+
+234
+00:10:38,300 --> 00:10:40,530
+You're going to fit your model on 99
+people.
+
+235
+00:10:40,530 --> 00:10:42,670
+You're going to hold out one of those
+people.
+
+236
+00:10:42,670 --> 00:10:45,271
+So you might fit a logistic regression on
+99.
+
+237
+00:10:45,271 --> 00:10:47,639
+You get the betas from that logistic
+regression.
+
+238
+00:10:47,639 --> 00:10:52,070
+You apply that model to the values for
+that particular person that you held out.
+
+239
+00:10:52,070 --> 00:10:53,810
+You calculate their predicative
+probability.
+
+240
+00:10:53,810 --> 00:10:55,370
+And then you see how well you did.
+
+241
+00:10:55,370 --> 00:10:58,530
+How, you know, we hope that if the person
+actually had the disease,
+
+242
+00:10:58,530 --> 00:11:00,040
+your predictive probability is close to
+one.
+
+243
+00:11:00,040 --> 00:11:02,520
+Where it, and we hope that if the person
+didn't have the disease,
+
+244
+00:11:02,520 --> 00:11:05,580
+that their predicted probability is close
+to zero.
+
+245
+00:11:05,580 --> 00:11:06,760
+But then we repeat this.
+
+246
+00:11:06,760 --> 00:11:08,850
+We do this again, and again, and again.
+
+247
+00:11:08,850 --> 00:11:11,660
+Holding out a different observation each
+time.
+
+248
+00:11:11,660 --> 00:11:14,220
+So that every observation is held out
+once.
+
+249
+00:11:14,220 --> 00:11:15,540
+And in this way,
+
+250
+00:11:15,540 --> 00:11:20,280
+you have only tested the model on data
+that were not used to fit the model.
+
+251
+00:11:20,280 --> 00:11:20,950
+And you might think, well,
+
+252
+00:11:20,950 --> 00:11:23,710
+how much of a difference can it make if I
+just hold one person?
+
+253
+00:11:23,710 --> 00:11:25,500
+Is the model really going to be any
+different?
+
+254
+00:11:25,500 --> 00:11:28,060
+But in fact, it can make I think enough
+difference.
+
+255
+00:11:28,060 --> 00:11:32,485
+And you can aggregate those differences
+all over, all the people in your data set.
+
+256
+00:11:32,485 --> 00:11:35,680
+You'e then going to be summarizing your
+predictive performance across.
+
+257
+00:11:35,680 --> 00:11:39,980
+So, you will if, if you have a data set of
+100 people, you will get a 100 residuals.
+
+258
+00:11:39,980 --> 00:11:42,700
+So 100 observed minus predictives,
+
+259
+00:11:42,700 --> 00:11:48,170
+each one of those residuals was based on a
+model that the person was not used to fit.
+
+260
+00:11:48,170 --> 00:11:51,750
+You, then take those 100 residuals and you
+aggregate those somehow.
+
+261
+00:11:51,750 --> 00:11:53,920
+Or you aggregate the predicted
+probabilities into
+
+262
+00:11:53,920 --> 00:11:55,230
+an ROC curve, for example.
+
+263
+00:11:55,230 --> 00:11:57,478
+So you're going to summarize across those
+different models.
+
+264
+00:11:57,478 --> 00:12:01,150
+10-co, fold cross-validation is very
+similar And again, I'm
+
+265
+00:12:01,150 --> 00:12:05,140
+going to go into more detail about this
+particular method in the upcoming module.
+
+266
+00:12:05,140 --> 00:12:10,200
+But the idea is rather than holding out 1%
+at a time, hold out 1 10th of your data.
+
+267
+00:12:10,200 --> 00:12:12,400
+Fit the model on the other 90% of your
+data.
+
+268
+00:12:12,400 --> 00:12:16,210
+Test that model on the 10% you held out.
+
+269
+00:12:16,210 --> 00:12:18,130
+And then do that again, and again, and
+again.
+
+270
+00:12:18,130 --> 00:12:19,450
+Do that ten times.
+
+271
+00:12:19,450 --> 00:12:23,050
+And then, you're going to summarize the
+predictive performance across those
+
+272
+00:12:23,050 --> 00:12:24,490
+ten different models.
+
+273
+00:12:24,490 --> 00:12:27,470
+Again getting something like an average
+area under the curve.
+
+274
+00:12:27,470 --> 00:12:29,120
+But you're getting to use all of your mod,
+
+275
+00:12:29,120 --> 00:12:32,170
+all of your observations get used at some
+point for model fitting.
+
+276
+00:12:32,170 --> 00:12:36,170
+But they never add, the models never
+tested on the same data that it was used,
+
+277
+00:12:36,170 --> 00:12:36,970
+that was used to fit it.
+
+278
+00:12:38,350 --> 00:12:40,200
+And you know, there's some fine details
+about these,
+
+279
+00:12:40,200 --> 00:12:43,320
+again I'm going to go to, into in a future
+module.
+
+280
+00:12:43,320 --> 00:12:45,220
+We can also use the bootstrap to do
+validation.
+
+281
+00:12:45,220 --> 00:12:48,380
+So ins, you could take bootstrap samples
+of your data.
+
+282
+00:12:48,380 --> 00:12:51,820
+So, samples with replacement from your
+original data set.
+
+283
+00:12:51,820 --> 00:12:55,220
+You can then fit the model on the
+bootstrap samples.
+
+284
+00:12:55,220 --> 00:12:56,540
+Test the model on, and
+
+285
+00:12:56,540 --> 00:12:59,470
+people do this in slightly different,
+there's many versions of this actually.
+
+286
+00:12:59,470 --> 00:13:02,530
+But you can test the model on the original
+sample.
+
+287
+00:13:02,530 --> 00:13:06,240
+Or you can test the, the model on the
+observations that were left out of
+
+288
+00:13:06,240 --> 00:13:10,070
+a particular bootstrap sample we call the,
+those the out of bag observations.
+
+289
+00:13:10,070 --> 00:13:11,288
+Again somehow we're then going to be
+
+290
+00:13:11,288 --> 00:13:14,020
+summarizing that predictive performance
+across those different models.
+
+291
+00:13:14,020 --> 00:13:17,220
+And remember about a third of the
+observations are going to be left out of
+
+292
+00:13:17,220 --> 00:13:18,770
+any given boot strap sample.
+
+293
+00:13:18,770 --> 00:13:21,010
+So those could be used for testing the
+model.
+
+294
+00:13:21,010 --> 00:13:26,080
+[BLANK_AUDIO]

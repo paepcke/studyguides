@@ -1,0 +1,510 @@
+1
+00:00:04,890 --> 00:00:08,834
+In this next module, I'm going to tell you
+how to test the linearity assumption for
+
+2
+00:00:08,834 --> 00:00:11,020
+continuous predictors in Cox regression.
+
+3
+00:00:13,200 --> 00:00:17,220
+When we talk about logistic regression, we
+spend an awful lot of time talking
+
+4
+00:00:17,220 --> 00:00:22,590
+about testing, whether or not continuous
+predictors were linear in the low jet.
+
+5
+00:00:22,590 --> 00:00:25,480
+And this is exactly analogous to that.
+
+6
+00:00:25,480 --> 00:00:30,040
+We're going to have a linearity assumption
+in the log hazard that we have to test for
+
+7
+00:00:30,040 --> 00:00:31,079
+continuous predictors.
+
+8
+00:00:32,080 --> 00:00:33,400
+Why is that?
+
+9
+00:00:33,400 --> 00:00:34,990
+Remember, what is our model here?
+
+10
+00:00:34,990 --> 00:00:39,820
+We're modeling the log of the hazard rate
+is equal to the log of
+
+11
+00:00:39,820 --> 00:00:43,050
+some baseline hazard rate, which we're not
+bothering to estimate.
+
+12
+00:00:43,050 --> 00:00:46,080
+Plus, betas and predictors.
+
+13
+00:00:47,550 --> 00:00:49,700
+Some combination of betas and predictors.
+
+14
+00:00:49,700 --> 00:00:53,880
+We are assuming a linear relationship
+between x and the log hazard,
+
+15
+00:00:53,880 --> 00:00:56,010
+just by modeling it this way.
+
+16
+00:00:56,010 --> 00:01:01,260
+So, for example, if I was to put age in my
+model and I fit a beta for age,
+
+17
+00:01:01,260 --> 00:01:08,420
+I am then assuming that age actually has a
+linear relationship with the log hazard.
+
+18
+00:01:08,420 --> 00:01:12,530
+I've modeled age as a linear term in the
+model here.
+
+19
+00:01:12,530 --> 00:01:15,290
+If I find that age doesn't have a linear
+relationship,
+
+20
+00:01:15,290 --> 00:01:20,080
+I might need to do a quadratic term for
+age or something like that.
+
+21
+00:01:20,080 --> 00:01:22,900
+We need to somehow be able to determine
+whether or
+
+22
+00:01:22,900 --> 00:01:26,120
+not age has a linear relationship with the
+log hazard.
+
+23
+00:01:26,120 --> 00:01:29,711
+Of course, if you've got categorical
+predictors or binary predictors,
+
+24
+00:01:29,711 --> 00:01:33,302
+you're not going to have to worry about
+this because binary predictors and
+
+25
+00:01:33,302 --> 00:01:37,007
+dummy-coded categorical predictors always
+hit a straight line because two
+
+26
+00:01:37,007 --> 00:01:38,900
+points always make a line.
+
+27
+00:01:38,900 --> 00:01:41,560
+This is only for continuous predictors.
+
+28
+00:01:41,560 --> 00:01:45,880
+We can't directly plot the log hazard
+against age, however.
+
+29
+00:01:45,880 --> 00:01:48,842
+So we're going to have to get at it with
+some other types of plots.
+
+30
+00:01:50,120 --> 00:01:53,770
+So just to give sa,some data, example data
+to work with here.
+
+31
+00:01:53,770 --> 00:01:56,140
+I've got some data from early in the AIDS
+epidemic.
+
+32
+00:01:56,140 --> 00:01:58,620
+A 100 people, the outcome was time to
+death.
+
+33
+00:01:58,620 --> 00:02:00,840
+The continuous predictor here is age.
+
+34
+00:02:00,840 --> 00:02:04,260
+There was also a binary predictor we
+talked about in an earlier module,
+
+35
+00:02:04,260 --> 00:02:05,340
+IV drug use.
+
+36
+00:02:05,340 --> 00:02:08,760
+But of course, we don't have to test
+linearity for IV drug use.
+
+37
+00:02:08,760 --> 00:02:10,600
+Only for age here.
+
+38
+00:02:10,600 --> 00:02:13,270
+So, one of the ways to test linearity in
+
+39
+00:02:13,270 --> 00:02:17,120
+the log hazard is to do a Martingale
+residual plot.
+
+40
+00:02:17,120 --> 00:02:20,050
+So, you can take your continuous predictor
+and
+
+41
+00:02:20,050 --> 00:02:23,500
+you plot it against the Martingale
+residuals, but you want to plot it
+
+42
+00:02:23,500 --> 00:02:27,380
+against the Martingale residuals from a
+model that actually doesn't include age.
+
+43
+00:02:27,380 --> 00:02:29,620
+That includes any other predictors that
+you're going to include in
+
+44
+00:02:29,620 --> 00:02:34,170
+your final model, but excludes the
+predictor that you're testing.
+
+45
+00:02:34,170 --> 00:02:36,920
+That's probably the preferred way to do
+this.
+
+46
+00:02:36,920 --> 00:02:41,760
+So you plot age against these residuals
+which your computer easily calculates for
+
+47
+00:02:41,760 --> 00:02:42,850
+you and will spit out for you.
+
+48
+00:02:42,850 --> 00:02:46,030
+I'm going to put on superimposed some kind
+of smoothing line here to
+
+49
+00:02:46,030 --> 00:02:48,730
+see what's the functional form here.
+
+50
+00:02:48,730 --> 00:02:51,190
+And for age here, it looks pretty good.
+
+51
+00:02:51,190 --> 00:02:52,910
+It's not a perfectly straight line.
+
+52
+00:02:52,910 --> 00:02:56,670
+It's just teeny bit of curvy curviness to
+this line.
+
+53
+00:02:56,670 --> 00:02:58,620
+But it's pretty close as real data go.
+
+54
+00:02:58,620 --> 00:03:03,350
+It would probably be just fine to model
+age here as a linear term in the model.
+
+55
+00:03:03,350 --> 00:03:08,440
+By leaving out age out of the model, we
+also can see that the risk,
+
+56
+00:03:08,440 --> 00:03:11,090
+the rate of death goes up here with age.
+
+57
+00:03:11,090 --> 00:03:15,310
+That tells us something about the
+relationship between age and our outcome.
+
+58
+00:03:15,310 --> 00:03:18,730
+So that's the Martingale residual plot,
+it's super easy to do and you're looking
+
+59
+00:03:18,730 --> 00:03:21,470
+for, to see whether or not there were
+actually is a straight line relationship.
+
+60
+00:03:21,470 --> 00:03:24,270
+A second option that you have for
+
+61
+00:03:24,270 --> 00:03:28,080
+testing the, the linearity assumption is
+to do some kind of a dummy plot.
+
+62
+00:03:28,080 --> 00:03:31,620
+And so what this is, is you're going to
+take your continuous predictor and
+
+63
+00:03:31,620 --> 00:03:34,460
+split it into even-sized categories.
+
+64
+00:03:34,460 --> 00:03:36,310
+So like, quartiles, or quintiles, or
+
+65
+00:03:36,310 --> 00:03:38,740
+deciles, depending on how big your sample
+is.
+
+66
+00:03:38,740 --> 00:03:41,780
+You're going to calculate the mean value
+of your continuous predictor for
+
+67
+00:03:41,780 --> 00:03:44,156
+each one of those categories, you're
+going to need those later for graphing.
+
+68
+00:03:44,156 --> 00:03:47,240
+Then you take the, that new categorical
+predictor,
+
+69
+00:03:47,240 --> 00:03:50,530
+those categories, you enter them into a
+Cox regression.
+
+70
+00:03:50,530 --> 00:03:52,950
+Cox regression dummy code it.
+
+71
+00:03:52,950 --> 00:03:56,650
+So a binary indicator variable for each
+category.
+
+72
+00:03:56,650 --> 00:03:59,890
+You then are going to plot the betas that
+result from those,
+
+73
+00:03:59,890 --> 00:04:01,300
+from that Cox regression model,
+
+74
+00:04:01,300 --> 00:04:05,840
+plot those betas against the mean value of
+your continuous predictor for each bin.
+
+75
+00:04:05,840 --> 00:04:08,270
+This should roughly be a straight line.
+
+76
+00:04:08,270 --> 00:04:09,500
+If that's a straight line,
+
+77
+00:04:09,500 --> 00:04:11,720
+that would indicate that you've met the
+linearity assumption.
+
+78
+00:04:11,720 --> 00:04:14,750
+If it's not a straight line, it tells you
+that you may have to
+
+79
+00:04:14,750 --> 00:04:17,870
+model a continuous predictor as something
+other than linear.
+
+80
+00:04:17,870 --> 00:04:19,840
+And so I went ahead and
+
+81
+00:04:19,840 --> 00:04:23,370
+did that with the data for age from this
+sample of a 100 people.
+
+82
+00:04:24,440 --> 00:04:28,460
+So what I did here was I divided age up
+into six categories.
+
+83
+00:04:28,460 --> 00:04:29,800
+You know I could have done ten here,
+
+84
+00:04:29,800 --> 00:04:32,500
+I could have done eight, I could have done
+five.
+
+85
+00:04:32,500 --> 00:04:36,930
+I, I just choose, I just chose six
+arbitrarily for illustration purposes.
+
+86
+00:04:36,930 --> 00:04:40,000
+So I took my, my 100 observations and
+
+87
+00:04:40,000 --> 00:04:43,820
+divided up, them up into roughly even
+categories of six.
+
+88
+00:04:43,820 --> 00:04:45,890
+Of course, they're not going to be exactly
+even, and for
+
+89
+00:04:45,890 --> 00:04:49,230
+each of those categories I calculated the
+mean age for the category.
+
+90
+00:04:49,230 --> 00:04:52,578
+So for example, the youngest category for
+
+91
+00:04:52,578 --> 00:04:56,695
+age at a mean age of around, somewhere
+around 28.
+
+92
+00:04:56,695 --> 00:05:03,060
+The second category for age had a mean age
+rate around about 31 or 32, and so on.
+
+93
+00:05:03,060 --> 00:05:10,570
+I then set up a Cox regression model,
+
+94
+00:05:10,570 --> 00:05:14,380
+which contained in it a beta for age
+group.
+
+95
+00:05:14,380 --> 00:05:16,920
+I set age group one as the reference group
+here.
+
+96
+00:05:16,920 --> 00:05:20,290
+So, a beta for age group two, a beta for
+age group three.
+
+97
+00:05:20,290 --> 00:05:21,880
+And these are, again, dummy coded
+variables.
+
+98
+00:05:21,880 --> 00:05:27,530
+Beta for age group four, beta for age
+group five and a beta for age group six.
+
+99
+00:05:27,530 --> 00:05:31,270
+In my model I can also include any other
+ah,predictors that I
+
+100
+00:05:31,270 --> 00:05:33,320
+might be adjusting for in that model.
+
+101
+00:05:33,320 --> 00:05:37,170
+I then took those betas and plotted them
+against the mean age for each category.
+
+102
+00:05:37,170 --> 00:05:38,400
+And that's all I've done here.
+
+103
+00:05:38,400 --> 00:05:40,370
+You can actually do this one by hand.
+
+104
+00:05:40,370 --> 00:05:41,550
+And it looks pretty good.
+
+105
+00:05:41,550 --> 00:05:45,350
+It looks like a reasonably straight line
+fit here.
+
+106
+00:05:45,350 --> 00:05:47,350
+So again, it looks like age,
+
+107
+00:05:47,350 --> 00:05:51,180
+it's reasonable to model age as a linear
+predictor in this model.
+
+108
+00:05:51,180 --> 00:05:52,520
+So for any continuous predictors,
+
+109
+00:05:52,520 --> 00:05:56,750
+you're going to want to check the
+linearity assumption.
+
+110
+00:05:56,750 --> 00:05:59,880
+[BLANK_AUDIO]

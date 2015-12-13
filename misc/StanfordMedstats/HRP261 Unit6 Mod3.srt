@@ -1,0 +1,1556 @@
+1
+00:00:04,920 --> 00:00:08,500
+In this next module I am going to talk
+about variable selection for
+
+2
+00:00:08,500 --> 00:00:12,690
+the easiest case when there's a single
+primary predictor of interest.
+
+3
+00:00:14,200 --> 00:00:18,410
+So if there's just one main hypothesis
+that you are trying to test.
+
+4
+00:00:18,410 --> 00:00:21,970
+That's going to make your variable
+selection quite a bit easier than some of
+
+5
+00:00:21,970 --> 00:00:24,670
+the cases we're going to see in a little
+bit.
+
+6
+00:00:24,670 --> 00:00:28,260
+This is going to come up in the situation
+we've got a randomized trial.
+
+7
+00:00:28,260 --> 00:00:29,820
+So in a randomized trial,
+
+8
+00:00:29,820 --> 00:00:32,760
+you've randomized people to different
+inter, interventions.
+
+9
+00:00:32,760 --> 00:00:34,180
+The regression model,
+
+10
+00:00:34,180 --> 00:00:38,370
+the final regression model that you report
+at the end of the day is going to have to
+
+11
+00:00:38,370 --> 00:00:42,960
+have intervention, the intervention, as
+your main predictor variable.
+
+12
+00:00:42,960 --> 00:00:44,080
+That might be the whole model.
+
+13
+00:00:44,080 --> 00:00:46,940
+Your predictor variables, your
+intervention, then your outcome variables,
+
+14
+00:00:46,940 --> 00:00:49,450
+your outcome, and you might be done.
+
+15
+00:00:49,450 --> 00:00:50,200
+Sometimes with randomized
+
+16
+00:00:50,200 --> 00:00:52,690
+trials there might be a couple additional
+variables in the model.
+
+17
+00:00:52,690 --> 00:00:54,340
+But they're usually pretty simple.
+
+18
+00:00:54,340 --> 00:00:57,160
+That's all the benefits of randomization.
+
+19
+00:00:57,160 --> 00:01:00,550
+For observational studies, if you're
+testing one main hypothesis,
+
+20
+00:01:00,550 --> 00:01:03,760
+I'm going to show you an example in a
+minute where,
+
+21
+00:01:03,760 --> 00:01:07,220
+they were looking at whether or not
+mercury levels in the body were linked to
+
+22
+00:01:07,220 --> 00:01:09,790
+an increased risk of cardiovascular
+disease.
+
+23
+00:01:09,790 --> 00:01:14,210
+That there's a clear hypothesis that the
+study was set out to test,
+
+24
+00:01:14,210 --> 00:01:17,240
+then you know at the end of the day that
+you're going to have a regression model
+
+25
+00:01:17,240 --> 00:01:21,970
+that contains that predictor of interest,
+as the main predictor in the model.
+
+26
+00:01:21,970 --> 00:01:24,940
+And there might be other variables
+included
+
+27
+00:01:24,940 --> 00:01:27,260
+in the model on the basis of things like
+confounding.
+
+28
+00:01:28,260 --> 00:01:33,340
+Now, variable selection, a lot of the
+principles about variable selection in
+
+29
+00:01:33,340 --> 00:01:36,280
+this case, we've already talked about in
+this course.
+
+30
+00:01:36,280 --> 00:01:38,425
+So how do I evaluate confounding and, and
+
+31
+00:01:38,425 --> 00:01:40,920
+in interaction, we've already talked about
+that.
+
+32
+00:01:40,920 --> 00:01:44,110
+A lot of what we're going to be doing here
+is just evaluating
+
+33
+00:01:44,110 --> 00:01:45,292
+confounding and interaction.
+
+34
+00:01:45,292 --> 00:01:48,640
+For a randomized trial again is really
+simple.
+
+35
+00:01:48,640 --> 00:01:51,140
+All of your regression models are going to
+have to center,
+
+36
+00:01:51,140 --> 00:01:53,150
+center on the intervention of interest.
+
+37
+00:01:53,150 --> 00:01:55,060
+You might not have anything else in the
+model.
+
+38
+00:01:55,060 --> 00:02:00,840
+It might literally be, here's my outcome,
+and I've got you know, maybe an intercept,
+
+39
+00:02:00,840 --> 00:02:06,830
+and my beta for intervention, if it's a
+yes-no intervention, only two groups.
+
+40
+00:02:06,830 --> 00:02:07,490
+That might be it.
+
+41
+00:02:07,490 --> 00:02:10,860
+Now, you'll see that in actual published
+randomized trials,
+
+42
+00:02:10,860 --> 00:02:13,310
+in the literature there's often something
+else in the model.
+
+43
+00:02:13,310 --> 00:02:17,105
+So for example for multi-site trials it's
+very common to adjust for
+
+44
+00:02:17,105 --> 00:02:19,950
+the clinical site as a set of dummy
+variables, so
+
+45
+00:02:19,950 --> 00:02:24,510
+maybe there's site one, and site two,
+maybe there's three sites in that,
+
+46
+00:02:24,510 --> 00:02:28,500
+in a trial, so you add two additional
+variables for clinical site.
+
+47
+00:02:28,500 --> 00:02:33,930
+Some smaller trials may also adjust for
+chance inbalances in the groups.
+
+48
+00:02:33,930 --> 00:02:38,400
+Randomization is supposed to mean that the
+confounders are balanced, but perhaps
+
+49
+00:02:39,510 --> 00:02:43,590
+there's a chance imbalance that arises in
+a small trial, you might say then
+
+50
+00:02:43,590 --> 00:02:48,160
+I'm going to adjust for that indifference,
+that base line difference in,
+
+51
+00:02:48,160 --> 00:02:51,250
+say, maybe the groups are slightly
+different in age or whatever it might be.
+
+52
+00:02:51,250 --> 00:02:54,690
+So you'll see that in real situations,
+
+53
+00:02:54,690 --> 00:02:56,420
+a lot of times there's something more in
+the model.
+
+54
+00:02:56,420 --> 00:02:57,550
+But it shouldn't be a lot and
+
+55
+00:02:57,550 --> 00:02:59,660
+it should be pretty easy to say what
+you're going to put in that model.
+
+56
+00:03:00,840 --> 00:03:04,530
+also, you can be using the regression
+model to test interaction, so
+
+57
+00:03:04,530 --> 00:03:07,060
+you might have an interaction with the
+treatment.
+
+58
+00:03:07,060 --> 00:03:08,660
+So your intervention time,
+
+59
+00:03:08,660 --> 00:03:13,350
+say gender if you think there's going to
+be an interaction with with gender.
+
+60
+00:03:13,350 --> 00:03:15,960
+But hopefully those interactions have been
+pre-specified, so
+
+61
+00:03:15,960 --> 00:03:18,900
+that you're not just going through and
+taking all the variables you've collected,
+
+62
+00:03:18,900 --> 00:03:20,920
+and trying to interact them with the
+intervention.
+
+63
+00:03:20,920 --> 00:03:23,910
+Obviously that's going to highly increase
+your type one error.
+
+64
+00:03:23,910 --> 00:03:27,950
+But pretty straight forward for randomized
+trials, in terms of variable selection.
+
+65
+00:03:27,950 --> 00:03:30,750
+For observational studies it's not too
+much harder.
+
+66
+00:03:30,750 --> 00:03:33,220
+Again, you're going to have a regression
+model.
+
+67
+00:03:33,220 --> 00:03:34,870
+Here's your outcome.
+
+68
+00:03:34,870 --> 00:03:39,220
+On the right hand side of the equation,
+your intercept and a beta for your primary
+
+69
+00:03:39,220 --> 00:03:42,860
+predictor of interest in whatever form you
+happen to model that predictor in.
+
+70
+00:03:43,910 --> 00:03:46,330
+Of course, if it's an observational study,
+
+71
+00:03:46,330 --> 00:03:48,040
+you're going to need to tease out
+confounding so
+
+72
+00:03:48,040 --> 00:03:53,060
+your model's going to contain a lot of
+other things which are the confounders.
+
+73
+00:03:53,060 --> 00:03:55,280
+You may also be testing for some
+interactions, as well.
+
+74
+00:03:56,420 --> 00:03:58,880
+Everything again is centered around the
+primary predictor so
+
+75
+00:03:58,880 --> 00:04:02,330
+that's going to stay in the model whether
+or not it's significant, obviously,
+
+76
+00:04:02,330 --> 00:04:05,530
+because non-significance is an answer to
+the question.
+
+77
+00:04:05,530 --> 00:04:08,460
+So for example, if mercury does not
+increase your risk of
+
+78
+00:04:08,460 --> 00:04:12,210
+cardiovascular disease, that's important
+to know, and you're going to keep that
+
+79
+00:04:12,210 --> 00:04:15,109
+beta in the model, you're going to report
+that it was non-significant.
+
+80
+00:04:16,220 --> 00:04:20,390
+And general principles, here, of model
+building, we're going to aim for
+
+81
+00:04:20,390 --> 00:04:21,710
+a parsimonious model, that is,
+
+82
+00:04:21,710 --> 00:04:25,090
+we're not necessarily going to stuff every
+possible confounder in the model.
+
+83
+00:04:25,090 --> 00:04:26,430
+We're going to be a little bit choosy.
+
+84
+00:04:26,430 --> 00:04:29,950
+And especially that's the case if the
+sample size is low because we
+
+85
+00:04:29,950 --> 00:04:31,680
+don't want to overfit our models.
+
+86
+00:04:31,680 --> 00:04:36,900
+So the general rule of thumb is you only
+want to have you need to have about
+
+87
+00:04:36,900 --> 00:04:40,191
+ten observations in your data set for
+every predictor, for
+
+88
+00:04:40,191 --> 00:04:44,260
+every variable in your model for every
+parameter you're estimating, so
+
+89
+00:04:44,260 --> 00:04:46,930
+you want to just kind of keep that in mind
+and not overstuff your models.
+
+90
+00:04:48,020 --> 00:04:50,990
+Just to give you an example of an
+observational study with
+
+91
+00:04:50,990 --> 00:04:54,820
+a clear single main hypothesis, a clear
+predictor of interest.
+
+92
+00:04:54,820 --> 00:04:58,310
+So this is a study on mercury levels and
+cardiovascular disease.
+
+93
+00:04:58,310 --> 00:05:00,120
+It was a nested case control study, so
+
+94
+00:05:00,120 --> 00:05:03,750
+they were able to get cases, those with
+cardiovascular disease and
+
+95
+00:05:03,750 --> 00:05:08,298
+controls from two larger cohorts, one on
+woman and one on men.
+
+96
+00:05:08,298 --> 00:05:09,160
+About 4,000 women and 2,000 men.
+
+97
+00:05:09,160 --> 00:05:10,610
+So a pretty big study.
+
+98
+00:05:11,620 --> 00:05:13,570
+The main predictor of interest was mercury
+levels.
+
+99
+00:05:13,570 --> 00:05:17,980
+So what they did was they measured mercury
+in the toenails of these men and women.
+
+100
+00:05:17,980 --> 00:05:20,330
+And there's a number of potential
+confounders here because it
+
+101
+00:05:20,330 --> 00:05:21,580
+is an observational study.
+
+102
+00:05:21,580 --> 00:05:24,590
+The biggest confounder here is fish
+consumption, and
+
+103
+00:05:24,590 --> 00:05:28,320
+that's because probably the biggest
+determinant of whether or
+
+104
+00:05:28,320 --> 00:05:31,670
+not you're going to have a high mercury
+level is how much fish you eat.
+
+105
+00:05:31,670 --> 00:05:35,300
+That's our main source of mercury is fish.
+
+106
+00:05:35,300 --> 00:05:39,430
+Of course, fish also has really good oils
+in it for you.
+
+107
+00:05:39,430 --> 00:05:43,698
+And people who eat a lot of fish tend to
+have lower cardiovascular risk.
+
+108
+00:05:43,698 --> 00:05:46,170
+So that's going to be a really important
+confounder to consider and
+
+109
+00:05:46,170 --> 00:05:48,530
+then there's many other confounders that
+you can think of.
+
+110
+00:05:48,530 --> 00:05:50,320
+Many things were measured in this study.
+
+111
+00:05:52,170 --> 00:05:54,840
+So how did they actually do the process of
+model building?
+
+112
+00:05:54,840 --> 00:05:58,950
+I'm just going to kind of walk you three
+it, through it, to show you their process.
+
+113
+00:05:58,950 --> 00:06:01,710
+I'm actually going to use the exact
+language from the paper because I
+
+114
+00:06:01,710 --> 00:06:05,240
+want to expose you to how people write
+things, these things up in papers.
+
+115
+00:06:05,240 --> 00:06:07,210
+And it may sound a little complicated, but
+
+116
+00:06:07,210 --> 00:06:09,560
+actually, you have enough knowledge to
+follow all of this.
+
+117
+00:06:09,560 --> 00:06:11,650
+I'll try to decode it a little bit.
+
+118
+00:06:11,650 --> 00:06:13,360
+So, first of all, how was mercury modeled?
+
+119
+00:06:13,360 --> 00:06:16,170
+We talked, last week, about, how do I
+model my predictor?
+
+120
+00:06:16,170 --> 00:06:17,160
+So there's choices.
+
+121
+00:06:17,160 --> 00:06:19,800
+You could model mercury here as a
+continuous predictor,
+
+122
+00:06:19,800 --> 00:06:22,140
+because it was measured as something
+continuous.
+
+123
+00:06:22,140 --> 00:06:23,610
+They evaluate it as as quintiles.
+
+124
+00:06:23,610 --> 00:06:26,845
+And I'm not sure the reason for that
+desicion.
+
+125
+00:06:26,845 --> 00:06:29,630
+[COUGH], but it might be that it's easier
+to interpret.
+
+126
+00:06:29,630 --> 00:06:33,062
+If you have quintiles of mercury
+concentrations, it might be
+
+127
+00:06:33,062 --> 00:06:38,620
+a little bit easier for somebody to look
+at than say, high versus low, for example.
+
+128
+00:06:38,620 --> 00:06:40,679
+I'm not sure about what that, why that was
+decided, but.
+
+129
+00:06:41,860 --> 00:06:44,600
+It says mercury concentrations were
+evaluated in quintiles as
+
+130
+00:06:44,600 --> 00:06:46,240
+indicator variables.
+
+131
+00:06:46,240 --> 00:06:49,780
+Now that may sound foreign to you, but
+this is just code for dummy coding.
+
+132
+00:06:49,780 --> 00:06:52,670
+So indicator variables are one zero
+variables.
+
+133
+00:06:52,670 --> 00:06:55,810
+So what they're saying there is that they
+dummy coded the quintiles,
+
+134
+00:06:55,810 --> 00:06:56,950
+as we talked about last week.
+
+135
+00:06:58,110 --> 00:06:59,630
+Just a little detail here,
+
+136
+00:06:59,630 --> 00:07:02,420
+they used sex-specific cutoff points among
+the controls.
+
+137
+00:07:02,420 --> 00:07:06,990
+All that means is that in the
+determination of what quintile you're in.
+
+138
+00:07:06,990 --> 00:07:10,880
+The cut offs for those quintiles were
+determined only based on the control and
+
+139
+00:07:10,880 --> 00:07:13,660
+they were determined separately for men
+and women, that's all that's saying.
+
+140
+00:07:15,040 --> 00:07:19,170
+They did test for trend because they were
+doing an ordinal variable quintiles.
+
+141
+00:07:19,170 --> 00:07:21,970
+They did those test for trends that we
+talked about last week.
+
+142
+00:07:21,970 --> 00:07:26,380
+So the tests for trend involve assigning
+participants the median value in their
+
+143
+00:07:26,380 --> 00:07:30,490
+quintile of exposure and evaluating this
+as a continuous variable.
+
+144
+00:07:30,490 --> 00:07:33,020
+Okay so this is just slightly different
+than the test for
+
+145
+00:07:33,020 --> 00:07:34,600
+trend that I told you about last week.
+
+146
+00:07:34,600 --> 00:07:38,170
+So again, the test for trend says I'm
+going to put my ordinal variable into
+
+147
+00:07:38,170 --> 00:07:41,470
+the model as a continuous predictor as a
+number.
+
+148
+00:07:46,130 --> 00:07:49,170
+And I told you last week that that's
+commonly done by, say I've got a five
+
+149
+00:07:49,170 --> 00:07:52,080
+level ordinal variable, I just stick in
+the numbers one through five.
+
+150
+00:07:52,080 --> 00:07:53,720
+That's almost what they did.
+
+151
+00:07:53,720 --> 00:07:57,090
+But they did something just a little bit
+different here, which was, instead of
+
+152
+00:07:57,090 --> 00:08:01,500
+putting one, two, three, four, five, they
+actually took the, the median value of
+
+153
+00:08:01,500 --> 00:08:05,690
+the mercury levels for each quintile, and
+they stuck that into the regression model.
+
+154
+00:08:05,690 --> 00:08:08,460
+And I'll just show you that, maybe, I'm
+making up numbers, I don't know what
+
+155
+00:08:08,460 --> 00:08:12,320
+the units are, here, but I'm making up
+some numbers to illustrate a point.
+
+156
+00:08:12,320 --> 00:08:15,410
+But maybe, the quintiles look something
+like this.
+
+157
+00:08:15,410 --> 00:08:19,290
+So there's actually not an even jump from
+one quintile to the next so
+
+158
+00:08:19,290 --> 00:08:21,900
+by actually putting the median value in
+each of these quintiles
+
+159
+00:08:21,900 --> 00:08:26,810
+is going to show a slightly different
+relationship with the outcome.
+
+160
+00:08:26,810 --> 00:08:30,230
+And again, though, you, you're going to
+have a beta, a single beta coefficient.
+
+161
+00:08:30,230 --> 00:08:32,080
+This is just treating this as a number and
+
+162
+00:08:32,080 --> 00:08:35,130
+you're going to get a p-value associated
+with that beta coefficient.
+
+163
+00:08:35,130 --> 00:08:36,075
+That's the p for trend.
+
+164
+00:08:36,075 --> 00:08:39,760
+[NOISE]
+
+165
+00:08:39,760 --> 00:08:42,380
+Okay, so here's the model, though, that
+they did.
+
+166
+00:08:42,380 --> 00:08:44,240
+They divided mercury into quintiles.
+
+167
+00:08:44,240 --> 00:08:45,380
+They dummy coded it.
+
+168
+00:08:45,380 --> 00:08:47,350
+That's just showing the dummy coding.
+
+169
+00:08:47,350 --> 00:08:48,270
+That's the basic model.
+
+170
+00:08:48,270 --> 00:08:49,620
+The outcome is CVD.
+
+171
+00:08:49,620 --> 00:08:51,320
+In a way, we're kind of done now.
+
+172
+00:08:51,320 --> 00:08:55,770
+We need, however, to add things to this
+model to account for confounding and
+
+173
+00:08:55,770 --> 00:08:57,480
+potentially for interaction.
+
+174
+00:08:57,480 --> 00:09:00,410
+So this is the main model but everything
+else now is going to be
+
+175
+00:09:00,410 --> 00:09:04,470
+put in the model because it's a confounder
+or an interaction term.
+
+176
+00:09:04,470 --> 00:09:06,060
+So what else are we going to put in the
+model?
+
+177
+00:09:06,060 --> 00:09:07,800
+This is where the variable selection comes
+in,
+
+178
+00:09:07,800 --> 00:09:10,340
+I gotta decide what other variables are
+going to go in here.
+
+179
+00:09:10,340 --> 00:09:12,940
+I know for sure this is going in, but then
+I have to decide on the rest.
+
+180
+00:09:14,240 --> 00:09:17,190
+So again, I'm going to show you the
+language from the paper about how they
+
+181
+00:09:17,190 --> 00:09:18,400
+chose their confounders, and
+
+182
+00:09:18,400 --> 00:09:22,105
+different people will do this in slightly
+different ways.
+
+183
+00:09:22,105 --> 00:09:26,624
+We'd talked about the way of choosing
+confounders of the 10% rule,
+
+184
+00:09:26,624 --> 00:09:29,070
+which is I'm going to put the confounder
+in the model.
+
+185
+00:09:29,070 --> 00:09:29,970
+I'm going to see whether or
+
+186
+00:09:29,970 --> 00:09:33,640
+not it changes the beta for my predictor
+of interest by more than 10%.
+
+187
+00:09:33,640 --> 00:09:37,510
+Now that's not totally easy to do here
+because we actually have
+
+188
+00:09:37,510 --> 00:09:38,770
+four betas in the model but
+
+189
+00:09:38,770 --> 00:09:42,660
+you can kind of do the same thing by
+scanning across the different betas and
+
+190
+00:09:42,660 --> 00:09:48,310
+seeing if a, a number of them changed a, a
+significant you know, more than 10%.
+
+191
+00:09:48,310 --> 00:09:50,440
+So we've talked about choosing confounders
+in that way.
+
+192
+00:09:50,440 --> 00:09:53,580
+You'll see that there's other factors that
+go into choice of confounders.
+
+193
+00:09:53,580 --> 00:09:55,390
+It's a little bit of an art.
+
+194
+00:09:55,390 --> 00:09:58,081
+So as potentional confounding was assessed
+with the use of multivariate models,
+
+195
+00:09:58,081 --> 00:09:59,808
+all it means is that they ran a logistic
+regression.
+
+196
+00:09:59,808 --> 00:10:04,410
+They put in that model some very important
+confounders, definitely went in the model.
+
+197
+00:10:04,410 --> 00:10:05,860
+So like, other major risk factors for
+
+198
+00:10:05,860 --> 00:10:08,970
+cardiovascular disease, something like
+diabetes, is going to go in the model.
+
+199
+00:10:08,970 --> 00:10:11,160
+The fish consumption, I already mentioned,
+is very important as well,
+
+200
+00:10:11,160 --> 00:10:12,280
+those omega fatty acids,
+
+201
+00:10:13,380 --> 00:10:16,230
+additional dietary factors that we know
+are associated with mercury.
+
+202
+00:10:16,230 --> 00:10:17,920
+So there were some things that they were
+saying, I'm,
+
+203
+00:10:17,920 --> 00:10:22,650
+we're definitely going to try these as
+confounders, because they're,
+
+204
+00:10:22,650 --> 00:10:24,210
+we have good reason to believe that they
+might be.
+
+205
+00:10:24,210 --> 00:10:27,930
+And then the multivariable modeling, that
+just means what variables we decided to
+
+206
+00:10:27,930 --> 00:10:32,010
+keep in the model at the end of the day,
+was guided by the principle of parsimony,
+
+207
+00:10:32,010 --> 00:10:35,640
+so again, you're not wanting to stuff the
+model with everything you have.
+
+208
+00:10:35,640 --> 00:10:37,170
+You have to be choosy.
+
+209
+00:10:37,170 --> 00:10:41,480
+And also guided by clinical relevance, so
+this just means that when you're
+
+210
+00:10:41,480 --> 00:10:45,920
+model building, a little bit of clinical
+judgment does come in to say, you know,
+
+211
+00:10:45,920 --> 00:10:48,980
+this is something I really think is
+going to be an important confounder.
+
+212
+00:10:48,980 --> 00:10:52,220
+I might put it in the model even if
+there's no real evidence
+
+213
+00:10:52,220 --> 00:10:54,890
+that it's a confounder just because
+somebody's going to wonder about it if I
+
+214
+00:10:54,890 --> 00:10:55,810
+don't put it in.
+
+215
+00:10:55,810 --> 00:10:58,770
+So just for face validity I might be
+putting it in.
+
+216
+00:10:58,770 --> 00:11:02,420
+They also looked at the strength of the
+association between the potential
+
+217
+00:11:02,420 --> 00:11:05,490
+confounder and mercury or cardiovascular
+disease, so
+
+218
+00:11:05,490 --> 00:11:09,670
+if there was a potential confounder that
+had a really strong association with
+
+219
+00:11:09,670 --> 00:11:12,610
+the either the exposure the outcome they
+might have included that in the model.
+
+220
+00:11:12,610 --> 00:11:14,620
+And then here's the percent change rule.
+
+221
+00:11:14,620 --> 00:11:17,630
+The percent change of the risk estimate
+when the confounder was included so
+
+222
+00:11:17,630 --> 00:11:20,000
+that's the one that we primarily talked
+about.
+
+223
+00:11:20,000 --> 00:11:23,910
+But notice that there's a lot of
+additional factors guiding this whole
+
+224
+00:11:23,910 --> 00:11:24,710
+choice here.
+
+225
+00:11:24,710 --> 00:11:26,480
+It's a little bit of an art.
+
+226
+00:11:26,480 --> 00:11:29,130
+I'll show you which confounders they came
+up with at the end of the day as
+
+227
+00:11:29,130 --> 00:11:29,720
+going in the model.
+
+228
+00:11:29,720 --> 00:11:32,720
+I just want to point out missing data here
+for covariates.
+
+229
+00:11:32,720 --> 00:11:33,280
+Which accounted for
+
+230
+00:11:33,280 --> 00:11:36,640
+less than 1% of all data, were imputed by
+the means of multiple imputation.
+
+231
+00:11:36,640 --> 00:11:39,860
+So we just talked about multiple
+imputation that was used here.
+
+232
+00:11:39,860 --> 00:11:42,120
+So here are the results.
+
+233
+00:11:42,120 --> 00:11:47,440
+They had quintiles of toe, of toenail
+mercury is there, is here.
+
+234
+00:11:47,440 --> 00:11:50,650
+And fish was such an important potential
+confounder that they
+
+235
+00:11:50,650 --> 00:11:53,500
+actually stratified on total fish.
+
+236
+00:11:53,500 --> 00:11:57,980
+On specific kinds of fish because it was
+just so, so
+
+237
+00:11:57,980 --> 00:12:00,590
+much of a potentially important confounder
+here.
+
+238
+00:12:00,590 --> 00:12:01,600
+So, here is the adjusted models.
+
+239
+00:12:01,600 --> 00:12:04,880
+What you'll notice is the P-values for
+trend are all null.
+
+240
+00:12:04,880 --> 00:12:08,640
+There's a couple cases where the P-value
+is getting up here,
+
+241
+00:12:08,640 --> 00:12:11,260
+where the P- value is getting a little
+close to significance.
+
+242
+00:12:11,260 --> 00:12:12,540
+And actually, though,
+
+243
+00:12:12,540 --> 00:12:16,890
+as you go up in mercury your risk of
+cardiovascular disease is going down.
+
+244
+00:12:16,890 --> 00:12:20,780
+That potentially could be due to residual
+confounding with fish consumption.
+
+245
+00:12:22,640 --> 00:12:25,740
+But you can see that in general doesn't
+look like mercury is
+
+246
+00:12:25,740 --> 00:12:28,950
+a particularly good predictor of
+cardiovascular risk.
+
+247
+00:12:28,950 --> 00:12:32,940
+I'll just note if you read the fine print
+you can see what final confounder has
+
+248
+00:12:32,940 --> 00:12:34,310
+made it into the model.
+
+249
+00:12:35,590 --> 00:12:39,545
+BMI, smoking, age, sex, race, physical
+activity, alchohol,
+
+250
+00:12:39,545 --> 00:12:41,840
+lot of confounders made it into the final
+model.
+
+251
+00:12:41,840 --> 00:12:45,880
+This is a fairly big data set so they can
+afford to put in a fairly large number of
+
+252
+00:12:45,880 --> 00:12:48,170
+confounders there, they're detailed there.
+
+253
+00:12:48,170 --> 00:12:49,700
+But again, because fish consumption was so
+
+254
+00:12:49,700 --> 00:12:53,170
+important that one got special treatment
+and actually they stratified on it.
+
+255
+00:12:54,700 --> 00:12:56,660
+They also say, did some test for
+interaction.
+
+256
+00:12:56,660 --> 00:13:00,980
+They actually stay in their statistical
+methods, test for interaction involved
+
+257
+00:13:00,980 --> 00:13:05,040
+multiplying the variable by the effect
+modifier of interest and using the Wald
+
+258
+00:13:05,040 --> 00:13:08,460
+test to calculate the P-value associated
+with the multiplicative interaction term.
+
+259
+00:13:08,460 --> 00:13:12,935
+All that means is, my translation here for
+you, they, they took the variable, the,
+
+260
+00:13:12,935 --> 00:13:15,380
+the thing that they thought was an
+interaction term, so
+
+261
+00:13:15,380 --> 00:13:17,920
+like, they're going to test for an action
+by sex or
+
+262
+00:13:17,920 --> 00:13:23,530
+gender here they multiplied that by their
+predictor of interest, mercury.
+
+263
+00:13:23,530 --> 00:13:25,540
+They put that term into the model.
+
+264
+00:13:25,540 --> 00:13:29,130
+It's exactly how we've tested for
+interaction before, so even though this
+
+265
+00:13:29,130 --> 00:13:32,660
+may sound a bit cryptic to you, you
+actually know everything that's in here.
+
+266
+00:13:32,660 --> 00:13:34,445
+The Wald test to calculate the P-value,
+
+267
+00:13:34,445 --> 00:13:36,850
+that's just the P-value associated with
+This beta.
+
+268
+00:13:36,850 --> 00:13:37,970
+It's nothing fancy.
+
+269
+00:13:37,970 --> 00:13:40,230
+We've talked about all of this before.
+
+270
+00:13:40,230 --> 00:13:42,690
+So that's how they tested for interaction
+in the normal way.
+
+271
+00:13:42,690 --> 00:13:47,800
+Now they didn't actually specify what
+interactions they tested, but the one
+
+272
+00:13:47,800 --> 00:13:53,260
+that was most important was they actually
+had data from two separate cohorts,
+
+273
+00:13:53,260 --> 00:13:58,050
+a female cohort so the most important
+potential interaction term was sex.
+
+274
+00:13:58,050 --> 00:14:01,560
+So they tested for interaction by male,
+female.
+
+275
+00:14:01,560 --> 00:14:07,090
+When they did a stratified analysts, men
+separated from women, they noticed that
+
+276
+00:14:07,090 --> 00:14:10,710
+it looked like there was a lower incidence
+of cardiovascular disease with
+
+277
+00:14:10,710 --> 00:14:15,130
+higher mercury for women, in other words
+the more mercury you had, the lower your
+
+278
+00:14:15,130 --> 00:14:20,300
+cardiovascular disease risk, they saw that
+in women, they didn't see that in men.
+
+279
+00:14:20,300 --> 00:14:25,010
+However, we've talked about this before
+that is very careful,
+
+280
+00:14:25,010 --> 00:14:29,060
+just because the trend looks different
+that doesn't necessarily guarantee you
+
+281
+00:14:29,060 --> 00:14:31,640
+that you're going to have a significant
+interaction.
+
+282
+00:14:31,640 --> 00:14:35,500
+So is that difference between men and
+women, is it statistically significant?
+
+283
+00:14:35,500 --> 00:14:37,630
+In this case it turned out not to be.
+
+284
+00:14:37,630 --> 00:14:42,130
+So when they did those interaction tests
+for sex with mercury, there,
+
+285
+00:14:42,130 --> 00:14:44,470
+it didn't quite reach statistical
+significance.
+
+286
+00:14:44,470 --> 00:14:46,890
+So they didn't have enough evidence that
+there's really a different
+
+287
+00:14:46,890 --> 00:14:51,700
+relationship between mercury in men and
+cardiovascular disease in men and women.
+
+288
+00:14:51,700 --> 00:14:56,810
+All right, so that's the, one example of
+how to build a model.
+
+289
+00:14:56,810 --> 00:15:00,090
+But basically, we're going to be following
+some process like that when
+
+290
+00:15:00,090 --> 00:15:01,940
+there's one primary predictor.
+
+291
+00:15:01,940 --> 00:15:05,880
+I just want to bring up the issue here of
+P-value shopping, because
+
+292
+00:15:05,880 --> 00:15:11,270
+it comes up in all contexts in variable
+selection when you're building models.
+
+293
+00:15:11,270 --> 00:15:14,750
+There's just a lot of opportunities,
+especially in observational studies,
+
+294
+00:15:14,750 --> 00:15:19,060
+where not everything has been
+pre-specified for multiple testing errors.
+
+295
+00:15:19,060 --> 00:15:21,050
+So, this is not what you should do, and
+
+296
+00:15:21,050 --> 00:15:23,040
+this is what you should not do on this
+slide.
+
+297
+00:15:23,040 --> 00:15:26,720
+I'm cautioning you against this kind of
+p-value shopping.
+
+298
+00:15:26,720 --> 00:15:30,025
+So, there's a lot of ways to make sure
+that you find the smallest
+
+299
+00:15:30,025 --> 00:15:31,350
+p-value possible.
+
+300
+00:15:31,350 --> 00:15:34,240
+Every time you're hunting, you're on the
+hunt and shopping for
+
+301
+00:15:34,240 --> 00:15:38,230
+smaller P-values, you're increasing your
+chances of a type one error.
+
+302
+00:15:38,230 --> 00:15:42,780
+So, for example, you could try all these
+different forms of the predictor,
+
+303
+00:15:42,780 --> 00:15:45,570
+not based on like looking at graphics.
+
+304
+00:15:45,570 --> 00:15:49,980
+But just keep dumping different ways of
+modeling the predictor into your into your
+
+305
+00:15:49,980 --> 00:15:52,280
+model and see which one gives you the
+lowest p-value.
+
+306
+00:15:52,280 --> 00:15:55,570
+You could say well, if I use this
+combination of confounders, and
+
+307
+00:15:55,570 --> 00:15:58,390
+I run this model, and then I try this
+other combination of confounders,
+
+308
+00:15:58,390 --> 00:16:02,940
+which one gives me the lowest P-value for,
+for the primary predictor of interest.
+
+309
+00:16:04,420 --> 00:16:07,850
+Or sometimes people will say like, oh,
+this guy's the little high value.
+
+310
+00:16:07,850 --> 00:16:09,380
+Maybe I'll just throw him out.
+
+311
+00:16:09,380 --> 00:16:12,380
+And if I throw these three observations
+out,
+
+312
+00:16:12,380 --> 00:16:15,440
+I can get my P-value down to be under
+0.05, and so on.
+
+313
+00:16:16,682 --> 00:16:21,940
+This P-value shopping obviously is a
+really bad idea.
+
+314
+00:16:21,940 --> 00:16:26,200
+However, I get a lot of emails [LAUGH],
+that are somewhat along these lines.
+
+315
+00:16:26,200 --> 00:16:29,290
+So that's why I just want to make sure
+that I'm cautioning you against this.
+
+316
+00:16:29,290 --> 00:16:32,530
+I get emails that say, Dr. Sonati ] if I,
+
+317
+00:16:32,530 --> 00:16:38,190
+you know, how can I get my P-value to be
+under point, my p-value is 0.052.
+
+318
+00:16:38,190 --> 00:16:39,970
+How can I get it to be under 0.05?
+
+319
+00:16:39,970 --> 00:16:41,550
+As if that's the goal, right,
+
+320
+00:16:41,550 --> 00:16:44,899
+of doing statistics is to get your p-value
+under 0.05 or.
+
+321
+00:16:44,899 --> 00:16:49,190
+Dr. Sonati if you know I, I think this
+data point might be an outlier and
+
+322
+00:16:49,190 --> 00:16:53,200
+if I include the outlier my p-value is
+0.06.
+
+323
+00:16:53,200 --> 00:16:56,450
+But if I don't include the outlier my
+p-value is 0.04.
+
+324
+00:16:56,450 --> 00:16:59,530
+So is it okay therefore to throw out the
+outlier.
+
+325
+00:16:59,530 --> 00:17:03,190
+They're looking for my permission to, you
+know p-value shop, basically.
+
+326
+00:17:03,190 --> 00:17:06,510
+So obviously you gotta be really careful
+that you're not
+
+327
+00:17:06,510 --> 00:17:12,031
+basing your variable selection decisions
+simply on what gives you the best p-value.

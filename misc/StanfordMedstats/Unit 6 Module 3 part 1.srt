@@ -1,0 +1,2728 @@
+1
+00:00:00,008 --> 00:00:09,070
+The next p-value
+
+2
+00:00:09,070 --> 00:00:11,770
+pitfall we're going to talk about is
+something called the problem of
+
+3
+00:00:11,770 --> 00:00:12,710
+multiple testing.
+
+4
+00:00:15,170 --> 00:00:17,590
+This problem is best illustrated with an
+example.
+
+5
+00:00:17,590 --> 00:00:21,170
+This is one of my favorite studies in the
+medical literature.
+
+6
+00:00:21,170 --> 00:00:23,450
+It shows why it's great to be a
+statistician.
+
+7
+00:00:23,450 --> 00:00:25,470
+So, this is a 1980s study.
+
+8
+00:00:25,470 --> 00:00:28,170
+Some researchers at Duke University
+randomized about
+
+9
+00:00:28,170 --> 00:00:31,680
+a thousand heart disease patients into two
+groups and that was the end of the study.
+
+10
+00:00:31,680 --> 00:00:33,040
+See, it's great to be a statistician.
+
+11
+00:00:33,040 --> 00:00:34,670
+You don't have to do anything too hard.
+
+12
+00:00:34,670 --> 00:00:35,180
+Right?
+
+13
+00:00:35,180 --> 00:00:39,640
+They just randomly assign those patients
+to either group 1 or group 2.
+
+14
+00:00:39,640 --> 00:00:42,880
+Essentially, they put their names in an
+Excel spreadsheet, as in, as whether or
+
+15
+00:00:42,880 --> 00:00:43,980
+not they were in group 1 or group 2.
+
+16
+00:00:43,980 --> 00:00:45,155
+And then the study was done.
+
+17
+00:00:45,155 --> 00:00:50,740
+This means that we know for sure that
+there is no biological effect here.
+
+18
+00:00:50,740 --> 00:00:53,800
+We know that being in group one can't have
+done anything differently than
+
+19
+00:00:53,800 --> 00:00:54,590
+being in group two.
+
+20
+00:00:54,590 --> 00:00:57,890
+We know that the null hypothesis is true
+because that's all.
+
+21
+00:00:57,890 --> 00:01:00,820
+There was nothing done differently to the
+two groups other than where they ended up
+
+22
+00:01:00,820 --> 00:01:04,550
+in the excel spreadsheet which obviously
+would not effect their outcome.
+
+23
+00:01:04,550 --> 00:01:07,870
+So, this is a case where we know, we know
+that the null hypothesis is true.
+
+24
+00:01:07,870 --> 00:01:08,629
+Then, the researchers tracked the survival
+of those heart disease patients, and, not
+
+25
+00:01:08,629 --> 00:01:09,377
+surprisingly there was no difference in
+survival between group one and group two.
+
+26
+00:01:09,377 --> 00:01:09,894
+We'd be really surprised if there had been
+a difference.
+
+27
+00:01:09,894 --> 00:01:12,400
+But, then the researchers went on
+
+28
+00:01:21,110 --> 00:01:22,800
+and did the following.
+
+29
+00:01:22,800 --> 00:01:24,740
+They started to divide the patients up,
+
+30
+00:01:24,740 --> 00:01:28,610
+those 1000 patients up into subgroups
+based on prognostic factors.
+
+31
+00:01:31,570 --> 00:01:36,660
+And in a subgroup of 397 patients,
+patients who had 3 vessel disease and
+
+32
+00:01:36,660 --> 00:01:41,130
+an abnormal left ventricular contraction
+in that particular subgroup, they were
+
+33
+00:01:41,130 --> 00:01:46,460
+able to find a survival difference between
+those randomized to group 1 and
+
+34
+00:01:46,460 --> 00:01:49,840
+those randomized to group 2, and the p
+value was less than 0.025.
+
+35
+00:01:49,840 --> 00:01:54,360
+There was a statistically significant
+difference in survival between the two
+
+36
+00:01:54,360 --> 00:01:55,630
+groups, but how can that be?
+
+37
+00:01:55,630 --> 00:01:59,890
+We know that nothing was done differently
+between those two groups.
+
+38
+00:01:59,890 --> 00:02:04,660
+How can we have gotten a statistically
+significant survival difference?
+
+39
+00:02:04,660 --> 00:02:05,540
+What's going on here?
+
+40
+00:02:06,630 --> 00:02:12,330
+Well, what happened is that if you parsed
+the data up enough ways, so they tried
+
+41
+00:02:12,330 --> 00:02:16,690
+this subgroup, they tried that subgroup,
+they tried 18 different subgroups.
+
+42
+00:02:16,690 --> 00:02:17,970
+In one of those subgroups,
+
+43
+00:02:17,970 --> 00:02:21,070
+it's not that unlikely that there would
+just be a chance imbalance.
+
+44
+00:02:21,070 --> 00:02:23,930
+Just by chance, by a fluke in one of those
+subgroups we happen to
+
+45
+00:02:23,930 --> 00:02:27,700
+have a little bit better survival in group
+1 than group 2.
+
+46
+00:02:27,700 --> 00:02:28,940
+It's a chance imbalance.
+
+47
+00:02:28,940 --> 00:02:31,040
+And we know that the null hypothesis is
+true here.
+
+48
+00:02:31,040 --> 00:02:33,420
+So we know if that we if we reject the
+null hypothesis,
+
+49
+00:02:33,420 --> 00:02:35,540
+we know we'll have made a type one error.
+
+50
+00:02:36,850 --> 00:02:39,170
+You can get imbalances in your data,
+though.
+
+51
+00:02:39,170 --> 00:02:40,300
+And if you parse your data,
+
+52
+00:02:40,300 --> 00:02:44,100
+if you start hunting around in your data
+enough times, you will
+
+53
+00:02:44,100 --> 00:02:48,890
+find some statistically significant P
+values that pop up just due to chance.
+
+54
+00:02:48,890 --> 00:02:50,870
+This is the idea of the multiple testing
+problem.
+
+55
+00:02:50,870 --> 00:02:54,755
+[SOUND] Remember, if we set a significance
+level of
+
+56
+00:02:54,755 --> 00:02:59,830
+0.05 we're allowing a false positive rate
+for one test of 5%.
+
+57
+00:02:59,830 --> 00:03:01,670
+That's for one test though.
+
+58
+00:03:01,670 --> 00:03:07,180
+If you run more than one test, every test
+has a false positive chance of 5%.
+
+59
+00:03:07,180 --> 00:03:09,280
+There is nothing going on [INAUDIBLE] if
+there are no effects,
+
+60
+00:03:09,280 --> 00:03:12,468
+your chances of getting a false positive
+if you set up a significance level of
+
+61
+00:03:12,468 --> 00:03:15,270
+0.05 is 5%, one in twenty.
+
+62
+00:03:15,270 --> 00:03:17,035
+But let's say you run many tests.
+
+63
+00:03:17,035 --> 00:03:20,000
+Let's say you run 18 tests.
+
+64
+00:03:20,000 --> 00:03:23,569
+Then the probability of getting a false
+positive is much higher, and
+
+65
+00:03:23,569 --> 00:03:25,120
+we can actually calculate what it would
+be.
+
+66
+00:03:25,120 --> 00:03:27,220
+So if we compare survival of treatment and
+
+67
+00:03:27,220 --> 00:03:31,195
+control within 18 different subgroups,
+that's 18 comparisons.
+
+68
+00:03:31,195 --> 00:03:34,420
+There's a 5% chance that any one of those,
+
+69
+00:03:34,420 --> 00:03:38,630
+each one of those has a 5% chance of
+generating a false positive.
+
+70
+00:03:38,630 --> 00:03:41,540
+When you have 18 though, the chance that
+at least one of
+
+71
+00:03:41,540 --> 00:03:45,140
+those comes up to be a false positive is
+much, much, much higher than 5%.
+
+72
+00:03:45,140 --> 00:03:48,980
+And we can actually calculate it using
+what we learned in the probability unit.
+
+73
+00:03:50,030 --> 00:03:50,920
+How would we calculate that?
+
+74
+00:03:50,920 --> 00:03:53,150
+Now we have to make a little assumption
+here in order to be able to
+
+75
+00:03:53,150 --> 00:03:54,680
+calculate this easily.
+
+76
+00:03:54,680 --> 00:03:56,980
+We're going to assume that all the
+comparisons are independent.
+
+77
+00:03:56,980 --> 00:03:58,530
+That's the only way we can solve this
+easily.
+
+78
+00:03:58,530 --> 00:04:01,110
+Of course, these comparisons are not
+independent because some of
+
+79
+00:04:01,110 --> 00:04:02,600
+those sub groups would have overlapped.
+
+80
+00:04:02,600 --> 00:04:05,310
+So this is sort of a maximum that we're
+calculating.
+
+81
+00:04:05,310 --> 00:04:07,510
+But think about the way that we would
+calculate this.
+
+82
+00:04:07,510 --> 00:04:10,750
+What's the chance of at least one type I
+error.
+
+83
+00:04:10,750 --> 00:04:13,664
+Remember this is one of those at least one
+problems in probability.
+
+84
+00:04:13,664 --> 00:04:16,380
+Well, every test has what?
+
+85
+00:04:16,380 --> 00:04:21,250
+Every test has a chance of a type one
+error of 5%.
+
+86
+00:04:21,250 --> 00:04:23,090
+So that means it's in at least one case.
+
+87
+00:04:23,090 --> 00:04:23,990
+So what are we going to calculate?
+
+88
+00:04:23,990 --> 00:04:27,290
+We're going to calculate one minus the
+probability of none.
+
+89
+00:04:27,290 --> 00:04:30,320
+Well, what's the probability on none here
+of getting no false
+
+90
+00:04:30,320 --> 00:04:31,700
+positives over 18 tests?
+
+91
+00:04:31,700 --> 00:04:33,340
+Well, that's going to be 1 minus.
+
+92
+00:04:33,340 --> 00:04:36,741
+And what's the probability of getting no
+false positives over 18 tests?
+
+93
+00:04:36,741 --> 00:04:40,316
+Well, the probability for one test of not
+getting a false positive is 95%.
+
+94
+00:04:40,316 --> 00:04:42,770
+95% chance you're not going to get a false
+positive.
+
+95
+00:04:42,770 --> 00:04:46,000
+But we have to do that 18 tests in a row.
+
+96
+00:04:46,000 --> 00:04:49,140
+So that's .95 raised to the 18th.
+
+97
+00:04:49,140 --> 00:04:51,910
+When you do that and then subtract from
+one, it turns out
+
+98
+00:04:51,910 --> 00:04:55,980
+that the chance of at least one false
+positive is somewhere around 60%.
+
+99
+00:04:55,980 --> 00:04:57,560
+In other words,
+
+100
+00:04:57,560 --> 00:05:02,610
+you're expecting to get at least one false
+positive when you run 18 tests.
+
+101
+00:05:02,610 --> 00:05:04,750
+It would be surprising, you have a 60%
+chance,
+
+102
+00:05:04,750 --> 00:05:07,270
+it would actually be surprising if you
+didn't get a false positive.
+
+103
+00:05:07,270 --> 00:05:11,780
+[SOUND] This is the idea that if you
+torture your data long enough,
+
+104
+00:05:11,780 --> 00:05:13,190
+they will confess to something right.
+
+105
+00:05:13,190 --> 00:05:16,570
+You can keep parsing up your data until
+you find a chance in balance somewhere.
+
+106
+00:05:16,570 --> 00:05:19,500
+That's essentially what you are doing when
+you are doing multiple testing.
+
+107
+00:05:20,870 --> 00:05:25,165
+If there are no effects you should expect
+to get a p-value of less than
+
+108
+00:05:25,165 --> 00:05:27,010
+0.05 about one in 20 times.
+
+109
+00:05:28,110 --> 00:05:30,730
+That's what that significance level does.
+
+110
+00:05:30,730 --> 00:05:32,868
+It guarantees you a type one error rate of
+about 5%.
+
+111
+00:05:32,868 --> 00:05:34,950
+One in 20 times you're going to get a
+false positive.
+
+112
+00:05:36,020 --> 00:05:38,710
+If you run lots of tests you're going to
+have more opportunities for
+
+113
+00:05:38,710 --> 00:05:39,345
+chance findings.
+
+114
+00:05:39,345 --> 00:05:45,780
+And here there's lots of ways that we run
+lots of tests and statistics, right?
+
+115
+00:05:45,780 --> 00:05:48,480
+Let's say we're doing a study where we
+look at multiple different outcomes,
+
+116
+00:05:48,480 --> 00:05:50,148
+all these different types of cancer.
+
+117
+00:05:50,148 --> 00:05:53,850
+Well, one of those cancers might come up
+significant just by chance.
+
+118
+00:05:53,850 --> 00:05:56,930
+Or, a lot of times, people get multiple
+different predictors.
+
+119
+00:05:56,930 --> 00:05:58,390
+Or we do sub group analysis.
+
+120
+00:05:58,390 --> 00:06:01,620
+It's very typical, for example in a
+randomized trial,
+
+121
+00:06:01,620 --> 00:06:03,180
+just like the one I was talking about.
+
+122
+00:06:04,310 --> 00:06:07,720
+Where you actually have a drug, though,
+where you go out do the randomized trial,
+
+123
+00:06:07,720 --> 00:06:11,280
+and it turns out there's no significant
+effect overall on survival.
+
+124
+00:06:11,280 --> 00:06:13,660
+Then, people start parsing out into
+subgroups.
+
+125
+00:06:13,660 --> 00:06:14,440
+And low and behold,
+
+126
+00:06:14,440 --> 00:06:17,310
+they get a statistically significant
+result in one of those subgroups.
+
+127
+00:06:17,310 --> 00:06:20,070
+And they come up with a great biological
+explanation.
+
+128
+00:06:20,070 --> 00:06:24,975
+Of why this drug will work for those with
+an abnormal left ventricular contraction.
+
+129
+00:06:24,975 --> 00:06:29,770
+They can come up with an explanation, but
+if you parse your data enough,
+
+130
+00:06:29,770 --> 00:06:32,070
+probably it's just a chance finding.
+
+131
+00:06:32,070 --> 00:06:34,250
+There's also other ways when people are
+analyzing their data,
+
+132
+00:06:34,250 --> 00:06:35,360
+some of these things are hidden.
+
+133
+00:06:35,360 --> 00:06:38,770
+Maybe they tried a whole bunch of
+different ways for how to define exposure.
+
+134
+00:06:38,770 --> 00:06:40,240
+Like, how do I define drinking?
+
+135
+00:06:40,240 --> 00:06:41,600
+Light drinking, and moderate drinking?
+
+136
+00:06:41,600 --> 00:06:44,250
+I can try it a whole bunch of different
+ways.
+
+137
+00:06:44,250 --> 00:06:45,630
+If I try lots of different ways,
+
+138
+00:06:45,630 --> 00:06:48,630
+one of those by chance is likely to come
+out significant.
+
+139
+00:06:48,630 --> 00:06:51,939
+Or if I do repeated measures, if I look at
+the outcome at multiple time points.
+
+140
+00:06:51,939 --> 00:06:56,040
+By chance one of those outcomes might come
+out significant.
+
+141
+00:06:56,040 --> 00:06:58,710
+Multiple looks at the data, if we're doing
+a randomized trial and
+
+142
+00:06:58,710 --> 00:06:59,780
+week peeking at the data.
+
+143
+00:06:59,780 --> 00:07:04,540
+There's so many places, where you can get
+multiple testing coming in and
+
+144
+00:07:04,540 --> 00:07:08,170
+increasing your chances of getting a false
+positive, of getting a type 1 error.
+
+145
+00:07:09,990 --> 00:07:12,790
+So I'd like to illustrate this in my
+on-campus class with
+
+146
+00:07:12,790 --> 00:07:14,450
+the following little experiment.
+
+147
+00:07:14,450 --> 00:07:17,670
+I do an experiment where I also know that
+the null hypothesis is true.
+
+148
+00:07:17,670 --> 00:07:20,480
+Just like those [INAUDIBLE] researchers
+knew for sure that the null hypothesis was
+
+149
+00:07:20,480 --> 00:07:23,530
+true, they knew that any significant p
+values had to be false positive.
+
+150
+00:07:23,530 --> 00:07:25,680
+I do the same little experiment in my
+class.
+
+151
+00:07:25,680 --> 00:07:29,140
+So I asked my class to fill out a survey
+in the begining of quarter that says
+
+152
+00:07:29,140 --> 00:07:31,270
+that asked them a bunch of questions.
+
+153
+00:07:31,270 --> 00:07:33,290
+And one of the questions I like to ask is
+whether or
+
+154
+00:07:33,290 --> 00:07:35,740
+not you were born on an odd day or an even
+day.
+
+155
+00:07:35,740 --> 00:07:37,780
+Because presumably being born on a odd day
+or
+
+156
+00:07:37,780 --> 00:07:41,830
+even day really doesn't have anything to
+do with anything in, in your future.
+
+157
+00:07:41,830 --> 00:07:43,470
+So I know that the null hypothesis is
+true.
+
+158
+00:07:43,470 --> 00:07:45,000
+I know that there shouldn't be any
+difference,
+
+159
+00:07:45,000 --> 00:07:47,070
+any real difference between those two
+groups.
+
+160
+00:07:47,070 --> 00:07:49,260
+And then I asked the students to provide
+data on lots of
+
+161
+00:07:49,260 --> 00:07:50,370
+other variables about themselves.
+
+162
+00:07:50,370 --> 00:07:54,090
+In one class I asked them to provide data
+about 28 variables.
+
+163
+00:07:54,090 --> 00:07:56,530
+I, I want to make sure that I'm going to
+get a false positive.
+
+164
+00:07:56,530 --> 00:07:59,490
+So by doing 28 that's a lot more than 20.
+
+165
+00:07:59,490 --> 00:08:02,340
+kind of guaranteeing myself a false
+positive.
+
+166
+00:08:02,340 --> 00:08:05,620
+So what I then do, is I take the results
+from all of those variables.
+
+167
+00:08:05,620 --> 00:08:09,960
+I compare people born on an odd day or an
+even day with the correct statistical test
+
+168
+00:08:09,960 --> 00:08:14,720
+and then I record the p-value from all 28
+comparisons, all 28 tests.
+
+169
+00:08:14,720 --> 00:08:17,450
+And I recorded all those p-values from all
+those tests, and I put them in
+
+170
+00:08:17,450 --> 00:08:21,090
+a histogram, so that we can see what the
+distribution of p-values looks like here.
+
+171
+00:08:21,090 --> 00:08:25,020
+Again, we know the null hypothesis to be
+true because I don't think being born on
+
+172
+00:08:25,020 --> 00:08:28,690
+an odd or even day affects any of the
+variables I asked them about.
+
+173
+00:08:28,690 --> 00:08:30,130
+So what do you see here?
+
+174
+00:08:30,130 --> 00:08:33,060
+This is the histogram for p-values, I did
+28 tests and
+
+175
+00:08:33,060 --> 00:08:35,280
+I'm showing the counts on the y-axis.
+
+176
+00:08:35,280 --> 00:08:39,220
+The p values range from zero to 1, so
+probability has to range from zero to 1.
+
+177
+00:08:39,220 --> 00:08:40,260
+So what do you notice here?
+
+178
+00:08:40,260 --> 00:08:44,398
+What distribution does a p value follow
+when the null hypothesis is true?
+
+179
+00:08:44,398 --> 00:08:46,730
+It follows a uniform distribution.
+
+180
+00:08:46,730 --> 00:08:49,550
+It is completely random if the null is
+true,
+
+181
+00:08:49,550 --> 00:08:52,680
+where the p-value will fall between zero
+and 1.0.
+
+182
+00:08:52,680 --> 00:08:53,850
+And notice when you look at this graph,
+
+183
+00:08:53,850 --> 00:08:57,780
+you probably, the thing that your eye is
+drawn to, is the following two things.
+
+184
+00:08:57,780 --> 00:09:00,320
+You probably, your eye was probably drawn
+to here, and here.
+
+185
+00:09:00,320 --> 00:09:01,320
+The gaps.
+
+186
+00:09:01,320 --> 00:09:04,139
+So for some reason, just by chance, I
+didn't get a p-value between 0.15 and
+
+187
+00:09:04,139 --> 00:09:08,840
+0.2, and I didn't get a p-value, any
+p-values between 0.75 and 0.85.
+
+188
+00:09:08,840 --> 00:09:11,820
+It's completely just chance that I didn't
+get any there.
+
+189
+00:09:11,820 --> 00:09:13,775
+But those are the most surprising things.
+
+190
+00:09:13,775 --> 00:09:19,331
+What's not surprising is that I happened
+to get two p-values between 0 and
+
+191
+00:09:19,331 --> 00:09:24,370
+0.05, so this bar here, I got two
+statistically significant p-values.
+
+192
+00:09:24,370 --> 00:09:26,000
+P of less than 0.05.
+
+193
+00:09:26,000 --> 00:09:29,190
+But if they hadn't gotten any p-values
+there, it would have been surprising.
+
+194
+00:09:29,190 --> 00:09:33,010
+I'm expecting because p values follow a
+uniform distribution, that I'm
+
+195
+00:09:33,010 --> 00:09:37,420
+going to get some p values that happen to
+fall between 0 and 0.05 just by chance.
+
+196
+00:09:37,420 --> 00:09:41,530
+And, in fact, you can show that p-values
+are, follow a uniform distribution.
+
+197
+00:09:41,530 --> 00:09:43,440
+So what I did, just to show you, so you
+can compare.
+
+198
+00:09:43,440 --> 00:09:45,900
+Here's the p values from my class.
+
+199
+00:09:45,900 --> 00:09:47,730
+Looks like it follows the uniform
+distribution.
+
+200
+00:09:47,730 --> 00:09:52,700
+When I generate 25 random numbers from a
+uniform distribution,
+
+201
+00:09:52,700 --> 00:09:55,800
+I come up with similar distributions.
+
+202
+00:09:55,800 --> 00:09:58,210
+This is just showing you that if the null
+hypothesis is true,
+
+203
+00:09:58,210 --> 00:10:01,380
+you're expecting to get anywhere from 0 to
+one with equal probability.
+
+204
+00:10:01,380 --> 00:10:06,660
+That is, values between 0 and 0.05 or
+between 0 and 0.1, are not surprising.
+
+205
+00:10:06,660 --> 00:10:07,600
+They're expected.
+
+206
+00:10:07,600 --> 00:10:10,350
+In fact, it would be odd is you didn't get
+some p values that
+
+207
+00:10:10,350 --> 00:10:14,301
+were statistically significant at the 0.05
+level when you do so many tests.
+
+208
+00:10:14,301 --> 00:10:19,690
+Let me give you another multiple testing
+example from the, from the [INAUDIBLE].
+
+209
+00:10:19,690 --> 00:10:22,890
+Just show you [INAUDIBLE] a real example
+where I think probably what's going on
+
+210
+00:10:22,890 --> 00:10:23,620
+are chance findings.
+
+211
+00:10:24,910 --> 00:10:27,010
+So, this was a study researchers were
+looking at whether or
+
+212
+00:10:27,010 --> 00:10:30,380
+not caffeine and coffee drinking and tea
+drinking, whether or
+
+213
+00:10:30,380 --> 00:10:32,840
+not any of that influences your risk of
+breast cancer.
+
+214
+00:10:32,840 --> 00:10:36,390
+There's been some thought in the past that
+drinking caffeinated coffee, and
+
+215
+00:10:36,390 --> 00:10:39,030
+a lot of caffeine might increase your risk
+of breast cancer.
+
+216
+00:10:39,030 --> 00:10:40,706
+So they did a very thorough study.
+
+217
+00:10:40,706 --> 00:10:44,580
+They looked at, they asked women about
+their caffeine, coffee and
+
+218
+00:10:44,580 --> 00:10:46,990
+tea consumptions, and
+
+219
+00:10:46,990 --> 00:10:50,150
+they looked at who got breast cancer and
+who didn't get breast cancer.
+
+220
+00:10:50,150 --> 00:10:51,940
+Now, they looked at this in a lot of
+different ways.
+
+221
+00:10:51,940 --> 00:10:54,570
+They looked at Does caffeine, coffee
+drinking or
+
+222
+00:10:54,570 --> 00:10:59,410
+tea drinking, do any of those things
+relate to getting breast cancer at all.
+
+223
+00:10:59,410 --> 00:11:02,420
+They also looked at breast cancer in
+multiple subgroups, so
+
+224
+00:11:02,420 --> 00:11:04,310
+the type of breast cancer, they broke that
+down.
+
+225
+00:11:04,310 --> 00:11:08,104
+They also looked at the type of women, is
+it a post menopausal woman or
+
+226
+00:11:08,104 --> 00:11:09,280
+pre-menopausal women.
+
+227
+00:11:09,280 --> 00:11:11,340
+So they made multiple subgroups.
+
+228
+00:11:11,340 --> 00:11:15,050
+So essentially, they ended up running
+about 50 statistical tests to
+
+229
+00:11:15,050 --> 00:11:17,200
+look at all of these different possible
+associations.
+
+230
+00:11:17,200 --> 00:11:18,760
+So notice, a large number of tests here.
+
+231
+00:11:20,220 --> 00:11:24,160
+Overall, there was no association between
+caffeine, coffee, caffeinated coffee,
+
+232
+00:11:24,160 --> 00:11:25,404
+caffeinated tea, and breast cancer.
+
+233
+00:11:25,404 --> 00:11:31,980
+However, they came out with 4 significant,
+or near significant P-values
+
+234
+00:11:31,980 --> 00:11:36,210
+with significant statistical significance
+at the level of 0.05, in some subgroups.
+
+235
+00:11:36,210 --> 00:11:39,450
+So, they found that coffee intake was
+linked to
+
+236
+00:11:39,450 --> 00:11:43,780
+an increased risk of breast cancer in
+women who had benign breast disease.
+
+237
+00:11:43,780 --> 00:11:45,110
+That's a particular subgroup.
+
+238
+00:11:45,110 --> 00:11:46,300
+The P-value there was 0.08, so
+
+239
+00:11:46,300 --> 00:11:49,250
+not quite statistically significant at the
+conventional 0.05.
+
+240
+00:11:49,250 --> 00:11:53,590
+They also found that caffeine intake was
+linked to an increased link of
+
+241
+00:11:53,590 --> 00:11:57,370
+a particular type of tumor,
+estrogen/progesterone negative tumors,
+
+242
+00:11:57,370 --> 00:12:00,492
+as well as larger tumors, tumors larger
+than 2 cm.
+
+243
+00:12:00,492 --> 00:12:03,640
+The p-values there were 0.02 and 0.02 for
+those comparisons.
+
+244
+00:12:03,640 --> 00:12:07,430
+They also found that decaf coffee was
+linked to
+
+245
+00:12:07,430 --> 00:12:11,840
+a reduced risk of breast cancer in
+postmenopausal hormone users.
+
+246
+00:12:11,840 --> 00:12:15,220
+Notice as I'm reading that the number of
+qualifiers that I'm putting in there.
+
+247
+00:12:15,220 --> 00:12:17,710
+When you start having lot's of qualifiers
+like that,
+
+248
+00:12:17,710 --> 00:12:20,010
+that's when you start to worry about
+things like multiple testing.
+
+249
+00:12:20,010 --> 00:12:22,260
+The P value there came out to be 0.02.
+
+250
+00:12:22,260 --> 00:12:25,820
+So overall they found you know, coffee,
+caffeine pretty safe for breast cancer.
+
+251
+00:12:25,820 --> 00:12:29,600
+But then they were worried about these
+"significant," I'm putting significant in
+
+252
+00:12:29,600 --> 00:12:32,360
+quotes, significant P values that came
+out.
+
+253
+00:12:33,440 --> 00:12:35,940
+And the media coverage reflected that
+[INAUDIBLE]
+
+254
+00:12:35,940 --> 00:12:38,280
+caffeine consumption was associated.
+
+255
+00:12:38,280 --> 00:12:41,180
+They, they said caffeine consumption,
+overall, not related to breast cancer.
+
+256
+00:12:41,180 --> 00:12:44,050
+But it was associated with hormone
+negative breast cancers.
+
+257
+00:12:44,050 --> 00:12:46,230
+And breast cancers, tumors larger than two
+centimeters.
+
+258
+00:12:46,230 --> 00:12:49,470
+But the study did uncover an increased
+risk of cancer from women with
+
+259
+00:12:49,470 --> 00:12:52,215
+benign breast disease, who drank four or
+more cups of coffee a day.
+
+260
+00:12:52,215 --> 00:12:55,338
+Caffeine consumption was also linked to an
+increased risk of tumors that
+
+261
+00:12:55,338 --> 00:12:57,838
+hormone receptor negative or larger than 2
+cm.
+
+262
+00:12:57,838 --> 00:13:02,740
+So, in other words, the implication here
+was that oh, well, overall it's not bad.
+
+263
+00:13:02,740 --> 00:13:06,710
+Coffee is not bad for breast cancer but it
+does affect these other subgroups.
+
+264
+00:13:06,710 --> 00:13:09,985
+And we worry about caffeine for those
+subgroups.
+
+265
+00:13:09,985 --> 00:13:13,820
+However, my conclusion from this study
+would be completely different.
+
+266
+00:13:13,820 --> 00:13:15,700
+So here is what I did.
+
+267
+00:13:15,700 --> 00:13:18,570
+I went through that study and so in recent
+time when I went through
+
+268
+00:13:18,570 --> 00:13:22,170
+that study they had multiple tables with
+all these different results and
+
+269
+00:13:22,170 --> 00:13:25,050
+they had p-values for each of these 50
+tests that I talked about,
+
+270
+00:13:25,050 --> 00:13:27,756
+the 50 different comparisons they did.
+
+271
+00:13:27,756 --> 00:13:32,280
+I extracted the p-values from all those 50
+tests and put them in a little data set
+
+272
+00:13:32,280 --> 00:13:35,540
+and graphed it, just so I could see the
+distribution of the p-values.
+
+273
+00:13:35,540 --> 00:13:37,570
+So notice what the distribution looks
+like,
+
+274
+00:13:37,570 --> 00:13:39,610
+it looks like a uniform distribution.
+
+275
+00:13:39,610 --> 00:13:42,090
+Remember, if the null hypothesis is true,
+
+276
+00:13:42,090 --> 00:13:47,080
+if there's no effects, we expect the
+p-value to follow uniform distribution.
+
+277
+00:13:47,080 --> 00:13:48,550
+Equal probability from 0 to 1.
+
+278
+00:13:48,550 --> 00:13:52,100
+Notice that the most surprising thing is
+as I mentioned earlier,
+
+279
+00:13:52,100 --> 00:13:55,160
+the most surprising thing on this graphic,
+the thing that your eye gets drawn to,
+
+280
+00:13:55,160 --> 00:13:57,870
+is that there are no P-values between 0.8
+and 0.85.
+
+281
+00:13:57,870 --> 00:14:00,670
+That's the surprising thing, that there's
+a gap.
+
+282
+00:14:00,670 --> 00:14:05,004
+In fact, it would be surprising if we had
+found no P-values between 0 and 0.05 or,
+
+283
+00:14:05,004 --> 00:14:06,450
+or between 0 and .10.
+
+284
+00:14:06,450 --> 00:14:08,770
+Those are the ones that they mentioned.
+
+285
+00:14:08,770 --> 00:14:11,630
+It would be completely surprising if we
+found none there.
+
+286
+00:14:11,630 --> 00:14:15,120
+In other words, the p-values that we found
+that were statistically significant,
+
+287
+00:14:15,120 --> 00:14:20,830
+these moderate 0.02, 0.08 p-values, those
+are almost certainly,
+
+288
+00:14:20,830 --> 00:14:23,930
+they're very highly likely to be chance
+findings.
+
+289
+00:14:23,930 --> 00:14:26,620
+They're completely consistent with chance
+findings.
+
+290
+00:14:26,620 --> 00:14:28,490
+We're going to get some significant
+p-values.
+
+291
+00:14:28,490 --> 00:14:32,380
+If you do 50 tests, some of those p-values
+are going to come out significant.
+
+292
+00:14:32,380 --> 00:14:34,560
+But those are most likely just chance
+findings.
+
+293
+00:14:34,560 --> 00:14:37,790
+You can also look at other things in the
+paper to kind of convince yourself that
+
+294
+00:14:37,790 --> 00:14:41,480
+these are almost certainly chance findings
+as opposed to anything real.
+
+295
+00:14:41,480 --> 00:14:42,715
+So I looked at the effect sizes.
+
+296
+00:14:42,715 --> 00:14:44,770
+The, they looked at, they calculated risk
+ratios here.
+
+297
+00:14:44,770 --> 00:14:46,030
+There was no consistent pattern.
+
+298
+00:14:46,030 --> 00:14:47,540
+So the risk ratios, they weren't big.
+
+299
+00:14:47,540 --> 00:14:48,650
+They were all close to one.
+
+300
+00:14:48,650 --> 00:14:50,430
+They range from 0.67 to 1.79.
+
+301
+00:14:50,430 --> 00:14:51,840
+So, now big values.
+
+302
+00:14:51,840 --> 00:14:52,940
+No big effect sizes here.
+
+303
+00:14:52,940 --> 00:14:55,940
+And they jumped around from below one and
+above one.
+
+304
+00:14:55,940 --> 00:14:58,710
+It wasn't like they were all in the
+direction of harm.
+
+305
+00:14:58,710 --> 00:15:01,960
+They're [INAUDIBLE] about half were below
+1 and about half were above 1.
+
+306
+00:15:01,960 --> 00:15:04,550
+So that's, again, a pattern that's
+consistent with chance.
+
+307
+00:15:04,550 --> 00:15:07,820
+There was no dose response pattern when
+they looked at the level of caffeine.
+
+308
+00:15:07,820 --> 00:15:10,620
+So all of these things are implying that
+it's almost certain that
+
+309
+00:15:10,620 --> 00:15:14,820
+those signifigant p-values that they found
+there were just purely chance findings.
+
+310
+00:15:14,820 --> 00:15:17,828
+And you'd actually expect to get a few
+significant p-values just by chance here.
+
+311
+00:15:17,828 --> 00:15:21,310
+So the thing, things you want to look for
+
+312
+00:15:21,310 --> 00:15:23,930
+when you're trying to decide, is this just
+a chance finding?
+
+313
+00:15:23,930 --> 00:15:26,290
+You're looking for, if you're doing a lot
+of exploratory analysis.
+
+314
+00:15:26,290 --> 00:15:27,610
+Running lots of tests.
+
+315
+00:15:27,610 --> 00:15:28,940
+If you run a whole bunch of tests, and
+
+316
+00:15:28,940 --> 00:15:32,024
+only a few pop up to be significant,
+that's very consistent with chance.
+
+317
+00:15:32,024 --> 00:15:35,121
+You're also looking for p-values that are
+modest in size.
+
+318
+00:15:35,121 --> 00:15:40,523
+So, you have a 5% chance of getting, you
+know, below 0.05.
+
+319
+00:15:40,523 --> 00:15:42,550
+But you have a very small percent chance,
+
+320
+00:15:42,550 --> 00:15:45,648
+say, of getting below a p-value of one in
+ten thousand.
+
+321
+00:15:45,648 --> 00:15:48,990
+So we're talking about modest size, .01,
+.02, .05.
+
+322
+00:15:48,990 --> 00:15:52,175
+Those are more likely to be chance
+p-values.
+
+323
+00:15:52,175 --> 00:15:54,678
+The pattern of effect sizes and
+
+324
+00:15:54,678 --> 00:15:57,800
+inconsistent would be, would be something
+that indicates chance.
+
+325
+00:15:57,800 --> 00:16:01,770
+Also, if you have a situation where the
+p-values are not in anyway corrected for
+
+326
+00:16:01,770 --> 00:16:02,490
+multiple comparisons.
+
+327
+00:16:02,490 --> 00:16:05,330
+So it turns out I'm going to talk at the
+end of this module about a few ways that
+
+328
+00:16:05,330 --> 00:16:08,070
+you can correct your p-values for multiple
+testing.
+
+329
+00:16:08,070 --> 00:16:10,680
+So if they've done that, then of course,
+this wouldn't apply, but if they
+
+330
+00:16:10,680 --> 00:16:14,210
+haven't corrected for multiple comparisons
+you need to worry about chance findings.
+
+331
+00:16:16,410 --> 00:16:21,320
+Another place this has come up a lot in
+recent decades is with some of
+
+332
+00:16:21,320 --> 00:16:23,806
+these things like microarray analyses.
+
+333
+00:16:23,806 --> 00:16:26,290
+High-Throughput Genome.
+
+334
+00:16:26,290 --> 00:16:28,470
+So when you do something like a
+microarray,
+
+335
+00:16:28,470 --> 00:16:31,290
+you might be comparing two groups, like a
+cancer group and a control group.
+
+336
+00:16:31,290 --> 00:16:32,760
+And they're usually small groups.
+
+337
+00:16:32,760 --> 00:16:35,795
+But you're comparing the expression of
+30,000 genes.
+
+338
+00:16:35,795 --> 00:16:38,470
+That's a huge number of comparisons.
+
+339
+00:16:38,470 --> 00:16:40,320
+So let's say there's no differences
+between the groups,
+
+340
+00:16:40,320 --> 00:16:41,990
+there's actually no difference in gene
+expression.
+
+341
+00:16:41,990 --> 00:16:44,730
+If you set your P-value, your significance
+level to be 0.05,
+
+342
+00:16:44,730 --> 00:16:48,950
+well out of 30,000, 5% of those are
+going to come out to
+
+343
+00:16:48,950 --> 00:16:53,638
+be statistically significant at that
+conventional level of 0.05.
+
+344
+00:16:53,638 --> 00:16:57,410
+1500 are going to achieve that purely by
+chance.
+
+345
+00:16:57,410 --> 00:16:58,610
+You're expecting that.
+
+346
+00:16:58,610 --> 00:17:02,200
+So there are a lot of microarray studies
+that came out that were later believed to
+
+347
+00:17:02,200 --> 00:17:04,310
+just be false positive because you can get
+so
+
+348
+00:17:04,310 --> 00:17:06,670
+many false positives when you run so many
+tests.
+
+349
+00:17:06,670 --> 00:17:09,510
+We had to change the way that we actually
+analyzed microarray data to
+
+350
+00:17:09,510 --> 00:17:10,194
+account for that.
+
+351
+00:17:10,194 --> 00:17:15,615
+And another interesting question that you
+can think about is,
+
+352
+00:17:15,615 --> 00:17:19,760
+well, if you just look at the literature,
+how common are false positives?
+
+353
+00:17:19,760 --> 00:17:21,210
+Now you might think well, okay,
+
+354
+00:17:21,210 --> 00:17:25,370
+false positives are 1 in 20 cause I just
+said the false positive rate is 1 in 20.
+
+355
+00:17:25,370 --> 00:17:28,240
+But you have to be a little bit careful
+about that because what I've told you is
+
+356
+00:17:28,240 --> 00:17:33,620
+the probability of getting a p-value of
+less than 0.05, if there are no effects.
+
+357
+00:17:33,620 --> 00:17:35,860
+So that is, if the null is true.
+
+358
+00:17:35,860 --> 00:17:36,360
+[SOUND].
+
+359
+00:17:38,860 --> 00:17:41,820
+That probability, of course, is 5 percent.
+
+360
+00:17:41,820 --> 00:17:42,960
+That's your false positive, right?
+
+361
+00:17:42,960 --> 00:17:44,950
+When you set the significance level at
+0.05.
+
+362
+00:17:44,950 --> 00:17:49,370
+You're going to get a, statistically
+significant p-value just by chance when
+
+363
+00:17:49,370 --> 00:17:51,330
+there are no effects 5% of the time.
+
+364
+00:17:51,330 --> 00:17:53,710
+That's the probability that we know.
+
+365
+00:17:53,710 --> 00:17:56,470
+Of course, to answer the question how
+common are false positives in
+
+366
+00:17:56,470 --> 00:17:58,850
+the literature, we want the reverse of
+that condition or
+
+367
+00:17:58,850 --> 00:18:00,650
+we're going to have to apply some Bayes'
+Rule here.
+
+368
+00:18:00,650 --> 00:18:01,890
+So if I want to switch that,
+
+369
+00:18:01,890 --> 00:18:05,340
+what's the probability that the null
+hypothesis is true?
+
+370
+00:18:05,340 --> 00:18:09,230
+That is that the effect is not real if I
+get a p-value of less than 0.05.
+
+371
+00:18:09,230 --> 00:18:10,790
+That's a harder question to answer.
+
+372
+00:18:10,790 --> 00:18:13,771
+We have to apply Bayes' rule to answer
+that question.
+
+373
+00:18:13,771 --> 00:18:17,520
+We don't have that probability in, with
+the conditionals in that direction.
+
+374
+00:18:17,520 --> 00:18:20,570
+We don't have it directly and you have to
+make some assumptions.
+
+375
+00:18:20,570 --> 00:18:24,040
+So you'd have to apply Bayes' rule here
+and then make some assumptions, and
+
+376
+00:18:24,040 --> 00:18:26,460
+of course those assumptions can really
+effect the estimate here.
+
+377
+00:18:26,460 --> 00:18:29,520
+But somebody's done that, and tried to
+make some reasonable assumptions.
+
+378
+00:18:29,520 --> 00:18:32,890
+And one paper said that it turns out that
+about one in
+
+379
+00:18:32,890 --> 00:18:36,080
+two p-values under 0.05 in the medical
+literature is a false positive.
+
+380
+00:18:36,080 --> 00:18:36,770
+In other words,
+
+381
+00:18:36,770 --> 00:18:40,400
+a half of all the significant p-values you
+see out there are just a false positive.
+
+382
+00:18:40,400 --> 00:18:43,890
+That's their estimate based on applying
+Bayes' rule here but
+
+383
+00:18:43,890 --> 00:18:47,040
+if you look at p-values less than 0.01, it
+goes down.
+
+384
+00:18:47,040 --> 00:18:48,680
+Only one in six are a false positive.
+
+385
+00:18:48,680 --> 00:18:50,070
+If you look at p values less than 0.0001,
+
+386
+00:18:50,070 --> 00:18:54,690
+then only about 1 in 56 are false
+positives.
+
+387
+00:18:54,690 --> 00:18:58,960
+So, again, those modest p-values, 0.01 to
+0.05 are much, much,
+
+388
+00:18:58,960 --> 00:19:00,450
+much more likely to be false positives.
+
+389
+00:19:00,450 --> 00:19:01,900
+If you get a really really small p-value,
+
+390
+00:19:01,900 --> 00:19:03,888
+it's much less likely to be a false
+positive.
+
+391
+00:19:03,888 --> 00:19:07,470
+Take [INAUDIBLE] point here.
+
+392
+00:19:07,470 --> 00:19:09,320
+You gotta look at the totality of the
+evidence,
+
+393
+00:19:09,320 --> 00:19:13,010
+there's tons and tons of nonsignificant
+p-value, but one significant p value in
+
+394
+00:19:13,010 --> 00:19:17,280
+a sea of nonsignificant p-values, don't be
+that impressed by that.
+
+395
+00:19:18,630 --> 00:19:20,480
+Authors tend to want to just jump in and
+
+396
+00:19:20,480 --> 00:19:23,970
+say oh, I'm going to look in my data until
+I can find a significant p-value, well,
+
+397
+00:19:23,970 --> 00:19:26,170
+some of those significant p values are
+just chance.
+
+398
+00:19:26,170 --> 00:19:27,940
+So don't be that impressed by one
+significant p-value
+
+399
+00:19:27,940 --> 00:19:30,030
+out of a sea of non-significant p-values.
+
+400
+00:19:30,030 --> 00:19:33,890
+Expect about one significant p-value in
+about one of every 20 tests if
+
+401
+00:19:33,890 --> 00:19:36,322
+there's nothing going on in the data, if
+there are no effects.
+
+402
+00:19:36,322 --> 00:19:41,390
+I want to spend just a minute here to
+mention p-value corrections because one
+
+403
+00:19:41,390 --> 00:19:44,510
+of the ways we deal with multiple testing
+is to try to
+
+404
+00:19:44,510 --> 00:19:49,300
+somehow control the type one error by
+correcting the p-values or
+
+405
+00:19:49,300 --> 00:19:53,560
+adjusting the p-value level that we're
+going to call statistically significant.
+
+406
+00:19:53,560 --> 00:19:55,560
+We call these corrections, p-value
+corrections,
+
+407
+00:19:55,560 --> 00:19:57,490
+multiple comparisons correction.
+
+408
+00:19:57,490 --> 00:19:58,140
+The simplest one,
+
+409
+00:19:58,140 --> 00:20:01,160
+one that many of you may already heard of
+is something called the Bonferroni.
+
+410
+00:20:01,160 --> 00:20:02,710
+It's the easiest one for me to illustrate.
+
+411
+00:20:02,710 --> 00:20:03,990
+It's the easiest one for me to apply.
+
+412
+00:20:03,990 --> 00:20:04,770
+So I'll start with that one.
+
+413
+00:20:04,770 --> 00:20:08,244
+It's also the most conservative correct
+procedure, in other words,
+
+414
+00:20:08,244 --> 00:20:12,140
+it's a little bit too conservative at
+guarding against multiple testing.
+
+415
+00:20:12,140 --> 00:20:14,910
+And, and what can happen if you apply
+Bonferroni is you may end up
+
+416
+00:20:14,910 --> 00:20:17,532
+with no statistically significant results
+as a result.
+
+417
+00:20:17,532 --> 00:20:18,970
+You may increase your type two error.
+
+418
+00:20:18,970 --> 00:20:21,274
+But Bonferroni's simple.
+
+419
+00:20:21,274 --> 00:20:22,240
+So if you have, you know,
+
+420
+00:20:22,240 --> 00:20:27,330
+just a few tests and you want to do a
+simple correction, here's what you can do.
+
+421
+00:20:27,330 --> 00:20:30,920
+All your doing with a Bonferroni is saying
+let's say you want to control your
+
+422
+00:20:30,920 --> 00:20:34,060
+type one error rate, study wide for all
+your tests.
+
+423
+00:20:34,060 --> 00:20:38,140
+Not just one test, but all of your tests
+at, at a level of 0.05.
+
+424
+00:20:38,140 --> 00:20:40,910
+And let's say you want to run five tests.
+
+425
+00:20:42,800 --> 00:20:48,080
+If you want to run five tests, one way to
+keep your overall alpha,
+
+426
+00:20:48,080 --> 00:20:52,560
+your overall significant, your overall
+type error error rate at 0.05,
+
+427
+00:20:52,560 --> 00:20:56,370
+is to require statistical significance to
+be more stringent.
+
+428
+00:20:56,370 --> 00:21:00,080
+So if you have, if you want to keep your
+overall error rate to be 0.05 and
+
+429
+00:21:00,080 --> 00:21:02,480
+you're going to run five tests, you could
+just divide those two things and
+
+430
+00:21:02,480 --> 00:21:04,800
+say well I'm only going to count something
+as statistically signicant,
+
+431
+00:21:04,800 --> 00:21:08,610
+not if the p-value's less than 0.05 but if
+the p-value is less than 0.01.
+
+432
+00:21:08,610 --> 00:21:13,560
+So for example, if you had obtained a
+p-value of 0.001 and
+
+433
+00:21:13,560 --> 00:21:16,670
+you would run five tests, you would still
+count that as statistically significant
+
+434
+00:21:16,670 --> 00:21:18,304
+because that is still below 0.01.
+
+435
+00:21:18,304 --> 00:21:19,960
+So we'd call that significant.
+
+436
+00:21:21,550 --> 00:21:25,710
+If I ran four tests, then my new
+significance level would be 0.013,
+
+437
+00:21:25,710 --> 00:21:26,800
+0.05 divided by 4.
+
+438
+00:21:26,800 --> 00:21:28,080
+You could see how easy this is to apply.
+
+439
+00:21:28,080 --> 00:21:31,110
+You're just dividing 0.05 by the number of
+tests you ran to come up
+
+440
+00:21:31,110 --> 00:21:33,600
+with a new cutoff for statistical
+significance.
+
+441
+00:21:34,700 --> 00:21:37,130
+So let's say you got a P value .011.
+
+442
+00:21:37,130 --> 00:21:41,060
+You're you want it to be under 0.013 for
+statistical significance here.
+
+443
+00:21:41,060 --> 00:21:42,780
+So that would still be statistically
+significant.
+
+444
+00:21:44,190 --> 00:21:46,350
+How about though if you ran three tests?
+
+445
+00:21:46,350 --> 00:21:49,640
+Then your significance level if you're
+going to do a Bonferroni correction,
+
+446
+00:21:49,640 --> 00:21:52,110
+you change your significance level to
+0.017.
+
+447
+00:21:52,110 --> 00:21:55,800
+So a p value of 0.019 would now no longer
+be statistically significant.
+
+448
+00:21:55,800 --> 00:21:59,070
+So a conventional statistical significance
+0.019 would say that was significant.
+
+449
+00:21:59,070 --> 00:22:02,790
+But when the Bonferroni correction for the
+fact that you ran three tests,
+
+450
+00:22:02,790 --> 00:22:07,380
+say three outcome, then that's no longer
+statistically significant.
+
+451
+00:22:07,380 --> 00:22:10,000
+And so on and so forth, so if you want, if
+you
+
+452
+00:22:10,000 --> 00:22:15,150
+ran two tests you'd need a significance
+level of 0.025, so 0.032 wouldn't cut it.
+
+453
+00:22:15,150 --> 00:22:18,476
+And if you run one test, of course, the
+significance goes back to 0.05.
+
+454
+00:22:18,476 --> 00:22:22,210
+So Bonferroni is easy to apply, but it's
+highly conservative, because it's actually
+
+455
+00:22:22,210 --> 00:22:25,850
+assuming that all the comparisons that
+you're running are completely independent.
+
+456
+00:22:25,850 --> 00:22:27,120
+And that's usually not the case.
+
+457
+00:22:27,120 --> 00:22:29,309
+Usually you're running things that are
+related to one another.
+
+458
+00:22:31,270 --> 00:22:34,100
+So, some alternatives to Bonferroni that
+you should be aware of are something
+
+459
+00:22:34,100 --> 00:22:37,240
+called the [INAUDIBLE], the Holm and
+Hochberg procedures.
+
+460
+00:22:37,240 --> 00:22:40,300
+And they, these are a little bit less
+conservative than Bonferroni.
+
+461
+00:22:40,300 --> 00:22:43,140
+But still extremely easy to apply.
+
+462
+00:22:43,140 --> 00:22:44,430
+So this is the way they work.
+
+463
+00:22:44,430 --> 00:22:47,250
+You would take all the p-values from all
+the tests you ran.
+
+464
+00:22:47,250 --> 00:22:49,440
+So if you ran 10 tests, then you'd have 10
+p-values.
+
+465
+00:22:49,440 --> 00:22:52,250
+You arrange those p-values from the
+smallest.
+
+466
+00:22:52,250 --> 00:22:53,500
+The most significant to the largest.
+
+467
+00:22:55,970 --> 00:22:58,600
+And Holm and Hochberg actually are really
+the identical test,
+
+468
+00:22:58,600 --> 00:23:00,030
+it's just the way that you approach it.
+
+469
+00:23:00,030 --> 00:23:01,745
+Which one is faster to apply?
+
+470
+00:23:01,745 --> 00:23:05,980
+If you have very few significant
+comparisons, the Holm is faster to apply.
+
+471
+00:23:05,980 --> 00:23:08,820
+If you have many significant [INAUDIBLE]
+comparisons,
+
+472
+00:23:08,820 --> 00:23:10,740
+it turns out the Hochberg is faster to
+apply.
+
+473
+00:23:10,740 --> 00:23:12,140
+But they're going to give you exactly the
+same result.
+
+474
+00:23:12,140 --> 00:23:13,600
+They're really essentially the same test.
+
+475
+00:23:13,600 --> 00:23:14,970
+One starts from smallest to largest.
+
+476
+00:23:14,970 --> 00:23:16,250
+One starts from largest to smallest.
+
+477
+00:23:17,650 --> 00:23:22,700
+So the Holm procedure says you start with
+the smallest p-value.
+
+478
+00:23:22,700 --> 00:23:25,810
+So that's the most significant you came,
+p-value you came up with in all your
+
+479
+00:23:25,810 --> 00:23:29,000
+tests and you compare it to the Bonferroni
+pvalue.
+
+480
+00:23:29,000 --> 00:23:32,260
+So if you ran ten tests, that would be
+0.05 divided by 10.
+
+481
+00:23:32,260 --> 00:23:35,250
+You would need, so lets say alpha is 0.05
+and
+
+482
+00:23:35,250 --> 00:23:37,348
+you ran 10 test then your new cut off
+here.
+
+483
+00:23:37,348 --> 00:23:37,950
+Would be .005.
+
+484
+00:23:37,950 --> 00:23:41,642
+That's your, just your Bonferroni
+correction.
+
+485
+00:23:41,642 --> 00:23:45,420
+If your smallest p-value is lower than
+that boundary,
+
+486
+00:23:45,420 --> 00:23:49,290
+then you call that one statistically
+significant, and you keep going.
+
+487
+00:23:49,290 --> 00:23:53,679
+If that one is not, your best p-value of
+all doesn't make the Bonferroni cutoff,
+
+488
+00:23:53,679 --> 00:23:57,010
+then you're, then you have no significant
+p-values, and you stop.
+
+489
+00:23:57,010 --> 00:23:59,650
+But let's say, then that means nothing
+significant.
+
+490
+00:23:59,650 --> 00:24:02,900
+But let's say that that best p value makes
+the Bonferroni cutoff.
+
+491
+00:24:02,900 --> 00:24:06,780
+Then you allow the next p-value, you're a
+little less stringent.
+
+492
+00:24:06,780 --> 00:24:09,190
+You then would say that the next cutoff
+for
+
+493
+00:24:09,190 --> 00:24:11,930
+statistical significance would make it a
+little less conservative, so
+
+494
+00:24:11,930 --> 00:24:17,010
+[INAUDIBLE], now, we're going to compare
+p2 the next p-value up in
+
+495
+00:24:17,010 --> 00:24:21,160
+significance to 0.05 divided by 9 rather
+than 0.05 divided 10.
+
+496
+00:24:21,160 --> 00:24:24,100
+In other words you P value cut off is a
+little less stringent.
+
+497
+00:24:24,100 --> 00:24:27,130
+If that next highest P value makes it,
+
+498
+00:24:27,130 --> 00:24:29,700
+it's significant at that level then you
+continue to the next step.
+
+499
+00:24:29,700 --> 00:24:33,140
+If not, you stop and so on and so forth.
+
+500
+00:24:33,140 --> 00:24:35,309
+So this is going to be less conservative
+than the [INAUDIBLE],
+
+501
+00:24:35,309 --> 00:24:36,360
+than the Bonferroni because some of
+
+502
+00:24:36,360 --> 00:24:40,138
+the p-values are not going to be compared
+against that most stringent cut off level.
+
+503
+00:24:40,138 --> 00:24:44,050
+Now the Hochberg is the exact same in the
+reverse.
+
+504
+00:24:44,050 --> 00:24:46,540
+So the Hochberg says start with the
+largest.
+
+505
+00:24:46,540 --> 00:24:48,390
+The least significant p-value and
+
+506
+00:24:48,390 --> 00:24:53,330
+compare that to just plain old alpha just
+the 0.05 your uncorrected p-value.
+
+507
+00:24:53,330 --> 00:24:55,780
+If that's significant every thing is
+significant.
+
+508
+00:24:55,780 --> 00:25:00,958
+If your worst P value is 0.05 everything
+will be significant.
+
+509
+00:25:00,958 --> 00:25:04,390
+If it's not significant, then keep going.
+
+510
+00:25:04,390 --> 00:25:05,870
+That one will be called not significant.
+
+511
+00:25:05,870 --> 00:25:10,450
+Now go to the next one down, the, the next
+least significant on your list.
+
+512
+00:25:17,380 --> 00:25:20,980
+Compare that to alpha divided by t minus
+1.
+
+513
+00:25:20,980 --> 00:25:23,420
+So now we're going to compare that to your
+original alpha divided by 2 here.
+
+514
+00:25:23,420 --> 00:25:25,500
+And so for the second p-value on the list
+you would compare p 2.
+
+515
+00:25:25,500 --> 00:25:26,380
+You would compare that one.
+
+516
+00:25:26,380 --> 00:25:29,310
+Now it's just a little bit less stringent
+than your original alpha.
+
+517
+00:25:29,310 --> 00:25:31,039
+If that one is significant,
+
+518
+00:25:31,039 --> 00:25:33,480
+all the remaining smaller p-values are
+significant you stop there.
+
+519
+00:25:33,480 --> 00:25:36,420
+If not, you gotta go on to step three and
+for
+
+520
+00:25:36,420 --> 00:25:39,652
+step three you would have compared the
+next least significant p-value.
+
+521
+00:25:39,652 --> 00:25:42,940
+To say 0.05 divided by three and I guess
+more and more stringent as you go along.
+
+522
+00:25:42,940 --> 00:25:45,720
+So, actually it's going to be the same
+answer as the Holm, it just
+
+523
+00:25:45,720 --> 00:25:48,800
+starts with the least significant rather
+than starting with the most significant.
+
+524
+00:25:48,800 --> 00:25:49,300
+Same idea.
+
+525
+00:25:50,390 --> 00:25:51,860
+Let's just apply this to a practice
+problem.
+
+526
+00:25:51,860 --> 00:25:56,100
+This is, these are all easier concepts to
+see with actually an application.
+
+527
+00:25:56,100 --> 00:25:59,520
+So, imagine that a large randomized trial
+to compare an experimental drug to
+
+528
+00:25:59,520 --> 00:26:03,240
+nine other standard drugs for treating
+motion sickness.
+
+529
+00:26:03,240 --> 00:26:06,060
+And you do some kind of statistical test,
+an ANOVA test.
+
+530
+00:26:06,060 --> 00:26:06,780
+And it reveals that
+
+531
+00:26:06,780 --> 00:26:08,820
+there's some significant differences
+between the groups.
+
+532
+00:26:08,820 --> 00:26:11,410
+So an ANOVA test, we're going to talk
+about this next week, is a global test.
+
+533
+00:26:11,410 --> 00:26:12,980
+And that tells you, well, there's some
+difference there.
+
+534
+00:26:12,980 --> 00:26:14,320
+Drug 1 is different than something.
+
+535
+00:26:14,320 --> 00:26:15,890
+But it doesn't tell you which groups
+differ.
+
+536
+00:26:15,890 --> 00:26:19,400
+So then you need to go in and compare drug
+one to all those other drugs.
+
+537
+00:26:19,400 --> 00:26:22,560
+And we're going to do 9 tests here.
+
+538
+00:26:22,560 --> 00:26:26,631
+We're going to compare drug 1 to 2, drug 1
+to 3, drug 1 to 4, et cetera.
+
+539
+00:26:26,631 --> 00:26:29,498
+Here's all the p-values that came out of
+just writing what, what our T test
+
+540
+00:26:29,498 --> 00:26:34,177
+comparing the mean motion sickness in drug
+1 to the mean motion sickness in drug 2.
+
+541
+00:26:34,177 --> 00:26:36,003
+We run a T test, we got a p of 0.05.
+
+542
+00:26:36,003 --> 00:26:36,695
+We do the same thing.
+
+543
+00:26:36,695 --> 00:26:38,269
+For the next one, we've got a p of 0.3.
+
+544
+00:26:38,269 --> 00:26:41,176
+Which of those differences will be
+statistically significant if we
+
+545
+00:26:41,176 --> 00:26:43,674
+do a multiple comparisons correction?
+
+546
+00:26:43,674 --> 00:26:45,330
+So if you didn't do a multiple comparisons
+correction,
+
+547
+00:26:45,330 --> 00:26:47,548
+anyone that was less than 0.05 would be
+significant.
+
+548
+00:26:47,548 --> 00:26:50,228
+But that's not correct for multiple
+comparisons.
+
+549
+00:26:50,228 --> 00:26:54,550
+So if we apply a Bonferroni, or a Holm, or
+a Hochberg here, what do we get?
+
+550
+00:26:54,550 --> 00:26:56,521
+Which ones will come out to be
+statistically significant.
+
+551
+00:26:56,521 --> 00:27:00,055
+So for the Bonferroni we did nine tests.
+
+552
+00:27:00,055 --> 00:27:04,658
+We divide 0.05 by 9, the new cutoff for
+statistical significance is 0.0056.
+
+553
+00:27:04,658 --> 00:27:10,120
+Using Bonferroni then for, go back to our
+list of drugs the only p-values
+
+554
+00:27:10,120 --> 00:27:15,690
+that came out to be lower than 0.0056 are
+number 6 and number 9.
+
+555
+00:27:15,690 --> 00:27:17,510
+So only six and nine would be significant.
+
+556
+00:27:17,510 --> 00:27:20,420
+Notice 0.006 here would not be
+significant, number 7.
+
+557
+00:27:20,420 --> 00:27:23,090
+So according to Bonferroni only 6 and
+
+558
+00:27:23,090 --> 00:27:26,150
+9 would be different than the experimental
+drug.
+
+559
+00:27:26,150 --> 00:27:29,290
+To apply Holm or Hochberg you're going to
+arrange the p-values from lowest to
+
+560
+00:27:29,290 --> 00:27:32,920
+the highest, so the least, from the most
+significant to the least significant.
+
+561
+00:27:34,250 --> 00:27:40,404
+If I apply the Holm correction, then it
+turns out that 6 is significant,
+
+562
+00:27:40,404 --> 00:27:43,825
+9 is significant and 7 is significant.
+
+563
+00:27:43,825 --> 00:27:46,470
+And then everything else after that is not
+significant.
+
+564
+00:27:46,470 --> 00:27:50,060
+So drug 6, 9, and 7 become significant
+according to Holm.
+
+565
+00:27:50,060 --> 00:27:53,045
+If you apply Hochberg, again, you're
+applying any other direction.
+
+566
+00:27:53,045 --> 00:27:55,750
+It's actually a little bit, takes you a
+little bit longer here.
+
+567
+00:27:55,750 --> 00:27:57,520
+But you find out that seven, nine and
+
+568
+00:27:57,520 --> 00:28:01,310
+six, the same three are significantly
+different.
+
+569
+00:28:01,310 --> 00:28:01,820
+And again,
+
+570
+00:28:01,820 --> 00:28:04,690
+just by looking at these procedures you
+can see how they're applyed.
+
+571
+00:28:04,690 --> 00:28:07,770
+You'll notice that Holm and Hochberg are
+less conservative because
+
+572
+00:28:07,770 --> 00:28:12,380
+additionally drug 7 comes out to be
+statistically significant in those cases.
+
+573
+00:28:12,380 --> 00:28:16,040
+It's good to be less conservative because
+you end up with if it's appropriate
+
+574
+00:28:16,040 --> 00:28:19,190
+because you end up with more things coming
+out statistically significant.
+
+575
+00:28:19,190 --> 00:28:23,040
+Again, Bonferroni is only [INAUDIBLE]
+appropriate if everything is independent,
+
+576
+00:28:23,040 --> 00:28:24,750
+which is usually not the case.
+
+577
+00:28:24,750 --> 00:28:27,680
+If everything is not independent,
+Bonferroni is too conservative, and you're
+
+578
+00:28:27,680 --> 00:28:31,310
+going to miss a statistically significant
+effect that you should of found.
+
+579
+00:28:31,310 --> 00:28:36,722
+In other words that you're going to make a
+type two error.

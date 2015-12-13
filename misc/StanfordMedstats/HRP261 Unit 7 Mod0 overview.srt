@@ -1,0 +1,657 @@
+1
+00:00:06,170 --> 00:00:07,750
+Welcome to week seven.
+
+2
+00:00:07,750 --> 00:00:11,300
+This week we're going to talk about how to
+build prediction models.
+
+3
+00:00:11,300 --> 00:00:16,270
+So last week we talked about the
+distinction between Explanatory models and
+
+4
+00:00:16,270 --> 00:00:17,740
+predictive models.
+
+5
+00:00:17,740 --> 00:00:21,740
+So, explanatory models are trying to
+identify [UNKNOWN] relationships whereas
+
+6
+00:00:21,740 --> 00:00:25,950
+predictive models are trying to predict
+something accurately about the future.
+
+7
+00:00:25,950 --> 00:00:28,020
+Because those goals are very different,
+
+8
+00:00:28,020 --> 00:00:30,740
+the model building process is also
+going to be different.
+
+9
+00:00:30,740 --> 00:00:33,270
+So, this week we are going to talk about
+model selection and
+
+10
+00:00:33,270 --> 00:00:36,410
+evaluation in the context of predictive
+models.
+
+11
+00:00:36,410 --> 00:00:40,860
+We'll be using some tools, the bootstrap,
+cross-validation, and shrinkage.
+
+12
+00:00:40,860 --> 00:00:44,710
+I just want to quickly point out one thing
+to you,
+
+13
+00:00:44,710 --> 00:00:47,910
+last week when I was talking about
+explanatory models,
+
+14
+00:00:47,910 --> 00:00:52,920
+I talked about the situation where we had
+multiple important predictors.
+
+15
+00:00:52,920 --> 00:00:56,350
+We were trying to identify multiple
+important predictors.
+
+16
+00:00:56,350 --> 00:00:57,120
+Of an outcome.
+
+17
+00:00:57,120 --> 00:01:01,740
+And I'll just warn you that in some ways
+this is going to look, kind of similar to
+
+18
+00:01:01,740 --> 00:01:05,040
+what we're doing this week when we're
+trying to do prediction modeling,
+
+19
+00:01:05,040 --> 00:01:10,160
+because we will be trying to find a set of
+predictors that significantly relate to
+
+20
+00:01:10,160 --> 00:01:11,230
+the outcome.
+
+21
+00:01:11,230 --> 00:01:13,010
+You've gotta keep in the back of your mind
+though,
+
+22
+00:01:13,010 --> 00:01:16,160
+that these two problems are very, very
+different.
+
+23
+00:01:16,160 --> 00:01:20,520
+So when we're trying to identify multiple
+important predictors, Of an outcome.
+
+24
+00:01:20,520 --> 00:01:24,400
+In the causal situation, in the
+explanatory case,
+
+25
+00:01:24,400 --> 00:01:28,760
+we really care about confounding, because
+we don't want to accidentally say that
+
+26
+00:01:28,760 --> 00:01:32,040
+a confounder is related to an outcome when
+it's not.
+
+27
+00:01:32,040 --> 00:01:33,790
+And we really care about chance findings,
+
+28
+00:01:33,790 --> 00:01:37,380
+we don't want to say that something's
+related, when it's not.
+
+29
+00:01:37,380 --> 00:01:40,540
+When we're talking about finding a set of
+predictors for
+
+30
+00:01:40,540 --> 00:01:45,570
+a prediction model, remember our goal is
+just to be able to predict accurately.
+
+31
+00:01:45,570 --> 00:01:46,480
+So, we're not going to worry so
+
+32
+00:01:46,480 --> 00:01:50,210
+much about confounding because if we put a
+confounder in the model, It doesn't
+
+33
+00:01:50,210 --> 00:01:55,130
+matter, as long as it's just as predictive
+as the variable that its related to.
+
+34
+00:01:55,130 --> 00:01:56,700
+Which it could be.
+
+35
+00:01:56,700 --> 00:02:00,700
+We may worry less about chance findings as
+well because if we end up with a couple of
+
+36
+00:02:00,700 --> 00:02:04,370
+extra predictors in our prediction model
+that are actually just noise.
+
+37
+00:02:04,370 --> 00:02:08,250
+It will reduce the, the model accuracy a
+little bit.
+
+38
+00:02:08,250 --> 00:02:10,880
+But we're not so worried about getting one
+or two wrong.
+
+39
+00:02:10,880 --> 00:02:14,640
+Because again we're not making any causal
+claims about those variables.
+
+40
+00:02:14,640 --> 00:02:18,290
+So just keep in mind that even know these,
+these may seem the same they're,
+
+41
+00:02:18,290 --> 00:02:19,560
+they're actually quite different.
+
+42
+00:02:20,910 --> 00:02:22,200
+Now prediction is everywhere.
+
+43
+00:02:22,200 --> 00:02:26,450
+So if you pay attention to the news You'll
+notice prediction in, in tons of
+
+44
+00:02:26,450 --> 00:02:30,690
+news stories because everybody wants to
+forecast something about the future.
+
+45
+00:02:30,690 --> 00:02:34,950
+So here's a couple of recent headlines I
+happen to see, so
+
+46
+00:02:34,950 --> 00:02:39,102
+Warren Buffet is offering a billion
+dollars if you can get the perfect NCAA
+
+47
+00:02:39,102 --> 00:02:44,700
+(no period) Tournament bracket to the NCAA
+basketball tournament that gets
+
+48
+00:02:44,700 --> 00:02:48,400
+played every year where you start with 64
+teams and you get down to one winner and
+
+49
+00:02:48,400 --> 00:02:52,990
+a lot of people will bet on this, he is
+offering a billion dollars if you can get
+
+50
+00:02:52,990 --> 00:02:56,550
+it exactly right, now in a minute, I'll
+show you what the probability of that is.
+
+51
+00:02:56,550 --> 00:02:57,470
+Is.
+
+52
+00:02:57,470 --> 00:02:59,030
+But that's a prediction problem.
+
+53
+00:02:59,030 --> 00:03:01,930
+And then Nate Silver is often in the news
+for prediction.
+
+54
+00:03:01,930 --> 00:03:08,260
+He of course, accurately predicted the
+presidential elections in 2008 and 2012.
+
+55
+00:03:08,260 --> 00:03:13,110
+He's also predicting things like Oscars
+and the Super Bowl apparently.
+
+56
+00:03:13,110 --> 00:03:16,700
+Prediction was in the news recently also
+because people are trying
+
+57
+00:03:16,700 --> 00:03:18,700
+predict risks of earthquakes.
+
+58
+00:03:18,700 --> 00:03:21,020
+That's of course very important in the Bay
+Area.
+
+59
+00:03:21,020 --> 00:03:24,060
+So there's so many cases where prediction
+comes in.
+
+60
+00:03:25,190 --> 00:03:28,420
+Just for fun here I want to actually
+calculate what's the probability of
+
+61
+00:03:28,420 --> 00:03:31,370
+winning that billion dollar prize from
+Warren Buffet,
+
+62
+00:03:31,370 --> 00:03:33,200
+we can calculate the probability of that.
+
+63
+00:03:33,200 --> 00:03:36,100
+So how does the basketball tournament
+work?
+
+64
+00:03:36,100 --> 00:03:39,770
+So, we start with 64 basketball teams.
+
+65
+00:03:39,770 --> 00:03:42,360
+They are going to play two at a time,
+
+66
+00:03:42,360 --> 00:03:46,170
+so, they'll be 32 games, from which will
+emerge 32 winners.
+
+67
+00:03:46,170 --> 00:03:51,250
+So we'll know at the beginning of the day
+the 64 teams that will start, and
+
+68
+00:03:51,250 --> 00:03:52,349
+we'll know who's playing who.
+
+69
+00:03:53,460 --> 00:03:57,290
+After that, we'll get, have 32 teams left.
+
+70
+00:03:57,290 --> 00:03:58,950
+Those teams will each play each other.
+
+71
+00:03:58,950 --> 00:04:01,420
+So we'll have a winner and a loser from
+each of those games.
+
+72
+00:04:01,420 --> 00:04:03,970
+We'll get down to 16 teams, and then down
+to eight.
+
+73
+00:04:03,970 --> 00:04:06,640
+Then down to four.
+
+74
+00:04:06,640 --> 00:04:09,240
+Then down to the final game, and then down
+to the winner.
+
+75
+00:04:09,240 --> 00:04:10,320
+Okay.
+
+76
+00:04:10,320 --> 00:04:12,730
+So, we can, its actually not too hard to
+go through and
+
+77
+00:04:12,730 --> 00:04:16,180
+say, what's the probability of getting
+the, the perfect bracket.
+
+78
+00:04:16,180 --> 00:04:20,560
+So we have to calculate first of all what
+are all the possible brackets that we
+
+79
+00:04:20,560 --> 00:04:24,860
+could possibly choose if we're in our
+office pool for example.
+
+80
+00:04:24,860 --> 00:04:27,590
+So, the first thing that happens is we
+have 64 teams.
+
+81
+00:04:27,590 --> 00:04:29,940
+We know who's playing each other within
+that 64.
+
+82
+00:04:29,940 --> 00:04:31,569
+Out of that 32 winners.
+
+83
+00:04:32,660 --> 00:04:36,260
+Well, the pr, the number of different ways
+we
+
+84
+00:04:36,260 --> 00:04:41,110
+can get 32 winners out of those 32 games,
+is 2 raised to the 32.
+
+85
+00:04:41,110 --> 00:04:45,920
+That's because in each game, there are two
+possible winners, and there are 32 games.
+
+86
+00:04:45,920 --> 00:04:48,550
+So we do 2 raised to the 32nd.
+
+87
+00:04:48,550 --> 00:04:49,590
+So, that's the first step.
+
+88
+00:04:49,590 --> 00:04:52,500
+That's just to get the first through the
+first round of elimination.
+
+89
+00:04:53,630 --> 00:04:57,650
+Then, we get to this second set, so 32
+teams are left.
+
+90
+00:04:57,650 --> 00:05:00,440
+There is going to be 16 games, two at a
+time.
+
+91
+00:05:00,440 --> 00:05:04,620
+And now, again, we are going to have out
+of that two raised to
+
+92
+00:05:04,620 --> 00:05:07,560
+the 16 ways that those games could sort
+themselves out, right?
+
+93
+00:05:07,560 --> 00:05:10,350
+You could have In, with each game there's
+two possible winners,
+
+94
+00:05:10,350 --> 00:05:12,100
+there's 16 different games.
+
+95
+00:05:12,100 --> 00:05:14,720
+Well now we can keep going, you can
+kind of guess the pattern here.
+
+96
+00:05:14,720 --> 00:05:19,050
+So, the, the next round, there's going to
+be eight winners, so there's two
+
+97
+00:05:19,050 --> 00:05:21,940
+possible winners for every game, there can
+only going to be eight winners.
+
+98
+00:05:21,940 --> 00:05:25,030
+And then the next round is going to be 2
+to the 4,
+
+99
+00:05:25,030 --> 00:05:28,580
+the next round is going to be 2 to the 2
+and
+
+100
+00:05:28,580 --> 00:05:32,360
+the next round there's going to be only 1
+winner out of 2 teams left.
+
+101
+00:05:32,360 --> 00:05:36,440
+So we just can multiply together all these
+2's raised to different powers (no period)
+
+102
+00:05:36,440 --> 00:05:40,440
+And so, if you just add up the 32 plus the
+16, plus the 8, 4, 2, and 1.
+
+103
+00:05:40,440 --> 00:05:43,750
+You can see this is raised to, this is 2
+raised to the 63rd.
+
+104
+00:05:43,750 --> 00:05:48,570
+There are to raised to the 63rd ways that
+you could draw [UNKNOWN] bracket.
+
+105
+00:05:48,570 --> 00:05:50,180
+That many possibilities.
+
+106
+00:05:50,180 --> 00:05:52,035
+Well, 2 raised to the 63rd.
+
+107
+00:05:52,035 --> 00:05:53,460
+[INAUDIBLE] base 2 is not so big.
+
+108
+00:05:53,460 --> 00:05:54,460
+You might not thing this is huge.
+
+109
+00:05:54,460 --> 00:06:02,220
+But actually, what value is, is this is 9,
+quintillion, which means 18 zeros.
+
+110
+00:06:02,220 --> 00:06:04,185
+So, let's see, one, two, three, four,
+five, six.
+
+111
+00:06:04,185 --> 00:06:09,590
+[SOUND] I just have to draw it out
+because,
+
+112
+00:06:09,590 --> 00:06:12,130
+just to show you how big that number is.
+
+113
+00:06:12,130 --> 00:06:16,730
+So, that's 9 quintillion, there are 9
+quintillion possible records.
+
+114
+00:06:16,730 --> 00:06:19,880
+Of course, the probability of winning the
+billion dollar prize.
+
+115
+00:06:19,880 --> 00:06:23,660
+Now this is just if you're guessing, is 1
+out of 9 quintillion.
+
+116
+00:06:24,890 --> 00:06:27,210
+Okay.
+So, it's not likely,
+
+117
+00:06:27,210 --> 00:06:30,480
+that anybody is actually going to claim
+this price as Warren Buffett said
+
+118
+00:06:30,480 --> 00:06:32,190
+billion dollar is pretty safe.
+
+119
+00:06:32,190 --> 00:06:35,430
+Now of course if you had actual knowledge
+about basketball,
+
+120
+00:06:35,430 --> 00:06:37,650
+you could do much better than these odds.
+
+121
+00:06:37,650 --> 00:06:40,570
+Because you'd have some sense of who's
+likely to win each game, but
+
+122
+00:06:40,570 --> 00:06:44,010
+still, even in that case the probability
+is going to be really, really,
+
+123
+00:06:44,010 --> 00:06:46,220
+really low that you can get it exactly
+right.
+
+124
+00:06:48,430 --> 00:06:52,050
+It's Oscar time until there's been a lot
+of Oscar predictions going on
+
+125
+00:06:52,050 --> 00:06:52,620
+around in the,
+
+126
+00:06:52,620 --> 00:06:57,770
+in the news, this was some predictions
+that were made from the 2013 Oscar's.
+
+127
+00:06:57,770 --> 00:07:01,110
+Somebody came up with some kind of
+modeling And
+
+128
+00:07:01,110 --> 00:07:05,010
+predicted out of all of the nominees who
+was going to win in each category.
+
+129
+00:07:05,010 --> 00:07:08,440
+There were 24 categories.This person got I
+think it was 19 out of
+
+130
+00:07:08,440 --> 00:07:09,540
+24 correct which isn't bad.
+
+131
+00:07:09,540 --> 00:07:14,020
+Then you can see some of there results
+here so for best director, they
+
+132
+00:07:14,020 --> 00:07:17,630
+calculated that the highest probability of
+winning went to Steven Spielberg.
+
+133
+00:07:17,630 --> 00:07:21,510
+In fact, Life of Pi Director Ang Lee won.
+
+134
+00:07:21,510 --> 00:07:24,510
+So he got this one wrong, but then you can
+see he got a lot right,
+
+135
+00:07:24,510 --> 00:07:25,890
+everywhere it's yellow he got it right.
+
+136
+00:07:25,890 --> 00:07:30,790
+So Argo he gave a 68% chance, indeed Argo
+won, Life of Pi for
+
+137
+00:07:30,790 --> 00:07:37,230
+best cinematography he gave 95% chance and
+that won, best actor, best screenplay etc.
+
+138
+00:07:37,230 --> 00:07:41,300
+So you can see that there's a lot of
+things that people want to predict and
+
+139
+00:07:41,300 --> 00:07:42,510
+it's a lot of fun to do prediction.

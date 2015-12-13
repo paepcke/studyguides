@@ -1,0 +1,1068 @@
+1
+00:00:00,000 --> 00:00:05,253
+[BLANK_AUDIO]
+
+2
+00:00:05,253 --> 00:00:08,880
+In this next module, I'm going to talk
+about the chi-squared test.
+
+3
+00:00:08,880 --> 00:00:11,180
+This should be review, for everybody in
+this course.
+
+4
+00:00:11,180 --> 00:00:13,170
+So, I'm going to just go over this
+quickly.
+
+5
+00:00:13,170 --> 00:00:15,600
+And say a little bit about what the
+chi-squared distribution actually is.
+
+6
+00:00:15,600 --> 00:00:18,090
+And then, I'll just do one practice
+problem on the chi squared.
+
+7
+00:00:20,350 --> 00:00:24,020
+So the chi squared test is used when you
+have either a two by two table or
+
+8
+00:00:24,020 --> 00:00:27,130
+something bigger than a 2x2 table, a
+bigger contingency table.
+
+9
+00:00:27,130 --> 00:00:29,620
+And it's used when you have independent
+observations.
+
+10
+00:00:32,370 --> 00:00:33,750
+But what is a chi-squared distribution?
+
+11
+00:00:33,750 --> 00:00:36,810
+I've mentioned the chi-squared
+distribution a couple of times already
+
+12
+00:00:36,810 --> 00:00:37,870
+this week.
+
+13
+00:00:37,870 --> 00:00:40,990
+So, let me just say a little bit about
+what it actually that distribution
+
+14
+00:00:40,990 --> 00:00:41,850
+actually is.
+
+15
+00:00:43,290 --> 00:00:47,530
+So, I mentioned earlier that a chi-square
+with one degree of
+
+16
+00:00:47,530 --> 00:00:51,460
+freedom is simply equal to a standard
+normal distribution squared.
+
+17
+00:00:51,460 --> 00:00:53,690
+Well what exactly do I mean by that?
+
+18
+00:00:53,690 --> 00:00:55,430
+One is equivilant to the other.
+
+19
+00:00:55,430 --> 00:00:57,830
+Well here's the idea, take a z
+distribution,
+
+20
+00:00:57,830 --> 00:01:01,280
+that's just a standard normal distribution
+that has a mean of zero and
+
+21
+00:01:01,280 --> 00:01:03,380
+a standard deviation of one and it's on a
+bell curve.
+
+22
+00:01:03,380 --> 00:01:05,710
+Okay so that's a z distribution.
+
+23
+00:01:05,710 --> 00:01:10,440
+If you take a standard normal distribution
+and you square all of the values, so for
+
+24
+00:01:10,440 --> 00:01:13,300
+example if you're at a value of two.
+
+25
+00:01:13,300 --> 00:01:14,190
+And, here's a z of two.
+
+26
+00:01:14,190 --> 00:01:16,640
+That would suddenly become a value of
+four.
+
+27
+00:01:16,640 --> 00:01:19,430
+That would go to four.
+
+28
+00:01:19,430 --> 00:01:24,310
+And, if you're at a value of negative two,
+that would also go to a value of four.
+
+29
+00:01:24,310 --> 00:01:25,760
+But, you keep the probability.
+
+30
+00:01:25,760 --> 00:01:27,910
+So the, the probability of getting
+negative two or
+
+31
+00:01:27,910 --> 00:01:30,100
+positive two, is still the same.
+
+32
+00:01:30,100 --> 00:01:32,389
+But, we're squaring all the values in this
+standard.
+
+33
+00:01:33,670 --> 00:01:36,100
+If you do that, what you end up with, is
+you get rid of the negatives.
+
+34
+00:01:36,100 --> 00:01:39,490
+So a Chi-Squared distribution, it has a
+bound at zero,
+
+35
+00:01:39,490 --> 00:01:41,700
+you can't have any negatives because it's
+a squared thing.
+
+36
+00:01:41,700 --> 00:01:45,910
+But you end up with a bounded zero, and
+then you end up with a long tail to
+
+37
+00:01:45,910 --> 00:01:49,100
+the right, and I'm not drawing this
+totally to scale, it's got to be centered.
+
+38
+00:01:49,100 --> 00:01:51,700
+In this case, the mean is going to be one.
+
+39
+00:01:51,700 --> 00:01:55,050
+So if, if we just square the standard
+normals, you'll end up with a mean of one,
+
+40
+00:01:55,050 --> 00:01:56,710
+and you're going to have a whole bunch of
+things out in the tail,
+
+41
+00:01:56,710 --> 00:01:59,240
+because the twos become fours, the
+negative two becomes four.
+
+42
+00:01:59,240 --> 00:02:00,910
+You're going to end up with a longer tail
+here.
+
+43
+00:02:02,090 --> 00:02:05,860
+But mathematically, the probability of any
+given set of val-,
+
+44
+00:02:05,860 --> 00:02:10,030
+given values is the same, it's just one is
+the square of the other.
+
+45
+00:02:10,030 --> 00:02:12,090
+Now, that is a chi-squared with one degree
+of freedom, so
+
+46
+00:02:12,090 --> 00:02:14,210
+that has a direct relation to ship to a
+standard normal.
+
+47
+00:02:14,210 --> 00:02:15,660
+And it gets a little more tricky after
+that.
+
+48
+00:02:15,660 --> 00:02:18,240
+But if you take one z squared and
+
+49
+00:02:18,240 --> 00:02:22,870
+you add it to another z squared you get a
+chi-squared with two degrees of freedom.
+
+50
+00:02:22,870 --> 00:02:24,450
+So that's what a chi-squared with two
+degrees of freedom is,
+
+51
+00:02:24,450 --> 00:02:27,320
+it's a standard normal squared plus a
+standard normal squared.
+
+52
+00:02:27,320 --> 00:02:29,140
+You can see where I'm going with this.
+
+53
+00:02:29,140 --> 00:02:34,500
+If you then take a z squared plus a z
+squared plus another z squared,
+
+54
+00:02:34,500 --> 00:02:40,070
+That ends up being a chi square with three
+degrees of freedom, and so on.
+
+55
+00:02:40,070 --> 00:02:41,820
+And all of these of course have different
+shapes.
+
+56
+00:02:41,820 --> 00:02:43,710
+And you can see some of the shapes here.
+
+57
+00:02:43,710 --> 00:02:47,080
+Which shows you with one degree of
+freedom, two degrees, three degrees, etc.
+
+58
+00:02:47,080 --> 00:02:48,710
+in this little picture.
+
+59
+00:02:48,710 --> 00:02:52,080
+So, the shape of the distribution depends
+on the degrees of freedom, but
+
+60
+00:02:52,080 --> 00:02:54,800
+there is a strict relationship back to the
+standard normal.
+
+61
+00:02:54,800 --> 00:02:58,730
+And at least with a chi-squared of one,
+degree of freedom,
+
+62
+00:02:58,730 --> 00:03:00,140
+that relationship is pretty direct.
+
+63
+00:03:00,140 --> 00:03:03,129
+This gets a little more tricky as you go
+out, but there's this direct relationship.
+
+64
+00:03:05,270 --> 00:03:08,430
+Now it's useful to know that the expected
+value of
+
+65
+00:03:08,430 --> 00:03:10,460
+a Chi-Square is always equal to its
+degrees of freedom.
+
+66
+00:03:10,460 --> 00:03:13,440
+So the expected value of a Chi-Square of
+one degree of freedom is one,
+
+67
+00:03:13,440 --> 00:03:15,520
+two degrees of freedom is two, etc.
+
+68
+00:03:15,520 --> 00:03:17,830
+And also the variance of a Chi-Square is
+also,
+
+69
+00:03:17,830 --> 00:03:20,500
+is always equal to two times its degrees
+of freedom.
+
+70
+00:03:20,500 --> 00:03:22,740
+So sometimes if you don't want to bother
+to go look up chi-square.
+
+71
+00:03:22,740 --> 00:03:26,650
+The chi-square, you know the p value in a
+chi-squared chart, you can kind of quickly
+
+72
+00:03:26,650 --> 00:03:30,375
+look at the value of the chi-squared in,
+guessed, based on, you know
+
+73
+00:03:30,375 --> 00:03:34,250
+two times the degrees of freedom, and, you
+know how you can probably guess whether or
+
+74
+00:03:34,250 --> 00:03:37,670
+not that chi-squared likely statistically
+significant, you can make an estimate.
+
+75
+00:03:38,760 --> 00:03:42,390
+So it's useful to just keep that in mind
+the expected value and variance grow.
+
+76
+00:03:42,390 --> 00:03:44,360
+With the numbers of degrees of freedom.
+
+77
+00:03:44,360 --> 00:03:48,868
+And again I'll just remind you that when
+you're calculated degrees of freedom for
+
+78
+00:03:48,868 --> 00:03:52,510
+a contingency table, is always the number
+of
+
+79
+00:03:52,510 --> 00:03:57,080
+degrees of freedoms is equal to rows minus
+one times columns minus one, so
+
+80
+00:03:57,080 --> 00:04:00,210
+since we're talking about the Chi-Squared
+distribution can be applied to
+
+81
+00:04:00,210 --> 00:04:03,510
+many different things And it's not just
+contingency tables.
+
+82
+00:04:03,510 --> 00:04:08,170
+But the, the co, one of the common uses of
+a chi square is for contingencies tables.
+
+83
+00:04:08,170 --> 00:04:11,620
+In the case of contingency table the
+degrees of freedom is always equal to r
+
+84
+00:04:11,620 --> 00:04:14,480
+minus, the rose minus one times the
+columns minus one.
+
+85
+00:04:16,300 --> 00:04:19,070
+I'm just going to quickly walk through one
+chi square test of
+
+86
+00:04:19,070 --> 00:04:21,290
+independance from my contingency table.
+
+87
+00:04:21,290 --> 00:04:24,110
+Again I'm assuming that you've all done
+this before to the to be
+
+88
+00:04:24,110 --> 00:04:25,800
+pretty much reviewed.
+
+89
+00:04:25,800 --> 00:04:30,460
+So here's some data that I got out of
+Agresti's discreet data analysis book.
+
+90
+00:04:31,530 --> 00:04:34,450
+They were looking at political ideology
+and happiness.
+
+91
+00:04:34,450 --> 00:04:36,420
+So they do a big survey of people and
+
+92
+00:04:36,420 --> 00:04:39,080
+said you know, are you liberal, moderate
+or conservative?
+
+93
+00:04:39,080 --> 00:04:40,500
+And what's your level of happiness?
+
+94
+00:04:40,500 --> 00:04:43,320
+We have two categorical variables they've
+done this as they,
+
+95
+00:04:43,320 --> 00:04:46,620
+they could have scored this as continues
+variables, probably but this
+
+96
+00:04:46,620 --> 00:04:50,680
+they've done this as categorical variables
+but we have three level categories so
+
+97
+00:04:50,680 --> 00:04:53,870
+we don't, we no longer on a 2 by 2 table,
+we're on a 3 by 3 table.
+
+98
+00:04:54,920 --> 00:04:59,020
+How can I tell, whether or not there are
+significant differences
+
+99
+00:04:59,020 --> 00:05:02,350
+in happiness between the different
+political ideology proofs.
+
+100
+00:05:04,310 --> 00:05:06,790
+I'm going to apply a chi-squared test for
+that, so
+
+101
+00:05:06,790 --> 00:05:10,000
+when I've got a bigger contingency table I
+going to apply the Chi-squared test.
+
+102
+00:05:10,000 --> 00:05:13,020
+So now I'm actually going to apply that
+Chi-squared test here.
+
+103
+00:05:13,020 --> 00:05:16,488
+So here is my Observe table just copied
+from the last slide and
+
+104
+00:05:16,488 --> 00:05:19,460
+now I'm going to calculate the expected
+values.
+
+105
+00:05:19,460 --> 00:05:22,710
+So we already did this for a two by two
+table in an earlier module.
+
+106
+00:05:22,710 --> 00:05:27,070
+It's really the same idea here, but how do
+I calculate my expected values?
+
+107
+00:05:27,070 --> 00:05:30,060
+So for, the quick way to calculate the
+expected count for
+
+108
+00:05:30,060 --> 00:05:35,030
+any cell is to multiply the row total
+times to column total for
+
+109
+00:05:35,030 --> 00:05:38,110
+that cell, and divide that by the total
+end.
+
+110
+00:05:38,110 --> 00:05:39,000
+Again, why is that?
+
+111
+00:05:39,000 --> 00:05:43,030
+Because you have the no hypothesis is true
+if the,
+
+112
+00:05:43,030 --> 00:05:48,280
+two things, political bent and happiness
+are independent, then.
+
+113
+00:05:48,280 --> 00:05:51,100
+The probability of being in the in
+
+114
+00:05:51,100 --> 00:05:55,620
+any given cell should be the product of
+the marginal probability so for
+
+115
+00:05:55,620 --> 00:05:59,060
+example the probability of being liberal
+and not to happy will be.
+
+116
+00:05:59,060 --> 00:06:01,610
+Being that in this particular cell,
+
+117
+00:06:01,610 --> 00:06:06,190
+if those things are independent should be
+exactly equal to the probability,
+
+118
+00:06:06,190 --> 00:06:08,790
+the marginal probability of being liberal,
+the overall probability of
+
+119
+00:06:08,790 --> 00:06:12,290
+being liberal times the overall
+probability of being not too happy.
+
+120
+00:06:12,290 --> 00:06:15,170
+So you would calculate that by doing 57
+out of 321,
+
+121
+00:06:15,170 --> 00:06:16,990
+is your probability of being liberal.
+
+122
+00:06:16,990 --> 00:06:19,920
+Your marginal probability of being
+liberal.
+
+123
+00:06:19,920 --> 00:06:22,770
+50 out of the 321 is your marginal
+probability of being not too happy.
+
+124
+00:06:22,770 --> 00:06:25,180
+That's going to give you the probability
+of being in this cell.
+
+125
+00:06:25,180 --> 00:06:27,050
+We always want to get counts for pi
+squared so
+
+126
+00:06:27,050 --> 00:06:29,540
+we were then going to have to multiply
+that by n.
+
+127
+00:06:29,540 --> 00:06:31,210
+Notice those 321's cancel, so
+
+128
+00:06:31,210 --> 00:06:34,670
+you can always get the expected value by
+row total times column total divided by n.
+
+129
+00:06:35,840 --> 00:06:37,890
+So if I do that here, 57.
+
+130
+00:06:37,890 --> 00:06:40,040
+Times 50 divided by 321.
+
+131
+00:06:40,040 --> 00:06:43,700
+I get that the expected count here is
+8.88.
+
+132
+00:06:43,700 --> 00:06:46,290
+So we were expecting only eight and
+
+133
+00:06:46,290 --> 00:06:49,010
+actually we saw a few more not too happy
+people in the liberal category.
+
+134
+00:06:49,010 --> 00:06:52,280
+Alright, so next I'm going to go on and
+
+135
+00:06:52,280 --> 00:06:55,940
+I'm going to do the expected value for,
+liberal and pretty happy.
+
+136
+00:06:55,940 --> 00:07:00,530
+I could pick any, any cell to do next, but
+I'm just kind of go in, in order here.
+
+137
+00:07:00,530 --> 00:07:01,380
+So, how am I going to get that one?
+
+138
+00:07:01,380 --> 00:07:05,060
+I'm going to take the row total which is
+57 times the column total which is 155 and
+
+139
+00:07:05,060 --> 00:07:08,850
+I'm going to divide that by the end, which
+is 321.
+
+140
+00:07:08,850 --> 00:07:11,610
+Which gives me a value of 27.5.
+
+141
+00:07:11,610 --> 00:07:15,450
+Next I'm going to go ahead and
+
+142
+00:07:15,450 --> 00:07:20,270
+do the expected value in the Moderate and
+Not too happy category.
+
+143
+00:07:20,270 --> 00:07:25,700
+So here I'm going to be using the row
+total of 129 times the column total of 50,
+
+144
+00:07:25,700 --> 00:07:26,800
+divided by 321.
+
+145
+00:07:26,800 --> 00:07:28,590
+That gives me an expected value of 20.09.
+
+146
+00:07:28,590 --> 00:07:33,670
+And then I'm going to do this middle cell.
+
+147
+00:07:33,670 --> 00:07:37,940
+That's going to be 129 times Times 50
+divided by 321.
+
+148
+00:07:37,940 --> 00:07:39,010
+And that gives me 62.29.
+
+149
+00:07:39,010 --> 00:07:42,530
+Now I could keep on multiplying like this.
+
+150
+00:07:43,630 --> 00:07:44,280
+But in fact,
+
+151
+00:07:44,280 --> 00:07:47,950
+there's an easier way from here on out to
+solve the rest of the cells.
+
+152
+00:07:47,950 --> 00:07:51,310
+So what you have to recognize in a Chi
+squared is that the marginals are fixed.
+
+153
+00:07:51,310 --> 00:07:55,900
+So 50, 155, and 116 those marginal totals.
+
+154
+00:07:55,900 --> 00:07:59,680
+And 57, 129, and 35, those don't change.
+
+155
+00:07:59,680 --> 00:08:00,440
+Those cannot change.
+
+156
+00:08:00,440 --> 00:08:05,600
+So by the time I've solved two cells in
+the first row and
+
+157
+00:08:05,600 --> 00:08:09,550
+I know the total then I know what that
+third cell in the first row has to be.
+
+158
+00:08:09,550 --> 00:08:11,940
+So I no longer have to do any
+mulitplication.
+
+159
+00:08:11,940 --> 00:08:13,680
+And same way that you can see that
+everyone of
+
+160
+00:08:13,680 --> 00:08:16,990
+the cells that's locked into this table I
+can fill in simply by subtracting.
+
+161
+00:08:17,990 --> 00:08:23,280
+What this tells you, is that this table
+has four degrees of freedom.
+
+162
+00:08:23,280 --> 00:08:26,860
+By the time I fill in four cells, the rest
+of the cells are fixed.
+
+163
+00:08:26,860 --> 00:08:28,760
+So, it only has four degrees of freedom.
+
+164
+00:08:28,760 --> 00:08:32,590
+What that means in terms of my workload is
+I only have to multiply out this
+
+165
+00:08:32,590 --> 00:08:34,690
+to get these expected values for four
+cells and
+
+166
+00:08:34,690 --> 00:08:36,450
+then I am essentially done and I can just
+subtract.
+
+167
+00:08:38,270 --> 00:08:41,348
+Another way to know that this has
+[INAUDIBLE] is to do three rows and
+
+168
+00:08:41,348 --> 00:08:42,180
+three columns.
+
+169
+00:08:42,180 --> 00:08:44,268
+Three minus times three minus one is also
+four.
+
+170
+00:08:44,268 --> 00:08:45,910
+But you can see that where that.
+
+171
+00:08:45,910 --> 00:08:50,820
+Comes from is that by the time I filled in
+four cells, then I got one row left and
+
+172
+00:08:50,820 --> 00:08:53,970
+one column left, those are going to be
+fixed, because the marginals are fixed.
+
+173
+00:08:53,970 --> 00:08:55,460
+So there's no more wiggle room.
+
+174
+00:08:55,460 --> 00:08:56,940
+There's no more degrees of freedom.
+
+175
+00:08:56,940 --> 00:08:58,440
+I'm just going to subtract, you know,
+
+176
+00:08:58,440 --> 00:09:03,880
+57 minus 27.5 minus 8.88 gives me an
+expected value of 20.6 here.
+
+177
+00:09:03,880 --> 00:09:06,320
+And I'm subtracting to fill in the rest of
+these cells.
+
+178
+00:09:10,580 --> 00:09:15,900
+So again, 50 minus 20.09 minus 8.88 gives
+me 21.0.
+
+179
+00:09:15,900 --> 00:09:21,260
+So I am filling all of my expected values,
+once I do that, then I can calculate.
+
+180
+00:09:21,260 --> 00:09:24,330
+Now here's just a little side that reviews
+how to calculate the expected in case you
+
+181
+00:09:24,330 --> 00:09:25,360
+need a little refresher on that.
+
+182
+00:09:25,360 --> 00:09:26,850
+I'm going to just skip over that quickly.
+
+183
+00:09:26,850 --> 00:09:29,560
+You can pause it if you need to look at
+that more carefully.
+
+184
+00:09:29,560 --> 00:09:31,550
+But now, once I've got my observed and
+
+185
+00:09:31,550 --> 00:09:35,020
+expected tables, I can calculate my
+chi-squared statistics.
+
+186
+00:09:35,020 --> 00:09:37,160
+It's again a Chi score of 40 degrees of
+freedom here.
+
+187
+00:09:38,180 --> 00:09:43,990
+My observe, the statistic is observe minus
+expected squared divided by expected.
+
+188
+00:09:43,990 --> 00:09:48,640
+So I went ahead just to save us time here
+and I plug in each of the values.
+
+189
+00:09:48,640 --> 00:09:52,760
+So the first cell the observed value was
+13 the expected was 8.88.
+
+190
+00:09:52,760 --> 00:09:56,760
+The next cell the observed was 29 the
+expected value was 27.5 and so on.
+
+191
+00:09:56,760 --> 00:09:58,580
+So there were nine cells on the table,
+
+192
+00:09:58,580 --> 00:10:01,970
+there are nine Terms is calculating this
+chi-squared statistic.
+
+193
+00:10:01,970 --> 00:10:04,810
+Now, I have to admit that I actually
+didn't want to sit there and
+
+194
+00:10:04,810 --> 00:10:08,730
+have to plug all of this into a
+calculator, so I went ahead and
+
+195
+00:10:08,730 --> 00:10:13,200
+dumped all of these data into SAS, and
+actually let SAS calculate this for me.
+
+196
+00:10:13,200 --> 00:10:15,980
+You're not going to have to do too many
+chi-squares by hand, maybe one.
+
+197
+00:10:15,980 --> 00:10:18,760
+In this class, and then it's rather
+tedious, you can see,
+
+198
+00:10:18,760 --> 00:10:19,820
+to calculate it by hand.
+
+199
+00:10:19,820 --> 00:10:21,500
+The computer can do it for you.
+
+200
+00:10:21,500 --> 00:10:22,182
+So when I calculate it out I
+
+201
+00:10:22,182 --> 00:10:23,592
+get a chi-squared value of seven point
+zero seven.
+
+202
+00:10:23,592 --> 00:10:25,550
+This chi-squared has four degrees of
+values of freedoms.
+
+203
+00:10:25,550 --> 00:10:27,720
+Remember the expected value here is four.
+
+204
+00:10:27,720 --> 00:10:29,960
+The variance is two times four or eight.
+
+205
+00:10:29,960 --> 00:10:34,120
+So you can see that seven isn't quite
+enough bigger than four to
+
+206
+00:10:34,120 --> 00:10:35,550
+quite make statistical significance.
+
+207
+00:10:35,550 --> 00:10:38,110
+It's the p value here comes out to zero
+point one three,
+
+208
+00:10:38,110 --> 00:10:41,450
+again you can go to a chart or you can
+have sas or
+
+209
+00:10:41,450 --> 00:10:45,030
+another statistical program calculate that
+for you directly which is what I did.
+
+210
+00:10:45,030 --> 00:10:47,330
+So it didn't quite reach statistical
+significance.
+
+211
+00:10:47,330 --> 00:10:49,330
+We don't have enough evidence to say that,
+you know,
+
+212
+00:10:49,330 --> 00:10:52,340
+liberals are doing worse on happiness
+than, than conservatives.
+
+213
+00:10:53,680 --> 00:10:54,780
+But as your general setup for
+
+214
+00:10:54,780 --> 00:10:57,370
+the chi-squared test, you won't have to do
+too many of these by hand.
+
+215
+00:10:57,370 --> 00:10:58,990
+You usually can let the computer do it but
+
+216
+00:10:58,990 --> 00:11:02,300
+it's good to kind of know what goes on
+behind the scenes in calculating this.
+
+217
+00:11:05,010 --> 00:11:08,190
+Now, I'm just going to show you that if
+you wanted to calculate that chi-squared
+
+218
+00:11:08,190 --> 00:11:12,860
+value by hand and then go get the p value
+that corresponds out of it, you can go to
+
+219
+00:11:12,860 --> 00:11:15,780
+a chi-squared chart like that you can find
+in back of an old fashioned text book.
+
+220
+00:11:15,780 --> 00:11:18,260
+Or, you can go to one of these online
+calculators,
+
+221
+00:11:18,260 --> 00:11:21,450
+if you Google, chi-square P value
+calculator, you'll get a ton.
+
+222
+00:11:21,450 --> 00:11:24,760
+Here's one that I used to get my P value.
+
+223
+00:11:24,760 --> 00:11:27,980
+Again, I also used SAS, but I plugged in
+my chi-square seven point zero seven,
+
+224
+00:11:27,980 --> 00:11:29,140
+I plugged in the degrees of freedom.
+
+225
+00:11:29,140 --> 00:11:31,364
+It spits out for me, the two-sided P value
+is zero point one three.
+
+226
+00:11:31,364 --> 00:11:34,759
+So fairly easy to do this online without
+having to go to a chart.
+
+227
+00:11:34,759 --> 00:11:35,321
+[BLANK_AUDIO]

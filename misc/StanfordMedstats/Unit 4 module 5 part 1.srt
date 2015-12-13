@@ -1,0 +1,1434 @@
+1
+00:00:08,310 --> 00:00:11,500
+In this next module I'm going to talk
+about a very
+
+2
+00:00:11,500 --> 00:00:15,590
+important continuous distribution function
+called the normal function, and
+
+3
+00:00:15,590 --> 00:00:18,810
+of course we've seen it already quite a
+bit in this course.
+
+4
+00:00:18,810 --> 00:00:23,110
+So the normal distribution we saw already
+has a bell shape.
+
+5
+00:00:23,110 --> 00:00:25,898
+It has 2 parameters that define it just
+like the.
+
+6
+00:00:25,898 --> 00:00:28,650
+Binomial had 2 parameter that define it N
+and P.
+
+7
+00:00:28,650 --> 00:00:34,070
+The normal has 2 parameter's mu and the
+mean and sigma the standard deviation.
+
+8
+00:00:34,070 --> 00:00:36,160
+The nice thing about the normal is the
+mean and
+
+9
+00:00:36,160 --> 00:00:39,860
+the sigma, the standard deviation are
+already calculated for you.
+
+10
+00:00:39,860 --> 00:00:44,450
+They define the curve so you don't have to
+calculate those by hand.
+
+11
+00:00:44,450 --> 00:00:48,490
+So, if you shift the mean, you shift the
+distribution left or right.
+
+12
+00:00:48,490 --> 00:00:53,360
+If you, if you increase the, the sigma,
+you widen the curve.
+
+13
+00:00:53,360 --> 00:00:56,680
+If you decrease the sigma, the curve
+becomes more narrow.
+
+14
+00:00:56,680 --> 00:01:02,540
+And that is a whole family of curves, of
+bell curves defined by mu and sigma.
+
+15
+00:01:02,540 --> 00:01:07,710
+Now, just for fun Don't get thrown by this
+if you are a little, intimidated by math.
+
+16
+00:01:07,710 --> 00:01:12,700
+But just for fun I'm showing you here the
+actual mathematical function that
+
+17
+00:01:12,700 --> 00:01:14,110
+defines the bell curve.
+
+18
+00:01:14,110 --> 00:01:18,010
+So all of this fancy math, all that it
+say's is that if you were to
+
+19
+00:01:18,010 --> 00:01:22,460
+plug this into a graphing calculator, or a
+graphing, program in a computer.
+
+20
+00:01:22,460 --> 00:01:25,310
+It would spit back out for you, a bell
+curve.
+
+21
+00:01:25,310 --> 00:01:28,670
+And there's a whole bunch of constants,
+the way, the reason it looks so bad is
+
+22
+00:01:28,670 --> 00:01:32,010
+here is we've got a bunch of constants in
+here that make it look more complicated.
+
+23
+00:01:32,010 --> 00:01:35,920
+Like E is just the exponential function
+that's just 2.71 blah, blah, blah.
+
+24
+00:01:35,920 --> 00:01:38,190
+And pi, you all know, is 3.14, etcetera.
+
+25
+00:01:38,190 --> 00:01:40,870
+And then there's 2 parameters, again,
+
+26
+00:01:40,870 --> 00:01:44,020
+that define exactly what the bell curve
+looks like.
+
+27
+00:01:44,020 --> 00:01:46,210
+Those are your sigma and your mu.
+
+28
+00:01:46,210 --> 00:01:49,690
+So different, if you change sigma and mu,
+you change the shape of the bell curve.
+
+29
+00:01:49,690 --> 00:01:51,666
+But they all belong to one single.
+
+30
+00:01:51,666 --> 00:01:54,770
+Mathematical family of functions.
+
+31
+00:01:54,770 --> 00:01:57,220
+And that again, is just a function there
+just for
+
+32
+00:01:57,220 --> 00:02:00,290
+fun, and that's the probability density
+function for a bell curve.
+
+33
+00:02:02,220 --> 00:02:05,050
+It's a probability function so we know
+that the area under the curve of
+
+34
+00:02:05,050 --> 00:02:08,390
+any bell curve that follows this function,
+must sum to one.
+
+35
+00:02:08,390 --> 00:02:10,530
+It must integrate to one.
+
+36
+00:02:10,530 --> 00:02:12,890
+And so, again this is purely for fun.
+
+37
+00:02:12,890 --> 00:02:15,730
+I'm never going to ask you to work out
+this integral.
+
+38
+00:02:15,730 --> 00:02:19,130
+But if you were to integrate this
+mathematical function,
+
+39
+00:02:19,130 --> 00:02:22,160
+from negative infinity to positive
+infinity, it indeed integrates to one.
+
+40
+00:02:22,160 --> 00:02:25,880
+So that means, that that's the proof that
+indeed the area under this curve is one,
+
+41
+00:02:25,880 --> 00:02:28,110
+so it is, that makes it a probability
+function.
+
+42
+00:02:30,490 --> 00:02:33,530
+And the expected value of this function is
+just mule.
+
+43
+00:02:33,530 --> 00:02:37,310
+But it turns out that you could, you could
+show that,
+
+44
+00:02:37,310 --> 00:02:39,760
+you could apply the expected value formula
+here.
+
+45
+00:02:39,760 --> 00:02:42,540
+Again if this bothers you, if all these
+integrals bother you,
+
+46
+00:02:42,540 --> 00:02:43,600
+you can scroll ahead of this.
+
+47
+00:02:43,600 --> 00:02:48,030
+It's not absolutely necessary, but just
+you understand, the.
+
+48
+00:02:48,030 --> 00:02:51,750
+If you were to multiply X times that
+probability function, and
+
+49
+00:02:51,750 --> 00:02:55,590
+integrate, which is like summing up, that
+would actually give you back mu.
+
+50
+00:02:55,590 --> 00:03:00,170
+You may not want to solve that integral by
+hand, but if you do it gives you back mu.
+
+51
+00:03:00,170 --> 00:03:04,862
+And same thing if you apply the variance
+formula here and solve that.
+
+52
+00:03:04,862 --> 00:03:09,620
+Yeah amazing integral here it would just
+give you back sigma squared so
+
+53
+00:03:09,620 --> 00:03:12,610
+again we don't actually have to solve for
+expected value of
+
+54
+00:03:12,610 --> 00:03:15,430
+our varience here because it turns out
+that the the mean is new and
+
+55
+00:03:15,430 --> 00:03:17,800
+the varience is sigma squared those define
+the curve.
+
+56
+00:03:17,800 --> 00:03:19,830
+So those, I just showing these for fun.
+
+57
+00:03:19,830 --> 00:03:24,740
+Now remember that, we have, when we, are
+on a perfect normal curve,
+
+58
+00:03:24,740 --> 00:03:28,298
+perfect mathematical funtion, we have this
+rule that we know that 68% of
+
+59
+00:03:28,298 --> 00:03:33,057
+observations will fall within one standard
+deviation of the mean, 95 within two.
+
+60
+00:03:33,057 --> 00:03:35,290
+And 99.7% within 3.
+
+61
+00:03:35,290 --> 00:03:38,090
+We've seen this rule and used it with real
+data before.
+
+62
+00:03:38,090 --> 00:03:40,250
+Well, where did that rule come from?
+
+63
+00:03:40,250 --> 00:03:43,120
+I just told you that rule, but why should
+you believe me?
+
+64
+00:03:43,120 --> 00:03:49,270
+Well, what that rule came from is that, in
+fact, if you integrate any normal
+
+65
+00:03:49,270 --> 00:03:54,050
+distribution bell curve, that follows that
+particular mathematical function.
+
+66
+00:03:54,050 --> 00:03:58,420
+That it always turns out that 68% of the
+area under the curve will fall
+
+67
+00:03:58,420 --> 00:04:02,045
+between one standard deviation below, up
+to one standard deviation above the mean.
+
+68
+00:04:02,045 --> 00:04:06,150
+95% of the area will fall between two
+standard deviations below to two
+
+69
+00:04:06,150 --> 00:04:07,410
+standard deviations above the mean.
+
+70
+00:04:07,410 --> 00:04:13,840
+So we, again saw this rule Earlier but now
+I'm just telling you where it comes from.
+
+71
+00:04:13,840 --> 00:04:16,990
+It just comes from calculus, from the
+math.
+
+72
+00:04:16,990 --> 00:04:20,080
+The area under the curve is always 68%
+between one
+
+73
+00:04:21,340 --> 00:04:25,230
+standard deviation below to one standard
+deviation above the mean and
+
+74
+00:04:25,230 --> 00:04:27,500
+you could actually, if you wanted, of
+course.
+
+75
+00:04:27,500 --> 00:04:29,970
+You're not going to have to do this in
+this course but if you wanted to,
+
+76
+00:04:29,970 --> 00:04:31,380
+you could do that integral and
+
+77
+00:04:31,380 --> 00:04:35,550
+you could show that if you're going from
+mu minus sigma to mu plus sigma.
+
+78
+00:04:35,550 --> 00:04:38,030
+And you integrate here that that will give
+you 68% etc.
+
+79
+00:04:38,030 --> 00:04:40,230
+Of course, you know, again your not
+going to have to do those integrals, but
+
+80
+00:04:40,230 --> 00:04:45,570
+just understand that's why that's where
+that 689599.7 percent rule comes from.
+
+81
+00:04:45,570 --> 00:04:48,420
+It just comes from the mathematical curve
+from the areas under the curve.
+
+82
+00:04:50,470 --> 00:04:53,320
+Alright, so that's a really useful rule.
+
+83
+00:04:53,320 --> 00:04:57,814
+68, 95, 99.7, is useful for a lot
+problems.
+
+84
+00:04:57,814 --> 00:05:03,070
+So suppose SAT scores, math SAT scores,
+say follow a roughly normal distribution.
+
+85
+00:05:03,070 --> 00:05:04,620
+A lot of IQ tests and,
+
+86
+00:05:04,620 --> 00:05:07,530
+and standardized tests like this will end
+up following a normal distribution.
+
+87
+00:05:07,530 --> 00:05:11,250
+And lets say that, the mean, math SAT
+score is 500 and
+
+88
+00:05:11,250 --> 00:05:12,470
+the standard deviation is 50.
+
+89
+00:05:12,470 --> 00:05:13,260
+I'm just making those up,
+
+90
+00:05:13,260 --> 00:05:16,100
+but that's probably reasonably close to
+what it actually is.
+
+91
+00:05:16,100 --> 00:05:17,300
+We know a whole bunch of things.
+
+92
+00:05:17,300 --> 00:05:20,120
+If we know it's on a normal curve, then
+because of this 95, 90.
+
+93
+00:05:20,120 --> 00:05:22,160
+68-95-99.7 rule.
+
+94
+00:05:22,160 --> 00:05:26,835
+We know that 68% of students will have
+scores 450 and 550,
+
+95
+00:05:26,835 --> 00:05:32,445
+that's one standard deviation below to one
+standard deviation above the mean.
+
+96
+00:05:32,445 --> 00:05:35,943
+We also know that 95% of students will be
+between 400 and
+
+97
+00:05:35,943 --> 00:05:39,395
+600, two standard deviations below to two
+standard deviations above the mean.
+
+98
+00:05:39,395 --> 00:05:44,050
+And we know that 99.7% will be between 350
+and 650.
+
+99
+00:05:44,050 --> 00:05:47,220
+Now that's all very useful but it's
+limited, right?
+
+100
+00:05:47,220 --> 00:05:49,520
+We would like to be able to do more with
+the normal curve.
+
+101
+00:05:49,520 --> 00:05:53,360
+So that answers some questions, but it
+answers only particular questions.
+
+102
+00:05:53,360 --> 00:05:55,840
+What if I instead ask something like,
+
+103
+00:05:55,840 --> 00:06:00,794
+what's the probability of getting a math
+SAT score of 575 or less?
+
+104
+00:06:00,794 --> 00:06:05,550
+Well 575 wasn't on one of those boundaries
+that I just showed you,
+
+105
+00:06:05,550 --> 00:06:09,465
+it doesn't fall at either 1 standard
+deviation or 2 standard deviations or
+
+106
+00:06:09,465 --> 00:06:11,020
+3 standard deviations away from the mean.
+
+107
+00:06:11,020 --> 00:06:15,550
+So our 68-95-99.7 rule doesn't help us
+here.
+
+108
+00:06:15,550 --> 00:06:18,600
+So you might think oh, no we're going to
+have to go to calculus and
+
+109
+00:06:18,600 --> 00:06:20,050
+do an integral to figure this out, right.
+
+110
+00:06:20,050 --> 00:06:23,320
+I mean you would get the answer if you, if
+you know the math and
+
+111
+00:06:23,320 --> 00:06:25,470
+I'm like, here's my normal curve.
+
+112
+00:06:25,470 --> 00:06:27,180
+Here's my mean of 500.
+
+113
+00:06:27,180 --> 00:06:29,050
+It's got a standard deviation of 50, and
+
+114
+00:06:29,050 --> 00:06:35,640
+I literally could integrate from negative
+infinity all the way up to 575.
+
+115
+00:06:35,640 --> 00:06:38,040
+I could do this integral under the curve,
+right?
+
+116
+00:06:38,040 --> 00:06:41,210
+Now, again, I'm not going to, you're not
+going to have to do this, I promise.
+
+117
+00:06:41,210 --> 00:06:44,250
+But that would be mathematically the w-,
+one way.
+
+118
+00:06:44,250 --> 00:06:47,140
+To, to solve that, you could actually do
+that integral and find out that,
+
+119
+00:06:47,140 --> 00:06:51,970
+that area under the curve, and that would
+be the probability of getting 575 or less.
+
+120
+00:06:51,970 --> 00:06:53,720
+But here's the integral again, just for
+fun.
+
+121
+00:06:55,050 --> 00:06:55,970
+Solve this integral?
+
+122
+00:06:55,970 --> 00:06:57,250
+No thanks.
+
+123
+00:06:57,250 --> 00:07:01,110
+It looks like a pain to solve, and we
+don't want to,
+
+124
+00:07:01,110 --> 00:07:05,610
+should be a negative infinity, that we
+don't really want to have to solve this.
+
+125
+00:07:05,610 --> 00:07:08,050
+All right.
+So we need a, we need something else.
+
+126
+00:07:08,050 --> 00:07:13,260
+We need something else to do when it's not
+right on, 68, 95, 99.7.
+
+127
+00:07:13,260 --> 00:07:16,390
+So, this is where we're going to bring in
+a little trick.
+
+128
+00:07:16,390 --> 00:07:20,810
+We're going to bring in something called
+the standard normal curve, or z scores.
+
+129
+00:07:20,810 --> 00:07:23,810
+And this is basically, we're going to take
+all normal curves, and
+
+130
+00:07:23,810 --> 00:07:26,900
+we're going to make them fall on a single
+normal curve.
+
+131
+00:07:26,900 --> 00:07:29,460
+And that's going to be the normal curve
+where we have a mean of zero,
+
+132
+00:07:29,460 --> 00:07:31,620
+and a standard deviation of one.
+
+133
+00:07:31,620 --> 00:07:35,010
+You can see that it's in, it's
+advantageous if the mean is zero, and
+
+134
+00:07:35,010 --> 00:07:38,890
+the standard deviation of 1 is 1, because
+that simplifies all of the math.
+
+135
+00:07:38,890 --> 00:07:43,330
+So we're going to force every single
+normal curve that we encounter to fall.
+
+136
+00:07:43,330 --> 00:07:44,180
+We're going to force it,
+
+137
+00:07:44,180 --> 00:07:47,840
+to instead, be on this universal currency
+of the standard normal curve.
+
+138
+00:07:47,840 --> 00:07:50,410
+We're going to turn everything into what
+we call z scores.
+
+139
+00:07:50,410 --> 00:07:54,216
+Z scores are just Standard deviation
+units.
+
+140
+00:07:54,216 --> 00:07:59,950
+So all that we're doing here is instead of
+talking about units of SAT score for
+
+141
+00:07:59,950 --> 00:08:02,250
+example, which are going to vary.
+
+142
+00:08:02,250 --> 00:08:06,060
+Your units of height or whatever units we
+happen to be talking about.
+
+143
+00:08:06,060 --> 00:08:10,670
+We're going to translate everything
+instead into standard deviation units.
+
+144
+00:08:10,670 --> 00:08:14,160
+We're going to convert all normal
+distributions onto the standard
+
+145
+00:08:14,160 --> 00:08:15,730
+normal chart.
+
+146
+00:08:15,730 --> 00:08:19,410
+Essentially we're going to be talking
+about units in standard deviation.
+
+147
+00:08:19,410 --> 00:08:23,130
+So, remember that 575 on the SAT score.
+
+148
+00:08:23,130 --> 00:08:28,690
+We just want to ask the question, well if
+somebody gets a 575,
+
+149
+00:08:28,690 --> 00:08:31,745
+how many standard deviatoins are they
+above the mean?
+
+150
+00:08:31,745 --> 00:08:35,040
+Well I can answer question I could just
+reason it out.
+
+151
+00:08:35,040 --> 00:08:36,550
+I don't even need this formula over here.
+
+152
+00:08:36,550 --> 00:08:42,900
+If they're 575 and the standard is 50 and
+
+153
+00:08:42,900 --> 00:08:47,020
+mean is 500 75 is 1.5 standard deviation
+above the mean.
+
+154
+00:08:47,020 --> 00:08:49,230
+That's all we're doing when we're
+calculating the Z score.
+
+155
+00:08:49,230 --> 00:08:50,360
+So how did I get that?
+
+156
+00:08:50,360 --> 00:08:53,680
+I subtract the mean and I divided by the
+standard deviation.
+
+157
+00:08:53,680 --> 00:08:59,360
+So, that person is, if they're 575 they're
+1.5 standard deviations above the mean.
+
+158
+00:08:59,360 --> 00:09:03,770
+So we put everything, no matter what the
+original curve we started with was,
+
+159
+00:09:03,770 --> 00:09:07,236
+we put everything into this common
+standard deviation units.
+
+160
+00:09:07,236 --> 00:09:12,720
+And the reason is that this is really
+nice, is that somebody went through and
+
+161
+00:09:12,720 --> 00:09:16,670
+did all of the integrals for the standard
+normal curve and put them in a chart.
+
+162
+00:09:16,670 --> 00:09:18,430
+And of course, now you can get all of this
+on a computer.
+
+163
+00:09:18,430 --> 00:09:22,470
+But and so all you have to do is, if you
+can get back to the standard normal,
+
+164
+00:09:22,470 --> 00:09:25,330
+then you can figure out the probabilities
+that are associated with
+
+165
+00:09:25,330 --> 00:09:28,280
+all possible different, different z
+scores.
+
+166
+00:09:28,280 --> 00:09:31,700
+Again, well all we're doing here, is we're
+taking the original curve,
+
+167
+00:09:31,700 --> 00:09:34,340
+where the mean was 500, the standard
+deviation was 50.
+
+168
+00:09:34,340 --> 00:09:37,560
+And we were talking about figuring out if
+we are 575,
+
+169
+00:09:37,560 --> 00:09:40,230
+what's the area to the left of 575.
+
+170
+00:09:40,230 --> 00:09:41,890
+Instead of figuring that out, which is
+trickier,
+
+171
+00:09:41,890 --> 00:09:46,160
+we're going to convert into these Z
+scores, standard deviation unit scores,
+
+172
+00:09:46,160 --> 00:09:50,760
+and say well, 575 is 1.5 standard
+deviations above the mean.
+
+173
+00:09:50,760 --> 00:09:54,400
+Then we can go to a standard normal chart,
+where somebody has already done
+
+174
+00:09:54,400 --> 00:10:00,020
+the integral to tell us what is the area
+on a standard normal to the left of 1.5.
+
+175
+00:10:00,020 --> 00:10:02,400
+Somebody has already done that interval
+for us, and
+
+176
+00:10:02,400 --> 00:10:05,200
+we can find it by going to a standard
+normal chart.
+
+177
+00:10:05,200 --> 00:10:06,499
+So I'm going to show you how to use these
+charts.
+
+178
+00:10:06,499 --> 00:10:10,820
+So, again, somebody has literally gone
+through and done all of the integrals for
+
+179
+00:10:10,820 --> 00:10:13,510
+all the z, you know, up to a certain
+decimal place
+
+180
+00:10:13,510 --> 00:10:18,160
+All the z values from negative, you know,
+3.5 all the way up to positive 3.
+
+181
+00:10:18,160 --> 00:10:20,480
+So if you can get everything out of
+standard normal then there's a chart that
+
+182
+00:10:20,480 --> 00:10:24,020
+gives you the probabilities that, of, that
+go with all the different z values.
+
+183
+00:10:24,020 --> 00:10:28,160
+So if we want to know what's the
+probability of getting 575 or
+
+184
+00:10:28,160 --> 00:10:31,150
+less you can see that, that probability is
+going to be pretty big.
+
+185
+00:10:31,150 --> 00:10:32,570
+You can just see that from this picture,
+right.
+
+186
+00:10:32,570 --> 00:10:35,050
+This probability's greater than 50%.
+
+187
+00:10:35,050 --> 00:10:40,060
+It's very likely that you're going to get
+575 or less.
+
+188
+00:10:40,060 --> 00:10:41,890
+So what's that probability again?
+
+189
+00:10:41,890 --> 00:10:44,820
+We translate it into a Z score by
+subtracting the mean and
+
+190
+00:10:44,820 --> 00:10:48,540
+dividing by the standard deviation to turn
+it into standard deviation units, and
+
+191
+00:10:48,540 --> 00:10:51,980
+then we have to go to a standard normal
+chart.
+
+192
+00:10:51,980 --> 00:10:53,680
+We're going to look this up in a standard
+normal chart.
+
+193
+00:10:53,680 --> 00:10:54,853
+I'll show you how to look it up in a
+minute.
+
+194
+00:10:54,853 --> 00:10:58,410
+When you look it up in a standard normal
+chart you get that the probability of
+
+195
+00:10:58,410 --> 00:11:03,089
+being to the left of 1.5 z scores is
+93.32%.
+
+196
+00:11:03,089 --> 00:11:08,746
+So your chance of getting 575 more or less
+on the mathecity is 93.3 per cent.
+
+197
+00:11:08,746 --> 00:11:11,310
+So here is what these charts look like and
+how do we read them.
+
+198
+00:11:11,310 --> 00:11:14,900
+Now, the reality is that these charts are
+getting a little old-fashioned,
+
+199
+00:11:14,900 --> 00:11:19,540
+because most things we do nowadays, we do
+them on a computer.
+
+200
+00:11:19,540 --> 00:11:23,860
+And it's very rare nowadays that I
+actually have to go back to my good old
+
+201
+00:11:23,860 --> 00:11:28,230
+pen and paper standard normal chart but,
+you should know how to read them.
+
+202
+00:11:28,230 --> 00:11:29,450
+They're a little bit of a relic, and
+
+203
+00:11:29,450 --> 00:11:31,380
+you know, a lot of this will get done on a
+computer, but
+
+204
+00:11:31,380 --> 00:11:33,160
+you should still understand the standard
+normal chart.
+
+205
+00:11:33,160 --> 00:11:36,270
+So, if I want to figure out what's the
+area to the left of 1.5,
+
+206
+00:11:36,270 --> 00:11:39,260
+first of all most of these charts are set
+up to give you the area to the left.
+
+207
+00:11:39,260 --> 00:11:42,010
+So, if you look at this picture up here,
+it's telling you it's going to be
+
+208
+00:11:42,010 --> 00:11:45,140
+giving you the area to the left of a
+particular z value or 0.
+
+209
+00:11:45,140 --> 00:11:48,050
+By convention it usually gives areas to
+the left.
+
+210
+00:11:48,050 --> 00:11:50,600
+So, if I want to find out the area to the
+left of 1.5,
+
+211
+00:11:50,600 --> 00:11:54,000
+I have to look up the z score 1.5 in my
+chart.
+
+212
+00:11:54,000 --> 00:11:56,660
+So, I'm going to first look up 1.5 in the
+row.
+
+213
+00:11:58,650 --> 00:12:01,020
+I start there, and then most of these
+charts are set up so
+
+214
+00:12:01,020 --> 00:12:03,280
+that you can go out an additional decimal
+place.
+
+215
+00:12:03,280 --> 00:12:07,120
+So we want to know the area to the right
+of 1.50, so
+
+216
+00:12:07,120 --> 00:12:11,260
+then I'm going to go down the column that
+corresponds to a zero in the decimal place
+
+217
+00:12:11,260 --> 00:12:13,510
+so this gives me the 1.50.
+
+218
+00:12:13,510 --> 00:12:17,390
+It turned out that the area is 93.32% so
+
+219
+00:12:17,390 --> 00:12:21,320
+that's the area to the left of a z-score
+of 1.5.
+
+220
+00:12:21,320 --> 00:12:24,340
+What is the what if we gotten a Z of 1.51
+just to
+
+221
+00:12:24,340 --> 00:12:27,700
+show you how to read this chart when you
+don't have a 0 there.
+
+222
+00:12:27,700 --> 00:12:32,200
+So again if it was 1.51 you start on the
+row that's the 1.5 and then you go for
+
+223
+00:12:32,200 --> 00:12:37,080
+the column for that decimal the 0.01 so
+that gets you to the 1.51.
+
+224
+00:12:37,080 --> 00:12:37,690
+The area for
+
+225
+00:12:37,690 --> 00:12:42,540
+that would be 93.45%, just slightly bigger
+because that Z is slightly bigger.
+
+226
+00:12:44,470 --> 00:12:47,120
+It's helpful here I think to just do a
+practice problem.
+
+227
+00:12:47,120 --> 00:12:48,780
+The [UNKNOWN], this is the kind of thing
+that if you
+
+228
+00:12:48,780 --> 00:12:50,445
+do a few practice problems you'll get the
+hang of it.
+
+229
+00:12:50,445 --> 00:12:54,365
+If birth weights in our population are
+normally distributed with a mean of
+
+230
+00:12:54,365 --> 00:12:58,649
+109 ounces and a standard deviation of 13
+ounces then,
+
+231
+00:12:58,649 --> 00:13:00,980
+what is the chance of obtaining a birth
+weight?
+
+232
+00:13:00,980 --> 00:13:04,700
+So, if you're giving birth to a random
+baby what's the bi,
+
+233
+00:13:04,700 --> 00:13:08,730
+chance of obtaining a birth rate of 141
+ounces or heavier or
+
+234
+00:13:08,730 --> 00:13:11,309
+if you're just kind of sampling birth
+records at random.
+
+235
+00:13:11,309 --> 00:13:14,205
+What's the chance of that random baby is
+going to have a weight of
+
+236
+00:13:14,205 --> 00:13:15,550
+141 ounces or heavier?
+
+237
+00:13:15,550 --> 00:13:20,500
+And what's the chance of obtaining a birth
+weight of 120 or lighter?
+
+238
+00:13:20,500 --> 00:13:22,670
+So let's solve both of those problems.
+
+239
+00:13:22,670 --> 00:13:25,460
+Again, we're assuming that these
+birthrates are normally distributed,
+
+240
+00:13:25,460 --> 00:13:29,070
+the mean is 109, the standard deviation is
+13.
+
+241
+00:13:29,070 --> 00:13:33,220
+So to solve the first one, I think it's
+helpful to always draw a picture,
+
+242
+00:13:33,220 --> 00:13:35,800
+especially when you start, when you're
+just starting out these.
+
+243
+00:13:35,800 --> 00:13:37,910
+So let's think about what did the curve
+look like.
+
+244
+00:13:37,910 --> 00:13:42,100
+So the birth weights, the mean birth
+weight is 109, and
+
+245
+00:13:42,100 --> 00:13:43,340
+the standard deviation is 13.
+
+246
+00:13:43,340 --> 00:13:45,600
+So we're on that normal curve.
+
+247
+00:13:45,600 --> 00:13:49,470
+And then I want to figure out where am I
+relative to 109 if I'm
+
+248
+00:13:49,470 --> 00:13:50,880
+talking about a weight of 141.
+
+249
+00:13:50,880 --> 00:13:54,640
+Well, 141 is pretty far out in the right
+tail.
+
+250
+00:13:54,640 --> 00:13:56,120
+It's much higher than the mean.
+
+251
+00:13:56,120 --> 00:14:02,270
+And I'm asking to, for the probability of
+getting a weight of 141 or heavier.
+
+252
+00:14:02,270 --> 00:14:07,380
+So, I'm asking for the area to the right
+of 141, that small area in the tail.
+
+253
+00:14:07,380 --> 00:14:10,490
+If I draw the picture then I know the
+probability that I'm going to get out at
+
+254
+00:14:10,490 --> 00:14:12,240
+the end of the day better be small.
+
+255
+00:14:12,240 --> 00:14:14,150
+If it's not, I know I'm going to have done
+something wrong.
+
+256
+00:14:14,150 --> 00:14:17,250
+Now I need to convert this into a z score.
+
+257
+00:14:17,250 --> 00:14:19,346
+So the z score here is I'm going to say,
+
+258
+00:14:19,346 --> 00:14:25,360
+well 141 is 2.46 standard deviation above
+the mean.
+
+259
+00:14:25,360 --> 00:14:26,140
+How did I get that?
+
+260
+00:14:26,140 --> 00:14:28,960
+I subtracted 141 minus 109.
+
+261
+00:14:28,960 --> 00:14:30,710
+That gives me the distance above the mean
+and
+
+262
+00:14:30,710 --> 00:14:33,600
+then I divide it by 13 to get it in
+standard deviation units.
+
+263
+00:14:33,600 --> 00:14:35,090
+So my z is 2.46.
+
+264
+00:14:35,090 --> 00:14:37,310
+That's pretty far in the tail of a normal
+distribution.
+
+265
+00:14:37,310 --> 00:14:40,210
+I'm 2.46 standard deviations above the
+mean.
+
+266
+00:14:40,210 --> 00:14:45,260
+What's the chance that a random baby is
+2.46 standard deviations above the mean or
+
+267
+00:14:45,260 --> 00:14:46,260
+even higher than that?
+
+268
+00:14:46,260 --> 00:14:50,800
+So that's, I'm looking for the area to the
+right of z equals 2.46.
+
+269
+00:14:50,800 --> 00:14:52,690
+So I can go to my standard normal chart.
+
+270
+00:14:52,690 --> 00:14:55,332
+First of all, I need to find the z for
+2.46.
+
+271
+00:14:55,332 --> 00:14:58,520
+So i'm going to find, the z for 2.46.
+
+272
+00:14:58,520 --> 00:15:01,840
+Again, I get that by doing the row is 2.4.
+
+273
+00:15:01,840 --> 00:15:05,458
+The column is the .06 part.
+
+274
+00:15:05,458 --> 00:15:09,560
+And, I get an area, the area to the left,
+
+275
+00:15:09,560 --> 00:15:11,940
+remember the charts are setup to always
+give you the area to the left.
+
+276
+00:15:11,940 --> 00:15:14,400
+So this is giving me the area to the left.
+
+277
+00:15:14,400 --> 00:15:19,130
+The area to the left, there's 2.46 which
+we know is way out in the tail.
+
+278
+00:15:19,130 --> 00:15:23,660
+That area, not surprisingly is very big,
+99.31%.
+
+279
+00:15:23,660 --> 00:15:26,340
+So what's the chance, what's the area to
+the right then?
+
+280
+00:15:26,340 --> 00:15:27,190
+How do you get the area to the right?
+
+281
+00:15:27,190 --> 00:15:32,760
+You're going to have to subtract 1 minus
+.9931 will give me the area to the right.
+
+282
+00:15:32,760 --> 00:15:36,100
+Which turns out to be .69%, a pretty
+small, percentage there.
+
+283
+00:15:36,100 --> 00:15:42,330
+Because as you don't tend to have babies
+that heavy.
+
+284
+00:15:45,690 --> 00:15:47,430
+Let's answer the 2nd practice question,
+
+285
+00:15:47,430 --> 00:15:50,850
+what's the chance of obtaining a birth
+weight of 120 or lighter?
+
+286
+00:15:50,850 --> 00:15:52,700
+Again, let's draw out the picture, so
+
+287
+00:15:52,700 --> 00:15:55,656
+again, we're on a normal curve where the
+mean is 109.
+
+288
+00:15:55,656 --> 00:15:58,430
+The standard deviation is 13.
+
+289
+00:15:58,430 --> 00:16:01,350
+I want to know, what's the chance of
+obtaining a birth rate of 120 or
+
+290
+00:16:01,350 --> 00:16:04,220
+lighter, so now I'm looking for the area
+to the left.
+
+291
+00:16:04,220 --> 00:16:06,660
+So 120 is above the mean, so
+
+292
+00:16:06,660 --> 00:16:11,000
+I know that my answer here is going to
+have to be greater than 50.
+
+293
+00:16:11,000 --> 00:16:13,910
+Mo, a lot of babies are 120 or lighter.
+
+294
+00:16:13,910 --> 00:16:15,650
+How many, what's my Z here?
+
+295
+00:16:15,650 --> 00:16:17,580
+So 120 minus 109 divided by 13.
+
+296
+00:16:17,580 --> 00:16:21,470
+I, my Z is 0.85 so I'm not quite a
+standard deviation above the mean.
+
+297
+00:16:21,470 --> 00:16:24,999
+I want to know the area to the left, so I
+go to the standard normal chart.
+
+298
+00:16:26,230 --> 00:16:30,680
+And, again, I look in the row for .8, and
+then I get the,
+
+299
+00:16:30,680 --> 00:16:35,200
+I want the .85, so I look in the column
+for the .05, that second decimal place,
+
+300
+00:16:35,200 --> 00:16:41,010
+that gives me an area of 80.23%, and that,
+I wanted the area to the left.
+
+301
+00:16:41,010 --> 00:16:46,469
+So there's an 80.23% that a random baby
+will be 120 ounces or lighter.

@@ -1,0 +1,356 @@
+1
+00:00:05,460 --> 00:00:09,410
+In this next module, I'll run through a
+quick example of the use of
+
+2
+00:00:09,410 --> 00:00:11,140
+Weibull regression in the literature.
+
+3
+00:00:11,140 --> 00:00:16,750
+So, this was a study that was looking at
+whether or not being either religious or
+
+4
+00:00:16,750 --> 00:00:20,980
+spiritual have any relationship to the
+onset of depression.
+
+5
+00:00:20,980 --> 00:00:24,140
+And the outcome of this study was the time
+to depression, so
+
+6
+00:00:24,140 --> 00:00:26,610
+they used survival analysis methods.
+
+7
+00:00:26,610 --> 00:00:30,530
+These are some data from Canada, there was
+about 12,000 people.
+
+8
+00:00:30,530 --> 00:00:33,900
+They were all verified to be not depressed
+at baseline in 1994,
+
+9
+00:00:33,900 --> 00:00:36,280
+and they were followed during 14 years.
+
+10
+00:00:36,280 --> 00:00:38,570
+And again, the outcome is time to
+depression.
+
+11
+00:00:38,570 --> 00:00:43,030
+They used Weibull proportional hazards
+regression model to model the risk
+
+12
+00:00:43,030 --> 00:00:43,920
+of depression.
+
+13
+00:00:43,920 --> 00:00:47,260
+And the, they were most interested in
+religious attendance and
+
+14
+00:00:47,260 --> 00:00:50,540
+spirit, spirituality as potential
+predictors of whether or
+
+15
+00:00:50,540 --> 00:00:53,050
+not you would end up getting depressed.
+
+16
+00:00:53,050 --> 00:00:55,560
+So, I'll just show you the survival
+curves.
+
+17
+00:00:55,560 --> 00:00:58,040
+These survival curves, as you can see,
+they're very smooth.
+
+18
+00:00:58,040 --> 00:01:01,310
+These come out of the Weibull regression
+model that they fit.
+
+19
+00:01:01,310 --> 00:01:06,370
+And this is the survival curves looking at
+religious attendance as the predictor.
+
+20
+00:01:06,370 --> 00:01:10,648
+So, we have survival on the y-axis
+starting at 100% because there's nobody
+
+21
+00:01:10,648 --> 00:01:12,370
+depressed at the beginning.
+
+22
+00:01:12,370 --> 00:01:14,540
+At baseline everybody was non-depressed.
+
+23
+00:01:14,540 --> 00:01:16,140
+And it falls off from there.
+
+24
+00:01:16,140 --> 00:01:20,190
+You can see the scale of the y-axis, it
+only goes down to about 75%.
+
+25
+00:01:20,190 --> 00:01:24,800
+So, by the end of the study, about 20% of
+people had become depressed.
+
+26
+00:01:24,800 --> 00:01:27,840
+You have 80, 80% chance of not being
+depressed by then.
+
+27
+00:01:27,840 --> 00:01:30,860
+This is time in months.
+
+28
+00:01:30,860 --> 00:01:32,680
+And there is three curves.
+
+29
+00:01:32,680 --> 00:01:37,890
+So the top, the bottom curve are the
+people who do not attend regular religious
+
+30
+00:01:37,890 --> 00:01:40,850
+services, and you can see that they get
+depressed more quickly, so
+
+31
+00:01:40,850 --> 00:01:42,890
+their survival curve drops off faster.
+
+32
+00:01:44,200 --> 00:01:47,860
+The ones who occasionally go to religious
+services, they're somewhere in the middle.
+
+33
+00:01:47,860 --> 00:01:52,560
+And the ones who attend monthly or more
+are on the top, having the,
+
+34
+00:01:52,560 --> 00:01:55,105
+the lowest rate of development of
+depression.
+
+35
+00:01:55,105 --> 00:01:58,460
+It isn't a huge effect, but there is some
+separation between those curves.
+
+36
+00:01:58,460 --> 00:01:59,910
+So, they did find an effect here.
+
+37
+00:01:59,910 --> 00:02:04,400
+They did not find any relationship between
+just spirituality in general and
+
+38
+00:02:04,400 --> 00:02:07,150
+the onset of depression for whatever
+reason.
+
+39
+00:02:07,150 --> 00:02:09,890
+I'll show you the table that they
+presented in their paper.
+
+40
+00:02:09,890 --> 00:02:13,880
+Again, this is based on a Weibull
+regression model, as they indicate here.
+
+41
+00:02:13,880 --> 00:02:16,930
+So, we'll scroll down to the predictor
+they cared most about,
+
+42
+00:02:16,930 --> 00:02:19,000
+which is this frequency of religious
+attendance.
+
+43
+00:02:20,130 --> 00:02:24,940
+And you can see that the reference
+category was those who did not attend,
+
+44
+00:02:24,940 --> 00:02:28,010
+occasionally had a hazard ratio of just a
+little below one.
+
+45
+00:02:28,010 --> 00:02:32,294
+Indicating a tiny bit of protection
+against depression and then monthly or
+
+46
+00:02:32,294 --> 00:02:34,410
+more had a hazard ratio of 0.78.
+
+47
+00:02:34,410 --> 00:02:35,660
+So, not a huge effect.
+
+48
+00:02:35,660 --> 00:02:38,735
+But we would say that the rate of
+depression was reduced by
+
+49
+00:02:38,735 --> 00:02:43,720
+22% in those with frequent religious
+attendance, and the P value here was 0.01.
+
+50
+00:02:43,720 --> 00:02:46,290
+The confidence interval does not cross
+one.
+
+51
+00:02:46,290 --> 00:02:48,960
+So, they did find a significant effect
+here.
+
+52
+00:02:48,960 --> 00:02:52,140
+Just for fun, let's look through some of
+the other hazard ratios from their model.
+
+53
+00:02:52,140 --> 00:02:55,353
+The, again, the spirituality variable did
+not come out significant, so
+
+54
+00:02:55,353 --> 00:02:57,285
+they didn't include it in the table here.
+
+55
+00:02:57,285 --> 00:03:01,425
+But here's all the other things that they
+adjusted for, which could be
+
+56
+00:03:01,425 --> 00:03:06,186
+potential confounders, of course, so they,
+they put gender into the model, so
+
+57
+00:03:06,186 --> 00:03:11,154
+female gender actually had a higher rate
+of becoming depressed some other ones,
+
+58
+00:03:11,154 --> 00:03:13,362
+education, so if you have a college or
+
+59
+00:03:13,362 --> 00:03:18,990
+university degree that predicted less
+depression over time, so that's good.
+
+60
+00:03:18,990 --> 00:03:22,350
+If you don't have any history of family
+depr of depression in the family,
+
+61
+00:03:22,350 --> 00:03:23,400
+that's protective.
+
+62
+00:03:23,400 --> 00:03:25,810
+If you've never had any episodes of
+depression before,
+
+63
+00:03:25,810 --> 00:03:27,540
+that's very protective, as you can see
+here.
+
+64
+00:03:27,540 --> 00:03:30,000
+That's a really low hazard ratio.
+
+65
+00:03:30,000 --> 00:03:32,250
+Perceived social support was also
+protective,
+
+66
+00:03:32,250 --> 00:03:36,220
+having more social support and, perhaps
+you attend religious services a lot,
+
+67
+00:03:36,220 --> 00:03:38,820
+you have some kind of community and
+support there.
+
+68
+00:03:38,820 --> 00:03:42,510
+The other thing that I'll point out is
+that they give the additional parameter
+
+69
+00:03:42,510 --> 00:03:48,520
+for the Weibull model is 1.68, and you can
+see that it is statistically significant,
+
+70
+00:03:48,520 --> 00:03:50,920
+the 95% confidence interval does not cross
+one.
+
+71
+00:03:50,920 --> 00:03:56,078
+So this is indicating that we probably are
+better off fitting a Weibull model
+
+72
+00:03:56,078 --> 00:03:59,990
+than an exponential here because the scale
+parameter clearly doesn't look to be wide.
+
+73
+00:03:59,990 --> 00:04:03,900
+And this is above one, so it's indicating
+that depression is increasing.
+
+74
+00:04:03,900 --> 00:04:07,450
+The rate of depression is increasing
+during the study follow up period.
+
+75
+00:04:07,450 --> 00:04:10,920
+So, this is just an example of Weibull
+regression in the literature.

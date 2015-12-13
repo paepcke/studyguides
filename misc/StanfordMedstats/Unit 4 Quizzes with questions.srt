@@ -1,0 +1,688 @@
+1
+00:00:05,500 --> 00:00:08,794
+This question wants us to find the
+probability that we would get a score of
+
+2
+00:00:08,794 --> 00:00:11,860
+three or less if we would roll a die.
+
+3
+00:00:11,860 --> 00:00:16,960
+now, this is a die which is fair, so each
+and every outcome is equally probable.
+
+4
+00:00:16,960 --> 00:00:21,860
+For us to roll a three or less we would
+have to roll a 1, a 2 or a 3.
+
+5
+00:00:21,860 --> 00:00:25,931
+And we know that the probability of
+getting any number on a die is 1/6 for
+
+6
+00:00:25,931 --> 00:00:27,800
+a fair die.
+
+7
+00:00:27,800 --> 00:00:32,474
+So to get a score of 3 or less we would
+just add up the probabilities and
+
+8
+00:00:32,474 --> 00:00:37,550
+get the total probability to be 3/6, or
+1/2.
+
+9
+00:00:37,550 --> 00:00:39,100
+So C is the right answer.
+
+10
+00:00:41,170 --> 00:00:42,930
+The answer to this question is true.
+
+11
+00:00:42,930 --> 00:00:46,041
+This is a discrete probability
+distribution because there are only four
+
+12
+00:00:46,041 --> 00:00:47,810
+values that X can take.
+
+13
+00:00:47,810 --> 00:00:51,763
+The probability that a patient has at
+least two major adverse events is
+
+14
+00:00:51,763 --> 00:00:56,319
+the probability that the patient has two
+adverse events or three adverse events,
+
+15
+00:00:56,319 --> 00:01:03,620
+and if we add both of these probabilities
+up, we get a total probability of 0.07.
+
+16
+00:01:03,620 --> 00:01:04,400
+This is the right answer.
+
+17
+00:01:04,400 --> 00:01:07,416
+To find the expected value of x,
+
+18
+00:01:07,416 --> 00:01:15,897
+we would need to find the value of the
+summation of x times px.
+
+19
+00:01:15,897 --> 00:01:18,750
+So for x of 0 we have a 0 here.
+
+20
+00:01:18,750 --> 00:01:20,805
+For x is 1, we get.
+
+21
+00:01:20,805 --> 00:01:25,110
+0.13 for this, we get 0.1, and for 3 we
+get 0.06.
+
+22
+00:01:25,110 --> 00:01:29,204
+And if we add all of these up,
+
+23
+00:01:29,204 --> 00:01:38,180
+we get the expected value of x to be 0.29.
+
+24
+00:01:38,180 --> 00:01:41,995
+The answer for this question is D, for
+minus $10.
+
+25
+00:01:41,995 --> 00:01:46,720
+The expected rally for this lottery is
+minus 10.
+
+26
+00:01:46,720 --> 00:01:48,400
+Which is the amount you paid to play the
+lottery.
+
+27
+00:01:48,400 --> 00:01:54,232
+And, the amount you'd
+
+28
+00:01:54,232 --> 00:02:00,420
+get if you win.
+
+29
+00:02:00,420 --> 00:02:02,175
+Times the probability of you winning.
+
+30
+00:02:02,175 --> 00:02:04,580
+Plus the amount that you'd get.
+
+31
+00:02:04,580 --> 00:02:13,952
+If you lose making zero dollars and the
+probabiliyt of you winning, of you losing.
+
+32
+00:02:13,952 --> 00:02:22,289
+And if we add all of this up we get the
+expected value to be negative $9.
+
+33
+00:02:25,600 --> 00:02:33,160
+We already calculated the mean for x as
+point 29 in the previous section.
+
+34
+00:02:33,160 --> 00:02:37,668
+The formula for standard deviation in this
+case is, and
+
+35
+00:02:37,668 --> 00:02:42,764
+I will just write out a couple of terms to
+illustrate what time,
+
+36
+00:02:42,764 --> 00:02:49,294
+what this expression will turn out to be.
+
+37
+00:02:49,294 --> 00:02:56,154
+For x of 0 we have, for x is 1 we have,
+
+38
+00:02:56,154 --> 00:03:02,769
+and we'll have two more terms for
+
+39
+00:03:02,769 --> 00:03:10,610
+x is 2 and 3.
+
+40
+00:03:10,610 --> 00:03:16,424
+If we calculate our default expression,
+
+41
+00:03:16,424 --> 00:03:19,844
+we find that the value of
+
+42
+00:03:19,844 --> 00:03:28,400
+standard deviation is .65, which is D.
+
+43
+00:03:28,400 --> 00:03:31,920
+This question asks us to find the
+probability of getting exactly 1
+
+44
+00:03:31,920 --> 00:03:34,060
+head in 5 coin flips.
+
+45
+00:03:34,060 --> 00:03:36,860
+This is a straight forward application of
+the binomial equation.
+
+46
+00:03:36,860 --> 00:03:46,040
+Here we have N is 5, we have X is 1 and we
+know that B is .5.
+
+47
+00:03:46,040 --> 00:03:51,778
+Putting that in into the binomial equation
+we
+
+48
+00:03:51,778 --> 00:03:57,910
+get .5 times 1, and 2.5 times 4.
+
+49
+00:03:57,910 --> 00:04:01,570
+And if you multiply this out, we'll find
+that the probability is 15.625 percent.
+
+50
+00:04:01,570 --> 00:04:10,989
+This question is again an application of
+the binomial equation.
+
+51
+00:04:12,190 --> 00:04:13,956
+We have n is 10.
+
+52
+00:04:13,956 --> 00:04:18,282
+We have 9 coin, 9 heads, so our x value is
+9 again, and
+
+53
+00:04:18,282 --> 00:04:25,310
+the probability of getting a head, or a
+tail, is 0.5.
+
+54
+00:04:25,310 --> 00:04:31,324
+Putting that into this equation here, we
+get the following expression for
+
+55
+00:04:31,324 --> 00:04:36,950
+the probability, [SOUND] which is the same
+expression as we have in d,
+
+56
+00:04:36,950 --> 00:04:41,978
+which is the right answer.
+
+57
+00:04:41,978 --> 00:04:46,364
+This question gives us a case where we
+have 150 participants,
+
+58
+00:04:46,364 --> 00:04:51,094
+each of whom has a 50% chance of being
+allocated to the treatment or
+
+59
+00:04:51,094 --> 00:05:01,017
+to the control bucket and we want to find
+the probability distribution of x.
+
+60
+00:05:01,017 --> 00:05:07,410
+Now it's very easy to see that the answer
+to this is 'd'.
+
+61
+00:05:07,410 --> 00:05:10,089
+This is the binomial distribution with 'n'
+equals 50 and
+
+62
+00:05:10,089 --> 00:05:14,769
+'p' equals .5 We could approximate it as a
+normal distribution.
+
+63
+00:05:14,769 --> 00:05:17,689
+With n equals 150 as well but the exact
+answer for
+
+64
+00:05:17,689 --> 00:05:21,200
+this question would be the binomial.
+
+65
+00:05:21,200 --> 00:05:26,940
+This question is similar to the question
+we had previously.
+
+66
+00:05:26,940 --> 00:05:30,987
+The only difference is that now we have a
+p value of 0.66 as oppose to a p
+
+67
+00:05:30,987 --> 00:05:33,250
+value of 0.5.
+
+68
+00:05:33,250 --> 00:05:37,150
+This is also a binomial distribution, and
+the answer is e.
+
+69
+00:05:37,150 --> 00:05:45,660
+We'll be using 2 equations that we derived
+for the binomial distribution here.
+
+70
+00:05:45,660 --> 00:05:47,923
+The first equation is the formula for
+
+71
+00:05:47,923 --> 00:05:52,390
+the expected value of a binomial, which is
+n times p.
+
+72
+00:05:52,390 --> 00:05:55,831
+We know that n here is 150, and p is one
+half, so
+
+73
+00:05:55,831 --> 00:06:00,590
+the expected value comes out to be 75.
+
+74
+00:06:00,590 --> 00:06:05,998
+We also know that the expression for the
+standard deviation is
+
+75
+00:06:05,998 --> 00:06:13,060
+n times p P times 1 minus P and the square
+root of that.
+
+76
+00:06:13,060 --> 00:06:19,470
+And if we substitute the value back in, we
+see that the standard deviation is 6.
+
+77
+00:06:19,470 --> 00:06:20,480
+So let me just draw this out.
+
+78
+00:06:20,480 --> 00:06:26,437
+If we approximate this binomial as a
+normal,
+
+79
+00:06:26,437 --> 00:06:30,483
+this is the mean.
+
+80
+00:06:31,620 --> 00:06:39,590
+Here we have a 75, and we know that 1
+strand of deviation is 6 of it.
+
+81
+00:06:39,590 --> 00:06:42,950
+So if we have numbers between 69 and 81,
+
+82
+00:06:42,950 --> 00:06:51,750
+we would say that they are within one
+standard deviation of the, the mean.
+
+83
+00:06:51,750 --> 00:06:55,718
+As the number that we are expected to find
+is 69 we know that this is exactly one
+
+84
+00:06:55,718 --> 00:07:01,750
+standard deviation away from the mean and
+hence, we 'b' being the right answer.
+
+85
+00:07:01,750 --> 00:07:05,728
+This question again needs us to apply the
+formulae that we
+
+86
+00:07:05,728 --> 00:07:10,876
+talked about earlier to find the expected
+value of a binomial distribution and
+
+87
+00:07:10,876 --> 00:07:16,012
+the variance of a binomial distribution.
+
+88
+00:07:16,012 --> 00:07:21,172
+The expected value is N times P which
+comes out to 25,
+
+89
+00:07:21,172 --> 00:07:27,532
+the variance is N times P times 1 minus P
+which comes out to 23.75,
+
+90
+00:07:27,532 --> 00:07:35,572
+the standard deviation is the square root
+of the variance And the value we get for
+
+91
+00:07:35,572 --> 00:07:44,570
+the standard deviation is 4.87.
+
+92
+00:07:44,570 --> 00:07:47,710
+This question is a Speak Forward
+application of the formula for z.
+
+93
+00:07:47,710 --> 00:07:49,800
+As z's quote is given by x minus mu by the
+standard deviation.
+
+94
+00:07:49,800 --> 00:07:55,385
+In this case our x value is 0.95, our mu
+is 1 and the standard deviation is 0.1.
+
+95
+00:07:55,385 --> 00:08:00,030
+Locking the values in, begin the z score
+to be minus 0.5.
+
+96
+00:08:00,030 --> 00:08:03,298
+The answer to this is fairly
+straightforward, the,
+
+97
+00:08:03,298 --> 00:08:07,402
+the only statement, out of the 4 given
+options, which is not 2, for
+
+98
+00:08:07,402 --> 00:08:15,770
+anomalous distribution, is the fact that
+it is a discrete probability distribution.
+
+99
+00:08:15,770 --> 00:08:19,710
+Anomalous distribution, if you remember,
+is a continuous distribution.
+
+100
+00:08:19,710 --> 00:08:24,384
+This formula needs us to find out the z
+squared for
+
+101
+00:08:24,384 --> 00:08:31,266
+the value of X, would be 0, then the mean
+is 0.
+
+102
+00:08:31,266 --> 00:08:33,622
+Plugging this in, we know that the formula
+for
+
+103
+00:08:33,622 --> 00:08:36,855
+Z is X minus mean by standard deviation.
+
+104
+00:08:36,855 --> 00:08:43,730
+If both X and mean are 0, we get a Z score
+of 0.
+
+105
+00:08:43,730 --> 00:08:47,495
+This formula requires us to remember this
+fact about the normal distribution.
+
+106
+00:08:47,495 --> 00:08:50,015
+Between one standard deviation below the
+mean and
+
+107
+00:08:50,015 --> 00:08:53,760
+one standard deviation above the mean.
+
+108
+00:08:53,760 --> 00:08:59,386
+The fraction of the normal distribution
+area that is enclosed is 68%,
+
+109
+00:08:59,386 --> 00:09:07,820
+which means that the area that is enclosed
+Under two extreme edges is 32%.
+
+110
+00:09:07,820 --> 00:09:13,950
+Which means each of the two tails has an
+area of 16%.
+
+111
+00:09:13,950 --> 00:09:19,260
+Now, let's use that to solve this
+equation.
+
+112
+00:09:19,260 --> 00:09:20,042
+Do you know that the z
+
+113
+00:09:20,042 --> 00:09:23,440
+value of one corresponds to one standard
+deviation above the mean?
+
+114
+00:09:23,440 --> 00:09:27,520
+We want to find the area to the left to z
+of 1.
+
+115
+00:09:27,520 --> 00:09:32,890
+We could just find the area to the right
+of z of 1 and then subtract 1 from that.
+
+116
+00:09:32,890 --> 00:09:35,256
+And as we found out previously,
+
+117
+00:09:35,256 --> 00:09:40,740
+this area is 16% which tells us that this
+area is 84%.
+
+118
+00:09:40,740 --> 00:09:45,105
+This question.
+
+119
+00:09:45,105 --> 00:09:49,515
+Answers to identify the type of
+probability distribution demonstrated by
+
+120
+00:09:49,515 --> 00:09:51,630
+the x vaiable here.
+
+121
+00:09:51,630 --> 00:09:54,780
+And it's very clearly obvious that this
+variable doesn't follow the normal
+
+122
+00:09:54,780 --> 00:09:57,340
+binomaial or the uniform distribution.
+
+123
+00:09:57,340 --> 00:10:01,549
+This is an imperical distribution that was
+observed in an experiment and
+
+124
+00:10:01,549 --> 00:10:07,876
+it doesn't follow any of the standard
+Distribution that we have studied so far.
+
+125
+00:10:07,876 --> 00:10:15,730
+We are given that we have a binomial
+distribution with N of 100 and B of 0.2.
+
+126
+00:10:15,730 --> 00:10:19,868
+Using the formula the expected value of X.
+
+127
+00:10:19,868 --> 00:10:22,640
+Which is np.
+
+128
+00:10:22,640 --> 00:10:26,470
+You get the expected value to be 20.
+
+129
+00:10:26,470 --> 00:10:32,660
+The formula for standard deviation of x is
+n times p times 1 minus p.
+
+130
+00:10:32,660 --> 00:10:39,900
+Plugging values in, we see that the
+standard deviation is 4.
+
+131
+00:10:39,900 --> 00:10:40,560
+This question asks us to
+
+132
+00:10:40,560 --> 00:10:42,945
+approximate the binomial distribtion from
+the previous question.
+
+133
+00:10:42,945 --> 00:10:44,460
+Question as in normal distribution.
+
+134
+00:10:44,460 --> 00:10:48,568
+We know that the expected value for this
+distrubution is 20 and
+
+135
+00:10:48,568 --> 00:10:52,220
+that the standard deviation is 4.
+
+136
+00:10:52,220 --> 00:10:56,912
+These are the [INAUDIBLE] in the previous
+question The probability of getting 20
+
+137
+00:10:56,912 --> 00:10:59,080
+successes or fewer.
+
+138
+00:10:59,080 --> 00:11:01,410
+If I just draw it out for a normal
+distribution.
+
+139
+00:11:01,410 --> 00:11:06,150
+It's just all the probability to the left
+of the mean, and because we know
+
+140
+00:11:06,150 --> 00:11:13,523
+that a normal distribution is symmetric,
+we know that this probability is 50%.
+
+141
+00:11:16,630 --> 00:11:20,120
+The correct answer here is C, that the
+mean and median are far apart.
+
+142
+00:11:20,120 --> 00:11:24,450
+In a normal distribution, we have the mean
+to be same as the median.
+
+143
+00:11:24,450 --> 00:11:26,200
+This is because in a normal distribution,
+
+144
+00:11:26,200 --> 00:11:30,250
+we have equal number of points to the left
+as to the right of the median.
+
+145
+00:11:30,250 --> 00:11:33,775
+And hence, the mean is the same as the
+median.
+
+146
+00:11:33,775 --> 00:11:38,180
+If we have a distribution in which the
+mean and the median are far.
+
+147
+00:11:38,180 --> 00:11:40,690
+Far apart, that is clearly not a normal
+distribution.
+
+148
+00:11:40,690 --> 00:11:41,190
+[BLANK_AUDIO]

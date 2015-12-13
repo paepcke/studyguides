@@ -1,0 +1,195 @@
+1
+00:00:00,220 --> 00:00:03,640
+Welcome to our module on creating graphics
+and SAS Enterprise Guide.
+
+2
+00:00:03,640 --> 00:00:07,240
+As you're probably learning in your HRP
+classes, data visualization is really
+
+3
+00:00:07,240 --> 00:00:09,510
+important when you're doing epidemiology
+and clinical research.
+
+4
+00:00:09,510 --> 00:00:12,300
+>> There may be times that patterns are
+too difficult to
+
+5
+00:00:12,300 --> 00:00:14,890
+interpret simply by looking at the numbers
+in a table.
+
+6
+00:00:14,890 --> 00:00:17,709
+In situations like this, graphics can
+become extremely essential.
+
+7
+00:00:19,550 --> 00:00:22,320
+>> That being said, there are important
+differences between good and bad graphics.
+
+8
+00:00:22,320 --> 00:00:28,020
+Graphics can be really helpful if they
+highlight the key points,
+
+9
+00:00:28,020 --> 00:00:32,300
+if they're clearly labeled and they don't
+contain unnecessary information.
+
+10
+00:00:32,300 --> 00:00:35,230
+>> Generally, make sure your graphics
+related to your conclusions and
+
+11
+00:00:35,230 --> 00:00:36,339
+inferences made in the study.
+
+12
+00:00:38,070 --> 00:00:42,170
+Overall, bad graphics consist of pie
+charts.
+
+13
+00:00:42,170 --> 00:00:44,820
+>> Anything that's 3D or too much ink.
+
+14
+00:00:44,820 --> 00:00:48,020
+>> Anything shaped like a donut, and
+graphs that are stacked.
+
+15
+00:00:48,020 --> 00:00:49,860
+>> Here's a 3D exploding pie chart.
+
+16
+00:00:49,860 --> 00:00:52,020
+This is a pretty bad graphic for a lot of
+reasons.
+
+17
+00:00:52,020 --> 00:00:55,030
+First of all it's 3D, so the first
+perspective can make it hard to
+
+18
+00:00:55,030 --> 00:00:58,360
+tell the difference between stuff in the
+foreground versus the background.
+
+19
+00:00:58,360 --> 00:01:01,010
+In general, graphs like these take up way
+too much ink and
+
+20
+00:01:01,010 --> 00:01:02,520
+it's hard to tell what they're trying to
+convey.
+
+21
+00:01:03,890 --> 00:01:05,870
+Avoid using 3D bar charts like these,
+
+22
+00:01:05,870 --> 00:01:09,160
+because again the 3D perspective can make
+it hard to tell.
+
+23
+00:01:09,160 --> 00:01:10,260
+Where does the line go?
+
+24
+00:01:10,260 --> 00:01:12,350
+Is it based on the front of the bar or the
+back of the bar?
+
+25
+00:01:13,700 --> 00:01:15,730
+>> Donuts are similar to pie charts.
+
+26
+00:01:15,730 --> 00:01:18,535
+They do not give you a lot of information
+and they take up a lot of ink.
+
+27
+00:01:20,090 --> 00:01:23,220
+>> Stacking is really bad because it's
+hard to tell the relative size of
+
+28
+00:01:23,220 --> 00:01:25,500
+the stacked bars, because they don't have
+the same baseline.
+
+29
+00:01:26,940 --> 00:01:30,750
+These graphs combine all the worst
+features of the ones we showed you so far.
+
+30
+00:01:30,750 --> 00:01:34,160
+They're 3D, they're stacked, and they're
+using pie charts.
+
+31
+00:01:34,160 --> 00:01:37,400
+It's really hard to interpret what's going
+on and it can be really misleading, and
+
+32
+00:01:37,400 --> 00:01:39,660
+it's not very clear what they're trying to
+convey with this kind of graphic.
+
+33
+00:01:40,990 --> 00:01:45,060
+>> As Dr. Ray Belise said, if you get a
+glossy handout with a 3D pie chart,
+
+34
+00:01:45,060 --> 00:01:46,379
+assume someone is lying to you.
+
+35
+00:01:47,760 --> 00:01:50,080
+SASS enterprise has many procedures for
+
+36
+00:01:50,080 --> 00:01:54,220
+graphing we will be using PROC SG plot and
+proc G plot.
+
+37
+00:01:55,250 --> 00:01:58,030
+>> There are endless changes that can be
+made to graphics an entire course can be
+
+38
+00:01:58,030 --> 00:01:59,700
+dedicated to SASS syntax for graphics.
+
+39
+00:01:59,700 --> 00:02:02,880
+In the following modules we're going to
+show you the basic code for
+
+40
+00:02:02,880 --> 00:02:05,790
+the essential graphics and once we're done
+with this we'll let you out on
+
+41
+00:02:05,790 --> 00:02:07,430
+your own to work with a SASS
+documentation.

@@ -1,0 +1,1121 @@
+1
+00:00:08,070 --> 00:00:09,170
+In this next module,
+
+2
+00:00:09,170 --> 00:00:12,720
+I'm going to talk about the alternative
+test that you can use.
+
+3
+00:00:12,720 --> 00:00:14,244
+Instead of the ttest and
+
+4
+00:00:14,244 --> 00:00:17,530
+ANOVA, when you violate the assumptions of
+ttest and ANOVA.
+
+5
+00:00:17,530 --> 00:00:21,940
+These are called non-parametric tests.
+
+6
+00:00:21,940 --> 00:00:24,682
+I'm going to be talking in this module
+about Wilcoxon sign-rank,
+
+7
+00:00:24,682 --> 00:00:27,420
+Wilcoxon rank-sum and Kruskal-Wallis test.
+
+8
+00:00:27,420 --> 00:00:29,840
+These are all what's called non-parametric
+statistics.
+
+9
+00:00:29,840 --> 00:00:33,750
+And all we mean by non-parametric is that
+we're not estimating any parameters.
+
+10
+00:00:33,750 --> 00:00:37,790
+So, when you do a ttest or ANOVA, you're
+estimating the means in
+
+11
+00:00:37,790 --> 00:00:41,010
+those different groups and the standard
+deviations in those different groups.
+
+12
+00:00:41,010 --> 00:00:45,700
+We're not going to be estimating any
+parameters like that in the Wilcoxon and
+
+13
+00:00:45,700 --> 00:00:47,100
+the Kruskal-Wallis test.
+
+14
+00:00:47,100 --> 00:00:48,990
+We're just going to get a p-value at the
+end of the day.
+
+15
+00:00:48,990 --> 00:00:52,571
+So, there won't be any estimation
+involved, only hypothesis testing.
+
+16
+00:00:52,571 --> 00:00:55,783
+So, I'll start here with the Wilcoxon
+rank-sum test.
+
+17
+00:00:55,783 --> 00:00:57,316
+Because actually, in very,
+
+18
+00:00:57,316 --> 00:01:01,331
+the very first week of this course, we saw
+a Wilcoxon rank-sum test.
+
+19
+00:01:01,331 --> 00:01:03,120
+So, I'm going to use that same example
+now.
+
+20
+00:01:03,120 --> 00:01:08,180
+The Wilcoxon rank-sum test is used as the
+alternative to the two sample ttest.
+
+21
+00:01:08,180 --> 00:01:14,150
+When you have a small sample, and you have
+a non-normally distributed outcome.
+
+22
+00:01:14,150 --> 00:01:15,330
+So, if you have a small sample and
+
+23
+00:01:15,330 --> 00:01:18,330
+it looks like your outcome variable is not
+normally distributed.
+
+24
+00:01:18,330 --> 00:01:24,390
+You might choose to, instead of running a
+ttest, to run a Wilcoxon rank-sum test.
+
+25
+00:01:24,390 --> 00:01:27,210
+Remember that we had this hypothetical
+weight loss trial that I showed you in
+
+26
+00:01:27,210 --> 00:01:29,140
+the very first week of the course.
+
+27
+00:01:29,140 --> 00:01:32,260
+Ten dieters were randomized to follow diet
+one, and
+
+28
+00:01:32,260 --> 00:01:34,580
+ten dieters were randomly assigned to
+follow diet two.
+
+29
+00:01:34,580 --> 00:01:37,520
+Group one lost an average of 34.5 pounds.
+
+30
+00:01:37,520 --> 00:01:40,430
+Group two lost an average of 18.5 pounds.
+
+31
+00:01:40,430 --> 00:01:42,900
+And you might just look at those numbers,
+and think that diet one is better.
+
+32
+00:01:42,900 --> 00:01:47,420
+The mean is higher, the mean weight loss
+is higher in group one.
+
+33
+00:01:47,420 --> 00:01:50,071
+That would be a natural conclusion, but
+let's look at the data more closely.
+
+34
+00:01:50,071 --> 00:01:52,915
+When you look at the histogram for diet
+two,
+
+35
+00:01:52,915 --> 00:01:58,190
+turns out that the mean was a loss of 18.5
+pounds, the median is a loss of 19 pounds.
+
+36
+00:01:58,190 --> 00:02:03,160
+It's pretty even, you know, it's not
+exactly a normal curve, but
+
+37
+00:02:03,160 --> 00:02:05,670
+it might be close enough to a normal
+distribution.
+
+38
+00:02:05,670 --> 00:02:09,130
+However, when you look at the histogram,
+the raw data from diet one.
+
+39
+00:02:09,130 --> 00:02:14,450
+It turns out that there was one person in
+that group of ten, who lost 300 pounds.
+
+40
+00:02:14,450 --> 00:02:17,490
+So, the mean weight loss was huge, 34.5
+pounds.
+
+41
+00:02:17,490 --> 00:02:19,790
+But that's mostly driven by that one
+person.
+
+42
+00:02:19,790 --> 00:02:25,140
+The median loss was only 4.5 pounds.
+
+43
+00:02:25,140 --> 00:02:28,020
+If you were to look at these data and were
+to analyze these data using a two
+
+44
+00:02:28,020 --> 00:02:32,060
+sample ttest, you would not find a
+significant difference between the groups.
+
+45
+00:02:32,060 --> 00:02:33,210
+Now, let's look at the raw data.
+
+46
+00:02:33,210 --> 00:02:34,720
+Here's diet one.
+
+47
+00:02:34,720 --> 00:02:36,380
+We can actually look at the numbers
+because there's only 10
+
+48
+00:02:36,380 --> 00:02:37,205
+people in each diet.
+
+49
+00:02:37,205 --> 00:02:41,950
+And here's the weight loss in pounds, the
+change in weight in pounds.
+
+50
+00:02:41,950 --> 00:02:45,260
+So, for example, one person gained four
+pounds, one person lost 300 pounds,
+
+51
+00:02:45,260 --> 00:02:46,583
+that's for diet one.
+
+52
+00:02:46,583 --> 00:02:49,690
+For diet two, here are the changes in
+weights.
+
+53
+00:02:49,690 --> 00:02:52,840
+You'll notice that if you look at the raw
+data,
+
+54
+00:02:52,840 --> 00:02:56,830
+there's a much more consistent weight loss
+in diet two.
+
+55
+00:02:56,830 --> 00:03:00,010
+If I were going to be recommending a diet
+to patient it
+
+56
+00:03:00,010 --> 00:03:04,210
+seems like everybody in diet two lost a
+pretty good chunk of weight.
+
+57
+00:03:04,210 --> 00:03:07,820
+Whereas, diet one it was much more
+variable, one person did great.
+
+58
+00:03:07,820 --> 00:03:11,750
+But there were a lot of people who didn't
+do as terrific on diet one.
+
+59
+00:03:11,750 --> 00:03:15,410
+So if I'm looking at the data now, I might
+just intuitively,
+
+60
+00:03:15,410 --> 00:03:18,160
+instinctively think well diet two seems
+somewhat better.
+
+61
+00:03:18,160 --> 00:03:22,776
+We can actually apply a statistical test
+to evaluate which diet is better.
+
+62
+00:03:22,776 --> 00:03:27,200
+We're going to apply something called the
+Wilcoxon rank-sum test.
+
+63
+00:03:27,200 --> 00:03:29,600
+It's also sometimes called the
+Mann-Whitney U test.
+
+64
+00:03:29,600 --> 00:03:32,351
+I would prefer the term Wilcoxon rank-sum
+test,
+
+65
+00:03:32,351 --> 00:03:34,320
+because rank-sum test tells you exactly
+what it does.
+
+66
+00:03:34,320 --> 00:03:36,275
+You rank the data and then you sum it.
+
+67
+00:03:36,275 --> 00:03:39,551
+So, we want to know if there is a
+difference in
+
+68
+00:03:39,551 --> 00:03:42,099
+weight loss between the two diets.
+
+69
+00:03:42,099 --> 00:03:45,011
+The outcome variable is weight change.
+
+70
+00:03:45,011 --> 00:03:46,650
+It is a continuous variable.
+
+71
+00:03:46,650 --> 00:03:49,960
+However, it is not a normally distributed
+variable.
+
+72
+00:03:49,960 --> 00:03:54,160
+If you look at those histograms, there is
+a huge left tail for diet one.
+
+73
+00:03:54,160 --> 00:03:56,090
+So, it might have been normally
+distributed, but
+
+74
+00:03:56,090 --> 00:03:59,090
+we had that one outlier which made it a
+non-normal distribution.
+
+75
+00:03:59,090 --> 00:04:00,810
+We have a small n, only 10 in each group.
+
+76
+00:04:00,810 --> 00:04:03,110
+So, we have to worry about the normality
+assumption here.
+
+77
+00:04:03,110 --> 00:04:05,270
+A ttest is not going to be appropriate
+here.
+
+78
+00:04:05,270 --> 00:04:09,510
+It's also not going to be appropriate to
+just throw out the one weight,
+
+79
+00:04:09,510 --> 00:04:12,040
+the one person who lost a lot of weight in
+diet one.
+
+80
+00:04:12,040 --> 00:04:14,210
+Because that person's a real person who
+lost a lot of weight,
+
+81
+00:04:14,210 --> 00:04:15,560
+we want to give them credit for that.
+
+82
+00:04:15,560 --> 00:04:17,070
+We don't want to just throw out that
+outlier.
+
+83
+00:04:17,070 --> 00:04:21,880
+But Wilcoxon rank-sum test can keep the
+outlier in.
+
+84
+00:04:21,880 --> 00:04:25,530
+Are the observations correlated?
+
+85
+00:04:25,530 --> 00:04:27,290
+No, we have independent groups here.
+
+86
+00:04:27,290 --> 00:04:30,180
+Are groups being compared?
+
+87
+00:04:30,180 --> 00:04:31,760
+Yes, and how many are being compared?
+
+88
+00:04:31,760 --> 00:04:33,270
+There's two groups.
+
+89
+00:04:33,270 --> 00:04:36,960
+Normally we would, if it weren't for the
+violation of the normal,
+
+90
+00:04:36,960 --> 00:04:39,930
+the normality assumption, we would be
+doing a two sample ttest.
+
+91
+00:04:39,930 --> 00:04:42,560
+But, because we've violated the normality
+assumption here,
+
+92
+00:04:42,560 --> 00:04:44,380
+our outcome variable is not normally
+distributed.
+
+93
+00:04:44,380 --> 00:04:47,840
+We have have small n, we're going to
+choose for the Wilcoxon rank-sum test.
+
+94
+00:04:47,840 --> 00:04:52,648
+Again, another it is also called the
+Mann-Whitney U test, those are equivalent.
+
+95
+00:04:52,648 --> 00:04:55,776
+So, first up in the rank-sum test is just
+to rank the data.
+
+96
+00:04:55,776 --> 00:04:57,952
+We're going to take all, everybody, and
+
+97
+00:04:57,952 --> 00:05:01,488
+we're going to ignore the group they're in
+the for the moment.
+
+98
+00:05:01,488 --> 00:05:03,880
+We're going to order the diets.
+
+99
+00:05:03,880 --> 00:05:07,090
+Order the weight losses ignoring diet.
+
+100
+00:05:07,090 --> 00:05:10,520
+So, we're going to order from the worst
+weight loss, to the best weight loss.
+
+101
+00:05:10,520 --> 00:05:14,190
+The person who lost the least is the
+person who gained four pounds.
+
+102
+00:05:14,190 --> 00:05:14,890
+They get a rank of one.
+
+103
+00:05:14,890 --> 00:05:15,880
+The person who did the best,
+
+104
+00:05:15,880 --> 00:05:18,150
+the person who lost 300 pounds, they get a
+rank of 20.
+
+105
+00:05:18,150 --> 00:05:20,140
+Then, we rank everybody else in between.
+
+106
+00:05:20,140 --> 00:05:21,260
+Again, ignoring groups.
+
+107
+00:05:21,260 --> 00:05:25,510
+So, the ranks both groups can have, both a
+sense of ranks.
+
+108
+00:05:25,510 --> 00:05:27,330
+You'll notice just looking at the ranks,
+
+109
+00:05:27,330 --> 00:05:31,400
+that most of the high ranks go to diet
+two.
+
+110
+00:05:31,400 --> 00:05:33,920
+So we rank the data, ignoring which group
+people are in,
+
+111
+00:05:33,920 --> 00:05:35,950
+from the lowest to the highest 1 to 20.
+
+112
+00:05:35,950 --> 00:05:39,350
+Notice, that we are including the person
+who lost the 300 pounds.
+
+113
+00:05:39,350 --> 00:05:40,560
+They're getting the highest credit.
+
+114
+00:05:40,560 --> 00:05:42,670
+They're getting that highest rank of 20.
+
+115
+00:05:42,670 --> 00:05:46,260
+But a difference between, the difference
+between 19 and 20 is much,
+
+116
+00:05:46,260 --> 00:05:49,420
+much smaller than the difference between
+negative 30 and negative 300.
+
+117
+00:05:49,420 --> 00:05:51,970
+So, that outlier is not having so much
+Influence here.
+
+118
+00:05:51,970 --> 00:05:54,140
+By looking at ranks data,
+
+119
+00:05:54,140 --> 00:05:56,820
+we're essentially comparing the medians
+rather than comparing the means.
+
+120
+00:05:58,530 --> 00:06:00,600
+We then sum the ranks within each group.
+
+121
+00:06:00,600 --> 00:06:01,150
+So, we're going to sum the ranks for group
+one, comes out to be 73.
+
+122
+00:06:01,150 --> 00:06:08,443
+We're going to sum the ranks for group
+two, that comes out to be 137.
+
+123
+00:06:08,443 --> 00:06:12,270
+The one with the bigger sum of the rank is
+going to be the better diet.
+
+124
+00:06:12,270 --> 00:06:17,950
+What the Wilcoxon rank-sum test then does
+is it looks at those
+
+125
+00:06:17,950 --> 00:06:22,580
+sums of the ranks, and tells you whether
+or not they're statistically different.
+
+126
+00:06:22,580 --> 00:06:25,780
+This is a little tricky if you have
+different sample sizes, right?
+
+127
+00:06:25,780 --> 00:06:28,660
+What if one group only had five people and
+the other group had 20 people.
+
+128
+00:06:28,660 --> 00:06:32,090
+Well, of course, the sum of the ranks is
+going to be higher for the bigger group.
+
+129
+00:06:32,090 --> 00:06:35,720
+So, the Wilcoxon rank-sum test accounts
+for differences in sample sizes as well.
+
+130
+00:06:35,720 --> 00:06:37,080
+Theory of the same sample size.
+
+131
+00:06:37,080 --> 00:06:41,730
+You just need to answer the question, is
+137 statistically different than 73?
+
+132
+00:06:41,730 --> 00:06:44,310
+And in fact, when we apply that test,
+
+133
+00:06:44,310 --> 00:06:48,150
+it does turn out that the p-value here
+comes out to be statistically significant.
+
+134
+00:06:48,150 --> 00:06:51,960
+It actually shows us that diet two is
+superior to diet one,
+
+135
+00:06:51,960 --> 00:06:55,210
+despite the fact that the mean weight loss
+was higher in diet one.
+
+136
+00:06:55,210 --> 00:06:57,370
+So, by applying the correct statistical
+test here,
+
+137
+00:06:57,370 --> 00:07:00,140
+we are able to say that diet two is
+superior.
+
+138
+00:07:00,140 --> 00:07:05,190
+I'm not going to go into the nitty gritty
+details of the actual
+
+139
+00:07:05,190 --> 00:07:09,274
+mathematical calculations of
+distinguishing that 73 from that 170, 37.
+
+140
+00:07:09,274 --> 00:07:15,016
+If you want the details on that, there is
+an optional material on that for you.
+
+141
+00:07:15,016 --> 00:07:19,192
+Now, I want to briefly review the Wilcoxon
+sign-rank test.
+
+142
+00:07:19,192 --> 00:07:23,629
+This is the non-parametric alternative to
+the paired ttest.
+
+143
+00:07:23,629 --> 00:07:30,010
+Recall that we talked last week about a
+randomized trial DHA oil to treat eczema.
+
+144
+00:07:30,010 --> 00:07:33,570
+Here's a table, a figure from that trial.
+
+145
+00:07:33,570 --> 00:07:38,640
+I showed you part B from that trial last
+week.
+
+146
+00:07:38,640 --> 00:07:41,730
+There is a bunch of p-values on this
+figure,
+
+147
+00:07:41,730 --> 00:07:45,370
+and you can see where do those p-values
+come from?
+
+148
+00:07:45,370 --> 00:07:48,190
+Well, these are showing the p-values for
+whether or
+
+149
+00:07:48,190 --> 00:07:51,850
+not the placebo group and the DHA group.
+
+150
+00:07:51,850 --> 00:07:53,260
+The control group and the DHA group.
+
+151
+00:07:53,260 --> 00:07:54,610
+Whether or not their score add scores,
+
+152
+00:07:54,610 --> 00:07:58,448
+went down at all a significant amount over
+time.
+
+153
+00:07:58,448 --> 00:08:04,890
+So, all the p values I've circled here
+came from Wilcoxon sign-rank tests.
+
+154
+00:08:04,890 --> 00:08:07,080
+So, when you're doing the within group
+comparison,
+
+155
+00:08:07,080 --> 00:08:11,360
+over time those p-values come from the
+Wilcoxon sign-rank test.
+
+156
+00:08:11,360 --> 00:08:14,010
+Here, we were comparing only week zero to
+week eight, so
+
+157
+00:08:14,010 --> 00:08:15,880
+we're actually only comparing two time
+points.
+
+158
+00:08:15,880 --> 00:08:21,950
+The score add index, the score add score
+turns out to be non-normally distributed.
+
+159
+00:08:21,950 --> 00:08:23,090
+Our sample size was small here.
+
+160
+00:08:23,090 --> 00:08:27,270
+We only had 53 people, so we're going to
+want to use a non-parametric equivalent to
+
+161
+00:08:27,270 --> 00:08:29,580
+the pair ttest, rather than use the pair
+ttest.
+
+162
+00:08:29,580 --> 00:08:31,280
+So again, how did I get there?
+
+163
+00:08:31,280 --> 00:08:34,140
+I wanted to know whether or not the
+patients improved in SCORAD score from
+
+164
+00:08:34,140 --> 00:08:35,840
+baseline to eight weeks, just two time
+points.
+
+165
+00:08:35,840 --> 00:08:40,590
+The outcome variable's SCORAD, the
+severity score of eczema.
+
+166
+00:08:40,590 --> 00:08:44,747
+It is a continuous variable, but it is not
+normally distributed, and
+
+167
+00:08:44,747 --> 00:08:47,730
+we they have small numbers, so we cannot
+apply a ttest here.
+
+168
+00:08:47,730 --> 00:08:50,400
+Are the observations correlated?
+
+169
+00:08:50,400 --> 00:08:52,859
+Yes, it's the same people before and
+after.
+
+170
+00:08:52,859 --> 00:08:54,740
+So, we also have correlated data here.
+
+171
+00:08:54,740 --> 00:08:56,790
+So, we would normally do a paired ttest.
+
+172
+00:08:56,790 --> 00:08:58,850
+But because we violated the normality
+assumption,
+
+173
+00:08:58,850 --> 00:09:02,810
+we're going to use the non-parametric
+equivalent to the pair ttest,
+
+174
+00:09:02,810 --> 00:09:05,230
+which is the Wilcoxon sign-rank test.
+
+175
+00:09:05,230 --> 00:09:06,750
+There's only two time points being
+compared,
+
+176
+00:09:06,750 --> 00:09:12,630
+which is why we can used a pair two test
+or a Wilcoxon sign-rank test.
+
+177
+00:09:12,630 --> 00:09:15,210
+The mechanics or the Wilcoxon sign-rank
+test just briefly,
+
+178
+00:09:15,210 --> 00:09:18,255
+it's very similar to the Wilcoxon rank-sum
+test.
+
+179
+00:09:18,255 --> 00:09:20,530
+It's going to involve some ranking.
+
+180
+00:09:20,530 --> 00:09:24,140
+Except this time, it's sort of, [COUGH]
+we're going to be looking at signs,
+
+181
+00:09:24,140 --> 00:09:26,590
+the signs, rather than at two groups.
+
+182
+00:09:26,590 --> 00:09:29,870
+So, you're going to calculate the change
+in SCORAD score for each participant.
+
+183
+00:09:29,870 --> 00:09:30,750
+So, just like what you do for
+
+184
+00:09:30,750 --> 00:09:35,080
+the pair ttest, everybody has an
+improvement score, change score.
+
+185
+00:09:35,080 --> 00:09:39,660
+You then rank the absolute values of the
+changes in SCORAD score,
+
+186
+00:09:39,660 --> 00:09:42,090
+from the smallest to the largest.
+
+187
+00:09:42,090 --> 00:09:45,000
+So, the person who had
+
+188
+00:09:45,000 --> 00:09:48,832
+the biggest absolute change would get the
+biggest rank.
+
+189
+00:09:48,832 --> 00:09:50,530
+We're ignoring sign for
+
+190
+00:09:50,530 --> 00:09:54,790
+the minute, [COUGH] the null hypothesis
+here is that there's no change.
+
+191
+00:09:54,790 --> 00:09:56,560
+We're ignoring sign for the minute.
+
+192
+00:09:56,560 --> 00:10:02,049
+We would then add up the ranks, sum up the
+ranks from the people who improved.
+
+193
+00:10:02,049 --> 00:10:06,556
+That's the people who would have a
+negative sign.
+
+194
+00:10:06,556 --> 00:10:07,550
+And we would add up the ranks from the
+people who got worse.
+
+195
+00:10:07,550 --> 00:10:09,860
+That's the people who had a positive sign.
+
+196
+00:10:09,860 --> 00:10:11,770
+So, that's where the sign part comes in.
+
+197
+00:10:11,770 --> 00:10:14,305
+We're comparing people who improved to
+people who got worse.
+
+198
+00:10:14,305 --> 00:10:17,058
+Does either sum of the ranks dominate.
+
+199
+00:10:17,058 --> 00:10:22,570
+The Wilcoxon sign-rank test compares these
+values to determine
+
+200
+00:10:22,570 --> 00:10:28,652
+whether the improvements significantly
+exceeded the declines or vice versa.
+
+201
+00:10:28,652 --> 00:10:32,180
+Remember, the null hypothesis here is that
+there is no change.
+
+202
+00:10:32,180 --> 00:10:35,230
+So, we just want to know if there is a
+significant change in either direction,
+
+203
+00:10:35,230 --> 00:10:36,440
+either going up or going down.
+
+204
+00:10:36,440 --> 00:10:39,302
+If we, and under the null, you'd expect
+there is some of
+
+205
+00:10:39,302 --> 00:10:42,810
+the ranks to be about equal for the
+negatives as for the positives.
+
+206
+00:10:42,810 --> 00:10:46,270
+If you violate the null, if you reject the
+null, that would suggest that there
+
+207
+00:10:46,270 --> 00:10:48,970
+was either a significant improvement or a
+significant decline.
+
+208
+00:10:48,970 --> 00:10:52,130
+And all we're asking in this particular
+example is whether or
+
+209
+00:10:52,130 --> 00:10:57,120
+not there was a significant improvement
+over time, in the DHA group alone or
+
+210
+00:10:57,120 --> 00:10:58,270
+in the control group alone.
+
+211
+00:10:59,410 --> 00:11:04,123
+So, and we saw that, indeed, these
+p-values the p-value for
+
+212
+00:11:04,123 --> 00:11:06,560
+the DHA group from the Wilcoxon sign-rank
+test,
+
+213
+00:11:06,560 --> 00:11:09,420
+that p-value comes from the Wilcoxon
+sign-rank test.
+
+214
+00:11:09,420 --> 00:11:14,250
+That came out significant the p-value from
+the Wilcoxon sign-rank test
+
+215
+00:11:14,250 --> 00:11:17,230
+applied just to the control group, did not
+come out significant.
+
+216
+00:11:17,230 --> 00:11:20,480
+So, those within group change was
+significant for the DHA group, but
+
+217
+00:11:20,480 --> 00:11:22,870
+not significant for the control group.
+
+218
+00:11:22,870 --> 00:11:28,240
+But, the p-value that really mattered here
+is not the within group changes,
+
+219
+00:11:28,240 --> 00:11:32,140
+but the p-value we should have cared about
+here is the between group difference.
+
+220
+00:11:32,140 --> 00:11:36,430
+Did the DHA group improve more than the
+control group?
+
+221
+00:11:36,430 --> 00:11:41,400
+To get that p-value, we had to apply a
+Wilcoxon rank-sum test.
+
+222
+00:11:41,400 --> 00:11:43,839
+The between group to compare the two
+groups and
+
+223
+00:11:43,839 --> 00:11:48,740
+their improvement in SCORAD scores, and
+that came out to be non-significant.
+
+224
+00:11:48,740 --> 00:11:52,320
+So, as we said, even though within group
+improvement, it,
+
+225
+00:11:52,320 --> 00:11:54,260
+it is significant in one group but not the
+other.
+
+226
+00:11:54,260 --> 00:11:57,911
+It doesn't mean that the between group
+differences are going to be significant.
+
+227
+00:11:57,911 --> 00:11:58,630
+And they weren't here.
+
+228
+00:11:58,630 --> 00:12:01,500
+All of those were done.
+
+229
+00:12:01,500 --> 00:12:05,240
+All those p-value were done by
+non-parametric because the SCORAD score is
+
+230
+00:12:05,240 --> 00:12:06,460
+not normally distributed.
+
+231
+00:12:09,100 --> 00:12:13,513
+Finally if you want, if you want to do
+compare two or
+
+232
+00:12:13,513 --> 00:12:19,148
+more groups, and you have a non normally
+distributed outcome variable.
+
+233
+00:12:19,148 --> 00:12:22,970
+The non non-parametric equivalent to the
+ANOVA is
+
+234
+00:12:22,970 --> 00:12:24,680
+something called the Kruskal-Wallis test.
+
+235
+00:12:24,680 --> 00:12:26,675
+And it basically, I'm not going to go over
+the mechanics,
+
+236
+00:12:26,675 --> 00:12:30,209
+because it basically works in the exact
+same way as the Wilcoxon rank-sum test.
+
+237
+00:12:30,209 --> 00:12:32,850
+You're going to rank everybody ignoring
+group, and
+
+238
+00:12:32,850 --> 00:12:35,619
+then your going to sum up the ranks within
+the groups and sum outcome.

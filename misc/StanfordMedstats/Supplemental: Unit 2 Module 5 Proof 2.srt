@@ -1,0 +1,298 @@
+1
+00:00:04,880 --> 00:00:08,710
+For those of you who want a few more
+mathematical details about
+
+2
+00:00:08,710 --> 00:00:11,090
+the relationship between the odds ratio
+and
+
+3
+00:00:11,090 --> 00:00:14,700
+the risk ratio, it's pretty easy to show
+the mathematical relationship.
+
+4
+00:00:14,700 --> 00:00:15,925
+So I'm going to do that now.
+
+5
+00:00:15,925 --> 00:00:22,560
+So if we wrote out the risk ratio, I'm
+going to use a few symbols here.
+
+6
+00:00:22,560 --> 00:00:26,370
+So if we say that the risk ratio is equal
+to the probability of
+
+7
+00:00:26,370 --> 00:00:31,900
+getting the disease and some exposed
+group, I'll call that P exposed.
+
+8
+00:00:31,900 --> 00:00:33,340
+So that's like my smoking group.
+
+9
+00:00:33,340 --> 00:00:36,480
+That's the probability of getting the
+disease in, say, my smoking group.
+
+10
+00:00:36,480 --> 00:00:40,830
+And then my risk ratio compares that group
+to some reference groups.
+
+11
+00:00:40,830 --> 00:00:43,200
+So that's what the probability of getting
+the disease in the reference group.
+
+12
+00:00:43,200 --> 00:00:44,770
+We'll call that P ref.
+
+13
+00:00:44,770 --> 00:00:46,162
+That's what our risk ratio is.
+
+14
+00:00:46,162 --> 00:00:51,432
+If we wrote off the odds ratio in term of,
+in terms of P exposed and
+
+15
+00:00:51,432 --> 00:00:56,650
+P ref, the odds ratio is equal to the
+probability of
+
+16
+00:00:56,650 --> 00:01:01,680
+getting the disease in the exposed divided
+by one minus that probability.
+
+17
+00:01:03,130 --> 00:01:05,140
+That's the odds for the exposed group.
+
+18
+00:01:05,140 --> 00:01:08,890
+And then, we have to divide that by the
+odds for the reference group.
+
+19
+00:01:08,890 --> 00:01:14,541
+So, that would be P-ref, divided by 1
+minus P-ref.
+
+20
+00:01:14,541 --> 00:01:19,830
+So then if we wanted to make a formula
+that
+
+21
+00:01:19,830 --> 00:01:23,130
+showed us the relationship between the
+odds ratio and the risk ratio,
+
+22
+00:01:23,130 --> 00:01:26,980
+we could simply say, well what's different
+between the odds ratio and the risk ratio?
+
+23
+00:01:26,980 --> 00:01:29,750
+Well the risk ratio is the probability in
+
+24
+00:01:29,750 --> 00:01:33,170
+the exposed group divided by the
+probability in the reference group.
+
+25
+00:01:33,170 --> 00:01:40,470
+So the odds ratio is simply the risk ratio
+times a factor and that factor is 1
+
+26
+00:01:40,470 --> 00:01:45,480
+minus the probability of the getting the
+disease in the reference group,
+
+27
+00:01:45,480 --> 00:01:51,430
+divided 1 minus the probability of getting
+the disease in the exposed group.
+
+28
+00:01:51,430 --> 00:01:54,490
+So that's the relationship between the
+odds ratio and the risk ratio.
+
+29
+00:01:54,490 --> 00:01:59,410
+What you notice is that the odds ratio is
+always the risk ratio times this
+
+30
+00:01:59,410 --> 00:02:03,540
+additional factor, this what I call a
+distortion term.
+
+31
+00:02:03,540 --> 00:02:10,780
+If the outcome is rare, that means P ref
+is small and also P exposed is small.
+
+32
+00:02:10,780 --> 00:02:15,350
+So for example, let's say that P exposed
+is 2%.
+
+33
+00:02:15,350 --> 00:02:19,470
+So the exposure the probability of getting
+a disease in the, say,
+
+34
+00:02:19,470 --> 00:02:22,310
+the smoking group is 2% and in the
+reference group, it's 1%.
+
+35
+00:02:22,310 --> 00:02:23,695
+Those are fairly rare outcomes.
+
+36
+00:02:23,695 --> 00:02:28,820
+Well, if the probability of getting the
+disease is 2% then,
+
+37
+00:02:28,820 --> 00:02:33,370
+the probability of not getting it is 98%.
+
+38
+00:02:33,370 --> 00:02:35,540
+If the probability of getting the disease
+is 1%,
+
+39
+00:02:35,540 --> 00:02:37,360
+then the probability of not getting it is
+99%.
+
+40
+00:02:37,360 --> 00:02:40,944
+So in that case, this distortion term,
+
+41
+00:02:40,944 --> 00:02:46,650
+1 minus P ref divided by 1 minus P exp,
+
+42
+00:02:46,650 --> 00:02:52,130
+exposed would just be 99% divided by 98%.
+
+43
+00:02:52,130 --> 00:02:53,560
+That would be the distortion term.
+
+44
+00:02:53,560 --> 00:02:56,220
+Well that's awfully close to 1.
+
+45
+00:02:56,220 --> 00:02:59,560
+So if that's the case, if you have
+something that's rare the distortion term,
+
+46
+00:02:59,560 --> 00:03:02,995
+what you're multiplying the risk ratio by
+to get the odds ratio is extremely small.
+
+47
+00:03:02,995 --> 00:03:08,980
+But compare that now to the situation
+where the the [INAUDIBLE],
+
+48
+00:03:08,980 --> 00:03:13,710
+the, the risk of getting your outcome is
+actually much higher.
+
+49
+00:03:13,710 --> 00:03:16,610
+So compared to this situation where, say,
+
+50
+00:03:16,610 --> 00:03:23,340
+the risk of getting the outcome in the
+exposed group is 50%.
+
+51
+00:03:23,340 --> 00:03:27,960
+And the risk in the reference group is
+25%.
+
+52
+00:03:27,960 --> 00:03:29,580
+Those are common outcomes.
+
+53
+00:03:29,580 --> 00:03:33,870
+So now the risk of not getting the, the
+outcome in the expose group is 50% and
+
+54
+00:03:33,870 --> 00:03:37,890
+the chance of not getting it in the
+reference group is 75%.
+
+55
+00:03:37,890 --> 00:03:42,750
+So now, what's our distortion factor, 1
+minus P ref divided by 1 minus P exposed,
+
+56
+00:03:42,750 --> 00:03:48,470
+that distortion factor is now going to be
+75% divided by 50% or 1.5.
+
+57
+00:03:48,470 --> 00:03:52,460
+So our, our odds ratio now will be 1.5
+times the risk ratio.
+
+58
+00:03:52,460 --> 00:03:55,726
+If we have risk ratios that are below 1,
+that if,
+
+59
+00:03:55,726 --> 00:03:58,300
+as if we're dealing with protective
+effects,
+
+60
+00:03:58,300 --> 00:04:02,740
+what will happen is that this distortion
+term will be a fraction.
+
+61
+00:04:02,740 --> 00:04:07,590
+And so the odds ratio will always be
+smaller than the corresponding risk ratio.
+
+62
+00:04:07,590 --> 00:04:10,620
+That means that the, the protective effect
+will look larger.
+
+63
+00:04:10,620 --> 00:04:11,120
+[BLANK_AUDIO]

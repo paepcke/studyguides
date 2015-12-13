@@ -1,0 +1,579 @@
+1
+00:00:04,680 --> 00:00:07,950
+In this next module, I'm going to talk
+about effect modification,
+
+2
+00:00:07,950 --> 00:00:10,600
+which is equivalent to the term
+interaction.
+
+3
+00:00:10,600 --> 00:00:13,490
+You'll see that epidemiologists tend to
+use the term effect modification.
+
+4
+00:00:13,490 --> 00:00:17,860
+It's a little easier to talk about one
+variable modifying the effect of another,
+
+5
+00:00:17,860 --> 00:00:20,060
+it's a little easier to talk about
+verbally.
+
+6
+00:00:20,060 --> 00:00:22,750
+But statisticians prefer the term
+interaction,
+
+7
+00:00:22,750 --> 00:00:24,060
+because that's more of a statistical term.
+
+8
+00:00:24,060 --> 00:00:25,190
+But they're equivalent terms.
+
+9
+00:00:25,190 --> 00:00:28,720
+So what is an effect modifier?
+
+10
+00:00:28,720 --> 00:00:32,310
+This is the situation where we have a
+predictor and outcome that actually have
+
+11
+00:00:32,310 --> 00:00:38,760
+different relationships depending on what
+level we're at of the effect modifier.
+
+12
+00:00:38,760 --> 00:00:41,090
+Again, effect modification is also called
+interaction.
+
+13
+00:00:41,090 --> 00:00:44,410
+So the predictor now, come now may differ
+in their relationships depending on
+
+14
+00:00:44,410 --> 00:00:46,610
+where we are depending on the effect
+modifier.
+
+15
+00:00:47,660 --> 00:00:51,360
+Just to say it a little bit more
+Statistical terms, what we're looking for
+
+16
+00:00:51,360 --> 00:00:54,130
+is when the effect size, again, the
+relationship between the predictor and
+
+17
+00:00:54,130 --> 00:00:57,550
+the outcome, is modified, is different, in
+different subgroups.
+
+18
+00:00:57,550 --> 00:00:59,920
+And statistically, that would mean we
+would see a statistically
+
+19
+00:00:59,920 --> 00:01:04,130
+significant difference of the effect
+between those different subgroups.
+
+20
+00:01:04,130 --> 00:01:07,220
+So for example, if you had a blood
+pressure treatment that worked
+
+21
+00:01:07,220 --> 00:01:10,470
+significantly better in men than in women,
+
+22
+00:01:10,470 --> 00:01:14,000
+we would say that the treatment had an
+interaction with gender.
+
+23
+00:01:14,000 --> 00:01:15,810
+So gender modifies the effect.
+
+24
+00:01:15,810 --> 00:01:17,280
+Of the treatment on blood pressure.
+
+25
+00:01:18,780 --> 00:01:21,090
+In this module, I'm just going to
+illustrate an interaction with some
+
+26
+00:01:21,090 --> 00:01:23,760
+examples, we're not going to get into the,
+
+27
+00:01:23,760 --> 00:01:27,860
+details of how you statistically identify
+interacting variables yet.
+
+28
+00:01:27,860 --> 00:01:31,320
+Here's some data from, one of the national
+health surveys.
+
+29
+00:01:31,320 --> 00:01:35,100
+So this was a study that was looking at
+the relationship between being
+
+30
+00:01:35,100 --> 00:01:37,190
+overweight or obese And mortality.
+
+31
+00:01:37,190 --> 00:01:42,400
+The outcome variable here is years of life
+loss so bigger bars higher bars
+
+32
+00:01:42,400 --> 00:01:46,690
+are bad that is increasing your mortality
+because you have more years of life lost.
+
+33
+00:01:46,690 --> 00:01:48,910
+The different colored bars here represent
+the age at
+
+34
+00:01:48,910 --> 00:01:50,780
+which you became overweight or obese.
+
+35
+00:01:50,780 --> 00:01:54,190
+So the thought being that being overweight
+or obese in your twenties that might be
+
+36
+00:01:54,190 --> 00:01:57,550
+worse than if you became overweight or
+obese in your thirties forties.
+
+37
+00:01:57,550 --> 00:01:58,430
+fifties, sixties, seventies.
+
+38
+00:01:58,430 --> 00:02:03,970
+It turns out that the relationship between
+obesity and
+
+39
+00:02:03,970 --> 00:02:09,000
+years of life lost is modified by both
+race and gender, and
+
+40
+00:02:09,000 --> 00:02:11,460
+that's what's illustrated in these next
+couple of slides.
+
+41
+00:02:11,460 --> 00:02:15,300
+So if you look at white men, and you look
+at the relationship, if you're This is 25.
+
+42
+00:02:15,300 --> 00:02:18,280
+A BMI of 25 would represent overweight.
+
+43
+00:02:18,280 --> 00:02:20,800
+A BMI of 30 or above would represent
+obese.
+
+44
+00:02:20,800 --> 00:02:25,244
+So basically if you were obese, starting
+from an early age.
+
+45
+00:02:25,244 --> 00:02:27,820
+You know from your twenties or your
+thirties or even forties or fifties.
+
+46
+00:02:27,820 --> 00:02:29,450
+If your obese.
+
+47
+00:02:29,450 --> 00:02:32,680
+And you're a white man, you are losing
+years off your life and, you know,
+
+48
+00:02:32,680 --> 00:02:37,000
+the worse the obesity the higher this
+goes, where you're really morbidly obese,
+
+49
+00:02:37,000 --> 00:02:39,320
+you're losing a huge number of years off
+of life.
+
+50
+00:02:39,320 --> 00:02:41,030
+If you then turn to look at white women,
+
+51
+00:02:41,030 --> 00:02:43,970
+however, you'll notice that the
+relationship's a little bit different.
+
+52
+00:02:43,970 --> 00:02:50,010
+So, indeed Women, white women are losing
+years off the off of life,
+
+53
+00:02:50,010 --> 00:02:52,170
+related to being overweight or obese.
+
+54
+00:02:52,170 --> 00:02:55,280
+But the curve here is not quite as steep,
+it's not quite as bad if you're
+
+55
+00:02:55,280 --> 00:02:59,470
+a white woman to be morbidly obese in
+terms of mortality.
+
+56
+00:02:59,470 --> 00:03:02,010
+And the relationship looks just a little
+bit different.
+
+57
+00:03:02,010 --> 00:03:06,360
+And being, starting the overweight in your
+twenties versus your forties in
+
+58
+00:03:06,360 --> 00:03:10,330
+women doesn't seem to make as much of a
+difference as it does, did in white men.
+
+59
+00:03:10,330 --> 00:03:15,310
+If you look at black men which, what's
+interesting is that In fact,.
+
+60
+00:03:15,310 --> 00:03:17,290
+If you're in your seventies, and
+
+61
+00:03:17,290 --> 00:03:20,540
+you become overweight or obese, the bars
+are below the zero line.
+
+62
+00:03:20,540 --> 00:03:23,540
+That means you're actually increasing your
+life expectancy.
+
+63
+00:03:23,540 --> 00:03:28,440
+But if you're overweight or obese up in
+the, you know, higher ranges.
+
+64
+00:03:28,440 --> 00:03:31,620
+The years of life lost for a black man who
+had been overweight or
+
+65
+00:03:31,620 --> 00:03:33,210
+obese since their twenties is huge.
+
+66
+00:03:33,210 --> 00:03:35,210
+It's up here, like 20 years of life lost.
+
+67
+00:03:35,210 --> 00:03:36,830
+So a much steeper increase here.
+
+68
+00:03:36,830 --> 00:03:39,906
+And a little bit of different relationship
+with depending on when you get.
+
+69
+00:03:41,090 --> 00:03:43,400
+Obesity or overweight occur.
+
+70
+00:03:43,400 --> 00:03:46,480
+Then if you look at black women, the
+pattern again is very different, and
+
+71
+00:03:46,480 --> 00:03:50,830
+there's not much increase in years of life
+lost until you get to the really,
+
+72
+00:03:50,830 --> 00:03:53,620
+really high levels of obesity.
+
+73
+00:03:53,620 --> 00:03:57,660
+So very different relationships Depending
+on both gender and race, so
+
+74
+00:03:57,660 --> 00:04:02,000
+we would say that both gender and race
+modify the effect of obesity on mortality.
+
+75
+00:04:02,000 --> 00:04:07,400
+And equivalently you could also say that
+the interaction between race and
+
+76
+00:04:07,400 --> 00:04:11,260
+BMI is significant and also the
+interaction between gender and
+
+77
+00:04:11,260 --> 00:04:13,960
+BMI is significant, so the impact of BMI.
+
+78
+00:04:13,960 --> 00:04:16,930
+On mortality differs by race and gender.
+
+79
+00:04:18,050 --> 00:04:20,690
+Just a couple more examples just to
+illustrate and
+
+80
+00:04:20,690 --> 00:04:22,320
+make sure you're on the same page here.
+
+81
+00:04:22,320 --> 00:04:25,370
+So here's another example where we were,
+we're looking at,
+
+82
+00:04:25,370 --> 00:04:27,870
+what we're looking at in these graphics is
+whether or
+
+83
+00:04:27,870 --> 00:04:31,820
+not that your education level, this is
+quintiles of education.
+
+84
+00:04:31,820 --> 00:04:35,720
+Whether or not that affects when you get
+diagnosed with breast cancer, whether or
+
+85
+00:04:35,720 --> 00:04:39,160
+not you're diagnosed when the tumor is
+local, regional, or
+
+86
+00:04:39,160 --> 00:04:40,960
+in the black bars here are distant.
+
+87
+00:04:40,960 --> 00:04:42,250
+So obviously,
+
+88
+00:04:42,250 --> 00:04:45,840
+with any cancer you want to be diagnosed
+when the cancer is still local.
+
+89
+00:04:45,840 --> 00:04:47,380
+It hasn't spread.
+
+90
+00:04:47,380 --> 00:04:51,880
+So if we look at white women And we look
+across Quintiles of Education.
+
+91
+00:04:51,880 --> 00:04:53,840
+You can see that as you go up in the
+quintiles,
+
+92
+00:04:53,840 --> 00:04:56,610
+you tend to have more cancers diagnosed
+locally,
+
+93
+00:04:56,610 --> 00:05:01,750
+you tend to have fewer cancers diagnosed
+at a distant, a metasticed stage.
+
+94
+00:05:01,750 --> 00:05:05,140
+So interestingly however, If you look at
+black women,
+
+95
+00:05:05,140 --> 00:05:08,960
+that relationship doesn't seem to be the
+true so as you go across quintiles of
+
+96
+00:05:08,960 --> 00:05:14,490
+education there's not much of a change in
+local diagnosis versus distant diagnosis.
+
+97
+00:05:14,490 --> 00:05:16,210
+I don't know why that would be but for
+
+98
+00:05:16,210 --> 00:05:19,450
+some reason the relationship between
+education and
+
+99
+00:05:19,450 --> 00:05:25,310
+stage of cancer diagnosis is different
+between white and, and black women.
+
+100
+00:05:25,310 --> 00:05:28,065
+So we would say that there's an
+interaction here between race It's
+
+101
+00:05:28,065 --> 00:05:28,940
+and education.
+
+102
+00:05:31,640 --> 00:05:36,710
+And a final example, the typical things
+
+103
+00:05:36,710 --> 00:05:41,140
+that you're going to see that tend to be
+effect modifiers or interacting variables.
+
+104
+00:05:41,140 --> 00:05:43,200
+Age might be one of them, race.
+
+105
+00:05:43,200 --> 00:05:46,503
+Gender these are sort of the big ones for
+women pre-menopausal verses
+
+106
+00:05:46,503 --> 00:05:50,890
+post-menopausal often makes a difference
+so this is an example we're looking at
+
+107
+00:05:50,890 --> 00:05:55,260
+colon cancer the relationship between
+obesity and colon cancer
+
+108
+00:05:55,260 --> 00:05:59,180
+is different in pre-menopausal women then
+in post-menopausal women so I'll just.
+
+109
+00:05:59,180 --> 00:06:00,740
+going to zero in on some things on the
+chart.
+
+110
+00:06:00,740 --> 00:06:04,430
+So if you look among pre-menopausal women.
+
+111
+00:06:04,430 --> 00:06:06,070
+Then obesity increases.
+
+112
+00:06:06,070 --> 00:06:10,320
+About doubles your risk of colon or colon
+rectal cancers.
+
+113
+00:06:10,320 --> 00:06:12,280
+That's for pre-menopausal women.
+
+114
+00:06:12,280 --> 00:06:15,920
+However if you look in post menopausal
+women it's the opposite.
+
+115
+00:06:15,920 --> 00:06:19,980
+the, for post-menopausal women being obese
+is actually slightly protective.
+
+116
+00:06:19,980 --> 00:06:21,640
+It doesn't quite reach statistical
+significance.
+
+117
+00:06:21,640 --> 00:06:22,670
+But it's a slightly.
+
+118
+00:06:22,670 --> 00:06:27,250
+Protected or at least unrelated to colon
+cancer in post-menopausal women.
+
+119
+00:06:27,250 --> 00:06:29,910
+Interestingly if you look at breast cancer
+it's the opposite.
+
+120
+00:06:29,910 --> 00:06:33,030
+So for breast cancer obesity is a risk
+factor for
+
+121
+00:06:33,030 --> 00:06:37,490
+breast cancer in postmenopausal women, but
+not in pre-menopausal women.
+
+122
+00:06:37,490 --> 00:06:41,320
+So these are the types of things that are
+typical interacting or
+
+123
+00:06:41,320 --> 00:06:42,860
+effect modifying variables.

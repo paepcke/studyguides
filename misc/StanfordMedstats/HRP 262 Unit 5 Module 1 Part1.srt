@@ -1,0 +1,869 @@
+1
+00:00:00,000 --> 00:00:05,544
+[BLANK_AUDIO]
+
+2
+00:00:05,544 --> 00:00:09,730
+In this next module, I'm going to talk
+about what to do,
+
+3
+00:00:09,730 --> 00:00:12,223
+when you have competing risks.
+
+4
+00:00:12,223 --> 00:00:14,728
+So, first of all, what is a competing
+risk?
+
+5
+00:00:14,728 --> 00:00:19,720
+A competing risk is an event that either
+precludes the event of interest, or
+
+6
+00:00:19,720 --> 00:00:21,467
+alters its probability.
+
+7
+00:00:21,467 --> 00:00:22,379
+So, up until now,
+
+8
+00:00:22,379 --> 00:00:26,970
+we've been talking about, you either have
+the event of interest, or you're censored.
+
+9
+00:00:26,970 --> 00:00:29,570
+And there's the no, nothing else in that.
+
+10
+00:00:29,570 --> 00:00:31,607
+And we've actually been assuming
+implicitly,
+
+11
+00:00:31,607 --> 00:00:35,010
+that the censoring was independent of the
+event of interest.
+
+12
+00:00:35,010 --> 00:00:38,780
+Didn't influence your chance of having the
+event of interest.
+
+13
+00:00:38,780 --> 00:00:41,750
+But what if there's something else that
+can happen in your data set?
+
+14
+00:00:41,750 --> 00:00:45,850
+You can have something happen that
+actually changes your probability of
+
+15
+00:00:45,850 --> 00:00:48,990
+having the event of interest, or prevents
+it all together.
+
+16
+00:00:48,990 --> 00:00:51,610
+So, as a couple of examples, imagine that
+what you
+
+17
+00:00:51,610 --> 00:00:56,480
+care about in a particular data set is
+death from melanoma, a specific cancer.
+
+18
+00:00:56,480 --> 00:00:58,820
+But, some of the people in your data set,
+this you know,
+
+19
+00:00:58,820 --> 00:01:00,120
+this people tend to be older.
+
+20
+00:01:00,120 --> 00:01:03,710
+So some of these patients actually die
+from other causes.
+
+21
+00:01:03,710 --> 00:01:06,850
+Well if you die from something else, then
+clearly, you are no longer at
+
+22
+00:01:06,850 --> 00:01:10,910
+risk of dying from melanoma, so that would
+be a competing risk.
+
+23
+00:01:10,910 --> 00:01:13,580
+Or as another example, imagine that what
+you cared about,
+
+24
+00:01:13,580 --> 00:01:17,703
+your event of interest was death while on
+dialysis, in a kidney patients.
+
+25
+00:01:19,060 --> 00:01:20,340
+But some kidney patients,
+
+26
+00:01:20,340 --> 00:01:23,730
+who are having kidney failure, will go
+onto get a kidney transplant.
+
+27
+00:01:23,730 --> 00:01:27,570
+And once you get a kidney transplant,
+you're removed from dialysis.
+
+28
+00:01:27,570 --> 00:01:30,690
+So you can no longer die while on
+dialysis.
+
+29
+00:01:30,690 --> 00:01:35,150
+So that also, the kidney transplant in
+that case, would also be a competing risk.
+
+30
+00:01:35,150 --> 00:01:38,620
+What do you do in that situation, when you
+have such a competing risk?
+
+31
+00:01:40,450 --> 00:01:43,760
+So, if competing risks are present, we
+now, instead of having sort of
+
+32
+00:01:43,760 --> 00:01:47,100
+two possibilities, event or censored, we
+have a third possibility.
+
+33
+00:01:47,100 --> 00:01:49,180
+So, we could have the event of interest.
+
+34
+00:01:50,590 --> 00:01:51,740
+You could be censored.
+
+35
+00:01:51,740 --> 00:01:55,610
+And again, up until now, we've only been
+considering those two possibilities.
+
+36
+00:01:55,610 --> 00:01:57,410
+But now there's a third thing that could
+happen.
+
+37
+00:01:57,410 --> 00:01:59,390
+You could have a competing risk,
+
+38
+00:01:59,390 --> 00:02:03,400
+which changes your probability of having
+the event of interest.
+
+39
+00:02:03,400 --> 00:02:04,800
+And this is a little tricky.
+
+40
+00:02:04,800 --> 00:02:10,160
+You have to think about it carefully, but,
+competing risk is distinct from censoring.
+
+41
+00:02:11,350 --> 00:02:12,710
+So if you think carefully,
+
+42
+00:02:12,710 --> 00:02:16,530
+if you ask the question, who failed from
+the event of interest?
+
+43
+00:02:16,530 --> 00:02:17,800
+What do we know?
+
+44
+00:02:17,800 --> 00:02:21,940
+So, if somebody has had the event of
+interest, so somebody, say, died from
+
+45
+00:02:21,940 --> 00:02:26,890
+melanoma, we can say for sure that yes,
+they have had the event of interest.
+
+46
+00:02:26,890 --> 00:02:27,820
+We observed that for them.
+
+47
+00:02:29,130 --> 00:02:33,730
+If somebody was censored, all we know is
+that up until the last time we saw them,
+
+48
+00:02:33,730 --> 00:02:37,090
+they had not have, had yet the event of
+interest.
+
+49
+00:02:37,090 --> 00:02:39,540
+But, there's still, we've left of it,
+
+50
+00:02:39,540 --> 00:02:42,840
+open the possibility that sometime after
+the study ended or, after we
+
+51
+00:02:42,840 --> 00:02:46,350
+lost them to follow up, they could have
+gone on to have the event of interest.
+
+52
+00:02:46,350 --> 00:02:50,830
+So, the answer to this question for people
+who are censored, is maybe.
+
+53
+00:02:50,830 --> 00:02:54,160
+Maybe they went on to fail from the event
+of interest later.
+
+54
+00:02:54,160 --> 00:02:56,218
+That possibility is still open.
+
+55
+00:02:56,218 --> 00:03:00,260
+However, imagine you've got a competing
+risk that precludes the event of interest,
+
+56
+00:03:00,260 --> 00:03:02,660
+like dying from other causes.
+
+57
+00:03:02,660 --> 00:03:04,860
+If they died from other causes, then
+clearly we know for
+
+58
+00:03:04,860 --> 00:03:09,240
+sure that they certainly did not die from
+melanoma.
+
+59
+00:03:09,240 --> 00:03:13,480
+So, censoring and the competing risk have
+a different answer to this question.
+
+60
+00:03:13,480 --> 00:03:15,880
+The censoring, they could have gone on to
+have the event, but
+
+61
+00:03:15,880 --> 00:03:17,530
+the competing risk, they could not have.
+
+62
+00:03:19,890 --> 00:03:23,595
+One of the ways that people typically
+we'll handle competing risks,
+
+63
+00:03:23,595 --> 00:03:25,580
+is just to treat them as censored values.
+
+64
+00:03:25,580 --> 00:03:28,880
+To lump them together with the censored
+individuals.
+
+65
+00:03:28,880 --> 00:03:33,100
+The problem with this, is it can run into
+some trouble.
+
+66
+00:03:33,100 --> 00:03:35,000
+Especially when calculating probabilities.
+
+67
+00:03:35,000 --> 00:03:36,440
+Because what you're essentially doing,
+
+68
+00:03:36,440 --> 00:03:41,310
+is you're treating these nos, you're
+treating them as maybes.
+
+69
+00:03:41,310 --> 00:03:44,150
+You're glossing over that distinction.
+
+70
+00:03:44,150 --> 00:03:48,270
+If you treat the nos as maybes, you're
+factoring into your estimate of
+
+71
+00:03:48,270 --> 00:03:52,770
+probability, that it's possible that some
+of the people who got censored,
+
+72
+00:03:52,770 --> 00:03:54,940
+could have gone on to have the risk.
+
+73
+00:03:54,940 --> 00:03:57,990
+You're factoring that in, in some way in
+your probabilities.
+
+74
+00:03:57,990 --> 00:03:59,570
+Because you're treating some of the nos,
+
+75
+00:03:59,570 --> 00:04:03,990
+who couldn't have gone on to have that
+event of interest, as maybes, you're
+
+76
+00:04:03,990 --> 00:04:08,690
+actually going to end up overestimating
+your risk of having the event of interest,
+
+77
+00:04:08,690 --> 00:04:12,010
+or equivalently underestimating your
+survival probabilities.
+
+78
+00:04:12,010 --> 00:04:15,760
+And it's easiest just to illustrate this
+with a few examples.
+
+79
+00:04:15,760 --> 00:04:20,060
+So, think about this melanoma data set
+that you dealt with for
+
+80
+00:04:20,060 --> 00:04:21,920
+the first couple of homeworks.
+
+81
+00:04:21,920 --> 00:04:24,720
+That had actually two competing risks in
+it.
+
+82
+00:04:24,720 --> 00:04:28,080
+You could die of other causes, or you
+could die of melanoma.
+
+83
+00:04:28,080 --> 00:04:30,730
+And, for the purposes of the homework, to
+make sure we got everything correct and
+
+84
+00:04:30,730 --> 00:04:35,330
+it was simple, I had you lump those two
+causes of death together, and
+
+85
+00:04:35,330 --> 00:04:38,680
+just look at the overall probability of
+survival.
+
+86
+00:04:38,680 --> 00:04:40,870
+And that's what's represented here on the
+left-hand side.
+
+87
+00:04:40,870 --> 00:04:45,729
+This is just the Kaplan-Meier curve, for
+the overall cohort, for overall survival.
+
+88
+00:04:45,729 --> 00:04:49,915
+So, about something like maybe 55% of the
+cohort,
+
+89
+00:04:49,915 --> 00:04:56,132
+had the probability of survival somewhere
+around 55% for the entire cohort.
+
+90
+00:04:56,132 --> 00:04:58,342
+This is a perfectly valid analysis, but
+
+91
+00:04:58,342 --> 00:05:01,680
+it doesn't allow you to isolate different
+causes of death.
+
+92
+00:05:02,850 --> 00:05:10,100
+We also sometimes call this, event-free
+survival, or overall mortality.
+
+93
+00:05:10,100 --> 00:05:12,010
+Because we're indicating that you didn't
+have.
+
+94
+00:05:12,010 --> 00:05:14,820
+This is the probability of having none of
+the events available.
+
+95
+00:05:14,820 --> 00:05:16,740
+None of the competing risks in the data
+set.
+
+96
+00:05:17,790 --> 00:05:19,868
+Now, look over on the right-hand side.
+
+97
+00:05:19,868 --> 00:05:24,200
+Here's the Kaplan-Meier curve that I've
+drawn specifically on the top here,
+
+98
+00:05:24,200 --> 00:05:27,100
+is specifically for death from other
+causes.
+
+99
+00:05:27,100 --> 00:05:32,250
+[SOUND]
+And I've lumped together people who
+
+100
+00:05:32,250 --> 00:05:37,410
+died of melanoma, in the censored people,
+for this Kaplan-Meier curve.
+
+101
+00:05:37,410 --> 00:05:39,770
+So, everybody who died of melanoma is
+counted as censored for
+
+102
+00:05:39,770 --> 00:05:41,220
+this Kaplan-Meier curve.
+
+103
+00:05:41,220 --> 00:05:45,600
+And on the bottom here, I'm showing the
+Kaplan-Meier curve from,
+
+104
+00:05:45,600 --> 00:05:48,890
+for death from melanoma specifically.
+
+105
+00:05:48,890 --> 00:05:54,240
+And in that cure, I've treated people who
+died of other causes as censored.
+
+106
+00:05:54,240 --> 00:05:59,180
+And let's just look actually at the five
+year survival probabilities.
+
+107
+00:05:59,180 --> 00:06:00,260
+A lot of times with cancer,
+
+108
+00:06:00,260 --> 00:06:02,580
+we're very interested in the five year
+survival probabilities,
+
+109
+00:06:02,580 --> 00:06:05,150
+those are often what people will cite.
+
+110
+00:06:05,150 --> 00:06:09,580
+So, if you look at the survival
+probability for the overall survival,
+
+111
+00:06:09,580 --> 00:06:14,380
+it's about, somewhere around 75%, and I've
+specifically gotten the actual numbers.
+
+112
+00:06:14,380 --> 00:06:17,900
+It was exactly a 26.8% chance of dying.
+
+113
+00:06:17,900 --> 00:06:19,890
+That's the overall failure probability.
+
+114
+00:06:19,890 --> 00:06:21,770
+So I'm going to talk now about the failure
+probabilities.
+
+115
+00:06:21,770 --> 00:06:25,630
+Your chances of dying in five years was
+26.8%.
+
+116
+00:06:25,630 --> 00:06:28,540
+Chances of survival, of course, would be 1
+minus that.
+
+117
+00:06:28,540 --> 00:06:32,020
+That's, and this is the valid analysis on
+the, on the left-hand side.
+
+118
+00:06:32,020 --> 00:06:36,630
+When we do the Kaplan-Meier, when we're
+censoring the competing event [INAUDIBLE]
+
+119
+00:06:36,630 --> 00:06:38,740
+you're going to see that something funny
+happens.
+
+120
+00:06:38,740 --> 00:06:43,310
+So, if we look at the five year survival
+on death from other causes, it was,
+
+121
+00:06:43,310 --> 00:06:48,990
+only a low number of people had died, but
+there was a 4.7% chance of dying,
+
+122
+00:06:50,400 --> 00:06:54,140
+from other causes according to this
+Kaplan-Meier curve.
+
+123
+00:06:54,140 --> 00:06:58,470
+And then, if you looked specifically at
+the melanoma-specific five year
+
+124
+00:06:58,470 --> 00:07:03,630
+survival rates, the chances of dying,
+
+125
+00:07:03,630 --> 00:07:07,470
+the survival probability's about 77% and
+the chance of dying specifically from
+
+126
+00:07:07,470 --> 00:07:12,646
+melanoma as projected on this Kaplan-Meier
+curve was 23.1%, but
+
+127
+00:07:12,646 --> 00:07:17,150
+you'll notice something interesting,
+there's two ways to die in this data set.
+
+128
+00:07:17,150 --> 00:07:19,680
+You can die from other causes, or you can
+die from melanoma,
+
+129
+00:07:19,680 --> 00:07:24,040
+those are mutually exclusive, and it
+covers all possible ways of dying.
+
+130
+00:07:24,040 --> 00:07:27,830
+So it should be case that if we add up the
+probability of dying from other causes,
+
+131
+00:07:27,830 --> 00:07:30,300
+plus the probability of dying from
+melanoma,
+
+132
+00:07:30,300 --> 00:07:33,300
+that should equal the total probability of
+dying.
+
+133
+00:07:33,300 --> 00:07:35,630
+But notice that it doesn't add up here.
+
+134
+00:07:35,630 --> 00:07:45,210
+So if I do 4.7% plus 23.1%, I actually get
+a, a total probability of 27.8%.
+
+135
+00:07:45,210 --> 00:07:50,700
+It's slightly different, than the 26.8%
+that we got for the overall survival.
+
+136
+00:07:50,700 --> 00:07:52,450
+So, something's funny here,
+
+137
+00:07:52,450 --> 00:07:54,610
+because they're not adding up in the way
+that they should.
+
+138
+00:07:54,610 --> 00:07:58,302
+And this difference isn't so huge, but
+it's, I mean it should add up exactly, and
+
+139
+00:07:58,302 --> 00:08:01,154
+so that the fact that there's any
+difference is problematic.
+
+140
+00:08:01,154 --> 00:08:04,829
+But yeah, just to give you an even more
+humorous example or
+
+141
+00:08:04,829 --> 00:08:09,779
+more kind of dramatic example here is an
+example from the literature, and
+
+142
+00:08:09,779 --> 00:08:15,511
+if you look at the overall serv the, this
+is the cardiovascular mortalities.
+
+143
+00:08:15,511 --> 00:08:19,487
+So if you look at just Kaplan, this, this
+is a Kaplan-Meier curve on the left-hand
+
+144
+00:08:19,487 --> 00:08:23,619
+side for cardiovascular mortality dying
+from some heart disease related cause.
+
+145
+00:08:23,619 --> 00:08:25,815
+The survival probability is estimated for
+
+146
+00:08:25,815 --> 00:08:29,170
+the whole study is estimated to be about
+50% in this low group.
+
+147
+00:08:29,170 --> 00:08:33,793
+And the low group is just, they divided
+the study subjects into three groups based
+
+148
+00:08:33,793 --> 00:08:37,947
+on a blood biomarker, if we just look
+specifically at the low group,
+
+149
+00:08:37,947 --> 00:08:42,763
+then the chances of dying in that low
+group of heart disease was about 50%.
+
+150
+00:08:42,763 --> 00:08:46,393
+But what's interesting if you go on and
+look at the low group, for
+
+151
+00:08:46,393 --> 00:08:49,297
+non-cardiovascular mortality on the right
+here,
+
+152
+00:08:49,297 --> 00:08:53,790
+it turns out that this is somewhere around
+44 or 45% survival probability.
+
+153
+00:08:53,790 --> 00:08:57,090
+So, one minus that will give you the
+probability of death,
+
+154
+00:08:57,090 --> 00:09:01,974
+which turns out to be about 55% or 56%
+chance of dying From non-cardiovascular,
+
+155
+00:09:01,974 --> 00:09:05,053
+and from, from something other than heart
+disease.
+
+156
+00:09:05,053 --> 00:09:07,773
+Now, again you should be able to add these
+up and
+
+157
+00:09:07,773 --> 00:09:10,670
+get the total probability of dying at all.
+
+158
+00:09:10,670 --> 00:09:13,310
+And if you have a 50% chance of dying of
+heart disease, and
+
+159
+00:09:13,310 --> 00:09:16,250
+a 50% chance of dying of things that
+aren't heart disease.
+
+160
+00:09:16,250 --> 00:09:21,760
+That should sum up, but that would say
+that you have a 105% chance of dying,
+
+161
+00:09:21,760 --> 00:09:24,700
+which of course is clearly impossible.
+
+162
+00:09:24,700 --> 00:09:28,380
+So, something is wrong with treating the
+competing risk as censored.
+
+163
+00:09:28,380 --> 00:09:30,444
+You get the wrong probabilities.
+
+164
+00:09:30,444 --> 00:09:32,580
+[SOUND]
+
+165
+00:09:32,580 --> 00:09:36,390
+And in fact, here is the overall all cause
+mortality graph.
+
+166
+00:09:36,390 --> 00:09:37,330
+And what you'll notice,
+
+167
+00:09:37,330 --> 00:09:42,400
+is that in fact in the low group, in fact
+they had about a 15% chance of surviving.
+
+168
+00:09:42,400 --> 00:09:45,020
+So they had about an 85% chance of dying.
+
+169
+00:09:46,610 --> 00:09:50,860
+So certainly, that's very different than
+105 or 106% chance.
+
+170
+00:09:50,860 --> 00:09:55,010
+And obviously, anything above 100% is, is
+impossible.
+
+171
+00:09:55,010 --> 00:09:57,230
+So this is just a really extreme example.
+
+172
+00:09:57,230 --> 00:10:00,600
+And you can see that some other authors
+kind of pointed out this error.
+
+173
+00:10:00,600 --> 00:10:03,682
+And they actually did a nice little table
+here, which shows you at the one year,
+
+174
+00:10:03,682 --> 00:10:06,190
+the three year, and the five year
+follow-ups.
+
+175
+00:10:06,190 --> 00:10:11,110
+The all cause mortality values are valid,
+from the Kaplan-Meier curves.
+
+176
+00:10:11,110 --> 00:10:14,900
+But if you calculate separately, using
+Kaplan-Meier methods.
+
+177
+00:10:14,900 --> 00:10:17,930
+With the competing risk treated as
+censored.
+
+178
+00:10:17,930 --> 00:10:20,370
+You'll notice that if I get the heart
+disease mortality, and
+
+179
+00:10:20,370 --> 00:10:23,100
+the non-heart disease mortality, and I add
+those up.
+
+180
+00:10:23,100 --> 00:10:26,090
+Those ought to su, sum up to the total
+mortality.
+
+181
+00:10:26,090 --> 00:10:27,810
+But they don't, in any of these cases.
+
+182
+00:10:27,810 --> 00:10:31,630
+And in some of these cases, you can see
+that the gap is quite large.
+
+183
+00:10:31,630 --> 00:10:35,610
+Obviously, again, you can't have more than
+100% chance of dying either.

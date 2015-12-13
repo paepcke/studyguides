@@ -1,0 +1,1086 @@
+1
+00:00:00,000 --> 00:00:03,499
+I want to add to the concept.
+
+2
+00:00:03,499 --> 00:00:05,233
+Now, we've talked about correlation and
+
+3
+00:00:05,233 --> 00:00:07,905
+I said, as I've said we abbreviate that as
+r.
+
+4
+00:00:07,905 --> 00:00:10,845
+There's another concept that's directly
+related to the correlation coefficient,
+
+5
+00:00:10,845 --> 00:00:14,105
+that's called R squared and it's not hard
+to guess what that is.
+
+6
+00:00:14,105 --> 00:00:17,110
+You just take r, your correlation
+coefficient, your Pearson's correlation
+
+7
+00:00:17,110 --> 00:00:22,110
+coefficient, you square it, and you get a
+qua, a quantity called R squared, and
+
+8
+00:00:22,110 --> 00:00:25,330
+that's going to come up as we talk about
+linear regression.
+
+9
+00:00:25,330 --> 00:00:29,304
+In this case if you square 0.78 you get
+about 0.60, 0.61, and
+
+10
+00:00:29,304 --> 00:00:32,578
+that R squared has a nice little
+interpretation.
+
+11
+00:00:32,578 --> 00:00:37,950
+The R squared give the proportion of
+variability in the outcome variable.
+
+12
+00:00:37,950 --> 00:00:40,710
+That is explained by, I'm putting
+explained by in quotes,
+
+13
+00:00:40,710 --> 00:00:42,740
+because I don't want to imply causality
+here.
+
+14
+00:00:42,740 --> 00:00:47,440
+It might be better to say something like,
+is accounted for by the predictor, or
+
+15
+00:00:47,440 --> 00:00:48,600
+predictors in the model.
+
+16
+00:00:48,600 --> 00:00:49,835
+It's also when we get to,
+
+17
+00:00:49,835 --> 00:00:55,220
+multi-variant linear regression, it's also
+a model of, measure of model fit.
+
+18
+00:00:55,220 --> 00:00:59,710
+But so you could interpret in this case,
+the r squared is 61%.
+
+19
+00:00:59,710 --> 00:01:04,890
+One of the interpretations of that would
+be that 61% of the variability in
+
+20
+00:01:04,890 --> 00:01:09,730
+ratings of President Obama, can be
+explained by your political bent.
+
+21
+00:01:09,730 --> 00:01:12,400
+That means 39% is left unexplained.
+
+22
+00:01:12,400 --> 00:01:15,050
+That's represented by the scatter around
+that line.
+
+23
+00:01:15,050 --> 00:01:17,718
+Just knowing your political bent is not
+completely tell us what your,
+
+24
+00:01:17,718 --> 00:01:20,091
+how your feel, going to feel about Obama.
+
+25
+00:01:20,091 --> 00:01:21,631
+But once you know a person's political
+bent.
+
+26
+00:01:21,631 --> 00:01:25,063
+You have a pretty good sense of where
+they're going to fall on the spectrum with
+
+27
+00:01:25,063 --> 00:01:26,895
+regards to Obama.
+
+28
+00:01:26,895 --> 00:01:29,015
+But there's still some unexplained
+variability,
+
+29
+00:01:29,015 --> 00:01:30,790
+39% of the variability is unexplained.
+
+30
+00:01:30,790 --> 00:01:34,430
+So there was other things besides your
+politics that, that determine whether or
+
+31
+00:01:34,430 --> 00:01:36,014
+not you like President Obama.
+
+32
+00:01:36,014 --> 00:01:40,203
+And I found this illustration of the R
+squared on Wikipedia Commons, and
+
+33
+00:01:40,203 --> 00:01:43,469
+I thought I thought it was a really nice
+illustration, so
+
+34
+00:01:43,469 --> 00:01:45,630
+I'll just walk you through it here.
+
+35
+00:01:45,630 --> 00:01:50,740
+On the left hand graphic here, what you're
+seeing is y bar is the mean for y.
+
+36
+00:01:50,740 --> 00:01:52,830
+So this would be the mean of your outcome
+variable, so
+
+37
+00:01:52,830 --> 00:01:55,910
+this is just like the mean ratings for
+Obama in my class.
+
+38
+00:01:55,910 --> 00:01:59,400
+On average if you don't know anything
+about persons political bent,
+
+39
+00:01:59,400 --> 00:02:04,190
+in my whole class, what was the overall
+mean, feelings about Obama?
+
+40
+00:02:04,190 --> 00:02:09,600
+If you compare an individual student from
+my data set to the mean.
+
+41
+00:02:09,600 --> 00:02:14,700
+That difference we can call, a residual or
+an unexpected, that's the difference
+
+42
+00:02:14,700 --> 00:02:18,090
+between that given person in the mean,
+that's their deviation from the mean.
+
+43
+00:02:18,090 --> 00:02:22,400
+If you square that, that's what that, that
+square represents there visually here.
+
+44
+00:02:22,400 --> 00:02:25,895
+If you square that, that's the squared
+distance from the mean.
+
+45
+00:02:25,895 --> 00:02:28,480
+Well, how did we calculate variance for y?
+
+46
+00:02:28,480 --> 00:02:29,780
+We calculated the variance for
+
+47
+00:02:29,780 --> 00:02:33,090
+y, as a function of the squared distances
+from the mean.
+
+48
+00:02:33,090 --> 00:02:36,040
+So these red boxes here are represented,
+representing
+
+49
+00:02:36,040 --> 00:02:40,550
+the unexplained variability in these,
+representing all the variability,
+
+50
+00:02:40,550 --> 00:02:44,602
+essentially, of different feelings about
+Obama in my sample.
+
+51
+00:02:44,602 --> 00:02:48,410
+On the right-hand panel here, what you're
+seeing is,
+
+52
+00:02:48,410 --> 00:02:50,650
+now let's throw in a predictor variable.
+
+53
+00:02:50,650 --> 00:02:52,620
+Now we're going to, we know something
+about the students.
+
+54
+00:02:52,620 --> 00:02:54,220
+We know their political bent.
+
+55
+00:02:54,220 --> 00:02:56,900
+And we know that there's a relationship
+between political bent and
+
+56
+00:02:56,900 --> 00:02:59,550
+feelings about Obama; we can draw that
+line.
+
+57
+00:02:59,550 --> 00:03:05,410
+Now if you know a person's political bent,
+you can say with some error but
+
+58
+00:03:05,410 --> 00:03:10,550
+not as much error about what you would
+expect their feelings of, of Obama to be.
+
+59
+00:03:10,550 --> 00:03:12,930
+That's what's represented by the line
+there.
+
+60
+00:03:12,930 --> 00:03:18,700
+Now you can see, that if you compare the
+distance between an individual person and
+
+61
+00:03:18,700 --> 00:03:22,160
+the line, the, the what we call a
+regression line here,
+
+62
+00:03:22,160 --> 00:03:24,930
+best fit line, the distance is much
+smaller.
+
+63
+00:03:24,930 --> 00:03:29,320
+Once you know a persons political bent the
+distance, the scatter around the line,
+
+64
+00:03:29,320 --> 00:03:33,580
+represents the remaining variability in
+feelings about Obama.
+
+65
+00:03:33,580 --> 00:03:34,660
+And that's represented,
+
+66
+00:03:34,660 --> 00:03:37,670
+those squared distances are represented as
+blue boxes here.
+
+67
+00:03:37,670 --> 00:03:42,120
+And you can see that most of the variance
+in Obama, if this was Obama, and
+
+68
+00:03:42,120 --> 00:03:48,025
+of course if this was the relationship
+between political bent and Obama.
+
+69
+00:03:48,025 --> 00:03:52,480
+That you can see that most of the
+variability, which is represented by
+
+70
+00:03:52,480 --> 00:03:56,510
+the red boxes, most of that goes away once
+you know a person's political bent.
+
+71
+00:03:56,510 --> 00:03:59,450
+There's very little unexplained
+variability left over, which is
+
+72
+00:03:59,450 --> 00:04:03,110
+what's represented by the blue boxes, so
+this would have a very big R squared.
+
+73
+00:04:03,110 --> 00:04:07,325
+Most of the variability in feelings about
+Obama is explained by political bent.
+
+74
+00:04:07,325 --> 00:04:12,900
+That's the idea of the R squared, and I
+think it's just nicely pictured there.
+
+75
+00:04:12,900 --> 00:04:18,930
+Last week we saw an example about
+chocolate and Noble Prize winners.
+
+76
+00:04:18,930 --> 00:04:23,980
+So this was looking at a, the per capita
+chocolate consumption in a given country,
+
+77
+00:04:23,980 --> 00:04:27,990
+and the number of Nobel laureates,‎ per
+population that they produce.
+
+78
+00:04:27,990 --> 00:04:29,740
+And it made interesting graphic,
+
+79
+00:04:29,740 --> 00:04:35,511
+where you can see the more chocolate seems
+to be related to more Nobel laureates‎.
+
+80
+00:04:35,511 --> 00:04:40,700
+And we talked about this as an example of
+correlation does not equal causation.
+
+81
+00:04:40,700 --> 00:04:45,070
+But I had shown in this graphic that the
+correlation coefficient here was 0.79.
+
+82
+00:04:45,070 --> 00:04:47,790
+It was highly statistically significant.
+
+83
+00:04:47,790 --> 00:04:51,429
+Again, of course it doesn't mean that if
+you eat chocolate,
+
+84
+00:04:51,429 --> 00:04:52,700
+you're going to be a Nobel prize winner.
+
+85
+00:04:52,700 --> 00:04:54,090
+Wouldn't that be great if that were so.
+
+86
+00:04:54,090 --> 00:04:58,060
+there's, of course, other variables
+explaining this relationship.
+
+87
+00:04:59,850 --> 00:05:04,560
+If you square R here, if you square 0.79,
+you get an R squared of 63 percent.
+
+88
+00:05:04,560 --> 00:05:10,420
+Again, that would say that 63% of the
+variability in Nobel Prize
+
+89
+00:05:10,420 --> 00:05:14,810
+laureates per in a country, would be
+explained by chocolate consumption.
+
+90
+00:05:14,810 --> 00:05:17,280
+Well again, you have to be really careful
+with that language,
+
+91
+00:05:17,280 --> 00:05:22,090
+because you don't want to in any way imply
+causality between the those two variables.
+
+92
+00:05:22,090 --> 00:05:25,735
+The chocolate consumption is a marker of
+something else here.
+
+93
+00:05:25,735 --> 00:05:31,320
+People like to say, to take the
+correlation coefficient and to
+
+94
+00:05:31,320 --> 00:05:35,730
+try to have a benchmark for what's strong
+correlation, what's moderate, what's weak.
+
+95
+00:05:35,730 --> 00:05:38,390
+There's various rules of thumb running
+around out there and, but
+
+96
+00:05:38,390 --> 00:05:39,070
+little consensus.
+
+97
+00:05:39,070 --> 00:05:40,650
+You'll, you'll hear different things from
+different people, but
+
+98
+00:05:40,650 --> 00:05:43,710
+a general guide that you might use, is if
+your above 0.7
+
+99
+00:05:43,710 --> 00:05:49,132
+that represents strong correlation between
+0.3 and 0.7 is moderate correlation.
+
+100
+00:05:49,132 --> 00:05:51,230
+Maybe 0.1 to 0.3 would be weak
+correlation.
+
+101
+00:05:51,230 --> 00:05:56,470
+And everything other than that is
+basically pretty close to 0.
+
+102
+00:05:56,470 --> 00:06:00,320
+That's one rule of thumb, one guideline,
+again it's just a rule of thumb.
+
+103
+00:06:00,320 --> 00:06:02,860
+And it depends on a, a lot on the problem
+at hand.
+
+104
+00:06:02,860 --> 00:06:04,700
+So you maybe have cases,
+
+105
+00:06:04,700 --> 00:06:09,380
+where it's important to explain 5% of the
+variance in an outcome variable.
+
+106
+00:06:09,380 --> 00:06:12,390
+That is a very small correlation
+coefficient could actually be important,
+
+107
+00:06:12,390 --> 00:06:14,840
+because maybe, it's hard to explain it you
+know,
+
+108
+00:06:14,840 --> 00:06:17,720
+it's hard to find to find any predictors
+of that particular outcome.
+
+109
+00:06:17,720 --> 00:06:19,290
+There may be other cases where a
+correlation of 0.7
+
+110
+00:06:19,290 --> 00:06:21,072
+is actually not that good.
+
+111
+00:06:21,072 --> 00:06:22,630
+So, it really depends on the problem.
+
+112
+00:06:22,630 --> 00:06:24,029
+And that's just a rough guide,
+
+113
+00:06:24,029 --> 00:06:28,400
+telling you about the magnitude of the
+correlation coefficient.
+
+114
+00:06:28,400 --> 00:06:30,530
+When we're dealing with correlation
+coefficients, of course,
+
+115
+00:06:30,530 --> 00:06:33,710
+we're also going to want to generate p
+values and confidence intervals.
+
+116
+00:06:33,710 --> 00:06:35,740
+We're going to want to make inferences
+about r.
+
+117
+00:06:35,740 --> 00:06:39,160
+I actually told you about the distribution
+of r as an example of
+
+118
+00:06:39,160 --> 00:06:41,240
+a statistic in unit 5.
+
+119
+00:06:41,240 --> 00:06:44,720
+For r, the null hypothesis is that r is
+equal to zero.
+
+120
+00:06:44,720 --> 00:06:46,950
+Zero means no linear relationship.
+
+121
+00:06:46,950 --> 00:06:49,340
+The alternative would be that its not
+equal to zero,
+
+122
+00:06:49,340 --> 00:06:53,540
+which would mean that there's some linear
+relationship either positive or negative.
+
+123
+00:06:53,540 --> 00:06:55,860
+I've already told you of course,
+
+124
+00:06:55,860 --> 00:06:57,810
+about the distribution of the correlation
+coefficient.
+
+125
+00:06:57,810 --> 00:07:01,150
+You may not remember the details of it, so
+I'll review it here.
+
+126
+00:07:01,150 --> 00:07:04,780
+So it turns out that the correlation
+coefficient, like,
+
+127
+00:07:04,780 --> 00:07:09,080
+all things when we're dealing with means,
+has a normal distribution, for large N,
+
+128
+00:07:09,080 --> 00:07:10,960
+and a T-distribution for small n.
+
+129
+00:07:10,960 --> 00:07:14,210
+It's a T-distribution throughout, but as
+soon as your, you get on a T-distribution
+
+130
+00:07:14,210 --> 00:07:17,470
+where your n is greater than 100, you
+might as well call it a normal.
+
+131
+00:07:17,470 --> 00:07:20,660
+The mean of the distribution correlation
+coefficient, of course,
+
+132
+00:07:20,660 --> 00:07:24,430
+going to be the true correlation in the
+real world, the true value.
+
+133
+00:07:24,430 --> 00:07:26,360
+The standard error for correlation
+coefficient,
+
+134
+00:07:26,360 --> 00:07:30,660
+I told you was roughly the square root of
+1 minus r squared divided by n.
+
+135
+00:07:30,660 --> 00:07:36,060
+I actually cheated just slightly here, I
+left them just to make things simple.
+
+136
+00:07:36,060 --> 00:07:37,670
+If you really precise,
+
+137
+00:07:37,670 --> 00:07:42,020
+it's really the standard error of 1 minus
+r squared divided by n minus 2.
+
+138
+00:07:42,020 --> 00:07:44,500
+Of course, if you're talking about an n of
+a 100.
+
+139
+00:07:44,500 --> 00:07:46,480
+Or more, if you subtract two or you don't.
+
+140
+00:07:46,480 --> 00:07:48,910
+It's not going to make any real difference
+in the magnitude there.
+
+141
+00:07:48,910 --> 00:07:53,330
+But if you want to be precise that n minus
+2 is, is there.
+
+142
+00:07:53,330 --> 00:07:55,080
+So that's the distribution of a
+correlation coefficient,
+
+143
+00:07:55,080 --> 00:07:58,210
+we can use all of that information to
+calculate p values and
+
+144
+00:07:58,210 --> 00:07:59,925
+to calculate confidence intervals.
+
+145
+00:07:59,925 --> 00:08:04,400
+For, so for large N we're essentially on a
+normal curve.
+
+146
+00:08:04,400 --> 00:08:07,230
+To, to, to do a hypothesis test, you'd
+simply be cam,
+
+147
+00:08:07,230 --> 00:08:09,910
+comparing your observed r, your null value
+here is 0.
+
+148
+00:08:09,910 --> 00:08:16,220
+You're comparing your observed r to a 0
+divided the standard error for r.
+
+149
+00:08:16,220 --> 00:08:17,970
+R divided by standard error gives you Z
+score,
+
+150
+00:08:17,970 --> 00:08:19,790
+and you'd get an accompanying p value.
+
+151
+00:08:19,790 --> 00:08:23,540
+To build a confidence interval, you take
+the observed value of r in your sample,
+
+152
+00:08:23,540 --> 00:08:28,450
+and you'd add or subtract the, the
+confidence limit is
+
+153
+00:08:28,450 --> 00:08:32,210
+usually that Z value's going to be 1.96
+through 95% confidence interval.
+
+154
+00:08:32,210 --> 00:08:34,142
+But if you wanted and to make 99% or
+
+155
+00:08:34,142 --> 00:08:37,110
+90% that Z value might change, times the
+standard error.
+
+156
+00:08:37,110 --> 00:08:41,253
+And you be just plugging in here into the
+standard era the observed r,
+
+157
+00:08:41,253 --> 00:08:43,820
+because we don't know the true r.
+
+158
+00:08:43,820 --> 00:08:44,517
+That's for large N,
+
+159
+00:08:44,517 --> 00:08:47,230
+for small n you'd have to worry about the
+fact that your on a T curve.
+
+160
+00:08:47,230 --> 00:08:48,690
+You might have to worry for really small
+n,
+
+161
+00:08:48,690 --> 00:08:51,740
+about the fact that it's an n minus 2 in
+the standard error.
+
+162
+00:08:51,740 --> 00:08:53,900
+and again you would just build, you'd do a
+t,
+
+163
+00:08:53,900 --> 00:08:58,000
+you would be comparing r to its standard
+error to get a t-statistic,
+
+164
+00:08:58,000 --> 00:08:59,610
+or you would be building a confidence
+interval.
+
+165
+00:08:59,610 --> 00:09:01,605
+All in the same way that we've talked
+about already.
+
+166
+00:09:01,605 --> 00:09:07,175
+What's kind of interesting about the
+correlation coefficient.
+
+167
+00:09:07,175 --> 00:09:10,070
+If you look at those formulas that I just
+showed you,
+
+168
+00:09:10,070 --> 00:09:15,030
+it turns out that whether or not a
+correlation coefficient comes out to
+
+169
+00:09:15,030 --> 00:09:18,460
+be statistically significant, depends on
+only two things.
+
+170
+00:09:18,460 --> 00:09:24,140
+The magnitude of r that you observed in
+your sample, and in n the sample size.
+
+171
+00:09:24,140 --> 00:09:26,310
+There is nothing else involved.
+
+172
+00:09:26,310 --> 00:09:29,170
+So you can take the formulas that I have
+just showed you,
+
+173
+00:09:29,170 --> 00:09:30,890
+and you can rearrange them a little bit.
+
+174
+00:09:30,890 --> 00:09:36,260
+And you can show that there's a direct
+relationship between r and n,
+
+175
+00:09:36,260 --> 00:09:41,420
+there is you can calculate a, the minimum
+size for
+
+176
+00:09:41,420 --> 00:09:45,620
+the correlation coefficient that you would
+need to be statistically significant for
+
+177
+00:09:45,620 --> 00:09:46,740
+every different sample size.
+
+178
+00:09:46,740 --> 00:09:48,580
+And I, it's approximation here.
+
+179
+00:09:48,580 --> 00:09:52,120
+But you take the formulas I had in the
+past, the last slide.
+
+180
+00:09:52,120 --> 00:09:55,770
+And basically to be statistically
+significant, the,
+
+181
+00:09:55,770 --> 00:09:58,640
+the minimum sta r that's going to be
+statically significant for
+
+182
+00:09:58,640 --> 00:10:02,060
+a given sample size, is roughly equal to 2
+divided by the square root of n.
+
+183
+00:10:02,060 --> 00:10:04,360
+It's a, it's a bit of an approximation,
+but it worked pretty well for
+
+184
+00:10:04,360 --> 00:10:05,690
+all most all n.
+
+185
+00:10:05,690 --> 00:10:10,070
+I can just plug in then for example, to be
+statistically
+
+186
+00:10:10,070 --> 00:10:13,730
+significant when you have a sample size of
+10, 2 divided by the square root of 10,
+
+187
+00:10:13,730 --> 00:10:15,860
+gives you that you're going to need to
+have a correlation of 0.63.
+
+188
+00:10:15,860 --> 00:10:19,230
+It's going to need to be pretty big in
+order to come out statistically
+
+189
+00:10:19,230 --> 00:10:22,442
+significant with only 10, to be confident
+that that's really different than 0.
+
+190
+00:10:22,442 --> 00:10:27,540
+With a 100 however, 2 divided by the
+square root of a 100 is,
+
+191
+00:10:27,540 --> 00:10:29,150
+gives you a value of 0.2.
+
+192
+00:10:29,150 --> 00:10:31,520
+So you can have any correlation
+coefficient for
+
+193
+00:10:31,520 --> 00:10:34,810
+any variables in your study, that comes
+out to be .02 or greater,
+
+194
+00:10:34,810 --> 00:10:38,390
+when you have a sample size of a 100 is
+going to be statistically significant.
+
+195
+00:10:38,390 --> 00:10:40,400
+As you get to very big sample sizes,
+
+196
+00:10:40,400 --> 00:10:44,540
+as I showed you before, say a 1000,
+10,000, 100,000.
+
+197
+00:10:44,540 --> 00:10:47,930
+The minimum correlation that's going to
+come out to be statistically significant,
+
+198
+00:10:47,930 --> 00:10:50,875
+notice all of these, when your sample size
+is a 1000 or
+
+199
+00:10:50,875 --> 00:10:55,710
+greater, 0.06, 0.02, these are all less
+than 0.1 correlation.
+
+200
+00:10:55,710 --> 00:10:58,360
+That would be considered essentially no
+correlation,
+
+201
+00:10:58,360 --> 00:11:01,230
+it's so small, that it's not meaningful.
+
+202
+00:11:01,230 --> 00:11:03,034
+And especially when you get to like 0.006,
+
+203
+00:11:03,034 --> 00:11:07,440
+0.002, you can statistically distinguish
+those from 0, but
+
+204
+00:11:07,440 --> 00:11:12,580
+they're so, so tiny that they're not
+clinically meaningful, as we talked about.
+
+205
+00:11:12,580 --> 00:11:14,250
+So that's where that slide came from.
+
+206
+00:11:14,250 --> 00:11:15,490
+I just want to mention,
+
+207
+00:11:15,490 --> 00:11:20,180
+while we're talking about Pearson's
+correlation coefficients just quickly,
+
+208
+00:11:20,180 --> 00:11:25,140
+that if you have a small sample where
+you're violating the normality assumption,
+
+209
+00:11:25,140 --> 00:11:28,470
+you'll want to use an alternative
+statistic to the Pearson's
+
+210
+00:11:28,470 --> 00:11:31,890
+correlation coefficient, called the
+Spearman rank correlation coefficient.
+
+211
+00:11:31,890 --> 00:11:35,290
+And it's just like all the non-parametric
+tests we talked about last week.
+
+212
+00:11:35,290 --> 00:11:37,000
+You're going to be ranking variables, and
+
+213
+00:11:37,000 --> 00:11:39,420
+building a correlation coefficient based
+on the ranks.
+
+214
+00:11:39,420 --> 00:11:42,840
+So say you're looking at height and
+weight,
+
+215
+00:11:42,840 --> 00:11:46,050
+you would rank everybody on height, you
+would rank everybody on weight,
+
+216
+00:11:46,050 --> 00:11:49,030
+from the lowest to the highest height, the
+lowest to the highest weight.
+
+217
+00:11:49,030 --> 00:11:52,520
+And then you look within a person, you
+look at the, the, rank they got for
+
+218
+00:11:52,520 --> 00:11:54,020
+height and the rank they got for weight,
+and
+
+219
+00:11:54,020 --> 00:11:56,659
+you subtract those to come up with the
+difference in the rank.
+
+220
+00:11:56,659 --> 00:11:58,830
+And the Spearman rank correlation
+coefficient is built,
+
+221
+00:11:58,830 --> 00:12:01,300
+is built around the difference in those
+ranks.
+
+222
+00:12:01,300 --> 00:12:05,660
+Obviously if the differences in those
+ranks are extremely small that would
+
+223
+00:12:05,660 --> 00:12:10,940
+indicate that you were on a the the those
+2 variables were strongly related.
+
+224
+00:12:10,940 --> 00:12:13,090
+If the difference in the ranks are very
+large,
+
+225
+00:12:13,090 --> 00:12:15,580
+that would indicated that those two
+variables were not strongly related.
+
+226
+00:12:15,580 --> 00:12:16,520
+But it's based on rank, so
+
+227
+00:12:16,520 --> 00:12:18,980
+you don't need to make any assumption
+about normality there.

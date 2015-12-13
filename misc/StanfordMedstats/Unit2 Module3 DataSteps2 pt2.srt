@@ -1,0 +1,599 @@
+1
+00:00:00,640 --> 00:00:02,280
+Now we're going to show you how to use if,
+then,
+
+2
+00:00:02,280 --> 00:00:04,720
+now statements to create new variables.
+
+3
+00:00:04,720 --> 00:00:06,610
+Sometimes when you're trying to manage
+missing data,
+
+4
+00:00:06,610 --> 00:00:08,510
+you can use a technique called imputation.
+
+5
+00:00:08,510 --> 00:00:12,340
+You'll learn more about imputation in your
+other HRP courses, but for
+
+6
+00:00:12,340 --> 00:00:15,699
+now, just know that imputation fills in
+missing data with a reasonable guess.
+
+7
+00:00:17,870 --> 00:00:22,070
+In this case, we will fill in the missing
+values for weight with the mean value for
+
+8
+00:00:22,070 --> 00:00:26,060
+weight, but we will add in an extra layer
+to our imputation strategy.
+
+9
+00:00:26,060 --> 00:00:28,870
+Since men and women have different
+distributions of weight,
+
+10
+00:00:28,870 --> 00:00:31,740
+we will fill in our missing values
+depending on our gender.
+
+11
+00:00:31,740 --> 00:00:32,705
+So let's take a look at some code.
+
+12
+00:00:32,705 --> 00:00:36,650
+Beforehand, we calculated the mean weight
+for
+
+13
+00:00:36,650 --> 00:00:39,170
+men in our dataset, which turned out to be
+154.
+
+14
+00:00:39,170 --> 00:00:41,910
+We also calculated the mean weight for
+
+15
+00:00:41,910 --> 00:00:44,610
+women in our dataset which turned out to
+be 140.
+
+16
+00:00:44,610 --> 00:00:47,920
+So here we specified how we want to fill
+in those values into our dataset.
+
+17
+00:00:49,290 --> 00:00:50,390
+We have multiple conditions for
+
+18
+00:00:50,390 --> 00:00:53,440
+these if than statements, enclosed in
+these parentheses.
+
+19
+00:00:54,660 --> 00:00:57,790
+The first condition is if weight is
+missing and if gender is male.
+
+20
+00:00:59,430 --> 00:01:04,616
+For these records, we create a new
+variable called imputed weight which will
+
+21
+00:01:04,616 --> 00:01:08,543
+receive the value of 154, like we
+calculated before.
+
+22
+00:01:08,543 --> 00:01:12,678
+The next condition is if weight is missing
+and if gender is female, for
+
+23
+00:01:12,678 --> 00:01:16,886
+these records, we'll create a new variable
+called ImputedWeight and
+
+24
+00:01:16,886 --> 00:01:18,652
+it receive a value of 140.
+
+25
+00:01:18,652 --> 00:01:22,073
+And then finally, if the last condition
+specifies if weight is not missing,
+
+26
+00:01:22,073 --> 00:01:25,140
+then new variable will just be equal to
+the original value of weight.
+
+27
+00:01:26,530 --> 00:01:31,860
+As a side note in SAS the shorthand NE is
+equivalent to not equal.
+
+28
+00:01:31,860 --> 00:01:33,360
+Another way to code not equal,
+
+29
+00:01:33,360 --> 00:01:36,108
+is by using a less than symbol followed by
+a greater than symbol.
+
+30
+00:01:36,108 --> 00:01:37,196
+Like this.
+
+31
+00:01:37,196 --> 00:01:41,628
+[SOUND] In the example above, you could
+alternatively write IF
+
+32
+00:01:41,628 --> 00:01:46,680
+weight less than greater than dot then
+ImputedWeight equals weight.
+
+33
+00:01:46,680 --> 00:01:49,620
+As we discussed earlier, periods are used
+for missing data.
+
+34
+00:01:51,520 --> 00:01:53,210
+Now, if we run the code and look at our
+output,
+
+35
+00:01:54,450 --> 00:01:58,310
+we can see that we have a new variable in
+our dataset called ImputedWeight.
+
+36
+00:01:58,310 --> 00:01:59,676
+If weight is not missing,
+
+37
+00:01:59,676 --> 00:02:02,852
+computed weight is just equal to the
+[SOUND] original weight.
+
+38
+00:02:02,852 --> 00:02:08,312
+If weight is missing and gender is male
+then the imputed weight is equal to 154.
+
+39
+00:02:08,312 --> 00:02:11,540
+In this case, we didn't have any missing
+values for weight for any males.
+
+40
+00:02:13,470 --> 00:02:17,200
+If weight is missing and gender is female,
+then the imputed weight is equal to 140,
+
+41
+00:02:17,200 --> 00:02:19,679
+as we can see in these rows.
+
+42
+00:02:22,300 --> 00:02:24,979
+>> Now we're going to walk you through
+another way you can use if then L
+
+43
+00:02:24,979 --> 00:02:25,611
+statements.
+
+44
+00:02:26,830 --> 00:02:31,180
+Within the if then L statements, you can
+also flag items that are likely incorrect,
+
+45
+00:02:31,180 --> 00:02:33,320
+or just interesting to keep track of.
+
+46
+00:02:33,320 --> 00:02:37,220
+Earlier in this module, we used if then L
+statements that we
+
+47
+00:02:37,220 --> 00:02:40,860
+believed were way too extreme for our data
+set.
+
+48
+00:02:40,860 --> 00:02:41,460
+Say instead that we
+
+49
+00:02:41,460 --> 00:02:44,810
+want to flag all observations that have
+unrealistic weight values.
+
+50
+00:02:44,810 --> 00:02:47,820
+This way, we would not be removing or
+changing any values in our dataset.
+
+51
+00:02:47,820 --> 00:02:52,040
+It is always important to think carefully
+about the realistic range of
+
+52
+00:02:52,040 --> 00:02:53,490
+values that your variable could have.
+
+53
+00:02:53,490 --> 00:02:56,800
+When it comes to weight, it is impossible
+for a person to have a negative
+
+54
+00:02:56,800 --> 00:03:01,370
+measurement, furthermore, it is impossible
+for a person to have a weight of zero.
+
+55
+00:03:01,370 --> 00:03:02,490
+Like we discussed earlier,
+
+56
+00:03:02,490 --> 00:03:06,574
+we also find it unlikely that anyone in
+our dataset has a weight greater than 500.
+
+57
+00:03:07,940 --> 00:03:08,860
+Here we have a code for
+
+58
+00:03:08,860 --> 00:03:11,660
+flag all observations with unrealistic
+weight values.
+
+59
+00:03:13,690 --> 00:03:17,740
+If you look at the code you will see that
+we put flag equals zero right after our
+
+60
+00:03:17,740 --> 00:03:21,500
+data line what this does is create a new
+data set where all
+
+61
+00:03:21,500 --> 00:03:25,770
+rows have a variable flag of zero by
+default.
+
+62
+00:03:25,770 --> 00:03:27,360
+We can then add our conditions and
+
+63
+00:03:27,360 --> 00:03:30,520
+actions without including an else in front
+of the multiple conditions.
+
+64
+00:03:31,560 --> 00:03:34,900
+All rows would automatically get a flag
+value of 0 unless it
+
+65
+00:03:34,900 --> 00:03:37,190
+needs the condition to be specified.
+
+66
+00:03:37,190 --> 00:03:40,500
+In which case, SAS will change our flag
+value to one.
+
+67
+00:03:40,500 --> 00:03:43,110
+Take a look at the code.
+
+68
+00:03:43,110 --> 00:03:45,540
+If a row has a weight value greater than
+500,
+
+69
+00:03:45,540 --> 00:03:50,770
+then SAS will change the zero to a one for
+the flag variable.
+
+70
+00:03:50,770 --> 00:03:52,820
+If a row has a weight that is less than or
+
+71
+00:03:52,820 --> 00:03:56,900
+equal to zero, then SAS will change the
+zero to a one for the flag variable.
+
+72
+00:03:57,950 --> 00:04:01,500
+Now is a good time for me to point out how
+SAS deals with missing data.
+
+73
+00:04:01,500 --> 00:04:05,670
+Like we mentioned earlier, missing data is
+represented with the period.
+
+74
+00:04:05,670 --> 00:04:10,090
+But behind the scenes, SAS treats missing
+data as negative infinity.
+
+75
+00:04:10,090 --> 00:04:13,959
+This means that a missing value is
+considered less than any non missing value
+
+76
+00:04:15,560 --> 00:04:17,680
+including negative numbers.
+
+77
+00:04:17,680 --> 00:04:20,660
+So, if you specified if weight is less
+than or equal to
+
+78
+00:04:20,660 --> 00:04:25,670
+zero then flag equals one SAS will flag
+all rows with weight less than or
+
+79
+00:04:25,670 --> 00:04:29,060
+equal to zero and also all rows with a
+missing value for weight.
+
+80
+00:04:29,060 --> 00:04:32,860
+This is because a missing value is
+considered less than zero.
+
+81
+00:04:32,860 --> 00:04:34,880
+Here I've run the code so that we can look
+at the output.
+
+82
+00:04:36,270 --> 00:04:39,120
+Do you notice how the individual with the
+weight of 9,800
+
+83
+00:04:39,120 --> 00:04:41,490
+is now a flag value of one?
+
+84
+00:04:41,490 --> 00:04:45,230
+The male with the negative weight also has
+a flag value of one.
+
+85
+00:04:45,230 --> 00:04:48,840
+Furthermore, all rows with missing values
+have flagged values for one.
+
+86
+00:04:48,840 --> 00:04:52,960
+>> We will now go over a more complicated
+example.
+
+87
+00:04:54,010 --> 00:04:57,340
+With a ten week class, such as HRP223,
+we're unable to
+
+88
+00:04:57,340 --> 00:05:00,760
+cover every aspect of coding related to if
+then, else statements.
+
+89
+00:05:00,760 --> 00:05:04,600
+The best way to master this data set is to
+try working with it yourself.
+
+90
+00:05:04,600 --> 00:05:08,210
+After this module, you'll have a few quiz
+questions using the people dataset.
+
+91
+00:05:08,210 --> 00:05:10,150
+We'll have you read the people variables
+in this task, and
+
+92
+00:05:10,150 --> 00:05:11,390
+write your own if, then code.
+
+93
+00:05:13,090 --> 00:05:15,450
+Let's look at a final, more complicated
+example.
+
+94
+00:05:15,450 --> 00:05:18,210
+We're interested in creating a weight
+group category for male patients.
+
+95
+00:05:19,340 --> 00:05:21,160
+Let's take a look at a final complicated
+example.
+
+96
+00:05:22,300 --> 00:05:25,150
+We're interested in creating weight group
+categories for male patients.
+
+97
+00:05:26,190 --> 00:05:27,660
+Weight is a continuous variable, but
+
+98
+00:05:27,660 --> 00:05:30,800
+sometimes it can be useful to treat it as
+a categorical variable like this.
+
+99
+00:05:34,630 --> 00:05:38,620
+Now we have four different bins for our
+continuous variable.
+
+100
+00:05:38,620 --> 00:05:41,160
+We can use these categories in our data
+analysis later on.
+
+101
+00:05:42,300 --> 00:05:43,530
+You'll learn more about the reasons for
+
+102
+00:05:43,530 --> 00:05:46,330
+turning continuous variables into
+categorical variables as you
+
+103
+00:05:46,330 --> 00:05:48,620
+continue studying epidemiology and
+clinical research.
+
+104
+00:05:50,010 --> 00:05:50,810
+Let's take a look at our code.
+
+105
+00:05:50,810 --> 00:05:53,339
+On the left here is the data that we're
+importing,
+
+106
+00:05:54,400 --> 00:05:57,450
+notice how we're using logical operations
+in our code.
+
+107
+00:05:57,450 --> 00:05:58,900
+You can include and and or
+
+108
+00:05:58,900 --> 00:06:03,900
+statements in parentheses to specify the
+conditions following the if statement.
+
+109
+00:06:03,900 --> 00:06:08,390
+In our first line of code, we're asking
+SAS to check each row for two conditions,
+
+110
+00:06:08,390 --> 00:06:12,510
+if the row has an N for gender and the
+weight value is less than or equal to 100.
+
+111
+00:06:12,510 --> 00:06:17,270
+And the row gets a value of one in the new
+weight group variable.
+
+112
+00:06:17,270 --> 00:06:19,615
+If a row does not meet both of these
+conditions,
+
+113
+00:06:19,615 --> 00:06:23,390
+SAS will move on to the next else if line
+if code.
+
+114
+00:06:23,390 --> 00:06:25,520
+Here's SAS will test if a row has a M for
+
+115
+00:06:25,520 --> 00:06:29,069
+the gender column and the weight value
+between 100 and 150.
+
+116
+00:06:30,090 --> 00:06:32,840
+If the row meets both of these conditions
+a new weight group
+
+117
+00:06:32,840 --> 00:06:37,830
+column gets evaluated too otherwise SAS
+will continue to check if a row has M for
+
+118
+00:06:37,830 --> 00:06:40,360
+gender or any of these other ranges for
+the weight variable.
+
+119
+00:06:41,570 --> 00:06:44,480
+And finally our last else if statement has
+three conditionals.
+
+120
+00:06:45,540 --> 00:06:48,620
+If the subject is a female or they're
+missing an entry for
+
+121
+00:06:48,620 --> 00:06:51,168
+gender or they have a missing weight
+value,
+
+122
+00:06:51,168 --> 00:06:54,540
+then SAS would give them a missing value
+for the weight group variable.
+
+123
+00:06:55,700 --> 00:06:56,980
+Let's quickly take a look at our outcome.
+
+124
+00:06:58,020 --> 00:06:58,720
+Perfect.
+
+125
+00:06:58,720 --> 00:07:01,270
+We now have a dataset that creates
+categories for
+
+126
+00:07:01,270 --> 00:07:03,960
+our continuous weight variable, but only
+for the males.

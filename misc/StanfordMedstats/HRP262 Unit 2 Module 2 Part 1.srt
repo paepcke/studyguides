@@ -1,0 +1,1378 @@
+1
+00:00:00,000 --> 00:00:05,520
+[BLANK_AUDIO]
+
+2
+00:00:05,520 --> 00:00:09,920
+In this next module, I'm going to talk
+about two probability distributions that
+
+3
+00:00:09,920 --> 00:00:14,360
+are often used in survival analysis, the
+Exponential and the Weibull.
+
+4
+00:00:14,360 --> 00:00:18,109
+It turns out that survival times often
+follow one of those distributions.
+
+5
+00:00:20,320 --> 00:00:23,420
+So, to build up to talking about the
+Exponential and
+
+6
+00:00:23,420 --> 00:00:27,050
+the Weibull, I'm actually going to start
+with the hazard function.
+
+7
+00:00:27,050 --> 00:00:30,140
+Every probability distribution has a
+hazard function and
+
+8
+00:00:30,140 --> 00:00:34,180
+I think it's easier if we start by
+defining the hazard function here And
+
+9
+00:00:34,180 --> 00:00:40,360
+then I'll show you how that leads to
+particular probability density function.
+
+10
+00:00:40,360 --> 00:00:43,310
+So, the hazard function as I mentioned
+earlier,
+
+11
+00:00:43,310 --> 00:00:46,040
+is the instantaneous incidence rate.
+
+12
+00:00:46,040 --> 00:00:50,720
+If the probability that if you survive up
+to a particular time, event free,
+
+13
+00:00:50,720 --> 00:00:53,460
+you haven't had the event yet, it's the
+probability that you're going to have
+
+14
+00:00:53,460 --> 00:00:58,600
+the event in the next, instant and
+probably the pregnancy data that we've
+
+15
+00:00:58,600 --> 00:01:01,650
+talked about earlier is a good example of,
+for kind of
+
+16
+00:01:01,650 --> 00:01:06,660
+putting this into words because women can
+only get pregnant once in a given month.
+
+17
+00:01:06,660 --> 00:01:09,860
+So for that pregnancy data we talked about
+earlier,
+
+18
+00:01:09,860 --> 00:01:12,740
+it would be the probability that if a
+woman is,
+
+19
+00:01:12,740 --> 00:01:16,430
+has remained as still not pregnant at the
+beginning of a given month,
+
+20
+00:01:16,430 --> 00:01:20,410
+it's the probability that she's going to
+get pregnant within that next month.
+
+21
+00:01:20,410 --> 00:01:22,590
+So, that's what we mean by a hazard
+function.
+
+22
+00:01:22,590 --> 00:01:27,070
+We can define it mathematically for those
+of you who like this kind of case,
+
+23
+00:01:27,070 --> 00:01:30,230
+it's just saying this is in, the
+mathematical terms.
+
+24
+00:01:30,230 --> 00:01:34,220
+If you like that words though, the
+probability that again, if you survive up
+
+25
+00:01:34,220 --> 00:01:38,200
+until a time t, that you will succumb to
+the event in the very next instant.
+
+26
+00:01:39,490 --> 00:01:41,870
+And lemmie just review some potential
+hazard functions.
+
+27
+00:01:41,870 --> 00:01:44,260
+What might hazard functions look like?
+
+28
+00:01:44,260 --> 00:01:47,760
+Well, the most obvious one is that maybe
+the hazard function would just be
+
+29
+00:01:47,760 --> 00:01:49,140
+constant over time.
+
+30
+00:01:49,140 --> 00:01:52,530
+That makes a lot of sense with something
+like the pregnancy data where it's
+
+31
+00:01:52,530 --> 00:01:56,320
+probably the case that a woman's
+probability of getting pregnant in
+
+32
+00:01:56,320 --> 00:01:59,510
+any particular month is pretty constant
+from month to month.
+
+33
+00:01:59,510 --> 00:02:02,450
+So we could say that the hazard function,
+and the way I'm going to represent
+
+34
+00:02:02,450 --> 00:02:04,440
+the hazard function is I'm always going to
+right it as h of t.
+
+35
+00:02:05,530 --> 00:02:10,620
+All that little t is in there to remind
+you that the hazard function itself is
+
+36
+00:02:10,620 --> 00:02:14,090
+a function of t, and it might change over
+time.
+
+37
+00:02:14,090 --> 00:02:18,260
+Now in the instance and when the example
+where it's constant over time, then
+
+38
+00:02:18,260 --> 00:02:21,970
+the hazard function will just be equal to
+the same thing, regardless of time.
+
+39
+00:02:21,970 --> 00:02:25,040
+And, so, it's going to be equal to some
+constant, which I'm calling here c.
+
+40
+00:02:25,040 --> 00:02:26,840
+c stands for constant.
+
+41
+00:02:26,840 --> 00:02:28,030
+So it could be constant over time, and
+
+42
+00:02:28,030 --> 00:02:30,150
+that makes a se, sense with a lot of types
+of data,
+
+43
+00:02:30,150 --> 00:02:34,170
+that the hazard rate is roughly the same
+from month to month or year to year.
+
+44
+00:02:34,170 --> 00:02:35,100
+That's the simplest case.
+
+45
+00:02:36,340 --> 00:02:39,290
+However, you could imagine scenarios where
+
+46
+00:02:39,290 --> 00:02:43,170
+the hazard function is increasing over
+time.
+
+47
+00:02:43,170 --> 00:02:44,270
+Maybe it's not constant but
+
+48
+00:02:44,270 --> 00:02:46,650
+it's increasing in some predictable way
+over time.
+
+49
+00:02:46,650 --> 00:02:51,220
+So a very simple function where the hazard
+would be increasing over time is,
+
+50
+00:02:51,220 --> 00:02:52,360
+is c times t.
+
+51
+00:02:52,360 --> 00:02:55,830
+So this means that the hazard would be a
+function of time.
+
+52
+00:02:55,830 --> 00:02:59,590
+And as time goes up the hazard function
+goes up.
+
+53
+00:02:59,590 --> 00:03:03,510
+A little bit more general than that we
+could define hazard function,
+
+54
+00:03:03,510 --> 00:03:09,070
+which was c, some constant, times time
+raised to a power.
+
+55
+00:03:09,070 --> 00:03:14,280
+If that power was greater than 0, then t,
+there's going to be some, you know,
+
+56
+00:03:14,280 --> 00:03:18,290
+we're multiplying by something greater
+than 0, then,
+
+57
+00:03:18,290 --> 00:03:20,690
+so this is going to be an increasing
+function.
+
+58
+00:03:20,690 --> 00:03:24,420
+And if k is equal to 1, then we would be
+back on this c times t.
+
+59
+00:03:24,420 --> 00:03:29,660
+So I can draw a little picture here, so if
+here's time and here's my hazard function,
+
+60
+00:03:29,660 --> 00:03:34,715
+which is a function of time, yes, we are
+equal to the first one, c times t, it's
+
+61
+00:03:34,715 --> 00:03:40,880
+going to look like that as we go across
+time, the hazard function increases.
+
+62
+00:03:40,880 --> 00:03:43,530
+And we don't have to have it increase so
+quietly so steeply, so
+
+63
+00:03:43,530 --> 00:03:46,360
+the second equation allows us to have
+
+64
+00:03:46,360 --> 00:03:52,490
+the hazard function increase less steeply
+over time something more like that.
+
+65
+00:03:53,620 --> 00:03:58,070
+You can also imagine in scenarios where
+the hazard function
+
+66
+00:03:58,070 --> 00:04:00,050
+decreases in some predictable ways.
+
+67
+00:04:00,050 --> 00:04:02,770
+For example if you had a constant but were
+dividing by time and
+
+68
+00:04:02,770 --> 00:04:07,830
+as time got bigger, as you went further in
+time, the hazard rate is going to go down.
+
+69
+00:04:07,830 --> 00:04:11,512
+Or you can again have a more general
+equation which has a constant time
+
+70
+00:04:11,512 --> 00:04:13,240
+raised to some power.
+
+71
+00:04:13,240 --> 00:04:16,830
+If that power is negative that puts t in
+the denominator and
+
+72
+00:04:16,830 --> 00:04:19,580
+again overtime the hazard function would
+be decreasing.
+
+73
+00:04:21,620 --> 00:04:25,320
+I told another possibility which is often
+the case of real data is that
+
+74
+00:04:25,320 --> 00:04:29,430
+perhaps the hazard function doesn't have a
+smooth mathematical function.
+
+75
+00:04:29,430 --> 00:04:32,280
+So you can some scenario, I'm just making
+this up.
+
+76
+00:04:32,280 --> 00:04:34,730
+But here is time, here is the hazard
+function.
+
+77
+00:04:34,730 --> 00:04:37,370
+There's nothing that says that it has to
+follow a nice smooth function.
+
+78
+00:04:37,370 --> 00:04:38,850
+With real you know,
+
+79
+00:04:38,850 --> 00:04:41,860
+things in life, perhaps the hazard
+function looks something like that,
+
+80
+00:04:41,860 --> 00:04:45,960
+some weird squiggly thing that's too hard
+to define mathematically.
+
+81
+00:04:45,960 --> 00:04:49,680
+So we're going to see that eventually when
+we get to cox regression.
+
+82
+00:04:49,680 --> 00:04:53,590
+We are going to try to avoid specifying
+any particular destination for
+
+83
+00:04:53,590 --> 00:04:56,490
+the hazard function because of the fact
+that often times it doesn't
+
+84
+00:04:56,490 --> 00:05:00,600
+follow something that we can easily
+estimate mathematically.
+
+85
+00:05:00,600 --> 00:05:02,210
+So just keep that in the back of your
+mind.
+
+86
+00:05:02,210 --> 00:05:04,420
+This week we are talking about parametric
+regression,
+
+87
+00:05:04,420 --> 00:05:09,710
+trying to actually estimate that hazard
+function, but eventually we may try to,
+
+88
+00:05:09,710 --> 00:05:12,610
+want to try to avoid estimating it and,
+and giving it any
+
+89
+00:05:12,610 --> 00:05:16,820
+particular mathematical form and that's
+what cox regression does for next week.
+
+90
+00:05:18,530 --> 00:05:21,250
+Alright, so, I now just kind of want to go
+through an example to
+
+91
+00:05:21,250 --> 00:05:23,620
+show you how How this works.
+
+92
+00:05:23,620 --> 00:05:29,080
+When the hazard function is constant what
+does that tell us about survival times?
+
+93
+00:05:29,080 --> 00:05:31,900
+For the pregnancy data, we have this
+pregnancy data that I
+
+94
+00:05:31,900 --> 00:05:36,252
+showed you last week, some women who had
+sub-frudoil or
+
+95
+00:05:36,252 --> 00:05:40,190
+sub-frutile they were given some treatment
+they were followed over 2 years.
+
+96
+00:05:40,190 --> 00:05:41,320
+When we look at that data,
+
+97
+00:05:41,320 --> 00:05:47,450
+we cal, we calculate an average incidence
+rate of 10.4% per month.
+
+98
+00:05:47,450 --> 00:05:50,790
+In other words, about 10.4%of women who
+were at
+
+99
+00:05:50,790 --> 00:05:53,640
+risk of getting pregnant in any given
+month, got pregnant.
+
+100
+00:05:53,640 --> 00:05:57,280
+Now, for the purposes of just making this,
+really, a really simple calculation.
+
+101
+00:05:57,280 --> 00:06:00,650
+What I'm going to say is that we imagine
+we have a case where the hazard rate is
+
+102
+00:06:00,650 --> 00:06:01,970
+a con, a constant.
+
+103
+00:06:01,970 --> 00:06:08,389
+And, it's equal to .1 at 10% chance per
+month, .1 chance of pregnancy per month.
+
+104
+00:06:11,080 --> 00:06:15,110
+So, if I were to tell you that every woman
+has a 10% chance of getting pregnant in
+
+105
+00:06:15,110 --> 00:06:19,060
+a given month if she, obviously if she's
+not already pregnant, and I were to say,
+
+106
+00:06:19,060 --> 00:06:24,000
+what's the chance that a woman is going to
+survive pregnancy free, she's going to
+
+107
+00:06:24,000 --> 00:06:27,720
+make it to 6 months without becoming
+pregnant or you could equivalently ask
+
+108
+00:06:27,720 --> 00:06:30,940
+what's the chance that she's going to get
+pregnant within the first 6 months?
+
+109
+00:06:30,940 --> 00:06:34,740
+Your instincts looking at this 10% might
+be to do the following.
+
+110
+00:06:34,740 --> 00:06:37,810
+You might say okay well I want to know the
+chance she's going to get
+
+111
+00:06:37,810 --> 00:06:42,350
+pregnant within 6 months so I'm going to
+say she has a 10% chance every month.
+
+112
+00:06:42,350 --> 00:06:45,940
+I'm going to multiply that by 6 and I'm
+going to say that her probability of
+
+113
+00:06:45,940 --> 00:06:53,340
+getting pregnant within 6 months or less
+is equal to,
+
+114
+00:06:53,340 --> 00:06:58,130
+I'm going to say she has a 60% chance of
+getting pregnant and therefore her chances
+
+115
+00:06:58,130 --> 00:07:02,970
+of the pregnancy taking greater than 6
+months is equal to 40%.
+
+116
+00:07:02,970 --> 00:07:05,560
+That would be kind of you're first guess.
+
+117
+00:07:05,560 --> 00:07:07,310
+That actually wouldn't be quite correct
+though and
+
+118
+00:07:07,310 --> 00:07:09,410
+I'm going to show you that, why, why that
+is now.
+
+119
+00:07:09,410 --> 00:07:13,220
+You can't just multiply like that because
+when you multiply like that,
+
+120
+00:07:13,220 --> 00:07:16,800
+you forget the fact that every month some
+women are getting pregnant.
+
+121
+00:07:16,800 --> 00:07:19,960
+And that changes the denominator, so let
+me illustrate that now.
+
+122
+00:07:19,960 --> 00:07:21,850
+So this again might, might be your first
+instinct, but
+
+123
+00:07:21,850 --> 00:07:23,580
+it would actually not be correct.
+
+124
+00:07:23,580 --> 00:07:25,325
+So let's just do a little math out here.
+
+125
+00:07:25,325 --> 00:07:28,110
+[BLANK_AUDIO]
+
+126
+00:07:28,110 --> 00:07:32,764
+I want to calculate the probability that a
+women gets pregnant within 6 months or
+
+127
+00:07:32,764 --> 00:07:36,290
+1 minus half the probability that she
+survives pregnancy three past 6
+
+128
+00:07:36,290 --> 00:07:41,504
+months if the hazard rate is a constant
+10% per month.
+
+129
+00:07:41,504 --> 00:07:44,690
+So, I gotta write down the time, the
+hazard,
+
+130
+00:07:44,690 --> 00:07:48,630
+the number of women at risk of getting
+pregnant, once you're pregnant already,
+
+131
+00:07:48,630 --> 00:07:52,570
+you can't, you have no chance of pregnant
+again that's why you have been,
+
+132
+00:07:52,570 --> 00:07:56,340
+within once you're already pregnant, until
+of course that baby is born.
+
+133
+00:07:56,340 --> 00:07:59,500
+And, incident pregnancies.
+
+134
+00:07:59,500 --> 00:08:01,330
+I am just going to make this little table,
+
+135
+00:08:01,330 --> 00:08:06,068
+I think it is easier to keep track of
+things, and then women left.
+
+136
+00:08:06,068 --> 00:08:08,260
+Okay, so here we go.
+
+137
+00:08:08,260 --> 00:08:10,330
+So, first month happens.
+
+138
+00:08:10,330 --> 00:08:12,950
+Let's start, to make this really easy
+we'll start with 100 women.
+
+139
+00:08:12,950 --> 00:08:16,050
+So we're make, we're going to put whole
+numbers to then start with 100 women.
+
+140
+00:08:16,050 --> 00:08:20,210
+So, at time point one, the first month of
+the study, the hazard rate is 10%.
+
+141
+00:08:20,210 --> 00:08:22,750
+I'm going to write it as a percent to make
+this really easy.
+
+142
+00:08:23,750 --> 00:08:26,150
+The number of women at risk at that point,
+time point is 100.
+
+143
+00:08:26,150 --> 00:08:29,080
+How many are then going to get pregnant?
+
+144
+00:08:29,080 --> 00:08:31,680
+Well, we start with 100 women, about 10%
+are going to get pregnant so
+
+145
+00:08:31,680 --> 00:08:33,960
+we are expecting about 10 pregnancies that
+month.
+
+146
+00:08:33,960 --> 00:08:37,700
+How many women are then left and are now
+at risk of pregnancy?
+
+147
+00:08:38,910 --> 00:08:40,890
+Only 90, so 100 minus 10.
+
+148
+00:08:40,890 --> 00:08:43,490
+Time .2, the hazard rate is still 10%.
+
+149
+00:08:43,490 --> 00:08:47,770
+We have a constant hazard, so everybody
+who's not pregnant now still has a 10% of
+
+150
+00:08:47,770 --> 00:08:49,770
+chance of getting pregnant in month two.
+
+151
+00:08:49,770 --> 00:08:51,080
+How many women are at risk now?
+
+152
+00:08:51,080 --> 00:08:52,790
+Only 90, because some already got
+pregnant.
+
+153
+00:08:52,790 --> 00:08:55,330
+This is what I mean about the denominators
+changing.
+
+154
+00:08:55,330 --> 00:08:58,030
+How many incident pregnancies are we
+going to expect?
+
+155
+00:08:58,030 --> 00:09:01,860
+So how many women are going to get
+pregnant then roughly in month two?
+
+156
+00:09:01,860 --> 00:09:03,510
+Well 10% of 90 is 9.
+
+157
+00:09:03,510 --> 00:09:06,780
+So we're not expecting 10 to get pregnant
+in that month.
+
+158
+00:09:06,780 --> 00:09:09,370
+But 9, because some of the women have
+already gotten pregnant.
+
+159
+00:09:09,370 --> 00:09:11,520
+That leaves 81 women left.
+
+160
+00:09:11,520 --> 00:09:13,730
+We go to time point 3 again, the hazard is
+still 10%,
+
+161
+00:09:13,730 --> 00:09:17,770
+we have a constant hazard makes the
+problem easy the number of women,
+
+162
+00:09:17,770 --> 00:09:22,990
+at risk is 81, while 10% of 81 is about 8,
+we're going to just rounding here for
+
+163
+00:09:22,990 --> 00:09:30,440
+ease, to make the point, so 81 minus 8
+we'll give us that we have 73 women
+
+164
+00:09:30,440 --> 00:09:35,792
+left who are still at risk of becoming
+pregnant,8 more have gotten pregnant.
+
+165
+00:09:35,792 --> 00:09:39,540
+Time .4, same hazard rate, 73 women at
+risk.
+
+166
+00:09:39,540 --> 00:09:41,220
+How many pregnancies are we then
+expecting?
+
+167
+00:09:41,220 --> 00:09:46,470
+Well, 10% of 73 is about 7, again, I'm
+just going to round for simplicity here.
+
+168
+00:09:46,470 --> 00:09:51,040
+That leaves us with 66 women who are still
+not pregnant.
+
+169
+00:09:52,290 --> 00:09:56,095
+Time .5, 10%, we're at 66 women.
+
+170
+00:09:56,095 --> 00:10:00,910
+10% of 66 is about 7, I'm rounding again a
+little bit so
+
+171
+00:10:00,910 --> 00:10:06,740
+that's going to leave me with about 59
+women
+
+172
+00:10:06,740 --> 00:10:11,160
+who are not, sorry, 59 women who are not
+pregnant.
+
+173
+00:10:11,160 --> 00:10:14,811
+And I'm going to keep going here [COUGH]
+to month six.
+
+174
+00:10:14,811 --> 00:10:20,300
+10% hazard, 59 women are not pregnant,
+about 6 of them will get pregnant,
+
+175
+00:10:20,300 --> 00:10:23,430
+so about 10%, that leaves me with a
+probability of 50,
+
+176
+00:10:23,430 --> 00:10:27,330
+that leaves me with 53 women who are not
+pregnant.
+
+177
+00:10:27,330 --> 00:10:32,640
+So notice now that the probability of
+getting pregnant within 6 months is
+
+178
+00:10:32,640 --> 00:10:36,650
+not equal to 60%, which might have been
+your instinct here.
+
+179
+00:10:36,650 --> 00:10:38,798
+It's actually only equal to 47%,
+
+180
+00:10:38,798 --> 00:10:43,620
+because there is a 47 women out of a 100
+who got pregnant within 6 months.
+
+181
+00:10:43,620 --> 00:10:46,180
+So the probability of not getting
+pregnant.
+
+182
+00:10:46,180 --> 00:10:48,880
+If the pregnancy taking greater than 6
+months.
+
+183
+00:10:48,880 --> 00:10:50,940
+That's kind of our trivial probability
+here.
+
+184
+00:10:50,940 --> 00:10:51,960
+It's 53%.
+
+185
+00:10:51,960 --> 00:10:56,020
+You had a 53% chance of it taking longer
+than 6 months here.
+
+186
+00:10:56,020 --> 00:10:59,510
+So it's a little counterintuitive, you
+kind of have to work it out.
+
+187
+00:10:59,510 --> 00:11:01,080
+But what I've just illustrated for
+
+188
+00:11:01,080 --> 00:11:05,950
+you is actually why we're on an
+exponential distribution when the,
+
+189
+00:11:05,950 --> 00:11:10,020
+hazard function is constant, we end up on
+an exponential distribution and
+
+190
+00:11:10,020 --> 00:11:13,790
+that's because the denominators every time
+are shrinking as I've shown you here.
+
+191
+00:11:13,790 --> 00:11:17,440
+So, it turns out when the hazard function
+is constant, we are on an exponential.
+
+192
+00:11:17,440 --> 00:11:21,830
+Remember this number the probability of
+surviving pregnancy for
+
+193
+00:11:21,830 --> 00:11:25,230
+any past 6 months is about 53% and I've
+rounded a lot here so
+
+194
+00:11:25,230 --> 00:11:28,240
+this is going to be a very rounded number,
+but I'll show you that when we
+
+195
+00:11:28,240 --> 00:11:31,860
+pretend we're on an exponential, or we say
+we're on an exponential and
+
+196
+00:11:31,860 --> 00:11:35,500
+I use the formulas for an exponential, it
+will spit out the same answer.
+
+197
+00:11:35,500 --> 00:11:40,640
+So it turns out when the, the hazard rate
+is constant, we are on an exponential.
+
+198
+00:11:40,640 --> 00:11:45,170
+Now the exponential distribution is
+actually a family of distributions because
+
+199
+00:11:45,170 --> 00:11:49,510
+the parameter h changes how steep the
+curve is.
+
+200
+00:11:49,510 --> 00:11:53,230
+You can have various steep exponential
+curves that drop really fast, or you can
+
+201
+00:11:53,230 --> 00:11:56,460
+have very shallow exponential curves which
+don't drop as fast, and that all
+
+202
+00:11:56,460 --> 00:12:00,850
+depends on the value of h, how the hazard
+rate, how fast events are occurring.
+
+203
+00:12:02,570 --> 00:12:06,970
+The probability density function for a, an
+exponential is the following.
+
+204
+00:12:06,970 --> 00:12:09,980
+h, your hazard rate, your constant hazard
+rate
+
+205
+00:12:09,980 --> 00:12:15,090
+The exponential function raised to
+negative ht, t here being time.
+
+206
+00:12:15,090 --> 00:12:18,100
+So that's the probability function if you
+wanted to say,
+
+207
+00:12:18,100 --> 00:12:20,980
+what's the probability of having the event
+in any particular month?
+
+208
+00:12:20,980 --> 00:12:24,680
+So for the pregnancy example, if I wanted
+to say, what's the probability that
+
+209
+00:12:24,680 --> 00:12:30,250
+a woman is going to get pregnant in
+exactly at, during the 7 month exactly and
+
+210
+00:12:30,250 --> 00:12:32,940
+that's a funny question to ask but you
+know, if she wants to know she is
+
+211
+00:12:32,940 --> 00:12:35,425
+going to get pregnant during that 7
+months, what's the probability of,
+
+212
+00:12:35,425 --> 00:12:38,410
+of that specific time point being, when
+she gets pregnant.
+
+213
+00:12:38,410 --> 00:12:41,570
+That's what we mean by a probability
+density function.
+
+214
+00:12:41,570 --> 00:12:43,618
+Once we know we are on an exponential,
+
+215
+00:12:43,618 --> 00:12:46,720
+we can also define a cumulative
+distribution function.
+
+216
+00:12:46,720 --> 00:12:49,500
+So the cumulative distributive function is
+a,
+
+217
+00:12:49,500 --> 00:12:52,810
+a calculated by taking the inner growth
+from 0 to t.
+
+218
+00:12:52,810 --> 00:12:58,690
+So what's the chance on a particular curve
+that I, that takes,
+
+219
+00:12:58,690 --> 00:13:01,270
+so for example what's the chance that it,
+that, you know, I'm going to get pregnant.
+
+220
+00:13:01,270 --> 00:13:03,930
+What's the probability that I'm going to
+get pregnant within 6 months?
+
+221
+00:13:03,930 --> 00:13:05,700
+So we've put he was 6 months here.
+
+222
+00:13:05,700 --> 00:13:08,550
+I can calculate if I know I'm on an
+exponential,
+
+223
+00:13:08,550 --> 00:13:11,620
+I can figure out that the cumulative
+distribution function.
+
+224
+00:13:11,620 --> 00:13:14,980
+I'm doing out the calculus here for you,
+you don't need to do out the calculus, but
+
+225
+00:13:14,980 --> 00:13:18,720
+for those of you who are curious, I take
+the integral from 0 to t,
+
+226
+00:13:18,720 --> 00:13:21,860
+t being the time that I want to know
+about,
+
+227
+00:13:21,860 --> 00:13:26,130
+when I take that integral I can show that
+cumulative distribution function for
+
+228
+00:13:26,130 --> 00:13:30,632
+an exponential has the general form 1
+minuse raised to negative h and
+
+229
+00:13:30,632 --> 00:13:34,620
+then t plug in whatever time you are
+interested in.
+
+230
+00:13:34,620 --> 00:13:35,660
+So for example, 6 months.
+
+231
+00:13:35,660 --> 00:13:37,300
+So if you just apply that here.
+
+232
+00:13:37,300 --> 00:13:39,060
+Remember for this pregnancy data, we said,
+
+233
+00:13:39,060 --> 00:13:44,948
+well, what's the probability that I get
+pregnant within 6 months?
+
+234
+00:13:46,000 --> 00:13:50,789
+You can just apply the cdf if we know that
+the pregnancy is constant at point one,
+
+235
+00:13:50,789 --> 00:13:52,870
+10% chance per month.
+
+236
+00:13:52,870 --> 00:13:55,650
+We can just apply the cdf formula here to
+get probability,
+
+237
+00:13:55,650 --> 00:14:00,030
+rather than us having to do out all the
+math like I just did on a previous slide.
+
+238
+00:14:00,030 --> 00:14:03,190
+So if we just apply 1 minus e raise to
+negative.
+
+239
+00:14:03,190 --> 00:14:06,290
+Now the houser right here is point 1 per
+month.
+
+240
+00:14:06,290 --> 00:14:10,100
+And then we have to make sure we enter
+time in months which we're going to at
+
+241
+00:14:10,100 --> 00:14:11,260
+six months.
+
+242
+00:14:11,260 --> 00:14:13,410
+We would just plug into that formula.
+
+243
+00:14:13,410 --> 00:14:17,358
+So if I do 1 minus e raise to negative .6.
+
+244
+00:14:17,358 --> 00:14:18,580
+[BLANK_AUDIO]
+
+245
+00:14:23,370 --> 00:14:26,600
+So when we calculate this out, this turns
+out to be right around 45%.
+
+246
+00:14:26,600 --> 00:14:29,580
+So not exactly what we got before because
+of course we
+
+247
+00:14:29,580 --> 00:14:32,470
+were doing a bunch of rounding there, but
+right about that.
+
+248
+00:14:32,470 --> 00:14:36,340
+So, we had found about 43%, about a 45%
+chance of
+
+249
+00:14:36,340 --> 00:14:39,680
+getting pregnant within 6 months, and then
+what we're usually interested in
+
+250
+00:14:39,680 --> 00:14:43,610
+when we're doing survival analysis is
+actually the survival function.
+
+251
+00:14:43,610 --> 00:14:48,320
+So the survival function is just the area
+to the right, what's the chance of,
+
+252
+00:14:48,320 --> 00:14:51,820
+not getting pregnant within the first 6
+months of it happening, after that
+
+253
+00:14:51,820 --> 00:14:56,700
+instead of that's just going to be 1 minus
+the cumulative density function.
+
+254
+00:14:56,700 --> 00:15:00,520
+So it's easy to just subtract 1 minus the
+cdf and
+
+255
+00:15:00,520 --> 00:15:05,128
+you can show that that's equal to e raised
+to the negative ht, so again if we plug-in
+
+256
+00:15:05,128 --> 00:15:10,648
+to that e raised to the negative 1 times
+6, well that's just
+
+257
+00:15:10,648 --> 00:15:15,300
+going to be 1 minus what we calculated on
+the previous page, it's right about 55%.
+
+258
+00:15:15,300 --> 00:15:18,810
+So again women have, the constant hazard
+rate,
+
+259
+00:15:18,810 --> 00:15:23,568
+is 10% per month, there's a 55% chance of
+surviving pregnancy,
+
+260
+00:15:23,568 --> 00:15:27,410
+free of not getting pregnant within the
+first 6 months.
+
+261
+00:15:27,410 --> 00:15:31,740
+So that's an exponential function, and
+just to show you all of
+
+262
+00:15:31,740 --> 00:15:35,640
+these together the hazard, the probability
+density function, the cumulative density
+
+263
+00:15:35,640 --> 00:15:38,940
+function and the survival function, all as
+functions of time.
+
+264
+00:15:38,940 --> 00:15:41,840
+I've made graphs where we have a constant
+hazard of .1,
+
+265
+00:15:41,840 --> 00:15:44,390
+just to show you what these all look like.
+
+266
+00:15:44,390 --> 00:15:48,150
+So the hazard function is here in this
+upper left hand panel, so
+
+267
+00:15:48,150 --> 00:15:50,910
+the hazard function is constant over time,
+it doesn't change over time.
+
+268
+00:15:50,910 --> 00:15:55,420
+That translates to a pdf, a probability
+density function,
+
+269
+00:15:55,420 --> 00:15:58,380
+that looks like an exponential, because
+we're on an exponential.
+
+270
+00:15:58,380 --> 00:16:00,500
+It's not a terribly steep one.
+
+271
+00:16:00,500 --> 00:16:03,130
+It's a rather shallow exponential.
+
+272
+00:16:03,130 --> 00:16:06,610
+That corresponds to a cumulative density
+function that looks like this,
+
+273
+00:16:06,610 --> 00:16:10,220
+where women are becoming pregnant and you
+can see that at 6 months,
+
+274
+00:16:10,220 --> 00:16:14,470
+you know, not quite half our pregnant yet,
+but if we were to keep going we
+
+275
+00:16:14,470 --> 00:16:18,900
+would expect about 90% of the women to be
+pregnant by about two years.
+
+276
+00:16:18,900 --> 00:16:23,250
+And then, finally the survival probability
+is just like a Kaplan Meier curve,
+
+277
+00:16:23,250 --> 00:16:25,820
+that's what we're trying to estimate when
+we do a Kaplan Meier curve.
+
+278
+00:16:25,820 --> 00:16:30,820
+And you can see that this is the chances
+of remaining pregnancy free or
+
+279
+00:16:30,820 --> 00:16:34,060
+event free and that one again drops.
+
+280
+00:16:34,060 --> 00:16:35,970
+It's kind of a complement of the cdf.
+
+281
+00:16:35,970 --> 00:16:39,020
+So this is just to show you that once you
+know one of them, if you know the hazard
+
+282
+00:16:39,020 --> 00:16:42,250
+then you'll know the pdf, the cdf, and the
+survival probability.
+
+283
+00:16:42,250 --> 00:16:45,430
+You can, you can know the functions for
+all of them.
+
+284
+00:16:45,430 --> 00:16:48,990
+When we do parametric regression, what
+we're actually going to be estimating.
+
+285
+00:16:48,990 --> 00:16:52,380
+Our regressions equation is going to be
+centered around the hazard function But
+
+286
+00:16:52,380 --> 00:16:56,010
+often, and what we want to generate is a
+survival function, a survival curve.

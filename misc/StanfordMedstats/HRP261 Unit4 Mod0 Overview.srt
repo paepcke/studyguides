@@ -1,0 +1,261 @@
+1
+00:00:05,090 --> 00:00:08,320
+Welcome to week four of HRP 261.
+
+2
+00:00:08,320 --> 00:00:11,690
+This week we're going to continue our
+discussion of Logistic Regression.
+
+3
+00:00:13,450 --> 00:00:16,870
+So, last week I told you how to interpret
+and estimate the alphas and
+
+4
+00:00:16,870 --> 00:00:19,360
+the betas from a logistic regression
+model.
+
+5
+00:00:19,360 --> 00:00:22,270
+This week we're going to talk more about
+the model over all.
+
+6
+00:00:22,270 --> 00:00:25,760
+What are some of the ways that you check
+the model in terms of assumptions and
+
+7
+00:00:25,760 --> 00:00:27,220
+model fit?
+
+8
+00:00:27,220 --> 00:00:29,474
+I'm also going to tell you how to test for
+confounding and
+
+9
+00:00:29,474 --> 00:00:32,659
+interaction within the framework of
+regression, and those principles will
+
+10
+00:00:32,659 --> 00:00:35,960
+apply across many types of regression, not
+just logistic regression.
+
+11
+00:00:35,960 --> 00:00:41,510
+So I'll throw in a couple of linear
+regression analyses to illustrate that.
+
+12
+00:00:41,510 --> 00:00:44,970
+Now the teaser for this week.
+
+13
+00:00:44,970 --> 00:00:49,990
+This is a study we're going to get back to
+in the last module for this week.
+
+14
+00:00:49,990 --> 00:00:54,520
+This was a study that was looking at what
+are predictors of which women will get
+
+15
+00:00:54,520 --> 00:00:57,810
+their annual breast cancer screening as
+they're supposed to.
+
+16
+00:00:57,810 --> 00:00:59,810
+So get the annual mammography.
+
+17
+00:00:59,810 --> 00:01:03,360
+This is a binary outcome because either
+women were doing a good job on their
+
+18
+00:01:03,360 --> 00:01:04,190
+screening or they weren't.
+
+19
+00:01:04,190 --> 00:01:08,930
+And the authors thought that perhaps, if
+you had a family history of breast cancer,
+
+20
+00:01:08,930 --> 00:01:11,840
+you might be more likely to go for your
+annual screening.
+
+21
+00:01:11,840 --> 00:01:15,110
+They also thought that how much you
+worried about breast
+
+22
+00:01:15,110 --> 00:01:19,970
+cancer might also impact the chances that
+you would go for your annual screening.
+
+23
+00:01:21,290 --> 00:01:25,070
+But what's interesting here is that the
+authors have thrown in a couple of
+
+24
+00:01:25,070 --> 00:01:27,600
+interaction terms, and we're going to be
+talking about interactions this week.
+
+25
+00:01:27,600 --> 00:01:30,220
+So if you go down to the bottom here,
+
+26
+00:01:30,220 --> 00:01:33,040
+you'll notice there are two interaction
+terms.
+
+27
+00:01:33,040 --> 00:01:35,650
+There is worry interacting with itself.
+
+28
+00:01:35,650 --> 00:01:39,280
+Another way to say that is that we have a
+worry squared term.
+
+29
+00:01:39,280 --> 00:01:42,520
+We also have worry interacting with family
+history.
+
+30
+00:01:42,520 --> 00:01:46,080
+In other words, the effect of worry on
+your likelihood of getting annual
+
+31
+00:01:46,080 --> 00:01:50,578
+mammography might depend on whether you
+are a high risk or low risk woman.
+
+32
+00:01:50,578 --> 00:01:53,570
+And we're going to worry less about the
+significance here,
+
+33
+00:01:53,570 --> 00:01:57,780
+we're not going to pay so much attention
+to, to statistical significance.
+
+34
+00:01:57,780 --> 00:02:00,250
+We're going to talk more about the affect
+sizes.
+
+35
+00:02:00,250 --> 00:02:05,310
+When you have interacting terms in your
+model, how do you present the odds ratios?
+
+36
+00:02:05,310 --> 00:02:09,250
+And in fact the way that the authors have
+presented the odds ratios here
+
+37
+00:02:09,250 --> 00:02:13,530
+isn't quite right, because how, what does
+it mean that your
+
+38
+00:02:13,530 --> 00:02:17,710
+worry squared has an odds ratio of 0.97,
+or what does it mean that your
+
+39
+00:02:17,710 --> 00:02:22,320
+worry times family history interacting
+term has an odds ratio of 0.98?
+
+40
+00:02:22,320 --> 00:02:26,120
+Well in fact really, there isn't a single
+odds ratio for these terms.
+
+41
+00:02:26,120 --> 00:02:28,330
+The fact that there's interaction in the
+model,
+
+42
+00:02:28,330 --> 00:02:31,430
+what that means is, is that there are
+multiple effect sizes.
+
+43
+00:02:31,430 --> 00:02:33,920
+In other words, there are multiple odds
+ratios.
+
+44
+00:02:33,920 --> 00:02:35,470
+There's more than one.
+
+45
+00:02:35,470 --> 00:02:38,780
+So there's more than one odds ratio for
+family history.
+
+46
+00:02:38,780 --> 00:02:44,870
+Your, your odds ratio for family history
+changes depending on your level of worry,
+
+47
+00:02:44,870 --> 00:02:48,250
+and similarly, your odds ratio for worry
+
+48
+00:02:49,580 --> 00:02:55,750
+changes depending on both your family
+history and your level of worry.
+
+49
+00:02:55,750 --> 00:02:57,640
+So at different levels of worry,
+
+50
+00:02:57,640 --> 00:03:00,250
+an increase in worry will have a different
+effect.
+
+51
+00:03:00,250 --> 00:03:01,300
+That's what we mean by a squared term.
+
+52
+00:03:01,300 --> 00:03:03,860
+We'll get back to this example.
+
+53
+00:03:03,860 --> 00:03:06,640
+And in the last module of this week, we're
+going to have some
+
+54
+00:03:06,640 --> 00:03:10,920
+fun talking about how to calculate odds
+ratios in the presence of interaction, and
+
+55
+00:03:10,920 --> 00:03:12,480
+how to report those correctly.

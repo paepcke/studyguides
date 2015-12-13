@@ -1,0 +1,574 @@
+1
+00:00:00,990 --> 00:00:04,700
+The second type of probability we can
+calculate with counting method is
+
+2
+00:00:04,700 --> 00:00:07,570
+something where we don't have replacement.
+
+3
+00:00:07,570 --> 00:00:11,350
+And these are going to be things like when
+you're dealing with decks of card.
+
+4
+00:00:11,350 --> 00:00:14,530
+Once you take a card out of a deck, it's
+no longer available.
+
+5
+00:00:14,530 --> 00:00:16,270
+So, it's without replacement.
+
+6
+00:00:16,270 --> 00:00:17,510
+So, here's a simple example,
+
+7
+00:00:17,510 --> 00:00:22,130
+what's the probability of drawing two aces
+from a standard deck of cards?
+
+8
+00:00:22,130 --> 00:00:23,770
+What would be the probability of drawing
+two aces?
+
+9
+00:00:23,770 --> 00:00:26,045
+So, let's use the counting method to solve
+this.
+
+10
+00:00:26,045 --> 00:00:28,800
+Again, there's more than one way to solve
+to this, but
+
+11
+00:00:28,800 --> 00:00:30,970
+we're going to use the counting method
+here.
+
+12
+00:00:30,970 --> 00:00:33,190
+So, what's the probability of drawing 2
+aces?
+
+13
+00:00:33,190 --> 00:00:37,580
+So again, we're going to make our
+demonator all the possible outcome, and
+
+14
+00:00:37,580 --> 00:00:41,049
+we're going to make our numerator all the
+ways in which you can draw 2 aces.
+
+15
+00:00:42,210 --> 00:00:43,870
+So, I'm going to start with the numerator.
+
+16
+00:00:43,870 --> 00:00:46,750
+And literally, I'm just going to write out
+how many different ways can you draw 2
+
+17
+00:00:46,750 --> 00:00:49,259
+aces when you draw 2 cards from a deck.
+
+18
+00:00:49,259 --> 00:00:50,880
+And I literally just draw them out.
+
+19
+00:00:50,880 --> 00:00:54,642
+So, you could get ace of clubs and ace of
+diamonds.
+
+20
+00:00:54,642 --> 00:00:56,708
+You could get ace of clubs and ace of
+hearts.
+
+21
+00:00:56,708 --> 00:00:59,352
+You could get ace of spades and ace of
+hearts.
+
+22
+00:00:59,352 --> 00:01:03,805
+And notice that I am counting it
+differently, if it's ace of clubs, and
+
+23
+00:01:03,805 --> 00:01:10,462
+then ace of diamonds versus is it's ace of
+diamonds, and then ace of clubs.
+
+24
+00:01:10,462 --> 00:01:13,355
+So, we're considering order in the
+numerator right now.
+
+25
+00:01:13,355 --> 00:01:14,510
+We're considering the order.
+
+26
+00:01:14,510 --> 00:01:15,430
+The order matters.
+
+27
+00:01:15,430 --> 00:01:19,280
+I'm counting it differently if there, if
+they have a different order.
+
+28
+00:01:19,280 --> 00:01:22,450
+I don't have to do that to solve this
+problem, as we'll see in a minute.
+
+29
+00:01:22,450 --> 00:01:24,470
+But if I count order in the denominator,
+
+30
+00:01:24,470 --> 00:01:26,730
+I've gotta count an order in the
+numerator, and vice versa.
+
+31
+00:01:26,730 --> 00:01:30,340
+So, for this first iteration of solving
+this problem, I'm going to consider order.
+
+32
+00:01:31,730 --> 00:01:32,480
+So, that's the numerator.
+
+33
+00:01:32,480 --> 00:01:35,660
+There's 12 ways you can draw ace aces, and
+literally, I've just written them out.
+
+34
+00:01:35,660 --> 00:01:37,920
+How about the denominator?
+
+35
+00:01:37,920 --> 00:01:41,562
+The denominator, turns out that there are
+52 times 51
+
+36
+00:01:41,562 --> 00:01:45,810
+different two-card sequences that you can
+draw from a deck of cards.
+
+37
+00:01:45,810 --> 00:01:47,850
+And again, I'm considering order here.
+
+38
+00:01:47,850 --> 00:01:48,980
+And why is that?
+
+39
+00:01:48,980 --> 00:01:49,730
+Where did I get that?
+
+40
+00:01:49,730 --> 00:01:53,850
+Well, you can again, draw out some kind of
+tree, just like we did for the dice.
+
+41
+00:01:53,850 --> 00:01:59,789
+So, the first thing that can happen is I
+can get any one of 52 cards.
+
+42
+00:01:59,789 --> 00:02:07,235
+Let's say that in the first card, I draw,
+say an ace of hearts.
+
+43
+00:02:07,235 --> 00:02:08,240
+Okay.
+
+44
+00:02:08,240 --> 00:02:09,390
+If I draw an ace of hearts,
+
+45
+00:02:09,390 --> 00:02:12,840
+then I can enumerate all the possibilities
+that are left.
+
+46
+00:02:12,840 --> 00:02:17,050
+Well, once I've drawn that ace of hearts,
+there are only 51 cards left.
+
+47
+00:02:17,050 --> 00:02:19,340
+I can no longer, the ace of hearts is
+gone.
+
+48
+00:02:19,340 --> 00:02:21,490
+So now, there is only 51 choices.
+
+49
+00:02:21,490 --> 00:02:25,310
+So, if I draw out all the possible two
+card sequences,
+
+50
+00:02:25,310 --> 00:02:27,810
+once I'm on the ace of hearts branch,
+then,
+
+51
+00:02:27,810 --> 00:02:32,970
+the all, there's only 51 possible things
+that can happen after that.
+
+52
+00:02:32,970 --> 00:02:35,110
+So, we start with 52 branches, but
+
+53
+00:02:35,110 --> 00:02:40,330
+whichever branch you go down, the next
+node is only going to have 51 branches.
+
+54
+00:02:40,330 --> 00:02:42,890
+So, you start with 52 choices.
+
+55
+00:02:42,890 --> 00:02:46,780
+But then, because one of them has been
+lost, it's been pulled out of the deck,
+
+56
+00:02:46,780 --> 00:02:49,850
+there's only 51 left next.
+
+57
+00:02:49,850 --> 00:02:53,570
+So, the prob, the total number of
+different two card sequences you draw,
+
+58
+00:02:53,570 --> 00:02:56,520
+you can possibly draw is going to be 52
+times 51.
+
+59
+00:02:56,520 --> 00:03:01,520
+And notice again that if you look at all
+the branches that will come out here,
+
+60
+00:03:01,520 --> 00:03:04,950
+the ace of hearts followed by the ace of
+diamonds will be different,
+
+61
+00:03:04,950 --> 00:03:08,010
+a different branch, than the ace of
+diamonds followed by the ace of hearts.
+
+62
+00:03:08,010 --> 00:03:10,510
+So again, we're considering order here.
+
+63
+00:03:10,510 --> 00:03:13,490
+So, the denominator here will be 52 times
+51.
+
+64
+00:03:13,490 --> 00:03:16,790
+Then, we can just divide the numerator by
+the denominator to get the probability.
+
+65
+00:03:16,790 --> 00:03:18,728
+So, the probability that you draw two
+aces,
+
+66
+00:03:18,728 --> 00:03:23,630
+when you draw two cards out of a deck is
+12 divided by 52 times 51.
+
+67
+00:03:23,630 --> 00:03:25,605
+So, that's one way to solve this problem.
+
+68
+00:03:25,605 --> 00:03:27,480
+Again, it's not the only way.
+
+69
+00:03:27,480 --> 00:03:30,230
+We can also try to solve the problem
+ignoring order.
+
+70
+00:03:30,230 --> 00:03:32,740
+A lot of people feel like oh, I don't, why
+should the order matter.
+
+71
+00:03:32,740 --> 00:03:35,590
+It doesn't matter for the hands that you
+have in a card deck.
+
+72
+00:03:35,590 --> 00:03:38,300
+So, there are card games, so lets ignore
+order.
+
+73
+00:03:38,300 --> 00:03:40,240
+So, we can solve the same thing ignoring
+order.
+
+74
+00:03:40,240 --> 00:03:41,950
+But if we ignore order in the numerator,
+
+75
+00:03:41,950 --> 00:03:43,542
+we've got to ignore order in the
+denominator.
+
+76
+00:03:43,542 --> 00:03:47,010
+So, if I ignore order, there's actually I
+can write out that's
+
+77
+00:03:47,010 --> 00:03:51,320
+there's 6 possible different pairs of aces
+where I'm not considering order.
+
+78
+00:03:51,320 --> 00:03:52,772
+So, my numerator will now be 6.
+
+79
+00:03:52,772 --> 00:03:55,520
+For the denominator,
+
+80
+00:03:55,520 --> 00:03:59,110
+the only way to get rid of the order is
+simply to divide out the order.
+
+81
+00:03:59,110 --> 00:04:01,170
+So, I'm literally going to just divide by
+2 here.
+
+82
+00:04:01,170 --> 00:04:05,610
+Because there was 52 times 51 different 2
+card sequences.
+
+83
+00:04:05,610 --> 00:04:08,840
+If you want to divide out all the repeats,
+you just divide by 2 here.
+
+84
+00:04:08,840 --> 00:04:11,960
+So then, the denominator becomes 1326.
+
+85
+00:04:11,960 --> 00:04:14,230
+So, we can divide the 2 of those,
+
+86
+00:04:14,230 --> 00:04:16,250
+the numerator by the denominator to get
+the probability.
+
+87
+00:04:16,250 --> 00:04:18,930
+Of course, it's the same probability that
+we got when we considered order.
+
+88
+00:04:18,930 --> 00:04:21,960
+We're, we're hopping to get the same
+probability no matter how we
+
+89
+00:04:21,960 --> 00:04:22,845
+approach the problem.
+
+90
+00:04:22,845 --> 00:04:24,305
+I'm just going to throw.
+
+91
+00:04:24,305 --> 00:04:24,850
+Okay.
+
+92
+00:04:24,850 --> 00:04:26,890
+There's one more way to solve this.
+
+93
+00:04:26,890 --> 00:04:27,670
+As you can see,
+
+94
+00:04:27,670 --> 00:04:31,320
+probability is tricky because there may be
+multiple ways to get the same answer.
+
+95
+00:04:32,910 --> 00:04:36,080
+So, here's another way that you can get
+the right answer, and this way's
+
+96
+00:04:36,080 --> 00:04:39,030
+probably the way that most people find the
+easiest, but is something that we're
+
+97
+00:04:39,030 --> 00:04:42,770
+going to be talking about more in Module 2
+than in this particular module.
+
+98
+00:04:42,770 --> 00:04:46,640
+So, this is not a counting method, but
+rather,
+
+99
+00:04:46,640 --> 00:04:49,890
+you could just say look at it this way.
+
+100
+00:04:49,890 --> 00:04:52,833
+What's the probability of drawing an ace
+on the first draw?
+
+101
+00:04:52,833 --> 00:04:54,457
+Well, that's 4 out of 52.
+
+102
+00:04:54,457 --> 00:04:56,880
+.We calculated that before.
+
+103
+00:04:56,880 --> 00:04:58,470
+So, you can calculate that probability.
+
+104
+00:04:58,470 --> 00:05:01,500
+And then, you can ask, well, now that I've
+drawn an ace on the first draw,
+
+105
+00:05:01,500 --> 00:05:05,560
+what's the probability of drawing an ace
+again, a second event?
+
+106
+00:05:05,560 --> 00:05:08,590
+Well, once you've drawn one ace outta the
+deck,
+
+107
+00:05:08,590 --> 00:05:12,230
+now you're down to 51 total cards in the
+deck and only 3 aces.
+
+108
+00:05:12,230 --> 00:05:15,630
+So, the probability that you draw an ace
+on the second draw as well,
+
+109
+00:05:15,630 --> 00:05:17,520
+is now 3 out of 51.
+
+110
+00:05:17,520 --> 00:05:20,800
+It's different because something already
+happened.
+
+111
+00:05:20,800 --> 00:05:23,346
+You could say the the probability of
+drawing an ace on the first draw is
+
+112
+00:05:23,346 --> 00:05:23,900
+4 out of 52.
+
+113
+00:05:23,900 --> 00:05:27,863
+The probability of also drawing an ace on
+the second draw is 3 out of 51.
+
+114
+00:05:27,863 --> 00:05:33,030
+And we could just multiply those together
+because in probably and means multiply.
+
+115
+00:05:33,030 --> 00:05:36,170
+So, the probability of both of those
+things happening to calculate that,
+
+116
+00:05:36,170 --> 00:05:37,670
+you're going to multiply those together.
+
+117
+00:05:37,670 --> 00:05:41,540
+So, notice that when you multiply those
+together you get
+
+118
+00:05:41,540 --> 00:05:45,400
+the same exact probability as we got
+before, 12 divided by 52 times 51.
+
+119
+00:05:45,400 --> 00:05:47,980
+So, it doesn't matter which way you
+approach this,
+
+120
+00:05:47,980 --> 00:05:50,680
+there's multiple ways to get the same
+answer.
+
+121
+00:05:50,680 --> 00:05:54,340
+And again, we're going to talk more about
+using this multiplication rule,
+
+122
+00:05:54,340 --> 00:05:56,650
+multiplying probabilities together in
+Module 2.
+
+123
+00:05:56,650 --> 00:05:59,990
+This is technically not a, a counting
+method that we've done here.

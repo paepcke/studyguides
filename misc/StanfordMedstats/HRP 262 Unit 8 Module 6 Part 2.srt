@@ -1,0 +1,272 @@
+1
+00:00:00,610 --> 00:00:03,276
+So finally I thought it would be useful to
+actually look at some real data,
+
+2
+00:00:03,276 --> 00:00:04,480
+rather than some made up data.
+
+3
+00:00:04,480 --> 00:00:07,942
+So going back to the data set I have on
+runners, the larger data set.
+
+4
+00:00:07,942 --> 00:00:11,454
+I measured bone mineral density on those
+runners at three time points.
+
+5
+00:00:11,454 --> 00:00:13,160
+And we also measured their weight.
+
+6
+00:00:13,160 --> 00:00:15,998
+And so for example, if you wanted to know
+whether or
+
+7
+00:00:15,998 --> 00:00:20,790
+not increases in weight, correlated with
+increases in bone mineral density.
+
+8
+00:00:20,790 --> 00:00:23,226
+You might run a generalized estimating
+equation.
+
+9
+00:00:23,226 --> 00:00:27,286
+And my outcome here would be bone marrow
+density, measured at three time points.
+
+10
+00:00:27,286 --> 00:00:30,275
+So you can kind of think of it again as a
+vector of bone marrow
+
+11
+00:00:30,275 --> 00:00:31,599
+density measurements.
+
+12
+00:00:33,710 --> 00:00:35,524
+And, so I'm writing a GEE model.
+
+13
+00:00:35,524 --> 00:00:37,338
+And I'll have time in the model.
+
+14
+00:00:37,338 --> 00:00:39,720
+And I'll also have this vector of weights.
+
+15
+00:00:41,680 --> 00:00:44,158
+If I enter weight in as a time changing
+predictor,
+
+16
+00:00:44,158 --> 00:00:46,458
+I've got the centralist vector of weights.
+
+17
+00:00:46,458 --> 00:00:48,410
+And I've got a single beta for weight.
+
+18
+00:00:50,050 --> 00:00:53,820
+When I went ahead and ran that model with
+these data, I'll show you what I get.
+
+19
+00:00:53,820 --> 00:00:56,200
+So you'll see that my weight was in
+pounds.
+
+20
+00:00:56,200 --> 00:01:01,450
+I get a highly significant coefficient for
+weight.
+
+21
+00:01:01,450 --> 00:01:06,380
+So weight across time does seem to be
+correlated to bone mineral density.
+
+22
+00:01:06,380 --> 00:01:08,410
+I also get a significant effect for time,
+
+23
+00:01:08,410 --> 00:01:12,440
+saying that as we know in these women the
+bone density was going up over time.
+
+24
+00:01:12,440 --> 00:01:15,823
+But how do I interpret this beta
+coefficient for weight here?
+
+25
+00:01:15,823 --> 00:01:17,154
+It's highly significant.
+
+26
+00:01:17,154 --> 00:01:20,738
+But it could be that I'm getting a
+significant coefficient here,
+
+27
+00:01:20,738 --> 00:01:24,520
+because people who are heavier have
+stronger skeletons.
+
+28
+00:01:24,520 --> 00:01:28,355
+Or, it could be that women who increase
+their weight also increase their bone
+
+29
+00:01:28,355 --> 00:01:29,360
+mineral density.
+
+30
+00:01:29,360 --> 00:01:31,680
+Or it could be some combination of both of
+those.
+
+31
+00:01:31,680 --> 00:01:33,000
+How am I going to tease that out?
+
+32
+00:01:34,980 --> 00:01:36,720
+So, one way to do it is just graphically.
+
+33
+00:01:36,720 --> 00:01:39,024
+And so, what I did here is I went ahead,
+and
+
+34
+00:01:39,024 --> 00:01:42,177
+I graphed the cross sectional relationship
+at base line.
+
+35
+00:01:42,177 --> 00:01:44,230
+Between weight and spine bone density.
+
+36
+00:01:44,230 --> 00:01:46,250
+To look for between subjects effects.
+
+37
+00:01:46,250 --> 00:01:50,560
+And we have, clearly, very strong between
+subjects effects here at baseline.
+
+38
+00:01:50,560 --> 00:01:52,270
+The higher your weight was at baseline,
+
+39
+00:01:52,270 --> 00:01:54,650
+the higher your spine bone density tended
+to be.
+
+40
+00:01:54,650 --> 00:01:56,510
+So strong between-subjects effects for
+sure.
+
+41
+00:01:57,720 --> 00:02:00,134
+To look for within-subjects effects,
+
+42
+00:02:00,134 --> 00:02:04,843
+I then calculated the change in spine bone
+density from time period one to two.
+
+43
+00:02:04,843 --> 00:02:06,956
+And from time period two to three.
+
+44
+00:02:06,956 --> 00:02:12,030
+And I graphed that against the change in
+weight for those same time periods.
+
+45
+00:02:12,030 --> 00:02:15,660
+So every woman will have two dots on here
+representing her two
+
+46
+00:02:15,660 --> 00:02:16,660
+different time periods.
+
+47
+00:02:17,950 --> 00:02:20,782
+And you can see that there are some
+within-subjects effect here, but
+
+48
+00:02:20,782 --> 00:02:22,350
+they're much, much weaker.
+
+49
+00:02:22,350 --> 00:02:25,683
+There's a lot of women who didn't change
+much in their weight.
+
+50
+00:02:25,683 --> 00:02:28,810
+So we get this kind of, line of women
+around zero.
+
+51
+00:02:28,810 --> 00:02:32,449
+If you superimpose a regression line here,
+it certainly does look positive.
+
+52
+00:02:32,449 --> 00:02:36,402
+But be careful because your eye is sort of
+being drawn by a few people who happen to
+
+53
+00:02:36,402 --> 00:02:38,003
+have very large weight gains.
+
+54
+00:02:38,003 --> 00:02:40,098
+And also happen to gain spine bone
+density.
+
+55
+00:02:40,098 --> 00:02:44,190
+So if you deleted these two subjects over
+here, it wouldn't be a very strong effect.
+
+56
+00:02:44,190 --> 00:02:47,902
+So, probably we have, very strong between
+subjects effects here,
+
+57
+00:02:47,902 --> 00:02:51,930
+that are driving that significant beta co
+efficient for weight.
+
+58
+00:02:51,930 --> 00:02:55,693
+We probably have some weak within subjects
+effects that are also contributing, but
+
+59
+00:02:55,693 --> 00:02:56,760
+that are much weaker.

@@ -1,0 +1,471 @@
+1
+00:00:01,250 --> 00:00:04,980
+I just want to quickly point out that the
+partial likelihood, when I was
+
+2
+00:00:04,980 --> 00:00:10,130
+describing that partial likelihood for
+you, I didn't say what you did about ties.
+
+3
+00:00:10,130 --> 00:00:14,070
+So every term in the likelihood, I said
+you get the person who died or
+
+4
+00:00:14,070 --> 00:00:17,480
+had the event in the numerator and the
+risk set in the denominator, but
+
+5
+00:00:17,480 --> 00:00:22,790
+what if more than one person had the event
+at a particular time, say time equals one.
+
+6
+00:00:22,790 --> 00:00:26,000
+So in the pregnancy data, for example, we
+had several women getting pregnant in
+
+7
+00:00:26,000 --> 00:00:30,520
+the first month of their first cycle,
+essentially, of the study.
+
+8
+00:00:31,640 --> 00:00:35,370
+The partial likelihood actually assumes no
+tied values amongst
+
+9
+00:00:35,370 --> 00:00:39,080
+the observed survival times, and that is
+not often the case with real data.
+
+10
+00:00:39,080 --> 00:00:43,040
+In other words, with real data, like the
+pregnancy data, you'll often see ties.
+
+11
+00:00:43,040 --> 00:00:47,060
+A lot of times the reason you have ties is
+not because people had the event at
+
+12
+00:00:47,060 --> 00:00:51,050
+the exact same moment in time, which is
+very unlikely.
+
+13
+00:00:51,050 --> 00:00:54,810
+But because, when we do a study, we don't
+measure time very precisely.
+
+14
+00:00:54,810 --> 00:00:57,610
+So you might only know the month when
+people had an event,
+
+15
+00:00:57,610 --> 00:00:58,880
+when a person had an event.
+
+16
+00:00:58,880 --> 00:01:02,330
+So several people might have the event
+three months into the study,
+
+17
+00:01:02,330 --> 00:01:04,500
+because that's as fine as you've measured
+time.
+
+18
+00:01:05,600 --> 00:01:07,290
+And that's usually what we assume.
+
+19
+00:01:07,290 --> 00:01:12,120
+We assume that the ties result from, that
+the ties in your data set, that is,
+
+20
+00:01:12,120 --> 00:01:15,630
+having multiple people with the same event
+time in your data set,
+
+21
+00:01:15,630 --> 00:01:20,740
+we usually assume that that just results
+from the imprecise measurement of time.
+
+22
+00:01:20,740 --> 00:01:24,220
+So, in other words, we think if we, there
+is some true order of
+
+23
+00:01:24,220 --> 00:01:27,850
+events that people don't die at the exact,
+exact moment, but that if you
+
+24
+00:01:27,850 --> 00:01:32,630
+could measure time more finely you would
+be able to know exactly who died first or
+
+25
+00:01:32,630 --> 00:01:37,390
+had the event first, so there is some true
+order of events, we just don't know it.
+
+26
+00:01:37,390 --> 00:01:42,500
+And so, if you assume that, then you can
+calculate the partial likelihood.
+
+27
+00:01:42,500 --> 00:01:46,420
+You can deal with the ties based on
+something called an exact method.
+
+28
+00:01:46,420 --> 00:01:49,070
+And the exact method, as all exact methods
+we've seen,
+
+29
+00:01:49,070 --> 00:01:54,190
+it calculates the exact probability of all
+possible orderings of events.
+
+30
+00:01:54,190 --> 00:01:58,030
+So, in other words we said that they're,
+if five people all have these
+
+31
+00:01:58,030 --> 00:02:02,030
+same event time in your data set, you can
+calculate the probability that, you know,
+
+32
+00:02:02,030 --> 00:02:05,340
+the order was one, two, three, four, five,
+if we call them subjects one through five.
+
+33
+00:02:05,340 --> 00:02:06,580
+Or that it was five, four,
+
+34
+00:02:06,580 --> 00:02:12,070
+three, two, one or all possible five
+factorial possible orderings.
+
+35
+00:02:12,070 --> 00:02:15,370
+You could calculate the probabilities of
+all of those.
+
+36
+00:02:15,370 --> 00:02:19,460
+Now this can be very calculation
+intensive, as you can imagine,
+
+37
+00:02:19,460 --> 00:02:21,015
+especially if you have a lot of ties.
+
+38
+00:02:21,015 --> 00:02:24,230
+because it's literally calculating all the
+possible ways it could have happened.
+
+39
+00:02:24,230 --> 00:02:27,540
+So since the exact method, especially in
+the past, it's so
+
+40
+00:02:27,540 --> 00:02:29,676
+computationally intensive.
+
+41
+00:02:29,676 --> 00:02:32,646
+Back in the 70s, when we didn't have as
+much computing power,
+
+42
+00:02:32,646 --> 00:02:35,310
+people came up with approximations to the
+exact methods.
+
+43
+00:02:35,310 --> 00:02:38,782
+They went, rather than doing out this
+exact probability, which can be,
+
+44
+00:02:38,782 --> 00:02:40,742
+if there a huge data set with lots of
+ties,
+
+45
+00:02:40,742 --> 00:02:44,840
+which might hang your computer, there are
+available approximations to it.
+
+46
+00:02:44,840 --> 00:02:46,880
+Bres, the Breslow approximation and
+
+47
+00:02:46,880 --> 00:02:49,710
+the Efron approximation are most commonly
+used.
+
+48
+00:02:49,710 --> 00:02:51,590
+And I'm not going to go into the
+mathematical details, but
+
+49
+00:02:51,590 --> 00:02:55,000
+they're just trying to do the exact method
+without having so much computation.
+
+50
+00:02:55,000 --> 00:02:58,450
+kind of getting at it without being
+totally exact.
+
+51
+00:02:58,450 --> 00:03:03,160
+So, the Breslow approximation is actually
+the default in SASS although,
+
+52
+00:03:03,160 --> 00:03:05,920
+statisticians will generally tell you that
+the Efron approximation is
+
+53
+00:03:05,920 --> 00:03:07,950
+better in some situations.
+
+54
+00:03:07,950 --> 00:03:13,170
+In fact, if you take some real data and
+try all of these different methods for
+
+55
+00:03:13,170 --> 00:03:15,750
+dealing with ties, even if you have a lot
+of ties,
+
+56
+00:03:15,750 --> 00:03:18,840
+a lot of times it doesn't make a huge
+difference in the estimate.
+
+57
+00:03:18,840 --> 00:03:22,720
+The only place that it really makes a
+difference is if time is
+
+58
+00:03:22,720 --> 00:03:27,080
+actually not continuous, but time is
+actually truly discrete.
+
+59
+00:03:27,080 --> 00:03:31,160
+And so one other way to handle the ties is
+to, is called the discrete method, and
+
+60
+00:03:31,160 --> 00:03:34,080
+this is actually conceptually different,
+because this is,
+
+61
+00:03:34,080 --> 00:03:38,580
+you might choose the discrete method when
+time actually is truly discrete.
+
+62
+00:03:38,580 --> 00:03:41,590
+In other words, when the ties are real,
+and
+
+63
+00:03:41,590 --> 00:03:44,563
+people actually have the event at the
+exact same times.
+
+64
+00:03:44,563 --> 00:03:49,670
+And the way that might happen is if events
+can only happen at certain discrete times.
+
+65
+00:03:49,670 --> 00:03:54,890
+So if time is truly discrete, you know,
+the events are somehow periodic and
+
+66
+00:03:54,890 --> 00:03:56,270
+can only happen at certain times.
+
+67
+00:03:56,270 --> 00:04:00,630
+So maybe like winning an Olympic medal can
+only happen every four years or voting for
+
+68
+00:04:00,630 --> 00:04:02,690
+President can only happen every four
+years.
+
+69
+00:04:02,690 --> 00:04:05,570
+There's just some things that can only
+happen at a given time.
+
+70
+00:04:05,570 --> 00:04:07,433
+Those ties are then real, and so
+
+71
+00:04:07,433 --> 00:04:11,350
+the method for handling with the ties then
+is somewhat different.
+
+72
+00:04:11,350 --> 00:04:14,580
+Now, the discrete method actually does
+something a little bit different.
+
+73
+00:04:14,580 --> 00:04:16,070
+So if you choose the discrete method for
+
+74
+00:04:16,070 --> 00:04:19,170
+handling ties, you're actually modeling
+proportional odds.
+
+75
+00:04:19,170 --> 00:04:24,350
+And what you get out at the end of the day
+are odds ratios, and not hazard ratios.
+
+76
+00:04:24,350 --> 00:04:25,310
+So that's a key distinction,
+
+77
+00:04:25,310 --> 00:04:29,550
+you have to know that those effects that
+you're getting out are then odds ratios.
+
+78
+00:04:29,550 --> 00:04:33,300
+And just briefly, I don't want to go into
+a lot of detail here, but briefly how it
+
+79
+00:04:33,300 --> 00:04:38,800
+works is, if, for example, you have a
+hundred people at risk at a certain time
+
+80
+00:04:38,800 --> 00:04:43,930
+and 15 have the event at the exact same
+time, what we're going to model
+
+81
+00:04:43,930 --> 00:04:48,000
+therefore is, what's the chance that, that
+given that we know, condition that we
+
+82
+00:04:48,000 --> 00:04:52,240
+know that 15 events occurred, what's the
+probability that the events happened to
+
+83
+00:04:52,240 --> 00:04:56,880
+this particular set of 15 people, out of
+all possible sets of 15?
+
+84
+00:04:56,880 --> 00:04:57,970
+So in your denominator,
+
+85
+00:04:57,970 --> 00:05:03,020
+you are going to sort of have all possible
+sets of 15 that could have happened.
+
+86
+00:05:03,020 --> 00:05:07,914
+You are going to have the probabilities
+for all of those, and there are 100,
+
+87
+00:05:07,914 --> 00:05:10,710
+choose 15 of them if you have a hundred
+people at risk.
+
+88
+00:05:10,710 --> 00:05:15,246
+And then you'll put in the numerator, the
+probability for this specific 15,
+
+89
+00:05:15,246 --> 00:05:20,610
+the ones who actually did have the event
+at that time, the actual set of 15.
+
+90
+00:05:20,610 --> 00:05:23,760
+So you're going to have a conditional
+probability in your likelihood that
+
+91
+00:05:23,760 --> 00:05:25,390
+looks like that.
+
+92
+00:05:25,390 --> 00:05:28,040
+This does give you, because we've taken
+out time now,
+
+93
+00:05:28,040 --> 00:05:31,400
+we're just saying groups of people, what
+group of people had the events,
+
+94
+00:05:31,400 --> 00:05:34,680
+this does now go back to odds ratios,
+rather than hazard ratios.
+
+95
+00:05:34,680 --> 00:05:38,406
+And if you think about it, if you remember
+back to when we talked about conditional
+
+96
+00:05:38,406 --> 00:05:42,078
+logistic regression, the likelihood here
+is actually very similar to the one we
+
+97
+00:05:42,078 --> 00:05:45,780
+had for conditional logistic regression,
+which also gave you odds ratios.

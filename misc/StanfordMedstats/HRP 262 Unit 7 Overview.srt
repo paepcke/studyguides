@@ -1,0 +1,161 @@
+1
+00:00:05,700 --> 00:00:06,512
+[BLANK_AUDIO]
+
+2
+00:00:06,512 --> 00:00:07,364
+So last week,
+
+3
+00:00:07,364 --> 00:00:12,620
+I told you how to graph continuous
+outcomes when you have repeated-measures.
+
+4
+00:00:12,620 --> 00:00:16,120
+This week we're going to start our
+discussion of statistical tests,
+
+5
+00:00:16,120 --> 00:00:18,655
+that are actually used to generate effect
+sizes, and
+
+6
+00:00:18,655 --> 00:00:20,780
+p-values to go along with those graphics.
+
+7
+00:00:22,600 --> 00:00:25,250
+So this week I'm going to give you an
+overview of
+
+8
+00:00:25,250 --> 00:00:28,225
+the statistical tests that are available
+for analyzing.
+
+9
+00:00:28,225 --> 00:00:32,040
+Repeated-measures data, with a focus on
+continuous outcomes.
+
+10
+00:00:32,040 --> 00:00:35,880
+I'm also going to tell you about some
+tests that actually don't really
+
+11
+00:00:35,880 --> 00:00:39,310
+handle the repeated-measures very well,
+that essentially simplify or
+
+12
+00:00:39,310 --> 00:00:40,900
+ignore the repeated-measures.
+
+13
+00:00:40,900 --> 00:00:43,320
+These are sort of old fashioned test.
+
+14
+00:00:43,320 --> 00:00:45,250
+There's nothing necessarily wrong with
+these tests, and
+
+15
+00:00:45,250 --> 00:00:48,930
+you may have a simple situation, when a
+simple test will do.
+
+16
+00:00:48,930 --> 00:00:52,100
+It's also handy just to have these in your
+toolbox, because sometimes you
+
+17
+00:00:52,100 --> 00:00:55,750
+do a more fancier, complicated model and
+you're not quite sure that you're
+
+18
+00:00:55,750 --> 00:00:59,700
+getting the right answer, you can check,
+with one of these simple tests and
+
+19
+00:00:59,700 --> 00:01:02,780
+make sure that you're getting, kind of a
+similar answer no matter how you.
+
+20
+00:01:02,780 --> 00:01:05,700
+Analyze the data, so we'll go over some,
+some options there.
+
+21
+00:01:05,700 --> 00:01:08,830
+I'm also going to show you how to do
+repeated-measures ANOVA this week.
+
+22
+00:01:10,170 --> 00:01:14,900
+So, again I showed you last week, how to
+graph repeated-measures outcome data.
+
+23
+00:01:14,900 --> 00:01:18,570
+We had an example of spine bone density
+changing over the time.
+
+24
+00:01:18,570 --> 00:01:20,810
+I'm showing you these graphics again here.
+
+25
+00:01:20,810 --> 00:01:23,300
+I was comparing just three small groups of
+women, and
+
+26
+00:01:23,300 --> 00:01:26,170
+you can see that sort of two of the groups
+were increasing.
+
+27
+00:01:26,170 --> 00:01:30,100
+And the, the group in blue here was pretty
+much staying flat on bone density.
+
+28
+00:01:30,100 --> 00:01:32,200
+The graph has a huge amount of
+information,
+
+29
+00:01:32,200 --> 00:01:35,040
+you can pick up a lot just by looking at
+the graphic.
+
+30
+00:01:35,040 --> 00:01:36,960
+However, we usually want to.
+
+31
+00:01:36,960 --> 00:01:40,880
+Attach something to the graphic like an
+effect size in the p-value.
+
+32
+00:01:40,880 --> 00:01:45,080
+So, this week, we're going to start
+talking about statistical tests,
+
+33
+00:01:45,080 --> 00:01:47,420
+that can be used for analyzing
+repeated-measures data.
+
+34
+00:01:47,420 --> 00:01:52,429
+[BLANK_AUDIO]

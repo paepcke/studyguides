@@ -1,0 +1,170 @@
+1
+00:00:00,000 --> 00:00:05,500
+[BLANK_AUDIO].
+
+2
+00:00:05,500 --> 00:00:06,940
+Welcome to unit eight.
+
+3
+00:00:06,940 --> 00:00:10,670
+This week we're going to start our
+discussion of regression methods that
+
+4
+00:00:10,670 --> 00:00:12,339
+handle repeated measures outcomes.
+
+5
+00:00:14,580 --> 00:00:17,730
+So this week we're going to be talking
+about generalized estimating equations
+
+6
+00:00:17,730 --> 00:00:21,270
+which is one of the regression methods
+that handles repeated measure data.
+
+7
+00:00:23,480 --> 00:00:27,190
+And there are many benefits of using a
+regression method for
+
+8
+00:00:27,190 --> 00:00:29,430
+handling repeated measures data.
+
+9
+00:00:29,430 --> 00:00:33,020
+We saw last week that if we wanted to use
+repeated measures ANOVA or
+
+10
+00:00:33,020 --> 00:00:38,340
+repeated measures MANOVA, that there were
+a number of limitations to those methods.
+
+11
+00:00:38,340 --> 00:00:41,870
+So, for one thing they assume that time is
+categorical.
+
+12
+00:00:41,870 --> 00:00:44,060
+Everybody has to be measured at the same
+time point.
+
+13
+00:00:44,060 --> 00:00:49,050
+And for MANOVA, those time points had to
+be sort of equally spaced time intervals.
+
+14
+00:00:49,050 --> 00:00:51,750
+With regression, with generalized
+estimating equations and
+
+15
+00:00:51,750 --> 00:00:53,560
+next week, we'll see, with mixed models.
+
+16
+00:00:53,560 --> 00:00:55,020
+You can treat time as continuous.
+
+17
+00:00:55,020 --> 00:00:57,940
+Everybody can have different time points
+that they're measured at.
+
+18
+00:00:59,690 --> 00:01:04,600
+Also, the ANOVA method don't handle
+time-dependent covariates and
+
+19
+00:01:04,600 --> 00:01:07,950
+as you all learned on the mid-terms that
+time changing predictors are very,
+
+20
+00:01:07,950 --> 00:01:09,270
+very important.
+
+21
+00:01:09,270 --> 00:01:11,674
+And other regression methods will
+incorporate in handling it.
+
+22
+00:01:13,760 --> 00:01:16,190
+For ANOVA you have to impute missing data
+or
+
+23
+00:01:16,190 --> 00:01:19,870
+anybody who is missing even one time point
+will be thrown out of the analysis
+
+24
+00:01:19,870 --> 00:01:22,620
+with the regression methods, you don't
+have to
+
+25
+00:01:22,620 --> 00:01:26,370
+necessarily impute the missing data
+because people will only be thrown out.
+
+26
+00:01:26,370 --> 00:01:27,950
+The time points that they missed.
+
+27
+00:01:29,870 --> 00:01:32,760
+The ANOVA methods had some more
+restrictive assumptions.
+
+28
+00:01:32,760 --> 00:01:34,570
+Particularly univariate repeated measures
+and
+
+29
+00:01:34,570 --> 00:01:37,410
+ANOVA had a restrictive assumption about
+the correlation structure,
+
+30
+00:01:37,410 --> 00:01:42,610
+the regression methods, don't necessarily
+require such restrictive assumptions.
+
+31
+00:01:42,610 --> 00:01:45,840
+And if you notice when we do the ANOVA,
+you didn't get any parameter estimates.
+
+32
+00:01:45,840 --> 00:01:48,290
+We didn't get any measures of effect size,
+for example.
+
+33
+00:01:48,290 --> 00:01:49,700
+We just got p values.
+
+34
+00:01:49,700 --> 00:01:52,410
+We'd also like to be able to get some beta
+coefficients,
+
+35
+00:01:52,410 --> 00:01:56,270
+some estimates of effect size, and
+regression will buy us that as well.
+
+36
+00:01:56,270 --> 00:02:00,999
+[BLANK_AUDIO]
+

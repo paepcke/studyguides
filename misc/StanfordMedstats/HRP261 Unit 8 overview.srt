@@ -1,0 +1,332 @@
+1
+00:00:00,000 --> 00:00:05,910
+[BLANK_AUDIO]
+
+2
+00:00:05,910 --> 00:00:07,740
+Welcome to week eight.
+
+3
+00:00:07,740 --> 00:00:10,860
+In the last couple of weeks we've been
+talking about model building.
+
+4
+00:00:10,860 --> 00:00:14,270
+This week we're going to switch modes and
+I'm going to tell you about some
+
+5
+00:00:14,270 --> 00:00:18,460
+additional models that are available to
+you when you have discreet outcomes.
+
+6
+00:00:18,460 --> 00:00:22,150
+Besides just a binary logistic model that
+we've been talking about so far.
+
+7
+00:00:23,820 --> 00:00:27,370
+So if you look at the medical literature,
+when you have discreet outcomes.
+
+8
+00:00:27,370 --> 00:00:30,820
+By and large, across the medical
+literature you'll see that
+
+9
+00:00:30,820 --> 00:00:36,470
+typically people will choose to use binary
+logistic regression to analyze that data.
+
+10
+00:00:36,470 --> 00:00:39,790
+However, you're not restricted to binary
+logistic regression.
+
+11
+00:00:39,790 --> 00:00:42,580
+There's a whole host of other models that
+are available to
+
+12
+00:00:42,580 --> 00:00:45,623
+you when you have [INAUDIBLE] outcomes.
+
+13
+00:00:45,623 --> 00:00:50,710
+And for example, if you have ca, a
+categorical outcome where there are more
+
+14
+00:00:50,710 --> 00:00:55,150
+than two levels, you could collapse those
+categories into just two but
+
+15
+00:00:55,150 --> 00:00:57,140
+there's no reason that you have to do
+that.
+
+16
+00:00:57,140 --> 00:01:00,850
+You could instead choose to do something
+called multinomial logistic regression or
+
+17
+00:01:00,850 --> 00:01:03,010
+ordinal logistic regression.
+
+18
+00:01:03,010 --> 00:01:05,370
+Also, sometimes you'll have count data.
+
+19
+00:01:05,370 --> 00:01:10,700
+Count data are technically discrete, they
+are not continuous, right,
+
+20
+00:01:10,700 --> 00:01:14,440
+because counts can only take on the value
+zero, one, two, three, etc.
+
+21
+00:01:14,440 --> 00:01:17,760
+Now sometimes when we get count data,
+
+22
+00:01:17,760 --> 00:01:22,220
+if it turns out to have a large range of
+possible counts, when you look at
+
+23
+00:01:22,220 --> 00:01:27,050
+the distribution of that count data it may
+turn out that if the mean is somewhere.
+
+24
+00:01:27,050 --> 00:01:31,520
+Quite of a lot higher than zero and
+there's a large range of possible counts.
+
+25
+00:01:31,520 --> 00:01:35,260
+If you look at the frequency distribution,
+the histogram, it may turn out that
+
+26
+00:01:35,260 --> 00:01:39,740
+those counts look close enough to a normal
+distribution that you may decide that you
+
+27
+00:01:39,740 --> 00:01:43,610
+just want to analyze that with linear
+regression and that's perfectly fine.
+
+28
+00:01:43,610 --> 00:01:47,860
+However, count data often do not look that
+way.
+
+29
+00:01:47,860 --> 00:01:51,790
+So typically with count data, you'll see
+something that seems more like this.
+
+30
+00:01:51,790 --> 00:01:55,200
+You have a lot people down around zero,
+one, two,
+
+31
+00:01:55,200 --> 00:01:59,370
+three, low numbers of events, and then you
+have some kind of right tail.
+
+32
+00:01:59,370 --> 00:02:02,120
+That certainly is not a normal
+distribution.
+
+33
+00:02:02,120 --> 00:02:07,020
+And if you have data that looks like that,
+then it's preferable to analyse that count
+
+34
+00:02:07,020 --> 00:02:09,230
+data with something called the Poisson
+regression, or
+
+35
+00:02:09,230 --> 00:02:11,330
+negative binomial regression.
+
+36
+00:02:11,330 --> 00:02:15,170
+So there's a lot of other choices besides
+just the binary logistic model that we've
+
+37
+00:02:15,170 --> 00:02:16,390
+focused on so far.
+
+38
+00:02:17,700 --> 00:02:21,130
+I'll just mention that I focused on the
+binary logistic model for
+
+39
+00:02:21,130 --> 00:02:24,520
+talking about the general principles of
+model building, but
+
+40
+00:02:24,520 --> 00:02:27,680
+those principles would apply to these
+models as well.
+
+41
+00:02:27,680 --> 00:02:29,640
+They're transferable principles.
+
+42
+00:02:29,640 --> 00:02:32,790
+Of course each of these models will have
+its own little idiosyncrasies in
+
+43
+00:02:32,790 --> 00:02:35,320
+terms of the assumptions that you have to
+check and
+
+44
+00:02:35,320 --> 00:02:37,750
+exactly what measures you're getting out
+of the model.
+
+45
+00:02:37,750 --> 00:02:38,300
+But by and
+
+46
+00:02:38,300 --> 00:02:42,340
+large, those principles of model building
+will apply to these models as well.
+
+47
+00:02:42,340 --> 00:02:47,270
+And just a little preview of the types of
+data that we're going to be
+
+48
+00:02:47,270 --> 00:02:48,620
+talking about this week.
+
+49
+00:02:48,620 --> 00:02:52,070
+So later this week again we're going to be
+talking about count data.
+
+50
+00:02:52,070 --> 00:02:56,630
+And I found some, an example data set that
+was looking at the outcome here as counts.
+
+51
+00:02:56,630 --> 00:03:02,820
+The outcome is the number of world records
+in swimming that are broken each year.
+
+52
+00:03:02,820 --> 00:03:05,270
+And that's a count because obviously you
+can't break one and
+
+53
+00:03:05,270 --> 00:03:08,150
+a half world records, you have to break an
+even number.
+
+54
+00:03:08,150 --> 00:03:11,942
+And those data are shown plotted here from
+1969 to 2009
+
+55
+00:03:11,942 --> 00:03:15,340
+this is the number of world records that
+were broken each year.
+
+56
+00:03:15,340 --> 00:03:18,300
+And there are a lot of different events in
+swimming, and there's men's swimming and
+
+57
+00:03:18,300 --> 00:03:20,440
+women's swimming so there's a lot of
+possible.
+
+58
+00:03:20,440 --> 00:03:21,710
+Records to be broken.
+
+59
+00:03:21,710 --> 00:03:25,210
+So kind of a large number get, can be
+broken in any given year.
+
+60
+00:03:25,210 --> 00:03:27,860
+But whats interesting if you look at the
+pattern here.
+
+61
+00:03:27,860 --> 00:03:31,770
+there, the number of records being broken
+was pretty high in the early 70s and
+
+62
+00:03:31,770 --> 00:03:36,640
+then it kind of goes down and there's not
+as many record being broken in the 1990s.
+
+63
+00:03:36,640 --> 00:03:40,740
+Maybe we've kind of peaked in terms of
+technology and things.
+
+64
+00:03:40,740 --> 00:03:43,540
+But then all of a sudden there's this
+spike back up as you
+
+65
+00:03:43,540 --> 00:03:48,400
+look in the 2000's and that probably has
+to do with new technology, new types of
+
+66
+00:03:48,400 --> 00:03:51,550
+swim wear that have actually made a lot of
+world records in swimming fall.
+
+67
+00:03:53,970 --> 00:03:57,230
+And therefore we could choose to analyze
+these data with something like
+
+68
+00:03:57,230 --> 00:04:00,510
+a Poisson regression or a negative
+binomial regression.
+
+69
+00:04:00,510 --> 00:04:02,600
+Those models are specifically for count
+data.

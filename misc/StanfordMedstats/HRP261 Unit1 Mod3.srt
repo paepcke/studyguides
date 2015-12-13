@@ -1,0 +1,2241 @@
+1
+00:00:04,600 --> 00:00:08,380
+In this next module, I'm going to talk
+about the statistical tests that we
+
+2
+00:00:08,380 --> 00:00:11,480
+use when we have correlated data in a two
+by two table.
+
+3
+00:00:11,480 --> 00:00:13,749
+This is less common, but it does come up
+sometimes.
+
+4
+00:00:15,470 --> 00:00:19,450
+So for those of you who took HRP259 in the
+fall,
+
+5
+00:00:19,450 --> 00:00:21,470
+I told you about McNemar's exact test.
+
+6
+00:00:21,470 --> 00:00:24,908
+I'm now just going to extend that to tell
+you about McNemar's chi-squared test.
+
+7
+00:00:25,960 --> 00:00:28,480
+So, for correlated data in a two by two
+table,
+
+8
+00:00:28,480 --> 00:00:30,170
+we're going to be using some kind of
+McNemar's test.
+
+9
+00:00:31,360 --> 00:00:34,250
+Now I'm assuming that you've all have had
+a previous course in statistics and
+
+10
+00:00:34,250 --> 00:00:37,400
+that you're familiar with the concept of
+correlated observations, so I'm going to
+
+11
+00:00:37,400 --> 00:00:41,490
+go over this very quickly, assuming that
+you already have the background here.
+
+12
+00:00:41,490 --> 00:00:47,050
+The correlated data arise whenever we have
+pairs or clusters of observations that
+
+13
+00:00:47,050 --> 00:00:50,460
+are essentially more related to each other
+than to other observations in the data
+
+14
+00:00:50,460 --> 00:00:54,480
+set, and this commonly comes up in things
+like, when we have repeated measures.
+
+15
+00:00:54,480 --> 00:00:58,130
+So, you measure the same person before and
+after a treatment, well,
+
+16
+00:00:58,130 --> 00:01:00,858
+that person of course is going to be
+correlated to themselves.
+
+17
+00:01:00,858 --> 00:01:05,826
+Or, perhaps you're doing something like,
+measuring twin pairs, and
+
+18
+00:01:05,826 --> 00:01:10,146
+of course, the people within a twin pair
+are going to be more correlated to
+
+19
+00:01:10,146 --> 00:01:12,770
+each other than other people in the study.
+
+20
+00:01:12,770 --> 00:01:17,300
+Or you might have a situation where you're
+measuring multiple lesions on each person.
+
+21
+00:01:17,300 --> 00:01:20,680
+Well if the unit of observation that
+you're looking at is the lesions,
+
+22
+00:01:20,680 --> 00:01:24,134
+those lesions within a person are going to
+be correlated to one another.
+
+23
+00:01:24,134 --> 00:01:27,420
+Or if you are in ophthalmology and you're
+looking at a person's eyes and
+
+24
+00:01:27,420 --> 00:01:31,050
+you measure both eyes from the people in
+your study, and
+
+25
+00:01:31,050 --> 00:01:34,396
+you measure at, again, the unit of
+observation is the eye,
+
+26
+00:01:34,396 --> 00:01:37,510
+then eyes within a person are going to be
+correlated to one another.
+
+27
+00:01:37,510 --> 00:01:39,100
+You get the idea.
+
+28
+00:01:39,100 --> 00:01:42,810
+It's important to understand that when you
+go to analyze your data,
+
+29
+00:01:42,810 --> 00:01:46,150
+if you ignore these kinds of correlations,
+one of two things can happen.
+
+30
+00:01:47,260 --> 00:01:51,040
+So if you're doing some kind of
+within-person comparison, so
+
+31
+00:01:51,040 --> 00:01:54,510
+let's say you're looking at the same
+person before and after,
+
+32
+00:01:54,510 --> 00:01:59,712
+or you're comparing one half of a person's
+face to the other half of their face.
+
+33
+00:01:59,712 --> 00:02:04,742
+Or some kind of within-cluster comparison,
+like within, you know, a twin pair.
+
+34
+00:02:04,742 --> 00:02:08,315
+And you ignore the correlations, you're
+actually going to overestimate your
+
+35
+00:02:08,315 --> 00:02:11,810
+p-values, so you might miss a
+statistically significant effect.
+
+36
+00:02:11,810 --> 00:02:13,820
+You, you're more likely to make a type two
+type of error.
+
+37
+00:02:15,270 --> 00:02:19,050
+However, if you're doing some kind of
+comparison where you have correlated data,
+
+38
+00:02:19,050 --> 00:02:21,660
+but you're looking at comparing between
+people or
+
+39
+00:02:21,660 --> 00:02:25,850
+between clusters, so like I have two eyes
+within a person but
+
+40
+00:02:25,850 --> 00:02:29,220
+I'm comparing both eyes in one person who
+is treated with a treatment to
+
+41
+00:02:29,220 --> 00:02:33,730
+both eyes of somebody else who is treated
+with a placebo, and if I ignore those
+
+42
+00:02:33,730 --> 00:02:36,920
+correlations in that case, I'm actually
+going to underestimate the p-values.
+
+43
+00:02:36,920 --> 00:02:40,610
+I'm going to be over-counting things and
+I'm going to be overly optimistic.
+
+44
+00:02:40,610 --> 00:02:43,550
+I might find something to be statistically
+significant that I shouldn't have.
+
+45
+00:02:44,690 --> 00:02:47,028
+So both of those situations can occur.
+
+46
+00:02:47,028 --> 00:02:50,230
+Obviously you're going to have problems
+with your statistical inference if you
+
+47
+00:02:50,230 --> 00:02:51,100
+ignore correlations.
+
+48
+00:02:53,268 --> 00:02:56,284
+One case where correlations come up that's
+worth mentioning,
+
+49
+00:02:56,284 --> 00:02:59,140
+is when we do something called pair
+matching.
+
+50
+00:02:59,140 --> 00:03:03,628
+So, pair matching is in a way in your
+study design to control for confounders,
+
+51
+00:03:03,628 --> 00:03:08,252
+and to actually increase the power of your
+statistical test down the line, and so
+
+52
+00:03:08,252 --> 00:03:10,937
+we often do this with case control
+studies.
+
+53
+00:03:10,937 --> 00:03:14,530
+You take a case, you get somebody with it
+a particular disease, and then you go out
+
+54
+00:03:14,530 --> 00:03:17,360
+and find a control for that person, but
+you just don't pick any control.
+
+55
+00:03:17,360 --> 00:03:20,860
+Maybe you pick somebody who's around the
+same age as the case and
+
+56
+00:03:20,860 --> 00:03:22,210
+also is of the same gender and
+
+57
+00:03:22,210 --> 00:03:26,210
+perhaps also is a smoker or non-smoker,
+maybe match them on smoking.
+
+58
+00:03:26,210 --> 00:03:29,720
+When you do that, you're controlling for
+all these extraneous sources of
+
+59
+00:03:29,720 --> 00:03:34,249
+variability, you're increasing your
+chances of being able to see a signal.
+
+60
+00:03:36,160 --> 00:03:38,390
+Of course, you have to remember to account
+for
+
+61
+00:03:38,390 --> 00:03:41,170
+this pair matching at the end of the day
+when you analyze your data.
+
+62
+00:03:41,170 --> 00:03:44,420
+So here's something, you know, you might
+match one control to
+
+63
+00:03:44,420 --> 00:03:47,050
+one case based on things like age, gender,
+and smoking again.
+
+64
+00:03:47,050 --> 00:03:51,770
+So let me just give you an example where
+pair matching was done.
+
+65
+00:03:51,770 --> 00:03:55,160
+This was a study from the New England
+Journal of Medicine many years ago, and
+
+66
+00:03:55,160 --> 00:03:56,320
+they wanted to know whether or
+
+67
+00:03:56,320 --> 00:04:01,340
+not getting a tonsillectomy was related to
+the chances of getting Hodgkin's disease.
+
+68
+00:04:01,340 --> 00:04:07,150
+So what they did was they found 85
+Hodgkin's patients, and they looked for
+
+69
+00:04:07,150 --> 00:04:10,450
+a control out of the siblings of the
+Hodgkin's patient.
+
+70
+00:04:10,450 --> 00:04:13,550
+They looked for a sibling who had not had
+Hodgkin's disease but
+
+71
+00:04:13,550 --> 00:04:17,810
+was of the same gender, and also was in a,
+you know,
+
+72
+00:04:17,810 --> 00:04:21,880
+reasonably similar age bracket, within
+five years of the patient's age.
+
+73
+00:04:21,880 --> 00:04:25,930
+So this was a way for them to try to say,
+to then look at,
+
+74
+00:04:25,930 --> 00:04:29,320
+did the case have a tonsillectomy in the
+past, and did the sib control?
+
+75
+00:04:29,320 --> 00:04:32,150
+We've got pair matching here because
+obviously the case and
+
+76
+00:04:32,150 --> 00:04:37,990
+the control are more related to each other
+than to the, everybody else in the sample.
+
+77
+00:04:37,990 --> 00:04:42,070
+So this was actually presented in the New
+England Journal of Medicine incorrectly.
+
+78
+00:04:42,070 --> 00:04:45,360
+So here is how the authors re-, reported
+that data.
+
+79
+00:04:45,360 --> 00:04:49,380
+They had 85 cases and 85 controls, and you
+can see in this two by two table,
+
+80
+00:04:49,380 --> 00:04:51,660
+they reported each case and control
+individually, and
+
+81
+00:04:51,660 --> 00:04:54,280
+there's no accounting for the fact that
+they had matching.
+
+82
+00:04:54,280 --> 00:04:57,470
+When you calculate just the basic odds
+ratio from this two by two table, and
+
+83
+00:04:57,470 --> 00:05:00,300
+the basic chi square statistic, it's not
+significant, and
+
+84
+00:05:00,300 --> 00:05:02,550
+your odds ratio comes out to be about
+1.47.
+
+85
+00:05:02,550 --> 00:05:05,670
+Well, that's actually not the right way to
+analyze these data.
+
+86
+00:05:05,670 --> 00:05:09,630
+Several letters to the editor pointed out
+that the investigators had failed to
+
+87
+00:05:09,630 --> 00:05:10,690
+account for the pairing.
+
+88
+00:05:11,930 --> 00:05:15,790
+The correct way to analyze these data is
+to put them in a two by two table,
+
+89
+00:05:15,790 --> 00:05:19,370
+not individuals in those cells, but pairs.
+
+90
+00:05:19,370 --> 00:05:23,300
+So every number in this cell represents
+now, a pair, rather than an individual.
+
+91
+00:05:23,300 --> 00:05:26,110
+So what the, what the correct way to look
+at these data is to say,
+
+92
+00:05:26,110 --> 00:05:30,640
+okay, within a case-control pair, who had
+a tonsillectomy and who didn't?
+
+93
+00:05:30,640 --> 00:05:34,160
+So, it turns out that there were 26 pairs
+where both the case and
+
+94
+00:05:34,160 --> 00:05:37,150
+the control had had a tonsillectomy in the
+past, and
+
+95
+00:05:37,150 --> 00:05:40,600
+there were 37 pairs where neither of them
+had had a tonsillectomy in the past.
+
+96
+00:05:40,600 --> 00:05:42,490
+Well, it turns out that those cells are
+not informative.
+
+97
+00:05:42,490 --> 00:05:43,940
+They don't tell us anything.
+
+98
+00:05:43,940 --> 00:05:48,670
+They don't help us to say whether or not
+getting a tonsillectomy is related to
+
+99
+00:05:48,670 --> 00:05:52,380
+getting the disease, because both people
+had the same status on tonsillectomy.
+
+100
+00:05:52,380 --> 00:05:58,730
+The informative, the interesting cells,
+turn out to be the discordant pairs.
+
+101
+00:05:58,730 --> 00:06:01,630
+So this is where a case had had a
+tonsillectomy and
+
+102
+00:06:01,630 --> 00:06:04,220
+a control had not, or vice versa, and
+
+103
+00:06:04,220 --> 00:06:09,200
+you can see that among the discordant
+pairs here, there were more discordant
+
+104
+00:06:09,200 --> 00:06:13,350
+pairs where it was the case that they had
+the tonsillectomy and not the control.
+
+105
+00:06:13,350 --> 00:06:17,490
+When you analyze the data this way, doing
+what's called a McNemar's odds ratio and
+
+106
+00:06:17,490 --> 00:06:21,300
+a McNemar's chi-square, it turns out that
+the odds ratio is much bigger, it's 2.14,
+
+107
+00:06:21,300 --> 00:06:25,230
+and the chi-squared test is almost
+statistically significant.
+
+108
+00:06:25,230 --> 00:06:27,722
+So as I mentioned, ignoring the
+correlations for
+
+109
+00:06:27,722 --> 00:06:32,830
+within-pair comparisons like this will
+make your p-value too big, so
+
+110
+00:06:32,830 --> 00:06:36,990
+when we correctly analyze the data the
+p-value becomes smaller here.
+
+111
+00:06:36,990 --> 00:06:39,366
+So this is the kind of situation where
+we're going to need a McNemar's test.
+
+112
+00:06:40,840 --> 00:06:43,910
+Let me just introduce yet another example.
+
+113
+00:06:43,910 --> 00:06:47,720
+Here's a larger study, where they were
+looking at myocardial infarction, so
+
+114
+00:06:47,720 --> 00:06:49,040
+this is having a heart attack.
+
+115
+00:06:49,040 --> 00:06:52,264
+They looked at people who had had a heart
+attack, those are the cases, and
+
+116
+00:06:52,264 --> 00:06:55,228
+controls who had not, and they matched
+them, one to one, on age and
+
+117
+00:06:55,228 --> 00:06:59,360
+gender, which of course are very
+highly-related to having heart attacks.
+
+118
+00:06:59,360 --> 00:07:02,362
+The question in this study was whether or
+not having a history of diabetes would
+
+119
+00:07:02,362 --> 00:07:04,220
+increase your risk of having a heart
+attack.
+
+120
+00:07:05,940 --> 00:07:08,680
+So here are the data correctly presented.
+
+121
+00:07:08,680 --> 00:07:12,940
+So, there were 144 pairs in this study.
+
+122
+00:07:12,940 --> 00:07:16,310
+And what you'll notice is that nine pairs,
+both the case and
+
+123
+00:07:16,310 --> 00:07:17,840
+the control had diabetes.
+
+124
+00:07:17,840 --> 00:07:20,900
+82 pairs, neither the case nor the control
+had diabetes.
+
+125
+00:07:20,900 --> 00:07:23,510
+Those cells turn out to be
+non-informative.
+
+126
+00:07:23,510 --> 00:07:25,320
+What are the informative cells here?
+
+127
+00:07:25,320 --> 00:07:27,890
+Again, the informative cells are the
+discordant cells,
+
+128
+00:07:27,890 --> 00:07:31,240
+the ones where the control and the case
+don't match, that's the 37 and the 16.
+
+129
+00:07:31,240 --> 00:07:32,000
+How do we analyze these data?
+
+130
+00:07:34,640 --> 00:07:39,400
+We can actually calculate an odds ratio
+based only on the discordant pairs.
+
+131
+00:07:39,400 --> 00:07:42,370
+That's called a McNemar's odds ratio and
+it's very simple to calculate.
+
+132
+00:07:42,370 --> 00:07:47,340
+We take the discordant pairs and we say
+what is the, among the discordant pairs,
+
+133
+00:07:47,340 --> 00:07:50,860
+what's the odds that the pair contains a
+diabetic case,
+
+134
+00:07:50,860 --> 00:07:52,260
+rather than a diabetic control?
+
+135
+00:07:52,260 --> 00:07:54,290
+And we get that odds just by dividing 37
+by 16.
+
+136
+00:07:54,290 --> 00:07:58,040
+So it's the simplest odds ratio you'll
+ever calculate.
+
+137
+00:07:58,040 --> 00:08:00,990
+We're simply going to divide 37 by 16.
+
+138
+00:08:00,990 --> 00:08:02,560
+We get an odds ratio here of 2.3.
+
+139
+00:08:02,560 --> 00:08:06,810
+So there's a twofold increase in the odds
+of getting
+
+140
+00:08:06,810 --> 00:08:09,350
+a heart attack if you are diabetic.
+
+141
+00:08:09,350 --> 00:08:12,290
+That's how you would interpret that.
+
+142
+00:08:12,290 --> 00:08:13,410
+So that's the McNemar's odds ratio.
+
+143
+00:08:13,410 --> 00:08:14,660
+Very simple to calculate.
+
+144
+00:08:14,660 --> 00:08:17,252
+We also want to get a p-value here, so we
+can cal-,
+
+145
+00:08:17,252 --> 00:08:19,670
+we can do what's called a McNemar's
+chi-squared test, and
+
+146
+00:08:19,670 --> 00:08:21,910
+now I'm going to lead you through the
+logic of that test.
+
+147
+00:08:21,910 --> 00:08:24,510
+Again it focuses only on the discordant
+pairs.
+
+148
+00:08:25,660 --> 00:08:29,950
+The null hypothesis here is that being
+diabetic is unrelated to
+
+149
+00:08:29,950 --> 00:08:31,160
+having a heart attack.
+
+150
+00:08:31,160 --> 00:08:35,580
+Another way to say that is that the
+chances among the discordant pairs
+
+151
+00:08:35,580 --> 00:08:37,740
+that it's the case that's diabetic,
+
+152
+00:08:37,740 --> 00:08:40,330
+should be equal to the chance that it's
+the control that's diabetic.
+
+153
+00:08:40,330 --> 00:08:43,860
+So when we restrict our analysis down to
+the discordant pairs,
+
+154
+00:08:43,860 --> 00:08:48,160
+what we'd expect to see if there was no
+relationship between diabetes and
+
+155
+00:08:48,160 --> 00:08:52,230
+heart attacks, we'd expect to see kind of
+an even number, an even split.
+
+156
+00:08:52,230 --> 00:08:55,710
+It would be equally likely that it would
+be the control that would be diabetic as
+
+157
+00:08:55,710 --> 00:08:57,180
+it would be that the case would be
+diabetic.
+
+158
+00:08:57,180 --> 00:09:00,040
+Now you can see clearly we don't have an
+even split here.
+
+159
+00:09:00,040 --> 00:09:03,920
+We have 37 pairs, discordant pairs, where
+it was the case that
+
+160
+00:09:03,920 --> 00:09:07,730
+was diabetic versus only 16 where it was
+the control that was diabetic.
+
+161
+00:09:07,730 --> 00:09:11,260
+You can see that that's pretty unbalanced,
+and we're going to think that that's
+
+162
+00:09:11,260 --> 00:09:15,055
+probably going to be something
+statistically significant.
+
+163
+00:09:15,055 --> 00:09:18,060
+But our, under the null, we would expect
+to see half here and
+
+164
+00:09:18,060 --> 00:09:20,150
+half in cell B and half in cell C.
+
+165
+00:09:23,520 --> 00:09:27,470
+So we start with that null hypothesis, and
+
+166
+00:09:27,470 --> 00:09:33,660
+what we have to recognize now, is that we
+actually have a binomial distribution.
+
+167
+00:09:33,660 --> 00:09:35,450
+Okay, so
+
+168
+00:09:35,450 --> 00:09:41,170
+if you think about this carefully, I have
+53 discordant pairs here.
+
+169
+00:09:41,170 --> 00:09:42,250
+Okay?
+
+170
+00:09:42,250 --> 00:09:45,880
+Under the null hypothesis of no
+relationship between diabetes and
+
+171
+00:09:45,880 --> 00:09:49,250
+case control status, I would actually
+expect to see about
+
+172
+00:09:49,250 --> 00:09:54,050
+half the pairs would be in this cell and
+about half would be in this cell.
+
+173
+00:09:54,050 --> 00:09:55,860
+I see, expect to see an even split.
+
+174
+00:09:55,860 --> 00:09:59,390
+Of course, we always know in statistics
+that nothing ever gets evenly split,
+
+175
+00:09:59,390 --> 00:10:02,770
+especially since we can't have half a
+person, so
+
+176
+00:10:02,770 --> 00:10:05,760
+we're going to expect to see about 26 or
+27 in each cell.
+
+177
+00:10:05,760 --> 00:10:09,250
+Instead we're seeing here a 37 to 16
+split, and we say,
+
+178
+00:10:09,250 --> 00:10:12,050
+well, is that discrepant enough from 26 to
+26?
+
+179
+00:10:12,050 --> 00:10:16,270
+Is that a big enough discrepancy from the
+null hypothesis,
+
+180
+00:10:16,270 --> 00:10:20,990
+where we're sure that that sort of rises
+above just random chance?
+
+181
+00:10:20,990 --> 00:10:21,950
+How do we evaluate that?
+
+182
+00:10:21,950 --> 00:10:26,330
+Well we can recognize here that what we
+are, we have under the null hypothesis,
+
+183
+00:10:27,920 --> 00:10:32,330
+we are on a binomial distribution, and
+that binomial distribution has an n of
+
+184
+00:10:32,330 --> 00:10:36,720
+53 because I have 53 pairs, and we're
+expecting half of them, so my p is 0.5.
+
+185
+00:10:36,720 --> 00:10:39,970
+We're expecting half of them to have a
+diabetic case rather than
+
+186
+00:10:39,970 --> 00:10:40,870
+a diabetic control.
+
+187
+00:10:40,870 --> 00:10:45,060
+So our null hypothesis here is that we're
+on a binomial with an n of 53 and
+
+188
+00:10:45,060 --> 00:10:48,347
+a p of 0.5.
+
+189
+00:10:48,347 --> 00:10:53,140
+Now, how do we then calculate a p-value
+for this null hypothesis?
+
+190
+00:10:53,140 --> 00:10:55,050
+So what we would have to do,
+
+191
+00:10:55,050 --> 00:10:58,720
+if we wanted to just stick with the
+binomial distribution here, is we would
+
+192
+00:10:58,720 --> 00:11:04,180
+have to calculate the probability of what
+we observed, and everything more extreme.
+
+193
+00:11:04,180 --> 00:11:07,460
+So this is the p-value that we would have
+to calculate here.
+
+194
+00:11:07,460 --> 00:11:11,190
+We would go, okay the p-value is equal to
+what we observed.
+
+195
+00:11:11,190 --> 00:11:18,410
+Well we observed, that out of 53 pairs,
+
+196
+00:11:18,410 --> 00:11:23,690
+37 of them ended up having a diabetic
+case, and of course, the chance
+
+197
+00:11:23,690 --> 00:11:26,870
+of having divided by the case under the
+null is 0.5, so we raise that to 37.
+
+198
+00:11:26,870 --> 00:11:30,530
+We raise the 0.5, 1 minus that to 16.
+
+199
+00:11:30,530 --> 00:11:33,626
+So that's the probability of getting 37
+
+200
+00:11:33,626 --> 00:11:37,920
+discordant pairs where it's the case that
+has diabetes.
+
+201
+00:11:37,920 --> 00:11:38,990
+That's exactly what we observed.
+
+202
+00:11:38,990 --> 00:11:42,290
+But then, we have to calculate everything
+more extreme than that.
+
+203
+00:11:42,290 --> 00:11:44,510
+And these, I'm just applying binomial
+probabilities here.
+
+204
+00:11:44,510 --> 00:11:48,640
+So, what's the probability of where I
+would've got 38 diabetic cases and
+
+205
+00:11:48,640 --> 00:11:50,610
+15 diabetic controls?
+
+206
+00:11:50,610 --> 00:11:56,140
+Well that would be 0.5 raised to 38, times
+0.5 raised to 15, and we can keep going.
+
+207
+00:11:56,140 --> 00:11:57,340
+Well, what's more extreme than that?
+
+208
+00:11:57,340 --> 00:12:00,170
+Well, I could've got 39 diabetic cases, so
+that's 53 choose 39,
+
+209
+00:12:00,170 --> 00:12:01,980
+0.5 raised to 39, 0.5 raised to 14 and
+
+210
+00:12:01,980 --> 00:12:08,480
+you can see that we're going to have to
+keep going for a long time here.
+
+211
+00:12:08,480 --> 00:12:11,064
+That's going to take us a while, because
+we have to get all the way down to 0,
+
+212
+00:12:11,064 --> 00:12:13,220
+and then that will give us the one tail,
+and
+
+213
+00:12:13,220 --> 00:12:16,640
+we would have to multiply that by 2 to get
+the two tail.
+
+214
+00:12:16,640 --> 00:12:19,760
+It's rather tedious to calculate out the
+exact binomial probability.
+
+215
+00:12:19,760 --> 00:12:21,540
+Your, of course the computer can do that
+for you easily.
+
+216
+00:12:22,550 --> 00:12:25,841
+But, what we can do instead is that we
+know that when we have a large enough n,
+
+217
+00:12:25,841 --> 00:12:28,450
+when n times p is greater than 5,
+
+218
+00:12:28,450 --> 00:12:32,180
+we can actually just do a normal
+approximation to the binomial.
+
+219
+00:12:32,180 --> 00:12:34,490
+So, just to remind you how that works.
+
+220
+00:12:34,490 --> 00:12:37,150
+What we say is, okay, think about what a
+binomial looks like.
+
+221
+00:12:37,150 --> 00:12:42,030
+Our expected value here is 26.5, and
+expect to be around here, and
+
+222
+00:12:42,030 --> 00:12:44,380
+then my binomial is going to look
+something like this.
+
+223
+00:12:44,380 --> 00:12:47,250
+It's very likely that I'm going to get
+things in the range of you know, 26, 25,
+
+224
+00:12:47,250 --> 00:12:51,418
+24, and then it's going to kind of drop
+off from there.
+
+225
+00:12:51,418 --> 00:12:53,910
+So if did out all of the binomial
+probabilities,
+
+226
+00:12:53,910 --> 00:12:57,620
+this would be all the way from zero to 53,
+so you know zero here 53,
+
+227
+00:12:57,620 --> 00:13:01,190
+I could get anywhere from zero to 53 pairs
+having diabetic cases.
+
+228
+00:13:01,190 --> 00:13:03,718
+Of course the probabilities are going to
+be very low on those tails.
+
+229
+00:13:03,718 --> 00:13:07,560
+I'm going to end up with something that
+looks very close to a normal distribution,
+
+230
+00:13:07,560 --> 00:13:09,200
+so I'm going to approximate it as a
+normal.
+
+231
+00:13:09,200 --> 00:13:13,020
+I'm going to say, well, whatever the
+expected value and variance for
+
+232
+00:13:13,020 --> 00:13:14,310
+the binomial is,
+
+233
+00:13:14,310 --> 00:13:17,790
+I'll just pretend I'm on a normal with
+that same expected value and variance.
+
+234
+00:13:17,790 --> 00:13:21,140
+You have to remember, what is the expected
+value for a binomial?
+
+235
+00:13:21,140 --> 00:13:25,210
+So the expected value of a binomial is n
+times p,
+
+236
+00:13:25,210 --> 00:13:29,310
+which in this case is 53 times 0.5, which,
+it just comes out to be that 26.5.
+
+237
+00:13:29,310 --> 00:13:31,540
+And notice, we didn't even need to know,
+
+238
+00:13:31,540 --> 00:13:33,699
+we just intuitively knew that that's
+going to come out to be 26.5.
+
+239
+00:13:35,250 --> 00:13:36,380
+What's the variance of a binomial?
+
+240
+00:13:36,380 --> 00:13:37,880
+You'll have to jog your memory a little
+bit here.
+
+241
+00:13:37,880 --> 00:13:42,800
+So, the variance of a binomial is n times
+p times 1 minus p, and
+
+242
+00:13:42,800 --> 00:13:45,790
+of course the standard deviation would be
+the square root of that.
+
+243
+00:13:45,790 --> 00:13:50,100
+So what's n times p times 1 minus p here?
+
+244
+00:13:50,100 --> 00:13:54,230
+So, n is 53, p is 0.5, and 1 minus p is
+0.5.
+
+245
+00:13:54,230 --> 00:14:02,186
+So the variance here will come out to be
+53 times 0.5 times 0.5,
+
+246
+00:14:02,186 --> 00:14:08,320
+and the standard deviation would be the
+square root of that.
+
+247
+00:14:08,320 --> 00:14:09,340
+I'm just going to leave that, I,
+
+248
+00:14:09,340 --> 00:14:11,690
+we don't actually need to even solve that
+out quite yet.
+
+249
+00:14:11,690 --> 00:14:12,550
+I'll just leave it like that.
+
+250
+00:14:13,620 --> 00:14:17,840
+So now I'm just going to assume that I'm
+on a normal with that same mean and
+
+251
+00:14:17,840 --> 00:14:19,600
+standard deviation.
+
+252
+00:14:19,600 --> 00:14:25,094
+So if a normal curve with a mean of 26.5
+and a standard deviation of the square
+
+253
+00:14:25,094 --> 00:14:31,100
+root of 53 times 0.5 times 0.5 what did I
+actually observe in this case?
+
+254
+00:14:31,100 --> 00:14:33,510
+Well, I observed that I was at 37.
+
+255
+00:14:33,510 --> 00:14:37,910
+So 37's going to be somewhere about here,
+and I want to know,
+
+256
+00:14:37,910 --> 00:14:39,600
+what's the area to the right of 37?
+
+257
+00:14:39,600 --> 00:14:42,460
+And, of course, I'll double that to get
+the two-tailed p value.
+
+258
+00:14:42,460 --> 00:14:43,810
+I observed a value of 33.
+
+259
+00:14:43,810 --> 00:14:46,840
+My expected value, so, z score, of course,
+you calculate by
+
+260
+00:14:46,840 --> 00:14:51,400
+simply subtracting the observed minus the
+mean, divided by the standard deviation.
+
+261
+00:14:51,400 --> 00:14:53,440
+My expected value here is 53 divided by 2,
+
+262
+00:14:53,440 --> 00:14:58,980
+and my standard deviation is 53 times 0.5
+times 0.5.
+
+263
+00:14:58,980 --> 00:15:03,358
+When I actually calculate that out, I get
+that the difference is 10.5.
+
+264
+00:15:03,358 --> 00:15:08,290
+I'm 10.5 away from the expected, and my
+standard deviation turns out to be 3.64.
+
+265
+00:15:08,290 --> 00:15:11,290
+My z value comes out to be 2.88.
+
+266
+00:15:11,290 --> 00:15:13,380
+Now clearly, if you know anything about z
+values,
+
+267
+00:15:13,380 --> 00:15:17,000
+clearly a two point, a z value of 2.88 is
+going to be out, way out in the tail.
+
+268
+00:15:17,000 --> 00:15:21,100
+The p value is going to be quite small, ao
+it will be statistically significant.
+
+269
+00:15:21,100 --> 00:15:24,010
+So that's much easier, doing that
+approximation is much easier than
+
+270
+00:15:24,010 --> 00:15:26,400
+doing out the entire binomial probability.
+
+271
+00:15:28,240 --> 00:15:33,390
+Now McNemar was clever here, because he
+recognized that there's an easy pattern,
+
+272
+00:15:33,390 --> 00:15:37,170
+that all of these situations where you
+have paired data in a two by two table
+
+273
+00:15:37,170 --> 00:15:41,790
+like this, they all are going to come out
+to be exactly the same binomial and
+
+274
+00:15:41,790 --> 00:15:44,460
+the exactly, and we're going to, we can
+generalize it.
+
+275
+00:15:44,460 --> 00:15:47,470
+So we can actually figure out a general
+formula that can be applied every time.
+
+276
+00:15:47,470 --> 00:15:48,290
+So that is, you don't have to
+
+277
+00:15:48,290 --> 00:15:50,900
+go through that logic that I just went
+through every time.
+
+278
+00:15:50,900 --> 00:15:51,570
+At the end of all this,
+
+279
+00:15:51,570 --> 00:15:53,980
+I'm going to give you a simple little
+formula that avoids that logic.
+
+280
+00:15:55,890 --> 00:15:57,620
+So, I'm now going to generalize.
+
+281
+00:15:57,620 --> 00:16:00,170
+Rather than plugging in the 53 and the 37,
+et cetera,
+
+282
+00:16:00,170 --> 00:16:03,980
+I'm just going to plug in the b and the c.
+
+283
+00:16:03,980 --> 00:16:08,400
+So if we're in the same situation, we've
+got paired data, we've got discordant
+
+284
+00:16:08,400 --> 00:16:13,620
+pairs b and c, we know that the observed
+value is going to be whatever we signed b.
+
+285
+00:16:13,620 --> 00:16:16,660
+Now I could calculate relative to c but,
+doesn't matter.
+
+286
+00:16:16,660 --> 00:16:18,880
+I'm just going to pick, I'm going to look
+at the,
+
+287
+00:16:18,880 --> 00:16:22,700
+the discordant pairs where it's the case
+that has the exposure.
+
+288
+00:16:22,700 --> 00:16:26,640
+So I'm going to look at b, that's my
+observed value.
+
+289
+00:16:26,640 --> 00:16:28,360
+What's my expected value?
+
+290
+00:16:28,360 --> 00:16:31,820
+That's going to be b plus c, which is my
+total number of discordant pairs.
+
+291
+00:16:31,820 --> 00:16:33,820
+That's the 53 in the previous slide.
+
+292
+00:16:33,820 --> 00:16:35,580
+B plus c divided by 2,
+
+293
+00:16:35,580 --> 00:16:39,060
+because remember the expected value here
+is n times p, p is a half.
+
+294
+00:16:39,060 --> 00:16:41,362
+So it's the total number of discordant
+pairs divided by 2.
+
+295
+00:16:41,362 --> 00:16:44,370
+That's going to be my expected value in
+all these cases.
+
+296
+00:16:44,370 --> 00:16:46,740
+What's my standard deviation going to be
+in all these cases?
+
+297
+00:16:46,740 --> 00:16:51,440
+Well, it's again going to be n, which is
+just b plus c times p times 1 minus p.
+
+298
+00:16:51,440 --> 00:16:53,092
+Well p is always going to be 0.5,
+
+299
+00:16:53,092 --> 00:16:56,560
+1 minus p is always going to be 0.5 under
+the null hypothesis here.
+
+300
+00:16:56,560 --> 00:16:58,420
+So we can simplify this out algebraically.
+
+301
+00:16:58,420 --> 00:16:59,400
+I've done all the algebra here,
+
+302
+00:16:59,400 --> 00:17:03,590
+a little bit of algebra, and we come out
+with a general formula.
+
+303
+00:17:03,590 --> 00:17:08,330
+So z is always going to be equal in these
+cases to b minus c divided by
+
+304
+00:17:08,330 --> 00:17:11,270
+the square root of b plus c, and in fact,
+you can apply that here.
+
+305
+00:17:11,270 --> 00:17:15,810
+We saw 37 was b, 16 was c.
+
+306
+00:17:15,810 --> 00:17:16,910
+Divided by the square root of 53.
+
+307
+00:17:16,910 --> 00:17:20,710
+If you calculate that out, indeed you will
+get a value of exactly 2.88.
+
+308
+00:17:20,710 --> 00:17:26,130
+So, that is a simple little formula that
+saves you having to do out the logic.
+
+309
+00:17:26,130 --> 00:17:28,410
+Now, McNemar went a little, one step
+further.
+
+310
+00:17:28,410 --> 00:17:31,300
+He didn't like the fact that there was a
+square root in the denominator.
+
+311
+00:17:31,300 --> 00:17:32,240
+That annoyed him, so
+
+312
+00:17:32,240 --> 00:17:34,910
+what he did is he said, well, I'm just
+going to square this quantity.
+
+313
+00:17:34,910 --> 00:17:38,950
+So if I take this whole quantity, and I
+square it, I can get
+
+314
+00:17:38,950 --> 00:17:42,560
+rid of the square root in the denominator,
+and that's all I've done here.
+
+315
+00:17:42,560 --> 00:17:46,860
+If I square the whole thing, I end up with
+b minus c squared in the numerator, and
+
+316
+00:17:46,860 --> 00:17:48,580
+b plus c in the denominator.
+
+317
+00:17:48,580 --> 00:17:55,160
+Again I can apply that here just as 37
+minus 16 squared, divided by 53, and that
+
+318
+00:17:56,880 --> 00:18:01,850
+will come out to be the square of 2.88,
+which is about 8.32, in this case.
+
+319
+00:18:02,910 --> 00:18:05,310
+This no longer has a z distribution.
+
+320
+00:18:05,310 --> 00:18:08,000
+It no longer has a standard normal
+distribution, but if you
+
+321
+00:18:08,000 --> 00:18:11,900
+square a standard normal, you end up with
+a chi-square with one degree of freedom.
+
+322
+00:18:11,900 --> 00:18:15,110
+So this is has a chi-square with one
+degree of freedom distribution.
+
+323
+00:18:15,110 --> 00:18:17,670
+All that means is I'm going to take that
+8.32, and
+
+324
+00:18:17,670 --> 00:18:21,760
+I'm going to go to a chi-square chart with
+one degree of freedom to find the p value.
+
+325
+00:18:21,760 --> 00:18:26,359
+I will get the exact same p value from
+taking the 2.88 to a z chart as I
+
+326
+00:18:26,359 --> 00:18:29,780
+will from taking the 8.32 to a chi-square
+chart.
+
+327
+00:18:29,780 --> 00:18:31,450
+Those are mathematically equivalent.
+
+328
+00:18:32,630 --> 00:18:34,770
+So that is the McNemar's chi-squared test.
+
+329
+00:18:34,770 --> 00:18:37,390
+Very simple to apply if you just use this
+little formula, but
+
+330
+00:18:37,390 --> 00:18:39,810
+important to know where it comes from.
+
+331
+00:18:39,810 --> 00:18:44,850
+I'll just end here with a quick note about
+what we call the McNemar's EXACT test.
+
+332
+00:18:44,850 --> 00:18:48,910
+So the McNemar's chi-square test, built
+into it, you saw that we
+
+333
+00:18:48,910 --> 00:18:52,810
+have this step where we're making a normal
+approximation to the binomial, and
+
+334
+00:18:52,810 --> 00:18:54,560
+again, I kind of drew it out.
+
+335
+00:18:54,560 --> 00:18:57,010
+And, you know, if your binomial
+distribution, you know,
+
+336
+00:18:57,010 --> 00:19:01,490
+looks something like this, we don't do too
+bad if we just pretend that's the normal.
+
+337
+00:19:01,490 --> 00:19:03,330
+But imagine you have a case where you have
+sparse data.
+
+338
+00:19:03,330 --> 00:19:06,450
+So you might have very [UNKNOWN] very
+small.
+
+339
+00:19:06,450 --> 00:19:08,820
+You might have a very small sample of some
+cells.
+
+340
+00:19:08,820 --> 00:19:10,825
+It might turn out that these bars are
+quite big,
+
+341
+00:19:10,825 --> 00:19:11,765
+because there's only a few bars.
+
+342
+00:19:11,765 --> 00:19:13,410
+There's only a few possible outcomes.
+
+343
+00:19:13,410 --> 00:19:16,280
+Now when you approximate with a normal,
+well you have these big gaps and
+
+344
+00:19:16,280 --> 00:19:18,740
+you're ending up with things that are way
+off.
+
+345
+00:19:18,740 --> 00:19:23,047
+So, if you have very sparse data, the rule
+of thumb being that n times p
+
+346
+00:19:23,047 --> 00:19:28,157
+is less than 5, then you don't want to
+rely on the McNemar's chi-squared test,
+
+347
+00:19:28,157 --> 00:19:31,999
+you want to go back to calculating out the
+exact binomials.
+
+348
+00:19:31,999 --> 00:19:34,660
+And, presumably if the ns are very small,
+hopefully there aren't too
+
+349
+00:19:34,660 --> 00:19:37,710
+many binomial probabilities that you have
+to calculate out.
+
+350
+00:19:38,720 --> 00:19:40,340
+So that's all the McNemar's EXACT test is.
+
+351
+00:19:40,340 --> 00:19:41,780
+It just kind of goes back one step.
+
+352
+00:19:41,780 --> 00:19:44,440
+And the example that I like to use for
+
+353
+00:19:44,440 --> 00:19:47,770
+illurating, illustrating the McNemar's
+EXACT test, is the following study.
+
+354
+00:19:47,770 --> 00:19:50,430
+So here's another example of correlated
+data.
+
+355
+00:19:50,430 --> 00:19:54,740
+This was a sunscreen study, so researchers
+wanted to know, if you put SPF 85 or
+
+356
+00:19:54,740 --> 00:19:58,250
+like a really really high SPF sunscreen on
+your face,
+
+357
+00:19:58,250 --> 00:20:00,892
+is that really any better then putting SPF
+50 right?
+
+358
+00:20:00,892 --> 00:20:03,360
+Like, the sunscreens are coming in a
+ridiculously high,
+
+359
+00:20:03,360 --> 00:20:04,700
+you can see SPF 100's out there.
+
+360
+00:20:04,700 --> 00:20:08,100
+Is it, does it really help you to put the
+higher SPF on?
+
+361
+00:20:08,100 --> 00:20:11,435
+So to test that, what they did is they
+took 56 subjects who were out skiing in
+
+362
+00:20:11,435 --> 00:20:14,400
+Vail, Colorado on a sunny day in the
+winter.
+
+363
+00:20:14,400 --> 00:20:17,800
+We're going to get a lot of sun exposure,
+they were out most of the day.
+
+364
+00:20:17,800 --> 00:20:22,980
+They assigned them to apply to one side of
+their face SPF 85,
+
+365
+00:20:22,980 --> 00:20:26,240
+and to the other side SPF 50, and it was
+blinded and randomized.
+
+366
+00:20:26,240 --> 00:20:29,420
+So they, the person didn't know which side
+of the face they were applying to and
+
+367
+00:20:29,420 --> 00:20:33,700
+it was random which side the SPF 85 versus
+50 went on.
+
+368
+00:20:33,700 --> 00:20:35,770
+They were outside for about five hours.
+
+369
+00:20:35,770 --> 00:20:39,260
+This is a split phase trial, because we
+want to compare within a person,
+
+370
+00:20:39,260 --> 00:20:44,660
+within a person, did the SPF 85 side do
+better than the SPF 50 side?
+
+371
+00:20:44,660 --> 00:20:47,930
+And the outcome here was whether or not
+the person sunburned.
+
+372
+00:20:47,930 --> 00:20:49,010
+So this is a binary outcome.
+
+373
+00:20:49,010 --> 00:20:51,020
+You either got a sunburn on one side of
+your face, or you didn't.
+
+374
+00:20:52,470 --> 00:20:54,790
+Now, when the researchers reported the
+data,
+
+375
+00:20:54,790 --> 00:20:58,040
+they actually didn't report the quite, it
+quite right.
+
+376
+00:20:58,040 --> 00:21:01,390
+So here's how they reported the data in
+their paper.
+
+377
+00:21:01,390 --> 00:21:06,260
+There were 56 people, so there were 56 SPF
+85 sides of the face, and
+
+378
+00:21:06,260 --> 00:21:08,370
+56 SPF 50 sides of the face.
+
+379
+00:21:08,370 --> 00:21:10,440
+You can see that in their two by two
+table,
+
+380
+00:21:10,440 --> 00:21:13,580
+they're analyzing things at the level of
+side of the face, but
+
+381
+00:21:13,580 --> 00:21:18,240
+of course, those 112 sides of the face are
+not independent.
+
+382
+00:21:18,240 --> 00:21:19,290
+Some of them are related.
+
+383
+00:21:19,290 --> 00:21:21,680
+If you are a person who burns on one side
+of your face,
+
+384
+00:21:21,680 --> 00:21:24,470
+you are much more likely to burn on the
+other side of your face.
+
+385
+00:21:24,470 --> 00:21:28,960
+So, this is ignoring the correlations that
+are built into this data set.
+
+386
+00:21:28,960 --> 00:21:30,560
+Now the authors did do a good job at
+recognizing
+
+387
+00:21:30,560 --> 00:21:32,240
+that they needed to use an exact test.
+
+388
+00:21:32,240 --> 00:21:34,100
+We have sparse cells here.
+
+389
+00:21:34,100 --> 00:21:35,400
+We have a cell with only one person.
+
+390
+00:21:35,400 --> 00:21:37,800
+So they recognized that they needed to use
+an exact test.
+
+391
+00:21:37,800 --> 00:21:41,720
+They applied a Fisher's exact test and got
+a p of 0.03, but in fact they could have
+
+392
+00:21:41,720 --> 00:21:44,960
+gotten an even slightly better p value had
+they analyzed the data correctly, and
+
+393
+00:21:44,960 --> 00:21:47,510
+that's what I'm going to do now.
+
+394
+00:21:47,510 --> 00:21:53,410
+The correct way to analyze these data is
+to actually look at,
+
+395
+00:21:53,410 --> 00:21:56,850
+within a person, so only compare a person
+to themselves.
+
+396
+00:21:56,850 --> 00:22:00,290
+You compare one side of a person's face to
+the other side of their face.
+
+397
+00:22:00,290 --> 00:22:03,770
+When you look at the data this way, and
+I've put them now into a two by two table,
+
+398
+00:22:03,770 --> 00:22:06,885
+now, the, notice there were only 56 things
+in the table,
+
+399
+00:22:06,885 --> 00:22:08,950
+because now we're looking at the level of
+a person,
+
+400
+00:22:08,950 --> 00:22:12,900
+comparing one side of a person's face to
+the other side of that same person's face.
+
+401
+00:22:12,900 --> 00:22:16,250
+When they looked at that data, when you
+look at the data this way, and, and
+
+402
+00:22:16,250 --> 00:22:18,860
+the authors nicely, actually said this in
+their paper,
+
+403
+00:22:18,860 --> 00:22:21,020
+they just didn't apply the correct
+statistical test.
+
+404
+00:22:21,020 --> 00:22:25,180
+It turned out that in all the cases where
+somebody sunburned there was
+
+405
+00:22:25,180 --> 00:22:30,270
+one person who's sunburned on both sides
+of the face, the, equally sunburned on,
+
+406
+00:22:30,270 --> 00:22:33,550
+in both sides of their face, no matter
+what the SPF was.
+
+407
+00:22:33,550 --> 00:22:37,990
+There were seven cases where people
+sunburned on one side of the face, but
+
+408
+00:22:37,990 --> 00:22:39,760
+not the other.
+
+409
+00:22:39,760 --> 00:22:43,300
+So, this is important, and what it turned
+out was that in all seven of those cases,
+
+410
+00:22:43,300 --> 00:22:46,560
+the person sunburned on the SPF 50 side
+and not the SPF 85 side.
+
+411
+00:22:46,560 --> 00:22:50,400
+That is starting to provide some data
+that,
+
+412
+00:22:50,400 --> 00:22:54,040
+that seemed to provide evidence that the
+SPF 85 actually does something better.
+
+413
+00:22:54,040 --> 00:22:56,390
+Now, of course, there were 48 people who
+didn't sunburn on either side.
+
+414
+00:22:56,390 --> 00:22:57,870
+There was one person who sunburned on both
+sides.
+
+415
+00:22:57,870 --> 00:22:59,060
+Those people are not informative, so
+
+416
+00:22:59,060 --> 00:23:02,420
+what we're going to zoom in on is this
+zero and seven, the discordant pairs.
+
+417
+00:23:05,960 --> 00:23:08,120
+There are seven discordant pairs.
+
+418
+00:23:08,120 --> 00:23:11,340
+Under the null hypothesis, if the
+sunscreen doesn't matter,
+
+419
+00:23:11,340 --> 00:23:14,935
+it would be equally likely that the burn
+in those discordant pairs would have been
+
+420
+00:23:14,935 --> 00:23:16,290
+on the SPF 85 side.
+
+421
+00:23:17,330 --> 00:23:20,122
+So in other words, under the null
+hypothesis,
+
+422
+00:23:20,122 --> 00:23:24,070
+we are on a binomial distribution with an
+n of 7 and a p of 0.5.
+
+423
+00:23:24,070 --> 00:23:25,800
+If the null hypothesis is true,
+
+424
+00:23:25,800 --> 00:23:30,710
+it should have been equally likely to get
+a burn on SPF 85 versus SPF 50.
+
+425
+00:23:30,710 --> 00:23:32,301
+So, what did we actually see?
+
+426
+00:23:32,301 --> 00:23:35,170
+Well, we observed, not a 50/50 split here.
+
+427
+00:23:35,170 --> 00:23:36,640
+We observed a 7/0 split.
+
+428
+00:23:36,640 --> 00:23:40,460
+So what's the probability that we would've
+observed that?
+
+429
+00:23:40,460 --> 00:23:43,020
+And there's the only thing that's more
+extreme or
+
+430
+00:23:43,020 --> 00:23:47,150
+equally extreme here is we could've seen
+zero and seven in the other direction.
+
+431
+00:23:47,150 --> 00:23:50,062
+That is, we could've seen seven burns on
+the SPF 85 side and
+
+432
+00:23:50,062 --> 00:23:51,340
+zero on the SPF 50 side.
+
+433
+00:23:51,340 --> 00:23:56,236
+So what's the probability if we're on a
+binomial distribution with an n of 7 and
+
+434
+00:23:56,236 --> 00:24:00,550
+a p of 0.5, of getting none, no sunburns
+on the SPF 85 side?
+
+435
+00:24:00,550 --> 00:24:07,350
+So we can just directly calculate out that
+binomial probability.
+
+436
+00:24:07,350 --> 00:24:12,214
+So if we run a binomial with an n of 7 and
+a p of 0.5, the probability that we
+
+437
+00:24:12,214 --> 00:24:16,622
+get 0 sunburns on the SPF 85 side would be
+exactly equal to 7 to 0,
+
+438
+00:24:16,622 --> 00:24:22,750
+0.5 raised to 0, times 0.5 raised to 7,
+and that value comes out to be 0.0078.
+
+439
+00:24:22,750 --> 00:24:25,970
+So there's a very small probability we'd
+see seven to
+
+440
+00:24:25,970 --> 00:24:30,730
+zero split if there really was no
+difference in the sunscreens.
+
+441
+00:24:30,730 --> 00:24:32,890
+Now that's the one sided probability.
+
+442
+00:24:32,890 --> 00:24:34,000
+Course we have to account,
+
+443
+00:24:34,000 --> 00:24:37,290
+we have to do a two-sided probability
+because we have to account for the fact
+
+444
+00:24:37,290 --> 00:24:42,510
+that there is a way to have an equally
+extreme outcome in the other direction.
+
+445
+00:24:42,510 --> 00:24:46,272
+We could have ended up with all seven
+sunburns on the SPF 85 side and
+
+446
+00:24:46,272 --> 00:24:47,680
+not the SPF 50 side.
+
+447
+00:24:47,680 --> 00:24:53,020
+That's an equally likely extreme outcome
+and
+
+448
+00:24:53,020 --> 00:24:55,952
+there's no reason that, you know, there
+could be some reason that
+
+449
+00:24:55,952 --> 00:24:59,790
+SPF 85 actually increases your risk of
+sunscreen, so we can't rule that tail out.
+
+450
+00:24:59,790 --> 00:25:02,770
+We have to calculate the two-sided
+probability here.
+
+451
+00:25:02,770 --> 00:25:07,740
+To calculate the two-sided probability it
+is going to be that 0.0078, which we
+
+452
+00:25:07,740 --> 00:25:12,500
+just calculated, and then the other tale,
+the probability of getting all seven
+
+453
+00:25:12,500 --> 00:25:17,940
+sunburns on the SPF 85 side, would be 7 to
+7, 0.5 raised to 7, 0.5 raised to 0.
+
+454
+00:25:17,940 --> 00:25:21,301
+Notice that that comes out to be exactly
+the same, a value of .0078.
+
+455
+00:25:21,301 --> 00:25:25,570
+The two-sided probability is just double
+the one-sided probability.
+
+456
+00:25:25,570 --> 00:25:28,909
+So this comes out to be a probability of
+0.0156, sorry,
+
+457
+00:25:28,909 --> 00:25:30,810
+there two-sided probability.
+
+458
+00:25:30,810 --> 00:25:35,800
+So that's the exact probability of the,
+what we've observed and
+
+459
+00:25:35,800 --> 00:25:37,530
+everything more extreme.
+
+460
+00:25:37,530 --> 00:25:39,060
+We have to use an exact test in this case,
+
+461
+00:25:39,060 --> 00:25:40,580
+because of the fact that we have sparse
+data.
+
+462
+00:25:40,580 --> 00:25:43,540
+If I had tried to approximate this with a
+normal, my inference would have,
+
+463
+00:25:43,540 --> 00:25:44,930
+my p value would have been off.
+
+464
+00:25:47,000 --> 00:25:49,820
+Notice that when the authors ignore the
+correlations and
+
+465
+00:25:49,820 --> 00:25:53,440
+they use the Fisher's exact test, they got
+a p value of 0.03.
+
+466
+00:25:53,440 --> 00:25:55,600
+When you correctly analyze the data
+accounting for
+
+467
+00:25:55,600 --> 00:25:58,130
+the correlation, the p value becomes even
+stronger.
+
+468
+00:25:58,130 --> 00:25:59,520
+It becomes 0.0156.
+
+469
+00:25:59,520 --> 00:26:02,350
+Now in this case it, it didn't make a
+difference in terms of whether it
+
+470
+00:26:02,350 --> 00:26:05,900
+turned out statistically significant, but
+you could see that in many cases it could.

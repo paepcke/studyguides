@@ -1,0 +1,763 @@
+1
+00:00:00,000 --> 00:00:05,810
+[BLANK_AUDIO]
+
+2
+00:00:05,810 --> 00:00:10,925
+In this next module, I'm going to
+introduce the Kaplan-Meier methods.
+
+3
+00:00:10,925 --> 00:00:15,755
+So, when we have time-to-event outcome
+data, and we want to do something that is
+
+4
+00:00:15,755 --> 00:00:20,620
+mainly descriptive, we usually turn to the
+Kaplan-Meier methods.
+
+5
+00:00:20,620 --> 00:00:24,070
+The nice thing about Kaplan-Meier is it
+gives you these beautiful,
+
+6
+00:00:24,070 --> 00:00:25,490
+intuitive graphics.
+
+7
+00:00:25,490 --> 00:00:28,180
+And that's why you'll see a lot of
+Kaplan-Meier curves in a lot of
+
+8
+00:00:28,180 --> 00:00:30,870
+papers that involve survival analysis.
+
+9
+00:00:30,870 --> 00:00:32,020
+They are mainly descriptive.
+
+10
+00:00:32,020 --> 00:00:35,324
+We can use them to compare groups but we
+can't adjust for anything.
+
+11
+00:00:35,324 --> 00:00:41,810
+So, Kaplan-Meier gives a non-parametric
+estimate of the survival function.
+
+12
+00:00:41,810 --> 00:00:44,830
+And all I mean by that is we're not
+going to assume any
+
+13
+00:00:44,830 --> 00:00:49,470
+particular smooth mathematical curve for
+the survival curve.
+
+14
+00:00:49,470 --> 00:00:51,420
+We're literally just going to look at our
+data and
+
+15
+00:00:51,420 --> 00:00:55,430
+we're going to define the survival curve
+based on when events occur.
+
+16
+00:00:55,430 --> 00:00:59,230
+And just based on how many people survived
+past different time points.
+
+17
+00:01:01,240 --> 00:01:04,390
+So, it's the empirical probability that
+what we see in
+
+18
+00:01:04,390 --> 00:01:07,980
+our data of surviving past certain times.
+
+19
+00:01:07,980 --> 00:01:11,100
+But the trick is that we have to somehow
+account for the censoring.
+
+20
+00:01:11,100 --> 00:01:11,910
+It would be a really,
+
+21
+00:01:11,910 --> 00:01:16,460
+really easy to calculate Kaplan-Meier
+estimates if there was no censoring.
+
+22
+00:01:16,460 --> 00:01:21,059
+If there's no censoring, the Kaplan-Meier
+estimate just becomes the proportion of
+
+23
+00:01:21,059 --> 00:01:25,420
+people in your study surviving past, given
+a, a different time points.
+
+24
+00:01:25,420 --> 00:01:28,000
+So, for example, if you started with 100
+people and
+
+25
+00:01:28,000 --> 00:01:31,830
+there were 64 people surviving at age six.
+
+26
+00:01:31,830 --> 00:01:33,371
+And nobody have been lost,
+
+27
+00:01:33,371 --> 00:01:37,645
+then the Kaplan-Meier estimate of survival
+would just be 64%.
+
+28
+00:01:37,645 --> 00:01:39,860
+That's just the percentage of people left.
+
+29
+00:01:39,860 --> 00:01:41,513
+The trick is that, accounting for
+
+30
+00:01:41,513 --> 00:01:45,720
+the censoring is, makes it just slightly
+more complicated than that.
+
+31
+00:01:45,720 --> 00:01:47,020
+Now, in this module,
+
+32
+00:01:47,020 --> 00:01:50,330
+I'm going to talk about just drawing a
+single Kaplan-Meier curve.
+
+33
+00:01:50,330 --> 00:01:53,540
+In the next module, we'll talk about
+drawing multiple Kaplan-Meier curves for
+
+34
+00:01:53,540 --> 00:01:54,980
+different groups.
+
+35
+00:01:54,980 --> 00:01:57,990
+You can get a kind of p-value test called
+a log-rank
+
+36
+00:01:57,990 --> 00:02:01,410
+test to statistically compare different
+Kaplan-Meier curves.
+
+37
+00:02:01,410 --> 00:02:02,760
+Again, that'll be in the next module.
+
+38
+00:02:02,760 --> 00:02:06,610
+Let me just start here with a really
+simple example that
+
+39
+00:02:06,610 --> 00:02:09,960
+will illustrate how Kaplan-Meier curves
+are drawn.
+
+40
+00:02:09,960 --> 00:02:12,800
+So, imagine that we have a study that just
+has five people in the study,
+
+41
+00:02:12,800 --> 00:02:13,580
+really simple.
+
+42
+00:02:13,580 --> 00:02:15,100
+It's a one year study.
+
+43
+00:02:15,100 --> 00:02:17,490
+At the beginning of the study there are
+five people alive.
+
+44
+00:02:17,490 --> 00:02:20,390
+And we'll say that this outcome, the
+outcome in the study is death, so
+
+45
+00:02:20,390 --> 00:02:21,679
+this is a time to death study.
+
+46
+00:02:22,950 --> 00:02:26,040
+And let's say that the first thing that
+happens in this study is that subject
+
+47
+00:02:26,040 --> 00:02:28,970
+E dies four months into the study.
+
+48
+00:02:28,970 --> 00:02:32,710
+That means we are going to start by
+estimating the probability of
+
+49
+00:02:32,710 --> 00:02:34,320
+surviving past four months.
+
+50
+00:02:34,320 --> 00:02:35,190
+Why four months?
+
+51
+00:02:35,190 --> 00:02:36,820
+Well, that's just what happened in this
+study.
+
+52
+00:02:36,820 --> 00:02:39,620
+The, the curve is only going to be defined
+when events occur,
+
+53
+00:02:39,620 --> 00:02:41,880
+happen to occur in our study.
+
+54
+00:02:41,880 --> 00:02:44,462
+How we're going to represent that on our
+Kaplan-Meier curve.
+
+55
+00:02:44,462 --> 00:02:46,712
+The Kaplan-Meier curve is going to start
+at 100%,
+
+56
+00:02:46,712 --> 00:02:50,200
+because all five out of five are alive at
+the beginning of the study.
+
+57
+00:02:50,200 --> 00:02:55,312
+We're then going to draw the curve over,
+keeping it at a 100% until somebody dies,
+
+58
+00:02:55,312 --> 00:02:57,080
+until an event occurs.
+
+59
+00:02:57,080 --> 00:03:04,290
+At four months subject E dies and we're
+going to drop the curve to represent that.
+
+60
+00:03:04,290 --> 00:03:09,320
+The survival probability, the probability
+of surviving past four months, which is
+
+61
+00:03:09,320 --> 00:03:13,050
+what we're trying to estimate with this
+Kaplan-Meier method is very easy here,
+
+62
+00:03:13,050 --> 00:03:16,860
+because we had five people who were at
+risk of dying at four months.
+
+63
+00:03:16,860 --> 00:03:20,570
+One of them died, four of them survived,
+so the survival probability here is
+
+64
+00:03:20,570 --> 00:03:24,140
+just going to be four out of five, 80%, so
+that's really simple.
+
+65
+00:03:24,140 --> 00:03:27,870
+So we drop the curve down here now to 80%.
+
+66
+00:03:27,870 --> 00:03:30,290
+Representing that our survival probability
+has now dropped.
+
+67
+00:03:32,240 --> 00:03:35,102
+Well, let's say that the next thing that
+happens in our study is
+
+68
+00:03:35,102 --> 00:03:37,530
+that subject A drops out of the study at
+six months.
+
+69
+00:03:37,530 --> 00:03:41,130
+So, at six months, for whatever reason,
+we, they were alive,
+
+70
+00:03:41,130 --> 00:03:44,130
+subject A was alive at six months, but
+then they were lost to followup.
+
+71
+00:03:44,130 --> 00:03:45,680
+We don't know what happened after that.
+
+72
+00:03:45,680 --> 00:03:48,730
+So, they may or may not have died in the
+last six months of the study.
+
+73
+00:03:48,730 --> 00:03:51,000
+And then, let's say, so they're said to be
+censored.
+
+74
+00:03:51,000 --> 00:03:53,480
+And then, let's say that subject C
+actually has an event,
+
+75
+00:03:53,480 --> 00:03:55,610
+they die at seven months.
+
+76
+00:03:55,610 --> 00:03:58,230
+So how would we represent that on the
+Kaplan-Meier curve?
+
+77
+00:03:58,230 --> 00:04:02,530
+So turning back to our curve here, we were
+at 80%, at 80%, and
+
+78
+00:04:02,530 --> 00:04:04,340
+then we're going to scroll the curve over.
+
+79
+00:04:04,340 --> 00:04:07,580
+At six months, subject A drops out of the
+study.
+
+80
+00:04:07,580 --> 00:04:09,620
+We represent that on the curve with a
+little tick mark.
+
+81
+00:04:09,620 --> 00:04:13,110
+We're not going to drop the curve, because
+nobody died, there were no events.
+
+82
+00:04:13,110 --> 00:04:16,370
+But we represent it on the curve with some
+kind of little mark, saying that,
+
+83
+00:04:16,370 --> 00:04:17,580
+hey, somebody was censored.
+
+84
+00:04:17,580 --> 00:04:20,080
+That means they're no longer at risk of
+having the event.
+
+85
+00:04:21,100 --> 00:04:26,230
+Then subject C dies seven months into the
+study.
+
+86
+00:04:26,230 --> 00:04:32,320
+At the time that subject C died, there
+were three people at risk of dying.
+
+87
+00:04:33,810 --> 00:04:34,740
+Why only three?
+
+88
+00:04:34,740 --> 00:04:39,410
+Well, one person died at four months, so
+they're out of the risk pool.
+
+89
+00:04:39,410 --> 00:04:42,150
+And then subject A was censored at six
+months, so
+
+90
+00:04:42,150 --> 00:04:44,340
+that person is also out of the risk pool.
+
+91
+00:04:44,340 --> 00:04:47,560
+So, there's actually only three people at
+risk of dying at seven months.
+
+92
+00:04:47,560 --> 00:04:49,490
+Now, one person dies, two live, so
+
+93
+00:04:49,490 --> 00:04:53,860
+the chance of surviving is two out of
+three, 2 3rds.
+
+94
+00:04:53,860 --> 00:04:57,370
+So, we're now going to drop the curve
+down.
+
+95
+00:04:57,370 --> 00:05:00,040
+We're actually dropping the curve here
+down to 53%.
+
+96
+00:05:00,040 --> 00:05:03,750
+I'll show you in just a second why, where
+that 53% comes from.
+
+97
+00:05:03,750 --> 00:05:07,760
+But, we dropped the curve because there
+was an event and
+
+98
+00:05:07,760 --> 00:05:11,310
+we are incorporating this 2 3rds
+probability, of,
+
+99
+00:05:11,310 --> 00:05:14,790
+because there was 2 3rds chance of
+surviving that second interval.
+
+100
+00:05:14,790 --> 00:05:18,370
+Now, let's say that subject B and D they
+just survive until the end of the study.
+
+101
+00:05:18,370 --> 00:05:20,660
+So when the study terminates, they're
+still alive.
+
+102
+00:05:20,660 --> 00:05:23,390
+So they're censored one year into the
+study.
+
+103
+00:05:23,390 --> 00:05:26,330
+So, we're going to represent on that, that
+on the Kaplan-Meier curve by just kind of
+
+104
+00:05:26,330 --> 00:05:29,570
+scrolling over the curve to the end of the
+study.
+
+105
+00:05:29,570 --> 00:05:32,710
+And the curve, of course, won't drop
+because nobody died.
+
+106
+00:05:32,710 --> 00:05:36,280
+So, again this is 80% are, and this is
+53%.
+
+107
+00:05:36,280 --> 00:05:39,930
+So, this is a very si, simple survival
+curve.
+
+108
+00:05:39,930 --> 00:05:42,270
+The probability of surviving past four
+months,
+
+109
+00:05:42,270 --> 00:05:47,570
+we would represent that probability that T
+is greater than four, that's equal to 80%.
+
+110
+00:05:47,570 --> 00:05:53,570
+The probability of surviving past seven
+months is equal to 53%, and that's it.
+
+111
+00:05:53,570 --> 00:05:58,112
+So the probability of surviving past one
+year, 12 months, is also equal to 53%.
+
+112
+00:05:58,112 --> 00:06:00,770
+And that's our whole survival curve,
+
+113
+00:06:00,770 --> 00:06:03,029
+just defined on, at the points at which we
+had events.
+
+114
+00:06:04,270 --> 00:06:06,910
+Now, let me tell you where that 53% came
+from.
+
+115
+00:06:06,910 --> 00:06:08,530
+Why did I drop the curve to 53% here?
+
+116
+00:06:08,530 --> 00:06:12,270
+So, where that comes from is we have a
+rule in
+
+117
+00:06:12,270 --> 00:06:15,850
+probability that says if we have
+independent events,
+
+118
+00:06:15,850 --> 00:06:19,520
+their joint probability is equal to the
+product of their marginal probabilities.
+
+119
+00:06:19,520 --> 00:06:22,300
+And what we're going to assume is that the
+probabilities of
+
+120
+00:06:22,300 --> 00:06:25,270
+surviving different intervals are
+independent of one another.
+
+121
+00:06:25,270 --> 00:06:29,610
+So, remember that four out of five people
+survive the first interval and
+
+122
+00:06:29,610 --> 00:06:32,150
+two out of three people survive the second
+interval.
+
+123
+00:06:32,150 --> 00:06:36,640
+So to get the cumulative, the total
+probability of surviving those first two
+
+124
+00:06:36,640 --> 00:06:41,130
+intervals, we're going to multiply the 4
+5ths times the 2 3rds.
+
+125
+00:06:41,130 --> 00:06:43,968
+That gives us a probability of 53.3%.
+
+126
+00:06:43,968 --> 00:06:48,300
+So, we're going to be multiplying across
+the different intervals to
+
+127
+00:06:48,300 --> 00:06:50,780
+get the cumulative probability of
+survival.
+
+128
+00:06:50,780 --> 00:06:53,710
+That's where that 53% comes from.
+
+129
+00:06:53,710 --> 00:06:55,680
+Now, notice that if nobody had been
+censored,
+
+130
+00:06:55,680 --> 00:07:00,230
+if subject A had not been censored in that
+second interval, we would have just been
+
+131
+00:07:00,230 --> 00:07:05,890
+multiplying 4 out of 5 times 3 out of 4,
+which would just have been 3 out of 5.
+
+132
+00:07:05,890 --> 00:07:09,030
+So, then the Kaplan-Meier estimate would
+be easy.
+
+133
+00:07:09,030 --> 00:07:12,660
+It would just be there was three out of
+five surviving it and two people had died.
+
+134
+00:07:12,660 --> 00:07:17,440
+By changing these denominators, that's how
+we're accounting for the censoring.
+
+135
+00:07:20,870 --> 00:07:23,440
+So again, it's the probability of
+surviving the entire year,
+
+136
+00:07:23,440 --> 00:07:26,670
+taking into the account, the censoring,
+comes out to be 53%.
+
+137
+00:07:26,670 --> 00:07:30,530
+And I just want to show you that
+intuitively that's a good estimate here,
+
+138
+00:07:30,530 --> 00:07:33,520
+because imagine if we didn't know what to
+do about the censor.
+
+139
+00:07:33,520 --> 00:07:35,230
+There's kind of two guesses we could make.
+
+140
+00:07:35,230 --> 00:07:38,002
+We could say, well, let's say that, you
+know,
+
+141
+00:07:38,002 --> 00:07:40,810
+we're kind of looking at the glass half
+empty.
+
+142
+00:07:40,810 --> 00:07:44,470
+And we say, well, subject A dropped out at
+six months.
+
+143
+00:07:44,470 --> 00:07:46,890
+As far as I know, they're not alive.
+
+144
+00:07:46,890 --> 00:07:50,648
+So, I'm going to, I only know for sure
+that B and D survived the whole year.
+
+145
+00:07:50,648 --> 00:07:53,098
+So, I'm only going to say that the
+survival probability for
+
+146
+00:07:53,098 --> 00:07:55,986
+the year is 40%, because that's what I'm
+sure of, two out of five.
+
+147
+00:07:55,986 --> 00:07:58,580
+So, I could be kind of pessimistic.
+
+148
+00:07:58,580 --> 00:08:02,801
+Or, I could become optimistic and I look
+at the glass half full and say well, but
+
+149
+00:08:02,801 --> 00:08:05,819
+yeah, but the last time I saw subject A,
+she was alive.
+
+150
+00:08:05,819 --> 00:08:09,129
+And so I, I'm going to assume she made it
+the rest of the year.
+
+151
+00:08:09,129 --> 00:08:12,849
+And, I'm going to say that the chances of
+surviving the year was three out of
+
+152
+00:08:12,849 --> 00:08:14,800
+five because we only saw two die.
+
+153
+00:08:14,800 --> 00:08:16,950
+So, I'm going to say it's 60%.
+
+154
+00:08:16,950 --> 00:08:21,700
+You can see that the 53% is kind of a nice
+compromise between those two, right?
+
+155
+00:08:21,700 --> 00:08:25,830
+It's a little bit bet, somewhere between
+40% and 60% and that's what we want.
+
+156
+00:08:25,830 --> 00:08:28,930
+Subject A, we have some information on
+subject A.
+
+157
+00:08:28,930 --> 00:08:31,970
+We know they were alive for at least six
+months, so we want to account for
+
+158
+00:08:31,970 --> 00:08:33,765
+that and incorporate it in our estimate.
+
+159
+00:08:33,765 --> 00:08:36,640
+40% is too small, 60% is too high.
+
+160
+00:08:36,640 --> 00:08:39,540
+53 is a good compromise then.
+
+161
+00:08:39,540 --> 00:08:42,820
+So that's the idea of the Kaplan-Meier
+estimate and the Kaplan-Meier curve.

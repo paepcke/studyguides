@@ -1,0 +1,1467 @@
+1
+00:00:05,320 --> 00:00:09,880
+In this next module I'm going to tell you
+about the mathematical connection between
+
+2
+00:00:09,880 --> 00:00:11,120
+the Mantel-Haenszel tests.
+
+3
+00:00:11,120 --> 00:00:12,880
+Which we learned about this week.
+
+4
+00:00:12,880 --> 00:00:15,980
+And McNemar's test which we talked about
+last week.
+
+5
+00:00:15,980 --> 00:00:19,590
+These two different methods are going to
+come at the same problem from two
+
+6
+00:00:19,590 --> 00:00:21,920
+completely different approaches, and yet
+
+7
+00:00:21,920 --> 00:00:24,780
+converge on exactly the same mathematical
+answer.
+
+8
+00:00:24,780 --> 00:00:26,260
+Which I think is just really cool and
+
+9
+00:00:26,260 --> 00:00:28,610
+will also give you some insight into both
+methods.
+
+10
+00:00:29,710 --> 00:00:33,910
+I'm going to start with an example that we
+talked about last week,
+
+11
+00:00:33,910 --> 00:00:36,500
+when we talked about McNemar's test.
+
+12
+00:00:36,500 --> 00:00:39,780
+So, this was a particular example where we
+had paired data.
+
+13
+00:00:39,780 --> 00:00:44,990
+For each case, a control was matched to
+the case, based on age and gender.
+
+14
+00:00:44,990 --> 00:00:47,510
+So, we have case control pairs, and we
+needed to account for
+
+15
+00:00:47,510 --> 00:00:50,130
+that correlation in those case control
+pairs.
+
+16
+00:00:50,130 --> 00:00:53,400
+The question here was whether or not,
+having a heart attack.
+
+17
+00:00:53,400 --> 00:00:56,030
+The cases here had all had a heart attack.
+
+18
+00:00:56,030 --> 00:00:58,570
+Whether or not that was related to having
+a history of diabetes.
+
+19
+00:00:58,570 --> 00:01:01,540
+So remember that we had to present this as
+paired data.
+
+20
+00:01:01,540 --> 00:01:07,540
+So what we did was we presented it as 144
+pairs rather than 288 individuals.
+
+21
+00:01:07,540 --> 00:01:11,436
+And then we apply what's called McNemar's
+test that was just a chi-square test with
+
+22
+00:01:11,436 --> 00:01:12,200
+one degree of freedom.
+
+23
+00:01:12,200 --> 00:01:18,660
+And it had a simple form which was just to
+do b minus c squared over b plus c.
+
+24
+00:01:18,660 --> 00:01:20,030
+And when we applied that here,
+
+25
+00:01:20,030 --> 00:01:25,770
+it turned out to be 37 minus 16 squared
+divided by 53, and that turned
+
+26
+00:01:25,770 --> 00:01:31,960
+out to be highly statistically significant
+of chi-square value of about 8.3.
+
+27
+00:01:31,960 --> 00:01:34,230
+So that was how we adjusted for
+
+28
+00:01:34,230 --> 00:01:37,840
+the correlation he took into account the
+correlation using McNemar's test.
+
+29
+00:01:37,840 --> 00:01:41,340
+Now, I want to approach this particular
+problem from
+
+30
+00:01:41,340 --> 00:01:43,820
+a completely different, perspective.
+
+31
+00:01:45,710 --> 00:01:49,750
+So what if, instead of counting for the
+pairing that way.
+
+32
+00:01:49,750 --> 00:01:55,760
+What if we, instead, envisioned each pair
+as its own age gender stratum.
+
+33
+00:01:55,760 --> 00:01:59,930
+So remember, we've matched here on age and
+gender.
+
+34
+00:01:59,930 --> 00:02:01,150
+So in a way,
+
+35
+00:02:01,150 --> 00:02:06,190
+you could view each pair as just having
+its own unique age-gender combination.
+
+36
+00:02:06,190 --> 00:02:08,360
+And you could think of it almost as a
+confounder,
+
+37
+00:02:08,360 --> 00:02:12,660
+which pair you're in could be thought of
+as a confounder in this problem.
+
+38
+00:02:12,660 --> 00:02:14,530
+It's a really interesting way to think of
+it,
+
+39
+00:02:14,530 --> 00:02:18,120
+because of course, if we're going to
+stratify on pair.
+
+40
+00:02:18,120 --> 00:02:21,150
+We're going to end up with some very small
+two by two tables.
+
+41
+00:02:21,150 --> 00:02:22,420
+But that's okay.
+
+42
+00:02:22,420 --> 00:02:26,550
+I'm going to show you that we can still do
+this kind of stratification and
+
+43
+00:02:26,550 --> 00:02:28,000
+calculate mantle hansel statistics.
+
+44
+00:02:28,000 --> 00:02:30,830
+So let me just explain exactly what I
+mean, here.
+
+45
+00:02:30,830 --> 00:02:33,900
+So, what we're going to do for example, is
+take the cell As.
+
+46
+00:02:33,900 --> 00:02:39,300
+These were the situations, cell A was the
+situation where we had pairs where,
+
+47
+00:02:39,300 --> 00:02:41,399
+both, the case and the control had a
+history of diabetes.
+
+48
+00:02:42,480 --> 00:02:46,670
+What if you represented that as its own
+two by two table,
+
+49
+00:02:46,670 --> 00:02:49,150
+it's own stratum, in this analysis?
+
+50
+00:02:49,150 --> 00:02:52,620
+Again, kind of thinking of which pair
+you're in as being the confounder here,
+
+51
+00:02:52,620 --> 00:02:54,630
+stratifying on which pair you're in.
+
+52
+00:02:54,630 --> 00:02:57,140
+It makes a very funny two by two table,
+because we only have,
+
+53
+00:02:57,140 --> 00:02:59,550
+our total here is only two people, because
+it's a pair.
+
+54
+00:02:59,550 --> 00:03:00,310
+But we can do this.
+
+55
+00:03:00,310 --> 00:03:01,190
+And so just bear with me.
+
+56
+00:03:01,190 --> 00:03:03,130
+It's going to all make sense in a bit.
+
+57
+00:03:03,130 --> 00:03:04,770
+So in this case, how do we represent.
+
+58
+00:03:04,770 --> 00:03:08,140
+We're now going back to representing the
+people as individuals.
+
+59
+00:03:08,140 --> 00:03:12,300
+So the two represents two individuals
+rather than two pairs now.
+
+60
+00:03:12,300 --> 00:03:14,770
+So both the case and the control had a
+history of diabetes.
+
+61
+00:03:14,770 --> 00:03:18,790
+So, both of them are going to get a one
+for diabetes, and both of
+
+62
+00:03:18,790 --> 00:03:23,660
+them are going to get, and there's nobody
+here who had, who didn't have diabetes.
+
+63
+00:03:23,660 --> 00:03:25,270
+So, we get zeroes in the other two cells.
+
+64
+00:03:25,270 --> 00:03:28,010
+Very simple two by two table, but we can
+draw that out.
+
+65
+00:03:28,010 --> 00:03:30,620
+All of the cell A's, all of the pairs
+where both the case and
+
+66
+00:03:30,620 --> 00:03:33,410
+the control had diabetes, are going to
+have the exact same two by two table.
+
+67
+00:03:33,410 --> 00:03:34,100
+It's going to look like that.
+
+68
+00:03:34,100 --> 00:03:38,100
+And then, we can go ahead and do this
+logic.
+
+69
+00:03:38,100 --> 00:03:39,480
+Across all the different types of pairs.
+
+70
+00:03:39,480 --> 00:03:42,260
+We only have four unique types of pairs
+here.
+
+71
+00:03:42,260 --> 00:03:46,310
+So, we have, again, nine pairs where both
+the case and the control had diabetes.
+
+72
+00:03:46,310 --> 00:03:50,450
+That can be represented in the top, the
+two-by-two table you see in the top here.
+
+73
+00:03:50,450 --> 00:03:53,360
+What about the situation where we have
+discordant pairs where it's the case
+
+74
+00:03:53,360 --> 00:03:55,830
+that has diabetes and the control that
+doesn't?
+
+75
+00:03:55,830 --> 00:03:58,600
+That can be represented in the second type
+of two by two table.
+
+76
+00:03:58,600 --> 00:04:02,748
+Right, there's again only two people in
+each stratum and in this case,
+
+77
+00:04:02,748 --> 00:04:07,304
+the case has diabetes so we have one case
+with diabetes and we have one control who
+
+78
+00:04:07,304 --> 00:04:11,950
+does not have diabetes and none of the
+other types of people in this case.
+
+79
+00:04:11,950 --> 00:04:15,860
+We have 37 dischord appears in the case
+that's diabetic.
+
+80
+00:04:15,860 --> 00:04:19,040
+So that's what those strata are going to
+look like.
+
+81
+00:04:19,040 --> 00:04:21,270
+We get the opposite situation of
+discordance,
+
+82
+00:04:21,270 --> 00:04:25,210
+where it's the control that has diabetes
+in the case that does not.
+
+83
+00:04:25,210 --> 00:04:28,730
+Again, two total in that strata.
+
+84
+00:04:28,730 --> 00:04:30,910
+There's 16 of those strata that look like
+that.
+
+85
+00:04:30,910 --> 00:04:35,670
+And then finally we have the situation, we
+have 82 pairs where both the case and
+
+86
+00:04:35,670 --> 00:04:37,130
+the control do not have diabetes and
+
+87
+00:04:37,130 --> 00:04:39,770
+those would be represented in this two by
+two table.
+
+88
+00:04:39,770 --> 00:04:46,061
+So we can write this out as a huge
+stratified analysis with 144 different
+
+89
+00:04:46,061 --> 00:04:49,430
+strata, of course you don't really want to
+have write this all by, out by hand, but
+
+90
+00:04:49,430 --> 00:04:54,430
+since a lot of the, strata look the same,
+we can kind of just move them like this.
+
+91
+00:04:54,430 --> 00:04:58,110
+Alright, now, how are we going to apply
+Mandel-Handel statistics, to these,
+
+92
+00:04:58,110 --> 00:04:59,740
+to this stratified analysis?
+
+93
+00:04:59,740 --> 00:05:00,270
+Well we're going to
+
+94
+00:05:00,270 --> 00:05:04,070
+apply it with the exact same formulas that
+we learned this week.
+
+95
+00:05:04,070 --> 00:05:07,900
+So let's apply the Mantel-Haenszel methods
+to those, all those different strata.
+
+96
+00:05:08,900 --> 00:05:12,670
+We want to know the relationship between
+diabetes and heartattack, controlling for
+
+97
+00:05:12,670 --> 00:05:13,290
+age and gender.
+
+98
+00:05:13,290 --> 00:05:17,280
+The matching variable, so essentially we
+are adjusting for hair here.
+
+99
+00:05:17,280 --> 00:05:19,230
+So we're going to apply the
+Mantel-Haenszel methods to
+
+100
+00:05:19,230 --> 00:05:20,160
+the stratified data.
+
+101
+00:05:21,700 --> 00:05:23,040
+So, how does that look like?
+
+102
+00:05:23,040 --> 00:05:24,410
+What I'm going to start with here is I'm
+going to
+
+103
+00:05:24,410 --> 00:05:27,660
+start by calculating the Mantel-Haenszel
+summary odds ratio just because it is
+
+104
+00:05:27,660 --> 00:05:29,340
+slightly simpler to calculate.
+
+105
+00:05:29,340 --> 00:05:35,790
+So just recall, from an earlier module,
+the Mantel-Haenszel Summary Odds Ratio
+
+106
+00:05:35,790 --> 00:05:41,010
+was just a weighted average of the odds
+ratios across all the different strata.
+
+107
+00:05:41,010 --> 00:05:44,540
+So in this case, we're going to have 100
+and k is going to be equal to 144.
+
+108
+00:05:44,540 --> 00:05:45,460
+You have 144 strata.
+
+109
+00:05:45,460 --> 00:05:47,830
+We're going to sum up a times d.
+
+110
+00:05:47,830 --> 00:05:50,480
+Divided by the total in each stratum,
+
+111
+00:05:50,480 --> 00:05:52,460
+which is going to be two in every case
+here.
+
+112
+00:05:52,460 --> 00:05:55,970
+We're going to do that, for the numerator
+and we're going to do
+
+113
+00:05:55,970 --> 00:05:58,820
+something similar for the denominator
+except it's going to be the b times c.
+
+114
+00:05:58,820 --> 00:06:01,190
+So, again the total with two in each
+stratum.
+
+115
+00:06:01,190 --> 00:06:04,680
+So, we can just do that here so let's
+actually go ahead and apply this.
+
+116
+00:06:04,680 --> 00:06:07,310
+So, what about in the first situation?
+
+117
+00:06:07,310 --> 00:06:09,940
+We've got the case [INAUDIBLE] control,
+both have diabetes.
+
+118
+00:06:09,940 --> 00:06:12,860
+So what, what's a times b in this
+situation?
+
+119
+00:06:12,860 --> 00:06:16,970
+Well, it's going to be 1 times 0, so a
+times b, ant the total here is 2.
+
+120
+00:06:16,970 --> 00:06:21,930
+For every, each one of those strata where
+we've got concordance on diabetes.
+
+121
+00:06:21,930 --> 00:06:25,060
+You're going to have it a times d, is
+equal to 0, and
+
+122
+00:06:25,060 --> 00:06:26,640
+divided by 2 is still equal to 0.
+
+123
+00:06:26,640 --> 00:06:32,430
+B times c, 1 times 0, is also going to be,
+0, so we're going to get 0's.
+
+124
+00:06:32,430 --> 00:06:36,680
+So, essentially, those dis, those
+concorded pairs are not going to
+
+125
+00:06:36,680 --> 00:06:40,220
+contribute anything to the Mantel-Haenszel
+odds ratio.
+
+126
+00:06:40,220 --> 00:06:43,598
+We know that the concord impair should not
+contribute because they're
+
+127
+00:06:43,598 --> 00:06:44,712
+not informative.
+
+128
+00:06:46,380 --> 00:06:49,440
+Alright what about this situation where we
+have a discord up here with
+
+129
+00:06:49,440 --> 00:06:51,930
+a diabetic case, what would that look
+like?
+
+130
+00:06:51,930 --> 00:06:53,640
+Well again where going to do a times d and
+
+131
+00:06:53,640 --> 00:06:56,880
+now we get 1 times 1 divided by the total
+here which is 2.
+
+132
+00:06:56,880 --> 00:07:01,060
+So now we actually get a number a times d
+divided by two here is going to be a half.
+
+133
+00:07:01,060 --> 00:07:04,530
+B times c because we got two zeros now is
+going to be zero.
+
+134
+00:07:04,530 --> 00:07:07,930
+For the discord up here where it is the
+control that has diabetes.
+
+135
+00:07:07,930 --> 00:07:10,000
+A times d is now going to be zero, but
+
+136
+00:07:10,000 --> 00:07:13,330
+b times c is going to be one over two, so
+we get another half here.
+
+137
+00:07:13,330 --> 00:07:17,080
+So those discordant strata are going to
+contribute to
+
+138
+00:07:17,080 --> 00:07:18,190
+the Mantel-Haenszel odds ratio.
+
+139
+00:07:18,190 --> 00:07:23,820
+Finally, though, those situations where we
+have the pair both don't have diabetes,
+
+140
+00:07:23,820 --> 00:07:25,420
+those are both going to give us zeroes
+again.
+
+141
+00:07:25,420 --> 00:07:28,890
+So again, the concordant pairs are not
+going to contribute to
+
+142
+00:07:28,890 --> 00:07:31,000
+the Mantel-Haenszel odds ratio.
+
+143
+00:07:31,000 --> 00:07:33,240
+Now let's just calculate that
+Mantel-Haenszel odds ratio.
+
+144
+00:07:33,240 --> 00:07:35,480
+Again, we have many, many strata here, but
+they all look the same.
+
+145
+00:07:35,480 --> 00:07:42,010
+So we can just multiply by how frequently
+each of these different strata occurs.
+
+146
+00:07:42,010 --> 00:07:46,640
+There was 37 discordant pairs where the
+case was diabetic, and
+
+147
+00:07:46,640 --> 00:07:48,440
+16 where the control was diabetic.
+
+148
+00:07:48,440 --> 00:07:52,320
+So now we're just going to plug into the
+Mantel-Haenszel odds ratio formula.
+
+149
+00:07:52,320 --> 00:07:58,500
+Again, we get a half everywhere where
+we've got that, discordant but
+
+150
+00:07:58,500 --> 00:08:04,110
+cases diabetic, there were 37 of those, we
+get a half in the denominator from these
+
+151
+00:08:04,110 --> 00:08:07,670
+pairs where we had discordance, but it was
+the control who was diabetic, so
+
+152
+00:08:07,670 --> 00:08:10,050
+we get 37 times a half divided by 16 times
+a half.
+
+153
+00:08:10,050 --> 00:08:11,170
+The halves cancel.
+
+154
+00:08:11,170 --> 00:08:14,590
+We just end up with 37 divided by 16 or b
+over c.
+
+155
+00:08:14,590 --> 00:08:17,420
+That's the Mantel-Haenszel odds ratio.
+
+156
+00:08:17,420 --> 00:08:22,490
+So it works out to be exactly the same as
+the McNemar odds
+
+157
+00:08:22,490 --> 00:08:24,390
+ratio as we saw from last week.
+
+158
+00:08:28,000 --> 00:08:32,205
+Now just slightly more tricky is to
+actually apply the Mantel Haenszel
+
+159
+00:08:32,205 --> 00:08:34,290
+chi-squared statistic that you learned
+about this week.
+
+160
+00:08:35,350 --> 00:08:36,300
+So what does that look like?
+
+161
+00:08:36,300 --> 00:08:40,390
+So here's the formula, first of all, that
+I gave you earlier this week.
+
+162
+00:08:40,390 --> 00:08:44,470
+We're going to be comparing observed minus
+expected for that A cell, and
+
+163
+00:08:44,470 --> 00:08:45,860
+then we've got this variance.
+
+164
+00:08:45,860 --> 00:08:48,780
+It was a little complicated to calculate
+the variance.
+
+165
+00:08:48,780 --> 00:08:50,590
+I'll show you how to apply it here.
+
+166
+00:08:50,590 --> 00:08:53,510
+The expected value is like we calculate
+for and MH chi-square.
+
+167
+00:08:53,510 --> 00:08:56,190
+So this is the formula for the Mantle
+Hansel chi-square.
+
+168
+00:08:56,190 --> 00:08:58,910
+What are we actually testing in this
+situation?
+
+169
+00:08:58,910 --> 00:09:05,460
+So the null hypothesis here would be that
+diabetes and heart attack
+
+170
+00:09:05,460 --> 00:09:11,280
+are independent after we adjust for, or
+control for, which pier you're in.
+
+171
+00:09:11,280 --> 00:09:15,380
+So we can apply that statistic here, and
+again, because a lot of the strata look
+
+172
+00:09:15,380 --> 00:09:18,630
+the same, it's not going to be as bad as
+you might anticipated.
+
+173
+00:09:18,630 --> 00:09:21,270
+I'm going to show you that what we come
+out with is exactly equal to
+
+174
+00:09:21,270 --> 00:09:22,290
+the McNemar's chi-squared.
+
+175
+00:09:22,290 --> 00:09:24,340
+All right.
+
+176
+00:09:24,340 --> 00:09:29,150
+So what do the concordant pairs contribute
+to the Mantel-Haenszel statistic?
+
+177
+00:09:29,150 --> 00:09:29,940
+Let's look at that.
+
+178
+00:09:29,940 --> 00:09:33,640
+So here's an example of concordant pair,
+where both the case and
+
+179
+00:09:33,640 --> 00:09:34,960
+the control have diabetes.
+
+180
+00:09:34,960 --> 00:09:37,150
+If I go to calculate out the expected
+value here,
+
+181
+00:09:37,150 --> 00:09:41,700
+the expected value is one, because the row
+total is two, the column total is one.
+
+182
+00:09:41,700 --> 00:09:46,270
+Two times one, divided by two, there's two
+total in the stratum.
+
+183
+00:09:46,270 --> 00:09:47,550
+Two divided by two gives you one.
+
+184
+00:09:47,550 --> 00:09:50,150
+We're expecting one case to have diabetes.
+
+185
+00:09:50,150 --> 00:09:53,250
+And indeed we observed one case having
+diabetes.
+
+186
+00:09:53,250 --> 00:09:55,850
+So observed minus expected here equals
+zero.
+
+187
+00:09:55,850 --> 00:09:58,170
+So again you can see that we are going to
+get some zeros.
+
+188
+00:09:58,170 --> 00:10:00,940
+The concorded pairs are not going to
+contribute to
+
+189
+00:10:00,940 --> 00:10:01,900
+the Mantel-Haenszel statistic.
+
+190
+00:10:01,900 --> 00:10:03,230
+The same with the variance.
+
+191
+00:10:03,230 --> 00:10:06,530
+Remember the variance is row one times
+column one.
+
+192
+00:10:06,530 --> 00:10:08,110
+Times row 2 times column 2.
+
+193
+00:10:08,110 --> 00:10:10,750
+Since row 2 is equal to 0, were
+multiplying in the 0,
+
+194
+00:10:10,750 --> 00:10:14,640
+that is going to come out to 0 as well, so
+its not going to contribute.
+
+195
+00:10:14,640 --> 00:10:17,270
+Same way if you look at the concordant
+pairs were both the case and
+
+196
+00:10:17,270 --> 00:10:21,220
+the control are free of diabetes we are
+going to get all 0's for those numbers.
+
+197
+00:10:21,220 --> 00:10:24,260
+So when we add those into the
+Mantel-Haenszel statistic,
+
+198
+00:10:24,260 --> 00:10:25,660
+they're going to contribute zero.
+
+199
+00:10:25,660 --> 00:10:29,350
+As they should, because they don't give us
+any information about
+
+200
+00:10:29,350 --> 00:10:32,320
+the relationship between diabetes and
+heart attack.
+
+201
+00:10:33,520 --> 00:10:35,041
+How about the discordant pair?
+
+202
+00:10:36,200 --> 00:10:41,150
+So where we have discordants we can either
+have the case having diabetes so
+
+203
+00:10:41,150 --> 00:10:42,890
+that case is shown here.
+
+204
+00:10:42,890 --> 00:10:46,860
+When the case has diabetes and the control
+does not, then when we do the expected
+
+205
+00:10:46,860 --> 00:10:50,340
+value, it's going to be row one times
+column one so one times one divided by
+
+206
+00:10:50,340 --> 00:10:54,020
+the total in the stratum, which is two so
+one times one divided by two is a half.
+
+207
+00:10:54,020 --> 00:10:58,420
+And, we're expecting to see about a half
+of a case having diabetes.
+
+208
+00:10:58,420 --> 00:11:02,410
+In fact, we saw one case with diabetes, so
+one minus the expected value of a half,
+
+209
+00:11:02,410 --> 00:11:05,120
+gives us a value of positive one half
+here, for
+
+210
+00:11:05,120 --> 00:11:08,150
+that difference between the observed and
+the expected.
+
+211
+00:11:08,150 --> 00:11:12,040
+The variance is going to turn out to be
+one over four, 'cause every row and
+
+212
+00:11:12,040 --> 00:11:14,530
+every column here has a total of one.
+
+213
+00:11:14,530 --> 00:11:17,450
+And then, the total is two, so we're
+going to do, put in the denominator,
+
+214
+00:11:17,450 --> 00:11:22,220
+two squared, times two minus one, which
+is, to which is 2 times 2, or 4.
+
+215
+00:11:22,220 --> 00:11:24,190
+So we end up with that the variance,
+
+216
+00:11:24,190 --> 00:11:27,570
+every stratum, contributes one fourth to
+the variance.
+
+217
+00:11:27,570 --> 00:11:28,350
+That's what's going to go in
+
+218
+00:11:28,350 --> 00:11:31,620
+the denominator of the Mantel-Haenszel
+statistic.
+
+219
+00:11:31,620 --> 00:11:34,240
+If we look at the situation where we have
+discordance in the other wave,
+
+220
+00:11:34,240 --> 00:11:36,630
+the control has diabetes and the case does
+not.
+
+221
+00:11:36,630 --> 00:11:39,060
+The expected value, again, is going to be
+a half.
+
+222
+00:11:39,060 --> 00:11:42,570
+But the observed minus the expected, now,
+since we're focusing on cell A,
+
+223
+00:11:42,570 --> 00:11:45,430
+is going to B zero minus a half, or
+negative one half.
+
+224
+00:11:45,430 --> 00:11:47,590
+So we're going to end up with a negative
+in this case.
+
+225
+00:11:47,590 --> 00:11:51,260
+The variance is going to be exactly the
+same as before, one quarter.
+
+226
+00:11:51,260 --> 00:11:53,920
+So now we can take all of those values,
+and
+
+227
+00:11:53,920 --> 00:11:56,830
+plug into the Mantel–Haenszel statistic.
+
+228
+00:11:56,830 --> 00:12:00,650
+So again, here is the Mantel–Haenszel
+statistic.
+
+229
+00:12:01,670 --> 00:12:04,700
+I'm now going to just kind of go through
+how to calculate all this.
+
+230
+00:12:04,700 --> 00:12:09,920
+So, we've got a chi square with one degree
+of freedom.
+
+231
+00:12:09,920 --> 00:12:12,130
+That is equal to, so what do we do?
+
+232
+00:12:12,130 --> 00:12:12,930
+Let's start with the numerator.
+
+233
+00:12:12,930 --> 00:12:13,790
+What do we do in the numerator?
+
+234
+00:12:13,790 --> 00:12:17,070
+We're going to add up the summations, that
+means we're adding.
+
+235
+00:12:17,070 --> 00:12:17,848
+There's 144 strata.
+
+236
+00:12:17,848 --> 00:12:20,880
+We're going to add up all the observed,
+
+237
+00:12:20,880 --> 00:12:22,940
+minus expecteds, from each of the 144
+strata.
+
+238
+00:12:22,940 --> 00:12:24,310
+We're going to do that.
+
+239
+00:12:24,310 --> 00:12:25,160
+First.
+
+240
+00:12:25,160 --> 00:12:28,540
+Well, what was the observed minus expected
+for the concord in strata?
+
+241
+00:12:28,540 --> 00:12:29,150
+Those were all 0s.
+
+242
+00:12:29,150 --> 00:12:32,680
+We're going to get a whole bunch of 0s,
+they won't contribute in, to anything.
+
+243
+00:12:32,680 --> 00:12:39,260
+Then, we're going to get, there were 37
+discordant pairs, discordant strata,
+
+244
+00:12:39,260 --> 00:12:43,350
+where the observed minus the expected was
+equal to positive one half.
+
+245
+00:12:43,350 --> 00:12:49,790
+There were 16 where the observe minus the
+expected was equal to negative one half.
+
+246
+00:12:49,790 --> 00:12:53,570
+So that sum will be the total sum that
+goes in the numerator.
+
+247
+00:12:53,570 --> 00:12:56,350
+And then after all of that we're going to
+square it.
+
+248
+00:12:56,350 --> 00:12:58,540
+That's the, the squared part happens last.
+
+249
+00:12:58,540 --> 00:13:01,060
+That's the numerator of the
+Mantel-Haenszel statistic here.
+
+250
+00:13:01,060 --> 00:13:03,710
+In the denominator we're again going to be
+summary,
+
+251
+00:13:03,710 --> 00:13:07,880
+summing up over 144 pairs, 144 strata.
+
+252
+00:13:07,880 --> 00:13:08,770
+The variances.
+
+253
+00:13:08,770 --> 00:13:13,650
+But remember that the variances from those
+concordant strata were again, all zero.
+
+254
+00:13:13,650 --> 00:13:15,350
+So they contribute zero.
+
+255
+00:13:15,350 --> 00:13:18,130
+Everywhere that there was a discordant
+strata,
+
+256
+00:13:18,130 --> 00:13:20,460
+they, each of those strata contributed one
+fourth.
+
+257
+00:13:20,460 --> 00:13:25,060
+So both, the discordant cells in both
+directions.
+
+258
+00:13:25,060 --> 00:13:25,630
+So 37 plus 16.
+
+259
+00:13:25,630 --> 00:13:28,240
+A total of 53 contributed a fourth.
+
+260
+00:13:31,200 --> 00:13:33,820
+Now, what you'll notice is if you multiply
+this out,
+
+261
+00:13:33,820 --> 00:13:35,910
+we can simplify this is a little bit.
+
+262
+00:13:35,910 --> 00:13:37,290
+It turns out to be,
+
+263
+00:13:37,290 --> 00:13:42,450
+you can say that we have in the numerator
+1 half times 37 minus 16.
+
+264
+00:13:42,450 --> 00:13:45,160
+I just pulled out the half there.
+
+265
+00:13:45,160 --> 00:13:46,330
+With that is squared.
+
+266
+00:13:46,330 --> 00:13:50,520
+And that's going to be divided by a total
+of 53 time a quarter.
+
+267
+00:13:50,520 --> 00:13:53,710
+But notice that if I pull the square over
+here and
+
+268
+00:13:53,710 --> 00:13:55,400
+I square the half, and take that out.
+
+269
+00:13:55,400 --> 00:13:58,390
+Half squared is just a fourth, so those
+two are going to cancel.
+
+270
+00:13:58,390 --> 00:13:59,350
+What do I end up with?
+
+271
+00:13:59,350 --> 00:14:04,610
+I end up with 37 minus 16 squared, divided
+by 53.
+
+272
+00:14:04,610 --> 00:14:06,270
+Well guess what?
+
+273
+00:14:06,270 --> 00:14:09,140
+That is also the Macnemare statistic.
+
+274
+00:14:09,140 --> 00:14:12,480
+So we got, when we apply the
+Mantel-Haenszel formula here,
+
+275
+00:14:12,480 --> 00:14:15,940
+we ended up with a, with the Macnemare's
+chi square as well.
+
+276
+00:14:15,940 --> 00:14:21,110
+It's the exact same mathematical formula,
+b minus c square, divided by b plus c.
+
+277
+00:14:21,110 --> 00:14:23,090
+So these turn out to be identical.
+
+278
+00:14:23,090 --> 00:14:26,620
+I've shown this here with specific
+numbers, and now,
+
+279
+00:14:26,620 --> 00:14:30,820
+let's also show it more generally, using b
+plus c rather than specific numbers.
+
+280
+00:14:32,000 --> 00:14:34,540
+For those of you who want a neat slide
+where this is all written out,
+
+281
+00:14:34,540 --> 00:14:37,390
+I'm putting that, I'm placing that here
+just in case you want to see it
+
+282
+00:14:37,390 --> 00:14:38,930
+written out more neatly than my
+handwritting.
+
+283
+00:14:40,030 --> 00:14:41,680
+But now going to generalizing.
+
+284
+00:14:41,680 --> 00:14:43,920
+Let's generalize this whole thing.
+
+285
+00:14:43,920 --> 00:14:46,945
+So, now if we look at the Cochran
+Mantel-Haenszel statistic and
+
+286
+00:14:46,945 --> 00:14:48,610
+we think about the general case.
+
+287
+00:14:48,610 --> 00:14:52,010
+Anywhere we have the situation of paired
+data where we have discorded and
+
+288
+00:14:52,010 --> 00:14:54,300
+concorded pairs.
+
+289
+00:14:54,300 --> 00:14:58,410
+Notice what's going to happen when we plug
+into the Mantel-Haenszel statistic.
+
+290
+00:14:58,410 --> 00:15:01,540
+Which again is a chi squared with one
+degree of freedom.
+
+291
+00:15:01,540 --> 00:15:04,990
+We are going to be in the numerator we are
+going to be adding zero for
+
+292
+00:15:04,990 --> 00:15:06,820
+all the concorded cells.
+
+293
+00:15:06,820 --> 00:15:11,240
+And then we are going to be adding
+one-half, positive one-half for
+
+294
+00:15:11,240 --> 00:15:12,200
+all the B cells.
+
+295
+00:15:12,200 --> 00:15:21,750
+Remember the B situation is where it's the
+case that has the diabetes
+
+296
+00:15:21,750 --> 00:15:26,160
+and the, control that doesn't or the case
+that has the exposure and
+
+297
+00:15:26,160 --> 00:15:27,910
+the control that doesn't, if we're
+generalizing.
+
+298
+00:15:27,910 --> 00:15:30,766
+For all the C cells, it's going to be
+negative one half, and
+
+299
+00:15:30,766 --> 00:15:33,210
+then we're going to be squaring that.
+
+300
+00:15:33,210 --> 00:15:37,750
+In the denominator, the variances are only
+occur where we have discordant cells and
+
+301
+00:15:37,750 --> 00:15:39,960
+that's going to be the b plus c and we're
+going to,
+
+302
+00:15:39,960 --> 00:15:42,730
+each one of those contributes one fourth
+to the variance.
+
+303
+00:15:42,730 --> 00:15:44,400
+So we can write this down generally.
+
+304
+00:15:44,400 --> 00:15:47,550
+We can show that is always the case that
+the Mantel-Haenszel statistic when
+
+305
+00:15:47,550 --> 00:15:52,080
+applied to this particular situation will
+simplify, again, these halves.
+
+306
+00:15:52,080 --> 00:15:55,400
+Halve squared will come out and it'll
+cancel the one fourth
+
+307
+00:15:55,400 --> 00:16:00,710
+will simplify to B minus C square, divided
+by B plus C.
+
+308
+00:16:00,710 --> 00:16:04,370
+Which is exactly the same as the
+Mcnamara's statistics.
+
+309
+00:16:04,370 --> 00:16:07,380
+So mathematically, these things turn out
+to be equivalent,
+
+310
+00:16:07,380 --> 00:16:08,580
+which is just pretty cool.
+
+311
+00:16:11,660 --> 00:16:13,570
+And again, I'm writing that out.
+
+312
+00:16:13,570 --> 00:16:14,890
+Is putting that in a neat slide for
+
+313
+00:16:14,890 --> 00:16:17,070
+any of you who need a little bit neater
+handwriting there.

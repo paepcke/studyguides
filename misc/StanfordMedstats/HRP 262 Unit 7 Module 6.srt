@@ -1,0 +1,1280 @@
+1
+00:00:00,000 --> 00:00:05,340
+[BLANK_AUDIO].
+
+2
+00:00:05,340 --> 00:00:06,348
+In this next module,
+
+3
+00:00:06,348 --> 00:00:09,600
+I'm going to tell you about multivariate
+repeated-measures ANOVA.
+
+4
+00:00:09,600 --> 00:00:16,000
+So up until now we've been talking about
+univariate repeated-measures ANOVA.
+
+5
+00:00:16,000 --> 00:00:19,440
+Now I want to tell you multivariate
+repeated measures ANOVA,
+
+6
+00:00:19,440 --> 00:00:23,240
+which approaches these types of data in a
+different way.
+
+7
+00:00:23,240 --> 00:00:26,210
+So the key to multivariate repeated
+measures ANOVA is,
+
+8
+00:00:26,210 --> 00:00:29,329
+that there's actually more than one
+dependent variable.
+
+9
+00:00:31,050 --> 00:00:33,340
+Rather than having a single dependent
+variable,
+
+10
+00:00:33,340 --> 00:00:36,730
+we actually have a vector of outcome
+variables.
+
+11
+00:00:38,630 --> 00:00:43,060
+And in fact because of that, it's not just
+used for repeated measures ANOVA, it would
+
+12
+00:00:43,060 --> 00:00:47,310
+be appropriate for other situations when
+you have multiple dependent variables.
+
+13
+00:00:47,310 --> 00:00:52,300
+I'm only going to talk about the case of
+applying it to repeated measure and data.
+
+14
+00:00:53,800 --> 00:00:57,200
+And the best way to understand
+multivariate repeated measures ANOVA,
+
+15
+00:00:57,200 --> 00:01:01,060
+is actually just to think back to when we
+did paired T tests.
+
+16
+00:01:01,060 --> 00:01:04,060
+It's essentially analogous to a paired T
+test.
+
+17
+00:01:04,060 --> 00:01:08,040
+So remember, we used a paired t-test
+actually before for
+
+18
+00:01:08,040 --> 00:01:11,750
+repeated measures, when we only had two
+time points.
+
+19
+00:01:11,750 --> 00:01:14,470
+And the way a paired t-test works is that
+you
+
+20
+00:01:14,470 --> 00:01:18,710
+subtract the values between the two time
+points, and you get a difference value.
+
+21
+00:01:18,710 --> 00:01:21,782
+How much did a person change from time
+point one, to time point two?
+
+22
+00:01:23,070 --> 00:01:25,640
+We're going to calculate the difference
+value for everybody, and
+
+23
+00:01:25,640 --> 00:01:28,590
+then we're going to calculate the average
+difference for this sample.
+
+24
+00:01:28,590 --> 00:01:31,150
+And the null hypothesis for
+
+25
+00:01:31,150 --> 00:01:34,230
+a paired t test is that the difference is
+equal to zero.
+
+26
+00:01:34,230 --> 00:01:38,800
+So on average people didn't go, didn't go
+up or down, they didn't change.
+
+27
+00:01:38,800 --> 00:01:40,200
+Then there is no effect.
+
+28
+00:01:41,320 --> 00:01:45,400
+So we would take the average difference
+and
+
+29
+00:01:45,400 --> 00:01:48,330
+divide that by the standard error for the
+average differences.
+
+30
+00:01:48,330 --> 00:01:50,050
+We divided by a standard error.
+
+31
+00:01:50,050 --> 00:01:51,250
+That's kind of a t distribution.
+
+32
+00:01:51,250 --> 00:01:54,290
+And so essentially our outcome here is
+just difference values.
+
+33
+00:01:54,290 --> 00:01:56,750
+A single different value for each person.
+
+34
+00:01:56,750 --> 00:02:02,480
+The only difference with the multivariate
+repeated measures ANOVA,
+
+35
+00:02:02,480 --> 00:02:06,290
+is that we are now going to look at a
+vector of differences rather than
+
+36
+00:02:06,290 --> 00:02:08,430
+a single difference for every person.
+
+37
+00:02:08,430 --> 00:02:10,060
+So in the example data set I've been
+using,
+
+38
+00:02:10,060 --> 00:02:14,160
+there were five time points, so each
+person actually has three differences.
+
+39
+00:02:14,160 --> 00:02:15,820
+They have the difference between time one
+and
+
+40
+00:02:15,820 --> 00:02:19,690
+two, between time two and three and
+between time three and four.
+
+41
+00:02:19,690 --> 00:02:24,050
+And that, those three values could be
+thought of as a vector of differences.
+
+42
+00:02:24,050 --> 00:02:27,050
+So MANOVA is essentially just a paired t
+test where the outcome variable is
+
+43
+00:02:27,050 --> 00:02:29,880
+a vector of difference values rather than
+a single difference.
+
+44
+00:02:31,110 --> 00:02:33,670
+It's sort of an extension of the pair t
+test.
+
+45
+00:02:33,670 --> 00:02:36,840
+So we can have multiple time points, more
+than two.
+
+46
+00:02:36,840 --> 00:02:39,370
+And we can calculate a statistic based on
+the,
+
+47
+00:02:39,370 --> 00:02:44,210
+comparing the average of the vector of
+differences to its standard error.
+
+48
+00:02:44,210 --> 00:02:49,560
+And the null hypothesis here, is that the
+difference one between the first
+
+49
+00:02:49,560 --> 00:02:53,760
+two time points and zero and difference
+two between the next two time points and
+
+50
+00:02:53,760 --> 00:02:57,400
+zero and difference three between the next
+two time points and zero and so on.
+
+51
+00:02:57,400 --> 00:03:00,210
+That all the difference values on average
+are zero.
+
+52
+00:03:00,210 --> 00:03:02,419
+That would say that there's no changes
+happening over time.
+
+53
+00:03:05,390 --> 00:03:09,330
+And one of the statistics, I'm not going
+go into the details of this statistic,
+
+54
+00:03:09,330 --> 00:03:10,230
+it involves vectors and
+
+55
+00:03:10,230 --> 00:03:13,940
+things, but you can make a statistic, one
+of them is called Hotel Lengths Trace.
+
+56
+00:03:15,250 --> 00:03:17,990
+So take that little example data set that
+I've been using with just these
+
+57
+00:03:17,990 --> 00:03:19,280
+six subjects.
+
+58
+00:03:19,280 --> 00:03:20,820
+I had four time points.
+
+59
+00:03:20,820 --> 00:03:22,800
+So I'm going to get three difference
+values.
+
+60
+00:03:22,800 --> 00:03:26,830
+So now, the values for subject one are no
+longer the absolute values.
+
+61
+00:03:26,830 --> 00:03:29,280
+I don't know what their absolute value of
+depression score is, but
+
+62
+00:03:29,280 --> 00:03:32,870
+I know that they went down two units
+between time point one and two.
+
+63
+00:03:32,870 --> 00:03:36,510
+And then down 14 more units between two,
+time points two and three.
+
+64
+00:03:36,510 --> 00:03:39,900
+And then up 11 units between time points
+three and four.
+
+65
+00:03:39,900 --> 00:03:42,900
+I've now got a vector of differences on
+each of these subjects.
+
+66
+00:03:44,070 --> 00:03:46,310
+Couple of caveats to think about here.
+
+67
+00:03:47,350 --> 00:03:49,900
+We're rating all of these differences
+equally, so
+
+68
+00:03:49,900 --> 00:03:53,300
+it's hard to interpret them if the time
+intervals are unevenly spaced.
+
+69
+00:03:53,300 --> 00:03:57,400
+So imagine that time point one was zero
+months into the study, and
+
+70
+00:03:57,400 --> 00:03:59,570
+then you measure people again at one
+month, and
+
+71
+00:03:59,570 --> 00:04:01,840
+then you didn't measure people again until
+a year.
+
+72
+00:04:01,840 --> 00:04:04,760
+Well the first difference would represent
+the one month change,
+
+73
+00:04:04,760 --> 00:04:08,460
+the second difference would represent an
+11 month change, and obviously those
+
+74
+00:04:08,460 --> 00:04:12,080
+might be different just because the
+different spacing of the time intervals.
+
+75
+00:04:12,080 --> 00:04:16,390
+So this is assuming we have evenly or
+reasonably evenly spaced time intervals.
+
+76
+00:04:16,390 --> 00:04:19,980
+Where the other assumption is that we have
+a normally distributed outcome.
+
+77
+00:04:19,980 --> 00:04:23,420
+This would following a multivariate normal
+distribution, but same idea.
+
+78
+00:04:23,420 --> 00:04:26,240
+And that we have a homogeneity of
+variances at each of
+
+79
+00:04:26,240 --> 00:04:28,510
+the time points again.
+
+80
+00:04:28,510 --> 00:04:31,830
+The null hypothesis is that all of the
+average different scores are zero.
+
+81
+00:04:31,830 --> 00:04:35,130
+You can see that the difference between
+time rates two and three, it looks like
+
+82
+00:04:35,130 --> 00:04:38,450
+kind of, there was, we, we already saw in
+the picture that it was going down.
+
+83
+00:04:38,450 --> 00:04:39,750
+There's a lot of negatives there.
+
+84
+00:04:39,750 --> 00:04:42,400
+And in time points three and four, there
+seems to be more positives.
+
+85
+00:04:42,400 --> 00:04:45,220
+But is that enough to be significantly
+different from zero.
+
+86
+00:04:47,810 --> 00:04:49,870
+I'm just starting this by ignoring groups
+and
+
+87
+00:04:49,870 --> 00:04:52,550
+asking the simple question, are there
+significant changes over time?
+
+88
+00:04:52,550 --> 00:04:55,670
+Are any of the changes, differences
+between time points significant?
+
+89
+00:04:57,730 --> 00:04:59,326
+And when I run these statistics,
+
+90
+00:04:59,326 --> 00:05:02,670
+I ran the multivariate repeated measures
+in ANOVA in SASS.
+
+91
+00:05:02,670 --> 00:05:05,348
+The p value that I get is 0.1876.
+
+92
+00:05:05,348 --> 00:05:08,190
+So my null hypothesis is all the
+differences are zero and
+
+93
+00:05:08,190 --> 00:05:09,570
+I can't reject that.
+
+94
+00:05:09,570 --> 00:05:12,780
+So I don't have evidence that there is
+really a significant difference over
+
+95
+00:05:12,780 --> 00:05:15,270
+time even though there looks to be some
+difference in time point three.
+
+96
+00:05:17,216 --> 00:05:19,910
+Notice you get four slightly different
+statistics here.
+
+97
+00:05:19,910 --> 00:05:22,404
+There are different statisticians who have
+come up with certainly,
+
+98
+00:05:22,404 --> 00:05:24,160
+certain different ways of calculating
+this.
+
+99
+00:05:25,190 --> 00:05:25,850
+In this case,
+
+100
+00:05:25,850 --> 00:05:29,920
+because the data aren't complicated, all
+the p values come out to be the same.
+
+101
+00:05:29,920 --> 00:05:34,380
+And just compare this to when we did the
+repeated measures univariate aNOVA.
+
+102
+00:05:34,380 --> 00:05:38,960
+This is the time effect that we got when
+we just had time in the model and
+
+103
+00:05:38,960 --> 00:05:40,700
+nothing else, when we were ignoring group.
+
+104
+00:05:40,700 --> 00:05:45,310
+We got a p value of 0.13 that was adjusted
+for the violation of compound symmetry.
+
+105
+00:05:45,310 --> 00:05:48,100
+So we got a lit, p value that's a little
+bit less, than what we got for
+
+106
+00:05:48,100 --> 00:05:50,100
+the, from the multivariate ANOVA.
+
+107
+00:05:50,100 --> 00:05:51,550
+But they're both saying that we
+
+108
+00:05:51,550 --> 00:05:53,620
+don't have enough evidence to reject the
+null hypothesis.
+
+109
+00:05:53,620 --> 00:05:55,330
+We do not have a significant time effect.
+
+110
+00:05:57,530 --> 00:06:00,290
+Statisticians would recommend that if
+there's differences between these p
+
+111
+00:06:00,290 --> 00:06:03,080
+values that you would choose the Wilks'
+Lambda in general.
+
+112
+00:06:03,080 --> 00:06:06,080
+But if you had a small sample, and some of
+the assumptions of the model,
+
+113
+00:06:06,080 --> 00:06:09,890
+the normality and homogeneity of variances
+was violated to use Pillai's Trace,
+
+114
+00:06:09,890 --> 00:06:12,040
+which was the second one, here.
+
+115
+00:06:13,190 --> 00:06:15,700
+So that's when I've just put time in the
+model,
+
+116
+00:06:15,700 --> 00:06:19,530
+of course we would also like to
+additionally consider group.
+
+117
+00:06:19,530 --> 00:06:21,850
+Now, it's important to keep in mind,
+
+118
+00:06:21,850 --> 00:06:25,670
+that when you're doing multivariate
+repeated measures ANOVA.
+
+119
+00:06:25,670 --> 00:06:27,130
+We're looking at difference values.
+
+120
+00:06:27,130 --> 00:06:29,890
+We never consider the absolute values.
+
+121
+00:06:29,890 --> 00:06:31,600
+Whether or not you have a depression score
+of 30 or 100.
+
+122
+00:06:31,600 --> 00:06:36,560
+We only compare, consider how much it went
+up or down.
+
+123
+00:06:36,560 --> 00:06:41,280
+So that means that for repeated measures
+multivariate, ANOVA,
+
+124
+00:06:41,280 --> 00:06:45,790
+there are actually going to be no between
+subjects effects, okay?
+
+125
+00:06:45,790 --> 00:06:50,150
+Because I can't tell you whether or not
+subject one is higher than subject two.
+
+126
+00:06:50,150 --> 00:06:51,350
+And I can't tell you whether or
+
+127
+00:06:51,350 --> 00:06:54,710
+not group A has a higher depression score
+than Group B.
+
+128
+00:06:54,710 --> 00:06:57,280
+I'm only looking at within subjects
+effects,
+
+129
+00:06:57,280 --> 00:06:59,240
+because I'm only looking at the changes
+over time.
+
+130
+00:07:00,280 --> 00:07:02,940
+Now, this was the picture when we brought
+group in.
+
+131
+00:07:02,940 --> 00:07:06,090
+B looks a little higher overall than A.
+
+132
+00:07:06,090 --> 00:07:09,490
+We will not be getting that group
+difference here.
+
+133
+00:07:09,490 --> 00:07:13,320
+But the pattern over time kind of looks
+pretty similar between the two groups.
+
+134
+00:07:13,320 --> 00:07:14,850
+We already saw that.
+
+135
+00:07:14,850 --> 00:07:19,320
+So now I'm going to run my repeated
+measures multivariate ANOVA with,
+
+136
+00:07:19,320 --> 00:07:20,380
+group in the model.
+
+137
+00:07:20,380 --> 00:07:24,060
+And, by the way, in SASS at least, you
+just ask for repeated-measures ANOVA and
+
+138
+00:07:24,060 --> 00:07:26,130
+it gives you both the univariate results
+and
+
+139
+00:07:26,130 --> 00:07:28,830
+the multivariate results in the output, so
+you get both.
+
+140
+00:07:30,570 --> 00:07:34,630
+I'm going to get from the multivariate
+repeated measures ANOVA.
+
+141
+00:07:34,630 --> 00:07:38,740
+I'm going to get here a time effect and a
+group by time interaction, and that's it.
+
+142
+00:07:38,740 --> 00:07:41,340
+So the time effect comes out to be 0.32.
+
+143
+00:07:41,340 --> 00:07:47,480
+This would say that there's no overall
+differences between time.
+
+144
+00:07:47,480 --> 00:07:51,740
+So overall ignoring group, there doesn't
+seem to be any significant time effect.
+
+145
+00:07:51,740 --> 00:07:53,280
+And again, we saw that in the picture.
+
+146
+00:07:53,280 --> 00:07:58,220
+If you look at everybody, it kind of goes
+like this, and a little bit of a dip in
+
+147
+00:07:58,220 --> 00:08:02,250
+time point three, but it wasn't enough to
+trigger statistical significance.
+
+148
+00:08:02,250 --> 00:08:04,180
+So there's no significant time effect.
+
+149
+00:08:04,180 --> 00:08:09,496
+We saw that in the repeated measures ANOVA
+univariate version, the p value was 0.17.
+
+150
+00:08:09,496 --> 00:08:13,046
+So basically giving us the same answer,
+not significant.
+
+151
+00:08:13,046 --> 00:08:15,860
+And then the time by group interaction,
+
+152
+00:08:15,860 --> 00:08:19,230
+that one clearly the two groups seem to
+have the same pattern over time.
+
+153
+00:08:19,230 --> 00:08:21,370
+So that one's clearly not significant.
+
+154
+00:08:21,370 --> 00:08:25,090
+So the changes, the differences between
+the time points don't seem to
+
+155
+00:08:25,090 --> 00:08:26,410
+differ between the two groups.
+
+156
+00:08:26,410 --> 00:08:29,130
+And for comparison the univariate result
+for
+
+157
+00:08:29,130 --> 00:08:32,860
+the time by group interaction was also
+highly nonsignificant 0.69.
+
+158
+00:08:32,860 --> 00:08:37,450
+So we can from the multivariate repeated
+
+159
+00:08:37,450 --> 00:08:40,450
+measures ANOVA we get basically the same
+results as we did from the univariate.
+
+160
+00:08:40,450 --> 00:08:45,270
+And so if we ask the question, are there
+any significant changes over time,
+
+161
+00:08:45,270 --> 00:08:46,520
+differences between time points?
+
+162
+00:08:46,520 --> 00:08:48,750
+That's a time main effect.
+
+163
+00:08:48,750 --> 00:08:51,700
+We did not see a main effect for time.
+
+164
+00:08:51,700 --> 00:08:55,680
+Now we cannot actually ask the question
+about whether the two groups differ at
+
+165
+00:08:55,680 --> 00:08:56,240
+any time points.
+
+166
+00:08:56,240 --> 00:08:59,160
+We don't, we are unable to get a group
+effect,
+
+167
+00:08:59,160 --> 00:09:01,480
+the overall effect of differences between
+groups.
+
+168
+00:09:01,480 --> 00:09:05,050
+Again, we don't have any absolute values
+in the analysis, so
+
+169
+00:09:05,050 --> 00:09:07,390
+I can't tell you if group A is higher than
+group B overall.
+
+170
+00:09:07,390 --> 00:09:10,460
+So we're not going to get that from the
+multivariate version.
+
+171
+00:09:11,480 --> 00:09:14,680
+We will get a p value for the group by
+time effect.
+
+172
+00:09:14,680 --> 00:09:17,910
+And therefore we can ask the question
+about whether the two groups differ in
+
+173
+00:09:17,910 --> 00:09:18,810
+their responses over time.
+
+174
+00:09:18,810 --> 00:09:21,400
+And that was clearly non-significant here,
+as we saw.
+
+175
+00:09:23,920 --> 00:09:28,496
+Now just for fun, I thought it would be
+nice to also throw in to the multivariate
+
+176
+00:09:28,496 --> 00:09:32,100
+repeated-measures ANOVA these data on bone
+density that we've been looking at.
+
+177
+00:09:32,100 --> 00:09:34,510
+So here's the picture again for that.
+
+178
+00:09:34,510 --> 00:09:40,180
+That we saw for the univariant, repeated
+measures ANOVA results,
+
+179
+00:09:40,180 --> 00:09:44,020
+we had a significant time effect and a
+borderline significant time by
+
+180
+00:09:44,020 --> 00:09:47,210
+group effect, and we get, pretty much same
+results here.
+
+181
+00:09:47,210 --> 00:09:49,142
+So the time effect is significant, 0.002.
+
+182
+00:09:49,142 --> 00:09:53,900
+It was 0.0006, a little bit smaller when
+we did the univariate.
+
+183
+00:09:53,900 --> 00:09:59,000
+But you can see that on average, it does
+look like the bone density's going up.
+
+184
+00:09:59,000 --> 00:10:02,240
+The group by time effect is borderline
+significant.
+
+185
+00:10:02,240 --> 00:10:05,080
+It was 0.06 when we did the univariate
+version.
+
+186
+00:10:05,080 --> 00:10:08,770
+It's 0.07 when we did the multivariate
+version, so about the same.
+
+187
+00:10:08,770 --> 00:10:12,850
+This doesn't quite make statistical
+significance that those groups differ in
+
+188
+00:10:12,850 --> 00:10:14,500
+their profiles over time, almost.
+
+189
+00:10:15,930 --> 00:10:17,400
+So we're getting basically the same
+answer.
+
+190
+00:10:17,400 --> 00:10:20,480
+You'll notice that the p values from the
+multivariate tend to be just a little bit
+
+191
+00:10:20,480 --> 00:10:23,020
+higher, than the ones from the univariate.
+
+192
+00:10:23,020 --> 00:10:26,480
+And that's because if the compound
+symmetry assumption is met,
+
+193
+00:10:26,480 --> 00:10:30,720
+the univariate approach actually has more
+power, more statistical power.
+
+194
+00:10:30,720 --> 00:10:34,080
+Now if the compound symmetry is not met
+however,
+
+195
+00:10:34,080 --> 00:10:39,390
+we are increasing our type one error by
+using the univariate approach.
+
+196
+00:10:39,390 --> 00:10:42,060
+So we're more likely to get a false
+positive so
+
+197
+00:10:42,060 --> 00:10:45,050
+the p values tend to be smaller for the
+univariate.
+
+198
+00:10:45,050 --> 00:10:48,480
+They're appropriately smaller if we meet
+this compound symmetry assumption, but
+
+199
+00:10:48,480 --> 00:10:49,750
+not if we don't.
+
+200
+00:10:49,750 --> 00:10:52,700
+So there's slight differences between the
+two in that way.
+
+201
+00:10:52,700 --> 00:10:55,690
+They usually give reasonably similar
+answers, however.
+
+202
+00:10:57,600 --> 00:11:01,124
+And so just to summarize repeated-measures
+ANOVA.
+
+203
+00:11:01,124 --> 00:11:02,686
+Both of the univariant and
+
+204
+00:11:02,686 --> 00:11:06,550
+the multivariate versions, you have to
+impute missing data.
+
+205
+00:11:06,550 --> 00:11:10,560
+If a person is missing just one time
+point, they are completely thrown out of
+
+206
+00:11:10,560 --> 00:11:14,580
+the analysis, so you have to fill in
+something, for that missing data.
+
+207
+00:11:15,780 --> 00:11:20,510
+Repeated measures, univeriant ANOVA
+requires compound symmetry.
+
+208
+00:11:20,510 --> 00:11:21,760
+So that's a restrictive assumption.
+
+209
+00:11:21,760 --> 00:11:24,660
+Now there are p value corrections for this
+as we saw.
+
+210
+00:11:25,840 --> 00:11:29,710
+We are treating time essentially as
+categorical in these analysis.
+
+211
+00:11:29,710 --> 00:11:31,180
+So we're requiring that subjects who,
+
+212
+00:11:31,180 --> 00:11:34,180
+they have to be measured at the same time
+points, because if everybody's measured at
+
+213
+00:11:34,180 --> 00:11:37,540
+different time points it really doesn't
+make sense to group them into categorical
+
+214
+00:11:37,540 --> 00:11:38,830
+time points.
+
+215
+00:11:38,830 --> 00:11:42,380
+And as we saw with the multivariate
+repeated measures ANOVA.
+
+216
+00:11:42,380 --> 00:11:44,400
+Since we're looking at difference values,
+
+217
+00:11:44,400 --> 00:11:49,330
+we are making the assumption that the time
+intervals are reasonably even.
+
+218
+00:11:50,510 --> 00:11:52,300
+The advantages of the, the map is,
+
+219
+00:11:52,300 --> 00:11:54,420
+however, they're pretty easy to implement
+and interpret.
+
+220
+00:11:54,420 --> 00:11:57,660
+They're pretty straightforward, once you
+get the hang of them, to interpret them.
+
+221
+00:11:57,660 --> 00:11:58,900
+They're not too complex.
+
+222
+00:11:58,900 --> 00:12:05,180
+So as we turn to talking about generalized
+estimating equations and mixed models,
+
+223
+00:12:05,180 --> 00:12:10,810
+you're going to see that a lot of these
+disadvantages are not a problem,
+
+224
+00:12:10,810 --> 00:12:13,070
+for those more sophisticated models.
+
+225
+00:12:13,070 --> 00:12:16,080
+But the models get a little bit more
+complicated to interpret.
+
+226
+00:12:16,080 --> 00:12:19,950
+Just for fun, I thought it would be fun
+even though we haven't gotten to GEE and
+
+227
+00:12:19,950 --> 00:12:23,720
+mixed models yet, I thought it would be
+fun just to throw that bone density data,
+
+228
+00:12:23,720 --> 00:12:25,800
+into a GE model and a mixed model.
+
+229
+00:12:25,800 --> 00:12:29,450
+And compare with what we got from the
+repeated measures ANOVA analysis.
+
+230
+00:12:30,990 --> 00:12:32,080
+So I went ahead and did that.
+
+231
+00:12:32,080 --> 00:12:34,190
+You can see it's a little more
+complicated.
+
+232
+00:12:34,190 --> 00:12:36,510
+But I ran a GEE model.
+
+233
+00:12:36,510 --> 00:12:38,170
+And you don't have to understand all of
+this yet,
+
+234
+00:12:38,170 --> 00:12:40,480
+I'll just sort of walk you through what's
+relevant here.
+
+235
+00:12:40,480 --> 00:12:44,930
+But I ran a GEE model for the same spine
+bone density data, so
+
+236
+00:12:44,930 --> 00:12:47,970
+my outcome here is fine bone density.
+
+237
+00:12:47,970 --> 00:12:51,630
+And I have three groups, again, black, I'm
+calling them black, red, and
+
+238
+00:12:51,630 --> 00:12:53,700
+blue for simplicity.
+
+239
+00:12:53,700 --> 00:12:57,950
+The main effects that I'm getting for
+black, red, and blue correspond to
+
+240
+00:12:57,950 --> 00:13:01,390
+the main effect for group, that I was
+getting from the univariate,
+
+241
+00:13:01,390 --> 00:13:05,530
+repeated measures of ANOVA, and those are
+not significant, as we saw before.
+
+242
+00:13:05,530 --> 00:13:09,120
+I am getting a time effect, which is
+saying,
+
+243
+00:13:09,120 --> 00:13:13,010
+does the bone density differ significantly
+over time?
+
+244
+00:13:13,010 --> 00:13:17,830
+But, in these regression models the time
+effect is not an average over all of
+
+245
+00:13:17,830 --> 00:13:22,500
+the groups, it is the time effect for the
+reference group only.
+
+246
+00:13:22,500 --> 00:13:25,550
+So, this time effect corresponds us to the
+changes over time for
+
+247
+00:13:25,550 --> 00:13:28,100
+the blue group, and that's clearly not
+significant,
+
+248
+00:13:28,100 --> 00:13:30,650
+because the blue group isn't changing much
+over time.
+
+249
+00:13:30,650 --> 00:13:34,850
+The, then we have a time by group
+interaction.
+
+250
+00:13:34,850 --> 00:13:37,410
+And we break it down by the black group
+and the red group, and
+
+251
+00:13:37,410 --> 00:13:39,770
+the blue group, of course, is the
+reference group.
+
+252
+00:13:39,770 --> 00:13:40,270
+What do we get?
+
+253
+00:13:40,270 --> 00:13:43,835
+We get an estimate here that's 0.01, and
+0.014.
+
+254
+00:13:43,835 --> 00:13:46,840
+And what that's saying is that we're going
+up by
+
+255
+00:13:46,840 --> 00:13:51,690
+about one gram per centimeter square,
+which is roughly a percent,
+
+256
+00:13:51,690 --> 00:13:56,220
+in bone density more, per year, in the
+black group versus the blue group.
+
+257
+00:13:56,220 --> 00:13:58,690
+And that does make statistical
+significance.
+
+258
+00:13:58,690 --> 00:14:01,160
+And for the red group, were going up even
+a little bit more than that,
+
+259
+00:14:01,160 --> 00:14:04,560
+about 0.0140 grams per centimeter square.
+
+260
+00:14:04,560 --> 00:14:09,650
+Per year more, about 1.4% more in the red
+group versus the blue group per year, and
+
+261
+00:14:09,650 --> 00:14:10,670
+that is highly significant.
+
+262
+00:14:10,670 --> 00:14:13,856
+And you'll notice that we achieve
+statistical significance on
+
+263
+00:14:13,856 --> 00:14:16,747
+the time by group effect in the GEE model
+where we didn't in
+
+264
+00:14:16,747 --> 00:14:19,480
+the less powerful repeated measures ANOVA
+models.
+
+265
+00:14:21,600 --> 00:14:23,970
+And we get very similar results when we do
+mixed models.
+
+266
+00:14:23,970 --> 00:14:27,210
+I won't go through the whole results here
+again because you'll
+
+267
+00:14:27,210 --> 00:14:30,610
+notice the parameter estimates look very
+similar, the p values look very similar.
+
+268
+00:14:30,610 --> 00:14:32,890
+So we're getting a similar result with a
+mixed model.
+
+269
+00:14:32,890 --> 00:14:37,369
+[BLANK_AUDIO]

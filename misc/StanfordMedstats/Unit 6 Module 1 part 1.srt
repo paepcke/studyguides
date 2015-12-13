@@ -1,0 +1,1095 @@
+1
+00:00:07,370 --> 00:00:10,290
+In this next module, I'm going to talk
+about the formal types of
+
+2
+00:00:10,290 --> 00:00:14,380
+errors that can occur with hypothesis
+tests, and directly related to that,
+
+3
+00:00:14,380 --> 00:00:16,050
+the concept of statistical power.
+
+4
+00:00:17,890 --> 00:00:20,860
+Lets review from last week, the steps of a
+hypothesis test.
+
+5
+00:00:22,020 --> 00:00:24,820
+First thing that you do is to define your
+null hypothesis,
+
+6
+00:00:24,820 --> 00:00:26,880
+that's the strong man that you want to
+shoot down.
+
+7
+00:00:27,970 --> 00:00:33,300
+Once you define the null hypothesis then
+you can predict the range of values for
+
+8
+00:00:33,300 --> 00:00:37,000
+your statistics that you expect to see
+when you do an experiment if the null
+
+9
+00:00:37,000 --> 00:00:38,930
+hypothesis is true.
+
+10
+00:00:38,930 --> 00:00:40,350
+Then you got to do your experiment.
+
+11
+00:00:40,350 --> 00:00:44,520
+You calculate that statistic If the
+statistic is within the range of
+
+12
+00:00:44,520 --> 00:00:48,460
+values that your expecting based on the
+null hypothesis your P
+
+13
+00:00:48,460 --> 00:00:51,650
+value the probability of your data will
+end up just a being something high in
+
+14
+00:00:51,650 --> 00:00:55,616
+other words your experiment will sort of
+match, match with the null hypothesis.
+
+15
+00:00:55,616 --> 00:00:59,210
+On the other hand, let's say you do the
+experiment and
+
+16
+00:00:59,210 --> 00:01:03,650
+you get a value that's outside of what's
+expected, based on the null hypothesis.
+
+17
+00:01:03,650 --> 00:01:04,760
+Then you're going to get a low p-value.
+
+18
+00:01:04,760 --> 00:01:06,380
+The probability of your data, or
+
+19
+00:01:06,380 --> 00:01:10,338
+something more extreme is going to be
+small, given the null hypothesis.
+
+20
+00:01:10,338 --> 00:01:14,250
+If the p-value is small enough you're
+going to reject the null hypothesis.
+
+21
+00:01:14,250 --> 00:01:17,300
+In other words your data and your null
+hypothesis don't match.
+
+22
+00:01:17,300 --> 00:01:19,110
+And therefore you're not going to reject
+your data, so
+
+23
+00:01:19,110 --> 00:01:20,640
+you're going to reject the null
+hypothesis.
+
+24
+00:01:20,640 --> 00:01:23,375
+That's the steps you go through in a
+hypothesis test.
+
+25
+00:01:23,375 --> 00:01:26,550
+And the underlying logic is something like
+this.
+
+26
+00:01:26,550 --> 00:01:29,800
+Assuming, assume that the null hypothesis
+is true.
+
+27
+00:01:29,800 --> 00:01:31,260
+If the null hypothesis is true,
+
+28
+00:01:31,260 --> 00:01:34,230
+then you expect to see a certain thing in
+your study.
+
+29
+00:01:34,230 --> 00:01:35,530
+Lets say that you don't see that.
+
+30
+00:01:35,530 --> 00:01:37,500
+So if A then b, not b.
+
+31
+00:01:38,540 --> 00:01:42,120
+If you don't see that, then you're going
+to reject your original assumption.
+
+32
+00:01:42,120 --> 00:01:44,440
+That's the logic of a hypothesis test.
+
+33
+00:01:44,440 --> 00:01:49,150
+But because we're doing statistics, we're
+of course dealing always with uncertainty.
+
+34
+00:01:49,150 --> 00:01:50,750
+We have to grapple with uncertainty.
+
+35
+00:01:50,750 --> 00:01:52,210
+So now throw in a bit of uncertainty.
+
+36
+00:01:52,210 --> 00:01:55,870
+If A is true, then probably we're going to
+see B.
+
+37
+00:01:55,870 --> 00:01:58,980
+If we don't see B then probably A isn't
+true.
+
+38
+00:01:58,980 --> 00:02:00,610
+There's uncertainty thrown in.
+
+39
+00:02:00,610 --> 00:02:02,650
+So, at the end of the day we have to make
+a binary decision.
+
+40
+00:02:02,650 --> 00:02:05,600
+We either reject the null or we don't.
+
+41
+00:02:05,600 --> 00:02:11,090
+That decision can have some errors
+associated with it.
+
+42
+00:02:11,090 --> 00:02:14,190
+Let's say that there, that the null
+hypothesis is true.
+
+43
+00:02:14,190 --> 00:02:16,490
+There really isn't an effect.
+
+44
+00:02:16,490 --> 00:02:20,780
+But we erroneously reject the null
+hypothesis when we shouldn't,
+
+45
+00:02:20,780 --> 00:02:22,300
+that's a false positive.
+
+46
+00:02:22,300 --> 00:02:23,380
+We've made a false positive.
+
+47
+00:02:23,380 --> 00:02:26,670
+We call that a type 1 error sometimes also
+called an alpha.
+
+48
+00:02:28,320 --> 00:02:31,829
+On the other hand let's say that the null
+hypothesis is false and
+
+49
+00:02:31,829 --> 00:02:33,710
+there is actually an effect.
+
+50
+00:02:33,710 --> 00:02:35,750
+But we failed to reject the null
+hypothesis.
+
+51
+00:02:35,750 --> 00:02:37,190
+That's a false negative error.
+
+52
+00:02:37,190 --> 00:02:40,045
+We call that a type 2 error it's also
+known as beta.
+
+53
+00:02:40,045 --> 00:02:44,650
+Directly related to the type 2 error is
+something called statistical power.
+
+54
+00:02:44,650 --> 00:02:47,840
+Statistical power is just the complement
+of the type 2 error.
+
+55
+00:02:47,840 --> 00:02:50,500
+If the probabilty that is there really is
+a effect.
+
+56
+00:02:50,500 --> 00:02:51,980
+If the null the hypothesis is false.
+
+57
+00:02:51,980 --> 00:02:56,960
+It's the probability that we're going to
+find that effect in our study.
+
+58
+00:02:56,960 --> 00:03:00,670
+Notice that all of these have a sneakly
+conditional.
+
+59
+00:03:00,670 --> 00:03:03,740
+You can only make a type 1 error is the
+effect isn't real.
+
+60
+00:03:03,740 --> 00:03:05,420
+If the null hypothesis isn't true.
+
+61
+00:03:05,420 --> 00:03:09,280
+You can only make a type 2 error is the
+effect is real.
+
+62
+00:03:09,280 --> 00:03:10,740
+If the null hypothesis is false.
+
+63
+00:03:10,740 --> 00:03:12,030
+Just kind of keep that in mind.
+
+64
+00:03:13,200 --> 00:03:16,480
+I think the easiest way to understand type
+1 and type 2 error.
+
+65
+00:03:16,480 --> 00:03:17,980
+Used to put them in a little box, and
+
+66
+00:03:17,980 --> 00:03:21,990
+I'm going to do that in a moment, but
+whenever I talk about type one and
+
+67
+00:03:21,990 --> 00:03:25,480
+type two error, it always reminds me of
+something called Pascal's wager.
+
+68
+00:03:25,480 --> 00:03:30,650
+So, this is a little bit of an aside, but,
+I was a philosophy major in college, and,
+
+69
+00:03:30,650 --> 00:03:35,950
+if you've ever taken a philosophy 101
+class, you've probably had to read.
+
+70
+00:03:35,950 --> 00:03:39,600
+A bunch of proofs from philosophers
+throughout history about either
+
+71
+00:03:39,600 --> 00:03:43,720
+the existence or non-existence of God,
+plus there's a lot to think about and
+
+72
+00:03:43,720 --> 00:03:45,970
+talk about in the philosophy literature.
+
+73
+00:03:48,050 --> 00:03:52,290
+One of my favorite proofs of all the ones
+I've had to read,
+
+74
+00:03:52,290 --> 00:03:54,340
+was something called Pascal's Wager.
+
+75
+00:03:54,340 --> 00:03:58,590
+And I really like it, because it's simple,
+it's a simple logical, rational argument,
+
+76
+00:03:58,590 --> 00:04:02,325
+rather than these kind of long winded,
+drawn out proofs that were hard to read.
+
+77
+00:04:02,325 --> 00:04:05,710
+Pascal's wager was just a rational
+argument.
+
+78
+00:04:05,710 --> 00:04:10,600
+So Pascal says, there's some truth out
+there, either God exists or
+
+79
+00:04:10,600 --> 00:04:11,440
+God doesn't exist.
+
+80
+00:04:11,440 --> 00:04:14,660
+One of those things is true and we can't
+really ever know for sure.
+
+81
+00:04:16,120 --> 00:04:21,530
+You have to make a decision however so
+it's kind of immaterial whether,
+
+82
+00:04:21,530 --> 00:04:23,420
+what the truth is since that's, you know,
+
+83
+00:04:23,420 --> 00:04:26,850
+a knowable but you have to make a decision
+regardless.
+
+84
+00:04:26,850 --> 00:04:31,300
+Your decision on Earth is to either reject
+God or you're going to accept God.
+
+85
+00:04:31,300 --> 00:04:35,680
+Now let's say, this is Pascal's argument:
+let's say that God exists.
+
+86
+00:04:35,680 --> 00:04:39,390
+And you reject God then you've made a big
+mistake right that
+
+87
+00:04:39,390 --> 00:04:43,870
+means your depending on the religion you
+subscribed to your going to hell or
+
+88
+00:04:43,870 --> 00:04:48,620
+some bad very bad thing will will result
+so that's a big mistake.
+
+89
+00:04:48,620 --> 00:04:49,970
+On the other hand.
+
+90
+00:04:49,970 --> 00:04:54,500
+If god exists and you accept god, then
+your, you've got it right, and
+
+91
+00:04:54,500 --> 00:04:55,650
+there's some kind of big payoff.
+
+92
+00:04:55,650 --> 00:04:57,270
+Like, you're going to heaven or
+
+93
+00:04:57,270 --> 00:05:01,440
+whatever the again whatever the particular
+religion you subscribe to says.
+
+94
+00:05:01,440 --> 00:05:03,318
+It's always a big, really great thing.
+
+95
+00:05:03,318 --> 00:05:07,020
+On the other hand, let's say that god
+doesn't exist.
+
+96
+00:05:07,020 --> 00:05:07,750
+And you reject god.
+
+97
+00:05:07,750 --> 00:05:09,230
+Well, then you've got it right.
+
+98
+00:05:09,230 --> 00:05:12,470
+But the payoff maybe isn't so big, maybe
+you get to live your life a little bit
+
+99
+00:05:12,470 --> 00:05:18,050
+differently, maybe the payout is not huge
+there, however if God doesn't exist and
+
+100
+00:05:18,050 --> 00:05:22,600
+you accept God, then Pascal says that's
+really kind of a minor mistake.
+
+101
+00:05:22,600 --> 00:05:26,500
+The cost to you of that mistake isn't so
+high Because, you know,
+
+102
+00:05:26,500 --> 00:05:29,190
+maybe, you live your life a little bit
+differently.
+
+103
+00:05:29,190 --> 00:05:30,380
+Maybe you go to church or
+
+104
+00:05:30,380 --> 00:05:34,140
+temple, maybe you, don't drink as much,
+but he says that,
+
+105
+00:05:34,140 --> 00:05:37,670
+those costs are much more minor compared
+to the other mistakes you could make.
+
+106
+00:05:37,670 --> 00:05:40,960
+And that's his sort of rational argument,
+for whether or
+
+107
+00:05:40,960 --> 00:05:45,170
+not to believe in God .So I think it's
+Just an interesting and fun example.
+
+108
+00:05:45,170 --> 00:05:47,970
+And, it always reminds me of type 1 and
+type 2 error.
+
+109
+00:05:47,970 --> 00:05:50,800
+Because put type 1 and type 2 error in a
+box.
+
+110
+00:05:52,050 --> 00:05:55,740
+So, the null hypothesis is either true or
+it's false.
+
+111
+00:05:55,740 --> 00:05:59,560
+One of those things is true, and we can
+never really know with complete certainty.
+
+112
+00:06:00,560 --> 00:06:02,680
+Let me just throw in an example in here,
+so
+
+113
+00:06:02,680 --> 00:06:05,640
+let's say that your null hypothesis is
+that the vaccine,
+
+114
+00:06:05,640 --> 00:06:09,800
+the HIV vaccine like we saw last week,
+doesn't work; that's the null hypothesis.
+
+115
+00:06:09,800 --> 00:06:12,520
+So let's say that one possibility is
+that's true and
+
+116
+00:06:12,520 --> 00:06:15,520
+the vaccine actually doesn't work, if the
+null hypothesis is false that would
+
+117
+00:06:15,520 --> 00:06:17,745
+mean the vaccine actually does have a
+biological effect.
+
+118
+00:06:17,745 --> 00:06:21,690
+Now you got into a study and then you have
+to make a statistical decision.
+
+119
+00:06:22,900 --> 00:06:24,960
+You're either going to reject the null
+hypothesis and
+
+120
+00:06:24,960 --> 00:06:26,950
+conclude that, in fact the vaccine does
+work.
+
+121
+00:06:28,490 --> 00:06:31,040
+Or you're going to fail to reject the null
+hypothesis.
+
+122
+00:06:31,040 --> 00:06:34,110
+If you fail to reject the null hypothesis,
+you're not saying that the null hypothesis
+
+123
+00:06:34,110 --> 00:06:37,690
+is true, you're just saying that there's
+insufficient evidence to reject it.
+
+124
+00:06:37,690 --> 00:06:39,090
+Notice that, that's a slightly different
+thing.
+
+125
+00:06:39,090 --> 00:06:40,190
+So just kind of keep that in mind.
+
+126
+00:06:40,190 --> 00:06:43,240
+We're never proving the null hypothesis,
+we're just failing to reject it.
+
+127
+00:06:44,300 --> 00:06:46,650
+So let's say that the null hypotheses is
+true.
+
+128
+00:06:46,650 --> 00:06:49,030
+In fact the vaccine doesn't work.
+
+129
+00:06:49,030 --> 00:06:51,680
+But let's say that you look at the results
+of the study and
+
+130
+00:06:51,680 --> 00:06:54,420
+say you see that P-value of .04 that made
+it under a .05.
+
+131
+00:06:54,420 --> 00:06:56,540
+And you decide to reject the null
+hypotheses, and
+
+132
+00:06:56,540 --> 00:06:58,940
+conclude that the vaccine is effective.
+
+133
+00:06:58,940 --> 00:07:01,530
+Then you've made a type one error a false
+positive, and
+
+134
+00:07:01,530 --> 00:07:04,240
+we think of that error as being fairly
+egregious.
+
+135
+00:07:04,240 --> 00:07:05,810
+Right because you might then, go out,
+
+136
+00:07:05,810 --> 00:07:08,360
+give people the vaccine, you might make
+policy decisions,
+
+137
+00:07:08,360 --> 00:07:12,410
+you might change how you treat patients
+based on rejecting a null hypothesis.
+
+138
+00:07:12,410 --> 00:07:15,550
+We tend to guard pretty stringently in the
+medical literature, or
+
+139
+00:07:15,550 --> 00:07:17,710
+we're trying to, against Type I error.
+
+140
+00:07:19,280 --> 00:07:22,430
+On the other hand, let's say that the
+vaccine in fact does work.
+
+141
+00:07:22,430 --> 00:07:26,010
+It has some real biological biological
+effect, in other words,
+
+142
+00:07:26,010 --> 00:07:28,660
+that the null hypothesis is false.
+
+143
+00:07:28,660 --> 00:07:30,980
+But let's say you look at the results of
+this study and
+
+144
+00:07:30,980 --> 00:07:32,870
+you know the P values are kind of
+marginal.
+
+145
+00:07:32,870 --> 00:07:34,180
+You're not that convinced.
+
+146
+00:07:34,180 --> 00:07:36,950
+So you don't reject the null hypothesis.
+
+147
+00:07:36,950 --> 00:07:38,720
+Then you've made a Type II error.
+
+148
+00:07:38,720 --> 00:07:41,670
+A false negative error.
+
+149
+00:07:41,670 --> 00:07:44,866
+You have failed to find an effect that
+actually exists.
+
+150
+00:07:44,866 --> 00:07:49,130
+Again, though, when you Fail to reject a
+null hypothesis you're
+
+151
+00:07:49,130 --> 00:07:52,450
+just concluding that there's insufficient
+evidence that the vaccine works.
+
+152
+00:07:52,450 --> 00:07:55,270
+Therefore, you might decide to keep on
+studying it.
+
+153
+00:07:55,270 --> 00:07:58,920
+We tend to think of a type II therefore as
+a little bit less egregious,
+
+154
+00:07:58,920 --> 00:08:02,870
+because we don't tend to change medical
+treatment and change policy based on it.
+
+155
+00:08:02,870 --> 00:08:05,925
+The result of a type II error is usually
+there's further study.
+
+156
+00:08:05,925 --> 00:08:10,670
+So in the medical literuture we tend to
+set the type 1 error to be
+
+157
+00:08:10,670 --> 00:08:12,940
+more stringent than the type 2 error rate.
+
+158
+00:08:12,940 --> 00:08:15,240
+And of course there's going to be a trade
+off between those 2 things.
+
+159
+00:08:15,240 --> 00:08:18,445
+So if you set the type 1 rate to be more
+stringent you have to loosen the type
+
+160
+00:08:18,445 --> 00:08:20,050
+2 error and vice versa.
+
+161
+00:08:20,050 --> 00:08:23,985
+In the medical literature a typical a
+study might have a type 1 error rate of
+
+162
+00:08:23,985 --> 00:08:30,900
+5% and a type 2 error of 20%.
+
+163
+00:08:30,900 --> 00:08:35,430
+Again, the type one error rate is directly
+related to the significance level.
+
+164
+00:08:35,430 --> 00:08:36,860
+So this is the false positive rate.
+
+165
+00:08:36,860 --> 00:08:39,290
+The probability of finding an effect that
+isn't real.
+
+166
+00:08:39,290 --> 00:08:43,390
+If you set the statistical significance
+cut-off a p-level of less than .05.
+
+167
+00:08:43,390 --> 00:08:46,540
+So in order to be statistically
+significant and reject the null.
+
+168
+00:08:46,540 --> 00:08:48,370
+You require a p-value of less than .05.
+
+169
+00:08:48,370 --> 00:08:52,935
+That means that you're permitting a false
+positive rate of
+
+170
+00:08:52,935 --> 00:08:56,070
+5% if there's nothing going on in your
+data if there are no
+
+171
+00:08:56,070 --> 00:09:02,090
+effects you're still expecting to see a
+significant p-value one in twenty times.
+
+172
+00:09:02,090 --> 00:09:05,708
+That's the Type I error rate directly
+related to the significance level.
+
+173
+00:09:05,708 --> 00:09:09,030
+The Type II error rate is
+
+174
+00:09:09,030 --> 00:09:12,490
+the probability of missing an effect to
+get a false negative.
+
+175
+00:09:12,490 --> 00:09:16,510
+Now, we don't usually talk directly about
+the Type II error in medical studies.
+
+176
+00:09:16,510 --> 00:09:19,840
+What we do instead is talk about something
+that's the compliment of
+
+177
+00:09:19,840 --> 00:09:20,400
+the Type II error.
+
+178
+00:09:20,400 --> 00:09:22,260
+We talk about the statistical power.
+
+179
+00:09:22,260 --> 00:09:25,020
+So, statistical power is just the
+probability of
+
+180
+00:09:25,020 --> 00:09:27,060
+finding an effect if it's there.
+
+181
+00:09:27,060 --> 00:09:29,310
+Is the probability of not making a type II
+error.
+
+182
+00:09:29,310 --> 00:09:33,760
+That's usually what we talk about in, in
+medical studies.
+
+183
+00:09:35,300 --> 00:09:41,560
+When we design studies a typical study
+might be designed to have a power 80%, so
+
+184
+00:09:41,560 --> 00:09:45,540
+that means we're allowing a false negative
+rate of type II error rate of about 20%.
+
+185
+00:09:45,540 --> 00:09:47,720
+Now that's sort of your typical study.
+
+186
+00:09:47,720 --> 00:09:50,740
+That means that we, when we go out to do
+studies we're accepting that in
+
+187
+00:09:50,740 --> 00:09:53,150
+about 1 in 5 studies we're going to miss a
+real effect,
+
+188
+00:09:53,150 --> 00:09:58,350
+when there are actually effects we're
+going to miss about 1 in 5 of them.
+
+189
+00:09:58,350 --> 00:10:00,370
+Statistical power is such an important
+concept in medicine/g,
+
+190
+00:10:00,370 --> 00:10:04,380
+I'm going to spend now a few more minutes
+talking about it.
+
+191
+00:10:04,380 --> 00:10:07,390
+Again, statistical power is the
+probability of finding and
+
+192
+00:10:07,390 --> 00:10:09,760
+effect if 1 is there.
+
+193
+00:10:09,760 --> 00:10:11,930
+It's akin, when we talk about diagnostic
+testing,
+
+194
+00:10:11,930 --> 00:10:13,520
+we talked about something called
+sensitivity.
+
+195
+00:10:13,520 --> 00:10:15,830
+Statistical power is just akin to
+sensitivity.
+
+196
+00:10:15,830 --> 00:10:17,170
+If there is an effect,
+
+197
+00:10:17,170 --> 00:10:18,760
+it's the probability that you're actually
+going to find it.
+
+198
+00:10:21,090 --> 00:10:25,428
+Finding an effect means coming out with a
+significant P value at the end of the day.
+
+199
+00:10:25,428 --> 00:10:29,860
+Statistical power is [UNKNOWN] if there's
+an effect there, the chances, the chance
+
+200
+00:10:29,860 --> 00:10:33,250
+that you're going to end up with a
+significant P value at the end of the day.
+
+201
+00:10:33,250 --> 00:10:37,080
+Your P value is going to be under 0.05, or
+whatever you set the bar at.
+
+202
+00:10:37,080 --> 00:10:41,390
+So statistical power is directly related
+to P-values because it's
+
+203
+00:10:41,390 --> 00:10:45,640
+the probability of getting a significant
+P-value.
+
+204
+00:10:45,640 --> 00:10:47,595
+What factors affect P values?
+
+205
+00:10:47,595 --> 00:10:49,570
+because the same factors that affect
+P-values are going to
+
+206
+00:10:49,570 --> 00:10:50,690
+affect statistical powers.
+
+207
+00:10:50,690 --> 00:10:52,480
+So let's just review from last week.
+
+208
+00:10:52,480 --> 00:10:54,160
+What affects the p-values?
+
+209
+00:10:54,160 --> 00:10:55,980
+Well there are three things that affect
+the P-values.
+
+210
+00:10:55,980 --> 00:10:59,079
+Remember we were calculating either Z or T
+scores.
+
+211
+00:11:00,480 --> 00:11:01,930
+When we do statistical tests.
+
+212
+00:11:01,930 --> 00:11:09,080
+And those were directly related to the
+effect size divided by the standard error.
+
+213
+00:11:09,080 --> 00:11:10,930
+And the standard error is some com-,
+
+214
+00:11:10,930 --> 00:11:15,272
+composite of variability divided by sample
+size.
+
+215
+00:11:15,272 --> 00:11:18,860
+It's not exactly variability divided by
+sample size.
+
+216
+00:11:18,860 --> 00:11:23,030
+It's more complicated than that but in
+essence the standard error has
+
+217
+00:11:23,030 --> 00:11:27,260
+a variability in the numerator and some
+version of sample size in the denominator.
+
+218
+00:11:27,260 --> 00:11:32,500
+So, roughly our z or t square was always
+proportional to the effect size divided by
+
+219
+00:11:32,500 --> 00:11:35,120
+the variability divided by the sample
+size.
+
+220
+00:11:35,120 --> 00:11:38,300
+That actually puts the sample size
+essentially in the numerator.
+
+221
+00:11:38,300 --> 00:11:42,700
+Bigger Z scores and bigger T scores mean
+smaller P values in other words if you
+
+222
+00:11:42,700 --> 00:11:46,190
+have a bigger effect size that's going to
+decrease the size of your P value because
+
+223
+00:11:46,190 --> 00:11:50,160
+its going to make you more likely to find
+a stastically significant effect.
+
+224
+00:11:50,160 --> 00:11:51,700
+If your sample size is bigger,
+
+225
+00:11:51,700 --> 00:11:55,650
+you're also going to be more likely to
+find a statistically significant effect.
+
+226
+00:11:55,650 --> 00:11:58,470
+However, if you have greater variability
+in the, in the outcome or
+
+227
+00:11:58,470 --> 00:12:02,640
+trait you are looking at, the greater the
+variability the smaller the z or
+
+228
+00:12:02,640 --> 00:12:06,410
+t value, therefore the less chance you'll
+have of finding statistical significance.
+
+229
+00:12:06,410 --> 00:12:10,540
+So those are the three factors that factor
+into the p-value.
+
+230
+00:12:10,540 --> 00:12:13,450
+Well since the statistical power is just
+the chance that your going to find
+
+231
+00:12:13,450 --> 00:12:16,930
+a significant P value of course power is
+directly related to
+
+232
+00:12:16,930 --> 00:12:18,190
+all those factors as well.

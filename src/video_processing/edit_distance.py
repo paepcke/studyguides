@@ -6,10 +6,8 @@ import random
 import string
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--rerun', action='store_true', dest='rerun', default=False)
 parser.add_argument('--regen-vocab', action='store_true', dest='regen_vocab', default=False)
 parser.add_argument('--window', action="store", dest="window", default=3)
-parser.add_argument('--verbose', action='store_true', dest='verbose', default=False)
 args = parser.parse_args()
 args.window = int(args.window)
 print "window = ", args.window, type(args.window)

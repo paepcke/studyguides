@@ -1,0 +1,423 @@
+1
+00:00:00,380 --> 00:00:02,880
+Now we're ready to do some simple analysis
+on the data.
+
+2
+00:00:02,880 --> 00:00:05,580
+Remember, you have two types of variables
+in your dataset.
+
+3
+00:00:05,580 --> 00:00:08,580
+Continuous variables and categorical
+variables.
+
+4
+00:00:08,580 --> 00:00:12,070
+>> Let's look at the distributions of our
+continuous variables first.
+
+5
+00:00:12,070 --> 00:00:13,470
+We can do this using proc univariate.
+
+6
+00:00:14,900 --> 00:00:16,480
+As you can see from the code.
+
+7
+00:00:16,480 --> 00:00:19,250
+We start out with proc univariate and then
+specify our data set.
+
+8
+00:00:20,420 --> 00:00:22,570
+Then using a var statement,
+
+9
+00:00:22,570 --> 00:00:25,550
+we can specify the variables that we
+want to have in our univariate analysis.
+
+10
+00:00:27,210 --> 00:00:32,120
+We're going to analyze age, BMI, weight,
+and height.
+
+11
+00:00:32,120 --> 00:00:33,640
+We then include a histogram statement, so
+
+12
+00:00:33,640 --> 00:00:35,370
+they get a histogram for each of these
+variables.
+
+13
+00:00:35,370 --> 00:00:44,700
+As you can see from the output, we still
+have age versus BMI by deceit status.
+
+14
+00:00:44,700 --> 00:00:47,760
+This is carried over from the previous
+graphic.
+
+15
+00:00:47,760 --> 00:00:51,860
+That's why you usually want to include G
+options, reset equals Alt before and
+
+16
+00:00:51,860 --> 00:00:53,350
+after each of your graphics.
+
+17
+00:00:53,350 --> 00:00:55,980
+Here's the output for the variable age.
+
+18
+00:00:55,980 --> 00:01:00,430
+You can see the mean, median, mode,
+standard deviation, variance and range.
+
+19
+00:01:00,430 --> 00:01:03,930
+And a lot of other information, here at
+the quantiles,
+
+20
+00:01:03,930 --> 00:01:05,500
+here's information about extreme values.
+
+21
+00:01:07,830 --> 00:01:10,770
+And down here, is a histogram as well as
+information on missing values.
+
+22
+00:01:10,770 --> 00:01:14,320
+We have a similar output for the BMI
+variable,
+
+23
+00:01:14,320 --> 00:01:19,760
+for the weight variable and for the height
+variable.
+
+24
+00:01:21,560 --> 00:01:24,860
+>> We might also be interested in looking
+at these distributions among the subset of
+
+25
+00:01:24,860 --> 00:01:28,620
+individuals who are diabetic and
+individuals who are not diabetic.
+
+26
+00:01:28,620 --> 00:01:31,870
+We can do this by adding a by statement in
+our code.
+
+27
+00:01:31,870 --> 00:01:35,230
+Under histogram, we write by is diabetic.
+
+28
+00:01:35,230 --> 00:01:39,230
+This will allow us to have an output that
+is stratified by diabetes status.
+
+29
+00:01:39,230 --> 00:01:40,700
+Let's run this code and see what happens.
+
+30
+00:01:44,720 --> 00:01:46,790
+As you can see we now have an error
+statement.
+
+31
+00:01:46,790 --> 00:01:51,810
+It says the data set, work BMI is not
+sorted in ascending sequence.
+
+32
+00:01:53,220 --> 00:01:55,230
+>> Remember, if you want to use a by
+statement,
+
+33
+00:01:55,230 --> 00:01:58,620
+you first have to sort your data set by
+the variable that you want to stratify on.
+
+34
+00:01:59,690 --> 00:02:05,660
+So first, you have to sort our data set by
+isdiabetic using proc sort.
+
+35
+00:02:05,660 --> 00:02:08,950
+Now, if we run it, it will stratify our
+data correctly.
+
+36
+00:02:12,410 --> 00:02:15,860
+As you can see from the output, it will
+first give us all the results for
+
+37
+00:02:15,860 --> 00:02:18,090
+the subset of non diabetics within our
+data set.
+
+38
+00:02:19,500 --> 00:02:20,420
+Here's the information for
+
+39
+00:02:20,420 --> 00:02:25,520
+the age variable amongst those who are
+non-diabetic.
+
+40
+00:02:25,520 --> 00:02:26,730
+Here's the information for
+
+41
+00:02:26,730 --> 00:02:29,204
+the BMI variable, amongst those who are
+non-diabetic.
+
+42
+00:02:30,940 --> 00:02:32,070
+And same for weight and height.
+
+43
+00:02:34,190 --> 00:02:37,270
+And then it'll have all the information
+for the people who are diabetic.
+
+44
+00:02:37,270 --> 00:02:38,670
+So here is the age information for
+
+45
+00:02:38,670 --> 00:02:43,240
+diabetics, BMI, weight and height, as
+well.
+
+46
+00:02:43,240 --> 00:02:47,110
+>> Now let's take a look at our
+categorical variables gender,
+
+47
+00:02:47,110 --> 00:02:49,650
+diabetes status, race and smoking.
+
+48
+00:02:49,650 --> 00:02:53,010
+We also have our new categorical variables
+that we made by chopping up age and BMI.
+
+49
+00:02:53,010 --> 00:02:56,150
+For these categorical variables we can use
+proc freq.
+
+50
+00:02:58,660 --> 00:03:00,220
+Let's take a look at our code.
+
+51
+00:03:00,220 --> 00:03:02,440
+By now you should be familiar with the
+proc freq syntax.
+
+52
+00:03:03,680 --> 00:03:08,035
+In this case, we made sure to specify that
+our data set was the BMI_quartiles.
+
+53
+00:03:09,470 --> 00:03:11,470
+Underneath, we have our table statement.
+
+54
+00:03:11,470 --> 00:03:14,790
+Here we list, all of our categorical
+variables we want to look at.
+
+55
+00:03:14,790 --> 00:03:16,320
+Let's run the code and take a look at the
+output.
+
+56
+00:03:18,330 --> 00:03:21,310
+>> Here we can see the one way frequency
+tables, for each of these variables.
+
+57
+00:03:23,180 --> 00:03:27,480
+As you can see, we have 582 non-diabetics
+and 413 diabetics.
+
+58
+00:03:28,540 --> 00:03:31,104
+It'll also tell us the percentage of ea,
+each of these sub-groups.
+
+59
+00:03:32,858 --> 00:03:34,130
+Let's make a contingency tables, so
+
+60
+00:03:34,130 --> 00:03:39,610
+we can see the distribution of these
+variables for diabetics and non-diabetics.
+
+61
+00:03:39,610 --> 00:03:42,380
+>> Remember, if you want to create
+multiple contingency tables,
+
+62
+00:03:42,380 --> 00:03:44,750
+you can use asterisks and parentheses and
+
+63
+00:03:44,750 --> 00:03:47,510
+include all the values you want to cross
+with is diabetic.
+
+64
+00:03:49,770 --> 00:03:52,390
+This code creates five separate
+contingency tables.
+
+65
+00:03:54,770 --> 00:03:58,500
+Now that we have these contingency tables,
+we can run a Chi-squared test to see if
+
+66
+00:03:58,500 --> 00:04:02,445
+there's an association between alkon
+variable and the categorical predictors.
+
+67
+00:04:02,445 --> 00:04:07,162
+>> [SOUND] We can also add additional
+options to
+
+68
+00:04:07,162 --> 00:04:12,280
+limit the output, so it's not as
+cluttered.
+
+69
+00:04:15,760 --> 00:04:18,740
+In the output area we can see whether
+these Chi-squared tests provided enough
+
+70
+00:04:18,740 --> 00:04:20,890
+evidence to reject a null hypothesis.
+
+71
+00:04:20,890 --> 00:04:22,140
+That these variables are independent.
+
+72
+00:04:24,460 --> 00:04:28,120
+For example, say we believe that there was
+a relationship between smoking status
+
+73
+00:04:28,120 --> 00:04:28,890
+and Diabetes.
+
+74
+00:04:30,550 --> 00:04:34,040
+Down here we can see the contingency table
+for Diabetes versus smoking status.
+
+75
+00:04:34,040 --> 00:04:39,610
+We can see here that the Chi-square value
+has a p-value that's less than 0.001.
+
+76
+00:04:39,610 --> 00:04:46,590
+This means that the alpha equals 0.05
+level, we can reject the null hypothesis.
+
+77
+00:04:46,590 --> 00:04:48,650
+In other words, there's sufficient
+evidence to
+
+78
+00:04:48,650 --> 00:04:52,690
+show that there is an association between
+smoking status and diabetic outcome.
+
+79
+00:04:53,910 --> 00:04:55,820
+>> Let's make some two-by-two contingency
+tables and
+
+80
+00:04:55,820 --> 00:04:57,480
+have Saas calculate some risk ratios.
+
+81
+00:05:00,080 --> 00:05:01,560
+To do this, we'll create a new program.
+
+82
+00:05:03,690 --> 00:05:06,720
+Use proc frequency and specifier data set.
+
+83
+00:05:06,720 --> 00:05:10,850
+And use our table statement to cross,
+Isdiabetics with females and
+
+84
+00:05:10,850 --> 00:05:11,510
+smoking staff.
+
+85
+00:05:12,720 --> 00:05:15,300
+>> In the options, we specify relrisk,
+
+86
+00:05:15,300 --> 00:05:17,600
+that tells us we wanted to calculate
+relative risk measures.
+
+87
+00:05:20,590 --> 00:05:23,690
+In the output, we can see that it
+calculated Odds Ratios and Risk Ratios.
+
+88
+00:05:23,690 --> 00:05:27,450
+This will tell us the strength of the
+association between these variables.
+
+89
+00:05:28,890 --> 00:05:34,210
+As we can see there is an Odds Ratio of
+0.8, for
+
+90
+00:05:34,210 --> 00:05:37,210
+the association between gender and
+diabetic status.

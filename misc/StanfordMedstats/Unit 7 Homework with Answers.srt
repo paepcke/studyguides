@@ -1,0 +1,876 @@
+1
+00:00:02,130 --> 00:00:05,595
+These data came from a twin study, so each
+case is somebody with
+
+2
+00:00:05,595 --> 00:00:11,530
+Parkinson's disease and they have a twin
+who does not have Parkinson's disease.
+
+3
+00:00:11,530 --> 00:00:14,598
+So we have these case control pairs that
+are correlated by the fact that
+
+4
+00:00:14,598 --> 00:00:17,190
+they're within a twin pair.
+
+5
+00:00:17,190 --> 00:00:19,060
+So we have correlated data here.
+
+6
+00:00:19,060 --> 00:00:22,430
+Our outcome here is binary.
+
+7
+00:00:22,430 --> 00:00:24,690
+You have Parkinson's disease or you don't.
+
+8
+00:00:24,690 --> 00:00:27,571
+Our exposure variable, our predictor is
+whether or
+
+9
+00:00:27,571 --> 00:00:30,465
+not you've been various chemicals.
+
+10
+00:00:30,465 --> 00:00:35,088
+So we have essentially categorical data
+for both the predictor and the outcome but
+
+11
+00:00:35,088 --> 00:00:37,830
+we have this correlation.
+
+12
+00:00:37,830 --> 00:00:41,910
+So that's going to tell us that we're
+going to have to do a McNemar's test.
+
+13
+00:00:41,910 --> 00:00:44,655
+However, if you look carefully at a lot of
+these cells.
+
+14
+00:00:44,655 --> 00:00:48,549
+Remember for a McNemar's test, we only
+care about the discordant pairs
+
+15
+00:00:48,549 --> 00:00:52,249
+which would be these two middle two
+columns.
+
+16
+00:00:52,249 --> 00:00:57,230
+If you look at all of these columns, a lot
+of the columns involve sparse data.
+
+17
+00:00:57,230 --> 00:01:00,360
+So one or two people only in some of those
+cells.
+
+18
+00:01:00,360 --> 00:01:02,349
+So not only do we have to do a McNemar's
+test, but
+
+19
+00:01:02,349 --> 00:01:06,998
+we actually have to do an exact test to
+calculate those probabilities exactly.
+
+20
+00:01:06,998 --> 00:01:09,497
+Rather than using a normal approximation
+to the binomial,
+
+21
+00:01:09,497 --> 00:01:12,350
+which is what a Ky square normally would
+do.
+
+22
+00:01:12,350 --> 00:01:16,329
+So we're going to use a McNemar's exact
+test here.
+
+23
+00:01:18,380 --> 00:01:19,767
+[SOUND].
+This question asks you
+
+24
+00:01:19,767 --> 00:01:23,370
+specifically about the probabilities for
+PRC.
+
+25
+00:01:23,370 --> 00:01:27,395
+It's asking you to calculate the p value
+for the PERC chemical [INAUDIBLE].
+
+26
+00:01:27,395 --> 00:01:31,900
+It might be helpful here to draw a 2 by 2
+table if that helps you to,
+
+27
+00:01:31,900 --> 00:01:35,400
+to see the problem.
+
+28
+00:01:35,400 --> 00:01:40,506
+So we have your either we have cases.
+
+29
+00:01:40,506 --> 00:01:47,280
+The case is either, these are pair data,
+so we have cases and controls.
+
+30
+00:01:47,280 --> 00:01:49,150
+So, the cases have Parkinson's.
+
+31
+00:01:49,150 --> 00:01:53,135
+The control is their twin and we're
+analyzing things at the level of pair.
+
+32
+00:01:53,135 --> 00:01:54,487
+So, we have, in this case, then,
+
+33
+00:01:54,487 --> 00:01:58,920
+what we're looking at here is you were
+either exposed to PERC or you weren't.
+
+34
+00:01:58,920 --> 00:02:03,790
+And some of the cases, both were exposed.
+
+35
+00:02:03,790 --> 00:02:08,850
+Some of them weren't, both were not
+exposed others, there was a discordant.
+
+36
+00:02:08,850 --> 00:02:11,130
+So it turns out that the majority were not
+exposed.
+
+37
+00:02:11,130 --> 00:02:14,780
+So we had 93 pairs where neither the case
+nor the control was exposed.
+
+38
+00:02:14,780 --> 00:02:18,278
+There weren't any new pairs where both
+case and control were exposed, however,
+
+39
+00:02:18,278 --> 00:02:22,200
+we did have a couple of pairs where there
+was discordance.
+
+40
+00:02:22,200 --> 00:02:25,970
+So there were five pairs where the case
+that is the person with Parkinson's di,
+
+41
+00:02:25,970 --> 00:02:29,112
+disease was exposed to this chemical.
+
+42
+00:02:29,112 --> 00:02:30,564
+But the control was not and
+
+43
+00:02:30,564 --> 00:02:35,000
+we have one situation, one case where the
+opposite was true.
+
+44
+00:02:35,000 --> 00:02:38,100
+The control was exposed to the chemical
+but the case was not.
+
+45
+00:02:38,100 --> 00:02:40,844
+It turns our for McNemar's test the only
+thing that's of use
+
+46
+00:02:40,844 --> 00:02:45,820
+the only information that's informative
+for us here is the discordant pair.
+
+47
+00:02:45,820 --> 00:02:48,690
+So we have six discordant pairs.
+
+48
+00:02:48,690 --> 00:02:53,170
+And the null hypothesis here is that the
+chemical is not related to whether or
+
+49
+00:02:53,170 --> 00:02:56,390
+not you're a case or a control.
+
+50
+00:02:56,390 --> 00:03:00,180
+So, under the null hypothesis we've got
+six discordant pairs.
+
+51
+00:03:00,180 --> 00:03:02,790
+If there was no relationship between the
+chemical and
+
+52
+00:03:02,790 --> 00:03:07,440
+getting Parkinson's disease, this would
+follow a binomial distribution.
+
+53
+00:03:07,440 --> 00:03:10,440
+X would follow a binomial distribution,
+and the n here is 6
+
+54
+00:03:10,440 --> 00:03:15,526
+which is just determined by how many
+discordant pairs we ended up with.
+
+55
+00:03:15,526 --> 00:03:18,000
+The p would .5 under the null hypothesis.
+
+56
+00:03:18,000 --> 00:03:19,518
+In other words just think intuitively,
+
+57
+00:03:19,518 --> 00:03:23,494
+if there's not relationship here between
+the chemical and Parkinson's disease.
+
+58
+00:03:23,494 --> 00:03:25,654
+You'd expect there, did, the discord
+appears to, kind of,
+
+59
+00:03:25,654 --> 00:03:29,880
+be even about three where it was the case
+that it was exposed and not the control.
+
+60
+00:03:29,880 --> 00:03:32,800
+And three where it was the control that
+was exposed and not the case.
+
+61
+00:03:32,800 --> 00:03:35,740
+The question we're really asking here is,
+how far off is a 51
+
+62
+00:03:35,740 --> 00:03:40,940
+split from what we'd expect under the
+normal, which is like a 3 3 split.
+
+63
+00:03:40,940 --> 00:03:43,391
+So we're on a binomial, we're going to
+have to because of small numbers,
+
+64
+00:03:43,391 --> 00:03:46,660
+we're going to have to calculate that
+exact binomial probability.
+
+65
+00:03:46,660 --> 00:03:48,235
+So we're literally going to go through and
+
+66
+00:03:48,235 --> 00:03:50,825
+calculate the exact binomial probabilities
+here.
+
+67
+00:03:50,825 --> 00:03:52,380
+So what did we actually see?
+
+68
+00:03:52,380 --> 00:03:55,035
+We saw the case where we ended up with
+five discordant pairs where it was
+
+69
+00:03:55,035 --> 00:03:58,080
+the case who had been exposed and not the
+control.
+
+70
+00:03:58,080 --> 00:04:03,050
+The binomial probability, we'll just apply
+our binomial probability formula here,
+
+71
+00:04:03,050 --> 00:04:06,970
+we've got six choose five P is 0.5 so we
+do 0.5 raised to the fifth, and
+
+72
+00:04:06,970 --> 00:04:13,760
+then one minus P is also 0.5, so we do,
+0.5 raised to the first.
+
+73
+00:04:13,760 --> 00:04:16,710
+But, remember, P values we have to
+calculate the probability of what we
+
+74
+00:04:16,710 --> 00:04:18,980
+saw and everything more extreme.
+
+75
+00:04:18,980 --> 00:04:22,205
+So we also have to calculate the
+probability that we
+
+76
+00:04:22,205 --> 00:04:27,005
+could have gotten all 6 discordant pairs,
+it was the case that was exposed, so
+
+77
+00:04:27,005 --> 00:04:31,270
+we do 626.5 raised to the 6th.
+
+78
+00:04:31,270 --> 00:04:33,502
+We also have to consider, the other tail,
+
+79
+00:04:33,502 --> 00:04:39,097
+remember if we did out all the binomial
+probabilities here, they go from 0 to 6.
+
+80
+00:04:39,097 --> 00:04:43,377
+We could we'd get something that excuse my
+crude drawing here.
+
+81
+00:04:43,377 --> 00:04:45,925
+But we get something where we have five
+and six and one tail, but
+
+82
+00:04:45,925 --> 00:04:48,522
+we have to consider we would run into a
+two tailed hypothesis and
+
+83
+00:04:48,522 --> 00:04:53,241
+consider we could've been just as extreme
+in the other direction.
+
+84
+00:04:53,241 --> 00:04:55,009
+And as we could have ended up with only 0
+or
+
+85
+00:04:55,009 --> 00:04:58,670
+1 discordant pairs where it was the case
+that was exposed.
+
+86
+00:04:58,670 --> 00:05:00,920
+So we have to do a two tailed probability.
+
+87
+00:05:00,920 --> 00:05:04,940
+You can do that by, calculating the other
+tail which is the probability that x
+
+88
+00:05:04,940 --> 00:05:08,610
+equals 1 and the probability that x equals
+0.
+
+89
+00:05:08,610 --> 00:05:13,116
+It turns out that those are exactly the
+same as the ones that you see here.
+
+90
+00:05:13,116 --> 00:05:16,190
+So this one comes out to be .015625.
+
+91
+00:05:16,190 --> 00:05:23,160
+This one comes out to be .09375.
+
+92
+00:05:23,160 --> 00:05:30,421
+This one will also be 0.09375 and this one
+will 0.019625 when you
+
+93
+00:05:30,421 --> 00:05:40,130
+add all of those up, You get the P value
+here is 0.21875.
+
+94
+00:05:40,130 --> 00:05:43,652
+These is a situation where we have carried
+the data, we have repeated measures.
+
+95
+00:05:43,652 --> 00:05:48,400
+It's the same women measured before and
+after they smoked.
+
+96
+00:05:48,400 --> 00:05:51,325
+We have a continuous outcome which is
+blood pressure and also heart rate, and,
+
+97
+00:05:51,325 --> 00:05:53,935
+so we are going to be using a paired t
+test here because it's a before and
+
+98
+00:05:53,935 --> 00:05:56,810
+after with a continuous outcome.
+
+99
+00:05:56,810 --> 00:06:01,400
+The correct answer here is false.
+
+100
+00:06:01,400 --> 00:06:04,100
+You actually cannot calculate the paired t
+test here,
+
+101
+00:06:04,100 --> 00:06:06,700
+from the data given in the table.
+
+102
+00:06:06,700 --> 00:06:08,380
+Why is that?
+
+103
+00:06:08,380 --> 00:06:11,964
+Well, we're given the mean before smoking
+and the mean after smoking, but
+
+104
+00:06:11,964 --> 00:06:17,300
+remember, the paired T test looks at the
+differences for individual women.
+
+105
+00:06:17,300 --> 00:06:20,810
+And right now, we don't know the
+difference values for individual women.
+
+106
+00:06:20,810 --> 00:06:25,110
+We don't know, how much each woman
+individually went up or down.
+
+107
+00:06:25,110 --> 00:06:30,194
+We would need that information in able to
+be able to calculate the paired T test.
+
+108
+00:06:30,194 --> 00:06:34,417
+In this question, breast feeding is a
+categorical variable.
+
+109
+00:06:34,417 --> 00:06:37,517
+We're comparing groups of men by whether
+they or not they were breastfed or
+
+110
+00:06:37,517 --> 00:06:41,210
+the duration of how they were how much
+they were breastfed.
+
+111
+00:06:41,210 --> 00:06:42,650
+Our outcome variable is binary.
+
+112
+00:06:42,650 --> 00:06:45,390
+Your either obese or you're not obese.
+
+113
+00:06:45,390 --> 00:06:50,048
+We also do not have sparse data, so we're
+going to be using a [UNKNOWN] square test.
+
+114
+00:06:50,048 --> 00:06:53,072
+And because we don't have sparse data we
+don't have to worry about
+
+115
+00:06:53,072 --> 00:06:56,950
+the fisher's exact test, we're doing an
+exact test here.
+
+116
+00:06:56,950 --> 00:07:00,105
+In this case we're going to be comparing
+different groups.
+
+117
+00:07:00,105 --> 00:07:03,453
+We're comparing men in different groups of
+duration of breast feeding, so
+
+118
+00:07:03,453 --> 00:07:07,830
+that's a categorical predictor, groups,
+they are independent groups.
+
+119
+00:07:07,830 --> 00:07:12,070
+Our outcome variable now is BMI, BMI is a
+continuous variable.
+
+120
+00:07:12,070 --> 00:07:14,185
+We're going to assume that it's normally
+distributed or
+
+121
+00:07:14,185 --> 00:07:18,254
+close enough with such large sample sizes
+that we can run an anova test here.
+
+122
+00:07:18,254 --> 00:07:22,514
+So this questions says, let's say we do
+our ki square test for obesity and
+
+123
+00:07:22,514 --> 00:07:28,409
+breast feeding group, and we get a
+significant P value, P is .03.
+
+124
+00:07:28,409 --> 00:07:30,640
+What does that mean?
+
+125
+00:07:30,640 --> 00:07:32,102
+Well the ki squared test is a global test,
+
+126
+00:07:32,102 --> 00:07:35,090
+what it actually doesn't tell us where the
+differences lie.
+
+127
+00:07:35,090 --> 00:07:37,180
+It just tells us that at least one of
+those breast feeding groups is
+
+128
+00:07:37,180 --> 00:07:38,760
+different than the others.
+
+129
+00:07:38,760 --> 00:07:42,024
+And if you actually look at the numbers
+here, you know,
+
+130
+00:07:42,024 --> 00:07:45,750
+it goes from 9.6% obese to 13.1% to 20.7%.
+
+131
+00:07:45,750 --> 00:07:47,790
+It looks like it's going up as you get
+more breastfeeding, and
+
+132
+00:07:47,790 --> 00:07:51,090
+then it goes down for the really long
+breast feeding group.
+
+133
+00:07:51,090 --> 00:07:54,264
+So there's no particular pattern here, so
+all we can conclude is D, that the percent
+
+134
+00:07:54,264 --> 00:07:58,660
+of obese subjects differs in at least one
+of those breast feeding categories.
+
+135
+00:08:01,310 --> 00:08:05,330
+This asks you to calculate the mean change
+in exercise duration.
+
+136
+00:08:05,330 --> 00:08:06,590
+And you can do it just off the graph.
+
+137
+00:08:06,590 --> 00:08:11,740
+It's nice that they were measured in only
+in units of .5, nothing finer than that.
+
+138
+00:08:11,740 --> 00:08:15,470
+So for example, this first person went up
+three seconds.
+
+139
+00:08:15,470 --> 00:08:20,910
+The next person went up .5, this one was
+zero, .5,
+
+140
+00:08:20,910 --> 00:08:28,682
+1.5, zero, 1.5, .5, .5, 1.0, .5, zero, and
+.5.
+
+141
+00:08:28,682 --> 00:08:33,480
+You literally just have to pick those up,
+up off of the graph.
+
+142
+00:08:33,480 --> 00:08:34,696
+Well if you add up all of those numbers,
+
+143
+00:08:34,696 --> 00:08:36,102
+I'm not going to write in all those all
+out here,
+
+144
+00:08:36,102 --> 00:08:38,030
+just because it would take a while.
+
+145
+00:08:38,030 --> 00:08:40,550
+But if you add up all of those numbers
+from 1 to 13,
+
+146
+00:08:40,550 --> 00:08:45,680
+you end up and then divide by 13, to
+calculate the average here.
+
+147
+00:08:45,680 --> 00:08:49,810
+You end up with .77.
+
+148
+00:08:49,810 --> 00:08:52,054
+To calculate the standard deviation of
+change here,
+
+149
+00:08:52,054 --> 00:08:56,170
+we're simply going to take each
+observation and subtract it from the mean.
+
+150
+00:08:56,170 --> 00:08:58,820
+Well, you've already calculated the mean
+to be 0.77.
+
+151
+00:08:58,820 --> 00:09:02,096
+So, for example, we take the first person,
+subtract the mean square of that,
+
+152
+00:09:02,096 --> 00:09:04,780
+then we do this for the next person.
+
+153
+00:09:04,780 --> 00:09:08,560
+The next person has a value of 0.5,
+subtract from the mean square of that.
+
+154
+00:09:08,560 --> 00:09:10,170
+We're going to do that for all 13.
+
+155
+00:09:10,170 --> 00:09:12,235
+I won't write it out completely here.
+
+156
+00:09:12,235 --> 00:09:15,895
+You're then going to divide by n-1.
+
+157
+00:09:15,895 --> 00:09:18,645
+For the standard deviation, you'll always
+divide by n-1, so
+
+158
+00:09:18,645 --> 00:09:21,250
+that ends up being 13-1 or 12 here.
+
+159
+00:09:21,250 --> 00:09:23,870
+And then we would square-root that whole
+thing.
+
+160
+00:09:23,870 --> 00:09:30,580
+When you calculate that out, you get a
+value of 0.83.
+
+161
+00:09:30,580 --> 00:09:34,540
+To calculate the standard error of the
+change here, we would take this.
+
+162
+00:09:34,540 --> 00:09:37,431
+Standard deviation for change which we
+calculated already as 0.83 and
+
+163
+00:09:37,431 --> 00:09:39,570
+divided by the square root of N.
+
+164
+00:09:39,570 --> 00:09:43,700
+So, 0.83 divided by the square root of 13
+is 0.23.
+
+165
+00:09:43,700 --> 00:09:45,310
+That would be our standard error here.
+
+166
+00:09:45,310 --> 00:09:50,070
+To calculate the 95% confidence interval,
+we're going to take the observed mean,
+
+167
+00:09:50,070 --> 00:09:53,984
+which we already calculated to to be 0.77.
+
+168
+00:09:53,984 --> 00:09:56,854
+We're going to add and subtract our t
+value here, for
+
+169
+00:09:56,854 --> 00:10:00,920
+a 99% confidence interval I gave you, is
+3.055.
+
+170
+00:10:00,920 --> 00:10:04,487
+We're going to multiply that by our
+standard error,
+
+171
+00:10:04,487 --> 00:10:08,630
+which we calculated already to be 0.23.
+
+172
+00:10:08,630 --> 00:10:09,848
+When you add that all out,
+
+173
+00:10:09,848 --> 00:10:13,920
+you're going to end up with a confidence
+interval of 0.067 to 1.47.
+
+174
+00:10:13,920 --> 00:10:16,588
+The answer to this question is true.
+
+175
+00:10:16,588 --> 00:10:20,820
+It is statistically significant at the
+0.01 level.
+
+176
+00:10:20,820 --> 00:10:22,200
+How do we know that?
+
+177
+00:10:22,200 --> 00:10:26,820
+Well we just calculated the 99% confidence
+interval.
+
+178
+00:10:26,820 --> 00:10:31,030
+That confidence interval does not include
+the null value which is 0 here.
+
+179
+00:10:31,030 --> 00:10:37,803
+This excludes 0, therefore we can be sure
+that the p value is less than .01.
+
+180
+00:10:39,110 --> 00:10:41,770
+The answer to this question is false.
+
+181
+00:10:41,770 --> 00:10:44,844
+We did prove that there is a statically
+significant increase in
+
+182
+00:10:44,844 --> 00:10:47,900
+the exercise duration of these patients.
+
+183
+00:10:47,900 --> 00:10:50,628
+However, it's unclear if the camp is
+responsible for
+
+184
+00:10:50,628 --> 00:10:54,910
+this change, they could have all gone up
+for other reasons.
+
+185
+00:10:54,910 --> 00:10:58,590
+We don't have a control group here so we
+can't conclude causality here.
+
+186
+00:10:58,590 --> 00:11:03,231
+We just know that for some reason they
+went up a significant amount.

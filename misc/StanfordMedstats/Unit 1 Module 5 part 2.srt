@@ -1,0 +1,1012 @@
+1
+00:00:01,750 --> 00:00:04,470
+Let's look at some of the example data,
+from my Stanford students.
+
+2
+00:00:04,470 --> 00:00:08,810
+So here's the distribution of homework,
+again, in hours per week.
+
+3
+00:00:08,810 --> 00:00:12,994
+And we saw that the, in an earlier module,
+the mean homework was 11.5, 4,
+
+4
+00:00:12,994 --> 00:00:18,380
+11.4 hours, the standard deviation for
+homework was actually 10.5 hours.
+
+5
+00:00:18,380 --> 00:00:20,450
+So that's a pretty big variability.
+
+6
+00:00:20,450 --> 00:00:21,190
+Right?
+So
+
+7
+00:00:21,190 --> 00:00:24,090
+when average students are doing about 11
+hours of homework, but
+
+8
+00:00:24,090 --> 00:00:27,320
+the average variability is 10.5.
+
+9
+00:00:27,320 --> 00:00:30,690
+So that means many students were doing
+down towards zero and
+
+10
+00:00:30,690 --> 00:00:33,060
+many students were doing 20 or more hours
+per week.
+
+11
+00:00:33,060 --> 00:00:36,070
+So pretty wide or pretty large variability
+here.
+
+12
+00:00:37,710 --> 00:00:40,540
+Lets look at our feelings about math from
+my Stanford students.
+
+13
+00:00:40,540 --> 00:00:42,550
+So again pretty wide variability here.
+
+14
+00:00:42,550 --> 00:00:45,210
+I asked the students to rate their
+feelings about math from,
+
+15
+00:00:45,210 --> 00:00:50,720
+zero being really hate math to 100 being
+they really love math.
+
+16
+00:00:50,720 --> 00:00:55,940
+And the mean in this particular variable
+turned out to be 61.
+
+17
+00:00:55,940 --> 00:00:58,470
+So on average people are favorable,
+although,
+
+18
+00:00:58,470 --> 00:01:00,690
+not highly favorable towards math.
+
+19
+00:01:00,690 --> 00:01:04,060
+But the standard deviation here was really
+high, it was 21.
+
+20
+00:01:04,060 --> 00:01:07,400
+So you can see, you know, on average,
+people are 61, but, you,
+
+21
+00:01:07,400 --> 00:01:12,230
+it easily goes down to 40 or up to 80, so
+there's a fairly wide spread here.
+
+22
+00:01:12,230 --> 00:01:17,230
+Now, I mentioned in an earlier module,
+that the feelings about math variable,
+
+23
+00:01:17,230 --> 00:01:20,950
+actually is roughly, follows a bell curve.
+
+24
+00:01:20,950 --> 00:01:24,300
+It's not a perfect bell curve by any
+means, but of the variables I've talked
+
+25
+00:01:24,300 --> 00:01:28,699
+about this week, it was one of the closest
+in terms of following a bell curve.
+
+26
+00:01:28,699 --> 00:01:32,700
+So I just want to pause for a minute, and
+I'm going to revisit a,
+
+27
+00:01:32,700 --> 00:01:38,520
+a rule I told you about earlier this week
+about bell curves, about normal curves.
+
+28
+00:01:38,520 --> 00:01:42,040
+So, remember I mentioned that bell curves
+have this predictable behavior.
+
+29
+00:01:42,040 --> 00:01:43,890
+If you're on a perfect bell curve,
+
+30
+00:01:43,890 --> 00:01:48,295
+you follow something called the 68-95-99.7
+rule.
+
+31
+00:01:48,295 --> 00:01:52,195
+68% of the observations lie within one
+standard deviation of the mean.
+
+32
+00:01:52,195 --> 00:01:57,520
+95% of observations will lie within two
+standard deviations of the mean.
+
+33
+00:01:57,520 --> 00:02:02,100
+And 99.7% of observations will lie within
+three standard deviations of the mean.
+
+34
+00:02:02,100 --> 00:02:03,580
+If you're on a perfect bell curve, and
+
+35
+00:02:03,580 --> 00:02:07,220
+a bell curve is just a mathematical
+function, if you follow that perfect bell
+
+36
+00:02:07,220 --> 00:02:10,800
+curve mathematical function, those will be
+exact.
+
+37
+00:02:10,800 --> 00:02:14,500
+Of course, real data is never going to
+follow a bell curve, perfectly like that.
+
+38
+00:02:14,500 --> 00:02:17,950
+So let's look, see how good this rule is
+for
+
+39
+00:02:17,950 --> 00:02:21,870
+some real data that looks kind of on a
+bell curve, but certainly not perfect.
+
+40
+00:02:21,870 --> 00:02:26,280
+How good is that rule for some real data,
+that's not even perfectly on a bell curve?
+
+41
+00:02:26,280 --> 00:02:27,520
+So we can test that out.
+
+42
+00:02:27,520 --> 00:02:32,500
+So the mean here was 61, so one standard
+deviation below the mean, and
+
+43
+00:02:32,500 --> 00:02:33,770
+the standard deviation was 21, so one
+standard deviation below the mean is 40.
+
+44
+00:02:33,770 --> 00:02:41,650
+One standard deviation above the mean is
+61 plus 21, which is 82.
+
+45
+00:02:41,650 --> 00:02:43,920
+So if you're going from one standard
+deviation below,
+
+46
+00:02:43,920 --> 00:02:48,790
+to one standard deviation above the mean,
+that's anywhere between 40 to 82.
+
+47
+00:02:48,790 --> 00:02:53,970
+So I actually went into my data set, and I
+looked and
+
+48
+00:02:53,970 --> 00:02:59,040
+counted up how many of my 50 students fell
+between values of 40 and 82.
+
+49
+00:02:59,040 --> 00:03:00,510
+I actually counted it up.
+
+50
+00:03:00,510 --> 00:03:03,340
+And it turned out there were 34 out of 47;
+in fact,
+
+51
+00:03:03,340 --> 00:03:05,330
+three people did not answer this question.
+
+52
+00:03:05,330 --> 00:03:10,859
+So I had only 47 total for this question,
+but 34 of them had values between 40 and
+
+53
+00:03:10,859 --> 00:03:14,580
+82, that's 72%, so it's not 68%, but it's
+pretty close.
+
+54
+00:03:16,450 --> 00:03:18,710
+If you go out 2 standard deviations from
+the mean,
+
+55
+00:03:18,710 --> 00:03:21,525
+that gets you out to 100 on the right
+side.
+
+56
+00:03:21,525 --> 00:03:23,830
+because you can't get a by, higher than
+100, and
+
+57
+00:03:23,830 --> 00:03:29,408
+it gets you down to 19, so 61-42 is 19, 19
+on the other side.
+
+58
+00:03:29,408 --> 00:03:32,352
+And if I count out the number of students
+that fall between 19 and
+
+59
+00:03:32,352 --> 00:03:36,210
+a 100 in my data set, it was 46 out of 47,
+or 98%.
+
+60
+00:03:36,210 --> 00:03:39,690
+So again, on a bell curve, in a perfect
+bell curve is going to be 95%, but
+
+61
+00:03:39,690 --> 00:03:43,149
+real data that was kind of a bell curve,
+it's pretty close, it's 98 percent.
+
+62
+00:03:43,149 --> 00:03:45,830
+And of course If I go out up three
+standard deviations above and
+
+63
+00:03:45,830 --> 00:03:47,758
+below the mean, I cover the entire range,
+
+64
+00:03:47,758 --> 00:03:52,380
+0 to 100, and of course that means a 100%
+of my students fell within that range.
+
+65
+00:03:52,380 --> 00:03:55,990
+It's suppose to be 99.7%, 100% is really,
+really close.
+
+66
+00:03:55,990 --> 00:04:00,780
+So, hey, this rule for, for a perfect bell
+curve is 95, 68, 95, 99.7.
+
+67
+00:04:00,780 --> 00:04:04,880
+For my real data that's not a perfect bell
+curve,
+
+68
+00:04:04,880 --> 00:04:08,130
+it came out to be 72, 98, 100, so it's
+pretty close.
+
+69
+00:04:11,150 --> 00:04:13,200
+Now I mentioned in an earlier module,
+
+70
+00:04:13,200 --> 00:04:17,490
+that binary variables can be thought of as
+0 1 variables.
+
+71
+00:04:17,490 --> 00:04:19,410
+You can code them as 0 1's.
+
+72
+00:04:19,410 --> 00:04:21,580
+And think of them as 0's and 1's as
+numbers.
+
+73
+00:04:21,580 --> 00:04:25,040
+And we saw that a binary variable has a
+mean and a median.
+
+74
+00:04:25,040 --> 00:04:26,540
+Does it also have a standard deviation?
+
+75
+00:04:26,540 --> 00:04:28,524
+Sure, of course, if you think of it as 0
+and
+
+76
+00:04:28,524 --> 00:04:31,150
+1s you can also calculate the standard
+deviation.
+
+77
+00:04:31,150 --> 00:04:33,590
+So, here again, is my binary variable,
+whether or
+
+78
+00:04:33,590 --> 00:04:35,550
+not you played varsity sports in high
+school.
+
+79
+00:04:35,550 --> 00:04:38,550
+And I have 30 who did, and 20 who did not.
+
+80
+00:04:38,550 --> 00:04:41,370
+How would we calculate the standard of
+deviation here?
+
+81
+00:04:41,370 --> 00:04:45,570
+We calculated in an earlier module that
+the mean is 0.6.
+
+82
+00:04:45,570 --> 00:04:50,830
+So we can subtract a each observation from
+the mean.
+
+83
+00:04:50,830 --> 00:04:54,200
+The mean is 0.6 and everybody is either a
+1 or a 0.
+
+84
+00:04:54,200 --> 00:04:57,200
+So it actually makes this calculation
+fairly easy to do by hand.
+
+85
+00:04:57,200 --> 00:05:00,070
+So if your a 1, if you played varsity
+sports in high school and
+
+86
+00:05:00,070 --> 00:05:03,240
+you subtract 0.6, that's a value of 0.4.
+
+87
+00:05:03,240 --> 00:05:06,810
+You then square it, and there's 30 people
+that have that identical value.
+
+88
+00:05:06,810 --> 00:05:09,479
+So we can just do that once, and multiple
+by 30.
+
+89
+00:05:09,479 --> 00:05:10,260
+If you're a 0,
+
+90
+00:05:10,260 --> 00:05:13,500
+if didn't play varsity sports, then your
+deviation is negative 0.6.
+
+91
+00:05:13,500 --> 00:05:17,020
+You square that, and there's 20 of those,
+so we multiple that by 20.
+
+92
+00:05:17,020 --> 00:05:21,590
+We add all those up, and divide by 50
+minus 1 n minus 1.
+
+93
+00:05:21,590 --> 00:05:24,360
+And then we square root it to get back to
+the standard deviation,
+
+94
+00:05:24,360 --> 00:05:25,570
+we come out with a value of 0.49.
+
+95
+00:05:25,570 --> 00:05:28,470
+So what does that 0.49 mean?
+
+96
+00:05:28,470 --> 00:05:31,780
+Well remember the, the average here is
+0.6.
+
+97
+00:05:31,780 --> 00:05:33,780
+Everybody is either 0 or a 1.
+
+98
+00:05:33,780 --> 00:05:37,360
+So you're either a 0.6 away from the mean,
+or 0.4 away from the mean.
+
+99
+00:05:37,360 --> 00:05:40,060
+So, you know, 0.49 is kind of the middle
+of those.
+
+100
+00:05:43,480 --> 00:05:45,800
+Just to help you understand standard
+deviation even a little better,
+
+101
+00:05:45,800 --> 00:05:49,930
+let me just represent to you three simple
+little mock data sets.
+
+102
+00:05:49,930 --> 00:05:52,790
+And they all have the same mean of 15.
+
+103
+00:05:52,790 --> 00:05:55,840
+They're just a couple, there's just 8
+people in each of these data sets.
+
+104
+00:05:55,840 --> 00:05:57,600
+But they all have the same mean.
+
+105
+00:05:57,600 --> 00:05:59,250
+But they have different standard
+deviations.
+
+106
+00:05:59,250 --> 00:06:03,240
+So in the first data set, data set B, over
+to the left of your screen.
+
+107
+00:06:03,240 --> 00:06:06,520
+The mean is 15, but everybody's really
+clustered around the mean.
+
+108
+00:06:06,520 --> 00:06:09,050
+So the standard deviation is only 0.9.
+
+109
+00:06:09,050 --> 00:06:10,710
+In the middle one, data set A,
+
+110
+00:06:10,710 --> 00:06:13,970
+the mean again is 15, but there's more
+spread around the mean.
+
+111
+00:06:13,970 --> 00:06:17,610
+So that standard, increases the standard
+deviation to 3.7.
+
+112
+00:06:17,610 --> 00:06:21,750
+In the final data set, data set C, over to
+the right of your screen.
+
+113
+00:06:21,750 --> 00:06:26,300
+The mean is 15, but the standard deviation
+is 5.1, because you
+
+114
+00:06:26,300 --> 00:06:29,470
+can see nobody's even close to the mean,
+everybody's way out in the tails.
+
+115
+00:06:29,470 --> 00:06:31,260
+I mean, that can happen in a distribution,
+so
+
+116
+00:06:31,260 --> 00:06:33,370
+that's going to make the standard
+deviation even bigger.
+
+117
+00:06:33,370 --> 00:06:37,860
+So that's a, giving you a sense of what
+the standard deviation means intuitively.
+
+118
+00:06:41,620 --> 00:06:44,460
+Now, we're going to talk a lot about
+something called
+
+119
+00:06:44,460 --> 00:06:46,730
+the standard error in this class.
+
+120
+00:06:46,730 --> 00:06:50,590
+But I just want to point out now to you,
+the difference between the standard
+
+121
+00:06:50,590 --> 00:06:53,670
+deviation and the standard error, because
+a lot of people get these confused.
+
+122
+00:06:53,670 --> 00:06:55,590
+And we're going to, again, I'm going to
+come back to this, so
+
+123
+00:06:55,590 --> 00:06:57,870
+this is not the last time you're going to
+hear this.
+
+124
+00:06:57,870 --> 00:07:00,370
+But it's worth me putting this in your
+head right now,
+
+125
+00:07:00,370 --> 00:07:02,205
+as we're talking about standard
+deviations.
+
+126
+00:07:02,205 --> 00:07:06,115
+So what's a standard deviation, and what's
+a standard error?
+
+127
+00:07:06,115 --> 00:07:09,370
+So, a standard deviation that we've been
+talking about today,
+
+128
+00:07:09,370 --> 00:07:13,140
+is a measure of the variability of a
+trait.
+
+129
+00:07:13,140 --> 00:07:14,620
+So that would be if we're measuring, like,
+
+130
+00:07:14,620 --> 00:07:17,560
+the variability of how much homework you
+do per week.
+
+131
+00:07:17,560 --> 00:07:22,090
+The standard error, is measuring the
+variability of something very specific.
+
+132
+00:07:22,090 --> 00:07:25,830
+It's measuring, it's a measure of the
+variability of a statistic.
+
+133
+00:07:25,830 --> 00:07:28,760
+So, where, when you talk about standard
+error,
+
+134
+00:07:28,760 --> 00:07:34,375
+you're talking only about the variability
+of a statistic.
+
+135
+00:07:34,375 --> 00:07:39,144
+And what does it mean for a statistic to
+have variability?
+
+136
+00:07:39,144 --> 00:07:42,590
+So, again as I mentioned earlier this
+week,
+
+137
+00:07:42,590 --> 00:07:45,510
+statistics actually follow distributions.
+
+138
+00:07:45,510 --> 00:07:47,230
+But that's a theoretical construct,
+
+139
+00:07:47,230 --> 00:07:50,102
+it's something that we're going to talk a
+lot about in this course.
+
+140
+00:07:50,102 --> 00:07:52,130
+But statistics follow distributions, so
+
+141
+00:07:52,130 --> 00:07:56,010
+statistics have a shape of the
+distribution and they have a variability.
+
+142
+00:07:56,010 --> 00:07:59,200
+That variability is called a standard
+error.
+
+143
+00:07:59,200 --> 00:08:01,370
+Different statistics have different
+standard errors.
+
+144
+00:08:01,370 --> 00:08:03,480
+So you may have the standard error of a
+mean.
+
+145
+00:08:03,480 --> 00:08:06,840
+You may have the standard error of an odds
+ratio, you may have a standard error of
+
+146
+00:08:06,840 --> 00:08:08,990
+a regression coefficient, those will all
+be different.
+
+147
+00:08:08,990 --> 00:08:12,200
+Again, standard error is about the
+variability of a statistic.
+
+148
+00:08:12,200 --> 00:08:15,720
+And we usually reserve the term standard
+deviation to talk about the variability of
+
+149
+00:08:15,720 --> 00:08:18,670
+a trait, so that we don't get it confused
+with standard error.
+
+150
+00:08:18,670 --> 00:08:20,930
+I don't expect you to completely
+understand that yet, but
+
+151
+00:08:20,930 --> 00:08:22,360
+just tuck it away in the back of your
+head, and
+
+152
+00:08:22,360 --> 00:08:27,630
+we're going to return to this concept a
+lot in, in future weeks.
+
+153
+00:08:27,630 --> 00:08:29,480
+Okay, another way to measure the spread or
+
+154
+00:08:29,480 --> 00:08:33,360
+variability of the data, is just to rank
+the data and look at percentiles.
+
+155
+00:08:33,360 --> 00:08:35,870
+We did this when we looked at box plots.
+
+156
+00:08:35,870 --> 00:08:39,540
+So, you could talk about things like 90th
+percentile of data.
+
+157
+00:08:39,540 --> 00:08:42,140
+Where does the 90, 90th percentile lie?
+
+158
+00:08:42,140 --> 00:08:44,820
+That will some information, some feeling
+about the data.
+
+159
+00:08:44,820 --> 00:08:49,320
+So, the 90th percentile is the value for
+which 90% of observations are lower.
+
+160
+00:08:49,320 --> 00:08:51,510
+You can talk about the 10th percentile of
+the data.
+
+161
+00:08:51,510 --> 00:08:54,612
+That would be the value for which 10% of
+the observations are lower.
+
+162
+00:08:54,612 --> 00:08:57,610
+We've already talked about the median,
+that's the 50th percentile,
+
+163
+00:08:57,610 --> 00:08:59,750
+half are above and half are below the
+median.
+
+164
+00:08:59,750 --> 00:09:03,420
+So sometimes we'll just talk about where
+those different percentiles lie,
+
+165
+00:09:03,420 --> 00:09:06,060
+to give ourselves a sense of the spread of
+the data.
+
+166
+00:09:06,060 --> 00:09:09,540
+Percentile will not be affected by extreme
+values, as we saw with the median.
+
+167
+00:09:09,540 --> 00:09:11,640
+So that's going to be different than
+standard deviation.
+
+168
+00:09:11,640 --> 00:09:15,580
+So that might be a reason that you focus
+on percentiles, is if you have extreme
+
+169
+00:09:15,580 --> 00:09:18,880
+value and skew data, the standard
+deviation might be a little misleading.
+
+170
+00:09:18,880 --> 00:09:20,630
+You might instead focus on percentile.
+
+171
+00:09:20,630 --> 00:09:26,640
+And in particular, one a measure that
+based on percentiles that we use a lot for
+
+172
+00:09:26,640 --> 00:09:30,150
+describing the variability of data, is
+something called the interquartile range.
+
+173
+00:09:30,150 --> 00:09:33,880
+And we saw this, when we talked about box
+spot already this week.
+
+174
+00:09:33,880 --> 00:09:37,600
+The interquartile range, is just the
+distance between the 75th percentile and
+
+175
+00:09:37,600 --> 00:09:41,500
+the 25th percentile, or also known as the
+third quartile and the first quartile.
+
+176
+00:09:41,500 --> 00:09:43,850
+The middle 50 percent of the data.
+
+177
+00:09:43,850 --> 00:09:46,880
+And again, that interquartile range is not
+going to be affected by outliers.
+
+178
+00:09:46,880 --> 00:09:50,315
+Because the middle 50% of the data is
+going to be same middle 50% of the data,
+
+179
+00:09:50,315 --> 00:09:54,840
+no matter how high or low the minimum and
+maximum values are.
+
+180
+00:09:54,840 --> 00:09:57,890
+We saw the interquartial range when we
+looked at boxplot.
+
+181
+00:09:57,890 --> 00:10:01,575
+So here is the boxplot of political bent
+in my Stanford students.
+
+182
+00:10:01,575 --> 00:10:03,265
+0 was the most conservative.
+
+183
+00:10:03,265 --> 00:10:04,590
+100 was the most liberal.
+
+184
+00:10:04,590 --> 00:10:10,410
+And again the middle 50% of the data laid
+between 68 and 85.
+
+185
+00:10:10,410 --> 00:10:14,190
+So most students in the liberal and
+democratic range.
+
+186
+00:10:14,190 --> 00:10:17,900
+And so we would subtract those two values
+to get the interquartile range,
+
+187
+00:10:17,900 --> 00:10:21,900
+which I abbreviate as IQR, and that value
+comes out to be 17.
+
+188
+00:10:21,900 --> 00:10:23,930
+So that gives you a sense of the spread of
+the data as well.
+
+189
+00:10:23,930 --> 00:10:26,484
+That that middle 50% of data in this case
+is pretty tight.
+
+190
+00:10:26,484 --> 00:10:31,040
+So I just want to summarize here,
+
+191
+00:10:31,040 --> 00:10:34,175
+wrap up with all the symbols that I've
+thrown at you.
+
+192
+00:10:34,175 --> 00:10:38,050
+Because I will be using some of these
+symbols a throughout this course.
+
+193
+00:10:38,050 --> 00:10:43,260
+So I, when I talked about the sample
+variance I abbreviated that as S squared.
+
+194
+00:10:43,260 --> 00:10:47,780
+When I talked about the sample standard
+deviation, I abbreviated that as an S.
+
+195
+00:10:47,780 --> 00:10:51,305
+I want to throw out here now, because
+sometimes when I talk about variance or
+
+196
+00:10:51,305 --> 00:10:56,200
+standard deviation, I may instead use
+this, the Greek symbol, sigma, and
+
+197
+00:10:56,200 --> 00:10:58,720
+sigma squared.when I'm using a sigma or
+
+198
+00:10:58,720 --> 00:11:02,580
+a sigma squared I'm talking about a
+variance that's not calculated from data.
+
+199
+00:11:02,580 --> 00:11:04,910
+It's something that's a theoretical
+variance,
+
+200
+00:11:04,910 --> 00:11:07,570
+like if you Knew the exact distribution.
+
+201
+00:11:07,570 --> 00:11:09,990
+When we talk about probability this may
+come up.
+
+202
+00:11:09,990 --> 00:11:14,250
+Or if you knew the true variance in the
+population, not from a sample but
+
+203
+00:11:14,250 --> 00:11:16,890
+from everybody, you would abbreviate that
+with a sigma.
+
+204
+00:11:16,890 --> 00:11:20,440
+So that's the distinction there, that you
+that may come up.
+
+205
+00:11:20,440 --> 00:11:26,590
+When we talk about the the sample mean,
+
+206
+00:11:26,590 --> 00:11:30,690
+we represent that with an X bar, so a
+little a bar over my X.
+
+207
+00:11:30,690 --> 00:11:32,010
+That represents the sample mean.
+
+208
+00:11:32,010 --> 00:11:34,040
+Again, mean calculated from data.
+
+209
+00:11:34,040 --> 00:11:38,148
+When I talk about a population or true
+mean, which is usually a theoretical
+
+210
+00:11:38,148 --> 00:11:41,470
+thing, I might use instead the Greek
+symbol mu which is represented there.
+
+211
+00:11:41,470 --> 00:11:49,570
+And again the interquartial range I'll
+represent with IQR.

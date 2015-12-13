@@ -1,0 +1,733 @@
+1
+00:00:04,740 --> 00:00:07,400
+In this next module, I'm going to talk
+about dummy coding.
+
+2
+00:00:07,400 --> 00:00:10,070
+I'm assuming that most of you have seen
+dummy coding before so
+
+3
+00:00:10,070 --> 00:00:11,310
+this will be largely review.
+
+4
+00:00:11,310 --> 00:00:12,920
+I'll go through it rather quickly.
+
+5
+00:00:12,920 --> 00:00:14,650
+But I'm going to tell you how it applies
+specifically in
+
+6
+00:00:14,650 --> 00:00:16,229
+the context of linguistic regression.
+
+7
+00:00:17,960 --> 00:00:23,650
+So, when you want to do a regression, how
+do you model categorical predictors?
+
+8
+00:00:23,650 --> 00:00:25,290
+How do you put categorical predictors in
+the model.
+
+9
+00:00:25,290 --> 00:00:27,260
+It's obvious how to put numerical ones in
+the model, but
+
+10
+00:00:27,260 --> 00:00:28,620
+what about categorical predictors?
+
+11
+00:00:28,620 --> 00:00:30,320
+How does that, how does that work?
+
+12
+00:00:30,320 --> 00:00:32,900
+So, actually it's very simple for binary
+predictors.
+
+13
+00:00:32,900 --> 00:00:36,840
+If you've got a binary predictor, You can
+just code it as zero one and
+
+14
+00:00:36,840 --> 00:00:38,158
+actually treat it as a number.
+
+15
+00:00:38,158 --> 00:00:42,140
+0 and 1 are numbers, so we can just treat
+it as a quantitative variable and
+
+16
+00:00:42,140 --> 00:00:44,550
+just stick it in a regression as a 0, 1
+variable.
+
+17
+00:00:44,550 --> 00:00:46,270
+So, that's essentially what we do with
+binary variables.
+
+18
+00:00:46,270 --> 00:00:51,270
+For categorical variables, we're going to
+have to do dummy coding.
+
+19
+00:00:51,270 --> 00:00:54,540
+Dummy coding means that we're going to
+re-code the categorical predictor as
+
+20
+00:00:54,540 --> 00:00:56,450
+a series of binary predictors.
+
+21
+00:00:56,450 --> 00:00:58,490
+Since it's easy to deal with binary
+predictors because we
+
+22
+00:00:58,490 --> 00:01:01,925
+can treat them as zeros and ones, we can
+actually just rip,
+
+23
+00:01:01,925 --> 00:01:05,070
+re-represent categorical predictions as a
+series of binary variables.
+
+24
+00:01:05,070 --> 00:01:06,150
+That's the basic idea.
+
+25
+00:01:06,150 --> 00:01:09,570
+So let me just give you a few pictures
+here to illustrate.
+
+26
+00:01:09,570 --> 00:01:11,720
+So here is a logit plot, okay.
+
+27
+00:01:11,720 --> 00:01:16,419
+So this the logit of stress fractures.
+
+28
+00:01:18,780 --> 00:01:23,370
+Lower rate of stress fractures in my data
+set on women runners this is whether or
+
+29
+00:01:23,370 --> 00:01:24,710
+not you have amenorrhea.
+
+30
+00:01:24,710 --> 00:01:26,310
+You either have amenorrhea, which is the,
+
+31
+00:01:26,310 --> 00:01:29,230
+the most severe menstrual irregularity, or
+you don't.
+
+32
+00:01:30,400 --> 00:01:32,415
+It's a binary variable, so here's my lojit
+plot.
+
+33
+00:01:32,415 --> 00:01:33,530
+Woo-hoo!
+
+34
+00:01:33,530 --> 00:01:36,090
+If I do my lojit plot there's only two
+points, right?
+
+35
+00:01:36,090 --> 00:01:37,520
+So, there's only two lojits, the lojit for
+
+36
+00:01:37,520 --> 00:01:38,910
+the 0 group, and the lojit for the 1
+group.
+
+37
+00:01:38,910 --> 00:01:41,850
+And so, since there's only two points,
+it's always going to be a line.
+
+38
+00:01:41,850 --> 00:01:44,190
+Well, guess what, you don't have to do
+logec plots when it comes to
+
+39
+00:01:44,190 --> 00:01:46,210
+categorical variables because primary
+variables,
+
+40
+00:01:46,210 --> 00:01:48,940
+binary variables, two points is always
+going to equal a line.
+
+41
+00:01:48,940 --> 00:01:50,290
+So, that's nice.
+
+42
+00:01:50,290 --> 00:01:53,030
+One less piece of work that you have to
+do.
+
+43
+00:01:53,030 --> 00:01:56,050
+Binary variables you can just stick in the
+model without thinking too hard about it.
+
+44
+00:01:58,130 --> 00:02:00,420
+What about, though, if you have more than
+two categories.
+
+45
+00:02:00,420 --> 00:02:02,910
+So that's where binary variables, if you
+have more than two categories you're
+
+46
+00:02:02,910 --> 00:02:04,530
+going to need to use To use dummy coding,
+and
+
+47
+00:02:04,530 --> 00:02:07,540
+most statistical packages will
+automatically dummy code for you.
+
+48
+00:02:07,540 --> 00:02:10,570
+So it's not like you have to do this on
+your own, but you need to understand what
+
+49
+00:02:10,570 --> 00:02:13,760
+the computer is doing, and what's coming
+out in your model.
+
+50
+00:02:13,760 --> 00:02:17,200
+So I'm just going to to take a simple
+example from this data set
+
+51
+00:02:17,200 --> 00:02:18,870
+on women runners.
+
+52
+00:02:18,870 --> 00:02:21,920
+So there's sort of three categories of
+menstrual function that
+
+53
+00:02:21,920 --> 00:02:24,030
+are usually recognized clinically.
+
+54
+00:02:24,030 --> 00:02:27,320
+Amenorrhea is basically the absence of
+periods, or very few periods per year.
+
+55
+00:02:27,320 --> 00:02:30,730
+Oligomenorrhea is sort of, irregular
+periods but
+
+56
+00:02:30,730 --> 00:02:32,110
+not the total absence of periods.
+
+57
+00:02:32,110 --> 00:02:35,440
+And eumenorrhea is just normal, you know,
+having more than nine periods per year.
+
+58
+00:02:35,440 --> 00:02:38,910
+So that we can look at those three
+categories rather than, we, in,
+
+59
+00:02:38,910 --> 00:02:41,830
+in an earlier sample we looked at the
+number of periods per year as
+
+60
+00:02:41,830 --> 00:02:43,540
+a continuous variable.
+
+61
+00:02:43,540 --> 00:02:46,770
+But, since there's a nice clinical
+characterization here we could also look
+
+62
+00:02:46,770 --> 00:02:50,500
+at this variable, as, as a categorical
+variable in these three categories.
+
+63
+00:02:50,500 --> 00:02:54,400
+But how are we going to include it into
+the regression model?
+
+64
+00:02:54,400 --> 00:02:56,480
+So the way that we're going to do it is
+we're going to dummy code,
+
+65
+00:02:56,480 --> 00:02:58,790
+and here's how dummy coding works.
+
+66
+00:02:58,790 --> 00:03:02,580
+A three level categorical variable will
+have Will be dummy coded as
+
+67
+00:03:02,580 --> 00:03:03,670
+two binary variables.
+
+68
+00:03:03,670 --> 00:03:06,380
+A 4-level categorical variable would be
+dummy coded as
+
+69
+00:03:06,380 --> 00:03:08,830
+three binary variables and so on.
+
+70
+00:03:08,830 --> 00:03:10,300
+So we have to pick something as the
+reference group.
+
+71
+00:03:10,300 --> 00:03:14,320
+In this example, it makes sense to, to use
+Eumenorrheic as the, the normal
+
+72
+00:03:14,320 --> 00:03:18,220
+functioning women as the reference So this
+is going to be my reference group.
+
+73
+00:03:18,220 --> 00:03:20,810
+I'm going to define a new binary variable
+that is,
+
+74
+00:03:20,810 --> 00:03:23,980
+you're either amenorrheic or you're not.
+
+75
+00:03:23,980 --> 00:03:26,390
+So women who are amenorrheic will get a
+value of 1 for
+
+76
+00:03:26,390 --> 00:03:31,100
+this variable, and everybody else will get
+everybody else will get a value of 0.
+
+77
+00:03:31,100 --> 00:03:32,870
+So you're either amenorrheic or you're
+not.
+
+78
+00:03:32,870 --> 00:03:37,340
+So the oligomenorrheic and the
+eumenorrheic women will get values of 0.
+
+79
+00:03:37,340 --> 00:03:41,140
+I'm going to define a second binary
+variable, oligomenorrheic.
+
+80
+00:03:41,140 --> 00:03:44,470
+And if you're oligomenorrheic, you're
+going to get a value of on 1 and
+
+81
+00:03:44,470 --> 00:03:46,860
+if you're not you're going to get a value
+of 0.
+
+82
+00:03:46,860 --> 00:03:50,250
+So women who get a value of 0 on the
+amenorrheia variable and
+
+83
+00:03:50,250 --> 00:03:53,820
+get a oligomenorrheia variable by default
+are in that reference,
+
+84
+00:03:53,820 --> 00:03:55,060
+the eumenorrheic category.
+
+85
+00:03:56,070 --> 00:03:59,500
+We're then going to take these two binary
+vairables and
+
+86
+00:03:59,500 --> 00:04:00,980
+we're going to put them into our model.
+
+87
+00:04:00,980 --> 00:04:03,880
+So the logit of stress factors then,
+
+88
+00:04:03,880 --> 00:04:07,730
+we would model this as in a receipt plus a
+beta for
+
+89
+00:04:07,730 --> 00:04:12,660
+that binary variable eumenorrhea, plus a
+beta for the variable oligomenorrhea.
+
+90
+00:04:12,660 --> 00:04:16,950
+We are, does eumenorrhea come into this
+picture well that has been it's, the,
+
+91
+00:04:16,950 --> 00:04:19,190
+it's absorbed essentially in the,
+
+92
+00:04:19,190 --> 00:04:21,780
+the intercept, it's represented by the
+intercept.
+
+93
+00:04:21,780 --> 00:04:23,880
+Then we have 2 additional parameters, so
+
+94
+00:04:23,880 --> 00:04:26,240
+I've got a 3 level categorical variable,
+I'm going to have to put.
+
+95
+00:04:26,240 --> 00:04:28,940
+Two parameters in my model, two betas in
+my model.
+
+96
+00:04:28,940 --> 00:04:32,810
+If I had a 5 level categorical variable,
+I'd have to put 4 betas into my model.
+
+97
+00:04:32,810 --> 00:04:36,050
+Now, pictorially, what we're really doing
+is we're just essentially breaking this
+
+98
+00:04:36,050 --> 00:04:37,670
+into a series of binary variables.
+
+99
+00:04:37,670 --> 00:04:40,420
+So again, you don't have to do the Logia
+plots here because if
+
+100
+00:04:40,420 --> 00:04:43,930
+you look at the Logia plots, I'm going to
+be comparing,
+
+101
+00:04:43,930 --> 00:04:47,160
+what I'm ending up doing is comparing
+amenorrheic women to normal women.
+
+102
+00:04:47,160 --> 00:04:49,500
+So here's my reference group, the normal
+women.
+
+103
+00:04:49,500 --> 00:04:54,560
+I'm going to compare this is actually
+umenorrheic and this is amenorrheic.
+
+104
+00:04:54,560 --> 00:04:57,290
+This is umenorrheic versus
+oligomenorrheic,
+
+105
+00:04:57,290 --> 00:04:59,390
+that's what the values represent here.
+
+106
+00:04:59,390 --> 00:05:02,440
+So I compare my amenorrheic woman to my
+umenorrheic woman.
+
+107
+00:05:02,440 --> 00:05:06,210
+It's just a two group comparison, so
+again, 2 points make a line.
+
+108
+00:05:06,210 --> 00:05:09,450
+Notice that the logit for the amenorrheic
+group is at negative 2.6,
+
+109
+00:05:09,450 --> 00:05:13,860
+same logit over here, same group, also at
+negative 2.6, but now I'm comparing to
+
+110
+00:05:13,860 --> 00:05:17,390
+my oligomenorrheic group which has a
+slightly lower logit than.
+
+111
+00:05:19,500 --> 00:05:22,780
+So literally I'm putting into my model a
+201 comparisons.
+
+112
+00:05:22,780 --> 00:05:26,890
+Now when I actually run this in my
+statistical program,
+
+113
+00:05:26,890 --> 00:05:31,450
+I can ask my statistical program to do
+this dummy coding for me.
+
+114
+00:05:31,450 --> 00:05:32,470
+It's usually built-in.
+
+115
+00:05:32,470 --> 00:05:35,250
+It's very easy to do, for example, in SAS.
+
+116
+00:05:35,250 --> 00:05:37,050
+And then I can get out some betas.
+
+117
+00:05:37,050 --> 00:05:39,390
+My betas are all going to be compared to
+the reference group,
+
+118
+00:05:39,390 --> 00:05:41,110
+and of course, since we're doing logistic
+regression,
+
+119
+00:05:41,110 --> 00:05:43,820
+it's nice to translate these directly into
+odds ratios.
+
+120
+00:05:43,820 --> 00:05:46,110
+It makes very interpretable odds ratios
+because we're now,
+
+121
+00:05:46,110 --> 00:05:48,540
+we're comparing Amennoreic to the
+reference group and
+
+122
+00:05:48,540 --> 00:05:50,430
+Oligomenorrheic to the reference group.
+
+123
+00:05:50,430 --> 00:05:53,390
+So notice that the Amennoreic women,
+really do
+
+124
+00:05:53,390 --> 00:05:59,100
+have quite a,a large increase in their
+odds of getting a stress fracture here.
+
+125
+00:05:59,100 --> 00:06:00,210
+6.8 is the odds ratio.
+
+126
+00:06:00,210 --> 00:06:03,410
+For them oligomenorrheic women have
+somewhat of an increased risk but
+
+127
+00:06:03,410 --> 00:06:06,040
+the alteration is only 2.4 so not quite as
+big and
+
+128
+00:06:06,040 --> 00:06:08,770
+this one did not come out to be
+statistically significant.
+
+129
+00:06:09,880 --> 00:06:14,080
+So that's the basic idea I'm going to come
+out with In logistic regression, an odds
+
+130
+00:06:14,080 --> 00:06:19,370
+ratio, a separate odd ratio for each
+category compared to the reference group.
+
+131
+00:06:19,370 --> 00:06:21,620
+Now which category am I going to choose to
+be the reference group?
+
+132
+00:06:21,620 --> 00:06:23,570
+That's a decision you usually have to
+make.
+
+133
+00:06:23,570 --> 00:06:25,526
+Of course it doesn't effect the math.
+
+134
+00:06:25,526 --> 00:06:28,060
+The SAS doesn't order your computer,
+
+135
+00:06:28,060 --> 00:06:30,740
+doesn't really care what you choose as the
+reference group.
+
+136
+00:06:30,740 --> 00:06:33,930
+But usually there's some kind of a group
+that makes sense to choose as
+
+137
+00:06:33,930 --> 00:06:37,180
+the reference group, and you want to make
+sure you go in, and, every computer
+
+138
+00:06:37,180 --> 00:06:40,670
+package will have a way to, will choose a
+reference group for you by default.
+
+139
+00:06:40,670 --> 00:06:44,170
+You want to go in and change that to the
+more, the sensible reference group.
+
+140
+00:06:44,170 --> 00:06:45,820
+So like if you're doing an experimental
+trial,
+
+141
+00:06:45,820 --> 00:06:48,000
+clearly you want the reference group to be
+the control group.
+
+142
+00:06:49,000 --> 00:06:50,320
+If you're still on the experimental trial
+and
+
+143
+00:06:50,320 --> 00:06:52,310
+there's no natural kind of control group,
+
+144
+00:06:52,310 --> 00:06:55,180
+you might want to pick the highest risk
+group.
+
+145
+00:06:55,180 --> 00:06:57,090
+If you want to show protective effects.
+
+146
+00:06:57,090 --> 00:06:58,760
+So like if you want to show that
+something,
+
+147
+00:06:58,760 --> 00:07:01,790
+if the message of your paper is that
+something is protective,
+
+148
+00:07:01,790 --> 00:07:04,410
+you would choose the highest, the group
+with the highest risk.
+
+149
+00:07:04,410 --> 00:07:09,460
+So that your odds ratios all come out to
+be below 1, it shows a protective effect.
+
+150
+00:07:09,460 --> 00:07:12,400
+Or if you want to show something's
+harmful, you'd pick the lowest risk group
+
+151
+00:07:12,400 --> 00:07:15,010
+as your reference group, so that your odds
+ratios all come out above 1.
+
+152
+00:07:15,010 --> 00:07:16,000
+And this again is,
+
+153
+00:07:16,000 --> 00:07:18,840
+just has to do with the message that you
+present at the end of the day.
+
+154
+00:07:18,840 --> 00:07:20,230
+But it's an important choice, so
+
+155
+00:07:20,230 --> 00:07:22,800
+you want to think about what makes the
+best reference group.

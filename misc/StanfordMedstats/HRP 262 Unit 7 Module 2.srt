@@ -1,0 +1,929 @@
+1
+00:00:00,000 --> 00:00:05,180
+[BLANK_AUDIO]
+
+2
+00:00:05,180 --> 00:00:09,880
+In this next module, I'm going to talk
+about statistical tests that simplify or
+
+3
+00:00:09,880 --> 00:00:12,900
+ignore the repeated measures outcome.
+
+4
+00:00:12,900 --> 00:00:17,270
+So there are a number of ways that you can
+actually get around having to
+
+5
+00:00:17,270 --> 00:00:20,300
+handle the repeated measures at all.
+
+6
+00:00:20,300 --> 00:00:24,970
+So one option is to actually collapse that
+repeated measurement into one value,
+
+7
+00:00:24,970 --> 00:00:27,530
+a single value for every person.
+
+8
+00:00:27,530 --> 00:00:31,730
+If every person only has one value, then
+you don't have to handle any correlations.
+
+9
+00:00:31,730 --> 00:00:35,320
+So for example I'm going to show you in a
+minute how to collapse all of
+
+10
+00:00:35,320 --> 00:00:37,910
+your measurements into a single slope for
+every person.
+
+11
+00:00:37,910 --> 00:00:40,540
+Then you can use those slopes in
+subsequent analysis.
+
+12
+00:00:42,170 --> 00:00:46,150
+You could also choose just to focus on one
+time point.
+
+13
+00:00:46,150 --> 00:00:48,380
+Usually that would be the final time
+point,
+
+14
+00:00:48,380 --> 00:00:51,860
+because presumably we care most about what
+happened last.
+
+15
+00:00:51,860 --> 00:00:56,470
+So you could only compare groups with
+respect to the final measurement
+
+16
+00:00:56,470 --> 00:01:00,620
+using something like an ANCOVA adjusting
+for any baseline differences.
+
+17
+00:01:00,620 --> 00:01:02,630
+This is called an end-point analysis.
+
+18
+00:01:02,630 --> 00:01:04,040
+And, I'll show you how to run this one, as
+well.
+
+19
+00:01:04,040 --> 00:01:09,450
+So, just to have some example data to play
+with here,
+
+20
+00:01:09,450 --> 00:01:13,460
+I'm going to use that same dataset that I
+showed you how to graph last week.
+
+21
+00:01:13,460 --> 00:01:17,370
+So, this was a dataset on 41 women
+runners.
+
+22
+00:01:17,370 --> 00:01:20,990
+At the beginning of this study, they all
+had irregular periods.
+
+23
+00:01:20,990 --> 00:01:24,680
+And women runners with irregular periods
+tend to have low bone density.
+
+24
+00:01:24,680 --> 00:01:27,870
+So, we were following them over time to
+see if their bone density would go up.
+
+25
+00:01:29,040 --> 00:01:31,080
+We identified three groups of women.
+
+26
+00:01:31,080 --> 00:01:34,090
+So, the group here in blue are women who
+continue to
+
+27
+00:01:34,090 --> 00:01:36,070
+have irregular periods throughout the
+study.
+
+28
+00:01:36,070 --> 00:01:39,000
+And you can see that their bone density
+stayed pretty flat.
+
+29
+00:01:39,000 --> 00:01:44,010
+Then we had a group of women in red who
+spontaneously regained their periods, and
+
+30
+00:01:44,010 --> 00:01:48,160
+you can see that their bone density went
+up a couple of percentage points.
+
+31
+00:01:48,160 --> 00:01:50,490
+And we also had a group in black who took
+hormones and
+
+32
+00:01:50,490 --> 00:01:53,960
+got their periods back that way, and also
+had some increase in bone density.
+
+33
+00:01:54,990 --> 00:01:57,940
+I showed you how to graph those data last
+week, now we want to attach some p
+
+34
+00:01:57,940 --> 00:02:01,240
+value to that to say whether or not our
+groups are significantly different.
+
+35
+00:02:02,390 --> 00:02:05,370
+So, one strategy is to use this idea of a
+slope analysis.
+
+36
+00:02:05,370 --> 00:02:09,670
+I talked a little bit about it slope
+analyses last week as well.
+
+37
+00:02:09,670 --> 00:02:13,580
+What I'm doing here is I'm saying okay
+I've got three spine bone
+
+38
+00:02:13,580 --> 00:02:16,200
+density measurements on each woman.
+
+39
+00:02:16,200 --> 00:02:19,240
+And rather than having to deal with those
+three measurements,
+
+40
+00:02:19,240 --> 00:02:24,340
+I am going to calculate one slope for each
+woman based on those three measurements.
+
+41
+00:02:24,340 --> 00:02:28,060
+So I'm literally going to be running a
+linear regression model for each woman.
+
+42
+00:02:28,060 --> 00:02:31,060
+The slope that I'm trying to calculate
+here is
+
+43
+00:02:31,060 --> 00:02:34,880
+going to represent the rate of change
+
+44
+00:02:34,880 --> 00:02:41,670
+[BLANK_AUDIO]
+
+45
+00:02:41,670 --> 00:02:43,150
+in spine bone density.
+
+46
+00:02:45,160 --> 00:02:49,410
+And, and time here is in years, so it's
+going to be a rate of change in years.
+
+47
+00:02:49,410 --> 00:02:52,100
+I'm going to take say this woman over here
+in the left.
+
+48
+00:02:52,100 --> 00:02:55,889
+She had bone density measurements of about
+0.944, 0.938 and 0.948.
+
+49
+00:02:55,889 --> 00:03:00,360
+So, she's really staying rather constant.
+
+50
+00:03:00,360 --> 00:03:02,340
+But she goes up just a little bit over
+time.
+
+51
+00:03:03,340 --> 00:03:05,050
+And so I'm going to take her three
+measurements and
+
+52
+00:03:05,050 --> 00:03:07,120
+run the following linear regression.
+
+53
+00:03:07,120 --> 00:03:12,250
+The outcome is spine bone mineral density,
+the predictor here is time.
+
+54
+00:03:12,250 --> 00:03:15,622
+And I do get to treat time as a continuous
+variable here.
+
+55
+00:03:15,622 --> 00:03:19,660
+So the women were supposed to be measured
+at one year and two year post-baseline.
+
+56
+00:03:19,660 --> 00:03:21,770
+But you can see she was a little bit
+beyond a year and
+
+57
+00:03:21,770 --> 00:03:22,930
+little bit beyond two years.
+
+58
+00:03:24,400 --> 00:03:26,420
+So I'm going to just take these three data
+points,
+
+59
+00:03:26,420 --> 00:03:29,280
+I'm fitting a linear regression line just
+based on three data points.
+
+60
+00:03:29,280 --> 00:03:30,770
+I'm going to take these three data points.
+
+61
+00:03:30,770 --> 00:03:33,240
+I'm going to fit a linear regression line
+to them.
+
+62
+00:03:33,240 --> 00:03:34,640
+You can see that line pictured here.
+
+63
+00:03:34,640 --> 00:03:37,150
+That line will have an intercept and a
+beta.
+
+64
+00:03:37,150 --> 00:03:40,160
+The beta, that's slope represents sort of
+an average rate of
+
+65
+00:03:40,160 --> 00:03:43,250
+change in spine bone density per year for
+that woman.
+
+66
+00:03:43,250 --> 00:03:47,850
+I'm going to take that beta, I'm going to
+save it for further analyses.
+
+67
+00:03:47,850 --> 00:03:50,070
+I'm then going to do that for the next
+woman in my data set.
+
+68
+00:03:50,070 --> 00:03:52,080
+So, I'll run the same linear regression
+model for
+
+69
+00:03:52,080 --> 00:03:56,230
+her, but I'll get a new beta for her.
+
+70
+00:03:56,230 --> 00:03:57,100
+I'll get a different beta.
+
+71
+00:03:57,100 --> 00:04:00,390
+So her beta, so the first woman's beta was
+something positive,
+
+72
+00:04:00,390 --> 00:04:02,730
+the second woman's beta you can see is
+going to be slightly negative,
+
+73
+00:04:02,730 --> 00:04:04,440
+because she's going down a little bit over
+time.
+
+74
+00:04:04,440 --> 00:04:06,560
+So her rate of change is negative.
+
+75
+00:04:06,560 --> 00:04:10,600
+So I'll take her data coefficient, her
+slope or rate of change, and
+
+76
+00:04:10,600 --> 00:04:12,140
+I'll save that into a dataset.
+
+77
+00:04:12,140 --> 00:04:14,200
+And then I'll do that for all 41 women.
+
+78
+00:04:14,200 --> 00:04:15,950
+I'll come up with 41 slopes.
+
+79
+00:04:15,950 --> 00:04:19,940
+I will then use those slopes as the
+outcome variable in a,
+
+80
+00:04:19,940 --> 00:04:21,680
+another linear regression analysis.
+
+81
+00:04:22,910 --> 00:04:25,320
+Those slopes now become the outcome.
+
+82
+00:04:25,320 --> 00:04:28,390
+So I'm going to run another linear
+regression where the slope,
+
+83
+00:04:28,390 --> 00:04:30,690
+the rate of change of bone density, is the
+outcome.
+
+84
+00:04:30,690 --> 00:04:31,610
+because that's what we care about.
+
+85
+00:04:31,610 --> 00:04:35,850
+We care about how these women's bone
+densities are changing over time.
+
+86
+00:04:35,850 --> 00:04:38,470
+So those rates of change, those slopes,
+now become the outcome.
+
+87
+00:04:38,470 --> 00:04:42,053
+I only have one value per woman, so I can
+just run a regular linear regression.
+
+88
+00:04:42,053 --> 00:04:46,190
+In this new linear regression, I'm
+going to have an intercept of course, and
+
+89
+00:04:46,190 --> 00:04:49,690
+then my predictor here is the groups.
+
+90
+00:04:49,690 --> 00:04:52,460
+I, I'm calling them black, red, and blue
+here just for simplicity.
+
+91
+00:04:53,800 --> 00:04:57,870
+I've gotta a categorical predictor, so I'm
+going to have the dummy code.
+
+92
+00:04:57,870 --> 00:05:01,470
+So I will have a beta for the black group,
+and I will have a beta for
+
+93
+00:05:01,470 --> 00:05:04,710
+the red group, and I'm making the blue
+group my reference group just
+
+94
+00:05:04,710 --> 00:05:08,610
+because they're the ones that had the
+least increase in bone density over time.
+
+95
+00:05:08,610 --> 00:05:11,790
+I fit that linear regression model as you
+can see here.
+
+96
+00:05:11,790 --> 00:05:14,010
+And we can then figure out,
+
+97
+00:05:14,010 --> 00:05:17,240
+we actually are going to get an effect
+size and a P value here.
+
+98
+00:05:17,240 --> 00:05:22,700
+So for example, for the red group, we get
+a beta coefficient of 0.013.
+
+99
+00:05:22,700 --> 00:05:26,540
+The way would interpret that is, this is a
+rate of change per year.
+
+100
+00:05:26,540 --> 00:05:29,640
+So, and we're comparing to the reference
+group of the blue group.
+
+101
+00:05:29,640 --> 00:05:36,310
+So they have a 1.3% bigger change in bone
+density per year than the blue group.
+
+102
+00:05:36,310 --> 00:05:38,950
+Their rate of change is 1.3% higher.
+
+103
+00:05:38,950 --> 00:05:42,240
+That is a statistically significant
+difference, so the red group and the blue
+
+104
+00:05:42,240 --> 00:05:46,930
+group are significantly different in their
+rate of change in bone density over time.
+
+105
+00:05:46,930 --> 00:05:48,480
+We get something very similar for the
+black group.
+
+106
+00:05:48,480 --> 00:05:52,110
+Their data coefficient corresponds to that
+their rate of change in
+
+107
+00:05:52,110 --> 00:05:57,530
+spine bone density is about 1.1, 1.2%
+higher per year than the blue group.
+
+108
+00:05:57,530 --> 00:06:00,760
+And they also just make a statistical
+significance there.
+
+109
+00:06:02,380 --> 00:06:05,880
+This slope analysis has a number of
+advantages actually.
+
+110
+00:06:05,880 --> 00:06:09,590
+It notice that we got to treat time as
+continuous, so that's nice.
+
+111
+00:06:09,590 --> 00:06:12,480
+We also, if we had some missing data like
+if a woman was
+
+112
+00:06:12,480 --> 00:06:16,660
+missing just one measurement, we'd still
+be able to calculate the slope on her,
+
+113
+00:06:16,660 --> 00:06:21,442
+because all we need is two time points to
+be able to fit a slope, to fit a line.
+
+114
+00:06:21,442 --> 00:06:24,300
+So it actually handles missing data pretty
+well.
+
+115
+00:06:24,300 --> 00:06:29,770
+We could also have continuous predictors
+in this approach.
+
+116
+00:06:29,770 --> 00:06:32,010
+And so there is a number of advantages.
+
+117
+00:06:32,010 --> 00:06:34,150
+However, it does have some disadvantages.
+
+118
+00:06:34,150 --> 00:06:36,720
+Obviously we're reducing a lot of
+information,
+
+119
+00:06:36,720 --> 00:06:39,500
+we're collapsing a lot of measurements
+into a single measurement, and
+
+120
+00:06:39,500 --> 00:06:41,940
+thus we're losing information and
+statistical power.
+
+121
+00:06:41,940 --> 00:06:43,950
+That's the main disadvantage.
+
+122
+00:06:43,950 --> 00:06:47,210
+It also doesn't handle time-changing
+predictors at all.
+
+123
+00:06:47,210 --> 00:06:49,360
+But keep in mind that the slope analysis.
+
+124
+00:06:49,360 --> 00:06:52,650
+It, it is pretty elegant in, in some ways,
+even though it's simple.
+
+125
+00:06:52,650 --> 00:06:56,090
+And in a way it's kind of a crude version
+of what we're going to see when we
+
+126
+00:06:56,090 --> 00:06:56,920
+do mixed models.
+
+127
+00:06:59,980 --> 00:07:01,990
+Now turning to the end point analysis.
+
+128
+00:07:01,990 --> 00:07:06,337
+So the end point analysis is going to
+focus on just the final time point.
+
+129
+00:07:06,337 --> 00:07:09,361
+So this corresponds to the graphic we had
+where we were looking at
+
+130
+00:07:09,361 --> 00:07:12,060
+the absolute values of the spine bone
+density.
+
+131
+00:07:12,060 --> 00:07:16,208
+We're going to compare among the three
+groups the final value of spine bone
+
+132
+00:07:16,208 --> 00:07:21,087
+density, which for the red and black
+groups was right around 0.98 or 0.99.
+
+133
+00:07:21,087 --> 00:07:25,530
+For the blue group it was somewhere about
+0.93 or 0.94.
+
+134
+00:07:25,530 --> 00:07:29,400
+Now you'll notice that the, the groups
+actually started a little bit different.
+
+135
+00:07:29,400 --> 00:07:32,360
+The, the blue group it was a little lower
+at baseline.
+
+136
+00:07:32,360 --> 00:07:36,570
+A little bit lower to start with so we're
+also going to adjust these analysis for
+
+137
+00:07:36,570 --> 00:07:38,178
+that difference at baseline.
+
+138
+00:07:38,178 --> 00:07:42,050
+So the ANCOVA analysis, it's just another
+linear regression.
+
+139
+00:07:42,050 --> 00:07:46,560
+My outcome though is the final spine bone
+density.
+
+140
+00:07:48,620 --> 00:07:52,270
+And my predictors are going to be, I'm
+going to be putting in a predictor for
+
+141
+00:07:52,270 --> 00:07:55,740
+the initial bone density, so that we can
+adjust for it.
+
+142
+00:07:57,840 --> 00:08:01,762
+That will take care of fact that the blue
+group started a little bit lower.
+
+143
+00:08:01,762 --> 00:08:05,620
+Plus I'm going to have betas for the, for
+the groups.
+
+144
+00:08:05,620 --> 00:08:07,430
+I'm dummy coding here, so I'm going to
+have a beta for
+
+145
+00:08:07,430 --> 00:08:10,820
+the black group and I'm going to have a
+beta for the red group.
+
+146
+00:08:10,820 --> 00:08:14,350
+And I'm going to leave the blue group as
+the reference group, here again,
+
+147
+00:08:14,350 --> 00:08:17,730
+because they're, they're the ones who
+stayed kind of flat.
+
+148
+00:08:17,730 --> 00:08:19,040
+So that going to be my model.
+
+149
+00:08:19,040 --> 00:08:20,060
+It's a linear regression.
+
+150
+00:08:20,060 --> 00:08:22,160
+We also can call it an ANCOVA,
+
+151
+00:08:22,160 --> 00:08:26,240
+an analysis of covariance because we have
+a categorical predictor.
+
+152
+00:08:26,240 --> 00:08:29,020
+If we're thinking about it as an analysis
+of covariance.
+
+153
+00:08:29,020 --> 00:08:33,110
+Then we can think about doing things like
+calculating adjusted means or
+
+154
+00:08:33,110 --> 00:08:35,720
+least squares means, and that's kind of
+useful.
+
+155
+00:08:35,720 --> 00:08:38,210
+So you can see here are the adjusted or
+least squares means.
+
+156
+00:08:38,210 --> 00:08:42,470
+These means have been adjusted for the
+base line difference in bone density.
+
+157
+00:08:42,470 --> 00:08:45,360
+You can see that the values are very
+similar to the absolute values that you
+
+158
+00:08:45,360 --> 00:08:46,690
+can see on the graph.
+
+159
+00:08:46,690 --> 00:08:48,580
+However, the blue group,
+
+160
+00:08:48,580 --> 00:08:51,470
+the adjusted value is a little bit higher
+than what you see on the graph.
+
+161
+00:08:51,470 --> 00:08:54,170
+The value on the graph is like 0.935.
+
+162
+00:08:54,170 --> 00:08:54,910
+After we adjust for
+
+163
+00:08:54,910 --> 00:08:58,410
+the fact that they started lower, that
+brings them up a little bit closer.
+
+164
+00:08:58,410 --> 00:09:00,000
+So the adjusted value is 0.958.
+
+165
+00:09:00,000 --> 00:09:03,830
+But you can see that they are still a
+little bit lower than the black and
+
+166
+00:09:03,830 --> 00:09:06,650
+red group, even after adjusting for that
+initial difference.
+
+167
+00:09:06,650 --> 00:09:10,960
+So we can get those adjusted means, we can
+also get p values
+
+168
+00:09:10,960 --> 00:09:15,020
+comparing the different groups, and that's
+what you see over on the right here.
+
+169
+00:09:15,020 --> 00:09:18,710
+The one, two, and three, correspond to
+black, red, and blue.
+
+170
+00:09:24,310 --> 00:09:27,460
+And there are three p values here that are
+repeated in this table.
+
+171
+00:09:27,460 --> 00:09:29,590
+But if we compare the red group to the
+black group,
+
+172
+00:09:29,590 --> 00:09:33,110
+clearly those are very similar, and so the
+p value is totally non-significant.
+
+173
+00:09:33,110 --> 00:09:36,440
+If we compare the blue group to the black
+group,
+
+174
+00:09:36,440 --> 00:09:38,950
+that one just makes statistical
+significance, and
+
+175
+00:09:38,950 --> 00:09:43,140
+these p values are adjusted for multiple
+comparisons with a 2D adjustment.
+
+176
+00:09:43,140 --> 00:09:45,790
+Because we are now doing multiple
+comparisons by com,
+
+177
+00:09:45,790 --> 00:09:47,060
+doing three comparisons here.
+
+178
+00:09:48,080 --> 00:09:50,480
+If you compare the blue and the red group
+after adjusting for
+
+179
+00:09:50,480 --> 00:09:53,460
+multiple comparisons, that one is also
+statistically significant.
+
+180
+00:09:53,460 --> 00:09:55,380
+Those two groups have the biggest
+difference, so
+
+181
+00:09:55,380 --> 00:09:58,390
+not surprisingly, they also have the
+smallest p value.
+
+182
+00:09:58,390 --> 00:10:01,330
+So again, we are able to detect a
+significant difference here,
+
+183
+00:10:01,330 --> 00:10:02,900
+using this endpoint analysis.
+
+184
+00:10:05,030 --> 00:10:09,460
+The endpoint analysis is nice and simple
+but it does have a number of limitations.
+
+185
+00:10:09,460 --> 00:10:11,710
+So again, we're reducing a lot of
+information and
+
+186
+00:10:11,710 --> 00:10:14,020
+thus we're losing a lot of statistical
+power.
+
+187
+00:10:14,020 --> 00:10:17,180
+We're actually throwing out all interim
+measurements, so,
+
+188
+00:10:17,180 --> 00:10:19,640
+it's kind of a waste of data.
+
+189
+00:10:19,640 --> 00:10:22,695
+If you're missing data on that very last
+time point,
+
+190
+00:10:22,695 --> 00:10:25,470
+since that's the only time point we're
+looking at.
+
+191
+00:10:25,470 --> 00:10:28,740
+If somebody had, wasn't measured, they're
+going to be thrown out unless you
+
+192
+00:10:28,740 --> 00:10:33,410
+impute their values, so you're going to be
+needing to be doing some imputation here.
+
+193
+00:10:33,410 --> 00:10:38,640
+The end point analysis also doesn't handle
+time-changing predictors in any way.
+
+194
+00:10:38,640 --> 00:10:41,690
+So the end point analysis has a number of
+limitations.
+
+195
+00:10:41,690 --> 00:10:44,310
+However, it is simple and easy to
+interpret.

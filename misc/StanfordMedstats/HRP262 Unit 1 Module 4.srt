@@ -1,0 +1,1466 @@
+1
+00:00:05,280 --> 00:00:09,650
+In this next module I'm going to show you
+how to compare Kaplan-Meier curves from
+
+2
+00:00:09,650 --> 00:00:11,160
+different groups.
+
+3
+00:00:11,160 --> 00:00:16,830
+So to illustrate the points in this module
+I'm going to use some example data,
+
+4
+00:00:16,830 --> 00:00:18,475
+which is comparing two groups.
+
+5
+00:00:18,475 --> 00:00:22,560
+Kaplan-Meier statistics can be used to
+compare multiple groups three,
+
+6
+00:00:22,560 --> 00:00:23,670
+four, whatever.
+
+7
+00:00:23,670 --> 00:00:26,810
+But we'll keep it simple by just focusing
+on a two-group example.
+
+8
+00:00:28,000 --> 00:00:31,720
+So these are some real data that come from
+a randomized trial,
+
+9
+00:00:31,720 --> 00:00:36,150
+researchers randomized 44 patients with
+chronic active hepatitis to a kind of
+
+10
+00:00:36,150 --> 00:00:39,200
+steroid, or to no treatment or control.
+
+11
+00:00:39,200 --> 00:00:42,310
+And then, were going to compare the
+survival curves here.
+
+12
+00:00:42,310 --> 00:00:44,940
+So let me just show you what the data
+actually look like here, So
+
+13
+00:00:44,940 --> 00:00:46,190
+the data are similar to before,
+
+14
+00:00:46,190 --> 00:00:49,890
+we have this kind of two part outcome
+variable where we have time.
+
+15
+00:00:49,890 --> 00:00:53,760
+Which is either the time to sensoring or
+the time to the event.
+
+16
+00:00:53,760 --> 00:00:58,340
+And the event here is death, and, then we
+have an event variable, that's
+
+17
+00:00:58,340 --> 00:01:02,780
+the binary variable that tells you one,
+they died, or zero, they were censored.
+
+18
+00:01:02,780 --> 00:01:06,160
+We also have a variable that captures
+whether or not they were in
+
+19
+00:01:06,160 --> 00:01:08,810
+the treatment group, so we have a treated
+group and a control group here.
+
+20
+00:01:10,210 --> 00:01:13,030
+So this is just showing you the data in a
+slightly different way.
+
+21
+00:01:13,030 --> 00:01:16,440
+The two columns represent the two
+treatment groups,
+
+22
+00:01:16,440 --> 00:01:20,030
+and this is a little different than how I
+showed you the pregnancy data.
+
+23
+00:01:20,030 --> 00:01:25,020
+The starred values are people who were
+censored, and if you don't have a star,
+
+24
+00:01:25,020 --> 00:01:27,330
+that means you had the event that you die.
+
+25
+00:01:27,330 --> 00:01:29,480
+So that's just another way to represent
+the data.
+
+26
+00:01:29,480 --> 00:01:33,090
+Let me show you what these look like when
+we put them on a Kaplan-Meier curve.
+
+27
+00:01:34,170 --> 00:01:35,840
+So now we have two groups.
+
+28
+00:01:35,840 --> 00:01:38,410
+The red group represents the control
+group.
+
+29
+00:01:38,410 --> 00:01:41,410
+The black line represents the treated
+group.
+
+30
+00:01:41,410 --> 00:01:43,520
+And, as you can see, the open, here, is
+death.
+
+31
+00:01:43,520 --> 00:01:46,520
+So you can see, you clearly want to be in
+the treatment group, right.
+
+32
+00:01:46,520 --> 00:01:49,370
+The control group falls off pretty
+quickly.
+
+33
+00:01:49,370 --> 00:01:51,680
+The treatment group seems to do much
+better.
+
+34
+00:01:51,680 --> 00:01:53,820
+Now, be a little careful, when looking at
+these curves, your might,
+
+35
+00:01:53,820 --> 00:01:56,310
+your eye might kind of go to the, end of
+this curves and
+
+36
+00:01:56,310 --> 00:01:59,340
+you might say, well, it looks like they
+kind of come together, eventually.
+
+37
+00:01:59,340 --> 00:02:00,600
+Time is in months, by the way.
+
+38
+00:02:00,600 --> 00:02:03,660
+You know, at the end of about 175 months,
+
+39
+00:02:03,660 --> 00:02:06,050
+it looks like the curves, converge, or
+something.
+
+40
+00:02:06,050 --> 00:02:07,300
+But be very careful.
+
+41
+00:02:07,300 --> 00:02:09,970
+There's very, very few subjects left here.
+
+42
+00:02:09,970 --> 00:02:13,350
+And this probably doesn't represent a
+whole heck of a lot.
+
+43
+00:02:13,350 --> 00:02:14,540
+A little bit misleading.
+
+44
+00:02:15,880 --> 00:02:19,510
+So we want to know whether or not these
+two curves are statistically different.
+
+45
+00:02:19,510 --> 00:02:22,510
+We're going to, I'm going to show you some
+tasks to look at that in a minute.
+
+46
+00:02:22,510 --> 00:02:23,330
+But again I just want to
+
+47
+00:02:23,330 --> 00:02:26,510
+point out that the end of this curve's a
+little misleading to the eye.
+
+48
+00:02:26,510 --> 00:02:31,200
+So, there's six controls in the control
+group who just kind of are censored, or
+
+49
+00:02:31,200 --> 00:02:32,580
+live until the end of the study.
+
+50
+00:02:32,580 --> 00:02:35,940
+You can see these little Ls here are
+censored people.
+
+51
+00:02:35,940 --> 00:02:39,770
+There are only six controls left here at
+about 70 months into the study.
+
+52
+00:02:39,770 --> 00:02:43,450
+So, these last six because none of them
+died, it drags the curve all the way out.
+
+53
+00:02:43,450 --> 00:02:47,740
+But that's just due to six people, maybe
+there are some people who can live with
+
+54
+00:02:47,740 --> 00:02:51,930
+chronic hepatitis, but that's why that
+curve gets dragged all the way out.
+
+55
+00:02:51,930 --> 00:02:57,450
+And also there's this large drop in the
+treatment curve at about 160 months.
+
+56
+00:02:57,450 --> 00:02:59,010
+And what's happening here,
+
+57
+00:02:59,010 --> 00:03:03,660
+is there's actually only three people left
+in the treatment group at that time point.
+
+58
+00:03:03,660 --> 00:03:07,670
+When one person dies out of that three,
+the curve drops like two thirds.
+
+59
+00:03:07,670 --> 00:03:09,260
+That's a big drop in the curve.
+
+60
+00:03:09,260 --> 00:03:13,880
+So, it also makes the curve look like it's
+closer to the control curve.
+
+61
+00:03:13,880 --> 00:03:15,730
+But again, don't over interpret that.
+
+62
+00:03:15,730 --> 00:03:18,710
+Small sample sizes at the end of the
+curves will often cause them to
+
+63
+00:03:18,710 --> 00:03:19,539
+move around like that.
+
+64
+00:03:20,640 --> 00:03:23,956
+So now lets look at, are these two curves
+statistically different?
+
+65
+00:03:23,956 --> 00:03:28,532
+There are p-value tests that we can use to
+evaluate the null hypothesis for
+
+66
+00:03:28,532 --> 00:03:31,580
+these tests would be that the two curves
+are the same.
+
+67
+00:03:31,580 --> 00:03:35,210
+If we get a significant p-value that would
+say we would reject a null hypothesis,
+
+68
+00:03:35,210 --> 00:03:38,040
+and conclude that they are significantly
+different.
+
+69
+00:03:39,090 --> 00:03:40,042
+So that the test that,
+
+70
+00:03:40,042 --> 00:03:42,750
+main test that we are focusing on in
+something called the log rank test.
+
+71
+00:03:42,750 --> 00:03:44,920
+You can see the results of the log rank
+test here.
+
+72
+00:03:44,920 --> 00:03:48,470
+The p-value indeed comes out to be
+statistically significant of pf 0.03.
+
+73
+00:03:48,470 --> 00:03:54,050
+So that would say that the two curves are
+significantly different.
+
+74
+00:03:54,050 --> 00:03:56,038
+The log rate test is a chi-square
+statistic.
+
+75
+00:03:56,038 --> 00:03:58,750
+It's a chi-square with one degree of
+freedom.
+
+76
+00:03:58,750 --> 00:03:59,880
+And I'll, so
+
+77
+00:03:59,880 --> 00:04:03,850
+I'll show you in a minute that it's
+actually a Mantel-Haenszel chi-square.
+
+78
+00:04:03,850 --> 00:04:05,570
+But this is one of the tests that you can
+use,
+
+79
+00:04:05,570 --> 00:04:07,730
+the most commonly used to compare survival
+curves.
+
+80
+00:04:07,730 --> 00:04:10,570
+And then again it could be used for more
+than two groups.
+
+81
+00:04:10,570 --> 00:04:11,960
+So what is the Log-rank test actually?
+
+82
+00:04:11,960 --> 00:04:13,930
+I'm going to kind of walk you through the
+math.
+
+83
+00:04:13,930 --> 00:04:16,060
+It's not something that you'd probably do
+by hand, but
+
+84
+00:04:16,060 --> 00:04:18,968
+it's good to have an understanding of
+what's going on behind the scenes.
+
+85
+00:04:18,968 --> 00:04:21,870
+So the Log-Rank test turns out to just be
+
+86
+00:04:21,870 --> 00:04:25,170
+a Mantel-Haenszel chi square test of
+independence.
+
+87
+00:04:25,170 --> 00:04:30,140
+And we talked about the Mantel-Haenszel
+test earlier when we talked about
+
+88
+00:04:30,140 --> 00:04:31,890
+stratifying for confounding.
+
+89
+00:04:31,890 --> 00:04:36,500
+So we used the Mantel-Haenszel chi square
+test To stratify on confounders to
+
+90
+00:04:36,500 --> 00:04:38,360
+see whether or not an exposure and
+
+91
+00:04:38,360 --> 00:04:42,250
+an outcome were related after adjusting
+for confounding.
+
+92
+00:04:42,250 --> 00:04:45,290
+The idea is similar here, except rather
+than stratifying on a confounder we're
+
+93
+00:04:45,290 --> 00:04:48,470
+going to stratify on event times.
+
+94
+00:04:48,470 --> 00:04:52,300
+At every time when events cur, occur, when
+people died.
+
+95
+00:04:52,300 --> 00:04:54,390
+We're going to be comparing the treated
+and
+
+96
+00:04:54,390 --> 00:04:56,760
+control group at each one of those event
+times.
+
+97
+00:04:56,760 --> 00:04:59,180
+The event times here are the strata.
+
+98
+00:05:00,800 --> 00:05:05,580
+So, again, the Log-rank test looks just
+like the Mantel-Haenszel test statistic.
+
+99
+00:05:05,580 --> 00:05:08,040
+In this case the strata are the unique
+event times.
+
+100
+00:05:08,040 --> 00:05:10,610
+And every month where people died in this
+study,
+
+101
+00:05:10,610 --> 00:05:13,229
+that is an event time we're going make a
+two by two table.
+
+102
+00:05:14,380 --> 00:05:18,090
+So there are K Strata K unique event
+times,
+
+103
+00:05:18,090 --> 00:05:20,680
+and each event time in each one of these
+strata we're going to look at
+
+104
+00:05:20,680 --> 00:05:23,550
+how many people were at risk at that event
+time.
+
+105
+00:05:23,550 --> 00:05:26,930
+And we're going to compare the number of
+events occurring in one group
+
+106
+00:05:26,930 --> 00:05:28,000
+versus the other.
+
+107
+00:05:28,000 --> 00:05:30,950
+Treated versus control in the case of our
+example data.
+
+108
+00:05:32,060 --> 00:05:35,722
+This just makes a simple two by two table
+at every event time.
+
+109
+00:05:35,722 --> 00:05:39,900
+The Mantel-Haenszel statistic, or the
+Log-rank statistic here is just,
+
+110
+00:05:39,900 --> 00:05:43,240
+we're going to take the observed value of
+a in every strata, and
+
+111
+00:05:43,240 --> 00:05:47,010
+we're going to compare it to the expected
+value of a in the strata.
+
+112
+00:05:47,010 --> 00:05:50,360
+Now this is a two by two table that has
+only one degree of freedom.
+
+113
+00:05:50,360 --> 00:05:54,820
+I could have chosen to peg this statistic
+on b or c or d.
+
+114
+00:05:54,820 --> 00:05:58,300
+A is usually the most interesting cell, so
+I've just chosen to focus on A.
+
+115
+00:05:58,300 --> 00:06:00,700
+But because the table only has one degree
+of freedom,
+
+116
+00:06:00,700 --> 00:06:04,160
+I get the same value whether I focus on,
+which ever cell I focused.
+
+117
+00:06:05,160 --> 00:06:08,780
+So, the, this is the observed value, we
+take the observed value of cell a.
+
+118
+00:06:08,780 --> 00:06:11,140
+To calculate the expected value of cell a,
+
+119
+00:06:11,140 --> 00:06:13,410
+we're going to calculate that in the
+normal way would would for
+
+120
+00:06:13,410 --> 00:06:19,900
+any chi squared statistic So, if group and
+events are independent,
+
+121
+00:06:19,900 --> 00:06:23,930
+the probability of being in cell a would
+just be a plus c times a plus b.
+
+122
+00:06:23,930 --> 00:06:28,400
+In other words, the row total times the
+column total to get the expected value,
+
+123
+00:06:28,400 --> 00:06:30,640
+then we'd divide by n.
+
+124
+00:06:30,640 --> 00:06:34,230
+So row total times column total divided by
+n gives us the expected value for
+
+125
+00:06:34,230 --> 00:06:35,720
+this cell.
+
+126
+00:06:35,720 --> 00:06:39,120
+For all of the strata, we are going to
+take observed minus expected,
+
+127
+00:06:39,120 --> 00:06:42,050
+we are going to sum that up over all the
+strata, that's the summation there, and
+
+128
+00:06:42,050 --> 00:06:43,130
+then we are going to square the whole
+thing.
+
+129
+00:06:44,130 --> 00:06:47,900
+In the denominator, we are going to sum up
+the variance of a for every strata.
+
+130
+00:06:47,900 --> 00:06:52,094
+The variance formula is the row, row one
+times row two,
+
+131
+00:06:52,094 --> 00:06:57,650
+times column times column two, divided by
+the sample size in that stratum.
+
+132
+00:06:57,650 --> 00:06:59,870
+And squared times N minus one.
+
+133
+00:06:59,870 --> 00:07:01,930
+Now this is a little bit of a complicated
+formula,
+
+134
+00:07:01,930 --> 00:07:04,780
+I'm not expecting you to calculate this by
+hand.
+
+135
+00:07:04,780 --> 00:07:07,470
+Just realize that we the reason that's the
+variances that were
+
+136
+00:07:07,470 --> 00:07:09,690
+working on a hyper-geometric distribution,
+
+137
+00:07:09,690 --> 00:07:12,670
+that's the variance of a hyper-geometric
+distribution.
+
+138
+00:07:12,670 --> 00:07:14,210
+That's what a follows.
+
+139
+00:07:14,210 --> 00:07:17,800
+But that will be the variance for a give
+a, and then we add,
+
+140
+00:07:17,800 --> 00:07:21,319
+of all the variances, over all the
+different strata, that's our denominator.
+
+141
+00:07:22,700 --> 00:07:25,730
+Again, this is identical to the
+Mantle-Haenszel statistic for
+
+142
+00:07:25,730 --> 00:07:27,110
+stratified unconfounders.
+
+143
+00:07:28,290 --> 00:07:29,570
+Now, a couple notes about this.
+
+144
+00:07:29,570 --> 00:07:30,410
+So first of all,
+
+145
+00:07:30,410 --> 00:07:33,950
+how do you know that this is a chi-square
+statistic with one degree of freedom?
+
+146
+00:07:33,950 --> 00:07:36,500
+How do you know that this complicated
+formula follows a chi-square?
+
+147
+00:07:36,500 --> 00:07:39,770
+Well, we can do a little bit of algebraic
+rearrangement and
+
+148
+00:07:39,770 --> 00:07:46,280
+show that this statistic, what you see
+here, is just the same as saying,
+
+149
+00:07:46,280 --> 00:07:49,970
+I want to add up all the different
+observed a's over different,
+
+150
+00:07:49,970 --> 00:07:52,340
+all the different strata, so it's the sum
+of observed a's.
+
+151
+00:07:53,350 --> 00:07:56,540
+We can rearrange that expected value as
+well.
+
+152
+00:07:56,540 --> 00:07:58,480
+And show you that this is,
+
+153
+00:07:58,480 --> 00:08:01,450
+we are subtracted the expected value of
+the sum of ace.
+
+154
+00:08:03,980 --> 00:08:05,740
+So that's equivalent.
+
+155
+00:08:05,740 --> 00:08:08,230
+We'd be then squaring all of that in the
+numerator, so
+
+156
+00:08:08,230 --> 00:08:12,070
+it's something minus it's expected value,
+and observed, minus it's expected value,
+
+157
+00:08:12,070 --> 00:08:15,070
+and then in the denominator, we have the
+variants of that same thing again.
+
+158
+00:08:15,070 --> 00:08:17,480
+We can do a little bit of re-arrangement
+that,
+
+159
+00:08:17,480 --> 00:08:21,890
+that is just equal to the variants of the
+sum of a case.
+
+160
+00:08:21,890 --> 00:08:25,450
+We have got an observed, minus an expected
+squared, divided by it's variants,
+
+161
+00:08:25,450 --> 00:08:28,480
+that's going to follow a chi-square with
+one degree of freedom.
+
+162
+00:08:28,480 --> 00:08:32,080
+Or if you took the square root, you would
+see that it's an observed minus
+
+163
+00:08:32,080 --> 00:08:36,380
+an expected divided by it's standard
+deviation that follows a z squared.
+
+164
+00:08:36,380 --> 00:08:40,380
+Sorry a z sta, statistic if you take away
+the square root.
+
+165
+00:08:40,380 --> 00:08:43,420
+So that, that's why this is a chi-square I
+have written that out if
+
+166
+00:08:43,420 --> 00:08:44,530
+you can't read my handwriting.
+
+167
+00:08:44,530 --> 00:08:49,030
+I have written that out again there, and
+again the variants formula just comes from
+
+168
+00:08:49,030 --> 00:08:51,770
+the fact that it's a hypergeometric
+distribution.
+
+169
+00:08:51,770 --> 00:08:53,574
+So just a little bit of mathematical
+background there.
+
+170
+00:08:54,960 --> 00:08:58,880
+Let's now actually show how to apply this
+for real data.
+
+171
+00:08:58,880 --> 00:09:03,010
+So, going back to our hepatitis randomized
+trial.
+
+172
+00:09:03,010 --> 00:09:06,260
+I'm displaying now some output from my
+computer,
+
+173
+00:09:06,260 --> 00:09:09,020
+that summarizes all the different events
+in the control group.
+
+174
+00:09:09,020 --> 00:09:12,350
+It also gives me the numbers at risk which
+makes it easy because it's been
+
+175
+00:09:12,350 --> 00:09:14,100
+tabulated for me.
+
+176
+00:09:14,100 --> 00:09:17,520
+So if we look in the control group, this
+is showing me the times, and
+
+177
+00:09:17,520 --> 00:09:19,710
+it's showing me when events occurred.
+
+178
+00:09:19,710 --> 00:09:21,732
+So, at the first time point,
+
+179
+00:09:21,732 --> 00:09:24,700
+with zero time zero, of course nobody has
+had the event then.
+
+180
+00:09:24,700 --> 00:09:26,820
+The first event occurred at month two,
+
+181
+00:09:26,820 --> 00:09:30,050
+the first time we update the survival
+estimate.
+
+182
+00:09:30,050 --> 00:09:33,590
+In month two there is one person who dies.
+
+183
+00:09:33,590 --> 00:09:35,090
+There were 22 at risk.
+
+184
+00:09:35,090 --> 00:09:36,160
+That's in the control group.
+
+185
+00:09:37,330 --> 00:09:40,170
+Now, in the treated group, there's also a
+death at month two.
+
+186
+00:09:40,170 --> 00:09:43,310
+So at time point two, there's one death in
+the treated group,
+
+187
+00:09:43,310 --> 00:09:45,740
+there were also 22 at risk.
+
+188
+00:09:45,740 --> 00:09:49,740
+So, the first stratum here is going to be
+month two, because that's
+
+189
+00:09:49,740 --> 00:09:53,785
+the first event time, and we're going to
+represent the data in a two by two table.
+
+190
+00:09:53,785 --> 00:09:57,210
+There were 22 people in the treated group,
+and
+
+191
+00:09:57,210 --> 00:10:01,590
+22 people at the cont, in the control
+group at risk at month two, total of 44.
+
+192
+00:10:01,590 --> 00:10:05,410
+There was one event in the treated group,
+and one event in the control group.
+
+193
+00:10:05,410 --> 00:10:08,270
+We can represent that in a two by two
+table.
+
+194
+00:10:08,270 --> 00:10:11,110
+This is the first stratum, the first event
+time.
+
+195
+00:10:11,110 --> 00:10:13,770
+We then can say, well what's the observed
+value of a here?
+
+196
+00:10:13,770 --> 00:10:15,090
+Here, that's just one.
+
+197
+00:10:15,090 --> 00:10:17,150
+There's one in cell a.
+
+198
+00:10:17,150 --> 00:10:19,330
+What's the expected value of a here?
+
+199
+00:10:19,330 --> 00:10:24,580
+Well, there were a total of 44 people,
+there were a total of two events,
+
+200
+00:10:24,580 --> 00:10:26,910
+22 people in each group.
+
+201
+00:10:26,910 --> 00:10:31,630
+If the no hypothesis is true, and there's
+no relationship between what group you're
+
+202
+00:10:31,630 --> 00:10:33,610
+in, and whether or not you have the event.
+
+203
+00:10:33,610 --> 00:10:37,260
+Then we would expect an even distribution
+of events over the two groups.
+
+204
+00:10:37,260 --> 00:10:40,750
+So if there's two events total, we'd
+expect about one in each group.
+
+205
+00:10:40,750 --> 00:10:42,890
+And that's what the expected value tells
+us.
+
+206
+00:10:42,890 --> 00:10:47,070
+So 22 times two divided by 44 gives us an
+expected value here of one.
+
+207
+00:10:47,070 --> 00:10:50,330
+This is the expected value under the null
+hypothesis.
+
+208
+00:10:50,330 --> 00:10:53,690
+The variance is going to be the row one
+times row two,
+
+209
+00:10:53,690 --> 00:10:56,250
+times column one, times column two.
+
+210
+00:10:56,250 --> 00:11:00,700
+That's the numerator, and in the
+denominator the number is still at risk at
+
+211
+00:11:00,700 --> 00:11:06,590
+that event time, that's 44 squared times n
+minus 1 43.
+
+212
+00:11:06,590 --> 00:11:09,830
+Again don't worry about having to
+calculate out the variants.
+
+213
+00:11:09,830 --> 00:11:12,460
+Just realize that there is a way to get
+the variance of a as well, and
+
+214
+00:11:12,460 --> 00:11:15,330
+that comes out to be 0.244 here.
+
+215
+00:11:15,330 --> 00:11:17,900
+So that's for the first stratum, the first
+event time.
+
+216
+00:11:17,900 --> 00:11:20,380
+Let's go back to our data and see what
+happens next.
+
+217
+00:11:20,380 --> 00:11:23,900
+So in the control group, the next thing
+that happens is that there is a,
+
+218
+00:11:23,900 --> 00:11:26,330
+one death at month three.
+
+219
+00:11:26,330 --> 00:11:29,020
+So now we're up to two people failed,
+there was 21 people at
+
+220
+00:11:29,020 --> 00:11:32,650
+risk At month three, one of them died in
+the control group.
+
+221
+00:11:32,650 --> 00:11:33,780
+But let's look at the treated group.
+
+222
+00:11:33,780 --> 00:11:37,940
+If you look at the treated group, there
+are no events at three months.
+
+223
+00:11:37,940 --> 00:11:41,070
+So there's still 21 at risk, but there are
+no events.
+
+224
+00:11:41,070 --> 00:11:44,100
+So the 2 by 2 table for the second event
+time.
+
+225
+00:11:44,100 --> 00:11:48,420
+The second stratum, that for month three
+looks like this,
+
+226
+00:11:48,420 --> 00:11:52,200
+there was 21 still at risk in the treated
+group and 21 in the control group.
+
+227
+00:11:52,200 --> 00:11:55,260
+Remember we, we lost, one died in month
+two in each of the groups, so
+
+228
+00:11:55,260 --> 00:11:56,180
+we lost them.
+
+229
+00:11:56,180 --> 00:11:59,250
+Total of 42 are still at risk at event
+time two.
+
+230
+00:11:59,250 --> 00:12:03,150
+The observed value for cell a here is
+zero.
+
+231
+00:12:03,150 --> 00:12:06,650
+There were no deaths in the treated group.
+
+232
+00:12:06,650 --> 00:12:08,350
+The expected value, however, is a half.
+
+233
+00:12:08,350 --> 00:12:11,380
+Under the null hypothesis, we'd expect if
+there's one total death,
+
+234
+00:12:11,380 --> 00:12:14,290
+then we'd expect about half in one and
+half in another.
+
+235
+00:12:14,290 --> 00:12:17,900
+Of course, you can't have a half a death,
+but that is just an expected value.
+
+236
+00:12:17,900 --> 00:12:22,200
+So 21 times one divided by 42 gives us an
+expected value of 0.5.
+
+237
+00:12:22,200 --> 00:12:25,050
+The variance, if you plug into the
+variance formula,
+
+238
+00:12:25,050 --> 00:12:26,070
+comes out to be a quarter.
+
+239
+00:12:26,070 --> 00:12:28,600
+And we can keep going here.
+
+240
+00:12:28,600 --> 00:12:31,630
+So, the next event time occurs at month
+four.
+
+241
+00:12:31,630 --> 00:12:35,270
+In the control group at month four,
+there's one more death.
+
+242
+00:12:35,270 --> 00:12:39,480
+There was just 20 at risk now in the
+control group One of them dies.
+
+243
+00:12:39,480 --> 00:12:43,540
+In the treated group, there are no deaths
+at month four, so we still have 21,
+
+244
+00:12:43,540 --> 00:12:45,180
+who are left, 21 at risk.
+
+245
+00:12:45,180 --> 00:12:48,440
+We represent that in our two by two table.
+
+246
+00:12:48,440 --> 00:12:53,670
+There were 21 treated at risk but only 20
+control individuals at risk for now.
+
+247
+00:12:53,670 --> 00:12:56,500
+For a total of 41, at event time three at
+four months.
+
+248
+00:12:58,040 --> 00:12:59,940
+The observed value for cell a is zero
+here.
+
+249
+00:12:59,940 --> 00:13:05,430
+The expected value is one times 21 divided
+by 41 or about 0.5,
+
+250
+00:13:05,430 --> 00:13:08,050
+and the variance here comes out to be 0.25
+again.
+
+251
+00:13:09,160 --> 00:13:12,210
+So that's the values for the third strata.
+
+252
+00:13:12,210 --> 00:13:14,740
+And then we can keep going, you could do
+this for every event time.
+
+253
+00:13:14,740 --> 00:13:18,080
+Of course you don't want to do this by
+hand, the computer will do this for you.
+
+254
+00:13:18,080 --> 00:13:20,620
+But then we take all of those observed
+expectant and
+
+255
+00:13:20,620 --> 00:13:23,166
+variances, and put them together in this
+test system.
+
+256
+00:13:23,166 --> 00:13:28,120
+So there's 20, 22 unique event times in
+this case.
+
+257
+00:13:28,120 --> 00:13:29,540
+I'm going to add in all the observes,
+
+258
+00:13:29,540 --> 00:13:32,200
+minus the expecteds and divide it by the
+variances.
+
+259
+00:13:32,200 --> 00:13:35,660
+So, we had a one observed in the first
+strata,
+
+260
+00:13:35,660 --> 00:13:37,650
+minus one expected in the second strata.
+
+261
+00:13:37,650 --> 00:13:41,580
+And there were zero observed minus a half
+expected, and so on the variances.
+
+262
+00:13:41,580 --> 00:13:44,650
+For those first three strata, we're .24,
+.25 and .25.
+
+263
+00:13:44,650 --> 00:13:48,080
+And then we would keep going across all
+the different strata.
+
+264
+00:13:48,080 --> 00:13:51,590
+When you add all that up squared in the
+numerator, add up the denominator.
+
+265
+00:13:51,590 --> 00:13:55,494
+It comes out to give you, if you did it
+all at, a chi square value of 4.66.
+
+266
+00:13:55,494 --> 00:13:59,160
+And that's exactly what we saw from the
+computer before.
+
+267
+00:13:59,160 --> 00:14:02,250
+So if we look at the output from the
+computer, the Log- rank test,
+
+268
+00:14:02,250 --> 00:14:03,790
+indeed, had a chi square of 4.66.
+
+269
+00:14:03,790 --> 00:14:06,920
+That corresponds to a p-value of .03.
+
+270
+00:14:06,920 --> 00:14:08,410
+Now, as I mentioned,
+
+271
+00:14:08,410 --> 00:14:13,670
+the log rank test is most commonly used to
+compare different groups in Kaplan-Meier.
+
+272
+00:14:13,670 --> 00:14:16,390
+There are other statistics that you could
+use, however.
+
+273
+00:14:16,390 --> 00:14:18,800
+So I'll just point those out to you now.
+
+274
+00:14:18,800 --> 00:14:22,540
+So first of all there's something called a
+likelihood ratio test.
+
+275
+00:14:22,540 --> 00:14:25,700
+The negative two Log likelihood ratio.
+
+276
+00:14:25,700 --> 00:14:29,680
+You should recognize that, that comes from
+maximum likelihood estimation.
+
+277
+00:14:29,680 --> 00:14:33,160
+So this value must come from some kind of
+regression.
+
+278
+00:14:33,160 --> 00:14:37,230
+And in fact, it comes from assuming an
+exponential distribution.
+
+279
+00:14:37,230 --> 00:14:41,780
+So if your data, actually if your survival
+curve actually follow a particular
+
+280
+00:14:41,780 --> 00:14:45,590
+distribution called the exponential, you
+could fit a regression here.
+
+281
+00:14:45,590 --> 00:14:51,800
+That regression will give you a p-value
+using negative two likelihood comparison.
+
+282
+00:14:51,800 --> 00:14:54,860
+Now you'll see that when we do that here,
+the p-value comes out to be very similar.
+
+283
+00:14:54,860 --> 00:14:57,070
+But there is an assumption here So
+
+284
+00:14:57,070 --> 00:15:00,420
+just keep in mind that there is an
+assumption in, in that test.
+
+285
+00:15:00,420 --> 00:15:01,970
+So unless you've evaluated that
+assumption,
+
+286
+00:15:01,970 --> 00:15:04,530
+you probably want to avoid that one.
+
+287
+00:15:04,530 --> 00:15:09,770
+Now the Wilcoxon statistic, is also a chi
+score with one degree of freedom.
+
+288
+00:15:09,770 --> 00:15:12,730
+It's really actually just a version of the
+Log-rank test.
+
+289
+00:15:12,730 --> 00:15:17,060
+All it does is it weights the strata by
+their size.
+
+290
+00:15:17,060 --> 00:15:20,820
+So remember, the earliest, event times are
+going to have the most people.
+
+291
+00:15:20,820 --> 00:15:23,130
+So those are going to get the highest
+weight.
+
+292
+00:15:23,130 --> 00:15:26,430
+So it's going to give a little bit more
+weight to earlier time points.
+
+293
+00:15:26,430 --> 00:15:27,280
+It's going to be a little bit more
+
+294
+00:15:27,280 --> 00:15:29,980
+sensitive to differences at earlier time
+points.
+
+295
+00:15:29,980 --> 00:15:34,550
+There might be a reason why you care about
+giving more weight to earlier time points.
+
+296
+00:15:34,550 --> 00:15:38,290
+If, if there is a reason for that then you
+might choose the Wilooxon test.
+
+297
+00:15:38,290 --> 00:15:42,440
+You can see that we get a slightly p-value
+of 0.01 there were
+
+298
+00:15:42,440 --> 00:15:45,650
+really good differences early on in, in
+this data set.
+
+299
+00:15:45,650 --> 00:15:46,640
+So if there is some reason you,
+
+300
+00:15:46,640 --> 00:15:50,360
+you want to wait those earlier time points
+more heavily the Wilooxon will do
+
+301
+00:15:50,360 --> 00:15:50,900
+that for you.
+
+302
+00:15:51,920 --> 00:15:55,360
+But as I mentioned the Log-rank is the
+most commonly used,
+
+303
+00:15:55,360 --> 00:15:58,300
+it actually turns out that they have the
+most statistic power to test
+
+304
+00:15:58,300 --> 00:16:02,540
+differences between groups that fit in
+proportional hazards model.
+
+305
+00:16:02,540 --> 00:16:04,660
+So it works well as a set up for
+
+306
+00:16:04,660 --> 00:16:07,830
+Cox regression which is also called the
+proper proportional hazards regression.
+
+307
+00:16:07,830 --> 00:16:12,210
+So if you are, you are planning to do Cox
+regression usually for the descriptive for
+
+308
+00:16:12,210 --> 00:16:14,360
+the Kaplan-Meier you end up recording the
+log-rank.
+
+309
+00:16:14,360 --> 00:16:17,420
+Rank test that's most commonly done.

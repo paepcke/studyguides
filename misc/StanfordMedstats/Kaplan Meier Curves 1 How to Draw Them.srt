@@ -1,0 +1,662 @@
+1
+00:00:01,120 --> 00:00:06,530
+Welcome students, this is a video K-M part
+one How to draw Kaplan-Meier Curves,
+
+2
+00:00:06,530 --> 00:00:08,709
+K-M stands for Kaplan-Meier.
+
+3
+00:00:08,709 --> 00:00:12,430
+Of course, you're very unlikely to need to
+draw Kaplan-Meier curves yourself, and
+
+4
+00:00:12,430 --> 00:00:16,530
+certainly software programs do this for
+you given the data, but you need to know.
+
+5
+00:00:16,530 --> 00:00:20,160
+How the data are actually converted into a
+Kaplan-Meier curve intige,
+
+6
+00:00:20,160 --> 00:00:24,280
+in order to truly understand what a
+Kaplan-Meier curve does so
+
+7
+00:00:24,280 --> 00:00:28,190
+we're going to take you through it I hope
+your not too nervous the math won't be
+
+8
+00:00:28,190 --> 00:00:31,090
+too hard because we're only going to do a
+very small clinical trial.
+
+9
+00:00:32,930 --> 00:00:34,670
+So, here's our clinical trial.
+
+10
+00:00:34,670 --> 00:00:39,150
+The clinical trial is a study in which we
+are interested in survival after
+
+11
+00:00:39,150 --> 00:00:43,550
+surgery for pancreatic cancer and what
+kind of survival are we talking about?
+
+12
+00:00:43,550 --> 00:00:45,910
+We're talking about overall survival.
+
+13
+00:00:45,910 --> 00:00:49,220
+We're, we're not going to ask why the
+patient died.
+
+14
+00:00:49,220 --> 00:00:51,630
+We're only going to ask is the patient
+alive or dead.
+
+15
+00:00:51,630 --> 00:00:54,280
+And we're going to measure it in time and
+it just so
+
+16
+00:00:54,280 --> 00:00:58,500
+happens that our measurement in time will
+be over the course of months,
+
+17
+00:00:58,500 --> 00:01:04,440
+because pancreatic cancer is a pretty
+dismal tumor and lots of people die.
+
+18
+00:01:06,890 --> 00:01:08,210
+So here we go.
+
+19
+00:01:08,210 --> 00:01:14,670
+Now, what we're going to do is we're
+going to start enrolling patients,
+
+20
+00:01:14,670 --> 00:01:16,900
+with the first surgery that I perform as a
+surgeon.
+
+21
+00:01:16,900 --> 00:01:20,520
+But I dont operate on ten patients, all in
+the same day.
+
+22
+00:01:20,520 --> 00:01:27,580
+The patients will get operated on in a
+spaced out way and I may not be willing
+
+23
+00:01:27,580 --> 00:01:33,310
+to wait until every last patient has died
+before I write my paper up because
+
+24
+00:01:33,310 --> 00:01:36,780
+I may have some interesting results that I
+want to share before that point.
+
+25
+00:01:36,780 --> 00:01:38,800
+And in the case of some clinical trials
+which,
+
+26
+00:01:38,800 --> 00:01:42,840
+in which you are going to measure survival
+in say five years you don't and
+
+27
+00:01:42,840 --> 00:01:47,000
+you're accumulating the patients over a
+five year interval,
+
+28
+00:01:47,000 --> 00:01:51,650
+you don't want to wait ten years before
+you publish it.
+
+29
+00:01:51,650 --> 00:01:56,160
+Because if you started the trial on year 1
+and you enrolled the patients for
+
+30
+00:01:56,160 --> 00:01:57,150
+the next five years,
+
+31
+00:01:57,150 --> 00:02:00,710
+you're going to have to wait at least 10
+years before you can analyze it.
+
+32
+00:02:00,710 --> 00:02:05,222
+So Kaplan-Meier has a way of getting
+around that and also it, as you'll see
+
+33
+00:02:05,222 --> 00:02:10,220
+it's a way of dealing with incomplete
+information in a very clever manner.
+
+34
+00:02:10,220 --> 00:02:11,270
+So here's our clinical trial.
+
+35
+00:02:12,380 --> 00:02:17,700
+We've got ten patients and the first
+
+36
+00:02:17,700 --> 00:02:22,600
+interval that we're interested in looking
+at is the interval from 0 to 1 month.
+
+37
+00:02:22,600 --> 00:02:25,460
+And the reason were going to look at the
+interval from zero to one
+
+38
+00:02:25,460 --> 00:02:31,220
+month is two patients happened to die at
+the end of that interval.
+
+39
+00:02:31,220 --> 00:02:35,460
+So during that interval from zero to
+
+40
+00:02:35,460 --> 00:02:39,239
+one month no patients were censored, we'll
+talk about censoring later.
+
+41
+00:02:40,680 --> 00:02:44,040
+And we did talk about it in class, but at
+the end of the interval,
+
+42
+00:02:44,040 --> 00:02:50,405
+there were 10 patients left and there were
+two deaths, okay?
+
+43
+00:02:50,405 --> 00:02:58,570
+So, at the very beginning of course,
+Kaplan-Meier curve shows 100% survival.
+
+44
+00:02:58,570 --> 00:03:03,120
+At the end, two patients die so the curve
+is going to come down a certain amount.
+
+45
+00:03:03,120 --> 00:03:08,442
+And one patient, one patient died,
+
+46
+00:03:08,442 --> 00:03:14,533
+from surgical complications, from surgery.
+
+47
+00:03:14,533 --> 00:03:23,580
+[NOISE] one died from complications of the
+pancreatic cancer.
+
+48
+00:03:24,870 --> 00:03:27,280
+It does kill very quickly, okay.
+
+49
+00:03:28,540 --> 00:03:31,190
+And as a result, the curve will drop down.
+
+50
+00:03:31,190 --> 00:03:33,240
+Now, how much will the curve drop down?
+
+51
+00:03:33,240 --> 00:03:36,370
+Well at, at this point that we're talking
+about,
+
+52
+00:03:36,370 --> 00:03:39,360
+there are 10 patients at risk, and 2 died.
+
+53
+00:03:39,360 --> 00:03:43,216
+So 2 out of 10 patients, died.
+
+54
+00:03:44,356 --> 00:03:50,890
+And the percent surviving, is 8 out of 10.
+
+55
+00:03:50,890 --> 00:03:54,105
+So, the percent surviving is 80%.
+
+56
+00:03:54,105 --> 00:03:56,420
+All right, good.
+
+57
+00:03:56,420 --> 00:03:59,400
+So, we've got 80% and now we follow that
+out.
+
+58
+00:03:59,400 --> 00:04:06,360
+The next interval will be from one month
+to four months.
+
+59
+00:04:06,360 --> 00:04:09,690
+Now, it turns out in that interval nobody
+died.
+
+60
+00:04:09,690 --> 00:04:12,990
+The reason we pick one month to format
+this because there was one death,
+
+61
+00:04:14,860 --> 00:04:16,460
+at the end of that interval.
+
+62
+00:04:16,460 --> 00:04:18,240
+But, several other things happened.
+
+63
+00:04:18,240 --> 00:04:24,230
+Now, at this point
+
+64
+00:04:24,230 --> 00:04:29,070
+at the two month mark, one patient showed
+up to clinic.
+
+65
+00:04:29,070 --> 00:04:33,000
+At the two month part, but never came to
+clinic again and
+
+66
+00:04:33,000 --> 00:04:35,520
+we don't know what happened to them, we
+made phone calls and so on.
+
+67
+00:04:35,520 --> 00:04:42,430
+So that patient is lost to follow-up, lost
+to follow-up, alright.
+
+68
+00:04:42,430 --> 00:04:44,950
+We can't say whether or
+
+69
+00:04:44,950 --> 00:04:51,110
+not that patient lived or died after two
+months, our information is incomplete.
+
+70
+00:04:51,110 --> 00:04:56,070
+However, we do know that, that patient did
+not die up to the two month mark and
+
+71
+00:04:56,070 --> 00:04:57,110
+that's valuable information.
+
+72
+00:04:57,110 --> 00:04:58,818
+So, we don't want to throw that patient
+out.
+
+73
+00:04:58,818 --> 00:05:07,543
+[COUGH] In addition, we'll have another
+patient here, okay.
+
+74
+00:05:08,651 --> 00:05:11,914
+Who entered the study three months ago.
+
+75
+00:05:11,914 --> 00:05:12,940
+Enrolled three months ago.
+
+76
+00:05:20,180 --> 00:05:21,870
+Okay, we're writing the paper now.
+
+77
+00:05:21,870 --> 00:05:24,720
+But we did the surgery, three months
+before.
+
+78
+00:05:24,720 --> 00:05:29,010
+So that patient we know, survived after
+three months.
+
+79
+00:05:29,010 --> 00:05:33,330
+But we're not really, willing to wait
+linger, before something happens.
+
+80
+00:05:33,330 --> 00:05:38,780
+All we know is that patient still, at the
+three month mark, was still alive.
+
+81
+00:05:38,780 --> 00:05:41,181
+We don't know anything after that and
+
+82
+00:05:41,181 --> 00:05:48,220
+you'll notice that at the beginning of the
+study we had eight patients left, okay.
+
+83
+00:05:48,220 --> 00:05:52,690
+And four were censored one lost a follow
+up, one that enrolled three months ago.
+
+84
+00:05:52,690 --> 00:05:54,330
+Another one that enrolled three and
+
+85
+00:05:54,330 --> 00:06:00,438
+a half months ago and say another patient
+lost a follow up, okay.
+
+86
+00:06:00,438 --> 00:06:03,150
+Some censoring events.
+
+87
+00:06:03,150 --> 00:06:05,660
+Now of course less the follow up and so
+
+88
+00:06:05,660 --> 00:06:10,620
+on they tend to get lost to follow up as
+you get further and
+
+89
+00:06:10,620 --> 00:06:16,030
+further out because say this one, this one
+wasn't really lost to fall up.
+
+90
+00:06:16,030 --> 00:06:20,080
+This one may have, I mentioned very
+quickly that this one
+
+91
+00:06:20,080 --> 00:06:26,104
+enrolled three and a half months ago.
+
+92
+00:06:26,104 --> 00:06:32,396
+This one moved to
+
+93
+00:06:32,396 --> 00:06:37,340
+England, okay?
+
+94
+00:06:37,340 --> 00:06:40,700
+This patient moved, she had pancreatic
+cancer and
+
+95
+00:06:40,700 --> 00:06:43,960
+wanted to move to be closer to her family.
+
+96
+00:06:46,130 --> 00:06:50,330
+She had, she had children who had moved to
+England and she wanted to move there too.
+
+97
+00:06:50,330 --> 00:06:57,218
+But because we saw her at this point but
+never saw her again and really, she, she,
+
+98
+00:06:57,218 --> 00:07:01,060
+she was in, no longer in any communication
+and we don't know what happened to her.
+
+99
+00:07:01,060 --> 00:07:03,010
+She's also censored.
+
+100
+00:07:03,010 --> 00:07:08,690
+Now at this point, at the end of this
+interval from one to four months.
+
+101
+00:07:08,690 --> 00:07:12,380
+There are four p, patients at risk, one
+dies.
+
+102
+00:07:12,380 --> 00:07:18,378
+So, the survival at that point is three
+out of four patients were still alive for
+
+103
+00:07:18,378 --> 00:07:21,570
+75% survival at that interval.
+
+104
+00:07:21,570 --> 00:07:28,147
+So from this point down, we have to have
+75% of 80%, or 60%.
+
+105
+00:07:28,147 --> 00:07:31,630
+So at that point, we have 60% survival.
+
+106
+00:07:31,630 --> 00:07:37,604
+And this patient right there,
+
+107
+00:07:37,604 --> 00:07:44,740
+one, died from pancreatic cancer.
+
+108
+00:07:44,740 --> 00:07:48,960
+All right and then we move out.
+
+109
+00:07:48,960 --> 00:07:52,530
+Now we have three patients left, okay?
+
+110
+00:07:52,530 --> 00:07:55,440
+We're going to have another patient who's
+censored at this point.
+
+111
+00:07:57,010 --> 00:07:57,820
+One patient censored.
+
+112
+00:07:57,820 --> 00:08:01,510
+That patient entered the study six months
+ago.
+
+113
+00:08:01,510 --> 00:08:02,770
+Enrolled six months ago.
+
+114
+00:08:04,420 --> 00:08:08,770
+Enrolled six months ago.
+
+115
+00:08:12,270 --> 00:08:14,400
+Okay, only followed for
+
+116
+00:08:14,400 --> 00:08:19,920
+six months and then we go out to eight
+months and something else happened.
+
+117
+00:08:20,940 --> 00:08:25,280
+Okay, so at the end here at the end of six
+months we have two patients left,
+
+118
+00:08:25,280 --> 00:08:27,640
+because we started out with three.
+
+119
+00:08:27,640 --> 00:08:31,340
+We, we have one, who was censored.
+
+120
+00:08:31,340 --> 00:08:34,380
+We ended up with two, two patients left
+and then one patient dies.
+
+121
+00:08:35,890 --> 00:08:39,390
+And then the number of patients at risk is
+two, one died, so that's
+
+122
+00:08:39,390 --> 00:08:45,360
+an overall survival for that interval,
+survi, survival of that interval of 50%.
+
+123
+00:08:45,360 --> 00:08:52,420
+So we go from 60% down to 30%, okay?
+
+124
+00:08:52,420 --> 00:08:54,750
+And that patient,
+
+125
+00:08:56,150 --> 00:09:02,570
+that patient died in a car accident.
+
+126
+00:09:02,570 --> 00:09:06,950
+[NOISE] And you'll say,
+
+127
+00:09:06,950 --> 00:09:14,050
+wait a minute that's not very fair.
+
+128
+00:09:14,050 --> 00:09:19,900
+It looks like, it looks like it's
+impacting survival after surgery.
+
+129
+00:09:19,900 --> 00:09:22,310
+But remember, we're only,
+
+130
+00:09:22,310 --> 00:09:26,110
+we've specified that we're going to look
+at overall survival.
+
+131
+00:09:26,110 --> 00:09:31,080
+So, we have to, we have to just measure
+whether patients are alive or
+
+132
+00:09:31,080 --> 00:09:34,760
+dead, and that's overall survival.
+
+133
+00:09:34,760 --> 00:09:38,970
+All we know, and all we know is that it
+looks like a big effect because,
+
+134
+00:09:38,970 --> 00:09:41,470
+at that point, there were only two
+patients at risk and
+
+135
+00:09:41,470 --> 00:09:44,220
+one died, happened to die in a car
+accident, which is an unlikely event.
+
+136
+00:09:44,220 --> 00:09:47,000
+But there are many possible unlikely
+events and if we
+
+137
+00:09:47,000 --> 00:09:50,530
+had a bigger study this wouldn't have much
+of an impact, but we have a small study.
+
+138
+00:09:50,530 --> 00:09:53,850
+So at the end of that interval, we have
+one patient left.
+
+139
+00:09:53,850 --> 00:09:55,780
+There's no censoring that goes on.
+
+140
+00:09:55,780 --> 00:09:57,830
+There's one patient at the end.
+
+141
+00:09:57,830 --> 00:10:01,320
+No deaths at the end and so, the last
+patient's there and we're done.
+
+142
+00:10:02,430 --> 00:10:05,090
+So the overall survival that we have from
+this
+
+143
+00:10:05,090 --> 00:10:10,280
+study is shown as a Kaplan-Meier curve,
+okay.
+
+144
+00:10:10,280 --> 00:10:11,190
+Thank you very much.

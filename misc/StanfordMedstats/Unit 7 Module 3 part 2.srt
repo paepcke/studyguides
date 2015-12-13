@@ -1,0 +1,287 @@
+1
+00:00:00,001 --> 00:00:00,747
+compare those [UNKNOWN].
+
+2
+00:00:00,747 --> 00:00:01,742
+Here's an example.
+
+3
+00:00:01,742 --> 00:00:05,601
+There was a study done on marathon runners
+who is a cross sectional study.
+
+4
+00:00:05,601 --> 00:00:10,450
+Marathon runners tend to spend a lot of
+time in the sun, so
+
+5
+00:00:10,450 --> 00:00:13,490
+they develop a lot of skin lesions from
+sun exposure.
+
+6
+00:00:13,490 --> 00:00:17,652
+They develop something called nevi which
+can be a precursors to melanoma, so
+
+7
+00:00:17,652 --> 00:00:21,672
+they're worrisome and the researchers
+wanted to know whether or
+
+8
+00:00:21,672 --> 00:00:26,150
+not more sun would increase your nevi
+that's expected.
+
+9
+00:00:26,150 --> 00:00:31,390
+They were curious whether or not if you're
+a marathon who trains more intensely,
+
+10
+00:00:31,390 --> 00:00:34,130
+who trains faster who trains harder for
+
+11
+00:00:34,130 --> 00:00:37,140
+the same amount of sun exposure if you are
+more likely to develop nevi.
+
+12
+00:00:37,140 --> 00:00:41,720
+The thought being that, somehow that
+intense training is maybe going to wear
+
+13
+00:00:41,720 --> 00:00:45,950
+down your immunity is going to make you
+more, at more risk for skin cancer.
+
+14
+00:00:45,950 --> 00:00:48,750
+And so, here is the results looking just
+at training velocity.
+
+15
+00:00:48,750 --> 00:00:54,620
+They grouped people according to their
+training velocity a slow group a medium
+
+16
+00:00:54,620 --> 00:00:58,160
+group, and a fast group, that last group
+on the right is the fastest group.
+
+17
+00:00:58,160 --> 00:00:59,830
+Then they counted up their nevi.
+
+18
+00:00:59,830 --> 00:01:01,570
+Here are the box spots for the nevi
+counts.
+
+19
+00:01:01,570 --> 00:01:03,120
+Our outcome variable here is nevi counts,
+
+20
+00:01:03,120 --> 00:01:05,290
+it's clearly not normally distributed
+right.
+
+21
+00:01:05,290 --> 00:01:08,160
+We have very much right skewed data.
+
+22
+00:01:08,160 --> 00:01:10,910
+We would not expect nevi counts to be
+normally distributed.
+
+23
+00:01:10,910 --> 00:01:14,230
+So how would we test whether or not those
+3 groups are different?
+
+24
+00:01:14,230 --> 00:01:17,170
+Well clearly, since we have very skewed
+data here,
+
+25
+00:01:17,170 --> 00:01:20,140
+we're not going to want apply a nova, our
+sample size is.
+
+26
+00:01:20,140 --> 00:01:21,250
+Is reasonably small here.
+
+27
+00:01:21,250 --> 00:01:25,020
+It's 150 marathon runners, so there's,
+roughly something like 50 in each group.
+
+28
+00:01:25,020 --> 00:01:28,000
+That's small enough with such skewed data
+that we're going to not want to
+
+29
+00:01:28,000 --> 00:01:29,030
+rely on ANOVA.
+
+30
+00:01:29,030 --> 00:01:32,090
+We're going to want to use a
+non-parametric test.
+
+31
+00:01:32,090 --> 00:01:35,070
+So how did I get to that, we want the
+Kruskal-Wallis test.
+
+32
+00:01:35,070 --> 00:01:37,970
+I want to know whether the nevi counts
+differ according to
+
+33
+00:01:37,970 --> 00:01:41,380
+training velocity group, slow, medium, or
+fast.
+
+34
+00:01:41,380 --> 00:01:43,190
+My outcome variable is nevi count.
+
+35
+00:01:43,190 --> 00:01:45,300
+It is a continuous variable.
+
+36
+00:01:45,300 --> 00:01:51,300
+It's actually a discrete variable but you
+know, it's it's a numerical variable.
+
+37
+00:01:51,300 --> 00:01:52,750
+Is it normally distributed?
+
+38
+00:01:52,750 --> 00:01:55,000
+No, it's definitely not normally
+distributed and
+
+39
+00:01:55,000 --> 00:01:58,250
+it's also, we're also dealing with a
+relatively small sample size.
+
+40
+00:01:58,250 --> 00:02:01,410
+The observations are not correlated; I
+have three independent groups.
+
+41
+00:02:01,410 --> 00:02:04,050
+I have groups being compared, it's not two
+groups being compared,
+
+42
+00:02:04,050 --> 00:02:05,520
+it's three groups being compared.
+
+43
+00:02:05,520 --> 00:02:09,090
+So that leads me to want to do the
+non-parametric ANOVA,
+
+44
+00:02:09,090 --> 00:02:11,491
+which is called the Kruskal-Wallis test.
+
+45
+00:02:11,491 --> 00:02:15,120
+[SOUND] When the non-parametric ANOVA is
+run again,
+
+46
+00:02:15,120 --> 00:02:18,640
+it's basically the same logistics as the
+Wilcoxon rank-sum test.
+
+47
+00:02:18,640 --> 00:02:20,350
+I'm not going to go into it in any great
+detail.
+
+48
+00:02:20,350 --> 00:02:23,850
+It involves ranking and adding up the
+ranks within those groups.
+
+49
+00:02:23,850 --> 00:02:26,795
+It turns out that there is a significant
+difference in
+
+50
+00:02:26,795 --> 00:02:28,970
+nevi count across the three groups.
+
+51
+00:02:28,970 --> 00:02:31,610
+Now remember, all an ANOVA tells you, it's
+a global test, so
+
+52
+00:02:31,610 --> 00:02:33,650
+it tells you that at least one of those
+groups differs.
+
+53
+00:02:33,650 --> 00:02:36,060
+It doesn't tell you which groups differ.
+
+54
+00:02:36,060 --> 00:02:37,350
+The authors went on further.
+
+55
+00:02:37,350 --> 00:02:40,190
+They wanted to know exactly where those
+differences lay, however.
+
+56
+00:02:40,190 --> 00:02:42,190
+So they went on further and
+
+57
+00:02:42,190 --> 00:02:47,450
+applied the Wilcoxon rank sum test to do
+the pairwise comparisons here.
+
+58
+00:02:47,450 --> 00:02:50,000
+But they adjusted for multiple
+comparisons.
+
+59
+00:02:50,000 --> 00:02:52,850
+They adjusted for the fact that they were
+then doing three tests.
+
+60
+00:02:52,850 --> 00:02:56,490
+And it turns out that they could show that
+the lowest velocity, the slowest group,
+
+61
+00:02:56,490 --> 00:03:05,074
+differed [INAUDIBLE] significantly from
+the fasted group, in terms of Nevi counts.

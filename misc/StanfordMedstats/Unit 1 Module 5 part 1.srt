@@ -1,0 +1,1022 @@
+1
+00:00:09,590 --> 00:00:12,810
+In this next module, I'm going to tell you
+about the statistics that we use to
+
+2
+00:00:12,810 --> 00:00:14,785
+describe the variability of data.
+
+3
+00:00:14,785 --> 00:00:18,570
+So there's a number of different
+statistics that we can use to
+
+4
+00:00:18,570 --> 00:00:19,550
+measure variability.
+
+5
+00:00:19,550 --> 00:00:21,870
+So the simplest is just look at the range.
+
+6
+00:00:21,870 --> 00:00:23,750
+That tells you about the spread of the
+data.
+
+7
+00:00:23,750 --> 00:00:26,560
+The most common one that we use is
+something called the standard deviation,
+
+8
+00:00:26,560 --> 00:00:28,030
+that we're going to talk a lot about.
+
+9
+00:00:28,030 --> 00:00:29,700
+We also might talk about the variability
+or
+
+10
+00:00:29,700 --> 00:00:34,420
+spread of the data in terms of percentiles
+or something like a inter-quartile range.
+
+11
+00:00:34,420 --> 00:00:37,440
+So the range is easy, because it's just
+the difference between the largest and
+
+12
+00:00:37,440 --> 00:00:40,490
+smallest observations, but that's very
+useful information.
+
+13
+00:00:40,490 --> 00:00:43,820
+So for example, when I asked my students
+about how much homework they did in
+
+14
+00:00:43,820 --> 00:00:47,230
+hours per week, I got a range of anywhere
+from zero hours per week,
+
+15
+00:00:47,230 --> 00:00:48,620
+all the way up to 40 hours per week.
+
+16
+00:00:48,620 --> 00:00:50,660
+So my range is 40 hours per week.
+
+17
+00:00:50,660 --> 00:00:52,090
+So it's quite a wide range,
+
+18
+00:00:52,090 --> 00:00:55,290
+it gives you a sense that the, the data is
+fairly variable here.
+
+19
+00:00:55,290 --> 00:00:58,860
+Moving to the standard deviation, the
+standard deviation is by far the most
+
+20
+00:00:58,860 --> 00:01:02,840
+common measure of variability that you're
+going to see in, in statistics.
+
+21
+00:01:02,840 --> 00:01:06,050
+So, I'm going to spend quite some time
+talking about the standard deviation.
+
+22
+00:01:06,050 --> 00:01:08,080
+Really get a good understanding of it.
+
+23
+00:01:08,080 --> 00:01:11,170
+First of all, however, I'm going to give
+you a little challenge.
+
+24
+00:01:11,170 --> 00:01:13,500
+And, if you want you can even pause the
+video and
+
+25
+00:01:13,500 --> 00:01:14,910
+think a little bit in terms of this
+challenge.
+
+26
+00:01:14,910 --> 00:01:18,090
+My challenge to you, is what if somebody,
+
+27
+00:01:18,090 --> 00:01:21,750
+somebody were to ask you to devise a
+statistic.
+
+28
+00:01:21,750 --> 00:01:26,300
+That would give you the average distance
+from the mean.
+
+29
+00:01:26,300 --> 00:01:28,940
+We want a statistic that tells you what is
+
+30
+00:01:28,940 --> 00:01:33,230
+the average distance of any given
+observation from the mean.
+
+31
+00:01:33,230 --> 00:01:35,140
+How would you calculate that?
+
+32
+00:01:35,140 --> 00:01:37,380
+How would you come up with a statistic
+that does that?
+
+33
+00:01:37,380 --> 00:01:39,330
+If you want, pause the video, see if you
+can think it out.
+
+34
+00:01:41,060 --> 00:01:44,240
+So, probably your first instinct on this
+is to,
+
+35
+00:01:44,240 --> 00:01:46,740
+first of all you have to think about
+what's distance from the mean.
+
+36
+00:01:46,740 --> 00:01:48,850
+How would I quantify distance from the
+mean?
+
+37
+00:01:48,850 --> 00:01:51,800
+So to measure the distance from the mean,
+what you're going to want to do is
+
+38
+00:01:51,800 --> 00:01:56,270
+subtract an observations value from the
+mean value, that will give you a distance.
+
+39
+00:01:56,270 --> 00:01:59,450
+So we can represent that in mathematical
+symbols as Xi,
+
+40
+00:01:59,450 --> 00:02:02,340
+that is any given observation in your data
+set.
+
+41
+00:02:02,340 --> 00:02:04,300
+Minus x bar, that's your mean.
+
+42
+00:02:04,300 --> 00:02:05,530
+So if you take,.
+
+43
+00:02:05,530 --> 00:02:06,140
+If somebody.
+
+44
+00:02:06,140 --> 00:02:10,950
+If the mean, in the data set is a mean
+height of say, 69 inches.
+
+45
+00:02:10,950 --> 00:02:17,120
+Then if somebody was 71 inches, they would
+be 2 inches above the mean.
+
+46
+00:02:17,120 --> 00:02:19,200
+That would be their distance from the
+mean.
+
+47
+00:02:19,200 --> 00:02:20,470
+Or if.
+
+48
+00:02:20,470 --> 00:02:23,670
+The mean homework that you do per week is
+11 hours per week,
+
+49
+00:02:23,670 --> 00:02:28,410
+and if that's the mean and you happen be
+somebody who does 40 hours per week,
+
+50
+00:02:28,410 --> 00:02:33,340
+then you would be 29 hours per week above
+the mean, that would be your distance.
+
+51
+00:02:33,340 --> 00:02:34,850
+If you only did 0 hours per week,
+
+52
+00:02:34,850 --> 00:02:37,970
+you would be negative 11 hours per week
+away from the mean.
+
+53
+00:02:37,970 --> 00:02:40,170
+So that would be the distance from the
+mean.
+
+54
+00:02:40,170 --> 00:02:41,570
+So that's the quantity distance.
+
+55
+00:02:41,570 --> 00:02:44,100
+But then, how do you get the average
+distance from the mean?
+
+56
+00:02:44,100 --> 00:02:46,280
+Well, we know how to calculate an average,
+right?
+
+57
+00:02:46,280 --> 00:02:47,910
+So to get the average distance from the
+mean.
+
+58
+00:02:47,910 --> 00:02:51,750
+Your instinct, your first instinct would
+be just to calculate an average of
+
+59
+00:02:51,750 --> 00:02:53,130
+those distances, right?
+
+60
+00:02:53,130 --> 00:02:57,470
+So again in mathematical symbols, what you
+would do is you would add up all of those
+
+61
+00:02:57,470 --> 00:03:01,370
+distances, so each observation in your
+data set has a distance from the mean.
+
+62
+00:03:01,370 --> 00:03:04,660
+You could add all of those up and then
+divide by n to get the average.
+
+63
+00:03:04,660 --> 00:03:07,090
+Right, that's a good first instinct.
+
+64
+00:03:07,090 --> 00:03:09,200
+Of course there's a problem with that.
+
+65
+00:03:09,200 --> 00:03:12,640
+There's going to be a problem with that
+quantity, right.
+
+66
+00:03:12,640 --> 00:03:14,149
+So what's the problem with that?
+
+67
+00:03:15,240 --> 00:03:18,310
+Well, the problem with that is it's
+going to fail,
+
+68
+00:03:18,310 --> 00:03:21,945
+because remember that some of the
+distances are going to be negative,
+
+69
+00:03:21,945 --> 00:03:24,760
+and some of the distances are going to be
+positive.
+
+70
+00:03:24,760 --> 00:03:27,920
+Some people do more homework, some people
+do less homework.
+
+71
+00:03:27,920 --> 00:03:30,299
+In fact, if you add up all of those
+negatives and
+
+72
+00:03:30,299 --> 00:03:32,560
+positives, you're going to get exactly
+zero.
+
+73
+00:03:32,560 --> 00:03:35,740
+So when you try to calculate the standard
+deviation in this way,
+
+74
+00:03:35,740 --> 00:03:39,160
+it actually completely fails because you
+end up with a value of zero.
+
+75
+00:03:39,160 --> 00:03:42,670
+And that's because you've got negatives as
+well as positives.
+
+76
+00:03:42,670 --> 00:03:45,930
+So the problem is the negative, so the
+next thing you might think is,
+
+77
+00:03:45,930 --> 00:03:48,450
+well how am I going to get rid of the
+negatives?
+
+78
+00:03:48,450 --> 00:03:51,620
+What do we do in math to, if we don't want
+to deal with negatives?
+
+79
+00:03:51,620 --> 00:03:53,140
+So how can I get rid of negatives?
+
+80
+00:03:53,140 --> 00:03:56,870
+Your first instinct on this might be to
+turn to absolute values, right.
+
+81
+00:03:57,960 --> 00:03:59,660
+You if you take the absolute value,
+
+82
+00:03:59,660 --> 00:04:01,730
+you could do the absolute values of the
+distances.
+
+83
+00:04:01,730 --> 00:04:03,250
+And that would get rid of the negatives.
+
+84
+00:04:03,250 --> 00:04:04,775
+It's not going to add up to zero anymore.
+
+85
+00:04:04,775 --> 00:04:08,698
+However, it turns out that it's very
+
+86
+00:04:08,698 --> 00:04:11,790
+messy mathematically to deal with absolute
+values.
+
+87
+00:04:11,790 --> 00:04:12,860
+Right?
+If you remember back to
+
+88
+00:04:12,860 --> 00:04:14,780
+like algebra two in high school.
+
+89
+00:04:14,780 --> 00:04:17,500
+When you deal with absolute values, funny
+things happens.
+
+90
+00:04:17,500 --> 00:04:20,390
+Like less than signs got flipped around to
+greater than signs, and
+
+91
+00:04:20,390 --> 00:04:22,100
+all these kinds of funny things.
+
+92
+00:04:22,100 --> 00:04:25,830
+So, mathematically we don't want to deal
+with absolute values.
+
+93
+00:04:25,830 --> 00:04:28,160
+So what's another way to get rid of
+negatives?
+
+94
+00:04:28,160 --> 00:04:31,310
+Another way to get rid of negatives is to
+square things.
+
+95
+00:04:31,310 --> 00:04:32,750
+So that's actually what we're going to do.
+
+96
+00:04:32,750 --> 00:04:35,500
+This is how we're going to calculate
+standard deviation.
+
+97
+00:04:35,500 --> 00:04:39,300
+We're going to square all of the distances
+from the mean in order to
+
+98
+00:04:39,300 --> 00:04:40,810
+eliminate the negatives.
+
+99
+00:04:40,810 --> 00:04:44,740
+So rather than take the raw distances from
+the mean and add them up, we're going to
+
+100
+00:04:44,740 --> 00:04:49,793
+square those distances first and add up
+these squared distances from the mean and
+
+101
+00:04:49,793 --> 00:04:53,620
+get the average squared distance from the
+mean.
+
+102
+00:04:53,620 --> 00:04:56,510
+This is something that we call a variance
+and
+
+103
+00:04:56,510 --> 00:05:01,840
+sym, in terms of symbols I represent this
+as an S squared.
+
+104
+00:05:01,840 --> 00:05:05,330
+S will be the standard deviation so S
+squared is what we call the variance.
+
+105
+00:05:05,330 --> 00:05:09,100
+So S squared, the variance is the average
+squared distance from the mean.
+
+106
+00:05:10,830 --> 00:05:12,670
+And I'll just write it out one more time
+here.
+
+107
+00:05:12,670 --> 00:05:17,510
+Formally, I just want to point out that
+the official Formula for
+
+108
+00:05:17,510 --> 00:05:18,850
+variance which I've now got up.
+
+109
+00:05:18,850 --> 00:05:22,080
+We've got, we've got to the official
+formula here for variance.
+
+110
+00:05:22,080 --> 00:05:26,950
+Again, S squared is my, this is symbols I
+used to represent, sample variance.
+
+111
+00:05:26,950 --> 00:05:31,920
+Notice that the formula look, looks just
+slightly different because there's, in
+
+112
+00:05:31,920 --> 00:05:35,930
+the denominator I'm not dividing by n to
+calculate the average, which is the way.
+
+113
+00:05:35,930 --> 00:05:39,250
+We usually calculate average in dividing
+by N minus 1 this is
+
+114
+00:05:39,250 --> 00:05:43,500
+a little technical point but I just want
+you to understand why its there so
+
+115
+00:05:43,500 --> 00:05:47,360
+it turns out that the reason we're
+dividing by N minus 1 here is that
+
+116
+00:05:47,360 --> 00:05:51,200
+we've lost what's called a degree of
+freedom.
+
+117
+00:05:51,200 --> 00:05:51,700
+So.
+
+118
+00:05:53,160 --> 00:05:55,430
+When we calculate variance or
+
+119
+00:05:55,430 --> 00:05:58,350
+standard deviation, we have to calculate
+something else first.
+
+120
+00:05:58,350 --> 00:06:00,960
+We have to calculate the mean first.
+
+121
+00:06:00,960 --> 00:06:04,820
+By calculating that mean, we loose what's
+called the degree of freedom.
+
+122
+00:06:04,820 --> 00:06:09,290
+And we're therefore only have negative- 1
+degrees of freedom, so
+
+123
+00:06:09,290 --> 00:06:12,220
+that's why we're dividing by n 1, rather
+than 1.
+
+124
+00:06:12,220 --> 00:06:15,700
+For all practical purposes, it doesn't
+usually make a huge difference, right,
+
+125
+00:06:15,700 --> 00:06:20,100
+whether you divide by n, or n - 1, because
+as long as n is pretty big.
+
+126
+00:06:20,100 --> 00:06:21,130
+You know, whether you divide by 99 or
+
+127
+00:06:21,130 --> 00:06:23,290
+divide by 100, it's not going to make a
+huge difference.
+
+128
+00:06:23,290 --> 00:06:25,800
+But that's why, technically, that's in the
+denominator.
+
+129
+00:06:25,800 --> 00:06:27,790
+So what's a degree of freedom?
+
+130
+00:06:27,790 --> 00:06:32,160
+One degree of freedom is, is, let's say
+I've got a data set of 100 people.
+
+131
+00:06:32,160 --> 00:06:34,200
+And I were to give you, and
+
+132
+00:06:34,200 --> 00:06:36,770
+I were to calculate the, the mean for that
+100 people.
+
+133
+00:06:36,770 --> 00:06:38,614
+Let's say the, the mean age.
+
+134
+00:06:38,614 --> 00:06:44,150
+And I were to give you the mean, and I
+were to give, and I were to give you 99,
+
+135
+00:06:44,150 --> 00:06:48,510
+the ages for 99 of the other people in the
+data set.
+
+136
+00:06:48,510 --> 00:06:51,430
+If you had 99 of the ages and the mean
+age,
+
+137
+00:06:51,430 --> 00:06:55,870
+you would be able to calculate back for me
+exactly that hundredth person.
+
+138
+00:06:55,870 --> 00:07:00,190
+So that means that once you've calculated
+the mean You only have 99 degrees of
+
+139
+00:07:00,190 --> 00:07:03,860
+freedom left because that last person,
+that hundredth person, is fixed.
+
+140
+00:07:03,860 --> 00:07:05,330
+They can't be anything else.
+
+141
+00:07:05,330 --> 00:07:08,860
+Once you have 99 and the mean, there's
+nothing else that that person can be.
+
+142
+00:07:08,860 --> 00:07:10,570
+So you've lost what we call a degree of
+freedom.
+
+143
+00:07:10,570 --> 00:07:11,710
+Again, that's a technical thing, but
+
+144
+00:07:11,710 --> 00:07:14,320
+it will come up again, so I just want to
+point out that that's there.
+
+145
+00:07:15,910 --> 00:07:18,660
+Of course we start by calculating the
+variance,
+
+146
+00:07:18,660 --> 00:07:21,190
+the average squared distance from the
+mean.
+
+147
+00:07:21,190 --> 00:07:24,080
+But that you would, you know, if you, you
+don't ever report the variance in
+
+148
+00:07:24,080 --> 00:07:26,980
+your paper because that would mean you'd
+be reporting things in,
+
+149
+00:07:26,980 --> 00:07:31,900
+like, age squared, years squared, homework
+hours squared.
+
+150
+00:07:31,900 --> 00:07:35,990
+Of course, we're going to want to get back
+to the units of the original data, so
+
+151
+00:07:35,990 --> 00:07:38,000
+we're going to Square rooted and
+
+152
+00:07:38,000 --> 00:07:41,460
+that's what the standard deviation is it's
+the square root of the various so
+
+153
+00:07:41,460 --> 00:07:44,780
+we start with the various and we square
+root it to get the standard deviation to
+
+154
+00:07:44,780 --> 00:07:48,480
+get back to the original units and I use
+as a symbol for
+
+155
+00:07:48,480 --> 00:07:52,500
+that I use s so s squared is the various s
+is the sample standard deviation.
+
+156
+00:07:52,500 --> 00:07:55,670
+So, that's just to take a square root to
+get back to the original unit that's what
+
+157
+00:07:55,670 --> 00:07:58,560
+your standard deviation is.
+
+158
+00:07:58,560 --> 00:08:01,970
+Now I just want to point out that there
+are consequences to
+
+159
+00:08:01,970 --> 00:08:04,290
+the fact that we did this little squaring
+routine.
+
+160
+00:08:04,290 --> 00:08:06,740
+So the standard deviation, at the end of
+the day,
+
+161
+00:08:06,740 --> 00:08:09,380
+is not exactly the average difference from
+the mean.
+
+162
+00:08:09,380 --> 00:08:11,170
+It represents sort of the average spread
+or
+
+163
+00:08:11,170 --> 00:08:14,130
+the average scatter but it's not exactly
+the average distance.
+
+164
+00:08:14,130 --> 00:08:16,500
+We have this little squaring trick in
+there, right?
+
+165
+00:08:16,500 --> 00:08:21,630
+And so one of the consequences of that
+squaring trick is that
+
+166
+00:08:21,630 --> 00:08:25,070
+things that are farther from the mean are
+actually going to have more influence.
+
+167
+00:08:25,070 --> 00:08:26,440
+Are going to contribute more to
+
+168
+00:08:26,440 --> 00:08:28,680
+the standard deviation than values closer
+to the mean.
+
+169
+00:08:28,680 --> 00:08:30,940
+So, for example, if the mean is 5,
+
+170
+00:08:30,940 --> 00:08:33,750
+then if you're talking about a value of 6
+you're only one away from the mean.
+
+171
+00:08:33,750 --> 00:08:35,830
+If you square 1 you're still at 1.
+
+172
+00:08:35,830 --> 00:08:38,260
+But if you were 5 away the mean and
+
+173
+00:08:38,260 --> 00:08:43,490
+square 5 your amplifying that distance so
+now it's a distance of 25.
+
+174
+00:08:43,490 --> 00:08:44,620
+So we're going to,
+
+175
+00:08:45,770 --> 00:08:51,100
+all this says is when you have values that
+are extreme those are going to have a lot
+
+176
+00:08:51,100 --> 00:08:55,092
+of influence on the standard devaition in
+the same way they influence the mean.
+
+177
+00:08:55,092 --> 00:08:59,190
+Let me just give a, an example calculation
+here of
+
+178
+00:08:59,190 --> 00:09:02,730
+how you'd actually go about calculating
+the standard deviation by hand.
+
+179
+00:09:02,730 --> 00:09:05,440
+So remember we had this little
+hypothetical data set,
+
+180
+00:09:05,440 --> 00:09:07,520
+which had eight people with eight ages in
+it.
+
+181
+00:09:07,520 --> 00:09:09,490
+They ranged from 17 to 38.
+
+182
+00:09:09,490 --> 00:09:14,510
+We calculated in a previous module that
+the mean for this data set was 23.25.
+
+183
+00:09:14,510 --> 00:09:16,310
+So again, we have to calculate the mean
+before we
+
+184
+00:09:16,310 --> 00:09:18,290
+can calculate The standard deviation.
+
+185
+00:09:18,290 --> 00:09:21,650
+To calculate the standard deviation I'm
+going to take each of
+
+186
+00:09:21,650 --> 00:09:26,090
+these individual ages and subtract the
+means and then square it.
+
+187
+00:09:26,090 --> 00:09:32,170
+So, for example the person who's 17, they
+are 6.25 years away from the mean.
+
+188
+00:09:32,170 --> 00:09:34,970
+So we're going to take 6.25 and I'm
+going to square it.
+
+189
+00:09:34,970 --> 00:09:39,910
+Person who is 19 is 4.25 units away from
+the mean.
+
+190
+00:09:39,910 --> 00:09:41,990
+So I'm going to take 4.25, and I'm
+going to square that.
+
+191
+00:09:41,990 --> 00:09:44,280
+I'm going to do that for each of the 8
+observations.
+
+192
+00:09:44,280 --> 00:09:47,070
+So I end up in the numerator with a sum of
+8 squares.
+
+193
+00:09:47,070 --> 00:09:51,930
+I'm going to add those up, and then I'm
+going to divide here by 8 minus 1.
+
+194
+00:09:51,930 --> 00:09:53,790
+Because, again, we've lost 1 degree of
+freedom.
+
+195
+00:09:53,790 --> 00:09:55,220
+So we always divide by n minus 1.
+
+196
+00:09:55,220 --> 00:09:57,010
+So we're diving by 7.
+
+197
+00:09:57,010 --> 00:09:59,340
+And then let's take the square root of
+that whole thing.
+
+198
+00:09:59,340 --> 00:10:00,730
+To get back to the standard deviation,
+
+199
+00:10:00,730 --> 00:10:03,800
+I come up if I calculate this all out with
+a value of 6.3.
+
+200
+00:10:03,800 --> 00:10:08,240
+What does that value of 6.3 actually mean?
+
+201
+00:10:08,240 --> 00:10:11,030
+So again, this is trying to get at the
+average distance from the mean.
+
+202
+00:10:11,030 --> 00:10:15,150
+So, this is saying that roughly the
+average scatter around the mean
+
+203
+00:10:15,150 --> 00:10:16,890
+is 6.3 years.
+
+204
+00:10:16,890 --> 00:10:21,390
+Now, if you notice, if you look at Each
+individual participant here, like.
+
+205
+00:10:21,390 --> 00:10:22,468
+There's a person who's 17.
+
+206
+00:10:22,468 --> 00:10:25,854
+Well 17 is, isalmost 6.3 away from the
+mean, but not quite.
+
+207
+00:10:25,854 --> 00:10:32,045
+19, 21, 22, 23, 23, 23, they're all much
+less than 6.3 away from the mean.
+
+208
+00:10:32,045 --> 00:10:34,820
+So it's not looking like the average
+distance from the mean is really
+
+209
+00:10:34,820 --> 00:10:39,780
+anywhere around 6 but we have 1 person
+whose really far from the mean.
+
+210
+00:10:39,780 --> 00:10:43,010
+Their 38 when everybody else is in their
+early 20s or teens.
+
+211
+00:10:43,010 --> 00:10:46,840
+That person, is, is because they're far
+from the mean,
+
+212
+00:10:46,840 --> 00:10:48,480
+they're having a lot of influence.
+
+213
+00:10:48,480 --> 00:10:52,220
+That person is driving the fact that this
+6.3 value is so high.
+
+214
+00:10:52,220 --> 00:10:53,620
+So, again, you know,
+
+215
+00:10:53,620 --> 00:10:57,340
+if you're far from the mean you can have a
+lot of influence on, on the variance or
+
+216
+00:10:57,340 --> 00:11:00,982
+the standard deviation, and so that's why
+that comes out to be 6.3 there.

@@ -1,0 +1,1265 @@
+1
+00:00:05,470 --> 00:00:09,440
+In this next module I'm just going to give
+you some examples of Kaplan-Meier curves
+
+2
+00:00:09,440 --> 00:00:13,410
+from the literature to get some practice
+on reading Kaplan-Meier curves.
+
+3
+00:00:15,670 --> 00:00:20,190
+So, the first example is just a fun
+example that comes out of
+
+4
+00:00:20,190 --> 00:00:22,980
+the British Medical Journal's Christmas
+edition and for
+
+5
+00:00:22,980 --> 00:00:25,360
+those of you who aren't familiar with it,
+
+6
+00:00:25,360 --> 00:00:29,210
+this is a satirical addition that they put
+out, it's just for fun.
+
+7
+00:00:29,210 --> 00:00:34,340
+And somebody submitted a paper on the
+survival analysis of chocolates.
+
+8
+00:00:34,340 --> 00:00:36,690
+So again, just a fun example here.
+
+9
+00:00:36,690 --> 00:00:39,990
+The study design, this was a study they
+actually did carry out,
+
+10
+00:00:39,990 --> 00:00:44,870
+was that they actually placed two types of
+chocolate boxes, Quality Street and
+
+11
+00:00:44,870 --> 00:00:50,100
+Roses chocolates and on different wards in
+the same hospital.
+
+12
+00:00:50,100 --> 00:00:55,170
+They used eight boxes in the study,
+containing a total of 258 chocolates.
+
+13
+00:00:55,170 --> 00:00:58,170
+Now, in fact, the others have in no way
+accounted for
+
+14
+00:00:58,170 --> 00:01:01,670
+the fact that chocolates within the same
+box might some how be correlated.
+
+15
+00:01:01,670 --> 00:01:05,760
+We are going to forgive them that, again,
+because this is just a fun little example.
+
+16
+00:01:05,760 --> 00:01:09,900
+So, each chocolate is an observation and
+they're following the chocolates.
+
+17
+00:01:09,900 --> 00:01:13,980
+There's somebody kind of hiding in the
+back watching the chocolates being eaten.
+
+18
+00:01:13,980 --> 00:01:15,620
+They're following the chocolates.
+
+19
+00:01:15,620 --> 00:01:19,260
+Each chocolate until it was eaten, each of
+these 258 chocolates.
+
+20
+00:01:19,260 --> 00:01:23,040
+The main outcome measure was the median
+survival time of a chocolate.
+
+21
+00:01:23,040 --> 00:01:26,470
+How, how quickly do chocolates on a
+hospital ward get eaten?
+
+22
+00:01:26,470 --> 00:01:28,420
+And they also looked at things like,
+
+23
+00:01:28,420 --> 00:01:31,800
+did the nurses versus the doctors eat more
+of the chocolates and so on.
+
+24
+00:01:31,800 --> 00:01:33,620
+Anyway it's just a fun example and
+
+25
+00:01:33,620 --> 00:01:37,060
+they generated a nice Kaplan-Meier curve
+for the data.
+
+26
+00:01:37,060 --> 00:01:40,535
+Again, we started with 258 chocolates in
+eight different boxes.
+
+27
+00:01:40,535 --> 00:01:45,370
+There were two types of chocolates, the
+Quality Street which is from Nestle, and
+
+28
+00:01:45,370 --> 00:01:47,610
+Roses which is from Cadbury.
+
+29
+00:01:47,610 --> 00:01:50,280
+You know, it looks like that Cadbury box
+is a little prettier.
+
+30
+00:01:50,280 --> 00:01:54,400
+Perhaps that's why that, the Roses, the
+Cadbury chocolates,
+
+31
+00:01:54,400 --> 00:01:55,850
+got eaten a little bit faster.
+
+32
+00:01:55,850 --> 00:01:59,690
+And you can see that that type of
+chocolate is pictured in blue,
+
+33
+00:01:59,690 --> 00:02:01,480
+the bottom curve on this Kaplan-Meier
+curve.
+
+34
+00:02:01,480 --> 00:02:03,530
+So, they were eaten more rapidly.
+
+35
+00:02:03,530 --> 00:02:07,430
+And what's so nice about this Kaplan-Meier
+curve is that they nicely placed
+
+36
+00:02:07,430 --> 00:02:11,370
+the number of chocolates who were still,
+that were still at risk of being eaten.
+
+37
+00:02:11,370 --> 00:02:15,190
+On the bottom here, it's always good to
+put your sample sizes on the bottom like
+
+38
+00:02:15,190 --> 00:02:18,610
+this, so that you know, especially when
+you get to the end of a Kaplan-Meier
+
+39
+00:02:18,610 --> 00:02:23,770
+curve, that there's very few observations,
+people, chocolates left at risk,
+
+40
+00:02:23,770 --> 00:02:27,080
+and to be a little careful at the end of
+that Kaplan-Meier curve.
+
+41
+00:02:27,080 --> 00:02:29,600
+The time here is given in minutes, so
+
+42
+00:02:29,600 --> 00:02:32,200
+minutes from the box being put on the
+ward.
+
+43
+00:02:32,200 --> 00:02:36,330
+Obviously we started with 100% chocolates
+and we drop off from there.
+
+44
+00:02:36,330 --> 00:02:40,860
+Again, the Cadbury Roses, chocolate seemed
+to be the prefer,
+
+45
+00:02:40,860 --> 00:02:43,709
+preference because they were eaten at a
+faster rate.
+
+46
+00:02:44,760 --> 00:02:49,100
+Couple of other things we can pick up off
+of a Kaplan-Meier curve,.
+
+47
+00:02:49,100 --> 00:02:51,890
+What if we wanted to know, what is the
+median survival time for
+
+48
+00:02:51,890 --> 00:02:53,760
+a chocolate on a hospital ward?
+
+49
+00:02:53,760 --> 00:02:56,870
+So, what we can do is look for the 50%
+line.
+
+50
+00:02:56,870 --> 00:02:58,570
+This is where we have 50% survival.
+
+51
+00:02:58,570 --> 00:03:01,456
+We are going to just kind of draw over and
+find at
+
+52
+00:03:01,456 --> 00:03:06,575
+what point was there chocolates survival
+probability in each of the two groups.
+
+53
+00:03:06,575 --> 00:03:09,300
+And in fact, the fifth, the median
+survival time is
+
+54
+00:03:09,300 --> 00:03:14,360
+shorter in the Roses chocolates and we'd
+have to keep going over and
+
+55
+00:03:14,360 --> 00:03:18,540
+the median survival time is longer for the
+Quality Street chocolates.
+
+56
+00:03:18,540 --> 00:03:20,980
+So, you know, you're just guessing here,
+but
+
+57
+00:03:20,980 --> 00:03:26,940
+it looks like somewhere around, close to
+100 maybe, were the Roses,
+
+58
+00:03:26,940 --> 00:03:31,690
+as the median survival time in minutes for
+the Roses chocolates versus for
+
+59
+00:03:31,690 --> 00:03:35,810
+Quality Street, it appears to be somewhere
+around 125 minutes.
+
+60
+00:03:35,810 --> 00:03:39,730
+And this was a statistically significant
+difference with a log rate test.
+
+61
+00:03:39,730 --> 00:03:42,070
+Anyway, that's just a fun example.
+
+62
+00:03:42,070 --> 00:03:43,890
+Another example that's a little bit more
+serious but
+
+63
+00:03:43,890 --> 00:03:47,150
+another one of my favorite, examples of
+Kaplan-Meier curve.
+
+64
+00:03:47,150 --> 00:03:49,100
+This is also from the British Medical
+Journal.
+
+65
+00:03:49,100 --> 00:03:52,910
+A little bit of an older study, but makes
+a really important point.
+
+66
+00:03:52,910 --> 00:03:57,270
+So, what the researchers here did was they
+looked at a bunch of grants that
+
+67
+00:03:57,270 --> 00:03:58,270
+were funded.
+
+68
+00:03:58,270 --> 00:04:00,500
+And, so that's what we're starting with at
+baseline,
+
+69
+00:04:00,500 --> 00:04:02,740
+this is the time at which the grants were
+funded.
+
+70
+00:04:02,740 --> 00:04:05,704
+And there's a, little less than 200 grants
+here, or
+
+71
+00:04:05,704 --> 00:04:08,553
+more, but more than 200 grants here that
+were funded.
+
+72
+00:04:08,553 --> 00:04:11,620
+And they follow them until publication.
+
+73
+00:04:11,620 --> 00:04:15,806
+So, the outcome is something positive,
+it's the time-to-publication.
+
+74
+00:04:15,806 --> 00:04:18,910
+So, you actually want to have a curve
+here, unlike in,
+
+75
+00:04:18,910 --> 00:04:20,410
+when we have survival curves.
+
+76
+00:04:20,410 --> 00:04:23,030
+For this curve, you want to be on the
+curve that's dropping steeply,
+
+77
+00:04:23,030 --> 00:04:25,090
+because that means you got published
+quickly, so
+
+78
+00:04:25,090 --> 00:04:28,515
+time to first publication from a major
+grant.
+
+79
+00:04:28,515 --> 00:04:31,330
+And what they were interested in is that
+they thought that
+
+80
+00:04:31,330 --> 00:04:35,670
+grants that ended up to going on to have a
+study, that had a significant or
+
+81
+00:04:35,670 --> 00:04:41,200
+positive finding, might be more likely to
+be published rapidly than a, a study that,
+
+82
+00:04:41,200 --> 00:04:44,460
+that came out with a no result, didn't
+find what it was hoping to find.
+
+83
+00:04:44,460 --> 00:04:46,540
+This gets at the concept of publication
+bias,
+
+84
+00:04:46,540 --> 00:04:48,460
+which is a major concern in literature.
+
+85
+00:04:48,460 --> 00:04:50,290
+And, indeed, that's exactly what they
+found.
+
+86
+00:04:50,290 --> 00:04:52,550
+So, the black line here.
+
+87
+00:04:52,550 --> 00:04:57,190
+The dark black rine, line represents the
+studies in which, sort of, the main thing
+
+88
+00:04:57,190 --> 00:05:00,680
+that they were looking at for this study,
+was found to be significant.
+
+89
+00:05:00,680 --> 00:05:02,120
+They actually, kind of, found what they
+were looking for.
+
+90
+00:05:02,120 --> 00:05:03,670
+They got a significant result.
+
+91
+00:05:03,670 --> 00:05:06,450
+You can see that that line drops rather
+rapidly.
+
+92
+00:05:06,450 --> 00:05:09,270
+We can look at the median time to
+publication if you
+
+93
+00:05:09,270 --> 00:05:10,750
+have a significant result.
+
+94
+00:05:10,750 --> 00:05:14,400
+The median time to publication from
+funding, if you had a significant result,
+
+95
+00:05:14,400 --> 00:05:15,500
+was about five years.
+
+96
+00:05:15,500 --> 00:05:16,880
+And a lot of these studies are trials and
+
+97
+00:05:16,880 --> 00:05:19,400
+things, they take time to, to actually
+carry out the study.
+
+98
+00:05:20,410 --> 00:05:25,780
+As expected, null results, that is where
+you did not find a significant result.
+
+99
+00:05:25,780 --> 00:05:28,140
+That's the gray line here.
+
+100
+00:05:28,140 --> 00:05:31,270
+Had a much longer time until publication.
+
+101
+00:05:31,270 --> 00:05:36,350
+The median time for that group was closer
+to eight years, actually.
+
+102
+00:05:36,350 --> 00:05:38,540
+So, hugely different.
+
+103
+00:05:38,540 --> 00:05:42,150
+Again, this is gets a publication bias
+because sometimes a null result is
+
+104
+00:05:42,150 --> 00:05:45,480
+just important, is often just important as
+a positive result.
+
+105
+00:05:45,480 --> 00:05:49,134
+So, the fact that these pub, that these
+publications are being held out of
+
+106
+00:05:49,134 --> 00:05:52,070
+the literature for so long creates a bias.
+
+107
+00:05:52,070 --> 00:05:54,840
+What was also really interesting, which I
+love about this study,
+
+108
+00:05:54,840 --> 00:05:56,380
+was they looked at another group, which is
+actually,
+
+109
+00:05:56,380 --> 00:06:00,330
+really, kind of ended up being a small
+group, but pretty interesting here.
+
+110
+00:06:00,330 --> 00:06:01,728
+So this top line, what is that?
+
+111
+00:06:01,728 --> 00:06:06,000
+That represents non-significant trends,
+so,
+
+112
+00:06:06,000 --> 00:06:09,220
+if the main hypothesis of your study, you
+end up with,
+
+113
+00:06:09,220 --> 00:06:12,200
+at the end of the day, what we call sort
+of a non-significant trend,
+
+114
+00:06:12,200 --> 00:06:16,690
+it probably means something like P is less
+than 0.1 but greater than 0.05.
+
+115
+00:06:16,690 --> 00:06:19,170
+Didn't reach conventional statistical
+significance, but
+
+116
+00:06:19,170 --> 00:06:20,550
+there's a hint of something.
+
+117
+00:06:20,550 --> 00:06:22,610
+Maybe the power was too low.
+
+118
+00:06:22,610 --> 00:06:25,750
+It turned out that that took the longest
+to get published,
+
+119
+00:06:25,750 --> 00:06:27,410
+which I find really interesting.
+
+120
+00:06:27,410 --> 00:06:30,270
+So, something a little bit about human
+nature, we don't like things that are in
+
+121
+00:06:30,270 --> 00:06:35,470
+a gray area, so those researchers had the
+hardest time getting those published,
+
+122
+00:06:35,470 --> 00:06:37,050
+which is interesting.
+
+123
+00:06:37,050 --> 00:06:40,310
+So, that's just another example of a
+Kaplan-Meier curve.
+
+124
+00:06:41,940 --> 00:06:43,620
+Just one more set of examples here,
+
+125
+00:06:43,620 --> 00:06:46,190
+because I want to make one additional
+point.
+
+126
+00:06:46,190 --> 00:06:49,240
+One place you'll see a lot of Kaplan-Meier
+curves these days,
+
+127
+00:06:49,240 --> 00:06:51,627
+is everybody wants to do gene signatures
+and
+
+128
+00:06:51,627 --> 00:06:55,040
+bio-marker signatures for prognosis for
+different diseases.
+
+129
+00:06:55,040 --> 00:06:57,300
+So, very commonly we see in the
+literature,
+
+130
+00:06:57,300 --> 00:07:01,390
+people trying to come up with gene
+signatures that can predict, for example,
+
+131
+00:07:01,390 --> 00:07:05,990
+what cancer patients are most likely to go
+on to, have a good result, and which ones
+
+132
+00:07:05,990 --> 00:07:10,090
+are most likely to, to go on to have a bad
+result, and that can guide treatment.
+
+133
+00:07:10,090 --> 00:07:12,930
+So you're going to, somebody who looks
+pretty low risk for
+
+134
+00:07:12,930 --> 00:07:16,020
+recurrence, you might treat them less
+aggressively.
+
+135
+00:07:16,020 --> 00:07:17,900
+Whereas, somebody who looks very high risk
+for
+
+136
+00:07:17,900 --> 00:07:22,540
+recurrence, you might choose to teat them,
+treat them more aggressively.
+
+137
+00:07:22,540 --> 00:07:25,180
+Just a little caution on these is that
+there's been a lot of
+
+138
+00:07:25,180 --> 00:07:27,360
+things published on gene signatures for
+
+139
+00:07:27,360 --> 00:07:31,100
+cancer prognosis in the literature that
+really haven't held up.
+
+140
+00:07:31,100 --> 00:07:34,300
+That haven't been able to be replicated
+later on.
+
+141
+00:07:34,300 --> 00:07:39,000
+And you can imagine that there's probably
+good reason for that, which is that when
+
+142
+00:07:39,000 --> 00:07:43,820
+we do things like gene signatures we're
+looking at a huge, huge number of markers.
+
+143
+00:07:43,820 --> 00:07:47,240
+You might be looking at 5,000, 10,000,
+20,000 genes.
+
+144
+00:07:47,240 --> 00:07:50,430
+There's a huge chance of Type one error
+here.
+
+145
+00:07:50,430 --> 00:07:52,480
+And a huge risk of over fitting.
+
+146
+00:07:52,480 --> 00:07:56,160
+So, a lot of these genes signatures that
+look good for a particular group
+
+147
+00:07:56,160 --> 00:08:00,352
+then fall down when later we try to
+validate them in an independent sample.
+
+148
+00:08:00,352 --> 00:08:02,720
+Now, I'll just show you some examples of
+that now.
+
+149
+00:08:02,720 --> 00:08:06,630
+Sometimes these curves look so beautiful
+that they can be very seductive but
+
+150
+00:08:06,630 --> 00:08:10,180
+be careful to make sure that things have
+been properly validated.
+
+151
+00:08:10,180 --> 00:08:11,524
+So, just as an example,
+
+152
+00:08:11,524 --> 00:08:15,830
+this was a study published in the New
+England Journal of Medicine in 2007.
+
+153
+00:08:15,830 --> 00:08:20,880
+They found a five gene signature, so some
+particular combination of low and
+
+154
+00:08:20,880 --> 00:08:25,610
+high expression in five genes that seemed
+to predict survival in non- smell,
+
+155
+00:08:25,610 --> 00:08:28,270
+small cell lung cancer.
+
+156
+00:08:28,270 --> 00:08:30,210
+And, we don't have to go into all the
+details.
+
+157
+00:08:30,210 --> 00:08:33,670
+I don't really want to go into all details
+of this particular study.
+
+158
+00:08:33,670 --> 00:08:36,550
+You can see that there is a whole bunch of
+Kaplan-Meier curves here.
+
+159
+00:08:36,550 --> 00:08:39,262
+But just the broader point is, if you look
+at all these
+
+160
+00:08:39,262 --> 00:08:42,630
+different Kaplan-Meier curves, it does
+look like they have pretty good
+
+161
+00:08:42,630 --> 00:08:47,410
+separation between low risk cancer
+patients, who are more likely to survive,
+
+162
+00:08:47,410 --> 00:08:51,620
+and high risk patients who are more likely
+to die and to die more quickly.
+
+163
+00:08:51,620 --> 00:08:53,580
+So, if you look across the Kaplan-Meier
+Curves,
+
+164
+00:08:53,580 --> 00:08:55,150
+they are representing somewhat different
+things, so
+
+165
+00:08:55,150 --> 00:08:58,440
+some of them are showing relapse free
+survival versus overall survival,
+
+166
+00:08:58,440 --> 00:09:01,760
+one is the outcome of death, one is the
+outcome of recurrence and
+
+167
+00:09:01,760 --> 00:09:03,990
+they're showing it in some slightly
+different groups.
+
+168
+00:09:03,990 --> 00:09:09,070
+But in all the cases, they seem to have
+fairly good separation and even g is
+
+169
+00:09:09,070 --> 00:09:12,080
+actually looking at an independent cord
+and even though the curves are a little
+
+170
+00:09:12,080 --> 00:09:16,700
+bit closer together, they still seem to
+have pretty good separation.
+
+171
+00:09:16,700 --> 00:09:19,370
+All significant long range tests, the last
+one,
+
+172
+00:09:19,370 --> 00:09:22,460
+the log rank test only came up to be 0,.06
+but the rest.
+
+173
+00:09:22,460 --> 00:09:26,330
+You can see the log-rank tests were all
+highly statistically significant.
+
+174
+00:09:26,330 --> 00:09:31,080
+So, looks like there, you know, maybe have
+found a good gene signature.
+
+175
+00:09:31,080 --> 00:09:35,170
+However, others then tried to replicate to
+independently validate this
+
+176
+00:09:35,170 --> 00:09:40,130
+particular signature in a, an entirely new
+cohort of patients, and
+
+177
+00:09:40,130 --> 00:09:41,600
+they didn't find such good separation.
+
+178
+00:09:41,600 --> 00:09:44,560
+I'm not exactly sure what's going on here,
+because they're, turns out the,
+
+179
+00:09:44,560 --> 00:09:48,470
+the not very many of the patients are
+classifying as low risk, so
+
+180
+00:09:48,470 --> 00:09:50,410
+the low risk group is very small here.
+
+181
+00:09:50,410 --> 00:09:51,090
+But in any case,
+
+182
+00:09:51,090 --> 00:09:55,410
+it doesn't seem to separate well at all,
+so it makes some question about how
+
+183
+00:09:55,410 --> 00:09:58,760
+good of a prognostic marker that five gene
+signature really was.
+
+184
+00:10:00,010 --> 00:10:03,030
+And you see this in a lot of examples, so
+just one more example,
+
+185
+00:10:03,030 --> 00:10:07,590
+this is another three gene signature for a
+non smell,
+
+186
+00:10:07,590 --> 00:10:11,936
+small cell lung cancer that was in the
+Journal of Clinical Oncology in 2007.
+
+187
+00:10:11,936 --> 00:10:16,390
+Again, it looked like had really, pretty
+good separation of curves.
+
+188
+00:10:16,390 --> 00:10:19,450
+A lot of the genes had been identified in
+other studies.
+
+189
+00:10:19,450 --> 00:10:23,110
+So, there was some good repeatability
+here.
+
+190
+00:10:23,110 --> 00:10:24,710
+This is showing you stage.
+
+191
+00:10:24,710 --> 00:10:26,780
+Everybody is in panel B, it shows
+everybody.
+
+192
+00:10:26,780 --> 00:10:32,050
+And then it's broken down into stage one
+and stage two patients for lung cancer.
+
+193
+00:10:32,050 --> 00:10:35,190
+But in any case, again, we've got these
+beautiful Kaplan-Meier curves.
+
+194
+00:10:35,190 --> 00:10:36,860
+Highly significant P values for
+
+195
+00:10:36,860 --> 00:10:40,900
+the log rank test, looks to be pretty good
+separation.
+
+196
+00:10:40,900 --> 00:10:46,100
+However, when another, that same group had
+then tried to validate this in a totally
+
+197
+00:10:46,100 --> 00:10:51,690
+new sample of lung cancer patients, the
+left panel shows stage one patients and
+
+198
+00:10:51,690 --> 00:10:56,165
+the right panel shows stage two patients,
+there wasn't such good separation and
+
+199
+00:10:56,165 --> 00:10:59,750
+the log rank test is totally null on the
+left panel.
+
+200
+00:10:59,750 --> 00:11:01,310
+And null on the right panel it,
+
+201
+00:11:01,310 --> 00:11:04,060
+even though there looks to be a tiny bit
+of separation there.
+
+202
+00:11:04,060 --> 00:11:07,500
+So, the point being that, even though
+these Kaplan–Meier curves can often look
+
+203
+00:11:07,500 --> 00:11:11,590
+beautiful when applied to the data that
+was used to fit the model,
+
+204
+00:11:11,590 --> 00:11:16,700
+many times those data don't hold up in
+future samples.
+
+205
+00:11:16,700 --> 00:11:20,250
+And there's a great study in the
+literature that's worth me pointing out.
+
+206
+00:11:20,250 --> 00:11:23,280
+Where some researchers try to get at this
+point,
+
+207
+00:11:23,280 --> 00:11:26,670
+they actually simulated some data to, to
+make this point.
+
+208
+00:11:26,670 --> 00:11:31,070
+So, what they did is they had a data set
+of 129 cancer patients and
+
+209
+00:11:31,070 --> 00:11:34,950
+they knew their time to death for those
+patients.
+
+210
+00:11:34,950 --> 00:11:36,190
+What they then did was though,
+
+211
+00:11:36,190 --> 00:11:39,390
+to create some mock gene expression data
+for 5000 genes.
+
+212
+00:11:39,390 --> 00:11:44,940
+So they just kind of generated 5000 random
+variables off of a random normal
+
+213
+00:11:44,940 --> 00:11:49,650
+number generator for the 129 patients,
+pretending that these were some genes.
+
+214
+00:11:49,650 --> 00:11:51,880
+Obviously, these variables are completely
+random and
+
+215
+00:11:51,880 --> 00:11:53,870
+have no relationship whatsoever to
+survival.
+
+216
+00:11:53,870 --> 00:11:55,480
+They're just noise.
+
+217
+00:11:55,480 --> 00:11:59,130
+What they then did was though, because we
+have 5,000 variables.
+
+218
+00:11:59,130 --> 00:12:02,930
+You can imagine here that the type one
+error rate is huge.
+
+219
+00:12:02,930 --> 00:12:06,680
+They are going to find some things that
+appear to significantly predict
+
+220
+00:12:06,680 --> 00:12:10,540
+survival in this group even when they
+don't and that's exactly what they showed.
+
+221
+00:12:10,540 --> 00:12:13,700
+They fit prognostic models for the real
+survival data.
+
+222
+00:12:13,700 --> 00:12:15,060
+They actually know the time to death for
+
+223
+00:12:15,060 --> 00:12:18,360
+these people using these totally made up
+variables.
+
+224
+00:12:18,360 --> 00:12:19,940
+They get it properly, so
+
+225
+00:12:19,940 --> 00:12:24,690
+they randomly divide 129 patients into
+training sets and test sets.
+
+226
+00:12:24,690 --> 00:12:27,720
+They only developed the model on the
+training sets and then they
+
+227
+00:12:27,720 --> 00:12:33,010
+properly tested the model on the test sets
+who had not been used to fit the model.
+
+228
+00:12:33,010 --> 00:12:35,944
+They generated Kaplan-Meier curves on the
+training data.
+
+229
+00:12:35,944 --> 00:12:38,794
+Those are obviously going to be over fit,
+they're going to be,
+
+230
+00:12:38,794 --> 00:12:41,816
+because these are what we call
+re-substitution statistic.
+
+231
+00:12:41,816 --> 00:12:45,656
+So this is, again, measuring performance
+on the same data that were used to
+
+232
+00:12:45,656 --> 00:12:49,496
+fit the model, but they then properly
+tested the models also on the tests and
+
+233
+00:12:49,496 --> 00:12:53,278
+then they repeated the simulation a number
+of times just to make a point.
+
+234
+00:12:53,278 --> 00:12:54,540
+So here is their results.
+
+235
+00:12:54,540 --> 00:12:56,200
+They're fun to look at.
+
+236
+00:12:56,200 --> 00:13:00,860
+So what you see on the left-hand column
+here is the Kaplan-Meier curves
+
+237
+00:13:00,860 --> 00:13:04,460
+from the Training sets and the log rank
+tests that go with them.
+
+238
+00:13:04,460 --> 00:13:07,730
+Again, based on these 5,000 mock genes.
+
+239
+00:13:07,730 --> 00:13:09,140
+You can see great separation.
+
+240
+00:13:09,140 --> 00:13:14,100
+So, they were able to find a set of genes
+out of these 5,000 that really predicted,
+
+241
+00:13:14,100 --> 00:13:17,240
+for each one of these training set the,
+who was going to survive for
+
+242
+00:13:17,240 --> 00:13:20,130
+a long versus a short amount of time, low
+risk versus high risk patients.
+
+243
+00:13:20,130 --> 00:13:23,160
+Huge separation, beautiful Kaplan-Meier
+curves, that looks great, and
+
+244
+00:13:23,160 --> 00:13:26,100
+you can imagine that being published in
+the literature,
+
+245
+00:13:26,100 --> 00:13:28,670
+an everybody being seduced by that.
+
+246
+00:13:28,670 --> 00:13:32,830
+however, when they then took that same
+gene signature that they got out of
+
+247
+00:13:32,830 --> 00:13:35,120
+the training set and applied it to the
+validation set,
+
+248
+00:13:35,120 --> 00:13:38,590
+the, the data that were held out and not
+used to fit the model.
+
+249
+00:13:38,590 --> 00:13:40,975
+They got no separation at all, the,
+
+250
+00:13:40,975 --> 00:13:44,000
+the difference from the curves, as we'd
+expect, completely disappears, so
+
+251
+00:13:44,000 --> 00:13:46,640
+now all the Kaplan-Meier curves are
+completely overlapping.
+
+252
+00:13:46,640 --> 00:13:48,580
+The log rank tests are all non
+significant.
+
+253
+00:13:49,610 --> 00:13:52,740
+This is to illustrate that point where
+you're not expecting these gene,
+
+254
+00:13:52,740 --> 00:13:55,880
+these genes shouldn't predict survival
+because they're totally made up data,
+
+255
+00:13:55,880 --> 00:13:57,850
+they have nothing to do with survival.
+
+256
+00:13:57,850 --> 00:13:59,400
+And then that's illustrated here.
+
+257
+00:13:59,400 --> 00:14:02,450
+But again, it's easy to get seduced by
+these beautiful Kaplan-Meier curves on
+
+258
+00:14:02,450 --> 00:14:03,930
+the left hand side.
+
+259
+00:14:03,930 --> 00:14:06,090
+And again, they did this, the simulation
+ten times, so
+
+260
+00:14:06,090 --> 00:14:08,514
+this is just showing you the results for
+all ten simulations.
+
+261
+00:14:08,514 --> 00:14:12,542
+You see the same thing, great separation
+on the training set,
+
+262
+00:14:12,542 --> 00:14:17,786
+totally overoptimistic performance values
+when applied, when you're looking
+
+263
+00:14:17,786 --> 00:14:22,878
+at the training data that were used to fit
+the model, when you apply that model to
+
+264
+00:14:22,878 --> 00:14:28,426
+the validation set, there's absolutely
+nothing there, no predictive power [SOUND]

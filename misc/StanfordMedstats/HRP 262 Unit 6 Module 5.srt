@@ -1,0 +1,1189 @@
+1
+00:00:05,340 --> 00:00:05,887
+[BLANK_AUDIO]
+
+2
+00:00:05,887 --> 00:00:08,969
+In this next module, I'm going to give you
+several different strategies, for
+
+3
+00:00:08,969 --> 00:00:10,430
+plotting repeated measures data.
+
+4
+00:00:11,540 --> 00:00:15,150
+So, it's always important to plot your
+data, but
+
+5
+00:00:15,150 --> 00:00:18,920
+it becomes even more important when we're
+dealing with repeated measures.
+
+6
+00:00:18,920 --> 00:00:21,770
+Because there's an additional layer of
+complexity to the data, and
+
+7
+00:00:21,770 --> 00:00:26,020
+sometimes when you just throw things into
+the black box of regression, it's hard to,
+
+8
+00:00:26,020 --> 00:00:28,680
+get the right answer, but if you look at
+the picture,
+
+9
+00:00:28,680 --> 00:00:30,100
+you're always going to get the right
+answers.
+
+10
+00:00:30,100 --> 00:00:32,650
+So, it's really, it's really important to
+plot.
+
+11
+00:00:32,650 --> 00:00:34,620
+The data that I'm going to use as an
+example for
+
+12
+00:00:34,620 --> 00:00:36,910
+this module is the same runner's data.
+
+13
+00:00:36,910 --> 00:00:41,060
+I've got longitudinal data on, bone
+density in women runners, and
+
+14
+00:00:41,060 --> 00:00:44,130
+women runners are at risk for having low
+bone density.
+
+15
+00:00:44,130 --> 00:00:47,780
+So, we measure their bone density at
+baseline, about a year later and
+
+16
+00:00:47,780 --> 00:00:49,220
+about two years later.
+
+17
+00:00:49,220 --> 00:00:52,280
+And for the purposes of this module, just
+have some groups to compare.
+
+18
+00:00:52,280 --> 00:00:54,170
+I'm going to compare three groups.
+
+19
+00:00:54,170 --> 00:00:56,340
+So, there was a subset of women.
+
+20
+00:00:56,340 --> 00:00:59,300
+Who, had irregular periods at, baseline
+and
+
+21
+00:00:59,300 --> 00:01:02,510
+that puts you at risk of having low bone
+density, and
+
+22
+00:01:02,510 --> 00:01:06,540
+some of those women went on to a
+spontaneously regain their periods.
+
+23
+00:01:06,540 --> 00:01:09,970
+Some of the women went on to take oral
+contraceptives to get their periods back,
+
+24
+00:01:09,970 --> 00:01:13,250
+and other women still had, irregular
+periods at the end of the study and
+
+25
+00:01:13,250 --> 00:01:19,710
+we can compare, the trajectory of changes
+in bone density in those three groups, so
+
+26
+00:01:19,710 --> 00:01:23,160
+the first type of plot I'm going to talk
+about is, what we call a mean plot or
+
+27
+00:01:23,160 --> 00:01:26,660
+a profile plot, and I already showed you
+several examples of these.
+
+28
+00:01:26,660 --> 00:01:29,570
+When I, showed you the examples of
+repeated measures from
+
+29
+00:01:29,570 --> 00:01:30,650
+the medical literature.
+
+30
+00:01:30,650 --> 00:01:34,910
+This is typically the way people will
+plot, repeated measures data.
+
+31
+00:01:34,910 --> 00:01:37,410
+Now, the key is that we, are going to
+assume,
+
+32
+00:01:37,410 --> 00:01:40,370
+that there are some regular follow-up
+times so that, everybody in
+
+33
+00:01:40,370 --> 00:01:44,840
+our study comes back kind of at the same
+time for their follow-up measurements.
+
+34
+00:01:44,840 --> 00:01:48,250
+We're going to set esssence treating time
+as discrete.
+
+35
+00:01:48,250 --> 00:01:50,820
+At each of those, regular follow-up times.
+
+36
+00:01:50,820 --> 00:01:55,910
+We're going to calculate the mean value of
+the outcome for, everybody or
+
+37
+00:01:55,910 --> 00:01:58,110
+you know, broken down by different groups
+for
+
+38
+00:01:58,110 --> 00:02:02,250
+different groups, and we're just going to
+plot those means against time so,
+
+39
+00:02:02,250 --> 00:02:07,222
+here's you know the mean for one group at
+time one, and a time two and a time three.
+
+40
+00:02:07,222 --> 00:02:10,270
+We're going to connect those means, with
+some lines and
+
+41
+00:02:10,270 --> 00:02:13,725
+typically we'll also add like some like
+standard deviation or standard error bars.
+
+42
+00:02:13,725 --> 00:02:16,270
+[SOUND].
+
+43
+00:02:16,270 --> 00:02:18,950
+Now, one of the key things that you have
+to keep in mind when doing these
+
+44
+00:02:18,950 --> 00:02:21,570
+mean plots is that, often with follow up
+data.
+
+45
+00:02:21,570 --> 00:02:24,680
+With longitudinal data, our sample size
+sort of shrinks over time.
+
+46
+00:02:24,680 --> 00:02:27,390
+So, maybe the first, at the first
+follow-up time.
+
+47
+00:02:27,390 --> 00:02:30,640
+That baseline there's 105 people in our
+study.
+
+48
+00:02:30,640 --> 00:02:34,120
+But then, by the second measurement
+[INAUDIBLE] the first follow-up time.
+
+49
+00:02:34,120 --> 00:02:35,400
+Maybe we're down to 105.
+
+50
+00:02:35,400 --> 00:02:38,870
+And then, maybe by the third measurement
+we're down to like 90, and
+
+51
+00:02:38,870 --> 00:02:40,240
+it keeps shrinking from there.
+
+52
+00:02:40,240 --> 00:02:44,600
+So, as you lose people over time, you're
+essentially changing the groups, so
+
+53
+00:02:44,600 --> 00:02:47,870
+it's going to be very important that you
+impute missing values,
+
+54
+00:02:47,870 --> 00:02:52,170
+because we don't want to compare our, one
+group of people at time one bear mean,
+
+55
+00:02:52,170 --> 00:02:55,160
+to a totally different group of people at
+time two.
+
+56
+00:02:55,160 --> 00:02:58,240
+The 20 people that we lose between,
+between the first time and
+
+57
+00:02:58,240 --> 00:03:01,720
+the second time, might be the 20 who have
+the highest values.
+
+58
+00:03:01,720 --> 00:03:05,230
+And so, it might look like we're having a
+decrease in the outcome simply because of,
+
+59
+00:03:05,230 --> 00:03:06,250
+who we lost.
+
+60
+00:03:06,250 --> 00:03:08,870
+So, we want to be comparing apples to
+apples, so
+
+61
+00:03:08,870 --> 00:03:11,870
+we need to make sure, that our ends remain
+constant.
+
+62
+00:03:11,870 --> 00:03:15,280
+And the way that you can do that is by
+imputing missing values.
+
+63
+00:03:15,280 --> 00:03:16,830
+A simple way to impute,
+
+64
+00:03:16,830 --> 00:03:20,540
+the missing values is something called
+last observation carried forward.
+
+65
+00:03:20,540 --> 00:03:23,710
+That's what I've done for the plots I'm
+going to show you on the next page.
+
+66
+00:03:23,710 --> 00:03:27,220
+What that does is, if a woman is missing a
+follow-up value,
+
+67
+00:03:27,220 --> 00:03:30,230
+you take the last value that you saw on
+her.
+
+68
+00:03:30,230 --> 00:03:31,750
+And you, carry it forward.
+
+69
+00:03:31,750 --> 00:03:36,110
+So, you fill in her value at say time two,
+with her value from time one.
+
+70
+00:03:36,110 --> 00:03:38,900
+What that does is if, if a person if you
+know, for
+
+71
+00:03:38,900 --> 00:03:42,250
+the example of bone density if a woman
+happens to have really high bone density.
+
+72
+00:03:42,250 --> 00:03:46,510
+And she drops out, you're at least
+carrying forward her high value, so
+
+73
+00:03:46,510 --> 00:03:49,360
+that there isn't an artificial drop in the
+mean, at time two,
+
+74
+00:03:49,360 --> 00:03:51,580
+just due to the fact that we've lost her.
+
+75
+00:03:51,580 --> 00:03:53,690
+So, that's going to be important to keep
+in mind.
+
+76
+00:03:53,690 --> 00:03:55,350
+There's kind of two ways you can do these
+plots.
+
+77
+00:03:55,350 --> 00:03:58,220
+You can plot the, absolute value in the
+outcome variable.
+
+78
+00:03:58,220 --> 00:03:59,820
+The, the absolute mean.
+
+79
+00:03:59,820 --> 00:04:05,380
+Value or, the mean percent change since
+baseline I'll show you both of those, so
+
+80
+00:04:05,380 --> 00:04:09,120
+now, I'm just showing you the plots two
+different ways of plotting, the outcome
+
+81
+00:04:09,120 --> 00:04:13,090
+here is spine bone density and again I'm
+looking at these three groups of women
+
+82
+00:04:13,090 --> 00:04:17,640
+runners in my study, I'm going to start
+with the graph on the left hand side.
+
+83
+00:04:17,640 --> 00:04:21,490
+This is plotting the mean, percent change
+from baseline.
+
+84
+00:04:22,620 --> 00:04:26,820
+So, what you'll notice is that, everybody
+starts at 0 because at baseline your
+
+85
+00:04:26,820 --> 00:04:30,690
+mean percent change, your percent change
+since baseline, at baseline is 0.
+
+86
+00:04:30,690 --> 00:04:32,270
+So, everybody starts at 0.
+
+87
+00:04:32,270 --> 00:04:34,110
+And then, we're going to calculate for
+
+88
+00:04:34,110 --> 00:04:38,730
+every person in my data set, their percent
+change, from baseline to Year 1.
+
+89
+00:04:38,730 --> 00:04:40,410
+So, imagine that I've got a woman,
+
+90
+00:04:40,410 --> 00:04:45,320
+who has a spine bone density at baseline
+of 1.0 [SOUND] and then,
+
+91
+00:04:45,320 --> 00:04:50,070
+at one year into the study, [SOUND]
+she has a value of 1.03.
+
+92
+00:04:50,070 --> 00:04:54,940
+And then let's say, at two years into the
+study, she has a value of, 1.05.
+
+93
+00:04:54,940 --> 00:04:56,849
+So, her percent changes.
+
+94
+00:04:58,020 --> 00:05:00,180
+Are going to be, well 0 at baseline.
+
+95
+00:05:00,180 --> 00:05:01,820
+And then, 3% at Year 1.
+
+96
+00:05:01,820 --> 00:05:04,650
+She went up, 3% from baseline to Year 1.
+
+97
+00:05:04,650 --> 00:05:06,860
+And then, 5% at Year 2.
+
+98
+00:05:06,860 --> 00:05:08,730
+From baseline to Year 2 she went up 5%.
+
+99
+00:05:08,730 --> 00:05:12,280
+We're going to calculate these percent
+change values for Year 1 and for
+
+100
+00:05:12,280 --> 00:05:14,680
+Year 2 for every person in the data set.
+
+101
+00:05:14,680 --> 00:05:17,200
+And then, we'll calculate the average for
+each group.
+
+102
+00:05:17,200 --> 00:05:18,570
+So, for example, this blue group here,
+
+103
+00:05:18,570 --> 00:05:22,690
+these are the women, who had irregular
+periods throughout this study.
+
+104
+00:05:22,690 --> 00:05:28,620
+You can see that on average, they went
+down about .5% from baseline to Year 1.
+
+105
+00:05:28,620 --> 00:05:30,370
+And they were basically stable.
+
+106
+00:05:30,370 --> 00:05:32,120
+They didn't change much by the end of the
+study.
+
+107
+00:05:32,120 --> 00:05:34,270
+By Year 2 is about, a 0% change.
+
+108
+00:05:35,520 --> 00:05:38,250
+In contrast, the red group which were
+those who,
+
+109
+00:05:38,250 --> 00:05:41,440
+spontaneously regained their periods, and
+the black group, which were those who
+
+110
+00:05:41,440 --> 00:05:44,760
+started taking oral contraceptives, and
+got their periods back that way.
+
+111
+00:05:44,760 --> 00:05:49,614
+They went up about 1% in the first year of
+the study and about, you know,
+
+112
+00:05:49,614 --> 00:05:51,980
+2+ percent in the second year of the
+study.
+
+113
+00:05:51,980 --> 00:05:53,720
+So, that's the graph on the left hand
+side.
+
+114
+00:05:53,720 --> 00:05:57,180
+The graph on the right hand side is very
+similar except rather than, plotting these
+
+115
+00:05:57,180 --> 00:06:01,550
+percent changes in space line we're just
+going to, plot the actual absolute values.
+
+116
+00:06:01,550 --> 00:06:05,060
+So, you can see that, spine bone density
+is measured in grams per
+
+117
+00:06:05,060 --> 00:06:07,548
+centimeters squared and a typical value is
+1.0.
+
+118
+00:06:07,548 --> 00:06:10,550
+These women were all a little low to begin
+with because of
+
+119
+00:06:10,550 --> 00:06:13,340
+the fact that they were having irregular
+periods at baseline.
+
+120
+00:06:13,340 --> 00:06:14,940
+So, they're a little below 1.
+
+121
+00:06:14,940 --> 00:06:17,000
+But, what's interesting is you can see
+that the blue group,
+
+122
+00:06:17,000 --> 00:06:19,050
+they were even kind of a riskier group,
+
+123
+00:06:19,050 --> 00:06:23,630
+because they started with a lower,
+baseline value than the other two groups.
+
+124
+00:06:23,630 --> 00:06:27,310
+So, that's something that the, the
+baseline differences don't show up on
+
+125
+00:06:27,310 --> 00:06:31,370
+the percent change graph, that you do see
+them on the absolute value graph.
+
+126
+00:06:33,080 --> 00:06:34,470
+And then, we're just going to calculate
+the,
+
+127
+00:06:34,470 --> 00:06:37,270
+mean value of spine bone density for each
+of those groups of baseline.
+
+128
+00:06:37,270 --> 00:06:39,340
+We do those mean values at Year 1 and at
+Year two.
+
+129
+00:06:39,340 --> 00:06:42,170
+And again, connect them with some dots.
+
+130
+00:06:42,170 --> 00:06:46,100
+And, you can see that the base, the same
+basic, general pattern emerges from
+
+131
+00:06:46,100 --> 00:06:49,520
+this plot, but you get the additional
+information, on the opposite plot of
+
+132
+00:06:49,520 --> 00:06:52,990
+whether or not there were any, baseline
+differences, as you can see here.
+
+133
+00:06:52,990 --> 00:06:55,560
+And, the other thing, as you can see,
+
+134
+00:06:55,560 --> 00:06:57,970
+that the percent change graph, well, it's
+maybe a little bit.
+
+135
+00:06:57,970 --> 00:06:58,610
+Prettier.
+
+136
+00:06:58,610 --> 00:06:59,810
+Those tend to be a little bit neater.
+
+137
+00:06:59,810 --> 00:07:01,760
+It may be a little bit easier to
+interpret.
+
+138
+00:07:01,760 --> 00:07:03,220
+So, depending on, the problem,
+
+139
+00:07:03,220 --> 00:07:06,840
+depending on what you're trying to show,
+one of these graphs might be preferable.
+
+140
+00:07:06,840 --> 00:07:09,570
+But those are both, they're, they're
+going to give you basically the same,
+
+141
+00:07:09,570 --> 00:07:10,290
+general pattern.
+
+142
+00:07:11,690 --> 00:07:13,320
+I also went ahead, and did the same plots
+for
+
+143
+00:07:13,320 --> 00:07:15,100
+plots for whole body bone mineral content,
+
+144
+00:07:15,100 --> 00:07:19,540
+which is just the total amount of calcium
+in your skeleton, just as another example.
+
+145
+00:07:19,540 --> 00:07:22,320
+You can see again, same, same general
+idea.
+
+146
+00:07:22,320 --> 00:07:25,750
+There's the group, group in blue is kind
+of going down over time.
+
+147
+00:07:25,750 --> 00:07:27,810
+The other two groups are going up over
+time.
+
+148
+00:07:27,810 --> 00:07:29,900
+One is displayed as the percent change
+since baseline,
+
+149
+00:07:29,900 --> 00:07:34,370
+which gives you a little bit more you
+know, you can, the x axis, or
+
+150
+00:07:34,370 --> 00:07:36,830
+the y axis can be stretched out a little
+bit more so you can.
+
+151
+00:07:36,830 --> 00:07:38,780
+You know, it gives you a little more
+distinction.
+
+152
+00:07:38,780 --> 00:07:39,960
+But the absolute values,
+
+153
+00:07:39,960 --> 00:07:43,480
+actually tell you what the absolute values
+were on the right-hand side.
+
+154
+00:07:43,480 --> 00:07:44,480
+So, those are the mean plots.
+
+155
+00:07:45,610 --> 00:07:48,340
+A second type of plot you can do is
+actually,
+
+156
+00:07:48,340 --> 00:07:51,680
+rather than calculating the averages at
+the discrete time points,
+
+157
+00:07:51,680 --> 00:07:55,790
+which assumes that everybody was measured
+at the same follow-up time points,.
+
+158
+00:07:55,790 --> 00:07:56,850
+Another option is that,
+
+159
+00:07:56,850 --> 00:08:01,020
+there is a way to do the graph, where you
+can treat time as continuous.
+
+160
+00:08:01,020 --> 00:08:05,340
+And this is important if you've got data,
+where not everybody was measured,
+
+161
+00:08:05,340 --> 00:08:06,710
+at the same follow-up time points,
+
+162
+00:08:06,710 --> 00:08:09,189
+especially if there's a lot of variability
+in those follow-up times.
+
+163
+00:08:10,580 --> 00:08:14,310
+When you do this graph, it's important
+that, you have to have some way to
+
+164
+00:08:14,310 --> 00:08:17,550
+account for the fact that it's the same
+person over time.
+
+165
+00:08:17,550 --> 00:08:20,620
+So, we're really only going to be able to
+do the percent change since baseline,
+
+166
+00:08:20,620 --> 00:08:22,280
+that's the only way to.
+
+167
+00:08:22,280 --> 00:08:24,100
+Account for the correlation over time.
+
+168
+00:08:24,100 --> 00:08:26,730
+You're not going to be able to do the
+absolute value graph, in this one,
+
+169
+00:08:26,730 --> 00:08:30,890
+because that won't account for, the fact
+that it's the same person over time.
+
+170
+00:08:30,890 --> 00:08:34,270
+We're going to plot each subject's percent
+change since baseline,
+
+171
+00:08:34,270 --> 00:08:38,010
+against their actual follow-up time,
+whatever that follow-up time is.
+
+172
+00:08:38,010 --> 00:08:40,350
+We're not going to be calculating any
+means here.
+
+173
+00:08:40,350 --> 00:08:42,760
+We're just going to be doing a scatter
+plot,
+
+174
+00:08:42,760 --> 00:08:46,670
+of the percent change since baseline
+against the follow-up time.
+
+175
+00:08:46,670 --> 00:08:48,910
+Then we'll superimpose a smoothing line
+for
+
+176
+00:08:48,910 --> 00:08:52,020
+each of the different groups to figure out
+what the patterns are over time.
+
+177
+00:08:53,060 --> 00:08:55,450
+Notice that, we're not calculating any
+means here.
+
+178
+00:08:55,450 --> 00:08:58,100
+So, we don't have to impute the missing
+values.
+
+179
+00:08:58,100 --> 00:09:01,210
+If a, person doesn't come back for their
+follow up value, you know,
+
+180
+00:09:01,210 --> 00:09:03,060
+maybe they're only going to contribute
+only one or
+
+181
+00:09:03,060 --> 00:09:06,630
+two dots, to the follow up to the scatter
+plot.
+
+182
+00:09:06,630 --> 00:09:10,720
+So, maybe here's a woman who comes back,
+the first time, but maybe she doesn't come
+
+183
+00:09:10,720 --> 00:09:13,590
+back at Year 1 like she was supposed to,
+but she comes back at Year 2.
+
+184
+00:09:13,590 --> 00:09:16,160
+We can still, fit the smoothing line to
+those data.
+
+185
+00:09:16,160 --> 00:09:17,400
+We don't have to do anything about.
+
+186
+00:09:17,400 --> 00:09:19,430
+Filling in, the values that are missing.
+
+187
+00:09:19,430 --> 00:09:21,420
+A person contributes, just when they were
+measured.
+
+188
+00:09:21,420 --> 00:09:23,180
+Let me just show you some examples.
+
+189
+00:09:23,180 --> 00:09:25,020
+This will become clearer with an actual
+example.
+
+190
+00:09:26,200 --> 00:09:30,270
+So, what I've done here is on the same,
+same data as before,
+
+191
+00:09:30,270 --> 00:09:32,660
+the outcome here is this spine bone
+density, it's the,
+
+192
+00:09:32,660 --> 00:09:36,050
+I've done the percent change since
+baseline in, spine bone density.
+
+193
+00:09:36,050 --> 00:09:38,600
+Again you need to do percent change here.
+
+194
+00:09:38,600 --> 00:09:42,620
+And, I'm plotting that against the years,
+since the baseline DXA.
+
+195
+00:09:42,620 --> 00:09:46,620
+Now, you can see that time is continuous,
+there's some variability in
+
+196
+00:09:46,620 --> 00:09:49,650
+when women actually came back, for these
+follow up measurements.
+
+197
+00:09:49,650 --> 00:09:52,780
+Women were asked to come back at one year,
+and then at two years.
+
+198
+00:09:52,780 --> 00:09:53,880
+But here's what actually happened.
+
+199
+00:09:53,880 --> 00:09:54,589
+So, here's one year.
+
+200
+00:09:55,970 --> 00:09:59,260
+You can see that, women did come back, by
+and large right around one year.
+
+201
+00:09:59,260 --> 00:10:00,510
+But there's some variability.
+
+202
+00:10:00,510 --> 00:10:02,160
+Not everybody came back right at one year,
+
+203
+00:10:02,160 --> 00:10:03,830
+some people were a little late, in coming
+back.
+
+204
+00:10:04,990 --> 00:10:07,830
+If you go to two years, there's even more,
+variability, right.
+
+205
+00:10:07,830 --> 00:10:09,140
+Women were supposed to come back at two
+years.
+
+206
+00:10:09,140 --> 00:10:10,730
+But there's a huge amount of variability
+in.
+
+207
+00:10:10,730 --> 00:10:14,140
+When people actually, came for those
+measurements, the end of a study you know
+
+208
+00:10:14,140 --> 00:10:17,300
+people get busy, we had to chase people
+down a little bit to get them in, and
+
+209
+00:10:17,300 --> 00:10:21,495
+sometimes took longer than, the two years
+that it was supposed to take [SOUND].
+
+210
+00:10:21,495 --> 00:10:25,300
+[COUGH] Let me just tell you, what, you
+know, is actually being plotted here so
+
+211
+00:10:25,300 --> 00:10:28,180
+let me give you an example, so this person
+right here this little dot right here,
+
+212
+00:10:28,180 --> 00:10:30,770
+what is this represent so this is saying
+that this.
+
+213
+00:10:30,770 --> 00:10:33,650
+This person had, was measured, they came
+back for
+
+214
+00:10:33,650 --> 00:10:37,620
+their one year follow-up visit right about
+one year, just a little after one year.
+
+215
+00:10:37,620 --> 00:10:41,860
+At that time point compared with baseline,
+they had a, about a,
+
+216
+00:10:41,860 --> 00:10:46,290
+negative three and one half percent
+decrease in their spine bone density.
+
+217
+00:10:46,290 --> 00:10:48,920
+I don't know, which other dot represents
+that person, but
+
+218
+00:10:48,920 --> 00:10:51,150
+that's okay since, everything is.
+
+219
+00:10:51,150 --> 00:10:54,890
+Calculated as the percent change this
+baseline sort of accounted, for
+
+220
+00:10:54,890 --> 00:10:57,170
+the within subject correlation.
+
+221
+00:10:57,170 --> 00:10:59,330
+Then I super imposed for each of the
+different groups,
+
+222
+00:10:59,330 --> 00:11:01,800
+these smoothing lines to get the pattern
+over time, and
+
+223
+00:11:01,800 --> 00:11:05,115
+you can see the general pattern that
+emerges is very similar.
+
+224
+00:11:05,115 --> 00:11:09,650
+To the pattern, that we saw with the,
+profile plots, with the mean plots.
+
+225
+00:11:09,650 --> 00:11:13,190
+However, there's a little more subtlety,
+on where we treat time as continuous.
+
+226
+00:11:13,190 --> 00:11:15,620
+It's accounting for the, variation in
+time, and
+
+227
+00:11:15,620 --> 00:11:20,140
+that can make, some difference in the
+trajectory over time as you can see here,
+
+228
+00:11:20,140 --> 00:11:21,923
+especially with so much variation at Year
+2.
+
+229
+00:11:23,200 --> 00:11:28,313
+You also, as I mentioned, [SOUND] do not
+have to impute, the missing data for
+
+230
+00:11:28,313 --> 00:11:33,150
+this, left-hand graph because, if a person
+didn't come back,
+
+231
+00:11:33,150 --> 00:11:36,930
+they just don't get a dot for Year 2 or
+for Year 1 or around that time point.
+
+232
+00:11:36,930 --> 00:11:39,250
+Whenever they come back they get a dot,
+and that's it.
+
+233
+00:11:39,250 --> 00:11:42,460
+And you see the general pattern is, the
+same.
+
+234
+00:11:42,460 --> 00:11:45,170
+There's certain advantages again of the,
+left hand plot here.
+
+235
+00:11:46,440 --> 00:11:49,360
+I went ahead did the same plot with whole
+body bone mineral content.
+
+236
+00:11:49,360 --> 00:11:52,110
+Again, you can see that the general
+pattern that emerges is very similar to
+
+237
+00:11:52,110 --> 00:11:54,680
+what we saw, for the mean plots.
+
+238
+00:11:54,680 --> 00:11:57,350
+You get a little bit more going on at the
+end here, so, you know,
+
+239
+00:11:57,350 --> 00:12:00,190
+we were definitely decreasing, in the blue
+group.
+
+240
+00:12:00,190 --> 00:12:03,210
+You know, with the, full body bone mineral
+content.
+
+241
+00:12:03,210 --> 00:12:06,690
+And that pattern is borne out to about two
+years.
+
+242
+00:12:06,690 --> 00:12:09,690
+And then, you can see though, there's a
+few people who came back after that, and
+
+243
+00:12:09,690 --> 00:12:11,680
+that drags the, this line a little bit up.
+
+244
+00:12:11,680 --> 00:12:13,220
+So, you get slightly different patterns.
+
+245
+00:12:13,220 --> 00:12:14,010
+But generally it looks.
+
+246
+00:12:14,010 --> 00:12:17,670
+Pretty similar, but this can make a
+difference, depending on the data set that
+
+247
+00:12:17,670 --> 00:12:21,110
+you have, if you have a lot of variation
+in follow up times.
+
+248
+00:12:21,110 --> 00:12:23,405
+[SOUND] So, those are just a couple of
+different ways,
+
+249
+00:12:23,405 --> 00:12:25,300
+that you can plot repeated measures data.
+
+250
+00:12:25,300 --> 00:12:29,429
+[BLANK_AUDIO]

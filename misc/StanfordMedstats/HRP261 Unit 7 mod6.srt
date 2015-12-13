@@ -1,0 +1,539 @@
+1
+00:00:05,940 --> 00:00:07,020
+In this next module,
+
+2
+00:00:07,020 --> 00:00:10,130
+I'm going to walk you through the specific
+steps of bootstrap validation.
+
+3
+00:00:11,260 --> 00:00:15,720
+So just recall that by bootstrap
+resampling, what we mean is that we're
+
+4
+00:00:15,720 --> 00:00:20,360
+going to be taking repeated samples from
+our original sample, but we are going to
+
+5
+00:00:20,360 --> 00:00:23,870
+be using replacements, we're going to be
+sampling with replacement.
+
+6
+00:00:23,870 --> 00:00:26,690
+Such that some of our observations will
+appear more than once
+
+7
+00:00:26,690 --> 00:00:29,970
+in a given bootstrap sample, and some
+won't appear at all.
+
+8
+00:00:29,970 --> 00:00:33,620
+In any given bootstrap sample, about two
+thirds of the observations will show up,
+
+9
+00:00:33,620 --> 00:00:35,640
+and about a third will be left out.
+
+10
+00:00:35,640 --> 00:00:39,180
+This allows us to create a whole bunch of
+different samples from
+
+11
+00:00:39,180 --> 00:00:40,160
+our original sample.
+
+12
+00:00:40,160 --> 00:00:42,770
+And we can do all sorts of things with
+these bootstrap examples.
+
+13
+00:00:42,770 --> 00:00:44,380
+Including bootstrap validation.
+
+14
+00:00:45,880 --> 00:00:49,100
+So the steps of bootstrap validation are
+the following.
+
+15
+00:00:49,100 --> 00:00:52,460
+Number our observations from 1 to n, so
+that we can have an easier time
+
+16
+00:00:52,460 --> 00:00:55,165
+selecting them out for this specific
+Bootstrap samples.
+
+17
+00:00:55,165 --> 00:00:59,040
+Then we're going to randomly draw a sample
+of size n from those
+
+18
+00:00:59,040 --> 00:01:03,290
+original observations, but we're randomly
+sampling with replacement.
+
+19
+00:01:03,290 --> 00:01:06,970
+Which means again, that a given
+observation can appear multiple times or
+
+20
+00:01:06,970 --> 00:01:09,800
+not at all in, in so, one of those
+samples.
+
+21
+00:01:09,800 --> 00:01:13,530
+We're then going to fit our model on this
+bootstrap sample.
+
+22
+00:01:13,530 --> 00:01:17,180
+Remember, that means we're going to repeat
+any variable selection steps that were
+
+23
+00:01:17,180 --> 00:01:19,650
+used to fit the original model.
+
+24
+00:01:19,650 --> 00:01:22,890
+We're going to test our model on the
+original sample, so
+
+25
+00:01:22,890 --> 00:01:26,580
+the test data in this case is going to be
+the entire original sample.
+
+26
+00:01:26,580 --> 00:01:29,390
+So notice that there is some contamination
+when we do it this way.
+
+27
+00:01:29,390 --> 00:01:32,430
+In other words, we're fitting the model on
+the bootstrap sample, but
+
+28
+00:01:32,430 --> 00:01:35,500
+some of those same observations exist in
+the original sample.
+
+29
+00:01:35,500 --> 00:01:39,420
+That's not considered ideal, so there are
+various variations of
+
+30
+00:01:39,420 --> 00:01:42,640
+bootstrap validation that people have come
+up with in the literature.
+
+31
+00:01:42,640 --> 00:01:46,680
+I'll just point out two, the .632 and the
+.632 plus.
+
+32
+00:01:46,680 --> 00:01:50,650
+The 632 just comes from the fact that in
+any given bootstrap sample,
+
+33
+00:01:50,650 --> 00:01:53,930
+about 63.2% of the observations will
+appear.
+
+34
+00:01:53,930 --> 00:01:56,910
+Those are alternate ways of doing
+bootstrap validation, and
+
+35
+00:01:56,910 --> 00:01:58,790
+there are more than just those.
+
+36
+00:01:58,790 --> 00:02:01,600
+I'm going to just show you the original
+bootstrap validation.
+
+37
+00:02:01,600 --> 00:02:04,820
+It's in, it's kind the simplest but you
+should be aware that if
+
+38
+00:02:04,820 --> 00:02:08,270
+you're going to use this, there are other
+alternatives that you might choose.
+
+39
+00:02:08,270 --> 00:02:11,740
+So we're going to test our model on the
+original sample, that's our test data set.
+
+40
+00:02:11,740 --> 00:02:13,710
+We're going to record some measure of
+model performance.
+
+41
+00:02:13,710 --> 00:02:16,680
+Let's say we record the area under the ROC
+curve, for
+
+42
+00:02:16,680 --> 00:02:19,446
+example if we're doing a logistic
+regression.
+
+43
+00:02:19,446 --> 00:02:21,546
+So we save that area under the ROC curve
+and
+
+44
+00:02:21,546 --> 00:02:24,920
+then we repeat this an arbitrarily large
+number of times.
+
+45
+00:02:24,920 --> 00:02:26,409
+Maybe 100, maybe 200 times.
+
+46
+00:02:27,430 --> 00:02:31,230
+Every time we make a model on a new
+bootstrap sample,
+
+47
+00:02:31,230 --> 00:02:34,010
+remember we are going to repeat variable
+selection.
+
+48
+00:02:34,010 --> 00:02:36,590
+We're now going to come out with say 200
+measures of model performance.
+
+49
+00:02:36,590 --> 00:02:39,300
+Say, 200 areas under the ROC curve.
+
+50
+00:02:39,300 --> 00:02:42,042
+We can just average them to come up with a
+average model,
+
+51
+00:02:42,042 --> 00:02:44,782
+me, average measure of model performance.
+
+52
+00:02:44,782 --> 00:02:49,040
+And that's going to be not as biased as
+the one that we got
+
+53
+00:02:49,040 --> 00:02:52,550
+when we calculated that measure of model
+performance on all of the original data.
+
+54
+00:02:54,340 --> 00:02:55,870
+This best illustrated with an example.
+
+55
+00:02:55,870 --> 00:02:59,030
+So here's an example where they were
+building a prediction model for
+
+56
+00:02:59,030 --> 00:03:00,470
+pulmonary embolism.
+
+57
+00:03:00,470 --> 00:03:02,940
+Some people are, may have suspected
+pulmonary embolism.
+
+58
+00:03:02,940 --> 00:03:07,180
+Who's actually likely to actually have it,
+and really need the full clinical workup.
+
+59
+00:03:07,180 --> 00:03:11,335
+The sample had, was 398 people with
+suspected pulmonary embolism.
+
+60
+00:03:11,335 --> 00:03:15,810
+43%, or about 170, actually had pulmonary
+embolism.
+
+61
+00:03:15,810 --> 00:03:19,640
+They had 27 candidate predictors that they
+were interested in, and they threw all of
+
+62
+00:03:19,640 --> 00:03:23,700
+those into a stepwise regression that came
+out with a final model.
+
+63
+00:03:23,700 --> 00:03:25,650
+They wanted to then validate the model.
+
+64
+00:03:25,650 --> 00:03:28,630
+The, the final model originally had an
+area under the curve,
+
+65
+00:03:28,630 --> 00:03:31,390
+as this was logistic regression because we
+have a binary outcome,
+
+66
+00:03:31,390 --> 00:03:34,170
+it had an area under the curve of 78%.
+
+67
+00:03:34,170 --> 00:03:38,750
+Now I'm actually just going to walk you
+through how they described how, their
+
+68
+00:03:38,750 --> 00:03:42,370
+process of doing bootstrap validation in
+their statistical method section.
+
+69
+00:03:42,370 --> 00:03:45,800
+It's good for you to get practice in
+reading these kinds of method sections.
+
+70
+00:03:45,800 --> 00:03:48,970
+So they say we applied bootstrapping
+techniques to quantify the amount of
+
+71
+00:03:48,970 --> 00:03:50,870
+overoptimism of the final model and
+
+72
+00:03:50,870 --> 00:03:54,400
+to adjust the model's predictive accuracy
+for overoptimism.
+
+73
+00:03:54,400 --> 00:03:56,100
+You could probably say this much more
+concisely,
+
+74
+00:03:56,100 --> 00:04:00,450
+they're using the bootstrap technique, the
+bootstrap validation to come up with a,
+
+75
+00:04:00,450 --> 00:04:02,700
+an estimate of predictive accuracy that's
+been corrected for
+
+76
+00:04:02,700 --> 00:04:04,130
+overoptimism, for overfitting.
+
+77
+00:04:04,130 --> 00:04:08,750
+200 random bootstrap samples of size 398
+from 398 subjects were
+
+78
+00:04:08,750 --> 00:04:10,460
+drawn with replacement from the original
+sample.
+
+79
+00:04:10,460 --> 00:04:13,610
+All they're saying there is we did 200
+bootstrap samples.
+
+80
+00:04:14,720 --> 00:04:18,710
+From each bootstrap sample a final
+prediction model was fitted using the same
+
+81
+00:04:18,710 --> 00:04:22,220
+criteria for predictor selection as in the
+previous section.
+
+82
+00:04:22,220 --> 00:04:25,630
+So they're saying that in every bootstrap
+sample, they repeated their
+
+83
+00:04:25,630 --> 00:04:29,850
+predictor selection, their stepwise
+regression which they need to do.
+
+84
+00:04:29,850 --> 00:04:32,960
+And then the predictive accuracy of each
+bootstrap model was estimated in
+
+85
+00:04:32,960 --> 00:04:37,300
+the bootstrap and in the original sample,
+to quantify the difference.
+
+86
+00:04:37,300 --> 00:04:39,640
+So, they estimated this was a logistic
+regression.
+
+87
+00:04:39,640 --> 00:04:43,450
+So, they estimated an area under the ROC
+curve in the bootstrap sample.
+
+88
+00:04:43,450 --> 00:04:44,160
+That's going to be overfit.
+
+89
+00:04:44,160 --> 00:04:47,130
+And then they estimated it in the test
+data which,
+
+90
+00:04:47,130 --> 00:04:50,250
+in this case, they're using the original
+sample as the test data.
+
+91
+00:04:50,250 --> 00:04:53,190
+That ROC curve, area under the curve is
+going to be lower.
+
+92
+00:04:53,190 --> 00:04:56,050
+They looked at the difference between
+those to get a gauge of how big is
+
+93
+00:04:56,050 --> 00:04:57,280
+the overoptimism.
+
+94
+00:04:57,280 --> 00:04:59,750
+They calculate 200 of these differences
+and
+
+95
+00:04:59,750 --> 00:05:03,590
+then just took the mean of them to get a
+single estimate of overoptimism.
+
+96
+00:05:03,590 --> 00:05:04,560
+So they're just saying that there,
+
+97
+00:05:04,560 --> 00:05:07,830
+they, such average is considered a stable
+estimate of the overoptimism.
+
+98
+00:05:07,830 --> 00:05:09,130
+So that's just how they,
+
+99
+00:05:09,130 --> 00:05:12,340
+they just averaged them together to get
+one measure of overoptimism, and that
+
+100
+00:05:12,340 --> 00:05:18,100
+tells you how much optimism there was in
+that apparent performance in the original
+
+101
+00:05:18,100 --> 00:05:22,060
+area under the curve of the model that was
+obtained from the original sample.
+
+102
+00:05:22,060 --> 00:05:27,480
+So, when they did this, they original area
+under the ROC curve was 78%.
+
+103
+00:05:27,480 --> 00:05:30,360
+They, they calculated this measure of
+optimism in all of
+
+104
+00:05:30,360 --> 00:05:33,660
+the bootstrap samples and averaged it, and
+came out to be 6%.
+
+105
+00:05:33,660 --> 00:05:37,758
+So, the area under the curve was
+overestimated here by 6%.
+
+106
+00:05:37,758 --> 00:05:42,370
+So the bootstrap-adjusted area under the
+curve here would be 72%.
+
+107
+00:05:42,370 --> 00:05:45,150
+You could also just calculate the area
+under the curve in
+
+108
+00:05:45,150 --> 00:05:48,180
+each one of the bootstrap samples in the
+test data and
+
+109
+00:05:48,180 --> 00:05:51,260
+then average those together and that would
+give you 72%.
+
+110
+00:05:51,260 --> 00:05:52,900
+You could subtract these to get the 6%.
+
+111
+00:05:52,900 --> 00:05:55,250
+You could do that either way, it will give
+you the same answer.
+
+112
+00:05:55,250 --> 00:05:59,480
+But this is a way again, of saying, how
+much was my model overfit?

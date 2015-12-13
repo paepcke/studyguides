@@ -1,0 +1,195 @@
+1
+00:00:00,460 --> 00:00:01,490
+Welcome back.
+
+2
+00:00:01,490 --> 00:00:04,560
+In the last module, we showed you how to
+make your own macro.
+
+3
+00:00:04,560 --> 00:00:06,090
+Sometimes, instead of making your own
+macro,
+
+4
+00:00:06,090 --> 00:00:08,390
+you need to use one that's already been
+made.
+
+5
+00:00:08,390 --> 00:00:12,060
+>> Here's a macro made by our colleague,
+Dr. Ray Belise, which is used for
+
+6
+00:00:12,060 --> 00:00:14,500
+generating a certain type of graphical
+plot.
+
+7
+00:00:14,500 --> 00:00:17,920
+You'll learn more about this in your HRP
+Biostatistics courses.
+
+8
+00:00:17,920 --> 00:00:20,200
+But, it's interesting to see how they
+work.
+
+9
+00:00:20,200 --> 00:00:23,160
+>> As you can see, this is a really
+complicated macro.
+
+10
+00:00:23,160 --> 00:00:27,410
+It includes several procedures, and has
+many parameters that you can specify.
+
+11
+00:00:27,410 --> 00:00:31,050
+But, it still follows all the rules we
+told you about, making macros.
+
+12
+00:00:31,050 --> 00:00:34,780
+It starts with percent macro, and it ends
+with percent mend.
+
+13
+00:00:34,780 --> 00:00:37,150
+After the macro statement, it has the name
+of the macro,
+
+14
+00:00:37,150 --> 00:00:38,910
+which you can see is logitplot.
+
+15
+00:00:40,330 --> 00:00:41,830
+This is followed by a side of parenthesis,
+
+16
+00:00:41,830 --> 00:00:44,480
+which contains four placeholder variables
+that are needed for this macro.
+
+17
+00:00:44,480 --> 00:00:47,620
+We need to specify the input DataSet,
+
+18
+00:00:47,620 --> 00:00:52,390
+a predictor variable, an outcome variable,
+and the number of bins.
+
+19
+00:00:52,390 --> 00:00:55,990
+You don't need to worry about what all
+this code does, but
+
+20
+00:00:55,990 --> 00:00:58,030
+we'll walk you through the steps you'll
+need to use this macro.
+
+21
+00:00:59,530 --> 00:01:00,610
+First, we'll need to run this macro.
+
+22
+00:01:03,350 --> 00:01:05,370
+Now, that we've run this macro, we can
+invoke it.
+
+23
+00:01:07,920 --> 00:01:09,660
+Our macro is called logitplot.
+
+24
+00:01:09,660 --> 00:01:14,910
+So, we can invoke it by typing
+%logitplot().
+
+25
+00:01:14,910 --> 00:01:18,140
+For our DataSet, we'll be using a DataSet
+called group.
+
+26
+00:01:18,140 --> 00:01:20,690
+For the predictor value, we'll use weight.
+
+27
+00:01:20,690 --> 00:01:24,710
+For the outcome variable, we will use is
+diabetic.
+
+28
+00:01:24,710 --> 00:01:28,750
+We will specify our NumBins as 4.
+
+29
+00:01:28,750 --> 00:01:32,690
+Remember to separate these parameters
+using comas.
+
+30
+00:01:32,690 --> 00:01:37,730
+You have to specify them in the order that
+we have listed in the original macro code.
+
+31
+00:01:37,730 --> 00:01:41,140
+Now, when we run this line of code, we
+will invoke the macro.
+
+32
+00:01:41,140 --> 00:01:44,230
+And, it'll fit in the placeholder
+variable, just like we told it to.
+
+33
+00:01:48,270 --> 00:01:49,400
+As you can see by the output,
+
+34
+00:01:49,400 --> 00:01:53,750
+it automatically ran all this code, and
+the output is a graphical plot.
+
+35
+00:01:55,550 --> 00:01:59,020
+Using this macro is a lot easier than
+copying and pasting this massive chunk of
+
+36
+00:01:59,020 --> 00:02:03,760
+code and manually tweaking each instance
+of every variable you want to change.
+
+37
+00:02:03,760 --> 00:02:06,700
+If you want to do that manually, by copy
+and pasting it over and over and
+
+38
+00:02:06,700 --> 00:02:09,170
+tweaking it by hand, it would have been
+very cumbersome.
+
+39
+00:02:09,170 --> 00:02:10,630
+And, you're more likely to make a mistake,
+or
+
+40
+00:02:10,630 --> 00:02:13,590
+a typo, or forget to tweak one of the
+variables.
+
+41
+00:02:13,590 --> 00:02:15,550
+When you use a macro, all of this gets
+streamlined.

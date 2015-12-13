@@ -1,0 +1,604 @@
+1
+00:00:00,860 --> 00:00:01,590
+Good morning, students.
+
+2
+00:00:01,590 --> 00:00:03,200
+This is Kaplan-Meier part two.
+
+3
+00:00:03,200 --> 00:00:04,780
+How to read Kaplan-Meier curves.
+
+4
+00:00:05,990 --> 00:00:11,300
+For this video, we are going to look at
+two sets of data.
+
+5
+00:00:12,390 --> 00:00:14,340
+From the actual clinical literature.
+
+6
+00:00:14,340 --> 00:00:15,430
+So here we go.
+
+7
+00:00:15,430 --> 00:00:20,830
+This is the result of a clinical trial
+comparing two chemotherapy regimens after
+
+8
+00:00:20,830 --> 00:00:22,270
+surgery for colon cancer.
+
+9
+00:00:24,500 --> 00:00:29,460
+And the two regimens are given here by the
+gold and blue lines.
+
+10
+00:00:30,470 --> 00:00:32,998
+One is the control arm,
+
+11
+00:00:32,998 --> 00:00:38,560
+5Fu, plus Leucovorin and the other is the
+experimental arm
+
+12
+00:00:38,560 --> 00:00:43,710
+which is 5Fu plus Leucovorin plus the
+experimental drug Oxaliplatin.
+
+13
+00:00:49,020 --> 00:00:53,060
+And what is being measure here, is
+disease-free survival.
+
+14
+00:00:53,060 --> 00:00:57,320
+In other words, the patient has had
+surgery and there is no evidence of
+
+15
+00:00:57,320 --> 00:01:01,760
+disease following surgery, but of course
+there's a risk for recurrence.
+
+16
+00:01:01,760 --> 00:01:04,020
+And so the patient may have a recurrence.
+
+17
+00:01:04,020 --> 00:01:05,790
+So the question is,
+
+18
+00:01:05,790 --> 00:01:11,498
+what is the proportion of patients who are
+disease-free after surgery.
+
+19
+00:01:11,498 --> 00:01:17,720
+And the time axis shows data up to four
+years following surgery.
+
+20
+00:01:20,000 --> 00:01:25,300
+Now, the first thing we notice is that the
+curves are very smooth.
+
+21
+00:01:25,300 --> 00:01:28,650
+And in fact, it's a pretty large clinical
+trial.
+
+22
+00:01:28,650 --> 00:01:33,270
+The number of patients enrolled in the,
+
+23
+00:01:33,270 --> 00:01:38,370
+study are shown here, 1,200, and 1,207
+patients in both of, in each of the arms.
+
+24
+00:01:39,760 --> 00:01:41,880
+You see a difference between the blue and
+the gold curves and
+
+25
+00:01:41,880 --> 00:01:44,600
+you want to know whether that's
+statistically significant.
+
+26
+00:01:44,600 --> 00:01:47,810
+That's given here by the P-value of .0034.
+
+27
+00:01:47,810 --> 00:01:50,508
+So what we need to know is what is the
+P-value.
+
+28
+00:01:50,508 --> 00:01:56,787
+Well, the P-value is this,
+
+29
+00:01:56,787 --> 00:02:05,076
+the P-value equals the probability,
+
+30
+00:02:05,076 --> 00:02:10,351
+that, this result would
+
+31
+00:02:10,351 --> 00:02:17,650
+occur under the null hypothesis.
+
+32
+00:02:20,850 --> 00:02:23,780
+Null hypothesis, what is that?
+
+33
+00:02:27,010 --> 00:02:32,220
+The null hypothesis is, the hypothesis
+that nothing is going on.
+
+34
+00:02:32,220 --> 00:02:35,793
+So, the P-value is, .34%, of that,
+
+35
+00:02:35,793 --> 00:02:41,492
+there's a .34% likelihood that what you
+see here would have occur
+
+36
+00:02:41,492 --> 00:02:47,677
+with Oxaliplatin actually having added
+nothing to the 5Fu Leucovorin, so
+
+37
+00:02:47,677 --> 00:02:54,760
+the P-value is pretty low so it looks like
+this is highly statistically significant.
+
+38
+00:02:56,730 --> 00:03:01,299
+The usual cutoff for clinical trials is
+that something is significant if it
+
+39
+00:03:01,299 --> 00:03:06,753
+has a P-value of less that .05, .05 would
+be considered borderline, or .04.
+
+40
+00:03:06,753 --> 00:03:12,860
+So being significantly less than that
+suggests that this is good clinical trial.
+
+41
+00:03:12,860 --> 00:03:18,920
+Now, what is the size of a benefit that's
+confirmed by Oxaliplatin.
+
+42
+00:03:18,920 --> 00:03:26,743
+That's given by the hazard ratio so,
+
+43
+00:03:26,743 --> 00:03:33,342
+the hazard ratio [SOUND] is a ratio
+
+44
+00:03:33,342 --> 00:03:41,910
+of hazard rates [SOUND] for the two
+groups.
+
+45
+00:03:48,740 --> 00:03:51,210
+Okay, what is the hazard here?
+
+46
+00:03:51,210 --> 00:03:56,630
+The hazard here, is the hazard that the
+disease would recur.
+
+47
+00:03:56,630 --> 00:04:02,690
+And, the way hazard ratio is defined, is
+the conventioning, is the numerator,
+
+48
+00:04:02,690 --> 00:04:06,150
+is the experimental group, and the
+denominator is the control group.
+
+49
+00:04:07,160 --> 00:04:16,080
+And the hazard ratio uses all the data
+here, calculated by a very clever formula.
+
+50
+00:04:23,170 --> 00:04:25,370
+Calculated by Cox Proportional Hazards.
+
+51
+00:04:29,520 --> 00:04:33,000
+And what Cox Proportional Hazards does is
+it makes use for
+
+52
+00:04:33,000 --> 00:04:35,580
+the fact that there's incomplete
+information in this trial.
+
+53
+00:04:37,680 --> 00:04:43,410
+So, another way of looking at hazard is in
+addition
+
+54
+00:04:43,410 --> 00:04:47,660
+to the Cox proportional hazards, you might
+want to explain to your patient, say what,
+
+55
+00:04:47,660 --> 00:04:54,090
+what are the chances that this treatment,
+Oxaliplatin, which is not benign at all.
+
+56
+00:04:54,090 --> 00:04:56,950
+There is significant side effects with
+Oxaliplatin,
+
+57
+00:04:56,950 --> 00:05:02,360
+most notably pain and tingling in the
+fingers and
+
+58
+00:05:02,360 --> 00:05:06,230
+toes, which actually can become permanent
+in some cases.
+
+59
+00:05:06,230 --> 00:05:09,306
+So, what what is the likelihood that
+you'll actually get
+
+60
+00:05:09,306 --> 00:05:13,844
+benefit from the Oxaliplatin plan in terms
+of preventing recurrence of the disease?
+
+61
+00:05:13,844 --> 00:05:17,200
+And you, you could say to the patient,
+
+62
+00:05:17,200 --> 00:05:22,183
+let's look at the two year mark, and at
+the two year mark,
+
+63
+00:05:22,183 --> 00:05:29,004
+the chance that you would remain
+disease-free with just 5Fu and Leucovorin,
+
+64
+00:05:29,004 --> 00:05:34,639
+the chance you would remain disease-free
+here would be 75%.
+
+65
+00:05:34,639 --> 00:05:41,010
+[SOUND] However what would be the chance
+that you would be,
+
+66
+00:05:41,010 --> 00:05:46,769
+remain disease-free had you added the
+Oxaliplatin and
+
+67
+00:05:46,769 --> 00:05:50,462
+that roughly here is about 80%.
+
+68
+00:05:50,462 --> 00:05:54,851
+So, by adding Oxaliplatin, you increase
+your
+
+69
+00:05:54,851 --> 00:06:00,022
+chances of being disease-free from 75% to
+80%.
+
+70
+00:06:00,022 --> 00:06:02,200
+So there's a 5% benefit here.
+
+71
+00:06:02,200 --> 00:06:05,880
+That means that if you
+
+72
+00:06:07,890 --> 00:06:13,680
+take the Oxaliplatin, there's a 5%
+improvement in your disease-free survival,
+
+73
+00:06:13,680 --> 00:06:18,696
+but there's a 95% chance that you wouldn't
+have benefited at all.
+
+74
+00:06:18,696 --> 00:06:22,754
+In fact, you, even without the
+Oxaliplatin,
+
+75
+00:06:22,754 --> 00:06:28,260
+there's a 75% chance you would remain
+disease-free.
+
+76
+00:06:28,260 --> 00:06:30,848
+And, even if you took the Oxaliplatin,
+
+77
+00:06:30,848 --> 00:06:34,220
+there's a 20% chance that the disease
+would come back anyway.
+
+78
+00:06:34,220 --> 00:06:35,920
+So that's another way of looking at it.
+
+79
+00:06:35,920 --> 00:06:40,880
+Now, moving on, let's look at a second
+curve.
+
+80
+00:06:41,990 --> 00:06:45,070
+This is a randomized clinical trial
+comparing Crizotinib
+
+81
+00:06:45,070 --> 00:06:48,770
+against standard chemotherapy in patients
+with metastatic lung cancer.
+
+82
+00:06:49,870 --> 00:06:55,466
+And what he, there's, looking at here is
+progression-free survival.
+
+83
+00:06:55,466 --> 00:06:58,700
+And they're measuring it over a period of
+months,
+
+84
+00:06:58,700 --> 00:07:03,700
+because the metastatic lung cancer has a
+pretty dismal prognosis.
+
+85
+00:07:03,700 --> 00:07:06,540
+And what you can see from this clinical
+trial immediately is that
+
+86
+00:07:06,540 --> 00:07:10,108
+it's a much smaller clinical trial for our
+fewer patients are at risk.
+
+87
+00:07:10,108 --> 00:07:13,200
+But the P-value is quite good, 0.001.
+
+88
+00:07:13,200 --> 00:07:19,000
+And not only that, the hazard ratio is
+0.49, again, a very good number.
+
+89
+00:07:19,000 --> 00:07:24,340
+What you can see is that at the end,
+
+90
+00:07:24,340 --> 00:07:30,770
+because this is a very small clinical
+trial, the curves are coming together.
+
+91
+00:07:30,770 --> 00:07:33,840
+But, we should ignore that part of the
+curve,
+
+92
+00:07:33,840 --> 00:07:38,830
+because actually, the number of patients
+at risk, is very small.
+
+93
+00:07:41,250 --> 00:07:46,426
+Now, what is Progression-free Survival?
+
+94
+00:07:46,426 --> 00:07:55,050
+Progression-free Survival is, will
+measure, the survival of the patient.
+
+95
+00:07:55,050 --> 00:07:58,333
+The patient's still alive without
+progression of disease.
+
+96
+00:07:58,333 --> 00:08:06,031
+So, censor, censoring here would
+
+97
+00:08:06,031 --> 00:08:12,640
+occur for the various reasons that we
+discussed in part one.
+
+98
+00:08:12,640 --> 00:08:15,110
+Lost a followup, moved away.
+
+99
+00:08:15,110 --> 00:08:20,426
+Late entry into the study, or left the
+study due to toxicity.
+
+100
+00:08:20,426 --> 00:08:29,200
+Now, the events are progression of tumor.
+
+101
+00:08:29,200 --> 00:08:32,426
+So that, each event causes the curve to
+drop,
+
+102
+00:08:32,426 --> 00:08:37,460
+progression of tumor, okay, as
+progression-free survival.
+
+103
+00:08:37,460 --> 00:08:38,680
+But also death.
+
+104
+00:08:40,160 --> 00:08:43,440
+And, and death from any cause, death from
+cancer.
+
+105
+00:08:43,440 --> 00:08:47,317
+Death from toxicity of chemotherapy or
+even death in a car crash.
+
+106
+00:08:47,317 --> 00:08:47,992
+Now.
+
+107
+00:08:47,992 --> 00:08:54,100
+[COUGH] This is progression-free survival,
+okay?
+
+108
+00:08:54,100 --> 00:08:58,368
+So there's another thing that we talked
+about in part one.
+
+109
+00:08:58,368 --> 00:09:01,834
+Overall survival.
+
+110
+00:09:01,834 --> 00:09:05,540
+[BLANK_AUDIO]
+
+111
+00:09:05,540 --> 00:09:10,540
+And overall survival simply uses as events
+death, it doesn't care about
+
+112
+00:09:10,540 --> 00:09:15,110
+progression of tumor, it just measures
+death, with other reasons.
+
+113
+00:09:15,110 --> 00:09:18,820
+Obviously a whole list of reasons for
+censoring, which we had gone over.
+
+114
+00:09:18,820 --> 00:09:22,270
+Now, there's yet another way of measuring
+things, and
+
+115
+00:09:22,270 --> 00:09:23,880
+that's called time to progression.
+
+116
+00:09:26,040 --> 00:09:32,620
+Time to progression is almost the same as
+progression-free survival, but not quite.
+
+117
+00:09:33,620 --> 00:09:39,190
+And the reason it's not quite, quite the
+same as in time to progression.
+
+118
+00:09:39,190 --> 00:09:42,180
+One of the reasons for censoring in
+addition to all the other
+
+119
+00:09:43,880 --> 00:09:47,650
+reasons, is that deaths are censored.
+
+120
+00:09:50,000 --> 00:09:53,010
+So death from toxicity are censored.
+
+121
+00:09:53,010 --> 00:09:57,300
+Now, if the patient progresses and dies as
+a result of progression, that would count.
+
+122
+00:09:57,300 --> 00:09:59,180
+But all other deaths are censored.
+
+123
+00:09:59,180 --> 00:10:00,920
+So from the FDA's point of view.
+
+124
+00:10:03,160 --> 00:10:05,975
+The FDA considers overall survival to be
+the best.
+
+125
+00:10:05,975 --> 00:10:09,388
+Progression-free survival to be next best.
+
+126
+00:10:09,388 --> 00:10:11,890
+Of course, regression-free survival
+matures more,
+
+127
+00:10:12,960 --> 00:10:15,240
+quickly because there are more events.
+
+128
+00:10:15,240 --> 00:10:22,290
+And then, time to progression as less
+desired than progression-free survival.
+
+129
+00:10:22,290 --> 00:10:26,630
+So, there you have it, a quick primer on
+how to read Kaplan-Meier curves.
+
+130
+00:10:26,630 --> 00:10:27,550
+Thank you very much.

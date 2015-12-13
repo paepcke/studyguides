@@ -1,0 +1,594 @@
+1
+00:00:08,300 --> 00:00:10,990
+In this next module we're going to talk
+about the concept of
+
+2
+00:00:10,990 --> 00:00:15,760
+expected value which is just a fancy word
+for mean which is a concept we've
+
+3
+00:00:15,760 --> 00:00:20,770
+already alked about in this course but the
+expected value is a really great tool for
+
+4
+00:00:20,770 --> 00:00:24,150
+making good decisions so we're going to
+spend a lot of time on expected value.
+
+5
+00:00:25,330 --> 00:00:26,370
+So what is expected value?
+
+6
+00:00:26,370 --> 00:00:27,840
+Again, it's just the mean.
+
+7
+00:00:27,840 --> 00:00:30,580
+It's the mean of a probability
+distribution.
+
+8
+00:00:31,660 --> 00:00:35,530
+And the way that we calculate this mean is
+slightly different than the way that we
+
+9
+00:00:35,530 --> 00:00:38,110
+calculated the mean when we had data.
+
+10
+00:00:38,110 --> 00:00:42,150
+So when we had data, we calculated the
+mean by adding up everybody's values, and
+
+11
+00:00:42,150 --> 00:00:44,000
+dividing by n.
+
+12
+00:00:44,000 --> 00:00:47,610
+That doesn't quite work when we have a
+probability distribution.
+
+13
+00:00:47,610 --> 00:00:49,870
+Because, for a probability distribution,
+
+14
+00:00:49,870 --> 00:00:53,730
+certain outcomes occur more frequently
+than other outcomes.
+
+15
+00:00:53,730 --> 00:00:55,060
+And, we have to factor that in.
+
+16
+00:00:55,060 --> 00:00:58,400
+So, what we're doing is we're actually
+weighting the value of
+
+17
+00:00:58,400 --> 00:01:00,170
+each outcome by it's probability.
+
+18
+00:01:00,170 --> 00:01:01,680
+So, it's a weighted average.
+
+19
+00:01:01,680 --> 00:01:04,700
+That's a little bit different than how we
+calculate a mean for
+
+20
+00:01:04,700 --> 00:01:07,260
+sample data where everybody occurs.
+
+21
+00:01:07,260 --> 00:01:08,220
+Equally frequently.
+
+22
+00:01:08,220 --> 00:01:12,170
+And again expected value is just this
+great concept.
+
+23
+00:01:12,170 --> 00:01:14,900
+I love to talk about expected value
+because it helps us to
+
+24
+00:01:14,900 --> 00:01:19,490
+make informed decisions and the idea is,
+that we're talking about,
+
+25
+00:01:19,490 --> 00:01:23,450
+on average, what do we expect to happen in
+the long run?
+
+26
+00:01:23,450 --> 00:01:26,490
+So this gets back to this frequentest view
+of probablility.
+
+27
+00:01:26,490 --> 00:01:31,190
+WE're saying, in the long run How, y'know,
+h- -- what value do we think will occur.
+
+28
+00:01:31,190 --> 00:01:32,970
+That -- so kind of put that in the back of
+your mind.
+
+29
+00:01:32,970 --> 00:01:34,800
+We're talking about if you could repeat
+things over and
+
+30
+00:01:34,800 --> 00:01:37,740
+over again, how often will, will different
+outcomes occur.
+
+31
+00:01:37,740 --> 00:01:40,670
+It's a frequentist view.
+
+32
+00:01:40,670 --> 00:01:43,020
+So expected value, to calculate it,
+
+33
+00:01:43,020 --> 00:01:46,480
+all we're going to do is we're going to --
+we need the probability distribution.
+
+34
+00:01:46,480 --> 00:01:50,670
+Once we have that We're going to take each
+value of x, each possible outcome,
+
+35
+00:01:50,670 --> 00:01:51,960
+we're going to take it's value, and
+
+36
+00:01:51,960 --> 00:01:55,900
+we're going to multiply it by its
+probability, how frequently it occurs.
+
+37
+00:01:55,900 --> 00:02:01,310
+So, outcomes that occur more frequently
+will be weighted higher in this sum.
+
+38
+00:02:01,310 --> 00:02:04,560
+We're going to take those weighted values
+and
+
+39
+00:02:04,560 --> 00:02:08,630
+we're going to add them all up, so, this
+is just saying add up.
+
+40
+00:02:08,630 --> 00:02:10,380
+All the x's times their probability.
+
+41
+00:02:10,380 --> 00:02:12,470
+All of the possible outcomes times their
+probability.
+
+42
+00:02:12,470 --> 00:02:15,410
+I'm going to show you some examples of how
+to calculate that.
+
+43
+00:02:15,410 --> 00:02:16,210
+Now, I just want to show you.
+
+44
+00:02:16,210 --> 00:02:18,300
+I'm not going to spend to much time on the
+continuous case.
+
+45
+00:02:18,300 --> 00:02:20,010
+Because it's really beyond the scope of
+this course.
+
+46
+00:02:20,010 --> 00:02:23,460
+But I'm just going to show you how this
+extends to the continuous case.
+
+47
+00:02:23,460 --> 00:02:25,540
+So, in the discrete case, we're adding
+things up.
+
+48
+00:02:25,540 --> 00:02:26,760
+So it's a summation sign.
+
+49
+00:02:26,760 --> 00:02:29,160
+When you move to the continuous case.
+
+50
+00:02:29,160 --> 00:02:32,570
+When you have an infinite number of
+possible things to add up.
+
+51
+00:02:32,570 --> 00:02:34,660
+Here, instead of summing, you're
+integrating.
+
+52
+00:02:34,660 --> 00:02:36,120
+So that's the analogy.
+
+53
+00:02:36,120 --> 00:02:40,610
+The analogy in the continuous case is the
+summation sign becomes an integral.
+
+54
+00:02:40,610 --> 00:02:42,970
+But notice it's otherwise exactly the
+same.
+
+55
+00:02:42,970 --> 00:02:46,060
+For, we're going to integrate over all
+possible values of x.
+
+56
+00:02:46,060 --> 00:02:49,010
+We're going to take x and weight it by its
+probability.
+
+57
+00:02:49,010 --> 00:02:51,260
+But since there's an infinite number of
+possible x's,
+
+58
+00:02:51,260 --> 00:02:55,470
+we have to do an integral here rather than
+just adding up Discrete values.
+
+59
+00:02:55,470 --> 00:02:58,180
+Again, we're not going to talk to much
+about the continuous case, so
+
+60
+00:02:58,180 --> 00:02:59,640
+don't get thrown by the integral.
+
+61
+00:02:59,640 --> 00:03:02,910
+But, just to give you a sense that it
+extends to the continuous case.
+
+62
+00:03:02,910 --> 00:03:05,950
+It's very easy to calculate expected value
+for the discrete case.
+
+63
+00:03:05,950 --> 00:03:10,070
+So, recall we have this probability
+distribution about how many patients were
+
+64
+00:03:10,070 --> 00:03:12,410
+arriving in the emergency room.
+
+65
+00:03:12,410 --> 00:03:13,620
+Within a given hour.
+
+66
+00:03:13,620 --> 00:03:16,040
+And let's say you know, so again, this is
+an artificial distribution, but
+
+67
+00:03:16,040 --> 00:03:17,560
+let's say this was the actual
+distribution.
+
+68
+00:03:18,640 --> 00:03:23,060
+What is the expected value or mean number
+of patients in any given hour?
+
+69
+00:03:23,060 --> 00:03:26,230
+How on average, how many patients are we
+expecting to see per hour?
+
+70
+00:03:26,230 --> 00:03:28,040
+That's an important piece of information
+for
+
+71
+00:03:28,040 --> 00:03:31,000
+determining Resources for the emergency
+group.
+
+72
+00:03:31,000 --> 00:03:32,880
+So just as when we have talked about the
+sample mean,
+
+73
+00:03:32,880 --> 00:03:36,850
+you can think about the expected value as
+a balancing point.
+
+74
+00:03:36,850 --> 00:03:42,280
+If each of those numbers 0.3, 0.3, 0.2
+those represent masses on a fulcrum,
+
+75
+00:03:42,280 --> 00:03:45,570
+on a lever, the mean is the point where
+you have to
+
+76
+00:03:45,570 --> 00:03:49,320
+put the fulcrum to balance those masses,
+the same concept.
+
+77
+00:03:50,410 --> 00:03:52,820
+Now students tend to be tempted.
+
+78
+00:03:52,820 --> 00:03:55,790
+If I tell students to calculate the mean
+here.
+
+79
+00:03:55,790 --> 00:04:00,700
+Their first instinct is to just add up the
+five numbers and divide by five, right?
+
+80
+00:04:00,700 --> 00:04:01,760
+You're tempted to just go oh,
+
+81
+00:04:01,760 --> 00:04:05,770
+I have to calculate a mean, so it's nine
+plus ten, plus 11, plus 12, plus 13.
+
+82
+00:04:05,770 --> 00:04:07,020
+Add those up, divide by five.
+
+83
+00:04:07,020 --> 00:04:09,650
+That's how you've always calculated a mean
+all your life.
+
+84
+00:04:09,650 --> 00:04:14,125
+But that's not going to be quite right
+here because 9 occurs more frequently then
+
+85
+00:04:14,125 --> 00:04:18,770
+13 so we have to wait 9 by the fact that
+it occurs more frequently so
+
+86
+00:04:18,770 --> 00:04:23,650
+to calculate the expected value what we're
+going to do is take the value of each x so
+
+87
+00:04:23,650 --> 00:04:24,790
+of each outcome.
+
+88
+00:04:24,790 --> 00:04:27,570
+And multiple by it's probablity.
+
+89
+00:04:27,570 --> 00:04:31,400
+So 9 times 0.3 and then we're going to add
+that to each other outcome.
+
+90
+00:04:31,400 --> 00:04:36,575
+So we're going to do 9 times 0.3 plus 10
+times 0.3 plus 11 times 0.2 plus
+
+91
+00:04:36,575 --> 00:04:41,759
+12 times 0.1 plus 13 times 0.1 when you
+add all that out, sum it all up,
+
+92
+00:04:41,759 --> 00:04:43,379
+it comes out to 10.4.
+
+93
+00:04:43,379 --> 00:04:48,860
+On average we're seeing 10.4 people in the
+emergency room in any given hour.
+
+94
+00:04:48,860 --> 00:04:51,615
+So we gotta remember when you're
+calculating these that you have to
+
+95
+00:04:51,615 --> 00:04:56,370
+weight them because the outcomes don't
+occur equally frequently.
+
+96
+00:04:59,490 --> 00:05:03,370
+Now a sample mean is actually just a
+special case of expected value.
+
+97
+00:05:03,370 --> 00:05:06,970
+So, remember in the first week of the
+course, when we calculated the sample
+
+98
+00:05:06,970 --> 00:05:10,980
+mean, what we did was to add up the values
+for everybody in our sample and
+
+99
+00:05:10,980 --> 00:05:13,252
+divide by n, that's something you've been
+doing all your life.
+
+100
+00:05:13,252 --> 00:05:18,920
+Well that, if I'm just rearrange the
+summation a little bit here,
+
+101
+00:05:18,920 --> 00:05:24,060
+I can show you that that's the same as
+taking every persons value and
+
+102
+00:05:24,060 --> 00:05:28,380
+multiplying it by 1 over n, and then
+adding those up.
+
+103
+00:05:28,380 --> 00:05:31,150
+So, every person is being weighted by 1
+over n.
+
+104
+00:05:31,150 --> 00:05:32,290
+That's their probability.
+
+105
+00:05:32,290 --> 00:05:33,980
+That's their frequency in the sample.
+
+106
+00:05:33,980 --> 00:05:36,150
+It just happens that everybody counts
+once.
+
+107
+00:05:36,150 --> 00:05:38,190
+So, everybody has the same weight.
+
+108
+00:05:38,190 --> 00:05:40,680
+So, we don't actually have to multiply
+everybody by the weight.
+
+109
+00:05:40,680 --> 00:05:43,020
+We can just divide by n at the end.
+
+110
+00:05:43,020 --> 00:05:45,190
+But really, that's everybody's weight.
+
+111
+00:05:45,190 --> 00:05:47,150
+Everybody has a probability in this
+sample,
+
+112
+00:05:47,150 --> 00:05:48,770
+frequency in the sample of 1 over n.
+
+113
+00:05:48,770 --> 00:05:50,270
+So this is really,
+
+114
+00:05:50,270 --> 00:05:54,090
+the sample mean is really just a special
+case of expected value.
+
+115
+00:05:56,240 --> 00:05:59,430
+I was, just make sure we're keeping our,
+our symbol straight here.
+
+116
+00:05:59,430 --> 00:06:03,000
+So when I talk about sample means I use
+this symbol X bar.
+
+117
+00:06:03,000 --> 00:06:05,780
+That means we calculated the mean from
+sample data.
+
+118
+00:06:05,780 --> 00:06:09,570
+When I'm talking about calculating means
+from probability distributions,
+
+119
+00:06:09,570 --> 00:06:12,560
+which are theoretical things rather than
+from data.
+
+120
+00:06:12,560 --> 00:06:17,120
+I'm either going to use the symbol mu,
+which is a Greek letter or
+
+121
+00:06:17,120 --> 00:06:21,710
+I will interchangeably use E of x, which
+just stands for expected value of x.
+
+122
+00:06:21,710 --> 00:06:25,090
+Remember, the mean and the expected value
+of x are the same thing.
+
+123
+00:06:25,090 --> 00:06:29,820
+It turns out to be easier on a typewriter
+sometimes to write E of x rather than to
+
+124
+00:06:29,820 --> 00:06:31,140
+find the Greek symbol mu.
+
+125
+00:06:31,140 --> 00:06:33,920
+So, you'll see a lot of times I'll just
+use E x.
+
+126
+00:06:33,920 --> 00:06:36,890
+Instead 'cause it's easier on my
+typewriter, but those mean the same thing.

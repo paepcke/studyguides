@@ -1,0 +1,175 @@
+1
+00:00:01,220 --> 00:00:03,590
+When we do statistics on binomials,
+
+2
+00:00:03,590 --> 00:00:06,260
+what we actually usually do are statistics
+on proportions.
+
+3
+00:00:06,260 --> 00:00:07,830
+So I just want to point that out now.
+
+4
+00:00:07,830 --> 00:00:13,340
+We don't usually talk about, oh, I got 60
+I found 60 smokers in my 200 cases.
+
+5
+00:00:13,340 --> 00:00:14,730
+We don't usually talk about the number 60,
+
+6
+00:00:14,730 --> 00:00:18,230
+we talk that about the proportion that
+that's 30% of my sample.
+
+7
+00:00:18,230 --> 00:00:21,980
+So our statistics are all going to be on
+the proportions rather than the counts.
+
+8
+00:00:21,980 --> 00:00:24,690
+So you'll just notice when we do
+statistics on proportions,
+
+9
+00:00:24,690 --> 00:00:26,420
+it'll look a lot like the binomial.
+
+10
+00:00:26,420 --> 00:00:28,425
+But everything will differ by a factor of
+n.
+
+11
+00:00:28,425 --> 00:00:31,710
+So, a statistic on a proportion, when I,
+
+12
+00:00:31,710 --> 00:00:34,860
+I represent that as a p-hat, that means a
+sample proportion.
+
+13
+00:00:34,860 --> 00:00:36,940
+If I want to know, what's the mean and
+
+14
+00:00:36,940 --> 00:00:40,600
+standard deviation of a sample proportion,
+those fall right out of the binomial.
+
+15
+00:00:40,600 --> 00:00:42,360
+The mean and variance for a binomial.
+
+16
+00:00:42,360 --> 00:00:44,210
+So the mean is just p.
+
+17
+00:00:44,210 --> 00:00:47,300
+That's, np for binomial, divide by n.
+
+18
+00:00:47,300 --> 00:00:51,340
+Because a proportion divides by n, that's
+the mean for a, proportion is p.
+
+19
+00:00:51,340 --> 00:00:53,920
+And similarly, the standard deviation for
+
+20
+00:00:53,920 --> 00:00:56,830
+the binomial is the square root of n times
+p times 1 minus p.
+
+21
+00:00:56,830 --> 00:01:00,695
+If you divide that quantity by n, it turns
+out to be this lower quantity.
+
+22
+00:01:00,695 --> 00:01:03,830
+And we're going to see this particular
+formula a lot because that's the standard
+
+23
+00:01:03,830 --> 00:01:05,820
+error of a proportion.
+
+24
+00:01:05,820 --> 00:01:07,680
+So again, that formula is going to come
+up, but
+
+25
+00:01:07,680 --> 00:01:09,890
+it falls right out of the binomial.
+
+26
+00:01:11,640 --> 00:01:13,920
+And, when we're doing statistics on
+proportions,
+
+27
+00:01:13,920 --> 00:01:16,010
+we're actually usually calculating
+z-scores.
+
+28
+00:01:16,010 --> 00:01:20,440
+We're actually pretending we're on a
+normal as long as the original binomial,
+
+29
+00:01:20,440 --> 00:01:22,240
+the n times p, is greater than 5.
+
+30
+00:01:22,240 --> 00:01:25,650
+So most of those statistics on proportions
+have that assumption embedded in
+
+31
+00:01:25,650 --> 00:01:27,890
+them that n times p is greater than 5.
+
+32
+00:01:27,890 --> 00:01:31,424
+If it turns out that you have a situation
+where you have n times p is very, is much,
+
+33
+00:01:31,424 --> 00:01:34,979
+is less than 5, that often occurs if you
+have a very small sample.
+
+34
+00:01:34,979 --> 00:01:40,820
+You need to instead go back to calculating
+the exact binomial probabilities.
+
+35
+00:01:40,820 --> 00:01:44,110
+And those tests are, they are, just what
+they sound like.
+
+36
+00:01:44,110 --> 00:01:46,840
+They are, they are named things like the
+exact binomial test.
+
+37
+00:01:46,840 --> 00:01:49,680
+So we'll see some of those in the case
+where you might have small numbers and
+
+38
+00:01:49,680 --> 00:01:53,000
+it's not appropriate to approximate with a
+normal.

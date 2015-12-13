@@ -1,0 +1,923 @@
+1
+00:00:00,550 --> 00:00:04,080
+What about the distribution of a
+correlation coefficient?
+
+2
+00:00:04,080 --> 00:00:05,580
+So, the correlation coefficient,
+
+3
+00:00:05,580 --> 00:00:08,825
+again ranges from a value of negative one
+to positive one.
+
+4
+00:00:08,825 --> 00:00:12,266
+0 means that two variables are
+uncorrelated.
+
+5
+00:00:12,266 --> 00:00:14,345
++1 is perfect positive correlation.
+
+6
+00:00:14,345 --> 00:00:16,280
+-1 is perfect inverse correlation.
+
+7
+00:00:16,280 --> 00:00:19,490
+Everything in between is some level of
+correlation.
+
+8
+00:00:19,490 --> 00:00:22,970
+And we have the picture here shows that we
+have a very weak correlation between
+
+9
+00:00:22,970 --> 00:00:25,640
+vitamin D and cognitive scores.
+
+10
+00:00:25,640 --> 00:00:26,570
+So what' s the distribution of
+
+11
+00:00:26,570 --> 00:00:29,132
+a correlation coefficient another measure
+we can calculate from our data.
+
+12
+00:00:29,132 --> 00:00:31,790
+Let me do another computer simulation.
+
+13
+00:00:31,790 --> 00:00:35,950
+So in this computer simulation I said that
+the true correlation between vitamin D and
+
+14
+00:00:35,950 --> 00:00:39,650
+cognitive function in the entire
+population of older.
+
+15
+00:00:39,650 --> 00:00:41,580
+European men is 0.15.
+
+16
+00:00:41,580 --> 00:00:46,145
+If that's true then I can sample from that
+population,
+
+17
+00:00:46,145 --> 00:00:49,560
+sample both vitamin D levels and cognitive
+scores.
+
+18
+00:00:49,560 --> 00:00:51,880
+I select a random sample of a 100 virtual
+men.
+
+19
+00:00:51,880 --> 00:00:53,640
+They all have a cognitive score and
+
+20
+00:00:53,640 --> 00:00:56,570
+a vitamin D level based on this underlying
+correlation.
+
+21
+00:00:56,570 --> 00:00:59,820
+I calculate the correlation coefficient in
+the sample.
+
+22
+00:00:59,820 --> 00:01:00,900
+And then I do this, again and
+
+23
+00:01:00,900 --> 00:01:03,380
+again and again, and let's say I do it
+15,000 times this time.
+
+24
+00:01:04,630 --> 00:01:06,390
+You're getting the idea of a computer
+simulation now, and
+
+25
+00:01:06,390 --> 00:01:09,470
+then we can explore the distribution of
+those 15,000 correlation coefficients.
+
+26
+00:01:09,470 --> 00:01:12,680
+So, here it is, here's the results.
+
+27
+00:01:12,680 --> 00:01:16,600
+So, notice, I found a normal curve again.
+
+28
+00:01:16,600 --> 00:01:17,550
+Well, this is great.
+
+29
+00:01:17,550 --> 00:01:19,620
+Lots of statistics follow normal curves,
+so
+
+30
+00:01:19,620 --> 00:01:23,290
+it turns out the normal curve is very
+important for this reason.
+
+31
+00:01:23,290 --> 00:01:24,400
+So here are some things.
+
+32
+00:01:24,400 --> 00:01:26,500
+It's normally distributed, hooray.
+
+33
+00:01:26,500 --> 00:01:30,185
+The mean turns out to be exactly the true
+correlation,
+
+34
+00:01:30,185 --> 00:01:33,760
+0.15, because most of my samples come out
+somewhere around 0.15.
+
+35
+00:01:33,760 --> 00:01:37,510
+I asked the computer to calculate the
+standard deviation of
+
+36
+00:01:37,510 --> 00:01:41,700
+these 15,000 observations, what we would
+also call a standard error here.
+
+37
+00:01:41,700 --> 00:01:45,420
+It came out to be, in my simulation, 0.10.
+
+38
+00:01:45,420 --> 00:01:46,250
+So, that's for
+
+39
+00:01:46,250 --> 00:01:49,930
+my computer simulation, the distribution
+of the correlation coefficient.
+
+40
+00:01:52,220 --> 00:01:54,580
+It turns out that the shape of the
+distribution for
+
+41
+00:01:54,580 --> 00:01:56,720
+a correlation coefficient, as with the
+mean,
+
+42
+00:01:56,720 --> 00:02:01,160
+is a normal distribution as long as we're
+talking about sample sizes above 100.
+
+43
+00:02:01,160 --> 00:02:03,540
+It is on a T-distribution though for
+smaller samples.
+
+44
+00:02:03,540 --> 00:02:06,710
+So if you have smaller samples, there's
+some additional uncertainty and
+
+45
+00:02:06,710 --> 00:02:09,370
+you actually are at a T-distribution,
+which looks a little bit different.
+
+46
+00:02:09,370 --> 00:02:10,362
+So for smaller samples,
+
+47
+00:02:10,362 --> 00:02:14,590
+you have to worry about being on a T
+rather than an, a normal.
+
+48
+00:02:14,590 --> 00:02:18,220
+But for larger as in this example it's
+essentially under normal.
+
+49
+00:02:18,220 --> 00:02:22,450
+The, the mean of the distribution of a
+correlation coefficient is the true is
+
+50
+00:02:22,450 --> 00:02:24,550
+the true correlation coefficient, not
+surprisingly.
+
+51
+00:02:24,550 --> 00:02:28,290
+The standard error, somebody's worked out
+with mathematical theory,
+
+52
+00:02:28,290 --> 00:02:31,930
+it tuns out to be approximately the square
+root of 1 minus r squared and
+
+53
+00:02:31,930 --> 00:02:34,615
+r is the true correlation coefficient in
+the whole population.
+
+54
+00:02:34,615 --> 00:02:36,380
+And divided by the square root of N.
+
+55
+00:02:36,380 --> 00:02:39,850
+Notice it has a lot of similarity to the
+standard error of the mean.
+
+56
+00:02:39,850 --> 00:02:42,190
+They both have square root of N in their
+denominator.
+
+57
+00:02:42,190 --> 00:02:45,490
+So bigger samples means smaller standard
+errors once again.
+
+58
+00:02:47,500 --> 00:02:51,120
+Turns out that many statistics follow
+either normal distributions, or for
+
+59
+00:02:51,120 --> 00:02:54,010
+small samples, T distributions, so this is
+great.
+
+60
+00:02:54,010 --> 00:02:55,410
+You saw two examples already.
+
+61
+00:02:55,410 --> 00:02:57,100
+It popped up to be a normal distribution.
+
+62
+00:02:57,100 --> 00:02:59,274
+Even when we didn't start on a normal
+distribution.
+
+63
+00:02:59,274 --> 00:03:04,070
+It turns out lots of statistics follow
+normal distributions or T distributions.
+
+64
+00:03:04,070 --> 00:03:06,150
+So statistics that follow T distributions
+for
+
+65
+00:03:06,150 --> 00:03:09,900
+small samples and normal distributions for
+large samples, include means,
+
+66
+00:03:09,900 --> 00:03:12,380
+as well as difference in means, and
+correlation coefficients.
+
+67
+00:03:12,380 --> 00:03:13,200
+Things we just saw.
+
+68
+00:03:13,200 --> 00:03:17,750
+Things that follow normal distributions
+whether or not you have a small or
+
+69
+00:03:17,750 --> 00:03:22,620
+a large n, that is, it's always on a
+normal distribution Include proportions,
+
+70
+00:03:22,620 --> 00:03:24,510
+risks, differences in proportions,
+
+71
+00:03:24,510 --> 00:03:28,240
+and a statistic that has to do with the
+odds ratio.
+
+72
+00:03:28,240 --> 00:03:30,590
+And since we spent a lot of time on the
+odds ratio in week two,
+
+73
+00:03:30,590 --> 00:03:32,030
+I thought I'd just introduce this now.
+
+74
+00:03:32,030 --> 00:03:36,620
+It's not quite the odds ratio that follows
+the normal distribution,
+
+75
+00:03:36,620 --> 00:03:40,090
+it's the natural log of the odds ratio
+that follows the normal distribution.
+
+76
+00:03:40,090 --> 00:03:43,710
+So let me just end with this last-
+Statistic the odds ratio.
+
+77
+00:03:43,710 --> 00:03:45,935
+What's the distribution of an odds ratio?
+
+78
+00:03:45,935 --> 00:03:48,130
+Let's do another computer simulation.
+
+79
+00:03:48,130 --> 00:03:50,300
+You can see how much I love computer
+simulations.
+
+80
+00:03:50,300 --> 00:03:51,520
+So, let's do a simulation for
+
+81
+00:03:51,520 --> 00:03:54,170
+an odds ratio to figure out the
+distribution of an odds ratio.
+
+82
+00:03:55,520 --> 00:03:58,360
+So, I'm going to say I'm going to be doing
+case control studies.
+
+83
+00:03:58,360 --> 00:04:01,622
+It would be a reason to calculate odds
+ratios, as I'm doing a case control study.
+
+84
+00:04:01,622 --> 00:04:02,940
+I'm going to tell the computer,
+
+85
+00:04:02,940 --> 00:04:07,350
+imagine I've got this large infinite Large
+population of cases and controls.
+
+86
+00:04:07,350 --> 00:04:11,590
+And, 20% of cases are smokers, and 20% of
+controls are smokers.
+
+87
+00:04:11,590 --> 00:04:14,780
+I want to know that I would be doing a
+case control study here to gauge
+
+88
+00:04:14,780 --> 00:04:18,340
+the relationship between smoking and,
+being a case.
+
+89
+00:04:18,340 --> 00:04:20,000
+And let's say that there actually is no
+relationship,
+
+90
+00:04:20,000 --> 00:04:21,720
+the odds ratio here happens to be one.
+
+91
+00:04:21,720 --> 00:04:24,850
+Because there, there's equal amount of
+smoking in both groups.
+
+92
+00:04:24,850 --> 00:04:30,350
+That's my underlying population, and then
+I'm going to, to my simulation.
+
+93
+00:04:30,350 --> 00:04:32,480
+So, I'm going to repeat over and
+
+94
+00:04:32,480 --> 00:04:35,021
+over again, case control studies with 100
+people.
+
+95
+00:04:35,021 --> 00:04:36,980
+50 cases and 50 controls.
+
+96
+00:04:36,980 --> 00:04:39,770
+Every case and every control has a 20
+percent chance of being a smoker.
+
+97
+00:04:39,770 --> 00:04:41,020
+In other words, it follows the binomial.
+
+98
+00:04:41,020 --> 00:04:42,840
+So that's how I can do this in a computer.
+
+99
+00:04:42,840 --> 00:04:45,260
+I can tell the computer that we're on a
+binomial.
+
+100
+00:04:45,260 --> 00:04:46,215
+So I randomly select.
+
+101
+00:04:46,215 --> 00:04:47,960
+50 cases and 50 controls.
+
+102
+00:04:47,960 --> 00:04:50,360
+For that one sample, I calculated an odds
+ratio.
+
+103
+00:04:50,360 --> 00:04:54,300
+I store that in a data set and then I do
+this again and again and again.
+
+104
+00:04:54,300 --> 00:04:57,430
+Like I'm doing repeated, repeated case
+control samples.
+
+105
+00:04:57,430 --> 00:05:01,060
+Repeated case control studies with
+different samples of the same size.
+
+106
+00:05:02,470 --> 00:05:05,450
+Do it, repeat it say 1,000 times.
+
+107
+00:05:05,450 --> 00:05:08,420
+And then I'm going to observe the
+distribution of the odds ratio.
+
+108
+00:05:08,420 --> 00:05:09,900
+So here we go.
+
+109
+00:05:09,900 --> 00:05:11,300
+Here's what it comes out to look like.
+
+110
+00:05:12,890 --> 00:05:13,540
+Wait a minute.
+
+111
+00:05:13,540 --> 00:05:14,060
+Oh no!
+
+112
+00:05:14,060 --> 00:05:15,460
+It's not on a normal curve.
+
+113
+00:05:15,460 --> 00:05:18,030
+Oh dear, everything else came out on a
+normal curve.
+
+114
+00:05:18,030 --> 00:05:21,840
+The odds ratio doesn't naturally follow a
+normal curve.
+
+115
+00:05:21,840 --> 00:05:22,930
+It doesn't follow a bell curve.
+
+116
+00:05:22,930 --> 00:05:27,860
+So notice that the distribution of the
+odds ratio has a rights skue.
+
+117
+00:05:27,860 --> 00:05:31,340
+The true odds ratio was 1.0 here, so we
+are centered around 1.0.
+
+118
+00:05:31,340 --> 00:05:35,490
+But we have this right skew, why would
+that be?
+
+119
+00:05:35,490 --> 00:05:38,180
+Well the odds ratio is a little different
+that the other statistics we've
+
+120
+00:05:38,180 --> 00:05:39,370
+talked about so far.
+
+121
+00:05:39,370 --> 00:05:44,440
+The odds ratio is a ratio; ratios can not
+have values below zero.
+
+122
+00:05:44,440 --> 00:05:48,880
+So we have this right hand boundary, we
+can't go below zero.
+
+123
+00:05:48,880 --> 00:05:52,139
+So we kind of end up clustering and going
+right up into zero but
+
+124
+00:05:52,139 --> 00:05:53,370
+we can't go over it.
+
+125
+00:05:53,370 --> 00:05:56,030
+On the other hand, an odds ratio can be as
+big as you please.
+
+126
+00:05:56,030 --> 00:05:58,130
+We've some big odds ratios in this class.
+
+127
+00:05:58,130 --> 00:05:59,950
+So the odds ratio can go way out,
+
+128
+00:05:59,950 --> 00:06:02,410
+it can get, it has no bound on the
+right-hand side.
+
+129
+00:06:02,410 --> 00:06:06,050
+So you can end up with, even when the true
+odds ratio is one.
+
+130
+00:06:06,050 --> 00:06:09,840
+You can end up in, in a given sample, and
+when you have small samples like this.
+
+131
+00:06:09,840 --> 00:06:11,460
+You can end up with some pretty big odds
+ratios.
+
+132
+00:06:11,460 --> 00:06:14,740
+Notice that one in 1000 times, even though
+the true odds ratio here is one,
+
+133
+00:06:14,740 --> 00:06:15,984
+that means there's no association here.
+
+134
+00:06:15,984 --> 00:06:21,680
+Just by chance, one in 1000 times we got
+an odds ratio way, way out here at 6.8.
+
+135
+00:06:21,680 --> 00:06:26,360
+So it can happen just by chance, but its a
+Right-skewed Distribution.
+
+136
+00:06:26,360 --> 00:06:31,490
+So that's a problem because we want
+everything to end up on a normal or a T.
+
+137
+00:06:31,490 --> 00:06:36,480
+So, what can we do to force this to go on
+a normal curve?
+
+138
+00:06:36,480 --> 00:06:41,500
+Actually, there's a little transformation
+we can make that will turn the odds ratio,
+
+139
+00:06:41,500 --> 00:06:43,800
+the distribution of the odds ratio into a
+normal curve.
+
+140
+00:06:43,800 --> 00:06:48,350
+What we can do, is just simply take the
+natural log of the odds ratio.
+
+141
+00:06:48,350 --> 00:06:51,610
+Here is the histogram when I take the
+natural log of the odds ratio.
+
+142
+00:06:51,610 --> 00:06:53,360
+Yay, we're back on a normal curve.
+
+143
+00:06:53,360 --> 00:06:57,610
+So what happens is, that when you take the
+natural log.
+
+144
+00:06:57,610 --> 00:07:00,280
+Any value for the odds ratio that's
+between zero and one.
+
+145
+00:07:00,280 --> 00:07:01,050
+That's a decimal.
+
+146
+00:07:01,050 --> 00:07:04,720
+When you take the natural log of a
+decimal, you end up with negative values.
+
+147
+00:07:04,720 --> 00:07:07,980
+So you bring back the negative values back
+into play.
+
+148
+00:07:07,980 --> 00:07:10,340
+And now you end up on a beautiful normal
+curve.
+
+149
+00:07:10,340 --> 00:07:14,500
+It's centered around zero because the
+natural log of one which was
+
+150
+00:07:14,500 --> 00:07:15,830
+the true value here.
+
+151
+00:07:15,830 --> 00:07:17,590
+The natural log of one is zero.
+
+152
+00:07:17,590 --> 00:07:20,150
+So, that this curve ends up centered
+around zero.
+
+153
+00:07:20,150 --> 00:07:21,380
+So, we're back on a normal curve.
+
+154
+00:07:21,380 --> 00:07:25,000
+So, even when we don't start on a normal
+curve naturally we can force statistics to
+
+155
+00:07:25,000 --> 00:07:26,410
+be on a normal curve.
+
+156
+00:07:26,410 --> 00:07:30,700
+And when we do statistical inference on
+odds ratios we actually are always working
+
+157
+00:07:30,700 --> 00:07:32,870
+with the natural log of the odds ratio for
+this reason.
+
+158
+00:07:34,320 --> 00:07:38,840
+Now somebody worked out from mathematical
+theory the standard error of
+
+159
+00:07:38,840 --> 00:07:40,340
+the natural log of the odds ratio.
+
+160
+00:07:40,340 --> 00:07:41,390
+So this is the standard error for
+
+161
+00:07:41,390 --> 00:07:43,340
+the natural log of the odds ratio for this
+curve here.
+
+162
+00:07:43,340 --> 00:07:46,961
+And it turns out to be the square root of
+1 over a plus 1 over b.
+
+163
+00:07:46,961 --> 00:07:48,440
+Plus 1 over C, plus 1 over D.
+
+164
+00:07:48,440 --> 00:07:52,720
+Don't worry about that formula, but just
+realize A is exposed cases,
+
+165
+00:07:52,720 --> 00:07:56,600
+B is exposed controls, C is unexposed
+cases, and d is unexposed controls.
+
+166
+00:07:56,600 --> 00:07:58,480
+In other words these are the sample sizes.
+
+167
+00:07:58,480 --> 00:08:01,760
+These are just the sample sizes of
+particular groups but
+
+168
+00:08:01,760 --> 00:08:02,770
+those are the sample sizes.
+
+169
+00:08:02,770 --> 00:08:07,100
+And notice that the smallest of those
+group is contributing the most to
+
+170
+00:08:07,100 --> 00:08:08,590
+the standard error because it's.
+
+171
+00:08:08,590 --> 00:08:10,920
+Reciprocals we're looking at here.
+
+172
+00:08:10,920 --> 00:08:13,000
+So that's the standard era of the odds
+ratio.
+
+173
+00:08:13,000 --> 00:08:14,550
+The, the natural log of the odds ratio.
+
+174
+00:08:14,550 --> 00:08:18,280
+Notice that like the other standard eras
+sample size is very important.
+
+175
+00:08:18,280 --> 00:08:19,880
+And sample size is in the denominator.
+
+176
+00:08:21,850 --> 00:08:23,490
+So let me just summarize this.
+
+177
+00:08:23,490 --> 00:08:26,090
+The distribution of a statistic.
+
+178
+00:08:26,090 --> 00:08:29,390
+The shape of the distribution of many
+statistics is
+
+179
+00:08:29,390 --> 00:08:31,800
+either a normal distribution or a key
+distribution and
+
+180
+00:08:31,800 --> 00:08:35,270
+if its not we might force it to be on a
+normal distribution.
+
+181
+00:08:35,270 --> 00:08:38,290
+The mean of the distribution of a
+statistic turns out
+
+182
+00:08:38,290 --> 00:08:41,390
+to always be the true value of the
+statistic in the larger population.
+
+183
+00:08:42,660 --> 00:08:46,100
+The standard error differs depending on
+what type of
+
+184
+00:08:46,100 --> 00:08:49,930
+statistic you have there are many
+different types of standard errors.
+
+185
+00:08:49,930 --> 00:08:51,910
+But it's always inversely related to
+sample size.
+
+186
+00:08:51,910 --> 00:08:54,080
+We saw three examples in this module.
+
+187
+00:08:54,080 --> 00:08:55,900
+The standard error of the mean.
+
+188
+00:08:55,900 --> 00:08:57,569
+The standard error of the correlation
+coefficient.
+
+189
+00:08:57,569 --> 00:08:59,060
+And the standard error of an odds ratio.
+
+190
+00:08:59,060 --> 00:09:01,880
+All of those had sample size in the
+denominator.
+
+191
+00:09:01,880 --> 00:09:04,310
+So with the bigger the sample size the
+lower the standard error.
+
+192
+00:09:04,310 --> 00:09:07,270
+But notice there's many different standard
+errors.
+
+193
+00:09:07,270 --> 00:09:10,350
+Let me just repeat that, there's many
+different stand, standard errors.
+
+194
+00:09:10,350 --> 00:09:13,680
+A lot of people think that this one,
+because this is the one they most commonly
+
+195
+00:09:13,680 --> 00:09:17,160
+see, the standard error of the mean is the
+only way to calculate standard error.
+
+196
+00:09:17,160 --> 00:09:19,580
+Well no, that's the standard error of the
+mean,
+
+197
+00:09:19,580 --> 00:09:23,180
+every other statistic has its own formula
+for standard error.
+
+198
+00:09:23,180 --> 00:09:25,840
+But notice they're all related to sample
+size.

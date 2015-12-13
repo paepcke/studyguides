@@ -1,0 +1,1248 @@
+1
+00:00:03,790 --> 00:00:07,580
+So, that's all there really is to the
+multinomial logistic regression.
+
+2
+00:00:07,580 --> 00:00:11,170
+But now we want to tell you a little about
+the map behind it and what the likelihood
+
+3
+00:00:11,170 --> 00:00:15,130
+function actually looks like to help you
+understand it a little bit better.
+
+4
+00:00:15,130 --> 00:00:16,250
+So, we call that,we have
+
+5
+00:00:16,250 --> 00:00:18,419
+learned previously about the binomial
+distribution.
+
+6
+00:00:19,440 --> 00:00:25,370
+So if we had a variable that was
+distributed in a binomial distribution
+
+7
+00:00:25,370 --> 00:00:31,010
+with an N, of a sample size of N and a
+probability of a positive event of
+
+8
+00:00:31,010 --> 00:00:36,910
+P then the probability that we would get
+exactly X positive events was equal to n,
+
+9
+00:00:36,910 --> 00:00:42,420
+choose x, p the probability of a positive
+event raised to
+
+10
+00:00:42,420 --> 00:00:47,530
+the number of positive events, and then
+one minus p raised to n minus x,
+
+11
+00:00:47,530 --> 00:00:51,129
+so you've seen that probability
+distribution before, the binomial.
+
+12
+00:00:52,510 --> 00:00:55,060
+The multinomial I'm going to show you in
+just a second here,
+
+13
+00:00:55,060 --> 00:00:56,870
+looks an awful lot like a binomial.
+
+14
+00:00:56,870 --> 00:01:00,790
+It's just a generalization of the binomial
+distribution.
+
+15
+00:01:00,790 --> 00:01:04,970
+So that we are no longer constrained to
+having two potential outcomes.
+
+16
+00:01:04,970 --> 00:01:07,430
+We now can have three outcomes or four
+outcomes.
+
+17
+00:01:07,430 --> 00:01:10,930
+I'm just going to show you the the formula
+when we have three outcomes.
+
+18
+00:01:10,930 --> 00:01:14,050
+It gets a little bit cumbersome after you
+get more than three.
+
+19
+00:01:14,050 --> 00:01:18,050
+But let me show you now the probability
+formula for three outcomes.
+
+20
+00:01:18,050 --> 00:01:22,660
+So for on a multinomial distribution,
+there are more than two possible outcomes.
+
+21
+00:01:22,660 --> 00:01:24,450
+So let me just give an example.
+
+22
+00:01:24,450 --> 00:01:27,490
+Imagine we're in a room of 100 people, and
+we know there's going to be
+
+23
+00:01:27,490 --> 00:01:31,480
+some democrats, some republicans, and some
+green party members there.
+
+24
+00:01:31,480 --> 00:01:33,170
+And we know what tho,
+
+25
+00:01:33,170 --> 00:01:36,360
+the probability of each of those different
+types of people is going to be.
+
+26
+00:01:37,430 --> 00:01:38,960
+So in this case, my.
+
+27
+00:01:38,960 --> 00:01:43,840
+I have 100 trials, my n is 100, and let's
+say I want to know what is
+
+28
+00:01:43,840 --> 00:01:48,920
+the probability that I get exactly 45
+democrats in the room.
+
+29
+00:01:48,920 --> 00:01:52,920
+Exactly 40 republicans, and exactly five
+green party members.
+
+30
+00:01:52,920 --> 00:01:55,870
+That's one potential outcome in this room
+of 100 people.
+
+31
+00:01:55,870 --> 00:01:57,630
+There's a lot of possible outcomes, so
+
+32
+00:01:57,630 --> 00:02:01,680
+the probability of this exact outcome may
+not be very high.
+
+33
+00:02:01,680 --> 00:02:03,110
+But what is that probability?
+
+34
+00:02:03,110 --> 00:02:06,790
+So, according to the multinomial formula
+it's going to be n
+
+35
+00:02:06,790 --> 00:02:12,830
+factorial divided by x factorial, x is
+going to be 45 for the democrats.
+
+36
+00:02:12,830 --> 00:02:17,370
+Divided by y factorial which will be 40
+factorial divided by 5 factorial.
+
+37
+00:02:17,370 --> 00:02:20,860
+So that looks an awful lot like the
+coefficient like a regular old binomial
+
+38
+00:02:20,860 --> 00:02:27,930
+which was just n factorial divided by n
+minus x factorial divided by x factorial.
+
+39
+00:02:27,930 --> 00:02:30,465
+So that was the, the coefficient from a
+binomial.
+
+40
+00:02:30,465 --> 00:02:34,840
+We've just expanded that to have more than
+two possible outcomes in the denominator.
+
+41
+00:02:34,840 --> 00:02:39,300
+That coefficient will then be multiplied
+by the probability of being a Democrat,
+
+42
+00:02:39,300 --> 00:02:43,760
+whatever that is, raised to 45 so that
+that's number we actually saw.
+
+43
+00:02:43,760 --> 00:02:47,740
+Times the probability of being a
+Republican raised to 40 and
+
+44
+00:02:47,740 --> 00:02:51,060
+then times the probability being a green
+party member.
+
+45
+00:02:51,060 --> 00:02:52,930
+These three probabilities have to add up
+to one.
+
+46
+00:02:52,930 --> 00:02:55,490
+So, the probability of being a green party
+member is going to be
+
+47
+00:02:55,490 --> 00:02:58,250
+1 minus the probability of a being of a
+democrat minus the probability of
+
+48
+00:02:58,250 --> 00:03:00,640
+being a republic and we are going to raise
+that to five.
+
+49
+00:03:00,640 --> 00:03:04,490
+That will give us the exact the
+probability of getting exactly 45
+
+50
+00:03:04,490 --> 00:03:09,280
+democrats, 40 republicans and five green
+party members in that room of 100.
+
+51
+00:03:09,280 --> 00:03:14,040
+I don't expect you to calculate
+multinomial probabilities by hand, but
+
+52
+00:03:14,040 --> 00:03:17,740
+I just wanted to show you that it looks an
+awful lot like the binomial formula.
+
+53
+00:03:17,740 --> 00:03:19,220
+So it should be a little bit familiar to
+you.
+
+54
+00:03:20,490 --> 00:03:23,736
+Well, the way that we built the
+likelihood.
+
+55
+00:03:23,736 --> 00:03:28,010
+Function for regular logistic regression
+was just based on binomial probability.
+
+56
+00:03:28,010 --> 00:03:30,810
+Similarly, we're going to be building the
+likelihood function for
+
+57
+00:03:30,810 --> 00:03:34,370
+multinomial logistic regression, built
+based on multinomial probabilities.
+
+58
+00:03:34,370 --> 00:03:38,060
+That's the idea.
+But let me just review for
+
+59
+00:03:38,060 --> 00:03:39,510
+you, because this is good review.
+
+60
+00:03:39,510 --> 00:03:42,200
+What does the likelihood function look
+like when we're
+
+61
+00:03:42,200 --> 00:03:46,160
+just talking about regular binomial
+logistic regression?
+
+62
+00:03:46,160 --> 00:03:49,230
+So go back now to the two models that I
+talked about.
+
+63
+00:03:49,230 --> 00:03:52,510
+So let's just for a minute talk about
+we're going to be fitting two separate
+
+64
+00:03:52,510 --> 00:03:58,440
+likelihood functions when we talk about a
+series of binary logistic regressions.
+
+65
+00:03:58,440 --> 00:04:03,420
+We'll be fitting a likelihood for model
+one, and that's an outcome of [UNKNOWN],
+
+66
+00:04:03,420 --> 00:04:08,380
+and we'll be fitting likelihood for model
+two, that was [UNKNOWN].
+
+67
+00:04:08,380 --> 00:04:11,790
+So we'll actually have two separate
+likelihood functions that we'll have to
+
+68
+00:04:11,790 --> 00:04:13,060
+solve separately.
+
+69
+00:04:13,060 --> 00:04:16,870
+That will look a little bit different from
+what we see in the multinomial case.
+
+70
+00:04:17,880 --> 00:04:23,358
+But for model one we have to we're, we're
+trying to estimate the intercept for
+
+71
+00:04:23,358 --> 00:04:27,360
+the [UNKNOWN] outcome and the beta for the
+[UNKNOWN] outcome.
+
+72
+00:04:27,360 --> 00:04:29,790
+And that's what we're trying to estimate.
+
+73
+00:04:29,790 --> 00:04:31,180
+We do that by fitting a likelihood.
+
+74
+00:04:31,180 --> 00:04:32,390
+What's going to go in the likelihood?
+
+75
+00:04:32,390 --> 00:04:36,310
+So the likelihood, the term that's
+going to go in the likelihood for
+
+76
+00:04:36,310 --> 00:04:40,720
+all [UNKNOWN] is the exact same
+probability term we've been dealing with
+
+77
+00:04:40,720 --> 00:04:41,510
+all along here.
+
+78
+00:04:41,510 --> 00:04:43,280
+It's going to look like the following.
+
+79
+00:04:43,280 --> 00:04:49,944
+Right, so that's the predicted
+
+80
+00:04:49,944 --> 00:04:59,730
+probability that a woman will have
+amenorrhea.
+
+81
+00:04:59,730 --> 00:05:03,810
+So all 13 women who have a amenorrhea,
+they're going to get
+
+82
+00:05:03,810 --> 00:05:07,510
+a term in the likelihood that represents
+the probability of having amenorrhea,
+
+83
+00:05:07,510 --> 00:05:09,630
+cause they actually did have it.
+
+84
+00:05:09,630 --> 00:05:12,790
+Of course the terms are all going to be
+slightly different for these 13 women,
+
+85
+00:05:12,790 --> 00:05:15,220
+cause we're going to plug in their
+individual EDIA score.
+
+86
+00:05:15,220 --> 00:05:17,450
+Some of them may have the same value
+there, but
+
+87
+00:05:17,450 --> 00:05:19,490
+some of them may have different values.
+
+88
+00:05:19,490 --> 00:05:21,990
+Those women get those terms in the
+likelihood.
+
+89
+00:05:21,990 --> 00:05:26,110
+If you're unamenorrheic, you're going to
+get a term in the likelihood that
+
+90
+00:05:26,110 --> 00:05:29,870
+represents the probability of not having
+amenorrhea, and that's going to look like
+
+91
+00:05:29,870 --> 00:05:34,320
+the following predicted probability that
+we've again seen before.
+
+92
+00:05:34,320 --> 00:05:36,300
+Same denominator, but we have a one in the
+numerator.
+
+93
+00:05:36,300 --> 00:05:39,540
+So that represents the hundred women who
+were eumenorrheic,
+
+94
+00:05:39,540 --> 00:05:41,040
+who did not have amenorrhea.
+
+95
+00:05:41,040 --> 00:05:44,500
+We'd be plugging in again their individual
+EDIA values.
+
+96
+00:05:44,500 --> 00:05:48,220
+We're going to end up here with 113 things
+multiplied together,
+
+97
+00:05:48,220 --> 00:05:51,230
+we will then solve that likelihood, or the
+computer will solve that likelihood to
+
+98
+00:05:51,230 --> 00:05:55,815
+find out the exact values the best, most
+likely values of the intercept and better.
+
+99
+00:05:57,070 --> 00:06:00,360
+We've all, we've seen this before, this
+should be just review.
+
+100
+00:06:00,360 --> 00:06:02,120
+Coming over here, when we fit this model
+for
+
+101
+00:06:02,120 --> 00:06:06,360
+oligomenorrhea The likelihood function is
+going to look like the following.
+
+102
+00:06:06,360 --> 00:06:08,390
+We're fitting an intercept for a oligo
+amenorrhea and
+
+103
+00:06:08,390 --> 00:06:10,550
+a data for a oligomenorrhea.
+
+104
+00:06:10,550 --> 00:06:13,110
+All the 37 women who are oligomenorrhea
+when
+
+105
+00:06:14,390 --> 00:06:18,860
+in this data set will get a term that
+looks like this in their likelihoods,
+
+106
+00:06:18,860 --> 00:06:21,121
+because they actually do have the outcome
+of oligomenorrhea.
+
+107
+00:06:21,121 --> 00:06:27,740
+And all the women who are umetiquerial
+
+108
+00:06:27,740 --> 00:06:31,710
+get a term where there's a one in the
+numerator, but the same denominator.
+
+109
+00:06:34,560 --> 00:06:37,480
+And of course, again, there's going to be
+137 terms,
+
+110
+00:06:37,480 --> 00:06:39,930
+things multiply together in this
+likelihood function.
+
+111
+00:06:39,930 --> 00:06:43,660
+Each women cancer own EDAI value plugged
+in but we'll
+
+112
+00:06:43,660 --> 00:06:48,660
+use this likelihood on the computer, well,
+to solve for the alpha and the beta here.
+
+113
+00:06:48,660 --> 00:06:50,030
+So, that's just review.
+
+114
+00:06:50,030 --> 00:06:53,250
+Now, lets turn to what the likelihood
+function looks like for
+
+115
+00:06:53,250 --> 00:06:54,630
+the multinomial case.
+
+116
+00:06:55,970 --> 00:06:57,730
+In the multinomial case,
+
+117
+00:06:57,730 --> 00:07:01,730
+there are three types of terms that are
+going to go in the likelihood.
+
+118
+00:07:01,730 --> 00:07:05,000
+The term for the amenorrheic woman is
+going to look different for,
+
+119
+00:07:05,000 --> 00:07:07,420
+from the term from, for the
+oligomenorrheaic women and
+
+120
+00:07:07,420 --> 00:07:10,100
+it's going to look different from the term
+for the eumenorrheaic women.
+
+121
+00:07:10,100 --> 00:07:13,850
+And I'll be representing the interseper-,
+remember,
+
+122
+00:07:13,850 --> 00:07:17,510
+trying to estimate two intercepts here,
+one for amenorrhea, one for
+
+123
+00:07:17,510 --> 00:07:21,750
+oligomenorrhea, and two betas, one for
+amenorrhea and one for oligomenorrhea.
+
+124
+00:07:21,750 --> 00:07:23,560
+So four things we're trying to estimate.
+
+125
+00:07:23,560 --> 00:07:26,290
+So what is the term for the amenorrheaic
+women going to look like?
+
+126
+00:07:26,290 --> 00:07:27,990
+So first of all, let's do the denominator.
+
+127
+00:07:27,990 --> 00:07:32,470
+In the denominator, we're going to put the
+following: e raised to al,
+
+128
+00:07:32,470 --> 00:07:38,080
+alpha a plus b the 8 times, eba, ebai,
+that's your score.
+
+129
+00:07:38,080 --> 00:07:40,730
+That's one terminated denominator.
+
+130
+00:07:40,730 --> 00:07:43,280
+That represents the odds being
+amenorrheic.
+
+131
+00:07:43,280 --> 00:07:47,640
+We are also going to put in the
+denominator the odds of
+
+132
+00:07:47,640 --> 00:07:49,000
+being oligomenorrheic.
+
+133
+00:07:53,890 --> 00:07:55,940
+And then, we are going to put a one.
+
+134
+00:07:55,940 --> 00:07:58,210
+Basically now we have three things in the
+denominator.
+
+135
+00:07:58,210 --> 00:08:02,870
+This represents your odds of being
+eumenorrheic, of being oligomenorrheic,
+
+136
+00:08:02,870 --> 00:08:03,680
+and being amenorrheic.
+
+137
+00:08:03,680 --> 00:08:07,110
+You have to be one of those three things.
+
+138
+00:08:07,110 --> 00:08:11,170
+So to get the probability that you're one
+of these three things, the probability of
+
+139
+00:08:11,170 --> 00:08:15,160
+being amenorrheic, we're just going to
+move up the term that represents this,
+
+140
+00:08:15,160 --> 00:08:17,360
+these types of women in the numerator.
+
+141
+00:08:17,360 --> 00:08:25,460
+So, the amenorrheic women will get the
+following.
+
+142
+00:08:25,460 --> 00:08:29,110
+The, it looks a lot like the probabilities
+that we were fitting for
+
+143
+00:08:29,110 --> 00:08:30,410
+regular logistic regression but
+
+144
+00:08:30,410 --> 00:08:33,660
+we have three things in the denominator
+now and three traces for the numerator.
+
+145
+00:08:33,660 --> 00:08:38,524
+The amenorrhea women, their probability
+would be e raised to alpha a,
+
+146
+00:08:38,524 --> 00:08:43,120
+plus beta a, times their edi score, over
+this denominator.
+
+147
+00:08:43,120 --> 00:08:44,740
+That's for the amenorrheic women.
+
+148
+00:08:44,740 --> 00:08:47,910
+There's 13 of them.
+The oligomenorrheic women, they're
+
+149
+00:08:47,910 --> 00:08:52,690
+going to have the same denominator, so the
+combination of these three types of women.
+
+150
+00:08:56,670 --> 00:09:03,900
+But in the numerator, they're going to get
+the term
+
+151
+00:09:03,900 --> 00:09:08,260
+that represents the oligomenorrheaic
+women, this is the odd of oligomenorrhea.
+
+152
+00:09:08,260 --> 00:09:14,060
+So that, if you divide this by the
+denominator you get,
+
+153
+00:09:14,060 --> 00:09:17,470
+you're going to actually get the
+probability of being oligomenorrheic.
+
+154
+00:09:17,470 --> 00:09:20,870
+All the women who are oligomenorrheic,
+they are 37 of them will get this term in
+
+155
+00:09:20,870 --> 00:09:24,120
+the likelihood of course with their
+individual scores plugged in.
+
+156
+00:09:24,120 --> 00:09:26,170
+The eumenorrheic women will have the same
+denominator but
+
+157
+00:09:26,170 --> 00:09:27,140
+with a one in the numerator.
+
+158
+00:09:27,140 --> 00:09:30,788
+So those will be all
+
+159
+00:09:30,788 --> 00:09:38,540
+the different terms in the likelihood.
+
+160
+00:09:38,540 --> 00:09:41,580
+So now there's three kinds of terms in the
+likelihood.
+
+161
+00:09:41,580 --> 00:09:45,390
+We're going to use that likelihood to
+again solve for those alphas and betas.
+
+162
+00:09:45,390 --> 00:09:48,450
+Now the one thing that's a little bit
+different here than what I showed you on
+
+163
+00:09:48,450 --> 00:09:53,080
+the previous slide, is that we've had, we
+have an additional constraint that's been
+
+164
+00:09:53,080 --> 00:09:58,090
+applied by putting all of these women
+together in the same model.
+
+165
+00:09:58,090 --> 00:10:00,080
+And that constraint is that we have our,
+
+166
+00:10:00,080 --> 00:10:04,300
+we know the probability of being
+amenorrheic Plus the probability of being
+
+167
+00:10:04,300 --> 00:10:08,930
+oligomenorrheic plus the probability of
+eumenorrheic, that has to sum up to one.
+
+168
+00:10:08,930 --> 00:10:12,450
+That's a constraint that didn't exist when
+we ran separate models.
+
+169
+00:10:12,450 --> 00:10:14,180
+When we ran the separate models,
+
+170
+00:10:14,180 --> 00:10:18,080
+then the probability of being amenorrheic
+plus the probability of eumen,
+
+171
+00:10:18,080 --> 00:10:21,030
+being eumenorrheic had to add up to one in
+the first model.
+
+172
+00:10:21,030 --> 00:10:26,040
+And then separately the probability of
+being [UNKNOWN] plus the probability of
+
+173
+00:10:26,040 --> 00:10:29,850
+being [UNKNOWN] also had up to had to add
+up to one in their own model but
+
+174
+00:10:29,850 --> 00:10:33,040
+their was no constraint on all three
+probabilities.
+
+175
+00:10:33,040 --> 00:10:36,220
+So that's why when you run everybody
+together in a single multi
+
+176
+00:10:36,220 --> 00:10:40,420
+nomial regression you actually do get
+slightly different values because of
+
+177
+00:10:40,420 --> 00:10:44,010
+this additional constraint but that's what
+the likelihood function looks like.
+
+178
+00:10:44,010 --> 00:10:45,570
+I just want you to see it.
+
+179
+00:10:45,570 --> 00:10:48,540
+So that you have some picture of what's
+going on behind the scenes and
+
+180
+00:10:48,540 --> 00:10:52,210
+what's slightly different about doing
+multinomial logistic regression
+
+181
+00:10:52,210 --> 00:10:54,510
+than regular logistic regression.
+
+182
+00:10:54,510 --> 00:10:59,030
+Also, you need to know these terms in the
+likelihood because in order to calculate,
+
+183
+00:10:59,030 --> 00:11:03,440
+to be able to calculate individual women's
+predictive probabilities.
+
+184
+00:11:03,440 --> 00:11:06,230
+So, we are now, we are going to actually
+calculate predictive probability.
+
+185
+00:11:06,230 --> 00:11:07,660
+For each woman.
+
+186
+00:11:07,660 --> 00:11:10,470
+Every woman gets three predicted
+probability because there're
+
+187
+00:11:10,470 --> 00:11:13,060
+three possible outcomes now.
+
+188
+00:11:13,060 --> 00:11:15,460
+So what's the predicted probability of
+being amonorea?
+
+189
+00:11:15,460 --> 00:11:18,280
+Well, that's just the, the term that I
+showed you from the likelihood from
+
+190
+00:11:18,280 --> 00:11:20,760
+the previous slide except yeah, we've
+actually fit the model.
+
+191
+00:11:20,760 --> 00:11:22,860
+We actually know what the alphas and the
+betas are.
+
+192
+00:11:22,860 --> 00:11:28,330
+So the alpha for the intercept for the
+amenorrheic women is negative 31.9.
+
+193
+00:11:28,330 --> 00:11:29,950
+The data was 0.1656.
+
+194
+00:11:29,950 --> 00:11:34,460
+So, I just actually plugged in the actual
+values for the alphas and the betas now.
+
+195
+00:11:34,460 --> 00:11:37,950
+This will give me the predictive
+probability of the amenorrheic.
+
+196
+00:11:37,950 --> 00:11:41,690
+The next term will give me the predictive
+probability of being oligomenorrheic and
+
+197
+00:11:41,690 --> 00:11:44,710
+the last one will give me the predictive
+probability of being eumenorrheic.
+
+198
+00:11:44,710 --> 00:11:50,530
+Let me just actually plug in a particular
+score, edi score to show how this works.
+
+199
+00:11:51,530 --> 00:11:56,610
+So say that a woman has an eating disorder
+score of nine we would plug her
+
+200
+00:11:56,610 --> 00:12:00,120
+value into each one of these terms to get
+her predicted probabilities.
+
+201
+00:12:00,120 --> 00:12:02,440
+For all three possible outcomes.
+
+202
+00:12:02,440 --> 00:12:06,100
+When I plug in nine to the term, the
+predictive probability being amenorrhea,
+
+203
+00:12:06,100 --> 00:12:08,596
+I get a value of about 10 or 11%.
+
+204
+00:12:08,596 --> 00:12:13,850
+So she has a 10 or 11% chance of being
+amenorrheic according to our model.
+
+205
+00:12:13,850 --> 00:12:17,610
+She has a 30 about 31% chance of being
+oligomenorrheic.
+
+206
+00:12:17,610 --> 00:12:21,050
+According to our model and about a 58%
+chance of being eumenorrheic.
+
+207
+00:12:21,050 --> 00:12:24,810
+Now, notice if I add up those three
+probabilities, they will have to sum to 1.
+
+208
+00:12:24,810 --> 00:12:27,200
+So, that's that additional constraint in
+there.
+
+209
+00:12:28,220 --> 00:12:33,710
+Now, just to show you in the actual data
+set when we are not accounting for
+
+210
+00:12:33,710 --> 00:12:34,820
+the eating disorder score.
+
+211
+00:12:34,820 --> 00:12:40,379
+Well remember there was a 13 out of a 150
+women who are a,
+
+212
+00:12:40,379 --> 00:12:46,680
+amenorrheic and 24 out of a 150 women were
+eumenorrheic.
+
+213
+00:12:46,680 --> 00:12:51,874
+So, so about 8% for amenorrheic and about
+24% oligomenorrheic.
+
+214
+00:12:51,874 --> 00:12:55,644
+So if you knew nothing about the women,
+your, the predicted probability for
+
+215
+00:12:55,644 --> 00:12:59,704
+a random woman where we didn't know her
+eating disorder score, her probability of
+
+216
+00:12:59,704 --> 00:13:03,670
+being amenorrheic would be about eight or
+nine percent and her probability.
+
+217
+00:13:03,670 --> 00:13:05,540
+being, amenorrhea could be about 24%.
+
+218
+00:13:05,540 --> 00:13:09,340
+Now, this woman because she has a, an
+elevated score.
+
+219
+00:13:09,340 --> 00:13:12,050
+She has a higher predictive probability of
+having one of
+
+220
+00:13:12,050 --> 00:13:14,610
+these menstrual irregularities.
+
+221
+00:13:14,610 --> 00:13:15,540
+Now, you are not going to have to
+
+222
+00:13:15,540 --> 00:13:17,580
+calculate these predictive probabilities
+by hand.
+
+223
+00:13:17,580 --> 00:13:19,040
+Obviously, it's a little cumbersome.
+
+224
+00:13:19,040 --> 00:13:22,720
+But the computer will go through and will
+calculate these predicted probabilities
+
+225
+00:13:22,720 --> 00:13:25,510
+for every woman in your data set and so
+I've done that here and
+
+226
+00:13:25,510 --> 00:13:28,960
+I'm just showing you a subset of the
+predicted probabilities so
+
+227
+00:13:28,960 --> 00:13:33,800
+woman who had EDIA scores of nine had
+these predicted probabilities which I
+
+228
+00:13:33,800 --> 00:13:35,940
+just showed you on the previous slide.
+
+229
+00:13:35,940 --> 00:13:40,080
+Women who had edi scores of 11 would have
+even higher predictive probabilities of
+
+230
+00:13:40,080 --> 00:13:42,410
+being either amenorrheic or
+oligomenorrheic.
+
+231
+00:13:42,410 --> 00:13:44,860
+Lower probability of being in the
+reference group.
+
+232
+00:13:44,860 --> 00:13:49,210
+And so on, if you go down to the highest
+possible eating disorder, which was 21.
+
+233
+00:13:49,210 --> 00:13:53,960
+Those amen would have three, 32% chance,
+almost a third chance
+
+234
+00:13:53,960 --> 00:13:59,310
+of being amenerrheic of 43% chance of
+being oligamanerrheic only less than a 25%
+
+235
+00:13:59,310 --> 00:14:03,480
+chance of having a normal period of your
+score is so high on that eating disorder.
+
+236
+00:14:03,480 --> 00:14:03,980
+Scale.
+
+237
+00:14:05,350 --> 00:14:07,660
+We can then take the predictive
+probabilities and
+
+238
+00:14:07,660 --> 00:14:08,310
+then actually graph them.
+
+239
+00:14:08,310 --> 00:14:11,080
+And I think the graph is very visually
+useful.
+
+240
+00:14:11,080 --> 00:14:13,990
+So what this graph is showing you is here
+is the EDI,
+
+241
+00:14:13,990 --> 00:14:16,750
+the eating disorder score on the X axis.
+
+242
+00:14:16,750 --> 00:14:18,180
+It goes again from zero to 21.
+
+243
+00:14:18,180 --> 00:14:22,395
+On the Y axis we're showing, all the
+predicted probabilities,
+
+244
+00:14:22,395 --> 00:14:28,480
+[SOUND]
+for the three groups.
+
+245
+00:14:28,480 --> 00:14:30,630
+So, this is your predicted probability.
+
+246
+00:14:30,630 --> 00:14:33,970
+eumenorrheic your predicted probabiliy in
+red, of being oligomenorrheaic.
+
+247
+00:14:33,970 --> 00:14:36,610
+And your predicted probability in blue.
+
+248
+00:14:36,610 --> 00:14:37,510
+Of being amenorrheaic.
+
+249
+00:14:37,510 --> 00:14:41,300
+So if you have a very low eating disorder
+score, if you have a score of zero,
+
+250
+00:14:41,300 --> 00:14:43,570
+you have a very low probability of being
+amenorrheaic,
+
+251
+00:14:43,570 --> 00:14:46,220
+still some probability of being
+oligomenorrheaic, but
+
+252
+00:14:46,220 --> 00:14:50,770
+not high, and you're most likely going to
+be, have a normal cycle.
+
+253
+00:14:50,770 --> 00:14:52,150
+As you go up in EDIA score,
+
+254
+00:14:52,150 --> 00:14:56,950
+what you see happens is there's a drop in
+your chances of having a normal cycle.
+
+255
+00:14:56,950 --> 00:14:59,680
+There's an increase in your chances of
+having one of these two
+
+256
+00:14:59,680 --> 00:15:03,330
+menstrual irregularities, but you'll
+notice that the curve for amenorrhea goes
+
+257
+00:15:03,330 --> 00:15:06,990
+up more steeply than the curve for
+aligametareia that's because there's
+
+258
+00:15:06,990 --> 00:15:11,270
+a tighter relationship between this eating
+disorder score and your chances of being
+
+259
+00:15:11,270 --> 00:15:15,700
+amatareiac than there is between the score
+and your chances of being aligamaneriac.
+
+260
+00:15:16,830 --> 00:15:21,160
+So this is just a nice way to kind of
+visually summarize our logistic or
+
+261
+00:15:21,160 --> 00:15:23,405
+multinomial logistic regression model.
+
+262
+00:15:23,405 --> 00:15:27,932
+[SOUND]

@@ -1,0 +1,273 @@
+1
+00:00:00,550 --> 00:00:01,710
+Welcome to our final online module for HRP
+223.
+
+2
+00:00:01,710 --> 00:00:04,330
+This week we're going to cover
+Comprehensive Example and
+
+3
+00:00:04,330 --> 00:00:06,912
+we'll incorporate most of the code you've
+learned during this cover.
+
+4
+00:00:06,912 --> 00:00:10,226
+>> By covering everything all at once, we
+hope you'll be a little bit
+
+5
+00:00:10,226 --> 00:00:14,150
+more comfortable by the time you have to
+go out and work on data sets on your own.
+
+6
+00:00:15,610 --> 00:00:18,970
+For this unit we created a fake data set
+about diabetes.
+
+7
+00:00:18,970 --> 00:00:21,900
+Before taking a look at our data
+dictionary please pause the video and
+
+8
+00:00:21,900 --> 00:00:25,890
+download the Diabetes 223.csv data set
+that goes along with this
+
+9
+00:00:25,890 --> 00:00:27,990
+comprehensive example.
+
+10
+00:00:27,990 --> 00:00:29,819
+Save it in the folder you created for this
+class.
+
+11
+00:00:31,640 --> 00:00:33,190
+Remember, whenever you get a data set,
+
+12
+00:00:33,190 --> 00:00:34,600
+always make sure you have a data
+dictionary.
+
+13
+00:00:34,600 --> 00:00:37,330
+Here's the data dictionary for our data
+set.
+
+14
+00:00:37,330 --> 00:00:42,050
+>> The main variable is this binary
+variable that represents
+
+15
+00:00:42,050 --> 00:00:44,520
+the disease outcome for each subject.
+
+16
+00:00:44,520 --> 00:00:48,140
+If they have a one they are diabetic, and
+if they have a zero they are not diabetic.
+
+17
+00:00:48,140 --> 00:00:53,630
+We have variables for age in years, weight
+in pounds and height in centimeters.
+
+18
+00:00:53,630 --> 00:00:56,110
+These are all continuous variables.
+
+19
+00:00:56,110 --> 00:00:58,317
+We also have some categorical variables.
+
+20
+00:00:58,317 --> 00:01:02,786
+Race ethnicity has five categories, 1 for
+black, 2 for white, 3 for asian, 4 for
+
+21
+00:01:02,786 --> 00:01:04,380
+hispanic and five for other.
+
+22
+00:01:04,380 --> 00:01:09,698
+Smoking status is a binary variable with 1
+representing smoker and
+
+23
+00:01:09,698 --> 00:01:12,040
+0 representing non smoker.
+
+24
+00:01:12,040 --> 00:01:15,160
+We also have a gender variable labelled
+isfemale, with 1 for
+
+25
+00:01:15,160 --> 00:01:15,910
+females and 0 for males.
+
+26
+00:01:15,910 --> 00:01:19,680
+>> A great place to start before even
+opening SAS,
+
+27
+00:01:19,680 --> 00:01:21,680
+is to make sure that you know the
+variables in your data set.
+
+28
+00:01:22,700 --> 00:01:25,170
+Make sure you know which of the variables
+are continuous, which are binary,
+
+29
+00:01:25,170 --> 00:01:27,950
+which are categorical, and etcetera.
+
+30
+00:01:27,950 --> 00:01:30,110
+Usually makes things easier when you
+import the data set, and
+
+31
+00:01:30,110 --> 00:01:34,130
+are checking the define field attributes
+window.
+
+32
+00:01:34,130 --> 00:01:35,820
+>> Let's open SAS and point to a permanent
+library.
+
+33
+00:01:37,030 --> 00:01:39,200
+As you may recall, during the first few
+modules,
+
+34
+00:01:39,200 --> 00:01:42,170
+we showed you how to use point and click
+to create a permanent library.
+
+35
+00:01:42,170 --> 00:01:46,930
+We also recommended that you copy the code
+located in the SAS log, so
+
+36
+00:01:46,930 --> 00:01:49,660
+that you could use it in the future.
+
+37
+00:01:49,660 --> 00:01:53,260
+We still have our library creating code,
+so we'll start by creating a new program,
+
+38
+00:01:54,490 --> 00:02:01,850
+labeling it Library, and then pasting in
+our live reference code.
+
+39
+00:02:01,850 --> 00:02:04,280
+Once we run this, we'll be able to import
+our data.
+
+40
+00:02:06,080 --> 00:02:11,420
+Let's click on File > Import Data, and
+navigate to the Diabetes 223 data set.
+
+41
+00:02:14,630 --> 00:02:17,890
+On the next page you can specify which
+library you want to import your data into.
+
+42
+00:02:17,890 --> 00:02:21,310
+Now you want to save it into the permanent
+library that we just created.
+
+43
+00:02:21,310 --> 00:02:29,518
+So click browse to find that library, and
+click Save.
+
+44
+00:02:29,518 --> 00:02:33,910
+When you're done specifying your library,
+click Next.
+
+45
+00:02:35,690 --> 00:02:39,800
+Make sure to check the box that says file
+contains field names on record number one,
+
+46
+00:02:39,800 --> 00:02:40,830
+like we have here.
+
+47
+00:02:40,830 --> 00:02:42,480
+Also make sure to check the box for
+
+48
+00:02:42,480 --> 00:02:44,760
+renaming columns to comply with SAS naming
+conventions.
+
+49
+00:02:44,760 --> 00:02:49,420
+This can fix any simple formatting errors
+that might mess up SAS.
+
+50
+00:02:49,420 --> 00:02:50,700
+Click Next.
+
+51
+00:02:50,700 --> 00:02:51,740
+On the next page,
+
+52
+00:02:51,740 --> 00:02:55,270
+check to make sure that each variable is
+being imported in their correct format.
+
+53
+00:02:55,270 --> 00:02:58,584
+We need to make sure that all of our
+numeric variables are listed as number,
+
+54
+00:02:58,584 --> 00:03:01,229
+and all of our categorical variables are
+listed as string.
+
+55
+00:03:01,229 --> 00:03:06,537
+[SOUND]
+
+56
+00:03:06,537 --> 00:03:13,969
+Great.
+
+57
+00:03:13,969 --> 00:03:17,286
+Now our variables are all correctly
+specified.
+
+58
+00:03:17,286 --> 00:03:22,360
+Now click finish and you'll be able to
+input your data set

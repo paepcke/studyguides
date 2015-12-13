@@ -1,0 +1,2998 @@
+1
+00:00:04,920 --> 00:00:07,250
+In this next module, I'm going to show you
+how to control for
+
+2
+00:00:07,250 --> 00:00:09,400
+confounding using stratification.
+
+3
+00:00:09,400 --> 00:00:12,934
+This will get us into the Mantel–Haenszel
+statistics.
+
+4
+00:00:12,934 --> 00:00:16,400
+So, getting back to the example that I
+introduced in the teaser for
+
+5
+00:00:16,400 --> 00:00:19,650
+today, this makes a good example for
+illustrating controlling for
+
+6
+00:00:19,650 --> 00:00:21,880
+confounding by stratification.
+
+7
+00:00:21,880 --> 00:00:25,090
+So, again, this example was looking at
+potential gender bias in
+
+8
+00:00:25,090 --> 00:00:26,828
+graduate school admissions at Berkeley.
+
+9
+00:00:26,828 --> 00:00:28,590
+This is hearkening back to the 1970s,
+
+10
+00:00:28,590 --> 00:00:31,180
+but, people were worried when they saw
+this data.
+
+11
+00:00:31,180 --> 00:00:34,490
+There was even a lawsuit and things like
+that.
+
+12
+00:00:34,490 --> 00:00:37,660
+but, if you look at the data here, this is
+some data that somebody compiled for
+
+13
+00:00:37,660 --> 00:00:39,730
+one of the years of admission.
+
+14
+00:00:39,730 --> 00:00:43,200
+The females were applying in fewer numbers
+than men.
+
+15
+00:00:43,200 --> 00:00:48,460
+But, indeed, women were 25% more likely to
+be denied admission than men and
+
+16
+00:00:48,460 --> 00:00:49,730
+that was the concern.
+
+17
+00:00:49,730 --> 00:00:52,940
+However, if you think about this example
+carefully, especially back thinking about
+
+18
+00:00:52,940 --> 00:00:58,790
+in the early 1970s, there is an important
+potential confounder here.
+
+19
+00:00:58,790 --> 00:01:03,950
+You have to look at what departments women
+and men are applying to.
+
+20
+00:01:03,950 --> 00:01:07,570
+Especially back in the 1970s, there was a
+big difference between where men and
+
+21
+00:01:07,570 --> 00:01:12,370
+women were applying and that might
+influence denial in admissions rate.
+
+22
+00:01:12,370 --> 00:01:15,380
+And, indeed, that's what somebody went
+back and did with these data.
+
+23
+00:01:15,380 --> 00:01:17,790
+So now we're going to stratify the data by
+department,
+
+24
+00:01:17,790 --> 00:01:20,010
+by program that people were applying to.
+
+25
+00:01:20,010 --> 00:01:24,890
+And I've kept the programs anonymous, so
+we won't, criticize any departments.
+
+26
+00:01:24,890 --> 00:01:27,350
+But you can kind of guess what these
+departments might be.
+
+27
+00:01:27,350 --> 00:01:29,110
+So the first stratum is program A.
+
+28
+00:01:29,110 --> 00:01:32,770
+And what you look, can see when you look
+at the data is that men were much,
+
+29
+00:01:32,770 --> 00:01:37,130
+much more likely than women to apply to
+program A, whatever program A happened to
+
+30
+00:01:37,130 --> 00:01:41,910
+be, maybe it's something like mathematics
+or engineering back in the early 70s.
+
+31
+00:01:41,910 --> 00:01:46,840
+You can see, though, that once you look
+only within program A,
+
+32
+00:01:46,840 --> 00:01:50,920
+women were no less likely to get admitted
+than men.
+
+33
+00:01:50,920 --> 00:01:56,860
+In fact, the risk ratio for denial of
+admissions for women versus men is 0.46.
+
+34
+00:01:56,860 --> 00:02:01,080
+What that tells you is that, actually,
+women were a little bit less likely to be
+
+35
+00:02:01,080 --> 00:02:04,068
+denied and that's actually statistically
+significant within this strata.
+
+36
+00:02:04,068 --> 00:02:08,690
+So once you drill in on program, you're
+seeing a different picture.
+
+37
+00:02:08,690 --> 00:02:11,830
+However, of course, there were very few
+women that applied to this program, so
+
+38
+00:02:11,830 --> 00:02:16,110
+though, even though a lot got in, it still
+doesn't represent a huge, number of women.
+
+39
+00:02:16,110 --> 00:02:19,810
+If you look at program B, you'll notice,
+
+40
+00:02:19,810 --> 00:02:22,660
+again, very few women applying to this
+program.
+
+41
+00:02:22,660 --> 00:02:25,640
+It's a relatively easy program to get
+into, though.
+
+42
+00:02:25,640 --> 00:02:28,720
+More than half of the people who apply are
+getting in.
+
+43
+00:02:28,720 --> 00:02:32,790
+And that was similar, and stratum one was
+also reasonably easy to get into.
+
+44
+00:02:32,790 --> 00:02:34,060
+But you can see that, again,
+
+45
+00:02:34,060 --> 00:02:37,980
+women, if anything, are slightly more
+likely to get in than men.
+
+46
+00:02:37,980 --> 00:02:41,200
+The, there appears to be not much of a
+difference here.
+
+47
+00:02:41,200 --> 00:02:45,100
+If anything, the risk ratio is slightly in
+the favor of women.
+
+48
+00:02:45,100 --> 00:02:47,830
+But easy department to get into relatively
+speaking, but
+
+49
+00:02:47,830 --> 00:02:49,990
+many, many more men are applying than
+women.
+
+50
+00:02:49,990 --> 00:02:53,890
+You could see how this might create a
+spurious association.
+
+51
+00:02:53,890 --> 00:02:54,990
+Now, turn to program C.
+
+52
+00:02:54,990 --> 00:02:56,250
+This program looks a little different.
+
+53
+00:02:56,250 --> 00:02:58,750
+Program C is dominated by women.
+
+54
+00:02:58,750 --> 00:03:01,770
+Many more women are applying, 593 versus
+325.
+
+55
+00:03:01,770 --> 00:03:04,752
+Many more women are applying than men.
+
+56
+00:03:04,752 --> 00:03:07,900
+However, it's a relatively hard program to
+get into.
+
+57
+00:03:07,900 --> 00:03:08,970
+So, for whatever reason,
+
+58
+00:03:08,970 --> 00:03:13,650
+many more than half of people who apply
+are getting denied admissions.
+
+59
+00:03:13,650 --> 00:03:16,200
+So, a harder program to get into, but more
+women are applying.
+
+60
+00:03:16,200 --> 00:03:16,990
+If you look at that risk ratio,
+
+61
+00:03:16,990 --> 00:03:22,030
+however, gender doesn't seem to make a
+difference on admittance within program C.
+
+62
+00:03:22,030 --> 00:03:25,500
+The risk ratio is 1.05, men and women are
+equally likely to get in.
+
+63
+00:03:25,500 --> 00:03:29,760
+If you then go to program D, women and men
+were about equally likely to apply.
+
+64
+00:03:29,760 --> 00:03:31,830
+Again, the risk ratio is 1.02.
+
+65
+00:03:31,830 --> 00:03:34,800
+So not much difference in admissions
+between men and women.
+
+66
+00:03:34,800 --> 00:03:37,560
+This was another department that was
+relatively hard to get into.
+
+67
+00:03:37,560 --> 00:03:42,580
+If you look at program E, this one is
+again dominated by women, but
+
+68
+00:03:42,580 --> 00:03:44,190
+hard to get into.
+
+69
+00:03:44,190 --> 00:03:46,290
+So women are applying to the harder
+departments, basically.
+
+70
+00:03:46,290 --> 00:03:48,050
+393 women versus 191 men.
+
+71
+00:03:48,050 --> 00:03:50,370
+A lot of people getting denied.
+
+72
+00:03:50,370 --> 00:03:51,640
+289 denials.
+
+73
+00:03:51,640 --> 00:03:53,180
+147 denials for the men.
+
+74
+00:03:53,180 --> 00:03:54,560
+Most people are getting denied.
+
+75
+00:03:54,560 --> 00:03:57,495
+So hard to get into, but no real
+difference between men and women.
+
+76
+00:03:57,495 --> 00:04:00,134
+That might be something like education or
+English.
+
+77
+00:04:00,134 --> 00:04:04,038
+Program F, pretty equal numbers are
+getting in between men and women and
+
+78
+00:04:04,038 --> 00:04:06,540
+this one pretty equal numbers are
+applying.
+
+79
+00:04:06,540 --> 00:04:08,092
+Pretty equal numbers are getting in.
+
+80
+00:04:08,092 --> 00:04:10,210
+This apart, department was really hard to
+get into.
+
+81
+00:04:10,210 --> 00:04:11,450
+Very few people got into it.
+
+82
+00:04:11,450 --> 00:04:13,490
+But women were no less likely than men to
+get in.
+
+83
+00:04:13,490 --> 00:04:16,730
+The risk ratio in this stratum was 1.01,
+right around no.
+
+84
+00:04:16,730 --> 00:04:20,670
+So, there were, if you look across these
+six departments, you can see that if
+
+85
+00:04:20,670 --> 00:04:24,270
+you just report the crude, the unadjusted
+risk ratio, not accounting for
+
+86
+00:04:24,270 --> 00:04:27,070
+programming, it looks like women are more
+likely to be denied admissions.
+
+87
+00:04:27,070 --> 00:04:30,180
+But when you go and look at the stratum
+specific relative risks,
+
+88
+00:04:30,180 --> 00:04:33,040
+the risk ratios, the picture is very
+different.
+
+89
+00:04:33,040 --> 00:04:37,480
+In fact, in all cases, the women are just
+about equally likely as the men to get in.
+
+90
+00:04:37,480 --> 00:04:40,840
+And there's one program where that's not
+true, but, in fact,
+
+91
+00:04:40,840 --> 00:04:43,170
+the women were more likely than the men to
+get in.
+
+92
+00:04:43,170 --> 00:04:46,680
+So the association that we were seeing in
+the crude risk ratio just had to
+
+93
+00:04:46,680 --> 00:04:50,520
+do with the fact that women were applying
+to the harder departments to get into and
+
+94
+00:04:50,520 --> 00:04:53,490
+men were applying to the easier
+departments to get into.
+
+95
+00:04:53,490 --> 00:04:57,890
+Now, that's pretty much the story we can
+now apply some formal statistics to
+
+96
+00:04:57,890 --> 00:05:01,530
+the story though and this brings int he
+Mantal-Haenszel statistics.
+
+97
+00:05:01,530 --> 00:05:04,630
+So there's a couple of different
+statistics that we're going to talk about.
+
+98
+00:05:04,630 --> 00:05:07,700
+So there's something called the
+Mantal-Haenszel test of independence.
+
+99
+00:05:07,700 --> 00:05:09,680
+This is a chi-squared test.
+
+100
+00:05:09,680 --> 00:05:14,070
+The null hypothesis here is that the
+predictor and the outcome
+
+101
+00:05:14,070 --> 00:05:18,740
+are independent after controlling for or
+conditioning on the confounder.
+
+102
+00:05:18,740 --> 00:05:19,700
+So once we adjust for
+
+103
+00:05:19,700 --> 00:05:24,740
+program, is gender and, denial of
+admissions, is, are those independent?
+
+104
+00:05:24,740 --> 00:05:26,620
+The null hypothesis is that they're
+independent, and
+
+105
+00:05:26,620 --> 00:05:30,640
+when you do that statistic, it comes out
+to be a p value that is non-significant.
+
+106
+00:05:30,640 --> 00:05:34,010
+So we have no evidence that those things
+are not independent.
+
+107
+00:05:34,010 --> 00:05:36,740
+So we, we're not going to reject the null
+hypothesis there.
+
+108
+00:05:36,740 --> 00:05:39,030
+It looks like they are unrelated.
+
+109
+00:05:39,030 --> 00:05:41,140
+We can calculate the p value test, but
+
+110
+00:05:41,140 --> 00:05:44,460
+then it's also nice to always be able to
+provide an affect size.
+
+111
+00:05:44,460 --> 00:05:47,340
+So we're going to provide an affect size
+by calculating what's called
+
+112
+00:05:47,340 --> 00:05:50,400
+a Maentel-Haenszel summary risk ratio.
+
+113
+00:05:50,400 --> 00:05:55,380
+All this is, is it's taking the
+stratum-specific risk ratios that we
+
+114
+00:05:55,380 --> 00:05:58,720
+just calculated and it's pooling them.
+
+115
+00:05:58,720 --> 00:06:00,740
+And it comes out here to be 0.95.
+
+116
+00:06:00,740 --> 00:06:03,550
+Now, if you were just trying to come up
+with the statistic on your own,
+
+117
+00:06:03,550 --> 00:06:04,200
+you might think, well,
+
+118
+00:06:04,200 --> 00:06:08,950
+the easiest way to do this is to just take
+six risk ratios from the six strata.
+
+119
+00:06:08,950 --> 00:06:10,140
+Add them up and divide by six.
+
+120
+00:06:10,140 --> 00:06:11,560
+In other words, average them.
+
+121
+00:06:11,560 --> 00:06:13,900
+And that's almost what we do to pool them.
+
+122
+00:06:13,900 --> 00:06:18,670
+Except we want to do one little other
+thing in here, which is we want to
+
+123
+00:06:18,670 --> 00:06:23,110
+give a heavier weight to the strata that
+have a bigger sample size.
+
+124
+00:06:23,110 --> 00:06:25,310
+So whichever strata have more people in
+them,
+
+125
+00:06:25,310 --> 00:06:29,250
+that should have a slightly heavier weight
+on the risk-ratio estimate.
+
+126
+00:06:29,250 --> 00:06:32,490
+So what we do is we do a weighted average
+of these risk ratios and
+
+127
+00:06:32,490 --> 00:06:34,470
+I'll show you the formula in a minute.
+
+128
+00:06:34,470 --> 00:06:36,860
+When we do that here, though, we come up
+with 0.95.
+
+129
+00:06:36,860 --> 00:06:39,330
+The confidence interval's quite tight
+around one.
+
+130
+00:06:40,520 --> 00:06:42,270
+That's showing you and then you can kind
+of,
+
+131
+00:06:42,270 --> 00:06:47,050
+if you eyeball these risk ratios, it looks
+like 0.95 would be a good pooling.
+
+132
+00:06:47,050 --> 00:06:48,760
+A good summary risk ratio.
+
+133
+00:06:48,760 --> 00:06:51,630
+So, again, this we would call "adjusted
+for program".
+
+134
+00:06:51,630 --> 00:06:53,040
+When the risk ratio is adjusted for
+
+135
+00:06:53,040 --> 00:06:55,220
+program, we're finding no difference
+between men and women.
+
+136
+00:06:56,300 --> 00:07:00,180
+This tells us that we thought we saw an
+association between gender and whether or
+
+137
+00:07:00,180 --> 00:07:03,290
+not you were denied admission to Berkeley,
+but, in fact, once we accounted for
+
+138
+00:07:03,290 --> 00:07:08,080
+confounding by program, that, association
+completely disappears.
+
+139
+00:07:08,080 --> 00:07:12,190
+Our p value is non-significant and our
+risk ratio is very close to one.
+
+140
+00:07:12,190 --> 00:07:14,920
+Now I'm just going to walk you
+
+141
+00:07:14,920 --> 00:07:19,400
+through the actual mathematical details of
+these tests.
+
+142
+00:07:19,400 --> 00:07:21,210
+So we're going to start with the p value
+test,
+
+143
+00:07:21,210 --> 00:07:23,470
+the Mantel-Haenszel test of conditional
+independence.
+
+144
+00:07:23,470 --> 00:07:25,400
+This is actually a chi-squared test.
+
+145
+00:07:25,400 --> 00:07:29,030
+Sometimes it's called the
+Cochran-Mantel-Haenszel statistic.
+
+146
+00:07:29,030 --> 00:07:32,340
+Sometimes an additional statistician's
+name is thrown on the front.
+
+147
+00:07:32,340 --> 00:07:36,040
+I tend to be lazy and just call it
+Mantel-Haenszel because it's shorter, but
+
+148
+00:07:36,040 --> 00:07:40,560
+you'll see, for example, in SAS, you have
+to ask for the CMH statistic.
+
+149
+00:07:40,560 --> 00:07:41,820
+So the C is the Cochran.
+
+150
+00:07:41,820 --> 00:07:42,840
+So you'll see it both ways.
+
+151
+00:07:42,840 --> 00:07:45,850
+So I just want to point out you might see
+it, as Cochran-Mantel-Haenszel.
+
+152
+00:07:45,850 --> 00:07:47,580
+Those are the same, though.
+
+153
+00:07:47,580 --> 00:07:51,470
+Again, the null hypothesis for this test
+is that the predictor and
+
+154
+00:07:51,470 --> 00:07:55,130
+the outcome are independent after you've
+accounted for the confounder.
+
+155
+00:07:55,130 --> 00:07:57,110
+So when conditioned on the confounder.
+
+156
+00:07:59,112 --> 00:08:01,760
+So, again, null hypothesis, that after
+conditioning for
+
+157
+00:08:01,760 --> 00:08:03,840
+the confounder, the predictor and the
+outcome are independent.
+
+158
+00:08:03,840 --> 00:08:08,420
+We can see that mathematically, so what do
+we mean by statistical independence?
+
+159
+00:08:08,420 --> 00:08:10,090
+I've gone over this before, but
+
+160
+00:08:10,090 --> 00:08:14,630
+by statistical independence, we mean that
+the joint probability of A and
+
+161
+00:08:14,630 --> 00:08:18,270
+B is equal to the product of the marginal
+probabilities of A and B.
+
+162
+00:08:18,270 --> 00:08:20,840
+That's what we mean by statistical
+independence.
+
+163
+00:08:20,840 --> 00:08:25,580
+All we're saying here is that you have to
+first condition on the confounder whether
+
+164
+00:08:25,580 --> 00:08:28,910
+or not somebody has the confounder, if you
+have a binary confounder,
+
+165
+00:08:28,910 --> 00:08:30,060
+as I'm showing here.
+
+166
+00:08:31,090 --> 00:08:34,640
+Once you condition on a confounder, then
+statistical independence between A and
+
+167
+00:08:34,640 --> 00:08:35,880
+B holds.
+
+168
+00:08:35,880 --> 00:08:38,810
+That's the null hypothesis, and indeed we
+saw here that when we
+
+169
+00:08:38,810 --> 00:08:42,400
+run the Mantel-Haenszel Test, we have no
+evidence against that null hypothesis.
+
+170
+00:08:42,400 --> 00:08:45,460
+It, indeed, looks like they're independent
+after we control for program.
+
+171
+00:08:46,550 --> 00:08:51,350
+Let me walk you now through all the
+nitty-gritty mathematical details.
+
+172
+00:08:51,350 --> 00:08:54,660
+I am probably not going to make you do too
+many of these by hand, because,
+
+173
+00:08:54,660 --> 00:08:57,610
+as you'll see, they're a little tedious to
+calculate.
+
+174
+00:08:57,610 --> 00:09:01,365
+But I actually think it's important for
+you to look into the black box here and
+
+175
+00:09:01,365 --> 00:09:06,120
+know what's actually happening, in terms
+of calculations in this statistic.
+
+176
+00:09:06,120 --> 00:09:10,860
+It'll give us a little bit of insight into
+the statistic to see what's going on.
+
+177
+00:09:10,860 --> 00:09:15,356
+It's also useful to just go through the
+math here because the Mantel-Haenszel
+
+178
+00:09:15,356 --> 00:09:19,950
+test, we're applying it here to the
+context of confounding.
+
+179
+00:09:19,950 --> 00:09:22,640
+But the Mantel–Haenszel test actually has
+a broader application,
+
+180
+00:09:22,640 --> 00:09:24,350
+it's more general than that.
+
+181
+00:09:24,350 --> 00:09:27,164
+It's going to come up again in the Spring
+term when we
+
+182
+00:09:27,164 --> 00:09:29,576
+talk about Kaplan-Meier statistics, so
+
+183
+00:09:29,576 --> 00:09:33,650
+the log rate test is actually a
+Mantel–Haenszel test, same formula.
+
+184
+00:09:34,720 --> 00:09:38,070
+It also comes up in meta analysis, that
+that gets applied to meta analysis,
+
+185
+00:09:38,070 --> 00:09:38,920
+that same formula.
+
+186
+00:09:38,920 --> 00:09:41,480
+So it's just worth you having gone through
+this formula once or
+
+187
+00:09:41,480 --> 00:09:45,210
+twice and having a basic understanding of
+what's going on here.
+
+188
+00:09:45,210 --> 00:09:48,680
+So let me just walk you through that, that
+nitty-gritty details here.
+
+189
+00:09:48,680 --> 00:09:50,380
+So how do we run this test?
+
+190
+00:09:50,380 --> 00:09:50,980
+By hand.
+
+191
+00:09:50,980 --> 00:09:52,640
+So what we're going to do is we're
+going to divide our
+
+192
+00:09:52,640 --> 00:09:54,480
+data up into the different strata.
+
+193
+00:09:54,480 --> 00:09:57,170
+So, by k here I mean just the number of
+strata.
+
+194
+00:09:57,170 --> 00:09:59,950
+So there's k strata, in the Berkeley
+example, there were six strata, so
+
+195
+00:09:59,950 --> 00:10:01,970
+k would be equal to six.
+
+196
+00:10:01,970 --> 00:10:06,000
+We start with, say the first stratum and
+we look at,
+
+197
+00:10:06,000 --> 00:10:09,590
+we make a two by two table for that first
+stratum as I did in the Berkeley example.
+
+198
+00:10:09,590 --> 00:10:12,690
+We can call those cells a, b, c, and d.
+
+199
+00:10:12,690 --> 00:10:15,560
+Usually, the a cell we call that, you
+know, the disease exposed cell
+
+200
+00:10:15,560 --> 00:10:19,080
+which just means, you know, denial and
+gender, the two things we care about.
+
+201
+00:10:20,224 --> 00:10:21,516
+And then in Nk here,
+
+202
+00:10:21,516 --> 00:10:26,780
+I'm going to use to represent the total
+number in a particular stratum.
+
+203
+00:10:26,780 --> 00:10:28,140
+So we start with, say, the first strata.
+
+204
+00:10:28,140 --> 00:10:31,370
+And what we're going to plug into this
+formula here is we're going to look at
+
+205
+00:10:31,370 --> 00:10:33,048
+the observed number in cell a.
+
+206
+00:10:33,048 --> 00:10:36,560
+Technically, we could've chosen to focus
+on any one of these four cells and say,
+
+207
+00:10:36,560 --> 00:10:39,420
+"A, a is the most interesting, we're
+going to use a".
+
+208
+00:10:39,420 --> 00:10:41,120
+This table has only one degree of freedom,
+though,
+
+209
+00:10:41,120 --> 00:10:43,680
+so any of the other cells would give us
+the equivalent answer.
+
+210
+00:10:43,680 --> 00:10:47,070
+So we're going to plug in the actual
+observed number, so
+
+211
+00:10:47,070 --> 00:10:48,780
+this is the observed, the observed number
+for
+
+212
+00:10:48,780 --> 00:10:52,610
+cell a in stratum k, that's all that
+little subscript k means there.
+
+213
+00:10:52,610 --> 00:10:54,030
+We're going to do that first.
+
+214
+00:10:54,030 --> 00:10:57,140
+Then we're going to calculate the expected
+count for that cell.
+
+215
+00:10:57,140 --> 00:10:59,820
+And we're going to do that in the exact
+same way we've done when we've
+
+216
+00:10:59,820 --> 00:11:01,650
+talked about chi-squared tests.
+
+217
+00:11:01,650 --> 00:11:07,730
+So, to calculate the expected value of a
+in a particular stratum,
+
+218
+00:11:07,730 --> 00:11:13,940
+we're just going to do the row one, the
+row times the column,
+
+219
+00:11:13,940 --> 00:11:18,030
+total divided by the total in that
+stratum.
+
+220
+00:11:18,030 --> 00:11:21,020
+That will give me the expected value of
+cell a,
+
+221
+00:11:21,020 --> 00:11:24,180
+as we talked about when we talked about
+the chi-squared statistic last week.
+
+222
+00:11:24,180 --> 00:11:26,080
+So I calculated that expected value.
+
+223
+00:11:26,080 --> 00:11:27,990
+I plug that in here and then,
+
+224
+00:11:27,990 --> 00:11:30,770
+notice, I am going to view this as a
+summation sign here.
+
+225
+00:11:30,770 --> 00:11:34,950
+So I'm going to be doing this for all six
+strata, or all K strata, if we want to be
+
+226
+00:11:34,950 --> 00:11:39,730
+more general, and I'm taking the observed,
+I'm subtracting from the expected.
+
+227
+00:11:39,730 --> 00:11:44,750
+And then I'm adding all of those observed
+minus expecteds up across all the strata,
+
+228
+00:11:44,750 --> 00:11:47,310
+and then I'm squaring that after the fact.
+
+229
+00:11:47,310 --> 00:11:49,040
+That's the numerator.
+
+230
+00:11:49,040 --> 00:11:49,880
+What's the denominator?
+
+231
+00:11:49,880 --> 00:11:53,490
+The denominator is calculated by typing
+the variance of a.
+
+232
+00:11:53,490 --> 00:11:56,150
+Now I haven't told you how to calculate
+the variance of a.
+
+233
+00:11:56,150 --> 00:11:57,920
+So I'm going to give you the formula now.
+
+234
+00:11:57,920 --> 00:12:00,540
+Again it's a little bit tedious, but
+basically we're going to calculate this
+
+235
+00:12:00,540 --> 00:12:03,180
+variance term for every strata and then
+just add them up.
+
+236
+00:12:03,180 --> 00:12:04,770
+That becomes the denominator.
+
+237
+00:12:04,770 --> 00:12:07,390
+So here is the formula for the variance.
+
+238
+00:12:07,390 --> 00:12:08,990
+I'm showing you the expected value formula
+here,
+
+239
+00:12:08,990 --> 00:12:11,890
+I've already talked about that, and here's
+the formula for the variance.
+
+240
+00:12:11,890 --> 00:12:16,500
+It looks rather cumbersome, but this is
+just row one times row two,
+
+241
+00:12:16,500 --> 00:12:21,030
+times column one, times column two,
+divided by n squared, times n minus one.
+
+242
+00:12:21,030 --> 00:12:24,320
+And we do this again, specific to each
+strata.
+
+243
+00:12:24,320 --> 00:12:25,380
+A little tedious to calculate.
+
+244
+00:12:25,380 --> 00:12:27,730
+I'll just tell you where this comes from.
+
+245
+00:12:27,730 --> 00:12:30,267
+We happened to have a situation here where
+we ha-,
+
+246
+00:12:30,267 --> 00:12:33,020
+we are on a hyper-geometric dias-,
+distribution.
+
+247
+00:12:33,020 --> 00:12:35,020
+That distribution comes with a variance.
+
+248
+00:12:35,020 --> 00:12:36,640
+And that's the variance for that
+distribution.
+
+249
+00:12:36,640 --> 00:12:39,040
+I won't go into more detail on it,.
+
+250
+00:12:39,040 --> 00:12:41,040
+You're not going to have to do too many of
+these by hand, fortunately.
+
+251
+00:12:41,040 --> 00:12:42,810
+But that is the variance of a.
+
+252
+00:12:42,810 --> 00:12:43,810
+So we're going to add those all up.
+
+253
+00:12:43,810 --> 00:12:45,050
+That makes the denominator.
+
+254
+00:12:45,050 --> 00:12:49,210
+This turns out to have a chi-square with
+one degree of freedom distribution under
+
+255
+00:12:49,210 --> 00:12:49,990
+the null hypothesis.
+
+256
+00:12:51,670 --> 00:12:53,430
+Why is this a chi-square with one degree
+of freedom?
+
+257
+00:12:53,430 --> 00:12:56,330
+I'm going to take a few minutes now to
+just explain why this is
+
+258
+00:12:56,330 --> 00:12:59,390
+a chi square with one degree of freedom.
+
+259
+00:12:59,390 --> 00:13:02,550
+If your head is swimming with summation
+tides of this,
+
+260
+00:13:02,550 --> 00:13:05,908
+really, just you don't care about this
+mathematical detail,
+
+261
+00:13:05,908 --> 00:13:08,870
+it's not absolutely essential, you can
+scroll forward on the video if you want.
+
+262
+00:13:08,870 --> 00:13:12,425
+But I just think its really cool to point
+out exactly why this falls at
+
+263
+00:13:12,425 --> 00:13:13,350
+chi-square with one degree of freedom.
+
+264
+00:13:13,350 --> 00:13:17,480
+This gets a little bit mathy, but I think
+is interesting to see walked through.
+
+265
+00:13:17,480 --> 00:13:18,440
+So where does this come from?
+
+266
+00:13:18,440 --> 00:13:22,470
+How come this statistic comes out to be a
+chi-square with one degree of freedom?
+
+267
+00:13:22,470 --> 00:13:25,460
+Well, I'm just going to rewrite this
+formula a little bit for you.
+
+268
+00:13:25,460 --> 00:13:28,250
+So, I'm going to take everything in this
+square and
+
+269
+00:13:28,250 --> 00:13:30,640
+just leave this square for the moment.
+
+270
+00:13:30,640 --> 00:13:33,970
+If I'm just kind of looking at this, what
+I'm
+
+271
+00:13:33,970 --> 00:13:38,560
+doing is I'm adding up the observed minus
+the expected in each cell, each stratum.
+
+272
+00:13:38,560 --> 00:13:43,170
+But that's the same as just adding up all
+the observed and then subtracting from
+
+273
+00:13:43,170 --> 00:13:46,520
+the sum of all the expected, right, I can
+distribute this summation sign.
+
+274
+00:13:46,520 --> 00:13:49,130
+So I, another way I can write this is I
+can just say that this
+
+275
+00:13:49,130 --> 00:13:53,930
+is the sum of the observed cells across
+each, observed cells A's across each of
+
+276
+00:13:53,930 --> 00:13:56,940
+the different strata if I just add them
+up, so it's a sum of A's.
+
+277
+00:13:56,940 --> 00:13:57,790
+That's my observed.
+
+278
+00:13:57,790 --> 00:14:01,050
+And then I'm going to rewrite my expected
+term a little bit.
+
+279
+00:14:01,050 --> 00:14:06,895
+So I have a sum of expected values here,
+but hopefully you know from a previous
+
+280
+00:14:06,895 --> 00:14:12,940
+statistics course that the sum of expected
+values is the expected value of the sum.
+
+281
+00:14:14,825 --> 00:14:16,920
+OK, just bear with me for a minute more
+here.
+
+282
+00:14:16,920 --> 00:14:18,930
+So we've got an observed minus and
+expected.
+
+283
+00:14:18,930 --> 00:14:22,060
+If I just say, you know, that the sum of a
+is the thing I care about,
+
+284
+00:14:22,060 --> 00:14:24,101
+I have an observed minus and expected in
+the numerator.
+
+285
+00:14:24,101 --> 00:14:25,980
+And then what about the denominator?
+
+286
+00:14:25,980 --> 00:14:30,070
+Well, hopefully you remember from a
+previous statistics class that the sum of
+
+287
+00:14:30,070 --> 00:14:34,390
+variances is the variances of the sum, if
+you have independent things,
+
+288
+00:14:34,390 --> 00:14:35,300
+which we do have here.
+
+289
+00:14:35,300 --> 00:14:40,550
+So I can rewrite the denominator also as
+the variance of the sum of a case.
+
+290
+00:14:41,660 --> 00:14:48,390
+So now we've got an observed minus an
+expected squared divided by a variance.
+
+291
+00:14:48,390 --> 00:14:54,040
+Well, that happens to have a chi-square,
+with one degree of freedom distribution.
+
+292
+00:14:54,040 --> 00:14:58,160
+And I can show you that very easily by
+just reminding you that,
+
+293
+00:14:58,160 --> 00:15:01,000
+if I square root everything, I should end
+up with a z-square.
+
+294
+00:15:01,000 --> 00:15:03,728
+So I'm now going to take the square root
+of this whole term.
+
+295
+00:15:03,728 --> 00:15:05,630
+So I'm going to get rid of the square on
+the numerator and
+
+296
+00:15:05,630 --> 00:15:08,110
+I'm going to take the square root of the
+denominator.
+
+297
+00:15:08,110 --> 00:15:09,450
+So what do I have now?
+
+298
+00:15:09,450 --> 00:15:13,430
+I've got a sum of a, that's my observed,
+minus the expected value of
+
+299
+00:15:13,430 --> 00:15:18,440
+that same quantity divided by the standard
+deviation of that same quantity.
+
+300
+00:15:18,440 --> 00:15:22,660
+So I have an observed minus an expected
+divided by a standard deviation.
+
+301
+00:15:22,660 --> 00:15:25,630
+Well, we know that an observed minus an
+expected divided by its
+
+302
+00:15:25,630 --> 00:15:27,940
+standard deviation is just a Z statistic.
+
+303
+00:15:27,940 --> 00:15:29,090
+That's just a standard normal.
+
+304
+00:15:29,090 --> 00:15:34,220
+So we've proven that this is actually just
+a Z square, but I told you last week
+
+305
+00:15:34,220 --> 00:15:40,630
+that if you square a Z, you end up on a
+chi-square with one degree of freedom.
+
+306
+00:15:40,630 --> 00:15:43,630
+And so that's why this is a chi-square
+with one degree of freedom.
+
+307
+00:15:43,630 --> 00:15:45,400
+So, again, a little bit of mathematical
+detail there, but
+
+308
+00:15:45,400 --> 00:15:47,260
+I think useful to kind of think that
+through.
+
+309
+00:15:50,260 --> 00:15:54,160
+Now, I'm just going to actually plug in
+numbers into this formula.
+
+310
+00:15:54,160 --> 00:15:56,840
+You'll see that I got a little bored of
+plugging in the numbers.
+
+311
+00:15:56,840 --> 00:15:59,820
+So, yeah, you have to back to the slides
+where I give the actual numbers in all of
+
+312
+00:15:59,820 --> 00:16:01,590
+those two by two tables, the, you know,
+
+313
+00:16:01,590 --> 00:16:04,970
+first cell a, was 19 and so on and so
+forth.
+
+314
+00:16:04,970 --> 00:16:08,320
+I started plugging them in and then I, it
+was rather tedious.
+
+315
+00:16:08,320 --> 00:16:11,440
+So I have to admit that I didn't actually
+plug and check all these numbers.
+
+316
+00:16:11,440 --> 00:16:16,080
+I put the data into SAS, and I let SAS
+calculate out this chi-square for me.
+
+317
+00:16:16,080 --> 00:16:16,790
+SAS spit out 1.49.
+
+318
+00:16:16,790 --> 00:16:21,880
+I'm going to trust that SAS did the adding
+and subtracting correctly here.
+
+319
+00:16:21,880 --> 00:16:24,620
+So I have a chi-square with one degree of
+freedom.
+
+320
+00:16:24,620 --> 00:16:26,370
+My value comes out to be 1.49.
+
+321
+00:16:26,370 --> 00:16:30,460
+I could take that and go to a chi-square
+chart, or,
+
+322
+00:16:30,460 --> 00:16:33,360
+of course, in SAS, I'm also going to get
+the P-value spit out to me,
+
+323
+00:16:33,360 --> 00:16:36,404
+so SAS told me that corresponding P-value
+is 0.22.
+
+324
+00:16:36,404 --> 00:16:40,380
+I'll just point out that you won't really
+need to go to a statistical chart here to
+
+325
+00:16:40,380 --> 00:16:43,160
+know that this is going to be
+statistically significant.
+
+326
+00:16:43,160 --> 00:16:46,818
+So you know a chi-square with one degree
+of freedom is just a Z square and,
+
+327
+00:16:46,818 --> 00:16:50,771
+if I square root 1.49, I'm certainly
+going to come up with something that's
+
+328
+00:16:50,771 --> 00:16:55,320
+less than 1.96 and we know a Z of 1.96 is
+the cut off for statistical significance.
+
+329
+00:16:55,320 --> 00:16:58,380
+So that's one way to know that this is not
+going to be significant.
+
+330
+00:16:58,380 --> 00:17:02,230
+You can also reach for what I talked about
+last week, that a chi-square with one
+
+331
+00:17:02,230 --> 00:17:06,230
+degree of freedom, the expected value's
+going to be one, and the variance is
+
+332
+00:17:06,230 --> 00:17:09,430
+going to be two times the degrees of
+freedom, so that's going to be two.
+
+333
+00:17:09,430 --> 00:17:11,190
+So if the expected value here is one and
+
+334
+00:17:11,190 --> 00:17:13,740
+the variance is two, that means the
+standard deviation's about 1.7.
+
+335
+00:17:13,740 --> 00:17:17,830
+We know that 1.49 is not going to be
+anywhere near the tail of
+
+336
+00:17:17,830 --> 00:17:18,590
+that distribution.
+
+337
+00:17:18,590 --> 00:17:21,130
+So it's clear that that's not going to be
+statistically significant.
+
+338
+00:17:21,130 --> 00:17:22,900
+Indeed, the P value comes out to be 0.22.
+
+339
+00:17:22,900 --> 00:17:26,930
+We have no evidence that gender and
+admissions are related,
+
+340
+00:17:26,930 --> 00:17:28,390
+after adjusting for program.
+
+341
+00:17:30,520 --> 00:17:32,300
+And, agan, I got SAS to do this for me.
+
+342
+00:17:32,300 --> 00:17:33,280
+So, in SAS,
+
+343
+00:17:33,280 --> 00:17:36,530
+it's just the first row of this output of
+the Mantel-Haenszel Statistic.
+
+344
+00:17:36,530 --> 00:17:38,950
+There are slightly different versions of
+the Mantel-Haenszel Statistic, but
+
+345
+00:17:38,950 --> 00:17:41,910
+you can see that here, this simple case,
+everything comes out the same.
+
+346
+00:17:41,910 --> 00:17:43,230
+We're just going to pick the first line
+there.
+
+347
+00:17:43,230 --> 00:17:48,560
+Now, let me tell you how to calculate that
+Mantel-Haenszel summary odds ratio or
+
+348
+00:17:48,560 --> 00:17:49,300
+risk ratio.
+
+349
+00:17:49,300 --> 00:17:52,420
+This, of course, only applies to two by
+two tables because we can only calculate
+
+350
+00:17:52,420 --> 00:17:54,740
+risk ratios or odds ratios from two by two
+tables.
+
+351
+00:17:56,210 --> 00:17:58,410
+So, a little caveat here.
+
+352
+00:17:58,410 --> 00:18:02,080
+We want to calculate summary odds ratios
+if the relative risk,
+
+353
+00:18:02,080 --> 00:18:06,740
+the risk ratios of the odds ratios are
+homogenous across the different strata.
+
+354
+00:18:08,050 --> 00:18:11,120
+That, it wouldn't, it wouldn't seem really
+fair to pool them,
+
+355
+00:18:11,120 --> 00:18:14,720
+if there was interaction going on or
+effect modification going on here.
+
+356
+00:18:14,720 --> 00:18:17,160
+In other words, if the relationship
+between the predictor and
+
+357
+00:18:17,160 --> 00:18:21,641
+the outcome was different in different
+strata, it doesn't seem like it would be
+
+358
+00:18:21,641 --> 00:18:25,450
+fair to pool them to come up with a single
+summary odds ratio or risk ratio.
+
+359
+00:18:25,450 --> 00:18:28,870
+So we're, in a minute I'm going to show
+you how to evaluate whether or
+
+360
+00:18:28,870 --> 00:18:30,750
+not we have interaction going on.
+
+361
+00:18:30,750 --> 00:18:32,540
+If we don't have interaction going on,
+
+362
+00:18:32,540 --> 00:18:35,410
+then it seems fair to pool them, so how
+are we going to pool them?
+
+363
+00:18:36,850 --> 00:18:39,860
+So here's the formula [SOUND] that we're
+going to use to pool them.
+
+364
+00:18:39,860 --> 00:18:41,465
+it's, again, a little tedious to
+calculate, but
+
+365
+00:18:41,465 --> 00:18:44,290
+not too hard to understand, so we're just
+kind of walking through what we're doing.
+
+366
+00:18:44,290 --> 00:18:46,100
+It's just calculating weighted average.
+
+367
+00:18:46,100 --> 00:18:49,007
+I'm going to start with the odds ratio
+because the odds ratio,
+
+368
+00:18:49,007 --> 00:18:50,610
+is slightly simpler.
+
+369
+00:18:50,610 --> 00:18:52,350
+So what are you looking at here?
+
+370
+00:18:52,350 --> 00:18:56,920
+So what we're doing in the numerator is
+we're, again, summing up over k strata.
+
+371
+00:18:56,920 --> 00:18:58,898
+So we've got, in the Berkeley example,
+
+372
+00:18:58,898 --> 00:19:01,450
+we have six strata, we're going to sum up
+over the six strata.
+
+373
+00:19:01,450 --> 00:19:03,980
+So k just represents the number of strata.
+
+374
+00:19:03,980 --> 00:19:07,571
+The Ti I'm using to represent the total
+sample size in the ith stratum, and
+
+375
+00:19:07,571 --> 00:19:10,030
+that's what I was calling nk before.
+
+376
+00:19:10,030 --> 00:19:10,940
+Same thing.
+
+377
+00:19:10,940 --> 00:19:14,390
+So that's the total sample size in the ith
+stratum.
+
+378
+00:19:14,390 --> 00:19:15,820
+So we're just going to go through and
+
+379
+00:19:15,820 --> 00:19:21,050
+we're going to, in the numerator, we're
+going to add up for each strata.
+
+380
+00:19:21,050 --> 00:19:23,890
+We're going to start, say, with the first
+stratum, we're going to do a times d,
+
+381
+00:19:23,890 --> 00:19:25,460
+which is the numerator when odds ratio.
+
+382
+00:19:25,460 --> 00:19:28,150
+But then we're going to weight it by
+dividing by the total number in that
+
+383
+00:19:28,150 --> 00:19:30,260
+strata, whatever that number happens to
+be.
+
+384
+00:19:30,260 --> 00:19:32,140
+And then we're going to do that for all
+six stratum and
+
+385
+00:19:32,140 --> 00:19:34,240
+add them up, that constitutes the
+numerator.
+
+386
+00:19:34,240 --> 00:19:36,570
+We're going to do something very similar
+in the denominator but
+
+387
+00:19:36,570 --> 00:19:38,960
+we're going to use b times c which is the
+denominator of.
+
+388
+00:19:38,960 --> 00:19:39,610
+An odds ratio.
+
+389
+00:19:39,610 --> 00:19:42,010
+And you'll see that if you look at the
+formula for
+
+390
+00:19:42,010 --> 00:19:44,530
+an odds ratio, it looks very similar to
+the formula here,
+
+391
+00:19:44,530 --> 00:19:49,460
+we're just weighting by the size of the
+strata, and averaging over all the strata.
+
+392
+00:19:49,460 --> 00:19:52,240
+So that's how you calculate the
+Mantel-Haenszel summary odds ratio.
+
+393
+00:19:52,240 --> 00:19:53,080
+At the end of this module,
+
+394
+00:19:53,080 --> 00:19:55,968
+I'll walk you through an actual example if
+you want to see some numbers put to that.
+
+395
+00:19:55,968 --> 00:20:01,888
+Now, the Mantel-Haenszel summary risk
+ratio is only slightly more complicated.
+
+396
+00:20:01,888 --> 00:20:06,090
+So, the Mantel-Haenszel summary risk
+ratio.
+
+397
+00:20:06,090 --> 00:20:08,000
+We're, we're going to do the same kind of
+thing.
+
+398
+00:20:08,000 --> 00:20:10,810
+Except now you can see that the numerators
+are slightly more complicated here.
+
+399
+00:20:10,810 --> 00:20:13,720
+W're going to take a in the first straum
+for exmpale and
+
+400
+00:20:13,720 --> 00:20:17,790
+multiply it times the total number of
+unexposed c plus d.
+
+401
+00:20:17,790 --> 00:20:21,080
+And then but again we're dividing by to
+wait by the total in the stratum.
+
+402
+00:20:21,080 --> 00:20:23,180
+We're adding up over all the different
+stratum.
+
+403
+00:20:23,180 --> 00:20:27,754
+But where does this a times c plus d comes
+from actually.
+
+404
+00:20:27,754 --> 00:20:32,450
+If you look at the formula for a risk
+ratio, it falls out on that pretty easily.
+
+405
+00:20:32,450 --> 00:20:34,090
+So coming to the risk ratio, we want to
+know,
+
+406
+00:20:34,090 --> 00:20:36,220
+what is out of everybody is exposed?,
+
+407
+00:20:36,220 --> 00:20:37,500
+what percent that the disease.
+
+408
+00:20:37,500 --> 00:20:40,660
+So that's just a divided by a plus b.
+
+409
+00:20:40,660 --> 00:20:43,290
+For the denominator we want to know how
+many,
+
+410
+00:20:43,290 --> 00:20:46,070
+what percent got the disease out of
+everybody who was not exposed to that.
+
+411
+00:20:46,070 --> 00:20:47,920
+That's just c divided by c plus d.
+
+412
+00:20:47,920 --> 00:20:51,230
+Well if you slightly rearrange this
+formula.
+
+413
+00:20:51,230 --> 00:20:55,450
+You end up seeing that that's equivalent
+to a times c plus d in the numerator,
+
+414
+00:20:55,450 --> 00:20:58,130
+divided by c times a plus b in the
+denominator.
+
+415
+00:20:58,130 --> 00:21:00,470
+And that's where we're getting these
+numerators.
+
+416
+00:21:00,470 --> 00:21:01,880
+And the rest is the same.
+
+417
+00:21:01,880 --> 00:21:04,200
+We're just going to plug into that as we
+would do with the odds.
+
+418
+00:21:04,200 --> 00:21:04,770
+Ratio.
+Again,
+
+419
+00:21:04,770 --> 00:21:07,520
+I'll walk you through in a miracle example
+in a minute.
+
+420
+00:21:07,520 --> 00:21:09,040
+You won't have to do too many of these by
+hand.
+
+421
+00:21:09,040 --> 00:21:10,470
+But it's good to just see where it comes
+from.
+
+422
+00:21:12,280 --> 00:21:16,030
+So here is, I'm actually going to walk you
+through [SOUND] plugging in the data for
+
+423
+00:21:16,030 --> 00:21:17,190
+Berkeley example.
+
+424
+00:21:17,190 --> 00:21:18,040
+This wasn't too hard.
+
+425
+00:21:18,040 --> 00:21:19,856
+I actually went through and plugged in all
+the numbers.
+
+426
+00:21:19,856 --> 00:21:25,130
+In the first stratum, for example,
+
+427
+00:21:25,130 --> 00:21:31,150
+19 was your" a cell," 933 was the total,
+and 825 was the,
+
+428
+00:21:31,150 --> 00:21:34,450
+in this case, the total number of men who
+had applied to that program.
+
+429
+00:21:34,450 --> 00:21:36,750
+You're going to do that for all six
+strata.
+
+430
+00:21:36,750 --> 00:21:38,740
+And then add them up for the numerator.
+
+431
+00:21:38,740 --> 00:21:40,050
+Similar to for the denominator.
+
+432
+00:21:40,050 --> 00:21:41,870
+And when I this all, it comes out to be
+0.95.
+
+433
+00:21:42,970 --> 00:21:46,330
+I'm not going to give you the formula to
+get the confidence limits.
+
+434
+00:21:46,330 --> 00:21:50,260
+I am, it's it's obviously if it's this
+hard to calculate the risk ratio itself,
+
+435
+00:21:50,260 --> 00:21:52,130
+it's going to be even more complicated.
+
+436
+00:21:52,130 --> 00:21:53,640
+To calculate confidence limits by hand,
+
+437
+00:21:53,640 --> 00:21:54,730
+you're not going to have to do that by
+hand.
+
+438
+00:21:54,730 --> 00:21:56,640
+I'm going to allow the computer to do that
+for me.
+
+439
+00:21:56,640 --> 00:22:01,410
+Luckily we have computers to do that for
+us and indeed if I ask for
+
+440
+00:22:01,410 --> 00:22:05,450
+the Mantel-Haenszel summary statistics,
+what I'm going to get here.
+
+441
+00:22:05,450 --> 00:22:08,370
+Is I'm, I want the cohort one because
+that's the risk ratio I,
+
+442
+00:22:08,370 --> 00:22:11,600
+I don't need the odds ratio here because I
+don't have a case control study.
+
+443
+00:22:11,600 --> 00:22:17,178
+I get that 0.95 which I just calculated,
+and my confidence limits turn out to be
+
+444
+00:22:17,178 --> 00:22:22,240
+0.87 to 1.03 pretty tightly around 1
+because they have fairly large numbers and
+
+445
+00:22:22,240 --> 00:22:26,550
+clearly it Includes one so this is not
+statistically significant.
+
+446
+00:22:26,550 --> 00:22:29,180
+If you're just curious what else is in
+this chart here.
+
+447
+00:22:29,180 --> 00:22:32,440
+This logit here just means that sas
+actually went ahead and
+
+448
+00:22:32,440 --> 00:22:34,760
+ran a logistic regression to adjust her
+program.
+
+449
+00:22:34,760 --> 00:22:36,930
+Something we're going to do pretty soon.
+
+450
+00:22:36,930 --> 00:22:39,980
+And it's spitting out the results from
+that logistic regression.
+
+451
+00:22:39,980 --> 00:22:42,300
+we're, we don't, we're not going to choose
+that from the output here.
+
+452
+00:22:42,300 --> 00:22:45,210
+But just notice that we can also adjust
+for her program.
+
+453
+00:22:45,210 --> 00:22:48,010
+For the confounder by regression by
+logistic regression.
+
+454
+00:22:48,010 --> 00:22:50,180
+Which.
+We're going to do in the upcoming weeks.
+
+455
+00:22:51,280 --> 00:22:54,850
+Alright, so just to summarize, we started
+with an adjusted risk ratio of 1.25.
+
+456
+00:22:54,850 --> 00:22:58,680
+It looked like being a woman was going to
+to decrease your likelihood of
+
+457
+00:22:58,680 --> 00:23:00,740
+getting into [SOUND] Berkely Graduate
+School.
+
+458
+00:23:00,740 --> 00:23:03,850
+The stratum specific relative risks are
+shown here.
+
+459
+00:23:03,850 --> 00:23:06,550
+We saw that once we looked in individual
+programs,
+
+460
+00:23:06,550 --> 00:23:08,990
+it didn't look like there was much of a
+relationship.
+
+461
+00:23:08,990 --> 00:23:11,608
+Between gender and your admissions.
+
+462
+00:23:11,608 --> 00:23:15,410
+Except potentially [SOUND] in the very
+first round where it looked better to
+
+463
+00:23:15,410 --> 00:23:17,880
+be a woman in that case.
+
+464
+00:23:17,880 --> 00:23:21,130
+When we calculate that [UNKNOWN] risk
+ratio it comes out to
+
+465
+00:23:21,130 --> 00:23:22,160
+be very close to one.
+
+466
+00:23:22,160 --> 00:23:25,700
+Now the question that we haven't dealt
+with that we need to deal with.
+
+467
+00:23:25,700 --> 00:23:28,490
+And I've pooled the risk ratios as if we
+have
+
+468
+00:23:28,490 --> 00:23:30,490
+homogeneity across the different strata.
+
+469
+00:23:30,490 --> 00:23:32,680
+In other words, as if we don't have any
+interaction or
+
+470
+00:23:32,680 --> 00:23:34,480
+affect modification going on here.
+
+471
+00:23:34,480 --> 00:23:37,580
+But you'll notice that one of the stratum
+does look different.
+
+472
+00:23:37,580 --> 00:23:42,150
+So potentially we may have a significant
+interaction by program here, so
+
+473
+00:23:42,150 --> 00:23:44,330
+we need to actually evaluate a test for
+that.
+
+474
+00:23:46,040 --> 00:23:48,740
+So how do we test for effect modification
+or interaction?
+
+475
+00:23:48,740 --> 00:23:52,800
+So in the case of just looking at
+stratified contingency tables,
+
+476
+00:23:52,800 --> 00:23:55,640
+the test that we're going to use is
+something called the Breslow-Day test
+
+477
+00:23:55,640 --> 00:23:57,270
+for homogeneity.
+
+478
+00:23:57,270 --> 00:24:01,500
+The null hypothesis here is that we have,
+do not have interaction, so
+
+479
+00:24:01,500 --> 00:24:06,010
+that the, that is that the risk ratios or
+odds ratios are homogenous.
+
+480
+00:24:06,010 --> 00:24:07,295
+Across the different strata.
+
+481
+00:24:07,295 --> 00:24:09,240
+If we reject this test, if we reject this
+
+482
+00:24:10,700 --> 00:24:14,010
+null hypothesis then that would indicate
+that we do have interaction.
+
+483
+00:24:14,010 --> 00:24:16,070
+I am not going to make you do the
+[UNKNOWN] test by hand.
+
+484
+00:24:16,070 --> 00:24:17,470
+The formula is rather complicated.
+
+485
+00:24:17,470 --> 00:24:20,650
+It's even worse that I've kind of
+summarized it quickly here, but
+
+486
+00:24:20,650 --> 00:24:21,360
+it's even worse than this.
+
+487
+00:24:21,360 --> 00:24:23,140
+You're not going to have to do it by hand.
+
+488
+00:24:23,140 --> 00:24:24,480
+But it's just evaluating whether or
+
+489
+00:24:24,480 --> 00:24:29,804
+not the effect size is the same across the
+different strata.
+
+490
+00:24:29,804 --> 00:24:33,970
+If the [UNKNOWN] comes up significant then
+we do have effect modification.
+
+491
+00:24:33,970 --> 00:24:35,020
+So what happens here?
+
+492
+00:24:35,020 --> 00:24:38,710
+Well, I ran this in SAS, I did not do this
+by hand, I ran the reso
+
+493
+00:24:38,710 --> 00:24:44,300
+day test in SAS and the p value d comes
+out significant for the Berkeley example.
+
+494
+00:24:44,300 --> 00:24:47,120
+So it turns out that program, what
+department.
+
+495
+00:24:47,120 --> 00:24:47,810
+You're applying to.
+
+496
+00:24:47,810 --> 00:24:53,370
+That variable is both a confounder and an
+effect modifier.
+
+497
+00:24:53,370 --> 00:24:55,950
+And this can happen, and that's important
+to really understand,
+
+498
+00:24:55,950 --> 00:24:59,870
+is that variables can be both confounders
+and effect modifiers.
+
+499
+00:24:59,870 --> 00:25:02,680
+And that is what happened in this case.
+
+500
+00:25:02,680 --> 00:25:08,240
+So argueably, because cell a is different
+than the other strata,
+
+501
+00:25:08,240 --> 00:25:11,270
+we might not want to report a, a pooled.
+
+502
+00:25:11,270 --> 00:25:15,520
+Risk ratio here because we'd be missing
+something of an important effect.
+
+503
+00:25:16,550 --> 00:25:19,020
+So if you look again look at the stratum
+specific risk ratios,
+
+504
+00:25:19,020 --> 00:25:20,490
+probably these all look homogeneous.
+
+505
+00:25:20,490 --> 00:25:21,330
+This one looks different.
+
+506
+00:25:21,330 --> 00:25:26,700
+And indeed, the Breslow-Day test rejects,
+saying we have interaction by the program.
+
+507
+00:25:26,700 --> 00:25:30,060
+The program modifies the effect of gender
+on admissions because this
+
+508
+00:25:30,060 --> 00:25:32,380
+one program looks different than the
+others.
+
+509
+00:25:32,380 --> 00:25:35,860
+So combining the risk ratios into a single
+summary risk ratio might
+
+510
+00:25:35,860 --> 00:25:39,860
+actually obscure that there's a pro female
+bias in program A.
+
+511
+00:25:39,860 --> 00:25:41,010
+We're missing some things.
+
+512
+00:25:41,010 --> 00:25:43,170
+You always want to make sure you test for
+interaction.
+
+513
+00:25:43,170 --> 00:25:46,120
+And if there is interaction, you probably
+want to just report
+
+514
+00:25:46,120 --> 00:25:50,280
+the stratum specific risk ratios instead
+of reporting the pooled one.
+
+515
+00:25:53,250 --> 00:25:56,620
+I just want to end here with another
+example where I
+
+516
+00:25:56,620 --> 00:25:59,400
+actually go through a case control study,
+just to show you how to
+
+517
+00:25:59,400 --> 00:26:04,900
+actually apply the Mandel Hansel odds
+ratio formula numerically.
+
+518
+00:26:04,900 --> 00:26:07,380
+So just to give you some example data from
+a case control study,
+
+519
+00:26:07,380 --> 00:26:09,860
+here's a study that was looking at whether
+or
+
+520
+00:26:09,860 --> 00:26:13,820
+not, if your spouse smokes, does that
+increase your risk of lung cancer?
+
+521
+00:26:13,820 --> 00:26:14,990
+So if you don't smoke but your spouse.
+
+522
+00:26:14,990 --> 00:26:17,850
+Spouse does, does that increase your risk
+of lung cancer.
+
+523
+00:26:17,850 --> 00:26:20,740
+They did this as a case control study
+because lung cancer is relatively rare,
+
+524
+00:26:20,740 --> 00:26:23,680
+so it's much more efficient to go out and
+find lung cancer cases and
+
+525
+00:26:23,680 --> 00:26:25,610
+then compare them to controls.
+
+526
+00:26:25,610 --> 00:26:28,190
+This was done across multiple countries,
+however.
+
+527
+00:26:28,190 --> 00:26:31,170
+And there was some concern that they might
+be confounding by country,
+
+528
+00:26:31,170 --> 00:26:34,970
+because if you are in a country with
+[UNKNOWN] with very high air pollution, or
+
+529
+00:26:34,970 --> 00:26:37,660
+with very high background rates of
+smoking.
+
+530
+00:26:37,660 --> 00:26:40,660
+Perhaps whether or not your spouse smokes
+doesn't make a big difference on your
+
+531
+00:26:40,660 --> 00:26:44,000
+lung cancer risk, whereas if you're in a
+country with low background rates of
+
+532
+00:26:44,000 --> 00:26:46,240
+air pollution and smoking maybe it makes
+more of a difference.
+
+533
+00:26:46,240 --> 00:26:47,450
+.
+That was the thought.
+
+534
+00:26:47,450 --> 00:26:49,500
+So we have to consider potential
+confounding.
+
+535
+00:26:49,500 --> 00:26:50,520
+Country.
+
+536
+00:26:50,520 --> 00:26:52,140
+So, here's the stratified analysis.
+
+537
+00:26:52,140 --> 00:26:55,340
+When you look at the individual countries
+in
+
+538
+00:26:55,340 --> 00:26:57,760
+the strata from the individual countries,
+actually,
+
+539
+00:26:57,760 --> 00:27:01,070
+the odds ratio comes out to be very
+similar across all three countries.
+
+540
+00:27:01,070 --> 00:27:04,700
+It does indeed look like spousal smoking
+increases your risk of
+
+541
+00:27:04,700 --> 00:27:06,630
+lung cancer a moderate amount.
+
+542
+00:27:06,630 --> 00:27:07,560
+Not a huge odds ratio.
+
+543
+00:27:07,560 --> 00:27:09,140
+Ratios, but somewhat.
+
+544
+00:27:09,140 --> 00:27:11,720
+And it looks pretty similar across the
+different countries.
+
+545
+00:27:11,720 --> 00:27:14,870
+So the odds ratios are 1.5, 1.6, and 1.3.
+
+546
+00:27:14,870 --> 00:27:17,660
+In my mind, those effect sizes are pretty
+similar.
+
+547
+00:27:17,660 --> 00:27:21,950
+And I'm not going to expect the [UNKNOWN]
+test to come out significant here.
+
+548
+00:27:21,950 --> 00:27:23,000
+Those look fairly homogenous.
+
+549
+00:27:23,000 --> 00:27:24,480
+Do this.
+
+550
+00:27:24,480 --> 00:27:27,480
+Now I went ahead and ran all of these
+statistics just for practice here.
+
+551
+00:27:27,480 --> 00:27:31,020
+So I ran the Cochran Mantel Haenszel test
+of conditional independence.
+
+552
+00:27:31,020 --> 00:27:32,560
+This is the chisper test.
+
+553
+00:27:32,560 --> 00:27:37,330
+The null hypothesis here would be that
+spousal smoking is unrelated to lung.
+
+554
+00:27:37,330 --> 00:27:39,285
+This comes out statistically significant.
+
+555
+00:27:39,285 --> 00:27:42,040
+.0196.
+So therefor we have evidence that
+
+556
+00:27:42,040 --> 00:27:43,140
+spousal smoking is actually.
+
+557
+00:27:43,140 --> 00:27:44,870
+Actually related to lung cancer.
+
+558
+00:27:44,870 --> 00:27:46,720
+It does appear to increase your risk
+somewhat.
+
+559
+00:27:48,460 --> 00:27:50,460
+Then I ran the Breslw-Day test of
+homogeneity.
+
+560
+00:27:50,460 --> 00:27:52,330
+This one comes about to be
+non-significant.
+
+561
+00:27:52,330 --> 00:27:53,140
+The P value's .88.
+
+562
+00:27:53,140 --> 00:27:54,160
+Well, that's expected, right,
+
+563
+00:27:54,160 --> 00:27:56,850
+because the odds ratios look pretty
+similar across the different strata.
+
+564
+00:27:56,850 --> 00:28:00,820
+We don't have any evidence of interaction
+by what country you're in.
+
+565
+00:28:02,450 --> 00:28:05,640
+That would mean that it's probably okay
+to.
+
+566
+00:28:05,640 --> 00:28:08,170
+Calculate a summary odds ratio here.
+
+567
+00:28:08,170 --> 00:28:12,170
+So now I'm just going to walk you through
+how to calculate that summary odds ratio.
+
+568
+00:28:12,170 --> 00:28:14,820
+I'll show you the SAS output, because I'm
+not going to do the confidence limits by
+
+569
+00:28:14,820 --> 00:28:18,930
+hand, so when I do this in SAS the summary
+odds ratio is about 1.38.
+
+570
+00:28:18,930 --> 00:28:22,270
+The confidence limits go from 1.04 to
+1.82,
+
+571
+00:28:22,270 --> 00:28:25,880
+in other words, 1.0 is not within the
+confidence interval.
+
+572
+00:28:25,880 --> 00:28:28,190
+This is a statistically significant odds
+ratio.
+
+573
+00:28:30,250 --> 00:28:32,050
+I'm just going to walk you through how to
+numerically how to
+
+574
+00:28:32,050 --> 00:28:34,330
+plug into this formula just so you've seen
+it once so
+
+575
+00:28:34,330 --> 00:28:38,100
+here it is again the Mantel-Haenszel
+summary odds ratio formula.
+
+576
+00:28:38,100 --> 00:28:42,890
+To plug into it I've put the data from the
+three a strata here so
+
+577
+00:28:42,890 --> 00:28:47,550
+you can see how I'm plugging into this
+formula its not too terribly hard.
+
+578
+00:28:47,550 --> 00:28:52,440
+So for the first strata, there was a total
+of 364 people in that first strata.
+
+579
+00:28:52,440 --> 00:28:57,230
+To do A times D is just 73 times 82,
+divided by the total which was 364.
+
+580
+00:28:57,230 --> 00:28:58,350
+We do that again for
+
+581
+00:28:58,350 --> 00:29:02,200
+the second strata, 19 times 16 divided by
+total in that strata, which was 78.
+
+582
+00:29:02,200 --> 00:29:04,120
+And so on, and so forth.
+
+583
+00:29:04,120 --> 00:29:05,770
+You just plug into that formula.
+
+584
+00:29:05,770 --> 00:29:07,610
+When I do that I come out indeed with a.
+
+585
+00:29:07,610 --> 00:29:08,480
+Odds ratio of about 1.38.
+
+586
+00:29:08,480 --> 00:29:12,760
+And that actually makes a lot of sense,
+right?
+
+587
+00:29:12,760 --> 00:29:16,644
+If you think about, we had odds ratios of
+about 1.5, 1.6, and
+
+588
+00:29:16,644 --> 00:29:20,220
+1.3 from the, the three countries.
+
+589
+00:29:20,220 --> 00:29:22,510
+The biggest country was the US.
+
+590
+00:29:22,510 --> 00:29:24,970
+That's quite a bit, has a quite a bit
+bigger sample size, so
+
+591
+00:29:24,970 --> 00:29:28,310
+we think that the weighted average should
+be a little closer to the US value of 1.3.
+
+592
+00:29:28,310 --> 00:29:32,470
+But it's going to be a little bit higher
+1.3 because the other countries had
+
+593
+00:29:32,470 --> 00:29:33,760
+slightly higher values.
+
+594
+00:29:33,760 --> 00:29:38,940
+So 1.38 makes good sense as being a
+reasonable summary odds ratio here.
+
+595
+00:29:40,030 --> 00:29:43,145
+And I'll just end by saying that you're
+not going to see a lot of
+
+596
+00:29:43,145 --> 00:29:46,110
+Mantel-Haenszel statistics in a lot of
+papers.
+
+597
+00:29:46,110 --> 00:29:49,080
+You're probably not going to end up
+publishing a paper that
+
+598
+00:29:49,080 --> 00:29:50,910
+uses Mantel-Haenszel statistics.
+
+599
+00:29:50,910 --> 00:29:54,650
+That's simply because we can do most of
+the adjustment for confounding and testing
+
+600
+00:29:54,650 --> 00:29:57,630
+for interaction within a regression, which
+is what we're going to do in the next.
+
+601
+00:29:57,630 --> 00:29:58,780
+Next couple of weeks.
+
+602
+00:29:58,780 --> 00:30:01,610
+But I still think it's actually useful to
+walk through the Mantel-Haenszel test,
+
+603
+00:30:01,610 --> 00:30:05,680
+because sometimes it's actually nice to go
+back to looking at
+
+604
+00:30:05,680 --> 00:30:08,000
+something in a stratified analysis.
+
+605
+00:30:08,000 --> 00:30:09,500
+It's a little bit more hands on and
+
+606
+00:30:09,500 --> 00:30:12,500
+a little more intuitive than just throwing
+things in a regression.
+
+607
+00:30:12,500 --> 00:30:14,680
+As I mentioned earlier, also,
+
+608
+00:30:14,680 --> 00:30:18,230
+the Mantel-Haenszel test is more general
+than just controlling for confounding.
+
+609
+00:30:18,230 --> 00:30:20,650
+So it's going to come up in some other
+contexts.
+
+610
+00:30:20,650 --> 00:30:21,970
+And then, finally.
+
+611
+00:30:21,970 --> 00:30:23,910
+I think just looking through the
+Mantel-Haenszel and
+
+612
+00:30:23,910 --> 00:30:26,840
+the stratification picture gives you
+
+613
+00:30:26,840 --> 00:30:31,120
+an intuitive sense of how we adjust for
+confounding.
+
+614
+00:30:31,120 --> 00:30:35,420
+How we adjust for confounding is actually
+simiilar in the regression picture.
+
+615
+00:30:35,420 --> 00:30:37,240
+So in the stratified analysis,
+
+616
+00:30:37,240 --> 00:30:40,300
+what we're doing is we're saying we're
+going to hold smoking [UNKNOWN].
+
+617
+00:30:40,300 --> 00:30:42,450
+We're only going to compare smokers to
+smokers.
+
+618
+00:30:42,450 --> 00:30:46,150
+And we're only going to compare nonsmokers
+to nonsmokers.
+
+619
+00:30:46,150 --> 00:30:49,500
+When we then move to continuous
+confounders, which we will do in
+
+620
+00:30:49,500 --> 00:30:53,480
+the regression picture, it's going to be
+very similar, except,
+
+621
+00:30:53,480 --> 00:30:56,550
+when we're talking about continuous
+confounders, what we're literally meaning,
+
+622
+00:30:56,550 --> 00:31:01,030
+that, mathematically, what we're Staying
+in the regression model is something like.
+
+623
+00:31:01,030 --> 00:31:02,450
+If I'm adjusting for age for exmaple.
+
+624
+00:31:02,450 --> 00:31:04,740
+I only want to compare twenty year olds to
+twenty year olds.
+
+625
+00:31:04,740 --> 00:31:07,850
+Or I only compare 21 year olds to 21 year
+olds.
+
+626
+00:31:07,850 --> 00:31:10,850
+Of course your dataset may not have a
+whole bunch of twenty year olds or
+
+627
+00:31:10,850 --> 00:31:12,380
+it might not have a bunch of 21 year olds.
+
+628
+00:31:12,380 --> 00:31:15,220
+So you're not litereally comparing them
+form year sample, but
+
+629
+00:31:15,220 --> 00:31:17,520
+your mathematically setting up a model.
+
+630
+00:31:17,520 --> 00:31:21,330
+That allows you to say I only want to I
+want a whole age fix, and
+
+631
+00:31:21,330 --> 00:31:23,500
+only compare people of the same ages.
+
+632
+00:31:23,500 --> 00:31:26,160
+Essentially that's what we're doing in
+regression to sort of
+
+633
+00:31:26,160 --> 00:31:29,510
+we're taking the limit of what we were
+doing in the stratified picture.
+
+634
+00:31:29,510 --> 00:31:33,070
+So it's kind of nice to see the, the
+stratified methods first because what
+
+635
+00:31:33,070 --> 00:31:36,240
+we're doing in the regression is actually
+very similar but just a.
+
+636
+00:31:36,240 --> 00:31:38,200
+Its a taken a a step further.

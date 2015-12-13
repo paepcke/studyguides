@@ -1,0 +1,1207 @@
+1
+00:00:00,025 --> 00:00:05,041
+[BLANK_AUDIO]
+
+2
+00:00:05,041 --> 00:00:06,283
+In this next module,
+
+3
+00:00:06,283 --> 00:00:10,665
+I'm going to give a brief introduction to
+an overview of survival analysis.
+
+4
+00:00:10,665 --> 00:00:12,842
+[BLANK_AUDIO]
+
+5
+00:00:12,842 --> 00:00:14,342
+So, by way of introduction,
+
+6
+00:00:14,342 --> 00:00:18,250
+I'm going to start with a historical
+example of survival analysis.
+
+7
+00:00:18,250 --> 00:00:19,330
+This is when of the,
+
+8
+00:00:19,330 --> 00:00:23,220
+one of the first survival curves that you
+can find in history.
+
+9
+00:00:23,220 --> 00:00:27,490
+This was drawn in 1669, and what this
+mathematician did,
+
+10
+00:00:27,490 --> 00:00:31,470
+is he said, out of 100 people, how, when
+do people die?
+
+11
+00:00:31,470 --> 00:00:34,160
+How long do, do people survive?
+
+12
+00:00:34,160 --> 00:00:41,260
+This is a survival curve, and what we're
+showing here is the percent surviving
+
+13
+00:00:41,260 --> 00:00:45,980
+at any given age And these are ages on the
+x-axis.
+
+14
+00:00:45,980 --> 00:00:51,760
+And you can see pretty quickly that
+longevity in 1669 was not so good.
+
+15
+00:00:51,760 --> 00:00:55,800
+So if you started with 100 people who were
+born, that's age zero.
+
+16
+00:00:55,800 --> 00:01:00,696
+By age six, if you scroll up here, about a
+third of them had died by age six.
+
+17
+00:01:00,696 --> 00:01:04,096
+Only about two-thirds, a little less than
+two-thirds,
+
+18
+00:01:04,096 --> 00:01:06,747
+64% are still surviving at around age 6.
+
+19
+00:01:06,747 --> 00:01:10,568
+If you go up to age 16, it's only 40% of
+people surviving.
+
+20
+00:01:10,568 --> 00:01:15,378
+So, less than half of people made it to
+age 16 back in 1669.
+
+21
+00:01:15,378 --> 00:01:18,230
+It's really a tribute to to modern
+medicine.
+
+22
+00:01:18,230 --> 00:01:22,300
+If you look at age 20, it's only about a
+third of people surviving.
+
+23
+00:01:22,300 --> 00:01:27,340
+At age 26, it's only about a quarter of
+people surviving, by age 36,
+
+24
+00:01:27,340 --> 00:01:31,260
+five-sixths of people had died, and only
+about a sixth,
+
+25
+00:01:31,260 --> 00:01:37,682
+one-sixth of people made it past age 36
+back in, past age 36 back in 1669.
+
+26
+00:01:37,682 --> 00:01:41,069
+So, the survival odds were not great
+living back then.
+
+27
+00:01:41,069 --> 00:01:45,884
+Again, really good tribute here to modern
+medicine.
+
+28
+00:01:45,884 --> 00:01:48,634
+But this is an early example of a survival
+curve, and this is
+
+29
+00:01:48,634 --> 00:01:52,920
+the kind of curve that we're going to be
+looking at in survival analysis.
+
+30
+00:01:52,920 --> 00:01:55,460
+So we can ask all sorts of questions about
+this curve.
+
+31
+00:01:55,460 --> 00:01:58,610
+So, for example, what's the shape of this
+survival curve?
+
+32
+00:01:58,610 --> 00:02:02,490
+It turns out that this survival curve
+corresponds to an exponential function.
+
+33
+00:02:02,490 --> 00:02:04,087
+We'll see that later today.
+
+34
+00:02:04,087 --> 00:02:08,960
+So we can define an actual mathematical
+function that defines the survival curve.
+
+35
+00:02:10,710 --> 00:02:14,850
+We can also just ask, you know, about
+particular survival probabilities.
+
+36
+00:02:14,850 --> 00:02:17,850
+What's the, what's a person's chance of
+surviving past age 20?
+
+37
+00:02:17,850 --> 00:02:21,850
+Well, there's only, in this case, about a,
+a 33% chance.
+
+38
+00:02:21,850 --> 00:02:24,270
+What was the probability of surviving past
+age 36?
+
+39
+00:02:24,270 --> 00:02:27,245
+There's only about a 16% chance.
+
+40
+00:02:27,245 --> 00:02:29,258
+When we do Kaplan-Meier statistics,
+
+41
+00:02:29,258 --> 00:02:32,857
+what we're actually going to be doing is
+just defining the curve based on
+
+42
+00:02:32,857 --> 00:02:36,110
+the probabilities of surviving past
+particular time points.
+
+43
+00:02:37,300 --> 00:02:39,087
+And this is really what survival analysis
+is.
+
+44
+00:02:39,087 --> 00:02:42,468
+We're trying to estimate this curve, but
+the outcome for
+
+45
+00:02:42,468 --> 00:02:46,226
+survival analysis doesn't necessarily have
+to be death.
+
+46
+00:02:46,226 --> 00:02:50,780
+You'll see that, of course, survival
+analysis was built, the, the tools were
+
+47
+00:02:50,780 --> 00:02:55,400
+built, with time to death in mind, so a
+lot of the terminology makes it, you know,
+
+48
+00:02:55,400 --> 00:03:00,020
+always talks about survival and failure
+but in fact, the methods will work for
+
+49
+00:03:00,020 --> 00:03:03,460
+any binary event, it doesn't just have to
+be death.
+
+50
+00:03:03,460 --> 00:03:06,490
+So we'll see some examples in a minute
+that are not just death.
+
+51
+00:03:06,490 --> 00:03:10,770
+Some of what we care about in survival
+analysis is drawing this curve or
+
+52
+00:03:10,770 --> 00:03:15,310
+defining this curve, but a lot of times
+what we care more about is not just, you
+
+53
+00:03:15,310 --> 00:03:19,470
+know, what does this curve look like, but
+we might want to compare different curves.
+
+54
+00:03:19,470 --> 00:03:24,650
+So for example, we could put the curve
+for, you know, today's survival rates and
+
+55
+00:03:24,650 --> 00:03:27,278
+compare it to survival in 1669.
+
+56
+00:03:27,278 --> 00:03:29,944
+So a lot of times what we're interested
+in, more so
+
+57
+00:03:29,944 --> 00:03:31,680
+than just drawing these curves,
+
+58
+00:03:31,680 --> 00:03:36,279
+is actually to compare different groups
+with respect to their survival experience.
+
+59
+00:03:36,279 --> 00:03:38,677
+[SOUND].
+
+60
+00:03:38,677 --> 00:03:41,669
+Just to give you an example, a more modern
+example,
+
+61
+00:03:41,669 --> 00:03:47,008
+this these are data from the Women's
+Health Initiative, which came out in 2002.
+
+62
+00:03:47,008 --> 00:03:52,480
+This was a very important study, because
+they randomized post-menopausal women,
+
+63
+00:03:52,480 --> 00:03:56,816
+to either take hormone-replacement therapy
+or, a placebo pill.
+
+64
+00:03:56,816 --> 00:04:00,749
+And, the results were very, were very
+surprising at that time because people had
+
+65
+00:04:00,749 --> 00:04:03,599
+thought that hormone replacement therapy
+protected women
+
+66
+00:04:03,599 --> 00:04:06,805
+against coronary heart disease, which is
+what's shown here.
+
+67
+00:04:06,805 --> 00:04:11,485
+And in fact, you can see that these graphs
+are pretty intuitive to interpret, that,
+
+68
+00:04:11,485 --> 00:04:16,165
+this is showing you the cumulative risk of
+getting coronary heart disease over time,
+
+69
+00:04:16,165 --> 00:04:20,280
+and the hormone group is, has a higher
+risk than the placebo group.
+
+70
+00:04:20,280 --> 00:04:25,640
+So in fact it turned out, that the hormone
+replacement therapy actually increased,
+
+71
+00:04:25,640 --> 00:04:30,180
+not decreased, the risk of coronary heart
+disease in post menopausal women and,
+
+72
+00:04:30,180 --> 00:04:34,520
+that was surprising and actually resulted
+in the, the study being halted early.
+
+73
+00:04:34,520 --> 00:04:37,500
+You can see that in the last slide I
+showed you an example of
+
+74
+00:04:37,500 --> 00:04:41,710
+a survival curve where we started at sort
+of 100% survival and dropped off.
+
+75
+00:04:41,710 --> 00:04:44,900
+A lot of times you'll see survival curves
+starting at 100% and
+
+76
+00:04:44,900 --> 00:04:46,890
+dropping down from there.
+
+77
+00:04:46,890 --> 00:04:51,562
+You also may see survival curves like
+this, which show you, the starting at
+
+78
+00:04:51,562 --> 00:04:56,841
+0% and showing you the cumulative total of
+people who develop some kind of disease.
+
+79
+00:04:56,841 --> 00:04:59,976
+It doesn't really matter which direction
+you put the curve in but
+
+80
+00:04:59,976 --> 00:05:04,194
+when you have an outcome that's relatively
+rare, you know, coronary heart disease,
+
+81
+00:05:04,194 --> 00:05:08,412
+you can see 1 or 2, 3%, a relatively rare
+outcome it might be better to describe it,
+
+82
+00:05:08,412 --> 00:05:11,718
+or to draw it as a cumulative hazard
+because if you start at 100%,
+
+83
+00:05:11,718 --> 00:05:14,020
+you're not going to go down very much.
+
+84
+00:05:14,020 --> 00:05:16,742
+But you'll see the curves drawn in both
+ways.
+
+85
+00:05:16,742 --> 00:05:17,844
+I'll just note here,
+
+86
+00:05:17,844 --> 00:05:21,556
+that we're going to be talking about
+something called the hazard ratio
+
+87
+00:05:21,556 --> 00:05:25,043
+that's also printed on this little graphic
+in this particular study.
+
+88
+00:05:25,043 --> 00:05:29,039
+The hazard ratio, which is very similar to
+a relative risk, for
+
+89
+00:05:29,039 --> 00:05:32,147
+coronary heart disease if you compared
+women on,
+
+90
+00:05:32,147 --> 00:05:37,430
+in the hormone group to women in the
+placebo group, the hazard ratio was 1.29.
+
+91
+00:05:37,430 --> 00:05:42,812
+The way that you would interpret that is
+that there was a 29% higher rate of the,
+
+92
+00:05:42,812 --> 00:05:47,750
+of coronary heart disease in the hormone
+group versus the placebo group.
+
+93
+00:05:49,320 --> 00:05:51,300
+So what is survival analysis?
+
+94
+00:05:51,300 --> 00:05:56,810
+It's a set of statistical tools that are
+used for analyzing time-to-event data.
+
+95
+00:05:56,810 --> 00:06:00,160
+And I'll talk about exactly what
+time-to-event data is in just a second
+
+96
+00:06:00,160 --> 00:06:04,230
+here, but because we're waiting for events
+to occur, we're measuring things over
+
+97
+00:06:04,230 --> 00:06:08,390
+time, we're generally going to be dealing
+with data that have been collected over
+
+98
+00:06:08,390 --> 00:06:12,930
+time, that is, either from a randomized
+clinical trial or from a cohort study.
+
+99
+00:06:14,090 --> 00:06:17,880
+You actually need to know the exact timing
+of when things occurred,
+
+100
+00:06:17,880 --> 00:06:19,070
+when events occurred.
+
+101
+00:06:19,070 --> 00:06:23,070
+So, time-to-event variables are actually a
+two-part outcome variable.
+
+102
+00:06:23,070 --> 00:06:26,700
+There's two pieces to it, and in our data
+set we'll actually store this
+
+103
+00:06:26,700 --> 00:06:29,660
+outcome variable as two separate
+variables.
+
+104
+00:06:29,660 --> 00:06:31,570
+So, there is a time part.
+
+105
+00:06:31,570 --> 00:06:33,990
+The time part of a time-to-event variable,
+
+106
+00:06:33,990 --> 00:06:38,250
+records the amount of time that a person
+was in the study,
+
+107
+00:06:38,250 --> 00:06:42,860
+until they either had the event, or, they
+were what we call censored.
+
+108
+00:06:42,860 --> 00:06:48,560
+And by censored we mean, that, we stopped
+following them for whatever reason,
+
+109
+00:06:48,560 --> 00:06:52,080
+but the last time we saw them, they had
+not had the event of interest.
+
+110
+00:06:52,080 --> 00:06:55,830
+So you either, again the time part is
+either the time until the event, or
+
+111
+00:06:55,830 --> 00:06:56,909
+the time until censored.
+
+112
+00:06:58,410 --> 00:07:01,320
+And then there's a binary variable that
+tells us whether or
+
+113
+00:07:01,320 --> 00:07:03,300
+not that person had the event.
+
+114
+00:07:03,300 --> 00:07:04,650
+Some people will have the event.
+
+115
+00:07:04,650 --> 00:07:07,540
+Some people will develop coronary heart
+disease during the study.
+
+116
+00:07:07,540 --> 00:07:09,328
+Some people will not.
+
+117
+00:07:09,328 --> 00:07:12,026
+So, this binary variable records whether
+or
+
+118
+00:07:12,026 --> 00:07:15,789
+not a person had the event or, whether
+they were censored, and
+
+119
+00:07:15,789 --> 00:07:20,411
+again censored means that the last time we
+saw them, they were event free.
+
+120
+00:07:20,411 --> 00:07:23,141
+[BLANK_AUDIO]
+
+121
+00:07:23,141 --> 00:07:24,841
+So we, it's a two-variable outcome,
+
+122
+00:07:24,841 --> 00:07:28,375
+we actually need two separate variables in
+our data set to store this information.
+
+123
+00:07:28,375 --> 00:07:33,115
+The time variable gives us the time at
+which a person had their event, or
+
+124
+00:07:33,115 --> 00:07:38,012
+the, at the last time where we saw them
+and they had not yet had the event.
+
+125
+00:07:38,012 --> 00:07:42,107
+And we also need a censoring variable,
+which is just a binary variable that
+
+126
+00:07:42,107 --> 00:07:46,214
+tells us, yes they had the event, or no
+they did not, they were censored.
+
+127
+00:07:46,214 --> 00:07:49,380
+So just to illustrate, let me throw it in,
+a simple example here.
+
+128
+00:07:49,380 --> 00:07:52,120
+So here's some data on time to conception,
+
+129
+00:07:52,120 --> 00:07:56,900
+just to show you that survival analysis
+doesn't always have to have a bad outcome.
+
+130
+00:07:56,900 --> 00:08:01,390
+So this was some data on 38 women who, all
+of them had some kind of treatment for
+
+131
+00:08:01,390 --> 00:08:04,660
+infertility, so this is a single cohort,
+one group of women.
+
+132
+00:08:04,660 --> 00:08:05,890
+They all had the same treatment.
+
+133
+00:08:07,000 --> 00:08:10,090
+They were followed for up to two years,
+and the event of inter-,
+
+134
+00:08:10,090 --> 00:08:11,360
+interest here was conception.
+
+135
+00:08:11,360 --> 00:08:14,750
+These were women who wanted to get
+pregnant, so again, it's a happy outcome.
+
+136
+00:08:14,750 --> 00:08:18,260
+So, time to a conception is the outcome
+here.
+
+137
+00:08:18,260 --> 00:08:22,830
+Just to show you what the data looked like
+from that study, it's again,
+
+138
+00:08:22,830 --> 00:08:24,970
+a two-variable outcome variable.
+
+139
+00:08:24,970 --> 00:08:27,510
+So we have Time and we have Event.
+
+140
+00:08:27,510 --> 00:08:31,610
+So the Time, again, tells us the amount of
+time they were in the study until they
+
+141
+00:08:31,610 --> 00:08:35,490
+got pregnant, or until they were censored,
+we lost them to follow-up.
+
+142
+00:08:35,490 --> 00:08:38,450
+The event variable tells us whether or not
+they got pregnant or,
+
+143
+00:08:38,450 --> 00:08:41,820
+whether the last time we saw them, they
+were not yet pregnant.
+
+144
+00:08:41,820 --> 00:08:45,960
+So, as an example, this person here was in
+the study for
+
+145
+00:08:45,960 --> 00:08:48,370
+two months before they got pregnant.
+
+146
+00:08:48,370 --> 00:08:52,100
+She did get pregnant in the second cycle,
+the second month.
+
+147
+00:08:52,100 --> 00:08:54,680
+Contrast that down here to this person.
+
+148
+00:08:54,680 --> 00:08:59,140
+This person was in the study for four
+months but she did not get pregnant,
+
+149
+00:08:59,140 --> 00:09:02,190
+so after four months we don't know what
+happened to her.
+
+150
+00:09:02,190 --> 00:09:05,980
+She was probably lost to follow-up, we no
+longer have any data on her,
+
+151
+00:09:05,980 --> 00:09:09,570
+she quit the study for whatever reason we,
+we don't know what
+
+152
+00:09:09,570 --> 00:09:13,260
+happened after four months so, she
+contributes just four months to the study,
+
+153
+00:09:13,260 --> 00:09:17,510
+we at least know that for four months she
+was, pregnancy free in this case.
+
+154
+00:09:19,580 --> 00:09:21,990
+All of the examples that we're going to
+deal with in this class are going to
+
+155
+00:09:21,990 --> 00:09:26,010
+have right censoring, which is the most
+common type of censoring.
+
+156
+00:09:26,010 --> 00:09:30,420
+So right censoring means that you censor
+somebody because the study ended, and
+
+157
+00:09:30,420 --> 00:09:33,720
+at the time the study ended, they still
+had not had the event.
+
+158
+00:09:33,720 --> 00:09:38,220
+Or, because something else happened to
+them like they died due to something that
+
+159
+00:09:38,220 --> 00:09:40,160
+wasn't the event of interest.
+
+160
+00:09:40,160 --> 00:09:44,090
+So they died before they got pregnant, or
+before they had coronary heart disease, so
+
+161
+00:09:44,090 --> 00:09:47,460
+something else that takes them out of the
+study, at, but at the last time we
+
+162
+00:09:47,460 --> 00:09:50,770
+saw them, they had not yet had the event,
+or they were lost to follow-up,
+
+163
+00:09:50,770 --> 00:09:54,690
+because of course with longitudinal
+studies, sometimes people move, they just
+
+164
+00:09:54,690 --> 00:09:59,360
+decide not to participate anymore, you
+lose a good amount of people to follow up.
+
+165
+00:09:59,360 --> 00:10:02,380
+So all of those would be reasons that
+people might be censored.
+
+166
+00:10:02,380 --> 00:10:06,710
+These are all right censoring because,
+right censoring means that we know that
+
+167
+00:10:06,710 --> 00:10:11,860
+the subject survived event free, at least
+up til time T.
+
+168
+00:10:11,860 --> 00:10:12,650
+They may or
+
+169
+00:10:12,650 --> 00:10:18,310
+may not have gone on to later have the
+event, to the right of, of that time.
+
+170
+00:10:18,310 --> 00:10:20,430
+This is in contrast to left censoring.
+
+171
+00:10:20,430 --> 00:10:23,710
+In left censoring, the event would've
+already happened before people
+
+172
+00:10:23,710 --> 00:10:27,350
+joined the study, and we don't necessarily
+know exactly when it happened, but those
+
+173
+00:10:27,350 --> 00:10:30,290
+examples are less common and we're not
+going to deal with those in this class.
+
+174
+00:10:30,290 --> 00:10:33,424
+Everything here is going to be right
+sensored.
+
+175
+00:10:33,424 --> 00:10:35,784
+Now if you're just looking at the data
+the, for
+
+176
+00:10:35,784 --> 00:10:39,324
+the first time seeing time-to-event
+outcomes, you might just say,
+
+177
+00:10:39,324 --> 00:10:42,360
+well, okay, why use survival analysis at
+all?
+
+178
+00:10:42,360 --> 00:10:44,670
+I've got a continuous outcome here, time.
+
+179
+00:10:44,670 --> 00:10:48,300
+So why not just compare the times, the
+mean times or
+
+180
+00:10:48,300 --> 00:10:52,010
+the median times, between the different
+groups using, say a T test or
+
+181
+00:10:52,010 --> 00:10:54,490
+a linear regression which we already know
+about.
+
+182
+00:10:54,490 --> 00:10:57,350
+So of course the problem with that, just
+looking at the time,
+
+183
+00:10:57,350 --> 00:11:01,350
+is you gotta remember that not everybody
+is going to have the event in your study.
+
+184
+00:11:01,350 --> 00:11:03,770
+So you need to account for the censoring.
+
+185
+00:11:03,770 --> 00:11:08,340
+If you just looked at the mean times and
+compared those mean times between groups,
+
+186
+00:11:08,340 --> 00:11:10,510
+you would ignore the fact that some people
+had the event and
+
+187
+00:11:10,510 --> 00:11:12,080
+some people were censored.
+
+188
+00:11:12,080 --> 00:11:13,329
+So that's not going to be sufficient.
+
+189
+00:11:14,360 --> 00:11:18,320
+You might also ask, well, okay, I've got a
+binary outcome here, and sure, you know,
+
+190
+00:11:18,320 --> 00:11:22,750
+some people took longer to get to that
+outcome than others, but, why not just
+
+191
+00:11:22,750 --> 00:11:26,560
+compare the proportion of people who have
+events in all the different groups and
+
+192
+00:11:26,560 --> 00:11:29,270
+use logistic regression like we did
+previously?
+
+193
+00:11:30,850 --> 00:11:35,160
+And, of course, the problem here is, that,
+it ignores the time element.
+
+194
+00:11:35,160 --> 00:11:36,510
+So, yes, some people had events and
+
+195
+00:11:36,510 --> 00:11:40,410
+some people didn't and we could just look
+at those proportions, with risk ratios,
+
+196
+00:11:40,410 --> 00:11:44,390
+odds ratios, logistic regression, but that
+would ignore the time.
+
+197
+00:11:44,390 --> 00:11:47,000
+And, the time may make a difference,
+right?
+
+198
+00:11:47,000 --> 00:11:50,170
+If somebody dies two days into your study,
+and
+
+199
+00:11:50,170 --> 00:11:54,500
+somebody else dies ten years into your
+study, that's a huge difference.
+
+200
+00:11:54,500 --> 00:11:58,520
+If we only looked at death, yes or no,
+we'd be completely ignoring that
+
+201
+00:11:58,520 --> 00:12:01,320
+time part, and losing a whole bunch of
+information.
+
+202
+00:12:01,320 --> 00:12:04,470
+We'd be reducing our statistical power and
+precision.
+
+203
+00:12:04,470 --> 00:12:09,200
+So this way, with survival analysis, we're
+able to incorporate both the time part and
+
+204
+00:12:09,200 --> 00:12:13,620
+the binary yes or no they had the event,
+or they didn't.
+
+205
+00:12:13,620 --> 00:12:16,820
+The basic test that we're going to be
+using for survival analysis, again,
+
+206
+00:12:16,820 --> 00:12:20,270
+this is when we have time-to-event
+outcomes, this very special kind of
+
+207
+00:12:20,270 --> 00:12:24,540
+outcome, you could use what are called
+just basic rate ratios if you
+
+208
+00:12:24,540 --> 00:12:27,830
+don't want to do any adjustment and, and
+there's only two groups.
+
+209
+00:12:27,830 --> 00:12:32,460
+For something a little more fancy, you can
+do Kaplan-Meier statistics, but
+
+210
+00:12:32,460 --> 00:12:35,360
+those are not going to be adjusted for
+anything so that just allows you
+
+211
+00:12:35,360 --> 00:12:39,000
+to compare groups without adjusting for
+any kind of confounding.
+
+212
+00:12:39,000 --> 00:12:42,890
+If you want to do any kind of regression,
+we're going to be doing either, some kind
+
+213
+00:12:42,890 --> 00:12:47,070
+of parametric survival model, which I'm
+going to talk about briefly this week,
+
+214
+00:12:47,070 --> 00:12:50,240
+or you can do cox regression which we're
+going to spend more time on.
+
+215
+00:12:50,240 --> 00:12:52,140
+Those are the multi variant regression
+techniques when
+
+216
+00:12:52,140 --> 00:12:53,972
+you have time-to-event outcomes.
+
+217
+00:12:55,690 --> 00:12:58,000
+And just to give you a little overview of
+those tests which we're going to go
+
+218
+00:12:58,000 --> 00:13:03,204
+into in great detail in upcoming modules,
+just to kind of frame them all together,
+
+219
+00:13:03,204 --> 00:13:07,690
+Kaplan-Meier statistics is what we call a
+non-parametric method.
+
+220
+00:13:07,690 --> 00:13:11,180
+So all that means is that we're not
+going to make any assumptions about
+
+221
+00:13:11,180 --> 00:13:11,930
+the survival curve.
+
+222
+00:13:11,930 --> 00:13:13,900
+We're going to try to draw the survival
+curve,
+
+223
+00:13:13,900 --> 00:13:16,960
+but we're going to just draw what we see
+in our data.
+
+224
+00:13:16,960 --> 00:13:20,890
+We're not going to assume it follows any
+particular mathematical function.
+
+225
+00:13:20,890 --> 00:13:22,780
+We're not going to be estimating any
+parameters, so
+
+226
+00:13:22,780 --> 00:13:24,960
+that means we're not going to be
+estimating hazard ratios or
+
+227
+00:13:24,960 --> 00:13:25,930
+anything like that.
+
+228
+00:13:25,930 --> 00:13:28,480
+We're just going to get these pictures of
+curves and get a p-value.
+
+229
+00:13:28,480 --> 00:13:29,850
+No, no, nothing else.
+
+230
+00:13:29,850 --> 00:13:31,000
+So we call that non-parametric.
+
+231
+00:13:31,000 --> 00:13:32,940
+We're not estimating any parameters.
+
+232
+00:13:32,940 --> 00:13:37,680
+Parametric survival occurs, as you can,
+guess, they're completely parametric.
+
+233
+00:13:37,680 --> 00:13:40,930
+This would mean that we're estimating all
+the possible param-, all,
+
+234
+00:13:40,930 --> 00:13:42,460
+all the possible parameters.
+
+235
+00:13:42,460 --> 00:13:43,990
+So that means we're actually going to try
+to,
+
+236
+00:13:43,990 --> 00:13:48,765
+to fit a per-, perfect mathematical
+function to the different survival curves.
+
+237
+00:13:48,765 --> 00:13:54,400
+And, we're going to, not only compare the
+curves, that, in different groups,
+
+238
+00:13:54,400 --> 00:13:56,980
+but we're also going to try to define the
+underlying curve.
+
+239
+00:13:56,980 --> 00:13:58,410
+What's the shape of that curve?
+
+240
+00:13:58,410 --> 00:14:01,610
+We're going to estimate all possible
+parameters essentially.
+
+241
+00:14:01,610 --> 00:14:04,200
+Now Cox regression is kind of a compromise
+between those two.
+
+242
+00:14:04,200 --> 00:14:05,720
+So in Cox regression,
+
+243
+00:14:05,720 --> 00:14:09,270
+we're not going to bother to try to
+estimate what's the shape of the curve.
+
+244
+00:14:09,270 --> 00:14:11,370
+So we don't want to make any assumptions.
+
+245
+00:14:11,370 --> 00:14:13,490
+We don't have to make any assumptions
+therefore,
+
+246
+00:14:13,490 --> 00:14:16,650
+about the underlying survival curve, what
+that shape it follows.
+
+247
+00:14:16,650 --> 00:14:20,188
+But we are going to try to say what is the
+difference between two groups in
+
+248
+00:14:20,188 --> 00:14:24,411
+their curves, without actually drawing or
+estimating that underlying curve.
+
+249
+00:14:24,411 --> 00:14:27,962
+So we're going to be estimating some
+parameters, hazard ratios, which compare
+
+250
+00:14:27,962 --> 00:14:31,672
+different groups without saying anything
+about the underlying survival curve.
+
+251
+00:14:31,672 --> 00:14:35,996
+So that's called semi-parametric because
+it's kind of in between the other two.
+
+252
+00:14:35,996 --> 00:14:40,716
+[BLANK_AUDIO]

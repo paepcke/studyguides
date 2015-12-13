@@ -1,0 +1,610 @@
+1
+00:00:01,030 --> 00:00:02,300
+>> Hello and welcome back to HRP223.
+
+2
+00:00:02,300 --> 00:00:06,690
+In this module we're going to show you
+some of the basics of coding.
+
+3
+00:00:06,690 --> 00:00:09,770
+Considering that this is a ten week
+course, it would really be impossible for
+
+4
+00:00:09,770 --> 00:00:11,180
+us to show you everything that you need to
+know.
+
+5
+00:00:11,180 --> 00:00:12,620
+>> The truth is,
+
+6
+00:00:12,620 --> 00:00:15,630
+the best way to learn how to code is by
+starting to write it yourself.
+
+7
+00:00:15,630 --> 00:00:18,760
+By struggling through it, looking at
+suggestions online and asking SAS for
+
+8
+00:00:18,760 --> 00:00:20,690
+help, you'll develop your coding skills
+over time.
+
+9
+00:00:21,720 --> 00:00:23,920
+In this module, we're going to go over the
+basics.
+
+10
+00:00:23,920 --> 00:00:25,510
+And the by the time you're in HRP 262,
+
+11
+00:00:25,510 --> 00:00:27,500
+you'll be writing most of your code on
+your own.
+
+12
+00:00:30,110 --> 00:00:32,710
+In this module, we're going to start
+building your own small data set, but
+
+13
+00:00:32,710 --> 00:00:35,230
+we'll continue to use in future modules.
+
+14
+00:00:35,230 --> 00:00:35,930
+Lets look at some code.
+
+15
+00:00:37,920 --> 00:00:40,790
+At the beginning of this program, is the
+code to create a library.
+
+16
+00:00:40,790 --> 00:00:43,110
+Just like we saw in an earlier module.
+
+17
+00:00:43,110 --> 00:00:45,380
+Remember, this must be done every time we
+start a new project.
+
+18
+00:00:46,430 --> 00:00:49,710
+>> There are a few more things you need to
+know about cutting SAS.
+
+19
+00:00:49,710 --> 00:00:53,510
+As you can see in SAS, every statement
+must end in a semicolon.
+
+20
+00:00:53,510 --> 00:00:56,210
+If you leave out a semicolon, a program
+will not run correctly.
+
+21
+00:00:56,210 --> 00:01:00,670
+A semicolon tells SAS that a certain
+operation, statement, or even procedure is
+
+22
+00:01:00,670 --> 00:01:03,860
+finished and that it should move on to the
+next one that you have written.
+
+23
+00:01:03,860 --> 00:01:06,380
+It's going to start thinking of the
+semicolon as a period.
+
+24
+00:01:06,380 --> 00:01:08,860
+Just make sure to end your SAS statements
+with a semicolon.
+
+25
+00:01:10,120 --> 00:01:14,420
+>> Another key feature of SaS code is the
+word run, followed by a semicolon.
+
+26
+00:01:14,420 --> 00:01:17,300
+Run statements tell SAS to go over the
+previous code they've written and
+
+27
+00:01:17,300 --> 00:01:18,680
+process it.
+
+28
+00:01:18,680 --> 00:01:22,718
+Without a run statement, SAS will not
+necessarily produce an output.
+
+29
+00:01:22,718 --> 00:01:23,262
+Checking for
+
+30
+00:01:23,262 --> 00:01:26,940
+semicolons in run statements is typically
+the best way to catch mistakes.
+
+31
+00:01:26,940 --> 00:01:29,180
+We'll talk more about the run statement
+when we cover data steps.
+
+32
+00:01:30,670 --> 00:01:33,100
+>> Also, notice that there are different
+colors for different bits of code.
+
+33
+00:01:33,100 --> 00:01:36,700
+All you need to know for now, is that red
+is bad.
+
+34
+00:01:36,700 --> 00:01:39,670
+See, if Ram starts typing somethings in
+SAS and
+
+35
+00:01:39,670 --> 00:01:42,580
+then it doesn't understand, it will be
+colored red.
+
+36
+00:01:42,580 --> 00:01:44,850
+This is extremely useful for catching
+typos and
+
+37
+00:01:44,850 --> 00:01:46,590
+mistakes, as you start writing your own
+code.
+
+38
+00:01:47,990 --> 00:01:49,590
+>> It's always useful to write comments,
+so
+
+39
+00:01:49,590 --> 00:01:51,630
+that you can explain what your code does.
+
+40
+00:01:51,630 --> 00:01:52,930
+Let's add a comment into our program.
+
+41
+00:01:54,930 --> 00:01:59,130
+One way to add a comment, is by starting a
+line with foreslash asterisk and and
+
+42
+00:01:59,130 --> 00:02:00,750
+ending a line with an asterisk foreslash.
+
+43
+00:02:02,030 --> 00:02:05,260
+You can type anything you want inside a
+comment, and it won't affect the code.
+
+44
+00:02:05,260 --> 00:02:06,670
+As long as it's within the asterisks.
+
+45
+00:02:07,960 --> 00:02:10,360
+>> As you can see, all comments are in
+green.
+
+46
+00:02:12,190 --> 00:02:14,370
+>> Now, let's take a look at the next
+chunk of code in this program.
+
+47
+00:02:15,380 --> 00:02:17,870
+The next two lines of code are part of
+what's called, a data step.
+
+48
+00:02:18,960 --> 00:02:21,600
+There are two main types of code that
+we'll see in SAS.
+
+49
+00:02:21,600 --> 00:02:24,070
+Data steps and PROC steps.
+
+50
+00:02:24,070 --> 00:02:26,320
+In the following example, we're going to
+be using a data step.
+
+51
+00:02:27,360 --> 00:02:30,870
+Data steps deal with creating, cleaning,
+and formatting data.
+
+52
+00:02:30,870 --> 00:02:32,600
+We'll tell you more about these in a bit.
+
+53
+00:02:32,600 --> 00:02:34,530
+Just know that whenever you end a Data
+step or
+
+54
+00:02:34,530 --> 00:02:36,900
+a Proc step, you must have lines that say
+run.
+
+55
+00:02:38,250 --> 00:02:42,160
+>> When we say data hrp223.people, we
+create a new
+
+56
+00:02:42,160 --> 00:02:47,250
+data set called people in the hrp223
+library that we pointed to earlier.
+
+57
+00:02:47,250 --> 00:02:50,270
+Notice how once again, we end with a
+semicolon.
+
+58
+00:02:50,270 --> 00:02:51,390
+When SAS runs codes,
+
+59
+00:02:51,390 --> 00:02:55,780
+it processes the statement one line at a
+time starting from the top.
+
+60
+00:02:55,780 --> 00:02:58,260
+At this point, the data set is empty.
+
+61
+00:02:58,260 --> 00:03:01,180
+As you can see there are no columns and no
+rows.
+
+62
+00:03:01,180 --> 00:03:02,660
+In the next line, we have run.
+
+63
+00:03:02,660 --> 00:03:03,720
+This just ends the program.
+
+64
+00:03:04,810 --> 00:03:07,000
+>> We have now just written a code for the
+program.
+
+65
+00:03:07,000 --> 00:03:10,660
+We still need to run the program to make
+SAS do the steps we put in.
+
+66
+00:03:10,660 --> 00:03:12,396
+Click on this green arrow to run the
+program.
+
+67
+00:03:12,396 --> 00:03:14,679
+[SOUND]
+
+68
+00:03:14,679 --> 00:03:18,190
+On the right side of the screen, we can
+see the applet of this program.
+
+69
+00:03:18,190 --> 00:03:21,730
+Here it shows the new data set that we
+just created.
+
+70
+00:03:21,730 --> 00:03:24,360
+As you can see, there is no columns and
+there is no rows.
+
+71
+00:03:24,360 --> 00:03:25,220
+It is completely empty.
+
+72
+00:03:27,850 --> 00:03:30,660
+>> Let's see what happens when we delete a
+semicolon somewhere in our original code.
+
+73
+00:03:30,660 --> 00:03:35,300
+Now, you can see that our program doesn't
+actually run.
+
+74
+00:03:35,300 --> 00:03:39,230
+Instead of showing you the output data
+set, SAS brings up what is called the log.
+
+75
+00:03:39,230 --> 00:03:41,470
+The program log records everything that
+SAS does.
+
+76
+00:03:41,470 --> 00:03:45,400
+As you can see SAS actually tried to run
+the program, and
+
+77
+00:03:45,400 --> 00:03:48,088
+everything was going fine until this line.
+
+78
+00:03:48,088 --> 00:03:52,240
+Here we run into an error, which resulted
+from us leaving out a semicolon.
+
+79
+00:03:52,240 --> 00:03:58,148
+When your program doesn't run you'll see a
+red X icon in the process flow.
+
+80
+00:03:58,148 --> 00:03:59,780
+Check the SAS log because sometimes,
+
+81
+00:03:59,780 --> 00:04:03,060
+it provides useful information about where
+to find a bug and how to fix it.
+
+82
+00:04:04,510 --> 00:04:06,620
+Now let's go back and add our semicolon.
+
+83
+00:04:07,720 --> 00:04:09,180
+Now when we click Run.
+
+84
+00:04:09,180 --> 00:04:09,790
+Everything is fine.
+
+85
+00:04:13,160 --> 00:04:15,270
+>> So here we have our first step of code.
+
+86
+00:04:15,270 --> 00:04:19,130
+Let's add another line to our code.
+
+87
+00:04:23,260 --> 00:04:28,640
+This first line creates a new data set
+called people in the hrp223 library.
+
+88
+00:04:28,640 --> 00:04:31,760
+The next line creates a new variable
+called weight.
+
+89
+00:04:31,760 --> 00:04:34,770
+This means, we'll have a column called
+weight in our data set now.
+
+90
+00:04:34,770 --> 00:04:38,918
+And because weight equals 188, this column
+has one value, 188.
+
+91
+00:04:38,918 --> 00:04:42,766
+[SOUND]
+
+92
+00:04:42,766 --> 00:04:47,050
+As we can see we now have a column for
+weight, and has one value.
+
+93
+00:04:50,260 --> 00:04:54,240
+Let's take it one step further and add a
+new variable for gender.
+
+94
+00:04:54,240 --> 00:04:58,120
+In our code we will write gender equals m.
+
+95
+00:04:58,120 --> 00:05:02,350
+Note, that when you enter a value for a
+number, you don't need quotation marks.
+
+96
+00:05:02,350 --> 00:05:04,920
+But if you enter a value that's a
+character or
+
+97
+00:05:04,920 --> 00:05:06,620
+a string, you do need quotation marks.
+
+98
+00:05:07,780 --> 00:05:11,540
+When we run this, you'll that we have a
+data set with two columns.
+
+99
+00:05:11,540 --> 00:05:13,022
+One for gender and one for weight.
+
+100
+00:05:13,022 --> 00:05:15,153
+[SOUND].
+
+101
+00:05:15,153 --> 00:05:18,068
+[BLANK_AUDIO]
+
+102
+00:05:18,068 --> 00:05:21,534
+In this chapter code, we create a new data
+set called people in
+
+103
+00:05:21,534 --> 00:05:24,210
+the hrp223 library just like we did
+before.
+
+104
+00:05:25,430 --> 00:05:27,200
+Next, we specify the columns in our data
+set.
+
+105
+00:05:28,360 --> 00:05:30,450
+Input tells SAS that you're naming the
+columns, and
+
+106
+00:05:30,450 --> 00:05:32,439
+anything that comes after it will be the
+name of a new column.
+
+107
+00:05:33,600 --> 00:05:36,450
+So we have a column, called gender and a
+column called weight.
+
+108
+00:05:36,450 --> 00:05:39,010
+Notice that there is a dollar sign that
+comes after gender,
+
+109
+00:05:40,200 --> 00:05:44,330
+this specifies that gender is a variable
+that allows characters as its values.
+
+110
+00:05:44,330 --> 00:05:47,950
+In other words, will not be able to do any
+mathematical operations on this variable.
+
+111
+00:05:47,950 --> 00:05:50,240
+Like, addition subtraction multiplication
+or division.
+
+112
+00:05:52,910 --> 00:05:55,680
+>> Now that we specified what columns to
+have in our data set,
+
+113
+00:05:55,680 --> 00:05:57,640
+we need to fill these columns in with
+data.
+
+114
+00:05:57,640 --> 00:06:01,020
+To do this, you write data lines and then
+a semicolon.
+
+115
+00:06:01,020 --> 00:06:04,710
+Now, you can type out values to fill in
+your columns.
+
+116
+00:06:04,710 --> 00:06:07,080
+Make sure to enter them in the same order
+you created your variables.
+
+117
+00:06:08,490 --> 00:06:10,050
+First, we have gender.
+
+118
+00:06:10,050 --> 00:06:10,950
+Next, we have weight.
+
+119
+00:06:11,950 --> 00:06:16,440
+So, when we enter each rogue data, gender
+comes first and then comes weight.
+
+120
+00:06:16,440 --> 00:06:18,028
+Make sure you have a space between each
+value.
+
+121
+00:06:18,028 --> 00:06:21,710
+Put a semicolon at the end of all the data
+lines, and
+
+122
+00:06:21,710 --> 00:06:23,190
+then include your run statement.
+
+123
+00:06:25,800 --> 00:06:28,430
+If you look at the data we have used to
+fill out the columns,
+
+124
+00:06:28,430 --> 00:06:31,690
+one of the females has a period instead of
+a value.
+
+125
+00:06:31,690 --> 00:06:34,270
+SAS uses periods to represent missing
+values.
+
+126
+00:06:35,758 --> 00:06:37,050
+>> In your HRP classes,
+
+127
+00:06:37,050 --> 00:06:40,300
+they'll often import data sets with lots
+of missing values.
+
+128
+00:06:40,300 --> 00:06:41,790
+It's important to know what these periods
+represent,
+
+129
+00:06:41,790 --> 00:06:43,370
+when you come to analyze your data.
+
+130
+00:06:44,640 --> 00:06:45,970
+We'll discuss this in more detail later.

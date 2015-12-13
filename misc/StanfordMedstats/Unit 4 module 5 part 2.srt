@@ -1,0 +1,203 @@
+1
+00:00:01,920 --> 00:00:06,720
+The final concept I want to go over with
+regards to the standard normal curve is
+
+2
+00:00:06,720 --> 00:00:11,540
+that, sometimes, you aren't given the Z, a
+lot of these problems are setup so
+
+3
+00:00:11,540 --> 00:00:15,120
+that you, you're given the Z and then you
+have to find the probability.
+
+4
+00:00:15,120 --> 00:00:17,600
+But sometimes the problems go in the other
+direction,
+
+5
+00:00:17,600 --> 00:00:21,260
+that is you're given the probability and
+you have to work back to the z-score.
+
+6
+00:00:21,260 --> 00:00:26,050
+So if you're doing it in the inverse like
+this, that's called a probit function.
+
+7
+00:00:26,050 --> 00:00:28,610
+So a probit function just means you're
+given the area and
+
+8
+00:00:28,610 --> 00:00:29,660
+you have to find the z-score.
+
+9
+00:00:29,660 --> 00:00:31,920
+So let me just give you an example and
+make it very clear.
+
+10
+00:00:31,920 --> 00:00:34,060
+So what if you wanted to know, for
+
+11
+00:00:34,060 --> 00:00:37,400
+this math SAT score, you wanted to know
+what SAT score do I have to
+
+12
+00:00:37,400 --> 00:00:41,640
+get in order to be in the ninetieth
+percentile of math SAT scores?
+
+13
+00:00:41,640 --> 00:00:45,600
+And again, assuming that we're on we have
+a mean of 500 and
+
+14
+00:00:45,600 --> 00:00:47,970
+a standard deviation of 50.
+
+15
+00:00:47,970 --> 00:00:49,810
+So, how are we going to solve this
+problem?
+
+16
+00:00:49,810 --> 00:00:54,891
+So we need to know what's the z-score that
+goes with the ninetieth percentile.
+
+17
+00:00:54,891 --> 00:00:56,990
+Ninetieth percentile is just an area.
+
+18
+00:00:56,990 --> 00:01:01,390
+We want to know what's the Z-value that
+corresponds to an area of ninetieth,
+
+19
+00:01:01,390 --> 00:01:02,146
+of 90%.
+
+20
+00:01:02,146 --> 00:01:07,130
+So, the ninetieth percentile for math SAT
+scores is going to be somewhere over here.
+
+21
+00:01:07,130 --> 00:01:09,900
+That means that 90% of people are lower.
+
+22
+00:01:09,900 --> 00:01:12,400
+So that means our area to the left is 90%.
+
+23
+00:01:12,400 --> 00:01:14,000
+So we're going to go to the z chart.
+
+24
+00:01:14,000 --> 00:01:17,620
+We're going to find the area of 90% and
+work backward to the z-score.
+
+25
+00:01:17,620 --> 00:01:19,430
+So if I go to my z chart and
+
+26
+00:01:19,430 --> 00:01:23,400
+I just have this, I literally have to scan
+around with my eyes until I find 0.90.
+
+27
+00:01:23,400 --> 00:01:29,650
+And you'll notice that it comes 0.88,
+8997, you also get 0.9015.
+
+28
+00:01:29,650 --> 00:01:35,590
+0.8997 is the closest to 0.90, so I'm just
+going to pick that one.
+
+29
+00:01:35,590 --> 00:01:41,600
+So, that corresponds to what z-score, if
+you scroll over, it's a 1.28.
+
+30
+00:01:41,600 --> 00:01:45,020
+So that corresponds to a z-score of a
+1.28.
+
+31
+00:01:45,020 --> 00:01:50,370
+So, in order to have 90% area and to the
+left, you need a z-score of 1.28.
+
+32
+00:01:50,370 --> 00:01:51,980
+So to be in the ninetieth percentile for
+
+33
+00:01:51,980 --> 00:01:57,220
+SAT scores, you need to be 1.28 standard
+deviation above the average.
+
+34
+00:01:57,220 --> 00:02:00,200
+So what is 1.28 standard deviations above
+the average if I want to
+
+35
+00:02:00,200 --> 00:02:04,130
+actually get the number, the number for
+the SAT score that I'm going to need?
+
+36
+00:02:04,130 --> 00:02:05,320
+Well, how would I solve that?
+
+37
+00:02:05,320 --> 00:02:11,030
+Well, what is in this case, a standard
+deviation is is a value of 50.
+
+38
+00:02:11,030 --> 00:02:15,320
+So first of all, I would multiply the
+z-score times the standard deviation.
+
+39
+00:02:15,320 --> 00:02:19,030
+So, I want to be 1.28 standard deviations
+above the mean,
+
+40
+00:02:19,030 --> 00:02:21,910
+that means I want to be 1.28 times 50
+above the mean.
+
+41
+00:02:21,910 --> 00:02:25,060
+The mean here of course is 500, so I'm
+just adding to the mean.
+
+42
+00:02:25,060 --> 00:02:27,600
+When I calculate the amount, I get that I
+need to have a,
+
+43
+00:02:27,600 --> 00:02:33,020
+an SAT score of at least 564 if I want to
+be in the ninetieth percentile.

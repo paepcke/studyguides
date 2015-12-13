@@ -1,0 +1,806 @@
+1
+00:00:00,000 --> 00:00:05,000
+[BLANK_AUDIO]
+
+2
+00:00:05,000 --> 00:00:07,820
+[SOUND]
+
+3
+00:00:07,820 --> 00:00:11,040
+So I've now talked about giving you an
+overview of
+
+4
+00:00:11,040 --> 00:00:16,290
+three different ways to handle repeated
+measures outcome data in SAS.
+
+5
+00:00:16,290 --> 00:00:17,910
+And I thought it might be helpful for
+
+6
+00:00:17,910 --> 00:00:22,230
+me to just put this together in an
+organized fashion into a chart for you.
+
+7
+00:00:22,230 --> 00:00:25,611
+So you can run PROC GENMOD with a repeated
+statement or
+
+8
+00:00:25,611 --> 00:00:28,647
+you could run PROC MIXED with a repeated
+statement or
+
+9
+00:00:28,647 --> 00:00:32,700
+you could run PROC MIXED with a random
+statement as I've alluded to.
+
+10
+00:00:32,700 --> 00:00:35,060
+What are the differences between those
+three approaches?
+
+11
+00:00:35,060 --> 00:00:36,628
+So, first of all,
+
+12
+00:00:36,628 --> 00:00:42,970
+PROC GENMOD is a procedure in SAS that
+handles any type of outcome variable.
+
+13
+00:00:42,970 --> 00:00:45,140
+It doesn't have to be continuous normally
+distributed.
+
+14
+00:00:45,140 --> 00:00:49,790
+It can also handle binary outcomes, count
+outcomes, negative binomial.
+
+15
+00:00:49,790 --> 00:00:51,640
+All of those different types of outcomes.
+
+16
+00:00:52,930 --> 00:00:55,950
+So, PROC GENMOD is general in that way.
+
+17
+00:00:55,950 --> 00:00:59,580
+However, PROC GENMOD does not allow for
+the inclusion of random effects.
+
+18
+00:00:59,580 --> 00:01:01,280
+So we are fitting marginal models.
+
+19
+00:01:01,280 --> 00:01:04,410
+We cannot get subject specific effects.
+
+20
+00:01:04,410 --> 00:01:08,960
+When in the repeated statement in PROC
+GENMOD, you're going to have to specify
+
+21
+00:01:08,960 --> 00:01:14,500
+a type equals where you tell SAS what type
+of covariance structure you want.
+
+22
+00:01:14,500 --> 00:01:18,290
+Whatever you put here, exchangeable, for
+example, unstructured.
+
+23
+00:01:18,290 --> 00:01:20,890
+You are specifying the covariance
+structure that you want for
+
+24
+00:01:20,890 --> 00:01:23,230
+what SAS calls the R matrix.
+
+25
+00:01:23,230 --> 00:01:25,960
+This is the covariance structure for the
+residuals.
+
+26
+00:01:25,960 --> 00:01:29,840
+The within subject correlation over time.
+
+27
+00:01:29,840 --> 00:01:34,800
+So just realize that that's the
+correlation that structure that you're
+
+28
+00:01:34,800 --> 00:01:36,490
+specifying in PROC GENMOD.
+
+29
+00:01:36,490 --> 00:01:38,210
+When you do PROC MIXED with a repeated
+statement,
+
+30
+00:01:38,210 --> 00:01:41,030
+you are really doing something very
+similar to PROC GENMOD with
+
+31
+00:01:41,030 --> 00:01:42,170
+a repeated statement.
+
+32
+00:01:42,170 --> 00:01:45,698
+Couple of differences, so PROC MIXED with
+a repeated statement,
+
+33
+00:01:45,698 --> 00:01:50,180
+PROC mixed in SAS only handles continuous
+roughly normally distributed outcomes.
+
+34
+00:01:50,180 --> 00:01:51,830
+We can only do linear models.
+
+35
+00:01:51,830 --> 00:01:55,150
+There are procedures in SASS that handle
+other types of outcome data,
+
+36
+00:01:55,150 --> 00:01:57,040
+such as binary outcomes.
+
+37
+00:01:57,040 --> 00:01:59,150
+But those are PROCs that are beyond the
+scope of this course.
+
+38
+00:01:59,150 --> 00:02:02,270
+So, PROC MIXED itself cannot handle
+anything other than
+
+39
+00:02:02,270 --> 00:02:05,230
+continuously normally distributed
+outcomes.
+
+40
+00:02:05,230 --> 00:02:07,190
+But if you're using the repeated statement
+and Proc mixed,
+
+41
+00:02:07,190 --> 00:02:11,300
+that is not including any random effects
+so you are still fitting a marginal model.
+
+42
+00:02:11,300 --> 00:02:14,050
+You are not going to get subject-specific
+effects, and you're still
+
+43
+00:02:14,050 --> 00:02:19,250
+focusing on the covariant structure of the
+residuals, what SAS calls the R matrix.
+
+44
+00:02:19,250 --> 00:02:22,240
+So that's what you're specifying when you
+put this type equals for
+
+45
+00:02:22,240 --> 00:02:23,340
+the covariant structure.
+
+46
+00:02:24,590 --> 00:02:26,490
+So those, the first two are very similar.
+
+47
+00:02:26,490 --> 00:02:29,330
+I'll, I'll notice that one other thing
+that I've mentioned is that
+
+48
+00:02:29,330 --> 00:02:34,570
+PROC MIXED with a repeated statement has
+more choices for
+
+49
+00:02:34,570 --> 00:02:37,570
+the covariance structure of the r matrix.
+
+50
+00:02:37,570 --> 00:02:40,120
+So that is one slight difference there.
+
+51
+00:02:40,120 --> 00:02:44,070
+PROC MIXED with a random statement is
+actually doing something quite different.
+
+52
+00:02:44,070 --> 00:02:47,908
+So PROC MIXED again, can only handle
+continuous normally distributed outcomes.
+
+53
+00:02:47,908 --> 00:02:51,272
+Although there are are procedures in SAS
+that will do mixed models for
+
+54
+00:02:51,272 --> 00:02:53,320
+other types of outcomes such as binary.
+
+55
+00:02:54,590 --> 00:02:58,730
+however, PROC MIXED with a random
+statement is now including allowing you
+
+56
+00:02:58,730 --> 00:03:01,040
+to include random effects.
+
+57
+00:03:01,040 --> 00:03:03,955
+So that's really quite different because
+now you can fit these
+
+58
+00:03:03,955 --> 00:03:07,860
+subject specific intercepts and slope
+subjects, specific effects.
+
+59
+00:03:07,860 --> 00:03:12,490
+So when you put the type equals, when you
+specify the covariant structure,
+
+60
+00:03:12,490 --> 00:03:14,530
+the covariant structure that you have to
+specify for
+
+61
+00:03:14,530 --> 00:03:17,950
+the random statement is not the covariant
+structure for the R matrix.
+
+62
+00:03:17,950 --> 00:03:20,550
+It's the co-variant structure for what SAS
+calls that G matrix.
+
+63
+00:03:20,550 --> 00:03:23,942
+This is just the co-variance matrix for
+the random effects and
+
+64
+00:03:23,942 --> 00:03:27,846
+it usually involves very few parameters,
+you might just have the,
+
+65
+00:03:27,846 --> 00:03:30,662
+correlation between the intercept and the
+slope for
+
+66
+00:03:30,662 --> 00:03:35,030
+example, those random effects, so I
+usually just set that to be unstructured.
+
+67
+00:03:35,030 --> 00:03:36,845
+So you have, you don't have to worry so
+
+68
+00:03:36,845 --> 00:03:41,700
+much about exactly the covariant structure
+when you're including a random statement.
+
+69
+00:03:41,700 --> 00:03:44,440
+The other thing I want to point out is
+that if you're in PROC MIXED,
+
+70
+00:03:44,440 --> 00:03:49,140
+you can included a random statement and
+also include a repeated statement.
+
+71
+00:03:49,140 --> 00:03:52,590
+As I mentioned before, you usually don't
+need to also include a repeated statement,
+
+72
+00:03:52,590 --> 00:03:53,690
+but SAS will allow you to do it.
+
+73
+00:03:53,690 --> 00:03:57,500
+You can also include multiple random
+statements.
+
+74
+00:03:57,500 --> 00:04:00,956
+So for example you could include, if you
+had a study where you had
+
+75
+00:04:00,956 --> 00:04:05,244
+repeated observations on subjects, and
+then, but then the subjects were also
+
+76
+00:04:05,244 --> 00:04:09,916
+clustered in some way, so maybe clustered
+within clinic or clustered within school,
+
+77
+00:04:09,916 --> 00:04:14,140
+you could include random effects for this
+subject as well as random effects for
+
+78
+00:04:14,140 --> 00:04:16,710
+the clinic or random effects for the
+school.
+
+79
+00:04:16,710 --> 00:04:21,030
+So you're allowed to include multiple
+random statements in PROC Mixed.
+
+80
+00:04:22,460 --> 00:04:25,240
+With Proc GENMOD, you can only include one
+repeated statement and
+
+81
+00:04:25,240 --> 00:04:27,740
+with PROC Mix, you can only include one
+repeated statement.
+
+82
+00:04:27,740 --> 00:04:30,390
+So you can't include multiple repeated
+statements.
+
+83
+00:04:30,390 --> 00:04:34,343
+So there tends to be some, some Datasets
+that PROC MIXED with a random statement
+
+84
+00:04:34,343 --> 00:04:38,355
+will just handle more easily, because you,
+the fact that you can include random
+
+85
+00:04:38,355 --> 00:04:42,440
+effects for multiple layers of clustering,
+what we call multilevel models.
+
+86
+00:04:44,030 --> 00:04:45,210
+So that's just kind of to set up
+
+87
+00:04:45,210 --> 00:04:47,420
+the differences between those three PROCs
+for you.
+
+88
+00:04:47,420 --> 00:04:50,880
+And then I thought it would be really
+helpful for you to really understand
+
+89
+00:04:50,880 --> 00:04:53,850
+the difference between the marginal models
+and the subject-specific models.
+
+90
+00:04:53,850 --> 00:04:55,560
+The easiest way to understand that is with
+a picture.
+
+91
+00:04:55,560 --> 00:04:58,240
+So I thought it would be worth me drawing
+some pictures here.
+
+92
+00:04:58,240 --> 00:05:01,090
+I'm going to go back to the same spine
+bone density example that we've been
+
+93
+00:05:01,090 --> 00:05:04,030
+using because you're all very familiar
+with this example by now.
+
+94
+00:05:04,030 --> 00:05:06,270
+So this is looking at three different
+groups.
+
+95
+00:05:06,270 --> 00:05:08,200
+Their bone density changes over time.
+
+96
+00:05:08,200 --> 00:05:10,419
+I've shown you these pictures several
+times.
+
+97
+00:05:10,419 --> 00:05:14,109
+I went ahead and took these data on these
+41 women and
+
+98
+00:05:14,109 --> 00:05:16,820
+I fit the data in three different ways.
+
+99
+00:05:16,820 --> 00:05:21,140
+I used proc mix for the random statement,
+proc mix for the repeated statement and
+
+100
+00:05:21,140 --> 00:05:24,760
+proc mixed, and proc/ gen mod with a
+repeated statement - a GE model.
+
+101
+00:05:24,760 --> 00:05:28,200
+And I want to show you, I then asked SAS
+to output for
+
+102
+00:05:28,200 --> 00:05:33,810
+me the predicted values for each person in
+my data set, from each of those models.
+
+103
+00:05:33,810 --> 00:05:35,050
+Those predicted values, where,
+
+104
+00:05:35,050 --> 00:05:37,440
+you'll see, when we graft them, that they
+are very informative.
+
+105
+00:05:38,810 --> 00:05:40,890
+So I'm going to start with the predicted
+model,
+
+106
+00:05:40,890 --> 00:05:42,850
+when I did prop mixed with a random
+statement.
+
+107
+00:05:42,850 --> 00:05:46,190
+I'm actually going to show you the code
+here, just to show you what it looks like.
+
+108
+00:05:46,190 --> 00:05:48,280
+You can see I included a random statement.
+
+109
+00:05:48,280 --> 00:05:50,910
+I, I'm allowing random ess, effects for
+subjects.
+
+110
+00:05:50,910 --> 00:05:53,310
+A random intercept, and random slopes.
+
+111
+00:05:53,310 --> 00:05:55,170
+And I haven't told you exactly what those
+are yet.
+
+112
+00:05:55,170 --> 00:05:57,210
+But we're going to get to that in the next
+module.
+
+113
+00:05:57,210 --> 00:05:59,490
+But the key is that if you look over at
+the pic,
+
+114
+00:05:59,490 --> 00:06:02,680
+picture what I've graphed here are
+predicted values for each subject.
+
+115
+00:06:02,680 --> 00:06:07,640
+So SAS calculates for me the predicted
+spine bone density at each time point for
+
+116
+00:06:07,640 --> 00:06:11,650
+each subject based on this model, this
+fitted model.
+
+117
+00:06:11,650 --> 00:06:15,246
+I went ahead and plotted those and you can
+see that different subjects have
+
+118
+00:06:15,246 --> 00:06:19,370
+different intercepts and different
+subjects have different changes over time.
+
+119
+00:06:19,370 --> 00:06:22,320
+There is a lot of subject-specific
+variability here.
+
+120
+00:06:22,320 --> 00:06:27,568
+I then super-imposed linear regression
+lines because we fit time is linear
+
+121
+00:06:27,568 --> 00:06:32,740
+here and we allowed the changes over time
+to vary by which group you're in.
+
+122
+00:06:32,740 --> 00:06:35,490
+So we've got time group and group by time
+in the model.
+
+123
+00:06:35,490 --> 00:06:36,640
+And there is three groups here.
+
+124
+00:06:36,640 --> 00:06:41,660
+The red and black groups you can see in
+our fitted model have very similar slopes
+
+125
+00:06:41,660 --> 00:06:46,190
+and the control group has as we saw from
+the observed values, it's pretty flat or
+
+126
+00:06:46,190 --> 00:06:47,360
+goes down a little bit over time.
+
+127
+00:06:47,360 --> 00:06:49,100
+So, this is the, the fitted model.
+
+128
+00:06:49,100 --> 00:06:50,210
+These are the predicted values.
+
+129
+00:06:50,210 --> 00:06:52,280
+This is the model that we just fit.
+
+130
+00:06:52,280 --> 00:06:54,390
+But see that subject specific variability.
+
+131
+00:06:54,390 --> 00:06:55,350
+I'm also showing you the code for
+
+132
+00:06:55,350 --> 00:06:57,160
+how to plot this in case you want to know
+how to do it.
+
+133
+00:06:58,360 --> 00:07:00,210
+That's what it means to have a random
+statement in the model.
+
+134
+00:07:00,210 --> 00:07:02,820
+Okay?
+So contrast that to the following.
+
+135
+00:07:02,820 --> 00:07:04,170
+I then went ahead and
+
+136
+00:07:04,170 --> 00:07:09,020
+fit a proc mixed with a repeated statement
+on this exact same data, exact same model.
+
+137
+00:07:09,020 --> 00:07:11,730
+Here are the predicted values from that
+model.
+
+138
+00:07:11,730 --> 00:07:12,730
+So what do you notice?
+
+139
+00:07:12,730 --> 00:07:16,380
+These again are the predicted values for
+each individual at each time point.
+
+140
+00:07:16,380 --> 00:07:20,400
+What you notice is there are no subject
+specific variability.
+
+141
+00:07:20,400 --> 00:07:24,520
+If somebody is in the red group, they are
+predicted to be right on that line for
+
+142
+00:07:24,520 --> 00:07:27,310
+the rate of change in the bone density
+over time.
+
+143
+00:07:27,310 --> 00:07:29,324
+So we get the same general lines, I mean
+the,
+
+144
+00:07:29,324 --> 00:07:33,508
+the scales are a little different here
+because this is only showing .92 to 1.02.
+
+145
+00:07:33,508 --> 00:07:36,588
+Over here we're seeing a wider range
+because it's showing you all
+
+146
+00:07:36,588 --> 00:07:38,238
+that individual variability, but
+
+147
+00:07:38,238 --> 00:07:42,570
+if you look just at those three lines, the
+three lines look pretty much the same.
+
+148
+00:07:42,570 --> 00:07:46,030
+So, that's what we end up really caring
+about is what is the slope for
+
+149
+00:07:46,030 --> 00:07:48,880
+each of the different groups and those are
+basically the same.
+
+150
+00:07:48,880 --> 00:07:53,890
+Red and black are largely overlapping and
+blue is lower than the other two.
+
+151
+00:07:53,890 --> 00:07:57,790
+However, what's different here is there is
+no subject specific variability allowed,
+
+152
+00:07:57,790 --> 00:08:01,044
+so this is what we mean by a marginal
+model or a population average model.
+
+153
+00:08:01,044 --> 00:08:04,890
+If you're the red group, you're predicted
+to be on one line, and that's it.
+
+154
+00:08:04,890 --> 00:08:06,960
+And that's the difference between having a
+random statement, and
+
+155
+00:08:06,960 --> 00:08:08,830
+having a repeated statement in proc mixed.
+
+156
+00:08:08,830 --> 00:08:11,350
+This is fitting a marginal model.
+
+157
+00:08:11,350 --> 00:08:15,050
+I went ahead and then chipped those same
+data, and put them into proc genmod with
+
+158
+00:08:15,050 --> 00:08:17,960
+a repeated statement, essentially fit a
+generalized estimating equation.
+
+159
+00:08:19,410 --> 00:08:22,818
+And when I did that, I get pretty much the
+same model that I
+
+160
+00:08:22,818 --> 00:08:25,700
+got from PROC mixed with a repeated
+statement.
+
+161
+00:08:25,700 --> 00:08:27,340
+So again, it's fitting a marginal model.
+
+162
+00:08:27,340 --> 00:08:29,570
+Everybody is forced to be on one of those
+lines.
+
+163
+00:08:29,570 --> 00:08:32,690
+If you're in the red group, everybody in
+the red group is on the same line.
+
+164
+00:08:32,690 --> 00:08:34,990
+Everybody on the black group is on the
+same line.
+
+165
+00:08:34,990 --> 00:08:37,790
+So the only variation we're allowed is
+because we have group in,
+
+166
+00:08:37,790 --> 00:08:39,810
+group by time in the, in the model.
+
+167
+00:08:39,810 --> 00:08:42,770
+We're not allowed any subject-specific
+variation.
+
+168
+00:08:42,770 --> 00:08:45,661
+And that's the difference between the, the
+picture really shows you
+
+169
+00:08:45,661 --> 00:08:49,100
+the difference between the marginal model
+and the model with random effects in it.
+
+170
+00:08:49,100 --> 00:08:54,799
+[BLANK_AUDIO]

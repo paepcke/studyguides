@@ -1,0 +1,1388 @@
+1
+00:00:04,790 --> 00:00:07,690
+In this next module, I'm going to tell you
+about some tests that you
+
+2
+00:00:07,690 --> 00:00:10,270
+can use to check the logistic regression
+model.
+
+3
+00:00:11,870 --> 00:00:16,980
+The example data that I'm going to use in
+this module is sort of a classic data set,
+
+4
+00:00:16,980 --> 00:00:20,220
+it's referred to in a lot of statistics
+textbooks, but
+
+5
+00:00:20,220 --> 00:00:24,010
+it was some data on 81 children who have
+corrective spinal surgery.
+
+6
+00:00:24,010 --> 00:00:27,560
+Some of them went on to get kyphosis,
+curvature of their spine, and
+
+7
+00:00:27,560 --> 00:00:28,070
+some did not.
+
+8
+00:00:28,070 --> 00:00:31,110
+So we have a binary outcome here, kyphosis
+or not.
+
+9
+00:00:31,110 --> 00:00:34,170
+The predictor I'm going to focus on for
+the purposes of this module is age.
+
+10
+00:00:34,170 --> 00:00:38,850
+Can we use age as, as a predictor of who's
+likely to go on to get spine curvature.
+
+11
+00:00:38,850 --> 00:00:43,490
+And so I went ahead and I ran the logistic
+regression model with kyphosis as
+
+12
+00:00:43,490 --> 00:00:45,130
+the outcome in age as the predictor.
+
+13
+00:00:45,130 --> 00:00:49,000
+And here is some of the results from the
+computer.
+
+14
+00:00:49,000 --> 00:00:53,210
+So this is showing you the test of global
+fit.
+
+15
+00:00:53,210 --> 00:00:56,680
+And remember what we talked about earlier,
+these are a test which
+
+16
+00:00:56,680 --> 00:01:02,460
+are testing the null hypothesis that all
+the data's in the model are equal to 0 and
+
+17
+00:01:02,460 --> 00:01:06,000
+we only have a single beta in this model
+age, so this in this case we're
+
+18
+00:01:06,000 --> 00:01:10,460
+just testing whether or not beta age is
+equal to 0 but you would
+
+19
+00:01:10,460 --> 00:01:14,720
+also be using these to test whether a
+series of predictors were all equal to 0.
+
+20
+00:01:14,720 --> 00:01:18,530
+We're going to focus on the likelihood
+ratio test, we talked about that earlier,
+
+21
+00:01:18,530 --> 00:01:22,640
+that's probably the most widely used test
+for goodness-of-fit.
+
+22
+00:01:22,640 --> 00:01:26,540
+So this is non-significant in this
+example, clearly non-significant, so
+
+23
+00:01:26,540 --> 00:01:29,200
+this is telling that we, us that we don't
+have a well fed model.
+
+24
+00:01:29,200 --> 00:01:30,990
+Age doesn't really do anything.
+
+25
+00:01:30,990 --> 00:01:32,540
+If we had multiple predictors in the
+models and
+
+26
+00:01:32,540 --> 00:01:35,240
+it was non-significant then we'd say that
+there are multiple predictors aren't
+
+27
+00:01:35,240 --> 00:01:36,080
+really doing anything.
+
+28
+00:01:36,080 --> 00:01:38,770
+So we don't have a good fit in this case.
+
+29
+00:01:38,770 --> 00:01:41,910
+So that's a global test that you can use
+to look at the model overall.
+
+30
+00:01:43,070 --> 00:01:46,560
+The Likelihood Ratio test which we already
+talked about in detail earlier.
+
+31
+00:01:47,560 --> 00:01:50,090
+We can also look at the ROC curve.
+
+32
+00:01:51,120 --> 00:01:55,640
+And so the ROC curve here you can see that
+it's not so great, right.
+
+33
+00:01:55,640 --> 00:01:59,580
+We if you're just guessing you're, you're
+going to end up
+
+34
+00:01:59,580 --> 00:02:02,500
+on this diagonal line where pretty much at
+the diagonal line,
+
+35
+00:02:02,500 --> 00:02:07,810
+the area under the curve here is 56%, so
+this is a really bad ROC curve.
+
+36
+00:02:07,810 --> 00:02:10,820
+Remember, what we're looking for with ROC
+curves is that we're ending up
+
+37
+00:02:10,820 --> 00:02:13,250
+something like this, with a high area
+under the curve.
+
+38
+00:02:13,250 --> 00:02:16,420
+Somewhere around 80, 90, 100%.
+
+39
+00:02:16,420 --> 00:02:18,780
+So the ROC curve shows us that we have
+really poor accuracy.
+
+40
+00:02:18,780 --> 00:02:22,930
+If we were trying to make predictions
+based on age, we have poor, poor accuracy.
+
+41
+00:02:22,930 --> 00:02:26,400
+So that's another thing we can look at
+just to see how well the model is
+
+42
+00:02:26,400 --> 00:02:27,050
+doing overall.
+
+43
+00:02:27,050 --> 00:02:33,639
+Now I'm going to tell you about how to use
+residuals, in the context of lig-,
+
+44
+00:02:33,639 --> 00:02:38,780
+logistic regression, to diagnose,
+underlying problems in the model.
+
+45
+00:02:38,780 --> 00:02:42,480
+You've probably all seen this in the
+context of lin-, linear regression before.
+
+46
+00:02:42,480 --> 00:02:46,220
+So there's very obvious residuals that
+come out of linear regression.
+
+47
+00:02:46,220 --> 00:02:52,550
+Residuals, of course, are just your
+observed value minus your predicted value.
+
+48
+00:02:52,550 --> 00:02:56,680
+In the case of linear regression where we
+have a continuous outcome variable,
+
+49
+00:02:56,680 --> 00:02:57,870
+this is very simple.
+
+50
+00:02:57,870 --> 00:03:01,720
+You say have a blood pressure of a hundred
+and fifty, the model predicts that you're
+
+51
+00:03:01,720 --> 00:03:03,930
+going to have a blood pressure of a
+hundred and forty.
+
+52
+00:03:03,930 --> 00:03:07,050
+In that case your residual would just be
+ten.
+
+53
+00:03:07,050 --> 00:03:10,700
+So, observed minus predictive is a little
+bit trickier though,
+
+54
+00:03:10,700 --> 00:03:13,570
+in the context of logistic regression.
+
+55
+00:03:13,570 --> 00:03:15,770
+So, what's your observe, you remember
+what,
+
+56
+00:03:15,770 --> 00:03:19,420
+start with the predicted, your predicted,
+the predicted value that you get out of
+
+57
+00:03:19,420 --> 00:03:22,230
+logistic regression is a predicted
+probability.
+
+58
+00:03:22,230 --> 00:03:26,640
+It's your predicted probability of having
+kyphosis or whatever the outcome is.
+
+59
+00:03:26,640 --> 00:03:27,940
+But what do you observe?
+
+60
+00:03:27,940 --> 00:03:30,710
+We don't observe a probability for an
+individual, right?
+
+61
+00:03:30,710 --> 00:03:35,050
+And individual either has the outcome,
+they either get kyphosis, or they don't.
+
+62
+00:03:35,050 --> 00:03:38,390
+So the observed value for logistic
+regression is only one of two things.
+
+63
+00:03:38,390 --> 00:03:41,130
+It's either a one, or it's a zero.
+
+64
+00:03:41,130 --> 00:03:43,630
+So we end up for logistic regression, we
+take,
+
+65
+00:03:43,630 --> 00:03:47,290
+if you had kyphosis you would be one minus
+your predicted probability.
+
+66
+00:03:47,290 --> 00:03:50,010
+If you didn't have kyphosis you're
+going to get zero minus your
+
+67
+00:03:50,010 --> 00:03:52,350
+predicted probability for the residuals.
+
+68
+00:03:52,350 --> 00:03:55,990
+So the residuals are just a little tricky
+for logistic regression.
+
+69
+00:03:55,990 --> 00:04:00,330
+So again, just to repeat,
+
+70
+00:04:00,330 --> 00:04:02,960
+residuals are observed minus predicted for
+logistic regression.
+
+71
+00:04:02,960 --> 00:04:05,320
+That's either going to be one minus your
+predicted probability or
+
+72
+00:04:05,320 --> 00:04:08,080
+it's going to be zero minus your
+predictive probability.
+
+73
+00:04:08,080 --> 00:04:12,070
+So it turns out that these aren't quite as
+useful as they are for
+
+74
+00:04:12,070 --> 00:04:15,050
+linear regression, because the residuals
+are a little bit funny.
+
+75
+00:04:15,050 --> 00:04:16,800
+But we'll see in a minute that they do
+have,
+
+76
+00:04:16,800 --> 00:04:19,300
+they can tell you some things about the
+model.
+
+77
+00:04:20,530 --> 00:04:23,000
+We generally, imagine if you actually
+plugged in some numbers,
+
+78
+00:04:23,000 --> 00:04:25,780
+what if you had a predictive probability
+of say, 80%,
+
+79
+00:04:25,780 --> 00:04:28,280
+and you actually did have kyphosis, you
+would get a value of 20%.
+
+80
+00:04:28,280 --> 00:04:32,510
+Any residual you can calculate on logistic
+regression is going to have to
+
+81
+00:04:32,510 --> 00:04:36,330
+come out to be a number between zero and
+one which is bounded.
+
+82
+00:04:36,330 --> 00:04:39,894
+So, we don't really like dealing with
+things that are bounded like that, but
+
+83
+00:04:39,894 --> 00:04:41,244
+you can take this residual and
+
+84
+00:04:41,244 --> 00:04:43,944
+you can translate into a Z-score that you
+would just do
+
+85
+00:04:43,944 --> 00:04:47,950
+some kind of observe minus expected
+divided by the standard deviation.
+
+86
+00:04:47,950 --> 00:04:51,570
+You can translate that into a Z-score, say
+based on other people's residuals in
+
+87
+00:04:51,570 --> 00:04:55,520
+the data that you can transform that, with
+a Z-score.
+
+88
+00:04:55,520 --> 00:04:58,700
+So generally, the types of residuals that
+you're going to see in computer packages
+
+89
+00:04:58,700 --> 00:05:01,740
+there, you're going to see things like
+Pearson's residuals and
+
+90
+00:05:01,740 --> 00:05:02,700
+deviance residuals.
+
+91
+00:05:02,700 --> 00:05:07,122
+All of those are essentially, you can
+interpret them as if they were Z-scores.
+
+92
+00:05:08,500 --> 00:05:11,820
+OK.
+So here is an example of a residual plot.
+
+93
+00:05:11,820 --> 00:05:14,410
+This is the deviance residuals that I just
+mentioned.
+
+94
+00:05:14,410 --> 00:05:16,420
+Essentially you can interpret these as
+Z-scores.
+
+95
+00:05:16,420 --> 00:05:17,330
+So, first of all,
+
+96
+00:05:17,330 --> 00:05:20,690
+the first thing you're going to notice on
+residual plots for logistic regression.
+
+97
+00:05:20,690 --> 00:05:24,320
+I've, by the way, plotted the residuals
+against the predictor age.
+
+98
+00:05:24,320 --> 00:05:26,920
+That's typically what we do with
+residuals.
+
+99
+00:05:26,920 --> 00:05:30,570
+We plot the residuals against the
+predictors in the model,
+
+100
+00:05:30,570 --> 00:05:31,210
+in this case, age.
+
+101
+00:05:31,210 --> 00:05:34,390
+And you can see that we get two stripes
+here.
+
+102
+00:05:34,390 --> 00:05:37,570
+So, you might look at that and say, well
+why are we getting these stripes.
+
+103
+00:05:37,570 --> 00:05:39,950
+Remember in linear regression, we were
+looking.
+
+104
+00:05:39,950 --> 00:05:43,860
+We wanted to see things [SOUND] which were
+completely random around zero.
+
+105
+00:05:43,860 --> 00:05:46,350
+So if the residual plot looks something
+like this.
+
+106
+00:05:46,350 --> 00:05:47,480
+Here's my predictor.
+
+107
+00:05:47,480 --> 00:05:48,980
+My continuous predictor.
+
+108
+00:05:48,980 --> 00:05:54,651
+Here is my predicted value or sorry, my
+residuals and
+
+109
+00:05:54,651 --> 00:06:01,410
+I get something that's a nice [NOISE]
+kind of random scatter around zero.
+
+110
+00:06:01,410 --> 00:06:03,040
+That was, that was what we were looking.
+
+111
+00:06:03,040 --> 00:06:05,270
+Now we clearly see a pattern here.
+
+112
+00:06:05,270 --> 00:06:06,770
+We've got these two stripes.
+
+113
+00:06:06,770 --> 00:06:08,710
+Well why does that happen in logistic
+regression?
+
+114
+00:06:08,710 --> 00:06:10,180
+OK.
+In logistic regression,
+
+115
+00:06:10,180 --> 00:06:12,360
+you either are a one or you're a zero.
+
+116
+00:06:12,360 --> 00:06:16,010
+So everybody, in fact, who did get
+kyphosis, they're going to be
+
+117
+00:06:16,010 --> 00:06:19,240
+positive because one minus a probability
+is always going to be positive.
+
+118
+00:06:19,240 --> 00:06:19,900
+That's the group here.
+
+119
+00:06:19,900 --> 00:06:21,200
+Those are the ones who actually had
+kyphosis.
+
+120
+00:06:22,490 --> 00:06:25,360
+Everybody who did not have kyphosis is
+going to be in the negative range,
+
+121
+00:06:25,360 --> 00:06:27,770
+so that's why you end up with two stripes.
+
+122
+00:06:27,770 --> 00:06:31,350
+There's going to be all the people who are
+controls are going to be in the negative
+
+123
+00:06:31,350 --> 00:06:34,800
+residuals and all the people who are cases
+are going to have positive residual.
+
+124
+00:06:34,800 --> 00:06:37,630
+So, you end up seeing a lot of patterns
+like stripes like that.
+
+125
+00:06:37,630 --> 00:06:40,490
+So, there's nothing wrong with stripes and
+seeing patterns like that.
+
+126
+00:06:40,490 --> 00:06:44,960
+Now, I have done one thing to this
+residual plot which I
+
+127
+00:06:44,960 --> 00:06:46,480
+have to tell you about.
+
+128
+00:06:46,480 --> 00:06:51,520
+I asked the computer to plot for me a
+smooth curve.
+
+129
+00:06:51,520 --> 00:06:52,740
+That fits these dots.
+
+130
+00:06:52,740 --> 00:06:56,398
+So you imagine if I just did this plot and
+I asked [NOISE] for the dots, and
+
+131
+00:06:56,398 --> 00:06:59,746
+I get something [LAUGH] that looks like
+this, I am not going to know,
+
+132
+00:06:59,746 --> 00:07:01,550
+hey is that a nice, even?
+
+133
+00:07:01,550 --> 00:07:04,660
+You know, I, again, I'm looking for my
+residual plot of having sort of
+
+134
+00:07:04,660 --> 00:07:07,750
+a straight line where there's no kind of
+pattern.
+
+135
+00:07:07,750 --> 00:07:11,820
+And I can't really tell that just by
+looking at two stripes of dots.
+
+136
+00:07:11,820 --> 00:07:14,860
+So what I did here was I asked the
+computer, most computer packages can do
+
+137
+00:07:14,860 --> 00:07:20,620
+this for you very easily, to put a, a
+curve, to fit a curve to these dots.
+
+138
+00:07:20,620 --> 00:07:22,040
+You want actually want a fit a curve and
+
+139
+00:07:22,040 --> 00:07:24,960
+not like a linear regression line, 'cause
+the curve is going to tell you a lot more.
+
+140
+00:07:24,960 --> 00:07:27,050
+So I fit, put the best curves to these
+dots.
+
+141
+00:07:27,050 --> 00:07:30,290
+And there's a number of different
+algorithms that we have for curve-fitting.
+
+142
+00:07:30,290 --> 00:07:35,960
+This one is was calculated using a, a
+spline, a smooth spline.
+
+143
+00:07:37,090 --> 00:07:40,030
+There's a lot of choices in most
+statistical packages.
+
+144
+00:07:40,030 --> 00:07:43,430
+You see, will usually see their splines or
+low-res curves.
+
+145
+00:07:43,430 --> 00:07:45,070
+Either one of those is good.
+
+146
+00:07:45,070 --> 00:07:48,210
+And you can get these kids of curves fit
+to the dots here.
+
+147
+00:07:49,240 --> 00:07:50,800
+That curve is very revealing.
+
+148
+00:07:50,800 --> 00:07:52,850
+Again, the dot plot I can't really,
+
+149
+00:07:52,850 --> 00:07:57,250
+my eye is not just not finely tuned enough
+to make much sense of that, but
+
+150
+00:07:57,250 --> 00:08:01,690
+if I add the curve here as I've done here,
+here's what you notice.
+
+151
+00:08:01,690 --> 00:08:06,030
+So, there is a quadratic relationship
+between the residuals and
+
+152
+00:08:06,030 --> 00:08:10,450
+age, that's what you can see much better
+when you've actually plotted the curve on,
+
+153
+00:08:10,450 --> 00:08:12,340
+on top of this graph.
+
+154
+00:08:12,340 --> 00:08:13,760
+What does that imply?
+
+155
+00:08:13,760 --> 00:08:17,770
+Well remember from linear if we ended up
+with residuals that look something like
+
+156
+00:08:17,770 --> 00:08:22,440
+this, that actually weren't you know,
+weren't a random pattern, but
+
+157
+00:08:22,440 --> 00:08:25,910
+had a quadratic pattern, that meant that
+probably one of
+
+158
+00:08:25,910 --> 00:08:30,450
+our predictors needs to be modeled as a
+quadratic, as a square.
+
+159
+00:08:30,450 --> 00:08:32,480
+And it means the same thing here in
+logistic regression.
+
+160
+00:08:32,480 --> 00:08:34,060
+We're seeing a quadratic pattern.
+
+161
+00:08:34,060 --> 00:08:39,270
+That means that age is probably modeled as
+age squared rather than age.
+
+162
+00:08:39,270 --> 00:08:41,330
+That's what that is revealing.
+
+163
+00:08:41,330 --> 00:08:43,240
+And I'll just showing the Pearson
+Residual, yet
+
+164
+00:08:43,240 --> 00:08:45,430
+another type of residual you can get.
+
+165
+00:08:45,430 --> 00:08:48,440
+It comes out with slightly different
+values if you compare to the last
+
+166
+00:08:48,440 --> 00:08:51,040
+slide But you see again, the two stripes.
+
+167
+00:08:51,040 --> 00:08:54,490
+I've plotted the, the curve as well and
+you see basically the same pattern.
+
+168
+00:08:54,490 --> 00:08:56,080
+So you're going to get similar things
+whether you
+
+169
+00:08:56,080 --> 00:08:59,530
+choose the Pearson residuals or whether
+you choose the deviance residuals.
+
+170
+00:08:59,530 --> 00:09:02,270
+I most commonly would choose the deviance
+residuals.
+
+171
+00:09:02,270 --> 00:09:05,460
+Again, something indicating that we have a
+quadratic.
+
+172
+00:09:05,460 --> 00:09:09,880
+Now there were, there's actually other
+ways, to figure out that actually,
+
+173
+00:09:09,880 --> 00:09:12,960
+it is true in this data set that age
+squared is predictive.
+
+174
+00:09:12,960 --> 00:09:14,920
+And there's other ways to figure that out.
+
+175
+00:09:14,920 --> 00:09:16,850
+So we could have done the logit plot.
+
+176
+00:09:16,850 --> 00:09:19,950
+We talked about doing a linear and a logit
+plot earlier.
+
+177
+00:09:19,950 --> 00:09:22,120
+So I've actually done a logit plot here.
+
+178
+00:09:22,120 --> 00:09:25,660
+I've binned, the data set is pretty small,
+so I made five bins and
+
+179
+00:09:25,660 --> 00:09:29,230
+I've just connected the dots here with a
+smooth line.
+
+180
+00:09:29,230 --> 00:09:33,800
+And you can see, again, that the logit
+plot also indicates that we do,
+
+181
+00:09:33,800 --> 00:09:35,330
+we're not linear in the logit, for sure.
+
+182
+00:09:35,330 --> 00:09:36,720
+It doesn't appear to be a line.
+
+183
+00:09:36,720 --> 00:09:40,360
+It really does appear to be a quadratic, a
+curve.
+
+184
+00:09:41,470 --> 00:09:42,900
+And, so that.
+
+185
+00:09:42,900 --> 00:09:45,140
+We could have just, rather than looking at
+the residuals,
+
+186
+00:09:45,140 --> 00:09:48,900
+we could have also just looked at the
+logit plot to come up
+
+187
+00:09:48,900 --> 00:09:52,850
+with the same conclusion, and I'm going to
+show you even something simpler.
+
+188
+00:09:52,850 --> 00:09:55,550
+So the logit plot and the residuals take
+some work, but here's something that
+
+189
+00:09:55,550 --> 00:09:58,370
+takes you no work on the computer that you
+also could have done.
+
+190
+00:09:58,370 --> 00:10:01,370
+You could have just done the very simplest
+scatter plot you
+
+191
+00:10:01,370 --> 00:10:04,930
+can do which is to plot age your predictor
+against kyphosis.
+
+192
+00:10:04,930 --> 00:10:09,940
+So my y-axis here just has kyphosis and
+remember that's just a 0-1 variable.
+
+193
+00:10:09,940 --> 00:10:12,880
+Again, if I do the dot plot, if I don't
+super impose a ca-,
+
+194
+00:10:12,880 --> 00:10:15,420
+curve I'm going to end up with something
+that looks like this.
+
+195
+00:10:15,420 --> 00:10:18,980
+It's going to be hard for me visually to
+see that that's a quadratic.
+
+196
+00:10:18,980 --> 00:10:22,490
+But when I ask the computer to, to fit a
+curve to these data,I can
+
+197
+00:10:22,490 --> 00:10:26,870
+immediately see that, hey, there's a
+quadratic relationship with age.
+
+198
+00:10:26,870 --> 00:10:30,030
+Again age is in months, which is why we
+are getting up to the 200's here.
+
+199
+00:10:30,030 --> 00:10:32,630
+These are children.
+
+200
+00:10:32,630 --> 00:10:34,140
+So one could argue that, you know,
+
+201
+00:10:34,140 --> 00:10:37,030
+in this case, all you had to do was the
+simple scatter plot, or
+
+202
+00:10:37,030 --> 00:10:39,800
+the logit plot, you didn't really need to
+look at the residuals.
+
+203
+00:10:39,800 --> 00:10:42,780
+I just want to tell you what the advantage
+of the residuals is.
+
+204
+00:10:42,780 --> 00:10:44,680
+And I'm going to show you that in a
+minute.
+
+205
+00:10:44,680 --> 00:10:46,610
+When you want to do a simple scatter plot,
+
+206
+00:10:46,610 --> 00:10:48,500
+you can only look at one predictor at a
+time.
+
+207
+00:10:48,500 --> 00:10:52,370
+When you want to do a logit plot, you can
+only plot one predictor at a time.
+
+208
+00:10:52,370 --> 00:10:53,993
+When you look at the residuals,
+
+209
+00:10:53,993 --> 00:10:58,310
+the residuals come out of a multivariate
+model.
+
+210
+00:10:58,310 --> 00:11:02,810
+So the residuals have accounted for the
+fact that you have adjusted for
+
+211
+00:11:02,810 --> 00:11:03,630
+other things in the model.
+
+212
+00:11:03,630 --> 00:11:05,900
+If you put multiple predictors in the
+model.
+
+213
+00:11:05,900 --> 00:11:08,070
+I'm going to show you in a minute that
+makes a difference.
+
+214
+00:11:09,280 --> 00:11:15,640
+If I go on and add a new mo-, variable to
+this model such as age squared,
+
+215
+00:11:15,640 --> 00:11:18,050
+I'm, it's going to be hard for me to
+evaluate whether or
+
+216
+00:11:18,050 --> 00:11:21,790
+not age, once I've adjusted, accounted for
+age square has a,
+
+217
+00:11:21,790 --> 00:11:25,970
+has a linear relationship with kyphosis, I
+can't do that in a simple scatter plot.
+
+218
+00:11:25,970 --> 00:11:29,290
+So the residuals will reflect a
+multivariate model and
+
+219
+00:11:29,290 --> 00:11:31,010
+things being adjusted for one another.
+
+220
+00:11:31,010 --> 00:11:34,560
+So that's where the residuals do better
+than these just simpler plots at,
+
+221
+00:11:34,560 --> 00:11:35,660
+at capturing things.
+
+222
+00:11:37,250 --> 00:11:40,850
+So, this all suggest that we should add
+age squared to the model.
+
+223
+00:11:40,850 --> 00:11:42,330
+So that's when I went ahead and did here
+is,
+
+224
+00:11:42,330 --> 00:11:45,340
+I added an age squared term to the model.
+
+225
+00:11:45,340 --> 00:11:49,300
+And I just want to show you a couple of
+things that came out of the computer.
+
+226
+00:11:49,300 --> 00:11:52,990
+Generally I left age in as a linear value
+as well.
+
+227
+00:11:52,990 --> 00:11:57,260
+Generally, when you're adding interactions
+or higher order terms, like squares,
+
+228
+00:11:57,260 --> 00:12:01,330
+to the model, you're also going to keep
+the linear term in, the main effect.
+
+229
+00:12:01,330 --> 00:12:03,410
+So, we're going to have both age and age
+squared in the model.
+
+230
+00:12:03,410 --> 00:12:06,970
+Now, notice, we go to our test of global
+fit for
+
+231
+00:12:06,970 --> 00:12:10,700
+the model our goodness-of-fit test, the
+likelihood ratio statistic.
+
+232
+00:12:10,700 --> 00:12:12,910
+Well now that comes out to be significant,
+
+233
+00:12:12,910 --> 00:12:16,800
+suggesting that we do have a good fitting
+model now.
+
+234
+00:12:16,800 --> 00:12:22,300
+And you'll notice that age squared turns
+out to have a, to be significant.
+
+235
+00:12:22,300 --> 00:12:25,370
+And now, age itself is also significant.
+
+236
+00:12:25,370 --> 00:12:27,980
+So the linear part of age is also
+significant,
+
+237
+00:12:27,980 --> 00:12:30,540
+once we account for age-squared.
+
+238
+00:12:30,540 --> 00:12:32,550
+It's hard to interpret [LAUGH],
+
+239
+00:12:32,550 --> 00:12:38,170
+we're going to talk about interpreting age
+the effect sizes of age-squared later.
+
+240
+00:12:38,170 --> 00:12:42,280
+But basically remember this is, if you
+kind of think about this mathematically,
+
+241
+00:12:42,280 --> 00:12:45,890
+and you also saw it in the picture, this
+is saying that if you are in
+
+242
+00:12:45,890 --> 00:12:48,112
+the middle ages, you're more likely to get
+get kyphosis.
+
+243
+00:12:48,112 --> 00:12:49,670
+So the very youngest and
+
+244
+00:12:49,670 --> 00:12:54,580
+the very oldest children ha-, were less
+likely to get, have kyphosis.
+
+245
+00:12:54,580 --> 00:12:58,670
+The children with ages in-between were
+most likely to get kyphosis.
+
+246
+00:12:58,670 --> 00:13:01,380
+And if you sort of did out the curve
+mathematically, you would
+
+247
+00:13:01,380 --> 00:13:05,210
+see that this positive linear term and
+this negative square term reflects that.
+
+248
+00:13:06,340 --> 00:13:09,860
+So now we have two things that are
+predictive in the model.
+
+249
+00:13:09,860 --> 00:13:14,810
+And doing the residual plots told us that
+we needed, we wouldn't have
+
+250
+00:13:14,810 --> 00:13:19,570
+known that we needed age squared in the
+model had we not done the plotting.
+
+251
+00:13:19,570 --> 00:13:22,990
+You could imagine that somebody just
+re-entered this whole regression,
+
+252
+00:13:22,990 --> 00:13:26,040
+this whole data set, just dumped age in
+the model and
+
+253
+00:13:26,040 --> 00:13:27,480
+said, oh, age is not significant.
+
+254
+00:13:27,480 --> 00:13:28,190
+I'm getting rid of it.
+
+255
+00:13:28,190 --> 00:13:29,260
+And dumped it out of the model.
+
+256
+00:13:29,260 --> 00:13:30,920
+And that was the end of the story.
+
+257
+00:13:30,920 --> 00:13:31,660
+If you failed to do plotting,
+
+258
+00:13:31,660 --> 00:13:36,710
+you are going to real-, run the risk of
+missing important relationships like this.
+
+259
+00:13:36,710 --> 00:13:39,820
+So just throwing age in as a linear term
+and not doing any of your
+
+260
+00:13:39,820 --> 00:13:45,342
+diagnostics could result in, in errors
+being made as, as it would have here.
+
+261
+00:13:45,342 --> 00:13:46,900
+Luckily we did the residual plot.
+
+262
+00:13:46,900 --> 00:13:50,010
+We saw that there's, we actually had to
+put age squared in.
+
+263
+00:13:50,010 --> 00:13:52,680
+Now again, you could have figured out
+
+264
+00:13:52,680 --> 00:13:55,340
+the same thing from doing either the very
+simple scatter plot,
+
+265
+00:13:55,340 --> 00:14:00,640
+which is super easy to do in a computer or
+from doing a logit plot.
+
+266
+00:14:00,640 --> 00:14:03,570
+Either of those would have also told you
+that you need to put age-squared in
+
+267
+00:14:03,570 --> 00:14:04,380
+the model.
+
+268
+00:14:04,380 --> 00:14:09,400
+But the point I made earlier is that the
+residuals are a little better because now
+
+269
+00:14:09,400 --> 00:14:14,800
+we can get residuals for a model that
+includes both age-squared and age.
+
+270
+00:14:14,800 --> 00:14:17,620
+And in those simple plots, there's no way
+to plot age-squared and
+
+271
+00:14:17,620 --> 00:14:19,270
+age at the same time.
+
+272
+00:14:19,270 --> 00:14:22,510
+But the residuals capture the effects of
+both of those.
+
+273
+00:14:22,510 --> 00:14:26,000
+So now what I've done is, I've taken this
+model and calculated, or
+
+274
+00:14:26,000 --> 00:14:29,190
+asked the computer to calculate for me the
+residuals for
+
+275
+00:14:29,190 --> 00:14:33,900
+everybody based on a model that contains
+both age and age-squared.
+
+276
+00:14:33,900 --> 00:14:37,400
+And then I've done the residual plots for
+all the predictors in this model which,
+
+277
+00:14:37,400 --> 00:14:39,540
+again, is just age and age squared.
+
+278
+00:14:39,540 --> 00:14:41,110
+And here's the neat thing.
+
+279
+00:14:41,110 --> 00:14:44,885
+So now you can see that once I have both
+of these predictors in the model, I,
+
+280
+00:14:44,885 --> 00:14:46,640
+I fit my curve to the,
+
+281
+00:14:46,640 --> 00:14:50,230
+to the dot plot again in which you notice
+is that I have exactly what I want.
+
+282
+00:14:50,230 --> 00:14:52,010
+Which essentially a flat line.
+
+283
+00:14:52,010 --> 00:14:53,160
+That's telling me that there's no sys-,
+
+284
+00:14:53,160 --> 00:14:59,230
+systematic powder in the residuals, so we
+don't have a problem in our model.
+
+285
+00:14:59,230 --> 00:14:59,780
+And the same with,
+
+286
+00:14:59,780 --> 00:15:04,590
+if I plot against age-squared, it's also a
+flat line, which is exactly what we want.
+
+287
+00:15:04,590 --> 00:15:08,570
+So, the nice thing here is, now I have a
+way of evaluating.
+
+288
+00:15:08,570 --> 00:15:10,670
+Once there are multiple things in the
+model.
+
+289
+00:15:10,670 --> 00:15:13,760
+How is my model doing, in terms of
+individual predictors?
+
+290
+00:15:13,760 --> 00:15:15,590
+Once, I've adjusted for other things.
+
+291
+00:15:15,590 --> 00:15:19,670
+So, age now, has a good relationship, now,
+that you've adjusted for age-squared.
+
+292
+00:15:19,670 --> 00:15:20,360
+That's the idea.
+
+293
+00:15:20,360 --> 00:15:21,928
+And, the use of the residuals.

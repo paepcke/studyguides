@@ -1,0 +1,470 @@
+1
+00:00:05,960 --> 00:00:09,160
+In this next module, I'm going to tell you
+about Poisson regression,
+
+2
+00:00:09,160 --> 00:00:13,010
+which is used when your outcome variable
+is a count variable,
+
+3
+00:00:13,010 --> 00:00:17,330
+such as the number of cases of disease
+occurring in a particular geographic area
+
+4
+00:00:17,330 --> 00:00:18,840
+during a particular time period.
+
+5
+00:00:20,700 --> 00:00:24,170
+Before I can delve into Poisson regression
+I first have to
+
+6
+00:00:24,170 --> 00:00:28,720
+tell you a little bit about the poi,
+Poisson probability distribution.
+
+7
+00:00:28,720 --> 00:00:32,250
+So, this is yet another probability
+distribution and remember that
+
+8
+00:00:32,250 --> 00:00:37,330
+all the probability distribution is, is a
+function that sums to 1.
+
+9
+00:00:37,330 --> 00:00:40,490
+So, if we can numerate all the possible
+outcomes here,
+
+10
+00:00:40,490 --> 00:00:43,430
+their probabilities have to sum to 1.
+
+11
+00:00:43,430 --> 00:00:45,890
+That's true in the Poisson probability.
+
+12
+00:00:45,890 --> 00:00:48,519
+It is a discreet probability distribution.
+
+13
+00:00:49,670 --> 00:00:53,260
+So we can actually talk about specific
+outcomes like the probability of
+
+14
+00:00:53,260 --> 00:00:57,600
+having 0 cases of disease or 1 case of
+disease or 2, et cetera.
+
+15
+00:00:57,600 --> 00:00:58,363
+They're counts.
+
+16
+00:00:58,363 --> 00:01:02,383
+Like any probability distribution there's
+a formula I can give you for
+
+17
+00:01:02,383 --> 00:01:05,300
+those particular discreet outcomes.
+
+18
+00:01:05,300 --> 00:01:09,430
+So ,this is the Poisson probability
+formula down here.
+
+19
+00:01:09,430 --> 00:01:13,020
+Mu is just the expected number of
+outcomes,
+
+20
+00:01:13,020 --> 00:01:16,460
+the expected count during a given time
+period.
+
+21
+00:01:16,460 --> 00:01:21,100
+So, we could talk about maybe we're
+expecting 10 deaths from
+
+22
+00:01:21,100 --> 00:01:24,420
+H1N1 flu in a given winter in California.
+
+23
+00:01:24,420 --> 00:01:26,900
+That would be our expected value then.
+
+24
+00:01:26,900 --> 00:01:29,650
+We could then calculate the probability
+that we're going to end up
+
+25
+00:01:29,650 --> 00:01:34,070
+with 9 deaths in a given winter or 11 or
+10 or 8, et cetera.
+
+26
+00:01:34,070 --> 00:01:36,470
+We would just be plugging into this
+formula.
+
+27
+00:01:36,470 --> 00:01:40,140
+I'm going to Actually plug some numbers in
+with a real example of this formula in
+
+28
+00:01:40,140 --> 00:01:43,330
+a minute, so I won't delve into the
+details of this formula quite yet.
+
+29
+00:01:44,560 --> 00:01:48,300
+I just want to point out that a Poisson
+probability distribution like any
+
+30
+00:01:48,300 --> 00:01:51,720
+other probability distribution, it has a
+mean and a variance.
+
+31
+00:01:51,720 --> 00:01:54,710
+I won't derive where they come from for
+you, but I'll just tell you that again
+
+32
+00:01:54,710 --> 00:01:59,309
+the mean is just the expected count that's
+going to come out in a given time period.
+
+33
+00:02:00,370 --> 00:02:03,770
+For a Poisson distribution what's really
+interesting is that the mean and
+
+34
+00:02:03,770 --> 00:02:05,370
+the variance are equal.
+
+35
+00:02:05,370 --> 00:02:07,020
+If we're really got a Poisson
+distribution,
+
+36
+00:02:07,020 --> 00:02:09,520
+that will be true that the mean and the
+variance will be equal.
+
+37
+00:02:09,520 --> 00:02:12,081
+That means the standard deviation will be
+the square root of the mean.
+
+38
+00:02:12,081 --> 00:02:14,850
+So, if we are expecting 10 cases of
+disease in a given winter in
+
+39
+00:02:14,850 --> 00:02:16,380
+California then the variance for
+
+40
+00:02:16,380 --> 00:02:22,860
+that if we are really on a Poisson
+distribution would also be 10.
+
+41
+00:02:22,860 --> 00:02:26,460
+It's easiest to illustrate a Poisson
+distribution by just kind of showing you
+
+42
+00:02:26,460 --> 00:02:28,080
+an example with actually numbers.
+
+43
+00:02:28,080 --> 00:02:29,420
+So, let's do that now.
+
+44
+00:02:29,420 --> 00:02:33,120
+So, let's imagine that in a particular
+population this might be
+
+45
+00:02:33,120 --> 00:02:35,460
+like college students.
+
+46
+00:02:35,460 --> 00:02:38,610
+The number of alcohol binging episodes in
+a month
+
+47
+00:02:38,610 --> 00:02:41,690
+follows a Poisson distribution with a mean
+of 4.
+
+48
+00:02:41,690 --> 00:02:45,770
+So, in this population on average, people
+are binging about 4 times a month.
+
+49
+00:02:45,770 --> 00:02:50,862
+So, what's the probability, that a random
+person will have 0 episodes,1 episodes,
+
+50
+00:02:50,862 --> 00:02:53,070
+2 episodes, 3 episodes, etc?
+
+51
+00:02:53,070 --> 00:02:54,510
+We can calculate the probability.
+
+52
+00:02:54,510 --> 00:02:57,540
+So we're somehow, assuming that there's a
+constant rate here, and
+
+53
+00:02:57,540 --> 00:03:00,970
+that everybody in the population on
+average is having about 4 per month.
+
+54
+00:03:00,970 --> 00:03:03,320
+So we can, this is a count, distribution.
+
+55
+00:03:03,320 --> 00:03:07,180
+And if we're really on a Poisson, then we
+can calculate the Poisson probability for
+
+56
+00:03:07,180 --> 00:03:08,070
+each of these cases.
+
+57
+00:03:08,070 --> 00:03:08,620
+This.
+So
+
+58
+00:03:08,620 --> 00:03:10,190
+what does the Poisson Probability looks
+like?
+
+59
+00:03:10,190 --> 00:03:14,870
+They're the probability that a, kind of a
+random person will have 0 episodes in
+
+60
+00:03:14,870 --> 00:03:17,520
+a given month is going to be equal to.
+
+61
+00:03:17,520 --> 00:03:21,230
+And then we just apply the Poisson
+probability function.
+
+62
+00:03:21,230 --> 00:03:25,660
+Which is, you take the mean, you raise it
+to the number of events,
+
+63
+00:03:25,660 --> 00:03:29,010
+the count that you're trying to calculate
+the probability for.
+
+64
+00:03:29,010 --> 00:03:34,210
+Then you take e, neg raise to negative the
+mean, which in this case is 4, and
+
+65
+00:03:34,210 --> 00:03:36,970
+then you do the count factorial in the
+denominator.
+
+66
+00:03:36,970 --> 00:03:40,160
+So in this case, we're trying to calculate
+the probability of 0 events.
+
+67
+00:03:40,160 --> 00:03:42,660
+So 4 raised to 0 here is one.
+
+68
+00:03:42,660 --> 00:03:44,140
+0 factorial is also 1.
+
+69
+00:03:44,140 --> 00:03:46,690
+So this is just going to be e raised to
+negative 4,
+
+70
+00:03:46,690 --> 00:03:48,230
+which turns out to be a value of 0.018.
+
+71
+00:03:48,230 --> 00:03:52,140
+So there's only about a 1 to 2% chance
+that a person's going to have no.
+
+72
+00:03:52,140 --> 00:03:53,200
+Binging episodes in a month.
+
+73
+00:03:54,220 --> 00:03:56,740
+What's the probability that x is going to
+equal 1?
+
+74
+00:03:56,740 --> 00:03:59,110
+So we again, we're going to apply the
+formula so that's going to be 4,
+
+75
+00:03:59,110 --> 00:04:03,860
+the mean raised to 1 e raised to the
+negative 4 divided by 1 factorial.
+
+76
+00:04:03,860 --> 00:04:05,640
+And, therefore we're going to have,
+
+77
+00:04:05,640 --> 00:04:09,860
+that comes out to be a value of about 7%
+of those 7% chance of having 1 episode in
+
+78
+00:04:09,860 --> 00:04:14,620
+the month let me just actually plug into
+the formula one more tie to show you,
+
+79
+00:04:14,620 --> 00:04:17,910
+so for probability of having binging
+episodes,
+
+80
+00:04:17,910 --> 00:04:23,340
+its going to be 4 raised to 2, e raised to
+negative 4, divided by 2 factorial.
+
+81
+00:04:23,340 --> 00:04:29,980
+That comes out to be about 14.65% and then
+you kind of get the pattern here.
+
+82
+00:04:29,980 --> 00:04:31,960
+I went through and calculated the rest of
+these.
+
+83
+00:04:31,960 --> 00:04:37,195
+So ,there's about a 95.5% chance of 3
+episodes.
+
+84
+00:04:37,195 --> 00:04:39,345
+19.5% chance of 4 episodes as the most
+likely outcome.
+
+85
+00:04:39,345 --> 00:04:45,155
+15% chance of 5 episodes, 10% chance of 6
+episodes, 5.95% chance of 7 episodes and
+
+86
+00:04:45,155 --> 00:04:49,775
+if you kept going you would see that the
+probabilities are going to get smaller and
+
+87
+00:04:49,775 --> 00:04:53,040
+smaller and smaller as we get away from
+the mean.
+
+88
+00:04:53,040 --> 00:04:56,020
+If I were to add up all of these
+probabilities up in to
+
+89
+00:04:56,020 --> 00:05:00,680
+the point where the probabilities get
+ravishingly small They'll be almost what.
+
+90
+00:05:00,680 --> 00:05:04,290
+Of course theoretically we can go up to a
+hundred episodes but by the time it
+
+91
+00:05:04,290 --> 00:05:07,720
+gets to a hundred, the probability would
+be so small that essentially if
+
+92
+00:05:07,720 --> 00:05:12,060
+we add up all the probabilities it's
+going to be almost, almost that one.
+
+93
+00:05:12,060 --> 00:05:14,480
+So that's just how the probab, the Poisson
+probability.
+
+94
+00:05:14,480 --> 00:05:15,420
+Distribution works.
+
+95
+00:05:16,440 --> 00:05:20,590
+Just like for the binomial probability
+distribution, I can talk about
+
+96
+00:05:20,590 --> 00:05:25,340
+the probability of a specific outcome, the
+specific number of counts.
+
+97
+00:05:25,340 --> 00:05:26,700
+And, that's what we are going to be
+taking.
+
+98
+00:05:26,700 --> 00:05:30,140
+We are going to take those Poisson
+probabilities, we are going to using those
+
+99
+00:05:30,140 --> 00:05:33,190
+in the likelihood function rather than the
+binomial probabilities.

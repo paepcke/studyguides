@@ -1,0 +1,369 @@
+1
+00:00:00,000 --> 00:00:06,300
+[BLANK_AUDIO]
+
+2
+00:00:06,300 --> 00:00:08,400
+Welcome to HRP 262.
+
+3
+00:00:08,400 --> 00:00:09,860
+This is the third and
+
+4
+00:00:09,860 --> 00:00:13,880
+final course in the three quarter
+biostatistics sequence that I teach.
+
+5
+00:00:13,880 --> 00:00:15,080
+This quarter should be a lot of fun,
+
+6
+00:00:15,080 --> 00:00:17,590
+we're going to be dealing with
+longitudinal data,
+
+7
+00:00:17,590 --> 00:00:19,930
+which is when you have data measured over
+time.
+
+8
+00:00:19,930 --> 00:00:24,560
+So just to give you a brief overview of
+the topics that we'll be
+
+9
+00:00:24,560 --> 00:00:26,900
+covering in HRP 262.
+
+10
+00:00:26,900 --> 00:00:30,300
+The first part of the course, we're
+going to talk about survival analysis,
+
+11
+00:00:30,300 --> 00:00:33,100
+this is when you have time-to-event
+outcomes.
+
+12
+00:00:33,100 --> 00:00:37,540
+We'll go over Kaplan Meier methods, which
+may be a review for some of you.
+
+13
+00:00:37,540 --> 00:00:40,820
+I'll talk briefly about parametric
+survival models, and
+
+14
+00:00:40,820 --> 00:00:43,980
+then we'll spend quite a bit of time on
+Cox Regression,
+
+15
+00:00:43,980 --> 00:00:48,510
+which is the most commonly used regression
+method for survival data.
+
+16
+00:00:48,510 --> 00:00:52,610
+The second part of the course is going to
+focus on repeated measures data.
+
+17
+00:00:52,610 --> 00:00:55,850
+This is when you measure people at
+multiple time points.
+
+18
+00:00:55,850 --> 00:00:59,160
+You had, maybe have measured their
+predictors multiple times, and
+
+19
+00:00:59,160 --> 00:01:02,130
+you may have measured their outcomes
+multiple times.
+
+20
+00:01:02,130 --> 00:01:07,740
+I will cover, I will, I will, I will do a
+brief of linear regression and ANOVA just
+
+21
+00:01:07,740 --> 00:01:11,920
+to make sure we're all on the same page,
+before we jump into repeated measures.
+
+22
+00:01:11,920 --> 00:01:15,740
+With repeated measures data, it's going to
+be extremely important to visualize, and
+
+23
+00:01:15,740 --> 00:01:19,330
+graph everything to get a sense of what's
+going on in the data.
+
+24
+00:01:19,330 --> 00:01:23,730
+The repeated measures part, the time part,
+does add some complexity.
+
+25
+00:01:23,730 --> 00:01:26,270
+And graphing is going to be even more
+important for
+
+26
+00:01:26,270 --> 00:01:28,020
+sorting through some of that complexity.
+
+27
+00:01:28,020 --> 00:01:31,390
+So we'll talk about ways to graph a data
+in different data structures.
+
+28
+00:01:32,430 --> 00:01:33,870
+The test that we are going to cover for
+
+29
+00:01:33,870 --> 00:01:38,220
+analyzing repeated measures data if we are
+just wanting to compare groups and
+
+30
+00:01:38,220 --> 00:01:41,780
+not adjust for anything, we can use
+repeated measures ANOVA.
+
+31
+00:01:41,780 --> 00:01:44,940
+And if we want to some kind of regression,
+the two regression techniques I'll be
+
+32
+00:01:44,940 --> 00:01:48,549
+talking about, are generalized estimating
+equations and mixed model.
+
+33
+00:01:50,410 --> 00:01:53,180
+Just to kind of show you where all of
+these topics fit in our kind of
+
+34
+00:01:53,180 --> 00:01:55,330
+big chart of statistical tests.
+
+35
+00:01:55,330 --> 00:01:59,060
+So this chart is showing you for different
+outcome variables whether or
+
+36
+00:01:59,060 --> 00:02:01,620
+not you have independent or correlated
+observations.
+
+37
+00:02:01,620 --> 00:02:05,070
+All of that helps you to decide which
+statistical test to choose.
+
+38
+00:02:05,070 --> 00:02:09,360
+A lot of these tests we covered in the
+biostatistic sequence thus far.
+
+39
+00:02:09,360 --> 00:02:12,330
+So what we're going to hit this term,
+again we
+
+40
+00:02:12,330 --> 00:02:16,720
+are going to hit time-to-event outcomes
+which we haven't talked much about so far.
+
+41
+00:02:16,720 --> 00:02:19,220
+So that's why I want to include
+Kaplan-Meier statistics,
+
+42
+00:02:19,220 --> 00:02:23,670
+a little bit of parametric regression, and
+a lot on Cox regression.
+
+43
+00:02:23,670 --> 00:02:27,780
+When we turn to the section on repeated
+measures data.
+
+44
+00:02:27,780 --> 00:02:30,680
+If we have continuous outcomes, we are
+going to dealing with
+
+45
+00:02:30,680 --> 00:02:33,510
+repeated measure ANOVA, mixed models and
+GE modelling.
+
+46
+00:02:33,510 --> 00:02:38,930
+We'll also talk a little bit of a, the
+situation where we have binary or
+
+47
+00:02:38,930 --> 00:02:43,430
+categorical data or even count data where
+we might use GE modelling.
+
+48
+00:02:45,920 --> 00:02:47,060
+Just a little preview to what we
+
+49
+00:02:47,060 --> 00:02:49,600
+are going to be talking about starting
+this week.
+
+50
+00:02:49,600 --> 00:02:51,250
+Survival analysis.
+
+51
+00:02:51,250 --> 00:02:56,250
+So this curve here shows a very early
+example of survival analysis.
+
+52
+00:02:56,250 --> 00:03:03,770
+It's way back from 1669, so somebody, a
+mathematician, drew a curve of longevity.
+
+53
+00:03:03,770 --> 00:03:06,950
+And it's a really interesting curve to
+look at because you'll see very
+
+54
+00:03:06,950 --> 00:03:10,220
+quickly that if we were in 1669,
+
+55
+00:03:10,220 --> 00:03:14,490
+a lot of us wouldn't still be alive, at
+this point in our lives.
+
+56
+00:03:14,490 --> 00:03:20,360
+So you can see that the X axis here is
+ages and what were looking
+
+57
+00:03:20,360 --> 00:03:24,590
+at here at the Y axis, is survival, so
+this is the percent surviving.
+
+58
+00:03:24,590 --> 00:03:27,180
+And this is generally how we're going to
+draw survival curves.
+
+59
+00:03:29,220 --> 00:03:35,710
+So by about age six, there was only about
+64 out of 100 people still surviving,
+
+60
+00:03:35,710 --> 00:03:41,500
+that means about a third of people in 1869
+would die before the age of six.
+
+61
+00:03:41,500 --> 00:03:45,300
+It's not so good when you look along here
+at that age 16.
+
+62
+00:03:45,300 --> 00:03:48,690
+There's only about 40%, 40 out 100 people
+surviving.
+
+63
+00:03:49,690 --> 00:03:53,360
+You go to age 20, it's only about a third
+of us left.
+
+64
+00:03:53,360 --> 00:03:56,100
+Age 26, there's only about a quarter of
+people left.
+
+65
+00:03:56,100 --> 00:03:58,800
+By age 36, five-sixths of the people had
+died, and
+
+66
+00:03:58,800 --> 00:04:03,040
+only one sixth of the people were going to
+live past the age of 36 back then.
+
+67
+00:04:03,040 --> 00:04:07,010
+So unfortunately, that means most of us,
+if we were living in 1669,
+
+68
+00:04:07,010 --> 00:04:08,710
+wouldn't still be around.
+
+69
+00:04:08,710 --> 00:04:11,970
+And then you can see that there's you know
+a tail end here, a couple of people live
+
+70
+00:04:11,970 --> 00:04:17,270
+our to 76 or 86, but longevity curves have
+obviously changed a great
+
+71
+00:04:17,270 --> 00:04:21,800
+deal in just a couple of hundred years
+which I find really fascinating.
+
+72
+00:04:21,800 --> 00:04:24,880
+And that's a tribute to modern medicine
+that now most people are going to
+
+73
+00:04:24,880 --> 00:04:26,450
+survive much much longer than this.
+
+74
+00:04:26,450 --> 00:04:28,410
+But this is an example of our survival
+curve.
+
+75
+00:04:28,410 --> 00:04:31,920
+And that's what we're going to dealing
+with this week, is just how to draw and
+
+76
+00:04:31,920 --> 00:04:33,990
+interpret and understand survival curves.
+
+77
+00:04:33,990 --> 00:04:39,950
+[BLANK_AUDIO]

@@ -1,0 +1,330 @@
+1
+00:00:05,020 --> 00:00:06,430
+Welcome to Week Five.
+
+2
+00:00:06,430 --> 00:00:10,280
+This week we're going to start our three
+week discussion of model building.
+
+3
+00:00:10,280 --> 00:00:12,910
+I'm going to talk about model building
+specifically in the context of
+
+4
+00:00:12,910 --> 00:00:16,460
+logistic regression, but most of the
+principles that I talk about will also
+
+5
+00:00:16,460 --> 00:00:19,850
+apply to other type of regression, such as
+linear regression and Cox regression.
+
+6
+00:00:21,250 --> 00:00:24,030
+This week I'm going to talk about how to
+model your predictor, so
+
+7
+00:00:24,030 --> 00:00:26,990
+we are going to be talking about the right
+hand side of the equation.
+
+8
+00:00:26,990 --> 00:00:31,310
+When you have different types of
+variables, continuous versus categorical,
+
+9
+00:00:31,310 --> 00:00:34,020
+how are you going to actually put them
+into your model?
+
+10
+00:00:34,020 --> 00:00:37,290
+There's some choices you have to make, so
+for continuous variables you
+
+11
+00:00:37,290 --> 00:00:41,180
+need to choose what units you're going to
+model the continuous variables in.
+
+12
+00:00:41,180 --> 00:00:44,820
+Sometimes you may choose to model them in
+standard deviation units that's
+
+13
+00:00:44,820 --> 00:00:47,039
+something called standardization which
+we're going to talk about.
+
+14
+00:00:48,140 --> 00:00:51,290
+For every continuous variables you're
+going to plot it in a logit plot and
+
+15
+00:00:51,290 --> 00:00:55,490
+make sure that it's actually linear in the
+logit like we talked about last week.
+
+16
+00:00:55,490 --> 00:00:58,360
+But what happens if some of those
+variables are not linear,
+
+17
+00:00:58,360 --> 00:01:01,930
+how are you going to transform them before
+putting them into the model?
+
+18
+00:01:01,930 --> 00:01:04,850
+Finally if you have kind of a large set of
+predictors, especially if
+
+19
+00:01:04,850 --> 00:01:08,610
+they're highly correlated, you might want
+to do some kind of variable reduction.
+
+20
+00:01:08,610 --> 00:01:12,008
+And we're going to talk about a specific
+technique this week taught called
+
+21
+00:01:12,008 --> 00:01:14,960
+principal components analysis that does
+that.
+
+22
+00:01:14,960 --> 00:01:17,970
+If you have categorical variables, you're
+most likely going to be dummy coding them,
+
+23
+00:01:17,970 --> 00:01:19,930
+so I'll review dummy coding.
+
+24
+00:01:19,930 --> 00:01:23,780
+Sometimes if you have ordered categories,
+you actually might treat those variables
+
+25
+00:01:23,780 --> 00:01:27,310
+as ordinal, which means that they're
+going to appear a little bit differently
+
+26
+00:01:27,310 --> 00:01:30,830
+in the model, and I'll talk about how to
+do deal with ordinal variables.
+
+27
+00:01:30,830 --> 00:01:32,310
+Just a little preview to this week,
+
+28
+00:01:32,310 --> 00:01:36,110
+we're going to spend quite a bit of time
+on principle components analysis.
+
+29
+00:01:36,110 --> 00:01:40,020
+And one of the places where that turns out
+to be pretty useful is when you're
+
+30
+00:01:40,020 --> 00:01:40,940
+analyzing dietary.
+
+31
+00:01:40,940 --> 00:01:41,820
+Dietary data.
+
+32
+00:01:41,820 --> 00:01:43,630
+So if you think about dietary data,
+
+33
+00:01:43,630 --> 00:01:48,910
+what people often do is to give especially
+if you have a large sample of people,
+
+34
+00:01:48,910 --> 00:01:50,580
+you're going to give them some sort of
+questionnaire.
+
+35
+00:01:50,580 --> 00:01:53,610
+They're going to check off things like how
+often do I eat apples?
+
+36
+00:01:53,610 --> 00:01:55,480
+How often do I eat fish?
+
+37
+00:01:55,480 --> 00:01:57,160
+And you end up with a, a larger, or
+
+38
+00:01:57,160 --> 00:01:59,490
+more variables for all of these different
+food types.
+
+39
+00:02:00,520 --> 00:02:01,710
+How are you going to analyze those data?
+
+40
+00:02:01,710 --> 00:02:05,070
+Well you're probably not going to want to
+put each individual food type into
+
+41
+00:02:05,070 --> 00:02:06,800
+a regression model.
+
+42
+00:02:06,800 --> 00:02:09,750
+For one thing there's just going to be so
+many variables.
+
+43
+00:02:09,750 --> 00:02:12,700
+You're going to increase you're type
+chances of a type one error if
+
+44
+00:02:12,700 --> 00:02:14,400
+you just throw them all in the model.
+
+45
+00:02:14,400 --> 00:02:18,020
+And secondly, of course, it's really hard
+to isolate the effect of
+
+46
+00:02:18,020 --> 00:02:21,760
+any one particular food, because foods
+tend to cluster.
+
+47
+00:02:21,760 --> 00:02:24,120
+People who eat a lot of hamburgers, for
+
+48
+00:02:24,120 --> 00:02:28,870
+example, are probably also eating a lot of
+French Fries, and a lot of,
+
+49
+00:02:28,870 --> 00:02:32,480
+soda, just because they're frequenting
+fast food joints.
+
+50
+00:02:32,480 --> 00:02:35,400
+So what principle components analysis
+allows you
+
+51
+00:02:35,400 --> 00:02:41,330
+to do with dietary data is to pick out
+patterns of eating.
+
+52
+00:02:41,330 --> 00:02:44,540
+Food groups that, food types that cluster
+together.
+
+53
+00:02:44,540 --> 00:02:47,890
+And so, you might be able to pick out that
+fast food pattern type of
+
+54
+00:02:47,890 --> 00:02:49,930
+eating using principle components
+analysis.
+
+55
+00:02:49,930 --> 00:02:52,700
+So you're going to reduce the bigger set
+of dietary variables about
+
+56
+00:02:52,700 --> 00:02:56,070
+individual foods into a smaller Smaller
+set of pattern.
+
+57
+00:02:56,070 --> 00:02:59,130
+And the particular study that I'm showing
+on this screen is one we're going to
+
+58
+00:02:59,130 --> 00:03:02,870
+talk about this week and it actually did
+that in this study.
+
+59
+00:03:02,870 --> 00:03:06,780
+They had a large number of women teachers
+from California and
+
+60
+00:03:06,780 --> 00:03:10,240
+they applied principal component analysis
+to their dietary data and
+
+61
+00:03:10,240 --> 00:03:13,970
+came out with five predominant food eating
+patterns.
+
+62
+00:03:13,970 --> 00:03:15,220
+And you can see them listed here,
+
+63
+00:03:15,220 --> 00:03:18,700
+plant based, high protein high fat, high
+carbohydrate, ethnic, and
+
+64
+00:03:18,700 --> 00:03:22,020
+the the salad and wine diet which I think
+is a particularly interesting one,
+
+65
+00:03:22,020 --> 00:03:27,250
+and then they tried to link women's
+scores, every woman will get
+
+66
+00:03:27,250 --> 00:03:33,930
+a score on each dietary pattern saying how
+much She follows that pattern.
+
+67
+00:03:33,930 --> 00:03:36,780
+They linked then those scores to breast
+cancer risk.
+
+68
+00:03:36,780 --> 00:03:40,410
+So that's a particular example of the use
+of principal component analysis that we'll
+
+69
+00:03:40,410 --> 00:03:41,700
+return to later this week.

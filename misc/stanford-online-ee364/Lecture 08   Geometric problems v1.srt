@@ -1,0 +1,5135 @@
+1
+00:00:00,420 --> 00:00:05,030
+Today we're going to look at applications
+well geometric problems.
+
+2
+00:00:05,030 --> 00:00:08,680
+And again some of these are very, very
+simple and so we actually skip them.
+
+3
+00:00:08,680 --> 00:00:13,490
+Things like computing projections of a
+point onto a convex set.
+
+4
+00:00:13,490 --> 00:00:16,420
+Doing things like calculating distance
+between two convex sets.
+
+5
+00:00:16,420 --> 00:00:18,140
+These are just to simple to even mention.
+
+6
+00:00:18,140 --> 00:00:21,980
+So we're going to skip those although
+they're, they're kind of obvious by now.
+
+7
+00:00:21,980 --> 00:00:24,847
+Now an example of that would be how do you
+compute the distance between two
+
+8
+00:00:24,847 --> 00:00:26,440
+polyhedron, right?
+
+9
+00:00:26,440 --> 00:00:30,460
+So without even writing it down you should
+know by now that's just a qp.
+
+10
+00:00:30,460 --> 00:00:33,726
+You know you minimize norm x minus y two
+norm subject to,
+
+11
+00:00:33,726 --> 00:00:37,930
+you know, a x less than b and f x less
+than g.
+
+12
+00:00:37,930 --> 00:00:41,120
+Okay, so we don't cover that kind of stuff
+because it's too simple.
+
+13
+00:00:41,120 --> 00:00:44,720
+Instead we're going to focus on stuff
+that's kind of less obvious and
+
+14
+00:00:44,720 --> 00:00:48,710
+really I mean quite interesting and very
+useful.
+
+15
+00:00:48,710 --> 00:00:52,806
+So the first topic is going to be the
+Lowner-John ellipsoid and this,
+
+16
+00:00:52,806 --> 00:00:58,366
+this is not obvious, although these have
+been know for about 100 years.
+
+17
+00:00:58,366 --> 00:01:01,110
+Although not, nothing was known about it
+computationally, right,
+
+18
+00:01:01,110 --> 00:01:04,554
+this was not a algorithmic thing, this was
+just theory.
+
+19
+00:01:04,554 --> 00:01:06,550
+Until maybe 20 years ago.
+
+20
+00:01:06,550 --> 00:01:10,825
+So basic idea is you want to compute the
+minimum volume ellipsoid that
+
+21
+00:01:10,825 --> 00:01:14,909
+covers a set, and it's completely general.
+
+22
+00:01:14,909 --> 00:01:16,545
+So I have a set, C.
+
+23
+00:01:16,545 --> 00:01:20,950
+And what I want to do is compute the
+minimum volume ellipsoid that covers it.
+
+24
+00:01:20,950 --> 00:01:22,150
+So, that's, that's the idea.
+
+25
+00:01:22,150 --> 00:01:25,080
+By the way there's tons of applications
+with this, right.
+
+26
+00:01:25,080 --> 00:01:30,310
+One would be to give a C could be very
+large, very complex.
+
+27
+00:01:30,310 --> 00:01:34,656
+And instead all you want is sort of a
+summary of, of, C a, that is a,
+
+28
+00:01:34,656 --> 00:01:39,210
+is, is a smaller right, and so.
+
+29
+00:01:39,210 --> 00:01:42,218
+To describe an ellipsoid takes on the
+order of N squared,
+
+30
+00:01:42,218 --> 00:01:47,860
+in fact N squared over two perimeters to
+describe a an ellipsoid in R, N.
+
+31
+00:01:47,860 --> 00:01:50,590
+So that's sort of an compact way to do
+this.
+
+32
+00:01:50,590 --> 00:01:52,329
+And this approximation covering a bunch
+of,
+
+33
+00:01:52,329 --> 00:01:54,540
+when you're covering a bunch of points.
+
+34
+00:01:54,540 --> 00:01:56,462
+It's a conservative one I guess so
+
+35
+00:01:56,462 --> 00:02:00,266
+you'd say you going to cover more then
+just the points.
+
+36
+00:02:00,266 --> 00:02:05,580
+Alright, now generically you can solve
+this problem.
+
+37
+00:02:05,580 --> 00:02:06,730
+I should be more careful about it.
+
+38
+00:02:06,730 --> 00:02:09,770
+We can generically write this as a convex
+optimization problem.
+
+39
+00:02:09,770 --> 00:02:11,921
+So, computing the minimum volume
+ellipsoid.
+
+40
+00:02:11,921 --> 00:02:14,587
+But that's going to be an expression that
+comes up in
+
+41
+00:02:14,587 --> 00:02:17,253
+the constraints that may be handled,
+depends on
+
+42
+00:02:17,253 --> 00:02:23,330
+that being tractable before this becomes a
+tractable convex program, right?
+
+43
+00:02:23,330 --> 00:02:27,274
+Oh, and I guess we've we're far enough in
+the class that it's time for you to, we,
+
+44
+00:02:27,274 --> 00:02:30,930
+we can actually be more honest here.
+
+45
+00:02:30,930 --> 00:02:35,700
+And, admit things like, there are non
+tractable convex optimization problems.
+
+46
+00:02:35,700 --> 00:02:36,810
+This is kind of obvious, right?
+
+47
+00:02:36,810 --> 00:02:38,510
+'Cuz if I write a convex optimization
+problem.
+
+48
+00:02:38,510 --> 00:02:40,296
+But for example, to evaluate the objective
+or
+
+49
+00:02:40,296 --> 00:02:42,790
+a constraint function, is itself
+intractable.
+
+50
+00:02:42,790 --> 00:02:44,370
+Then you're in trouble, right?
+
+51
+00:02:44,370 --> 00:02:45,604
+So, okay.
+
+52
+00:02:45,604 --> 00:02:46,822
+So what we'll do is we'll,
+
+53
+00:02:46,822 --> 00:02:51,130
+there's a very carefully chosen
+parameterization of the ellipsoid.
+
+54
+00:02:51,130 --> 00:02:53,120
+And we're going to write it as this.
+
+55
+00:02:53,120 --> 00:02:58,090
+It's the inverse image of the unit ball
+under an affine mapping, right?
+
+56
+00:02:58,090 --> 00:03:01,966
+So, so, we're going to take the ellipsoid
+e to be the center points for
+
+57
+00:03:01,966 --> 00:03:06,890
+which the two norm of av plus b is less
+than one, right?
+
+58
+00:03:06,890 --> 00:03:10,229
+So that's the inverse image of the unit
+ball under the affine mapping.
+
+59
+00:03:10,229 --> 00:03:12,080
+A v plus b.
+
+60
+00:03:12,080 --> 00:03:17,980
+Okay, now here a here a of course could be
+anything well I mean it has to be square.
+
+61
+00:03:17,980 --> 00:03:21,796
+Well it wouldn't even have to be square
+but we can without loss of
+
+62
+00:03:21,796 --> 00:03:27,689
+generality we're going to take a to be
+symmetric positive definite.
+
+63
+00:03:27,689 --> 00:03:31,819
+Now the argument there, I'm just going to
+go over it very briefly here, so
+
+64
+00:03:31,819 --> 00:03:35,039
+this is going to be obscure, but hopefully
+you can follow.
+
+65
+00:03:35,039 --> 00:03:36,557
+The argument is this.
+
+66
+00:03:36,557 --> 00:03:40,902
+Here I can multiply a and b on the left by
+any orthogonal matrix, and
+
+67
+00:03:40,902 --> 00:03:44,945
+it will define the same ellipsoid.
+
+68
+00:03:44,945 --> 00:03:46,450
+Everyone agree with that?
+
+69
+00:03:46,450 --> 00:03:50,027
+Because it doesn't change, it doesn't
+change the norm, but
+
+70
+00:03:50,027 --> 00:03:53,970
+if that's the case I can take an arbitrary
+non-singular matrix.
+
+71
+00:03:53,970 --> 00:03:56,520
+Multiply on the left by an appropriate
+orthogonal matrix and
+
+72
+00:03:56,520 --> 00:03:59,440
+make it symmetric positive definite,
+right?
+
+73
+00:03:59,440 --> 00:04:01,760
+And the way you do that, again, I'll just
+talk through it because it's,
+
+74
+00:04:01,760 --> 00:04:02,870
+I don't know.
+
+75
+00:04:02,870 --> 00:04:03,760
+We're far enough along.
+
+76
+00:04:03,760 --> 00:04:05,990
+If we can do this, we can go faster.
+
+77
+00:04:07,111 --> 00:04:09,630
+You just take the singular value
+decomposition of A.
+
+78
+00:04:09,630 --> 00:04:11,689
+So you have u sigma v transposed and
+
+79
+00:04:11,689 --> 00:04:16,430
+you multiply on the left by like you know,
+v u transposed.
+
+80
+00:04:16,430 --> 00:04:17,750
+And that's an orthogonal matrix and
+
+81
+00:04:17,750 --> 00:04:20,347
+it converts into a symmetric positive
+definite, okay?
+
+82
+00:04:21,710 --> 00:04:22,409
+So that's the idea.
+
+83
+00:04:22,409 --> 00:04:25,772
+Now the volume of this ellipsoid is
+proportional to the determinate of
+
+84
+00:04:25,772 --> 00:04:27,100
+A inverse.
+
+85
+00:04:27,100 --> 00:04:34,410
+In fact the constant of proportionality is
+exactly the volume of the unit.
+
+86
+00:04:34,410 --> 00:04:35,890
+Right?
+Which actually doesn't for
+
+87
+00:04:35,890 --> 00:04:38,280
+minimizing, it hardly matters what that
+is.
+
+88
+00:04:38,280 --> 00:04:41,030
+It's something, it's got some Pi's in it,
+some gamma functions, or
+
+89
+00:04:41,030 --> 00:04:44,770
+factorials and things like that, but it
+doesn't really matter.
+
+90
+00:04:44,770 --> 00:04:49,187
+It's proportional to the determinant of a
+inverse, right?
+
+91
+00:04:49,187 --> 00:04:53,123
+Because when you, when things map under
+aphi mappings, or
+
+92
+00:04:53,123 --> 00:04:59,600
+linear mapping, aphi mappings, volumes
+transforms like determinants.
+
+93
+00:04:59,600 --> 00:05:00,170
+Okay?
+
+94
+00:05:00,170 --> 00:05:03,720
+So now the problem looks like this, it
+says minimize.
+
+95
+00:05:03,720 --> 00:05:09,010
+Over variables, A and b, log det A
+inverse, right?
+
+96
+00:05:09,010 --> 00:05:12,450
+So that's the log of the volume, well up
+to a constant, right?
+
+97
+00:05:12,450 --> 00:05:14,638
+Because it's an additive thing.
+
+98
+00:05:14,638 --> 00:05:20,420
+Subject to the condition that every point
+C is in this set.
+
+99
+00:05:20,420 --> 00:05:22,716
+And one way to say that is that for every
+point in C,
+
+100
+00:05:22,716 --> 00:05:26,080
+the norm of Av plus b is less than one,
+right?
+
+101
+00:05:26,080 --> 00:05:27,490
+So and you can write this, this way or
+
+102
+00:05:27,490 --> 00:05:31,200
+you can write it as, I could remove the
+soup and say for all v and c.
+
+103
+00:05:31,200 --> 00:05:33,840
+Okay, and that would be the, the
+condition.
+
+104
+00:05:33,840 --> 00:05:36,880
+Right, so that's the, that's the
+condition.
+
+105
+00:05:36,880 --> 00:05:40,816
+You might ask, why does it say in
+parentheses here, over ab?
+
+106
+00:05:40,816 --> 00:05:41,882
+Because these,
+
+107
+00:05:41,882 --> 00:05:49,040
+well this kind of problem generically ends
+up with maximally confusing notation.
+
+108
+00:05:49,040 --> 00:05:53,614
+And then of course, norm, norm of linear,
+is convex.
+
+109
+00:05:53,614 --> 00:05:56,230
+And this is true for any v.
+
+110
+00:05:56,230 --> 00:05:57,496
+So, supremum.
+
+111
+00:05:57,496 --> 00:05:59,270
+That's pointwise supremum.
+
+112
+00:05:59,270 --> 00:06:00,090
+That's convex.
+
+113
+00:06:00,090 --> 00:06:01,870
+So, okay.
+
+114
+00:06:01,870 --> 00:06:03,800
+So here, that's a convex optimization
+problem.
+
+115
+00:06:03,800 --> 00:06:08,170
+And it computes the minimum volume
+ellipsoid that covers the set c.
+
+116
+00:06:08,170 --> 00:06:10,760
+Now, the question is whether it's
+tractable or not.
+
+117
+00:06:10,760 --> 00:06:13,705
+And it's tractable precisely when.
+
+118
+00:06:13,705 --> 00:06:18,560
+This constraint is handleable, right?
+
+119
+00:06:18,560 --> 00:06:20,220
+So here's a simple case where it is.
+
+120
+00:06:20,220 --> 00:06:22,020
+There's actually a whole bunch where it
+is.
+
+121
+00:06:22,020 --> 00:06:26,260
+I mean, not a whole bunch, but there's a
+bunch of cases where it's tractable.
+
+122
+00:06:26,260 --> 00:06:27,630
+But here's one where it is.
+
+123
+00:06:27,630 --> 00:06:29,020
+Let's look at this.
+
+124
+00:06:29,020 --> 00:06:30,650
+Let's take c to be a finite set.
+
+125
+00:06:30,650 --> 00:06:32,470
+So I have a cloud of points.
+
+126
+00:06:32,470 --> 00:06:35,240
+And I want to compute the minimum volume
+ellipsoid that covers it.
+
+127
+00:06:35,240 --> 00:06:36,760
+Right, so that's the idea.
+
+128
+00:06:36,760 --> 00:06:41,342
+So here, well that's very simple, because
+the, v and z is nothing but a,
+
+129
+00:06:41,342 --> 00:06:47,150
+it requires that each, each of these
+points is in the set.
+
+130
+00:06:47,150 --> 00:06:48,119
+And so you get this.
+
+131
+00:06:48,119 --> 00:06:50,954
+And of course that's the Lowner-John
+ellipsoid for
+
+132
+00:06:50,954 --> 00:06:53,600
+a polyhedron described by its, its
+vertices, right?
+
+133
+00:06:53,600 --> 00:06:57,292
+So what that says is, if I give you a
+bunch of points like this and
+
+134
+00:06:57,292 --> 00:06:59,830
+then you calculate.
+
+135
+00:06:59,830 --> 00:07:02,280
+Then you take the convex whole, right?
+
+136
+00:07:02,280 --> 00:07:05,800
+Then computing the minimum volume
+ellipsoid that covers that
+
+137
+00:07:05,800 --> 00:07:09,462
+is an entirely tractable convex problem,
+okay?
+
+138
+00:07:09,462 --> 00:07:15,760
+So by the way these things are, are not
+obvious here.
+
+139
+00:07:15,760 --> 00:07:19,976
+So for example if I, I could give you an
+ellipsoid described as, sorry a polyhedron
+
+140
+00:07:19,976 --> 00:07:26,120
+described as the convex hull of a set of
+points, so as I could give you vertices.
+
+141
+00:07:26,120 --> 00:07:30,240
+And I could ask, find me the maximum
+volume ellipsoid that lies inside it.
+
+142
+00:07:30,240 --> 00:07:32,470
+That's, that's another natural problem
+that we'll look at shortly.
+
+143
+00:07:32,470 --> 00:07:35,850
+That's, that's actually in b hard, okay?
+
+144
+00:07:35,850 --> 00:07:36,990
+So, so these things are,
+
+145
+00:07:36,990 --> 00:07:41,171
+I mean you really have to be very careful
+with these things, right?
+
+146
+00:07:41,171 --> 00:07:43,971
+Depends on the description and it depends
+you know, whether it,
+
+147
+00:07:43,971 --> 00:07:48,040
+it's extremely easier or extremely hard,
+depends on the description.
+
+148
+00:07:48,040 --> 00:07:50,507
+Okay, so that's the Lowner-John ellipsoid.
+
+149
+00:07:50,507 --> 00:07:57,650
+Well the duel roughly of that is the
+maximum volume inscribed ellipsoid.
+
+150
+00:07:57,650 --> 00:08:01,760
+So here, we have a this time the set has
+to be convex.
+
+151
+00:08:01,760 --> 00:08:03,360
+I mean it doesn't have to be convex, but
+
+152
+00:08:03,360 --> 00:08:06,060
+then it's actually quite intractable,
+right?
+
+153
+00:08:06,060 --> 00:08:08,950
+So we take a convex set.
+
+154
+00:08:08,950 --> 00:08:09,987
+And then the idea is,
+
+155
+00:08:09,987 --> 00:08:14,140
+we want to find the maximum volume
+ellipsoid that sits inside it.
+
+156
+00:08:14,140 --> 00:08:14,850
+Okay?
+
+157
+00:08:14,850 --> 00:08:16,300
+And we do that this way.
+
+158
+00:08:16,300 --> 00:08:21,136
+This time, we're going to parameterize the
+ellipsoid as the forward image as
+
+159
+00:08:21,136 --> 00:08:27,605
+opposed to the inverse image of a unit
+ball under an aphi mapping.
+
+160
+00:08:27,605 --> 00:08:32,028
+So here, it's the set of points bu plus d
+where u is in a unit ball.
+
+161
+00:08:32,028 --> 00:08:33,426
+Right?
+
+162
+00:08:33,426 --> 00:08:37,815
+So by the way there are lots of different
+parameterizations of ellipsoids as general
+
+163
+00:08:37,815 --> 00:08:43,540
+linear algebra that would go between the
+different cononical representations right?
+
+164
+00:08:43,540 --> 00:08:47,426
+It would be elementary linear algebra like
+square roots of matrices,
+
+165
+00:08:47,426 --> 00:08:50,540
+things like that.
+
+166
+00:08:50,540 --> 00:08:54,270
+What's interesting is they all have
+different convexity properties.
+
+167
+00:08:54,270 --> 00:08:56,196
+Right?
+So the problem would be convex in one, but
+
+168
+00:08:56,196 --> 00:08:57,370
+not the other.
+
+169
+00:08:57,370 --> 00:08:58,740
+So, whenever you have problems in.
+
+170
+00:08:58,740 --> 00:09:02,130
+When you optimize over ellipsoids, they're
+actually kind of fun.
+
+171
+00:09:02,130 --> 00:09:02,745
+Because it's not,
+
+172
+00:09:02,745 --> 00:09:06,118
+it's not like a problem where something's
+just given to you on a platter.
+
+173
+00:09:06,118 --> 00:09:09,000
+You have to figure out the appropriate.
+
+174
+00:09:10,020 --> 00:09:12,120
+Representation to make it convex.
+
+175
+00:09:12,120 --> 00:09:14,680
+If, if, if it's, if it, if that even
+exists.
+
+176
+00:09:14,680 --> 00:09:15,220
+Right.
+So.
+
+177
+00:09:15,220 --> 00:09:16,180
+Okay.
+
+178
+00:09:16,180 --> 00:09:17,650
+So here's the forward image.
+
+179
+00:09:17,650 --> 00:09:20,880
+And in this case the volume is
+proportional to the determinant.
+
+180
+00:09:20,880 --> 00:09:25,560
+We want to maximize it, so we maximize log
+log determinant, right?
+
+181
+00:09:25,560 --> 00:09:30,741
+Which you recognize as tractable, because
+log determinant is concave.
+
+182
+00:09:30,741 --> 00:09:33,955
+And here the condition is this.
+
+183
+00:09:33,955 --> 00:09:37,970
+This condition right here is simply this.
+
+184
+00:09:37,970 --> 00:09:41,636
+Right?
+So that's the, that, this condition here
+
+185
+00:09:41,636 --> 00:09:47,088
+says that if you take the image, the unit
+ball, and you multiply b by it,
+
+186
+00:09:47,088 --> 00:09:56,130
+add d, that this set lies entirely in c,
+so that looks like this, right?
+
+187
+00:09:56,130 --> 00:10:00,295
+I mean this is just a long and complicated
+way to say that for
+
+188
+00:10:00,295 --> 00:10:06,229
+all u of norm less than one, bu plus d is
+in c, right?
+
+189
+00:10:06,229 --> 00:10:07,648
+I guess this is, it's written this way so
+
+190
+00:10:07,648 --> 00:10:10,330
+we can verify instantly that this is
+convex, right?
+
+191
+00:10:10,330 --> 00:10:12,023
+And the way to do that is very simple.
+
+192
+00:10:12,023 --> 00:10:15,983
+This thing, that expression is linear and
+the variables, which are b and
+
+193
+00:10:15,983 --> 00:10:21,390
+d, I see that the indicator function,
+that's of course convex.
+
+194
+00:10:21,390 --> 00:10:22,280
+So that's convex.
+
+195
+00:10:22,280 --> 00:10:24,680
+So for each u, this is convex.
+
+196
+00:10:24,680 --> 00:10:29,280
+That's a suprimum of convex functions, so
+that the left-hand side is convex.
+
+197
+00:10:29,280 --> 00:10:30,590
+So you have a convex inequality.
+
+198
+00:10:30,590 --> 00:10:36,895
+Okay, so again, once again the issue is
+the following,.
+
+199
+00:10:36,895 --> 00:10:40,805
+Is this, is evaluating that function
+tractable right,
+
+200
+00:10:40,805 --> 00:10:45,140
+in these very simple cases where it's not.
+
+201
+00:10:45,140 --> 00:10:48,724
+Here's one if I simply give you a finite
+number of points and I ask you does that
+
+202
+00:10:48,724 --> 00:10:54,100
+hold there, that's actually, that, that
+one is actually going to be hard.
+
+203
+00:10:54,100 --> 00:10:55,350
+Right.
+None that I find a never point, sorry.
+
+204
+00:10:55,350 --> 00:10:58,820
+The convex hull of a finite number of
+points.
+
+205
+00:10:58,820 --> 00:11:00,560
+That's actually np hard.
+
+206
+00:11:00,560 --> 00:11:01,148
+Right?
+So so
+
+207
+00:11:01,148 --> 00:11:04,381
+sometimes it's tractable, sometimes it's
+not.
+
+208
+00:11:04,381 --> 00:11:09,393
+But here and has kind of a pretty duality
+here.
+
+209
+00:11:09,393 --> 00:11:13,114
+What's interesting is It turns out
+remember that, computing the minimum
+
+210
+00:11:13,114 --> 00:11:18,770
+volume of ellipsoid is tractable the
+cononical cases when you get the vertices.
+
+211
+00:11:18,770 --> 00:11:22,358
+So computing the maximum volume of
+ellipsoid is tractable and
+
+212
+00:11:22,358 --> 00:11:26,880
+again almost es, esthetics almost requires
+this, right?
+
+213
+00:11:26,880 --> 00:11:29,472
+Because just to make it pretty.
+
+214
+00:11:29,472 --> 00:11:31,524
+It's the dual representation of an
+ellipsis,
+
+215
+00:11:31,524 --> 00:11:35,920
+of a polyhedron which is in fact given by
+its linear inequalities, right?
+
+216
+00:11:35,920 --> 00:11:37,550
+So, so what happens is here.
+
+217
+00:11:37,550 --> 00:11:42,058
+If I give you a polyhedron defined by
+linear inequalities,
+
+218
+00:11:42,058 --> 00:11:47,854
+then this is really simple because
+basically you're asking, when is it true
+
+219
+00:11:47,854 --> 00:11:57,180
+that a i transposed times b u plus d Is
+less than bI for all u less than one.
+
+220
+00:11:57,180 --> 00:11:58,772
+Right.
+That's the question.
+
+221
+00:11:58,772 --> 00:12:02,360
+What are the conditions on B and D under
+which this holds, right?
+
+222
+00:12:02,360 --> 00:12:04,660
+And this is actually relatively easy to
+work out.
+
+223
+00:12:04,660 --> 00:12:06,184
+Right.
+So you have aI transposed d
+
+224
+00:12:06,184 --> 00:12:09,376
+that comes out fine, and then here, you
+need to calculate, you know,
+
+225
+00:12:09,376 --> 00:12:13,880
+what's, what's the largest possible value
+of that.
+
+226
+00:12:13,880 --> 00:12:14,420
+But that's easy.
+
+227
+00:12:14,420 --> 00:12:16,940
+That's the converse [UNKNOWN] inequality
+right?
+
+228
+00:12:16,940 --> 00:12:20,652
+Because it says you have a you have
+something which is b a i, and then you
+
+229
+00:12:20,652 --> 00:12:24,556
+take an inner product of b a i with a
+vector u whose norm is less than one, you
+
+230
+00:12:24,556 --> 00:12:32,170
+want to know the maximum value of that,
+and the answer is the norm of b a i right?
+
+231
+00:12:32,170 --> 00:12:35,540
+That's [UNKNOWN] the converse of
+[UNKNOWN], okay?
+
+232
+00:12:35,540 --> 00:12:40,226
+So that problem translates to this, that
+is again, you have to be on your toes
+
+233
+00:12:40,226 --> 00:12:45,409
+here, because the variables are B and d,
+which parameterize the ellipsoid here, and
+
+234
+00:12:45,409 --> 00:12:52,390
+that otherwise, these are just completely
+legitimate constraints.
+
+235
+00:12:52,390 --> 00:12:55,250
+That's clearly a concave function that
+you're maximizing.
+
+236
+00:12:55,250 --> 00:13:00,400
+And the inequality here, again, with B and
+d, that's a linear term here.
+
+237
+00:13:00,400 --> 00:13:02,851
+That's linear in B, right, and so that
+norm terms, so
+
+238
+00:13:02,851 --> 00:13:05,520
+these are second-order constraints.
+
+239
+00:13:05,520 --> 00:13:08,434
+So there's actually some very interesting
+things you can show about these
+
+240
+00:13:08,434 --> 00:13:10,483
+ellipsoidal approximations.
+
+241
+00:13:10,483 --> 00:13:14,672
+so, let's take a convex, you know,
+bounded, nonempty interior set, and
+
+242
+00:13:14,672 --> 00:13:20,146
+it's the following, that there's actually
+this basic efficiency.
+
+243
+00:13:20,146 --> 00:13:21,992
+It says that if you take a set, so
+
+244
+00:13:21,992 --> 00:13:26,492
+here's one, here's a polyhedron given by
+its vertices.
+
+245
+00:13:26,492 --> 00:13:30,512
+This the loner John Ellipsoid, the minimum
+volume ellipsoid covers it,
+
+246
+00:13:30,512 --> 00:13:33,460
+it says that if you take that loner John
+Ellipsoid and
+
+247
+00:13:33,460 --> 00:13:39,467
+you shrink it by a factor of N, that's
+this space dimension, right?
+
+248
+00:13:39,467 --> 00:13:40,610
+About its center.
+
+249
+00:13:40,610 --> 00:13:42,710
+That's guaranteed to be inside the set,
+okay?
+
+250
+00:13:42,710 --> 00:13:43,705
+Everybody got that?
+
+251
+00:13:43,705 --> 00:13:46,745
+And so actually what that says is that you
+can,
+
+252
+00:13:46,745 --> 00:13:51,865
+I'm going to say it something like this,
+it says that any convex set in RN can be
+
+253
+00:13:51,865 --> 00:14:00,180
+approximated within a factor, in fact
+here, I'll leave and try it this way.
+
+254
+00:14:00,180 --> 00:14:04,268
+Within a, it can be approximated within a
+factor square root n by an ellipsoid.
+
+255
+00:14:04,268 --> 00:14:07,400
+Everybody got that?
+
+256
+00:14:07,400 --> 00:14:09,410
+Now I mean you might not like to factor
+square root n.
+
+257
+00:14:09,410 --> 00:14:11,840
+But the point is, that's what that is.
+
+258
+00:14:11,840 --> 00:14:14,570
+Everybody or anybody, by the way that
+statement is completely false.
+
+259
+00:14:14,570 --> 00:14:18,370
+I mean you can talk about things like with
+other, with other classes of.
+
+260
+00:14:18,370 --> 00:14:19,620
+Geometric objects, right?
+
+261
+00:14:19,620 --> 00:14:22,440
+You could talk about things like a
+bounding box, right?
+
+262
+00:14:22,440 --> 00:14:25,148
+And it's just completely false, right?
+
+263
+00:14:25,148 --> 00:14:27,620
+All sorts of other things you might
+imagine.
+
+264
+00:14:27,620 --> 00:14:33,100
+Things, data structures to describe,
+regions in rn.
+
+265
+00:14:33,100 --> 00:14:34,770
+And it's just not, not the case.
+
+266
+00:14:34,770 --> 00:14:35,730
+I mean, there are others, right?
+
+267
+00:14:35,730 --> 00:14:37,200
+One would be like a simplex, right?
+
+268
+00:14:37,200 --> 00:14:38,215
+So that's another one.
+
+269
+00:14:38,215 --> 00:14:41,900
+Now by the way, in this example, you can
+see that that factor of two.
+
+270
+00:14:41,900 --> 00:14:44,620
+I mean this is in space dimension two,
+right?
+
+271
+00:14:44,620 --> 00:14:47,410
+In here, you can see the factor of two was
+not needed.
+
+272
+00:14:47,410 --> 00:14:50,550
+It's quite likely, I mean in this case,
+take a look at it.
+
+273
+00:14:50,550 --> 00:14:52,090
+Here, I mean we can eyeball it, okay?
+
+274
+00:14:52,090 --> 00:14:54,158
+Probably, you didn't have to divide by
+factor of two, but
+
+275
+00:14:54,158 --> 00:14:57,020
+by you just divide it by like 20, 30
+percent.
+
+276
+00:14:57,020 --> 00:14:58,250
+And you're inside, okay?
+
+277
+00:14:58,250 --> 00:15:00,830
+And by the way, that factor is an
+interesting number.
+
+278
+00:15:00,830 --> 00:15:04,922
+You might recall that, you know, how
+ellipsoidally approximable the set is, or
+
+279
+00:15:04,922 --> 00:15:07,290
+something, I don't know.
+
+280
+00:15:07,290 --> 00:15:08,420
+So, everybody see what I'm saying here?
+
+281
+00:15:08,420 --> 00:15:12,850
+So it just guarantees.
+
+282
+00:15:12,850 --> 00:15:17,340
+By the way, what's the worst possible set
+to approximate by an ellipsoid?
+
+283
+00:15:17,340 --> 00:15:21,720
+What is the convex set that is the worst
+possible one.
+
+284
+00:15:21,720 --> 00:15:23,320
+Simplex, there we go, okay?
+
+285
+00:15:23,320 --> 00:15:25,180
+So, let's do triangle.
+
+286
+00:15:25,180 --> 00:15:27,740
+Like this, you know?
+
+287
+00:15:27,740 --> 00:15:31,406
+There's your minimum bounding ellipsoid's
+a circle.
+
+288
+00:15:31,406 --> 00:15:32,390
+There, there it is.
+
+289
+00:15:32,390 --> 00:15:33,790
+And in this case, guess what?
+
+290
+00:15:33,790 --> 00:15:37,630
+You have to shrink it exactly by a factor
+of n, before it fits inside.
+
+291
+00:15:37,630 --> 00:15:40,362
+And that tells you that this factor of n
+cannot be improved.
+
+292
+00:15:40,362 --> 00:15:41,028
+Okay?
+
+293
+00:15:41,028 --> 00:15:50,523
+So the least ellipsoidially approximable
+convexet is a simplet.
+
+294
+00:15:50,523 --> 00:15:53,991
+I've drawn it this way but in fact all of
+these ellipsoid approximations methods,
+
+295
+00:15:53,991 --> 00:15:58,202
+they're actually invariant under affine
+transformations.
+
+296
+00:15:58,202 --> 00:15:59,124
+Right?
+
+297
+00:15:59,124 --> 00:16:02,091
+Because if I take a set if I multiply it
+you know by
+
+298
+00:16:02,091 --> 00:16:06,507
+applying an affine transformation, what
+happens, volume transforms under
+
+299
+00:16:06,507 --> 00:16:12,250
+affine transformation just by a
+determinant, by a constant.
+
+300
+00:16:12,250 --> 00:16:15,010
+So you get a commutative diagram.
+
+301
+00:16:15,010 --> 00:16:20,085
+You know, if you take the original set,
+affine transformation, optimal ellipsoid.
+
+302
+00:16:20,085 --> 00:16:22,661
+Then apply an affine transformation of the
+optimal ellipsoid, and
+
+303
+00:16:22,661 --> 00:16:25,480
+you get the optimal ellipsoid for the
+second case.
+
+304
+00:16:25,480 --> 00:16:26,520
+You get a commutative diagram.
+
+305
+00:16:26,520 --> 00:16:27,100
+Okay?
+
+306
+00:16:27,100 --> 00:16:30,187
+So it's, in other words, you might say
+something like this.
+
+307
+00:16:30,187 --> 00:16:34,201
+Extremal volume ellipsoidal approximation
+is affinely invariant.
+
+308
+00:16:34,201 --> 00:16:35,308
+Everybody got that?
+
+309
+00:16:35,308 --> 00:16:37,502
+That's actually quite important.
+
+310
+00:16:37,502 --> 00:16:39,896
+actually, it's quite important in
+practice,
+
+311
+00:16:39,896 --> 00:16:42,983
+right because it says that if the x's
+represent things, and
+
+312
+00:16:42,983 --> 00:16:49,130
+you actually don't have any idea how the
+scales should go together.
+
+313
+00:16:49,130 --> 00:16:52,892
+I mean if, if it means nothing to you then
+there are plenty of cases like that then
+
+314
+00:16:52,892 --> 00:16:56,711
+it says, you'd have, I mean you should
+probably whatever your method is should be
+
+315
+00:16:56,711 --> 00:17:00,040
+a finally in variant so.
+
+316
+00:17:00,040 --> 00:17:04,367
+Oh, I should say something like this, if
+the, if the polyhedron Is is symmetric.
+
+317
+00:17:04,367 --> 00:17:07,580
+Symmetric means if x is in the set so is
+minus x.
+
+318
+00:17:07,580 --> 00:17:10,400
+Right?
+So an example would be a normal.
+
+319
+00:17:10,400 --> 00:17:13,892
+Then it says you can this factor is not n
+but square root n.
+
+320
+00:17:13,892 --> 00:17:15,162
+Okay?
+
+321
+00:17:15,162 --> 00:17:17,760
+And I said something obscure at first.
+
+322
+00:17:17,760 --> 00:17:22,380
+I said any convex set can be approximated
+by an ellipsoid within a factor square
+
+323
+00:17:22,380 --> 00:17:23,990
+root n.
+
+324
+00:17:23,990 --> 00:17:27,500
+Alright, so let me explain what I was
+saying.
+
+325
+00:17:27,500 --> 00:17:28,722
+That, that, that's kind of I, I,
+
+326
+00:17:28,722 --> 00:17:32,370
+I take the minimum volume one and I divide
+it by square root n, right?
+
+327
+00:17:32,370 --> 00:17:34,040
+So I put the one that's geometrically in
+the middle.
+
+328
+00:17:34,040 --> 00:17:36,632
+And what that means is for any convex set
+I can bruise a convex set,
+
+329
+00:17:36,632 --> 00:17:39,320
+which has the property that if I expand
+it, square root M I cover, and
+
+330
+00:17:39,320 --> 00:17:42,842
+if I shrink it square root n, I'm inside.
+
+331
+00:17:42,842 --> 00:17:47,190
+Okay, so actually philosophically, it's
+quite interesting.
+
+332
+00:17:47,190 --> 00:17:49,880
+It's a, you could, you can argue something
+like this.
+
+333
+00:17:49,880 --> 00:17:54,385
+Ellipsoids are universal approximators of
+convex sets.
+
+334
+00:17:54,385 --> 00:17:56,360
+Yeah?
+
+335
+00:17:56,360 --> 00:17:58,868
+I mean, square root of n is not a
+fantastic, by the way,
+
+336
+00:17:58,868 --> 00:18:02,720
+core, it's the fourth root of m for
+symmetric right.
+
+337
+00:18:02,720 --> 00:18:05,640
+You know, you might not like that, but the
+point is, it's a constant.
+
+338
+00:18:05,640 --> 00:18:06,959
+Right and that's it.
+
+339
+00:18:06,959 --> 00:18:08,659
+I mean, it's even a constant that doesn't
+grow that badly and
+
+340
+00:18:08,659 --> 00:18:09,900
+all that kind of stuff.
+
+341
+00:18:09,900 --> 00:18:14,240
+So, so this is actually interesting and it
+kind of explains a lot about how,
+
+342
+00:18:14,240 --> 00:18:19,720
+why things like quadratic methods would be
+so prevalent.
+
+343
+00:18:19,720 --> 00:18:24,730
+By the way one one interesting thing you
+can say here is the following.
+
+344
+00:18:24,730 --> 00:18:28,272
+Any norm on RN, can be approximated by a
+quadratic norm,
+
+345
+00:18:28,272 --> 00:18:32,672
+within a factor of N to the one fourth,
+okay?
+
+346
+00:18:32,672 --> 00:18:34,098
+And that's interesting right because it
+says that anything, any norm, and
+
+347
+00:18:34,098 --> 00:18:35,500
+there is some very sophisticated norms,
+right?
+
+348
+00:18:35,500 --> 00:18:40,252
+Because it says that every
+
+349
+00:18:40,252 --> 00:18:46,343
+single one is approximate within.
+
+350
+00:18:46,343 --> 00:18:51,460
+Into the 1/4 by a quadratic one.
+
+351
+00:18:51,460 --> 00:18:52,390
+Right?
+
+352
+00:18:52,390 --> 00:18:55,570
+So that tells you actually, I think to me
+this is sort of a philosophical,
+
+353
+00:18:55,570 --> 00:18:58,220
+this explains why least square, why using
+least squares for
+
+354
+00:18:58,220 --> 00:19:02,710
+the past two centuries people have gotten
+pretty far right?
+
+355
+00:19:02,710 --> 00:19:05,449
+This, this at least explains it.
+
+356
+00:19:07,514 --> 00:19:08,930
+Next topic is centering.
+
+357
+00:19:08,930 --> 00:19:10,610
+So, I mean in here there's tons and
+
+358
+00:19:10,610 --> 00:19:15,180
+tons of applications of centering, I'll
+just address that first.
+
+359
+00:19:15,180 --> 00:19:16,680
+You've seen a couple already,
+
+360
+00:19:16,680 --> 00:19:20,960
+even in the first couple of weeks we saw
+yield maximization.
+
+361
+00:19:20,960 --> 00:19:25,730
+So yield maximization says that you're
+running a manufacturing process.
+
+362
+00:19:25,730 --> 00:19:30,630
+You want to tell your machine to target a
+certain set of like critical dimensions.
+
+363
+00:19:30,630 --> 00:19:35,110
+Lets say an I C manufacturer but since
+you're pushing it.
+
+364
+00:19:35,110 --> 00:19:36,683
+Right?
+You're pushing it absolutely to
+
+365
+00:19:36,683 --> 00:19:40,015
+the limit of the technology when you say,
+please make this critical dimension one
+
+366
+00:19:40,015 --> 00:19:42,808
+nano-meter, it's going to be off a little
+bit and things like that, so
+
+367
+00:19:42,808 --> 00:19:46,410
+there's going to be variations.
+
+368
+00:19:46,410 --> 00:19:49,832
+And so there you have a, a, a [UNKNOWN]
+that describes the acceptable,
+
+369
+00:19:49,832 --> 00:19:54,950
+acceptable critical pairs, you know,
+combinations of critical dimensions.
+
+370
+00:19:54,950 --> 00:19:57,441
+And what you want is you want to tell them
+that you want to target,
+
+371
+00:19:57,441 --> 00:19:59,697
+you want to shoot for is something deep,
+deep in that set so
+
+372
+00:19:59,697 --> 00:20:04,380
+that when you have variations away from it
+it, you're still in it.
+
+373
+00:20:04,380 --> 00:20:05,030
+Your yield is high.
+
+374
+00:20:05,030 --> 00:20:05,690
+Okay?
+
+375
+00:20:05,690 --> 00:20:07,560
+So we, we looked at all that.
+
+376
+00:20:07,560 --> 00:20:08,820
+So, so that comes up.
+
+377
+00:20:08,820 --> 00:20:10,300
+And we've even seen some of these
+problems.
+
+378
+00:20:10,300 --> 00:20:10,898
+So here's one.
+
+379
+00:20:10,898 --> 00:20:15,030
+Find the center of the largest inscribed
+ball.
+
+380
+00:20:15,030 --> 00:20:16,190
+That's the Chebyshev center.
+
+381
+00:20:16,190 --> 00:20:17,450
+And that's this problem.
+
+382
+00:20:17,450 --> 00:20:21,260
+I give you a polyhedron described by
+inequalities.
+
+383
+00:20:21,260 --> 00:20:25,378
+And I say, please find me the ball of
+maximum radius that fits inside, and
+
+384
+00:20:25,378 --> 00:20:29,283
+the center of that we're going to call
+that the Chebyshev center, and
+
+385
+00:20:29,283 --> 00:20:31,780
+it's the point deepest in the polyhedron.
+
+386
+00:20:31,780 --> 00:20:33,730
+Right?
+And that's clearly defined.
+
+387
+00:20:33,730 --> 00:20:38,194
+It's the one which has highest depth,
+
+388
+00:20:38,194 --> 00:20:44,210
+highest distance to the exterior.
+
+389
+00:20:44,210 --> 00:20:44,810
+Right?
+
+390
+00:20:44,810 --> 00:20:45,550
+That's this.
+
+391
+00:20:45,550 --> 00:20:46,230
+And that's an LP.
+
+392
+00:20:46,230 --> 00:20:49,500
+I, that was actually one of our first
+examples when we look at LP.
+
+393
+00:20:49,500 --> 00:20:52,524
+And it was a fine example because it
+doesn't look like it should be
+
+394
+00:20:52,524 --> 00:20:54,076
+an LP, right?
+
+395
+00:20:54,076 --> 00:20:59,520
+'Cause well, it looks like an LP while
+you're drawing the, polyhedron outside.
+
+396
+00:20:59,520 --> 00:21:04,615
+But the minute you draw a ball that should
+not evoke LP.
+
+397
+00:21:04,615 --> 00:21:06,960
+Right, that is an LP.
+
+398
+00:21:06,960 --> 00:21:13,985
+A more sophisticated one is the center of
+the maximum volume ellipsoid.
+
+399
+00:21:13,985 --> 00:21:17,792
+Actually, that's quite interesting because
+this one is
+
+400
+00:21:17,792 --> 00:21:23,675
+actually invariant Under affine,
+coordinate transformations.
+
+401
+00:21:23,675 --> 00:21:25,253
+Right?
+Now that may not be relevant to you,
+
+402
+00:21:25,253 --> 00:21:28,277
+right, if, if, your coordinates are things
+you know about.
+
+403
+00:21:28,277 --> 00:21:30,041
+You're intimately familiar with them, and
+
+404
+00:21:30,041 --> 00:21:34,640
+you really do know the range of each one
+and they all have separate meanings.
+
+405
+00:21:34,640 --> 00:21:35,750
+Good for you.
+
+406
+00:21:35,750 --> 00:21:38,310
+An affine invariance doesn't mean
+anything, right?
+
+407
+00:21:38,310 --> 00:21:41,770
+But in a lot of cases, that's just not
+true, right?
+
+408
+00:21:41,770 --> 00:21:44,392
+These are sort of arbitrary coordinates,
+these might be features or
+
+409
+00:21:44,392 --> 00:21:48,450
+something like that, and you don't know
+the scale or anything.
+
+410
+00:21:48,450 --> 00:21:50,834
+You pick a reasonable scale and that's
+about all you can do.
+
+411
+00:21:52,570 --> 00:21:53,260
+So this is one.
+
+412
+00:21:53,260 --> 00:21:55,606
+This is the center of the maximum volume
+ellipsoid.
+
+413
+00:21:55,606 --> 00:21:59,131
+There's one that we are going to be
+looking at very much in
+
+414
+00:21:59,131 --> 00:22:01,998
+the next couple of weeks.
+
+415
+00:22:01,998 --> 00:22:05,806
+We'll see this, it'll take a while, but
+maybe in three weeks, two and
+
+416
+00:22:05,806 --> 00:22:09,875
+a half weeks, and that's the analytic
+center.
+
+417
+00:22:09,875 --> 00:22:13,020
+So this is a good time to look at it.
+
+418
+00:22:13,020 --> 00:22:18,390
+So the analytic center actually not a,
+it's not a function of the set.
+
+419
+00:22:18,390 --> 00:22:20,960
+It's actually a function of the
+description of the set.
+
+420
+00:22:20,960 --> 00:22:23,290
+So technically I don't know.
+
+421
+00:22:23,290 --> 00:22:25,483
+It's, it's, it's not the same as limited
+volume ellipsoid and
+
+422
+00:22:25,483 --> 00:22:26,970
+all that kind of stuff.
+
+423
+00:22:26,970 --> 00:22:28,550
+So here, here's what it is.
+
+424
+00:22:28,550 --> 00:22:32,620
+Suppose I have, a set of convex
+inequalities, and equalities.
+
+425
+00:22:32,620 --> 00:22:35,680
+Then, I simply form the following problem.
+
+426
+00:22:35,680 --> 00:22:39,010
+I minimize the sum of the logs of the
+minus FIs.
+
+427
+00:22:39,010 --> 00:22:43,600
+The FIs, of court, minus FI, well it has a
+perfect interpretation.
+
+428
+00:22:43,600 --> 00:22:46,840
+It's the margin [COUGH] in the IF
+inequality, right?
+
+429
+00:22:46,840 --> 00:22:51,029
+because the, the third inequality says F3
+has to be negative less than or
+
+430
+00:22:51,029 --> 00:22:53,614
+equal to zero, right?
+
+431
+00:22:53,614 --> 00:22:57,820
+So if F3 is minus 2.1 you have a margin of
+2.1.
+
+432
+00:22:57,820 --> 00:22:59,235
+So these are the margins here.
+
+433
+00:22:59,235 --> 00:23:00,882
+Right?
+
+434
+00:23:00,882 --> 00:23:03,130
+Positive means you're in the interior of
+the set.
+
+435
+00:23:03,130 --> 00:23:05,172
+Well, relative interior because of this.
+
+436
+00:23:05,172 --> 00:23:06,671
+Okay?
+
+437
+00:23:06,671 --> 00:23:10,200
+So here this is the log, it's the sum of
+the logs of the margins.
+
+438
+00:23:10,200 --> 00:23:11,880
+Well it's the product of the margins,
+right?
+
+439
+00:23:11,880 --> 00:23:15,520
+So this says maximize the product of the
+margins.
+
+440
+00:23:15,520 --> 00:23:16,700
+That's, that's what this is.
+
+441
+00:23:16,700 --> 00:23:17,280
+Okay?
+
+442
+00:23:17,280 --> 00:23:21,015
+So this is, and this comes up in a lot of
+things.
+
+443
+00:23:21,015 --> 00:23:24,420
+That's a convex optimization problem, of
+course, right?
+
+444
+00:23:24,420 --> 00:23:27,120
+Because minus log minus arg.
+
+445
+00:23:27,120 --> 00:23:30,288
+Is a convex increasing function, right?
+
+446
+00:23:30,288 --> 00:23:36,324
+I mean, you have to trace through the two
+minuses to see what happens, right?
+
+447
+00:23:36,324 --> 00:23:39,379
+The first minus changes the sine, the
+modifinicity, and
+
+448
+00:23:39,379 --> 00:23:41,970
+it changes concave to convex.
+
+449
+00:23:41,970 --> 00:23:44,841
+And the second one change, flips the
+modifinicity, okay?
+
+450
+00:23:44,841 --> 00:23:46,870
+So, or makes it go back to be increasing.
+
+451
+00:23:46,870 --> 00:23:49,760
+Right?
+So, so the, by the composition rule.
+
+452
+00:23:49,760 --> 00:23:51,471
+This is a convex function here, and
+
+453
+00:23:51,471 --> 00:23:56,200
+that's called the this function is called
+the log barrier.
+
+454
+00:23:56,200 --> 00:23:58,751
+Right?
+So its a barrier function, right?
+
+455
+00:23:58,751 --> 00:24:00,467
+And the meaning of that is that,
+
+456
+00:24:00,467 --> 00:24:03,701
+on this set of points where this is
+strictly less than zero,
+
+457
+00:24:03,701 --> 00:24:08,189
+this things finite as you move that point
+towards any point where one of these goes
+
+458
+00:24:08,189 --> 00:24:16,260
+to zero, one of these margins goes to zero
+and the product goes to infinity, right?
+
+459
+00:24:16,260 --> 00:24:18,844
+Well, certain some of the negative log
+minus,
+
+460
+00:24:18,844 --> 00:24:22,731
+negative log margins goes to infinity,
+right?
+
+461
+00:24:22,731 --> 00:24:26,451
+So this, actually, is extremely easy to
+solve, I mean, it depends on def,
+
+462
+00:24:26,451 --> 00:24:31,383
+I mean, it depends how F is given but
+we'll see this later.
+
+463
+00:24:31,383 --> 00:24:34,967
+But it's not a property of the feasible
+set, it's actually, it's a function of
+
+464
+00:24:34,967 --> 00:24:39,735
+the description of the problem, and that
+will be clear in a minute.
+
+465
+00:24:39,735 --> 00:24:42,283
+But for fun, let's just look at the
+analytic center of the set of
+
+466
+00:24:42,283 --> 00:24:43,990
+linear inequalities.
+
+467
+00:24:43,990 --> 00:24:46,246
+So these are a set of linear inequalities,
+like this, and
+
+468
+00:24:46,246 --> 00:24:48,740
+what's plotted here are various things.
+
+469
+00:24:48,740 --> 00:24:54,010
+These dashed curves show the level sets of
+the log, this is the log barrier,
+
+470
+00:24:54,010 --> 00:25:01,346
+and what it's showing here are the level
+sets of the log barrier right?
+
+471
+00:25:01,346 --> 00:25:03,740
+So actually if you say what's the level
+sets, what,
+
+472
+00:25:03,740 --> 00:25:07,120
+where are they equal, where's it equal to
+1,000.
+
+473
+00:25:07,120 --> 00:25:10,070
+You get a kind of a cool little app, you
+know a curve.
+
+474
+00:25:10,070 --> 00:25:13,589
+A smooth curve here which hugs the
+boundary of this thing very
+
+475
+00:25:13,589 --> 00:25:15,490
+closely, right?
+
+476
+00:25:15,490 --> 00:25:18,935
+And then as I decrease that number, this
+number is one by the way,
+
+477
+00:25:18,935 --> 00:25:24,430
+when I decrease that number to one it's
+looking more ellipsoidal.
+
+478
+00:25:24,430 --> 00:25:26,522
+It's not.
+And as I keep going lower and lower and
+
+479
+00:25:26,522 --> 00:25:29,000
+actually the heshen.
+
+480
+00:25:29,000 --> 00:25:33,104
+The hechon of this thing at the analytic
+center is actually a good
+
+481
+00:25:33,104 --> 00:25:38,030
+ellipse quadratic summary of the shape of
+this set.
+
+482
+00:25:38,030 --> 00:25:39,514
+Right?
+So that, that, that's a good,
+
+483
+00:25:39,514 --> 00:25:41,350
+a good way to do that alright.
+
+484
+00:25:41,350 --> 00:25:44,827
+So actually in a lot of cases where you
+know, you know how to do something if
+
+485
+00:25:44,827 --> 00:25:49,160
+you had a quadratic representation or
+something like that.
+
+486
+00:25:49,160 --> 00:25:50,946
+We'll see optimization methods where this
+is the case or
+
+487
+00:25:50,946 --> 00:25:53,266
+statistical methods where this is the
+case.
+
+488
+00:25:53,266 --> 00:25:55,490
+But you don't have anything like that.
+
+489
+00:25:55,490 --> 00:25:57,485
+What you have is a complicated convex set,
+
+490
+00:25:57,485 --> 00:26:00,610
+that, one option is to do something like
+this.
+
+491
+00:26:00,610 --> 00:26:01,460
+And, I mean, another option of
+
+492
+00:26:01,460 --> 00:26:03,880
+course is calculate maximum volume
+ellipsoid inside it and so on.
+
+493
+00:26:03,880 --> 00:26:04,403
+Okay?
+
+494
+00:26:04,403 --> 00:26:11,310
+Now, it turns out here there are
+guaranteed approximations, right.
+
+495
+00:26:11,310 --> 00:26:12,810
+So, one is this.
+
+496
+00:26:12,810 --> 00:26:15,885
+It turns out that if you form the
+following, so
+
+497
+00:26:15,885 --> 00:26:19,335
+the inner ellipsoids is you go to the
+center and you take
+
+498
+00:26:19,335 --> 00:26:27,317
+the ellipsoid given defined by the hpshen
+of the analytic center that actually.
+
+499
+00:26:27,317 --> 00:26:30,617
+With the one here, that always lies within
+the set and
+
+500
+00:26:30,617 --> 00:26:35,520
+this one always lies outside the set,
+covers the set.
+
+501
+00:26:35,520 --> 00:26:39,440
+This is a worse approximation ratio than
+the maximum volume one, right?
+
+502
+00:26:39,440 --> 00:26:40,350
+And the reason is this.
+
+503
+00:26:40,350 --> 00:26:42,820
+This number here is m, let's call it m
+squared.
+
+504
+00:26:42,820 --> 00:26:46,360
+You take the square root and that gives
+you the expansion size, right?
+
+505
+00:26:46,360 --> 00:26:48,820
+So it says, that if you, I mean, it says
+this.
+
+506
+00:26:48,820 --> 00:26:56,860
+It says if you take this thing here that's
+shown in dark its shaded here.
+
+507
+00:26:56,860 --> 00:26:59,828
+That ellipsoid is inside the set, and if I
+expand it by a factor m,
+
+508
+00:26:59,828 --> 00:27:03,412
+which is by the way not the ambient space
+dimension its actually the number of
+
+509
+00:27:03,412 --> 00:27:06,548
+inequalities but the number of
+inequalities is at least n plus one,
+
+510
+00:27:06,548 --> 00:27:13,190
+because it takes n plus one inequalities
+In rn, to get a bounded region.
+
+511
+00:27:13,190 --> 00:27:17,180
+And if you have n plus 1, you have a
+simplex, right?
+
+512
+00:27:17,180 --> 00:27:23,050
+So that's the so this is a worse
+approximation ratio.
+
+513
+00:27:23,050 --> 00:27:25,775
+So I mean it's not clear that matters,
+right?
+
+514
+00:27:25,775 --> 00:27:29,225
+Oh one question here, here I have let's
+see one, two,
+
+515
+00:27:29,225 --> 00:27:32,762
+three, I have six inequalities.
+
+516
+00:27:32,762 --> 00:27:33,470
+but.
+
+517
+00:27:33,470 --> 00:27:36,780
+Analytic center its not a function set its
+a function of the inequalities.
+
+518
+00:27:36,780 --> 00:27:39,460
+What if I added a new inequality that
+looked like that?
+
+519
+00:27:39,460 --> 00:27:43,280
+So it says please stay on this side of
+that inequality.
+
+520
+00:27:43,280 --> 00:27:44,320
+It shifts left.
+
+521
+00:27:44,320 --> 00:27:47,160
+Exactly right and in fact the following is
+true.
+
+522
+00:27:47,160 --> 00:27:50,976
+Given a polyhedron actually for that
+matter just given a set
+
+523
+00:27:50,976 --> 00:27:55,008
+I can take any point on the interior, and
+pile up a bunch of, this is a,
+
+524
+00:27:55,008 --> 00:28:01,730
+you could call that a redundant or
+irrelevant inequality, right?
+
+525
+00:28:01,730 --> 00:28:03,510
+It doesn't do, it doesn't change the set.
+
+526
+00:28:03,510 --> 00:28:06,425
+So I can pile up redundant inequalities,
+and I can, I can get you,
+
+527
+00:28:06,425 --> 00:28:11,065
+I can get any point in the interior to be
+the analytic center, right?
+
+528
+00:28:11,065 --> 00:28:13,639
+So all that says is analytic center is a,
+
+529
+00:28:13,639 --> 00:28:19,502
+is an attribute of the description of the
+set, not the set itself.
+
+530
+00:28:19,502 --> 00:28:20,158
+Okay?
+
+531
+00:28:20,158 --> 00:28:23,445
+Okay, so technically it's not, it's not a
+question of geometry.
+
+532
+00:28:23,445 --> 00:28:24,150
+Right?
+
+533
+00:28:24,150 --> 00:28:25,432
+It has to do with the description.
+
+534
+00:28:25,432 --> 00:28:28,300
+Okay.
+
+535
+00:28:32,330 --> 00:28:34,600
+Another topic is linear discrimination.
+
+536
+00:28:34,600 --> 00:28:36,756
+So, and if you've had a course on sort of
+machine learning or
+
+537
+00:28:36,756 --> 00:28:40,880
+something like that, or modern statistics,
+you'll, you've seen things like this.
+
+538
+00:28:40,880 --> 00:28:42,639
+So here's the problem.
+
+539
+00:28:42,639 --> 00:28:46,310
+This is actually also quite an old
+problem.
+
+540
+00:28:46,310 --> 00:28:48,664
+I think it goes back at least to the 40s.
+
+541
+00:28:48,664 --> 00:28:50,390
+Something like that.
+
+542
+00:28:50,390 --> 00:28:53,405
+I don't know how old the perception
+algorithm is but so
+
+543
+00:28:53,405 --> 00:28:59,389
+you have a set of points, x one through x
+n, y one through y m, and n sum r n.
+
+544
+00:28:59,389 --> 00:29:03,141
+And the idea is to determine whether they
+if you can separate them by
+
+545
+00:29:03,141 --> 00:29:07,650
+hyper plane and if so find such a hyper
+point, right?
+
+546
+00:29:07,650 --> 00:29:10,440
+And there's actually a few tricks here,
+you want to watch very carefully in
+
+547
+00:29:10,440 --> 00:29:14,365
+the next few minutes because you will be
+doing these things yourself.
+
+548
+00:29:14,365 --> 00:29:17,610
+And the arguments are, well they're not
+totally subtle but, I mean you,
+
+549
+00:29:17,610 --> 00:29:21,595
+you have to, listen, all I'm saying is you
+better listen.
+
+550
+00:29:21,595 --> 00:29:22,800
+Okay?
+
+551
+00:29:22,800 --> 00:29:24,000
+That, that's the right way to do it.
+
+552
+00:29:24,000 --> 00:29:26,230
+So here, I'll, I'll go over it a bit
+slowly.
+
+553
+00:29:26,230 --> 00:29:29,044
+So what it is, is You really want to know,
+whether or
+
+554
+00:29:29,044 --> 00:29:33,440
+not, this set of inequalities is feasible.
+
+555
+00:29:33,440 --> 00:29:37,960
+Now, the first thing you notice about
+those inequalities is their strict.
+
+556
+00:29:37,960 --> 00:29:41,096
+And you might say, hey, wait a minute,
+I've been doing this class for
+
+557
+00:29:41,096 --> 00:29:44,927
+a long time we haven't see strict
+inequalities before.
+
+558
+00:29:44,927 --> 00:29:45,432
+Right?
+And
+
+559
+00:29:45,432 --> 00:29:47,680
+then you might say something like this.
+
+560
+00:29:47,680 --> 00:29:49,099
+You might think about it for a minute and
+
+561
+00:29:49,099 --> 00:29:52,850
+this would generally, it would generally
+be true the following would be true.
+
+562
+00:29:52,850 --> 00:29:56,490
+If your problem, if the difference between
+a strict inequality and
+
+563
+00:29:56,490 --> 00:29:59,415
+a non-strict inequality, like changes your
+problem,
+
+564
+00:29:59,415 --> 00:30:03,812
+that's kind of a mathematical pathology,
+right?
+
+565
+00:30:03,812 --> 00:30:05,220
+You know what I'm saying?
+
+566
+00:30:05,220 --> 00:30:08,019
+Right?
+If you say, hey I just built a you know,
+
+567
+00:30:08,019 --> 00:30:12,522
+I, I, just built machine that gives you
+know, the correct dose on a,
+
+568
+00:30:12,522 --> 00:30:17,180
+on a tumor or something like that, and I
+can satisfy these inequalities.
+
+569
+00:30:17,180 --> 00:30:21,900
+And someone says, oh you know, what are
+they, which inequalities can you do?
+
+570
+00:30:21,900 --> 00:30:22,960
+You say I can do the non strict ones.
+
+571
+00:30:22,960 --> 00:30:24,060
+They say no, no, it has to be strict.
+
+572
+00:30:25,230 --> 00:30:27,185
+I mean, it just makes absolutely no sense.
+
+573
+00:30:27,185 --> 00:30:29,120
+Eh, no sense whatsoever, right.
+
+574
+00:30:29,120 --> 00:30:34,034
+Because the difference between, in the two
+is, I mean, it can hardly matter that,
+
+575
+00:30:34,034 --> 00:30:39,026
+if it turns out, the difference between
+putting 49.999 grays on some,
+
+576
+00:30:39,026 --> 00:30:40,742
+some tumor vocso, and fifty.
+
+577
+00:30:40,742 --> 00:30:44,890
+If that really makes a difference, well
+then give up and go home.
+
+578
+00:30:44,890 --> 00:30:46,400
+Because this doesn't make any sense.
+
+579
+00:30:46,400 --> 00:30:47,620
+This is not the real world.
+
+580
+00:30:47,620 --> 00:30:48,240
+Right?
+
+581
+00:30:48,240 --> 00:30:50,170
+Or that would be something like in
+finance, at a hedge fund.
+
+582
+00:30:50,170 --> 00:30:52,180
+You come back and you go, oh, great news.
+
+583
+00:30:52,180 --> 00:30:56,460
+I can, I can, I can get this return with
+this risk level.
+
+584
+00:30:56,460 --> 00:31:00,342
+And they go, equal, equal to the risk
+level or less than?
+
+585
+00:31:00,342 --> 00:31:05,160
+I mean, the answer is, your risk model is
+so ridiculous, it's just totally made up.
+
+586
+00:31:05,160 --> 00:31:08,592
+So the point is, if somebody is telling
+you there's a difference between strict
+
+587
+00:31:08,592 --> 00:31:11,380
+inequality and non-strict inequality, it
+just makes no sense.
+
+588
+00:31:11,380 --> 00:31:12,440
+Everybody following this?
+
+589
+00:31:12,440 --> 00:31:13,430
+Okay, right.
+
+590
+00:31:13,430 --> 00:31:15,800
+So, let's apply that common sense
+principle here.
+
+591
+00:31:15,800 --> 00:31:24,010
+Let's take this and go like this, like
+that, okay?
+
+592
+00:31:24,010 --> 00:31:24,716
+There you go.
+Now you tell me,
+
+593
+00:31:24,716 --> 00:31:27,500
+now, now, the good news is the problem has
+become actually substantially easier.
+
+594
+00:31:27,500 --> 00:31:32,018
+So the answer is a equals b equals zero is
+feasible, okay?
+
+595
+00:31:32,018 --> 00:31:34,622
+Everybody, everybody got that?
+
+596
+00:31:34,622 --> 00:31:35,873
+Okay?
+All right.
+
+597
+00:31:35,873 --> 00:31:40,410
+So, so that then, so, the, the the
+standard method, right, didn't work here.
+
+598
+00:31:40,410 --> 00:31:41,472
+Okay?
+So that means that
+
+599
+00:31:41,472 --> 00:31:43,350
+the common method doesn't work.
+
+600
+00:31:43,350 --> 00:31:44,459
+Okay?
+So let's do something,
+
+601
+00:31:44,459 --> 00:31:46,780
+here you have to be a bit more subtle.
+
+602
+00:31:46,780 --> 00:31:51,790
+What you do, is you observe that these
+inequalities are homogeneous in a and b.
+
+603
+00:31:51,790 --> 00:31:53,900
+Okay?
+So that's, in other words, if,
+
+604
+00:31:53,900 --> 00:31:58,300
+if there's a and b for which ai transpose
+x plus b is positive, then I
+
+605
+00:31:58,300 --> 00:32:03,340
+guarantee you, there's a and b for which a
+transpose x plus b is bigger than or
+
+606
+00:32:03,340 --> 00:32:06,081
+equal to is, sorry, is bigger or equal to
+one.
+
+607
+00:32:06,081 --> 00:32:07,270
+Okay?
+
+608
+00:32:07,270 --> 00:32:07,784
+Why?
+I
+
+609
+00:32:07,784 --> 00:32:09,480
+mean you just scale them all up until it's
+true.
+
+610
+00:32:09,480 --> 00:32:10,780
+Right?
+So what it says is,
+
+611
+00:32:10,780 --> 00:32:12,330
+we replace this with this, and
+
+612
+00:32:12,330 --> 00:32:15,368
+I would strongly recommend that you go to
+a quiet place, and
+
+613
+00:32:15,368 --> 00:32:21,620
+make sure you understand the exactly the
+semantics of what went down there.
+
+614
+00:32:21,620 --> 00:32:22,338
+Right, right?
+
+615
+00:32:22,338 --> 00:32:25,638
+It is not the same as saying that a strict
+inequality is the always same as
+
+616
+00:32:25,638 --> 00:32:27,728
+replacing with a one.
+
+617
+00:32:27,728 --> 00:32:28,282
+Right?
+
+618
+00:32:28,282 --> 00:32:31,698
+So you have to make the observation that
+these are homogeneous,
+
+619
+00:32:31,698 --> 00:32:37,370
+that I can scale them, and they're, then
+this is, then they become equivalent.
+
+620
+00:32:37,370 --> 00:32:40,580
+Okay?
+That's the, that's the idea.
+
+621
+00:32:40,580 --> 00:32:43,778
+This is a bonafide set of linear
+inequalities,
+
+622
+00:32:43,778 --> 00:32:47,970
+in fact that's a linear program in a and
+b.
+
+623
+00:32:47,970 --> 00:32:52,392
+Right, so interestingly questions about
+linear discrimination it took a,
+
+624
+00:32:52,392 --> 00:32:56,211
+unfortunately a shocking, a much longer
+time than it should have for
+
+625
+00:32:56,211 --> 00:33:02,485
+somebody to look up one day and say oh hey
+that's a linear program.
+
+626
+00:33:02,485 --> 00:33:06,770
+Right so, so, sadly, historically but it
+really did.
+
+627
+00:33:06,770 --> 00:33:10,320
+In fact, whole algorithms were worked out
+to solve these kinds of things before it
+
+628
+00:33:10,320 --> 00:33:13,420
+was understood that other people had
+worked out other whole algorithms to
+
+629
+00:33:13,420 --> 00:33:17,460
+solve these kinds of things and so on and
+so forth.
+
+630
+00:33:17,460 --> 00:33:18,210
+I mean now I think,
+
+631
+00:33:18,210 --> 00:33:20,860
+well there's even a legacy of that in
+current machine learning,
+
+632
+00:33:20,860 --> 00:33:25,770
+I mean there's some weird, anyway I, maybe
+I won't go, I, I won't go any farther.
+
+633
+00:33:25,770 --> 00:33:26,600
+But, so, okay.
+
+634
+00:33:26,600 --> 00:33:28,730
+Alright, so what does this say?
+
+635
+00:33:28,730 --> 00:33:31,322
+This says that if I give you a bunch of
+points, pairs of points, and
+
+636
+00:33:31,322 --> 00:33:35,030
+you know, these might be like labels or
+something like that.
+
+637
+00:33:35,030 --> 00:33:36,854
+Then it says I can now, by solving an LP,
+
+638
+00:33:36,854 --> 00:33:41,068
+I can determine if they are, you would say
+linearly separable.
+
+639
+00:33:41,068 --> 00:33:43,850
+Or linearlly discriminable, right?
+
+640
+00:33:43,850 --> 00:33:48,010
+So, you could test and if you can, if they
+are, you can exhibit or
+
+641
+00:33:48,010 --> 00:33:52,710
+deduce a the separating hyperplane.
+
+642
+00:33:52,710 --> 00:33:53,820
+Now you can optimize over that hyperplane.
+
+643
+00:33:53,820 --> 00:33:55,220
+We're going to see that next, right?
+
+644
+00:33:55,220 --> 00:33:57,750
+Like you could, you know, find the
+smallest one.
+
+645
+00:33:57,750 --> 00:34:01,608
+Or we'll see all sorts of things you could
+work, you could optimize now, right?
+
+646
+00:34:01,608 --> 00:34:04,970
+And what would be the idea behind this?
+
+647
+00:34:04,970 --> 00:34:08,480
+Well, it might be something like this,.
+
+648
+00:34:08,480 --> 00:34:10,130
+This is a giant pile of data.
+
+649
+00:34:10,130 --> 00:34:10,630
+Here.
+
+650
+00:34:12,250 --> 00:34:14,580
+In fact you'd call this you'd say labels.
+
+651
+00:34:14,580 --> 00:34:16,980
+Right?
+So you'd, these would feature vectors.
+
+652
+00:34:16,980 --> 00:34:17,730
+Right.
+So, this is,
+
+653
+00:34:17,730 --> 00:34:20,490
+I look at let's say one billion emails.
+
+654
+00:34:20,490 --> 00:34:24,930
+Right, each one is labeled as either spam
+and not spam.
+
+655
+00:34:24,930 --> 00:34:27,505
+So, that's spam and that's not spam.
+
+656
+00:34:27,505 --> 00:34:29,218
+Okay?
+How do I know that?
+
+657
+00:34:29,218 --> 00:34:36,460
+Because I watched when someone junked
+something or something like that.
+
+658
+00:34:36,460 --> 00:34:38,010
+I got a pretty good idea of the labels.
+
+659
+00:34:38,010 --> 00:34:42,105
+And let's say each of these is I have a
+feature that's let's say I'll be
+
+660
+00:34:42,105 --> 00:34:43,970
+safe here.
+
+661
+00:34:43,970 --> 00:34:46,142
+Let's make it just like five, 10,000
+features.
+
+662
+00:34:46,142 --> 00:34:47,009
+Right?
+For each email.
+
+663
+00:34:47,009 --> 00:34:48,329
+And they could, a lot of these features,
+
+664
+00:34:48,329 --> 00:34:51,854
+these features are kind of obvious that
+they were what you think they would be.
+
+665
+00:34:51,854 --> 00:34:54,302
+They would be things like word counts and
+things like that.
+
+666
+00:34:54,302 --> 00:34:58,310
+All r ight, so you take a billion of these
+points some X's, some Y's.
+
+667
+00:34:58,310 --> 00:35:00,042
+Right?
+And then you'd want to know in R 1000 or
+
+668
+00:35:00,042 --> 00:35:02,730
+10,000, whatever we, however many features
+we decided there were,
+
+669
+00:35:02,730 --> 00:35:06,730
+you'd like to know if there was a hyper
+plane in between them.
+
+670
+00:35:06,730 --> 00:35:08,935
+And, but if there were a hyper plane.
+
+671
+00:35:08,935 --> 00:35:11,956
+Then, you, then it'd be easy because now
+you'd take that hyper plane,
+
+672
+00:35:11,956 --> 00:35:15,242
+a new email comes in, you compute its
+feature vector, find out which side of
+
+673
+00:35:15,242 --> 00:35:20,290
+the hyper plane you're on, and either
+announce it's spam or not.
+
+674
+00:35:20,290 --> 00:35:23,035
+And in fact even the distance to the hyper
+plane would tell you something,
+
+675
+00:35:23,035 --> 00:35:25,120
+like if it was way off.
+
+676
+00:35:25,120 --> 00:35:31,250
+In on one side you might say with high
+confidence that it is spam or not.
+
+677
+00:35:31,250 --> 00:35:32,170
+Everybody, got this?
+
+678
+00:35:32,170 --> 00:35:33,429
+Okay?
+Now actually,
+
+679
+00:35:33,429 --> 00:35:37,070
+you'd be quite nervous if in fact it
+separated.
+
+680
+00:35:37,070 --> 00:35:39,400
+Right?
+There'd be something deeply wrong but
+
+681
+00:35:39,400 --> 00:35:42,500
+in this case at least that's abstractly
+the idea of the use of
+
+682
+00:35:42,500 --> 00:35:45,150
+these types of things.
+
+683
+00:35:45,150 --> 00:35:45,700
+Right?
+
+684
+00:35:45,700 --> 00:35:46,582
+So.
+Okay.
+
+685
+00:35:46,582 --> 00:35:49,857
+We will get to that.
+
+686
+00:35:49,857 --> 00:35:52,699
+So it turns out actually a very simple
+varia, very simple variation on
+
+687
+00:35:52,699 --> 00:35:56,410
+this produces something that's actually
+extremely effective.
+
+688
+00:35:56,410 --> 00:35:57,035
+Right?
+So.
+
+689
+00:35:57,035 --> 00:35:59,976
+Okay, so the first thing we're going to
+look at is this.
+
+690
+00:35:59,976 --> 00:36:02,264
+If you, you have a set of linear
+inequalities, right,
+
+691
+00:36:02,264 --> 00:36:04,610
+that just detects the hyperplane.
+
+692
+00:36:04,610 --> 00:36:06,955
+But the point is there's lots of hyper
+planes that separate two clouds of points,
+
+693
+00:36:06,955 --> 00:36:08,260
+if they're separable.
+
+694
+00:36:08,260 --> 00:36:09,950
+If they're linearly discriminable.
+
+695
+00:36:09,950 --> 00:36:11,580
+There's lots of hyper planes.
+
+696
+00:36:11,580 --> 00:36:14,436
+So, by the way there's lots of ways you
+could choose a hyper plane
+
+697
+00:36:14,436 --> 00:36:16,230
+that separates them.
+
+698
+00:36:16,230 --> 00:36:18,066
+Right?
+There's lots of reasonable ways to do it.
+
+699
+00:36:18,066 --> 00:36:21,180
+One way would be to do some kind of
+robustness thing.
+
+700
+00:36:21,180 --> 00:36:24,734
+And what one, one would do that, what you
+would do something like this.
+
+701
+00:36:24,734 --> 00:36:30,680
+You can imagine, the, the hyper plane is a
+transpose z plus b is zero, right?
+
+702
+00:36:30,680 --> 00:36:34,334
+But instead, what we could do is we could
+take the points where that's one and
+
+703
+00:36:34,334 --> 00:36:38,325
+minus one, and everything in between those
+two parallel hyperlinks, that's a slab.
+
+704
+00:36:38,325 --> 00:36:42,940
+Right, and they can very reasonably asked
+to find the compute the maximum with
+
+705
+00:36:42,940 --> 00:36:47,180
+the slab, it separates the two points
+right?
+
+706
+00:36:47,180 --> 00:36:50,999
+And by the by what's the nice about that I
+mean some people calls it maximum margin
+
+707
+00:36:50,999 --> 00:36:56,990
+classify right the reason is maximum
+margin is puff up each of these points.
+
+708
+00:36:56,990 --> 00:37:02,072
+By a ball still classified correctly, and
+the amount you could puff 'em up by
+
+709
+00:37:02,072 --> 00:37:07,640
+is the largest possible, and still
+maintain correctness.
+
+710
+00:37:07,640 --> 00:37:08,410
+Everybody got that?
+
+711
+00:37:08,410 --> 00:37:12,210
+So it's maximum margin classifier.
+
+712
+00:37:12,210 --> 00:37:12,931
+Okay.
+
+713
+00:37:12,931 --> 00:37:14,560
+Completely reasonable, right?
+
+714
+00:37:14,560 --> 00:37:18,060
+But the width of the slab is exactly two
+over the norm of a.
+
+715
+00:37:18,060 --> 00:37:18,656
+Right?
+So
+
+716
+00:37:18,656 --> 00:37:23,076
+that's the, I mean if the norm of A were
+one, then, well, A transpose x plus B,
+
+717
+00:37:23,076 --> 00:37:28,090
+literally is the signed distance to the
+hyper plane.
+
+718
+00:37:28,090 --> 00:37:28,980
+If the norm of A is one.
+
+719
+00:37:28,980 --> 00:37:33,918
+If the norm of A is big, then, in fact,
+the slab is small.
+
+720
+00:37:33,918 --> 00:37:35,051
+Right?
+
+721
+00:37:35,051 --> 00:37:35,970
+So, okay.
+
+722
+00:37:35,970 --> 00:37:40,070
+So then it says, please, let's maximize
+[COUGH] two over the norm of a2.
+
+723
+00:37:41,590 --> 00:37:43,980
+That's the same as minimizing norm, a2.
+
+724
+00:37:43,980 --> 00:37:47,948
+And so you'd say, minimize the norm of a2
+subject to these inequalities and
+
+725
+00:37:47,948 --> 00:37:49,930
+now we get a QP.
+
+726
+00:37:49,930 --> 00:37:52,677
+And that, that's the maximum margin
+classifier,
+
+727
+00:37:52,677 --> 00:37:57,010
+if I'm saying that correctly in whatever
+dialect that is.
+
+728
+00:37:57,010 --> 00:37:58,730
+Oh, and I guess they would do this.
+
+729
+00:37:58,730 --> 00:38:00,402
+This is not, yeah you'd have to square the
+objective,
+
+730
+00:38:00,402 --> 00:38:02,230
+you'd do something like that, right?
+
+731
+00:38:02,230 --> 00:38:04,292
+It'd be the same thing, okay.
+
+732
+00:38:04,292 --> 00:38:08,884
+okay, so now now if two sets are
+separable, linearly separable we at
+
+733
+00:38:08,884 --> 00:38:14,050
+least have a nice an utterly reasonable to
+way to to find a hyper plane
+
+734
+00:38:14,050 --> 00:38:23,214
+that separates them that's kind of luck it
+clearly has some good properties.
+
+735
+00:38:23,214 --> 00:38:23,791
+Okay.
+
+736
+00:38:23,791 --> 00:38:29,690
+Very interesting thing is to look at the
+dual of this, and we'll do that quickly.
+
+737
+00:38:29,690 --> 00:38:35,370
+So I, I just mechanically worked out the
+dual of, of the separation problem.
+
+738
+00:38:35,370 --> 00:38:42,480
+So the dual of this problem right is
+maximum margin problem is exactly this.
+
+739
+00:38:42,480 --> 00:38:44,680
+It's maximize this function subject to,
+and
+
+740
+00:38:44,680 --> 00:38:48,041
+here what you see is something very
+interesting.
+
+741
+00:38:48,041 --> 00:38:53,310
+I get two sets of I get two sets of of
+Lagrange multipliers Lambda, and Mu.
+
+742
+00:38:53,310 --> 00:38:57,540
+They are associated exactly with the two
+sets of linear inequalities right?
+
+743
+00:38:57,540 --> 00:38:59,650
+For the the x's and the y's.
+
+744
+00:38:59,650 --> 00:39:01,766
+I have these kind of inequalities go the
+wrong way.
+
+745
+00:39:01,766 --> 00:39:03,930
+And you get some very interesting
+constraints.
+
+746
+00:39:03,930 --> 00:39:05,874
+I get a norm constraint here.
+
+747
+00:39:05,874 --> 00:39:07,835
+These are, well those are, inequalities,
+so
+
+748
+00:39:07,835 --> 00:39:12,152
+these things are non-negative, and I get
+this equality constraint here.
+
+749
+00:39:12,152 --> 00:39:14,999
+So, again, everything is homogeneous here,
+so
+
+750
+00:39:14,999 --> 00:39:19,817
+what we're going to do is the following,
+is I'm going to normalize, these things,
+
+751
+00:39:19,817 --> 00:39:25,645
+here to be, I'll, I'll take both of these
+to be one.
+
+752
+00:39:25,645 --> 00:39:30,990
+Whereupon, lambda and mu become, well,
+they're probability distributions.
+
+753
+00:39:30,990 --> 00:39:33,060
+Or they are, I dunno.
+
+754
+00:39:33,060 --> 00:39:34,010
+They're convex mixtures.
+
+755
+00:39:34,010 --> 00:39:34,684
+Right?
+They're,
+
+756
+00:39:34,684 --> 00:39:37,470
+they're numbers that are not negative and
+add up to one.
+
+757
+00:39:37,470 --> 00:39:40,305
+But if these are numbers that add up,
+non-negative and
+
+758
+00:39:40,305 --> 00:39:44,158
+add up to one, these two things are really
+simple.
+
+759
+00:39:44,158 --> 00:39:48,358
+They are elem they are arbitrary elements
+in the convex hull of the x
+
+760
+00:39:48,358 --> 00:39:52,530
+point cloud and y point cloud right?
+
+761
+00:39:52,530 --> 00:39:55,598
+And so that says i can rewrite the problem
+to look like this, and
+
+762
+00:39:55,598 --> 00:39:57,787
+its really, beautiful.
+
+763
+00:39:57,787 --> 00:39:59,341
+It says, it basically says,
+
+764
+00:39:59,341 --> 00:40:03,485
+take the convex hull of x point cloud
+convex hull of y point cloud, and
+
+765
+00:40:03,485 --> 00:40:08,640
+actually calculate that's an arbitrary
+point in one and arbitrary point in other.
+
+766
+00:40:08,640 --> 00:40:11,366
+And it says, this is the [UNKNOWN] I mean
+minimizing t subject to same,
+
+767
+00:40:11,366 --> 00:40:13,580
+you just minimize this thing here.
+
+768
+00:40:15,110 --> 00:40:18,188
+It's, it's actually says, find the minimum
+distance between two
+
+769
+00:40:18,188 --> 00:40:21,950
+ellipse two polyhedra, described by their
+vertices.
+
+770
+00:40:21,950 --> 00:40:22,705
+Everybody got that?
+
+771
+00:40:22,705 --> 00:40:23,905
+So that was it.
+
+772
+00:40:23,905 --> 00:40:25,900
+It makes perfect sense.
+
+773
+00:40:25,900 --> 00:40:26,981
+So now you know when are two,
+
+774
+00:40:26,981 --> 00:40:29,978
+when are two point clouds separable,
+linearly separable.
+
+775
+00:40:29,978 --> 00:40:31,197
+The answer is, and straight from duality
+is this, if and only if,
+
+776
+00:40:31,197 --> 00:40:32,370
+the convex holes don't intersect.
+
+777
+00:40:32,370 --> 00:40:33,860
+That's it, okay?
+And that's duality.
+
+778
+00:40:33,860 --> 00:40:39,716
+Right, that's exactly what duality is.
+
+779
+00:40:39,716 --> 00:40:44,474
+This doesn't say anything, but
+
+780
+00:40:44,474 --> 00:40:48,200
+it's just fun to look at.
+
+781
+00:40:48,200 --> 00:40:48,785
+Right?
+
+782
+00:40:48,785 --> 00:40:49,487
+So, okay.
+
+783
+00:40:49,487 --> 00:40:55,207
+Now we're going to get to a real case, and
+in fact, it's one of those things where
+
+784
+00:40:55,207 --> 00:41:00,663
+you just add one more, one more feature to
+this, to the problem, and then
+
+785
+00:41:00,663 --> 00:41:10,670
+it goes from being mm maybe not so useful
+to off scale unbelievably useful.
+
+786
+00:41:10,670 --> 00:41:11,370
+Okay?
+
+787
+00:41:11,370 --> 00:41:12,703
+So those Taken a modern statistics or
+
+788
+00:41:12,703 --> 00:41:15,390
+machine learning course, know what's
+going to happen now.
+
+789
+00:41:15,390 --> 00:41:18,440
+So, but anyway, so if you just sit tight,
+everything will be fine.
+
+790
+00:41:18,440 --> 00:41:19,330
+Alright.
+
+791
+00:41:19,330 --> 00:41:21,604
+So what you do is this.
+
+792
+00:41:21,604 --> 00:41:25,684
+And in fact, I want to, before we even get
+into this,
+
+793
+00:41:25,684 --> 00:41:29,930
+I want to talk about, let's start the
+story this way.
+
+794
+00:41:29,930 --> 00:41:32,250
+I give you some x's and I give you some
+y's.
+
+795
+00:41:32,250 --> 00:41:34,930
+These are spectors for spam, and for not
+spam.
+
+796
+00:41:34,930 --> 00:41:39,890
+You calculate whether there's a separating
+hyper plane and there isn't.
+
+797
+00:41:41,260 --> 00:41:43,187
+Right?
+And that's probably good, right?
+
+798
+00:41:43,187 --> 00:41:46,775
+Oh by the way, if the two point clouds are
+like totally, you know, if,
+
+799
+00:41:46,775 --> 00:41:51,640
+if they're totally on top of each other so
+there's no difference, that's not good.
+
+800
+00:41:51,640 --> 00:41:54,010
+That means you've picked some pretty poor
+features.
+
+801
+00:41:54,010 --> 00:41:55,120
+Okay?
+Right?
+
+802
+00:41:55,120 --> 00:41:57,310
+But this is the point is that two point
+clouds are there.
+
+803
+00:41:57,310 --> 00:41:59,675
+They do, the two, the two convex cells
+intersect.
+
+804
+00:41:59,675 --> 00:42:00,980
+Period.
+
+805
+00:42:00,980 --> 00:42:04,343
+In other words, there are spam-feature
+vectors that penetrate into
+
+806
+00:42:04,343 --> 00:42:06,826
+whatever the non-spam territory.
+
+807
+00:42:06,826 --> 00:42:09,745
+Ev-, everybody, I mean, this is just the
+picture.
+
+808
+00:42:09,745 --> 00:42:10,489
+Okay?
+And so
+
+809
+00:42:10,489 --> 00:42:15,992
+the question is, how would you let's skip
+what I have on the slide here.
+
+810
+00:42:15,992 --> 00:42:19,780
+What would you imagine you might want to
+do.
+
+811
+00:42:19,780 --> 00:42:23,674
+So, you have a, a million linear
+equalities that you want to satisfy, and
+
+812
+00:42:23,674 --> 00:42:26,810
+they're not mutually satisfiable.
+
+813
+00:42:26,810 --> 00:42:27,910
+Yeah.
+So I have a whole bunch of
+
+814
+00:42:27,910 --> 00:42:29,830
+inequalities that I want to satisfy.
+
+815
+00:42:29,830 --> 00:42:35,310
+I solve and LP, and I announce with total
+confidence, there is no hyper plane.
+
+816
+00:42:35,310 --> 00:42:36,910
+I cannot satisfy all these inequalities.
+
+817
+00:42:36,910 --> 00:42:38,170
+It's impossible.
+
+818
+00:42:38,170 --> 00:42:40,879
+So the natural, I think one of the most
+natural things you might want to do next
+
+819
+00:42:40,879 --> 00:42:42,730
+would be to say okay, fine.
+
+820
+00:42:42,730 --> 00:42:49,200
+Find me a hyper plane that minimizes the
+number of inequalities you violate.
+
+821
+00:42:49,200 --> 00:42:52,980
+Now if you want to think about a, a
+classification problem.
+
+822
+00:42:52,980 --> 00:42:55,270
+That's the number of misclassifications,
+right?
+
+823
+00:42:55,270 --> 00:42:58,980
+And by the way, if that number were like
+.5% you'd be very happy.
+
+824
+00:42:58,980 --> 00:43:00,790
+You wouldn't, but okay.
+
+825
+00:43:00,790 --> 00:43:03,642
+At, at, at, at some point in time in the
+past for spam detection you would be,
+
+826
+00:43:03,642 --> 00:43:05,810
+you would've been very happy.
+
+827
+00:43:05,810 --> 00:43:08,510
+Right?
+For a lot of problems you'd be delighted.
+
+828
+00:43:08,510 --> 00:43:09,640
+Right?
+Everybody see what I'm saying?
+
+829
+00:43:09,640 --> 00:43:12,840
+So you'd, so you'd, so then the problem is
+to figure out which ones can you not,
+
+830
+00:43:12,840 --> 00:43:15,348
+how do you minimize the number?
+
+831
+00:43:15,348 --> 00:43:16,556
+Okay. Well. And by the way,
+
+832
+00:43:16,556 --> 00:43:21,250
+then you might ask yourself, what kind of
+a optimization problem is that.
+
+833
+00:43:21,250 --> 00:43:24,900
+And you would find out pretty quickly that
+that is NP heart.
+
+834
+00:43:24,900 --> 00:43:27,204
+So I give you a set of inequalities, and
+
+835
+00:43:27,204 --> 00:43:31,839
+I ask you to satisfy as many as you can,
+it's NP heart.
+
+836
+00:43:31,839 --> 00:43:32,840
+Okay?
+
+837
+00:43:32,840 --> 00:43:36,850
+Fine. Okay. So then you say, let's see,
+maybe there's a heuristic for this.
+
+838
+00:43:36,850 --> 00:43:38,600
+And what does this mean?
+
+839
+00:43:38,600 --> 00:43:41,240
+This means that the violations are sparse.
+
+840
+00:43:41,240 --> 00:43:43,352
+You, you know, if there's going to be
+violations, and
+
+841
+00:43:43,352 --> 00:43:46,490
+by the way, the L1 norm should be the
+right thing here.
+
+842
+00:43:46,490 --> 00:43:49,740
+Because it says, you know, it, it, it's
+got a V.
+
+843
+00:43:49,740 --> 00:43:50,998
+I mean we'll see it's not quite an L1
+norm, but
+
+844
+00:43:50,998 --> 00:43:54,048
+it's exactly this, actually it is an L1
+norm for something that's positive.
+
+845
+00:43:54,048 --> 00:43:56,998
+Yeah, it's something, it means what you
+want is something that keeps up
+
+846
+00:43:56,998 --> 00:44:00,090
+the pressure to drive you to zero.
+
+847
+00:44:00,090 --> 00:44:02,670
+But, if you have to violate you shouldn't
+go nuts.
+
+848
+00:44:02,670 --> 00:44:05,166
+[INAUDIBLE] It should not be a function, a
+penalty that grows,
+
+849
+00:44:05,166 --> 00:44:07,582
+it should, should grow lineally, okay?
+
+850
+00:44:07,582 --> 00:44:09,970
+Okay, so so that's the idea.
+
+851
+00:44:09,970 --> 00:44:12,823
+So, in fact, that leads you immediately to
+the following.
+
+852
+00:44:12,823 --> 00:44:15,660
+Let me do it this, I'll write it another
+way.
+
+853
+00:44:15,660 --> 00:44:19,530
+I'll write a i transpose, x plus b.
+
+854
+00:44:19,530 --> 00:44:21,502
+I want that to be bigger than one.
+
+855
+00:44:21,502 --> 00:44:26,260
+Okay, so I want this thing to be bigger
+than zero, that's what I want.
+
+856
+00:44:26,260 --> 00:44:29,150
+Now I know that I can't, I actually can't
+choose an A and B.
+
+857
+00:44:29,150 --> 00:44:30,536
+Well, that one and the other ones were so
+
+858
+00:44:30,536 --> 00:44:33,220
+all these inequalities hold, everybody
+following this?
+
+859
+00:44:33,220 --> 00:44:38,340
+So I want the, if that's positive I'm
+totally happy Right?
+
+860
+00:44:38,340 --> 00:44:40,624
+So you might do something like this.
+
+861
+00:44:40,624 --> 00:44:47,695
+You might form AI transpose, xb minus one,
+the minus part.
+
+862
+00:44:47,695 --> 00:44:48,690
+Okay?
+
+863
+00:44:48,690 --> 00:44:51,670
+If you satisfy that inequality, that
+gives, there's no bill here.
+
+864
+00:44:51,670 --> 00:44:52,620
+You don't pay anything.
+
+865
+00:44:52,620 --> 00:44:53,280
+Right?
+
+866
+00:44:54,850 --> 00:44:58,380
+But if this thing becomes negative, then
+you start paying.
+
+867
+00:44:58,380 --> 00:44:59,870
+And you pay linearly.
+
+868
+00:44:59,870 --> 00:45:01,890
+Ever, so, what, what function is that?
+
+869
+00:45:01,890 --> 00:45:04,564
+That's a function that looks like this.
+
+870
+00:45:04,564 --> 00:45:05,730
+Right.
+
+871
+00:45:05,730 --> 00:45:06,590
+Looks like that.
+
+872
+00:45:06,590 --> 00:45:07,130
+Right?
+
+873
+00:45:07,130 --> 00:45:09,240
+And this is called the margin, in the
+inequality.
+
+874
+00:45:09,240 --> 00:45:13,059
+And what this says, if your margin's
+positive, no charge whatsoever.
+
+875
+00:45:13,059 --> 00:45:17,100
+If it's negative you charge linearly for
+negative margins.
+
+876
+00:45:17,100 --> 00:45:18,565
+Right.
+Everybody sort of following this.
+
+877
+00:45:18,565 --> 00:45:23,437
+Okay, now when you look at that, and by
+the way, it helps to turn your head
+
+878
+00:45:23,437 --> 00:45:28,316
+about 40 degrees, then L1, your L1 part of
+your brain will light up.
+
+879
+00:45:28,316 --> 00:45:31,081
+Okay?
+I mean its the same thing, right?
+
+880
+00:45:31,081 --> 00:45:31,790
+Okay?
+And so
+
+881
+00:45:31,790 --> 00:45:36,275
+by the way this is called hinge loss, is,
+is the name for this in several fields I
+
+882
+00:45:36,275 --> 00:45:43,380
+think that, that in both and, and modern
+statistics and machine that's hinge loss.
+
+883
+00:45:43,380 --> 00:45:46,772
+And so it suggests that actually doing
+something like this,
+
+884
+00:45:46,772 --> 00:45:49,927
+adding that in would be a great idea.
+
+885
+00:45:49,927 --> 00:45:53,817
+Because, you know, I mean, it doesn't look
+like L1.
+
+886
+00:45:53,817 --> 00:45:55,151
+But by the time you see this, I mean,
+
+887
+00:45:55,151 --> 00:45:58,100
+it should evoke, L1 is not to be taken
+literally.
+
+888
+00:45:58,100 --> 00:45:59,030
+Although a lot of people do.
+
+889
+00:45:59,030 --> 00:46:00,770
+This is L1.
+
+890
+00:46:00,770 --> 00:46:02,201
+Right?
+Actually it's a linear plus L1, so
+
+891
+00:46:02,201 --> 00:46:03,530
+it actually, kind of is.
+
+892
+00:46:03,530 --> 00:46:05,630
+But you look at that, and, and sparsity.
+
+893
+00:46:05,630 --> 00:46:08,962
+The sparsity part of your brain should be,
+lighting up.
+
+894
+00:46:08,962 --> 00:46:09,558
+Okay.
+
+895
+00:46:09,558 --> 00:46:10,300
+Right.
+
+896
+00:46:10,300 --> 00:46:12,650
+And what does it mean if this is sparse?
+
+897
+00:46:12,650 --> 00:46:13,645
+It's super cool.
+
+898
+00:46:13,645 --> 00:46:19,290
+If, if that's sparse, it says the
+following: it says that you satisfy most.
+
+899
+00:46:19,290 --> 00:46:21,866
+It means that, that misclassifications,
+these are not, by the way,
+
+900
+00:46:21,866 --> 00:46:24,672
+misclassifications there's even a little
+extra there, because the one,
+
+901
+00:46:24,672 --> 00:46:27,520
+without the one it's misclassification.
+
+902
+00:46:27,520 --> 00:46:28,080
+Right?
+
+903
+00:46:28,080 --> 00:46:30,090
+This says that misclassifications are
+sparse.
+
+904
+00:46:30,090 --> 00:46:31,580
+That's exactly what you want.
+
+905
+00:46:31,580 --> 00:46:32,670
+Everybody.
+
+906
+00:46:32,670 --> 00:46:35,720
+Following, I mean that was a very long
+story.
+
+907
+00:46:35,720 --> 00:46:37,332
+But the idea is, I just wanted to give,
+
+908
+00:46:37,332 --> 00:46:41,890
+I just wanted to give the whole, like
+everything about what you're doing here.
+
+909
+00:46:41,890 --> 00:46:43,210
+Okay so that's what this is.
+
+910
+00:46:43,210 --> 00:46:45,090
+U is a slack variable here, I mean this is
+the way,
+
+911
+00:46:45,090 --> 00:46:47,770
+this is the traditional description of it.
+
+912
+00:46:47,770 --> 00:46:50,240
+Actually this is at, a more modern
+description.
+
+913
+00:46:50,240 --> 00:46:51,965
+You don't even introduce u's.
+
+914
+00:46:51,965 --> 00:46:55,110
+because, you just look at it, you say it's
+convex, done.
+
+915
+00:46:55,110 --> 00:46:56,515
+Right?
+That's the correct way to do it in my
+
+916
+00:46:56,515 --> 00:46:57,230
+opinion.
+
+917
+00:46:57,230 --> 00:46:58,240
+But we'll do it the traditional way.
+
+918
+00:46:58,240 --> 00:47:01,290
+The traditional way is you say I would
+like to satisfy this inequality and
+
+919
+00:47:01,290 --> 00:47:04,375
+this one, it's determined that you cannot.
+
+920
+00:47:04,375 --> 00:47:07,040
+And then you go, oh, okay, fine.
+
+921
+00:47:07,040 --> 00:47:08,880
+Then you add in slacks.
+
+922
+00:47:08,880 --> 00:47:11,490
+Now the slacks are, by the way, nothing
+but these things, right?
+
+923
+00:47:11,490 --> 00:47:15,522
+So a slack is something it says, fine,
+I'll subtract something from the one to
+
+924
+00:47:15,522 --> 00:47:21,130
+make it easier to satisfy this, and I'll
+do the same here.
+
+925
+00:47:21,130 --> 00:47:22,390
+I'll make the inequality easier.
+
+926
+00:47:22,390 --> 00:47:24,507
+These are the use in these, those are
+[UNKNOWN].
+
+927
+00:47:24,507 --> 00:47:27,135
+And then I'll minimize those, and by the
+way,
+
+928
+00:47:27,135 --> 00:47:31,807
+you'll find out this problem is absolutely
+identical to the problem of this.
+
+929
+00:47:31,807 --> 00:47:35,380
+Plus of course, the opposite ones, the,
+for the y's, right?
+
+930
+00:47:35,380 --> 00:47:37,620
+So you get exactly the same problem, okay?
+
+931
+00:47:37,620 --> 00:47:39,360
+Everybody following this?
+
+932
+00:47:39,360 --> 00:47:40,670
+Okay, so.
+
+933
+00:47:42,580 --> 00:47:47,433
+That and, and you should even think of
+this its a beautiful thing.
+
+934
+00:47:47,433 --> 00:47:51,083
+You should think of this thing as we l1
+type heuristic for
+
+935
+00:47:51,083 --> 00:47:55,521
+solving the following hard competorial
+problem.
+
+936
+00:47:55,521 --> 00:47:58,905
+Finding a hyper plane its satisfies it's
+many, you know,
+
+937
+00:47:58,905 --> 00:48:02,800
+it misclassifies as few as possible,
+right?
+
+938
+00:48:02,800 --> 00:48:04,535
+That's the correct interpretation of this.
+
+939
+00:48:04,535 --> 00:48:06,010
+Okay?
+
+940
+00:48:06,010 --> 00:48:08,075
+And you get something like that, you know,
+here's a case.
+
+941
+00:48:08,075 --> 00:48:09,370
+Okay.
+
+942
+00:48:09,370 --> 00:48:12,120
+Now, the only thing you have to do now is
+you put the two together and
+
+943
+00:48:12,120 --> 00:48:14,700
+you have something kind of famous.
+
+944
+00:48:14,700 --> 00:48:17,399
+Right?
+So, and I guess the traditional one,
+
+945
+00:48:17,399 --> 00:48:21,351
+I think the traditional one would look
+something like that, but
+
+946
+00:48:21,351 --> 00:48:23,350
+you get the same tradeoff curve.
+
+947
+00:48:23,350 --> 00:48:27,906
+So what you do now is this, is you put
+slacks in to minimize, for the for, for
+
+948
+00:48:27,906 --> 00:48:31,572
+actually misclassifying right?
+
+949
+00:48:31,572 --> 00:48:37,091
+And then at the same time you can also
+think of this regularization, by the way.
+
+950
+00:48:37,091 --> 00:48:41,006
+So here traditional l two regularization
+turns out to
+
+951
+00:48:41,006 --> 00:48:45,570
+have a beautiful geometric interpretation.
+
+952
+00:48:45,570 --> 00:48:47,926
+Because when you're minimizing the norm of
+A,
+
+953
+00:48:47,926 --> 00:48:52,470
+I guess you'd call it the weight vector,
+or something like that.
+
+954
+00:48:52,470 --> 00:48:55,655
+If you're minimizing over the weight
+vector, it turns out, that's equivalent
+
+955
+00:48:55,655 --> 00:49:00,000
+to, geometrically, to saying, don't look
+for a hyper plane, look for a slab.
+
+956
+00:49:00,000 --> 00:49:01,656
+And in fact, maximize the width of the
+slab,
+
+957
+00:49:01,656 --> 00:49:04,130
+which means that you've separated them
+well.
+
+958
+00:49:04,130 --> 00:49:06,630
+Everybody kind of seeing all these things
+go together?
+
+959
+00:49:06,630 --> 00:49:09,310
+So, I mean, for people who've seen this
+before, that's fine, you may not have seen
+
+960
+00:49:09,310 --> 00:49:13,060
+the geometric interpretive full geometric
+interpretations, but now you have.
+
+961
+00:49:13,060 --> 00:49:15,580
+So, it's actually kind of, kind of cool.
+
+962
+00:49:15,580 --> 00:49:21,760
+So, this, this is given the name support
+vector machine.
+
+963
+00:49:21,760 --> 00:49:24,870
+Here, you have a parameter and the
+parameter is very simple.
+
+964
+00:49:24,870 --> 00:49:29,259
+It trades off, the parameter, now I'll
+describe it geometrically, and
+
+965
+00:49:29,259 --> 00:49:33,956
+there are statistical interpretations of
+all of these, had to go into them.
+
+966
+00:49:33,956 --> 00:49:38,499
+But there are, so, the geometric
+interpretation is quite beautiful.
+
+967
+00:49:38,499 --> 00:49:42,540
+lambda, or gamma, here, sorry, trades off
+the width, of the slab.
+
+968
+00:49:42,540 --> 00:49:45,113
+and, and this is going to be very rough.
+
+969
+00:49:45,113 --> 00:49:48,500
+The number of inequality violations.
+
+970
+00:49:48,500 --> 00:49:49,020
+Okay.
+
+971
+00:49:49,020 --> 00:49:50,202
+And that's what it does.
+
+972
+00:49:50,202 --> 00:49:51,184
+Right?
+
+973
+00:49:51,184 --> 00:49:55,460
+And so you can imagine what, what, what,
+what turning that parameter will do here.
+
+974
+00:49:55,460 --> 00:49:58,333
+This is unbelievably widely used.
+
+975
+00:49:58,333 --> 00:50:00,870
+I mean, not as much as least squares or
+something like that.
+
+976
+00:50:00,870 --> 00:50:01,840
+But it's catching up.
+
+977
+00:50:01,840 --> 00:50:02,550
+Let me put it that way.
+
+978
+00:50:02,550 --> 00:50:06,230
+So it's used tons of places, everywhere,
+all the time.
+
+979
+00:50:06,230 --> 00:50:06,872
+Right?
+So,
+
+980
+00:50:06,872 --> 00:50:09,730
+you couldn't possibly get through a day.
+
+981
+00:50:09,730 --> 00:50:13,190
+here, except if you're like hiking in
+Yosemite or something.
+
+982
+00:50:13,190 --> 00:50:14,829
+And maybe even then you couldn't.
+
+983
+00:50:14,829 --> 00:50:18,970
+when, when something you did didn't run
+through a support vector classifier.
+
+984
+00:50:18,970 --> 00:50:20,930
+I mean, I not, it'd be, you have to touch
+no electronics, and
+
+985
+00:50:20,930 --> 00:50:23,050
+I don't what else you, you'd have to do.
+
+986
+00:50:23,050 --> 00:50:27,850
+So, but it'd be very hard, very hard to
+do.
+
+987
+00:50:27,850 --> 00:50:29,152
+Certainly don't pick up your phone or
+
+988
+00:50:29,152 --> 00:50:32,126
+anything like, don't read email because
+then it's all over.
+
+989
+00:50:32,126 --> 00:50:35,290
+so, anyway, so, yet these are good things
+to know.
+
+990
+00:50:35,290 --> 00:50:35,906
+Okay.
+
+991
+00:50:35,906 --> 00:50:41,390
+Let's look at the idea of nonlinear
+discrimination.
+
+992
+00:50:41,390 --> 00:50:44,820
+So, here, I, we've been looking at linear
+discrimination.
+
+993
+00:50:44,820 --> 00:50:46,880
+We can just as well look at nonlinear
+discrimination.
+
+994
+00:50:46,880 --> 00:50:50,174
+Because, in fact it turns out that the
+fact that the class line was linear,
+
+995
+00:50:50,174 --> 00:50:52,250
+was totally irrelevant.
+
+996
+00:50:52,250 --> 00:50:54,632
+All that mattered, was that it was linear
+in the parameters.
+
+997
+00:50:54,632 --> 00:50:55,909
+Right?
+
+998
+00:50:55,909 --> 00:51:00,414
+So nonlinear classification says, find me
+a function f that is,
+
+999
+00:51:00,414 --> 00:51:05,602
+you know, positive on the xs, negative on
+the ys.
+
+1000
+00:51:05,602 --> 00:51:08,230
+Okay?
+
+1001
+00:51:08,230 --> 00:51:09,840
+So, so, here's one approach to it.
+
+1002
+00:51:09,840 --> 00:51:13,359
+Actually, there's multiple approaches
+here, one which doesn't fit in this theme,
+
+1003
+00:51:13,359 --> 00:51:18,180
+but we could talk about, but don't have
+time to, would be sort of kernel methods.
+
+1004
+00:51:18,180 --> 00:51:19,000
+But we're not, instead,
+
+1005
+00:51:19,000 --> 00:51:21,009
+we're going to look at something that's
+just much simpler and
+
+1006
+00:51:21,009 --> 00:51:23,528
+it fits with the theme of convex
+optimization.
+
+1007
+00:51:23,528 --> 00:51:29,328
+What you do is you simply take a set of
+basis functions here.
+
+1008
+00:51:29,328 --> 00:51:32,658
+And, y-, what you're going to do is you're
+going to look at a,
+
+1009
+00:51:32,658 --> 00:51:37,960
+at a, a finite dimensional, set of
+candidate functions.
+
+1010
+00:51:37,960 --> 00:51:38,730
+That's all.
+
+1011
+00:51:38,730 --> 00:51:39,380
+And, you know?
+
+1012
+00:51:39,380 --> 00:51:41,208
+These are the, these are basis functions,
+right?
+
+1013
+00:51:41,208 --> 00:51:42,800
+F1 through fk, right?
+
+1014
+00:51:42,800 --> 00:51:43,770
+They could be anything you like.
+
+1015
+00:51:43,770 --> 00:51:46,119
+So it could be, polynomials.
+
+1016
+00:51:46,119 --> 00:51:48,050
+They could be weird exponentials.
+
+1017
+00:51:48,050 --> 00:51:52,760
+They could be things that, that pertain to
+your particular problem, right?
+
+1018
+00:51:52,760 --> 00:51:55,700
+I don't know, I don't know why but I mean,
+you know, could be, this could be
+
+1019
+00:51:55,700 --> 00:52:00,420
+prolatespheriods or something like that
+,or vessel functions of some order.
+
+1020
+00:52:00,420 --> 00:52:01,080
+I mean I don't know.
+
+1021
+00:52:01,080 --> 00:52:03,180
+They could be anything, right?
+
+1022
+00:52:03,180 --> 00:52:06,120
+This could be the Igon functions of some
+of some partial
+
+1023
+00:52:06,120 --> 00:52:08,640
+differential operator right?
+
+1024
+00:52:08,640 --> 00:52:10,220
+Doesn't matter right?
+
+1025
+00:52:10,220 --> 00:52:12,245
+It just suppose to be functions,
+
+1026
+00:52:12,245 --> 00:52:16,572
+you're going to linearaly combine to do
+separation.
+
+1027
+00:52:16,572 --> 00:52:18,400
+Okay.
+
+1028
+00:52:18,400 --> 00:52:22,152
+So here it's the same thing you just end
+up with absolutely nothing whatsoever is
+
+1029
+00:52:22,152 --> 00:52:24,600
+different, I mean nothing.
+
+1030
+00:52:24,600 --> 00:52:27,195
+Right?
+So that's, that's what you get.
+
+1031
+00:52:27,195 --> 00:52:30,450
+And so this tells you you can do fun
+things like this.
+
+1032
+00:52:30,450 --> 00:52:34,194
+You can say [COUGH] please separate my
+points quadratically, okay?
+
+1033
+00:52:34,194 --> 00:52:36,746
+And that says find me a quadratic
+function, that's a,
+
+1034
+00:52:36,746 --> 00:52:39,440
+that's a general quadratic function.
+
+1035
+00:52:39,440 --> 00:52:41,280
+And what's being asked is that you should
+find P,
+
+1036
+00:52:41,280 --> 00:52:44,510
+Q and R those are the variables that
+separates your points.
+
+1037
+00:52:44,510 --> 00:52:52,045
+Okay, so Here's an example of
+quadratically seperable points, right?
+
+1038
+00:52:52,045 --> 00:52:52,759
+And this, by the way,
+
+1039
+00:52:52,759 --> 00:52:56,158
+goes back to our question of what would
+you do with those ellipsoids.
+
+1040
+00:52:56,158 --> 00:52:59,574
+This would be if you had two types of data
+you had places where let's say
+
+1041
+00:52:59,574 --> 00:53:02,630
+a pilot flown and came back.
+
+1042
+00:53:02,630 --> 00:53:04,860
+Let's suppose that's the things inside.
+
+1043
+00:53:04,860 --> 00:53:07,350
+And these are the ones where, there was no
+recovery.
+
+1044
+00:53:07,350 --> 00:53:09,220
+That's a little bit gruseome.
+
+1045
+00:53:09,220 --> 00:53:09,790
+Sorry.
+
+1046
+00:53:09,790 --> 00:53:10,730
+Okay.
+
+1047
+00:53:10,730 --> 00:53:12,020
+So, something else.
+
+1048
+00:53:12,020 --> 00:53:12,905
+But that's the idea.
+
+1049
+00:53:12,905 --> 00:53:15,560
+Okay?
+And, so this would be the case.
+
+1050
+00:53:15,560 --> 00:53:17,500
+It's a, and it's a linear program.
+
+1051
+00:53:17,500 --> 00:53:21,988
+To compute and, to compute actually just
+quadratically separation, now,
+
+1052
+00:53:21,988 --> 00:53:28,175
+quadratic separation by itself does not
+require, there's no curvature constraint.
+
+1053
+00:53:28,175 --> 00:53:29,070
+Right?
+
+1054
+00:53:29,070 --> 00:53:32,535
+So in fact, in this case, you could, you
+might as well, you could if you just do
+
+1055
+00:53:32,535 --> 00:53:38,950
+straight quadratic classification, you
+could actually be looking for a hyperbola.
+
+1056
+00:53:38,950 --> 00:53:39,600
+That separates them.
+
+1057
+00:53:39,600 --> 00:53:41,080
+Everybody following this?
+
+1058
+00:53:41,080 --> 00:53:41,820
+Right, and if, you know,
+
+1059
+00:53:41,820 --> 00:53:45,122
+depending on what your data is that could
+be completely reasonable and interesting.
+
+1060
+00:53:45,122 --> 00:53:47,760
+Everybody got this?
+
+1061
+00:53:47,760 --> 00:53:51,852
+If you want to insist that, for example,
+if you say find me an ellipsoid that
+
+1062
+00:53:51,852 --> 00:53:57,850
+covers these points but not those, then
+you simply add a constraint.
+
+1063
+00:53:57,850 --> 00:53:59,978
+That says that the p is less than or
+
+1064
+00:53:59,978 --> 00:54:03,550
+equal to, actually you would add p
+negative definite for
+
+1065
+00:54:03,550 --> 00:54:10,730
+example to get an ellipsoid or the
+exterior [UNKNOWN] b p positive definite.
+
+1066
+00:54:10,730 --> 00:54:14,057
+That's homogeneous and that translates to
+this, okay?
+
+1067
+00:54:14,057 --> 00:54:15,590
+And now you have an STP.
+
+1068
+00:54:15,590 --> 00:54:16,800
+Is everybody following this?
+
+1069
+00:54:16,800 --> 00:54:18,906
+So this is the idea.
+
+1070
+00:54:18,906 --> 00:54:22,390
+I mean here's a quasi convex problem.
+
+1071
+00:54:22,390 --> 00:54:24,400
+It says here's two sets of points and
+
+1072
+00:54:24,400 --> 00:54:29,830
+this says please separate them by the
+minimal degree polynomial in r two.
+
+1073
+00:54:29,830 --> 00:54:31,272
+Everybody got that?
+
+1074
+00:54:31,272 --> 00:54:35,490
+And without even saying anything you
+should understand that that is
+
+1075
+00:54:35,490 --> 00:54:37,319
+quasi convex.
+
+1076
+00:54:37,319 --> 00:54:40,005
+Why?
+In fact, how was that done?
+
+1077
+00:54:40,005 --> 00:54:42,170
+How was that figure done?
+
+1078
+00:54:42,170 --> 00:54:47,699
+You take the two set of points and what's
+the first thing you try to do?
+
+1079
+00:54:47,699 --> 00:54:52,064
+You first try to separate them [INAUDIBLE]
+by linear, and you can't.
+
+1080
+00:54:52,064 --> 00:54:56,138
+Because we're looking at the data, you
+cannot, okay.
+
+1081
+00:54:56,138 --> 00:54:59,936
+And that doesn't work, so now you try
+quadratic.
+
+1082
+00:54:59,936 --> 00:55:02,520
+And you cannot, okay?
+
+1083
+00:55:02,520 --> 00:55:06,450
+Then you try cubic, and you can't.
+
+1084
+00:55:06,450 --> 00:55:08,112
+And then you try quartic, and you can't.
+
+1085
+00:55:08,112 --> 00:55:09,890
+Everybody, so that's, that's the idea,
+right?
+
+1086
+00:55:09,890 --> 00:55:11,800
+So, I mean I don't know why you'd want to.
+
+1087
+00:55:11,800 --> 00:55:14,707
+And by the way, I mean one of the nice
+things about these sort of convex
+
+1088
+00:55:14,707 --> 00:55:17,512
+formulations is, you know, we're showing
+you the simple ones, but
+
+1089
+00:55:17,512 --> 00:55:21,700
+in fact you can just, you know can, it's
+like cooking.
+
+1090
+00:55:21,700 --> 00:55:24,320
+You can add stuff in, and things like
+that.
+
+1091
+00:55:24,320 --> 00:55:27,820
+I mean for example, here, suppose instead
+you want to say yeah.
+
+1092
+00:55:27,820 --> 00:55:28,550
+This is, oh yeah.
+
+1093
+00:55:28,550 --> 00:55:29,470
+This is what I want to do.
+
+1094
+00:55:29,470 --> 00:55:30,790
+I really want to do that.
+
+1095
+00:55:30,790 --> 00:55:32,804
+But you know what, it doesn't work exactly
+and
+
+1096
+00:55:32,804 --> 00:55:35,680
+I don't mind if a few end up
+mis-classified.
+
+1097
+00:55:35,680 --> 00:55:36,766
+Everybody following this?
+
+1098
+00:55:36,766 --> 00:55:39,010
+So what do you, what would you do?
+
+1099
+00:55:39,010 --> 00:55:41,570
+Yeah, yeah, the u and the v, the slacks or
+whatever you like.
+
+1100
+00:55:41,570 --> 00:55:43,109
+And then, you know, and then, and
+
+1101
+00:55:43,109 --> 00:55:47,240
+then you have a parameter that would trade
+off of various things.
+
+1102
+00:55:47,240 --> 00:55:49,340
+But I mean, so that, that's, that's
+exactly what you do.
+
+1103
+00:55:49,340 --> 00:55:52,944
+You'd add in u and v and then you'd end up
+computing an ellipsoid and there would be,
+
+1104
+00:55:52,944 --> 00:55:55,370
+hope if you're lucky.
+
+1105
+00:55:55,370 --> 00:55:57,461
+Couple of points outside, couple of,
+couple of points on,
+
+1106
+00:55:57,461 --> 00:56:00,170
+on either side of the boundary that went
+the wrong way.
+
+1107
+00:56:00,170 --> 00:56:01,540
+Everybody got this?
+
+1108
+00:56:01,540 --> 00:56:02,360
+So it's, it's okay.
+
+1109
+00:56:02,360 --> 00:56:04,400
+So that's, I mean, you get it.

@@ -1,0 +1,9896 @@
+1
+00:00:00,008 --> 00:00:03,440
+Now, we're going to start in on convex
+functions.
+
+2
+00:00:03,440 --> 00:00:09,050
+Well, first of all, the definition is very
+simple.
+
+3
+00:00:09,050 --> 00:00:11,890
+It's this.
+It says that a function is convex if its
+
+4
+00:00:11,890 --> 00:00:17,000
+domain is convex, and also if it satisfies
+this inequality.
+
+5
+00:00:17,000 --> 00:00:20,100
+Now, this inequality says that if I take a
+mixture of two points, so theta's
+
+6
+00:00:20,100 --> 00:00:24,990
+between 0 and 1, if I take any mixture of
+two points x and y convex combination.
+
+7
+00:00:24,990 --> 00:00:26,820
+I form theta x plus 1 minus theta y.
+
+8
+00:00:26,820 --> 00:00:29,124
+I evaluate f there, that's less than or
+
+9
+00:00:29,124 --> 00:00:34,270
+equal to the same convex combination of
+the values of f, right.
+
+10
+00:00:34,270 --> 00:00:35,620
+Evaluate at the end-points.
+
+11
+00:00:35,620 --> 00:00:37,985
+Or another way to say it geometrically is
+if you have the graph of f,
+
+12
+00:00:37,985 --> 00:00:39,780
+that's, that's this thing.
+
+13
+00:00:39,780 --> 00:00:41,300
+That's the graph of f.
+
+14
+00:00:41,300 --> 00:00:44,948
+It says that the chord, some people call
+it that, that's a very old term for
+
+15
+00:00:44,948 --> 00:00:50,180
+the line segment in the graph space that
+goes from x, f of x to y, f of y.
+
+16
+00:00:50,180 --> 00:00:55,570
+It says that the chord, and this chord is
+parametrized this point right here.
+
+17
+00:00:55,570 --> 00:00:58,580
+It says that f y is below, the graph of f
+y is below its chord.
+
+18
+00:00:58,580 --> 00:01:05,260
+So that, that, that would be the very old
+way to talk about convexity.
+
+19
+00:01:05,260 --> 00:01:09,197
+A function is concave if minus f is
+convex.
+
+20
+00:01:09,197 --> 00:01:12,048
+And it's called strictly convex.
+
+21
+00:01:12,048 --> 00:01:13,920
+If it is a convex function.
+
+22
+00:01:13,920 --> 00:01:16,325
+And if this inequality here holds
+strictly,
+
+23
+00:01:16,325 --> 00:01:19,060
+as long as theta is not zero or 1.
+
+24
+00:01:19,060 --> 00:01:21,490
+Well, of course, a theta zero one it
+cannot hold strictly.
+
+25
+00:01:21,490 --> 00:01:22,561
+Right?
+But when, for
+
+26
+00:01:22,561 --> 00:01:25,480
+theta in between, it holds strictly.
+
+27
+00:01:25,480 --> 00:01:26,734
+Right.
+So that says that it's,
+
+28
+00:01:26,734 --> 00:01:30,570
+there's actually a gap between the
+function and this chord.
+
+29
+00:01:30,570 --> 00:01:32,435
+The function graph and, and the chord.
+
+30
+00:01:32,435 --> 00:01:33,870
+Okay.
+
+31
+00:01:33,870 --> 00:01:36,300
+So let's look at some examples.
+
+32
+00:01:36,300 --> 00:01:39,610
+Well, we'll look first at just functions
+on R just to make it simple.
+
+33
+00:01:39,610 --> 00:01:42,324
+You, by the way, you could just plot these
+at truly or
+
+34
+00:01:42,324 --> 00:01:46,076
+virtually and just look in, you know, use
+your.
+
+35
+00:01:46,076 --> 00:01:48,290
+Use your eyeball to look at these things.
+
+36
+00:01:48,290 --> 00:01:51,760
+The important point here is convexity
+means non-negative curvature.
+
+37
+00:01:51,760 --> 00:01:53,170
+It means it curves up.
+
+38
+00:01:53,170 --> 00:01:53,760
+Okay.
+
+39
+00:01:53,760 --> 00:01:55,430
+So affine.
+
+40
+00:01:55,430 --> 00:01:58,270
+Well, an affine function, the graph looks
+like that.
+
+41
+00:01:58,270 --> 00:02:00,070
+I mean, it's got zero curviture.
+
+42
+00:02:00,070 --> 00:02:02,710
+So these are, these are of course convex.
+
+43
+00:02:02,710 --> 00:02:04,555
+Oh, and by the way,.
+
+44
+00:02:04,555 --> 00:02:08,150
+Affine is right where you get an equals
+there, right.
+
+45
+00:02:08,150 --> 00:02:10,880
+So affine say's you get equals here for
+all theta.
+
+46
+00:02:10,880 --> 00:02:13,110
+Not just theta between 0 and 1.
+
+47
+00:02:13,110 --> 00:02:13,610
+Okay?
+So in
+
+48
+00:02:13,610 --> 00:02:17,135
+some sense affine functions are right on
+the boundary of convexity.
+
+49
+00:02:17,135 --> 00:02:18,029
+So, okay.
+
+50
+00:02:18,029 --> 00:02:23,092
+Exponential, well these look either like
+that or like that, right?
+
+51
+00:02:23,092 --> 00:02:24,770
+This is if a is positive.
+
+52
+00:02:24,770 --> 00:02:27,710
+That is if a is negative, these are
+convex.
+
+53
+00:02:27,710 --> 00:02:29,175
+The curvature is positive.
+
+54
+00:02:29,175 --> 00:02:32,050
+Powers well this again you can figure this
+out.
+
+55
+00:02:32,050 --> 00:02:35,470
+If alpha is bigger than one, this is on
+our plus, so if it's bigger than one
+
+56
+00:02:35,470 --> 00:02:40,250
+that would be a power, that's like to the
+1.1 or something or 1.5.
+
+57
+00:02:40,250 --> 00:02:41,830
+The square, you know what that looks like.
+
+58
+00:02:41,830 --> 00:02:42,490
+The cube.
+
+59
+00:02:42,490 --> 00:02:45,040
+These things get, actually more and more
+convex.
+
+60
+00:02:45,040 --> 00:02:47,282
+They curve more, they have more and more
+curvature.
+
+61
+00:02:47,282 --> 00:02:49,720
+But it's also true for alpha less than
+zero.
+
+62
+00:02:49,720 --> 00:02:54,440
+So for example 1 over x is going to be
+also convex.
+
+63
+00:02:54,440 --> 00:02:57,360
+Right?
+That looks like this.
+
+64
+00:02:57,360 --> 00:02:59,133
+Right? Oh. And we should be careful here.
+
+65
+00:02:59,133 --> 00:03:04,950
+Because when I say one over X, I have to
+say that the domain.
+
+66
+00:03:04,950 --> 00:03:09,210
+If this is F, I have to say the domain is
+R plus, plus.
+
+67
+00:03:09,210 --> 00:03:11,120
+Alright, because.
+
+68
+00:03:11,120 --> 00:03:14,192
+So there's a distinction between sort of
+informal kind of
+
+69
+00:03:14,192 --> 00:03:17,295
+high school Algebra writing 1 over x.
+
+70
+00:03:17,295 --> 00:03:18,850
+Right.
+
+71
+00:03:18,850 --> 00:03:19,990
+And what you really mean.
+
+72
+00:03:19,990 --> 00:03:21,654
+So when, usually when we say one over x,
+
+73
+00:03:21,654 --> 00:03:25,034
+and we'll see this for several other
+functions, we mean a different function,
+
+74
+00:03:25,034 --> 00:03:28,690
+we mean one that's not defined for x
+negative.
+
+75
+00:03:28,690 --> 00:03:31,970
+Whereas of course one over x is quite well
+defined for x negative.
+
+76
+00:03:31,970 --> 00:03:32,630
+So, okay.
+
+77
+00:03:32,630 --> 00:03:37,102
+What can you say about one over x for x
+negative.
+
+78
+00:03:37,102 --> 00:03:40,030
+Convex, concave?
+
+79
+00:03:40,030 --> 00:03:41,285
+>> Concave.
+>> It's concave, so, okay.
+
+80
+00:03:41,285 --> 00:03:44,788
+Powers of absolute value, I mean again
+these are kind of obvious.
+
+81
+00:03:44,788 --> 00:03:47,860
+Negative entropy, that's something that
+looks like this.
+
+82
+00:03:47,860 --> 00:03:50,780
+It's got infinitely sharp there and then
+goes up like that, okay?
+
+83
+00:03:50,780 --> 00:03:51,865
+And it's convex.
+
+84
+00:03:51,865 --> 00:03:53,618
+Alright.
+
+85
+00:03:53,618 --> 00:03:56,100
+concave, well affine, because they're
+both.
+
+86
+00:03:56,100 --> 00:04:00,486
+In fact, affine is another way to say
+you're both convex and concave.
+
+87
+00:04:00,486 --> 00:04:05,040
+Powers between zero and one, square root
+for example, is is going to be concave.
+
+88
+00:04:05,040 --> 00:04:09,400
+And the log is a, is a, is an, these are
+very obvious concave functions.
+
+89
+00:04:10,990 --> 00:04:14,589
+By the way, the picture here is something
+like this: You're going to build up
+
+90
+00:04:14,589 --> 00:04:19,490
+a family of basic functions that you know
+to be convex and concave.
+
+91
+00:04:19,490 --> 00:04:21,380
+Most will be kind of obvious, like this.
+
+92
+00:04:21,380 --> 00:04:23,017
+Some will be less obvious.
+
+93
+00:04:23,017 --> 00:04:26,153
+And then you're going to, we're going to
+work out a calculus of convex functions so
+
+94
+00:04:26,153 --> 00:04:30,345
+you'll be able to combine them in various
+ways and things like that.
+
+95
+00:04:30,345 --> 00:04:35,601
+And actually, just a couple of these
+things and you'll be quite you'll actually
+
+96
+00:04:35,601 --> 00:04:42,350
+be quite effective at sort of detecting
+convexity or establishing convexity.
+
+97
+00:04:42,350 --> 00:04:44,521
+So, okay.
+Let's look at some functions on Rn.
+
+98
+00:04:44,521 --> 00:04:50,424
+here, a general affine function, that's
+box convex and and concave norm.
+
+99
+00:04:50,424 --> 00:04:54,700
+So any norm is convex, okay?
+
+100
+00:04:54,700 --> 00:04:56,280
+So, any norm is convex.
+
+101
+00:04:56,280 --> 00:05:00,590
+So that's things like the one norm, the
+two norm, infinity norm, you know?
+
+102
+00:05:00,590 --> 00:05:02,326
+Three norm, doesn't matter.
+
+103
+00:05:02,326 --> 00:05:04,534
+Any other norm is convex.
+
+104
+00:05:04,534 --> 00:05:07,250
+And then we can look at examples on
+matrices.
+
+105
+00:05:07,250 --> 00:05:09,686
+So here's a add find function.
+
+106
+00:05:09,686 --> 00:05:13,850
+The general inter product on m by n
+matrices.
+
+107
+00:05:13,850 --> 00:05:15,735
+Is simply trace a transpose x so
+
+108
+00:05:15,735 --> 00:05:21,480
+this when you see this, this here by the
+was some people even write it this way.
+
+109
+00:05:21,480 --> 00:05:24,900
+Right you can write it that way or other
+people write it this way.
+
+110
+00:05:24,900 --> 00:05:27,848
+Its basically the generic standard inner
+product so
+
+111
+00:05:27,848 --> 00:05:32,040
+when you see trace a transpose x or a
+transpose b.
+
+112
+00:05:32,040 --> 00:05:34,320
+It's the inner product of a and b, right?
+
+113
+00:05:34,320 --> 00:05:37,115
+So that's what it, I mean, here, here's
+another method you might write this as,
+
+114
+00:05:37,115 --> 00:05:39,400
+is I find this a bit weird, but okay.
+
+115
+00:05:39,400 --> 00:05:40,930
+Something like that.
+
+116
+00:05:40,930 --> 00:05:44,082
+I mean, this is kind of mixing weird
+notation, but that's it, okay?
+
+117
+00:05:44,082 --> 00:05:44,927
+So, alright, so
+
+118
+00:05:44,927 --> 00:05:50,065
+an affine function of matrices is trace
+something and then plus a constant.
+
+119
+00:05:50,065 --> 00:05:52,000
+Here's one.
+
+120
+00:05:52,000 --> 00:05:53,400
+The maximum singular value.
+
+121
+00:05:53,400 --> 00:05:54,480
+So, well, it's a norm.
+
+122
+00:05:54,480 --> 00:05:59,150
+So of course all norms are convex so
+maximum singular value is.
+
+123
+00:05:59,150 --> 00:05:59,972
+Right?
+So, by the way,
+
+124
+00:05:59,972 --> 00:06:01,530
+that's not a simple function.
+
+125
+00:06:01,530 --> 00:06:04,000
+The, the maximum singular value.
+
+126
+00:06:04,000 --> 00:06:06,537
+Right?
+It's, it's quite complicated.
+
+127
+00:06:06,537 --> 00:06:08,329
+For example, to actually evaluate it,
+
+128
+00:06:08,329 --> 00:06:12,330
+I mean, in principle you would form a
+characteristic polynomial.
+
+129
+00:06:12,330 --> 00:06:14,050
+You'd factor that.
+
+130
+00:06:14,050 --> 00:06:16,351
+You'd look at its roots, and you'd take
+the largest Among all the roots,
+
+131
+00:06:16,351 --> 00:06:20,171
+you take the largest one, and then you
+take the square root of that or something.
+
+132
+00:06:20,171 --> 00:06:25,404
+So this is not a simple function.
+
+133
+00:06:25,404 --> 00:06:30,436
+So, and yet we know it's convex.
+
+134
+00:06:30,436 --> 00:06:31,002
+Okay.
+So
+
+135
+00:06:31,002 --> 00:06:35,850
+this is, this is one of the tricks you
+need to know about.
+
+136
+00:06:35,850 --> 00:06:38,525
+It's this.
+If you have a convex function,
+
+137
+00:06:38,525 --> 00:06:40,859
+from R on n into R.
+
+138
+00:06:41,926 --> 00:06:43,746
+And sorry.
+If you have a function then you can
+
+139
+00:06:43,746 --> 00:06:45,340
+restrict it to a line.
+
+140
+00:06:45,340 --> 00:06:47,115
+Now a line is given by x plus tv,
+
+141
+00:06:47,115 --> 00:06:52,130
+x is something, you know, you might call
+that the base point.
+
+142
+00:06:52,130 --> 00:06:54,230
+You might call v the direction of the
+line.
+
+143
+00:06:54,230 --> 00:06:55,880
+And t is a parameter.
+
+144
+00:06:55,880 --> 00:06:59,480
+Right, so T as in R and it tells you where
+you are on the line.
+
+145
+00:06:59,480 --> 00:07:01,280
+Oh and I should say V has to be non zero.
+
+146
+00:07:01,280 --> 00:07:02,810
+It doesn't give you a line.
+
+147
+00:07:02,810 --> 00:07:03,940
+So x plus t v.
+
+148
+00:07:03,940 --> 00:07:07,396
+This is the free parameter representation
+of a line where x plus t
+
+149
+00:07:07,396 --> 00:07:10,032
+is a parameter that's real.
+
+150
+00:07:10,032 --> 00:07:16,788
+Okay, so this says evaluate f at the point
+on the line parameterized by t, right?
+
+151
+00:07:16,788 --> 00:07:22,798
+And I'm going to define that to be g of t
+So that's a function from r to r.
+
+152
+00:07:22,798 --> 00:07:23,921
+Right?
+
+153
+00:07:23,921 --> 00:07:27,020
+And so, here's what, here's, here's what
+the result is.
+
+154
+00:07:27,020 --> 00:07:28,380
+And this is not too hard.
+
+155
+00:07:28,380 --> 00:07:29,190
+But it says the following.
+
+156
+00:07:29,190 --> 00:07:31,450
+A function is convex if and only if.
+
+157
+00:07:31,450 --> 00:07:33,672
+When it's restricted to all lines, it's
+convex.
+
+158
+00:07:33,672 --> 00:07:34,472
+Okay?
+
+159
+00:07:34,472 --> 00:07:36,850
+Now, in principle, this is quite useful.
+
+160
+00:07:36,850 --> 00:07:38,939
+Because, oh, let, let me ask this.
+
+161
+00:07:38,939 --> 00:07:42,700
+How do you, how do you determine if a
+function from r to r is convex..
+
+162
+00:07:42,700 --> 00:07:43,290
+Yeah.
+You plot it,
+
+163
+00:07:43,290 --> 00:07:45,120
+and, and you looked with your eyeball.
+
+164
+00:07:45,120 --> 00:07:46,162
+Does it curve up or down?
+
+165
+00:07:46,162 --> 00:07:50,955
+Or both right and if it curves up then you
+say well its convex.
+
+166
+00:07:50,955 --> 00:07:54,135
+OK, by the way what you do then is you
+back off an dyou go to some other fancy
+
+167
+00:07:54,135 --> 00:07:58,700
+method like you differentiate it twice and
+prove some inequality.
+
+168
+00:07:59,760 --> 00:08:01,736
+And then you destroy evidence that you
+actually plotted it but
+
+169
+00:08:01,736 --> 00:08:04,260
+the correct thing to do is to plot it.
+
+170
+00:08:04,260 --> 00:08:06,756
+Okay, so that, that, that's how you use
+this.
+
+171
+00:08:06,756 --> 00:08:07,486
+Okay?
+
+172
+00:08:07,486 --> 00:08:12,578
+So alright, what this says is in principal
+you can detect if a function is convex,
+
+173
+00:08:12,578 --> 00:08:17,220
+a function of RN by simply taking all
+lines.
+
+174
+00:08:17,220 --> 00:08:18,848
+Now of course, you can not really do that,
+but
+
+175
+00:08:18,848 --> 00:08:21,092
+this does tell you, this gives you a
+perfectly good method for
+
+176
+00:08:21,092 --> 00:08:25,139
+checking if a function is convex and I
+will tell you what it is.
+
+177
+00:08:25,139 --> 00:08:26,430
+So here's what it is.
+
+178
+00:08:26,430 --> 00:08:29,450
+First, you might try some analytical
+tools.
+
+179
+00:08:29,450 --> 00:08:31,377
+You know, you might differentiate
+something twice, but
+
+180
+00:08:31,377 --> 00:08:33,468
+after the formulas grow to the size of a
+page you might quit, or
+
+181
+00:08:33,468 --> 00:08:35,293
+something like that.
+
+182
+00:08:35,293 --> 00:08:36,660
+Then what you do is this.
+
+183
+00:08:36,660 --> 00:08:40,730
+You write a simple little program to
+generate random lines.
+
+184
+00:08:40,730 --> 00:08:43,510
+Right?
+Then do effectively do the same as plot.
+
+185
+00:08:43,510 --> 00:08:45,580
+Just evaluate the function at a hundred
+points along the line.
+
+186
+00:08:45,580 --> 00:08:48,960
+And check the inequality, just to check
+that it always curves up.
+
+187
+00:08:48,960 --> 00:08:49,920
+Right?
+By the way, if it,
+
+188
+00:08:49,920 --> 00:08:53,580
+if you ever find a point where it doesn't,
+you're done.
+
+189
+00:08:53,580 --> 00:08:54,152
+Because you,
+
+190
+00:08:54,152 --> 00:08:58,389
+you've produced two points where the
+inequality defining convexity is violated.
+
+191
+00:08:58,389 --> 00:08:59,593
+In which case, the you are done and
+
+192
+00:08:59,593 --> 00:09:02,545
+it's absolutely no one's business how you
+found this point.
+
+193
+00:09:02,545 --> 00:09:04,000
+Everyone realize?
+
+194
+00:09:04,000 --> 00:09:05,655
+So what you do now is you go to lunch.
+
+195
+00:09:05,655 --> 00:09:07,860
+>> Is everyone following, is everyone
+following this?
+
+196
+00:09:07,860 --> 00:09:08,640
+>> Yeah.
+>> Okay.
+
+197
+00:09:08,640 --> 00:09:09,450
+You go to lunch.
+
+198
+00:09:09,450 --> 00:09:10,960
+And you come back after lunch.
+
+199
+00:09:10,960 --> 00:09:13,840
+If in fact it is terminated, and bounded
+by two points, then you walk down
+
+200
+00:09:13,840 --> 00:09:17,960
+the hall to your colleague who asked
+whether the function is convex.
+
+201
+00:09:17,960 --> 00:09:20,342
+You go, obviously not.
+
+202
+00:09:20,342 --> 00:09:21,600
+>> [LAUGH] And they say why.
+
+203
+00:09:21,600 --> 00:09:24,720
+And you say, well look at this point here.
+
+204
+00:09:24,720 --> 00:09:25,916
+And you, you, you give x and y and
+
+205
+00:09:25,916 --> 00:09:28,630
+the convex combination, which violates the
+inequality, and you go, I,
+
+206
+00:09:28,630 --> 00:09:33,302
+I don't even really know why you would
+think that was convex in the first place.
+
+207
+00:09:33,302 --> 00:09:34,630
+>> [LAUGH] Everyone see what I'm saying?
+
+208
+00:09:34,630 --> 00:09:37,800
+And then they'd say, well, how the hell
+did you come up with these things?
+
+209
+00:09:37,800 --> 00:09:41,020
+And you'd say, I don't know, it seems kind
+of obvious to me.
+
+210
+00:09:41,020 --> 00:09:42,296
+I don't...
+
+211
+00:09:42,296 --> 00:09:44,530
+>> [LAUGH] So, okay.
+Does this, everyone following this?
+
+212
+00:09:44,530 --> 00:09:46,505
+Okay, now that's the def, the,
+
+213
+00:09:46,505 --> 00:09:51,680
+the other outcome is that actually it
+hasn't been violated.
+
+214
+00:09:51,680 --> 00:09:53,690
+Now, you don't know for sure it's convex.
+
+215
+00:09:53,690 --> 00:09:56,390
+But you went out for lunch and you fired
+this up, depends on maybe you used
+
+216
+00:09:56,390 --> 00:10:00,200
+a cluster, maybe, maybe you fired up
+something on EC2, I don't know.
+
+217
+00:10:00,200 --> 00:10:03,060
+But, a fair number of points may have been
+checked by now.
+
+218
+00:10:03,060 --> 00:10:04,865
+Now you don't know if it's convex or not.
+
+219
+00:10:04,865 --> 00:10:06,650
+Okay.
+
+220
+00:10:06,650 --> 00:10:10,180
+So now I can actually tell you several
+ways to move forward.
+
+221
+00:10:10,180 --> 00:10:13,570
+The first is, you then try to prove it's
+convex.
+
+222
+00:10:13,570 --> 00:10:15,340
+That, that would be, that's the simplest
+way.
+
+223
+00:10:15,340 --> 00:10:16,366
+And if you do prove it,
+
+224
+00:10:16,366 --> 00:10:21,110
+you destroy all evidence that you ever
+tried to establish it empirically.
+
+225
+00:10:21,110 --> 00:10:22,350
+Everybody understand this?
+
+226
+00:10:22,350 --> 00:10:24,311
+Okay, so then, now the other thing is you
+can still get credit for
+
+227
+00:10:24,311 --> 00:10:26,320
+it even if you can't prove it's convex.
+
+228
+00:10:26,320 --> 00:10:27,605
+You go to the next conference.
+
+229
+00:10:27,605 --> 00:10:31,280
+And you say, well, I think the log and the
+detection probability.
+
+230
+00:10:31,280 --> 00:10:32,940
+It seems to be like it's gotta be concave.
+
+231
+00:10:32,940 --> 00:10:34,700
+Is that, and you just drop that around.
+
+232
+00:10:34,700 --> 00:10:37,290
+You say it obvious places, and things like
+that.
+
+233
+00:10:37,290 --> 00:10:41,732
+And then the next year, some smart young
+researcher will prove it.
+
+234
+00:10:41,732 --> 00:10:42,825
+>> [LAUGH].
+>> And if you're really lucky,
+
+235
+00:10:42,825 --> 00:10:47,020
+they'll have attached your name to it, and
+call it the such and such conjecture.
+
+236
+00:10:47,020 --> 00:10:48,400
+Everyone following this?
+
+237
+00:10:48,400 --> 00:10:51,720
+>> And then people would say, how did you
+know?
+
+238
+00:10:51,720 --> 00:10:55,020
+It, it the proof is very complicated
+there's all sort of algebraic geomerty and
+
+239
+00:10:55,020 --> 00:10:58,170
+all sorts of other stuff how could you
+have possibly known it was concave and
+
+240
+00:10:58,170 --> 00:11:02,445
+then you look straight at them and you say
+intuition.
+
+241
+00:11:02,445 --> 00:11:05,328
+[LAUGH] Is everyone following this?
+
+242
+00:11:05,328 --> 00:11:11,120
+Okay, so these are advanced methods for
+establishing convexity [LAUGH].
+
+243
+00:11:11,120 --> 00:11:14,252
+Well we'll talk more about these as the
+course goes on, okay?
+
+244
+00:11:14,252 --> 00:11:18,490
+Alright so let's do one, like that.
+
+245
+00:11:18,490 --> 00:11:21,082
+By the way if you do these things just
+don't tell anyone where you learned them,
+
+246
+00:11:21,082 --> 00:11:22,980
+[LAUGH] so, because I'll deny it.
+
+247
+00:11:22,980 --> 00:11:28,050
+So okay so let's look, let's look at an
+example.
+
+248
+00:11:28,050 --> 00:11:30,856
+Here's a very famous one it's kind of one
+of the first functions that's not
+
+249
+00:11:30,856 --> 00:11:32,340
+obviously convex.
+
+250
+00:11:32,340 --> 00:11:33,545
+It's log of a determinate.
+
+251
+00:11:33,545 --> 00:11:34,710
+Right?
+
+252
+00:11:34,710 --> 00:11:36,000
+Well, that's not.
+
+253
+00:11:36,000 --> 00:11:39,030
+By the way, these two thing, these two
+symbols go together.
+
+254
+00:11:39,030 --> 00:11:41,300
+It depends on what courses you've taken.
+
+255
+00:11:41,300 --> 00:11:44,368
+But, for example, you would recognize this
+as related to the entropy of
+
+256
+00:11:44,368 --> 00:11:47,950
+a Gaussian random variable, where x is the
+co-variance.
+
+257
+00:11:47,950 --> 00:11:48,570
+I mean.
+So you
+
+258
+00:11:48,570 --> 00:11:53,574
+probably have seen log determinants
+sitting next to each other before maybe.
+
+259
+00:11:53,574 --> 00:11:54,662
+Okay.
+Maybe you have.
+
+260
+00:11:54,662 --> 00:11:55,750
+Maybe you haven't.
+
+261
+00:11:55,750 --> 00:11:56,722
+But the idea is there,
+
+262
+00:11:56,722 --> 00:12:00,578
+there are a lot of areas where they fit
+very comfortable together.
+
+263
+00:12:00,578 --> 00:12:04,970
+And it turns out log determinant of a
+matrix is concave.
+
+264
+00:12:04,970 --> 00:12:07,210
+For a positive definite matrix.
+
+265
+00:12:07,210 --> 00:12:08,317
+Just a fact.
+
+266
+00:12:08,317 --> 00:12:11,430
+I mean, later, this will be completely
+obvious.
+
+267
+00:12:11,430 --> 00:12:12,790
+We'll get to it.
+
+268
+00:12:12,790 --> 00:12:17,969
+By the way, it would be kind of a pain in
+the ass to show this via a direct proof.
+
+269
+00:12:17,969 --> 00:12:20,700
+Although if you've taken information
+theory.
+
+270
+00:12:20,700 --> 00:12:22,100
+and, and.
+
+271
+00:12:22,100 --> 00:12:25,630
+For some reason think that, that's simpler
+than sort of basic inequalities.
+
+272
+00:12:25,630 --> 00:12:28,958
+Then you'd say oh that follows because
+entropies some mixture something and
+
+273
+00:12:28,958 --> 00:12:30,882
+you say something and some theorem from,
+
+274
+00:12:30,882 --> 00:12:35,600
+from information theory would tell us
+immediately that this concave.
+
+275
+00:12:35,600 --> 00:12:38,500
+Okay, its a mixture of Gaussian I don't
+know what it is anyway, okay?
+
+276
+00:12:38,500 --> 00:12:40,202
+So let's check this though.
+
+277
+00:12:40,202 --> 00:12:41,652
+So how do you check it?
+
+278
+00:12:41,652 --> 00:12:44,930
+Well, what we'll do is we'll form an
+arbitrary line.
+
+279
+00:12:44,930 --> 00:12:47,230
+So, what does a line in matrix space look
+like?
+
+280
+00:12:47,230 --> 00:12:48,720
+In symmetric matrix space.
+
+281
+00:12:48,720 --> 00:12:49,440
+Well, it looks like this.
+
+282
+00:12:49,440 --> 00:12:52,720
+It's got a base point, X, and it's got a
+direction, V.
+
+283
+00:12:52,720 --> 00:12:55,938
+Now, X we can assume without a loss of
+generality is positive-definite.
+
+284
+00:12:55,938 --> 00:12:59,006
+because this line has to intersect the
+non, the positive-definite dom,
+
+285
+00:12:59,006 --> 00:13:02,674
+it has to right, otherwise there's nothing
+to show, right?
+
+286
+00:13:02,674 --> 00:13:03,974
+So it has to intersect right so
+
+287
+00:13:03,974 --> 00:13:07,436
+we might as well say it intersects when t
+equals 0, right?
+
+288
+00:13:07,436 --> 00:13:10,610
+So we can assume without lost generality
+that x is positive.
+
+289
+00:13:10,610 --> 00:13:14,525
+And then v is merely symmetric, so x plus
+t v is really a line.
+
+290
+00:13:14,525 --> 00:13:20,660
+And if you want to, you can think of it as
+a line of potential covariance matrices.
+
+291
+00:13:20,660 --> 00:13:21,430
+So that's what it is.
+
+292
+00:13:21,430 --> 00:13:22,810
+So it is parametarized by t.
+
+293
+00:13:22,810 --> 00:13:25,166
+Now, for an interval of t, for some values
+of t,
+
+294
+00:13:25,166 --> 00:13:30,510
+it is possible there is an interval where
+that thing is positive definite.
+
+295
+00:13:30,510 --> 00:13:33,450
+But there is, it is possible if you make t
+big enough one way or the other.
+
+296
+00:13:33,450 --> 00:13:34,430
+It is possible.
+
+297
+00:13:34,430 --> 00:13:38,050
+In fact that, that matrix will become not
+positive definite.
+
+298
+00:13:38,050 --> 00:13:40,490
+So there may be an interval of little t.
+
+299
+00:13:40,490 --> 00:13:43,100
+Over which, X plus tV is positive
+definite.
+
+300
+00:13:43,100 --> 00:13:45,810
+So this, the, is there, positive definite
+matrices?
+
+301
+00:13:45,810 --> 00:13:47,623
+There's a line and it may intersect it at,
+
+302
+00:13:47,623 --> 00:13:51,650
+now you can have weird things where it
+intersects at, at only one point.
+
+303
+00:13:51,650 --> 00:13:54,670
+It's a half open interval but you know,
+but that would happen for example.
+
+304
+00:13:54,670 --> 00:13:58,350
+If v is positive-semidefinite, the
+direction.
+
+305
+00:13:58,350 --> 00:13:59,980
+Okay so let's, now let's look at this on a
+line.
+
+306
+00:13:59,980 --> 00:14:03,150
+Well on a line, this thing is log det.
+
+307
+00:14:03,150 --> 00:14:05,174
+I'm going to, I'm going to expand, I'm
+going to write this as,
+
+308
+00:14:05,174 --> 00:14:07,474
+I'm going to do this, I can/g, there's
+several ways to do it, but
+
+309
+00:14:07,474 --> 00:14:10,580
+I can write, I can pull out x one half.
+
+310
+00:14:10,580 --> 00:14:13,145
+On either side of this thing, and
+
+311
+00:14:13,145 --> 00:14:20,820
+write this, i plus t is x minus half v, x
+minus half, and x one half.
+
+312
+00:14:20,820 --> 00:14:27,390
+So, certainly, this, this matrix is surely
+the same as that, here.
+
+313
+00:14:27,390 --> 00:14:28,340
+Right?
+
+314
+00:14:28,340 --> 00:14:29,900
+And now I take the determinant of that.
+
+315
+00:14:29,900 --> 00:14:32,840
+It's the triple product of the
+determinants, you get, and log is the sum,
+
+316
+00:14:32,840 --> 00:14:35,290
+so I get log det, I get one half log det x
+plus one half log det x,
+
+317
+00:14:35,290 --> 00:14:38,875
+that's this one, this one, and this one.
+
+318
+00:14:38,875 --> 00:14:40,879
+Okay.
+
+319
+00:14:40,879 --> 00:14:44,955
+That's a constant and doesn't interest me
+as far as convexity is concerned.
+
+320
+00:14:44,955 --> 00:14:46,710
+Now we look at this thing.
+
+321
+00:14:46,710 --> 00:14:48,480
+So what it says is something like this.
+
+322
+00:14:48,480 --> 00:14:49,752
+Without loss of generality,
+
+323
+00:14:49,752 --> 00:14:53,505
+I can concentrate on the case where my
+base point is the identity.
+
+324
+00:14:53,505 --> 00:14:54,177
+Okay, but
+
+325
+00:14:54,177 --> 00:15:00,820
+log of det of i plus something, we know
+the eigenvalues of this matrix right?
+
+326
+00:15:00,820 --> 00:15:04,785
+The eigenvalues of that matrix are exactly
+1 plus t lambda i where lambda i
+
+327
+00:15:04,785 --> 00:15:08,571
+are the eigenvalues of this matrix, right?
+
+328
+00:15:08,571 --> 00:15:12,796
+So and in fact the that tells you that the
+log determinant is the sum of log plus t
+
+329
+00:15:12,796 --> 00:15:15,121
+lambda i.
+
+330
+00:15:15,121 --> 00:15:17,560
+and, guess what?
+
+331
+00:15:17,560 --> 00:15:22,400
+This function is concave and you can just
+check that again.
+
+332
+00:15:22,400 --> 00:15:23,502
+My claim is that for
+
+333
+00:15:23,502 --> 00:15:28,420
+a variable for something with one
+variable, you can just check, right?
+
+334
+00:15:28,420 --> 00:15:31,099
+That log of 1 plus t lambda depends on the
+sign of lambda i,
+
+335
+00:15:31,099 --> 00:15:33,850
+which can be positive or negative.
+
+336
+00:15:33,850 --> 00:15:35,686
+But either way this thing is concave,
+
+337
+00:15:35,686 --> 00:15:38,620
+because log of something affine is
+concave, right?
+
+338
+00:15:38,620 --> 00:15:39,810
+So, that's it.
+
+339
+00:15:39,810 --> 00:15:41,190
+So we're, we're done.
+
+340
+00:15:41,190 --> 00:15:44,325
+By the way, these lambda i's they might
+look mysterious here, but
+
+341
+00:15:44,325 --> 00:15:47,955
+if you know, if you had an advanced course
+on linear algebra or maybe you took
+
+342
+00:15:47,955 --> 00:15:54,250
+a mechanics course, these are actually the
+generalized eigenvalues of the pair, x v.
+
+343
+00:15:54,250 --> 00:15:56,835
+Right, so if you've, if you've, if you
+trained in these areas, you,
+
+344
+00:15:56,835 --> 00:15:59,542
+this, this does not look mysterious at
+all.
+
+345
+00:15:59,542 --> 00:16:01,645
+OK.
+So, there we go.
+
+346
+00:16:01,645 --> 00:16:06,063
+By the way, this has been known about a
+hundred years,
+
+347
+00:16:06,063 --> 00:16:12,480
+the fact that the log determinant is is
+concave.
+
+348
+00:16:12,480 --> 00:16:16,004
+OK, now there's a one, one other thing
+we're going to cover is this.
+
+349
+00:16:16,004 --> 00:16:18,692
+It turns out when you're dealing with
+convex or concave functions,
+
+350
+00:16:18,692 --> 00:16:21,668
+there's a very nice way that you can
+actually pull in the idea of the domain,
+
+351
+00:16:21,668 --> 00:16:24,700
+and, and define things over.
+
+352
+00:16:24,700 --> 00:16:28,450
+A bigger extended have extended values.
+
+353
+00:16:28,450 --> 00:16:33,274
+So what you could do is you take a normal
+function F, which has domain F.
+
+354
+00:16:33,274 --> 00:16:35,731
+And has value when you're in the domain F,
+F of x,
+
+355
+00:16:35,731 --> 00:16:39,065
+at if x is in the domain, if the value.
+
+356
+00:16:39,065 --> 00:16:42,070
+So, and for an ordinary function.
+
+357
+00:16:42,070 --> 00:16:44,675
+If I call f outside the domain.
+
+358
+00:16:44,675 --> 00:16:48,020
+what, I mean, well, what I should get.
+
+359
+00:16:48,020 --> 00:16:51,150
+Is, what should be returned to me, an
+exception should be thrown.
+
+360
+00:16:51,150 --> 00:16:54,078
+And the exception thrown should be
+something, should be a token like OOD,
+
+361
+00:16:54,078 --> 00:16:56,020
+which means out of domain.
+
+362
+00:16:56,020 --> 00:17:01,509
+Which means I have no intention of, of, of
+evaluating f out there.
+
+363
+00:17:01,509 --> 00:17:04,710
+Because, you're not, it's not in the valid
+domain.
+
+364
+00:17:04,710 --> 00:17:07,580
+Right, so that, that's, so you should get
+something like that.
+
+365
+00:17:07,580 --> 00:17:10,150
+But you can actually modify things and do
+the following.
+
+366
+00:17:10,150 --> 00:17:14,340
+What you do is f tilde is the
+extended-value extension.
+
+367
+00:17:14,340 --> 00:17:18,390
+What you do is, it's the same as whenever
+x is in the domain, it's just f.
+
+368
+00:17:18,390 --> 00:17:21,020
+But when you're outside the domain, you
+assign the value plus infinity.
+
+369
+00:17:21,020 --> 00:17:22,882
+And it'll turn out, everything's going to
+work,
+
+370
+00:17:22,882 --> 00:17:26,050
+included, including like inequalities and
+various things.
+
+371
+00:17:26,050 --> 00:17:27,842
+It's all just going to work automatically.
+
+372
+00:17:27,842 --> 00:17:28,934
+Right?
+
+373
+00:17:28,934 --> 00:17:32,221
+So in some sense it's not a whole lot
+different, right?
+
+374
+00:17:32,221 --> 00:17:37,920
+And if you think of a return value of plus
+infinity as an exception then well okay.
+
+375
+00:17:37,920 --> 00:17:41,376
+Then whether or not you get the exception
+OD, for out of domain, or
+
+376
+00:17:41,376 --> 00:17:45,280
+plus infinity, I guess doesn't matter
+much.
+
+377
+00:17:45,280 --> 00:17:46,982
+But what's nice about it is If you think
+of it,
+
+378
+00:17:46,982 --> 00:17:50,018
+not as an exception, but as an extended
+value, all sorts of inequalities and
+
+379
+00:17:50,018 --> 00:17:53,068
+things like that will just work, right.
+
+380
+00:17:53,068 --> 00:17:55,986
+So this is the extended value extension.
+
+381
+00:17:55,986 --> 00:18:01,360
+And it simplifies notation, right, so for
+example this holds now for any x and y.
+
+382
+00:18:01,360 --> 00:18:03,218
+And you can sort of just check.
+
+383
+00:18:03,218 --> 00:18:04,350
+And there's a couple of rules.
+
+384
+00:18:04,350 --> 00:18:06,946
+There are a few things that are not
+well-defined,
+
+385
+00:18:06,946 --> 00:18:09,560
+in extended arithmetic, obviously.
+
+386
+00:18:09,560 --> 00:18:12,474
+Well, zero times infinity is not
+well-defined.
+
+387
+00:18:12,474 --> 00:18:13,746
+But all, everything else is,
+
+388
+00:18:13,746 --> 00:18:18,655
+the inequalities, everything, everything's
+well defined here, and, and just works.
+
+389
+00:18:18,655 --> 00:18:22,820
+Okay, so this is the extended value
+extension.
+
+390
+00:18:22,820 --> 00:18:25,181
+This will also come up a bunch of times.
+
+391
+00:18:25,181 --> 00:18:32,538
+Okay, now we get to sort of first order
+conditions for convexity.
+
+392
+00:18:32,538 --> 00:18:37,210
+Well, the, if F's differentiable that
+means its domain is open.
+
+393
+00:18:37,210 --> 00:18:38,620
+And it has a gradient.
+
+394
+00:18:38,620 --> 00:18:43,410
+These partial derivatives exist at point
+okay.
+
+395
+00:18:43,410 --> 00:18:48,170
+By the way this constructor here which is
+a parenthesis with a middle.
+
+396
+00:18:48,170 --> 00:18:49,500
+It's more compact.
+
+397
+00:18:49,500 --> 00:18:58,769
+Right so this is a column factor that
+actually looks like this right?
+
+398
+00:19:00,670 --> 00:19:01,190
+Like that.
+
+399
+00:19:02,520 --> 00:19:03,818
+That's the same is that and
+
+400
+00:19:03,818 --> 00:19:07,570
+the first order condition is actually
+really interesting.
+
+401
+00:19:07,570 --> 00:19:09,260
+It's one of the most important tings.
+
+402
+00:19:09,260 --> 00:19:13,380
+It's actually the one thing which kind of
+tells you everything.
+
+403
+00:19:13,380 --> 00:19:13,890
+It's this.
+
+404
+00:19:13,890 --> 00:19:21,612
+This function here, that is the that is
+the first ordered tailored function of F.
+
+405
+00:19:22,780 --> 00:19:24,920
+At the point x.
+
+406
+00:19:24,920 --> 00:19:26,530
+Right?
+So the y is the variable here.
+
+407
+00:19:26,530 --> 00:19:30,690
+That's an affine function of y, this what
+I've, what I've ident, this thing.
+
+408
+00:19:30,690 --> 00:19:31,970
+It's an affine function of y.
+
+409
+00:19:31,970 --> 00:19:36,410
+It's the first-order Taylor expansion of f
+at x.
+
+410
+00:19:36,410 --> 00:19:37,050
+Okay?
+
+411
+00:19:37,050 --> 00:19:39,480
+So if this is f, right?
+
+412
+00:19:39,480 --> 00:19:41,840
+Here is This first ordered tailored.
+
+413
+00:19:41,840 --> 00:19:43,350
+That's this function.
+
+414
+00:19:43,350 --> 00:19:45,066
+Here is this function y okay.
+
+415
+00:19:45,066 --> 00:19:49,680
+Here's what calculus tells you is the
+following.
+
+416
+00:19:49,680 --> 00:19:56,679
+This function is really close to F if you
+are close to x.
+
+417
+00:19:56,679 --> 00:20:02,450
+It means that you are close to x this
+function is close squared.
+
+418
+00:20:02,450 --> 00:20:03,120
+The f.
+
+419
+00:20:03,120 --> 00:20:04,850
+That's what calculus tells you.
+
+420
+00:20:04,850 --> 00:20:06,310
+Right, that that's the whole thing.
+
+421
+00:20:06,310 --> 00:20:12,050
+What this says instead the assertion here
+is a global inequality.
+
+422
+00:20:12,050 --> 00:20:18,088
+It basically says the function is bigger
+everywhere, globally.
+
+423
+00:20:18,088 --> 00:20:22,350
+Than the first-order tailor series
+expansion, right.
+
+424
+00:20:22,350 --> 00:20:27,470
+And so this is your first hint that what
+you are seeing is not calculus.
+
+425
+00:20:27,470 --> 00:20:32,176
+It's some weird, sick, global, and
+asymetric thing.
+
+426
+00:20:32,176 --> 00:20:33,760
+We have a different animal here.
+
+427
+00:20:33,760 --> 00:20:35,832
+The first thing is it is a inequality,
+right,
+
+428
+00:20:35,832 --> 00:20:38,700
+that's the first difference with calculus.
+
+429
+00:20:38,700 --> 00:20:42,700
+Calculus is just, you know, above, below,
+you only have the concept of close.
+
+430
+00:20:42,700 --> 00:20:43,620
+And it's symmetric.
+
+431
+00:20:43,620 --> 00:20:45,475
+You can be above, below, you're close.
+
+432
+00:20:45,475 --> 00:20:46,520
+Right?
+
+433
+00:20:46,520 --> 00:20:48,010
+And it's weird and local and asymptotic.
+
+434
+00:20:49,140 --> 00:20:50,920
+This, there are no conditions here.
+
+435
+00:20:50,920 --> 00:20:53,740
+This is just, it's it's a global
+inequality.
+
+436
+00:20:53,740 --> 00:20:54,475
+Just looks like that.
+
+437
+00:20:54,475 --> 00:20:55,510
+Okay?
+
+438
+00:20:55,510 --> 00:20:56,052
+So, that's it.
+So,
+
+439
+00:20:56,052 --> 00:20:57,520
+this is actually very important, actually.
+
+440
+00:20:57,520 --> 00:21:00,768
+This is also going to come up later in the
+class you're going to be
+
+441
+00:21:00,768 --> 00:21:03,300
+doing convex optimization.
+
+442
+00:21:03,300 --> 00:21:04,571
+You'll be doing, you'll be solving, I
+don't know,
+
+443
+00:21:04,571 --> 00:21:06,560
+some problem with a thousand variables, I
+don't know.
+
+444
+00:21:06,560 --> 00:21:08,710
+And you'll be And someone will come along
+and say what are you doing?
+
+445
+00:21:08,710 --> 00:21:09,810
+I'm solving this problem.
+
+446
+00:21:09,810 --> 00:21:12,010
+And you'd say here's the solution, and
+they'd say oh,
+
+447
+00:21:12,010 --> 00:21:14,620
+well how do you know that's the solution?
+
+448
+00:21:14,620 --> 00:21:16,100
+You go oh no it is.
+
+449
+00:21:16,100 --> 00:21:17,650
+I mean that's, no one can do better.
+
+450
+00:21:17,650 --> 00:21:22,400
+But R 1000 is a giant place, right,
+there's a lot, that's a huge thing.
+
+451
+00:21:22,400 --> 00:21:28,060
+You can't possibly go to lunch and check
+other points and come back later and say.
+
+452
+00:21:28,060 --> 00:21:29,890
+I checked a million points.
+
+453
+00:21:29,890 --> 00:21:31,590
+You know, and our one thousand, that's
+like zero.
+
+454
+00:21:31,590 --> 00:21:33,130
+Okay, so you know nothing.
+
+455
+00:21:33,130 --> 00:21:33,980
+That is all I'm saying.
+
+456
+00:21:33,980 --> 00:21:36,680
+So someone can reasonably say, how do you
+know?
+
+457
+00:21:36,680 --> 00:21:41,800
+How could you possibly assert that this is
+the best, that no one can do any better?
+
+458
+00:21:41,800 --> 00:21:43,430
+In such, in such a giant place?
+
+459
+00:21:43,430 --> 00:21:45,428
+And the answer will be this inequality
+here.
+
+460
+00:21:45,428 --> 00:21:49,148
+That's it, that's the whole, the whole
+thing is constructed on the basis of
+
+461
+00:21:49,148 --> 00:21:54,260
+global asymmetric, well asymmetric in an
+inequality, that's what it is.
+
+462
+00:21:54,260 --> 00:21:56,160
+Okay, second order conditions.
+
+463
+00:21:56,160 --> 00:21:59,930
+Well if a function is twice differentiable
+that means it's, it's got,
+
+464
+00:21:59,930 --> 00:22:05,710
+all these partial derivatives exist and
+they're That's denoted the Hessian.
+
+465
+00:22:05,710 --> 00:22:08,199
+So, sometimes written this way, right?
+
+466
+00:22:08,199 --> 00:22:09,730
+of, of the function at that point.
+
+467
+00:22:09,730 --> 00:22:11,248
+And what it says is the following.
+
+468
+00:22:11,248 --> 00:22:13,880
+If, if f.
+
+469
+00:22:13,880 --> 00:22:18,560
+It says that f is convex, if and only if
+its second derivative is non negative.
+
+470
+00:22:18,560 --> 00:22:19,370
+Now that's a matrix.
+
+471
+00:22:19,370 --> 00:22:22,030
+So that means positive semi definite,
+okay?
+
+472
+00:22:22,030 --> 00:22:24,160
+So that's the, that's the condition.
+
+473
+00:22:24,160 --> 00:22:27,286
+Now, it turns out there's a weird
+asymmetry here.
+
+474
+00:22:27,286 --> 00:22:29,806
+If a function, if the second derivative or
+
+475
+00:22:29,806 --> 00:22:35,152
+hessian is positive definite, that's not
+enough to guarantee.
+
+476
+00:22:35,152 --> 00:22:35,800
+sorry.
+
+477
+00:22:35,800 --> 00:22:39,380
+That guarantees straight convexity, but
+the other way around is actually false.
+
+478
+00:22:39,380 --> 00:22:42,772
+You can be strictly convex without having
+the hessian, positive, for
+
+479
+00:22:42,772 --> 00:22:44,880
+all points in the domain.
+
+480
+00:22:44,880 --> 00:22:45,650
+Okay?
+
+481
+00:22:45,650 --> 00:22:49,280
+So, I mean, and there are things you can
+say about that, but that's good enough.
+
+482
+00:22:49,280 --> 00:22:49,780
+So that's it.
+
+483
+00:22:49,780 --> 00:22:53,500
+So that's another way to say it is, again
+The second order expansion.
+
+484
+00:22:53,500 --> 00:22:57,725
+When you get that second, that second
+term, that second term is in fact the,
+
+485
+00:22:57,725 --> 00:23:01,110
+the matrix is positive-semidefinite.
+
+486
+00:23:01,110 --> 00:23:04,920
+Okay so let's look at some examples.
+
+487
+00:23:04,920 --> 00:23:06,890
+Let's knock off all quadratic functions.
+
+488
+00:23:06,890 --> 00:23:09,300
+Here's a quadratic function.
+
+489
+00:23:09,300 --> 00:23:12,084
+Without loss of generality we can assume
+that p here is
+
+490
+00:23:12,084 --> 00:23:16,240
+positive-semidefinite symmetric, sorry
+symmetric.
+
+491
+00:23:16,240 --> 00:23:19,470
+Right, because, and otherwise you get the
+same quadratic form.
+
+492
+00:23:19,470 --> 00:23:23,570
+The gradient of this function is PX plus
+Q, right?
+
+493
+00:23:23,570 --> 00:23:27,930
+And the heshin is P.
+
+494
+00:23:27,930 --> 00:23:29,920
+Okay?
+So that's the, that, that's the heshin.
+
+495
+00:23:29,920 --> 00:23:31,144
+And it's really simple.
+
+496
+00:23:31,144 --> 00:23:35,823
+The quadratic function is convex if and
+only if its quadratic part.
+
+497
+00:23:35,823 --> 00:23:38,160
+Is positive semi-definite.
+
+498
+00:23:38,160 --> 00:23:40,340
+Okay.
+So here's an example.
+
+499
+00:23:40,340 --> 00:23:41,560
+Is the score subjective?
+
+500
+00:23:41,560 --> 00:23:44,980
+So let's take F of X is AX minus B norm
+squared.
+
+501
+00:23:44,980 --> 00:23:48,730
+Well the gradient, is, and you can put a
+one half there, you know, for aesthetics.
+
+502
+00:23:48,730 --> 00:23:50,010
+I mean, it doesn't make any difference.
+
+503
+00:23:50,010 --> 00:23:51,879
+And people often do, for aesthetics.
+
+504
+00:23:51,879 --> 00:23:53,490
+The aesthetics is the following.
+
+505
+00:23:53,490 --> 00:23:55,958
+That you don't get this 2, and you don't
+get this 2.
+
+506
+00:23:55,958 --> 00:24:01,260
+Right so, well the gradient is a transpose
+ax minus b.
+
+507
+00:24:01,260 --> 00:24:04,760
+And the hessian is simply its constant its
+a transpose a.
+
+508
+00:24:04,760 --> 00:24:06,975
+But that's always positive semi-definite
+so you're done.
+
+509
+00:24:06,975 --> 00:24:11,135
+OK, and here is I think probably the
+simplest function well we've already seen
+
+510
+00:24:11,135 --> 00:24:16,902
+log that, that wasn't obvious but this is
+sort of a really simple function.
+
+511
+00:24:16,902 --> 00:24:19,340
+And its the first one most people don't
+know.
+
+512
+00:24:19,340 --> 00:24:20,060
+Is convex.
+
+513
+00:24:20,060 --> 00:24:23,100
+Its really simple function its x squared
+over y.
+
+514
+00:24:23,100 --> 00:24:25,135
+And its a function of two variables x and
+y and
+
+515
+00:24:25,135 --> 00:24:27,920
+the domain is y has to be positive OK.
+
+516
+00:24:27,920 --> 00:24:32,650
+And here's a plot of it so there, there,
+there's the plot.
+
+517
+00:24:32,650 --> 00:24:37,275
+By the way you've seen that plot actually
+twice before I claim.
+
+518
+00:24:37,275 --> 00:24:38,820
+Weirdly.
+
+519
+00:24:38,820 --> 00:24:40,860
+The first is I, you saw it when we
+plotted,
+
+520
+00:24:40,860 --> 00:24:45,870
+when I gave you a plot of the positive
+semidefinite cone in 2 variables.
+
+521
+00:24:45,870 --> 00:24:47,831
+Right, and I think that I mumbled
+something incoherently about
+
+522
+00:24:47,831 --> 00:24:50,415
+somebody telling me once it looks like the
+front of a ship.
+
+523
+00:24:50,415 --> 00:24:51,690
+Okay?
+
+524
+00:24:51,690 --> 00:24:54,418
+I also said that if you took that thing
+and rotated it,
+
+525
+00:24:54,418 --> 00:24:59,300
+it's actually the same as the Lorentz
+cone, it the cone.
+
+526
+00:24:59,300 --> 00:25:02,980
+Right, so that's a lot of mileage from one
+stupid cone, right.
+
+527
+00:25:02,980 --> 00:25:06,372
+It's come up three times, but the point is
+it's the graph of x squared over y is,
+
+528
+00:25:06,372 --> 00:25:08,289
+is this thing.
+
+529
+00:25:08,289 --> 00:25:11,438
+And it turns out now, you, you can verify
+many things, but
+
+530
+00:25:11,438 --> 00:25:15,239
+you just work out what the, the Hessian
+is.
+
+531
+00:25:15,239 --> 00:25:16,690
+I mean, this is kind of high school
+calculus.
+
+532
+00:25:16,690 --> 00:25:20,870
+So you work out what the Hessian is, and
+sure enough the Hessian has this form.
+
+533
+00:25:20,870 --> 00:25:24,258
+It's rank one, but it's positive
+semi-definite, 'kay?
+
+534
+00:25:24,258 --> 00:25:25,218
+And you get that, so
+
+535
+00:25:25,218 --> 00:25:30,380
+that tells you, and in fact it even tells
+you a lot, the fact that it's rank one.
+
+536
+00:25:30,380 --> 00:25:33,735
+The fact that it's rank one tells you that
+at any point on that surface it's
+
+537
+00:25:33,735 --> 00:25:37,445
+sort of curving in one direction, but not
+the other.
+
+538
+00:25:37,445 --> 00:25:39,050
+Alright, so that's what it says.
+
+539
+00:25:39,050 --> 00:25:40,260
+In one direction, it's flat.
+
+540
+00:25:40,260 --> 00:25:43,160
+In the other direction, it's got positive
+curvature.
+
+541
+00:25:43,160 --> 00:25:45,120
+So x squared over y is convex.
+
+542
+00:25:45,120 --> 00:25:47,110
+By the way, we're going to see lots of.
+
+543
+00:25:47,110 --> 00:25:48,260
+Implications of this.
+
+544
+00:25:48,260 --> 00:25:50,416
+Right, this is going to come up in like
+robust statistics, and
+
+545
+00:25:50,416 --> 00:25:52,080
+all sorts of other things.
+
+546
+00:25:52,080 --> 00:25:53,070
+It's going to come up a lot.
+
+547
+00:25:53,070 --> 00:25:54,172
+You'll see.
+
+548
+00:25:54,172 --> 00:25:58,180
+OK, here's one.
+
+549
+00:25:58,180 --> 00:25:59,500
+It's log sum exp, and
+
+550
+00:25:59,500 --> 00:26:04,520
+what it is is you take the log of the sum
+of a bunch of exponentials.
+
+551
+00:26:04,520 --> 00:26:06,580
+And before we get into it.
+
+552
+00:26:06,580 --> 00:26:10,052
+I want to give you a rough idea of what
+this function is because it's going to
+
+553
+00:26:10,052 --> 00:26:13,748
+play a big role and the bunch of stuff we,
+you probably have seen before, will see
+
+554
+00:26:13,748 --> 00:26:20,167
+again if you've taken the right courses
+anyway and will see also in this course.
+
+555
+00:26:20,167 --> 00:26:22,680
+So here's what log-sum-exp is.
+
+556
+00:26:22,680 --> 00:26:28,700
+So, first of all it's the power combining
+formula in Electro engineering.
+
+557
+00:26:28,700 --> 00:26:31,403
+In decibals right so again so this I'm
+going to go into dialect so
+
+558
+00:26:31,403 --> 00:26:35,007
+those of you not in electrical engineering
+I apologize formally but thats okay so
+
+559
+00:26:35,007 --> 00:26:37,640
+I'll go into dialect.
+
+560
+00:26:37,640 --> 00:26:40,250
+So if I tell you that you have a bunch of
+signals coming in you know one at
+
+561
+00:26:40,250 --> 00:26:44,060
+plus five dbm one at minus twelve one at
+this or what something.
+
+562
+00:26:44,060 --> 00:26:45,875
+And I say what's the total power.
+
+563
+00:26:45,875 --> 00:26:47,602
+Incident there.
+
+564
+00:26:47,602 --> 00:26:50,464
+What you would do is -- each of these are
+decibels, for the rest of
+
+565
+00:26:50,464 --> 00:26:55,320
+you who don't speak this dialect -- is a
+log of a power level, right?
+
+566
+00:26:55,320 --> 00:27:01,330
+So, so if you want to convert these to
+powers, you form an exp.
+
+567
+00:27:01,330 --> 00:27:04,120
+I mean, there are some, y'know, factors in
+there, but I don't care about them.
+
+568
+00:27:04,120 --> 00:27:05,470
+So you form an exp.
+
+569
+00:27:05,470 --> 00:27:07,410
+Then you add the powers.
+
+570
+00:27:07,410 --> 00:27:09,040
+Now we're at the sum exp.
+
+571
+00:27:09,040 --> 00:27:11,070
+We're up to here, right.
+
+572
+00:27:11,070 --> 00:27:14,820
+And then the log reconverts back to
+decimals.
+
+573
+00:27:14,820 --> 00:27:17,205
+Okay, so, so my claim is that everyone at
+ee knows this it's the db
+
+574
+00:27:17,205 --> 00:27:18,740
+combining formula.
+
+575
+00:27:18,740 --> 00:27:22,620
+So don't, don't pretend like you haven't
+seen it, you have seen it if you're in ee.
+
+576
+00:27:22,620 --> 00:27:27,275
+The second thing is this is a smooth
+approximation of a maximum.
+
+577
+00:27:27,275 --> 00:27:31,660
+Okay and in fact another name for this
+function is soft max okay?
+
+578
+00:27:31,660 --> 00:27:32,920
+So that 's that.
+
+579
+00:27:32,920 --> 00:27:37,390
+You may have seen in maybe machine
+learning course It's a soft.
+
+580
+00:27:37,390 --> 00:27:40,360
+Is that what it's called in a machines
+learning class.
+
+581
+00:27:40,360 --> 00:27:42,650
+Okay good.
+
+582
+00:27:42,650 --> 00:27:45,370
+And the intuition is really simple.
+
+583
+00:27:45,370 --> 00:27:47,458
+It's this.
+If I got a bunch of exponentials,
+
+584
+00:27:47,458 --> 00:27:51,680
+the exponential is going to actually
+accentuate.
+
+585
+00:27:51,680 --> 00:27:52,370
+Large numbers.
+
+586
+00:27:52,370 --> 00:27:54,640
+Like, if one or two numbers are much
+bigger than the others.
+
+587
+00:27:54,640 --> 00:28:00,200
+Their exp, their exps are much bigger than
+the exponentials of the others, right?
+
+588
+00:28:00,200 --> 00:28:02,130
+You add 'em up, and the big ones dominate.
+
+589
+00:28:02,130 --> 00:28:03,615
+You take the log.
+
+590
+00:28:03,615 --> 00:28:04,670
+And you get something.
+
+591
+00:28:04,670 --> 00:28:07,240
+So it's like a soft approximation of the
+max, right?
+
+592
+00:28:07,240 --> 00:28:09,080
+So that's another name for the soft max.
+
+593
+00:28:09,080 --> 00:28:12,500
+And it's also normalizing function in
+statistical mechanics for something.
+
+594
+00:28:12,500 --> 00:28:14,190
+And it comes up in lots of other things
+too.
+
+595
+00:28:14,190 --> 00:28:16,230
+But maybe not quite with this notation.
+
+596
+00:28:16,230 --> 00:28:17,870
+Okay.
+
+597
+00:28:17,870 --> 00:28:19,402
+So this is convex.
+
+598
+00:28:19,402 --> 00:28:23,230
+and, again, the way to show that is to
+work out the proof.
+
+599
+00:28:23,230 --> 00:28:24,450
+And then to write it this way.
+
+600
+00:28:24,450 --> 00:28:29,650
+Now, unfortunately, the proof was either
+going to be shorter or a bit longer.
+
+601
+00:28:29,650 --> 00:28:31,730
+It's going to, it's, it's not totally
+simple.
+
+602
+00:28:31,730 --> 00:28:34,555
+Because this one is positive semi
+definite, clearly.
+
+603
+00:28:34,555 --> 00:28:37,920
+Unfortunately, that said, that goes the
+wrong way.
+
+604
+00:28:37,920 --> 00:28:38,970
+It's minus, right?
+
+605
+00:28:38,970 --> 00:28:41,850
+So you actually have to do some work to
+show this is positive semi definite.
+
+606
+00:28:41,850 --> 00:28:42,890
+And to do that.
+
+607
+00:28:42,890 --> 00:28:47,420
+You really have to show that this thing
+here is, is positive semi-definite.
+
+608
+00:28:47,420 --> 00:28:49,850
+So you form something like v transpose
+times the Hessian times v,
+
+609
+00:28:49,850 --> 00:28:53,690
+and you argue that that thing is bigger
+than or equal to zero for all v.
+
+610
+00:28:53,690 --> 00:28:55,240
+And you might do that this way.
+
+611
+00:28:55,240 --> 00:28:57,220
+You might use Cauchy-Schwarz right, so
+
+612
+00:28:57,220 --> 00:29:00,500
+Cauchy-Schwarz would tell you this
+inequality.
+
+613
+00:29:00,500 --> 00:29:03,636
+Right, that, that would be the
+Cauchy-Schwarz inequality applied.
+
+614
+00:29:03,636 --> 00:29:10,090
+2 square root, well, to square root zk and
+square zk vk, right?
+
+615
+00:29:10,090 --> 00:29:12,400
+The, the two vectors, you plug
+Cauchy-Schwarz and
+
+616
+00:29:12,400 --> 00:29:14,611
+you get exactly this, right?
+
+617
+00:29:14,611 --> 00:29:19,110
+And that tells you up here that this thing
+is bigger or equal to 0.
+
+618
+00:29:19,110 --> 00:29:19,746
+So, so.
+And, by the way,
+
+619
+00:29:19,746 --> 00:29:22,270
+I'm not going to go into, you're not
+suppose to be getting this in real time.
+
+620
+00:29:22,270 --> 00:29:24,610
+You have to go out to quiet place.
+
+621
+00:29:24,610 --> 00:29:26,310
+Check that you believe all these things
+and so on.
+
+622
+00:29:26,310 --> 00:29:27,066
+So, okay.
+
+623
+00:29:27,066 --> 00:29:28,220
+Geometric mean.
+
+624
+00:29:30,900 --> 00:29:37,090
+So the nth root of the product of a bunch
+of positive numbers.
+
+625
+00:29:37,090 --> 00:29:39,083
+Well, or, or none negative for that
+matter.
+
+626
+00:29:39,083 --> 00:29:40,325
+That's concave.
+
+627
+00:29:40,325 --> 00:29:41,410
+And it's the same kind of thing.
+
+628
+00:29:41,410 --> 00:29:43,820
+In fact, it turns out that the, you know?
+
+629
+00:29:43,820 --> 00:29:48,360
+For a function like that, and for many
+functions like this, it turns out.
+
+630
+00:29:48,360 --> 00:29:52,170
+That the Hessian is non-negative diagonal
+minus rank one.
+
+631
+00:29:52,170 --> 00:29:56,630
+That's what this is, and you get the same,
+same type of argument holds.
+
+632
+00:29:56,630 --> 00:30:02,360
+Okay, so what's the connection between
+convex sets and convex functions?
+
+633
+00:30:02,360 --> 00:30:09,820
+And that's this, it's through a simple
+thing called the epigraph,.
+
+634
+00:30:09,820 --> 00:30:11,580
+So we'll encounter a whole bunch of
+things.
+
+635
+00:30:11,580 --> 00:30:13,950
+One relating sets and functions.
+
+636
+00:30:13,950 --> 00:30:15,258
+So here's one.
+
+637
+00:30:15,258 --> 00:30:18,030
+If I have a function, then it's alpha
+sublevel set,
+
+638
+00:30:18,030 --> 00:30:21,800
+is this, it's the set of points in the
+domain.
+
+639
+00:30:21,800 --> 00:30:25,360
+Although, of course if you used extended
+value that happens automatically.
+
+640
+00:30:25,360 --> 00:30:27,275
+Where f is less than alpha.
+
+641
+00:30:27,275 --> 00:30:30,960
+Okay that is the sub level set.
+
+642
+00:30:30,960 --> 00:30:33,770
+By the way this will have all sorts of
+practical meanings when we get into this.
+
+643
+00:30:33,770 --> 00:30:37,850
+If F is an objective that you want to
+minimize than the alpha sub level set
+
+644
+00:30:37,850 --> 00:30:39,618
+are the set of points designs or
+
+645
+00:30:39,618 --> 00:30:46,700
+choices whatever the x represents, which
+are at least as good as alpha.
+
+646
+00:30:46,700 --> 00:30:49,980
+The alpha good, alpha good or better
+points.
+
+647
+00:30:49,980 --> 00:30:50,900
+Right?
+So, and
+
+648
+00:30:50,900 --> 00:30:56,670
+if you have a convex function the sublevel
+sets are convex, 'kay?
+
+649
+00:30:56,670 --> 00:31:00,072
+So, the set of points better than
+something if you're trying to minimize it,
+
+650
+00:31:00,072 --> 00:31:01,930
+that's convex, 'kay.
+
+651
+00:31:01,930 --> 00:31:03,470
+The converse is false.
+
+652
+00:31:03,470 --> 00:31:06,538
+You can have convex sublevel sets and
+you're not a convex function,
+
+653
+00:31:06,538 --> 00:31:10,845
+in fact those functions have a name, and
+we'll get to them.
+
+654
+00:31:10,845 --> 00:31:11,370
+later.
+
+655
+00:31:12,450 --> 00:31:13,638
+The real, the, the closest connection,
+
+656
+00:31:13,638 --> 00:31:16,238
+the correct connection is through
+something called the epigraph.
+
+657
+00:31:16,238 --> 00:31:17,800
+So epi means sort of above.
+
+658
+00:31:17,800 --> 00:31:21,245
+And, graph means of course, you know,
+something that's, that's drawn or in
+
+659
+00:31:21,245 --> 00:31:26,460
+mathematics it's the pairs, points comma
+values in our N plus 1 in graph space.
+
+660
+00:31:26,460 --> 00:31:28,190
+People can Rn plus 1.
+
+661
+00:31:28,190 --> 00:31:29,254
+And so the epigraph of a function is the
+set of all pairs x t where f of x
+
+662
+00:31:29,254 --> 00:31:30,312
+is less than or equal to t, right?
+
+663
+00:31:30,312 --> 00:31:31,947
+So the normal graph is equals to t because
+you just get the surface of the function.
+
+664
+00:31:31,947 --> 00:31:34,843
+So the normal graph is equals to t because
+you just get the surface of the function.
+
+665
+00:31:34,843 --> 00:31:40,420
+So the normal graph is equals to t because
+you just get the surface of the function.
+
+666
+00:31:40,420 --> 00:31:43,084
+The epigraph is everything above it right
+so
+
+667
+00:31:43,084 --> 00:31:46,868
+its this shaded thing here its the
+epigraph.
+
+668
+00:31:46,868 --> 00:31:51,210
+OK, and there's the connection very
+simple.
+
+669
+00:31:51,210 --> 00:31:55,040
+So a function f is convex if and only if.
+
+670
+00:31:55,040 --> 00:31:58,560
+Its epigraph is a convex set and that's,
+that's the connection.
+
+671
+00:31:58,560 --> 00:32:00,672
+So the real connection between convex
+functions and
+
+672
+00:32:00,672 --> 00:32:03,200
+convex sets is through the epigraph,
+right?
+
+673
+00:32:03,200 --> 00:32:04,810
+And in fact we'll see all sorts of cool
+things.
+
+674
+00:32:04,810 --> 00:32:09,220
+You know various things about convex
+sets,.
+
+675
+00:32:09,220 --> 00:32:12,650
+Those will all translate to various rules
+about convex functions.
+
+676
+00:32:12,650 --> 00:32:13,850
+And we'll, we'll look at, you know?
+
+677
+00:32:13,850 --> 00:32:16,180
+We'll look at a couple of those, and all
+that kind of stuff.
+
+678
+00:32:16,180 --> 00:32:18,674
+And so, in fact, what it will really mean
+is that moving, after a while,
+
+679
+00:32:18,674 --> 00:32:21,916
+when you start, when you start
+internalizing all these.
+
+680
+00:32:21,916 --> 00:32:24,609
+You'll have different ways to say the same
+thing.
+
+681
+00:32:24,609 --> 00:32:28,150
+One will be a w statement about sets.
+
+682
+00:32:28,150 --> 00:32:29,580
+There'll be a statement about functions.
+
+683
+00:32:29,580 --> 00:32:31,538
+And the connection will be through the
+epigraph.
+
+684
+00:32:31,538 --> 00:32:32,502
+Okay.
+
+685
+00:32:32,502 --> 00:32:35,680
+So, Jensen's inequality.
+
+686
+00:32:35,680 --> 00:32:37,900
+It's about a hundred years old.
+
+687
+00:32:37,900 --> 00:32:39,762
+Now maybe, actually a little bit more.
+
+688
+00:32:39,762 --> 00:32:42,140
+Actually the inequality was around
+earlier.
+
+689
+00:32:42,140 --> 00:32:45,380
+You know, obviously, for, for, for very
+specific things.
+
+690
+00:32:45,380 --> 00:32:47,960
+And it was was Jensen who kind of looked
+at it and said Hey you know what.
+
+691
+00:32:47,960 --> 00:32:51,405
+Everyone keeps making the same, keeps
+talking about the same inequality, and
+
+692
+00:32:51,405 --> 00:32:54,650
+here's here's what it is that they're all
+saying.
+
+693
+00:32:54,650 --> 00:32:56,250
+He just collected the name for it.
+
+694
+00:32:56,250 --> 00:32:56,910
+OK.
+
+695
+00:32:56,910 --> 00:32:58,260
+Basic inequality says this.
+
+696
+00:32:59,270 --> 00:33:02,560
+If f is convex and you have theta between
+zero and one, you have that.
+
+697
+00:33:02,560 --> 00:33:04,620
+Now and in fact that's the definition of
+convexity.
+
+698
+00:33:04,620 --> 00:33:06,880
+So I don't know, anyway that.
+
+699
+00:33:06,880 --> 00:33:08,182
+That's called Jensen's Inequality.
+
+700
+00:33:08,182 --> 00:33:14,540
+OK, now it turns out Jensen's inequality
+you can generalize various ways.
+
+701
+00:33:14,540 --> 00:33:18,500
+Number one to finite sms right so if I
+have a if I have a set of points x
+
+702
+00:33:18,500 --> 00:33:22,892
+one through x k theta one through theta k
+theta i non negative add up to one f
+
+703
+00:33:22,892 --> 00:33:30,335
+of sum theta i xi is less than equal to
+sum theta ix of f of xi.
+
+704
+00:33:30,335 --> 00:33:31,220
+Okay?
+
+705
+00:33:31,220 --> 00:33:32,270
+So that's, that's it.
+
+706
+00:33:32,270 --> 00:33:36,139
+Then you can, you can extend it to
+infinite sums, integrals, and
+
+707
+00:33:36,139 --> 00:33:41,078
+finally you go all the way and it's just
+expectations.
+
+708
+00:33:41,078 --> 00:33:43,180
+So the right way to say it is this.
+
+709
+00:33:43,180 --> 00:33:46,586
+If you have a random variable Z, it takes
+values from the domain of F.
+
+710
+00:33:46,586 --> 00:33:47,257
+Right.
+
+711
+00:33:47,257 --> 00:33:50,339
+By the way, if it doesn't take values, if
+it, if there's a positive probability it
+
+712
+00:33:50,339 --> 00:33:54,710
+takes values outside the domain of f, then
+there's really not much to say here.
+
+713
+00:33:54,710 --> 00:33:57,020
+But, so it takes, it's values are in the
+domain of f,
+
+714
+00:33:57,020 --> 00:34:00,105
+almost surely, then the following is true.
+
+715
+00:34:00,105 --> 00:34:04,900
+F of the expected value is less than the
+expected value of f of x.
+
+716
+00:34:04,900 --> 00:34:06,220
+That, that's it.
+
+717
+00:34:06,220 --> 00:34:06,940
+And guess what.
+
+718
+00:34:08,020 --> 00:34:11,760
+This very basic inequality here, is
+exactly this.
+
+719
+00:34:11,760 --> 00:34:14,830
+This is the most general form of the
+inequality.
+
+720
+00:34:14,830 --> 00:34:19,600
+And this is a special case of that for a
+very specific distribution of z.
+
+721
+00:34:19,600 --> 00:34:21,660
+I mean, it's really dumb, it's atomic.
+
+722
+00:34:21,660 --> 00:34:25,144
+It's a distribution that assign, has the
+value of x with a probability theta, and
+
+723
+00:34:25,144 --> 00:34:27,760
+probability y with probability of.
+
+724
+00:34:27,760 --> 00:34:30,735
+Has the value y with a probability of one
+minus.
+
+725
+00:34:30,735 --> 00:34:32,010
+Data.
+
+726
+00:34:32,010 --> 00:34:33,760
+Then this is a special case of that.
+
+727
+00:34:33,760 --> 00:34:38,590
+So, so this is, so this is another way to
+talk about convexity.
+
+728
+00:34:38,590 --> 00:34:43,280
+It's, function is convex if it doesn't
+commute with expectation that's affine,
+
+729
+00:34:43,280 --> 00:34:47,769
+right, but what it does is expectation
+Always, I means there's lots of ways to
+
+730
+00:34:47,769 --> 00:34:51,923
+say this but, well when you commute them
+you get an inequality, right so
+
+731
+00:34:51,923 --> 00:34:54,804
+actually one way to say this is, and this
+is weird and
+
+732
+00:34:54,804 --> 00:35:03,958
+this is a little bit dialect but,
+dithering increases the value of function.
+
+733
+00:35:03,958 --> 00:35:06,850
+Ok, that, that.
+
+734
+00:35:06,850 --> 00:35:11,310
+The dithering is to add noise to some zero
+[INAUDIBLE] noise intentionally.
+
+735
+00:35:11,310 --> 00:35:18,025
+Ok, so now let's talk about some of these
+operations that preserve convexity.
+
+736
+00:35:18,025 --> 00:35:19,280
+so.
+
+737
+00:35:19,280 --> 00:35:23,568
+What you'll have, what you, what you will
+be doing establishing convexity of
+
+738
+00:35:23,568 --> 00:35:27,135
+functions, and sets, for that matter.
+
+739
+00:35:27,135 --> 00:35:27,640
+and, so.
+
+740
+00:35:27,640 --> 00:35:28,550
+How do you do this?
+
+741
+00:35:28,550 --> 00:35:32,660
+Well, one is just, every n-, every now and
+then, although quite rarely.
+
+742
+00:35:32,660 --> 00:35:35,800
+The best thing to do is just roll up your
+sleeves.
+
+743
+00:35:35,800 --> 00:35:36,367
+Fill at x y,
+
+744
+00:35:36,367 --> 00:35:41,600
+take a theta between 0 and 1 and just jump
+in and then establish an inequality.
+
+745
+00:35:41,600 --> 00:35:43,900
+That's actually extremely rarely.
+
+746
+00:35:43,900 --> 00:35:46,810
+It's that the right thing to do, right?
+
+747
+00:35:46,810 --> 00:35:47,320
+Sometimes.
+
+748
+00:35:47,320 --> 00:35:52,010
+Or you can restrict to a line and verify
+it.
+
+749
+00:35:52,010 --> 00:35:54,060
+That's another option.
+
+750
+00:35:54,060 --> 00:35:57,360
+Now, for twice differentiable functions,
+you can differentiate twice.
+
+751
+00:35:57,360 --> 00:36:00,290
+And, if the function is simple enough, you
+know, go ahead.
+
+752
+00:36:00,290 --> 00:36:01,639
+If it's not simple and,
+
+753
+00:36:01,639 --> 00:36:07,630
+in fact, it takes very little before this
+method is completely unworkable.
+
+754
+00:36:07,630 --> 00:36:11,140
+Just because the notation proliferates and
+you get horrible expressions and
+
+755
+00:36:11,140 --> 00:36:15,950
+you write it down and it's half a page of
+Stuff, and someone says what's that?
+
+756
+00:36:15,950 --> 00:36:19,640
+And you go partial squared F, partial XI,
+partial XJ.
+
+757
+00:36:19,640 --> 00:36:22,440
+And then, and then they say what do you
+have to do now?
+
+758
+00:36:22,440 --> 00:36:23,590
+And you go, prove that that,
+
+759
+00:36:23,590 --> 00:36:27,430
+half page of formula represents a positive
+semi affine matrix, right?
+
+760
+00:36:27,430 --> 00:36:30,290
+And this is not fun, so,.
+
+761
+00:36:30,290 --> 00:36:30,880
+Now, the way.
+
+762
+00:36:30,880 --> 00:36:32,800
+The, sort of, I think a more modern way to
+do this.
+
+763
+00:36:32,800 --> 00:36:35,760
+Is certainly a, a way that is more useful.
+
+764
+00:36:35,760 --> 00:36:39,200
+And it's the way you will do it in this
+course, mostly, is the following.
+
+765
+00:36:39,200 --> 00:36:43,055
+Is, you'll actually do this,
+constructively by a calculus.
+
+766
+00:36:43,055 --> 00:36:46,871
+And what that means is, you'll, you'll
+know a bunch of convex and
+
+767
+00:36:46,871 --> 00:36:49,120
+concave functions.
+
+768
+00:36:49,120 --> 00:36:50,250
+You've already seen a bunch.
+
+769
+00:36:50,250 --> 00:36:52,620
+You know, norms, and, you know?
+
+770
+00:36:52,620 --> 00:36:55,500
+Square root log entropy.
+
+771
+00:36:55,500 --> 00:36:58,285
+Geometric mean all sorts of things like
+this, right?
+
+772
+00:36:58,285 --> 00:37:00,505
+You'll have those, you'll have, in that,
+
+773
+00:37:00,505 --> 00:37:05,390
+that by the way that list of atoms will
+grow, as you learn more of them.
+
+774
+00:37:05,390 --> 00:37:09,230
+And then you'll have some operations that
+preserve convexity.
+
+775
+00:37:09,230 --> 00:37:12,130
+Right so some of them are going to be some
+are going to be totally obvious and
+
+776
+00:37:12,130 --> 00:37:15,680
+stupid like the sum of two convex
+functions is convex.
+
+777
+00:37:15,680 --> 00:37:19,500
+Well duh two times a convex function is
+convex fine right.
+
+778
+00:37:19,500 --> 00:37:22,395
+Minus three times a convex function is
+concave OK fine.
+
+779
+00:37:22,395 --> 00:37:25,121
+Others are going to be way less obvious OK
+so we'll, we'll get to those and
+
+780
+00:37:25,121 --> 00:37:28,223
+it turns out that you don't have to know a
+whole lot of these things before you put
+
+781
+00:37:28,223 --> 00:37:34,100
+them all togeterh and they're actually
+quite powerful at establishing convesity.
+
+782
+00:37:34,100 --> 00:37:35,620
+Parking capital or something like that.
+
+783
+00:37:35,620 --> 00:37:37,130
+And that, that, that's going to be the
+thing.
+
+784
+00:37:37,130 --> 00:37:40,146
+Or if you like thinking of it from a
+computer science point of view,
+
+785
+00:37:40,146 --> 00:37:44,600
+your proofs or verifications of convexity
+are going to look like this.
+
+786
+00:37:44,600 --> 00:37:46,860
+Your going to have expressions and trees.
+
+787
+00:37:46,860 --> 00:37:51,960
+The leaves are going to be things you know
+are convex or concave.
+
+788
+00:37:51,960 --> 00:37:53,250
+That's going to happen.
+
+789
+00:37:53,250 --> 00:37:56,605
+And, all of the internal nodes in that
+expression tree are going to be
+
+790
+00:37:56,605 --> 00:37:58,252
+expressions whose convexity or
+
+791
+00:37:58,252 --> 00:38:02,600
+concavity you can tag by one of these
+calculus rules.
+
+792
+00:38:02,600 --> 00:38:04,530
+So if you understood that, great.
+
+793
+00:38:04,530 --> 00:38:08,800
+If you didn't, you will, because, you'll,
+we're going to force you to.
+
+794
+00:38:08,800 --> 00:38:11,370
+Alright.
+So let's start with the obvious ones.
+
+795
+00:38:11,370 --> 00:38:15,130
+I mean, positive weighted sum and
+composition with an affine function.
+
+796
+00:38:15,130 --> 00:38:16,420
+So,.
+
+797
+00:38:16,420 --> 00:38:18,790
+Non negative multiple, these are kind of
+obvious.
+
+798
+00:38:18,790 --> 00:38:20,810
+By the way these things do have to be
+shown, right.
+
+799
+00:38:20,810 --> 00:38:23,200
+So somebody should show them, or you
+should show them, or something.
+
+800
+00:38:23,200 --> 00:38:25,079
+I'm certainly not going to do it here.
+
+801
+00:38:25,079 --> 00:38:25,850
+sum.
+Right.
+
+802
+00:38:25,850 --> 00:38:28,760
+So if you add 2 convex functions it's
+convex.
+
+803
+00:38:28,760 --> 00:38:30,114
+I mean, it's kind of obvious.
+
+804
+00:38:30,114 --> 00:38:32,290
+Composition with an affine function.
+
+805
+00:38:32,290 --> 00:38:33,930
+If you pre-compose.
+
+806
+00:38:33,930 --> 00:38:37,300
+A convex function with an affine function,
+the result is convex.
+
+807
+00:38:37,300 --> 00:38:38,270
+Right?
+Same for concave.
+
+808
+00:38:38,270 --> 00:38:39,730
+Let's look at some.
+
+809
+00:38:39,730 --> 00:38:43,020
+Here's one.
+Log barrier for linear inequalities.
+
+810
+00:38:43,020 --> 00:38:44,340
+So, here's a function.
+
+811
+00:38:44,340 --> 00:38:49,050
+It's the sum of minus log, b i minus a i
+transpose x.
+
+812
+00:38:49,050 --> 00:38:51,680
+The domain is this open polyhedron.
+
+813
+00:38:51,680 --> 00:38:56,100
+It's the set of points where it's the
+interior of this, right?
+
+814
+00:38:56,100 --> 00:38:59,950
+So it, it doesn't include the boundary, is
+what the domain of f is.
+
+815
+00:38:59,950 --> 00:39:03,680
+And in there, we can even, we can even
+interpret these terms.
+
+816
+00:39:03,680 --> 00:39:06,930
+This, that's the margin in the ithenic
+volume.
+
+817
+00:39:06,930 --> 00:39:09,185
+If you require BI to be bigger than AI
+transpose X,
+
+818
+00:39:09,185 --> 00:39:12,820
+strictly bigger, that's the margin, a
+positive number.
+
+819
+00:39:12,820 --> 00:39:14,242
+You take the log of that.
+
+820
+00:39:14,242 --> 00:39:16,582
+Well, okay that's, that's, if the margin
+is small,
+
+821
+00:39:16,582 --> 00:39:19,003
+that's a very large negative number.
+
+822
+00:39:19,003 --> 00:39:21,330
+And the minus sign converts it that way.
+
+823
+00:39:21,330 --> 00:39:23,450
+This is a, so true that this is a convex
+function,
+
+824
+00:39:23,450 --> 00:39:27,200
+called a logarithmic barrier function for
+this polyhedron.
+
+825
+00:39:27,200 --> 00:39:29,435
+And we're going to see a lot of that later
+in the class.
+
+826
+00:39:29,435 --> 00:39:32,315
+And you can guess kind of why it's called
+a logarithmic barrier because if
+
+827
+00:39:32,315 --> 00:39:34,880
+you were to visualize that function on a
+polyhedron, this function,
+
+828
+00:39:34,880 --> 00:39:38,510
+it goes to plus infinity on the
+boundaries, right?
+
+829
+00:39:38,510 --> 00:39:40,490
+As you move towards the boundary, one of
+your margin,
+
+830
+00:39:40,490 --> 00:39:43,080
+at least one of your margin gets really
+small.
+
+831
+00:39:43,080 --> 00:39:45,320
+One term in here.
+
+832
+00:39:45,320 --> 00:39:48,023
+One term in here goes to zero; the log
+goes to minus infinity, and
+
+833
+00:39:48,023 --> 00:39:51,160
+the minus makes it go to plus infinity.
+
+834
+00:39:51,160 --> 00:39:52,050
+So it's like a barrier.
+
+835
+00:39:52,050 --> 00:39:53,338
+If you think of it like in physics,
+
+836
+00:39:53,338 --> 00:39:56,272
+a potential function, it's an infinite
+potential well.
+
+837
+00:39:56,272 --> 00:39:58,802
+Okay?
+That's what this is.
+
+838
+00:39:58,802 --> 00:40:02,002
+Alright, you can have the norm of an
+affine function, right,
+
+839
+00:40:02,002 --> 00:40:07,260
+because that's an affine function composed
+with a norm which is convex.
+
+840
+00:40:07,260 --> 00:40:11,000
+I mean, this is kind of obvious, but,
+we'll quickly get to ones that are not.
+
+841
+00:40:11,000 --> 00:40:12,915
+So, pointwise maximum.
+
+842
+00:40:12,915 --> 00:40:15,085
+So if you have a bunch of convex
+functions,
+
+843
+00:40:15,085 --> 00:40:18,110
+then their pointwise maximum is convex.
+
+844
+00:40:18,110 --> 00:40:19,250
+I mean, this is kind of obvious.
+
+845
+00:40:19,250 --> 00:40:20,320
+I'm just going to draw a picture.
+
+846
+00:40:20,320 --> 00:40:21,440
+Here's one function.
+
+847
+00:40:21,440 --> 00:40:22,500
+Here's another.
+
+848
+00:40:22,500 --> 00:40:24,880
+Here's the pointwise maximum, is this
+function here.
+
+849
+00:40:24,880 --> 00:40:29,850
+That's the pointwise maximum, and it's
+convex.
+
+850
+00:40:29,850 --> 00:40:31,730
+I mean, the picture is clear.
+
+851
+00:40:31,730 --> 00:40:35,525
+It's two lines of a proof, if you can
+stretch it to two lines.
+
+852
+00:40:35,525 --> 00:40:38,020
+You know.
+It's, it's not hard to show.
+
+853
+00:40:38,020 --> 00:40:41,383
+Actually this is very interesting and this
+tells you that you are you
+
+854
+00:40:41,383 --> 00:40:44,451
+are not in the calculus mode anymore
+here's why this is one of
+
+855
+00:40:44,451 --> 00:40:51,620
+the most most basic constructors of convex
+functions is through point wise maximum.
+
+856
+00:40:51,620 --> 00:40:55,116
+And what's completely clear even this
+little example I
+
+857
+00:40:55,116 --> 00:40:59,880
+just drew is it does not preserve
+differentiability.
+
+858
+00:40:59,880 --> 00:41:03,378
+Right max of even differentiable functions
+is generally not diffrentiable OK
+
+859
+00:41:03,378 --> 00:41:07,760
+you get points and in fact that's kind of
+a theme for the whole course.
+
+860
+00:41:07,760 --> 00:41:13,480
+It turns out differentiability doesn't
+play a huge role in convexity.
+
+861
+00:41:13,480 --> 00:41:16,248
+There is certainly complex optimization,
+it doesn't play a big role.
+
+862
+00:41:16,248 --> 00:41:19,090
+So and again, these are just things that
+we're, you're going to just,
+
+863
+00:41:19,090 --> 00:41:19,972
+this'll be clear, but
+
+864
+00:41:19,972 --> 00:41:24,720
+this is kind of your first hint that this
+is not going to be like a calculus class.
+
+865
+00:41:24,720 --> 00:41:27,186
+So, here are some quick examples.
+
+866
+00:41:27,186 --> 00:41:31,840
+Piecewise-linear function so that maximum,
+I have a bunch of affine functions.
+
+867
+00:41:31,840 --> 00:41:34,341
+Then piecewise-linear functions just, the
+max,
+
+868
+00:41:34,341 --> 00:41:38,380
+a maximum of them, that's convex
+immediately, right.
+
+869
+00:41:38,380 --> 00:41:41,592
+So, by the way that's a very specific form
+of of a piecewise-linear function, right,
+
+870
+00:41:41,592 --> 00:41:45,450
+because normally when people talk about
+piecewise-linear functions.
+
+871
+00:41:45,450 --> 00:41:47,930
+They talk, you know, you, you specify the
+dom, the, the little regions, and
+
+872
+00:41:47,930 --> 00:41:51,510
+then on that region, you say it has this
+value and this value and so on.
+
+873
+00:41:51,510 --> 00:41:53,950
+This one kind of does all that implicitly.
+
+874
+00:41:53,950 --> 00:41:56,290
+It just says it's the maximum of a bunch
+of functions, right?
+
+875
+00:41:56,290 --> 00:41:58,810
+Here's an affine function, here's that,
+you know?
+
+876
+00:41:58,810 --> 00:41:59,770
+That is the maximum.
+
+877
+00:41:59,770 --> 00:42:02,613
+The function, it looks like this.
+
+878
+00:42:03,680 --> 00:42:08,350
+That is the, that's a piecewise-linear
+convex function, right.
+
+879
+00:42:08,350 --> 00:42:12,010
+And it's just the maximum of a bunch of
+affine functions.
+
+880
+00:42:12,010 --> 00:42:13,545
+Here's one that's less obvious.
+
+881
+00:42:13,545 --> 00:42:15,240
+How about this?
+
+882
+00:42:15,240 --> 00:42:18,680
+The sum of the r largest components of a
+vector, 'kay?
+
+883
+00:42:20,360 --> 00:42:22,680
+So the sum of the five largest components.
+
+884
+00:42:24,090 --> 00:42:27,250
+That's kind of a complicated thing, right?
+
+885
+00:42:27,250 --> 00:42:31,090
+If anything, you should be getting a
+combinatorial feel for it.
+
+886
+00:42:31,090 --> 00:42:35,602
+This is convex, and the argument is really
+quick.
+
+887
+00:42:35,602 --> 00:42:37,710
+Let's talk about different ways you might
+show this.
+
+888
+00:42:37,710 --> 00:42:39,840
+Okay, let's talk about differentiating.
+
+889
+00:42:40,870 --> 00:42:42,370
+If you, let's talk about it.
+
+890
+00:42:42,370 --> 00:42:44,072
+So what's the derivative?
+
+891
+00:42:44,072 --> 00:42:49,154
+What the gradient of the function which is
+the sum of the five largest entries in
+
+892
+00:42:49,154 --> 00:42:51,148
+a vector?
+
+893
+00:42:51,148 --> 00:42:56,870
+Wherever the five largest elements are
+bigger than.
+
+894
+00:42:56,870 --> 00:42:59,090
+There's a gap between the fifth and sixth
+element in the vector.
+
+895
+00:42:59,090 --> 00:43:01,650
+That function is actually just alfine.
+
+896
+00:43:01,650 --> 00:43:02,630
+And what is the gradient there?
+
+897
+00:43:02,630 --> 00:43:06,347
+It's a vector with a 1 in each component
+if you're among the top five, and
+
+898
+00:43:06,347 --> 00:43:08,120
+0 otherwise.
+
+899
+00:43:08,120 --> 00:43:08,820
+Right?
+
+900
+00:43:08,820 --> 00:43:09,570
+So that's fine.
+
+901
+00:43:09,570 --> 00:43:10,710
+It's got a gradient.
+
+902
+00:43:10,710 --> 00:43:12,734
+And you could try to show that gradient
+inequality or
+
+903
+00:43:12,734 --> 00:43:17,470
+something like that, ignoring the fact
+that, in fact, the gradient doesn't exist.
+
+904
+00:43:17,470 --> 00:43:21,570
+When there's a tie between the fifth and
+sixth elements in this function.
+
+905
+00:43:21,570 --> 00:43:23,247
+And a hessian out of the, it's just zero
+everywhere,
+
+906
+00:43:23,247 --> 00:43:26,540
+except on these points where it doesn't
+exist, and all that kind of stuff.
+
+907
+00:43:26,540 --> 00:43:27,120
+So it gets weird.
+
+908
+00:43:27,120 --> 00:43:28,759
+Okay.
+So that doesn't work.
+
+909
+00:43:28,759 --> 00:43:30,790
+But it's actually very easy to say what it
+is.
+
+910
+00:43:30,790 --> 00:43:37,280
+It's a maximum over, n choose r linear
+functions.
+
+911
+00:43:37,280 --> 00:43:39,120
+Because what I do is this.
+
+912
+00:43:39,120 --> 00:43:40,860
+I simply say.
+
+913
+00:43:40,860 --> 00:43:47,560
+I take all vectors, which consist of r1s
+and n minus r0s.
+
+914
+00:43:47,560 --> 00:43:48,870
+And then, of which there's n choose r.
+
+915
+00:43:48,870 --> 00:43:50,758
+Right, so I take all those vectors, and
+
+916
+00:43:50,758 --> 00:43:55,340
+I take the linear function, which is that
+vector in a product with x.
+
+917
+00:43:55,340 --> 00:43:58,840
+That's the sum of a particular, actually
+each one of those.
+
+918
+00:43:58,840 --> 00:44:02,750
+In our products is the sum of five
+particular elements.
+
+919
+00:44:02,750 --> 00:44:04,490
+I'm going to take r equals five.
+
+920
+00:44:04,490 --> 00:44:07,815
+So, it's the sum of five particular
+elements in that vector.
+
+921
+00:44:07,815 --> 00:44:08,830
+Right?
+
+922
+00:44:08,830 --> 00:44:11,740
+And now I take the maximum of all of
+those.
+
+923
+00:44:11,740 --> 00:44:13,054
+Right?
+That will give me the sum of
+
+924
+00:44:13,054 --> 00:44:14,200
+the five largest.
+
+925
+00:44:14,200 --> 00:44:15,160
+Okay?
+
+926
+00:44:15,160 --> 00:44:17,414
+So there's a two line proof,
+
+927
+00:44:17,414 --> 00:44:25,890
+one line that the sum of the three largest
+entries in a vector is, Is convex.
+
+928
+00:44:25,890 --> 00:44:26,520
+OK?
+
+929
+00:44:26,520 --> 00:44:27,750
+So that's it.
+
+930
+00:44:27,750 --> 00:44:31,257
+By the way, this doesn't give you a good
+way to calculate it this way.
+
+931
+00:44:31,257 --> 00:44:32,395
+But still.
+
+932
+00:44:32,395 --> 00:44:35,232
+OK.
+Well this idea extends actually to
+
+933
+00:44:35,232 --> 00:44:41,940
+infinite sums, and it's the same way if
+you go back to the epigraphs.
+
+934
+00:44:41,940 --> 00:44:45,440
+It's the same way, it says that
+intersection of an arbitrary number.
+
+935
+00:44:45,440 --> 00:44:46,610
+A convex sets as convex.
+
+936
+00:44:46,610 --> 00:44:48,598
+So, here, pointwise supremum,
+
+937
+00:44:48,598 --> 00:44:53,500
+is you can have the supremum over an
+arbitrary set of functions.
+
+938
+00:44:53,500 --> 00:44:55,820
+Right, ar, arbitrary set of convex
+functions.
+
+939
+00:44:55,820 --> 00:45:00,198
+So the idea is this, if you have a
+function, F of X and Y.
+
+940
+00:45:00,198 --> 00:45:02,980
+Y actually can be completely abstract.
+
+941
+00:45:02,980 --> 00:45:06,770
+It does not have to be a vector in our n,
+right?
+
+942
+00:45:06,770 --> 00:45:11,260
+It can be indexed by sup things or strings
+or weird, I don't know, anything, right?
+
+943
+00:45:11,260 --> 00:45:12,421
+It doesn't ma, matter.
+
+944
+00:45:12,421 --> 00:45:16,469
+It says that if this function is convex in
+x for each y,
+
+945
+00:45:16,469 --> 00:45:23,290
+then the supremum of this Of these
+functions is convex in x.
+
+946
+00:45:23,290 --> 00:45:27,000
+And we can look at some simple examples.
+
+947
+00:45:27,000 --> 00:45:27,650
+Here's one.
+
+948
+00:45:27,650 --> 00:45:31,341
+The support function of a set is this.
+
+949
+00:45:31,341 --> 00:45:34,590
+Here's a set here, here's a set.
+
+950
+00:45:34,590 --> 00:45:36,940
+It doesn't have to be convex right?
+
+951
+00:45:36,940 --> 00:45:37,770
+Like that, that's C.
+
+952
+00:45:37,770 --> 00:45:42,010
+And the support function says, here's a
+vector y.
+
+953
+00:45:42,010 --> 00:45:44,332
+You actually form the largest inner
+product, and so
+
+954
+00:45:44,332 --> 00:45:49,360
+that would tell you Well, I didn't draw it
+right, but it looks something like that.
+
+955
+00:45:49,360 --> 00:45:52,230
+Here, I'll, I'll bend my set to touch it
+there.
+
+956
+00:45:52,230 --> 00:45:52,790
+Okay?
+
+957
+00:45:52,790 --> 00:45:55,940
+So this would give you, it tells you how
+far you can go in the direction y.
+
+958
+00:45:55,940 --> 00:45:57,120
+And it's as a function of y.
+
+959
+00:45:57,120 --> 00:46:00,800
+That is a convex function of x.
+
+960
+00:46:00,800 --> 00:46:03,860
+'Kay?
+And so let's see, why is that?
+
+961
+00:46:03,860 --> 00:46:06,097
+Why would you say that?
+
+962
+00:46:06,097 --> 00:46:10,824
+Well What kind of function of x is y
+transpose x?
+
+963
+00:46:10,824 --> 00:46:12,940
+It's linear, okay?
+
+964
+00:46:12,940 --> 00:46:13,510
+So it's linear.
+
+965
+00:46:13,510 --> 00:46:14,822
+Therefore, it's convex.
+
+966
+00:46:14,822 --> 00:46:18,050
+Because, convex promotes to linear, right?
+
+967
+00:46:18,050 --> 00:46:20,170
+I'm sorry.
+Linear promotes to convex, okay?
+
+968
+00:46:20,170 --> 00:46:23,959
+So, the, and then it's a supreme over
+them, so that's convex.
+
+969
+00:46:25,080 --> 00:46:25,989
+Here's another one for fun.
+
+970
+00:46:25,989 --> 00:46:30,070
+Is the maximum eigenvalue of a symmetric
+matrix right?
+
+971
+00:46:30,070 --> 00:46:36,650
+That's one way to write that is this, it's
+the supremum of Y transposed capital X y.
+
+972
+00:46:36,650 --> 00:46:39,650
+Subject to norm Y equals 1.
+
+973
+00:46:39,650 --> 00:46:40,500
+Okay?
+That, that,
+
+974
+00:46:40,500 --> 00:46:43,490
+the answer is the maxim eigenvalue of X.
+
+975
+00:46:43,490 --> 00:46:45,840
+Right?
+That's almost the definition, okay?
+
+976
+00:46:45,840 --> 00:46:47,815
+So, then the question is.
+
+977
+00:46:47,815 --> 00:46:50,340
+How do you, how we do know that's a convex
+function?
+
+978
+00:46:50,340 --> 00:46:51,340
+By the way, we already talked about it.
+
+979
+00:46:51,340 --> 00:46:53,410
+It's a quite con-, complicated function,
+right?
+
+980
+00:46:53,410 --> 00:46:56,330
+It involves writing out the, you know?
+
+981
+00:46:56,330 --> 00:46:58,190
+The characteristic value of x.
+
+982
+00:46:58,190 --> 00:47:00,300
+Factoring it, taking the largest, you
+know?
+
+983
+00:47:00,300 --> 00:47:01,330
+All this kind of stuff.
+
+984
+00:47:01,330 --> 00:47:04,067
+So let's see.
+What kind of function of capital x is y
+
+985
+00:47:04,067 --> 00:47:05,768
+transpose x.
+
+986
+00:47:05,768 --> 00:47:08,460
+Why?
+It's linear and that's right.
+
+987
+00:47:08,460 --> 00:47:10,820
+Actually this is a very good, this is the
+first time you've seen this.
+
+988
+00:47:10,820 --> 00:47:13,316
+There are going to be lots of times when
+someone walks up to you and
+
+989
+00:47:13,316 --> 00:47:15,210
+you see Y transposed X Y.
+
+990
+00:47:15,210 --> 00:47:22,440
+The quadratic part of your brain is
+already, sort of actit-, activated.
+
+991
+00:47:22,440 --> 00:47:22,970
+Right?
+
+992
+00:47:22,970 --> 00:47:23,870
+It's Y transposed X Y.
+
+993
+00:47:23,870 --> 00:47:24,512
+It's quadratic.
+
+994
+00:47:24,512 --> 00:47:28,398
+Right so but here you have to be you have
+to think very straight because
+
+995
+00:47:28,398 --> 00:47:34,456
+someonee says y is given x is the variable
+and that thing is linear right.
+
+996
+00:47:34,456 --> 00:47:37,400
+So this is kind of the idea and then we
+take a supremum of this over all possible
+
+997
+00:47:37,400 --> 00:47:40,055
+y and you get something that's convex.
+
+998
+00:47:40,055 --> 00:47:47,015
+Its the composition of functions so here's
+the idea I have a function,.
+
+999
+00:47:47,015 --> 00:47:48,488
+H.
+
+1000
+00:47:48,488 --> 00:47:50,550
+And I have a function g and I compose
+them.
+
+1001
+00:47:50,550 --> 00:47:52,550
+So I take h of g of x.
+
+1002
+00:47:52,550 --> 00:47:54,020
+I'm going to call that f.
+
+1003
+00:47:54,020 --> 00:47:56,700
+And the basic rule is very simple.
+
+1004
+00:47:56,700 --> 00:48:01,770
+It turns out that a convex increasing
+function of a convex function is convex.
+
+1005
+00:48:01,770 --> 00:48:05,950
+Okay, so that's, that's the, that's,
+that's the basic composition rule.
+
+1006
+00:48:05,950 --> 00:48:07,540
+Convex increasing.
+
+1007
+00:48:07,540 --> 00:48:10,300
+Now there's some details here and they're,
+they are actually important.
+
+1008
+00:48:10,300 --> 00:48:13,780
+They are not little sort of analytical.
+
+1009
+00:48:13,780 --> 00:48:15,740
+Things that only a mathematician would
+worry about.
+
+1010
+00:48:15,740 --> 00:48:18,070
+They are quite real, and they have all
+sorts of consequences.
+
+1011
+00:48:18,070 --> 00:48:19,802
+The first is this.
+
+1012
+00:48:19,802 --> 00:48:22,420
+the, the outer function, here.
+
+1013
+00:48:22,420 --> 00:48:23,440
+The one that you apply.
+
+1014
+00:48:23,440 --> 00:48:28,330
+The increasing or non decreasing re-,
+restriction there is actually on its,.
+
+1015
+00:48:28,330 --> 00:48:30,150
+It, its conve-.
+
+1016
+00:48:30,150 --> 00:48:32,872
+It's, it's.
+
+1017
+00:48:32,872 --> 00:48:35,330
+Extended value extension.
+
+1018
+00:48:35,330 --> 00:48:43,520
+Right, so, so here h tilde is the extended
+valued extension of h.
+
+1019
+00:48:43,520 --> 00:48:47,460
+OK and so, what this says, I mean we can
+look at some examples.
+
+1020
+00:48:47,460 --> 00:48:50,055
+So here's a function, let's take.
+
+1021
+00:48:50,055 --> 00:48:58,530
+H of x equals x squared with dom h equals
+r plus.
+
+1022
+00:48:58,530 --> 00:49:00,837
+Okay?
+Now, in fact, you would normally say,
+
+1023
+00:49:00,837 --> 00:49:04,340
+that function is non-decreasing, it's
+increasing.
+
+1024
+00:49:04,340 --> 00:49:05,430
+Okay?
+
+1025
+00:49:05,430 --> 00:49:06,530
+It, it is increasing.
+
+1026
+00:49:06,530 --> 00:49:08,739
+If you take any two points on its domain,
+which is non,
+
+1027
+00:49:08,739 --> 00:49:11,960
+non-negative numbers One is bigger than
+the other then.
+
+1028
+00:49:11,960 --> 00:49:14,030
+It's, it's bigger because the square makes
+things bigger.
+
+1029
+00:49:14,030 --> 00:49:14,550
+Okay?
+
+1030
+00:49:14,550 --> 00:49:15,120
+Period.
+
+1031
+00:49:15,120 --> 00:49:16,990
+So that's an increasing function.
+
+1032
+00:49:16,990 --> 00:49:18,240
+That's not good here.
+
+1033
+00:49:18,240 --> 00:49:21,672
+That won't work here because h tilde looks
+like this,
+
+1034
+00:49:21,672 --> 00:49:26,610
+h tilde, I'm just going to draw it kind of
+Is a diagram.
+
+1035
+00:49:26,610 --> 00:49:29,590
+It kind of goes up here to plus infinity.
+
+1036
+00:49:29,590 --> 00:49:34,270
+Okay, and so the point is, that is not,
+that is not an increasing function.
+
+1037
+00:49:34,270 --> 00:49:36,640
+Well, in fact you can see it goes from
+plus infinity down to zero.
+
+1038
+00:49:37,690 --> 00:49:38,480
+And in fact,
+
+1039
+00:49:38,480 --> 00:49:44,260
+if I compose This function here with
+something like x minus 1 squared.
+
+1040
+00:49:44,260 --> 00:49:45,750
+The, actually, the conclusion is wrong.
+
+1041
+00:49:45,750 --> 00:49:47,450
+You get a function that is not convex.
+
+1042
+00:49:47,450 --> 00:49:48,200
+Okay?
+
+1043
+00:49:48,200 --> 00:49:51,370
+So, these are detail-, these are details.
+
+1044
+00:49:51,370 --> 00:49:53,720
+But they're actually important ones.
+
+1045
+00:49:53,720 --> 00:49:55,080
+I don't expect you to get it here.
+
+1046
+00:49:55,080 --> 00:49:55,730
+You should, you know?
+
+1047
+00:49:55,730 --> 00:49:57,570
+You should be read-, you'll read this part
+of the chapter.
+
+1048
+00:49:57,570 --> 00:49:59,300
+And you'll do homework exercises and
+things like that.
+
+1049
+00:49:59,300 --> 00:50:00,170
+Then it'll become clear.
+
+1050
+00:50:01,350 --> 00:50:04,123
+But the, the zeroth level one that you
+should remember is
+
+1051
+00:50:04,123 --> 00:50:08,280
+convex increasing function of a convex
+function is convex.
+
+1052
+00:50:08,280 --> 00:50:10,700
+OK, so and then there's variations on
+that.
+
+1053
+00:50:12,690 --> 00:50:18,335
+A, you have a function is convex if the
+inner function is concave but h is.
+
+1054
+00:50:18,335 --> 00:50:21,130
+Instead if non decreasing, non increasing.
+
+1055
+00:50:21,130 --> 00:50:23,780
+So it's basically a decreasing function
+okay, informally.
+
+1056
+00:50:23,780 --> 00:50:25,030
+So that's the idea.
+
+1057
+00:50:25,030 --> 00:50:26,730
+Now how do you prove this?
+
+1058
+00:50:26,730 --> 00:50:30,479
+You can actually prove this directly and
+it's actually quite simple.
+
+1059
+00:50:30,479 --> 00:50:31,804
+And in fact it's even clearer,
+
+1060
+00:50:31,804 --> 00:50:35,558
+because a basic proof of this there's one
+in the book.
+
+1061
+00:50:35,558 --> 00:50:38,730
+Basically does not requi-, it doesn't.
+
+1062
+00:50:38,730 --> 00:50:40,530
+It makes no assumptions whatsoever about h
+and g.
+
+1063
+00:50:40,530 --> 00:50:41,850
+They don't have to be differentiable.
+
+1064
+00:50:41,850 --> 00:50:43,280
+Nothing, right?
+
+1065
+00:50:43,280 --> 00:50:45,776
+But an instructive proof is actually to do
+one,
+
+1066
+00:50:45,776 --> 00:50:49,860
+assuming that these are scalar fun-, that
+x is scalar.
+
+1067
+00:50:49,860 --> 00:50:53,880
+And that these function are differentiable
+twice, right?
+
+1068
+00:50:53,880 --> 00:50:55,960
+So, in that case, you just take the train
+rule.
+
+1069
+00:50:55,960 --> 00:50:58,246
+And you work out what the second
+derivative of F is.
+
+1070
+00:50:58,246 --> 00:50:59,956
+Right?
+Because essentially,
+
+1071
+00:50:59,956 --> 00:51:03,590
+convexity is a statement about the second
+derivative.
+
+1072
+00:51:03,590 --> 00:51:05,320
+Right?
+I mean, when a function is convex or, or
+
+1073
+00:51:05,320 --> 00:51:08,010
+sorry, when a function is smooth.
+
+1074
+00:51:08,010 --> 00:51:10,501
+So here, you simply work out what the
+second derivative here and
+
+1075
+00:51:10,501 --> 00:51:12,430
+you get this expression here.
+
+1076
+00:51:12,430 --> 00:51:13,130
+And so This,
+
+1077
+00:51:13,130 --> 00:51:18,870
+this composition theorem here is actually
+going to turn out to be very simple.
+
+1078
+00:51:18,870 --> 00:51:23,520
+It's a case where trivially you can assert
+the sign of the second derivative.
+
+1079
+00:51:23,520 --> 00:51:25,180
+OK?
+So let's look at it.
+
+1080
+00:51:25,180 --> 00:51:28,990
+If you look at the first term, you see
+that there's a h prime prime.
+
+1081
+00:51:28,990 --> 00:51:32,266
+So let's look at this theorem that says
+that a convex increasing function of
+
+1082
+00:51:32,266 --> 00:51:34,532
+a convex function is convex.
+
+1083
+00:51:34,532 --> 00:51:37,637
+Well here, h prime prime, this thing, is
+bigger than or
+
+1084
+00:51:37,637 --> 00:51:42,250
+equal to zero.That's what it means to be
+convex.
+
+1085
+00:51:42,250 --> 00:51:44,855
+This is squared, and so it's totally
+relevant, it's not negative.
+
+1086
+00:51:44,855 --> 00:51:46,410
+Right?
+
+1087
+00:51:46,410 --> 00:51:49,400
+Then this thing here, that's the
+assumption.
+
+1088
+00:51:49,400 --> 00:51:50,950
+It's of a convex function.
+
+1089
+00:51:50,950 --> 00:51:52,922
+So this is, this is going to be non
+negative.
+
+1090
+00:51:52,922 --> 00:51:54,900
+And then this here.
+
+1091
+00:51:54,900 --> 00:51:57,430
+Now you can see where the monotonicity
+requirement comes in.
+
+1092
+00:51:57,430 --> 00:52:00,852
+The monotonicity requirement comes in
+because it gets multiplied by h
+
+1093
+00:52:00,852 --> 00:52:02,280
+prime, right?
+
+1094
+00:52:02,280 --> 00:52:05,855
+So, another way to say it is something
+like this, and this'll be very rough.
+
+1095
+00:52:05,855 --> 00:52:11,703
+But, this composition theorem tells you
+when you can deduce the sign of the second
+
+1096
+00:52:11,703 --> 00:52:19,800
+derivative, using, well, calculus and then
+a very elementary signed arithmetic.
+
+1097
+00:52:19,800 --> 00:52:21,420
+Signed arithmetic is very simple, right?
+
+1098
+00:52:21,420 --> 00:52:23,582
+It means you multiply two things that are
+non-negative,
+
+1099
+00:52:23,582 --> 00:52:25,451
+you get something non-negative.
+
+1100
+00:52:25,451 --> 00:52:26,640
+You add non-negative things, they're
+non-negative.
+
+1101
+00:52:26,640 --> 00:52:27,861
+You add a ne, you multiply a negative and
+
+1102
+00:52:27,861 --> 00:52:29,860
+a positive thing, you get something
+negative.
+
+1103
+00:52:29,860 --> 00:52:31,390
+That's like signed arithmetic, okay?
+
+1104
+00:52:31,390 --> 00:52:34,540
+So it says It says that basically from
+calculus and
+
+1105
+00:52:34,540 --> 00:52:40,650
+signed arithmetic, you can conclude the
+sign of the second derivative.
+
+1106
+00:52:40,650 --> 00:52:42,570
+If it's positive, you got a convex
+function.
+
+1107
+00:52:42,570 --> 00:52:43,730
+If it's negative, you got a concave.
+
+1108
+00:52:43,730 --> 00:52:45,850
+Everyone following this?
+
+1109
+00:52:45,850 --> 00:52:49,242
+OK, so, but I, the interesting, the funny
+part is actually the, the proof that
+
+1110
+00:52:49,242 --> 00:52:54,272
+holds completely generally, right, not for
+differentiable, is actually easier.
+
+1111
+00:52:54,272 --> 00:52:56,930
+Then it's, well, at least mathematically
+it's easier.
+
+1112
+00:52:56,930 --> 00:52:57,760
+All right.
+
+1113
+00:52:57,760 --> 00:52:59,110
+So what are some examples?
+
+1114
+00:52:59,110 --> 00:53:03,410
+It says that the exponential of a convex
+function is convex, okay?
+
+1115
+00:53:03,410 --> 00:53:04,379
+And the inverse of a,
+
+1116
+00:53:04,379 --> 00:53:08,720
+of a function is convex if the function is
+concave and positive, right?
+
+1117
+00:53:08,720 --> 00:53:13,290
+So one over a concave function is going to
+be.
+
+1118
+00:53:13,290 --> 00:53:15,130
+Concave, sorry, convex.
+
+1119
+00:53:15,130 --> 00:53:15,650
+Right?
+
+1120
+00:53:15,650 --> 00:53:21,231
+So, okay, alright, now there's a vector
+version of this, right?
+
+1121
+00:53:21,231 --> 00:53:24,385
+When a function takes multiple arguments
+and
+
+1122
+00:53:24,385 --> 00:53:28,500
+actually This is incredibly important,.
+
+1123
+00:53:28,500 --> 00:53:31,850
+We can argue that the one thing on this
+page you're going to use,
+
+1124
+00:53:31,850 --> 00:53:35,960
+probably every day for the rest of the
+quarter.
+
+1125
+00:53:35,960 --> 00:53:37,970
+Not, maybe not today, tomorrow.
+
+1126
+00:53:37,970 --> 00:53:40,130
+But starting, like next week, I promise
+you.
+
+1127
+00:53:40,130 --> 00:53:42,355
+You will use this every single day.
+
+1128
+00:53:42,355 --> 00:53:45,081
+So, we're going to arrange the homework
+load to ensure that you'll be
+
+1129
+00:53:45,081 --> 00:53:46,660
+using this everyday.
+
+1130
+00:53:46,660 --> 00:53:47,450
+So this is it.
+
+1131
+00:53:47,450 --> 00:53:48,245
+Here it is.
+
+1132
+00:53:48,245 --> 00:53:51,551
+It's this, it says, so all I'm saying is,
+this, this is, this is going to be
+
+1133
+00:53:51,551 --> 00:53:56,880
+a big part of your life is going to be,
+actually just this one composition term.
+
+1134
+00:53:56,880 --> 00:54:00,800
+It's this, it says suppose you have a
+function.
+
+1135
+00:54:00,800 --> 00:54:04,740
+So G of X, has, is is R k value, right.
+
+1136
+00:54:04,740 --> 00:54:07,868
+So, I have a function h, of k, k
+arguments.
+
+1137
+00:54:07,868 --> 00:54:10,000
+G1 through gk.
+
+1138
+00:54:10,000 --> 00:54:12,530
+And I want to con, conclude convexity of
+that thing.
+
+1139
+00:54:12,530 --> 00:54:17,822
+Well, a simple one is, is this, is if the
+enclosing function h is convex.
+
+1140
+00:54:17,822 --> 00:54:20,100
+And then there's a rule.
+
+1141
+00:54:20,100 --> 00:54:24,140
+And it say's that for each argument, that,
+I mean these are the two simple versions.
+
+1142
+00:54:24,140 --> 00:54:26,305
+But then I'll give you a completely
+general version.
+
+1143
+00:54:26,305 --> 00:54:27,590
+The simple version is this.
+
+1144
+00:54:27,590 --> 00:54:32,480
+Is that if each of these arguments is
+convex right?
+
+1145
+00:54:32,480 --> 00:54:35,618
+And H is increasing in each argument.
+
+1146
+00:54:35,618 --> 00:54:36,498
+Okay.
+
+1147
+00:54:36,498 --> 00:54:38,989
+And in fact it's h tilde, the extended bag
+extension, but
+
+1148
+00:54:38,989 --> 00:54:41,270
+let's, that's, that's the idea.
+
+1149
+00:54:41,270 --> 00:54:43,930
+So, in fact, it's the natural extension,
+right?
+
+1150
+00:54:43,930 --> 00:54:47,518
+So what it says is, is this right, each of
+these right here, h is,
+
+1151
+00:54:47,518 --> 00:54:53,290
+is you, you analyze the monotonicity with
+respect to each argument.
+
+1152
+00:54:53,290 --> 00:54:57,050
+And if it's increasing in every argument,
+then you can take a convex.
+
+1153
+00:54:57,050 --> 00:54:57,970
+Function at each point.
+
+1154
+00:54:57,970 --> 00:54:59,725
+Actually, you can mix and match these.
+
+1155
+00:54:59,725 --> 00:55:03,650
+So, let me explain that, and in fact, let
+me give you a very general one.
+
+1156
+00:55:03,650 --> 00:55:05,144
+It goes something like this.
+
+1157
+00:55:05,144 --> 00:55:08,312
+F is convex if, and this is only
+sufficient,
+
+1158
+00:55:08,312 --> 00:55:14,810
+it is absolutely not necessary, it's, if
+the following is true.
+
+1159
+00:55:14,810 --> 00:55:17,140
+For each i, right?
+
+1160
+00:55:17,140 --> 00:55:19,912
+And I'll, I'll give you a more general
+version, and we'll have an exercise on
+
+1161
+00:55:19,912 --> 00:55:23,340
+this, so don't worry about it, but I just
+thought I'd say it now.
+
+1162
+00:55:23,340 --> 00:55:25,069
+One of the following occurs.
+
+1163
+00:55:25,069 --> 00:55:29,185
+first, if, if, gi is affine, then you,
+there are no,
+
+1164
+00:55:29,185 --> 00:55:37,510
+absolutely no monotonicity requirements
+on, on the enclosing function h.
+
+1165
+00:55:37,510 --> 00:55:38,570
+Right?
+That's the first one, right?
+
+1166
+00:55:38,570 --> 00:55:42,329
+Or gi is convex and h h,
+
+1167
+00:55:42,329 --> 00:55:49,183
+sorry, is increasing in Arg i.
+
+1168
+00:55:49,183 --> 00:55:49,824
+Okay?
+
+1169
+00:55:49,824 --> 00:55:57,515
+I'm, I'm writing this informally, but you
+know what I mean.
+
+1170
+00:55:57,515 --> 00:56:02,936
+Or gi is concave and h is decreasing in
+arg i.
+
+1171
+00:56:02,936 --> 00:56:04,930
+Okay?
+
+1172
+00:56:04,930 --> 00:56:05,520
+So that's it.
+
+1173
+00:56:05,520 --> 00:56:09,600
+So, now one of the reasons that you need
+to know this is because this is
+
+1174
+00:56:09,600 --> 00:56:13,170
+the basis of for example, cvx.
+
+1175
+00:56:13,170 --> 00:56:15,690
+Which you'll be using starting next week.
+
+1176
+00:56:15,690 --> 00:56:17,130
+Okay, which is a software system for
+
+1177
+00:56:17,130 --> 00:56:20,470
+doing convex optimization, convex
+analysis, things like that.
+
+1178
+00:56:20,470 --> 00:56:25,400
+And it's all based on these basic rules of
+convex analysis, right.
+
+1179
+00:56:25,400 --> 00:56:28,211
+Although, they're basic but you get a lot
+of them.
+
+1180
+00:56:28,211 --> 00:56:31,743
+So this is, this is the, the idea.
+
+1181
+00:56:32,760 --> 00:56:36,066
+There details here like the monotonicity
+has to be with respect to
+
+1182
+00:56:36,066 --> 00:56:41,110
+the extended value extensions, so you have
+to take the domain into account.
+
+1183
+00:56:41,110 --> 00:56:43,382
+So, there's a generalization of the
+others.
+
+1184
+00:56:43,382 --> 00:56:46,946
+actually, here's a very interesting fact
+all the other rules you've seen so
+
+1185
+00:56:46,946 --> 00:56:50,690
+far, almost all of them This includes
+them, right.
+
+1186
+00:56:50,690 --> 00:56:53,570
+When you teach this stuff to humans, you
+say things like look it's good to
+
+1187
+00:56:53,570 --> 00:56:57,020
+know that the sum of convex functions is
+convex, right.
+
+1188
+00:56:57,020 --> 00:56:58,975
+That follows actually from this directly.
+
+1189
+00:56:58,975 --> 00:57:03,170
+because all I do is I take h, the outer
+function to be the sum.
+
+1190
+00:57:03,170 --> 00:57:07,710
+It's kind of a silly, right, it takes two
+arguments and it adds them, right.
+
+1191
+00:57:07,710 --> 00:57:09,430
+So that's a convex function.
+
+1192
+00:57:09,430 --> 00:57:09,965
+I mean.
+
+1193
+00:57:09,965 --> 00:57:10,800
+Sure, right.
+
+1194
+00:57:10,800 --> 00:57:14,030
+It's convex, oh and guess what, it's
+monotone increasing in each argument.
+
+1195
+00:57:17,320 --> 00:57:20,120
+Therefore, the sum of two convex functions
+is convex.
+
+1196
+00:57:20,120 --> 00:57:21,969
+Now that's kind of pedantic, right,
+because it's a,
+
+1197
+00:57:21,969 --> 00:57:25,250
+you're using a sledgehammer to show
+something that's quite obvious.
+
+1198
+00:57:25,250 --> 00:57:26,310
+Everyone following this?
+
+1199
+00:57:26,310 --> 00:57:27,510
+But my point is.
+
+1200
+00:57:27,510 --> 00:57:30,132
+Then in fact this is kind of the only
+thing you need to know actually is
+
+1201
+00:57:30,132 --> 00:57:31,820
+just this one thing.
+
+1202
+00:57:31,820 --> 00:57:34,902
+There's max we looked at that we said that
+we observed at the max of a pointwise max
+
+1203
+00:57:34,902 --> 00:57:38,090
+of a bunch of convex functions is convex.
+
+1204
+00:57:38,090 --> 00:57:42,420
+Well guess what all you do is you take
+this theorm you take h is the max.
+
+1205
+00:57:42,420 --> 00:57:46,510
+That's a convex function by itself it is
+increasing in each argument.
+
+1206
+00:57:46,510 --> 00:57:50,090
+I guess not in its, its non-decreasing.
+
+1207
+00:57:50,090 --> 00:57:51,344
+Oh.
+You have to distinguish between
+
+1208
+00:57:51,344 --> 00:57:53,510
+informal speech and then when you're
+writing.
+
+1209
+00:57:53,510 --> 00:57:55,109
+So when I'm talking, it's informal speech,
+and
+
+1210
+00:57:55,109 --> 00:57:57,249
+I say "increasing" to mean non-decreasing.
+
+1211
+00:57:57,249 --> 00:57:58,505
+Okay.
+So, so it -- so -- so
+
+1212
+00:57:58,505 --> 00:58:02,537
+this also tells me that the maximum of a
+bunch of convex functions is maximum,
+
+1213
+00:58:02,537 --> 00:58:05,150
+point-wise maximum.
+
+1214
+00:58:05,150 --> 00:58:08,802
+So you, you actually get a lot out of this
+one A, one composition here.
+
+1215
+00:58:08,802 --> 00:58:11,977
+So let's look at an example.
+
+1216
+00:58:11,977 --> 00:58:15,065
+You have something like this.
+
+1217
+00:58:15,065 --> 00:58:15,780
+well, let's see.
+
+1218
+00:58:15,780 --> 00:58:22,690
+The sum of the log of bunch of concave
+functions, is going to be concave.
+
+1219
+00:58:22,690 --> 00:58:23,726
+Right?
+And that would follow from
+
+1220
+00:58:23,726 --> 00:58:24,580
+something like this.
+
+1221
+00:58:24,580 --> 00:58:25,400
+Here's one.
+
+1222
+00:58:25,400 --> 00:58:29,230
+Log sum X of GI.
+
+1223
+00:58:29,230 --> 00:58:29,800
+Of x.
+
+1224
+00:58:29,800 --> 00:58:31,150
+If the GIs are convex.
+
+1225
+00:58:31,150 --> 00:58:32,710
+Log sum x g, i.
+
+1226
+00:58:32,710 --> 00:58:33,740
+That's convex.
+
+1227
+00:58:33,740 --> 00:58:36,120
+By the way, you should be getting a little
+bit of,.
+
+1228
+00:58:36,120 --> 00:58:38,060
+L, let's first, let's talk about that a
+little bit.
+
+1229
+00:58:38,060 --> 00:58:39,620
+And I'll just say a little bit about it.
+
+1230
+00:58:39,620 --> 00:58:43,170
+Log sum exp you should think of as a soft
+max.
+
+1231
+00:58:43,170 --> 00:58:46,170
+It's an analytic or smooth approximation
+of the max function.
+
+1232
+00:58:46,170 --> 00:58:50,010
+But the max of a bunch of convex functions
+is met, is convex.
+
+1233
+00:58:50,010 --> 00:58:50,640
+So, you know?
+
+1234
+00:58:50,640 --> 00:58:53,830
+Intuition suggests that log sum exp would
+be convex.
+
+1235
+00:58:53,830 --> 00:58:54,800
+So.
+
+1236
+00:58:54,800 --> 00:58:59,400
+Immediately, we get a, this is consistent
+just by intuition, right.
+
+1237
+00:59:00,480 --> 00:59:03,713
+And then, now there's all sorts of things
+we could do here to parse this and
+
+1238
+00:59:03,713 --> 00:59:05,740
+establish convexity.
+
+1239
+00:59:05,740 --> 00:59:07,600
+I'll show you one that doesn't work first.
+
+1240
+00:59:07,600 --> 00:59:11,790
+The first one is to, is to simply parse it
+from the inside and go out.
+
+1241
+00:59:11,790 --> 00:59:12,509
+Here's one.
+
+1242
+00:59:12,509 --> 00:59:16,758
+What can you say if GI is convex what can
+you say about X GI.
+
+1243
+00:59:16,758 --> 00:59:18,398
+It's convex.
+
+1244
+00:59:18,398 --> 00:59:20,350
+because that's the most basic thing there
+is, right.
+
+1245
+00:59:20,350 --> 00:59:22,030
+It's convex increasing function of
+[UNKNOWN].
+
+1246
+00:59:22,030 --> 00:59:23,850
+Okay, how about the sum?
+
+1247
+00:59:23,850 --> 00:59:24,652
+You can label that.
+
+1248
+00:59:24,652 --> 00:59:27,150
+It's convex.
+
+1249
+00:59:27,150 --> 00:59:29,410
+Okay.
+How about the log of a convex function.
+
+1250
+00:59:29,410 --> 00:59:30,020
+Right.
+
+1251
+00:59:30,020 --> 00:59:32,190
+There, in fact, it's false.
+
+1252
+00:59:32,190 --> 00:59:35,750
+There's no rule, that's, you can have the
+log of a convex function, it's nothing.
+
+1253
+00:59:35,750 --> 00:59:36,655
+It could be.
+
+1254
+00:59:36,655 --> 00:59:40,750
+That, you could, that could be concave, it
+could be convex, it can be anything.
+
+1255
+00:59:40,750 --> 00:59:45,175
+There is no rule that says the log of a
+convex function is anything.
+
+1256
+00:59:45,175 --> 00:59:46,790
+because there, it just, just isn't one.
+
+1257
+00:59:46,790 --> 00:59:47,485
+Everybody see that?
+
+1258
+00:59:47,485 --> 00:59:49,110
+So that failed completely.
+
+1259
+00:59:49,110 --> 00:59:51,410
+What is the correct parsing of this?
+
+1260
+00:59:53,950 --> 00:59:59,860
+What you do is you make h the log sum x
+function.
+
+1261
+00:59:59,860 --> 01:00:04,400
+The log sum x function is clearly, it's
+what's convex.
+
+1262
+01:00:04,400 --> 01:00:06,470
+And it is increasing in each argument.
+
+1263
+01:00:06,470 --> 01:00:08,480
+By the way, there, it really is
+increasing, so I'm okay.
+
+1264
+01:00:08,480 --> 01:00:10,235
+That's informal and formal.
+
+1265
+01:00:10,235 --> 01:00:15,530
+It's [INAUDIBLE], and therefore, log sum x
+of a bunch of convex functions is convex.
+
+1266
+01:00:15,530 --> 01:00:16,480
+Everybody.
+
+1267
+01:00:16,480 --> 01:00:17,472
+Got that?
+So, actually,
+
+1268
+01:00:17,472 --> 01:00:21,460
+a lot of this will become much clearer as
+you get into actually doing these things.
+
+1269
+01:00:21,460 --> 01:00:24,540
+But, what this says is, proving convexity
+of something it's not as,
+
+1270
+01:00:24,540 --> 01:00:28,530
+you just don't write the first parse tree
+that comes down.
+
+1271
+01:00:28,530 --> 01:00:29,900
+Because it might be wrong.
+
+1272
+01:00:29,900 --> 01:00:32,780
+The first parsing might, well sorry, not
+that it's wrong,
+
+1273
+01:00:32,780 --> 01:00:35,395
+it won't work using these rules.
+
+1274
+01:00:35,395 --> 01:00:36,240
+Okay?
+
+1275
+01:00:36,240 --> 01:00:37,301
+Okay.
+
+1276
+01:00:37,301 --> 01:00:42,620
+So minimu-, this is a very, minimization
+is a very general construction.
+
+1277
+01:00:42,620 --> 01:00:45,430
+Oh and I should contrast this with
+maximization.
+
+1278
+01:00:45,430 --> 01:00:46,390
+You remember the following.
+
+1279
+01:00:46,390 --> 01:00:50,944
+That if I had a function F of 2 variables
+here if this was,
+
+1280
+01:00:50,944 --> 01:00:53,716
+if this function is convex in X for
+
+1281
+01:00:53,716 --> 01:01:02,345
+each Y Then, the following, is, this is
+just y in any set, right?
+
+1282
+01:01:02,345 --> 01:01:06,480
+This function is convex in x, right?
+
+1283
+01:01:06,480 --> 01:01:09,952
+So, there's absolutely no requirement that
+the function be convex in x and
+
+1284
+01:01:09,952 --> 01:01:13,900
+y and, in fact, y here doesn't even have
+to be a vector.
+
+1285
+01:01:13,900 --> 01:01:18,560
+It could be some any other kind of, it
+could be some weird combinatorial thing.
+
+1286
+01:01:18,560 --> 01:01:21,070
+It could be over parse trees or, it
+doesn't really matter.
+
+1287
+01:01:21,070 --> 01:01:23,000
+It could be Anything.
+
+1288
+01:01:23,000 --> 01:01:23,530
+Right?
+So
+
+1289
+01:01:23,530 --> 01:01:28,280
+the sepremum of an arbitrary family of
+convex functions is convex.
+
+1290
+01:01:28,280 --> 01:01:30,698
+What's interesting is, infemum, the
+minimum,
+
+1291
+01:01:30,698 --> 01:01:33,922
+of a convex function, sometimes yields a
+convex function, but
+
+1292
+01:01:33,922 --> 01:01:38,720
+it's in very specific cases, and the
+conditions are stronger.
+
+1293
+01:01:38,720 --> 01:01:39,770
+It's this.
+
+1294
+01:01:39,770 --> 01:01:43,340
+If you have a function that is, it has to
+be jointly convex and X M Y.
+
+1295
+01:01:43,340 --> 01:01:45,180
+So it's convex and both X M Y.
+
+1296
+01:01:45,180 --> 01:01:48,546
+And if you a convex set then the infimum
+is
+
+1297
+01:01:48,546 --> 01:01:54,250
+sometimes called the partial minimization
+of F.
+
+1298
+01:01:54,250 --> 01:01:56,400
+Right?
+Cause I have a function F of several,
+
+1299
+01:01:56,400 --> 01:01:59,040
+well 2 blocks of variables X M Y.
+
+1300
+01:01:59,040 --> 01:02:02,880
+And I'm going to minimize it over one
+block.
+
+1301
+01:02:02,880 --> 01:02:05,880
+And that will leave a function of the
+remaining variable.
+
+1302
+01:02:05,880 --> 01:02:07,120
+Has everybody got this?
+
+1303
+01:02:07,120 --> 01:02:09,980
+That's called partial minimization, is
+another name for this operation.
+
+1304
+01:02:09,980 --> 01:02:11,766
+Partial minimization.
+
+1305
+01:02:11,766 --> 01:02:16,120
+And partial minimization, here preserves
+convexing.
+
+1306
+01:02:16,120 --> 01:02:19,740
+So if you do partial minimization, you get
+a convex one.
+
+1307
+01:02:19,740 --> 01:02:21,571
+This is actually extremely important.
+
+1308
+01:02:21,571 --> 01:02:24,030
+This is kind of the basis of a lot of
+things like.
+
+1309
+01:02:24,030 --> 01:02:25,840
+Dynamic programming or something like
+that.
+
+1310
+01:02:25,840 --> 01:02:28,528
+It says that you can minimize over some
+things, and
+
+1311
+01:02:28,528 --> 01:02:31,920
+look at this as a function of what's left.
+
+1312
+01:02:31,920 --> 01:02:33,420
+And then you can minimize over some more
+things.
+
+1313
+01:02:33,420 --> 01:02:34,590
+And some more.
+And some more.And some more.
+
+1314
+01:02:34,590 --> 01:02:37,800
+And that would give you dynamic
+programming in the right circumstances.
+
+1315
+01:02:37,800 --> 01:02:39,920
+Right?
+So that, that's the idea.
+
+1316
+01:02:39,920 --> 01:02:42,890
+This is actually, this is actually quite
+important.
+
+1317
+01:02:42,890 --> 01:02:45,280
+OK.
+So this is called partial minimization.
+
+1318
+01:02:45,280 --> 01:02:47,645
+And it, it comes up in a whole bunch of
+things.
+
+1319
+01:02:47,645 --> 01:02:49,830
+You'll see some of it later.
+
+1320
+01:02:49,830 --> 01:02:50,650
+Surely.
+
+1321
+01:02:50,650 --> 01:02:53,260
+Oh, by the way in terms of epigraphs this
+is embarrass-, look here,
+
+1322
+01:02:53,260 --> 01:02:55,150
+it looks very complicated.
+
+1323
+01:02:55,150 --> 01:02:58,495
+Like, oh my god you're minimizing this
+thing and you know it's complicated.
+
+1324
+01:02:58,495 --> 01:03:01,980
+It turns out in terms of epigraphs, this
+is nothing but projections.
+
+1325
+01:03:01,980 --> 01:03:05,620
+Projections of an epigraph onto, the
+first, like you know, whatever it is,
+
+1326
+01:03:05,620 --> 01:03:07,302
+end components.
+
+1327
+01:03:07,302 --> 01:03:08,764
+It's nothing more.
+
+1328
+01:03:08,764 --> 01:03:10,594
+You can check that, right?
+
+1329
+01:03:10,594 --> 01:03:12,590
+Okay, so here's a, here's a very famous
+example.
+
+1330
+01:03:12,590 --> 01:03:14,150
+Let's take a quadratic function.
+
+1331
+01:03:14,150 --> 01:03:15,290
+So that, that's it.
+
+1332
+01:03:15,290 --> 01:03:19,060
+But we're going to block the variable into
+2, the argument to 2, 2 parts.
+
+1333
+01:03:19,060 --> 01:03:19,890
+X and Y, right?
+
+1334
+01:03:19,890 --> 01:03:22,380
+So, here's a general.
+
+1335
+01:03:22,380 --> 01:03:27,105
+That's, that's a general convex quadratic
+function of 2 sets of variables,
+
+1336
+01:03:27,105 --> 01:03:30,070
+quadratic form x and y.
+
+1337
+01:03:30,070 --> 01:03:31,990
+And what it is, and it is jointly convex
+in x and y,
+
+1338
+01:03:31,990 --> 01:03:36,190
+that means its block matrix is positive
+semidefinite.
+
+1339
+01:03:36,190 --> 01:03:38,940
+For simplicity we'll assume c is positive
+definite.
+
+1340
+01:03:38,940 --> 01:03:41,330
+You, you actually don't need to, but
+that's okay.
+
+1341
+01:03:41,330 --> 01:03:44,130
+And now, if we minimize over y, you can do
+that [UNKNOWN] you just set
+
+1342
+01:03:44,130 --> 01:03:47,330
+the gradient equal to zero and various
+other things, and what you'll get is a,
+
+1343
+01:03:47,330 --> 01:03:51,440
+you, the result is actually a quadratic
+form.
+
+1344
+01:03:51,440 --> 01:03:53,350
+Over x.
+
+1345
+01:03:53,350 --> 01:03:57,974
+And the matrix there is this thing, it's a
+minus b c inverse b transpose.
+
+1346
+01:03:57,974 --> 01:04:01,234
+You probabily have seen this matrix
+before.
+
+1347
+01:04:01,234 --> 01:04:06,226
+If not, get used to it because you will
+see it in pretty much any class you take,
+
+1348
+01:04:06,226 --> 01:04:08,960
+any good class.
+
+1349
+01:04:08,960 --> 01:04:11,060
+If you don't see it then I'm suspicious.
+
+1350
+01:04:11,060 --> 01:04:12,060
+Of, of the class.
+
+1351
+01:04:12,060 --> 01:04:15,936
+Right so, for example This is the matrix
+that comes up, in example for
+
+1352
+01:04:15,936 --> 01:04:20,960
+circuits analysis, and mechanical,
+mechanical engineering.
+
+1353
+01:04:20,960 --> 01:04:25,570
+Everything is this, right, analysis of
+structures in, probability.
+
+1354
+01:04:25,570 --> 01:04:26,500
+This is conditioning.
+
+1355
+01:04:26,500 --> 01:04:30,010
+This is the covariant, this is the
+conditional covariance.
+
+1356
+01:04:30,010 --> 01:04:31,778
+This is, what, this is how you condition.
+
+1357
+01:04:31,778 --> 01:04:32,781
+Right?
+
+1358
+01:04:32,781 --> 01:04:36,265
+So and it's actually a nice thing to
+remember in your head as
+
+1359
+01:04:36,265 --> 01:04:37,940
+a big high level thing is this,
+
+1360
+01:04:37,940 --> 01:04:44,360
+is quadratic functions actually are
+preserved under partial minimization.
+
+1361
+01:04:44,360 --> 01:04:46,300
+That's actually extremely important,
+right?
+
+1362
+01:04:46,300 --> 01:04:47,785
+It says that if you, if you take a,
+
+1363
+01:04:47,785 --> 01:04:51,410
+a quadratic function, convex quadratic
+function.
+
+1364
+01:04:51,410 --> 01:04:53,200
+And you minimize over some variables.
+
+1365
+01:04:54,270 --> 01:04:55,470
+Then the result is a quadratic form,
+
+1366
+01:04:55,470 --> 01:04:57,350
+convex quadratic form in the remaining
+variables, and,
+
+1367
+01:04:57,350 --> 01:05:00,050
+in fact, specifically, it's the Schur
+complement.
+
+1368
+01:05:00,050 --> 01:05:01,668
+This matrix is called the Schur
+complement.
+
+1369
+01:05:01,668 --> 01:05:04,039
+So, okay.
+
+1370
+01:05:04,039 --> 01:05:06,275
+And we'll have a, we'll certainly have an
+exercise on that, and
+
+1371
+01:05:06,275 --> 01:05:08,984
+you're going to encounter the Schur
+complement, like, throughout the class,
+
+1372
+01:05:08,984 --> 01:05:13,468
+and, for that matter, throughout And every
+other class you take, I hope.
+
+1373
+01:05:13,468 --> 01:05:17,836
+Another not-obvious not-obvious operation
+that
+
+1374
+01:05:17,836 --> 01:05:22,890
+preserves convexity is perspective
+mapping.
+
+1375
+01:05:22,890 --> 01:05:25,770
+So perspective mapping is this, and you'll
+remember,
+
+1376
+01:05:25,770 --> 01:05:31,980
+you'll remember that perspective the
+projective mapping for convex sets, right?
+
+1377
+01:05:31,980 --> 01:05:34,576
+That was something that took [UNKNOWN], it
+took X and
+
+1378
+01:05:34,576 --> 01:05:37,730
+divided by the last component or
+something.
+
+1379
+01:05:37,730 --> 01:05:40,480
+And it basically, it's a, it's what it
+looks like when you see
+
+1380
+01:05:40,480 --> 01:05:45,260
+a three-dimensional object when you put
+that onto an image plane, right.
+
+1381
+01:05:45,260 --> 01:05:48,400
+So, this is the perspective of a function
+is this.
+
+1382
+01:05:48,400 --> 01:05:49,575
+You have a function from Rn to R.
+
+1383
+01:05:49,575 --> 01:05:55,206
+The perspective is a function on the graph
+space, so it actually takes two arguments.
+
+1384
+01:05:55,206 --> 01:05:58,877
+One in Rn and one in R.
+
+1385
+01:05:58,877 --> 01:05:59,774
+In fact r plus or
+
+1386
+01:05:59,774 --> 01:06:05,140
+actually r plus, plus so positive argument
+and its this tf of x over t.
+
+1387
+01:06:05,140 --> 01:06:10,036
+So that, that is the perspective of a, of
+a function, and it is the set the domain
+
+1388
+01:06:10,036 --> 01:06:17,455
+is the set of points where t is positive
+and x over t is in the domain of f.
+
+1389
+01:06:17,455 --> 01:06:19,825
+And it turns out this is jointly convex in
+x and t.
+
+1390
+01:06:19,825 --> 01:06:20,870
+Okay?
+
+1391
+01:06:20,870 --> 01:06:22,382
+So that's, that's, and by the way,
+
+1392
+01:06:22,382 --> 01:06:26,000
+very simple if you want to know what this
+is look like in terms of epic graphs, this
+
+1393
+01:06:26,000 --> 01:06:31,940
+is you have the projective transformation
+on the epic graph, and so that's.
+
+1394
+01:06:31,940 --> 01:06:33,650
+That's what it does, gives you this.
+
+1395
+01:06:33,650 --> 01:06:35,830
+So let's look at some examples.
+
+1396
+01:06:35,830 --> 01:06:37,011
+Oh, here's one.
+
+1397
+01:06:37,011 --> 01:06:38,564
+well, let's see.
+
+1398
+01:06:38,564 --> 01:06:40,840
+F of x equals x transpose x.
+
+1399
+01:06:40,840 --> 01:06:41,980
+That's the sum of the squares.
+
+1400
+01:06:41,980 --> 01:06:42,820
+That's convex.
+
+1401
+01:06:42,820 --> 01:06:45,830
+In fact, in some ways, that's your
+canonical smooth convex function, right?
+
+1402
+01:06:45,830 --> 01:06:46,640
+That graph is a bowl.
+
+1403
+01:06:46,640 --> 01:06:49,593
+That couldn't get simpler than that.
+
+1404
+01:06:49,593 --> 01:06:52,410
+So if you calculate the perspective of
+that, its this.
+
+1405
+01:06:52,410 --> 01:06:54,955
+You'd take, well, basically, you'd take.
+
+1406
+01:06:54,955 --> 01:06:59,630
+T, and then x over t transpose, x over t.
+
+1407
+01:07:01,110 --> 01:07:04,690
+And when all the smoke clears you get the
+sum of the squares divided by t.
+
+1408
+01:07:04,690 --> 01:07:06,430
+And that's convex.
+
+1409
+01:07:06,430 --> 01:07:08,380
+Right?
+So now you remember we showed x
+
+1410
+01:07:08,380 --> 01:07:10,490
+squared over y.
+
+1411
+01:07:10,490 --> 01:07:13,342
+Was convex when y is positive before, and
+its got various names like you
+
+1412
+01:07:13,342 --> 01:07:17,790
+know quadratic over linear I don't know
+there's lots of names for that function.
+
+1413
+01:07:17,790 --> 01:07:19,694
+But we did it by calculating a hessian and
+
+1414
+01:07:19,694 --> 01:07:23,335
+that's fine it doesn't kill you to
+calculate a hessian.
+
+1415
+01:07:23,335 --> 01:07:28,173
+But here it says that this file was
+instantly from the perspective,
+
+1416
+01:07:28,173 --> 01:07:31,740
+mapping right,.
+
+1417
+01:07:31,740 --> 01:07:32,890
+Here's one.
+
+1418
+01:07:32,890 --> 01:07:35,480
+The negative logarithm in convex.
+
+1419
+01:07:35,480 --> 01:07:38,910
+So if I calculate what its perspective is.
+
+1420
+01:07:38,910 --> 01:07:42,560
+It's simply t log x over t.
+
+1421
+01:07:42,560 --> 01:07:43,830
+And that is this thing.
+
+1422
+01:07:43,830 --> 01:07:45,810
+And it says that's the relative
+[INAUDIBLE].
+
+1423
+01:07:46,864 --> 01:07:50,786
+And it says that that is going to be
+convex, on.
+
+1424
+01:07:50,786 --> 01:07:54,700
+On our, on-on, jointy in t and x, right?
+
+1425
+01:07:54,700 --> 01:07:57,581
+So a lot of things will come out, it takes
+an innocent function where convexity is
+
+1426
+01:07:57,581 --> 01:08:00,032
+obvious or concavity like log, and you
+apply something like this and
+
+1427
+01:08:00,032 --> 01:08:04,020
+all of a sudden things like [UNKNOWN]
+diverergence comes out.
+
+1428
+01:08:04,020 --> 01:08:06,990
+Functions that look like it would be kind
+of a pain in the ass to prove are convex,
+
+1429
+01:08:06,990 --> 01:08:09,778
+and they just pop right out from this
+rule.
+
+1430
+01:08:09,778 --> 01:08:11,310
+Okay?
+
+1431
+01:08:11,310 --> 01:08:16,430
+So they also often have interesting
+meanings in that field.
+
+1432
+01:08:16,430 --> 01:08:20,777
+So if you're in a field and you work out
+the perspective of a function, right,
+
+1433
+01:08:20,777 --> 01:08:25,508
+it often has some interesting meaning in
+that field.
+
+1434
+01:08:25,508 --> 01:08:26,068
+So, okay.
+
+1435
+01:08:26,068 --> 01:08:29,717
+The conjugate.
+
+1436
+01:08:29,717 --> 01:08:32,777
+So this is also something that's going to
+come up like crazy in chapter 5 and
+
+1437
+01:08:32,777 --> 01:08:35,480
+this may have come up in other classes
+you've seen especially if
+
+1438
+01:08:35,480 --> 01:08:40,122
+you took economics except it wasn't stated
+this clearly.
+
+1439
+01:08:40,122 --> 01:08:42,740
+Unless you took a graduate course.
+
+1440
+01:08:42,740 --> 01:08:44,753
+If you took an undergraduate course you
+saw this but they went on and on and
+
+1441
+01:08:44,753 --> 01:08:46,270
+it wasn't clear, but anyway.
+
+1442
+01:08:46,270 --> 01:08:48,125
+So the conjugate of a function is this,
+and
+
+1443
+01:08:48,125 --> 01:08:51,460
+again, all of this is sort of without
+context, so.
+
+1444
+01:08:51,460 --> 01:08:53,021
+Starting next week.
+
+1445
+01:08:53,021 --> 01:08:55,042
+Beginning of next week you'll start seeing
+you'll,
+
+1446
+01:08:55,042 --> 01:08:58,420
+you'll actually start seeing applications
+and stuff like that.
+
+1447
+01:08:58,420 --> 01:09:00,300
+But for now all of this is without
+context.
+
+1448
+01:09:00,300 --> 01:09:01,980
+So here's the conjugate.
+
+1449
+01:09:01,980 --> 01:09:05,730
+The conjugate, of a function is this: it's
+denoted f star here.
+
+1450
+01:09:06,990 --> 01:09:09,857
+And I mean that's kind of standard right,
+because there's a whole bunch of
+
+1451
+01:09:09,857 --> 01:09:13,940
+mathematical terms that you use and they
+kind of evoke the same thing.
+
+1452
+01:09:13,940 --> 01:09:16,489
+Dual Conjugate.
+
+1453
+01:09:16,489 --> 01:09:20,228
+Can you think of many others?
+
+1454
+01:09:20,228 --> 01:09:21,920
+Ii kind of think.
+
+1455
+01:09:21,920 --> 01:09:24,170
+What they all suggest.
+
+1456
+01:09:24,170 --> 01:09:25,540
+Things that if you do them.
+
+1457
+01:09:25,540 --> 01:09:27,546
+twice you get back to where you started or
+
+1458
+01:09:27,546 --> 01:09:30,840
+something like that, if certain things
+happen.
+
+1459
+01:09:30,840 --> 01:09:31,350
+it's one of them.
+
+1460
+01:09:31,350 --> 01:09:36,470
+Transposed would be another word like
+that.
+
+1461
+01:09:36,470 --> 01:09:38,288
+Here it is.
+It's the supremum, or
+
+1462
+01:09:38,288 --> 01:09:41,850
+the maximum, of y transpose x minus f of
+x.
+
+1463
+01:09:41,850 --> 01:09:45,140
+Right, so that's, that's what it is.
+
+1464
+01:09:45,140 --> 01:09:47,182
+Right?
+So and, you know, the, there are a lot,
+
+1465
+01:09:47,182 --> 01:09:52,280
+you can give lots of interpretations to
+this beautiful interpretations, in fact.
+
+1466
+01:09:52,280 --> 01:09:52,850
+Right?
+
+1467
+01:09:52,850 --> 01:09:56,650
+Like let's see, you could do something
+like this.
+
+1468
+01:09:56,650 --> 01:09:57,550
+Your minimum,
+
+1469
+01:09:57,550 --> 01:10:01,975
+this could be something Like this f of x
+is cost if x is a set of vectors its
+
+1470
+01:10:01,975 --> 01:10:09,097
+a vector that tells you how much of the
+say the commodities that you own.
+
+1471
+01:10:09,097 --> 01:10:11,580
+Right f of x tells you your cost.
+
+1472
+01:10:11,580 --> 01:10:15,462
+I guess economists make it they look at
+minus f of x that's your utility.
+
+1473
+01:10:15,462 --> 01:10:16,424
+Right.
+
+1474
+01:10:16,424 --> 01:10:18,310
+So, we look at f of x.
+
+1475
+01:10:18,310 --> 01:10:19,900
+F of x is your cost.
+
+1476
+01:10:19,900 --> 01:10:23,020
+And that's, that's how much it irritates
+you to own that amount.
+
+1477
+01:10:23,020 --> 01:10:25,420
+I mean, if it's negative, I suppose that
+means you're happy or something like that.
+
+1478
+01:10:25,420 --> 01:10:27,530
+But anyway, so that's f of x.
+
+1479
+01:10:27,530 --> 01:10:30,780
+Then y here has the interpretation of
+prices.
+
+1480
+01:10:30,780 --> 01:10:33,800
+So y is a price vector.
+
+1481
+01:10:33,800 --> 01:10:35,590
+And then what you're seeing is the
+following.
+
+1482
+01:10:35,590 --> 01:10:37,534
+It says, if the prices were y,
+
+1483
+01:10:37,534 --> 01:10:43,410
+how much would you, of each of these
+things would you?
+
+1484
+01:10:43,410 --> 01:10:44,860
+How much would you purchase?
+
+1485
+01:10:44,860 --> 01:10:46,588
+And the answer is, you would take your f
+of x,
+
+1486
+01:10:46,588 --> 01:10:49,468
+that's how irritated you are, and maybe I
+got the sign wrong slightly, or
+
+1487
+01:10:49,468 --> 01:10:53,590
+something, here maybe minus y is the price
+vector.
+
+1488
+01:10:53,590 --> 01:10:57,455
+But I would take f of x, and to that I
+would add how much I have to pay for it.
+
+1489
+01:10:57,455 --> 01:10:59,920
+And then I would, I'd minimize that.
+
+1490
+01:10:59,920 --> 01:11:04,276
+And that would give me the, the least, the
+amount that I should buy so that the sum
+
+1491
+01:11:04,276 --> 01:11:10,451
+of how irritated I am plus how much I had
+to pay for the good is minimized.
+
+1492
+01:11:10,451 --> 01:11:11,112
+Right?
+
+1493
+01:11:11,112 --> 01:11:13,820
+And so that's, that's where things like
+this come up.
+
+1494
+01:11:13,820 --> 01:11:15,480
+And it comes up in lots of other fields
+too.
+
+1495
+01:11:15,480 --> 01:11:18,510
+And we'll see things like this so.
+
+1496
+01:11:18,510 --> 01:11:19,093
+OK.
+
+1497
+01:11:19,093 --> 01:11:21,904
+So the picture is something like this.
+
+1498
+01:11:21,904 --> 01:11:24,760
+Here's your function, and then what it
+says is for,
+
+1499
+01:11:24,760 --> 01:11:30,650
+to evaluate the conjugate what you do is
+you, you take a slope like y.
+
+1500
+01:11:30,650 --> 01:11:33,740
+So we're going to evaluate it at y and we
+take a slope like that, x y.
+
+1501
+01:11:33,740 --> 01:11:35,374
+And then it say we take,
+
+1502
+01:11:35,374 --> 01:11:41,960
+we're going to maximize the difference
+between this thing and f of x.
+
+1503
+01:11:41,960 --> 01:11:42,560
+Right?
+And so
+
+1504
+01:11:42,560 --> 01:11:44,648
+that means you move This way, until you
+just touch here.
+
+1505
+01:11:44,648 --> 01:11:45,240
+And then in fact if you simply move over
+here,
+
+1506
+01:11:45,240 --> 01:11:46,517
+that gives you the height of this is the
+negative conjugate here.
+
+1507
+01:11:46,517 --> 01:11:52,237
+So, so in fact, in this case, for this
+example we could
+
+1508
+01:11:52,237 --> 01:12:01,070
+even do things, like I could ask you
+questions about.
+
+1509
+01:12:01,070 --> 01:12:02,640
+What happens if I increase y?
+
+1510
+01:12:02,640 --> 01:12:05,107
+So for example, let me do this.
+
+1511
+01:12:05,107 --> 01:12:11,690
+For this example here if I were to, y is
+maybe about 1, here.
+
+1512
+01:12:11,690 --> 01:12:14,440
+And I would like to know, if I make y 2,
+what happens to the con,
+
+1513
+01:12:14,440 --> 01:12:19,150
+what, what is the con, what does the
+negative conjugate function do?
+
+1514
+01:12:19,150 --> 01:12:20,432
+Just visually?
+
+1515
+01:12:20,432 --> 01:12:21,659
+>> What happens?
+
+1516
+01:12:21,659 --> 01:12:22,777
+>> It goes down.
+
+1517
+01:12:22,777 --> 01:12:24,390
+>> It goes down, yup.
+
+1518
+01:12:24,390 --> 01:12:25,390
+The negative conjugate goes down.
+
+1519
+01:12:25,390 --> 01:12:27,124
+So what happens is the slope is now two
+and
+
+1520
+01:12:27,124 --> 01:12:29,840
+your point of tangency might be like here.
+
+1521
+01:12:29,840 --> 01:12:31,870
+And it might go down right down to there.
+
+1522
+01:12:31,870 --> 01:12:32,730
+Right?
+
+1523
+01:12:32,730 --> 01:12:34,668
+And then that would be, so the negative
+conjugate went down or
+
+1524
+01:12:34,668 --> 01:12:35,970
+the conjugate went up.
+
+1525
+01:12:35,970 --> 01:12:37,225
+The idea is you can visualize it.
+
+1526
+01:12:37,225 --> 01:12:40,080
+Here's what's kind of cool.
+
+1527
+01:12:40,080 --> 01:12:45,092
+It turns out that the conjugate of any
+function is convex period, any.
+
+1528
+01:12:45,092 --> 01:12:49,280
+Looks like a deep mathematical fact or
+something like that.
+
+1529
+01:12:49,280 --> 01:12:51,550
+It's extremely easy to show.
+
+1530
+01:12:51,550 --> 01:12:53,200
+Let's show it.
+
+1531
+01:12:53,200 --> 01:12:58,080
+What kind of function of y.
+
+1532
+01:12:58,080 --> 01:12:58,860
+Is that expression.
+
+1533
+01:12:58,860 --> 01:12:59,380
+What is it?
+
+1534
+01:12:59,380 --> 01:13:01,068
+It's affine.
+
+1535
+01:13:01,068 --> 01:13:02,300
+Right.
+
+1536
+01:13:02,300 --> 01:13:05,534
+I heard someone say linear, that's cool,
+because we're among friends here, but
+
+1537
+01:13:05,534 --> 01:13:06,791
+it's affine.
+
+1538
+01:13:06,791 --> 01:13:10,065
+Okay?
+No, I mean, you know what I mean, right?
+
+1539
+01:13:10,065 --> 01:13:11,553
+So, it's affine.
+
+1540
+01:13:11,553 --> 01:13:13,461
+okay, so affine, an affine function is,
+and
+
+1541
+01:13:13,461 --> 01:13:17,105
+this is critical, because we're going to
+promote it to something.
+
+1542
+01:13:17,105 --> 01:13:19,800
+Convex.
+
+1543
+01:13:19,800 --> 01:13:21,880
+So, I can also promote it to concave, by
+the way.
+
+1544
+01:13:21,880 --> 01:13:24,010
+That's what it mean to be [INAUDIBLE],
+'cause you're both.
+
+1545
+01:13:24,010 --> 01:13:25,420
+I'll promote it to convex.
+
+1546
+01:13:25,420 --> 01:13:31,290
+This says, take the supremum parameterized
+by x of a family of convex functions.
+
+1547
+01:13:31,290 --> 01:13:34,710
+In fact, they're [INAUDIBLE].
+Well, the supremum of any family.
+
+1548
+01:13:34,710 --> 01:13:38,818
+Of convex functions as convex, so this is
+convex, period.
+
+1549
+01:13:38,818 --> 01:13:39,904
+Right?
+
+1550
+01:13:39,904 --> 01:13:43,785
+So, okay, so that, that's the the
+conjugate.
+
+1551
+01:13:43,785 --> 01:13:44,980
+Okay.
+
+1552
+01:13:44,980 --> 01:13:46,880
+Some examples, you can work these out.
+
+1553
+01:13:46,880 --> 01:13:49,742
+I mean, it's a bit silly right now, but I
+mean, you should look, go,
+
+1554
+01:13:49,742 --> 01:13:52,710
+go through this once, but then later
+we'll, this will also Be just as
+
+1555
+01:13:52,710 --> 01:13:56,367
+completely central part of the course, so
+if you take the negative logarhtm you
+
+1556
+01:13:56,367 --> 01:14:02,960
+would have to for example calculate what
+this and you'd work out what that was.
+
+1557
+01:14:02,960 --> 01:14:04,360
+I mean it turns out if y is bigger or
+
+1558
+01:14:04,360 --> 01:14:08,510
+equal to zero the answer is when you take
+the supremum its plus infinity.
+
+1559
+01:14:08,510 --> 01:14:12,320
+If y is negative though you can work out
+what this is.
+
+1560
+01:14:12,320 --> 01:14:14,942
+You can work out what the optimal x what
+the optimal x is and so on and so
+
+1561
+01:14:14,942 --> 01:14:17,240
+forth you get that expression.
+
+1562
+01:14:17,240 --> 01:14:18,504
+Here's an interesting one.
+
+1563
+01:14:18,504 --> 01:14:21,980
+Take convex quadratic.
+
+1564
+01:14:21,980 --> 01:14:24,940
+So, that's one half ex transpose q x.
+
+1565
+01:14:24,940 --> 01:14:27,250
+And then you calculate the supreme of
+this.
+
+1566
+01:14:27,250 --> 01:14:30,030
+Well, this is easy to do, you just set the
+gradient equal to zero.
+
+1567
+01:14:30,030 --> 01:14:32,900
+Because that's, everything's got, got the
+right curvature.
+
+1568
+01:14:32,900 --> 01:14:36,620
+And it turns out The answer is this.
+
+1569
+01:14:36,620 --> 01:14:40,156
+So the conjugate of a quadratic form is
+the quadratic form with
+
+1570
+01:14:40,156 --> 01:14:42,740
+the inverse matrix, right.
+
+1571
+01:14:42,740 --> 01:14:45,885
+So there's, and we'll see there's lots of
+intersting things going on here.
+
+1572
+01:14:45,885 --> 01:14:51,045
+So now what we're going to do is we're
+going to talk about two three, sorry,
+
+1573
+01:14:51,045 --> 01:14:55,050
+three extensions of convexity.
+
+1574
+01:14:55,050 --> 01:14:57,450
+Right, so there's actually, like, tons.
+
+1575
+01:14:57,450 --> 01:15:00,561
+Like, 20 or 30 different extensions, and
+they have all sorts of names like
+
+1576
+01:15:00,561 --> 01:15:05,398
+quasi-convex, pseudo-convex, you know,
+quasipseudo-convex, generalized convex.
+
+1577
+01:15:05,398 --> 01:15:08,640
+Generalized, quasi, pseudoconvex and so
+on.
+
+1578
+01:15:08,640 --> 01:15:14,200
+And, and often in these books somewhere
+around page 500 there's usually a diagram.
+
+1579
+01:15:14,200 --> 01:15:15,910
+So, now we get a very clear picture.
+
+1580
+01:15:15,910 --> 01:15:17,386
+And there's going to be like 20 different
+things and
+
+1581
+01:15:17,386 --> 01:15:19,114
+you'll say now we see that a pseudoconvex,
+Schur-convex,
+
+1582
+01:15:19,114 --> 01:15:21,699
+quasiconvex function is also such-and-such
+convex.
+
+1583
+01:15:21,699 --> 01:15:25,079
+Anyway, so, alright, so
+
+1584
+01:15:25,079 --> 01:15:32,130
+Some of these extensions are useful.
+
+1585
+01:15:32,130 --> 01:15:34,503
+others, maybe not so much.
+
+1586
+01:15:34,503 --> 01:15:36,790
+so, done a bunch of triage here.
+
+1587
+01:15:36,790 --> 01:15:41,510
+And come down to a handful that are
+actually useful, like three, okay?
+
+1588
+01:15:41,510 --> 01:15:43,160
+And they're, they're fairly natural.
+
+1589
+01:15:43,160 --> 01:15:46,030
+But we'll, these are things that are
+going to come up all the time.
+
+1590
+01:15:46,030 --> 01:15:47,872
+So, quasi convex is one.
+
+1591
+01:15:47,872 --> 01:15:50,530
+And a function is quasi convex.
+
+1592
+01:15:50,530 --> 01:15:53,720
+what that means is this it says that the
+sublevel sets are convex that,
+
+1593
+01:15:53,720 --> 01:15:55,630
+that's all it means.
+
+1594
+01:15:55,630 --> 01:15:58,194
+Oh another name for this is uni-modal.
+
+1595
+01:15:58,194 --> 01:16:00,074
+So in probability it would be referred to
+as unimodal and
+
+1596
+01:16:00,074 --> 01:16:01,692
+maybe some other fields too.
+
+1597
+01:16:01,692 --> 01:16:07,210
+Right so and, and for example for a scalar
+function it just means the following.
+
+1598
+01:16:07,210 --> 01:16:11,928
+It says that if I slice the function at
+any level and I look at the sublevel sets.
+
+1599
+01:16:11,928 --> 01:16:14,210
+Well, in R, I get an interval.
+
+1600
+01:16:14,210 --> 01:16:15,130
+But it could be half.
+
+1601
+01:16:15,130 --> 01:16:17,590
+You know?
+Like, for example, when I slice at beta.
+
+1602
+01:16:17,590 --> 01:16:20,130
+I should get, I get a half, infinite
+interval.
+
+1603
+01:16:20,130 --> 01:16:21,282
+I mean I get a, well, yeah.
+
+1604
+01:16:21,282 --> 01:16:23,812
+F, an infinite interval right?
+
+1605
+01:16:23,812 --> 01:16:25,498
+Everybody got this?
+
+1606
+01:16:25,498 --> 01:16:29,710
+And it's not hard to figure out what the
+condition for quasi convexity is in R.
+
+1607
+01:16:29,710 --> 01:16:34,820
+It's basically that it is monotone
+decreasing up to some point.
+
+1608
+01:16:34,820 --> 01:16:36,770
+And then, well, monotone non-increasing,
+and
+
+1609
+01:16:36,770 --> 01:16:39,550
+then monotone non-decreasing to the right
+of it.
+
+1610
+01:16:39,550 --> 01:16:40,180
+That's it.
+
+1611
+01:16:40,180 --> 01:16:43,660
+And that, by the way that justifies this
+ideal of unimodal, right?
+
+1612
+01:16:43,660 --> 01:16:45,450
+That it can't have 2 bumps, right?
+
+1613
+01:16:45,450 --> 01:16:46,613
+That's what it can't have.
+
+1614
+01:16:46,613 --> 01:16:47,151
+Okay.
+So,
+
+1615
+01:16:47,151 --> 01:16:51,645
+that's a quasi-convex function,
+quasi-concave is the negative.
+
+1616
+01:16:51,645 --> 01:16:53,515
+And quasi-linear is both.
+
+1617
+01:16:53,515 --> 01:16:54,690
+Okay?
+
+1618
+01:16:54,690 --> 01:16:57,990
+So let's look at some examples.
+
+1619
+01:16:57,990 --> 01:17:00,380
+Well the square root of the absolute value
+of x.
+
+1620
+01:17:00,380 --> 01:17:02,670
+That's a function that looks like this.
+
+1621
+01:17:02,670 --> 01:17:03,270
+Right?
+
+1622
+01:17:03,270 --> 01:17:06,550
+And that is definitely not convex, and
+it's definitely not concave.
+
+1623
+01:17:06,550 --> 01:17:08,022
+But it's quasiconvex.
+
+1624
+01:17:08,022 --> 01:17:09,696
+Right?
+Because sublevel sets if
+
+1625
+01:17:09,696 --> 01:17:12,468
+you draw a level here is just an interval.
+
+1626
+01:17:12,468 --> 01:17:14,728
+So you're okay.
+
+1627
+01:17:14,728 --> 01:17:17,638
+Here's one, the ceiling.
+
+1628
+01:17:17,638 --> 01:17:20,930
+So that's, that's the integer part, right?
+
+1629
+01:17:20,930 --> 01:17:24,950
+Or the, into the next, the integer that's,
+that's bigger than the given function.
+
+1630
+01:17:24,950 --> 01:17:25,940
+That, that's pretty weird.
+
+1631
+01:17:25,940 --> 01:17:28,470
+Because that thing is integer valued,
+right?
+
+1632
+01:17:28,470 --> 01:17:31,810
+And you don't have very many integer
+valued convex functions.
+
+1633
+01:17:31,810 --> 01:17:34,440
+We have a couple, but they're really
+silly.
+
+1634
+01:17:34,440 --> 01:17:38,240
+Right, mostly they're constant, right, and
+not interesting, right.
+
+1635
+01:17:38,240 --> 01:17:43,700
+But that says you can be, the ceiling of a
+function is, is quasilinear.
+
+1636
+01:17:43,700 --> 01:17:45,808
+You'll see some more interesting examples
+in certainly in the book and
+
+1637
+01:17:45,808 --> 01:17:47,937
+in homeworks and in things like that.
+
+1638
+01:17:47,937 --> 01:17:50,700
+Log x is quasilinear.
+
+1639
+01:17:50,700 --> 01:17:54,786
+So it's both, a monotone function is both
+quasiconcave and quasiconvex.
+
+1640
+01:17:54,786 --> 01:17:58,390
+Here's one, x1 x2.
+
+1641
+01:17:58,390 --> 01:17:59,710
+That's a product.
+
+1642
+01:17:59,710 --> 01:18:02,369
+That's definitely not convex.
+
+1643
+01:18:02,369 --> 01:18:03,330
+It's not concave.
+
+1644
+01:18:03,330 --> 01:18:05,040
+In fact, it's hessian, right?
+
+1645
+01:18:05,040 --> 01:18:07,640
+That's a quadratic form, right.
+
+1646
+01:18:07,640 --> 01:18:10,270
+And the hessian, the hessian is just this
+right?
+
+1647
+01:18:10,270 --> 01:18:10,895
+It's like that.
+
+1648
+01:18:10,895 --> 01:18:15,550
+And matrices like that, clearly, it
+clearly has split eigen values.
+
+1649
+01:18:15,550 --> 01:18:16,568
+Right?
+It's got a positive one and
+
+1650
+01:18:16,568 --> 01:18:17,300
+a negative one.
+
+1651
+01:18:17,300 --> 01:18:20,670
+And that tells you, kind of, like where if
+you're looking at a function closely.
+
+1652
+01:18:20,670 --> 01:18:21,460
+Well globally.
+
+1653
+01:18:21,460 --> 01:18:23,230
+Cause it's actually a quadratic form.
+
+1654
+01:18:23,230 --> 01:18:25,423
+It says that in one direction, it goes
+like that, and
+
+1655
+01:18:25,423 --> 01:18:27,800
+in another direction, it curves up.
+
+1656
+01:18:27,800 --> 01:18:28,535
+It's a saddle point.
+
+1657
+01:18:28,535 --> 01:18:29,830
+Everywhere.
+
+1658
+01:18:29,830 --> 01:18:30,690
+Right.
+That's the curvature.
+
+1659
+01:18:30,690 --> 01:18:34,860
+So that thing is for sure not convex, not
+concave.
+
+1660
+01:18:34,860 --> 01:18:37,510
+But it is quasi-concave.
+
+1661
+01:18:37,510 --> 01:18:42,526
+And to test that, you'd say what is the --
+what are the points that look like this,
+
+1662
+01:18:42,526 --> 01:18:46,420
+right, x1, x2 is bigger Than t.
+
+1663
+01:18:46,420 --> 01:18:49,024
+That's the hypo yeah this is not the
+hypograph,
+
+1664
+01:18:49,024 --> 01:18:53,200
+sorry this is the super-level set, not the
+sub-level set.
+
+1665
+01:18:53,200 --> 01:18:55,930
+Oh, and of course we have to have x i
+positive.
+
+1666
+01:18:55,930 --> 01:18:56,640
+Right?
+
+1667
+01:18:56,640 --> 01:18:58,250
+That set looks like this.
+
+1668
+01:18:58,250 --> 01:19:00,250
+That's all these things.
+
+1669
+01:19:00,250 --> 01:19:02,090
+That's all this stuff over here.
+
+1670
+01:19:02,090 --> 01:19:06,705
+Alright, and for any t that's going to be
+convex.
+
+1671
+01:19:06,705 --> 01:19:07,720
+Okay?
+
+1672
+01:19:07,720 --> 01:19:09,091
+So that's it.
+
+1673
+01:19:09,091 --> 01:19:13,634
+There's a lot of other ones, a very famous
+one is linear-fractional, so
+
+1674
+01:19:13,634 --> 01:19:17,230
+a ratio of two affine functions.
+
+1675
+01:19:17,230 --> 01:19:22,330
+Notice it's called linear-fractional, but
+that's already ingrained in the in, in, in
+
+1676
+01:19:22,330 --> 01:19:29,130
+standard mathematical speech, so, anyway,
+linear-fractional functions Are quasi.
+
+1677
+01:19:29,130 --> 01:19:31,980
+They are going to be actually quasilinear.
+
+1678
+01:19:31,980 --> 01:19:32,936
+Right?
+Because if
+
+1679
+01:19:32,936 --> 01:19:38,660
+you ask what are the points where f is
+bigger than sum value t.
+
+1680
+01:19:38,660 --> 01:19:40,730
+Right?
+Or less than sum value t.
+
+1681
+01:19:40,730 --> 01:19:43,030
+All you do is you take the denominator,
+put it on the other side.
+
+1682
+01:19:43,030 --> 01:19:44,280
+And you get a linear inequality.
+
+1683
+01:19:44,280 --> 01:19:45,370
+So you get a half space.
+
+1684
+01:19:45,370 --> 01:19:46,155
+Everybody got that?
+
+1685
+01:19:46,155 --> 01:19:51,488
+So I just said that, but that's, you'd,
+you'd want to check on that.
+
+1686
+01:19:51,488 --> 01:19:52,939
+Okay.
+
+1687
+01:19:52,939 --> 01:19:55,530
+here, let's look at one that's real.
+
+1688
+01:19:55,530 --> 01:19:57,640
+So is internal rate of return.
+
+1689
+01:19:57,640 --> 01:20:02,164
+So here, a vector x represents a cash
+flow.
+
+1690
+01:20:02,164 --> 01:20:08,565
+And it's, the sign is it's if, if it's a,
+if it's cash coming in, it's positive.
+
+1691
+01:20:08,565 --> 01:20:09,200
+Okay?
+
+1692
+01:20:09,200 --> 01:20:10,890
+So that's, it's a cash flow, right?
+
+1693
+01:20:10,890 --> 01:20:14,184
+So, and then lots of things would look
+like you could write out all sorts of
+
+1694
+01:20:14,184 --> 01:20:16,398
+financial instruments.
+
+1695
+01:20:16,398 --> 01:20:18,830
+As non-, I guess they're non contingent
+[INAUDIBLE].
+
+1696
+01:20:18,830 --> 01:20:21,370
+So you could write them out as a cash flow
+vector, right?
+
+1697
+01:20:21,370 --> 01:20:21,910
+Right?
+
+1698
+01:20:21,910 --> 01:20:26,210
+Like, if I, if I lend something to someone
+else.
+
+1699
+01:20:26,210 --> 01:20:29,080
+Then what happens is my x zero is
+negative.
+
+1700
+01:20:29,080 --> 01:20:30,520
+And then all my X1s, X1, X2,
+
+1701
+01:20:30,520 --> 01:20:34,720
+up to Xn, would be principal plus interest
+payment, right.
+
+1702
+01:20:34,720 --> 01:20:38,117
+An interest only thing would look like I
+have X0 if I,
+
+1703
+01:20:38,117 --> 01:20:42,410
+if I borrow interest only, X0 is positive.
+
+1704
+01:20:42,410 --> 01:20:44,345
+I then have,.
+
+1705
+01:20:44,345 --> 01:20:44,852
+You know?
+
+1706
+01:20:44,852 --> 01:20:45,856
+Negative things.
+
+1707
+01:20:45,856 --> 01:20:47,920
+'Cuz I'm, I'm paying the interest.
+
+1708
+01:20:47,920 --> 01:20:52,060
+And then on the last step, the last one, I
+would pay off the principal, right?
+
+1709
+01:20:52,060 --> 01:20:53,170
+So something like that, right?
+
+1710
+01:20:53,170 --> 01:20:55,280
+And you can do all of these things, right?
+
+1711
+01:20:55,280 --> 01:20:56,350
+An amortized loan.
+
+1712
+01:20:56,350 --> 01:20:57,740
+All these kind of things, right?
+
+1713
+01:20:57,740 --> 01:20:58,240
+Okay.
+
+1714
+01:20:59,250 --> 01:21:01,481
+Set a cash flow, it's a vector.
+
+1715
+01:21:01,481 --> 01:21:04,300
+So we're going to assume x zero is
+negative.
+
+1716
+01:21:04,300 --> 01:21:05,070
+That means.
+
+1717
+01:21:05,070 --> 01:21:06,500
+We're going to make an investment.
+
+1718
+01:21:06,500 --> 01:21:10,650
+That's, that's, that's cash weak, so on
+the zero thing, we're going to invest.
+
+1719
+01:21:10,650 --> 01:21:11,980
+And you can turn it around too, it doesn't
+matter.
+
+1720
+01:21:11,980 --> 01:21:13,100
+But we're going to invest.
+
+1721
+01:21:13,100 --> 01:21:14,035
+In amount x zero.
+
+1722
+01:21:14,035 --> 01:21:16,750
+And, you should interpret x one, x two, x
+three.
+
+1723
+01:21:16,750 --> 01:21:18,150
+Those are payments to us.
+
+1724
+01:21:18,150 --> 01:21:19,230
+I mean, if they're positive.
+
+1725
+01:21:19,230 --> 01:21:20,350
+We hope they are.
+
+1726
+01:21:20,350 --> 01:21:21,450
+Right.
+By the way, they might not be there.
+
+1727
+01:21:21,450 --> 01:21:22,730
+There might be further investments.
+
+1728
+01:21:22,730 --> 01:21:26,732
+But if they're positive, the idea is that,
+those are, we make an investment of x0 and
+
+1729
+01:21:26,732 --> 01:21:29,290
+then x1, x2, x3, up to xn.
+
+1730
+01:21:29,290 --> 01:21:31,882
+That's money that comes back in.
+
+1731
+01:21:31,882 --> 01:21:33,069
+Okay.
+
+1732
+01:21:33,069 --> 01:21:36,890
+Well if you have an interest rate r And
+you discount these cash flows.
+
+1733
+01:21:36,890 --> 01:21:38,402
+Then this'd be the present value,
+
+1734
+01:21:38,402 --> 01:21:41,835
+right, it's just the sum of 1 plus r to
+the minus i, xi.
+
+1735
+01:21:41,835 --> 01:21:45,195
+Right, because the i is indexing periods
+in the future and
+
+1736
+01:21:45,195 --> 01:21:49,032
+you discount each one by the interest
+rate.
+
+1737
+01:21:49,032 --> 01:21:52,272
+Okay, so, that's the so called present
+value and
+
+1738
+01:21:52,272 --> 01:21:58,520
+it's a function of the cash flow vector
+and the rate Interest rate.
+
+1739
+01:21:58,520 --> 01:22:01,050
+Now the internal rate of return, of a cash
+flow vector or
+
+1740
+01:22:01,050 --> 01:22:03,650
+investment sequence here, is this.
+
+1741
+01:22:03,650 --> 01:22:06,822
+It's the smallest, by the way it's not
+said this way because people are not
+
+1742
+01:22:06,822 --> 01:22:10,202
+clear about these things and it's usually
+wrong and all that kind of stuff, but
+
+1743
+01:22:10,202 --> 01:22:15,050
+in fact this is the correct, this is the
+correct way to say it.
+
+1744
+01:22:15,050 --> 01:22:19,472
+They say this: it's the interest rate
+which makes the present value 0.
+
+1745
+01:22:19,472 --> 01:22:20,744
+Okay?
+
+1746
+01:22:20,744 --> 01:22:23,610
+So that, that's, that's the idea, right?
+
+1747
+01:22:23,610 --> 01:22:24,820
+So, that's silly.
+
+1748
+01:22:24,820 --> 01:22:28,384
+Because if this thing, this thing here
+could actually be zero for
+
+1749
+01:22:28,384 --> 01:22:31,200
+multiple values of r.
+
+1750
+01:22:31,200 --> 01:22:33,930
+In which case, it's the smallest one,
+right?
+
+1751
+01:22:33,930 --> 01:22:38,980
+So it's the smallest interest rate which
+makes the present value zero, right?
+
+1752
+01:22:38,980 --> 01:22:40,430
+And so the idea is something like this.
+
+1753
+01:22:40,430 --> 01:22:41,696
+If you make a good investment, it means.
+
+1754
+01:22:41,696 --> 01:22:44,882
+X0, you don't put in, your initial
+investment is not very much and
+
+1755
+01:22:44,882 --> 01:22:47,540
+lots of stuff comes back to you.
+
+1756
+01:22:47,540 --> 01:22:50,470
+And it comes back to you so fast that even
+when you, when you...
+
+1757
+01:22:50,470 --> 01:22:55,340
+It takes a lot of discounting to make it
+look like the net present value is zero.
+
+1758
+01:22:55,340 --> 01:22:56,045
+So that's the idea.
+
+1759
+01:22:56,045 --> 01:22:58,920
+Okay, so this is the internal rate of
+return.
+
+1760
+01:22:58,920 --> 01:23:02,690
+That's really quite complicated as a
+function if you think about it Right,
+
+1761
+01:23:02,690 --> 01:23:06,228
+in fact if you really, the only way you'd
+be able to do this would be to do
+
+1762
+01:23:06,228 --> 01:23:10,056
+something like even compute you well you
+take x and you might do somehting where
+
+1763
+01:23:10,056 --> 01:23:17,430
+you try some internal rate of return and,
+and, and look at and you vary it.
+
+1764
+01:23:17,430 --> 01:23:20,560
+Or calculate the internal rate of return
+over 100 values or something like that.
+
+1765
+01:23:20,560 --> 01:23:23,440
+That would give you the internal rate of
+return to some accuracy right.
+
+1766
+01:23:23,440 --> 01:23:27,264
+You'd find where its slightly negative and
+one where its slightly positive and OK.
+
+1767
+01:23:27,264 --> 01:23:29,120
+It's a complicated function.
+
+1768
+01:23:30,285 --> 01:23:32,276
+But it turns out it's quasiconcave.
+
+1769
+01:23:32,276 --> 01:23:34,080
+So, quasiconcave says this.
+
+1770
+01:23:34,080 --> 01:23:39,085
+It says the internal rate of return of a
+cash flow sequence, right,
+
+1771
+01:23:39,085 --> 01:23:43,830
+exceeds some number r, say, 10%, right?
+
+1772
+01:23:43,830 --> 01:23:46,890
+That's true, if and only if the following
+is true.
+
+1773
+01:23:46,890 --> 01:23:52,645
+For all, for all, discount factors up to
+That 10% value, right?
+
+1774
+01:23:52,645 --> 01:24:02,400
+The net present values is positive, right,
+so that's the, that's the idea, okay?
+
+1775
+01:24:02,400 --> 01:24:04,070
+That, that, that would give it to you.
+
+1776
+01:24:04,070 --> 01:24:08,815
+This as a function of x, what is that
+actually, geometrically?
+
+1777
+01:24:08,815 --> 01:24:13,516
+>> This inequality for a fixed value of r,
+what does that look like?
+
+1778
+01:24:13,516 --> 01:24:15,918
+In, in cash flow space?
+
+1779
+01:24:15,918 --> 01:24:17,330
+>> Polyhedron.
+
+1780
+01:24:17,330 --> 01:24:18,602
+>> It's what?
+
+1781
+01:24:18,602 --> 01:24:21,005
+For a fixed value of r?
+
+1782
+01:24:21,005 --> 01:24:22,490
+>> [INAUDIBLE] No, it's, it's a
+polyhedron, I agree, but
+
+1783
+01:24:22,490 --> 01:24:23,880
+it's, it's sim, much simpler.
+
+1784
+01:24:23,880 --> 01:24:25,236
+What is it?
+>> Halfspace.
+
+1785
+01:24:25,236 --> 01:24:26,180
+>> Halfspace.
+
+1786
+01:24:26,180 --> 01:24:27,608
+Yeah.
+It's an open halfspace.
+
+1787
+01:24:27,608 --> 01:24:31,007
+Okay?
+So that's an open halfspace.
+
+1788
+01:24:31,007 --> 01:24:33,359
+And then this say's you have to take the
+intersection of o,
+
+1789
+01:24:33,359 --> 01:24:35,711
+of an infinite number of open half spa,
+half spaces and
+
+1790
+01:24:35,711 --> 01:24:39,800
+you get, in fact in that, turns out the
+answer's closed.
+
+1791
+01:24:39,800 --> 01:24:40,990
+But that's irrelevant.
+
+1792
+01:24:40,990 --> 01:24:44,012
+So you take the int-, intersection of the
+infinite number of half spaces.
+
+1793
+01:24:44,012 --> 01:24:47,330
+And then that's actually going to be your
+super level set.
+
+1794
+01:24:47,330 --> 01:24:50,590
+And that basically is saying The
+interpretation of this is beautiful.
+
+1795
+01:24:50,590 --> 01:24:54,154
+It says these are the cash flow sequences
+which have an internal,
+
+1796
+01:24:54,154 --> 01:24:58,240
+intenral rate of return exceeding let's
+say 10%.
+
+1797
+01:24:58,240 --> 01:24:59,890
+Right, it's not all of them of course.
+
+1798
+01:24:59,890 --> 01:25:03,050
+There's a whole bunch of crappy cash flow
+sequences, there's good ones.
+
+1799
+01:25:03,050 --> 01:25:05,320
+But the boys, it says that the super level
+set.
+
+1800
+01:25:05,320 --> 01:25:06,800
+Is convex.
+
+1801
+01:25:06,800 --> 01:25:08,156
+Right?
+And that means this thing is
+
+1802
+01:25:08,156 --> 01:25:09,180
+quasi-concave.
+
+1803
+01:25:09,180 --> 01:25:11,099
+Now I, I'm moving fast.
+
+1804
+01:25:11,099 --> 01:25:14,304
+There's no way you could get all of this
+right here.
+
+1805
+01:25:14,304 --> 01:25:18,882
+So the idea more or less here is just to
+get kind of the idea and the flavor of it.
+
+1806
+01:25:18,882 --> 01:25:20,750
+Okay.
+
+1807
+01:25:20,750 --> 01:25:24,288
+So let's look at some properties of
+quasiconvex functions.
+
+1808
+01:25:24,288 --> 01:25:26,740
+The first is, you have a modified Jensen
+inequality.
+
+1809
+01:25:26,740 --> 01:25:29,545
+In stead of saying that f, if you evaluate
+it at a mixture of points,
+
+1810
+01:25:29,545 --> 01:25:32,452
+is less than the corresponding mixture of
+f values, instead of that,
+
+1811
+01:25:32,452 --> 01:25:35,410
+this says you just write max.
+
+1812
+01:25:35,410 --> 01:25:37,170
+And so the picture is, is kind of cool.
+
+1813
+01:25:37,170 --> 01:25:38,020
+It's this, right?
+
+1814
+01:25:38,020 --> 01:25:40,292
+Here's a, here's a generic quasiconvex
+function.
+
+1815
+01:25:40,292 --> 01:25:41,940
+Like that.
+
+1816
+01:25:41,940 --> 01:25:42,600
+And what it, so
+
+1817
+01:25:42,600 --> 01:25:46,580
+convexity, let me take some points where
+it's definitely not convex.
+
+1818
+01:25:46,580 --> 01:25:47,510
+There.
+Okay?
+
+1819
+01:25:47,510 --> 01:25:51,010
+So if I take those two points, that's X,
+right?
+
+1820
+01:25:51,010 --> 01:25:51,730
+That's Y.
+
+1821
+01:25:51,730 --> 01:25:55,600
+And let me just take the midpoint, that's
+A equals a half.
+
+1822
+01:25:55,600 --> 01:25:59,540
+And we can see that by Jenson's
+inequality, we're not doing well here.
+
+1823
+01:25:59,540 --> 01:26:00,835
+It's, it's not, it's violated.
+
+1824
+01:26:00,835 --> 01:26:02,190
+Right, OK.
+
+1825
+01:26:02,190 --> 01:26:04,026
+However, what this says is that if I draw,
+
+1826
+01:26:04,026 --> 01:26:07,730
+it says that instead of lying, you don't
+have to lie.
+
+1827
+01:26:07,730 --> 01:26:10,610
+The function doesn't have to be below the
+cord connecting these two points on
+
+1828
+01:26:10,610 --> 01:26:11,740
+the graph.
+
+1829
+01:26:11,740 --> 01:26:12,950
+It has to be below this box,
+
+1830
+01:26:12,950 --> 01:26:18,100
+which is kind of goes from whatever the
+taller of one of them is and then down.
+
+1831
+01:26:18,100 --> 01:26:19,460
+Right, so it has to sit under there.
+
+1832
+01:26:19,460 --> 01:26:21,862
+That's a, that's a quasiconvex function.
+
+1833
+01:26:23,140 --> 01:26:24,220
+There's first order conditions and
+
+1834
+01:26:24,220 --> 01:26:26,056
+I think we'll, we'll come back to this
+later in the course, but
+
+1835
+01:26:26,056 --> 01:26:28,020
+it's basically something like this.
+
+1836
+01:26:28,020 --> 01:26:32,209
+It says that, it says that if f of y is
+less than f of x then the gradient of f
+
+1837
+01:26:32,209 --> 01:26:36,860
+of x transpose y minus x is less than
+zero.
+
+1838
+01:26:36,860 --> 01:26:40,230
+So these, these might be the sublevel sets
+of a quaziconvex function.
+
+1839
+01:26:40,230 --> 01:26:44,460
+And it says that if If that is the
+gradient, right?
+
+1840
+01:26:44,460 --> 01:26:48,438
+Then it says that all points that are, had
+a lower value of F,
+
+1841
+01:26:48,438 --> 01:26:51,975
+lie in this half space, okay?
+
+1842
+01:26:51,975 --> 01:26:55,030
+So, there are some things you have to
+worry about.
+
+1843
+01:26:55,030 --> 01:26:55,530
+Things like this.
+
+1844
+01:26:55,530 --> 01:26:58,690
+Sums of quasi functions are not quasi
+convex.
+
+1845
+01:26:58,690 --> 01:27:01,310
+And extreme, I'll just draw the, I'll draw
+the picture.
+
+1846
+01:27:01,310 --> 01:27:02,760
+And that's the end of the story.
+
+1847
+01:27:02,760 --> 01:27:03,796
+So here's the picture.
+
+1848
+01:27:03,796 --> 01:27:08,040
+There, there's a quasiconvex function.
+
+1849
+01:27:08,040 --> 01:27:08,915
+And here's another one.
+
+1850
+01:27:08,915 --> 01:27:10,090
+Okay?
+
+1851
+01:27:10,090 --> 01:27:12,450
+And now add them together in your head
+please and
+
+1852
+01:27:12,450 --> 01:27:15,450
+you will see a non-quasiconvex function.
+
+1853
+01:27:15,450 --> 01:27:19,650
+Right.
+Or maybe clearer, a non-unimodal function.
+
+1854
+01:27:19,650 --> 01:27:21,540
+Right, because you'll see something that's
+got two bumps.
+
+1855
+01:27:21,540 --> 01:27:23,940
+You, you draw your sublevel set right at
+the right thing.
+
+1856
+01:27:23,940 --> 01:27:27,990
+You get two intervals or whatever you like
+as the sublevel set and it's all over.
+
+1857
+01:27:27,990 --> 01:27:28,701
+Okay?
+
+1858
+01:27:28,701 --> 01:27:29,489
+So.
+Okay.
+
+1859
+01:27:29,489 --> 01:27:32,137
+Next generalization.
+
+1860
+01:27:32,137 --> 01:27:38,016
+This is going to be two out of our three,
+is log concave.
+
+1861
+01:27:38,016 --> 01:27:43,930
+Actually the, the quasi-convex stuff is
+actually fairly straight.
+
+1862
+01:27:43,930 --> 01:27:45,774
+Forward.
+It just introduces some notation for
+
+1863
+01:27:45,774 --> 01:27:48,766
+some stuff that's obvious, will solve a
+lot of problems that are quasi convex, and
+
+1864
+01:27:48,766 --> 01:27:50,520
+things like that.
+
+1865
+01:27:50,520 --> 01:27:51,547
+We'll get to that later.
+
+1866
+01:27:51,547 --> 01:27:53,591
+Log convexity, and by the way, for
+
+1867
+01:27:53,591 --> 01:27:59,994
+some weird reason, it comes up what's
+interesting always is log concavity.
+
+1868
+01:27:59,994 --> 01:28:03,980
+This is not a simple extension.
+
+1869
+01:28:03,980 --> 01:28:07,090
+It, it, there are some things here that
+are not obvious at all.
+
+1870
+01:28:07,090 --> 01:28:10,030
+It's, It's kind of, it appears to be quite
+deep.
+
+1871
+01:28:10,030 --> 01:28:12,900
+So, a function is log-concave if its log
+is concave.
+
+1872
+01:28:12,900 --> 01:28:16,245
+I mean that's just.
+
+1873
+01:28:16,245 --> 01:28:18,150
+That's what it means, very simple.
+
+1874
+01:28:18,150 --> 01:28:19,558
+And what that means is this.
+
+1875
+01:28:19,558 --> 01:28:20,780
+Another way to say that is this.
+
+1876
+01:28:20,780 --> 01:28:26,582
+It says that, it says that if you evaluate
+f at a mixture of two points x and y.
+
+1877
+01:28:26,582 --> 01:28:32,660
+The f-, if it were concave, it would be
+bigger than the mixture of the f values.
+
+1878
+01:28:32,660 --> 01:28:36,350
+But here what it says is, it's bigger than
+the geometric mixture.
+
+1879
+01:28:36,350 --> 01:28:39,922
+Geo, weighted geometric mean, however you
+want to call that.
+
+1880
+01:28:39,922 --> 01:28:40,734
+Okay?
+
+1881
+01:28:40,734 --> 01:28:41,750
+So that's what it says.
+
+1882
+01:28:41,750 --> 01:28:45,160
+And you take the log of this, and that,
+that's what it means to be concave.
+
+1883
+01:28:45,160 --> 01:28:48,751
+Okay, so it's log-convex if log, if the
+log of the function is convex, and
+
+1884
+01:28:48,751 --> 01:28:51,885
+if the function's obviously positive.
+
+1885
+01:28:51,885 --> 01:28:54,999
+So, examples would be powers.
+
+1886
+01:28:54,999 --> 01:28:57,698
+But this is actually where it really comes
+up.
+
+1887
+01:28:57,698 --> 01:29:00,320
+And we'll see this later in great detail.
+
+1888
+01:29:00,320 --> 01:29:06,830
+It turns out, tons of common probability
+densities, are log concave.
+
+1889
+01:29:06,830 --> 01:29:11,998
+Right so that, that's going to be
+completely, I mean, tons, that, it takes
+
+1890
+01:29:11,998 --> 01:29:19,067
+you a while to even think of a named
+distribution that is not log concave.
+
+1891
+01:29:19,067 --> 01:29:21,781
+You can, I mean especially if you're in
+statistics, but
+
+1892
+01:29:21,781 --> 01:29:27,260
+Generally speaking, there, all the ones
+you bump into, they are all log concave.
+
+1893
+01:29:27,260 --> 01:29:30,320
+And it's going to have huge implications
+later in the class when we do statistical
+
+1894
+01:29:30,320 --> 01:29:32,980
+methods and estimation and things like
+that.
+
+1895
+01:29:32,980 --> 01:29:35,420
+And they're going to be good.
+
+1896
+01:29:35,420 --> 01:29:36,330
+The consequences.
+
+1897
+01:29:37,598 --> 01:29:39,300
+So here's one.
+
+1898
+01:29:39,300 --> 01:29:45,110
+Here is the density, of a normal, random
+variable.
+
+1899
+01:29:45,110 --> 01:29:49,204
+With, you know mean X bar and co-variant
+sigma.
+
+1900
+01:29:49,204 --> 01:29:49,766
+Okay?
+And
+
+1901
+01:29:49,766 --> 01:29:52,880
+if I take the log of that density, what do
+I get?
+
+1902
+01:29:52,880 --> 01:29:57,710
+Well I get a constant that's not relevant
+minus a, minus a convex quadratic.
+
+1903
+01:29:57,710 --> 01:30:00,430
+So it's a concave quadratic.
+
+1904
+01:30:00,430 --> 01:30:02,210
+Okay, so that's an example.
+
+1905
+01:30:02,210 --> 01:30:06,485
+By the way, a uniform distribution, on a
+convex set.
+
+1906
+01:30:06,485 --> 01:30:11,890
+Right, so any uniform distri, uniform
+distribution on any convex set.
+
+1907
+01:30:11,890 --> 01:30:14,380
+Has a log concave density, right?
+
+1908
+01:30:14,380 --> 01:30:16,980
+Because the, here's, let's talk about what
+that is.
+
+1909
+01:30:16,980 --> 01:30:19,870
+If I have a uniform distribution on a, on
+a set c.
+
+1910
+01:30:19,870 --> 01:30:23,742
+Then the density is a constant on c.
+
+1911
+01:30:23,742 --> 01:30:26,090
+And then off of c, the density is zero.
+
+1912
+01:30:26,090 --> 01:30:27,440
+You take logs.
+
+1913
+01:30:27,440 --> 01:30:31,650
+It says the log of the dens-, the log
+density is a constant.
+
+1914
+01:30:31,650 --> 01:30:34,520
+It's a log of the original constant,
+right, on c.
+
+1915
+01:30:34,520 --> 01:30:36,380
+And then it goes to minus infinity.
+
+1916
+01:30:36,380 --> 01:30:39,667
+And you visualize that in your head and
+you realize that's concave.
+
+1917
+01:30:39,667 --> 01:30:40,312
+Okay?
+And
+
+1918
+01:30:40,312 --> 01:30:43,180
+in fact that's really the extended value
+of extension.
+
+1919
+01:30:43,180 --> 01:30:45,561
+Right?
+So, so, that's another one.
+
+1920
+01:30:45,561 --> 01:30:46,786
+And here's one.
+
+1921
+01:30:46,786 --> 01:30:48,990
+This is much less obvious.
+
+1922
+01:30:48,990 --> 01:30:53,286
+The cumulative distribution function, of a
+Gaussian.
+
+1923
+01:30:53,286 --> 01:30:55,990
+Okay?
+So that's, that is log concave.
+
+1924
+01:30:55,990 --> 01:30:57,930
+Right, so that, that's something.
+
+1925
+01:30:57,930 --> 01:30:59,369
+That looks like this, right?
+
+1926
+01:30:59,369 --> 01:31:02,240
+It goes like that, like that.
+
+1927
+01:31:02,240 --> 01:31:03,180
+And so that.
+
+1928
+01:31:03,180 --> 01:31:06,415
+So something like, things with, like these
+[INAUDIBLE] shapes.
+
+1929
+01:31:06,415 --> 01:31:08,130
+These, many of these.
+
+1930
+01:31:08,130 --> 01:31:10,200
+Well, actually, the cumulative density of
+any,.
+
+1931
+01:31:10,200 --> 01:31:15,160
+Well, log concave density is, is log
+concave.
+
+1932
+01:31:15,160 --> 01:31:16,050
+But we'll get to that, right?
+
+1933
+01:31:16,050 --> 01:31:18,632
+So, [INAUDIBLE] when you look at that,
+that does not look.
+
+1934
+01:31:18,632 --> 01:31:20,560
+Concave, right?
+
+1935
+01:31:20,560 --> 01:31:22,260
+So what you have to do is you look at that
+thing.
+
+1936
+01:31:22,260 --> 01:31:24,220
+And you take the log in your head, right?
+
+1937
+01:31:24,220 --> 01:31:27,300
+And when you take the log in your head,
+here's what happens.
+
+1938
+01:31:27,300 --> 01:31:28,990
+You know, that's, like, a half, right?
+
+1939
+01:31:28,990 --> 01:31:30,150
+That's one.
+
+1940
+01:31:30,150 --> 01:31:31,200
+And this is going down to zero.
+
+1941
+01:31:31,200 --> 01:31:33,190
+And so what the log does is over here.
+
+1942
+01:31:33,190 --> 01:31:35,610
+It, it takes that part of the curve and
+bends it down.
+
+1943
+01:31:35,610 --> 01:31:37,082
+And what you get is a quadratic.
+
+1944
+01:31:37,082 --> 01:31:39,025
+OK, so you just get a quadratic,
+
+1945
+01:31:39,025 --> 01:31:44,866
+sorry you get something that approaches a
+quadratic I'm sorry in this case OK.
+
+1946
+01:31:44,866 --> 01:31:48,545
+So this would give you some something like
+that OK.
+
+1947
+01:31:48,545 --> 01:31:52,833
+Now let's look at osme properties of these
+well the first is, if you have a,
+
+1948
+01:31:52,833 --> 01:31:55,521
+I mean one condition is this you, you can
+say that a,
+
+1949
+01:31:55,521 --> 01:32:02,600
+a twice differentiable f with convex I
+mean its log concave if and only if.
+
+1950
+01:32:02,600 --> 01:32:04,910
+This inequality holds and we can rewrite
+this another way.
+
+1951
+01:32:06,120 --> 01:32:08,050
+We can write it this way.
+
+1952
+01:32:08,050 --> 01:32:11,280
+I'll just erase this part.
+
+1953
+01:32:11,280 --> 01:32:12,470
+If this inequality,
+
+1954
+01:32:12,470 --> 01:32:17,905
+now concave would be if the right hand
+side of this expression were zero.
+
+1955
+01:32:17,905 --> 01:32:18,950
+Right?
+
+1956
+01:32:18,950 --> 01:32:21,810
+If that was the zero matrix, that would be
+a concave function.
+
+1957
+01:32:21,810 --> 01:32:25,320
+It says, it says the Hessian function is
+negative semidefinite.
+
+1958
+01:32:25,320 --> 01:32:32,820
+Here though, you allow the Hessian to be
+less than or equal to a rank one matrix.
+
+1959
+01:32:32,820 --> 01:32:33,701
+Right?
+So you have to
+
+1960
+01:32:33,701 --> 01:32:37,753
+know a few things with what I'm about to
+say, but I'll say it anyway.
+
+1961
+01:32:37,753 --> 01:32:43,250
+That says you can have one eigenvalue of
+the [INAUDIBLE] can be positive.
+
+1962
+01:32:43,250 --> 01:32:45,308
+And you can still be log concave, okay?
+
+1963
+01:32:45,308 --> 01:32:47,758
+Okay.
+Now, how do I know that.
+
+1964
+01:32:47,758 --> 01:32:51,085
+Well, if a matrix is less than a rank one
+matrix.
+
+1965
+01:32:51,085 --> 01:32:54,650
+.Then, in fact, all its eigenvalues but
+one.
+
+1966
+01:32:54,650 --> 01:32:58,420
+Are, are less or equal to 0.
+
+1967
+01:32:58,420 --> 01:32:59,458
+Okay?
+So, and this is just to
+
+1968
+01:32:59,458 --> 01:33:01,270
+give you some flavor at this.
+
+1969
+01:33:01,270 --> 01:33:02,350
+So, it says that more is allowed.
+
+1970
+01:33:02,350 --> 01:33:05,649
+And in fact we already saw that earlier,
+right?
+
+1971
+01:33:05,649 --> 01:33:09,049
+So, here is an example where clearly here,
+the second derivative is positive, but
+
+1972
+01:33:09,049 --> 01:33:12,442
+if you take that log, and it ends up being
+negative.
+
+1973
+01:33:12,442 --> 01:33:15,940
+OK, here's one.
+
+1974
+01:33:15,940 --> 01:33:17,925
+Let's see.
+Product of log-concave functions is log,
+
+1975
+01:33:17,925 --> 01:33:20,669
+that's trivial because if you take the
+product of two functions and
+
+1976
+01:33:20,669 --> 01:33:25,790
+take the log, this basically says that the
+sum of two concave functions is concave.
+
+1977
+01:33:25,790 --> 01:33:26,874
+So this is easy.
+
+1978
+01:33:26,874 --> 01:33:31,920
+The sum of log-concave functions, that's
+not always log-concave.
+
+1979
+01:33:31,920 --> 01:33:35,820
+So in probability that means that a
+mixture distribution with
+
+1980
+01:33:35,820 --> 01:33:41,020
+log-concave distributions is not
+necessarily log-concave.
+
+1981
+01:33:41,020 --> 01:33:42,400
+That's totally obvious, right?
+
+1982
+01:33:42,400 --> 01:33:45,393
+Because look, here's a galsion, here's
+another galsion.
+
+1983
+01:33:45,393 --> 01:33:47,813
+You take the sum or the average to get the
+mixture distribution and
+
+1984
+01:33:47,813 --> 01:33:50,022
+it, it's definitely not log-concave.
+
+1985
+01:33:50,022 --> 01:33:52,282
+Okay?
+
+1986
+01:33:52,282 --> 01:33:54,560
+And then here's a very interesting one.
+
+1987
+01:33:54,560 --> 01:33:55,111
+Integration.
+
+1988
+01:33:55,111 --> 01:33:58,991
+If you have a function that takes two, two
+var-.
+
+1989
+01:33:58,991 --> 01:34:02,619
+Two block, I block the argument into two
+things.
+
+1990
+01:34:02,619 --> 01:34:06,450
+And I integrate over one of a set of
+variables.
+
+1991
+01:34:06,450 --> 01:34:07,620
+So, I, so this is like partial
+minimization.
+
+1992
+01:34:07,620 --> 01:34:09,232
+But this is partial integration.
+
+1993
+01:34:09,232 --> 01:34:09,906
+Okay.
+
+1994
+01:34:09,906 --> 01:34:14,000
+If I do that the result is log concave.
+
+1995
+01:34:14,000 --> 01:34:17,510
+So the, the, if I integrate out over, and
+it, you know, by the way, this would be,
+
+1996
+01:34:17,510 --> 01:34:22,500
+this would actually, this is part of
+conditioning or something like that.
+
+1997
+01:34:22,500 --> 01:34:24,610
+In, in, a dense, if you'd like to think of
+it that way.
+
+1998
+01:34:24,610 --> 01:34:28,280
+And what that says is this thing is logged
+concave.
+
+1999
+01:34:28,280 --> 01:34:29,530
+The integral is logged concave.
+
+2000
+01:34:29,530 --> 01:34:30,300
+We'll look at that.
+
+2001
+01:34:30,300 --> 01:34:31,620
+By the way.
+
+2002
+01:34:31,620 --> 01:34:32,436
+For that fact,
+
+2003
+01:34:32,436 --> 01:34:37,110
+I'm [INAUDIBLE], I am unaware of an
+elementary derivation of this.
+
+2004
+01:34:37,110 --> 01:34:38,610
+So, here's some consequences.
+
+2005
+01:34:38,610 --> 01:34:41,260
+It turns out that, because of the
+integral.
+
+2006
+01:34:41,260 --> 01:34:43,950
+[INAUDIBLE] it turns out the convolution
+is log concave.
+
+2007
+01:34:43,950 --> 01:34:45,430
+Is preserved from, that's very interesting
+for
+
+2008
+01:34:45,430 --> 01:34:47,680
+probability densities, 'cuz this says the
+following.
+
+2009
+01:34:47,680 --> 01:34:49,075
+It says that if I have two.
+
+2010
+01:34:49,075 --> 01:34:52,510
+Random variables, each with a log-concave
+probability distribution.
+
+2011
+01:34:52,510 --> 01:34:56,800
+Then the sum of those random variables
+also, whose density is the convolution,
+
+2012
+01:34:56,800 --> 01:35:00,960
+it says that sums of, it says random, if
+you take sums of random variables with
+
+2013
+01:35:00,960 --> 01:35:07,776
+log-concave distributions, you get a
+log-concave distributions preserved.
+
+2014
+01:35:07,776 --> 01:35:08,527
+Right?
+
+2015
+01:35:08,527 --> 01:35:09,692
+Here's one.
+
+2016
+01:35:09,692 --> 01:35:11,960
+This is a very interesting one.
+
+2017
+01:35:11,960 --> 01:35:16,940
+This is alone just has huge applications.
+
+2018
+01:35:16,940 --> 01:35:19,508
+It's this If you have a convex set.
+
+2019
+01:35:19,508 --> 01:35:24,350
+And I have a random variable with a log
+concave pdf, then the following is true.
+
+2020
+01:35:24,350 --> 01:35:25,540
+I make a function which is this.
+
+2021
+01:35:25,540 --> 01:35:28,720
+This is actually called the yield function
+option like in manufacturing.
+
+2022
+01:35:28,720 --> 01:35:30,660
+It's the probability.
+
+2023
+01:35:30,660 --> 01:35:32,670
+So I have a set that looks like this.
+
+2024
+01:35:32,670 --> 01:35:33,874
+Here's my set c.
+
+2025
+01:35:33,874 --> 01:35:38,010
+And what I do is I, to evaluate my
+function, I take x and
+
+2026
+01:35:38,010 --> 01:35:43,180
+then to that I add this random variable.
+
+2027
+01:35:43,180 --> 01:35:45,116
+Okay, so I, it doesn't matter lets make it
+galcion or,
+
+2028
+01:35:45,116 --> 01:35:47,888
+it doesn't really matter, it's some
+galcion and it's spread around here, so
+
+2029
+01:35:47,888 --> 01:35:51,220
+Let it, you know, it would, I'll try to
+draw it.
+
+2030
+01:35:51,220 --> 01:35:53,660
+I don't know how to draw a distribution,
+but it looks something like that, right?
+
+2031
+01:35:53,660 --> 01:35:56,894
+There's a little volcano that kind of goes
+up, and you, and then what, the point is
+
+2032
+01:35:56,894 --> 01:36:02,000
+now, you look at that as a, what you do is
+you take the total probability in the set.
+
+2033
+01:36:02,000 --> 01:36:04,690
+Right?
+And then you move that target point, x.
+
+2034
+01:36:04,690 --> 01:36:05,765
+You can think of it that way.
+
+2035
+01:36:05,765 --> 01:36:08,840
+And it changes with the yield, right?
+
+2036
+01:36:08,840 --> 01:36:12,296
+So the application of this is pretty
+simple: C is a set of values of
+
+2037
+01:36:12,296 --> 01:36:16,080
+some parameters that are acceptable,
+right?
+
+2038
+01:36:16,080 --> 01:36:17,796
+So it's you -- you build a chip or
+something like that,
+
+2039
+01:36:17,796 --> 01:36:20,487
+and it means that the final thing actually
+does clock at this rate and last this long
+
+2040
+01:36:20,487 --> 01:36:24,426
+or something li- -- it doesn't ma- -- it's
+some manufacturing problem.
+
+2041
+01:36:24,426 --> 01:36:26,670
+Everybody got it?
+
+2042
+01:36:26,670 --> 01:36:30,240
+Then y is just the, the variations in
+manufacture.
+
+2043
+01:36:30,240 --> 01:36:31,969
+Just uncontrolled, right?
+
+2044
+01:36:31,969 --> 01:36:35,838
+Critical dimensions, things like that it,
+your ability to control the process, and
+
+2045
+01:36:35,838 --> 01:36:37,588
+things like that.
+
+2046
+01:36:37,588 --> 01:36:40,778
+I mean, that, you're pushing everything to
+the absolute limit, so
+
+2047
+01:36:40,778 --> 01:36:43,050
+it's not like you can, yeah.
+
+2048
+01:36:43,050 --> 01:36:44,502
+If, if the distribution is super tight,
+
+2049
+01:36:44,502 --> 01:36:47,290
+then you're not doing high-end
+manufacturing.
+
+2050
+01:36:47,290 --> 01:36:47,840
+Right.
+You could be
+
+2051
+01:36:47,840 --> 01:36:49,030
+pushing this way harder, right?
+
+2052
+01:36:49,030 --> 01:36:51,180
+So, you push it and it looks like that.
+
+2053
+01:36:51,180 --> 01:36:54,950
+Then, the problem of choosing x is the
+target point that you set your machines,
+
+2054
+01:36:54,950 --> 01:36:58,120
+your manufacturing machines to do.
+
+2055
+01:36:58,120 --> 01:37:00,550
+You say please target this.
+
+2056
+01:37:00,550 --> 01:37:02,474
+And you know, look, if you target it out
+here,
+
+2057
+01:37:02,474 --> 01:37:05,010
+that's like really dumb [LAUGH], right?
+
+2058
+01:37:05,010 --> 01:37:09,600
+Because basically, most of the time, the
+thing, comes, it doesn't work at all.
+
+2059
+01:37:09,600 --> 01:37:11,260
+By the way, every now and then, it works.
+
+2060
+01:37:11,260 --> 01:37:11,820
+Right?
+
+2061
+01:37:11,820 --> 01:37:14,892
+Because every now and then, a random
+manufacturing fluctuation will come up
+
+2062
+01:37:14,892 --> 01:37:17,970
+with that point and you'll have one
+working device.
+
+2063
+01:37:17,970 --> 01:37:19,540
+Everybody following this, right?
+
+2064
+01:37:19,540 --> 01:37:20,458
+So, that, that point,
+
+2065
+01:37:20,458 --> 01:37:24,360
+this point here would not be a
+particularly good choice yield wise.
+
+2066
+01:37:24,360 --> 01:37:25,271
+Okay?
+
+2067
+01:37:25,271 --> 01:37:30,353
+And so then, obvious question is how do
+you What target point would you choose to
+
+2068
+01:37:30,353 --> 01:37:33,720
+maximize the yield, right?
+
+2069
+01:37:33,720 --> 01:37:37,248
+And it takes very little imagination to
+realize actually how much,
+
+2070
+01:37:37,248 --> 01:37:42,930
+how actually, how much this would actually
+mean in certain contexts right.
+
+2071
+01:37:42,930 --> 01:37:44,870
+I mean it's incredibly important, right.
+
+2072
+01:37:44,870 --> 01:37:47,378
+And so the idea's there, do you want to,
+it's going to be somewhere in the,
+
+2073
+01:37:47,378 --> 01:37:51,840
+what this says is that function, the log
+of that yield function.
+
+2074
+01:37:51,840 --> 01:37:53,060
+Is actually concave.
+
+2075
+01:37:53,060 --> 01:37:56,720
+That says we'll be able to maximize it,
+right?
+
+2076
+01:37:56,720 --> 01:37:58,860
+So it's, that's going to be a convex
+optimization problem.
+
+2077
+01:37:58,860 --> 01:38:01,150
+That means we can effectively solve that
+problem, right?
+
+2078
+01:38:01,150 --> 01:38:05,132
+So, so just this little thing already has
+like serious implications.
+
+2079
+01:38:05,132 --> 01:38:08,740
+So how do you show something like that?
+
+2080
+01:38:08,740 --> 01:38:10,430
+Well, you just set it up for this integral
+thing.
+
+2081
+01:38:10,430 --> 01:38:11,762
+And so the way you do it is this.
+
+2082
+01:38:11,762 --> 01:38:15,520
+You write this thing, the thing that we're
+interested in, as the following.
+
+2083
+01:38:15,520 --> 01:38:18,920
+As it's an integral of two things, the
+product of two things.
+
+2084
+01:38:19,980 --> 01:38:23,130
+Actually and, these things are the
+following.
+
+2085
+01:38:23,130 --> 01:38:25,600
+So p is, are that's the density of y.
+
+2086
+01:38:25,600 --> 01:38:28,990
+And g is this weird function, that's like
+one or zero.
+
+2087
+01:38:28,990 --> 01:38:29,570
+Right?
+
+2088
+01:38:29,570 --> 01:38:31,930
+Both of those functions are log concave.
+
+2089
+01:38:31,930 --> 01:38:33,120
+Right, p by assumption.
+
+2090
+01:38:33,120 --> 01:38:36,340
+G is because g is, actually, it's silly.
+
+2091
+01:38:36,340 --> 01:38:39,418
+It's log zero on, on, on c, and then it's
+minus infinity outside c,
+
+2092
+01:38:39,418 --> 01:38:44,210
+that's a con, it's silly, but it's a
+convex fun, a concave function.
+
+2093
+01:38:44,210 --> 01:38:46,855
+Right?
+Product of two log-concave Integral over
+
+2094
+01:38:46,855 --> 01:38:50,443
+some of the variables in this case just y
+that's log concave and
+
+2095
+01:38:50,443 --> 01:38:54,670
+this is what you have so that's the idea.
+
+2096
+01:38:54,670 --> 01:38:58,930
+OK, so I think we already talked about
+this, this is the idea.
+
+2097
+01:38:58,930 --> 01:39:05,140
+And this says that the yield the log of
+the yield function is, is concave.
+
+2098
+01:39:05,140 --> 01:39:07,078
+So and by the way we don't know that yet
+but
+
+2099
+01:39:07,078 --> 01:39:11,264
+we'll see later that means that basically
+we can effectively.
+
+2100
+01:39:11,264 --> 01:39:12,577
+Maximizing, right?
+
+2101
+01:39:12,577 --> 01:39:15,080
+So, by the way a lot of weird things
+happen this way.
+
+2102
+01:39:15,080 --> 01:39:19,045
+Where there's an asymmetry between what
+you want to do with something and
+
+2103
+01:39:19,045 --> 01:39:24,450
+there's a, and there's also a asymmetry in
+what you can and cannot do.
+
+2104
+01:39:24,450 --> 01:39:26,350
+This is a perfect example.
+
+2105
+01:39:26,350 --> 01:39:27,360
+Right?
+
+2106
+01:39:27,360 --> 01:39:30,300
+You take a yield function, there's a
+strong asymmetry here.
+
+2107
+01:39:30,300 --> 01:39:32,970
+You want to maximize it.
+
+2108
+01:39:32,970 --> 01:39:34,115
+You don't want to minimize it.
+
+2109
+01:39:34,115 --> 01:39:36,087
+Well, you can turn everything around and
+
+2110
+01:39:36,087 --> 01:39:39,683
+mini, that'll be you want to, the set C
+will be some terrible outcome and
+
+2111
+01:39:39,683 --> 01:39:44,515
+you want to maximize, you want to avoid
+it, but, anyway.
+
+2112
+01:39:44,515 --> 01:39:48,160
+And it turns out, it's concave, that's
+something we can maximize.
+
+2113
+01:39:48,160 --> 01:39:49,435
+If it were convex, we cannot.
+
+2114
+01:39:49,435 --> 01:39:51,175
+So, okay.
+
+2115
+01:39:51,175 --> 01:39:54,955
+And our final, generalization X functions
+is,
+
+2116
+01:39:54,955 --> 01:40:00,092
+to generalize it to the idea of, vector
+values.
+
+2117
+01:40:00,092 --> 01:40:00,934
+Right? So here are the ideas. I'll take a
+function which takes, you know,
+
+2118
+01:40:00,934 --> 01:40:01,435
+as usual a vector argument.
+
+2119
+01:40:01,435 --> 01:40:02,920
+But it returns a vector argument, not a
+scaler argument.
+
+2120
+01:40:02,920 --> 01:40:03,937
+So I
+
+2121
+01:40:03,937 --> 01:40:13,900
+take a A vector argument.
+
+2122
+01:40:13,900 --> 01:40:18,080
+And you define a function to be K-convex
+if the domain is convex and
+
+2123
+01:40:18,080 --> 01:40:21,590
+if this Jenson inequality holds.
+
+2124
+01:40:21,590 --> 01:40:24,825
+But it holds with respect to this concave.
+
+2125
+01:40:24,825 --> 01:40:26,230
+Okay?
+
+2126
+01:40:26,230 --> 01:40:31,190
+Now this mostly only comes up in a couple
+of, you know, in, in a couple of ways.
+
+2127
+01:40:32,710 --> 01:40:37,429
+I mean a couple of these are are come up
+much more often than other things.
+
+2128
+01:40:37,429 --> 01:40:40,503
+And so one for example, if this is, if
+this is matrix inequalities, and
+
+2129
+01:40:40,503 --> 01:40:43,736
+these are symmetric matrices, and that's
+matrix inequality, then this,
+
+2130
+01:40:43,736 --> 01:40:47,181
+a function that is K-convex with respect
+to the positive semi-definite cone,
+
+2131
+01:40:47,181 --> 01:40:50,670
+that's called matrix convex.
+
+2132
+01:40:50,670 --> 01:40:53,370
+So, that's.
+
+2133
+01:40:53,370 --> 01:40:57,906
+So here, for example, if I've a mapping
+from m by m symmetric matrices, into m
+
+2134
+01:40:57,906 --> 01:41:04,890
+by m symmetric matrices, and the mapping
+is the following, you square the matrix.
+
+2135
+01:41:04,890 --> 01:41:05,620
+That's it.
+
+2136
+01:41:05,620 --> 01:41:10,745
+Then, the claim is that is convex, matrix
+convex.
+
+2137
+01:41:10,745 --> 01:41:11,870
+Okay?
+
+2138
+01:41:11,870 --> 01:41:12,970
+And.
+
+2139
+01:41:12,970 --> 01:41:14,200
+What you have to check is this.
+
+2140
+01:41:14,200 --> 01:41:19,184
+You want to check here, whether or not you
+have to check whether z
+
+2141
+01:41:19,184 --> 01:41:26,670
+transpose X squared z is convex with
+respect to capital X, right.
+
+2142
+01:41:26,670 --> 01:41:28,180
+For each Z.
+
+2143
+01:41:28,180 --> 01:41:29,490
+That's what you have to check.
+
+2144
+01:41:29,490 --> 01:41:32,160
+And, that is true because you write it
+this way.
+
+2145
+01:41:32,160 --> 01:41:36,507
+And now this expression, capital x times
+little z, is actually linear in capital x,
+
+2146
+01:41:36,507 --> 01:41:39,730
+and then you have a norm.
+
+2147
+01:41:39,730 --> 01:41:41,260
+Squared, that's convex.
+
+2148
+01:41:41,260 --> 01:41:41,890
+Okay?
+
+2149
+01:41:41,890 --> 01:41:46,852
+So this, so this expression is convex in
+capital x, okay?
+
+2150
+01:41:46,852 --> 01:41:49,930
+By the way, it kind of suggests that,
+right?
+
+2151
+01:41:49,930 --> 01:41:53,116
+I mean, you know, if x squared is your
+canonical convex function,
+
+2152
+01:41:53,116 --> 01:41:57,920
+little x squared Then Y wouldn't capital x
+squared become x as well.
+
+2153
+01:41:57,920 --> 01:41:59,510
+I mean you have to be very careful with
+these things because some
+
+2154
+01:41:59,510 --> 01:42:00,480
+things are wrong.
+
+2155
+01:42:00,480 --> 01:42:03,680
+For example x, you don't get a whole lot
+more.
+
+2156
+01:42:03,680 --> 01:42:05,789
+I mean that's convex and capital as well.
+
+2157
+01:42:05,789 --> 01:42:08,839
+And the x of a matrix, symmetric matrix is
+actually not a matrix convex so,
+
+2158
+01:42:08,839 --> 01:42:11,333
+there's some weird stuff happens.
+
+2159
+01:42:11,333 --> 01:42:16,230
+I mean seriously weird stuff so but In
+this case it didn't happen.
+
+2160
+01:42:16,230 --> 01:42:19,740
+Okay, now this is true for any z, and that
+tells you that I removed the z's and
+
+2161
+01:42:19,740 --> 01:42:22,008
+I changed this inequality to a matrix
+inequality,
+
+2162
+01:42:22,008 --> 01:42:26,910
+because that's what it means for matrix
+inequality to hold, right.
+
+2163
+01:42:26,910 --> 01:42:28,591
+It says that if you take the one quadratic
+form and
+
+2164
+01:42:28,591 --> 01:42:32,470
+another, this quadratic form is always
+less than this one.
+
+2165
+01:42:32,470 --> 01:42:35,550
+That, that's always true, then it means
+that this matrix is less or
+
+2166
+01:42:35,550 --> 01:42:39,358
+equal to this one in the matrix sense, and
+so you get, you get a statement that looks
+
+2167
+01:42:39,358 --> 01:42:45,560
+like, like that, okay, so that, that's it,
+and this is sophisticated statement.

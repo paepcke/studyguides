@@ -1,0 +1,269 @@
+1
+00:00:04,440 --> 00:00:06,080
+Welcome to the first R module.
+
+2
+00:00:06,080 --> 00:00:10,390
+In this video we'll be going over the
+solutions to the first R exercise.
+
+3
+00:00:10,390 --> 00:00:11,910
+If you prefer,
+
+4
+00:00:11,910 --> 00:00:14,880
+there's also a written version of these
+solutions on the class website.
+
+5
+00:00:16,680 --> 00:00:19,530
+Now this first R exercise was really
+designed to get you to
+
+6
+00:00:19,530 --> 00:00:22,310
+explore the different options in Deducer.
+
+7
+00:00:22,310 --> 00:00:25,390
+So if you found yourself struggling a
+little bit, don't worry.
+
+8
+00:00:25,390 --> 00:00:26,900
+It's going to get easier from here.
+
+9
+00:00:26,900 --> 00:00:31,720
+The first step is actually not question
+one.
+
+10
+00:00:31,720 --> 00:00:34,790
+The first thing we need to do is open up
+Deducer.
+
+11
+00:00:34,790 --> 00:00:39,544
+So to do that I'm going to click this
+shortcut.
+
+12
+00:00:39,544 --> 00:00:42,150
+[COUGH] And there are two windows here.
+
+13
+00:00:42,150 --> 00:00:44,310
+There's the console window on the left.
+
+14
+00:00:44,310 --> 00:00:46,820
+And the data viewer window on the right.
+
+15
+00:00:46,820 --> 00:00:51,750
+In order to open up my data, which is,
+provided to you as an Excel file on
+
+16
+00:00:51,750 --> 00:00:57,560
+the class website, I'm going to click on
+the open data icon
+
+17
+00:00:57,560 --> 00:01:03,840
+on the data viewer window on the
+right-hand side of the The screen.
+
+18
+00:01:03,840 --> 00:01:07,740
+This will allow you to navigate to
+wherever you have that Excel file saved.
+
+19
+00:01:07,740 --> 00:01:10,510
+In my case it happens to be on the
+desktop.
+
+20
+00:01:10,510 --> 00:01:13,090
+And I'm going to select it and open it.
+
+21
+00:01:13,090 --> 00:01:15,880
+Because our data is only on one worksheet,
+the first one,
+
+22
+00:01:15,880 --> 00:01:16,810
+I'm just going to click okay here.
+
+23
+00:01:16,810 --> 00:01:21,230
+And I see that deducers was able
+
+24
+00:01:21,230 --> 00:01:25,450
+to load in the data correctly, I'm
+going to scroll to the right.
+
+25
+00:01:25,450 --> 00:01:27,840
+Make sure everything's there, good.
+
+26
+00:01:27,840 --> 00:01:31,380
+I'm going to scroll down to make sure I
+have 50 rows, great.
+
+27
+00:01:31,380 --> 00:01:35,050
+So at this point, we are now ready to
+start the exercise.
+
+28
+00:01:35,050 --> 00:01:38,200
+The first question reads that,
+
+29
+00:01:38,200 --> 00:01:42,420
+varsity, the variable varsity is currently
+stored as type double.
+
+30
+00:01:42,420 --> 00:01:46,720
+You want to change this continuous
+variable to a categorical variable.
+
+31
+00:01:46,720 --> 00:01:49,950
+R denotes categorical variables as
+factors.
+
+32
+00:01:49,950 --> 00:01:52,880
+The way we're going to do this is using
+the data viewer window on
+
+33
+00:01:52,880 --> 00:01:57,325
+the right-hand side, I'm going to click on
+Variable View here,
+
+34
+00:01:57,325 --> 00:02:01,530
+which will list all the variables in a
+column.
+
+35
+00:02:01,530 --> 00:02:04,865
+Along with their type and something called
+factor levels.
+
+36
+00:02:04,865 --> 00:02:08,675
+And so I'm going to go to varsity.
+
+37
+00:02:08,675 --> 00:02:16,390
+Click on Type, and then select Factor.
+
+38
+00:02:16,390 --> 00:02:21,420
+And notice when I do this that The factor
+levels column gets populated for
+
+39
+00:02:21,420 --> 00:02:22,170
+that variable.
+
+40
+00:02:22,170 --> 00:02:24,960
+It shows two factor levels.
+
+41
+00:02:24,960 --> 00:02:27,340
+Level 0 and level one.
+
+42
+00:02:27,340 --> 00:02:31,030
+That's because varsity only has two values
+in it.
+
+43
+00:02:31,030 --> 00:02:33,740
+I do want to caution you.
+
+44
+00:02:33,740 --> 00:02:36,850
+That when you're doing variable
+conversions in Deducer,
+
+45
+00:02:36,850 --> 00:02:41,170
+like I did just now, that you don't go
+back and forth too many times,
+
+46
+00:02:41,170 --> 00:02:46,760
+because Deducer will make assumptions
+about what types of variables you want,
+
+47
+00:02:47,850 --> 00:02:49,870
+and what you want certain values to be.
+
+48
+00:02:49,870 --> 00:02:55,090
+So just be aware that Deducer makes
+certain assumptions and
+
+49
+00:02:55,090 --> 00:02:56,870
+to always check your data.
+
+50
+00:02:56,870 --> 00:03:00,190
+After changing anything.
+
+51
+00:03:00,190 --> 00:03:03,000
+For question two we want to sort two
+different variables.
+
+52
+00:03:03,000 --> 00:03:04,560
+Varsity and writing love.
+
+53
+00:03:04,560 --> 00:03:07,540
+In different orders.
+
+54
+00:03:07,540 --> 00:03:11,490
+So first we want to sort varsity in
+ascending order.
+
+55
+00:03:11,490 --> 00:03:15,255
+And then, eh, writing love in descending
+order.
+
+56
+00:03:15,255 --> 00:03:17,000
+Okay.
+
+57
+00:03:17,000 --> 00:03:20,730
+So the way I'm going to do that, I'm
+going to click back to data view, for now.
+
+58
+00:03:20,730 --> 00:03:24,620
+The way I'm going to do this is by going
+now to the console window on
+
+59
+00:03:24,620 --> 00:03:28,429
+the left hand side here.

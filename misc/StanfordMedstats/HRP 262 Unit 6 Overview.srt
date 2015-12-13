@@ -1,0 +1,356 @@
+1
+00:00:00,000 --> 00:00:05,780
+[BLANK_AUDIO].
+
+2
+00:00:05,780 --> 00:00:07,120
+Welcome to unit six.
+
+3
+00:00:07,120 --> 00:00:09,360
+This week we're going to switch modes.
+
+4
+00:00:09,360 --> 00:00:12,380
+We're now done with our discussion of
+survival analysis.
+
+5
+00:00:12,380 --> 00:00:16,280
+And the second half of the course is
+going to focus on repeated measures data.
+
+6
+00:00:16,280 --> 00:00:19,280
+This is the situation where you've
+measured an outcome variable on
+
+7
+00:00:19,280 --> 00:00:20,500
+the same people.
+
+8
+00:00:20,500 --> 00:00:21,850
+At multiple time points.
+
+9
+00:00:25,750 --> 00:00:28,900
+So, most of the outcomes that we're
+going to look at in the second half of
+
+10
+00:00:28,900 --> 00:00:31,500
+this course are actually going to be
+continuous outcomes.
+
+11
+00:00:31,500 --> 00:00:34,760
+Things like blood pressure, weight, and
+bone density.
+
+12
+00:00:34,760 --> 00:00:38,510
+Because of that, we're mostly going to be
+dealing with linear models.
+
+13
+00:00:38,510 --> 00:00:41,540
+The statistical models that I'm going to
+give you are going to be
+
+14
+00:00:41,540 --> 00:00:46,380
+extensions of our basic ANOVA and linear
+regression models.
+
+15
+00:00:46,380 --> 00:00:47,850
+So what I thought I'd do for the.
+
+16
+00:00:47,850 --> 00:00:51,860
+Beginning of this week is actually to
+review basic ANOVA and linear regression.
+
+17
+00:00:51,860 --> 00:00:55,700
+Before we complicate them and add the
+complexity of repeated measures,
+
+18
+00:00:55,700 --> 00:00:58,820
+let's make sure we're all on the same page
+about just the basics of ANOVA and
+
+19
+00:00:58,820 --> 00:00:59,920
+linear regression.
+
+20
+00:01:01,220 --> 00:01:03,610
+This week I'll also just give you an
+introduction.
+
+21
+00:01:03,610 --> 00:01:05,870
+To what does repeated measures data look
+like.
+
+22
+00:01:05,870 --> 00:01:08,040
+So, I'll show you some examples from the
+literature.
+
+23
+00:01:08,040 --> 00:01:11,200
+I'll talk about the different data
+structures for repeated measures.
+
+24
+00:01:11,200 --> 00:01:14,120
+There's actually kind of two ways to
+structure the data and
+
+25
+00:01:14,120 --> 00:01:16,710
+depending on what you're trying to do in
+the computer you nee,
+
+26
+00:01:16,710 --> 00:01:19,190
+you may need it in one or the other form.
+
+27
+00:01:19,190 --> 00:01:24,120
+And I'll also give you some examples of
+how to plot your repeated-measures data.
+
+28
+00:01:24,120 --> 00:01:26,310
+Plotting is going to be very important
+here for
+
+29
+00:01:26,310 --> 00:01:29,250
+you get to get a real understanding of
+what's going on in the data.
+
+30
+00:01:30,720 --> 00:01:35,060
+Just to ground us on where are we on our
+statistical chart of tasks, so
+
+31
+00:01:35,060 --> 00:01:39,730
+again I will talk a little bit about some
+binary repeated measures.
+
+32
+00:01:39,730 --> 00:01:41,970
+Outcome data in the second half of this
+course, but
+
+33
+00:01:41,970 --> 00:01:45,350
+I'm mostly going to fit, focus on
+continuous outcomes.
+
+34
+00:01:45,350 --> 00:01:48,940
+So, if we have continuous outcomes, these
+are things like again, blood pressure,
+
+35
+00:01:48,940 --> 00:01:53,880
+weight, pain scale, cognitive function on
+some kind of continuous scale.
+
+36
+00:01:53,880 --> 00:01:56,600
+If we have independent groups, or
+independent observations,
+
+37
+00:01:56,600 --> 00:02:00,660
+we're going to be doing something like a
+basic ANOVA or a basic linear regression.
+
+38
+00:02:00,660 --> 00:02:02,910
+I'm going to review those this week.
+
+39
+00:02:02,910 --> 00:02:05,180
+If we add correlations into the picture.
+
+40
+00:02:05,180 --> 00:02:06,980
+We have some source of correlation.
+
+41
+00:02:06,980 --> 00:02:10,000
+Such as that we've measured the same
+people over time,
+
+42
+00:02:10,000 --> 00:02:13,390
+then we're going to need slightly more
+complicated statistical tests.
+
+43
+00:02:13,390 --> 00:02:17,360
+So in the next three weeks I'm going to
+review repeated measures in ANOVA,
+
+44
+00:02:17,360 --> 00:02:19,750
+mixed models and GEE models.
+
+45
+00:02:19,750 --> 00:02:24,490
+These will handle the correlation due to
+having the same people over time.
+
+46
+00:02:24,490 --> 00:02:27,220
+They would also handle other sources of
+correlation such as
+
+47
+00:02:27,220 --> 00:02:30,940
+clustering although I'm mostly going to
+focus on the problem of repeated measures.
+
+48
+00:02:32,360 --> 00:02:35,410
+This week again though I'm not going to go
+over any specific statistical tests for
+
+49
+00:02:35,410 --> 00:02:38,120
+the repeated measures, I'm just going to
+talk about the basic data structure.
+
+50
+00:02:39,960 --> 00:02:42,660
+So what does the data look like that we're
+going to be dealing with in
+
+51
+00:02:42,660 --> 00:02:43,700
+the second half of this.
+
+52
+00:02:43,700 --> 00:02:44,620
+course.
+
+53
+00:02:44,620 --> 00:02:49,240
+Here is just an example of some data that
+I analyzed a number of years ago.
+
+54
+00:02:49,240 --> 00:02:52,170
+This was a data set which was a
+longitudinal data set.
+
+55
+00:02:52,170 --> 00:02:53,700
+So women were measured over time.
+
+56
+00:02:53,700 --> 00:02:57,610
+These were women runners, and we measured
+their bone density at base line.
+
+57
+00:02:57,610 --> 00:03:00,770
+And about a year later, and then about two
+years later.
+
+58
+00:03:00,770 --> 00:03:05,380
+What you're seeing here is the changes in
+bone density over time for
+
+59
+00:03:05,380 --> 00:03:07,110
+three different groups of women.
+
+60
+00:03:07,110 --> 00:03:11,200
+And the way that I've presented the data
+here is to show you that I started.
+
+61
+00:03:11,200 --> 00:03:13,580
+I'm presenting it as the mean change from
+base line.
+
+62
+00:03:13,580 --> 00:03:15,010
+So everybody starts at zero.
+
+63
+00:03:15,010 --> 00:03:16,030
+That's the base line value.
+
+64
+00:03:16,030 --> 00:03:20,380
+And then I'm giving, every woman gets her
+percent change from her base line value.
+
+65
+00:03:20,380 --> 00:03:21,290
+This is one way to.
+
+66
+00:03:21,290 --> 00:03:23,850
+Present repeated-measures outcome data.
+
+67
+00:03:23,850 --> 00:03:27,470
+And you can see that what happens is that
+the group in blue here,
+
+68
+00:03:27,470 --> 00:03:30,130
+they have a slight decrease in the first
+year, and
+
+69
+00:03:30,130 --> 00:03:32,250
+then they kind of go back up to what they
+started at.
+
+70
+00:03:32,250 --> 00:03:34,450
+But they basically have no change overall.
+
+71
+00:03:34,450 --> 00:03:35,960
+In their bone density.
+
+72
+00:03:35,960 --> 00:03:38,400
+in contrast, the groups that are in red
+and
+
+73
+00:03:38,400 --> 00:03:41,680
+black here have some increase in their
+bone density over time.
+
+74
+00:03:41,680 --> 00:03:44,620
+About a two or 3% increase for those
+groups.
+
+75
+00:03:44,620 --> 00:03:47,770
+So these are the types of data that we're
+going to be looking at for
+
+76
+00:03:47,770 --> 00:03:48,890
+the rest of this course.

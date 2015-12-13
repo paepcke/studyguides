@@ -1,0 +1,732 @@
+1
+00:00:01,630 --> 00:00:03,860
+Alright, now, we're going to jump to the
+continuous case.
+
+2
+00:00:03,860 --> 00:00:06,220
+As I said, the continuous case is a little
+bit more tricky.
+
+3
+00:00:06,220 --> 00:00:08,230
+It's a little bit more math involved in
+this.
+
+4
+00:00:08,230 --> 00:00:10,575
+We're just going to touch upon the
+continuous case this week.
+
+5
+00:00:10,575 --> 00:00:15,740
+But, if you have any continuous
+mathematical function, if that
+
+6
+00:00:15,740 --> 00:00:19,140
+function integrates to 1, that just means
+that the area under that curve is 1.
+
+7
+00:00:19,140 --> 00:00:21,850
+Then, it is by default a probability
+function.
+
+8
+00:00:23,830 --> 00:00:27,760
+The probabilities associated with a
+continuous probability function are just,
+
+9
+00:00:27,760 --> 00:00:28,900
+again, areas under the curve.
+
+10
+00:00:28,900 --> 00:00:31,360
+Just integrals.
+
+11
+00:00:31,360 --> 00:00:34,320
+And, probabilities are going to be given
+for a range of values rather than
+
+12
+00:00:34,320 --> 00:00:37,457
+any particular value, so in the discrete
+case, we talked about the probability that
+
+13
+00:00:37,457 --> 00:00:40,690
+exactly 1 occurs, or the probability that
+exactly 9 occurs.
+
+14
+00:00:40,690 --> 00:00:42,700
+With a continuous case there are no
+particular,
+
+15
+00:00:42,700 --> 00:00:45,730
+there's an infinite number of possible
+particular values, so
+
+16
+00:00:45,730 --> 00:00:48,630
+we're always talking about the
+probabilities of ranges of values.
+
+17
+00:00:48,630 --> 00:00:51,626
+Like, what's the probability that it will
+fall between 1 and 2?
+
+18
+00:00:51,626 --> 00:00:54,310
+So let me just give you an example to make
+this clear.
+
+19
+00:00:54,310 --> 00:00:56,539
+So, a very simple but
+
+20
+00:00:56,539 --> 00:01:01,050
+important probability function is the
+exponential distribution.
+
+21
+00:01:01,050 --> 00:01:02,660
+And let me just write up what that
+function is.
+
+22
+00:01:02,660 --> 00:01:06,060
+So, the exponential distribution is e
+raised to negative x.
+
+23
+00:01:06,060 --> 00:01:10,230
+We call that the exponential distribution
+in probability.
+
+24
+00:01:10,230 --> 00:01:13,760
+And that function is just a mathematical
+function,
+
+25
+00:01:13,760 --> 00:01:15,510
+where the area under the curve is one.
+
+26
+00:01:15,510 --> 00:01:19,160
+And we can kind of just draw a picture of
+that function to see that.
+
+27
+00:01:19,160 --> 00:01:20,380
+You can't have negative values.
+
+28
+00:01:20,380 --> 00:01:24,350
+So it starts at one and it kind of goes
+down towards the x-axis like that.
+
+29
+00:01:24,350 --> 00:01:26,950
+Now, if I just told you that the area
+under that curve is 1,
+
+30
+00:01:26,950 --> 00:01:29,100
+you'd probably say that sounds reasonable,
+right?
+
+31
+00:01:29,100 --> 00:01:32,070
+If you were to calculate the area under
+the curve here, it starts at 1 and
+
+32
+00:01:32,070 --> 00:01:36,030
+it goes down towards the x value, it seems
+reasonable that that area might be 1.
+
+33
+00:01:36,030 --> 00:01:38,620
+So if you want to just believe me, that's,
+that's fine.
+
+34
+00:01:38,620 --> 00:01:40,780
+I can also show you the interval for those
+who are interested.
+
+35
+00:01:40,780 --> 00:01:41,730
+Again, this is optional,
+
+36
+00:01:41,730 --> 00:01:45,890
+but we could take the integral over all
+possible values of this function.
+
+37
+00:01:45,890 --> 00:01:49,830
+So you can have any value from the x, can
+be anything from 0 to infinity.
+
+38
+00:01:49,830 --> 00:01:52,496
+If we take the integral of e raised to
+negative x.
+
+39
+00:01:52,496 --> 00:01:57,250
+And we, we integrated over the, from 0 to
+infinity.
+
+40
+00:01:57,250 --> 00:01:58,396
+We get a value of 1.
+
+41
+00:01:58,396 --> 00:02:02,160
+Again, that, that integral is just there
+for those of you who want it, but
+
+42
+00:02:02,160 --> 00:02:03,950
+that just proves that the area under the
+curve is 1,
+
+43
+00:02:03,950 --> 00:02:05,588
+therefore, it's a probability function.
+
+44
+00:02:05,588 --> 00:02:08,330
+So here is the same function, just drawn
+out.
+
+45
+00:02:08,330 --> 00:02:10,630
+We call this the e raised to the negative
+x,
+
+46
+00:02:10,630 --> 00:02:13,240
+we call that function a probability
+density function.
+
+47
+00:02:13,240 --> 00:02:16,610
+It's analogous to a probability mass
+function, that little table where I
+
+48
+00:02:16,610 --> 00:02:21,130
+wrote out if x is this, the probability of
+x is that, for for the discrete case.
+
+49
+00:02:21,130 --> 00:02:25,170
+But really, the probability density
+function it gives us this curve, but
+
+50
+00:02:25,170 --> 00:02:29,730
+we can't really talk about the probability
+of any particular value off of this curve,
+
+51
+00:02:29,730 --> 00:02:33,620
+because there's an infinite number of
+possible distance, different values here.
+
+52
+00:02:33,620 --> 00:02:36,640
+So we can't really assign probabilities to
+any particular value,
+
+53
+00:02:36,640 --> 00:02:39,790
+we can only assign probabilities to a
+range of values.
+
+54
+00:02:39,790 --> 00:02:41,570
+So we're always talking about a range of
+values.
+
+55
+00:02:41,570 --> 00:02:44,620
+because if you say, what's the probability
+of getting a value of 1?
+
+56
+00:02:44,620 --> 00:02:48,530
+Well, do you mean 1 or do you mean 1.0, do
+you mean 1.023?
+
+57
+00:02:48,530 --> 00:02:49,860
+Right?
+So you're always really talking about
+
+58
+00:02:49,860 --> 00:02:50,532
+a range of values.
+
+59
+00:02:50,532 --> 00:02:54,890
+So, in, that means that, when again, when
+we're talking about a range of values,
+
+60
+00:02:54,890 --> 00:02:58,840
+we're actually a, talking about a
+cumulative distribution function rather
+
+61
+00:02:58,840 --> 00:03:00,160
+than a probability mass function.
+
+62
+00:03:00,160 --> 00:03:01,750
+But don't worry about that terminology.
+
+63
+00:03:01,750 --> 00:03:04,720
+All that means is, instead of looking at
+the original function,
+
+64
+00:03:04,720 --> 00:03:07,120
+we're looking at the area under the curve.
+
+65
+00:03:07,120 --> 00:03:11,800
+And again areas under the curve happen to
+be calculated with integrals, but
+
+66
+00:03:11,800 --> 00:03:13,710
+you can kind of look at this picture I'm
+showing here.
+
+67
+00:03:13,710 --> 00:03:14,520
+So like if I asked,
+
+68
+00:03:14,520 --> 00:03:18,360
+what's the probability on an exponential
+function of being between 1 and 2?
+
+69
+00:03:18,360 --> 00:03:22,819
+Well, you could kind of just draw in that
+area and you could almost estimate it just
+
+70
+00:03:22,819 --> 00:03:26,400
+from looking at the picture, that that's
+around, you know, a quarter of the area.
+
+71
+00:03:26,400 --> 00:03:29,710
+Or, you could do out the actual integral,
+which I'm showing on the bottom for
+
+72
+00:03:29,710 --> 00:03:32,045
+those of you who want to see the integral
+done out.
+
+73
+00:03:32,045 --> 00:03:34,500
+We could do the integral from 1 to 2 and
+
+74
+00:03:34,500 --> 00:03:37,220
+we find out that precisely the area under
+the curve here is 23%.
+
+75
+00:03:37,220 --> 00:03:41,650
+And here's an example of how this might be
+used in medicine.
+
+76
+00:03:41,650 --> 00:03:44,450
+So let's say that we found out, we did a
+study and
+
+77
+00:03:44,450 --> 00:03:48,590
+found out that survival times after lung
+transplant roughly follow
+
+78
+00:03:48,590 --> 00:03:51,110
+an exponential distribution, an
+exponential function .
+
+79
+00:03:51,110 --> 00:03:55,340
+So people are dying after a lung
+transplant at a certain rate.
+
+80
+00:03:55,340 --> 00:03:58,640
+If it follows an exponential function,
+then we can use that information or
+
+81
+00:03:58,640 --> 00:04:01,598
+approximately follows an exponential
+function to get,
+
+82
+00:04:01,598 --> 00:04:05,540
+to calculate the probabilities of survival
+in different time periods.
+
+83
+00:04:05,540 --> 00:04:09,400
+So for example, the probability that a
+patient will die in the second year after
+
+84
+00:04:09,400 --> 00:04:14,000
+surgery, somewhere between the year one
+they will survive up through year one but
+
+85
+00:04:14,000 --> 00:04:17,350
+die before year two, that that is they
+will die between years one and two.
+
+86
+00:04:17,350 --> 00:04:20,580
+If we get the end of the curve it's 23%,
+so
+
+87
+00:04:20,580 --> 00:04:24,150
+their probability of dying in that
+interval is 23%.
+
+88
+00:04:24,150 --> 00:04:28,880
+So it has very useful applications, the
+exponential function in survival analysis.
+
+89
+00:04:28,880 --> 00:04:31,280
+We'll talk about that in the very last
+week of the course.
+
+90
+00:04:32,750 --> 00:04:34,890
+Another example of a useful,
+
+91
+00:04:34,890 --> 00:04:38,970
+continuous probability function is the
+uniform distribution.
+
+92
+00:04:38,970 --> 00:04:41,520
+It's a very simple, nice little function.
+
+93
+00:04:41,520 --> 00:04:43,450
+So it's easy to, to understand, so
+
+94
+00:04:43,450 --> 00:04:46,270
+it's easy for illustrating some of, some
+of these concepts.
+
+95
+00:04:46,270 --> 00:04:50,320
+So the uniform distribution is just a
+distribution where you can,
+
+96
+00:04:50,320 --> 00:04:54,250
+x can only take on values between zero and
+one, and they all have equal probability.
+
+97
+00:04:54,250 --> 00:04:55,220
+Hence, it's uniform.
+
+98
+00:04:55,220 --> 00:04:56,400
+And you can see,
+
+99
+00:04:56,400 --> 00:05:00,250
+it just makes that function, literally
+just makes a little box, a little square.
+
+100
+00:05:00,250 --> 00:05:04,971
+And the area under the, the curve here,
+the area in that box has to be 1, right?
+
+101
+00:05:04,971 --> 00:05:08,160
+The, the width is 1, the length is 1, so 1
+times 1 is 1.
+
+102
+00:05:08,160 --> 00:05:11,590
+You can also prove that the area under the
+curve is one by doing
+
+103
+00:05:11,590 --> 00:05:14,390
+an interval here should you choose, of
+course, we don't really need that because
+
+104
+00:05:14,390 --> 00:05:18,310
+everybody knows that the area under of
+that box is just one.
+
+105
+00:05:18,310 --> 00:05:21,930
+So the very simple little distribution and
+it's easy even without knowing any
+
+106
+00:05:21,930 --> 00:05:24,450
+calculus to calculate areas under the
+curve here.
+
+107
+00:05:24,450 --> 00:05:25,700
+So for example if I said,
+
+108
+00:05:25,700 --> 00:05:28,860
+what's the probability that x is between a
+quarter and a half?
+
+109
+00:05:28,860 --> 00:05:30,560
+Well, that's going to be 1 4th or
+
+110
+00:05:30,560 --> 00:05:34,210
+if I said, what's the probability that x
+is between 0 and 1 ?
+
+111
+00:05:34,210 --> 00:05:35,810
+Well, that's going to be 50%.
+
+112
+00:05:35,810 --> 00:05:40,390
+And this has real practical implications
+in medical research.
+
+113
+00:05:40,390 --> 00:05:43,130
+So, for example, when you're doing a
+randomized trial, and
+
+114
+00:05:43,130 --> 00:05:44,310
+you're randomizing patients.
+
+115
+00:05:44,310 --> 00:05:46,710
+Say you're, you're randomizing half the
+patients to treatment and
+
+116
+00:05:46,710 --> 00:05:48,520
+half the patients to control.
+
+117
+00:05:48,520 --> 00:05:52,810
+The typical way that you would do that is
+to use a random number generator in
+
+118
+00:05:52,810 --> 00:05:53,310
+a computer.
+
+119
+00:05:53,310 --> 00:05:57,010
+And, one of the random number generators
+available to
+
+120
+00:05:57,010 --> 00:06:01,429
+you works by randomly generating a number
+between 0 and
+
+121
+00:06:01,429 --> 00:06:03,810
+1 with equal probabilities of all the
+numbers in between.
+
+122
+00:06:03,810 --> 00:06:05,840
+In other words, it's based on a uniform
+distribution.
+
+123
+00:06:06,970 --> 00:06:10,940
+Every subject has an equal probability of
+getting it, any number between 0 and 1.
+
+124
+00:06:10,940 --> 00:06:15,090
+So you can arbitrarily say if the subject
+ends up with a number below 0.5,
+
+125
+00:06:15,090 --> 00:06:16,530
+we're going to call them control.
+
+126
+00:06:16,530 --> 00:06:19,750
+If the subject ends up with a number above
+0.5, we're going to call them treatment.
+
+127
+00:06:19,750 --> 00:06:22,340
+That will randomly assign people to
+treatment and
+
+128
+00:06:22,340 --> 00:06:25,751
+control with 50-50 probability.
+
+129
+00:06:25,751 --> 00:06:30,500
+And I had a case a couple of years back
+where a student of mine had done some
+
+130
+00:06:30,500 --> 00:06:34,670
+a research project where she had randomly
+assigned people to a treatment group and
+
+131
+00:06:34,670 --> 00:06:35,260
+a control group.
+
+132
+00:06:35,260 --> 00:06:39,530
+And then actually literally flipped a coin
+you know, an actual
+
+133
+00:06:39,530 --> 00:06:44,760
+point to decide where people were going,
+which group they were going to end up in.
+
+134
+00:06:44,760 --> 00:06:48,590
+And the reviewer one of the reviewers of
+her paper came back and
+
+135
+00:06:48,590 --> 00:06:51,250
+said, well, they were, they didn't like
+the fact that it was done manually,
+
+136
+00:06:51,250 --> 00:06:53,690
+that that a person had actually flipped
+coins.
+
+137
+00:06:53,690 --> 00:06:55,220
+Because that allowed the probability,
+
+138
+00:06:55,220 --> 00:06:59,300
+the problem that you could introduce error
+or bias.
+
+139
+00:06:59,300 --> 00:07:03,770
+And so, it's better to have your computer
+virtually flip coins.
+
+140
+00:07:03,770 --> 00:07:07,670
+And, and this is what I just described is
+exactly the computer flipping
+
+141
+00:07:07,670 --> 00:07:08,960
+a coin virtually.
+
+142
+00:07:08,960 --> 00:07:12,219
+So it's very useful for things like
+randomizing patients.
+
+143
+00:07:15,380 --> 00:07:18,340
+Now, all probability distributions have
+two features to them that
+
+144
+00:07:18,340 --> 00:07:20,480
+are very important, they have a mean and a
+variance.
+
+145
+00:07:20,480 --> 00:07:22,530
+And this mean and variance are just like
+the mean and
+
+146
+00:07:22,530 --> 00:07:25,720
+variance that we talked about in the first
+week of the course.
+
+147
+00:07:25,720 --> 00:07:28,770
+So in the next couple of modules, I'm
+going to tell you how to calculate
+
+148
+00:07:28,770 --> 00:07:33,400
+the mean and variance for a probability
+distribution rather than for data.
+
+149
+00:07:33,400 --> 00:07:36,340
+And we've already seen some mean and
+variance of probability distributions.
+
+150
+00:07:36,340 --> 00:07:38,100
+We saw the normal curve before.
+
+151
+00:07:38,100 --> 00:07:41,410
+The normal curve has a mean, and it has a
+standard deviation.
+
+152
+00:07:41,410 --> 00:07:42,780
+So, we've seen these before.
+
+153
+00:07:42,780 --> 00:07:44,530
+Now, I'm going to show you how to
+calculate them.

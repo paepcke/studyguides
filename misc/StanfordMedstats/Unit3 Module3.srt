@@ -1,0 +1,298 @@
+1
+00:00:00,510 --> 00:00:01,410
+Welcome back,
+
+2
+00:00:01,410 --> 00:00:04,410
+in this module we're going to show you how
+to use the ranks procedure.
+
+3
+00:00:04,410 --> 00:00:07,040
+This is a fairly simple procedure that
+allows you to compute the ranks
+
+4
+00:00:07,040 --> 00:00:09,110
+of the values of the numeric variables in
+your data set.
+
+5
+00:00:09,110 --> 00:00:13,435
+As you learn more about Statistics, Proc
+ranks will become an essential tool for
+
+6
+00:00:13,435 --> 00:00:15,360
+non-parametric analysis.
+
+7
+00:00:15,360 --> 00:00:19,320
+Also ranks were used when generating,
+quartile, decile, percentile or
+
+8
+00:00:19,320 --> 00:00:20,860
+any other group you might be interested in
+studying.
+
+9
+00:00:20,860 --> 00:00:24,950
+I'm going to start with the new data set
+as you can see I've a column for
+
+10
+00:00:24,950 --> 00:00:26,335
+gender, weight and age.
+
+11
+00:00:26,335 --> 00:00:30,670
+[SOUND]
+Let's look at some code.
+
+12
+00:00:30,670 --> 00:00:32,920
+If you look at the code,
+
+13
+00:00:32,920 --> 00:00:36,530
+you can see that we start with Proc rank
+and then we specify our data set.
+
+14
+00:00:38,080 --> 00:00:42,120
+We use out equals to name a new SAS data
+set that will contain the ranks data.
+
+15
+00:00:42,120 --> 00:00:47,290
+Var which is short for variable instructs
+SAS to rank the variable called age.
+
+16
+00:00:47,290 --> 00:00:51,360
+Let's press Run and see what happens.
+
+17
+00:00:51,360 --> 00:00:54,300
+[BLANK_AUDIO]
+
+18
+00:00:54,300 --> 00:00:55,460
+You see how the original values for
+
+19
+00:00:55,460 --> 00:00:58,465
+the age variable are replaced with ranks
+for the non-missing data?
+
+20
+00:00:58,465 --> 00:01:02,010
+[SOUND]
+Here's the data point with the first rank.
+
+21
+00:01:03,200 --> 00:01:04,530
+That means it had the lowest value for
+age.
+
+22
+00:01:04,530 --> 00:01:08,295
+But what if we want to see the ranks
+without replacing the original values?
+
+23
+00:01:08,295 --> 00:01:10,200
+[SOUND].
+
+24
+00:01:10,200 --> 00:01:13,380
+>> Let's modify the code to include the
+original age values as well as
+
+25
+00:01:13,380 --> 00:01:15,400
+a variable with the age ranks.
+
+26
+00:01:15,400 --> 00:01:17,220
+In this modified code, we've included a
+ranks statement.
+
+27
+00:01:17,220 --> 00:01:23,630
+This code actually names the variable used
+to store the ranks for
+
+28
+00:01:23,630 --> 00:01:24,150
+the non missing data.
+
+29
+00:01:24,150 --> 00:01:28,890
+To clarify, we now have told SAS to create
+a new variable called rank underscore age,
+
+30
+00:01:28,890 --> 00:01:30,870
+that records the ranks of the age
+variable.
+
+31
+00:01:32,590 --> 00:01:34,140
+Let's run this and compare the two
+outputs.
+
+32
+00:01:35,360 --> 00:01:40,070
+Notice how our original output had the
+ranks listed under the variable name, age.
+
+33
+00:01:40,070 --> 00:01:44,570
+It was labeled, Value of age Were Replaced
+by Ranks.
+
+34
+00:01:45,930 --> 00:01:47,370
+After including the rank statements,
+
+35
+00:01:47,370 --> 00:01:51,240
+we now have an output that includes the
+actual age value and the ranks
+
+36
+00:01:51,240 --> 00:01:56,580
+listed under the name ranks underscore age
+with the label ranks for variable age.
+
+37
+00:01:58,100 --> 00:01:59,390
+>> Notice how SAS ranks the data.
+
+38
+00:01:59,390 --> 00:02:04,810
+The lowest values get the lowest ranks and
+the higher values get the higher ranks.
+
+39
+00:02:04,810 --> 00:02:05,750
+This is ascending order.
+
+40
+00:02:06,900 --> 00:02:10,040
+SAS will rank the data in ascending order
+by default.
+
+41
+00:02:10,040 --> 00:02:11,860
+If you want to change the order of the
+ranks,
+
+42
+00:02:11,860 --> 00:02:14,530
+you can do that by including the
+descending option at the end of your
+
+43
+00:02:14,530 --> 00:02:15,140
+first line of code.
+
+44
+00:02:15,140 --> 00:02:21,600
+With descending order, the highest value
+would get the lowest rank and
+
+45
+00:02:21,600 --> 00:02:23,620
+the lowest value would get the highest
+rank.
+
+46
+00:02:23,620 --> 00:02:25,200
+As you can see, the subject with the age
+of 18,
+
+47
+00:02:25,200 --> 00:02:27,570
+which is the highest value, got the lowest
+rank.
+
+48
+00:02:27,570 --> 00:02:30,080
+Number 1.
+And the subject that had age 13,
+
+49
+00:02:30,080 --> 00:02:33,130
+which is the lowest age got the highest
+rank.
+
+50
+00:02:33,130 --> 00:02:36,450
+>> So, what else can you do with proc
+ranks?
+
+51
+00:02:36,450 --> 00:02:38,020
+Like we mentioned in an earlier module,
+
+52
+00:02:38,020 --> 00:02:41,160
+it's sometimes necessary to convert a
+continuous variable into a categorical
+
+53
+00:02:41,160 --> 00:02:43,910
+variable by splitting it up into separate
+bins.
+
+54
+00:02:43,910 --> 00:02:45,700
+You can use prop ranks to help set up
+these bins.
+
+55
+00:02:46,760 --> 00:02:49,430
+Let's first return to our people today set
+and use the following code.
+
+56
+00:02:52,010 --> 00:02:54,710
+Notice how I've included the words groups
+and
+
+57
+00:02:54,710 --> 00:02:56,960
+an equal sign at the end of our first line
+of code.
+
+58
+00:02:56,960 --> 00:03:00,860
+When you write groups equals a hundred,
+you could create percentiles.
+
+59
+00:03:00,860 --> 00:03:06,160
+Groups equals ten deciles and in our case,
+groups equal four for quartiles.
+
+60
+00:03:06,160 --> 00:03:07,430
+Let's run this and look at the output.
+
+61
+00:03:11,360 --> 00:03:13,640
+Now, I can see that there is a new column
+for age quartiles.
+
+62
+00:03:13,640 --> 00:03:17,160
+The quartiles were based on the overall
+distribution and
+
+63
+00:03:17,160 --> 00:03:20,670
+each individual record gets a value for
+the specific quartile and falls inside

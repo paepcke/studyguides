@@ -1,0 +1,659 @@
+1
+00:00:00,000 --> 00:00:05,380
+[BLANK_AUDIO]
+
+2
+00:00:05,380 --> 00:00:07,480
+Welcome to week four of the course.
+
+3
+00:00:07,480 --> 00:00:10,480
+This week, we're going to continue our
+discussion of Cox regression, and
+
+4
+00:00:10,480 --> 00:00:13,270
+I'm going to tell you about some really
+cool things that you can do with
+
+5
+00:00:13,270 --> 00:00:18,280
+a Cox regression model, including
+incorporating time-changing predictors.
+
+6
+00:00:20,610 --> 00:00:22,530
+So this week we're going to talk more
+about Cox regression.
+
+7
+00:00:22,530 --> 00:00:26,400
+I'm going to tell you about some
+variations on Cox regression.
+
+8
+00:00:26,400 --> 00:00:31,050
+So, for one thing, last week we were
+talking about using the time scale of
+
+9
+00:00:31,050 --> 00:00:33,040
+the time that you're in the study.
+
+10
+00:00:33,040 --> 00:00:34,980
+But we can actually switch the time scale
+and
+
+11
+00:00:34,980 --> 00:00:37,605
+make the time scale age rather than time
+in the study.
+
+12
+00:00:37,605 --> 00:00:39,000
+I'll show you how to do that.
+
+13
+00:00:39,000 --> 00:00:42,060
+We're also going to talk about
+time-dependent predictors.
+
+14
+00:00:42,060 --> 00:00:46,740
+This is the first time that we've had a
+model that incorporates time and therefore
+
+15
+00:00:46,740 --> 00:00:51,150
+that we are actually able to update
+people's values for a given predictor.
+
+16
+00:00:51,150 --> 00:00:52,410
+That's really cool.
+
+17
+00:00:52,410 --> 00:00:54,380
+And I'll show you how that works this
+week.
+
+18
+00:00:54,380 --> 00:00:58,140
+I'll also tell you some strategies for
+dealing with repeated events.
+
+19
+00:00:58,140 --> 00:01:03,110
+So up until now, we've only been doing the
+time until the first event occurs.
+
+20
+00:01:03,110 --> 00:01:07,380
+But what if you have an event, like a
+heart attack or an episode of disability
+
+21
+00:01:07,380 --> 00:01:11,380
+that can happen, or a fracture, that can
+happen multiple times during your study?
+
+22
+00:01:11,380 --> 00:01:13,530
+How do you deal with repeated events?
+
+23
+00:01:13,530 --> 00:01:17,440
+I'll also talk to you about how to deal
+with clustered observations with
+
+24
+00:01:17,440 --> 00:01:18,950
+correlations in your data.
+
+25
+00:01:20,570 --> 00:01:25,130
+Most of what I'm going to be talking about
+this week I'm going to have to present you
+
+26
+00:01:25,130 --> 00:01:29,880
+the likelihood function, go through how
+things happen in the likelihood function.
+
+27
+00:01:29,880 --> 00:01:32,340
+For you to be able to really understand
+what's going on,
+
+28
+00:01:32,340 --> 00:01:34,740
+you have to kind of dig into the
+likelihood function.
+
+29
+00:01:34,740 --> 00:01:38,190
+So by the end of this week, you're going
+to be dreaming in likelihood functions.
+
+30
+00:01:38,190 --> 00:01:42,010
+Just as a quick review, if you totally got
+the likelihood function last week you
+
+31
+00:01:42,010 --> 00:01:45,980
+can fast forward this part, but let me
+just give you a brief review of
+
+32
+00:01:45,980 --> 00:01:49,670
+the likelihood function for a Cox
+regression so we're all on the same page.
+
+33
+00:01:49,670 --> 00:01:54,450
+So what I've done down here is I've drawn
+out a very small simple little data set.
+
+34
+00:01:54,450 --> 00:01:55,820
+It's got four people in it.
+
+35
+00:01:55,820 --> 00:01:58,250
+Their ID numbers are one, two, three and
+four.
+
+36
+00:01:58,250 --> 00:02:01,260
+And there's one predictor we're going to
+look at, they're either in the treatment
+
+37
+00:02:01,260 --> 00:02:05,460
+group treatment equals one, or they're in
+the control group treatment equals zero.
+
+38
+00:02:05,460 --> 00:02:08,050
+I've represented their data over time
+here.
+
+39
+00:02:08,050 --> 00:02:10,900
+So for example subject one, it was in the
+study for 12 months and
+
+40
+00:02:10,900 --> 00:02:12,440
+then the x means they had the event.
+
+41
+00:02:12,440 --> 00:02:14,160
+So they had the event.
+
+42
+00:02:14,160 --> 00:02:17,100
+Subject two was in the study for say,
+about eight months.
+
+43
+00:02:17,100 --> 00:02:19,520
+And then the c represents the sensor.
+
+44
+00:02:19,520 --> 00:02:24,610
+How does this translate to a likelihood
+function for Cox regression?
+
+45
+00:02:24,610 --> 00:02:26,740
+So remember that the likelihood function
+for
+
+46
+00:02:26,740 --> 00:02:31,360
+Cox regression contains one term for every
+event.
+
+47
+00:02:31,360 --> 00:02:33,035
+So, in this case we have two events.
+
+48
+00:02:33,035 --> 00:02:35,890
+Subject one and subjects three both have
+the event so
+
+49
+00:02:35,890 --> 00:02:38,650
+we're going to have two terms in the
+likelihood.
+
+50
+00:02:38,650 --> 00:02:43,220
+The terms and the likelihood again
+represent the probability of your data.
+
+51
+00:02:43,220 --> 00:02:46,220
+For Cox regression, we're using a
+conditional likelihood.
+
+52
+00:02:46,220 --> 00:02:50,280
+So we're looking at the probability of, if
+we know.
+
+53
+00:02:50,280 --> 00:02:51,670
+We're conditioning on,
+
+54
+00:02:51,670 --> 00:02:54,870
+if we know that an event happened at five
+months into the study.
+
+55
+00:02:54,870 --> 00:02:56,240
+We're conditioning on that fact.
+
+56
+00:02:56,240 --> 00:02:59,540
+If we know that an even happened at five
+months into the study.
+
+57
+00:02:59,540 --> 00:03:03,340
+What's the probability that it happened to
+subject three as opposed to
+
+58
+00:03:03,340 --> 00:03:05,130
+anybody else who was at risk?
+
+59
+00:03:05,130 --> 00:03:08,240
+That's what the term in a likelihood
+represents.
+
+60
+00:03:08,240 --> 00:03:12,300
+So the denominator of the terms is going
+to contain the probability of
+
+61
+00:03:12,300 --> 00:03:16,036
+anybody having the event at time two,
+anybody who is at risk.
+
+62
+00:03:16,036 --> 00:03:21,556
+And we're going to be putting into that
+denominator the hazard rate for
+
+63
+00:03:21,556 --> 00:03:27,470
+person, in this case subject one was at
+risk at five months into the study.
+
+64
+00:03:27,470 --> 00:03:30,810
+Subject two was at risk, subject three was
+at risk, and subject four was at risk.
+
+65
+00:03:35,180 --> 00:03:38,520
+So, the denominator contains the
+probability of having the event at
+
+66
+00:03:38,520 --> 00:03:41,840
+exactly five months for any one of those
+four people who were at risk.
+
+67
+00:03:41,840 --> 00:03:43,300
+Each of their hazard rates.
+
+68
+00:03:43,300 --> 00:03:47,060
+The numerator is going to contain the
+hazard, the probability for the person who
+
+69
+00:03:47,060 --> 00:03:49,530
+actually did have the event, which happens
+to be subject three here.
+
+70
+00:03:50,540 --> 00:03:54,330
+Remember, for Cox regression, the baseline
+hazards, we're going to assume that
+
+71
+00:03:54,330 --> 00:03:56,970
+everybody has the same baseline hazard and
+those are going to cancel out, so
+
+72
+00:03:56,970 --> 00:03:59,760
+we're not going to be estimating any
+intercepts here.
+
+73
+00:03:59,760 --> 00:04:02,370
+And so, what is the hazard function
+actually?
+
+74
+00:04:02,370 --> 00:04:03,720
+What does it boil down to?
+
+75
+00:04:03,720 --> 00:04:09,440
+It's going to be some e raised to data one
+times x one times beta two times x two.
+
+76
+00:04:09,440 --> 00:04:12,940
+Whatever you have in your Cox regression
+model for predictors.
+
+77
+00:04:12,940 --> 00:04:15,530
+Well, in this case, let's say we just have
+one predictor which is treatment.
+
+78
+00:04:17,080 --> 00:04:20,050
+The person who had the event was person
+three subject three.
+
+79
+00:04:20,050 --> 00:04:21,670
+They were not on treatment.
+
+80
+00:04:21,670 --> 00:04:23,990
+They have a value of zero for treatment.
+
+81
+00:04:23,990 --> 00:04:27,960
+We can also replace the hazard functions
+in the denominator,
+
+82
+00:04:27,960 --> 00:04:30,750
+in terms of e raised to betas.
+
+83
+00:04:30,750 --> 00:04:36,970
+And so the person who had the event, they
+had beta raised, times zero.
+
+84
+00:04:36,970 --> 00:04:40,120
+The person who, everybody else who was at
+risk we had,
+
+85
+00:04:40,120 --> 00:04:43,100
+subject one who is in the treatment group
+who is at risk.
+
+86
+00:04:43,100 --> 00:04:46,983
+That's their chance of having the event
+right now as a function of beta.
+
+87
+00:04:46,983 --> 00:04:50,222
+Subject two was also in the treatment
+group, and
+
+88
+00:04:50,222 --> 00:04:53,034
+then finally subject four was a control.
+
+89
+00:04:53,034 --> 00:04:56,376
+So that's what the first terminal
+likelihood here is going to look like.
+
+90
+00:04:56,376 --> 00:04:59,951
+Again, representing the probability that
+it was subject three as opposed to
+
+91
+00:04:59,951 --> 00:05:01,359
+anybody else who was at risk.
+
+92
+00:05:01,359 --> 00:05:05,940
+Conditioned on the fact we know we had an
+event at five months into the study.
+
+93
+00:05:05,940 --> 00:05:08,200
+The second event happened at 12 months
+into the study.
+
+94
+00:05:08,200 --> 00:05:11,090
+At that time period, there were only two
+people at risk, subject one and
+
+95
+00:05:11,090 --> 00:05:11,620
+subject four.
+
+96
+00:05:11,620 --> 00:05:16,750
+So the only people who could've had the
+event there is the subject four,
+
+97
+00:05:16,750 --> 00:05:20,380
+who was in the control group and subject
+one, who was in the treatment group.
+
+98
+00:05:20,380 --> 00:05:23,490
+The one who actually had the event was
+subject one who was
+
+99
+00:05:23,490 --> 00:05:24,420
+in the treatment group.
+
+100
+00:05:24,420 --> 00:05:27,910
+So that would be our likelihood function
+for this simple data set.
+
+101
+00:05:29,450 --> 00:05:31,610
+If you understand the likelihood function,
+
+102
+00:05:31,610 --> 00:05:33,500
+that's going to allow you to do a lot of
+cool things.
+
+103
+00:05:33,500 --> 00:05:36,960
+So one of the things that we're going to
+grapple with this week is incorporating
+
+104
+00:05:36,960 --> 00:05:39,770
+time changing predictors into our model.
+
+105
+00:05:39,770 --> 00:05:40,884
+So, what do I mean by that?
+
+106
+00:05:40,884 --> 00:05:43,679
+Go back to this example I was talking
+about last week
+
+107
+00:05:43,679 --> 00:05:47,709
+about Academy Award winners, and those who
+are only ever nominated, and
+
+108
+00:05:47,709 --> 00:05:51,629
+I'm showing you the Kaplan–Meier curve
+here for the screenwriters.
+
+109
+00:05:51,629 --> 00:05:57,081
+For the screenwriters, unlike for the
+actors and actresses, those
+
+110
+00:05:57,081 --> 00:06:03,553
+who are ever only nominated actually did
+better than those who were the winners.
+
+111
+00:06:03,553 --> 00:06:07,348
+But what's interesting if you think
+carefully about this Kaplan–Meier curve,
+
+112
+00:06:07,348 --> 00:06:10,069
+there was a problem with this analysis, as
+I mentioned.
+
+113
+00:06:11,090 --> 00:06:15,168
+Look, you can see that the time scale here
+is age, so we're starting at age zero.
+
+114
+00:06:15,168 --> 00:06:19,620
+We are counting people is in the nominee
+group on the red line, or
+
+115
+00:06:19,620 --> 00:06:23,020
+in the winners group on the blue line from
+birth.
+
+116
+00:06:23,020 --> 00:06:26,340
+But that somehow seems wrong because
+people were not
+
+117
+00:06:26,340 --> 00:06:30,170
+didn't win an Academy Award at birth, they
+weren't nominated at birth.
+
+118
+00:06:30,170 --> 00:06:34,780
+Those events of being nominated or winning
+an Academy Award happen much later in
+
+119
+00:06:34,780 --> 00:06:39,110
+life, and yet we're somehow assuming that
+their status in one group or
+
+120
+00:06:39,110 --> 00:06:43,690
+the other translates and so, effects their
+longevity their whole life.
+
+121
+00:06:43,690 --> 00:06:46,100
+So there's something quite wrong with
+that.
+
+122
+00:06:46,100 --> 00:06:49,330
+With time-changing predictors what we're
+going to be able to do is to correctly
+
+123
+00:06:49,330 --> 00:06:53,240
+count somebody as a control or a nominee
+or as a winner for
+
+124
+00:06:53,240 --> 00:06:55,630
+the ages in which they were in one of
+those groups.
+
+125
+00:06:55,630 --> 00:06:59,780
+So you can have the status of being a
+nominee only for many,
+
+126
+00:06:59,780 --> 00:07:03,520
+many years before we switch you into the
+winner's group.
+
+127
+00:07:03,520 --> 00:07:05,710
+That's going to be a much better way to
+analyze these data.
+
+128
+00:07:06,800 --> 00:07:10,560
+I'm also going to tell you this week how
+to deal with repeated events.
+
+129
+00:07:10,560 --> 00:07:14,560
+And so I'm just showing you an example
+here of a study that has repeated events.
+
+130
+00:07:14,560 --> 00:07:16,450
+There are five subjects pictured here.
+
+131
+00:07:16,450 --> 00:07:20,060
+Every time you see a little black dot,
+that's an episode of disability.
+
+132
+00:07:20,060 --> 00:07:23,360
+So what you'll notice is that some
+subjects had many episodes of
+
+133
+00:07:23,360 --> 00:07:25,040
+disability over time.
+
+134
+00:07:25,040 --> 00:07:29,130
+Up until now I've only told you how to
+deal with time to first event,
+
+135
+00:07:29,130 --> 00:07:32,900
+that would be the first dot you see on
+each of these, but if you just look at
+
+136
+00:07:32,900 --> 00:07:36,630
+time the first event for data like this,
+you'd be missing a lot of information, so
+
+137
+00:07:36,630 --> 00:07:39,630
+how we grapple with, how do we handle
+repeated events?
+
+138
+00:07:39,630 --> 00:07:41,020
+I'll show you how to do that this week.

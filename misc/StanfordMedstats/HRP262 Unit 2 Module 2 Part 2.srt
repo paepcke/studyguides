@@ -1,0 +1,960 @@
+1
+00:00:00,880 --> 00:00:02,510
+All right.
+Let me show you something a little bit
+
+2
+00:00:02,510 --> 00:00:03,130
+more complicated.
+
+3
+00:00:03,130 --> 00:00:05,510
+The exponential is great because it's the
+simplest of them.
+
+4
+00:00:05,510 --> 00:00:08,130
+But let me show one, one step more
+complicated.
+
+5
+00:00:08,130 --> 00:00:11,510
+So, what if we have a hazard function that
+was increasing?
+
+6
+00:00:11,510 --> 00:00:15,440
+And, what if that hazard function was
+increasing in a very specific way?
+
+7
+00:00:15,440 --> 00:00:21,070
+So, what if the hazard function was equal
+to point one, like we had before.
+
+8
+00:00:21,070 --> 00:00:22,410
+So, say a ten percent chance.
+
+9
+00:00:22,410 --> 00:00:26,165
+But it was a 10% in the first month, and
+then let's say,
+
+10
+00:00:26,165 --> 00:00:30,250
+their, your chances went up with each
+sequent month.
+
+11
+00:00:30,250 --> 00:00:34,610
+So what I'm doing here, is I'm taking
+time, and I'm raising it to .2.
+
+12
+00:00:34,610 --> 00:00:35,810
+This is just arbitrary.
+
+13
+00:00:35,810 --> 00:00:36,550
+I'm making this up.
+
+14
+00:00:36,550 --> 00:00:39,740
+But for whatever reason, imagine that
+every month there's a little bit more and
+
+15
+00:00:39,740 --> 00:00:42,970
+more chance of getting pregnant or
+whatever the event is.
+
+16
+00:00:42,970 --> 00:00:45,414
+I, I can't come up with exactly the
+scenario here, but
+
+17
+00:00:45,414 --> 00:00:48,482
+imagine that these women were in this
+study had some treatment that was
+
+18
+00:00:48,482 --> 00:00:52,140
+slow acting and every month the, their
+fertility went up a little bit.
+
+19
+00:00:52,140 --> 00:00:55,375
+So that's what we could, we could use as
+the function here.
+
+20
+00:00:55,375 --> 00:00:58,830
+Lemmie just show you how this would work
+again, kind of the same chart as
+
+21
+00:00:58,830 --> 00:01:03,110
+before it's a little bit more complicated
+now because of the fact that the hazard is
+
+22
+00:01:03,110 --> 00:01:07,460
+increasing, changing over time, but we can
+still do this kind of same calculation.
+
+23
+00:01:07,460 --> 00:01:12,730
+So imagine that that's the hazard rate and
+we are starting with a 100 women and
+
+24
+00:01:12,730 --> 00:01:16,870
+we're looking for the probabilities for
+pregnancy within 6 months.
+
+25
+00:01:16,870 --> 00:01:20,510
+So the number remaining at risk, this is
+those that haven't gotten pregnant yet,
+
+26
+00:01:20,510 --> 00:01:22,064
+the instance of pregancies.
+
+27
+00:01:22,064 --> 00:01:26,590
+[BLANK_AUDIO]
+
+28
+00:01:26,590 --> 00:01:28,100
+And women to our left.
+
+29
+00:01:28,100 --> 00:01:30,320
+So again, let's just go through this
+calculation.
+
+30
+00:01:30,320 --> 00:01:31,130
+Sometimes it's helpful to
+
+31
+00:01:31,130 --> 00:01:33,570
+write something out like this to really
+understand what's going on.
+
+32
+00:01:33,570 --> 00:01:37,456
+So in the first month, the hazard rate is
+10%, the time is one, so
+
+33
+00:01:37,456 --> 00:01:39,150
+1 raised to .2 is still 1.
+
+34
+00:01:39,150 --> 00:01:42,304
+And so the hazard rate in the first month
+is just 10%.
+
+35
+00:01:42,304 --> 00:01:44,104
+There were 100 women at risk, so
+
+36
+00:01:44,104 --> 00:01:48,070
+we're expecting about 10 of them, 10% of
+100, to get pregnant.
+
+37
+00:01:48,070 --> 00:01:50,170
+Means 90 are left, that one's easy.
+
+38
+00:01:50,170 --> 00:01:53,030
+For 10.2, it's just slightly more
+complicated.
+
+39
+00:01:53,030 --> 00:01:57,204
+Which is 10% times month two raised to
+0.2.
+
+40
+00:01:57,204 --> 00:02:00,940
+Well, 2 raised to 0.2 is 1.14,
+
+41
+00:02:00,940 --> 00:02:04,680
+that gives a hazard rate that's a little
+bit higher it's 11.4% so
+
+42
+00:02:04,680 --> 00:02:08,860
+we're expecting about 11.4% of the other
+women to get pregnant that month.
+
+43
+00:02:08,860 --> 00:02:12,060
+There are 90 women who are still at risk
+of getting pregnant.
+
+44
+00:02:12,060 --> 00:02:15,140
+Well, 11% of 90 is actually still about
+10, so
+
+45
+00:02:15,140 --> 00:02:18,060
+we're expecting 10 to get pregnant, 80 to
+be left.
+
+46
+00:02:18,060 --> 00:02:27,170
+10.3, we do 3 raised to .2, which is 1.24,
+giving us a hazard rate of 12.4%.
+
+47
+00:02:27,170 --> 00:02:30,750
+We are starting with 80 women; 12.4% of 80
+is actually about 10, so
+
+48
+00:02:30,750 --> 00:02:32,650
+now we'd be down to 70.
+
+49
+00:02:32,650 --> 00:02:36,670
+Month 4, we do the same calculation.
+
+50
+00:02:36,670 --> 00:02:41,160
+4 raised to .2 is about 1.31, so it's a
+13.1% hazard rate.
+
+51
+00:02:41,160 --> 00:02:43,230
+So you can see that every month the hazard
+rate is increasing.
+
+52
+00:02:43,230 --> 00:02:46,290
+Now you have a 13% chance, if you're still
+pregnancy free,
+
+53
+00:02:46,290 --> 00:02:49,170
+you have a 13% chance of getting pregnant
+in this month.
+
+54
+00:02:49,170 --> 00:02:55,040
+And we had 70 women left, so 13% of 70 is
+just about 9, so then we're down to 61.
+
+55
+00:02:55,040 --> 00:02:59,800
+In month 5, I'm going to just, to keep
+things from getting too slow here,
+
+56
+00:02:59,800 --> 00:03:01,770
+I'm just going to write down what it comes
+out to be.
+
+57
+00:03:01,770 --> 00:03:02,450
+So, 10%.
+
+58
+00:03:02,450 --> 00:03:07,440
+5 raised to the 0.2 power, that's going to
+give me 13.8% hazard, a little bit higher.
+
+59
+00:03:07,440 --> 00:03:09,230
+61 women left and
+
+60
+00:03:09,230 --> 00:03:15,220
+so, therefore 13.8% of 61 is about 8 women
+who will get pregnant; 53 are left.
+
+61
+00:03:15,220 --> 00:03:22,565
+And then for month 6, the rate comes out
+to be 14.3% we are starting with 53 women,
+
+62
+00:03:22,565 --> 00:03:27,680
+14.3% of 53 is about 8, again, I'm
+rounding just here to keep things simple.
+
+63
+00:03:27,680 --> 00:03:30,730
+We would then be left with about 45 women.
+
+64
+00:03:30,730 --> 00:03:33,990
+So that means that 45 women are left who
+haven't got pregnant,
+
+65
+00:03:33,990 --> 00:03:36,260
+that means 55 have gotten pregnant So
+
+66
+00:03:36,260 --> 00:03:42,300
+the probability of pregnancy within 6
+months is now about 55%.
+
+67
+00:03:42,300 --> 00:03:45,410
+It is higher because every month there was
+a little bit more chance of
+
+68
+00:03:45,410 --> 00:03:46,400
+getting pregnant.
+
+69
+00:03:46,400 --> 00:03:53,230
+But the probability of not getting
+pregnant within 6 months is 45%.
+
+70
+00:03:53,230 --> 00:03:57,570
+And what I just illustrated for you is
+something called the Weibull distribution.
+
+71
+00:03:57,570 --> 00:04:02,790
+So if you have a hazard function that is
+increasing with co, a constant times
+
+72
+00:04:02,790 --> 00:04:08,620
+T raised to a power, that will follow the
+Weibull probability distribution.
+
+73
+00:04:08,620 --> 00:04:10,940
+So what you just illustrated was the
+Weibull distribution.
+
+74
+00:04:12,260 --> 00:04:14,210
+So let me just write out the Weibull
+distribution.
+
+75
+00:04:14,210 --> 00:04:15,630
+I don't want you to get bogged down.
+
+76
+00:04:15,630 --> 00:04:17,610
+There is a lot of parameters.
+
+77
+00:04:17,610 --> 00:04:19,060
+This can look a little complicated.
+
+78
+00:04:19,060 --> 00:04:20,280
+If you look this up on the internet,
+
+79
+00:04:20,280 --> 00:04:23,370
+you'll see that everybody uses different
+symbols to
+
+80
+00:04:23,370 --> 00:04:26,392
+represent the Weibull function and they
+represent it in slightly different ways.
+
+81
+00:04:26,392 --> 00:04:29,710
+I'm going to represent it in the simplest
+way that I can think of to.
+
+82
+00:04:29,710 --> 00:04:32,420
+And I don't want you to get bogged down
+with the details of the function or
+
+83
+00:04:32,420 --> 00:04:36,220
+worried about it too much when you are not
+going to have to work with really Weibull
+
+84
+00:04:36,220 --> 00:04:40,160
+directly but I want you to have a concept
+of what the Weibull function means.
+
+85
+00:04:40,160 --> 00:04:43,460
+So, again a hazard function for a Weibull,
+this is just a way of
+
+86
+00:04:43,460 --> 00:04:48,810
+having a Hazard function increase over
+time in some smooth mathematical way we're
+
+87
+00:04:48,810 --> 00:04:54,480
+multiplying by some function of time every
+month or every year, every unit of time.
+
+88
+00:04:54,480 --> 00:04:59,020
+And I just want to show you actually that
+the exponential distribution is
+
+89
+00:04:59,020 --> 00:05:01,160
+actually a special case of the Weibull
+distribution.
+
+90
+00:05:01,160 --> 00:05:05,210
+So the exponential, which I told you
+occurs when you have a constant hazard,
+
+91
+00:05:05,210 --> 00:05:06,490
+well if k equals 1.
+
+92
+00:05:06,490 --> 00:05:11,470
+And I'm calling k this power here, is
+equal to 1, then if I plug in
+
+93
+00:05:11,470 --> 00:05:15,700
+k I get t raised to 0, so that t just goes
+away and I get back to the constant.
+
+94
+00:05:15,700 --> 00:05:19,620
+So an exponential is actually just a
+special case of a Weibull distribution.
+
+95
+00:05:20,720 --> 00:05:23,430
+Alright, so let me kind of just give you
+some examples here for
+
+96
+00:05:23,430 --> 00:05:24,670
+Weibull hazard functions.
+
+97
+00:05:24,670 --> 00:05:28,680
+Here is, the Weibull hazard function when
+k equals 1.
+
+98
+00:05:28,680 --> 00:05:31,080
+So this parameter k, what I'm calling k.
+
+99
+00:05:31,080 --> 00:05:33,710
+And again, you'll see it called different
+things in literature, but
+
+100
+00:05:33,710 --> 00:05:35,290
+what I'm calling k is just a power.
+
+101
+00:05:35,290 --> 00:05:37,920
+I'm raising to a power in order to have a
+way to
+
+102
+00:05:37,920 --> 00:05:40,290
+multiply something more every month.
+
+103
+00:05:40,290 --> 00:05:45,144
+If I set k equal to 1, I'm just going to
+end up with and I'm using here a c of .1.
+
+104
+00:05:45,144 --> 00:05:49,530
+What we did before, that them or the
+constant hazard is .1 and I'm
+
+105
+00:05:49,530 --> 00:05:53,500
+not multiplying by anything, every month,
+just by 1, that I get a constant hazard.
+
+106
+00:05:53,500 --> 00:05:55,710
+That's actually just an exponential.
+
+107
+00:05:55,710 --> 00:06:00,530
+However, if I then set k equal to
+something greater than 1,
+
+108
+00:06:00,530 --> 00:06:05,030
+I'm going to then have, be multiplying by
+something that's above 1, and
+
+109
+00:06:05,030 --> 00:06:07,950
+whet you can see is that I get an
+increasing hazard over time.
+
+110
+00:06:07,950 --> 00:06:12,040
+It's not linearly increasing, because
+again, I'm raising by this power here, but
+
+111
+00:06:12,040 --> 00:06:15,000
+this is one instance of a Weibull
+function,
+
+112
+00:06:15,000 --> 00:06:18,990
+I think I Set k to be 1.2 here, and C to
+be 0.1.
+
+113
+00:06:18,990 --> 00:06:20,480
+Increasing hazard function, but
+
+114
+00:06:20,480 --> 00:06:24,250
+it's smooth, we can predict how that
+hazard function is changing over time.
+
+115
+00:06:24,250 --> 00:06:28,010
+I could also make k less than 1, and when
+I make k less than 1 I'm going to
+
+116
+00:06:28,010 --> 00:06:30,880
+get something that's decreasing, and they
+look, the curves generally look something
+
+117
+00:06:30,880 --> 00:06:34,120
+like that, but again, depending on what k
+and c are, this curve will change.
+
+118
+00:06:34,120 --> 00:06:34,620
+All right.
+
+119
+00:06:34,620 --> 00:06:37,770
+So then I took those, once I've
+established those Hazard functions I
+
+120
+00:06:37,770 --> 00:06:41,090
+can then say how that translates to the
+probability density function,
+
+121
+00:06:41,090 --> 00:06:42,400
+the cumulative density function, and
+
+122
+00:06:42,400 --> 00:06:45,590
+what we really care about here, which is
+the survival function.
+
+123
+00:06:45,590 --> 00:06:47,390
+Again, don't get bogged down in the
+formula.
+
+124
+00:06:47,390 --> 00:06:49,720
+The formula looks rather complex.
+
+125
+00:06:49,720 --> 00:06:54,670
+Remember that there's a mathematical
+relationship between the Hazard function,
+
+126
+00:06:54,670 --> 00:06:56,600
+the pdf, the cdf and the survival.
+
+127
+00:06:56,600 --> 00:06:59,060
+I'm not going to make you do that
+mathematical work.
+
+128
+00:06:59,060 --> 00:07:02,050
+I'll show you what the relationship is, at
+a future module.
+
+129
+00:07:02,050 --> 00:07:06,600
+But don't worry too much what I wanted to
+show you here is that if k is equal to
+
+130
+00:07:06,600 --> 00:07:09,330
+1 again, this just goes back down to the
+exponential.
+
+131
+00:07:09,330 --> 00:07:12,688
+So if I plug in 1 and 1 here notice what I
+get.
+
+132
+00:07:12,688 --> 00:07:18,112
+I get c, t raised to 0 which is just 1, e
+raised
+
+133
+00:07:18,112 --> 00:07:24,120
+to negative ct so it just goes back down
+to the the exponential.
+
+134
+00:07:24,120 --> 00:07:28,150
+I was calling the constant h for, before
+for hazard ratio I'm calling it c here for
+
+135
+00:07:28,150 --> 00:07:31,730
+constant but otherwise don't worry too
+much about that formula but
+
+136
+00:07:31,730 --> 00:07:33,040
+it's there just if you want it.
+
+137
+00:07:36,370 --> 00:07:39,260
+So now, I'm just showing you the
+probability density functions as
+
+138
+00:07:39,260 --> 00:07:43,510
+a function of time, I have the same c, I
+think I said c equal to .1 and all of
+
+139
+00:07:43,510 --> 00:07:48,620
+these, so they all have the same c, but k
+is either 1, making this an exponential,
+
+140
+00:07:48,620 --> 00:07:52,890
+or greater than 1, making this, a positive
+hazard over time, or less than 1.
+
+141
+00:07:52,890 --> 00:07:55,010
+So what you'll see is, that an exponential
+curve,
+
+142
+00:07:55,010 --> 00:07:57,840
+as expected, looks like an exponential
+when k is 1.
+
+143
+00:07:57,840 --> 00:08:02,860
+When k is greater than 1, you get this
+probability density function, so,
+
+144
+00:08:02,860 --> 00:08:06,270
+there's a steep rise in your chances early
+on in the having the event occur, but
+
+145
+00:08:06,270 --> 00:08:10,380
+then a lot of people by the end here have
+had the event occur already, so
+
+146
+00:08:10,380 --> 00:08:14,210
+the probability of having it happen last
+month is low just because moth
+
+147
+00:08:14,210 --> 00:08:16,170
+people have the even early on.
+
+148
+00:08:16,170 --> 00:08:17,900
+Because the hazard is high.
+
+149
+00:08:17,900 --> 00:08:22,450
+When we have case last in line the hazard
+is decreasing over time.
+
+150
+00:08:22,450 --> 00:08:25,900
+So, you have allot of chance of having the
+even early on because that's when
+
+151
+00:08:25,900 --> 00:08:27,320
+the hazard is highest.
+
+152
+00:08:27,320 --> 00:08:28,750
+And then that goes down over time.
+
+153
+00:08:28,750 --> 00:08:30,320
+The hazard rate is going down over time.
+
+154
+00:08:30,320 --> 00:08:34,040
+So, less and less a chance of having the
+event in the later months.
+
+155
+00:08:34,040 --> 00:08:36,580
+So that's just what the probability
+density functions look like.
+
+156
+00:08:36,580 --> 00:08:38,780
+The corresponding cumulative density
+functions, again,
+
+157
+00:08:38,780 --> 00:08:40,790
+don't stress too much about the formula
+here, but
+
+158
+00:08:40,790 --> 00:08:45,230
+I'll just show you that this does go
+nicely to the formula for
+
+159
+00:08:45,230 --> 00:08:50,650
+an exponential if I plug in k is equal to
+1 So you'll just end up with that and
+
+160
+00:08:50,650 --> 00:08:55,550
+again, I'm using c here when I used h
+before but they're both just constants.
+
+161
+00:08:55,550 --> 00:08:59,510
+Just to show you a few different
+cumulative density functions.
+
+162
+00:08:59,510 --> 00:09:00,950
+So they all have the same c.
+
+163
+00:09:00,950 --> 00:09:06,430
+The hazard is just staying the same here
+on this left hand panel, so
+
+164
+00:09:06,430 --> 00:09:09,190
+we kind of have a shallow rise in the
+events.
+
+165
+00:09:09,190 --> 00:09:12,080
+When the hazard rate is increasing over
+time notice that the chance of
+
+166
+00:09:12,080 --> 00:09:15,240
+having your cumulative chance of events
+goes up more, much more steeply.
+
+167
+00:09:15,240 --> 00:09:19,060
+You're getting, to you know, 86, 80% of
+the sample,
+
+168
+00:09:19,060 --> 00:09:22,300
+having the event much earlier than when k
+is equal to 1 as expected.
+
+169
+00:09:22,300 --> 00:09:27,630
+And of course if your k is less than 1,
+then as the rate is decreasing over
+
+170
+00:09:27,630 --> 00:09:31,885
+time in the cumulative curve, it takes
+much longer for events to accumulate.
+
+171
+00:09:31,885 --> 00:09:36,330
+[NOISE] And then finally, the Weibull
+survival function.
+
+172
+00:09:36,330 --> 00:09:38,860
+This is just one minus the cdf.
+
+173
+00:09:38,860 --> 00:09:41,990
+So, again, the survival probabilities he,
+
+174
+00:09:41,990 --> 00:09:45,190
+are, these are similar to Kaplan-Meier
+curves.
+
+175
+00:09:45,190 --> 00:09:47,960
+They're looking at survival function so
+over time,
+
+176
+00:09:47,960 --> 00:09:49,980
+with the exponential, it's almost what
+you'd kind of expect.
+
+177
+00:09:49,980 --> 00:09:52,670
+For an exponential, there's a steeper drop
+in survival if you
+
+178
+00:09:52,670 --> 00:09:54,170
+have an increasing hazard.
+
+179
+00:09:54,170 --> 00:09:57,580
+There's a shallower drop in survival if
+you have a decreasing hazard.
+
+180
+00:09:57,580 --> 00:09:59,905
+All of those again conceptually is what
+you'd expect.
+
+181
+00:09:59,905 --> 00:10:03,550
+[NOISE] And just to show you these kind of
+all put together, so
+
+182
+00:10:03,550 --> 00:10:07,980
+if we have c is equal .1, the constant is
+equal to .1, and k is equal to 1,
+
+183
+00:10:07,980 --> 00:10:10,120
+so the power, we're not raising to any
+powers here.
+
+184
+00:10:10,120 --> 00:10:11,580
+We're on the exponential.
+
+185
+00:10:11,580 --> 00:10:14,850
+This is the hazard constant the
+corresponding pdf which looks like
+
+186
+00:10:14,850 --> 00:10:18,760
+an exponential function, the cumulative
+density and the survival probability.
+
+187
+00:10:18,760 --> 00:10:21,224
+Therefore we've got this increasing hazard
+rate,
+
+188
+00:10:21,224 --> 00:10:25,060
+you know the hazard rates going up over
+time so we have events very early on.
+
+189
+00:10:25,060 --> 00:10:26,910
+We accumulate events very early and
+
+190
+00:10:26,910 --> 00:10:30,290
+the survival curve is very steep drops
+very quickly.
+
+191
+00:10:30,290 --> 00:10:34,390
+If we have a decreasing hazard over time
+this ones decreasing over time then we
+
+192
+00:10:34,390 --> 00:10:39,270
+have event early then it drops off quite a
+bit, from there it takes longer to
+
+193
+00:10:39,270 --> 00:10:41,860
+accumulate events because the hazard is
+going down every month and
+
+194
+00:10:41,860 --> 00:10:45,260
+the survival probability, the curve
+doesn't drop as quickly.
+
+195
+00:10:45,260 --> 00:10:48,390
+So that's the general idea of the Weibull
+function.
+
+196
+00:10:48,390 --> 00:10:51,430
+And again, as I mentioned earlier,
+
+197
+00:10:51,430 --> 00:10:54,700
+hazard functions don't have to follow a
+nice mathematical function,
+
+198
+00:10:54,700 --> 00:10:59,890
+you could end up with one with real data
+that looks something funny like that.
+
+199
+00:10:59,890 --> 00:11:04,290
+At that point, we aren't going to try to
+force it to be on a mathematical function.
+
+200
+00:11:04,290 --> 00:11:06,400
+We're instead, when we do cox regression,
+
+201
+00:11:06,400 --> 00:11:09,104
+just going to try to avoid estimating that
+altogether.
+
+202
+00:11:09,104 --> 00:11:09,664
+[BLANK_AUDIO]

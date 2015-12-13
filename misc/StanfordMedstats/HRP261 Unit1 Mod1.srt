@@ -1,0 +1,2303 @@
+1
+00:00:05,240 --> 00:00:06,450
+In this next module,
+
+2
+00:00:06,450 --> 00:00:10,420
+I'm going to review the statistical test
+that we can use when we want to analyze
+
+3
+00:00:10,420 --> 00:00:14,540
+data in the two by two table specifically
+when we have independent observations.
+
+4
+00:00:14,540 --> 00:00:15,800
+Uncorrelated data.
+
+5
+00:00:15,800 --> 00:00:17,370
+That's the most common situation.
+
+6
+00:00:19,560 --> 00:00:23,240
+So, on this module, I'm going to be
+talking about the risk difference and
+
+7
+00:00:23,240 --> 00:00:25,370
+relative risks, that is odds ratio and
+
+8
+00:00:25,370 --> 00:00:27,730
+risk ratios, as well as the chi-squared
+test because,
+
+9
+00:00:27,730 --> 00:00:31,213
+of course, the chi-squared test can also
+be applied to a two by two table.
+
+10
+00:00:34,560 --> 00:00:37,730
+The example I'm going to be using for this
+module, there's some data that comes from
+
+11
+00:00:37,730 --> 00:00:42,370
+a randomized control trial of probiotic
+supplementation during pregnancy.
+
+12
+00:00:42,370 --> 00:00:47,630
+So, pregnant women were supplemented with
+probiotics, or given a placebo.
+
+13
+00:00:47,630 --> 00:00:51,040
+And the idea was that this might prevent
+eczema in the infant.
+
+14
+00:00:51,040 --> 00:00:52,600
+So after the infant was born,
+
+15
+00:00:52,600 --> 00:00:56,110
+they might be less likely to get eczema
+during the first year of life.
+
+16
+00:00:56,110 --> 00:00:57,260
+So, that's the data that's shown here.
+
+17
+00:00:57,260 --> 00:01:00,130
+This table's got a lot of stuff in it, so,
+what I'm going to do for
+
+18
+00:01:00,130 --> 00:01:04,720
+now is just zoom in on the unadjusted
+part, just kind of the raw numbers.
+
+19
+00:01:04,720 --> 00:01:07,420
+So, the outcome here was a binary outcome.
+
+20
+00:01:07,420 --> 00:01:11,870
+The infant either got eczema, some point
+during the first year of their life, or
+
+21
+00:01:11,870 --> 00:01:12,910
+they did not.
+
+22
+00:01:12,910 --> 00:01:15,410
+We had two groups: a probiotics groups,
+
+23
+00:01:15,410 --> 00:01:19,470
+that where the mother got the probiotics
+during pregnancy, or a placebo group.
+
+24
+00:01:19,470 --> 00:01:23,130
+There were 33 in the, in the probiotics
+group and 35 in the placebo group.
+
+25
+00:01:23,130 --> 00:01:26,980
+And you can see, if you just look at the
+raw numbers here, that indeed, fewer
+
+26
+00:01:26,980 --> 00:01:31,410
+infants in the probiotics group got eczema
+sometime during the first year of life.
+
+27
+00:01:31,410 --> 00:01:33,930
+The p-value for the difference here is
+0.029.
+
+28
+00:01:33,930 --> 00:01:36,860
+I'm going to walk you through where that
+p-value comes from now.
+
+29
+00:01:40,180 --> 00:01:43,370
+So we can put these data into a nice
+little two by two table.
+
+30
+00:01:43,370 --> 00:01:46,070
+Everything in this module is going to be
+about analyzing data from a simple two
+
+31
+00:01:46,070 --> 00:01:47,270
+by two table.
+
+32
+00:01:47,270 --> 00:01:48,690
+So we have a Treatment group and
+
+33
+00:01:48,690 --> 00:01:52,440
+a Placebo group, and the infant either got
+eczema or they didn't.
+
+34
+00:01:52,440 --> 00:01:55,850
+So two binary and, binary outcome of
+binary predictor here.
+
+35
+00:01:57,090 --> 00:02:01,370
+You can see that 36% of it treatment group
+got eczema versus 62.9% of
+
+36
+00:02:01,370 --> 00:02:02,560
+the placebo group.
+
+37
+00:02:05,158 --> 00:02:08,190
+If we want to compare those two numbers,
+those two proportions or
+
+38
+00:02:08,190 --> 00:02:11,660
+risks we're going to do what's called a
+difference in proportions z test.
+
+39
+00:02:11,660 --> 00:02:13,660
+You might also call it a risk difference.
+
+40
+00:02:13,660 --> 00:02:15,270
+So this is very simple, we just.
+
+41
+00:02:15,270 --> 00:02:19,890
+We have a two observed proportions, and we
+want to compare them and to see whether or
+
+42
+00:02:19,890 --> 00:02:23,470
+not we can reject the null hypothesis that
+those proportions are equal.
+
+43
+00:02:24,690 --> 00:02:27,870
+Difference in proportions follows a normal
+distribution so
+
+44
+00:02:27,870 --> 00:02:31,060
+we are going to be calculating a z square
+here, so
+
+45
+00:02:31,060 --> 00:02:36,120
+that's the z squared because we know that
+proportions follow a normal distribution.
+
+46
+00:02:36,120 --> 00:02:37,160
+We're going to just be putting in
+
+47
+00:02:37,160 --> 00:02:40,400
+the numerator here the observed difference
+that 36% versus the 63%.
+
+48
+00:02:40,400 --> 00:02:44,770
+That's what we observed we're going to
+compare that to this standard error of
+
+49
+00:02:44,770 --> 00:02:45,590
+the difference.
+
+50
+00:02:45,590 --> 00:02:48,600
+The standard error of the difference is
+this formula here.
+
+51
+00:02:48,600 --> 00:02:51,240
+Hopefully this is familiar to all of you.
+
+52
+00:02:51,240 --> 00:02:55,350
+It just comes from the fact that we have
+proportions coming from two roots.
+
+53
+00:02:55,350 --> 00:02:59,160
+That's why we have sort of two items here
+under that square root.
+
+54
+00:02:59,160 --> 00:03:00,810
+And then the variability,
+
+55
+00:03:00,810 --> 00:03:04,960
+the standard deviation of a proportion is
+related to p times 1 minus p.
+
+56
+00:03:04,960 --> 00:03:09,680
+Now, a small little subtle note in here
+for our hypothesis test,
+
+57
+00:03:09,680 --> 00:03:11,150
+we're going to use what's called p bar.
+
+58
+00:03:11,150 --> 00:03:14,070
+That's just the pooled proportion.
+
+59
+00:03:14,070 --> 00:03:16,240
+All that means is it's nothing
+complicated.
+
+60
+00:03:17,290 --> 00:03:20,550
+It just means we're going to look at the
+total proportion of people who had
+
+61
+00:03:20,550 --> 00:03:23,940
+the outcome in our total sample, ignoring
+group.
+
+62
+00:03:23,940 --> 00:03:27,240
+In other words, how many infants, overall
+got eczema?
+
+63
+00:03:27,240 --> 00:03:30,580
+In this case, it was 34 out of 68 infants
+got eczema, so
+
+64
+00:03:30,580 --> 00:03:34,020
+our pooled proportion in this case, is
+just 0.5.
+
+65
+00:03:34,020 --> 00:03:37,430
+The reason we use a pooled proportion is
+because our null hypothesis
+
+66
+00:03:37,430 --> 00:03:38,120
+here is at the.
+
+67
+00:03:38,120 --> 00:03:39,870
+Two proportions are equal,
+
+68
+00:03:39,870 --> 00:03:43,695
+therefore we're assuming that there's a
+single proportion here.
+
+69
+00:03:43,695 --> 00:03:45,790
+When, we don't have different proportions
+in the two groups,
+
+70
+00:03:45,790 --> 00:03:49,510
+we're assuming they're equal, therefore we
+can just pool them and plug in p bar here.
+
+71
+00:03:51,270 --> 00:03:52,620
+That gives us a z score.
+
+72
+00:03:52,620 --> 00:03:54,880
+We can then look up the p-value that goes
+with that.
+
+73
+00:03:54,880 --> 00:03:56,620
+So that's to test the hypothesis of
+whether or
+
+74
+00:03:56,620 --> 00:03:58,600
+not the, those two proportions are equal.
+
+75
+00:03:58,600 --> 00:04:02,920
+We can also build a 95% confidence in all
+for the difference in proportions.
+
+76
+00:04:02,920 --> 00:04:05,300
+We do that by, take the point estimate,
+
+77
+00:04:05,300 --> 00:04:08,382
+the observe difference in proportions
+which is about 0.6, 0.5% here.
+
+78
+00:04:08,382 --> 00:04:10,301
+Add or subtract 1.96.
+
+79
+00:04:10,301 --> 00:04:15,180
+The 1.96 comes from the fact that we're on
+a z distribution.
+
+80
+00:04:15,180 --> 00:04:17,240
+And then we multiply that by the standard
+error.
+
+81
+00:04:17,240 --> 00:04:20,680
+A small subtlety here is that notice when
+I'm doing the confidence interval.
+
+82
+00:04:20,680 --> 00:04:24,800
+I'm plugging in the individual proportions
+from the individual groups.
+
+83
+00:04:24,800 --> 00:04:28,610
+So notice that these proportions are the
+actually the observe proportions in
+
+84
+00:04:28,610 --> 00:04:29,450
+each group.
+
+85
+00:04:29,450 --> 00:04:31,370
+I'm plugging in the different proportions.
+
+86
+00:04:31,370 --> 00:04:34,460
+The 30.
+
+87
+00:04:34,460 --> 00:04:37,030
+6% versus the 63% here.
+
+88
+00:04:37,030 --> 00:04:38,780
+Rather than the pooled proportion.
+
+89
+00:04:38,780 --> 00:04:42,200
+Simply because we have no assumption when
+we're building the oncifdance interval
+
+90
+00:04:42,200 --> 00:04:44,400
+that those two proportions are going to be
+equal.
+
+91
+00:04:44,400 --> 00:04:47,070
+Now if you plugin the pool proportion here
+on
+
+92
+00:04:47,070 --> 00:04:48,940
+the observe proportions in the hypothesis.
+
+93
+00:04:48,940 --> 00:04:51,180
+It's not going to make a huge difference
+in your estimates.
+
+94
+00:04:51,180 --> 00:04:53,610
+It's only going to make a subtle tiny
+little difference.
+
+95
+00:04:53,610 --> 00:04:56,810
+And for the most part, after this week,
+you'll just be doing this on a computer.
+
+96
+00:04:56,810 --> 00:04:58,930
+And the computer will take care of that
+detail for you.
+
+97
+00:04:58,930 --> 00:05:00,690
+But I just want to point out that subtle
+difference here.
+
+98
+00:05:03,310 --> 00:05:07,340
+So I, I want you now to go ahead and run
+the hypothesis test.
+
+99
+00:05:07,340 --> 00:05:08,930
+Calculate the z score.
+
+100
+00:05:08,930 --> 00:05:13,610
+That z score should, of course, come out
+ca-, correlating to a p value of 0.029.
+
+101
+00:05:13,610 --> 00:05:16,550
+Calculate the z score here for the
+difference in proportions.
+
+102
+00:05:16,550 --> 00:05:18,910
+I actually want you to pause the video and
+try this on your own.
+
+103
+00:05:18,910 --> 00:05:21,460
+And then restart the video and I'll walk
+you through it again.
+
+104
+00:05:21,460 --> 00:05:23,640
+I'm assuming that this is largely review
+for most of you.
+
+105
+00:05:28,090 --> 00:05:29,930
+Alright, so this is fairly straight
+forward.
+
+106
+00:05:29,930 --> 00:05:32,840
+Again, we are just going to apply that
+formula where we are calculating a z
+
+107
+00:05:32,840 --> 00:05:34,410
+score based on our observed difference.
+
+108
+00:05:34,410 --> 00:05:36,480
+So our observed difference is 62.9% minus
+36.4%.
+
+109
+00:05:36,480 --> 00:05:41,640
+I'm putting the larger group first, just
+so
+
+110
+00:05:41,640 --> 00:05:43,080
+that I don't end, end up with a negative.
+
+111
+00:05:43,080 --> 00:05:45,220
+It doesn't matter whether you make it
+negative or positive.
+
+112
+00:05:45,220 --> 00:05:47,750
+So I'm avoiding dealing with the negative.
+
+113
+00:05:47,750 --> 00:05:50,170
+And then my standard error is going to be
+p times 1 minus p.
+
+114
+00:05:50,170 --> 00:05:52,680
+Again I'm going to use the pooled
+proportion.
+
+115
+00:05:52,680 --> 00:05:55,086
+Just half the infants got eczema overall.
+
+116
+00:05:55,086 --> 00:06:00,990
+So that's 0.5 times 1 minus 0.5 divided by
+the sample size in one group
+
+117
+00:06:00,990 --> 00:06:06,550
+plus 0.5 times 1 minus 0.5 divided by the
+sample size in the second group.
+
+118
+00:06:07,660 --> 00:06:12,000
+If you just run through the actual math on
+that, crank that into a calculator,
+
+119
+00:06:12,000 --> 00:06:14,380
+you'll see that the z score comes out to
+be 2.18.
+
+120
+00:06:14,380 --> 00:06:18,190
+We call know that if the z score's above
+1.96.
+
+121
+00:06:18,190 --> 00:06:21,120
+That's going to be statistically
+significant at the point of five level.
+
+122
+00:06:21,120 --> 00:06:22,980
+Indeed, if you go to a z calculator, you
+will,
+
+123
+00:06:22,980 --> 00:06:28,120
+in fact, find that the p value that
+corresponds to a z value of 2.18 is 0.029,
+
+124
+00:06:28,120 --> 00:06:32,110
+exactly what the authors reported in their
+paper.
+
+125
+00:06:32,110 --> 00:06:33,640
+That's the two tail p value, and of
+course,
+
+126
+00:06:33,640 --> 00:06:36,720
+we're going to want to use the two tail p
+value here, because there's no reason.
+
+127
+00:06:36,720 --> 00:06:41,000
+That the probiotics couldn't of actually
+increased the risk of eczema that could,
+
+128
+00:06:41,000 --> 00:06:42,480
+that's biologically possible.
+
+129
+00:06:45,500 --> 00:06:48,580
+Now, I'm just going to show you some
+output from a computer program.
+
+130
+00:06:48,580 --> 00:06:52,300
+I plugged these data into SAS and just to
+show you what you get out of SAS,
+
+131
+00:06:52,300 --> 00:06:55,750
+the key value that's associated with a
+difference in proportion.
+
+132
+00:06:55,750 --> 00:06:58,950
+Now notice that where I'm actually getting
+this out of
+
+133
+00:06:58,950 --> 00:07:01,750
+this SAS output point is chi-square.
+
+134
+00:07:01,750 --> 00:07:04,280
+It doesn't say difference in proportions
+z-test, but
+
+135
+00:07:04,280 --> 00:07:07,320
+notice the p value is exactly the same as
+we just calculated.
+
+136
+00:07:07,320 --> 00:07:08,990
+In fact, mathematically,
+
+137
+00:07:08,990 --> 00:07:13,990
+the chi square test from a two by two
+table is mathematically equivalent to
+
+138
+00:07:13,990 --> 00:07:16,490
+the difference in proportion z-test that
+we just did.
+
+139
+00:07:16,490 --> 00:07:18,180
+So we will get exactly the same p value.
+
+140
+00:07:18,180 --> 00:07:20,120
+So in fact, in sas there's no separate
+line for
+
+141
+00:07:20,120 --> 00:07:24,117
+that, you just take the p-value from the
+chi-square.
+
+142
+00:07:24,117 --> 00:07:28,900
+Alright, now I want you to attempt to
+build the 95% confidence interval for
+
+143
+00:07:28,900 --> 00:07:31,810
+the risk difference using the formula that
+I already gave you.
+
+144
+00:07:31,810 --> 00:07:34,270
+Again, pause the video, see if you can do
+this on your own, because again,
+
+145
+00:07:34,270 --> 00:07:37,620
+this should be review, and then restart
+the video and I'll walk you through it.
+
+146
+00:07:42,800 --> 00:07:45,010
+Okay, so to build the 95% confidence
+interval here,
+
+147
+00:07:45,010 --> 00:07:48,840
+we're just going to use the observed
+difference in proportion, which was 26.5%.
+
+148
+00:07:48,840 --> 00:07:52,741
+That is if I subtract 62.9% minus 36.4%.
+
+149
+00:07:52,741 --> 00:07:53,610
+I get 26.5%.
+
+150
+00:07:53,610 --> 00:07:55,450
+That's the risk difference.
+
+151
+00:07:55,450 --> 00:07:57,800
+The absolute risk difference between the
+two groups.
+
+152
+00:07:57,800 --> 00:08:02,690
+I'm going to add and subtract from that
+the 1.96 from the 95% confidence interval.
+
+153
+00:08:02,690 --> 00:08:03,950
+Times the standard error.
+
+154
+00:08:03,950 --> 00:08:05,230
+The standard error here.
+
+155
+00:08:05,230 --> 00:08:09,360
+Again, I'm going to plug in just the
+observed proportions in each group.
+
+156
+00:08:09,360 --> 00:08:13,320
+So, 1 minus 0.364 and
+
+157
+00:08:13,320 --> 00:08:18,670
+the treatment group divided by 33.
+
+158
+00:08:18,670 --> 00:08:27,480
+Plus 0.629 times
+
+159
+00:08:27,480 --> 00:08:35,780
+1 minus 0.629, divided by 35 for the
+placebo group.
+
+160
+00:08:35,780 --> 00:08:38,030
+If you crank out the math on that, this.
+
+161
+00:08:38,030 --> 00:08:39,900
+Standard error comes out to be about
+0.117.
+
+162
+00:08:39,900 --> 00:08:45,260
+And so you add and subtract that from the
+26.5%.
+
+163
+00:08:45,260 --> 00:08:52,550
+You end up with a confidence interval of
+3.6% to 49.4%.
+
+164
+00:08:52,550 --> 00:08:55,820
+So indeed that confidence interval does
+not cross zero.
+
+165
+00:08:55,820 --> 00:08:58,610
+So we're 95% sure that the true value is
+not zero.
+
+166
+00:08:58,610 --> 00:08:59,240
+So in other words,
+
+167
+00:08:59,240 --> 00:09:03,240
+we can clearly reject the null hypothesis
+that the two groups are the same.
+
+168
+00:09:04,588 --> 00:09:10,890
+If you want to get this in SAS, you can
+ask for the risk diff option, and
+
+169
+00:09:10,890 --> 00:09:15,226
+it will actually give you you can see at
+the bottom here, the difference in risk.
+
+170
+00:09:15,226 --> 00:09:19,980
+And the conf-, the standard error and the
+95% confidence interval,
+
+171
+00:09:19,980 --> 00:09:22,970
+these are exactly as we calculated in the
+last slide, except for
+
+172
+00:09:22,970 --> 00:09:25,860
+that their SAS goes out to a few more
+decimal places.
+
+173
+00:09:25,860 --> 00:09:28,500
+I'll just note that SAS says something
+about it
+
+174
+00:09:28,500 --> 00:09:31,230
+being an asymptotic 95% confidence limit.
+
+175
+00:09:31,230 --> 00:09:32,310
+All that means.
+
+176
+00:09:32,310 --> 00:09:35,790
+Is that we are assuming that we have a
+large enough sample that it's okay to
+
+177
+00:09:35,790 --> 00:09:38,290
+approximate the binomial with the normal.
+
+178
+00:09:38,290 --> 00:09:40,910
+That's essentially what we're doing when
+we calculate standard in
+
+179
+00:09:40,910 --> 00:09:43,450
+the way we just did in the last line.
+
+180
+00:09:43,450 --> 00:09:45,000
+That's probably fine here.
+
+181
+00:09:45,000 --> 00:09:48,932
+Our sample isn't terribly small for much
+smaller samples you're
+
+182
+00:09:48,932 --> 00:09:52,880
+going to want to instead use what is
+called an exact 95% confidence limits.
+
+183
+00:09:52,880 --> 00:09:56,160
+That simply calculates the confidence
+limit based on the exact
+
+184
+00:09:56,160 --> 00:09:59,220
+binomial probabilities rather than doing
+any approximation.
+
+185
+00:09:59,220 --> 00:10:01,270
+SAS does not give this to you if you don't
+ask.
+
+186
+00:10:01,270 --> 00:10:04,080
+I didn't ask here, but in cases where you
+have small,
+
+187
+00:10:04,080 --> 00:10:07,560
+much smaller samples, you might want to
+ask for those exact confidence limits.
+
+188
+00:10:09,872 --> 00:10:13,680
+I want to also show you that you can also
+use a chi-squared test to analyze a two by
+
+189
+00:10:13,680 --> 00:10:14,560
+two table.
+
+190
+00:10:14,560 --> 00:10:18,640
+I'm, again, assuming that most of you have
+seen a chi-square test before, so
+
+191
+00:10:18,640 --> 00:10:20,590
+this would be largely review.
+
+192
+00:10:20,590 --> 00:10:24,010
+So, how do we do a chi-squared test for a
+contingency table?
+
+193
+00:10:24,010 --> 00:10:26,850
+We need to calculate, we have the observed
+table on the top here.
+
+194
+00:10:26,850 --> 00:10:31,350
+We need to calculate the expected counts
+in order to run a chi-squared test.
+
+195
+00:10:31,350 --> 00:10:33,580
+So where do those expected counts come
+from?
+
+196
+00:10:33,580 --> 00:10:37,990
+Well, the null hypothesis here is that
+which group you're in, treatment versus
+
+197
+00:10:37,990 --> 00:10:42,620
+control, is unrelated, is independent
+from, whether or not you get eczema.
+
+198
+00:10:42,620 --> 00:10:47,270
+So we can say that there, the two, our two
+variables, call them A and B.
+
+199
+00:10:47,270 --> 00:10:51,530
+So A being what treatment group you're in,
+B being whether or not you get eczema.
+
+200
+00:10:51,530 --> 00:10:55,210
+So we're going to say that those two
+variables are independent of one another.
+
+201
+00:10:55,210 --> 00:10:59,540
+And in statistics, being independent means
+statistically,
+
+202
+00:10:59,540 --> 00:11:02,330
+that your joint probability, the
+probability of both of
+
+203
+00:11:02,330 --> 00:11:06,450
+those things happening is equal to the
+product of the marginal probabilities.
+
+204
+00:11:06,450 --> 00:11:09,790
+That's what statistical independence is
+defined as.
+
+205
+00:11:09,790 --> 00:11:14,350
+So in other words, if these two variables
+are independent, then the likelihood that
+
+206
+00:11:14,350 --> 00:11:17,070
+you have both things happen that you're
+both in the treatment group and
+
+207
+00:11:17,070 --> 00:11:18,370
+that you get eczema.
+
+208
+00:11:18,370 --> 00:11:22,010
+Should be equal to the probability of
+getting eczema overall,
+
+209
+00:11:22,010 --> 00:11:24,304
+the marginal probability of getting
+eczema, tied up time,
+
+210
+00:11:24,304 --> 00:11:26,990
+times the marginal probability of being in
+the treatment group.
+
+211
+00:11:26,990 --> 00:11:29,940
+So that's the, the theory that we're
+going to use to
+
+212
+00:11:29,940 --> 00:11:33,170
+calculate the expected values here under
+the null hypothesis.
+
+213
+00:11:33,170 --> 00:11:36,920
+So, if the null hypothesis is true, and we
+do indeed have independence,
+
+214
+00:11:36,920 --> 00:11:40,610
+then it should be the case that your
+chance of being in this cell,
+
+215
+00:11:40,610 --> 00:11:45,840
+the treated and get eczema cell should be
+equal to 34 out of 68.
+
+216
+00:11:45,840 --> 00:11:48,670
+That's your marginal probability of
+getting eczema.
+
+217
+00:11:48,670 --> 00:11:49,510
+Where did I get that?
+
+218
+00:11:49,510 --> 00:11:51,130
+That just comes right from the margins.
+
+219
+00:11:52,130 --> 00:11:55,540
+Times your chance of being in the
+treatment group was actually 33 out of 69.
+
+220
+00:11:55,540 --> 00:11:56,850
+The two groups were not.
+
+221
+00:11:56,850 --> 00:12:00,240
+Completely even here, there is a slightly
+different sample size.
+
+222
+00:12:00,240 --> 00:12:03,400
+So, if we multiply those two probabilities
+together,
+
+223
+00:12:03,400 --> 00:12:06,290
+that should give us the probability of
+being in this particular cell,
+
+224
+00:12:06,290 --> 00:12:09,770
+what we call cell A, the treated plus gets
+eczema group.
+
+225
+00:12:11,110 --> 00:12:12,110
+Now, in, for
+
+226
+00:12:12,110 --> 00:12:15,270
+doing chi-squared tests we actually don't
+want the probability we want the counts.
+
+227
+00:12:15,270 --> 00:12:18,510
+So what I'm additionally going to do here
+is I'm going to multiply by 68
+
+228
+00:12:18,510 --> 00:12:19,280
+by the total count.
+
+229
+00:12:19,280 --> 00:12:22,550
+If I multiply that probability by the
+total count,
+
+230
+00:12:22,550 --> 00:12:25,430
+I'm going to get the count for that cell,
+the expected count for that cell.
+
+231
+00:12:25,430 --> 00:12:27,450
+Notice one of the 68s will cancel.
+
+232
+00:12:27,450 --> 00:12:32,620
+So a very simple way to get these expected
+values is just to take the row total and
+
+233
+00:12:32,620 --> 00:12:37,500
+the column total, multiply them together,
+and then divide by the total sample size.
+
+234
+00:12:37,500 --> 00:12:40,050
+If you do that math, you get a value of
+16.5.
+
+235
+00:12:40,050 --> 00:12:42,640
+So our expected value under the null
+hypothesis,
+
+236
+00:12:42,640 --> 00:12:46,170
+if there's no relationship between
+treatment and eczema, is 16.5.
+
+237
+00:12:46,170 --> 00:12:49,360
+Now notice that I don't have to do any
+more multiplication.
+
+238
+00:12:49,360 --> 00:12:51,280
+To fill in the rest of this table.
+
+239
+00:12:51,280 --> 00:12:53,610
+So the marginal totals are fixed.
+
+240
+00:12:53,610 --> 00:12:54,900
+Those are not allowed to change.
+
+241
+00:12:54,900 --> 00:12:56,310
+The ones I've filled in,
+
+242
+00:12:56,310 --> 00:13:01,360
+the 16.5, I can subtract 34 minus 16.5 to
+get this cell should be 17.5.
+
+243
+00:13:01,360 --> 00:13:07,200
+And then I subtract 35 minus 17.5 to be
+able to fill in this cell.
+
+244
+00:13:07,200 --> 00:13:11,870
+And finally I subtract 33 minus 16.5 to be
+able to fill in that cell.
+
+245
+00:13:12,940 --> 00:13:17,710
+So this table has what we call one degree
+of freedom only.
+
+246
+00:13:17,710 --> 00:13:21,460
+That all that means is by the time I've
+multiplied out to figure out one cell,
+
+247
+00:13:21,460 --> 00:13:23,780
+the rest of the cells are fixed, they
+can't be anything else,
+
+248
+00:13:23,780 --> 00:13:25,800
+because of the fact that the marginals are
+fixed.
+
+249
+00:13:25,800 --> 00:13:29,260
+So, this table only has one degree of
+freedom which means I save myself work
+
+250
+00:13:29,260 --> 00:13:32,800
+cause I only have to really do any work
+for one particular cell.
+
+251
+00:13:32,800 --> 00:13:36,188
+So those are the expected values for that
+table, we're then going to
+
+252
+00:13:36,188 --> 00:13:40,838
+apply the chi-square formula, to compare
+the observed in the expected cells.
+
+253
+00:13:40,838 --> 00:13:47,410
+Notice that you know, there's a few more
+people in the treatment,
+
+254
+00:13:47,410 --> 00:13:51,470
+there's, you know, in the expected value,
+the treatment in eczema group has 16.5.
+
+255
+00:13:51,470 --> 00:13:53,020
+We actually observed only 12.
+
+256
+00:13:53,020 --> 00:13:56,370
+So there's a little bit fewer people in
+the,
+
+257
+00:13:56,370 --> 00:13:57,970
+infants in the treatment group with
+eczema.
+
+258
+00:13:57,970 --> 00:14:00,650
+So it's a little bit different than the
+observed.
+
+259
+00:14:00,650 --> 00:14:03,310
+Is it enough to be statistically
+significant?
+
+260
+00:14:03,310 --> 00:14:06,400
+And we can answer that question by
+applying the chi-squared formula, so
+
+261
+00:14:06,400 --> 00:14:07,990
+this is just if we're going to add up for
+
+262
+00:14:07,990 --> 00:14:12,250
+all the sales observed minus expected
+squared divided by the expected.
+
+263
+00:14:12,250 --> 00:14:12,950
+And I went ahead and
+
+264
+00:14:12,950 --> 00:14:16,670
+plugged all those numbers in from the four
+sales on the previous slide.
+
+265
+00:14:16,670 --> 00:14:21,005
+When you calculate that out, you get a
+value of 4.77 for the chi-squared.
+
+266
+00:14:21,005 --> 00:14:25,060
+This is a chi-squared with one degree of
+freedom for the reasons I just mentioned.
+
+267
+00:14:25,060 --> 00:14:27,680
+Just know the other way to know the
+degrees of freedom.
+
+268
+00:14:27,680 --> 00:14:31,670
+For a contingency table is, you do, rows
+minus 1 times columns minus 1.
+
+269
+00:14:31,670 --> 00:14:35,330
+In this case, we have two rows and we have
+two columns,
+
+270
+00:14:35,330 --> 00:14:38,870
+because it's a two by two table, so our
+degrees or freedom will be 1.
+
+271
+00:14:38,870 --> 00:14:42,500
+So that's your shorthand for figuring out
+the degrees of freedom.
+
+272
+00:14:42,500 --> 00:14:46,550
+Achi-square with one degree of freedom, if
+that value is 4.77,
+
+273
+00:14:46,550 --> 00:14:48,238
+if you go look that up in a.
+
+274
+00:14:48,238 --> 00:14:51,820
+Chart a chi-square chart you will find
+that you get a p value of
+
+275
+00:14:51,820 --> 00:14:56,930
+exactly 0.029 exactly what we got from the
+difference in proportions test, and
+
+276
+00:14:56,930 --> 00:15:00,210
+notice that if you go back and look at the
+z value.
+
+277
+00:15:00,210 --> 00:15:01,940
+That we got from the difference in
+proportions test.
+
+278
+00:15:01,940 --> 00:15:03,300
+That was 2.18.
+
+279
+00:15:03,300 --> 00:15:04,310
+If you square that,
+
+280
+00:15:04,310 --> 00:15:09,208
+you get exactly 4.77 with a little there
+may be some rounding error in there.
+
+281
+00:15:09,208 --> 00:15:14,430
+So, the chi-square with one degree of
+freedom comes out to be exactly the square
+
+282
+00:15:14,430 --> 00:15:17,990
+of the z statistic that we calculated from
+the difference in proportions.
+
+283
+00:15:17,990 --> 00:15:21,710
+In fact, you can prove that those tests,
+even though the formulas look
+
+284
+00:15:21,710 --> 00:15:24,010
+very different, they're mathematically
+equivalent,
+
+285
+00:15:24,010 --> 00:15:27,100
+the chi-square is just the square of
+disease statistic.
+
+286
+00:15:27,100 --> 00:15:29,350
+They're mathematically the same.
+
+287
+00:15:29,350 --> 00:15:33,260
+And just as a note, the chi-square
+distribution in fact, if you take the z
+
+288
+00:15:33,260 --> 00:15:37,480
+distribution and you square it, that is a
+chi-square with one degree of freedom.
+
+289
+00:15:37,480 --> 00:15:41,230
+And I'll talk a little more about that
+when we get to the module on chi-squares.
+
+290
+00:15:41,230 --> 00:15:45,140
+But just note a chi-square distribution is
+defined as a chi-square with one
+
+291
+00:15:45,140 --> 00:15:49,320
+degrees freedom is defined as a standard
+normal variable squared.
+
+292
+00:15:49,320 --> 00:15:51,800
+So there's a direct relationship there.
+
+293
+00:15:51,800 --> 00:15:54,270
+And again, the chi-square test for a two
+by table,
+
+294
+00:15:54,270 --> 00:15:59,030
+mathematically equivalent to the z test or
+that the difference in proportions.
+
+295
+00:15:59,030 --> 00:16:06,590
+And so that's why in SAS we actually just
+use the p-value from the chi-squared test.
+
+296
+00:16:06,590 --> 00:16:08,830
+So again, here is that p-value from the
+chi-squared test.
+
+297
+00:16:08,830 --> 00:16:09,500
+It comes out to be 0.29.
+
+298
+00:16:09,500 --> 00:16:11,199
+We already saw this output.
+
+299
+00:16:14,060 --> 00:16:17,100
+Now, other things that you can calculate
+from a two by two table that I need to
+
+300
+00:16:17,100 --> 00:16:21,620
+mention, what we've calculated so far are
+absolute risks differences.
+
+301
+00:16:21,620 --> 00:16:24,590
+We've looked at the absolute of eczema in
+each group.
+
+302
+00:16:24,590 --> 00:16:29,090
+Arguably the absolute risks are more
+relevant.
+
+303
+00:16:29,090 --> 00:16:32,980
+To patients and to people, it, people can
+understand the absolute risks
+
+304
+00:16:32,980 --> 00:16:36,780
+more easily and they're less likely to be
+misleading.
+
+305
+00:16:38,300 --> 00:16:42,890
+So I encourage people to report absolute
+risks in their papers whenever possible.
+
+306
+00:16:42,890 --> 00:16:44,540
+However, if you look at the medical
+literature,
+
+307
+00:16:44,540 --> 00:16:49,530
+in fact you'll much more commonly see the
+relative risks reported.
+
+308
+00:16:49,530 --> 00:16:51,580
+Things like risk ratios and odds ratios,
+so
+
+309
+00:16:51,580 --> 00:16:53,460
+I'm going to talk a little bit about what
+those are.
+
+310
+00:16:53,460 --> 00:16:55,520
+Again, I'm assuming you've seen these
+before so
+
+311
+00:16:55,520 --> 00:16:58,130
+I'm going to go through this rather
+quickly.
+
+312
+00:16:58,130 --> 00:16:59,680
+So, what is a risk ratio?
+
+313
+00:16:59,680 --> 00:17:03,588
+A risk ratio is just a ratio of two risks,
+so it's very, very simple to calculate.
+
+314
+00:17:03,588 --> 00:17:06,960
+We're just going to take the risk of
+getting eczema in the treated group,
+
+315
+00:17:06,960 --> 00:17:09,900
+that goes in the numerator, we're going to
+compare that to the risk of getting
+
+316
+00:17:09,900 --> 00:17:14,820
+eczema in the reference group, the control
+group that goes in the denominator.
+
+317
+00:17:14,820 --> 00:17:16,570
+That gives us a relative risk of 0.58.
+
+318
+00:17:16,570 --> 00:17:24,230
+That's interpreted as we can say there's a
+42% decrease in the relative risk Risk, of
+
+319
+00:17:24,230 --> 00:17:28,660
+getting eczema if you were in the treated
+group versus the control group here.
+
+320
+00:17:29,670 --> 00:17:31,230
+I'm not going to go through the math on
+how I
+
+321
+00:17:31,230 --> 00:17:33,340
+calculated the 95% confidence interval.
+
+322
+00:17:33,340 --> 00:17:34,630
+It's, it's not hard to do, but
+
+323
+00:17:34,630 --> 00:17:37,830
+it's a little tedious, so we'll just let
+the computer calculate it out for us.
+
+324
+00:17:37,830 --> 00:17:40,880
+I'll just note that the 95% confidence
+interval here.
+
+325
+00:17:40,880 --> 00:17:43,020
+Does not cross one, and for
+
+326
+00:17:43,020 --> 00:17:47,000
+a risk ratio, a value of one would
+indicate no difference between the groups.
+
+327
+00:17:47,000 --> 00:17:47,850
+That's the null value.
+
+328
+00:17:47,850 --> 00:17:50,570
+So, the fact that it doesn't cross one
+tells you that it's going to be
+
+329
+00:17:50,570 --> 00:17:52,980
+a statistically significant risk ratio.
+
+330
+00:17:54,220 --> 00:17:58,080
+Risk ratio is very straightforward, makes
+absolute sense in the contexts of
+
+331
+00:17:58,080 --> 00:18:01,090
+these data that we're looking at to report
+the risk ratio.
+
+332
+00:18:01,090 --> 00:18:03,790
+However, when you actually go and look at
+the table that I showed you earlier,
+
+333
+00:18:03,790 --> 00:18:06,030
+we're going to look at it more detailed in
+a minute.
+
+334
+00:18:06,030 --> 00:18:08,210
+You'll see that authors don't report the
+risk ratio,
+
+335
+00:18:08,210 --> 00:18:10,460
+they report something called the odds
+ratio.
+
+336
+00:18:10,460 --> 00:18:14,780
+Now the odds ratio is this very funny
+measure that is going to come up,
+
+337
+00:18:14,780 --> 00:18:18,540
+all the time in the medical literature, as
+well as, in this class, for
+
+338
+00:18:18,540 --> 00:18:20,470
+reasons I will get to.
+
+339
+00:18:20,470 --> 00:18:24,050
+The odds ratio is literally a ratio of two
+odds.
+
+340
+00:18:24,050 --> 00:18:25,500
+So, what's an odd?
+
+341
+00:18:25,500 --> 00:18:30,460
+An odd is the risk of something happening,
+divided by the risk of it not happening.
+
+342
+00:18:30,460 --> 00:18:31,710
+That's what an odds is.
+
+343
+00:18:31,710 --> 00:18:34,410
+Probability divided by 1 minus the
+probability.
+
+344
+00:18:34,410 --> 00:18:38,952
+So in other words, if the risk of
+something happening is say 25%,
+
+345
+00:18:38,952 --> 00:18:43,800
+then your odds is going to be 1 to 3.
+
+346
+00:18:43,800 --> 00:18:48,000
+There's one chance of it happening for
+every three chances of it not happening.
+
+347
+00:18:48,000 --> 00:18:51,460
+So it's the probability divided by 1 minus
+the probability.
+
+348
+00:18:51,460 --> 00:18:53,220
+So, 25% divided by 75%, or 1 to 3.
+
+349
+00:18:53,220 --> 00:18:59,010
+So we're going to make a ratio of two odds
+here.
+
+350
+00:18:59,010 --> 00:19:03,230
+So what are the, what's the odds of
+getting eczema in the treatment group?
+
+351
+00:19:03,230 --> 00:19:08,390
+Well, the risk of getting eczema in the
+treatment group is 36.4%, so the odds of
+
+352
+00:19:08,390 --> 00:19:11,650
+getting eczema in the treatment group is
+going to be the probability of getting it
+
+353
+00:19:11,650 --> 00:19:15,330
+divided by the probability of not getting
+it, which is 1 minus 36.4%.
+
+354
+00:19:15,330 --> 00:19:18,920
+Again, very funny measure, most of us
+don't think in odds.
+
+355
+00:19:18,920 --> 00:19:21,170
+Odds happen to have some nice mathematical
+properties,
+
+356
+00:19:21,170 --> 00:19:23,930
+however, which is why the odds ratio comes
+up.
+
+357
+00:19:23,930 --> 00:19:27,720
+So, the numerator is the odds of getting
+eczema for the treated group.
+
+358
+00:19:27,720 --> 00:19:32,550
+The denominator, similarly, is the odds of
+getting eczema in the control group.
+
+359
+00:19:32,550 --> 00:19:35,660
+So, 62.9% divided by 1 minus minus that.
+
+360
+00:19:35,660 --> 00:19:38,250
+When you calculate that all out, you get
+this value 0.34.
+
+361
+00:19:38,250 --> 00:19:41,670
+What does that value actually mean?
+
+362
+00:19:42,700 --> 00:19:51,160
+Well, you would interpret this, as a, 66%
+decrease in the relative odds.
+
+363
+00:19:51,160 --> 00:19:52,580
+Of getting eczema.
+
+364
+00:19:52,580 --> 00:19:54,880
+And if you tell that to a patient, if you
+tell to that a person, you know,
+
+365
+00:19:54,880 --> 00:19:56,470
+you're going to decrease your odds by 66%,
+
+366
+00:19:56,470 --> 00:19:59,180
+nobody is really going to know what you
+mean by that.
+
+367
+00:19:59,180 --> 00:20:03,880
+Most of us are use to thinking in chances,
+probabilities or risks, not in odds.
+
+368
+00:20:03,880 --> 00:20:09,450
+So this can lead to some the odds ratio
+can lead to mis-interpretations.
+
+369
+00:20:09,450 --> 00:20:10,960
+It can be misleading.
+
+370
+00:20:10,960 --> 00:20:13,100
+Because you might see this 0.34 and
+
+371
+00:20:13,100 --> 00:20:17,380
+think that that means a 66% decrease in
+your risk, but it does not.
+
+372
+00:20:17,380 --> 00:20:21,760
+I'm going to talk more in the next module
+about being careful about
+
+373
+00:20:21,760 --> 00:20:23,670
+interpreting odds ratios.
+
+374
+00:20:23,670 --> 00:20:26,710
+Notice the 95% confidence interval for the
+odds ratio is also here.
+
+375
+00:20:26,710 --> 00:20:29,830
+I'll show you in the next module how to
+calculate that.
+
+376
+00:20:29,830 --> 00:20:31,460
+But again, it does not cross one,
+
+377
+00:20:31,460 --> 00:20:33,830
+that tells you that it is statistically
+significant.
+
+378
+00:20:33,830 --> 00:20:34,920
+Now again, you're probably wondering,
+
+379
+00:20:34,920 --> 00:20:38,150
+if you've never seen odds ratios before,
+or even if you have seen them,
+
+380
+00:20:38,150 --> 00:20:40,000
+you're probably wondering why do we ever
+use odds ratios?
+
+381
+00:20:40,000 --> 00:20:42,260
+Well there, there's some, there are some
+reasons for that.
+
+382
+00:20:42,260 --> 00:20:43,850
+But what I'll show you.
+
+383
+00:20:43,850 --> 00:20:46,840
+This is by the ways where you get this in
+the SAS output though.
+
+384
+00:20:46,840 --> 00:20:47,680
+Just to show you that you
+
+385
+00:20:47,680 --> 00:20:49,910
+can get a computer to calculate these
+things for you.
+
+386
+00:20:51,100 --> 00:20:54,190
+The computer, SAS automatically calculates
+for
+
+387
+00:20:54,190 --> 00:20:55,950
+you the odds ratio as well as the risk
+ratio.
+
+388
+00:20:55,950 --> 00:20:57,720
+It even tells you, well gee, you know,
+
+389
+00:20:57,720 --> 00:21:01,260
+you really only need the odds ratio if
+your dealing with a case control study.
+
+390
+00:21:01,260 --> 00:21:04,070
+For a two by two table, but it gives you
+those confidence limits so
+
+391
+00:21:04,070 --> 00:21:05,830
+it saves you having to calculate those by
+hand,
+
+392
+00:21:05,830 --> 00:21:08,190
+again SAS has gone out to a few more
+decimal places here.
+
+393
+00:21:10,110 --> 00:21:13,310
+I'll also just provide for you for those
+of you who are interested,
+
+394
+00:21:13,310 --> 00:21:17,220
+the SAS code that I used to generate the
+output in this module for
+
+395
+00:21:17,220 --> 00:21:21,052
+those of you who are interested in trying
+this in SAS on your own.
+
+396
+00:21:21,052 --> 00:21:22,380
+Here is SAS code.
+
+397
+00:21:22,380 --> 00:21:25,520
+I've actually entered the data as grouped
+data so
+
+398
+00:21:25,520 --> 00:21:29,090
+all that means is notice that I only
+really entered four lines of data code.
+
+399
+00:21:30,194 --> 00:21:32,710
+There's only four different types of
+infants in this study.
+
+400
+00:21:32,710 --> 00:21:35,810
+And I've entered it as grouped data by
+just giving it count so
+
+401
+00:21:35,810 --> 00:21:39,560
+I don't have to type this line 1112 times.
+
+402
+00:21:39,560 --> 00:21:42,940
+That's just a shorthand in SAS, or any
+statistical program, for
+
+403
+00:21:42,940 --> 00:21:45,340
+entering data that's from, you know, a
+contingency table.
+
+404
+00:21:45,340 --> 00:21:48,428
+So I'm just going to put that up there for
+those who are interested.
+
+405
+00:21:48,428 --> 00:21:50,640
+I don't want to dwell on it but
+
+406
+00:21:50,640 --> 00:21:53,310
+getting back now to that data from the
+actual paper.
+
+407
+00:21:53,310 --> 00:21:55,810
+So here's that table three from the paper
+again.
+
+408
+00:21:55,810 --> 00:21:58,180
+We already looked at the unadjusted
+numbers, but
+
+409
+00:21:58,180 --> 00:22:02,950
+now I want to look at the highlighted area
+here, the adjusted numbers and
+
+410
+00:22:02,950 --> 00:22:05,770
+this is where an odds ratio suddenly pops
+up.
+
+411
+00:22:05,770 --> 00:22:07,760
+So, OR here stands for odds ratios so
+that.
+
+412
+00:22:07,760 --> 00:22:09,860
+This is adjusted odds ratio.
+
+413
+00:22:09,860 --> 00:22:14,330
+So notice that even though it would make
+total sense here to report a risk ratio,
+
+414
+00:22:14,330 --> 00:22:17,300
+because we've got risks, what you, in
+fact,
+
+415
+00:22:17,300 --> 00:22:20,530
+what the others have in fact reported is
+an odds ratio.
+
+416
+00:22:20,530 --> 00:22:21,840
+The reason they did that -
+
+417
+00:22:21,840 --> 00:22:25,350
+you can see the reason in the footnote for
+this table, they say the p-value was
+
+418
+00:22:25,350 --> 00:22:29,680
+calculated by multivariable logistic
+regression analysis.
+
+419
+00:22:29,680 --> 00:22:34,240
+So, the reason there's an odds ratio here
+is because the authors have
+
+420
+00:22:34,240 --> 00:22:38,810
+a binary outcome and they want to adjust
+for some confounders.
+
+421
+00:22:38,810 --> 00:22:41,480
+To do a statistical adjustment, we have to
+use regression.
+
+422
+00:22:41,480 --> 00:22:44,890
+And the typical regression that people use
+when you have a binary outcome,
+
+423
+00:22:44,890 --> 00:22:46,670
+is logistic regression.
+
+424
+00:22:46,670 --> 00:22:49,760
+Logistic regression is what we're going to
+focus on a lot in this class,
+
+425
+00:22:49,760 --> 00:22:52,050
+but when you do a logistic regression,
+
+426
+00:22:52,050 --> 00:22:55,040
+what it gives you out at the end of the
+day are odds ratios.
+
+427
+00:22:55,040 --> 00:22:56,490
+It does not give you risk ratios,
+
+428
+00:22:56,490 --> 00:22:59,540
+it gives you odds ratios, there's
+mathematical reasons for that.
+
+429
+00:22:59,540 --> 00:23:02,230
+But the upshot is, because lots of people
+do logistic regression,
+
+430
+00:23:02,230 --> 00:23:04,930
+there are lots of odds ratios floating
+around in the literature and
+
+431
+00:23:04,930 --> 00:23:08,140
+we have to be very careful again about how
+we look at these.
+
+432
+00:23:08,140 --> 00:23:09,960
+The reason the odds, this was a randomized
+trials so,
+
+433
+00:23:09,960 --> 00:23:12,670
+arguably, the authors probably shouldn't
+have needed to adjust for
+
+434
+00:23:12,670 --> 00:23:16,210
+confounding but perhaps they've adjusted
+for antibiotic use.
+
+435
+00:23:16,210 --> 00:23:19,510
+Breastfeeding and caesarean section
+perhaps those were slightly imbalanced in
+
+436
+00:23:19,510 --> 00:23:21,390
+these two groups since it was a small
+randomized trial.
+
+437
+00:23:23,140 --> 00:23:25,370
+When they do the adjustment the odds ratio
+goes down slightly so
+
+438
+00:23:25,370 --> 00:23:27,700
+the unadjusted odds ratio was 0.34.
+
+439
+00:23:27,700 --> 00:23:30,170
+It goes down to 0.24 when you adjust for
+these other things.
+
+440
+00:23:30,170 --> 00:23:31,870
+The p value is about the same as before.
+
+441
+00:23:33,240 --> 00:23:35,210
+So we end up with an odds ratio and
+
+442
+00:23:35,210 --> 00:23:37,620
+again you have to be careful about you
+interpret this.
+
+443
+00:23:37,620 --> 00:23:39,680
+So, you wouldn't want to look at this odds
+ratio and
+
+444
+00:23:39,680 --> 00:23:42,640
+say, oh, well that means that after
+adjusting for
+
+445
+00:23:42,640 --> 00:23:48,460
+these confounders there was a 76% decrease
+in the risk of eczema.
+
+446
+00:23:48,460 --> 00:23:51,060
+This is a 76% decrease in the odds of
+getting eczema.
+
+447
+00:23:51,060 --> 00:23:56,160
+Which, again, is a really hard thing for
+us to understand intuitively.
+
+448
+00:23:56,160 --> 00:23:57,380
+All you have to do is look at the risks.
+
+449
+00:23:57,380 --> 00:23:59,320
+It's really a halving of risk, right?
+
+450
+00:23:59,320 --> 00:24:02,250
+The risk goes down by about half, from
+about 63% to 36%.
+
+451
+00:24:02,250 --> 00:24:06,035
+So clearly, not a 76% drop in the risk.
+
+452
+00:24:06,035 --> 00:24:08,140
+76% drop in the odds, whatever that
+exactly means.
+
+453
+00:24:09,920 --> 00:24:13,120
+Now, you might wonder, if you're looking
+at this, you know,
+
+454
+00:24:13,120 --> 00:24:15,530
+adjusted odds ratio and say, well,oh,
+well, maybe it's.
+
+455
+00:24:15,530 --> 00:24:17,820
+It's the fact that we've adjusted for
+things.
+
+456
+00:24:17,820 --> 00:24:19,860
+Maybe that makes the relationship
+stronger, and
+
+457
+00:24:19,860 --> 00:24:21,930
+in fact, if we adjusted these, you know,
+
+458
+00:24:21,930 --> 00:24:25,940
+the risk ratios somehow, that the risk
+ratio would also appear much smaller.
+
+459
+00:24:25,940 --> 00:24:29,730
+In fact, that's not the case, and you can
+show that, because of the fact that
+
+460
+00:24:29,730 --> 00:24:33,510
+the odds ratio and risk ratio have a
+direct mathematical relationship.
+
+461
+00:24:33,510 --> 00:24:37,030
+So there's a little formula you can use,
+if you were in HRP 259,
+
+462
+00:24:37,030 --> 00:24:38,340
+you've already done this before.
+
+463
+00:24:38,340 --> 00:24:42,200
+But there's a little formula you can use
+to convert back the odds ratio from
+
+464
+00:24:42,200 --> 00:24:46,330
+a logistic regression,back into a adjusted
+risk ratio.
+
+465
+00:24:46,330 --> 00:24:50,070
+Just using the mathematical relationship
+between those two quantities.
+
+466
+00:24:50,070 --> 00:24:51,500
+I won't derive it for you here.
+
+467
+00:24:52,690 --> 00:24:55,000
+But it's fairly easy to apply.
+
+468
+00:24:55,000 --> 00:24:57,780
+So, we're just going to plug it, in this
+case, to this formula.
+
+469
+00:24:57,780 --> 00:25:00,540
+The observed odds ratio is 0.243.
+
+470
+00:25:00,540 --> 00:25:02,520
+Now we have to plug in the risk, or
+
+471
+00:25:02,520 --> 00:25:04,860
+prevalence, of the outcome in the
+reference group.
+
+472
+00:25:04,860 --> 00:25:07,340
+So in this case, the reference is that
+control group.
+
+473
+00:25:07,340 --> 00:25:10,110
+62.9% Of them got eczema, so we plug in
+the 0.629.
+
+474
+00:25:10,110 --> 00:25:14,220
+When you do that, you get that the
+adjusted risk ratio is 0.46.
+
+475
+00:25:14,220 --> 00:25:16,660
+Remember, the unadjusted was 0.58, if we
+just.
+
+476
+00:25:16,660 --> 00:25:20,860
+Just divided the the two percentages in
+the two groups.
+
+477
+00:25:20,860 --> 00:25:23,010
+When we adjust it goes down slightly to
+0.46,
+
+478
+00:25:23,010 --> 00:25:26,040
+but it's still about a halving of risk.
+
+479
+00:25:26,040 --> 00:25:28,250
+The risk is cut by about in half.
+
+480
+00:25:28,250 --> 00:25:33,200
+So it's the odds ratio again, of 0.24, is
+very misleading.
+
+481
+00:25:34,440 --> 00:25:38,800
+You would not want to say that the risk is
+reduced by 75% here.
+
+482
+00:25:38,800 --> 00:25:42,140
+The correct interpretation is that the
+risk is cut in half.
+
+483
+00:25:42,140 --> 00:25:45,410
+And I'll talk a little bit more in the
+next module about correctly interpreting
+
+484
+00:25:45,410 --> 00:25:45,980
+odds ratios.
+
+485
+00:25:45,980 --> 00:25:48,610
+Again, we're going to see odds ratios a
+lot in this course,
+
+486
+00:25:48,610 --> 00:25:51,480
+simply because of the fact that we're
+doing a lot of logistic regression.

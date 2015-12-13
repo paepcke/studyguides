@@ -1,0 +1,1408 @@
+1
+00:00:00,000 --> 00:00:08,270
+[BLANK_AUDIO]
+
+2
+00:00:08,270 --> 00:00:12,490
+In this next module, we're going to talk
+about diagnostic testing,
+
+3
+00:00:12,490 --> 00:00:15,880
+using as an example that CelluliteDX test
+that
+
+4
+00:00:15,880 --> 00:00:18,889
+I set out as the teaser in the opener this
+week.
+
+5
+00:00:20,850 --> 00:00:22,640
+So when we're talking about diagnostic
+testing,
+
+6
+00:00:22,640 --> 00:00:24,560
+we're talking about things like
+sensitivity,
+
+7
+00:00:24,560 --> 00:00:28,080
+specificity, positive predictive value and
+negative predictive value.
+
+8
+00:00:28,080 --> 00:00:30,450
+I've already used these terms a little bit
+this week.
+
+9
+00:00:30,450 --> 00:00:32,160
+Now I'm going to formally define them, and
+
+10
+00:00:32,160 --> 00:00:34,180
+we're going to do a little bit formal
+calculation of them.
+
+11
+00:00:35,460 --> 00:00:38,180
+So first of all the senstivity is the
+probability that if you
+
+12
+00:00:38,180 --> 00:00:42,180
+truly have the disease, that the
+diagnostic test is going to catch it.
+
+13
+00:00:42,180 --> 00:00:43,930
+How sensitive is the test?
+
+14
+00:00:43,930 --> 00:00:47,240
+Specificity is the probability that if you
+don't have the disease,
+
+15
+00:00:47,240 --> 00:00:50,480
+that the test is going to accurately
+register as a negative.
+
+16
+00:00:50,480 --> 00:00:51,720
+You want both of those to be good.
+
+17
+00:00:53,790 --> 00:00:57,970
+Positive predictive value is the
+probability that if you test positive for
+
+18
+00:00:57,970 --> 00:01:00,290
+the disease, you actually have the
+disease.
+
+19
+00:01:00,290 --> 00:01:02,960
+This is usually what the patients are more
+interested in, right?
+
+20
+00:01:02,960 --> 00:01:06,320
+If you have a positive test, what's the
+chance that you actually have the disease?
+
+21
+00:01:06,320 --> 00:01:09,490
+We calculated this already today for a
+couple of conditions.
+
+22
+00:01:10,530 --> 00:01:12,720
+Similarly, the negative predictive value,
+
+23
+00:01:12,720 --> 00:01:15,350
+is the probability that if you test
+negative for
+
+24
+00:01:15,350 --> 00:01:19,140
+a disease, it's the probability that you
+actually do not have the disease.
+
+25
+00:01:20,990 --> 00:01:22,830
+Now, unlike sensitivity and
+
+26
+00:01:22,830 --> 00:01:26,270
+specificity, which actually don't depend
+on the prevalence of a disease that
+
+27
+00:01:26,270 --> 00:01:30,100
+only depend on how good the test is, the
+positive predictive value and
+
+28
+00:01:30,100 --> 00:01:34,230
+negative predictive value depend directly
+on the prevalence of the disease.
+
+29
+00:01:34,230 --> 00:01:36,169
+Of course, as well as how accurate the
+test is.
+
+30
+00:01:37,960 --> 00:01:41,990
+So let's get back to this fun example that
+CelluliteDX test.
+
+31
+00:01:41,990 --> 00:01:47,490
+So this is a test that the company sells
+for about $250 a pop,
+
+32
+00:01:47,490 --> 00:01:50,480
+to, it's a genetic test, to tell women
+whether or
+
+33
+00:01:50,480 --> 00:01:54,800
+not they are likely to develop moderate to
+se, to severe cellulite.
+
+34
+00:01:54,800 --> 00:01:57,840
+So the idea is that a young woman might
+take this test before she
+
+35
+00:01:57,840 --> 00:02:01,700
+develops cellulite, and it would give her
+some information about whether or
+
+36
+00:02:01,700 --> 00:02:04,430
+not she's likely to develop cellulite, and
+therefore she and
+
+37
+00:02:04,430 --> 00:02:08,070
+her doctor might be able to do something
+together to mitigate her risk.
+
+38
+00:02:09,340 --> 00:02:13,180
+So here's the, the pitch the company has
+on its website for this test.
+
+39
+00:02:13,180 --> 00:02:18,270
+They say a patient who tests positive has
+approximately a 70% chance of
+
+40
+00:02:18,270 --> 00:02:19,790
+developing moderate to severe cellulite.
+
+41
+00:02:19,790 --> 00:02:22,110
+Notice that's the positive predicted
+value.
+
+42
+00:02:22,110 --> 00:02:23,850
+A patient who tests negative,
+
+43
+00:02:23,850 --> 00:02:29,580
+has approximately a 50% chance of not
+developing moderate to severe cellulite.
+
+44
+00:02:29,580 --> 00:02:31,636
+So that's the negative predictive value.
+
+45
+00:02:31,636 --> 00:02:34,840
+Now if you're thinking about this
+carefully, right away you can see that
+
+46
+00:02:34,840 --> 00:02:41,100
+this test is not terribly useful right, so
+if you test positive you have
+
+47
+00:02:41,100 --> 00:02:47,552
+a 70% chance of of ha, developing moderate
+to sever cellulite, approximately.
+
+48
+00:02:47,552 --> 00:02:51,590
+And If you test negative, notice you still
+have a 50%
+
+49
+00:02:51,590 --> 00:02:53,930
+chance of getting moderate to severe
+cellulite, right?
+
+50
+00:02:53,930 --> 00:02:56,959
+It's not terribly different, 1 minus 50%
+is 50%.
+
+51
+00:02:56,959 --> 00:02:59,400
+So you, you test positive, there's a 70%
+chance.
+
+52
+00:02:59,400 --> 00:03:03,028
+If you tested negative, it's still a 50%
+chance.
+
+53
+00:03:03,028 --> 00:03:06,132
+So right away you kind of see this, mm, is
+this really that useful?
+
+54
+00:03:06,132 --> 00:03:08,992
+Even assuming that there's something you
+can do to intervene and
+
+55
+00:03:08,992 --> 00:03:12,632
+prevent the onset of cellulite, but it
+gets even funnier than then this, okay, so
+
+56
+00:03:12,632 --> 00:03:15,911
+we're going to delve into this a little
+bit more deeply into the numbers.
+
+57
+00:03:15,911 --> 00:03:17,423
+It's a great illustration of,
+
+58
+00:03:17,423 --> 00:03:21,749
+of diagnostic testing and the, the numbers
+come out to be even funnier than this.
+
+59
+00:03:23,830 --> 00:03:27,170
+So where did the, first of all, where did
+this test come from?
+
+60
+00:03:27,170 --> 00:03:33,370
+So the CelluliteDX test was developed
+based on a case control study,
+
+61
+00:03:33,370 --> 00:03:36,920
+where researchers were looking at a
+particular genetic variant.
+
+62
+00:03:36,920 --> 00:03:40,350
+And they were able to show that this
+genetic variant was statistically
+
+63
+00:03:40,350 --> 00:03:43,100
+associated with moderate to severe
+cellulite.
+
+64
+00:03:43,100 --> 00:03:44,690
+So it was a case controlled study.
+
+65
+00:03:44,690 --> 00:03:45,820
+Here's the data from that study.
+
+66
+00:03:45,820 --> 00:03:47,030
+They sampled 200 cases.
+
+67
+00:03:47,030 --> 00:03:50,030
+These are women who have, moderate to
+severe cellulite.
+
+68
+00:03:50,030 --> 00:03:53,660
+And 200 controls, women who did not have
+moderate to severe cellulite.
+
+69
+00:03:53,660 --> 00:03:57,020
+And then they tested them for this
+particular genotype.
+
+70
+00:03:57,020 --> 00:04:02,480
+And if you carried a D allele, there, that
+was associated with a significantly higher
+
+71
+00:04:02,480 --> 00:04:05,570
+risk of having moderate to severe
+cellulite in this case control study.
+
+72
+00:04:05,570 --> 00:04:06,640
+Here are the numbers.
+
+73
+00:04:06,640 --> 00:04:10,375
+So, when you get a positive on the
+CelluliteDX test,
+
+74
+00:04:10,375 --> 00:04:13,437
+all that means is that you carry a D
+allele.
+
+75
+00:04:13,437 --> 00:04:18,194
+So let's, that, so again, the same numbers
+are used for, if you have a positive on
+
+76
+00:04:18,194 --> 00:04:22,580
+the CelluliteDX test, that's the same as,
+as having this genetic allele.
+
+77
+00:04:22,580 --> 00:04:25,334
+So now let's look at the test and who, and
+the, and the, and
+
+78
+00:04:25,334 --> 00:04:28,412
+who actually has the disease, and right
+from this two by two table,
+
+79
+00:04:28,412 --> 00:04:31,350
+we can calculate from these data
+sensitivity and specificity.
+
+80
+00:04:31,350 --> 00:04:34,680
+And a lot of times when you're calculating
+sensitivity and specificity from
+
+81
+00:04:34,680 --> 00:04:39,030
+actual data, you might having it, setting
+it up in a two by two table like this.
+
+82
+00:04:39,030 --> 00:04:41,777
+We can also calculate this from a tree and
+all those other things we learned, but
+
+83
+00:04:41,777 --> 00:04:43,214
+let's do it from a two by two table now.
+
+84
+00:04:43,214 --> 00:04:44,781
+So what's the sensitivity here?
+
+85
+00:04:44,781 --> 00:04:49,214
+So there are 200 women who truly have
+cellulite.
+
+86
+00:04:49,214 --> 00:04:51,983
+Out of those women, those are the case
+women,
+
+87
+00:04:51,983 --> 00:04:54,687
+168 of them tested positive on this test.
+
+88
+00:04:54,687 --> 00:04:57,683
+So that would make the sensitivity 84%.
+
+89
+00:04:57,683 --> 00:05:01,672
+Notice that there were 32 women who
+falsely tested negative out of 200 cases.
+
+90
+00:05:01,672 --> 00:05:07,000
+The specificity is, 26% because if you
+look carefully, there were 200 women who
+
+91
+00:05:07,000 --> 00:05:12,097
+did not have cellulite, only 52 of them
+actually tested negative on this test.
+
+92
+00:05:12,097 --> 00:05:14,615
+So this genetic variant actually really
+common.
+
+93
+00:05:14,615 --> 00:05:17,623
+So it's much more common to get a positive
+result from this test then from a,
+
+94
+00:05:17,623 --> 00:05:19,020
+then to get a negative test.
+
+95
+00:05:19,020 --> 00:05:20,990
+But the specificity here was 26%.
+
+96
+00:05:20,990 --> 00:05:24,540
+In other words, there were 148 false
+positives.
+
+97
+00:05:24,540 --> 00:05:29,450
+148 women out of the control group falsely
+tested positive on this test.
+
+98
+00:05:29,450 --> 00:05:30,970
+So that's the sensitivity and specificity.
+
+99
+00:05:30,970 --> 00:05:33,970
+And if you to the company website, they
+have a nice little brochure,
+
+100
+00:05:33,970 --> 00:05:37,210
+where they lay out the calculation of
+sensitivity and specificity for you.
+
+101
+00:05:37,210 --> 00:05:38,930
+And they did it correctly.
+
+102
+00:05:40,630 --> 00:05:43,350
+What's really fun about this problem, is,
+if I ask you
+
+103
+00:05:43,350 --> 00:05:46,940
+to calculate the positive predictive
+value, it's actually a little bit tricky.
+
+104
+00:05:46,940 --> 00:05:50,740
+So this is a really good exercise, I
+think, because if I just give you
+
+105
+00:05:50,740 --> 00:05:54,070
+the data in the two by two table, when I
+give this to students and I say,
+
+106
+00:05:54,070 --> 00:05:58,970
+calculate the positive predictive value,
+everybody's tempted to say, oh well,
+
+107
+00:05:58,970 --> 00:06:03,950
+there were 316 people who tested positive,
+168 of them actually have cellulite.
+
+108
+00:06:03,950 --> 00:06:05,880
+So that's the positive predictive value.
+
+109
+00:06:05,880 --> 00:06:09,170
+That is in fact incorrect, okay?
+
+110
+00:06:09,170 --> 00:06:11,860
+So why is that not correct?
+
+111
+00:06:11,860 --> 00:06:14,410
+It's, keep in mind, the study design here.
+
+112
+00:06:14,410 --> 00:06:16,820
+This is a case controlled study.
+
+113
+00:06:16,820 --> 00:06:20,750
+So the prevalence of the condition, of
+having moderate to severe cellulite,
+
+114
+00:06:20,750 --> 00:06:25,280
+is different in the study sample, than it
+is in the general population.
+
+115
+00:06:25,280 --> 00:06:29,540
+And remember, positive predictive value
+depends on the prevalence of disease.
+
+116
+00:06:29,540 --> 00:06:34,220
+So we have to factor in, the actual
+prevalence of the disease in the general
+
+117
+00:06:34,220 --> 00:06:38,680
+population here in order to calculate
+positive predictive value, for this test.
+
+118
+00:06:38,680 --> 00:06:39,700
+So that's a little tricky.
+
+119
+00:06:40,890 --> 00:06:45,530
+To the company's credit if you go read
+their little brochure they say,
+
+120
+00:06:45,530 --> 00:06:48,970
+oh well they knew they had to incorporate
+the actual prevalence.
+
+121
+00:06:48,970 --> 00:06:50,800
+They must have a statistician involved.
+
+122
+00:06:50,800 --> 00:06:53,050
+So they say, oh yeah we used Bayes' rule
+to calculate it.
+
+123
+00:06:53,050 --> 00:06:56,860
+So indeed they used Bayes' rule to
+incorporate the true prevalence of
+
+124
+00:06:56,860 --> 00:06:58,050
+cellulite in the population.
+
+125
+00:06:58,050 --> 00:07:01,970
+So, that's a great example of where Bayes'
+Rule can be useful.
+
+126
+00:07:01,970 --> 00:07:03,138
+So let's actually do this.
+
+127
+00:07:03,138 --> 00:07:06,880
+Let's use Bayes' Rule to calculate the
+positive predictive value,
+
+128
+00:07:06,880 --> 00:07:11,470
+incorporating the true prevalence of
+cellulite in the population.
+
+129
+00:07:11,470 --> 00:07:15,600
+So the company said that the true
+prevalence of moderate cellulite in
+
+130
+00:07:15,600 --> 00:07:16,150
+women was 65%.
+
+131
+00:07:16,150 --> 00:07:20,490
+That sounds reasonable to me, so we'll
+assume that's, that's reasonable.
+
+132
+00:07:20,490 --> 00:07:22,730
+So now we can use Bayes' Rule to
+incorporate that.
+
+133
+00:07:22,730 --> 00:07:25,621
+Notice that that's higher then in case
+control study where's its only 50%.
+
+134
+00:07:27,050 --> 00:07:29,310
+So, let's, here's how we would apply
+Bayes' rule.
+
+135
+00:07:29,310 --> 00:07:31,040
+We want to know the positive predictive
+value.
+
+136
+00:07:31,040 --> 00:07:35,790
+We want to know the probability that you
+will get moderate to severe cellulite,
+
+137
+00:07:35,790 --> 00:07:37,630
+if you test positive on this test.
+
+138
+00:07:39,920 --> 00:07:41,560
+Well, we can just apply Bayes' rule here,
+so
+
+139
+00:07:41,560 --> 00:07:45,672
+that's going to be equal to the posit,
+probability of testing positive,
+
+140
+00:07:45,672 --> 00:07:50,510
+given that you actually are a woman who's
+going to get cellulite,
+
+141
+00:07:50,510 --> 00:07:54,280
+times the marginal probability of getting
+cellulite, that's the prevalence in
+
+142
+00:07:54,280 --> 00:07:58,220
+the population, over the marginal
+probability of testing positive at all.
+
+143
+00:07:58,220 --> 00:07:59,410
+Alright.
+So what's the probability that you're
+
+144
+00:07:59,410 --> 00:08:01,220
+going to test positive given that you are
+positive?
+
+145
+00:08:01,220 --> 00:08:02,690
+Well, that's the sensitivity of the test.
+
+146
+00:08:02,690 --> 00:08:04,331
+We just saw that that was 84%.
+
+147
+00:08:06,280 --> 00:08:09,550
+What's the margin of probability of having
+moderate to severe cellulite?
+
+148
+00:08:09,550 --> 00:08:13,020
+The company just told us that that's 65%
+in the general population,
+
+149
+00:08:13,020 --> 00:08:16,230
+so that's where we're incorporating that
+number.
+
+150
+00:08:16,230 --> 00:08:18,440
+What's the marginal probability of testing
+positive?
+
+151
+00:08:18,440 --> 00:08:20,660
+Well, there are two ways you could test
+positive.
+
+152
+00:08:20,660 --> 00:08:23,050
+You could be one of those of 65% of women,
+
+153
+00:08:23,050 --> 00:08:25,360
+who actually has moderate to severe
+cellulite, or
+
+154
+00:08:25,360 --> 00:08:31,250
+is going to get it and, your chance of
+testing positive is 84%, the sensitivity.
+
+155
+00:08:31,250 --> 00:08:34,770
+Or, you can be one of the 35% of women,
+
+156
+00:08:34,770 --> 00:08:37,630
+who is not destined to get moderate to
+severe cellulite.
+
+157
+00:08:37,630 --> 00:08:42,570
+Your chance of testing positive on this
+test is actually 74%.
+
+158
+00:08:42,570 --> 00:08:44,500
+That's 1 minus the specificity.
+
+159
+00:08:44,500 --> 00:08:46,570
+Remember the specificity was 26%.
+
+160
+00:08:46,570 --> 00:08:49,410
+That means the false positive rate is 74%.
+
+161
+00:08:49,410 --> 00:08:53,160
+So that's the marginal probability of
+testing positive.
+
+162
+00:08:53,160 --> 00:08:58,670
+When you add that up, it comes out to be
+.805 in our denominator.
+
+163
+00:08:58,670 --> 00:09:00,710
+So, we can put all these numbers together.
+
+164
+00:09:02,130 --> 00:09:06,732
+So .84, times 0.65, that's equal to
+
+165
+00:09:06,732 --> 00:09:12,396
+.546 we divide that by the denominator of
+.805,
+
+166
+00:09:12,396 --> 00:09:18,285
+we get that the positive predictive value
+is 67.8%.
+
+167
+00:09:18,285 --> 00:09:20,865
+All right, so the, the company calculated
+that,
+
+168
+00:09:20,865 --> 00:09:24,885
+in their literature, now in their
+marketing material, they rounded that up,
+
+169
+00:09:24,885 --> 00:09:28,785
+so they said, oh, your, the, the actual
+probability that you're going to
+
+170
+00:09:28,785 --> 00:09:33,363
+get moderate to severe cellulite if you
+test positive is 60, it's about 68%.
+
+171
+00:09:33,363 --> 00:09:35,846
+Well they said, they rounded that up to
+approximately 70%.
+
+172
+00:09:35,846 --> 00:09:39,896
+They were trying to boost it, make it
+look, just look a little bit better.
+
+173
+00:09:39,896 --> 00:09:41,832
+Okay.
+
+174
+00:09:41,832 --> 00:09:44,496
+Now notice that that's an application of
+Bayes' Rule.
+
+175
+00:09:44,496 --> 00:09:47,681
+For those of you who are more comfortable
+using the tree, which most students
+
+176
+00:09:47,681 --> 00:09:50,900
+are when they first start this material,
+you could also do this on the tree.
+
+177
+00:09:50,900 --> 00:09:52,800
+So let me just quickly show you how to do
+it on the tree.
+
+178
+00:09:52,800 --> 00:09:55,700
+So, and then I'm going to show you how to
+do it using a 2 by 2 table.
+
+179
+00:09:55,700 --> 00:09:57,790
+I'm going to give you many ways to get the
+right answer.
+
+180
+00:09:57,790 --> 00:10:00,750
+And remember, with probability there's
+many ways to get the right answer.
+
+181
+00:10:00,750 --> 00:10:02,510
+Some are more efficient than others.
+
+182
+00:10:02,510 --> 00:10:04,770
+Some are, are better for when you're
+learning.
+
+183
+00:10:04,770 --> 00:10:07,480
+So, the first thing is, your either one of
+these women get destined to
+
+184
+00:10:07,480 --> 00:10:08,970
+get the cellulite or you're not.
+
+185
+00:10:08,970 --> 00:10:13,101
+That's 65% prevalence and 1 minus 65% is
+35%, so
+
+186
+00:10:13,101 --> 00:10:15,730
+that's whether or not you truly have the
+disease.
+
+187
+00:10:17,090 --> 00:10:20,740
+Then, you are either going to test
+positive on this CelluliteDX test or not.
+
+188
+00:10:20,740 --> 00:10:23,980
+If you actually have the disease, the
+sensitivity again is 84%,
+
+189
+00:10:23,980 --> 00:10:26,823
+so your chance of not testing positive is
+16%.
+
+190
+00:10:27,960 --> 00:10:32,750
+If you don't have the disease, you still
+have a 74% chance of testing positive, and
+
+191
+00:10:32,750 --> 00:10:35,350
+you have a 26% chance of not testing
+positive.
+
+192
+00:10:35,350 --> 00:10:37,790
+We can multiply across the branches, so
+
+193
+00:10:37,790 --> 00:10:42,916
+the upper branch is .546, this one is
+.104.
+
+194
+00:10:42,916 --> 00:10:47,570
+This one is .259, this one is .091.
+
+195
+00:10:47,570 --> 00:10:49,560
+I just got those by multiplying across the
+branches.
+
+196
+00:10:49,560 --> 00:10:54,310
+Notice if I add all these up, it sums up
+to exactly 1, so I've done it right.
+
+197
+00:10:54,310 --> 00:10:57,780
+So now, once I know that you've tested
+positive, I,
+
+198
+00:10:57,780 --> 00:11:01,380
+then I know that you're either on this
+branch, or your on this branch.
+
+199
+00:11:01,380 --> 00:11:02,660
+So once you know you tested positive,
+
+200
+00:11:02,660 --> 00:11:06,090
+you're on one of those branches, which of
+those is actually having cellulite?
+
+201
+00:11:06,090 --> 00:11:07,380
+Only the top branch.
+
+202
+00:11:07,380 --> 00:11:11,065
+So the probability that you're actually
+going to get the disease,
+
+203
+00:11:11,065 --> 00:11:13,611
+given that you tested positive in this
+case,
+
+204
+00:11:13,611 --> 00:11:19,500
+will be .546 divided by .259, plus .546,
+and that again, comes out to be 67.8%.
+
+205
+00:11:19,500 --> 00:11:20,420
+So you can solve it
+
+206
+00:11:20,420 --> 00:11:23,090
+this way if you're more comfortable still
+with the tree, and Bayes' Rule.
+
+207
+00:11:23,090 --> 00:11:26,513
+And I'm going to show you even one more
+way to solve it.
+
+208
+00:11:26,513 --> 00:11:30,260
+So alternatively we can use a little trick
+with 2 by 2 tables, and
+
+209
+00:11:30,260 --> 00:11:34,390
+a lot of students find it easier to
+calculate it in this way, so if you're
+
+210
+00:11:34,390 --> 00:11:38,780
+more comfortable with a 2 by 2 table, this
+is yet another way to get this right.
+
+211
+00:11:38,780 --> 00:11:42,900
+So, to solve for positive predictive and
+negative predictive value,
+
+212
+00:11:42,900 --> 00:11:47,510
+you could incorporate the true prevalence
+by just doing a little 2 by 2 table and
+
+213
+00:11:47,510 --> 00:11:50,250
+assuming that you have a denominator of
+100 people.
+
+214
+00:11:50,250 --> 00:11:52,310
+Why a hundred, why am I picking a hundred
+here?
+
+215
+00:11:52,310 --> 00:11:55,120
+Well, it's easy to deal with percentages.
+
+216
+00:11:55,120 --> 00:11:58,320
+If you treat them as whole numbers, so if
+we start with 100 people,
+
+217
+00:11:58,320 --> 00:12:00,710
+then all the percentages just become whole
+numbers.
+
+218
+00:12:00,710 --> 00:12:03,526
+So, for example, rather than talking about
+65%, or
+
+219
+00:12:03,526 --> 00:12:07,010
+35%, I can say if I have a hundred women
+in the general population,
+
+220
+00:12:07,010 --> 00:12:11,510
+65 of them would have cellulite, and 35
+would not have cellulite, right, so
+
+221
+00:12:11,510 --> 00:12:15,359
+I can set it out this way, and make it
+super easy to do these calculations.
+
+222
+00:12:16,980 --> 00:12:20,720
+Then you can apply the sensitivity and
+specificity to figure out how many of
+
+223
+00:12:20,720 --> 00:12:23,100
+them are going to test positive and test
+negative.
+
+224
+00:12:23,100 --> 00:12:25,680
+So, for example, we start with the
+prevalence of the disease and
+
+225
+00:12:25,680 --> 00:12:31,170
+then we know, out of the 65 women who have
+the disease, 84% of them
+
+226
+00:12:31,170 --> 00:12:36,623
+are going to correctly test positive, so
+we can fill in that cell with a 55.
+
+227
+00:12:38,410 --> 00:12:42,200
+Out of the 35 women who truly do not have
+the disease,
+
+228
+00:12:42,200 --> 00:12:46,450
+only 26% of them, that's a specificity,
+are going to test negative.
+
+229
+00:12:46,450 --> 00:12:50,030
+So we're going fill in that cell with a 9
+there.
+
+230
+00:12:50,030 --> 00:12:52,990
+Then you can just subtract.
+
+231
+00:12:52,990 --> 00:12:55,825
+Now we have enough information to be able
+to fill in rest of the cells.
+
+232
+00:12:55,825 --> 00:12:58,641
+So for example, 65 minus 55 is 10.
+
+233
+00:12:58,641 --> 00:13:02,800
+35 minus 9 will get us to 24, 26.
+
+234
+00:13:02,800 --> 00:13:05,380
+So we can fill in all of those cells.
+
+235
+00:13:06,470 --> 00:13:07,940
+So now we have enough information.
+
+236
+00:13:07,940 --> 00:13:10,961
+We have the correct prevalence of the
+disease in a population to
+
+237
+00:13:10,961 --> 00:13:14,680
+calculate positive predictive value
+directly from the 2 by 2 table.
+
+238
+00:13:14,680 --> 00:13:18,280
+And again, maybe students find it easier
+to do it this way, because dealing with
+
+239
+00:13:18,280 --> 00:13:21,299
+whole numbers is always easier than
+dealing with fractions and probabilities.
+
+240
+00:13:23,150 --> 00:13:25,670
+So what will the positive predictive value
+be?
+
+241
+00:13:25,670 --> 00:13:31,000
+There are 81 women who will test positive,
+out of a sample of 100 women.
+
+242
+00:13:31,000 --> 00:13:32,460
+Out of that, those 81,
+
+243
+00:13:32,460 --> 00:13:36,900
+55 of them will truly go on to get
+moderate to severe cellulite.
+
+244
+00:13:36,900 --> 00:13:39,346
+So the positive predictive value here is
+68%,
+
+245
+00:13:39,346 --> 00:13:41,860
+the same 68% we calculated in two other
+ways.
+
+246
+00:13:41,860 --> 00:13:43,730
+What's the negative predictive value?
+
+247
+00:13:43,730 --> 00:13:49,410
+The negative predictive value, we would
+calculate by recognizing that there
+
+248
+00:13:49,410 --> 00:13:53,230
+are 19 women in the general population who
+will get a negative on this test.
+
+249
+00:13:53,230 --> 00:13:58,140
+Of those 19, only nine of them will go on
+to not get cellulite.
+
+250
+00:13:58,140 --> 00:13:59,800
+Ten of them will actually go on to get
+cellulite.
+
+251
+00:13:59,800 --> 00:14:03,218
+So, the negative predictive value here, is
+47%.
+
+252
+00:14:03,218 --> 00:14:08,444
+So 47% of those who test negative, will
+not get cellulite.
+
+253
+00:14:08,444 --> 00:14:09,494
+In other words,
+
+254
+00:14:09,494 --> 00:14:14,970
+now remember that the company, rounded
+that up to 50% when they reported it.
+
+255
+00:14:14,970 --> 00:14:18,070
+So they said, 50% of those who test
+negative will not get cellulite.
+
+256
+00:14:18,070 --> 00:14:20,770
+So they're doing a little rounding again,
+in their favor to look it,
+
+257
+00:14:20,770 --> 00:14:22,520
+make it look more interesting.
+
+258
+00:14:22,520 --> 00:14:26,820
+In other words, though, another way to say
+it, rather than putting it negative
+
+259
+00:14:26,820 --> 00:14:29,550
+predictive value, which is probably a
+little bit more difficult for most people
+
+260
+00:14:29,550 --> 00:14:34,450
+to understand, the better way to say it
+would be that 53% will get cellulite.
+
+261
+00:14:34,450 --> 00:14:37,000
+So in other words, if you test negative
+for
+
+262
+00:14:37,000 --> 00:14:41,780
+this test, you still have a 53% chance of
+going on to get cellulite.
+
+263
+00:14:41,780 --> 00:14:45,340
+So, just to summarize here, if you don't
+take the test,
+
+264
+00:14:45,340 --> 00:14:48,560
+your chance of getting moderate to severe
+cellulite is 65%, right,
+
+265
+00:14:48,560 --> 00:14:51,660
+because that's the prevalence, the risk of
+the disease in the general population.
+
+266
+00:14:51,660 --> 00:14:54,096
+So, if you don't take the test, you have a
+65% chance.
+
+267
+00:14:54,096 --> 00:14:56,090
+Let's say you take the test.
+
+268
+00:14:56,090 --> 00:14:58,990
+If you take the test, four out of five
+women who take the test are actually
+
+269
+00:14:58,990 --> 00:15:03,350
+going to test positive, and if you take
+the test and you find out you're positive,
+
+270
+00:15:03,350 --> 00:15:09,190
+your risk moves from 65%, just barely a
+little bit to 68%.
+
+271
+00:15:09,190 --> 00:15:15,255
+So, most women are going to find out their
+risk moved up just a tiny 3%.
+
+272
+00:15:15,255 --> 00:15:17,854
+One out of the five women will test
+negative.
+
+273
+00:15:17,854 --> 00:15:18,596
+Because their,
+
+274
+00:15:18,596 --> 00:15:22,660
+this is just has to do with the prevalence
+of the particular genetic variant.
+
+275
+00:15:22,660 --> 00:15:23,610
+It's pretty rare.
+
+276
+00:15:24,890 --> 00:15:30,500
+If you test negative, then your risk goes
+down from 65%, down to 53%.
+
+277
+00:15:30,500 --> 00:15:35,320
+So it moves slightly more down 12% but
+still is not that different than
+
+278
+00:15:35,320 --> 00:15:40,550
+just your risk to begin with your prior
+probability, it's not changed that much.
+
+279
+00:15:42,530 --> 00:15:46,210
+So, our conclusion would be then, the test
+is basically useless, and
+
+280
+00:15:46,210 --> 00:15:50,390
+barely moves your probability from just
+what, what your prior probability,
+
+281
+00:15:50,390 --> 00:15:54,760
+your starting probability was and most of
+it are going to get, test positive an, and
+
+282
+00:15:54,760 --> 00:15:57,870
+their prior probability basically doesn't
+change at all.
+
+283
+00:15:57,870 --> 00:16:00,630
+So, it's not the most useful test in the
+world but
+
+284
+00:16:00,630 --> 00:16:04,280
+it's a really fun example for illustrating
+diagnostic testing and Bayes' Rule.
+
+285
+00:16:05,800 --> 00:16:09,640
+And just to conclude this module, again,
+sensitivity and specificity don't depend
+
+286
+00:16:09,640 --> 00:16:12,640
+on the prevalence of the disease, but
+positive predicative value and
+
+287
+00:16:12,640 --> 00:16:15,390
+negative predicative value do depend on
+the prevalence.
+
+288
+00:16:15,390 --> 00:16:18,330
+So make sure that you're always
+incorporating that correctly as we
+
+289
+00:16:18,330 --> 00:16:19,450
+did in the example today.
+
+290
+00:16:20,720 --> 00:16:25,860
+And finally, this genetic variant was
+significantly associated with cellulite,
+
+291
+00:16:25,860 --> 00:16:27,967
+there was a significant association there.
+
+292
+00:16:27,967 --> 00:16:31,147
+You can see from the example today though,
+that that doesn't mean just
+
+293
+00:16:31,147 --> 00:16:34,698
+because something is significantly
+associated, that it, that doesn't mean
+
+294
+00:16:34,698 --> 00:16:38,139
+that it's going to make a useful screening
+test, so I'd keep that in mind.
+
+295
+00:16:38,139 --> 00:16:38,639
+[BLANK_AUDIO]

@@ -1,0 +1,2116 @@
+1
+00:00:05,530 --> 00:00:10,320
+In this next module, I'm going to review
+the basics of ANOVA and linear regression.
+
+2
+00:00:10,320 --> 00:00:12,410
+If you're totally comfortable with these
+tasks,
+
+3
+00:00:12,410 --> 00:00:14,280
+if you have a lot of experience with them.
+
+4
+00:00:14,280 --> 00:00:16,060
+Feel free to skip this module.
+
+5
+00:00:16,060 --> 00:00:19,350
+Otherwise it's probably worth watching
+just to set you up for
+
+6
+00:00:19,350 --> 00:00:20,780
+the upcoming weeks in the course.
+
+7
+00:00:23,730 --> 00:00:29,190
+So when you have continuous outcomes and
+you have independent observations and
+
+8
+00:00:29,190 --> 00:00:32,360
+you want to just do some basic statistics
+on the means.
+
+9
+00:00:32,360 --> 00:00:33,400
+Of the outcomes.
+
+10
+00:00:33,400 --> 00:00:35,030
+You're going to be doing something like an
+ANOVA.
+
+11
+00:00:35,030 --> 00:00:38,894
+An ANOVA will allow you to compare
+different groups with respect to
+
+12
+00:00:38,894 --> 00:00:40,910
+the mean of the outcome.
+
+13
+00:00:40,910 --> 00:00:42,990
+Or if you want to do something a little
+bit more complicated where you've
+
+14
+00:00:42,990 --> 00:00:46,600
+got multiple predictors maybe continuous
+predictors then you're going to
+
+15
+00:00:46,600 --> 00:00:47,390
+need regression.
+
+16
+00:00:47,390 --> 00:00:48,860
+And the regression technique for
+
+17
+00:00:48,860 --> 00:00:52,290
+continuous outcomes, of course, is linear
+regression.
+
+18
+00:00:52,290 --> 00:00:55,340
+For this module I'm just going to review
+the situation where we have
+
+19
+00:00:55,340 --> 00:00:56,433
+independent observations.
+
+20
+00:00:58,550 --> 00:01:02,190
+So linear models have some assumptions
+that it's worth just reviewing here.
+
+21
+00:01:03,800 --> 00:01:07,060
+When I say linear models, I mean linear
+regression and
+
+22
+00:01:07,060 --> 00:01:10,730
+then all the things that are related to
+linear regression so.
+
+23
+00:01:10,730 --> 00:01:14,260
+Linear correlation, like the Pierson's
+correlation coefficient.
+
+24
+00:01:14,260 --> 00:01:15,830
+And also ANOVA and ttest.
+
+25
+00:01:15,830 --> 00:01:20,250
+In fact the ANOVA test and the ttest are
+just special cases of linear regression,
+
+26
+00:01:20,250 --> 00:01:23,280
+so these are all fall, these all fall
+under a linear model.
+
+27
+00:01:23,280 --> 00:01:24,680
+So they all have the same assumptions.
+
+28
+00:01:26,010 --> 00:01:30,980
+So one of the assumptions is that our
+outcome variable is normally distributed.
+
+29
+00:01:30,980 --> 00:01:34,490
+It turns out that this assumption is the
+most important for small samples.
+
+30
+00:01:34,490 --> 00:01:37,890
+If you have large samples, the Central
+Limit Theorem kicks in, and
+
+31
+00:01:37,890 --> 00:01:42,830
+if you violate normality the, these tests
+are fairly robust against this assumption.
+
+32
+00:01:42,830 --> 00:01:44,950
+But especially if you have small samples,
+you're going to want to test to
+
+33
+00:01:44,950 --> 00:01:47,349
+make sure that your outcome variable is
+normally distributed.
+
+34
+00:01:50,460 --> 00:01:53,220
+We also have an assumption of homogeneity
+of variances.
+
+35
+00:01:53,220 --> 00:01:56,350
+Basically, that says that the variances of
+that
+
+36
+00:01:56,350 --> 00:02:00,790
+outcome variable are equal at all levels
+of the predictor.
+
+37
+00:02:00,790 --> 00:02:03,720
+And again, the models are fairly robust
+against this assumption,
+
+38
+00:02:03,720 --> 00:02:05,300
+especially if you have large samples.
+
+39
+00:02:05,300 --> 00:02:07,210
+But, it's still something that we will
+evaluate.
+
+40
+00:02:09,000 --> 00:02:11,380
+The third assumption is that we have
+independent observations.
+
+41
+00:02:11,380 --> 00:02:13,630
+That's something that we're about to
+violate in the,
+
+42
+00:02:13,630 --> 00:02:16,502
+the rest of this course, because we're
+going to have situations where we have.
+
+43
+00:02:16,502 --> 00:02:19,250
+Repeated measures and we do not have
+independent observations.
+
+44
+00:02:19,250 --> 00:02:22,660
+But the, the basic models assume that we
+have this independence.
+
+45
+00:02:24,410 --> 00:02:27,910
+And then finally, we're dealing here with
+linear models, so it's important to
+
+46
+00:02:27,910 --> 00:02:31,620
+keep in mind that if you're talking about
+a continuous predictor.
+
+47
+00:02:31,620 --> 00:02:35,460
+Such as in a linear regression or in a
+correlation coefficient.
+
+48
+00:02:35,460 --> 00:02:38,450
+You are assuming that that continuous
+predictor actually has
+
+49
+00:02:38,450 --> 00:02:42,790
+a linear relationship with the outcome
+variable.
+
+50
+00:02:42,790 --> 00:02:47,880
+And we've tested for linearity, if you
+were in HRP261, we did this testing for
+
+51
+00:02:47,880 --> 00:02:49,740
+linearity in the low jet.
+
+52
+00:02:49,740 --> 00:02:53,700
+Or earlier in this course, we tested for a
+linearity in the log hazard.
+
+53
+00:02:53,700 --> 00:02:56,330
+So we've done these tests for linearity
+before.
+
+54
+00:02:56,330 --> 00:02:58,030
+For linear models, it's the simplest.
+
+55
+00:02:58,030 --> 00:02:59,890
+Because we're just testing whether or
+
+56
+00:02:59,890 --> 00:03:03,220
+not that predictor has a linear
+relationship with the outcome.
+
+57
+00:03:03,220 --> 00:03:05,050
+And we don't have to do any
+transformations of the outcome.
+
+58
+00:03:05,050 --> 00:03:07,110
+So that's a really easy assumption to
+test.
+
+59
+00:03:07,110 --> 00:03:08,960
+But don't forget that it's there.
+
+60
+00:03:08,960 --> 00:03:11,870
+That we are making the assumption of
+linearity.
+
+61
+00:03:11,870 --> 00:03:18,650
+When our predictor variable becomes time,
+as it will for repeated measures examples.
+
+62
+00:03:18,650 --> 00:03:22,190
+We are assuming therefore for a lot of the
+models we're going to use.
+
+63
+00:03:22,190 --> 00:03:25,070
+That the changes over time are relatively
+constant.
+
+64
+00:03:25,070 --> 00:03:26,410
+So, just keep that in the back of your
+mind.
+
+65
+00:03:26,410 --> 00:03:27,880
+That's something that you're going to need
+to test.
+
+66
+00:03:30,000 --> 00:03:34,180
+Alright, so just starting with one-way
+ANOVA, basic ANOVA.
+
+67
+00:03:34,180 --> 00:03:35,240
+When do we use this test?
+
+68
+00:03:35,240 --> 00:03:41,080
+So, we use one-way ANOVA when we want to
+test, we want to compare, some outcomes,
+
+69
+00:03:41,080 --> 00:03:44,430
+some continuous outcomes, and we're
+comparing the means of that outcome.
+
+70
+00:03:44,430 --> 00:03:49,020
+Between more than two groups or greater
+than or equal to two groups.
+
+71
+00:03:49,020 --> 00:03:52,010
+If you have just two groups, this
+essentially becomes a ttest.
+
+72
+00:03:52,010 --> 00:03:55,180
+Of course you can run an ANOVA with only
+two groups then, it,
+
+73
+00:03:55,180 --> 00:03:58,090
+it's equivalent though to the ttest.
+
+74
+00:03:58,090 --> 00:04:01,490
+You can also have more than two groups
+within the ANOVA.
+
+75
+00:04:01,490 --> 00:04:05,450
+The null hypothesis for an ANOVA is that
+the means in all the groups that you're
+
+76
+00:04:05,450 --> 00:04:09,660
+looking at, however many there are, let's
+say we have four here, that the means for
+
+77
+00:04:09,660 --> 00:04:11,900
+your outcome variable are equal.
+
+78
+00:04:11,900 --> 00:04:16,270
+This is a global test because notice that
+if we reject this null hypothesis,
+
+79
+00:04:16,270 --> 00:04:20,690
+all we can say is that at least one of
+those means is not equal to the others.
+
+80
+00:04:20,690 --> 00:04:23,940
+It doesn't tell us specifically where
+those differences lie.
+
+81
+00:04:23,940 --> 00:04:28,130
+So after you do an ANOVA, if you have a
+significant finding.
+
+82
+00:04:28,130 --> 00:04:31,710
+Then you may want to go in and find
+exactly,
+
+83
+00:04:31,710 --> 00:04:34,540
+to specify exactly where those differences
+lie.
+
+84
+00:04:34,540 --> 00:04:37,890
+But that's going to require some kind of
+correction for multiple comparisons if you
+
+85
+00:04:37,890 --> 00:04:42,270
+want to look at pairwise comparisons
+between diff, specific different groups.
+
+86
+00:04:43,350 --> 00:04:45,160
+What are we basically doing when we do an
+ANOVA?
+
+87
+00:04:45,160 --> 00:04:49,070
+We're going to be doing some kind of F
+test, and remember the idea.
+
+88
+00:04:49,070 --> 00:04:52,840
+The F test, is that we're going to be
+comparing the variance between groups,
+
+89
+00:04:53,840 --> 00:04:55,220
+to the variance within groups.
+
+90
+00:04:55,220 --> 00:04:59,298
+And again, I'm assuming that you've had a
+course that's covered ANOVA before, so
+
+91
+00:04:59,298 --> 00:05:03,230
+that's why I'm going over this quickly,
+this is just to serve as a review.
+
+92
+00:05:03,230 --> 00:05:06,250
+So, the between group variance, remember,
+is,
+
+93
+00:05:06,250 --> 00:05:11,550
+to say that's essentially comparing the
+means, of the different groups.
+
+94
+00:05:11,550 --> 00:05:14,320
+So if there's big differences between the
+means in the different groups.
+
+95
+00:05:14,320 --> 00:05:16,450
+The between group variance will be high.
+
+96
+00:05:16,450 --> 00:05:19,558
+Within group variance which goes in the
+denominator is just
+
+97
+00:05:19,558 --> 00:05:20,940
+the background variability.
+
+98
+00:05:20,940 --> 00:05:25,450
+So how much variation is there in the
+outcome, within a specific group,
+
+99
+00:05:25,450 --> 00:05:28,110
+that gives you just kind of the background
+variability in that
+
+100
+00:05:28,110 --> 00:05:30,260
+particular outcome measurement?
+
+101
+00:05:30,260 --> 00:05:33,540
+If the between group variance is very
+close to the within group variance.
+
+102
+00:05:33,540 --> 00:05:36,630
+That would say that the needs between the
+groups are just and
+
+103
+00:05:36,630 --> 00:05:40,350
+the differences are just part of that
+background variability.
+
+104
+00:05:40,350 --> 00:05:44,410
+However if the between group variance is a
+lot deeper than the within group variance,
+
+105
+00:05:44,410 --> 00:05:47,510
+that would tell you the differences in
+means between the differences exceeds that
+
+106
+00:05:47,510 --> 00:05:49,410
+sort of background noise.
+
+107
+00:05:49,410 --> 00:05:51,090
+And so what we are looking for.
+
+108
+00:05:51,090 --> 00:05:55,550
+Is, under the null hypothesis, the F test,
+the F statistic will equal 1.
+
+109
+00:05:55,550 --> 00:05:57,800
+If we get a big F value,
+
+110
+00:05:57,800 --> 00:06:01,260
+the F distribution looks something like
+that under the null hypothesis.
+
+111
+00:06:03,450 --> 00:06:06,880
+Depends on, the exact shape depends on the
+degrees of freedom for the numerator and
+
+112
+00:06:06,880 --> 00:06:07,500
+the denominator.
+
+113
+00:06:07,500 --> 00:06:11,110
+But basically, under the null, the
+expected value here is 1.
+
+114
+00:06:11,110 --> 00:06:13,600
+And then if we're out in the tails, the
+between for
+
+115
+00:06:13,600 --> 00:06:15,390
+variants is much bigger than the
+within-group variance.
+
+116
+00:06:15,390 --> 00:06:16,508
+So that's going to trigger some kind of.
+
+117
+00:06:16,508 --> 00:06:19,882
+Statistical significance.
+
+118
+00:06:19,882 --> 00:06:25,140
+I'm actually going to walk you through the
+math in a hypothetical example.
+
+119
+00:06:25,140 --> 00:06:28,590
+It's worth me walking through the math
+because when we turn to repeated measures
+
+120
+00:06:28,590 --> 00:06:31,210
+ANOVA next week, I will walk you through
+the math in that.
+
+121
+00:06:31,210 --> 00:06:34,060
+I think in order to really understand how
+that works,
+
+122
+00:06:34,060 --> 00:06:35,820
+you need to have walked through the math
+once.
+
+123
+00:06:35,820 --> 00:06:38,060
+I won't be making you do any of these by
+hand.
+
+124
+00:06:38,060 --> 00:06:40,350
+But it's worth having probed the math, so
+
+125
+00:06:40,350 --> 00:06:43,850
+that you have a good understanding of
+what's actually happening in the computer.
+
+126
+00:06:43,850 --> 00:06:47,040
+So, I just made up some hypothetical data
+here.
+
+127
+00:06:47,040 --> 00:06:48,776
+You know, just completely made up.
+
+128
+00:06:48,776 --> 00:06:52,080
+But we've got a data set with four groups
+and
+
+129
+00:06:52,080 --> 00:06:56,470
+we've got our outcome variable is a score
+on some kind of test.
+
+130
+00:06:56,470 --> 00:06:59,530
+And, so, let's say we have four different
+educational interventions these
+
+131
+00:06:59,530 --> 00:07:03,210
+are kids who are getting different
+educational training.
+
+132
+00:07:03,210 --> 00:07:05,950
+And they're all taking a test at the end
+of the study to
+
+133
+00:07:05,950 --> 00:07:09,610
+say how much they learned and there's six
+per group for
+
+134
+00:07:09,610 --> 00:07:12,860
+a total of 24 kids here so that's what the
+made up data looked like.
+
+135
+00:07:14,100 --> 00:07:15,360
+So first thing I did with this data,
+
+136
+00:07:15,360 --> 00:07:16,980
+you're always going to want to plot your
+data.
+
+137
+00:07:16,980 --> 00:07:18,390
+So, before we do any fancy.
+
+138
+00:07:18,390 --> 00:07:19,330
+Testing.
+
+139
+00:07:19,330 --> 00:07:21,420
+We want to plot the data and get a sense
+of what's going on.
+
+140
+00:07:21,420 --> 00:07:23,800
+Obviously you can figure out a lot from
+this plot.
+
+141
+00:07:23,800 --> 00:07:26,130
+These are very simple data, we're not
+adjusting for anything.
+
+142
+00:07:26,130 --> 00:07:28,060
+So I just plotted the box and
+
+143
+00:07:28,060 --> 00:07:33,720
+whisker plots for those scores on this
+test for the four groups, 1, 2, 3, and 4.
+
+144
+00:07:33,720 --> 00:07:36,270
+And you can see quite quickly that it
+looks like Groups 1 and
+
+145
+00:07:36,270 --> 00:07:41,190
+2 seem to have a higher mean score than
+Groups 3 and 4.
+
+146
+00:07:41,190 --> 00:07:43,500
+So you can get a lot out of the plot.
+
+147
+00:07:43,500 --> 00:07:47,650
+In fact that, this plot automatically gave
+me an ANOVA p-value.
+
+148
+00:07:47,650 --> 00:07:51,466
+So what you're seeing up here is an F from
+a one-way ANOVA, and
+
+149
+00:07:51,466 --> 00:07:54,610
+a p-value which is 0.0003.
+
+150
+00:07:54,610 --> 00:07:58,080
+So these, this is a highly statistically
+significant difference.
+
+151
+00:07:58,080 --> 00:08:00,420
+Somewhere in there, there lies a
+difference.
+
+152
+00:08:00,420 --> 00:08:02,950
+Again, we can't say, specifically, which
+groups differ.
+
+153
+00:08:02,950 --> 00:08:05,520
+But those groups are definitely not all
+equal.
+
+154
+00:08:07,290 --> 00:08:10,690
+We also want to just plot the outcome
+variable of the scores here in
+
+155
+00:08:10,690 --> 00:08:13,980
+a histogram, to look at whether or not
+these are normally distributed.
+
+156
+00:08:13,980 --> 00:08:15,060
+This is a small sample.
+
+157
+00:08:15,060 --> 00:08:17,970
+So we would want to make sure that we met
+the normality assumption here.
+
+158
+00:08:17,970 --> 00:08:20,990
+So I plotted these scores in a histogram.
+
+159
+00:08:20,990 --> 00:08:23,860
+The average scores around high 20s and
+
+160
+00:08:23,860 --> 00:08:27,640
+low 30s and you can see that it's
+reasonably normally distributed.
+
+161
+00:08:27,640 --> 00:08:28,780
+That's good enough for
+
+162
+00:08:28,780 --> 00:08:32,610
+us to be able to run linear models, ANOVA
+linear regression on these data.
+
+163
+00:08:34,780 --> 00:08:36,420
+Alright.
+So now, I am actually going to walk.
+
+164
+00:08:36,420 --> 00:08:39,790
+Through the mechanics of calculating that
+one-way ANOVA.
+
+165
+00:08:41,320 --> 00:08:45,340
+And what I've done here is just rearranged
+the data a little bit to make this easier.
+
+166
+00:08:45,340 --> 00:08:48,970
+So here's my four groups, here are the six
+kids in each group.
+
+167
+00:08:48,970 --> 00:08:52,230
+Here are their scores, their, their scores
+on that post test.
+
+168
+00:08:52,230 --> 00:08:54,660
+And I've already calculated for each
+group.
+
+169
+00:08:54,660 --> 00:08:57,660
+The mean score on that test for each
+group.
+
+170
+00:08:57,660 --> 00:09:01,110
+And we saw on the plot, on the box plot
+that groups 1 and
+
+171
+00:09:01,110 --> 00:09:04,220
+2 had higher mean scores than groups 3 and
+4.
+
+172
+00:09:04,220 --> 00:09:08,330
+Group 3 actually had the lowest mean score
+of any of the groups.
+
+173
+00:09:08,330 --> 00:09:09,820
+So I've already calculated those means.
+
+174
+00:09:09,820 --> 00:09:10,990
+We're going to need those means for
+
+175
+00:09:10,990 --> 00:09:14,740
+each group, in order to calculate that
+between group variance.
+
+176
+00:09:14,740 --> 00:09:16,600
+The between group variance just says,
+
+177
+00:09:16,600 --> 00:09:21,060
+how much difference is there, on average,
+in the means between the groups?
+
+178
+00:09:22,660 --> 00:09:24,190
+So, the between group variance.
+
+179
+00:09:24,190 --> 00:09:25,180
+How do we calculate that?
+
+180
+00:09:25,180 --> 00:09:29,200
+So, the between group variance just says,
+of the overall mean of all 24 kids.
+
+181
+00:09:29,200 --> 00:09:31,640
+On this test was 27.46.
+
+182
+00:09:31,640 --> 00:09:34,090
+To calculate the between group variance,
+
+183
+00:09:34,090 --> 00:09:36,380
+we're going to be taking the mean from
+each group.
+
+184
+00:09:36,380 --> 00:09:38,250
+Subtracting from the overall mean.
+
+185
+00:09:38,250 --> 00:09:41,300
+And squaring it, and adding those up.
+
+186
+00:09:41,300 --> 00:09:44,390
+So we're actually going to start by
+calculating something called a sum of
+
+187
+00:09:44,390 --> 00:09:46,300
+squares rather than a variant.
+
+188
+00:09:46,300 --> 00:09:49,860
+The sum of square is just the numerator of
+variance, so if you take a sum of
+
+189
+00:09:49,860 --> 00:09:53,010
+squares and you divide by the degrees of
+freedom, you will get a variant.
+
+190
+00:09:53,010 --> 00:09:56,240
+But with a nodal we always start with the
+sum of squares because it turns out that
+
+191
+00:09:56,240 --> 00:10:00,200
+the sum of squares have nice mathematical
+properties they add up and such.
+
+192
+00:10:00,200 --> 00:10:01,410
+So we'll just start there.
+
+193
+00:10:01,410 --> 00:10:03,450
+So the sum of squares, the numerator of
+variance for
+
+194
+00:10:03,450 --> 00:10:06,510
+the between groups, is you take each
+groups mean.
+
+195
+00:10:06,510 --> 00:10:08,320
+So like, group one had a mean of 34.33.
+
+196
+00:10:08,320 --> 00:10:12,260
+Subtract from the overall mean of 27.46,
+square it, these are,
+
+197
+00:10:12,260 --> 00:10:16,200
+we always square for variances, so we're
+going to square those differences.
+
+198
+00:10:16,200 --> 00:10:17,710
+We do that for each of the four groups.
+
+199
+00:10:17,710 --> 00:10:19,320
+So you can see that I've already done that
+out.
+
+200
+00:10:19,320 --> 00:10:21,766
+Here, there's only four of them.
+
+201
+00:10:21,766 --> 00:10:25,392
+We then for ANOVA have to multiply that
+total sum by 6, and
+
+202
+00:10:25,392 --> 00:10:29,018
+the reason is that we want to get 24 sums
+squares here, so
+
+203
+00:10:29,018 --> 00:10:34,135
+that we match the sum of squares within,
+we'll also have 24 squared things.
+
+204
+00:10:34,135 --> 00:10:37,209
+So, we have 4 squared things we're going
+to multiply by 6 here, so
+
+205
+00:10:37,209 --> 00:10:38,530
+we end up with 24.
+
+206
+00:10:38,530 --> 00:10:40,871
+Square things, so the math will work out.
+
+207
+00:10:40,871 --> 00:10:44,474
+When I add all of that up, I get a value
+of 630.46.
+
+208
+00:10:44,474 --> 00:10:47,654
+If I were to divide by the degrees of
+freedom I would get the between group
+
+209
+00:10:47,654 --> 00:10:49,456
+variance, but I'm going to just, but for
+
+210
+00:10:49,456 --> 00:10:52,487
+now stick with the numerator of that
+variance, the sum of squares.
+
+211
+00:10:52,487 --> 00:10:55,448
+That reflects conceptually just how much
+difference,
+
+212
+00:10:55,448 --> 00:10:58,874
+how big is the difference in the means of
+the different groups.
+
+213
+00:10:58,874 --> 00:11:01,130
+Of course there's always going to be
+variability.
+
+214
+00:11:01,130 --> 00:11:02,890
+So what's the background variability here?
+
+215
+00:11:02,890 --> 00:11:04,300
+That's what's reflected.
+
+216
+00:11:04,300 --> 00:11:07,170
+WIthin the groups, the within group
+variants.
+
+217
+00:11:07,170 --> 00:11:10,000
+So, what I am going to next do is
+calculate the within group sum of
+
+218
+00:11:10,000 --> 00:11:13,870
+squares and all that is, is I am going to
+look at each person and
+
+219
+00:11:13,870 --> 00:11:15,750
+compare them to their group name.
+
+220
+00:11:15,750 --> 00:11:19,268
+So, for example, in group one, the overall
+mean is 34.33.
+
+221
+00:11:19,268 --> 00:11:22,480
+There is some variability however, within
+that group,
+
+222
+00:11:22,480 --> 00:11:25,770
+so one person got a score of 35, they were
+a little above the mean.
+
+223
+00:11:25,770 --> 00:11:27,030
+Another person got a 3rd score of 34.
+
+224
+00:11:27,030 --> 00:11:28,930
+They were a little bit below the mean.
+
+225
+00:11:28,930 --> 00:11:33,590
+So just how much variability is there, in
+scores within a group?
+
+226
+00:11:33,590 --> 00:11:37,260
+I'm going to calculate that for each group
+separately.
+
+227
+00:11:37,260 --> 00:11:38,400
+I'm going to add up, so, for
+
+228
+00:11:38,400 --> 00:11:41,830
+example, I'm going to calculate each
+person minus their group mean.
+
+229
+00:11:41,830 --> 00:11:42,610
+Square that.
+
+230
+00:11:42,610 --> 00:11:44,120
+We're going to be squaring these
+differences.
+
+231
+00:11:44,120 --> 00:11:45,210
+Then, I'm going to do that for the.
+
+232
+00:11:45,210 --> 00:11:47,700
+Six people in group 1, and then for the
+six in group 2.
+
+233
+00:11:47,700 --> 00:11:49,810
+Then for the six in group 3, etcetera.
+
+234
+00:11:49,810 --> 00:11:50,860
+And that's what I've done here.
+
+235
+00:11:50,860 --> 00:11:53,780
+There's going to be again, 24 squared
+things I'm adding up.
+
+236
+00:11:53,780 --> 00:11:55,150
+So I, I haven't.
+
+237
+00:11:55,150 --> 00:11:56,480
+I'm not going to do them all out right
+now.
+
+238
+00:11:56,480 --> 00:11:59,770
+I've just kind of written, written out
+part of these for you.
+
+239
+00:11:59,770 --> 00:12:03,390
+So, for example, the first person here in
+group 1 had a score of 35.
+
+240
+00:12:03,390 --> 00:12:06,960
+They were about 2 3rds of a point above
+the mean.
+
+241
+00:12:06,960 --> 00:12:08,690
+We're going to square their difference.
+
+242
+00:12:08,690 --> 00:12:11,590
+The next person, was 34, they're about a
+third of a point below the mean,
+
+243
+00:12:11,590 --> 00:12:14,350
+we're going to square that, we're going to
+keep going.
+
+244
+00:12:14,350 --> 00:12:17,440
+When we get to group 2, we're going to do
+32 minus 29.83 squared.
+
+245
+00:12:17,440 --> 00:12:20,650
+28 minus 29,83 squared, et cetera, and
+
+246
+00:12:20,650 --> 00:12:24,870
+then finally the last two will be 22 minus
+25, and 26 minus 25.
+
+247
+00:12:24,870 --> 00:12:28,640
+We're going to add up those squared
+differences,
+
+248
+00:12:28,640 --> 00:12:31,080
+that gives us the sum of squares within.
+
+249
+00:12:31,080 --> 00:12:33,060
+If I were to divide by the degrees of
+freedom,
+
+250
+00:12:33,060 --> 00:12:35,500
+I would get the with in group variance.
+
+251
+00:12:35,500 --> 00:12:39,350
+And that's analogous to the pool variance
+from a ttest.
+
+252
+00:12:39,350 --> 00:12:41,460
+So we've now calculated the sum of squares
+between the groups,
+
+253
+00:12:41,460 --> 00:12:42,650
+the sum of squares within the groups.
+
+254
+00:12:42,650 --> 00:12:47,540
+If I were to add those two up, what I'm
+going to get is the total sum of squares.
+
+255
+00:12:47,540 --> 00:12:50,530
+The total sum of squares could also be
+calculated manually.
+
+256
+00:12:50,530 --> 00:12:55,170
+By taking each individual and subtracting
+from the over all mean.
+
+257
+00:12:55,170 --> 00:12:58,790
+So this is the numerator of the variance
+for score overall.
+
+258
+00:12:58,790 --> 00:13:01,250
+So if I just said what's the variance of
+score in this data set,
+
+259
+00:13:01,250 --> 00:13:05,160
+I took those 24 values and calculated
+their variance, which you
+
+260
+00:13:05,160 --> 00:13:08,910
+do by taking each individual person and
+subtracting for the overall mean.
+
+261
+00:13:08,910 --> 00:13:11,860
+The numerator of that would be the total
+sum of squares.
+
+262
+00:13:11,860 --> 00:13:16,270
+So when I add up 630 plus 423 its about
+1,053.
+
+263
+00:13:16,270 --> 00:13:20,760
+The total sum of squares is going to be
+equal to 1053.
+
+264
+00:13:20,760 --> 00:13:24,200
+If I were to divide by the degrees of
+freedom, which here would be 23,
+
+265
+00:13:24,200 --> 00:13:27,540
+I would get the variance for score, just
+the overall variance for score.
+
+266
+00:13:27,540 --> 00:13:28,480
+So those things add up.
+
+267
+00:13:29,840 --> 00:13:32,620
+The way that ANOVA is usually presented is
+in an ANOVA table.
+
+268
+00:13:32,620 --> 00:13:34,720
+So let me walk you through how to fill in
+all the.
+
+269
+00:13:34,720 --> 00:13:36,790
+Pieces of this ANOVA table.
+
+270
+00:13:36,790 --> 00:13:41,045
+So, first of all, we have the source of,
+and this could be, this is,
+
+271
+00:13:41,045 --> 00:13:43,550
+they will sometimes say model, I could
+also say group.
+
+272
+00:13:43,550 --> 00:13:47,220
+This is, what's the difference, the
+variability that's due to the group or
+
+273
+00:13:47,220 --> 00:13:49,660
+the predictors in your model if you're
+doing a linear regression.
+
+274
+00:13:49,660 --> 00:13:51,230
+So what's the variability due to groups?
+
+275
+00:13:51,230 --> 00:13:53,120
+This corresponds to the between group
+variance.
+
+276
+00:13:54,260 --> 00:13:58,920
+The degrees of freedom here are going to
+be 3, because we have four groups.
+
+277
+00:13:58,920 --> 00:14:01,140
+So we were comparing four group means, but
+
+278
+00:14:01,140 --> 00:14:03,870
+we had to estimate the overall mean as
+well.
+
+279
+00:14:03,870 --> 00:14:08,070
+Here and so we've lost one degree of
+freedom, so we have 4 minus 1 is 3,
+
+280
+00:14:08,070 --> 00:14:09,850
+the total number groups minus 1.
+
+281
+00:14:09,850 --> 00:14:13,780
+That's the degrees of freedom, the sum of
+squares we've calculated on the last slide
+
+282
+00:14:13,780 --> 00:14:18,550
+to be 630.46, if I divide the sum of
+squares by its degrees of freedom, I
+
+283
+00:14:18,550 --> 00:14:21,910
+get the variance, some times that variance
+is also called the mean squares so
+
+284
+00:14:21,910 --> 00:14:23,720
+just know that those are equivalent.
+
+285
+00:14:23,720 --> 00:14:30,084
+So, 630 divided by 0.46 will give me a
+variance of about 210.15.
+
+286
+00:14:30,084 --> 00:14:34,590
+If I were squared, to square root that, of
+course, I'd get a standard deviation.
+
+287
+00:14:34,590 --> 00:14:36,880
+For the degrees of freedom for the error.
+
+288
+00:14:36,880 --> 00:14:38,460
+The error is the within group variance.
+
+289
+00:14:38,460 --> 00:14:41,610
+This is the background noise, the
+background variability.
+
+290
+00:14:41,610 --> 00:14:43,850
+The degrees of freedom here are going to
+be 20,
+
+291
+00:14:43,850 --> 00:14:48,230
+because I have 24 individuals and I lost.
+
+292
+00:14:48,230 --> 00:14:50,520
+Four degrees of freedom, because I had.
+
+293
+00:14:50,520 --> 00:14:53,950
+In order to calculate the within group
+variance,
+
+294
+00:14:53,950 --> 00:14:57,440
+I had to first calculate four group means.
+
+295
+00:14:57,440 --> 00:14:59,020
+So I had 24 degrees of freedom, but
+
+296
+00:14:59,020 --> 00:15:02,420
+I lost four for those four group means
+that I had to calculate first.
+
+297
+00:15:02,420 --> 00:15:04,300
+So I end up with 20 degrees of freedom.
+
+298
+00:15:04,300 --> 00:15:07,890
+Notice if I sum those up, that gives me
+the total degrees of freedom.
+
+299
+00:15:07,890 --> 00:15:10,830
+That corresponds to the degrees of freedom
+for the overall variance.
+
+300
+00:15:10,830 --> 00:15:12,400
+Because, of course, you know that.
+
+301
+00:15:12,400 --> 00:15:13,090
+The degrees of freedom for
+
+302
+00:15:13,090 --> 00:15:16,250
+the overall variance is always n minus 1
+so 24 minus 1.
+
+303
+00:15:16,250 --> 00:15:19,500
+We already calculated on previous slide
+the sum of squares error,
+
+304
+00:15:19,500 --> 00:15:21,880
+the sum of squares within, that was 423.5.
+
+305
+00:15:21,880 --> 00:15:25,220
+If I divide that by its degrees of freedom
+I'm
+
+306
+00:15:25,220 --> 00:15:29,916
+going to get the variants within the
+group, that turns out to be 21.18.
+
+307
+00:15:29,916 --> 00:15:31,030
+Now remember.
+
+308
+00:15:31,030 --> 00:15:34,700
+That if there's no differences between the
+groups, we're expecting the between group
+
+309
+00:15:34,700 --> 00:15:37,840
+variances, 210, to be about the same as
+the within group variance.
+
+310
+00:15:37,840 --> 00:15:39,910
+You can see that's clearly not the case.
+
+311
+00:15:39,910 --> 00:15:41,770
+The variance between the groups here, is,
+
+312
+00:15:41,770 --> 00:15:46,100
+it's about, almost 10 times as big as the
+variance within the groups.
+
+313
+00:15:46,100 --> 00:15:52,340
+So if I divide the 210 by the 21, I
+actually end up with an f value of 9.92.
+
+314
+00:15:52,340 --> 00:15:55,210
+You can see that this ANOVA chart, you
+kind of fill in one piece after the other
+
+315
+00:15:55,210 --> 00:15:59,240
+and you fill it in across, everything is
+sequential.
+
+316
+00:15:59,240 --> 00:16:03,750
+And, the p value that corresponds to an f
+value of 9.92
+
+317
+00:16:03,750 --> 00:16:10,450
+with 3 numerator degrees of freedom and 20
+denominator degrees of freedom is 0.0003.
+
+318
+00:16:10,450 --> 00:16:12,650
+So that's how you would fill out an ANOVA
+table.
+
+319
+00:16:12,650 --> 00:16:14,340
+Again, you're not going to have to do this
+by hand.
+
+320
+00:16:14,340 --> 00:16:16,260
+But when this computer spits this out to
+you,
+
+321
+00:16:16,260 --> 00:16:18,800
+you should know what each of these pieces
+means.
+
+322
+00:16:18,800 --> 00:16:20,710
+We can also calculate what's called an R
+squared.
+
+323
+00:16:20,710 --> 00:16:24,170
+So again, if you total up the sum of
+squares, if you add this up,
+
+324
+00:16:24,170 --> 00:16:27,750
+you get that the total sum of squares is
+1053.95, about.
+
+325
+00:16:27,750 --> 00:16:32,510
+If I were to divide that by 23, I would
+get the variance for
+
+326
+00:16:32,510 --> 00:16:34,670
+score in this data set.
+
+327
+00:16:34,670 --> 00:16:37,070
+We don't usually put that in the ANOVA
+chart.
+
+328
+00:16:37,070 --> 00:16:40,250
+But if I take the between, the group sum
+of squares, and
+
+329
+00:16:40,250 --> 00:16:44,390
+divide it by the total sum of squares, I
+get what's called the R squared value.
+
+330
+00:16:44,390 --> 00:16:48,670
+I'm rounding here.
+
+331
+00:16:48,670 --> 00:16:50,270
+This comes out in this case to be about
+60%.
+
+332
+00:16:50,270 --> 00:16:55,630
+So, what that would tell me is that about
+60% of the overall variability in the test
+
+333
+00:16:55,630 --> 00:17:01,160
+scores is due to which group you're in, as
+opposed to just unexplained variability.
+
+334
+00:17:01,160 --> 00:17:02,430
+The error is the rest of it.
+
+335
+00:17:03,700 --> 00:17:06,030
+So, you can also look at the R squared.
+
+336
+00:17:06,030 --> 00:17:08,710
+And probably all, you should all have
+heard of R squared 3 4ths but
+
+337
+00:17:08,710 --> 00:17:09,800
+I won't belabor that point.
+
+338
+00:17:11,040 --> 00:17:13,820
+So that's your basic ANOVA you'll also get
+that out of the computer.
+
+339
+00:17:13,820 --> 00:17:14,560
+Again, but
+
+340
+00:17:14,560 --> 00:17:17,820
+that's where that output is coming from
+that you would get out of the computer.
+
+341
+00:17:19,180 --> 00:17:22,950
+I just want to point out and remind you
+that ANOVA is nothing special.
+
+342
+00:17:22,950 --> 00:17:23,930
+It's really just a.
+
+343
+00:17:23,930 --> 00:17:25,340
+Special case of linear regression.
+
+344
+00:17:25,340 --> 00:17:27,650
+In fact, it doesn't really need its own
+name.
+
+345
+00:17:27,650 --> 00:17:31,910
+We could survive in statistics if nobody
+had ever called it ANOVA and
+
+346
+00:17:31,910 --> 00:17:35,140
+we just always thought of it as a special
+case of linear regression.
+
+347
+00:17:35,140 --> 00:17:36,690
+because that's really what it is.
+
+348
+00:17:36,690 --> 00:17:40,130
+It's just a linear regression where our
+outcome variable, in this case,
+
+349
+00:17:40,130 --> 00:17:44,290
+is score and what we're doing is we have a
+categorical predictor, so,
+
+350
+00:17:44,290 --> 00:17:46,130
+of course, we're going to have to dummy
+code it.
+
+351
+00:17:46,130 --> 00:17:47,710
+That's equivalent to the ANOVA.
+
+352
+00:17:47,710 --> 00:17:52,970
+Even though it looks different, it really
+is going to give you the same answer.
+
+353
+00:17:52,970 --> 00:17:54,270
+So, our outcome variable here are these.
+
+354
+00:17:54,270 --> 00:17:58,580
+Score for dealing with a linear regression
+we're going to have an intercept and
+
+355
+00:17:58,580 --> 00:18:01,450
+then we're going to have, in this case we
+have four groups.
+
+356
+00:18:01,450 --> 00:18:04,370
+So, if we dummy code we're going to end up
+with three betas.
+
+357
+00:18:04,370 --> 00:18:05,720
+And I chose as the reference for
+
+358
+00:18:05,720 --> 00:18:09,260
+group 3 when I set up this linear
+regression model.
+
+359
+00:18:09,260 --> 00:18:12,950
+Because I know that group 3 has the lowest
+average test score.
+
+360
+00:18:12,950 --> 00:18:17,940
+So it was just easier to relate everything
+to the group with the lowest scores.
+
+361
+00:18:17,940 --> 00:18:20,080
+So now I have a beta for being in group 1.
+
+362
+00:18:20,080 --> 00:18:24,370
+And x1 will be 1 if you're in group 1 and
+0 if you're not.
+
+363
+00:18:24,370 --> 00:18:26,780
+I'm going to have a beta for being in
+group 2.
+
+364
+00:18:26,780 --> 00:18:30,960
+X2 will be a 1 if you're in group 2, and a
+0 if you're not, and I'm going to have
+
+365
+00:18:30,960 --> 00:18:36,560
+a beta for group 4, which will have a 1 if
+you're in group 4 and a 0 if you're not.
+
+366
+00:18:36,560 --> 00:18:41,030
+When you're dummy coding, you end up with
+three variables in the model,
+
+367
+00:18:41,030 --> 00:18:43,800
+three parameters in the model representing
+the four groups.
+
+368
+00:18:43,800 --> 00:18:47,290
+If you have a zero on all of those if you
+have a zero for x1, a zero for
+
+369
+00:18:47,290 --> 00:18:51,030
+x2 and a zero for x4, then that means by
+default you're in group 3 and
+
+370
+00:18:51,030 --> 00:18:53,670
+your value is captured in the intercept.
+
+371
+00:18:53,670 --> 00:18:55,200
+So we can run this linear regression;
+we're
+
+372
+00:18:55,200 --> 00:18:57,250
+going to get the same general results.
+
+373
+00:18:57,250 --> 00:18:58,580
+As from the ANOVA.
+
+374
+00:18:58,580 --> 00:18:59,920
+Except now we're getting,
+
+375
+00:18:59,920 --> 00:19:02,950
+there's more information in the table
+that's output, because we
+
+376
+00:19:02,950 --> 00:19:05,860
+actually can see what is the difference in
+the means between the groups.
+
+377
+00:19:05,860 --> 00:19:09,880
+The ANOVA doesn't specifically spit out
+those average differences, but
+
+378
+00:19:09,880 --> 00:19:12,200
+we can get that right out of the linear
+regression.
+
+379
+00:19:12,200 --> 00:19:16,680
+So if we don't adjust for anything in this
+model, the Intercept is 20.666,
+
+380
+00:19:16,680 --> 00:19:19,010
+represents the mean score in Group 3.
+
+381
+00:19:19,010 --> 00:19:24,040
+And you'll remember that if you back to
+that box plot I showed you that it,
+
+382
+00:19:24,040 --> 00:19:27,210
+well also in the previous slide here.
+
+383
+00:19:27,210 --> 00:19:29,565
+That indeed, the mean for that group is
+20.67.
+
+384
+00:19:31,140 --> 00:19:33,480
+So that's the mean for group 3, the
+reference group.
+
+385
+00:19:33,480 --> 00:19:36,360
+Everything else then, if you're in group
+1, you,
+
+386
+00:19:36,360 --> 00:19:39,430
+the difference between group one and group
+3 is a value of 13.6.
+
+387
+00:19:39,430 --> 00:19:44,866
+So the difference in the means between
+group 3 and group 1 is 13.666.
+
+388
+00:19:44,866 --> 00:19:49,136
+If I add 20.66, the, the intercept value
+to.
+
+389
+00:19:49,136 --> 00:19:52,830
+Add 13.666 to that, I will get the mean
+for
+
+390
+00:19:52,830 --> 00:19:56,590
+group 1, which was about 34 point
+something.
+
+391
+00:19:57,710 --> 00:20:01,490
+And then for group 2 the difference and
+notice that one is statistically
+
+392
+00:20:01,490 --> 00:20:05,510
+significant, telling you that group 1 and
+3 are significantly different.
+
+393
+00:20:05,510 --> 00:20:11,370
+Then for group 2, the main difference
+between group 2 and group 3 is 9.2.
+
+394
+00:20:11,370 --> 00:20:15,050
+So we saw from that picture, that group 2
+had a much higher mean than group 3.
+
+395
+00:20:15,050 --> 00:20:17,650
+Group 4 and group 3 were actually similar.
+
+396
+00:20:17,650 --> 00:20:19,670
+Group 4 is a little bit higher than group
+3.
+
+397
+00:20:19,670 --> 00:20:22,600
+It does not a significant difference
+between those two groups.
+
+398
+00:20:22,600 --> 00:20:23,450
+So we could.
+
+399
+00:20:23,450 --> 00:20:31,730
+Plug in the, the actual fitted model here
+would be 20.66 plus 13.66
+
+400
+00:20:31,730 --> 00:20:37,950
+times X1 plus 9.166 times X2 plus 4.33
+times X4.
+
+401
+00:20:37,950 --> 00:20:39,368
+That would be the fitted model.
+
+402
+00:20:39,368 --> 00:20:42,780
+But all this represent as those data are
+just the difference in means between
+
+403
+00:20:42,780 --> 00:20:44,260
+the groups and the reference group.
+
+404
+00:20:45,320 --> 00:20:47,970
+So we can think of ANOVA as a special case
+of linear regression, and
+
+405
+00:20:47,970 --> 00:20:49,370
+set it up that way.
+
+406
+00:20:49,370 --> 00:20:52,330
+I'll also point out just since we're
+reviewing things here,
+
+407
+00:20:52,330 --> 00:20:54,150
+that since we're in a linear regression,
+
+408
+00:20:54,150 --> 00:20:57,830
+we could then actually add continuous
+predictors into this model.
+
+409
+00:20:57,830 --> 00:20:59,020
+We could adjust for things.
+
+410
+00:20:59,020 --> 00:21:00,400
+And that could be useful.
+
+411
+00:21:00,400 --> 00:21:04,480
+And again gets its spec its, gets a
+special name even though it's just a,
+
+412
+00:21:04,480 --> 00:21:06,580
+again, just a linear regression.
+
+413
+00:21:06,580 --> 00:21:08,720
+But there's something called analysis of
+covariance.
+
+414
+00:21:08,720 --> 00:21:11,690
+All that means is that you're setting up a
+linear regression where you've
+
+415
+00:21:11,690 --> 00:21:14,900
+got a categoric predictor like the groups
+here.
+
+416
+00:21:14,900 --> 00:21:18,300
+and then you throw in some continuous
+things that you want to adjust for.
+
+417
+00:21:18,300 --> 00:21:22,850
+Like say I'm in these made up data, I then
+added a variable age.
+
+418
+00:21:22,850 --> 00:21:24,320
+And I just made up that.
+
+419
+00:21:24,320 --> 00:21:27,340
+Let's pretend that the ages were actually
+somewhat different between
+
+420
+00:21:27,340 --> 00:21:28,340
+the different groups.
+
+421
+00:21:28,340 --> 00:21:31,040
+Maybe this is an observational study and
+not randomized, so
+
+422
+00:21:31,040 --> 00:21:34,410
+different age groups were getting
+different interventions, and then
+
+423
+00:21:34,410 --> 00:21:38,800
+age is related to the test score, cause if
+you're older you do better on this test.
+
+424
+00:21:38,800 --> 00:21:41,470
+So, I made up this new variable age.
+
+425
+00:21:41,470 --> 00:21:43,190
+And then I adjusted for it.
+
+426
+00:21:43,190 --> 00:21:45,590
+And again, this is just a linear
+regression.
+
+427
+00:21:45,590 --> 00:21:48,590
+But now we've added to the model that we
+had before.
+
+428
+00:21:48,590 --> 00:21:53,770
+So we had the score is equal to alpha plus
+beta 1 plus beta 2 plus beta 4.
+
+429
+00:21:53,770 --> 00:21:55,740
+Plus now we've having a beta for age.
+
+430
+00:21:55,740 --> 00:21:56,750
+So now we're adjusting for
+
+431
+00:21:56,750 --> 00:22:00,080
+age just by putting it into that linear
+regression model.
+
+432
+00:22:00,080 --> 00:22:04,440
+What that gains us if we do it this way,
+why this gets its own special name again,
+
+433
+00:22:04,440 --> 00:22:06,410
+called analysis of covariance.
+
+434
+00:22:06,410 --> 00:22:08,380
+Is that now if you look at the betas for
+
+435
+00:22:08,380 --> 00:22:11,900
+the different groups, group 3 is still my
+reference here.
+
+436
+00:22:11,900 --> 00:22:16,590
+What it's giving you is the adjusted mean
+difference.
+
+437
+00:22:16,590 --> 00:22:17,730
+Adjusted for age.
+
+438
+00:22:17,730 --> 00:22:21,870
+So once I account for age, the difference
+between group 1 and
+
+439
+00:22:21,870 --> 00:22:25,740
+group 3 is now only 6.7 points on average.
+
+440
+00:22:25,740 --> 00:22:29,300
+Rather than before, it was about 13.6.
+
+441
+00:22:29,300 --> 00:22:32,850
+So that's telling you that group 1
+probably was a much
+
+442
+00:22:32,850 --> 00:22:35,160
+older group than group 3.
+
+443
+00:22:35,160 --> 00:22:38,530
+And so they were doing better partly, just
+because of the fact that they were older.
+
+444
+00:22:38,530 --> 00:22:41,440
+Once we account for age by adjusting for
+it in the model.
+
+445
+00:22:41,440 --> 00:22:44,990
+We can get these adjusted mean values,
+which can be useful.
+
+446
+00:22:44,990 --> 00:22:48,630
+Because now you could present a plot, for
+example, that showed the adjusted.
+
+447
+00:22:48,630 --> 00:22:52,290
+Mean differences between the groups, so
+that's called analysis of covariance but
+
+448
+00:22:52,290 --> 00:22:54,990
+again if you never called it ANOVA or
+ANCOVA and
+
+449
+00:22:54,990 --> 00:22:58,770
+you just want to think of all of this as
+linear regression, this really just is,
+
+450
+00:22:58,770 --> 00:23:00,370
+special pieces of linear regression.

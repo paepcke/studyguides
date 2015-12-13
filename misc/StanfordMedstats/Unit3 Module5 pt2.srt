@@ -1,0 +1,248 @@
+1
+00:00:00,460 --> 00:00:01,760
+Now let's talk about contingency tables.
+
+2
+00:00:02,890 --> 00:00:06,740
+For this example, we'll be building our
+own data set related to marital status.
+
+3
+00:00:06,740 --> 00:00:08,170
+It will be three variables.
+
+4
+00:00:08,170 --> 00:00:10,852
+One for gender, where females get a one
+and males get a zero.
+
+5
+00:00:10,852 --> 00:00:15,920
+There will be another variable for race,
+with one for white and zero for black.
+
+6
+00:00:15,920 --> 00:00:18,520
+The third variable is for marital status.
+
+7
+00:00:18,520 --> 00:00:21,625
+Those who are single get a zero, people
+who are married get a one,
+
+8
+00:00:21,625 --> 00:00:24,190
+and those who are divorced get a two.
+
+9
+00:00:24,190 --> 00:00:25,510
+Now we have our new data set.
+
+10
+00:00:25,510 --> 00:00:27,922
+Let's start with a simple contingency
+table.
+
+11
+00:00:27,922 --> 00:00:31,490
+There will be one row variable and one
+column variable.
+
+12
+00:00:31,490 --> 00:00:32,430
+Let's take a look at some code.
+
+13
+00:00:33,440 --> 00:00:37,770
+Notice how I've included
+gender*MaritalStat.
+
+14
+00:00:37,770 --> 00:00:41,550
+This is the way of specifying which two
+variables you want to analyze.
+
+15
+00:00:41,550 --> 00:00:45,390
+By putting gender first, we are
+establishing this as the row variable.
+
+16
+00:00:45,390 --> 00:00:49,120
+Marital stat will then automatically
+become the column variable.
+
+17
+00:00:49,120 --> 00:00:50,860
+Let's run the code and take a look at the
+output.
+
+18
+00:00:54,430 --> 00:00:58,080
+Here you see we've created our two by two
+table for gender and marital status.
+
+19
+00:00:58,080 --> 00:01:00,960
+[BLANK_AUDIO]
+
+20
+00:01:00,960 --> 00:01:05,550
+As you can see from the table, you have
+Frequency, Percent, Row Percent, and
+
+21
+00:01:05,550 --> 00:01:06,930
+Column Percent.
+
+22
+00:01:06,930 --> 00:01:09,600
+Let's take a look at the first cell in our
+table.
+
+23
+00:01:09,600 --> 00:01:13,380
+These are the people in the gender equal
+to zero and marital stat equal to zero.
+
+24
+00:01:13,380 --> 00:01:16,410
+In other words, this cell depicts makes
+who are single.
+
+25
+00:01:17,780 --> 00:01:21,460
+The first number 13, is the number of
+single men in our data set.
+
+26
+00:01:22,580 --> 00:01:27,920
+The second number, 34.21 is the percent of
+single males in our total group.
+
+27
+00:01:28,980 --> 00:01:30,845
+The row percent is the third number.
+
+28
+00:01:30,845 --> 00:01:37,284
+So 72.22% means that out of the males,
+around 72% were single.
+
+29
+00:01:37,284 --> 00:01:41,269
+Finally, 56.52 is the column percent.
+
+30
+00:01:42,320 --> 00:01:47,740
+This means that nearly 57% of all single
+people in our data set were males.
+
+31
+00:01:47,740 --> 00:01:50,720
+[BLANK_AUDIO]
+
+32
+00:01:50,720 --> 00:01:52,520
+>> Staring at all of these numbers can be
+pretty confusing.
+
+33
+00:01:53,690 --> 00:01:57,390
+It's easy to make a mistake and choose the
+wrong number when you do your analysis.
+
+34
+00:01:57,390 --> 00:02:00,150
+Luckily, SAS lets you suppress certain
+output values.
+
+35
+00:02:02,670 --> 00:02:03,790
+Here's the code for how you can do that.
+
+36
+00:02:03,790 --> 00:02:09,950
+By including nocol, nopercent, and norow,
+we'll be left with just our frequencies.
+
+37
+00:02:09,950 --> 00:02:10,560
+Let's run this code.
+
+38
+00:02:10,560 --> 00:02:16,600
+As you can see, we have a much cleaner
+table now with just the frequencies.
+
+39
+00:02:16,600 --> 00:02:22,280
+So now we know there are 13 single men,
+five married men, and zero divorced men.
+
+40
+00:02:22,280 --> 00:02:24,430
+This couple use the dataset that we looked
+at earlier,
+
+41
+00:02:24,430 --> 00:02:27,980
+with people who are treated and people who
+are cured.
+
+42
+00:02:27,980 --> 00:02:30,570
+This code will set up a two by two
+contingency table, and
+
+43
+00:02:30,570 --> 00:02:32,085
+only give us the frequencies that we want.
+
+44
+00:02:32,085 --> 00:02:36,440
+[SOUND]
+
+45
+00:02:36,440 --> 00:02:38,910
+This quadrant shows the number of subjects
+who were treated and cured.
+
+46
+00:02:38,910 --> 00:02:42,350
+This one shows that unknown subjects were
+treated and not cured.
+
+47
+00:02:44,030 --> 00:02:46,520
+This is the number of subjects who were
+not treated, but were cured.
+
+48
+00:02:46,520 --> 00:02:51,056
+And these are the subjects who were not
+treated and not cured.
+
+49
+00:02:51,056 --> 00:02:54,860
+In your HRP 225 course, you learn how to
+calculate risk ratios and Oz ratios.
+
+50
+00:02:55,980 --> 00:02:58,810
+Now that we have a two by two table setup,
+you can calculate a risk ratio to
+
+51
+00:02:58,810 --> 00:03:01,590
+estimate the association between getting
+treatment and being cured.
+
+52
+00:03:01,590 --> 00:03:04,751
+In the next module we'll show you how you
+can use Proc Freq to
+
+53
+00:03:04,751 --> 00:03:05,820
+have SAS solve this for you.

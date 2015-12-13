@@ -1,0 +1,1382 @@
+1
+00:00:00,000 --> 00:00:05,270
+[BLANK_AUDIO]
+
+2
+00:00:05,270 --> 00:00:08,580
+In this next module I'm going to tell you
+about the intention-to-treat principle,
+
+3
+00:00:08,580 --> 00:00:12,240
+which is applied when you have data from a
+randomized clinical trial.
+
+4
+00:00:12,240 --> 00:00:14,790
+And, this is not specific to survival
+analysis.
+
+5
+00:00:14,790 --> 00:00:20,180
+So, you would apply the intention-to-treat
+principle whether you had time-to-event
+
+6
+00:00:20,180 --> 00:00:25,085
+data or whether you had some other type of
+outcome data, from your clinical trial.
+
+7
+00:00:25,085 --> 00:00:29,487
+So, first of all, what's meant by an
+intention-to-treat analysis.
+
+8
+00:00:29,487 --> 00:00:31,973
+The idea is this, you do a randomized
+trial.
+
+9
+00:00:31,973 --> 00:00:34,230
+You randomize people to different groups.
+
+10
+00:00:34,230 --> 00:00:37,646
+If you're using an intention-to-treat
+analysis you're going to
+
+11
+00:00:37,646 --> 00:00:41,672
+compare outcomes according to the groups
+to which subjects were randomized,
+
+12
+00:00:41,672 --> 00:00:44,356
+regardless of what happened after
+randomization.
+
+13
+00:00:44,356 --> 00:00:47,589
+So, in the real world, in real world
+trials, lots of people,
+
+14
+00:00:47,589 --> 00:00:50,395
+as I'm going to show you in some examples
+in this module,
+
+15
+00:00:50,395 --> 00:00:54,300
+lots of people will end up switching
+groups or violating the protocol.
+
+16
+00:00:54,300 --> 00:00:55,866
+All sorts of things can happen.
+
+17
+00:00:55,866 --> 00:00:59,170
+For, if you're doing a true
+Intention-to-treat analysis you're
+
+18
+00:00:59,170 --> 00:01:01,074
+going to ignore all that essentially, and
+
+19
+00:01:01,074 --> 00:01:04,340
+just analyze the outcomes to what you were
+originally randomizing.
+
+20
+00:01:05,420 --> 00:01:09,350
+So a nice way to summarized that is once
+randomized, always analyzed.
+
+21
+00:01:09,350 --> 00:01:15,140
+And that's well-illustrated if you just
+look at the flow diagram.
+
+22
+00:01:15,140 --> 00:01:19,080
+Most randomized trials will present one of
+these flow diagram which shows, you know,
+
+23
+00:01:19,080 --> 00:01:22,600
+who was screened for this study, who was
+randomized to what group,
+
+24
+00:01:22,600 --> 00:01:24,450
+what happened, how many people were
+analyzed.
+
+25
+00:01:24,450 --> 00:01:29,460
+It's very easy to tell, if the authors
+have used an intention-to-treat analysis.
+
+26
+00:01:29,460 --> 00:01:30,960
+Let me zoom in here.
+
+27
+00:01:30,960 --> 00:01:35,200
+So, this is just a flow diagram from the
+dietary intervention component of
+
+28
+00:01:35,200 --> 00:01:36,620
+the Women's Health Initiative.
+
+29
+00:01:36,620 --> 00:01:40,740
+But, here's the key to telling if you've
+done an intention to treat analysis.
+
+30
+00:01:40,740 --> 00:01:47,060
+So, notice we had in this trial 48,000
+women randomized.
+
+31
+00:01:47,060 --> 00:01:52,220
+About 29,000 to the usual diet group, and
+19,000 to this diet intervention.
+
+32
+00:01:52,220 --> 00:01:56,232
+And, notice those exact numbers in 19,541
+29,294, and
+
+33
+00:01:56,232 --> 00:01:59,945
+then you can scroll down and see all these
+other things happen.
+
+34
+00:01:59,945 --> 00:02:03,257
+Some people withdrew, some people lost to
+follow-up.
+
+35
+00:02:03,257 --> 00:02:04,361
+Some people died.
+
+36
+00:02:04,361 --> 00:02:09,053
+But, how many people were analyzed in the
+primary analysis at the end of the day?
+
+37
+00:02:09,053 --> 00:02:12,020
+19,541 in the dietary intervention group.
+
+38
+00:02:12,020 --> 00:02:16,210
+And 29,294 in the control group.
+
+39
+00:02:16,210 --> 00:02:19,123
+Notice these are identical to the numbers
+who were randomized.
+
+40
+00:02:19,123 --> 00:02:24,211
+This would indicated that they've done a
+true intention-to-treat analysis.
+
+41
+00:02:24,211 --> 00:02:27,720
+So, intention-to-treat says, that
+participants are going to be
+
+42
+00:02:27,720 --> 00:02:31,380
+counted in the intervention group to which
+they were originally assigned,
+
+43
+00:02:31,380 --> 00:02:35,500
+even if they refuse the intervention
+immediately after randomization.
+
+44
+00:02:35,500 --> 00:02:39,570
+If they dis, discontinued it sometime
+during the study,
+
+45
+00:02:39,570 --> 00:02:41,960
+even if they followed the intervention
+incorrectly,
+
+46
+00:02:41,960 --> 00:02:45,440
+even if they violated study protocol, they
+missed follow-up measurements.
+
+47
+00:02:45,440 --> 00:02:48,040
+Even if it was found after randomization
+and
+
+48
+00:02:48,040 --> 00:02:51,060
+that they should've been excluded from the
+trial in the first place.
+
+49
+00:02:51,060 --> 00:02:56,140
+All these things we're going to ignore and
+once randomized, always analyzed.
+
+50
+00:02:56,140 --> 00:02:59,140
+That's the pure form of
+intention-to-treat.
+
+51
+00:02:59,140 --> 00:03:04,280
+And you can see that in real-world trials,
+lots of things like this do happen.
+
+52
+00:03:04,280 --> 00:03:07,270
+'Kay so here is a nice figure that was
+
+53
+00:03:07,270 --> 00:03:09,310
+presented from the Women's Health
+Initiative.
+
+54
+00:03:09,310 --> 00:03:10,940
+This was from the main trial.
+
+55
+00:03:10,940 --> 00:03:15,390
+The Women's Health Initiative was a large,
+randomized trial, that was designed to
+
+56
+00:03:15,390 --> 00:03:20,180
+compare postmenopausal hormones to a
+placebo pill in postmenopausal women.
+
+57
+00:03:20,180 --> 00:03:23,869
+And see whether or not hormones, which at
+the time were thought to be very good for
+
+58
+00:03:23,869 --> 00:03:27,286
+postmenopausal women, whether they, in
+fact, had benefits.
+
+59
+00:03:27,286 --> 00:03:30,448
+And, what you're seeing here is, the
+circles are women who
+
+60
+00:03:30,448 --> 00:03:33,920
+were originally randomized to the estrogen
+and progestin group.
+
+61
+00:03:33,920 --> 00:03:35,408
+That's the hormone group.
+
+62
+00:03:35,408 --> 00:03:39,004
+The, the triangles are women who were
+originally randomized to
+
+63
+00:03:39,004 --> 00:03:40,058
+the placebo group.
+
+64
+00:03:40,058 --> 00:03:44,522
+But, what this graph is showing you is,
+what are called the drop-ins and dropouts.
+
+65
+00:03:44,522 --> 00:03:47,870
+It shows you how much crossover there was
+during this trial among
+
+66
+00:03:47,870 --> 00:03:49,300
+the different groups.
+
+67
+00:03:49,300 --> 00:03:56,052
+So, this filled in circles are women who
+dropped out of the active treatment group.
+
+68
+00:03:56,052 --> 00:03:57,650
+So, they stopped taking their hormones.
+
+69
+00:03:57,650 --> 00:04:00,280
+They were randomized to hormones, and they
+stopped taking them for whatever reason.
+
+70
+00:04:00,280 --> 00:04:03,513
+You can see by the end of the trial, we're
+talking 35% and or
+
+71
+00:04:03,513 --> 00:04:06,563
+more of women in that treatment have
+actually dropped out of
+
+72
+00:04:06,563 --> 00:04:10,064
+the treatment group, they're no longer
+taking their hormones.
+
+73
+00:04:10,064 --> 00:04:13,088
+Why might this be, well people get sick of
+taking pills.
+
+74
+00:04:13,088 --> 00:04:16,920
+Also they may have perceived there were
+side effects from those pills.
+
+75
+00:04:16,920 --> 00:04:21,952
+What's really interesting is that the
+placebo group also had a very high dropout
+
+76
+00:04:21,952 --> 00:04:26,994
+rate, and it's almost as high but just a
+little bit less than the hormone group.
+
+77
+00:04:26,994 --> 00:04:30,110
+So, that's this filled-in triangle line
+below.
+
+78
+00:04:30,110 --> 00:04:33,260
+That's the dropout rate over time, for
+those who are taking placebo pills.
+
+79
+00:04:33,260 --> 00:04:35,910
+Remember, the women were blinded they
+didn't know whether or
+
+80
+00:04:35,910 --> 00:04:39,310
+not they were on hormones or placebos, so
+some of the women either perceived that
+
+81
+00:04:39,310 --> 00:04:41,460
+they were having side effects on the
+placebo pill.
+
+82
+00:04:41,460 --> 00:04:44,600
+Or they just, you know, got sick of taking
+a pill or forgot or whatever.
+
+83
+00:04:44,600 --> 00:04:47,408
+And the rate of dropouts was almost as
+high in the placebo group,
+
+84
+00:04:47,408 --> 00:04:48,617
+which I find interesting.
+
+85
+00:04:48,617 --> 00:04:52,673
+And then besides dropouts we also have,
+had,
+
+86
+00:04:52,673 --> 00:04:56,529
+people dropping into the treatment group.
+
+87
+00:04:56,529 --> 00:04:58,530
+So women on the placebo pill,
+
+88
+00:04:58,530 --> 00:05:02,709
+this is the triangles here on the bottom,
+dropped into the treatment.
+
+89
+00:05:02,709 --> 00:05:06,704
+So at the time the paradigm was that
+hormones are good for
+
+90
+00:05:06,704 --> 00:05:12,077
+you, plus menopausal hormones are good,
+and so the women weren't sure.
+
+91
+00:05:12,077 --> 00:05:14,849
+The women in the placebo group weren't
+sure they were on the hormones, and
+
+92
+00:05:14,849 --> 00:05:16,135
+maybe suspected they weren't.
+
+93
+00:05:16,135 --> 00:05:17,845
+And so they actually went to their or
+
+94
+00:05:17,845 --> 00:05:21,550
+their doctor recommended to them, if they
+get a prescription for hormones.
+
+95
+00:05:21,550 --> 00:05:23,522
+So they dropped into the hormone group,
+
+96
+00:05:23,522 --> 00:05:25,784
+they stopped taking their placebo pills,
+and
+
+97
+00:05:25,784 --> 00:05:29,728
+actually dropped into the hormone group,
+thinking that they should be on them.
+
+98
+00:05:29,728 --> 00:05:33,490
+And then finally, there were women who
+were actually on hormones,
+
+99
+00:05:33,490 --> 00:05:37,591
+this is the last graph here, who decided
+to stop taking their study drug.
+
+100
+00:05:37,591 --> 00:05:40,470
+Maybe they weren't sure if they had been
+assigned to the hormone group.
+
+101
+00:05:40,470 --> 00:05:43,130
+And decided to go and get a prescription
+for the, those hormones.
+
+102
+00:05:43,130 --> 00:05:45,080
+So, women in the estrogen and
+
+103
+00:05:45,080 --> 00:05:48,240
+progestin group actually dropped into
+active treatment.
+
+104
+00:05:48,240 --> 00:05:51,150
+So, they stopped taking their study drugs
+and went out and got a prescription for
+
+105
+00:05:51,150 --> 00:05:53,110
+the same thing essentially.
+
+106
+00:05:53,110 --> 00:05:56,310
+Because, again, women are blinded, and
+they might have wanted to be on hormones.
+
+107
+00:05:56,310 --> 00:06:00,140
+So you can see that there's a whole bunch
+of noise in the study.
+
+108
+00:06:00,140 --> 00:06:03,810
+Women don't stay in the groove to which
+they were assigned in this study.
+
+109
+00:06:03,810 --> 00:06:07,460
+And yet the intention to treat principle
+is going to say all the ones who
+
+110
+00:06:07,460 --> 00:06:11,410
+are circles are going to be analyzed as
+treatment group, active treatment.
+
+111
+00:06:11,410 --> 00:06:14,810
+And all the ones who are triangles are
+going to be analyzed as placebo,
+
+112
+00:06:14,810 --> 00:06:15,710
+at the end of the day.
+
+113
+00:06:17,940 --> 00:06:21,190
+Now you might be wondering why we would
+use intention to treat.
+
+114
+00:06:21,190 --> 00:06:22,450
+What's the rationale here?
+
+115
+00:06:22,450 --> 00:06:24,690
+now, it might not your instinct to say
+okay,
+
+116
+00:06:24,690 --> 00:06:27,370
+we're just going to keep everybody in the
+original groups.
+
+117
+00:06:27,370 --> 00:06:28,090
+You might think, well,
+
+118
+00:06:28,090 --> 00:06:30,970
+we should account for the fact there's all
+this switching around.
+
+119
+00:06:30,970 --> 00:06:32,710
+So what's the rationale for intention to
+treat?
+
+120
+00:06:32,710 --> 00:06:34,850
+There's sort of two basic reasons.
+
+121
+00:06:34,850 --> 00:06:38,180
+So first of all, if you're using intention
+to treat analysis,
+
+122
+00:06:38,180 --> 00:06:41,150
+you're preserving the benefits of
+randomization.
+
+123
+00:06:41,150 --> 00:06:45,310
+So the whole point of randomization was to
+balance potential confounding factors in
+
+124
+00:06:45,310 --> 00:06:46,000
+the study arms.
+
+125
+00:06:46,000 --> 00:06:47,490
+Make sure those arms are balanced.
+
+126
+00:06:47,490 --> 00:06:49,900
+In things that can be confounders.
+
+127
+00:06:49,900 --> 00:06:51,800
+If you then go and look and
+
+128
+00:06:51,800 --> 00:06:54,880
+say well okay I'm not going to analyze
+according to the randomization, but
+
+129
+00:06:54,880 --> 00:06:57,880
+I'm going to go analyze according to who
+took hormones and who didn't.
+
+130
+00:06:57,880 --> 00:07:03,590
+Then you bring a whole set of confounders
+and biases back in to this study, right.
+
+131
+00:07:03,590 --> 00:07:06,870
+The balance will no longer be preserved,
+
+132
+00:07:06,870 --> 00:07:10,010
+if you're analyzing women according to
+what they actually did.
+
+133
+00:07:10,010 --> 00:07:14,080
+And again, these can be large numbers of
+women, or people, in randomized trials,
+
+134
+00:07:14,080 --> 00:07:15,180
+switching around groups.
+
+135
+00:07:16,340 --> 00:07:20,670
+So, you lose all those benefits of
+randomization by doing intentioned,
+
+136
+00:07:20,670 --> 00:07:23,780
+if you don't do intention to treat, by
+doing intention to treat,
+
+137
+00:07:23,780 --> 00:07:25,270
+you can preserve the benefits of
+randomization.
+
+138
+00:07:25,270 --> 00:07:27,700
+So that's one rationale.
+
+139
+00:07:27,700 --> 00:07:32,750
+The second rationale is that it more
+closely simulates real life.
+
+140
+00:07:32,750 --> 00:07:37,370
+So it's the intention-to-treat as opposed
+to the actual treatment, and
+
+141
+00:07:37,370 --> 00:07:40,590
+that's more similar to what happens when
+you go to a doctor's office.
+
+142
+00:07:40,590 --> 00:07:44,270
+The doctor prescribes you a drug, that
+doesn't necessarily mean that
+
+143
+00:07:44,270 --> 00:07:47,630
+every patient is going to go home and take
+that drug perfectly.
+
+144
+00:07:47,630 --> 00:07:50,770
+So patients often don't adhere perfectly
+to treatment regimens.
+
+145
+00:07:50,770 --> 00:07:53,030
+They might discontinue treatment
+altogether.
+
+146
+00:07:53,030 --> 00:07:57,810
+So it's evaluating not how good the drug
+is under perfect,
+
+147
+00:07:57,810 --> 00:08:02,130
+ideal conditions, but how good the drug is
+under real word conditions.
+
+148
+00:08:02,130 --> 00:08:05,250
+If you prescribe it, how likely is it to
+have a benefit.
+
+149
+00:08:05,250 --> 00:08:07,380
+So it's getting more at effectiveness.
+
+150
+00:08:07,380 --> 00:08:11,220
+Rather than efficacy, which is probably
+what we care most about, in most cases,
+
+151
+00:08:11,220 --> 00:08:14,240
+we want to look at real life opposed to
+perfect use.
+
+152
+00:08:14,240 --> 00:08:18,150
+So those sort of the main two rationales
+for using intention to treat analysis.
+
+153
+00:08:19,700 --> 00:08:24,200
+Now, what effect does intention to treat
+have on a statistical analysis?
+
+154
+00:08:24,200 --> 00:08:28,200
+So basically, we are preserving the
+benefits of randomization, so
+
+155
+00:08:28,200 --> 00:08:30,040
+we're not going to introduce any bias
+here.
+
+156
+00:08:30,040 --> 00:08:33,210
+We're going to avoid that you know,
+confounding.
+
+157
+00:08:33,210 --> 00:08:37,130
+However, we there's going to be all of
+this noise that's introduced by
+
+158
+00:08:37,130 --> 00:08:40,180
+the fact that people didn't actually do
+what we think they did, or
+
+159
+00:08:40,180 --> 00:08:41,680
+what they should have done.
+
+160
+00:08:41,680 --> 00:08:47,030
+And so that noise is going to have the
+effect of diluting our effect sizes.
+
+161
+00:08:47,030 --> 00:08:49,150
+So it's going to reduce our statistical
+power.
+
+162
+00:08:50,380 --> 00:08:52,250
+If you use an intention-to-treat analysis,
+
+163
+00:08:52,250 --> 00:08:54,720
+you tend to underestimate treatment
+effects.
+
+164
+00:08:54,720 --> 00:08:58,420
+So you don't get a bias in there, but you
+tend to, bring things closer to the null.
+
+165
+00:08:58,420 --> 00:09:02,210
+We had this additional variability which
+sort of waters down the results,
+
+166
+00:09:02,210 --> 00:09:03,970
+reduces your statistical power.
+
+167
+00:09:03,970 --> 00:09:07,960
+And it's really easy to illustrate that
+with a simple mathematical example.
+
+168
+00:09:07,960 --> 00:09:12,120
+So, let me just do a simple hypothetical,
+mathematical example here to illustrate
+
+169
+00:09:12,120 --> 00:09:16,160
+how it's going to water down our affect
+sizes, make them closer to the null.
+
+170
+00:09:16,160 --> 00:09:19,050
+So, take the following hypothetical
+randomized control trial.
+
+171
+00:09:19,050 --> 00:09:23,170
+Imagine that you have a drug that actually
+is effective, and it's really,
+
+172
+00:09:23,170 --> 00:09:24,340
+really good actually.
+
+173
+00:09:24,340 --> 00:09:26,170
+So if you take the drug perfectly,
+
+174
+00:09:26,170 --> 00:09:28,720
+you have a 25% chance of dying during two
+years.
+
+175
+00:09:28,720 --> 00:09:30,510
+Versus, if you don't take the drug,
+
+176
+00:09:30,510 --> 00:09:32,670
+a placebo subject would have a 50% chance
+of dying.
+
+177
+00:09:32,670 --> 00:09:36,803
+If that's really the truth out there, then
+that's a really good drug.
+
+178
+00:09:36,803 --> 00:09:39,060
+'because it's cutting the risk of death in
+half.
+
+179
+00:09:39,060 --> 00:09:40,406
+The true relative risk here.
+
+180
+00:09:40,406 --> 00:09:45,380
+Would be 0.5, 50% less chance of dying in
+the treated group.
+
+181
+00:09:45,380 --> 00:09:47,740
+So now, sort of, if everybody took the
+drug perfectly.
+
+182
+00:09:49,110 --> 00:09:51,990
+But imagine you go out and do a 2-year
+randomized trial.
+
+183
+00:09:51,990 --> 00:09:54,650
+You have a hundred treated subjects and a
+hundred placebo subjects.
+
+184
+00:09:54,650 --> 00:09:56,720
+If everybody took the drug perfectly.
+
+185
+00:09:56,720 --> 00:09:58,240
+Nobody switched groups.
+
+186
+00:09:58,240 --> 00:10:02,070
+You would expect to see about 25 deaths in
+the treated group, because there's a 25%
+
+187
+00:10:02,070 --> 00:10:07,010
+chance of dying in the treated group, and
+about 50 deaths in the placebo group.
+
+188
+00:10:07,010 --> 00:10:09,400
+And, of course, you know, give or take a
+few due to random choice.
+
+189
+00:10:09,400 --> 00:10:13,490
+We're not going to get exactly 25, we may
+get 26, or 24, something around that.
+
+190
+00:10:14,650 --> 00:10:17,790
+And so the observed relative risk that
+you're going to see it's going to be
+
+191
+00:10:17,790 --> 00:10:21,940
+somewhere around 0.5, maybe not exactly
+0.5 but somewhere around 0.5.
+
+192
+00:10:21,940 --> 00:10:26,920
+Now imagine that things happen in the
+trial, as in most trials.
+
+193
+00:10:26,920 --> 00:10:28,950
+Start people do in fact switch groups.
+
+194
+00:10:28,950 --> 00:10:32,940
+So if, fairly early in the study about 25
+treated subjects switch to
+
+195
+00:10:32,940 --> 00:10:35,995
+the placebo stop taking their treatment
+group, their treatment drug, and
+
+196
+00:10:35,995 --> 00:10:39,820
+25 placebo subjects stop taking the
+placebo and actually go out and
+
+197
+00:10:39,820 --> 00:10:41,660
+get the treatment, which actually did
+happen.
+
+198
+00:10:41,660 --> 00:10:43,890
+In the women's health initiative, for
+example.
+
+199
+00:10:43,890 --> 00:10:47,840
+Then, what effect is that going to have on
+our relative risk at the end of the day?
+
+200
+00:10:48,990 --> 00:10:53,750
+Well, now because some of the placebo
+participants are actually taking the drug
+
+201
+00:10:53,750 --> 00:10:56,680
+and getting the benefit of it, we're
+actually going to see fewer deaths
+
+202
+00:10:56,680 --> 00:10:59,390
+in the placebo group, maybe 43 or 44
+rather than about 50.
+
+203
+00:10:59,390 --> 00:11:03,380
+And since some of the people in
+
+204
+00:11:03,380 --> 00:11:06,760
+the treated group are no longer getting
+the benefits of the drug,
+
+205
+00:11:06,760 --> 00:11:09,740
+we're going to expect to see a few higher
+deaths than the treated group.
+
+206
+00:11:09,740 --> 00:11:12,200
+So maybe something around 31, if you want
+the math.
+
+207
+00:11:13,440 --> 00:11:17,000
+So the observed relative risk is going to
+be something closer to one.
+
+208
+00:11:17,000 --> 00:11:18,940
+So if you kind of estimate it out,
+
+209
+00:11:18,940 --> 00:11:22,894
+you'd expect to see something around 0.7
+even though the true value is 0.5.
+
+210
+00:11:22,894 --> 00:11:27,400
+You're getting closer to the null, it's a
+diluted effect, and that's the general
+
+211
+00:11:27,400 --> 00:11:31,310
+effect that doing an intention-to-treat
+analysis is going to have on your results.
+
+212
+00:11:33,960 --> 00:11:37,400
+So, that often, for many randomized, for
+most randomized trials,
+
+213
+00:11:37,400 --> 00:11:40,830
+they do some kind of intention-to-treat
+analysis as their primary analysis.
+
+214
+00:11:40,830 --> 00:11:45,580
+Let me just review what the alternatives
+to intention-to-treat analysis would be.
+
+215
+00:11:45,580 --> 00:11:48,270
+So you see in the literature a lot of
+times what people actually do is
+
+216
+00:11:48,270 --> 00:11:51,080
+not a pure, pure intention-to-treat
+analysis but
+
+217
+00:11:51,080 --> 00:11:54,520
+is actually what's called a modified
+intention-to-treat analysis.
+
+218
+00:11:54,520 --> 00:11:57,130
+This is actually probably more common in
+the literature.
+
+219
+00:11:57,130 --> 00:12:01,330
+A pure intention-to-treat would say, once
+randomized always analysed, and,
+
+220
+00:12:01,330 --> 00:12:02,710
+end of story.
+
+221
+00:12:02,710 --> 00:12:06,380
+But sometimes people will allow some
+limited exclusions and
+
+222
+00:12:06,380 --> 00:12:08,080
+still call it an intention-to-treat.
+
+223
+00:12:08,080 --> 00:12:11,400
+That's technically then, a modified
+intention-to-treat.
+
+224
+00:12:11,400 --> 00:12:15,500
+So for example, if you were doing a
+vaccine trial for
+
+225
+00:12:15,500 --> 00:12:19,500
+an HIV vaccine, and after you randomized
+people,
+
+226
+00:12:19,500 --> 00:12:23,548
+you discovered that there were a few
+people in each of your groups.
+
+227
+00:12:23,548 --> 00:12:28,020
+Who were HIV-positive before the study
+actually started,
+
+228
+00:12:28,020 --> 00:12:30,210
+because it takes time to do the testing
+and everything.
+
+229
+00:12:30,210 --> 00:12:33,030
+You might find out after the fact, after
+they were already enrolled and
+
+230
+00:12:33,030 --> 00:12:36,620
+randomized, that they, in fact, are
+already HIV-positive.
+
+231
+00:12:36,620 --> 00:12:39,960
+And therefore really shouldn't have been
+eligible for he trial.
+
+232
+00:12:39,960 --> 00:12:41,480
+Do you then go back and exclude them?
+
+233
+00:12:41,480 --> 00:12:44,170
+Because clearly the vaccine can't protect
+them.
+
+234
+00:12:44,170 --> 00:12:46,510
+Or do you keep them in the analysis?
+
+235
+00:12:46,510 --> 00:12:50,040
+Well a modified intention-to-treat, for
+example, might allow you to exclude them.
+
+236
+00:12:50,040 --> 00:12:53,180
+You want to be a little bit careful though
+when you see studies that
+
+237
+00:12:53,180 --> 00:12:55,090
+have a modified intention-to-treat.
+
+238
+00:12:55,090 --> 00:12:58,150
+And the reason is, that there may be good
+rationale for
+
+239
+00:12:58,150 --> 00:12:59,868
+excluding a couple of participants.
+
+240
+00:12:59,868 --> 00:13:03,310
+But modified intention-to-treat really is
+not applied
+
+241
+00:13:03,310 --> 00:13:04,590
+consistently in the literature.
+
+242
+00:13:04,590 --> 00:13:07,520
+There's really a lack of standards here.
+
+243
+00:13:07,520 --> 00:13:12,940
+And it opens up the door that authors
+could then either consciously or
+
+244
+00:13:12,940 --> 00:13:17,230
+unconsciously, you know, say after the
+fact, oh well,
+
+245
+00:13:17,230 --> 00:13:19,410
+maybe I should've excluded this type of
+participant.
+
+246
+00:13:19,410 --> 00:13:21,060
+And if I exclude these types of
+participants,
+
+247
+00:13:21,060 --> 00:13:23,620
+let me see how that affects my p value.
+
+248
+00:13:23,620 --> 00:13:26,510
+People aren't always, you know, trying to
+do this purposely, but
+
+249
+00:13:26,510 --> 00:13:29,745
+you can see how it would open the door to
+creeping in a little bit of bias.
+
+250
+00:13:29,745 --> 00:13:33,110
+because it then gives you the opportunity
+to exclude certain participants.
+
+251
+00:13:33,110 --> 00:13:37,340
+Perhaps, you know, the ones who didn't
+have the outcome you were hoping for.
+
+252
+00:13:37,340 --> 00:13:40,730
+So you want to be really careful when you
+see things where there are exclusions
+
+253
+00:13:40,730 --> 00:13:41,814
+after the fact.
+
+254
+00:13:41,814 --> 00:13:47,770
+And preferably those exclusions would have
+been defined in the protocol,
+
+255
+00:13:47,770 --> 00:13:49,220
+before anybody saw the data.
+
+256
+00:13:49,220 --> 00:13:52,740
+If you're making those modifications after
+you see the data,
+
+257
+00:13:52,740 --> 00:13:57,270
+there is an opportunity to introduce bias,
+so be just a little wary of those.
+
+258
+00:13:58,340 --> 00:14:01,560
+More dramatic alternatives to
+intention-to-treat,
+
+259
+00:14:01,560 --> 00:14:05,570
+where you're truly not doing
+intention-to-treat in any way anymore,
+
+260
+00:14:05,570 --> 00:14:09,340
+would include the as-treated analysis and
+the per-protocol analysis.
+
+261
+00:14:09,340 --> 00:14:13,190
+So an as-treated analysis, would analyze
+participants according to
+
+262
+00:14:13,190 --> 00:14:16,220
+what actually happened, what treatments
+they actually took.
+
+263
+00:14:16,220 --> 00:14:20,970
+So if you think of the women's health
+initiative, study for example.
+
+264
+00:14:20,970 --> 00:14:24,680
+In Cox regression you can have time
+changing predictors, so that's great
+
+265
+00:14:24,680 --> 00:14:29,940
+because you can see over time women
+started, started drugs or stopped drugs.
+
+266
+00:14:29,940 --> 00:14:31,500
+You could change their status.
+
+267
+00:14:31,500 --> 00:14:34,630
+You could change which group they were in
+over time.
+
+268
+00:14:34,630 --> 00:14:36,620
+And that would be an as-treated analysis.
+
+269
+00:14:36,620 --> 00:14:39,230
+It would actually incorporate the fact
+that they dropped in or
+
+270
+00:14:39,230 --> 00:14:40,740
+off, or out, you know.
+
+271
+00:14:40,740 --> 00:14:42,610
+Onto or off of drugs.
+
+272
+00:14:42,610 --> 00:14:44,560
+That would be an as treated analysis.
+
+273
+00:14:44,560 --> 00:14:47,120
+A per-protocol analysis is even stricter
+than that.
+
+274
+00:14:47,120 --> 00:14:50,860
+And it's going to drop, exclude everybody
+from the analysis, who,
+
+275
+00:14:50,860 --> 00:14:52,530
+essentially wasn't a perfect participant.
+
+276
+00:14:52,530 --> 00:14:57,780
+Who violated the study protocol in any
+way, so they, they switched groups, or
+
+277
+00:14:57,780 --> 00:15:01,010
+they didn't come in for all of their
+followup measurements or, you know,
+
+278
+00:15:01,010 --> 00:15:02,720
+they, they shouldn't have been in the
+study in the first place.
+
+279
+00:15:02,720 --> 00:15:06,620
+Whatever reasons, that's going to be an
+even more exclusive analysis.
+
+280
+00:15:06,620 --> 00:15:11,760
+And you can imagine that the problem with
+these non-intention-to-treat analyses,
+
+281
+00:15:11,760 --> 00:15:13,520
+the as treated in the per-protocol,
+
+282
+00:15:13,520 --> 00:15:15,800
+is that you're losing the benefits of
+randomization.
+
+283
+00:15:15,800 --> 00:15:18,670
+So now all of a sudden you're analyzing
+people according to what they
+
+284
+00:15:18,670 --> 00:15:19,410
+actually did.
+
+285
+00:15:19,410 --> 00:15:22,680
+And of course, the reasons that they did,
+they went in one group or
+
+286
+00:15:22,680 --> 00:15:24,300
+another, that they took the drug or
+
+287
+00:15:24,300 --> 00:15:27,110
+didn't, that they came in for their study
+measurements or didn't.
+
+288
+00:15:27,110 --> 00:15:29,650
+All of those things could be related to
+the outcomes.
+
+289
+00:15:29,650 --> 00:15:32,900
+So you're essentially getting back to an
+observational study.
+
+290
+00:15:32,900 --> 00:15:36,830
+It's no longer a, you no longer have all
+the benefits of a randomized trial.

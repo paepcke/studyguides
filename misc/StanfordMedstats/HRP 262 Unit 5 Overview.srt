@@ -1,0 +1,246 @@
+1
+00:00:00,000 --> 00:00:05,400
+[BLANK_AUDIO]
+
+2
+00:00:05,400 --> 00:00:07,600
+Welcome to week five of the course.
+
+3
+00:00:07,600 --> 00:00:10,950
+This week we're going to wrap up our
+discussion of survival analysis.
+
+4
+00:00:12,560 --> 00:00:16,780
+So, I've tried to keep the material in
+this unit fairly light because you're
+
+5
+00:00:16,780 --> 00:00:19,760
+all working hard on your mid-term data
+analysis and
+
+6
+00:00:19,760 --> 00:00:23,200
+there is no homework set specifically for
+this unit.
+
+7
+00:00:23,200 --> 00:00:27,710
+I'm going to cover a couple of topics, so
+first of all, the idea of competing risks.
+
+8
+00:00:27,710 --> 00:00:30,805
+You've actually seen a data set that had
+competing risks in it
+
+9
+00:00:30,805 --> 00:00:34,895
+already,so that melanoma data set that you
+dealt with in the first couple of
+
+10
+00:00:34,895 --> 00:00:37,890
+homework's actually had a competing risk.
+
+11
+00:00:37,890 --> 00:00:42,580
+There was variable that told you, did
+somebody die of melanoma specifically, or
+
+12
+00:00:42,580 --> 00:00:44,980
+did they die of other courses.
+
+13
+00:00:44,980 --> 00:00:47,030
+For the purposes of those homework's, to
+keep it simple,
+
+14
+00:00:47,030 --> 00:00:51,090
+we just want those together and we look at
+overall mortality,but what if
+
+15
+00:00:51,090 --> 00:00:56,410
+you specifically wanted to look at risk
+factors for death from melanoma.
+
+16
+00:00:56,410 --> 00:00:59,450
+How would you isolate that from death for
+other causes.
+
+17
+00:00:59,450 --> 00:01:02,400
+This is the idea of competing risks and
+it's a little bit tricky and
+
+18
+00:01:02,400 --> 00:01:04,050
+we'll see how to handle it this week.
+
+19
+00:01:05,080 --> 00:01:07,800
+Secondly, I'm going to talk about
+something called the intention to
+
+20
+00:01:07,800 --> 00:01:09,140
+treat principle.
+
+21
+00:01:09,140 --> 00:01:11,730
+This is not specific to survival analysis,
+but
+
+22
+00:01:11,730 --> 00:01:16,820
+is a principle that's used whenever you
+have randomized clinical trial data,so,
+
+23
+00:01:16,820 --> 00:01:20,300
+because a lot of the times in randomized
+trials we have survival data, we're often
+
+24
+00:01:20,300 --> 00:01:24,550
+implied applying this intention to treat
+principle,so we'll go over that this week.
+
+25
+00:01:25,900 --> 00:01:30,530
+Just an introductory example along the
+ideas of competing risks, what you're
+
+26
+00:01:30,530 --> 00:01:34,170
+looking at here are two Kaplan-Meier
+curves from the same data set.
+
+27
+00:01:34,170 --> 00:01:38,090
+So on the left hand side you're seeing
+cardiovascular mortality is
+
+28
+00:01:38,090 --> 00:01:41,740
+the outcome and on the right hand side
+you're seeing deaths from other
+
+29
+00:01:41,740 --> 00:01:43,919
+causes that are not heart disease related.
+
+30
+00:01:45,380 --> 00:01:48,690
+What's interesting if you look carefully
+at these Kaplan–Meier curves,lets just,
+
+31
+00:01:48,690 --> 00:01:53,620
+for the purposes of illustration, focus on
+just this low group the people in
+
+32
+00:01:53,620 --> 00:01:58,850
+this study were classified according to
+levels of a particular blood biomarker.
+
+33
+00:01:58,850 --> 00:02:01,580
+Those in the low group, if you look
+carefully and
+
+34
+00:02:01,580 --> 00:02:04,570
+see the total number that died of
+cardiovascular disease.
+
+35
+00:02:04,570 --> 00:02:09,420
+You can kind of scroll over and you can
+see that by the end of the study,
+
+36
+00:02:09,420 --> 00:02:14,750
+about seven or eight years in,there was
+about a 50% survival probability which
+
+37
+00:02:14,750 --> 00:02:22,520
+means that there was a 50% chance of dying
+from cardiovascular
+
+38
+00:02:22,520 --> 00:02:26,960
+heart disease related causes,so 50% chance
+of dying from,
+
+39
+00:02:26,960 --> 00:02:29,800
+from that but, what's interesting is if
+you go over here and
+
+40
+00:02:29,800 --> 00:02:34,085
+look at the low group, over again the
+whole course of this study for
+
+41
+00:02:34,085 --> 00:02:39,710
+non-cardiovascular mortality, the survival
+probabilities may be only 44 or 45%.
+
+42
+00:02:39,710 --> 00:02:44,556
+That means the chances of dying from other
+causes besides CVD,
+
+43
+00:02:44,556 --> 00:02:51,300
+cardiovascular disease, was 55%,so
+
+44
+00:02:51,300 --> 00:02:57,420
+in other words, people in this study had a
+50% chance of dying from heart disease,
+
+45
+00:02:57,420 --> 00:03:02,280
+and they had a 55% chance of dying from
+things other than heart disease.
+
+46
+00:03:02,280 --> 00:03:04,150
+Well, we should be able to add those up
+and
+
+47
+00:03:04,150 --> 00:03:07,840
+get the total probability of dying from,of
+dying in this study.
+
+48
+00:03:07,840 --> 00:03:11,110
+Notice that if we add those up, it turns
+out that people in the study had
+
+49
+00:03:11,110 --> 00:03:14,885
+a 105% chance of dying, and obviously
+that's
+
+50
+00:03:14,885 --> 00:03:19,560
+impossible,so there's something wrong with
+the way the data is presented here.
+
+51
+00:03:19,560 --> 00:03:23,250
+We'll get to this idea when we get to the
+topic of competing risks.

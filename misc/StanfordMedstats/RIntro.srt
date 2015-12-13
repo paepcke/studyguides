@@ -1,0 +1,771 @@
+1
+00:00:08,840 --> 00:00:13,920
+This is the first video of a series of
+modules that will explain how to
+
+2
+00:00:13,920 --> 00:00:15,590
+use a Deducer.
+
+3
+00:00:15,590 --> 00:00:17,920
+Which is a graphical user interface for
+
+4
+00:00:17,920 --> 00:00:22,520
+the program R to conduct your statistical
+analysis.
+
+5
+00:00:22,520 --> 00:00:25,890
+R is a really powerful statistical
+program, but for
+
+6
+00:00:25,890 --> 00:00:30,400
+those who have never coded before it can
+be quite challenging.
+
+7
+00:00:30,400 --> 00:00:34,070
+What Deducer does is it creates a
+graphical user interface, or
+
+8
+00:00:34,070 --> 00:00:37,140
+a gooey, for R users.
+
+9
+00:00:37,140 --> 00:00:40,430
+That simplify a lot of the coding that you
+would otherwise need to learn.
+
+10
+00:00:40,430 --> 00:00:45,224
+This first module, we'll go over how to
+download and install these
+
+11
+00:00:45,224 --> 00:00:49,800
+programs onto your computer so that you
+can use them in the subsequent exercises.
+
+12
+00:00:49,800 --> 00:00:51,327
+So let's begin.
+
+13
+00:00:51,327 --> 00:00:58,760
+The first step is to open up your Internet
+browser and go to www.deducer.org.
+
+14
+00:00:58,760 --> 00:00:59,380
+OK.
+
+15
+00:00:59,380 --> 00:01:08,090
+And then click on Download and Install in
+the middle of the screen here.
+
+16
+00:01:08,090 --> 00:01:12,984
+And there are three different options for
+different operating environments.
+
+17
+00:01:12,984 --> 00:01:15,910
+This computer that I'm working on is a
+Windows machine.
+
+18
+00:01:15,910 --> 00:01:17,111
+So I'm going to click on Windows.
+
+19
+00:01:17,111 --> 00:01:20,879
+And then I'm going to click on Download
+Installer.
+
+20
+00:01:20,879 --> 00:01:27,193
+So a few things I want to say while we're
+waiting for this installer to download.
+
+21
+00:01:27,193 --> 00:01:28,690
+One is that all the,
+
+22
+00:01:28,690 --> 00:01:33,305
+instructions in this video are in written
+form posted on the class website.
+
+23
+00:01:33,305 --> 00:01:38,793
+So, if that's easier or faster for you,
+please follow the instructions there.
+
+24
+00:01:38,793 --> 00:01:40,587
+The other is that.
+
+25
+00:01:40,587 --> 00:01:43,930
+Deducer will require Java to run on your
+machine, so
+
+26
+00:01:43,930 --> 00:01:49,280
+if you don't have Java, you're going to
+need to install that first.
+
+27
+00:01:49,280 --> 00:01:51,820
+So it looks like the installer is
+complete, so
+
+28
+00:01:51,820 --> 00:01:54,200
+I'm going to click on that and hit Run.
+
+29
+00:01:56,300 --> 00:01:59,830
+Want English, going to click Next, Next,
+Next.
+
+30
+00:02:01,080 --> 00:02:04,380
+It's telling me where, it wants to install
+R,
+
+31
+00:02:04,380 --> 00:02:08,225
+which is basically the statistical engine
+that Deducer is going to run through.
+
+32
+00:02:08,225 --> 00:02:13,710
+OK, R already exists on this machine, so
+
+33
+00:02:13,710 --> 00:02:15,860
+this prompt comes up, it should not come
+up.
+
+34
+00:02:15,860 --> 00:02:17,870
+When you're installing R on your computer.
+
+35
+00:02:17,870 --> 00:02:19,730
+I'm going to hit Yes.
+
+36
+00:02:19,730 --> 00:02:21,180
+I'm going to hit Next.
+
+37
+00:02:21,180 --> 00:02:27,130
+One thing I do want to point out is that
+if you're on a Windows machine and
+
+38
+00:02:27,130 --> 00:02:31,550
+you're using the installer, then Java is
+included in this package.
+
+39
+00:02:31,550 --> 00:02:33,889
+So, this package should have everything
+that you need.
+
+40
+00:02:36,780 --> 00:02:39,690
+I do not want to customize, the
+installation.
+
+41
+00:02:39,690 --> 00:02:41,520
+And I'm just going to keep clicking next.
+
+42
+00:02:41,520 --> 00:02:44,660
+I'm going to leave, Create a desktop icon,
+checked.
+
+43
+00:02:44,660 --> 00:02:50,343
+don't really want a quick launch icon.
+
+44
+00:02:50,343 --> 00:02:56,080
+And that's that.
+
+45
+00:02:56,080 --> 00:02:59,110
+I do want to point out while we're waiting
+for this to install,
+
+46
+00:02:59,110 --> 00:03:04,120
+that there are instructions for existing R
+users in the background here,
+
+47
+00:03:04,120 --> 00:03:07,345
+on the Chrome page where we downloaded the
+installer.
+
+48
+00:03:07,345 --> 00:03:10,820
+So for those of you with R already on your
+machine,
+
+49
+00:03:10,820 --> 00:03:14,670
+you should feel free to update R first.
+
+50
+00:03:14,670 --> 00:03:22,510
+And then install the correct packages, in
+order to run Deducer.
+
+51
+00:03:22,510 --> 00:03:25,080
+Okay, so the Java runtime environment has
+been found.
+
+52
+00:03:25,080 --> 00:03:28,690
+That's because deducer's uh,been on this
+computer before.
+
+53
+00:03:28,690 --> 00:03:32,675
+This should not come up for if you're
+installing this for the first time.
+
+54
+00:03:32,675 --> 00:03:35,984
+So it looks like it's completed.
+
+55
+00:03:35,984 --> 00:03:42,720
+What I'm going to do is minimize this for
+now and then go to the Deducer shortcut.
+
+56
+00:03:42,720 --> 00:03:44,660
+So this is what it looks like on the
+screen here.
+
+57
+00:03:44,660 --> 00:03:51,670
+I'm going to double-click that, and I see
+two windows pop up here.
+
+58
+00:03:51,670 --> 00:03:53,820
+So one's called the console.
+
+59
+00:03:53,820 --> 00:03:55,275
+And one's called the data viewer.
+
+60
+00:03:55,275 --> 00:03:56,570
+Okay.
+
+61
+00:03:56,570 --> 00:04:00,680
+So the first thing I want to do is select
+Packages in data.
+
+62
+00:04:00,680 --> 00:04:02,395
+And then go to package manager.
+
+63
+00:04:02,395 --> 00:04:07,110
+And the reason why I want to do that is
+because I want to select,
+
+64
+00:04:07,110 --> 00:04:10,020
+the check boxes next to Deducer extras.
+
+65
+00:04:11,170 --> 00:04:14,630
+Again, what I did was I went to Packages
+in data.
+
+66
+00:04:14,630 --> 00:04:16,305
+I selected package manager.
+
+67
+00:04:16,305 --> 00:04:21,302
+Okay and I selected the check boxes under
+the columns, default, and loaded.
+
+68
+00:04:21,302 --> 00:04:25,621
+So both checkboxes next to Deducer extras.
+
+69
+00:04:25,621 --> 00:04:31,210
+And what that's going to do is create a
+whole nother menu for us,
+
+70
+00:04:31,210 --> 00:04:37,640
+that offers, statistical tests and options
+that we didn't have before.
+
+71
+00:04:37,640 --> 00:04:40,610
+So we're going to be using those in the
+exercises, so
+
+72
+00:04:40,610 --> 00:04:43,875
+it's a good idea to just include that
+right now.
+
+73
+00:04:43,875 --> 00:04:47,250
+So believe it or not, that's it.
+
+74
+00:04:47,250 --> 00:04:53,610
+Now you have Deducer and R both running on
+your computer.
+
+75
+00:04:53,610 --> 00:04:56,850
+So now that we've installed R and Deducer.
+
+76
+00:04:56,850 --> 00:05:01,400
+Let's try to open up the class data and
+see what it looks like.
+
+77
+00:05:01,400 --> 00:05:06,950
+So, not shown here, but I've gone to the
+class website and downloaded this
+
+78
+00:05:06,950 --> 00:05:11,560
+Excel spreadsheet called mock class data,
+and saved it to my desktop.
+
+79
+00:05:11,560 --> 00:05:16,240
+So what I want to do now is click on the
+open data icon in the data viewer window,
+
+80
+00:05:16,240 --> 00:05:21,460
+on the right-hand side of the screen here,
+and then navigate towards the desktop,
+
+81
+00:05:21,460 --> 00:05:25,440
+or wherever you saved mock class data, and
+hit Open.
+
+82
+00:05:25,440 --> 00:05:28,899
+And I want, there's only one worksheet.
+
+83
+00:05:28,899 --> 00:05:30,560
+[INAUDIBLE] here with data, so I'm just
+going to hit Ok.
+
+84
+00:05:30,560 --> 00:05:31,230
+And here we go.
+
+85
+00:05:31,230 --> 00:05:37,230
+So the data has been loaded.
+
+86
+00:05:37,230 --> 00:05:38,450
+There should be 50 rows.
+
+87
+00:05:38,450 --> 00:05:42,030
+Good.
+It's always good to check your data and
+
+88
+00:05:42,030 --> 00:05:45,270
+look across it to make sure everything's
+been loaded correctly.
+
+89
+00:05:45,270 --> 00:05:47,060
+And so just scrolling left and
+
+90
+00:05:47,060 --> 00:05:49,800
+right and up and down, I see that
+everything's been loaded.
+
+91
+00:05:49,800 --> 00:05:54,400
+And you're essentially ready to go at this
+point.
+
+92
+00:05:54,400 --> 00:05:55,060
+So if you,
+
+93
+00:05:55,060 --> 00:05:58,930
+a few things that I want to point out
+before you jump in the exercises.
+
+94
+00:05:58,930 --> 00:06:01,355
+There are two tabs here data view and
+variable view.
+
+95
+00:06:01,355 --> 00:06:04,950
+Data view is the spread sheet view it's
+almost like you're
+
+96
+00:06:04,950 --> 00:06:08,440
+looking at an Excel Spreadsheet or
+something like that.
+
+97
+00:06:08,440 --> 00:06:13,620
+You can directly change data here by
+clicking on random cells.
+
+98
+00:06:13,620 --> 00:06:17,100
+So please be very very careful that you
+don't do that.
+
+99
+00:06:17,100 --> 00:06:20,331
+okay.
+I was just demonstrating that by
+
+100
+00:06:20,331 --> 00:06:24,560
+selecting random cells and hitting
+numbers.
+
+101
+00:06:24,560 --> 00:06:27,580
+In variable view, in this tab we see a
+list of all of
+
+102
+00:06:27,580 --> 00:06:30,840
+the variables in the data set as well as
+their type.
+
+103
+00:06:30,840 --> 00:06:34,840
+So, variable types can range between a few
+things.
+
+104
+00:06:34,840 --> 00:06:38,075
+So you can have character variables which
+are otherwise known as strings.
+
+105
+00:06:38,075 --> 00:06:45,800
+So letters essentially are the conventions
+actually is just
+
+106
+00:06:45,800 --> 00:06:51,445
+keep all variables that you don't plan on
+doing any math on as character variables.
+
+107
+00:06:51,445 --> 00:06:58,568
+So, things like zip codes or reference
+numbers.
+
+108
+00:06:58,568 --> 00:07:00,130
+Is things like that.
+
+109
+00:07:00,130 --> 00:07:02,260
+That you don't want to do math on.
+
+110
+00:07:02,260 --> 00:07:06,210
+Even if they're numbers you generally
+want to make them character variables.
+
+111
+00:07:06,210 --> 00:07:08,210
+Just to prevent any mistakes from
+happening.
+
+112
+00:07:08,210 --> 00:07:12,150
+Now things like age where you might
+want to take the average of it in
+
+113
+00:07:12,150 --> 00:07:13,340
+your data set.
+
+114
+00:07:13,340 --> 00:07:16,420
+You can keep those as a numeric varialbe.
+
+115
+00:07:16,420 --> 00:07:20,600
+And the numeric variables here are double
+and integer.
+
+116
+00:07:20,600 --> 00:07:24,810
+Factor is r's way of describing a
+categorical variable.
+
+117
+00:07:24,810 --> 00:07:30,660
+And you'll also notice that there are
+different options for
+
+118
+00:07:30,660 --> 00:07:37,150
+date and time variables ,okay?
+
+119
+00:07:37,150 --> 00:07:39,720
+You can have multiple data sets open at
+the same time.
+
+120
+00:07:39,720 --> 00:07:43,560
+And the way to navigate between them is to
+click on
+
+121
+00:07:43,560 --> 00:07:46,760
+the drop-down underneath Data Set in the
+center.
+
+122
+00:07:46,760 --> 00:07:49,260
+And I only have one data set open, so
+
+123
+00:07:49,260 --> 00:07:53,330
+only one drops down here, but you can
+image having two or three open.
+
+124
+00:07:54,790 --> 00:07:56,600
+And that's essentially the data of your
+window.
+
+125
+00:07:56,600 --> 00:07:59,320
+The console window is where you're
+
+126
+00:07:59,320 --> 00:08:03,305
+going to have more of your meaty
+statistical options.
+
+127
+00:08:03,305 --> 00:08:08,720
+So the tabs that we're going to be using
+in our exercises are the Data tab.
+
+128
+00:08:08,720 --> 00:08:13,510
+The Analysis tab, the Plots tab, and the
+Extras tab.
+
+129
+00:08:13,510 --> 00:08:14,019
+Okay.
+
+130
+00:08:14,019 --> 00:08:22,330
+So these 4 tabs are going to have 95% of
+everything that we're interested in.
+
+131
+00:08:22,330 --> 00:08:26,670
+One last thing I want to note before
+ending the video is
+
+132
+00:08:26,670 --> 00:08:31,950
+that sometimes you might have an issue
+importing an Excel file.
+
+133
+00:08:31,950 --> 00:08:34,819
+The first time that you run reducer.
+
+134
+00:08:34,819 --> 00:08:39,840
+And if that's the case that's the case
+there's a little there's a little trick.
+
+135
+00:08:39,840 --> 00:08:46,190
+So, for Windows, Windows users, what you
+can do is type in a certain command,
+
+136
+00:08:46,190 --> 00:08:48,990
+so that is, and I'll show you here.
+
+137
+00:08:48,990 --> 00:08:49,925
+Type in
+
+138
+00:08:49,925 --> 00:08:59,925
+install.packages("XLConnect")
+
+139
+00:09:01,110 --> 00:09:05,110
+So if you hit that, this [INAUDIBLE] will
+come up.
+
+140
+00:09:05,110 --> 00:09:10,210
+Just select USA and then the state that
+you're closest to,
+
+141
+00:09:10,210 --> 00:09:13,700
+or really where ever in the world you're
+closest to.
+
+142
+00:09:13,700 --> 00:09:18,150
+And hit OK to download and install that
+package.
+
+143
+00:09:18,150 --> 00:09:22,265
+And that package is going to help you
+import Excel files.
+
+144
+00:09:22,265 --> 00:09:24,280
+Okay?
+
+145
+00:09:24,280 --> 00:09:28,960
+If you're on a Mac and you experience the
+same problem it's similar code.
+
+146
+00:09:28,960 --> 00:09:32,420
+But it's a little more involved.
+
+147
+00:09:32,420 --> 00:09:34,740
+So you want to Basically do the same
+thing.
+
+148
+00:09:34,740 --> 00:09:35,590
+Type in install.packages("rJava").
+
+149
+00:09:35,590 --> 00:09:37,070
+So run that.
+
+150
+00:09:37,070 --> 00:09:37,700
+Hit Enter.
+
+151
+00:09:37,700 --> 00:09:42,070
+I'm not going to do it here.
+
+152
+00:09:42,070 --> 00:09:47,995
+Here and then one more.
+
+153
+00:09:47,995 --> 00:09:54,020
+So do install.packages again.
+
+154
+00:09:54,020 --> 00:09:55,890
+And then ("XLConnect" like we did before,
+
+155
+00:09:55,890 --> 00:09:58,845
+except this time you're also going to also
+put in comma space
+
+156
+00:09:58,845 --> 00:10:08,845
+type=
+
+157
+00:10:12,160 --> 00:10:16,610
+Open quote source and close quote, close
+parentheses.
+
+158
+00:10:16,610 --> 00:10:17,965
+So, and hit enter.
+
+159
+00:10:17,965 --> 00:10:19,690
+Okay?
+
+160
+00:10:19,690 --> 00:10:27,392
+So that should install this package that
+you need to import Excel files.
+
+161
+00:10:27,392 --> 00:10:31,550
+Now if your R is up to date, and your
+Deducer is up to date and you're
+
+162
+00:10:31,550 --> 00:10:36,010
+using the most up to date packages for
+everything, this should not be a problem.
+
+163
+00:10:36,010 --> 00:10:39,120
+But this is something that commonly
+happens so
+
+164
+00:10:39,120 --> 00:10:44,200
+I just wanted to show this in the video
+just in case.
+
+165
+00:10:44,200 --> 00:10:46,920
+Okay, so that wraps up the download and
+installation video.
+
+166
+00:10:46,920 --> 00:10:54,901
+Hope that was helpful.

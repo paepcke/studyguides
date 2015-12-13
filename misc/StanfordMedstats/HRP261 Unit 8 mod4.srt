@@ -1,0 +1,960 @@
+1
+00:00:00,000 --> 00:00:06,690
+[BLANK_AUDIO]
+
+2
+00:00:06,690 --> 00:00:11,130
+In this next module, I'm going to tell you
+about negative binomial regression,
+
+3
+00:00:11,130 --> 00:00:13,580
+which is just an extension of Poisson
+Regression.
+
+4
+00:00:15,870 --> 00:00:19,100
+So negative binomial regression is also
+used in a situation where you
+
+5
+00:00:19,100 --> 00:00:20,250
+have Count data.
+
+6
+00:00:20,250 --> 00:00:22,110
+It's a lot like poisson regression,
+
+7
+00:00:22,110 --> 00:00:25,450
+except you're going to estimate one
+additional parameter.
+
+8
+00:00:25,450 --> 00:00:28,010
+But that additional parameter can be
+pretty important.
+
+9
+00:00:28,010 --> 00:00:32,590
+So the parameter that you're estimating is
+something called the dispersion parameter.
+
+10
+00:00:32,590 --> 00:00:34,930
+And here's why you might need that.
+
+11
+00:00:34,930 --> 00:00:37,988
+So when you did a poisson regression, you
+were assuming.
+
+12
+00:00:37,988 --> 00:00:41,200
+That the data actually had
+
+13
+00:00:41,200 --> 00:00:45,350
+a Poisson probability distribution that it
+actually followed that.
+
+14
+00:00:45,350 --> 00:00:48,500
+Remember with the Poisson probability
+distribution, the mean and
+
+15
+00:00:48,500 --> 00:00:50,070
+the variance are equivalent.
+
+16
+00:00:50,070 --> 00:00:55,030
+It turns out that with a lot of real life
+count data, that is not true,
+
+17
+00:00:55,030 --> 00:00:56,520
+the mean and the variance are not
+equivalent,
+
+18
+00:00:56,520 --> 00:01:00,380
+in fact the variance, Can be quite a bit
+bigger than the mean.
+
+19
+00:01:00,380 --> 00:01:05,660
+If that's the case, then our data are what
+we call over-dispersed.
+
+20
+00:01:05,660 --> 00:01:09,500
+And Poisson probability isn't quite the
+right fit.
+
+21
+00:01:09,500 --> 00:01:11,350
+We have to correct for this dispersion,
+for
+
+22
+00:01:11,350 --> 00:01:13,800
+the fact that the variance is actually
+bigger than the mean.
+
+23
+00:01:13,800 --> 00:01:16,790
+We can do that by estimating an additional
+parameter.
+
+24
+00:01:16,790 --> 00:01:18,150
+Called the dispersion parameter.
+
+25
+00:01:19,230 --> 00:01:22,050
+Now, what's the consequences of pretending
+we're on
+
+26
+00:01:22,050 --> 00:01:26,000
+a Poisson distribution when in fact the
+mean is smaller than the variance?
+
+27
+00:01:26,000 --> 00:01:29,570
+Well, what would happen in that case, we
+run a Poisson regression,
+
+28
+00:01:29,570 --> 00:01:32,970
+we're assuming that the variance is
+smaller than it actually is,
+
+29
+00:01:32,970 --> 00:01:37,260
+and therefore all of our estimates of
+standard error are going to be too small.
+
+30
+00:01:37,260 --> 00:01:40,050
+And therefor, our p values are going to be
+too small, and
+
+31
+00:01:40,050 --> 00:01:41,910
+we're going to have an overly optimistic
+model.
+
+32
+00:01:41,910 --> 00:01:45,230
+So if you don't estimate this dispersion
+parameter when it's needed,
+
+33
+00:01:45,230 --> 00:01:47,630
+your model might be overly optimistic.
+
+34
+00:01:47,630 --> 00:01:50,740
+My general recommendation actually is
+you're going to see in
+
+35
+00:01:50,740 --> 00:01:54,550
+a minute that it's fairly straight forward
+to run the negative binomial regression.
+
+36
+00:01:54,550 --> 00:01:57,690
+You can always run the negative binomial
+regression for count data.
+
+37
+00:01:57,690 --> 00:02:00,970
+It will tell you, essentially, weather or
+not you need this dispersion term.
+
+38
+00:02:00,970 --> 00:02:02,460
+If you don't need the dispersion term,
+
+39
+00:02:02,460 --> 00:02:04,400
+you can default back to the Poisson
+regression.
+
+40
+00:02:04,400 --> 00:02:07,250
+If you do need it, then you can stick with
+the negative binomial.
+
+41
+00:02:07,250 --> 00:02:09,460
+So then my general approach would actually
+be, with count data,
+
+42
+00:02:09,460 --> 00:02:12,920
+to start with the negative binomial
+regression, and then default to
+
+43
+00:02:12,920 --> 00:02:17,730
+Poisson only if the dispersion clu-,
+parameter's close to zero.
+
+44
+00:02:17,730 --> 00:02:22,480
+Just as, a, just a quick note here, I
+want to mention that,
+
+45
+00:02:22,480 --> 00:02:27,160
+we are, negative binomial, that's the
+another probability distribution.
+
+46
+00:02:27,160 --> 00:02:31,160
+So, I am not going to go into a lot of
+details about it but the negative
+
+47
+00:02:31,160 --> 00:02:34,620
+binomial probability distribution works
+again, the probability distribution.
+
+48
+00:02:34,620 --> 00:02:37,910
+Therefore, we can use it to do regression
+and just to like you know.
+
+49
+00:02:37,910 --> 00:02:40,330
+A sense of what it is, is a situation like
+this.
+
+50
+00:02:40,330 --> 00:02:41,490
+So imagine you got a coin, and
+
+51
+00:02:41,490 --> 00:02:44,880
+you say I'm going to flip this coin until
+I get 50 heads.
+
+52
+00:02:44,880 --> 00:02:47,630
+So I'm going to stop when I get 50 heads.
+
+53
+00:02:47,630 --> 00:02:50,230
+You can ask the question then, well how
+long, how many flips of
+
+54
+00:02:50,230 --> 00:02:52,910
+the coin are you going to have to do
+before you stop, before you hit 50 heads?
+
+55
+00:02:52,910 --> 00:02:55,380
+And of course.
+
+56
+00:02:55,380 --> 00:02:58,190
+On a given try, it might take you 80 flips
+of a coin.
+
+57
+00:02:58,190 --> 00:02:59,440
+It might take you a 100.
+
+58
+00:02:59,440 --> 00:03:01,110
+It might take you a 120.
+
+59
+00:03:01,110 --> 00:03:05,050
+So, we can talk about the probability of
+each of those possible outcomes.
+
+60
+00:03:05,050 --> 00:03:07,950
+So, whether it takes you 90 coin flips
+before you get 50 heads or
+
+61
+00:03:07,950 --> 00:03:09,510
+whether it takes you a 110.
+
+62
+00:03:09,510 --> 00:03:12,300
+We can actually calculate all of this
+probabilities.
+
+63
+00:03:12,300 --> 00:03:13,690
+Those probabilities follows what's
+
+64
+00:03:13,690 --> 00:03:17,090
+called a negative Binomial probability
+distribution.
+
+65
+00:03:17,090 --> 00:03:20,440
+Turns out that the negative binomials
+related to both the binomial and
+
+66
+00:03:20,440 --> 00:03:24,190
+to the Poisson and and that's as much
+detailed as I'll, I'll go into there.
+
+67
+00:03:24,190 --> 00:03:27,910
+But let me actually just give you a real
+example.
+
+68
+00:03:27,910 --> 00:03:32,060
+So, go back to the data that I had on the
+number of swimming world records that
+
+69
+00:03:32,060 --> 00:03:33,820
+are set in a given year.
+
+70
+00:03:33,820 --> 00:03:36,210
+We fit all that data with a Poisson
+regression.
+
+71
+00:03:36,210 --> 00:03:40,440
+But actually that probably wasn't optimal,
+because if you look carefully at
+
+72
+00:03:40,440 --> 00:03:43,410
+that outcome variable here, it is in fact
+over-dispersed.
+
+73
+00:03:43,410 --> 00:03:46,390
+The variance of the number of world
+records in a given year is
+
+74
+00:03:46,390 --> 00:03:48,600
+actually bigger than the mean.
+
+75
+00:03:48,600 --> 00:03:52,190
+So that indicates that we should probably
+try a negative binomial regression here,
+
+76
+00:03:52,190 --> 00:03:53,380
+and that's indeed what I did.
+
+77
+00:03:53,380 --> 00:03:56,970
+So let me just remind you what the Poisson
+regression model we ended up with
+
+78
+00:03:56,970 --> 00:03:58,060
+was the following.
+
+79
+00:03:58,060 --> 00:04:02,050
+So this came out of Poisson regression, we
+had Ended with a model of year,
+
+80
+00:04:02,050 --> 00:04:03,900
+year squared, number of new technologies,
+and
+
+81
+00:04:03,900 --> 00:04:07,620
+the interaction between year and number of
+new technologies.
+
+82
+00:04:07,620 --> 00:04:12,880
+Something that's hidden here is that we
+set the dispersion parameter to zero.
+
+83
+00:04:12,880 --> 00:04:15,160
+So we're saying we're not allowing for any
+dispersion.
+
+84
+00:04:15,160 --> 00:04:17,370
+The only difference you're going to see
+with the negative binomial is
+
+85
+00:04:17,370 --> 00:04:20,310
+that we'll actually estimate this, we
+won't set it to zero.
+
+86
+00:04:20,310 --> 00:04:22,240
+What you're going to pay attention to in
+the output here,
+
+87
+00:04:22,240 --> 00:04:25,370
+is just kind of scan the Poisson
+regression model that we've got,
+
+88
+00:04:25,370 --> 00:04:29,720
+look at the beta coefficients, And then
+also look at the standard errors.
+
+89
+00:04:29,720 --> 00:04:31,860
+What's going to happen when we do a
+negative binomial is
+
+90
+00:04:31,860 --> 00:04:33,790
+that the beta coefficients aren't going to
+change much at all.
+
+91
+00:04:33,790 --> 00:04:36,860
+because this doesn't really effect the
+beta coefficients at all it
+
+92
+00:04:36,860 --> 00:04:41,370
+simply effects the variants or the
+standard error.
+
+93
+00:04:41,370 --> 00:04:45,527
+However, look carefully at the standard
+errors they are about .01,
+
+94
+00:04:45,527 --> 00:04:48,310
+.004, .1086, .0036 Those standard errors
+are going to get a lot bigger,
+
+95
+00:04:48,310 --> 00:04:50,140
+when we account for dispersion.
+
+96
+00:04:50,140 --> 00:04:53,880
+So now let me show you the negative
+binomial regression for the same data.
+
+97
+00:04:53,880 --> 00:04:55,370
+Same model, same data.
+
+98
+00:04:55,370 --> 00:04:58,300
+So notice now first focus on this
+dispersion parameter.
+
+99
+00:04:58,300 --> 00:05:02,440
+We've estimated this additional parameter,
+that's called the dispersion parameter.
+
+100
+00:05:02,440 --> 00:05:07,120
+Came out with a value of positive ,1654
+and we also get a standard error for
+
+101
+00:05:07,120 --> 00:05:08,470
+this dispersion parameter.
+
+102
+00:05:08,470 --> 00:05:12,360
+Notice if I divide the point estimate by
+its standard error here,
+
+103
+00:05:12,360 --> 00:05:17,120
+I'm going to get assuming this is normally
+distributed, I'm going to get a Z score.
+
+104
+00:05:17,120 --> 00:05:20,450
+You know, of above three, it's going to be
+highly statistically significant.
+
+105
+00:05:20,450 --> 00:05:24,210
+That's telling me that the dispersion is
+different than zero.
+
+106
+00:05:24,210 --> 00:05:25,740
+There is dispersion.
+
+107
+00:05:25,740 --> 00:05:27,240
+That means I need to account for it.
+
+108
+00:05:27,240 --> 00:05:29,470
+If I had fit the negative binomial
+regression and
+
+109
+00:05:29,470 --> 00:05:32,500
+the dispersion value had come out close to
+zero And
+
+110
+00:05:32,500 --> 00:05:35,880
+you know wasn't statistically significant,
+then I would say Poisson regression model
+
+111
+00:05:35,880 --> 00:05:38,100
+is good enough, it doesn't look like it
+have a lot of dispersion.
+
+112
+00:05:38,100 --> 00:05:41,380
+So you can actually fit the negative
+binomial, check the dispersion parameter,
+
+113
+00:05:41,380 --> 00:05:45,340
+if its close to zero, go with Poisson, if
+its away from zero as is it here,
+
+114
+00:05:45,340 --> 00:05:46,470
+then go with the negative binomial.
+
+115
+00:05:47,510 --> 00:05:50,420
+Notice, that you actually look at the
+betas, they don't change much,
+
+116
+00:05:50,420 --> 00:05:52,730
+they're almost identical to what we got
+from From plus on.
+
+117
+00:05:52,730 --> 00:05:54,890
+So this does not effect the point
+estimates.
+
+118
+00:05:54,890 --> 00:05:58,220
+However, look over here at the standard
+errors.
+
+119
+00:05:58,220 --> 00:06:02,720
+We had about .01 before that's more than
+doubled, we had .04 that's now .008.
+
+120
+00:06:02,720 --> 00:06:08,160
+A lot of that, they're almost all either
+nearly doubled or, or doubled.
+
+121
+00:06:08,160 --> 00:06:11,150
+So the standard errors are quite a bit
+bigger that's going to
+
+122
+00:06:11,150 --> 00:06:12,710
+make a huge impact on the p-values.
+
+123
+00:06:12,710 --> 00:06:16,390
+So you'll notice that all of the p-values
+are smaller than they were.
+
+124
+00:06:16,390 --> 00:06:21,080
+This new technology, linear term, is no
+longer significant.
+
+125
+00:06:21,080 --> 00:06:24,270
+And the year squared term is kind of only
+borderline.
+
+126
+00:06:24,270 --> 00:06:26,200
+All of them were significant before.
+
+127
+00:06:26,200 --> 00:06:28,570
+This is important because it can really
+effect the p-values.
+
+128
+00:06:28,570 --> 00:06:32,550
+Just for fun, I also took this data,
+
+129
+00:06:32,550 --> 00:06:35,490
+because sometimes you get data and you're
+not quite sure which model to put them in.
+
+130
+00:06:35,490 --> 00:06:37,540
+So you have to go through this thought
+process.
+
+131
+00:06:37,540 --> 00:06:41,510
+I also took these count data and because
+if you plot them in a histogram,
+
+132
+00:06:41,510 --> 00:06:44,600
+you realize that they're, you know,
+there's a, there's a fair range here.
+
+133
+00:06:44,600 --> 00:06:49,620
+Perhaps, we can make these a little bit
+normally distributed if we apply a log.
+
+134
+00:06:49,620 --> 00:06:52,790
+And so, you could try to kind of force
+these data in a linear regression and
+
+135
+00:06:52,790 --> 00:06:55,480
+I did that just to show you what happens.
+
+136
+00:06:55,480 --> 00:07:00,180
+So I took the log count data because
+that's more normally distributed than
+
+137
+00:07:00,180 --> 00:07:00,690
+the count data.
+
+138
+00:07:00,690 --> 00:07:03,390
+Although, still not perfectly normally
+distributed.
+
+139
+00:07:03,390 --> 00:07:06,410
+And I ran it with a regular old linear
+regression, same model.
+
+140
+00:07:06,410 --> 00:07:07,760
+And here's the outcome that I get.
+
+141
+00:07:07,760 --> 00:07:08,740
+So notice, first of all,
+
+142
+00:07:08,740 --> 00:07:12,680
+that the beta coefficients are almost
+identical to what we saw before.
+
+143
+00:07:12,680 --> 00:07:14,760
+So no matter which of these models you
+choose,
+
+144
+00:07:14,760 --> 00:07:17,610
+your basically getting the same beta
+coefficients.
+
+145
+00:07:17,610 --> 00:07:18,860
+So that's good.
+
+146
+00:07:18,860 --> 00:07:20,310
+What changes is the standard error.
+
+147
+00:07:20,310 --> 00:07:24,990
+So the standard errors here are now
+actually a little bit higher than with,
+
+148
+00:07:24,990 --> 00:07:27,850
+the optimal model, which is negative
+binomial regression.
+
+149
+00:07:27,850 --> 00:07:31,860
+The standard error is a little higher, so
+the p values are even Even bigger.
+
+150
+00:07:31,860 --> 00:07:36,560
+And we're going to miss some things that
+actually are statistically significant
+
+151
+00:07:36,560 --> 00:07:38,120
+in the negative binomial regression.
+
+152
+00:07:38,120 --> 00:07:42,780
+So, the linear regression turns out to be
+overly conservative for these data.
+
+153
+00:07:42,780 --> 00:07:45,020
+So, if you had forced this into a linear
+regression,
+
+154
+00:07:45,020 --> 00:07:46,640
+you might have missed something.
+
+155
+00:07:46,640 --> 00:07:50,790
+So, with count data, it's probably best to
+just start with the negative binomial.
+
+156
+00:07:50,790 --> 00:07:54,150
+And then if you want to get simpler from
+there, you know if you don't need
+
+157
+00:07:54,150 --> 00:07:58,490
+the dispersion parameter, or you could try
+a linear regression if it looks like you,
+
+158
+00:07:58,490 --> 00:08:02,000
+really the counts are really filling in
+all the wide range that aren't
+
+159
+00:08:02,000 --> 00:08:05,090
+normally distributed, but often with
+counts, they're not normally distributed.
+
+160
+00:08:05,090 --> 00:08:07,970
+So with counts, think of negative binomial
+or plasan.
+
+161
+00:08:07,970 --> 00:08:13,710
+And then finally, I just want to mention
+that as with the plasan regression.
+
+162
+00:08:13,710 --> 00:08:16,940
+You can take the data co-efficients from a
+negative binomial regression and
+
+163
+00:08:16,940 --> 00:08:19,840
+they have a direct interpretation as
+relative risks.
+
+164
+00:08:19,840 --> 00:08:22,290
+So, if you just exponentiate the data
+co-efficients from
+
+165
+00:08:22,290 --> 00:08:23,880
+negative binomial regression.
+
+166
+00:08:25,530 --> 00:08:29,040
+That's going to give you the incidence
+rate ratio, same as with Poisson.
+
+167
+00:08:29,040 --> 00:08:31,020
+So, everything is identical.
+
+168
+00:08:31,020 --> 00:08:32,760
+I want to give you an example here or
+
+169
+00:08:32,760 --> 00:08:35,560
+a model is a little complicated because I
+have got all Interaction in
+
+170
+00:08:35,560 --> 00:08:39,330
+a higher order terms, but let me walk you
+through one calculation.
+
+171
+00:08:39,330 --> 00:08:41,800
+So, for example, our beta for
+
+172
+00:08:41,800 --> 00:08:45,707
+the number of new technologies, that was
+negative .27.
+
+173
+00:08:45,707 --> 00:08:50,410
+Our beta for the interaction between
+technologies is And
+
+174
+00:08:50,410 --> 00:08:54,090
+year turned out to be positive 0.015,
+
+175
+00:08:54,090 --> 00:08:58,650
+and remember that I've modeled years here
+as the number of years since 1969.
+
+176
+00:08:58,650 --> 00:09:04,890
+So how would I get the incidence rate
+ratio for new technology Well, of course,
+
+177
+00:09:04,890 --> 00:09:09,800
+because of an interaction term that means
+that this rate ratio depends on the year
+
+178
+00:09:09,800 --> 00:09:12,770
+that we're talking about, technology has a
+different effect depending on the year.
+
+179
+00:09:12,770 --> 00:09:18,000
+The easiest one to calculate it for is if
+I just look at 1969.
+
+180
+00:09:18,000 --> 00:09:23,640
+So if I look at 1969 the interaction term
+will go to 0 because I've modeled
+
+181
+00:09:23,640 --> 00:09:27,750
+this as year since 1969 so that will have
+a value, year will have a value of 0.
+
+182
+00:09:27,750 --> 00:09:29,590
+This interaction term will go away.
+
+183
+00:09:29,590 --> 00:09:34,580
+So at, in 1969, the ri, the risk ratio,
+the rate ratio for new
+
+184
+00:09:34,580 --> 00:09:39,820
+technologies was e raised to the negative
+0.27 which is a risk ratio of 0.76.
+
+185
+00:09:39,820 --> 00:09:44,900
+So introducing a new technology in 1969
+had little effect, if anything, it,
+
+186
+00:09:44,900 --> 00:09:47,760
+there were less world records when that
+happened.
+
+187
+00:09:47,760 --> 00:09:50,845
+However, scroll ahead 40 years later to
+2009.
+
+188
+00:09:50,845 --> 00:09:51,870
+[UNKNOWN].
+
+189
+00:09:51,870 --> 00:09:53,560
+What are we going to get in our model.
+
+190
+00:09:53,560 --> 00:09:56,700
+So our risk ratio's going to be negative
+.27 but
+
+191
+00:09:56,700 --> 00:10:01,840
+now we get the interaction term so I'm
+doing this very one, one new technology so
+
+192
+00:10:01,840 --> 00:10:06,220
+technology will be one, I'm going to
+multiply it by 40, 40 years since 1969.
+
+193
+00:10:06,220 --> 00:10:08,975
+The beta co-efficient here was .015.
+
+194
+00:10:08,975 --> 00:10:11,200
+.015 time 40 is .60.
+
+195
+00:10:11,200 --> 00:10:17,550
+This is going to, if I add .60 minus .27 I
+get e raised to .33 so
+
+196
+00:10:17,550 --> 00:10:20,040
+the odd, the relative risk here is 1.39.
+
+197
+00:10:20,040 --> 00:10:26,710
+So if you're talking about 2009 than every
+new technology
+
+198
+00:10:26,710 --> 00:10:31,310
+increases your weight of world records or
+your risk of world records by 39%.
+
+199
+00:10:31,310 --> 00:10:35,000
+So new technologies are having a really
+big impact in the later Four years.
+
+200
+00:10:35,000 --> 00:10:36,770
+That's what the interaction term tells us.
+
+201
+00:10:36,770 --> 00:10:40,710
+But again with negative binomial, there's
+a nice, easy, you can get out these,
+
+202
+00:10:40,710 --> 00:10:44,150
+these rate ratios better than odds ratios
+as, as we know.

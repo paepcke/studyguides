@@ -1,0 +1,1128 @@
+1
+00:00:00,740 --> 00:00:03,760
+So now I'm going to give you some details
+about how we
+
+2
+00:00:03,760 --> 00:00:07,310
+actually build the propensity score model.
+
+3
+00:00:07,310 --> 00:00:11,320
+So here's the logistic regression model
+that they used in example 1.
+
+4
+00:00:11,320 --> 00:00:13,790
+So the outcome here was the Ross
+procedure.
+
+5
+00:00:13,790 --> 00:00:16,550
+If you didn't get the Ross procedure you
+got the mechanical valve.
+
+6
+00:00:16,550 --> 00:00:21,040
+They put into the model 23 predictors, 23
+things that they thought would
+
+7
+00:00:21,040 --> 00:00:24,130
+predict whether or not you were going to
+get one treatment or the other.
+
+8
+00:00:24,130 --> 00:00:30,310
+So things like age, valve disease, gender,
+coronary artery bypass, et cetera.
+
+9
+00:00:30,310 --> 00:00:32,810
+Notice that they're sticking an awful lot
+of things in the model.
+
+10
+00:00:32,810 --> 00:00:36,010
+So one of the things that's different
+about propensity score modeling
+
+11
+00:00:36,010 --> 00:00:39,040
+from the other types of model building
+we've talked about is that you're going to
+
+12
+00:00:39,040 --> 00:00:43,630
+actually try to overfit your model, try to
+stuff in as many things as you can,
+
+13
+00:00:43,630 --> 00:00:46,320
+to get the best fit possible to your
+sample.
+
+14
+00:00:46,320 --> 00:00:50,440
+We want to balance the groups with respect
+to all of these different covariates.
+
+15
+00:00:50,440 --> 00:00:53,580
+For example, two of the propensity score
+model against the logistic regression
+
+16
+00:00:53,580 --> 00:00:56,290
+model, they were predicting whether or not
+you got rehabilitation.
+
+17
+00:00:56,290 --> 00:00:58,850
+They put all sorts of things in their
+model.
+
+18
+00:00:58,850 --> 00:00:59,980
+Actually, 112 predictors.
+
+19
+00:00:59,980 --> 00:01:03,050
+So, again, we're really going to stuff the
+model in the case of
+
+20
+00:01:03,050 --> 00:01:04,181
+propensity score modeling.
+
+21
+00:01:05,940 --> 00:01:08,230
+So here are the actual steps of building a
+propensity score model.
+
+22
+00:01:08,230 --> 00:01:11,360
+So, first of all, of course, you're going
+to identify potential confounders.
+
+23
+00:01:11,360 --> 00:01:14,320
+Confounders have to be related both to the
+treatment and the outcome.
+
+24
+00:01:14,320 --> 00:01:18,340
+So if there are variables that are clearly
+totally unrelated to either
+
+25
+00:01:18,340 --> 00:01:21,240
+the treatment or the outcome, it may not
+be worth using them.
+
+26
+00:01:22,470 --> 00:01:23,740
+We're going to be liberal about this, or
+
+27
+00:01:23,740 --> 00:01:26,480
+in other words, we're going to only take
+it out of
+
+28
+00:01:26,480 --> 00:01:31,580
+the set if it's really clearly not a
+treatment or, related to the treatment.
+
+29
+00:01:31,580 --> 00:01:34,840
+If it's even a little related, we're
+probably going to include it in our model.
+
+30
+00:01:34,840 --> 00:01:38,350
+We're going to then need to impute missing
+data for reason we've talked about.
+
+31
+00:01:38,350 --> 00:01:41,080
+We're going to be building a
+non-parsimonious model.
+
+32
+00:01:41,080 --> 00:01:44,920
+So this is very different than other model
+building situations where we're
+
+33
+00:01:44,920 --> 00:01:46,260
+usually trying to be parsimonious.
+
+34
+00:01:46,260 --> 00:01:49,360
+Here we're going to just stuff in
+everything, maybe putting quadratics,
+
+35
+00:01:49,360 --> 00:01:51,760
+interaction terms, higher order terms.
+
+36
+00:01:51,760 --> 00:01:54,080
+We're going to try to really stuff the
+model, we're,
+
+37
+00:01:54,080 --> 00:01:58,560
+we really want to fit our model to our
+sample as closely as possible.
+
+38
+00:01:58,560 --> 00:02:02,220
+That's going to get us the best balance of
+covariates in the two
+
+39
+00:02:02,220 --> 00:02:04,020
+different treatment groups.
+
+40
+00:02:04,020 --> 00:02:06,760
+Then we're going to take the propensity
+scores and
+
+41
+00:02:06,760 --> 00:02:11,680
+we're going to stratify or, match on the
+resulting scores.
+
+42
+00:02:11,680 --> 00:02:14,870
+And we're going to come up with now,
+comparing apples and apples.
+
+43
+00:02:14,870 --> 00:02:18,590
+So we're going to be now comparing only
+people who are in quintile one to people
+
+44
+00:02:18,590 --> 00:02:21,370
+who are in quintile one, for example, or
+we're going to have a matched cohort where
+
+45
+00:02:21,370 --> 00:02:25,860
+every Ross patient has been matched to a
+mechanical valve patient.
+
+46
+00:02:25,860 --> 00:02:30,440
+So our groups are now comparable, and we
+want to assess whether or not those
+
+47
+00:02:30,440 --> 00:02:34,620
+covariates that we put in the regression
+model, whether or not those are balanced.
+
+48
+00:02:34,620 --> 00:02:36,420
+Hopefully they'll be reasonably balanced.
+
+49
+00:02:36,420 --> 00:02:37,880
+I'll show you an example in a minute.
+
+50
+00:02:37,880 --> 00:02:40,175
+If the balance isn't great, we're going to
+go back and
+
+51
+00:02:40,175 --> 00:02:43,133
+actually try to refit the model, stuffing
+more things in the model,
+
+52
+00:02:43,133 --> 00:02:46,367
+other additional confounders, higher-order
+terms to get a better fit.
+
+53
+00:02:46,367 --> 00:02:48,138
+To get better balance and
+
+54
+00:02:48,138 --> 00:02:52,151
+just to say again what I've said already
+about missing data.
+
+55
+00:02:52,151 --> 00:02:56,037
+After an individual is missing one data
+point for one variable, they're going to
+
+56
+00:02:56,037 --> 00:02:59,285
+be omitted from that logistic regression
+model, so it's going to be
+
+57
+00:02:59,285 --> 00:03:03,270
+very important to impute missing data
+before doing propensity scores.
+
+58
+00:03:03,270 --> 00:03:04,900
+So for example, in the rehabilitation
+study,
+
+59
+00:03:04,900 --> 00:03:06,810
+they put 112 predictors in their models.
+
+60
+00:03:06,810 --> 00:03:11,420
+Now, only seven of those variables were
+missing values.
+
+61
+00:03:11,420 --> 00:03:13,490
+But each one of those was missing values
+for
+
+62
+00:03:13,490 --> 00:03:18,020
+anywhere between 0.5 to 5.5% of the data
+set.
+
+63
+00:03:18,020 --> 00:03:21,400
+Well, if your one variable's missing 5%,
+another variable's missing 2%, and
+
+64
+00:03:21,400 --> 00:03:26,370
+another variable's missing 1%, over seven
+variables if different people
+
+65
+00:03:26,370 --> 00:03:29,930
+are missing values on different variables,
+that can really add up.
+
+66
+00:03:29,930 --> 00:03:32,400
+So a lot of the sample, could be 15% of
+the sample,
+
+67
+00:03:32,400 --> 00:03:33,760
+would get dumped if you didn't fill those
+in.
+
+68
+00:03:33,760 --> 00:03:35,980
+So you just have to fill them in, at least
+with something.
+
+69
+00:03:37,290 --> 00:03:38,680
+All of our normal rules of
+
+70
+00:03:38,680 --> 00:03:40,480
+model building aren't going to apply to
+propensity scores.
+
+71
+00:03:40,480 --> 00:03:42,380
+We're not going to worry about parsimony,
+as I said.
+
+72
+00:03:42,380 --> 00:03:43,460
+We're not going to worry about
+overfitting.
+
+73
+00:03:43,460 --> 00:03:46,230
+We're going to try all sort of
+interactions and quadratic terms.
+
+74
+00:03:46,230 --> 00:03:49,310
+We're not worried about chance findings,
+here, because we don't care.
+
+75
+00:03:49,310 --> 00:03:52,665
+We're not going to be using the betas from
+those logistic regression model
+
+76
+00:03:52,665 --> 00:03:54,270
+for anything.
+
+77
+00:03:54,270 --> 00:03:58,390
+We're just purely trying to compress the
+data into a probability.
+
+78
+00:03:58,390 --> 00:04:03,100
+The one thing that people have found
+actually can improve your model fit
+
+79
+00:04:03,100 --> 00:04:06,650
+here can, you can do a little better if
+you omit variables that
+
+80
+00:04:06,650 --> 00:04:08,970
+are actually totally unrelated to the
+outcomes.
+
+81
+00:04:08,970 --> 00:04:14,250
+And I'd recommend saying like, if your p
+value between the potential confounder and
+
+82
+00:04:14,250 --> 00:04:18,500
+the outcome is greater than 0.2, maybe
+don't bother putting it in the model.
+
+83
+00:04:18,500 --> 00:04:22,320
+The reason is that statisticians have
+shown in simulation studies that
+
+84
+00:04:22,320 --> 00:04:26,790
+including these doesn't benefit you at all
+in terms of balancing the covariates or
+
+85
+00:04:26,790 --> 00:04:30,890
+reducing bias, but it does sometimes make
+it harder to find matches if you're
+
+86
+00:04:30,890 --> 00:04:32,960
+trying to do matching of the propensity
+score.
+
+87
+00:04:32,960 --> 00:04:35,429
+So there may be some advantage to not
+bothering with those.
+
+88
+00:04:37,020 --> 00:04:41,060
+So how do we evaluate whether or not we've
+done well with the model?
+
+89
+00:04:41,060 --> 00:04:43,730
+It's a success if it balances the
+treatment groups with
+
+90
+00:04:43,730 --> 00:04:46,870
+respect to covariates, the covariates
+we've measured.
+
+91
+00:04:46,870 --> 00:04:47,930
+If it, the balance, again,
+
+92
+00:04:47,930 --> 00:04:49,960
+is not achieved, we're going to have to
+refit the model.
+
+93
+00:04:50,960 --> 00:04:54,108
+So here's an example of how to evaluate
+the balance.
+
+94
+00:04:54,108 --> 00:04:59,020
+We're going to actually look at effect
+sizes rather than any p-value tests, So
+
+95
+00:04:59,020 --> 00:05:02,480
+that if you think about the way people
+look at balance and randomized trials,
+
+96
+00:05:02,480 --> 00:05:06,900
+they usually take the baseline variables
+and they line them up between the groups.
+
+97
+00:05:06,900 --> 00:05:08,470
+And they do some kind of p-value tests.
+
+98
+00:05:08,470 --> 00:05:10,835
+And they say, oh well, as long as the
+p-value is,
+
+99
+00:05:10,835 --> 00:05:13,880
+you know, not significant, then we're
+balanced.
+
+100
+00:05:13,880 --> 00:05:17,320
+We're not going to want to use a p-value
+test here for several reasons.
+
+101
+00:05:17,320 --> 00:05:20,340
+P-values are highly dependent on sample
+size, and
+
+102
+00:05:20,340 --> 00:05:23,460
+just because a p-value is non-significant
+doesn't indicate,
+
+103
+00:05:23,460 --> 00:05:26,160
+doesn't guarantee that the groups are
+necessarily balanced.
+
+104
+00:05:26,160 --> 00:05:29,500
+You could still have a fairly big
+difference in terms of the di,
+
+105
+00:05:29,500 --> 00:05:33,920
+big, affect size but even if the P-value
+doesn't come out to be significant.
+
+106
+00:05:33,920 --> 00:05:35,050
+So we're going to rely on a,
+
+107
+00:05:35,050 --> 00:05:38,860
+an effect size comparison, rather than a
+p-value comparison.
+
+108
+00:05:38,860 --> 00:05:41,750
+What we're going to do is, we're going to
+compare the difference between the two
+
+109
+00:05:41,750 --> 00:05:46,030
+groups, the mean difference between the
+two groups on every variable of interest.
+
+110
+00:05:46,030 --> 00:05:49,260
+We're going to standardize it so it's in
+standard deviation units.
+
+111
+00:05:49,260 --> 00:05:52,270
+It's a little bit easier to compare across
+different variables.
+
+112
+00:05:52,270 --> 00:05:55,020
+We're looking for standardized differences
+that are less than 10%,
+
+113
+00:05:55,020 --> 00:06:00,560
+so that the groups differ, by less than
+10% of a standard deviation.
+
+114
+00:06:00,560 --> 00:06:02,960
+That would be considered reasonable
+balance.
+
+115
+00:06:04,290 --> 00:06:06,770
+How do we actually calculate the
+standardized difference?
+
+116
+00:06:06,770 --> 00:06:08,830
+All it is is we take the mean in one
+group,
+
+117
+00:06:08,830 --> 00:06:11,320
+subtract it from the mean in the other
+group, that's the mean difference.
+
+118
+00:06:11,320 --> 00:06:14,660
+And then we put it in standard deviation
+units by dividing by
+
+119
+00:06:14,660 --> 00:06:16,520
+the standard deviation for that variable.
+
+120
+00:06:16,520 --> 00:06:17,890
+Since we have standard deviations for
+
+121
+00:06:17,890 --> 00:06:20,850
+both groups, we're just going to take an
+average of the standard deviations.
+
+122
+00:06:20,850 --> 00:06:24,960
+So just to give an example, in the Ross
+study, the mean age for
+
+123
+00:06:24,960 --> 00:06:25,990
+the Ross patients was 41.6.
+
+124
+00:06:25,990 --> 00:06:28,100
+The standard deviation was 11.
+
+125
+00:06:28,100 --> 00:06:31,130
+The mean age for the mechanical valve
+patients was 49.
+
+126
+00:06:31,130 --> 00:06:33,072
+The standard deviation was 10.
+
+127
+00:06:33,072 --> 00:06:36,530
+We average the standard deviations from
+the two groups to come up with an average
+
+128
+00:06:36,530 --> 00:06:42,780
+standard deviation of 10.65, so therefore
+the standardized difference
+
+129
+00:06:42,780 --> 00:06:45,380
+would be 49.5 minus 41.6, about eight
+years of difference.
+
+130
+00:06:45,380 --> 00:06:48,600
+The standard deviation for age is about
+10.
+
+131
+00:06:48,600 --> 00:06:51,850
+So you can see that they're not quite a
+full standard deviation away from
+
+132
+00:06:51,850 --> 00:06:56,610
+each other, and then we typically will
+actually multiply this by 100, so
+
+133
+00:06:56,610 --> 00:06:58,050
+that we can get it in a percentage.
+
+134
+00:06:58,050 --> 00:06:59,930
+It's just easier to deal with whole
+numbers.
+
+135
+00:06:59,930 --> 00:07:01,370
+So this turns out be a value of 75%.
+
+136
+00:07:01,370 --> 00:07:05,820
+So the standardized difference here is
+75%, meaning that there is,
+
+137
+00:07:05,820 --> 00:07:10,359
+a difference between the groups of 75% or
+three-quarters of a standard deviation.
+
+138
+00:07:11,920 --> 00:07:15,410
+And this particular study actually has a
+really nice graphic that
+
+139
+00:07:15,410 --> 00:07:18,798
+illustrates looking for balance between
+the groups.
+
+140
+00:07:18,798 --> 00:07:21,970
+So what you're seeing here is the absolute
+standardized differences,
+
+141
+00:07:21,970 --> 00:07:25,150
+these percentages, percent of a
+standard-deviation difference between
+
+142
+00:07:25,150 --> 00:07:26,800
+the groups are on the x-axis.
+
+143
+00:07:26,800 --> 00:07:30,840
+And all these different covariates that we
+want to balance are on the y-axis.
+
+144
+00:07:30,840 --> 00:07:35,220
+The filled-in circles represent before we
+did the propensity score matching.
+
+145
+00:07:35,220 --> 00:07:38,870
+The open circles, or open ovals, represent
+after the matching.
+
+146
+00:07:39,930 --> 00:07:42,260
+So before a propensity score matching,
+
+147
+00:07:42,260 --> 00:07:46,470
+you can see that a lot of variables had
+very big differences between the groups.
+
+148
+00:07:46,470 --> 00:07:48,490
+We already saw that when we looked at
+table one.
+
+149
+00:07:49,930 --> 00:07:52,710
+What they did then was to calculate the
+propensities for
+
+150
+00:07:52,710 --> 00:07:54,350
+us, and they did one-to-one matching.
+
+151
+00:07:54,350 --> 00:07:59,890
+So they would, for every Ross patient who
+had a propensity score of 0.5,
+
+152
+00:07:59,890 --> 00:08:00,930
+they would try to go out and
+
+153
+00:08:00,930 --> 00:08:05,660
+find a mechanical valve patient who had a
+propensity score around 0.5.
+
+154
+00:08:05,660 --> 00:08:08,350
+And they were able to find matches for
+
+155
+00:08:08,350 --> 00:08:11,540
+some of the patients in the original
+cohort, but not all, so
+
+156
+00:08:11,540 --> 00:08:14,851
+the matched cohort is actually smaller
+than the original unmatched cohort.
+
+157
+00:08:16,080 --> 00:08:20,960
+When they compare all of these different
+variables between the two
+
+158
+00:08:20,960 --> 00:08:23,315
+treatment groups after matching,
+
+159
+00:08:23,315 --> 00:08:27,070
+you'll notice that all of these
+standardized differences were below 10%.
+
+160
+00:08:27,070 --> 00:08:28,100
+That's what we want.
+
+161
+00:08:28,100 --> 00:08:28,730
+That's good balance.
+
+162
+00:08:31,040 --> 00:08:34,010
+Now we can also use the propensity scores
+just to
+
+163
+00:08:34,010 --> 00:08:37,240
+help us get a sense of who can be compared
+and
+
+164
+00:08:37,240 --> 00:08:41,530
+who, some of the patients in our, study
+may just not have a good comparator.
+
+165
+00:08:41,530 --> 00:08:45,300
+So for example on the raw study they
+couldn't find matches for everybody.
+
+166
+00:08:45,300 --> 00:08:47,150
+That means that there were just some
+patients who,
+
+167
+00:08:47,150 --> 00:08:50,740
+every doctor would give a Ross procedure
+to, and there were some patients who just,
+
+168
+00:08:50,740 --> 00:08:53,370
+every doctor would give a mechanical valve
+to.
+
+169
+00:08:53,370 --> 00:08:55,190
+In other words there really wasn't any
+uncertainty for
+
+170
+00:08:55,190 --> 00:09:00,050
+those patients to begin with, so we really
+don't need to say anything, though.
+
+171
+00:09:00,050 --> 00:09:01,420
+Those patients are going to get one
+treatment or
+
+172
+00:09:01,420 --> 00:09:03,880
+the other all the time anyway.
+
+173
+00:09:03,880 --> 00:09:07,380
+We don't really need to figure out which
+treatment to give them.
+
+174
+00:09:07,380 --> 00:09:09,430
+So this is just illustrated here.
+
+175
+00:09:09,430 --> 00:09:12,780
+A really good thing to do is actually to
+plot the distribution of
+
+176
+00:09:12,780 --> 00:09:15,830
+the propensity scores in your different
+groups.
+
+177
+00:09:15,830 --> 00:09:17,720
+So imagine, this is just a made up graph,
+but
+
+178
+00:09:17,720 --> 00:09:21,410
+imagine we've got, a group of treated
+subjects.
+
+179
+00:09:21,410 --> 00:09:23,000
+Then we calculate their propensity scores.
+
+180
+00:09:23,000 --> 00:09:25,310
+These are the ones that we know actually
+did get the treatment, so
+
+181
+00:09:25,310 --> 00:09:28,600
+not surprisingly they have higher
+propensity scores.
+
+182
+00:09:28,600 --> 00:09:32,550
+The propensity scores for the untreated
+group are given with the dotted line here.
+
+183
+00:09:32,550 --> 00:09:34,820
+So you can see that the distributions do
+overlap.
+
+184
+00:09:34,820 --> 00:09:36,440
+There are some people that are comparable,
+
+185
+00:09:36,440 --> 00:09:39,870
+but some parts of the distributions do not
+overlap.
+
+186
+00:09:39,870 --> 00:09:47,370
+So, there is a point at which none of the
+untreated people got propensity
+
+187
+00:09:47,370 --> 00:09:51,770
+scores higher than a value of around, that
+looks like around 0.75 or 0.8.
+
+188
+00:09:51,770 --> 00:09:54,590
+Above that propensity score, there were
+nobody,
+
+189
+00:09:54,590 --> 00:09:58,292
+there was nobody in the untreated group
+who got a propensity score that high.
+
+190
+00:09:58,292 --> 00:10:01,170
+That means there's a certain group of
+patients that are always going to
+
+191
+00:10:01,170 --> 00:10:03,280
+get treated no matter what.
+
+192
+00:10:03,280 --> 00:10:07,790
+And, similarly, on the other side here
+there was, among the treated group,
+
+193
+00:10:07,790 --> 00:10:12,610
+there was nobody who had a propensity
+score less than, looks like about 0.25.
+
+194
+00:10:12,610 --> 00:10:17,360
+So there's just a group of patients who
+are never going to get this treatment.
+
+195
+00:10:17,360 --> 00:10:18,450
+We can't compare them.
+
+196
+00:10:18,450 --> 00:10:22,945
+We have to drop them out of the rest of
+the analysis, and
+
+197
+00:10:22,945 --> 00:10:24,450
+they're just going to be excluded.
+
+198
+00:10:25,498 --> 00:10:27,374
+after, if you look inside here,
+
+199
+00:10:27,374 --> 00:10:30,940
+you'll notice that there are equal, there
+are comparators.
+
+200
+00:10:30,940 --> 00:10:35,960
+So, for example, here, there was at least
+one person who you can compare that had
+
+201
+00:10:35,960 --> 00:10:37,160
+got the same propensity score.
+
+202
+00:10:37,160 --> 00:10:40,400
+So we can do matching or stratification
+there, but
+
+203
+00:10:40,400 --> 00:10:41,660
+some patients have to be excluded.
+
+204
+00:10:41,660 --> 00:10:42,790
+That happened in the raw study.
+
+205
+00:10:42,790 --> 00:10:45,200
+There were people who couldn't be
+compared, and they were just dropped.
+
+206
+00:10:46,660 --> 00:10:49,570
+This is kind of showing the same thing
+with a different example,
+
+207
+00:10:49,570 --> 00:10:51,350
+some real data from real paper.
+
+208
+00:10:51,350 --> 00:10:56,435
+So, there was, they were wanting to
+compare diuretics to no diuretics.
+
+209
+00:10:56,435 --> 00:10:59,450
+They calculated the propensity scores, the
+propensity that you,
+
+210
+00:10:59,450 --> 00:11:01,490
+the likelihood that you would get
+diuretics.
+
+211
+00:11:01,490 --> 00:11:04,710
+The, you can see that those who did get
+diuretics, not surprisingly,
+
+212
+00:11:04,710 --> 00:11:06,030
+had higher propensity scores.
+
+213
+00:11:06,030 --> 00:11:08,820
+Those who didn't get diuretics had lower
+propensity scores.
+
+214
+00:11:08,820 --> 00:11:13,710
+There's places where there's no overlap,
+so nobody who's in
+
+215
+00:11:13,710 --> 00:11:17,030
+the untreated group got propensity scores
+higher than a certain amount.
+
+216
+00:11:17,030 --> 00:11:19,100
+These we can't find matches for.
+
+217
+00:11:19,100 --> 00:11:20,328
+They're going to have to be excluded.
+
+218
+00:11:20,328 --> 00:11:24,980
+And similarly, among the untreated group,
+there were some who had
+
+219
+00:11:24,980 --> 00:11:29,550
+propensity scores that were so low that
+there's no overlap with the treated group.
+
+220
+00:11:29,550 --> 00:11:32,100
+Those people will be excluded as well.
+
+221
+00:11:32,100 --> 00:11:35,140
+Then, where there's overlap, we can
+develop a matched cohort.
+
+222
+00:11:35,140 --> 00:11:37,080
+So among the matched cohort,
+
+223
+00:11:37,080 --> 00:11:40,520
+we're going to find for every no-diuretics
+patient, we're going to find a patient who
+
+224
+00:11:40,520 --> 00:11:43,980
+got diuretics who has the same propensity
+score, and that's, those will
+
+225
+00:11:43,980 --> 00:11:49,170
+become a matched pair in our data set and
+taken forth for further analysis.
+
+226
+00:11:50,940 --> 00:11:53,760
+And finally, you may end up with a
+situation where there
+
+227
+00:11:53,760 --> 00:11:57,030
+is really no overlap and that's
+informative too.
+
+228
+00:11:57,030 --> 00:12:00,550
+If you plot the distributions of the
+propensity scores in the two groups, so
+
+229
+00:12:00,550 --> 00:12:05,830
+here, it's showing, males versus females,
+you may end up with so
+
+230
+00:12:05,830 --> 00:12:10,430
+little overlap that it actually tells you
+that we just have, there's, men and
+
+231
+00:12:10,430 --> 00:12:12,150
+women are just too different here.
+
+232
+00:12:12,150 --> 00:12:16,810
+We cannot make meaningful comparisons, and
+the analysis would stop there.
+
+233
+00:12:16,810 --> 00:12:17,790
+But that's useful.
+
+234
+00:12:17,790 --> 00:12:22,200
+That's a useful insight to know that women
+are always treated in one way and
+
+235
+00:12:22,200 --> 00:12:24,290
+men are always treated in the other way,
+and there's no overlap.
+
+236
+00:12:24,290 --> 00:12:25,770
+Therefore we can't compare them.

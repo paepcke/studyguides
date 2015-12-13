@@ -1,0 +1,427 @@
+1
+00:00:05,300 --> 00:00:11,350
+Up until now we have been implicitly
+assuming that change over time was linear.
+
+2
+00:00:11,350 --> 00:00:13,390
+Of course, there's no reason it has to be
+linear.
+
+3
+00:00:13,390 --> 00:00:17,150
+You can imagine that there may be cases
+where you have non linear time effects and
+
+4
+00:00:17,150 --> 00:00:19,500
+I'm going to show you an example of that
+in this module.
+
+5
+00:00:21,410 --> 00:00:24,750
+So just to have some data here, I made up
+some data.
+
+6
+00:00:24,750 --> 00:00:27,500
+This is similar to data that you're
+analyzing in your homework.
+
+7
+00:00:27,500 --> 00:00:31,720
+So imagine that 50 patients are randomized
+to an exercise intervention, these are all
+
+8
+00:00:31,720 --> 00:00:35,410
+elderly patients, and 50 patients are
+randomized to a control group.
+
+9
+00:00:35,410 --> 00:00:40,900
+The outcome here is the mini mental state
+exam score, this is a continuous variable
+
+10
+00:00:40,900 --> 00:00:44,060
+and it measures cognitive function and
+higher scores are better.
+
+11
+00:00:45,880 --> 00:00:49,360
+The blue group is the exercise group, the
+red group is the control group.
+
+12
+00:00:49,360 --> 00:00:50,992
+And what you can see that is,
+
+13
+00:00:50,992 --> 00:00:54,810
+that it indeed looks like the exercise
+group did better over time.
+
+14
+00:00:54,810 --> 00:00:58,480
+They had less of a declining cognitive
+function over time.
+
+15
+00:00:58,480 --> 00:01:02,060
+But what's also interesting in this
+graphic is that you'll notice that
+
+16
+00:01:02,060 --> 00:01:06,340
+the trajectory over time doesn't look like
+a straight line.
+
+17
+00:01:06,340 --> 00:01:09,230
+It looks more curved, more like a
+quadratic.
+
+18
+00:01:09,230 --> 00:01:12,829
+And you can see that even better if you
+graph using a scatter plot like
+
+19
+00:01:12,829 --> 00:01:14,130
+I've shown you how to do.
+
+20
+00:01:14,130 --> 00:01:17,949
+You can definitely see that there appears
+to be a quadratic element to the rate of
+
+21
+00:01:17,949 --> 00:01:20,420
+change in depression scores over time.
+
+22
+00:01:20,420 --> 00:01:24,020
+So that means we're probably going to have
+to include a time squared term in
+
+23
+00:01:24,020 --> 00:01:25,040
+our regression models.
+
+24
+00:01:26,420 --> 00:01:29,003
+So I went ahead and ran a series of models
+here, so
+
+25
+00:01:29,003 --> 00:01:33,350
+all of the models contain a cognitive
+square as the outcome, a main effect for
+
+26
+00:01:33,350 --> 00:01:37,067
+time, a main effect for group, the
+interaction of time by group, but
+
+27
+00:01:37,067 --> 00:01:40,670
+I also included this quadratic effect for
+time.
+
+28
+00:01:40,670 --> 00:01:42,190
+And then I ran three different models.
+
+29
+00:01:42,190 --> 00:01:44,230
+I ran a model with only a random
+intercept.
+
+30
+00:01:44,230 --> 00:01:46,976
+We've seen in some cases that's
+sufficient.
+
+31
+00:01:46,976 --> 00:01:50,564
+I ran a model with a random intercept and
+a random time slope and
+
+32
+00:01:50,564 --> 00:01:55,118
+I ran a model with a random effect for the
+intercept for the linear time as well as
+
+33
+00:01:55,118 --> 00:01:59,610
+for the quadratic time because that also
+may vary between different subjects.
+
+34
+00:02:01,530 --> 00:02:03,390
+I'll just show you the results of those
+three models.
+
+35
+00:02:03,390 --> 00:02:05,380
+Here's the random intercept model only.
+
+36
+00:02:05,380 --> 00:02:06,660
+Pay attention to the AIC.
+
+37
+00:02:06,660 --> 00:02:08,740
+It turns out to be 1639 here.
+
+38
+00:02:08,740 --> 00:02:14,260
+If we look at the results we see that the
+intercept here represents at baseline
+
+39
+00:02:14,260 --> 00:02:20,110
+the average for the control group, the
+average cognitive score was about 23.
+
+40
+00:02:20,110 --> 00:02:27,160
+The main effect for time is 0.58 and that
+is highly statistically significant.
+
+41
+00:02:27,160 --> 00:02:31,850
+This would say that well, you have to be
+careful here because we also have a,
+
+42
+00:02:31,850 --> 00:02:34,080
+a time squared so, so I'll look at both of
+these.
+
+43
+00:02:34,080 --> 00:02:37,950
+There's also a highly significant time
+squared term here.
+
+44
+00:02:37,950 --> 00:02:39,710
+Both of these belong to the control group.
+
+45
+00:02:39,710 --> 00:02:43,430
+But what this is saying is that there,
+appears to be sort of an initial
+
+46
+00:02:43,430 --> 00:02:47,690
+positive increase but then as you saw,
+that this, that this is kind of fits that
+
+47
+00:02:47,690 --> 00:02:52,180
+quadratic term, where we're going up a
+little and then down quite a bit.
+
+48
+00:02:52,180 --> 00:02:55,900
+So, that corresponds to the control
+group's trajectory over time.
+
+49
+00:02:55,900 --> 00:02:59,164
+It is highly significant saying that the
+cognitive score is really changing over
+
+50
+00:02:59,164 --> 00:03:02,030
+time in both a linear and quadratic
+fashion.
+
+51
+00:03:02,030 --> 00:03:03,690
+The mean effect for group is not
+significant.
+
+52
+00:03:03,690 --> 00:03:05,090
+Well, this is supposed to be a randomized
+trial, so
+
+53
+00:03:05,090 --> 00:03:08,600
+we would hope that at base line, they
+didn't differ in cognitive score.
+
+54
+00:03:08,600 --> 00:03:13,950
+And, but the interaction between time and
+the treatment group, that is highly
+
+55
+00:03:13,950 --> 00:03:19,000
+significant, and it's positive, indicating
+that the treated group, the exercise group
+
+56
+00:03:19,000 --> 00:03:22,769
+had higher cognitive scores over time, as
+we saw in the picture.
+
+57
+00:03:24,980 --> 00:03:28,328
+Now when I fit a model with a random
+intercept and a random effect for time,
+
+58
+00:03:28,328 --> 00:03:31,676
+actually the AIC went up quite a bit, so
+this was not as good of a model, and
+
+59
+00:03:31,676 --> 00:03:35,078
+what you'll notice also is that a lot of
+things that came out significant in
+
+60
+00:03:35,078 --> 00:03:38,110
+the previous model don't come out
+significant here.
+
+61
+00:03:38,110 --> 00:03:42,050
+So, a year is no longer significant the
+year by treated effect is
+
+62
+00:03:42,050 --> 00:03:44,650
+no longer significant, so made a pretty
+big difference.
+
+63
+00:03:44,650 --> 00:03:47,190
+We definitely didn't do as well for
+whatever reason.
+
+64
+00:03:47,190 --> 00:03:50,090
+The quadratic effect's still significant
+because that definitely is a nice curve.
+
+65
+00:03:51,250 --> 00:03:54,490
+I then went ahead and fit it with a random
+intercept, a random effect for
+
+66
+00:03:54,490 --> 00:03:57,946
+time, and a random effect for the time
+squared, because that's another within
+
+67
+00:03:57,946 --> 00:04:01,150
+subject element that we can put as a
+random effect.
+
+68
+00:04:01,150 --> 00:04:04,690
+You'll notice that the AIC is actually the
+best from this model.
+
+69
+00:04:04,690 --> 00:04:06,910
+So this is the model that I'm going to end
+up reporting.
+
+70
+00:04:06,910 --> 00:04:10,729
+And in this model it looks very similar to
+the results that I got when I
+
+71
+00:04:10,729 --> 00:04:12,598
+had the random intercept only.
+
+72
+00:04:12,598 --> 00:04:16,567
+I'm getting a significant effect for time,
+a significant effect for
+
+73
+00:04:16,567 --> 00:04:20,550
+time by group, and a significant effect
+for the quadratic shape of time.
+
+74
+00:04:21,780 --> 00:04:23,240
+So that seems to be the best model here.
+
+75
+00:04:24,248 --> 00:04:29,022
+Now the other thing that we need to
+consider in adding is that, we also want
+
+76
+00:04:29,022 --> 00:04:34,195
+to consider whether we want to put a year
+squared terms times treatment group.
+
+77
+00:04:34,195 --> 00:04:37,471
+What that would indicate if we put it in
+the model is
+
+78
+00:04:37,471 --> 00:04:42,490
+that there was a difference in the
+quadratic shape between the two groups.
+
+79
+00:04:42,490 --> 00:04:44,325
+And actually the picture doesn't seem to
+indicate that.
+
+80
+00:04:44,325 --> 00:04:46,469
+If you look at the picture carefully,
+
+81
+00:04:46,469 --> 00:04:50,427
+the blue group definitely looks higher
+than the red group over time.
+
+82
+00:04:50,427 --> 00:04:55,459
+They're, so the linear affect over time
+for, looks different but the, the shape of
+
+83
+00:04:55,459 --> 00:05:00,287
+the quadratic, the shape of the curve kind
+of looks similar over time and indeed when
+
+84
+00:05:00,287 --> 00:05:04,435
+I went ahead and set a model adding this
+year squared times group effect it
+
+85
+00:05:04,435 --> 00:05:08,620
+didn't come out to be statistically
+significant and the AIC went up.
+
+86
+00:05:08,620 --> 00:05:12,270
+So we probably wouldn't end up including
+that in the model.
+
+87
+00:05:12,270 --> 00:05:15,750
+But this is just to show you that
+sometimes we don't want to necessarily
+
+88
+00:05:15,750 --> 00:05:19,470
+that rates of change are linear over time
+because sometimes they're not.

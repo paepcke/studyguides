@@ -1,0 +1,1339 @@
+1
+00:00:01,750 --> 00:00:05,569
+For this first problem on the first
+homework assignment we're provided with
+
+2
+00:00:05,569 --> 00:00:09,932
+a table that we're going to spend a few
+questions dissecting.
+
+3
+00:00:09,932 --> 00:00:13,409
+So, we really should first understand what
+this table what kind of
+
+4
+00:00:13,409 --> 00:00:16,800
+information this table's giving us.
+
+5
+00:00:16,800 --> 00:00:21,360
+On the left hand side here, we have all
+the different values in our data set.
+
+6
+00:00:21,360 --> 00:00:22,440
+So, you can think of the,
+
+7
+00:00:22,440 --> 00:00:26,260
+about this as a list of all the distinct
+values in our data set.
+
+8
+00:00:26,260 --> 00:00:26,780
+Okay, and
+
+9
+00:00:26,780 --> 00:00:31,740
+these are associated with relative
+frequencies on the right hand side.
+
+10
+00:00:31,740 --> 00:00:32,740
+So, what is this really saying?
+
+11
+00:00:32,740 --> 00:00:38,230
+This is saying that in our data set, we
+have 11 showing up 10 different times.
+
+12
+00:00:38,230 --> 00:00:45,470
+So, that's going to be looking something
+like 11, 11, 11, ten times.
+
+13
+00:00:45,470 --> 00:00:47,840
+And then we're going to have 12 nine
+times.
+
+14
+00:00:47,840 --> 00:00:49,720
+That's going to be 12, 12, 12.
+
+15
+00:00:49,720 --> 00:00:56,070
+Now usually it's not all organized this
+way from in, in, in ascending order.
+
+16
+00:00:56,070 --> 00:01:00,110
+But that's how it's presented here in this
+table.
+
+17
+00:01:00,110 --> 00:01:02,370
+Sort of a, a, a summary of our data.
+
+18
+00:01:02,370 --> 00:01:06,395
+So, the first question is asking us to
+calculate the mean.
+
+19
+00:01:06,395 --> 00:01:12,606
+Okay, and the way we're going to do that
+[SOUND] is we're going to use a short cut.
+
+20
+00:01:12,606 --> 00:01:15,650
+So, we know we have 11 ten times.
+
+21
+00:01:15,650 --> 00:01:18,554
+So, rather than writing out 11 plus 11
+plus 11 plus 11,
+
+22
+00:01:18,554 --> 00:01:21,603
+we're going to do ten times 11, okay?
+
+23
+00:01:21,603 --> 00:01:25,440
+We're going to do the same thing for each
+of these outcomes.
+
+24
+00:01:25,440 --> 00:01:33,776
+So, we're going to do 9 times 12 plus 11
+times 13, et cetera.
+
+25
+00:01:33,776 --> 00:01:38,390
+All the way until we get to 6 times 16,
+okay?
+
+26
+00:01:38,390 --> 00:01:43,868
+And this is all divided by the total
+number of data points in our data set,
+
+27
+00:01:43,868 --> 00:01:46,390
+which is 60.
+
+28
+00:01:46,390 --> 00:01:49,575
+So, this is all going to be divided by 60
+and
+
+29
+00:01:49,575 --> 00:01:54,480
+that's going to work out to be 13.4, okay.
+
+30
+00:01:54,480 --> 00:01:58,662
+So, the answer to the first question which
+asks us
+
+31
+00:01:58,662 --> 00:02:04,460
+about the mean of the sample data is 13.4.
+
+32
+00:02:04,460 --> 00:02:07,587
+In the next question we're asked about the
+standard deviation, and
+
+33
+00:02:07,587 --> 00:02:10,926
+in order to calculate the standard
+deviation what we're going to need to do
+
+34
+00:02:10,926 --> 00:02:15,662
+is remember what the formula for the
+standard deviation was.
+
+35
+00:02:15,662 --> 00:02:18,570
+And so let me start out by first writing
+that formula.
+
+36
+00:02:18,570 --> 00:02:20,560
+So let's see I'll do it over here.
+
+37
+00:02:20,560 --> 00:02:24,555
+The standard deviation notated as SD here
+is equal to
+
+38
+00:02:24,555 --> 00:02:29,688
+the square root of the sum of this
+expression.
+
+39
+00:02:29,688 --> 00:02:37,185
+The number in your data set minus the mean
+in your data set squared over n minus 1.
+
+40
+00:02:37,185 --> 00:02:39,842
+Now we know that n is equal to 60.
+
+41
+00:02:39,842 --> 00:02:44,217
+Okay, we have 60 numbers in our data set
+and
+
+42
+00:02:44,217 --> 00:02:51,040
+we also just calculated the mean to be
+13.4.
+
+43
+00:02:51,040 --> 00:02:57,625
+So, we have these pieces these components
+so let's plug them into our formula here.
+
+44
+00:02:57,625 --> 00:03:05,087
+So, let's see, so 60 and 13.4, okay.
+
+45
+00:03:05,087 --> 00:03:07,793
+And, so what I'm going to do is write out
+the first few
+
+46
+00:03:07,793 --> 00:03:11,321
+expressions here in the numerator.
+
+47
+00:03:11,321 --> 00:03:14,534
+The whole thing is in the written
+solutions provided to you on
+
+48
+00:03:14,534 --> 00:03:16,536
+the class website.
+
+49
+00:03:16,536 --> 00:03:21,715
+So, for those who want to see the whole
+thing I would encourage you to look there.
+
+50
+00:03:21,715 --> 00:03:29,581
+So, what I'm going to do is
+
+51
+00:03:30,823 --> 00:03:40,345
+write out this expression,
+
+52
+00:03:40,345 --> 00:03:47,026
+okay.
+
+53
+00:03:47,026 --> 00:03:52,349
+And you might have noticed that I did
+something wrong here, okay?
+
+54
+00:03:52,349 --> 00:03:53,571
+What did I do wrong?
+
+55
+00:03:53,571 --> 00:03:59,420
+Well, if you think about what our data set
+really looks like, it has ten 11's, right?
+
+56
+00:03:59,420 --> 00:04:00,780
+I said that before.
+
+57
+00:04:00,780 --> 00:04:06,492
+So, we can't just have one expression that
+has 11 minus the mean of our data set,
+
+58
+00:04:06,492 --> 00:04:09,790
+we need ten of those.
+
+59
+00:04:09,790 --> 00:04:14,890
+So, what we're going to do is multiple
+this by ten and similarly we're going to
+
+60
+00:04:14,890 --> 00:04:21,902
+multiple this by 9 because there are 12
+nines in our full data set.
+
+61
+00:04:21,902 --> 00:04:27,430
+So, yes so I'll multiply the last one by
+six as well.
+
+62
+00:04:27,430 --> 00:04:32,470
+And doing out this calculation, we're
+going to get 148 on the top divided by
+
+63
+00:04:32,470 --> 00:04:38,480
+59 in denominator and that's going to
+leave us with 1.58.
+
+64
+00:04:38,480 --> 00:04:41,808
+So, the answer to the question is 1.58,
+
+65
+00:04:41,808 --> 00:04:47,190
+the standard deviation of our data is
+1.58.
+
+66
+00:04:47,190 --> 00:04:51,604
+The next part of the question asks us
+about the median value of our data.
+
+67
+00:04:51,604 --> 00:04:52,119
+Okay?
+So,
+
+68
+00:04:52,119 --> 00:04:56,390
+the median if you remember, is the middle
+number in our data set.
+
+69
+00:04:56,390 --> 00:04:57,656
+Okay?
+So, the first step
+
+70
+00:04:57,656 --> 00:04:59,822
+whenever you're thinking about the median
+or
+
+71
+00:04:59,822 --> 00:05:04,990
+the interquartile range, is to arrange the
+numbers in your data set in order.
+
+72
+00:05:04,990 --> 00:05:06,754
+Okay?
+And this can be in increasing or
+
+73
+00:05:06,754 --> 00:05:09,790
+decreasing but you need to have them in
+order.
+
+74
+00:05:09,790 --> 00:05:14,210
+Fortunately for us it's already presented
+in that way.
+
+75
+00:05:14,210 --> 00:05:17,360
+Okay?
+This is in, ascending order here, and
+
+76
+00:05:17,360 --> 00:05:22,569
+we know that we have 60 data points in our
+data set.
+
+77
+00:05:22,569 --> 00:05:24,089
+So, the middle value or
+
+78
+00:05:24,089 --> 00:05:29,556
+the median is going to be between the 30th
+and the 31st values.
+
+79
+00:05:29,556 --> 00:05:30,195
+Okay?
+So,
+
+80
+00:05:30,195 --> 00:05:35,530
+how do I know what value is the 30th and
+what value is the 31st?
+
+81
+00:05:35,530 --> 00:05:37,454
+If I don't write them out and order them.
+
+82
+00:05:37,454 --> 00:05:40,394
+Well, I know the first ten numbers are
+supposed to be 11, and
+
+83
+00:05:40,394 --> 00:05:44,522
+then I know the next nine are supposed to
+be 12, right?
+
+84
+00:05:44,522 --> 00:05:47,680
+So, the 19th number is going to be 12.
+
+85
+00:05:47,680 --> 00:05:55,321
+So, then if I add 11 to that I know that
+the 30th number is going to be 13.
+
+86
+00:05:55,321 --> 00:06:00,370
+Okay, then I'm going to get 14, the 31st
+number is going to be 14.
+
+87
+00:06:00,370 --> 00:06:05,945
+In fact the next 14 numbers are going to
+be 14 because of that right there.
+
+88
+00:06:05,945 --> 00:06:08,200
+So, what is the median?
+
+89
+00:06:08,200 --> 00:06:15,550
+The median is the average of these two, so
+13 plus 14 divided by 2.
+
+90
+00:06:15,550 --> 00:06:20,090
+The median in this case is 13.5.
+
+91
+00:06:20,090 --> 00:06:22,520
+Right, moving on to the inner quartile
+range.
+
+92
+00:06:22,520 --> 00:06:26,801
+So, again, the first step would be to
+order our data.
+
+93
+00:06:26,801 --> 00:06:29,447
+Fortunately for us, it's already ordered.
+
+94
+00:06:29,447 --> 00:06:36,793
+Okay, we know that the median or the 50th
+percentile, remember those are the same.
+
+95
+00:06:36,793 --> 00:06:40,783
+The 50th, the value at the 50th
+percentile, lies between the 30th and
+
+96
+00:06:40,783 --> 00:06:43,235
+31st number, right.
+
+97
+00:06:43,235 --> 00:06:46,212
+From the problem before, we know that
+that's the case.
+
+98
+00:06:46,212 --> 00:06:51,819
+So, that means that, the 25th percentile
+and the 75th percentile, okay,
+
+99
+00:06:51,819 --> 00:06:57,820
+are going to reside between the 15th and
+16th numbers.
+
+100
+00:06:57,820 --> 00:07:02,708
+And the 75th percentile's going to lie
+between the 45th and
+
+101
+00:07:02,708 --> 00:07:06,149
+the 46th numbers, okay.
+
+102
+00:07:06,149 --> 00:07:07,827
+And what is that going to be?
+
+103
+00:07:07,827 --> 00:07:11,670
+This is going to be 12, because we know
+that the first ten numbers are going to be
+
+104
+00:07:11,670 --> 00:07:16,580
+11, and the next nine are 12, so that
+includes the 12th number.
+
+105
+00:07:16,580 --> 00:07:24,712
+And then we want to look at the 45th and
+the 46th number, okay.
+
+106
+00:07:24,712 --> 00:07:29,100
+And that's going to be 15, right here.
+
+107
+00:07:29,100 --> 00:07:33,230
+It's actually easier if you work backwards
+from 60, okay to do that calculation, but
+
+108
+00:07:33,230 --> 00:07:35,500
+that's going to be 15.
+
+109
+00:07:35,500 --> 00:07:39,840
+And the reason why we're interested in the
+25th and 75th percentiles here,
+
+110
+00:07:39,840 --> 00:07:45,990
+is that the IQR is equal to the 75th
+percentile minus the 25th percentile.
+
+111
+00:07:45,990 --> 00:07:51,040
+Okay?
+So, that's going to be 15 minus 12,
+
+112
+00:07:51,040 --> 00:07:56,340
+giving us an IQR of 3.
+
+113
+00:07:56,340 --> 00:07:59,646
+So, this last part of the first question
+asks us to correctly identify
+
+114
+00:07:59,646 --> 00:08:03,780
+the histogram that's associated with the
+data in our table.
+
+115
+00:08:03,780 --> 00:08:06,489
+So, looking at the answer choices very
+quickly, and
+
+116
+00:08:06,489 --> 00:08:11,097
+I think it's immediately obvious that B is
+not the answer, okay.
+
+117
+00:08:11,097 --> 00:08:14,293
+So, B shows that the frequencies are equal
+across all
+
+118
+00:08:14,293 --> 00:08:17,540
+the different respiratory rates.
+
+119
+00:08:17,540 --> 00:08:22,213
+And that's certainly not the case here,
+all these numbers are not equal, okay.
+
+120
+00:08:22,213 --> 00:08:24,268
+So, we can quickly eliminate B.
+
+121
+00:08:24,268 --> 00:08:28,780
+If you look at C closely, there's actually
+a bar at 17,
+
+122
+00:08:28,780 --> 00:08:37,100
+and we do not have a 17 an outcome that is
+17 in our data set, okay?
+
+123
+00:08:37,100 --> 00:08:40,300
+If there was a 17 here, there'd be the
+number zero there.
+
+124
+00:08:40,300 --> 00:08:44,510
+So, C does not make sense, leaving us with
+answer choice A.
+
+125
+00:08:44,510 --> 00:08:49,253
+So, moving onto question two of the
+homework, question two is
+
+126
+00:08:49,253 --> 00:08:56,708
+showing us a table that's similar to the
+table shown in question one.
+
+127
+00:08:56,708 --> 00:09:00,614
+There're only two different outcomes here
+with outcomes on the left and
+
+128
+00:09:00,614 --> 00:09:05,907
+frequency shown on the right, and it's a
+100 in this case, okay.
+
+129
+00:09:05,907 --> 00:09:09,590
+So lets look at what the questions are
+asking us to do.
+
+130
+00:09:09,590 --> 00:09:14,600
+The first part asks us to calculate the
+mean of our sample.
+
+131
+00:09:14,600 --> 00:09:16,279
+Okay?
+So, again let's think about how to
+
+132
+00:09:16,279 --> 00:09:17,160
+read this.
+
+133
+00:09:17,160 --> 00:09:23,160
+So, this is saying that in our data set,
+zero occurs 53 times.
+
+134
+00:09:23,160 --> 00:09:25,900
+So there's going to be 53 zeros here.
+
+135
+00:09:25,900 --> 00:09:29,508
+And then there's going to be 47 ones
+following that, for
+
+136
+00:09:29,508 --> 00:09:33,945
+a total of 100 values in our data set,
+okay.
+
+137
+00:09:33,945 --> 00:09:38,527
+So, the mean is simply going to be the sum
+of all those values divided by
+
+138
+00:09:38,527 --> 00:09:43,165
+the number of numbers in our data set.
+
+139
+00:09:43,165 --> 00:09:48,630
+And so that's going to be equal to 53
+times zero.
+
+140
+00:09:48,630 --> 00:09:52,734
+Right, which seems silly to do because
+this is
+
+141
+00:09:52,734 --> 00:10:00,400
+just equal to 0 plus 47 times 1 divided by
+100, okay.
+
+142
+00:10:00,400 --> 00:10:05,220
+And so the mean is going to be equal to
+.47.
+
+143
+00:10:05,220 --> 00:10:09,360
+The second part of this question asks us
+to calculate the standard deviation of
+
+144
+00:10:09,360 --> 00:10:11,130
+this data set.
+
+145
+00:10:11,130 --> 00:10:14,042
+And so again, the first step is to
+remember what the formula for
+
+146
+00:10:14,042 --> 00:10:16,280
+the standard deviation is.
+
+147
+00:10:16,280 --> 00:10:18,791
+So I'll write that out one more time.
+
+148
+00:10:18,791 --> 00:10:24,962
+It's the summation of the expression shown
+here, okay.
+
+149
+00:10:24,962 --> 00:10:33,560
+And so n is the number of values in our
+data set so that's going to be 100.
+
+150
+00:10:33,560 --> 00:10:40,299
+The mean we just calculate it to be 0.47,
+okay.
+
+151
+00:10:40,299 --> 00:10:44,875
+So, let me clean this up a little bit and
+
+152
+00:10:44,875 --> 00:10:50,512
+rewrite that expression here.
+
+153
+00:10:50,512 --> 00:10:53,379
+All right, and the in contrast to previous
+examples,
+
+154
+00:10:53,379 --> 00:10:56,612
+this is actually going to be a shorter
+expression to write out,
+
+155
+00:10:56,612 --> 00:11:01,590
+because there are only two distinct values
+in our data set.
+
+156
+00:11:01,590 --> 00:11:04,200
+And I'll show you what I mean in a second.
+
+157
+00:11:04,200 --> 00:11:10,580
+So, we have 0 minus .47 squared plus 1
+minus 0.47 squared.
+
+158
+00:11:10,580 --> 00:11:15,986
+And that's it because we only have two
+values, i equals 1 here and
+
+159
+00:11:15,986 --> 00:11:21,770
+i equals 2 here, and that is all I equals.
+
+160
+00:11:21,770 --> 00:11:25,110
+The issue is that zero shows up 53 times.
+
+161
+00:11:25,110 --> 00:11:28,720
+So, we really should be doing this
+calculation 53 times.
+
+162
+00:11:28,720 --> 00:11:31,640
+So, what I'm going to do is add a 53 in
+front of there,
+
+163
+00:11:31,640 --> 00:11:37,930
+basically multiplying it by 53, and
+multiply this by 47 as well.
+
+164
+00:11:37,930 --> 00:11:41,260
+Now, remember when you were calculating
+the mean,
+
+165
+00:11:41,260 --> 00:11:47,750
+you might have said, okay, 53 times 0, I
+don't have to do that, that's just 0.
+
+166
+00:11:47,750 --> 00:11:52,674
+In this case you do have to do this
+because 0 minus 0.47.
+
+167
+00:11:52,674 --> 00:11:54,916
+Okay, so it's, it's negative 0.47 squared,
+so
+
+168
+00:11:54,916 --> 00:12:00,400
+that's going to give you a number and
+affect your standard deviation estimate.
+
+169
+00:12:00,400 --> 00:12:02,890
+So, don't just ignore the zero this time.
+
+170
+00:12:02,890 --> 00:12:05,510
+Okay, that's a common mistake.
+
+171
+00:12:05,510 --> 00:12:09,130
+So, this is all going to be divided by 99.
+
+172
+00:12:09,130 --> 00:12:14,735
+And then if you do have this calculation
+it simplifies to 24.91 over 99,
+
+173
+00:12:14,735 --> 00:12:20,140
+which okay, which simplifies to 0.502.
+
+174
+00:12:20,140 --> 00:12:29,240
+Alright, so the standard deviation here is
+0.502.
+
+175
+00:12:29,240 --> 00:12:31,630
+So, what is the median value in this data
+set?
+
+176
+00:12:31,630 --> 00:12:35,620
+Well, the median value in any data set is
+the middle number, okay?
+
+177
+00:12:35,620 --> 00:12:40,545
+And the middle number here, we know, well,
+so, we know that there's 100 numbers here.
+
+178
+00:12:40,545 --> 00:12:44,575
+So, we know that the middle number is
+represented by the average of the 50th and
+
+179
+00:12:44,575 --> 00:12:47,004
+the 51st number, okay.
+
+180
+00:12:47,004 --> 00:12:50,538
+And remember to order your data in what,
+either increasing or
+
+181
+00:12:50,538 --> 00:12:56,660
+decreasing order but you need to order
+your data in order for this to make sense.
+
+182
+00:12:56,660 --> 00:12:59,867
+So thankfully here it's already ordered.
+
+183
+00:12:59,867 --> 00:13:04,080
+It wouldn't be too hard to do since there
+are only two values anyway.
+
+184
+00:13:04,080 --> 00:13:07,668
+But so you could imagine that the first 53
+numbers in
+
+185
+00:13:07,668 --> 00:13:15,210
+your data set are going to be zero, and
+then the 54th number is going to be one.
+
+186
+00:13:15,210 --> 00:13:19,029
+Okay?
+So if this is the 54th number, 53, 52, 51,
+
+187
+00:13:19,029 --> 00:13:25,000
+50 we see that the average of 0 and 0 is
+just 0.
+
+188
+00:13:25,000 --> 00:13:29,190
+So the median here is 0.
+
+189
+00:13:29,190 --> 00:13:32,370
+Great, so this piggybacks on to the next
+question which is asking for
+
+190
+00:13:32,370 --> 00:13:34,410
+the interquartile range.
+
+191
+00:13:34,410 --> 00:13:39,466
+For it, to calculate the interquartile
+range, okay, we're going to need to know
+
+192
+00:13:39,466 --> 00:13:47,194
+the number at the 75th percentile minus
+the number at the 25th percentile, okay.
+
+193
+00:13:47,194 --> 00:13:52,654
+So, we calculated the number at the 50th
+percentile it would you could gather
+
+194
+00:13:52,654 --> 00:13:57,646
+that the number at the 75th percentile
+would be the average of the 75th and
+
+195
+00:13:57,646 --> 00:14:02,413
+76th numbers in our data set.
+
+196
+00:14:02,413 --> 00:14:06,648
+And similarly the 25th, the number at the
+25th percentile would be
+
+197
+00:14:06,648 --> 00:14:11,480
+the numbers between the 25th and the 26th
+numbers.
+
+198
+00:14:11,480 --> 00:14:17,150
+And so we know that this is going to be
+zero and that is this going
+
+199
+00:14:17,150 --> 00:14:26,600
+to be one because of this relation and I
+will keep reiterating that.
+
+200
+00:14:26,600 --> 00:14:28,782
+But basically we're going to do 1 minus 0.
+
+201
+00:14:28,782 --> 00:14:36,200
+The interquartile range is the glamorous
+number of 1.
+
+202
+00:14:36,200 --> 00:14:39,738
+For the third question on this homework,
+we're provided with table 1,
+
+203
+00:14:39,738 --> 00:14:44,319
+which is an excerpt from a paper published
+in JAMA recently.
+
+204
+00:14:45,860 --> 00:14:50,008
+So, the first part of this third questions
+asks us what type of variable is
+
+205
+00:14:50,008 --> 00:14:52,288
+the variable age.?
+
+206
+00:14:52,288 --> 00:14:54,525
+Okay So there's some clues here.
+
+207
+00:14:54,525 --> 00:15:00,383
+So, age is reported with the median in the
+interquartile range and
+
+208
+00:15:00,383 --> 00:15:05,330
+the units here are given as y.
+
+209
+00:15:05,330 --> 00:15:10,874
+So, age in years, this is a continuous
+variable because it's giving us years and
+
+210
+00:15:10,874 --> 00:15:16,583
+it's reported with the median
+interquartile range.
+
+211
+00:15:16,583 --> 00:15:20,426
+We know, or, or the author, we know that
+the authors believe that age is not
+
+212
+00:15:20,426 --> 00:15:26,650
+normally distributed because they report
+the median and the interquartile range.
+
+213
+00:15:26,650 --> 00:15:32,300
+That's a very standard practice if age was
+normally distributed.
+
+214
+00:15:32,300 --> 00:15:35,830
+The mean and the standard deviation are
+usually reported.
+
+215
+00:15:35,830 --> 00:15:41,298
+The next question asks us about the
+variable below that, okay.
+
+216
+00:15:41,298 --> 00:15:44,650
+Age greater than or equal to 75 years.
+
+217
+00:15:45,872 --> 00:15:49,930
+This is going to be a binary variable.
+
+218
+00:15:49,930 --> 00:15:54,301
+It's either going to be yes, older than or
+greater than or
+
+219
+00:15:54,301 --> 00:15:59,020
+equal to 75 or no, less than 75, okay.
+
+220
+00:15:59,020 --> 00:16:04,080
+So, this is a binary variable, probably
+coded as 1, 0.
+
+221
+00:16:06,850 --> 00:16:11,125
+The third question asks us what
+statistical measures are used to
+
+222
+00:16:11,125 --> 00:16:17,090
+describe the central tendency and
+variability of the age variable.
+
+223
+00:16:17,090 --> 00:16:20,933
+So, I already pointed this out, earlier
+when we were discussing this,
+
+224
+00:16:20,933 --> 00:16:27,130
+but, it's reported with the median in the
+interquartile range as indicated here.
+
+225
+00:16:27,130 --> 00:16:31,000
+The statistics used to describe age
+greater than or
+
+226
+00:16:31,000 --> 00:16:35,908
+equal to 75 years is n and percentages,
+okay.
+
+227
+00:16:35,908 --> 00:16:41,790
+So, this is the percentages of this end,
+essentially.
+
+228
+00:16:41,790 --> 00:16:46,850
+So, 562 represents 17% of this overall
+cohort of 32,
+
+229
+00:16:46,850 --> 00:16:51,910
+about 33 hundred people and 592 represents
+about 18% of
+
+230
+00:16:51,910 --> 00:16:59,630
+this overall cohort of again, about 3,300
+people.
+
+231
+00:16:59,630 --> 00:17:05,590
+The next three questions ask us to, gather
+some values from this table.
+
+232
+00:17:05,590 --> 00:17:10,260
+So, the first one is asking us what the
+median weight of the placebo group is.
+
+233
+00:17:10,260 --> 00:17:15,080
+So, we're immediately our attention is
+drawn to this column, okay.
+
+234
+00:17:15,080 --> 00:17:18,600
+And then we want to find the weight
+variable.
+
+235
+00:17:18,600 --> 00:17:22,045
+We notice that it's given, the median is
+reported, okay.
+
+236
+00:17:22,045 --> 00:17:26,900
+So, the median in this case is going to be
+81, specifically, 81 kilograms.
+
+237
+00:17:26,900 --> 00:17:31,475
+What is the percent of participants in the
+ranolazine, I'm not sure if
+
+238
+00:17:31,475 --> 00:17:38,091
+I'm pronouncing that right, in the, in the
+drug group basically, okay.
+
+239
+00:17:38,091 --> 00:17:40,941
+So, you notice it says female sex here,
+and
+
+240
+00:17:40,941 --> 00:17:44,841
+that's the percentage of the participants
+who are female,
+
+241
+00:17:44,841 --> 00:17:50,710
+which means that about 66% of those
+participants are male.
+
+242
+00:17:52,726 --> 00:17:55,206
+The next question asks us about the number
+or
+
+243
+00:17:55,206 --> 00:18:01,010
+the percentage of participants rather in
+the placebo group who have hypertension.
+
+244
+00:18:01,010 --> 00:18:02,474
+So, again, we're going to go and
+
+245
+00:18:02,474 --> 00:18:06,561
+find the hypertension row here, which is
+in the co-morbidity section, and we see
+
+246
+00:18:06,561 --> 00:18:13,000
+that the percentage of the patients in the
+placebo group with hypertension is 73.9%.
+
+247
+00:18:13,000 --> 00:18:15,997
+The next part of this question is asking
+us to
+
+248
+00:18:15,997 --> 00:18:21,070
+calculate how many binary variables are
+shown, okay.
+
+249
+00:18:21,070 --> 00:18:26,450
+So, the trick here is to look at how these
+variables are reported.
+
+250
+00:18:26,450 --> 00:18:29,450
+If there's a fraction, if there's a
+percentage reported for
+
+251
+00:18:29,450 --> 00:18:33,550
+a certain variable, you can assume that
+it's binary, okay.
+
+252
+00:18:33,550 --> 00:18:35,830
+And that's because when there are two
+levels,
+
+253
+00:18:35,830 --> 00:18:38,290
+if you know the percentage here this one's
+going,
+
+254
+00:18:38,290 --> 00:18:43,840
+just going to be 100 just minus the
+percentage given in the other category.
+
+255
+00:18:43,840 --> 00:18:51,240
+That's why there are no like second level
+or third level values reported here.
+
+256
+00:18:51,240 --> 00:18:55,932
+So, to get back to the question, all the
+variables with percentages reported,
+
+257
+00:18:55,932 --> 00:19:00,762
+our fractions here, are age grid equals
+75, female sex, white race diabetes,
+
+258
+00:19:00,762 --> 00:19:07,916
+hypertension, hyperlipidemia, whether
+you're a current smoker or not.
+
+259
+00:19:07,916 --> 00:19:11,918
+History of prior MI history of prior
+coronary revascularization and
+
+260
+00:19:11,918 --> 00:19:14,060
+prior heart failure.
+
+261
+00:19:14,060 --> 00:19:19,855
+The last part of this first homework
+question asks you to identify the box
+
+262
+00:19:19,855 --> 00:19:28,310
+plot that represents the distribution of
+each in the placebo group.
+
+263
+00:19:28,310 --> 00:19:30,390
+So, we look at the placebo group.
+
+264
+00:19:30,390 --> 00:19:32,430
+Whoops, I just covered what I needed to
+show you.
+
+265
+00:19:32,430 --> 00:19:34,590
+So, we look at the placebo group, and
+
+266
+00:19:34,590 --> 00:19:40,190
+we see that the median is 64 with an
+interquartile range of 56 to 72.
+
+267
+00:19:40,190 --> 00:19:41,971
+Okay.
+So, for a box plot, the,
+
+268
+00:19:41,971 --> 00:19:46,707
+the interquartile range, this is really
+going to be really informative, so,
+
+269
+00:19:46,707 --> 00:19:53,170
+you're going to want to pick the box plot
+that looks like a boxy part.
+
+270
+00:19:53,170 --> 00:19:57,250
+So, this, this represents the
+interquartile range here,
+
+271
+00:19:57,250 --> 00:19:59,756
+I just overshot that.
+
+272
+00:19:59,756 --> 00:20:04,635
+So, the box here represents the
+interquartile range.
+
+273
+00:20:04,635 --> 00:20:08,460
+So, you're going to want to pick the box
+where it looks like it ray,
+
+274
+00:20:08,460 --> 00:20:13,510
+ranges from 56 to 72, and that's going to
+be answer B.
+
+275
+00:20:13,510 --> 00:20:18,494
+So, you might have thought that C could
+also be the answer because it
+
+276
+00:20:18,494 --> 00:20:24,730
+satisfies that criteria of the
+interquartile range.
+
+277
+00:20:24,730 --> 00:20:27,546
+But, there's another piece of information
+here,
+
+278
+00:20:27,546 --> 00:20:33,561
+which is captured in this variable, aged
+greater than or equal to 75 years Okay.
+
+279
+00:20:33,561 --> 00:20:37,133
+So, 18% of our cohort is older than 75.
+
+280
+00:20:37,133 --> 00:20:41,117
+It's unlikely that the maximum age is 75
+years exactly and
+
+281
+00:20:41,117 --> 00:20:46,180
+that's what's shown in box plot c, which
+further sort of lends, which,
+
+282
+00:20:46,180 --> 00:20:54,410
+which further provides evidence for the
+fact that B is the correct answer.

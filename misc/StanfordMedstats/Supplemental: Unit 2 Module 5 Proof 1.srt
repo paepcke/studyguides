@@ -1,0 +1,267 @@
+1
+00:00:04,390 --> 00:00:07,110
+So for those of you who want some more
+mathematical details.
+
+2
+00:00:07,110 --> 00:00:10,580
+You want me to derive the formula that
+I've just showed on the last slide.
+
+3
+00:00:10,580 --> 00:00:14,020
+Let me rewrite that formula so you can see
+it written out.
+
+4
+00:00:15,460 --> 00:00:17,060
+To save myself some writing here,
+
+5
+00:00:17,060 --> 00:00:22,330
+I'm going to use Po to represent the
+probability of the disease,
+
+6
+00:00:24,210 --> 00:00:30,040
+in the reference group, what I was calling
+P ref before.
+
+7
+00:00:30,040 --> 00:00:33,160
+So that's the formula that we're trying to
+derive.
+
+8
+00:00:33,160 --> 00:00:35,730
+So, It's just really algebra to derive it,
+but for
+
+9
+00:00:35,730 --> 00:00:38,175
+those of you who are curious, let me do it
+out here.
+
+10
+00:00:38,175 --> 00:00:41,675
+So we can write that.
+
+11
+00:00:41,675 --> 00:00:47,840
+The probability of getting the outcome in
+the exposed group.
+
+12
+00:00:47,840 --> 00:00:52,040
+Another way to write that is just a risk
+ratio times the probability of
+
+13
+00:00:52,040 --> 00:00:53,570
+getting the disease in the unexposed
+group.
+
+14
+00:00:53,570 --> 00:00:56,510
+So if you multiply the probability of
+getting the disease in the unexposed group
+
+15
+00:00:56,510 --> 00:00:57,200
+by the risk ratio,
+
+16
+00:00:57,200 --> 00:01:00,980
+that gives you the probability of getting
+the disease in the exposed group.
+
+17
+00:01:00,980 --> 00:01:03,150
+So that's a useful piece of information to
+have.
+
+18
+00:01:03,150 --> 00:01:06,260
+And then we can write out what the odds
+ratio is.
+
+19
+00:01:06,260 --> 00:01:08,790
+What is the odds ratio in terms of all of
+these things?
+
+20
+00:01:08,790 --> 00:01:14,180
+The odds ratio is the odds of getting the
+disease in the exposed group divided
+
+21
+00:01:14,180 --> 00:01:17,890
+by the odds of getting the disease in the
+unexposed group, in the reference group.
+
+22
+00:01:17,890 --> 00:01:23,430
+So, since we said that the, that p exposed
+is just equal to the risk ratio times Po,
+
+23
+00:01:23,430 --> 00:01:27,500
+that's the probability of getting the
+disease in the exposed group.
+
+24
+00:01:27,500 --> 00:01:31,660
+The probability of not getting it there is
+for 1 minus that.
+
+25
+00:01:31,660 --> 00:01:33,610
+So that's the numerator for the odds
+ratio.
+
+26
+00:01:33,610 --> 00:01:38,810
+So that represents the odds of getting the
+disease in the exposed group.
+
+27
+00:01:38,810 --> 00:01:41,980
+The odds of getting the disease in the
+unexposed group, the reference group is
+
+28
+00:01:41,980 --> 00:01:47,810
+just Po divided by 1 minus Po.
+
+29
+00:01:47,810 --> 00:01:51,470
+So then we can just do a little bit of
+algebraic rearrangement here, right?
+
+30
+00:01:51,470 --> 00:01:54,520
+So what I'm going to do is a just a little
+of algebra.
+
+31
+00:01:54,520 --> 00:01:59,440
+So I'm going to multiply both sides of the
+equation by Po over 1 minus Po.
+
+32
+00:01:59,440 --> 00:02:06,370
+So that will then give me the odds ratio
+times Po
+
+33
+00:02:06,370 --> 00:02:12,170
+over 1 minus Po is equal to that.
+
+34
+00:02:12,170 --> 00:02:21,320
+So now if you noticed,
+
+35
+00:02:21,320 --> 00:02:24,970
+both sides of the equation have a Po in
+the numerator so
+
+36
+00:02:24,970 --> 00:02:27,228
+I'm going to cancel that will make things
+easier.
+
+37
+00:02:27,228 --> 00:02:30,950
+Then I'm going to cross multiply both
+sides by the denominators of
+
+38
+00:02:30,950 --> 00:02:31,610
+the other side.
+
+39
+00:02:31,610 --> 00:02:36,116
+So OR times 1 minus RRPo is equal to RR
+times 1 minus Po.
+
+40
+00:02:36,116 --> 00:02:38,780
+Next I'm just going to multiply
+
+41
+00:02:46,680 --> 00:02:52,500
+across that odds ratio, using the
+distributive property.
+
+42
+00:02:52,500 --> 00:02:59,172
+That's OR minus OR, times RR, times Po,
+
+43
+00:02:59,172 --> 00:03:06,390
+equal to RR, minus RRPo.
+
+44
+00:03:06,390 --> 00:03:10,640
+And then I'm trying to isolate the RR, so
+I'm going to add this term to the other
+
+45
+00:03:10,640 --> 00:03:14,338
+side to get all the RR's, the risk ratios
+on one side.
+
+46
+00:03:14,338 --> 00:03:19,611
+So that's plus OR
+
+47
+00:03:19,611 --> 00:03:24,550
+times RR times Po.
+
+48
+00:03:24,550 --> 00:03:30,448
+So now we get the, the odds ratio is equal
+to the risk ratio minus
+
+49
+00:03:30,448 --> 00:03:36,200
+RRPo plus OR times RR times Po.
+
+50
+00:03:36,200 --> 00:03:42,310
+We can then take the risk ratio out of all
+of that.
+
+51
+00:03:42,310 --> 00:03:45,522
+So that's 1 minus Po plus OR times Po.
+
+52
+00:03:45,522 --> 00:03:51,180
+And that's equal to the OR
+
+53
+00:03:51,180 --> 00:03:54,930
+and then all we have to do is divide both
+sides by that term so
+
+54
+00:03:54,930 --> 00:04:00,760
+we get what we're looking for, 1 minus Po
+plus OR times Po.
+
+55
+00:04:00,760 --> 00:04:02,590
+So there it is.
+
+56
+00:04:02,590 --> 00:04:04,550
+There is the derivation.
+
+57
+00:04:04,550 --> 00:04:07,280
+If your a so inclined to like that kind of
+proof.

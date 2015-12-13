@@ -1,0 +1,1488 @@
+1
+00:00:05,760 --> 00:00:09,230
+In this next module, I am going to go over
+the mechanics of how to
+
+2
+00:00:09,230 --> 00:00:11,008
+calculate the Fisher's exact test by hand.
+
+3
+00:00:11,008 --> 00:00:13,650
+You're not going to have to do too many of
+these by hand, but
+
+4
+00:00:13,650 --> 00:00:15,580
+it's important that you do this at least
+once,
+
+5
+00:00:15,580 --> 00:00:18,290
+to really understand what's going on
+behind the scenes in this test.
+
+6
+00:00:18,290 --> 00:00:21,590
+And also in order to know how to choose
+the correct P value from your
+
+7
+00:00:21,590 --> 00:00:22,450
+statistical output.
+
+8
+00:00:23,750 --> 00:00:26,520
+So when is the Fisher's exact test used?
+
+9
+00:00:26,520 --> 00:00:30,630
+The fisher's exact test is used when you
+would try to do a chi-squared test that
+
+10
+00:00:30,630 --> 00:00:32,850
+you have an r by c, contingency table but
+
+11
+00:00:32,850 --> 00:00:37,900
+you have sparse data, some of your cells
+have 001 person in them.
+
+12
+00:00:37,900 --> 00:00:41,670
+The rule of thumb is that your expected
+value in any cell if you go to calculate
+
+13
+00:00:41,670 --> 00:00:44,590
+the chi-squared and the expected value in
+any of those cells is less than 5,
+
+14
+00:00:44,590 --> 00:00:47,360
+you should prefer to use the Fisher's
+exact test.
+
+15
+00:00:47,360 --> 00:00:50,970
+Now, its actually never wrong to use the
+Fisher's exact test.
+
+16
+00:00:50,970 --> 00:00:54,430
+But you'll see in a minute that it can be
+quite cumber sum to calculate out of
+
+17
+00:00:54,430 --> 00:00:57,030
+Fisher's exact test if you have a large
+sample.
+
+18
+00:00:57,030 --> 00:01:00,980
+Now a days when we have a lot of computing
+power so one could argue that you
+
+19
+00:01:00,980 --> 00:01:03,940
+should always report the P value from the
+Fisher's exact.
+
+20
+00:01:03,940 --> 00:01:06,610
+As long as your computer can handle
+calculating it.
+
+21
+00:01:06,610 --> 00:01:08,950
+They'll be situation when it's just,
+there's too many
+
+22
+00:01:10,180 --> 00:01:12,640
+probabilities to calculate out for the
+computer to handle it.
+
+23
+00:01:12,640 --> 00:01:18,123
+But you know, my, my little computer on my
+desktop with Sass with calculate
+
+24
+00:01:18,123 --> 00:01:22,820
+[UNKNOWN] exact out for relatively large
+Sample sizes without too much problem.
+
+25
+00:01:22,820 --> 00:01:25,830
+But you definitely want to use and report
+the fisher's exact,
+
+26
+00:01:25,830 --> 00:01:28,880
+especially when you have sparse data when
+you have large samples, in fact,
+
+27
+00:01:28,880 --> 00:01:29,800
+it usually doesn't matter.
+
+28
+00:01:29,800 --> 00:01:32,110
+The p-values come out kind of similar.
+
+29
+00:01:32,110 --> 00:01:35,600
+This is especially important in papers to
+report the fisher's exact,
+
+30
+00:01:35,600 --> 00:01:37,410
+not only to get the p-values.
+
+31
+00:01:37,410 --> 00:01:38,490
+Right.
+
+32
+00:01:38,490 --> 00:01:42,930
+But even more importantly because when you
+when you use an exact test and you put
+
+33
+00:01:42,930 --> 00:01:48,070
+that in the the footnote of your table, it
+flags to the reader, hey, reader, I have
+
+34
+00:01:48,070 --> 00:01:51,330
+sparse data, and you need to consider that
+in an Interpreting these results.
+
+35
+00:01:51,330 --> 00:01:54,890
+So it's kind of like a signal to the
+reader that you've got sparce data.
+
+36
+00:01:54,890 --> 00:01:57,770
+So another important reason to always
+chose the Fisher's exact test when you
+
+37
+00:01:57,770 --> 00:01:58,580
+have sparse data.
+
+38
+00:02:01,330 --> 00:02:03,370
+I'm now going to go over to just how to,
+
+39
+00:02:03,370 --> 00:02:06,510
+to calculate a Fisher's exact test by
+hand.
+
+40
+00:02:06,510 --> 00:02:07,930
+You can do it by hand.
+
+41
+00:02:07,930 --> 00:02:12,150
+It is a little tedious, you will have to
+do one for homework just so
+
+42
+00:02:12,150 --> 00:02:13,710
+you understand the logic of it.
+
+43
+00:02:15,730 --> 00:02:19,680
+And the best way to illustrate how to
+calculate one is just to do an example.
+
+44
+00:02:19,680 --> 00:02:25,340
+And so, the, the, the story is, where this
+Fisher's exact test came from,
+
+45
+00:02:25,340 --> 00:02:29,810
+and this is the story that Fisher, who was
+a statistician.
+
+46
+00:02:29,810 --> 00:02:32,300
+A very famous statistician who came up
+with,
+
+47
+00:02:32,300 --> 00:02:34,570
+a lot of the statistics that we do today.
+
+48
+00:02:34,570 --> 00:02:36,560
+That, you know, way back when.
+
+49
+00:02:36,560 --> 00:02:38,380
+He, had a colleague.
+
+50
+00:02:38,380 --> 00:02:41,240
+I'm just going to call her Cathy, just to,
+to give her a name.
+
+51
+00:02:41,240 --> 00:02:44,240
+He clai, she claimed that when she drank
+tea,
+
+52
+00:02:44,240 --> 00:02:48,830
+she could actually distinguish whether the
+milk had been poured first into the cup,
+
+53
+00:02:48,830 --> 00:02:50,810
+or tea had been poured first into the cup.
+
+54
+00:02:50,810 --> 00:02:52,410
+So, in other words, you know?
+
+55
+00:02:52,410 --> 00:02:55,460
+She could actually sit there [UNKNOWN]
+taste different.
+
+56
+00:02:55,460 --> 00:02:57,980
+It's whether or not you actually poured
+the milk before the tea or
+
+57
+00:02:57,980 --> 00:02:59,510
+the tea before the milk.
+
+58
+00:02:59,510 --> 00:03:01,590
+That was her claim, in that she could
+distinguish this.
+
+59
+00:03:01,590 --> 00:03:05,040
+So, he wanted to, to test her on this, he
+wanted to kind of call her on it.
+
+60
+00:03:05,040 --> 00:03:06,750
+So, he had designed a little experiment.
+
+61
+00:03:06,750 --> 00:03:10,390
+The experiment, couldn't involve her
+drinking too much tea, it had to have,
+
+62
+00:03:10,390 --> 00:03:13,990
+kind of, a limited number of, tea cups and
+
+63
+00:03:13,990 --> 00:03:16,530
+therefore we ended up with sparse data
+here.
+
+64
+00:03:16,530 --> 00:03:17,710
+So, the task I claim.
+
+65
+00:03:17,710 --> 00:03:19,060
+Fisher designed the following experiment.
+
+66
+00:03:19,060 --> 00:03:22,690
+So he made eight cups of tea for her to
+taste and you can see why we
+
+67
+00:03:22,690 --> 00:03:25,870
+need to keep this relatively small and why
+we're going to end up with sparse data.
+
+68
+00:03:25,870 --> 00:03:27,570
+In four of those cups, you know,
+
+69
+00:03:27,570 --> 00:03:31,800
+he poured the milk first, in four of those
+cups he poured the tea first and
+
+70
+00:03:31,800 --> 00:03:34,810
+he just presented her with the eight cups
+kind of randomly ordered.
+
+71
+00:03:34,810 --> 00:03:37,800
+And told her you have to pick out for me
+the four in which the milk was
+
+72
+00:03:37,800 --> 00:03:41,320
+poured first and the four in which the tea
+was for first.
+
+73
+00:03:43,920 --> 00:03:47,350
+And the null hypothesis here would be that
+Cathy's guessing abilities are no
+
+74
+00:03:47,350 --> 00:03:48,110
+better than chance.
+
+75
+00:03:48,110 --> 00:03:50,528
+So, if she was just guessing what would
+you expect to happen.
+
+76
+00:03:50,528 --> 00:03:53,740
+Well you probably expect her to guess
+about two right, just kind of randomly.
+
+77
+00:03:56,420 --> 00:03:59,830
+The alter, there's actually more than one
+alternative hypothesis here.
+
+78
+00:03:59,830 --> 00:04:00,820
+So just bare with me.
+
+79
+00:04:00,820 --> 00:04:02,240
+It's a little confusing but.
+
+80
+00:04:02,240 --> 00:04:06,260
+That the right tail hypothesis is kind of
+what you'd expect.
+
+81
+00:04:06,260 --> 00:04:10,380
+We think maybe she's going to guess right
+more than expected by chance.
+
+82
+00:04:10,380 --> 00:04:14,940
+And she's going to correctly identify the
+milk poured cups more than you'd
+
+83
+00:04:14,940 --> 00:04:16,740
+expect is due to chance.
+
+84
+00:04:16,740 --> 00:04:17,950
+There is another possibility.
+
+85
+00:04:17,950 --> 00:04:21,150
+There's another alternative here that's
+different than the null hypothesis.
+
+86
+00:04:21,150 --> 00:04:24,160
+This is what we call the Left-tail
+alternative hypothesis.
+
+87
+00:04:24,160 --> 00:04:25,640
+And this is important because this is
+going to be
+
+88
+00:04:25,640 --> 00:04:27,299
+printed out in your statistical [UNKNOWN].
+
+89
+00:04:27,299 --> 00:04:28,528
+You have to understand what it is.
+
+90
+00:04:28,528 --> 00:04:30,720
+There's another possibility here.
+
+91
+00:04:30,720 --> 00:04:33,410
+She could guess wrong more than expected
+by chance.
+
+92
+00:04:33,410 --> 00:04:38,670
+In other words, she could correctly
+distinguish the cups, but, but,
+
+93
+00:04:38,670 --> 00:04:40,170
+label them in the reverse.
+
+94
+00:04:40,170 --> 00:04:41,080
+So she could.
+
+95
+00:04:41,080 --> 00:04:42,750
+Correctly say, hey, these four are,
+
+96
+00:04:42,750 --> 00:04:45,368
+milk poured first, in other words, she
+could get the four that were,
+
+97
+00:04:45,368 --> 00:04:50,110
+that were she could correctly get the four
+that were different than the other for.
+
+98
+00:04:50,110 --> 00:04:53,170
+But she might say, these are the milk
+poured first, but,
+
+99
+00:04:53,170 --> 00:04:55,780
+in fact, those were all the tea poured
+first.
+
+100
+00:04:55,780 --> 00:04:58,582
+She did actually distinguish the cups
+correctly in that case,
+
+101
+00:04:58,582 --> 00:05:01,130
+except she She didn't know which ones were
+actually milk poured for
+
+102
+00:05:01,130 --> 00:05:03,540
+her, so she was actually systematically
+wrong.
+
+103
+00:05:03,540 --> 00:05:08,260
+So that's another possible outcome that
+would not be the null hypothesis.
+
+104
+00:05:08,260 --> 00:05:11,130
+And we'll calculate p values for both of
+those.
+
+105
+00:05:11,130 --> 00:05:15,130
+So when the, the legend goes that when
+this was conducted,
+
+106
+00:05:15,130 --> 00:05:17,660
+this experiment was conducted, this is how
+she did it.
+
+107
+00:05:17,660 --> 00:05:18,990
+So this is the observed table.
+
+108
+00:05:18,990 --> 00:05:19,710
+This is the data that we.
+
+109
+00:05:19,710 --> 00:05:21,180
+You have.
+That, this is what actually happened.
+
+110
+00:05:21,180 --> 00:05:29,190
+So, Fisher, had poured a milk first in
+four cups and tea first in four cups.
+
+111
+00:05:29,190 --> 00:05:32,160
+And Kathy knew that there were four cups
+with milk first and
+
+112
+00:05:32,160 --> 00:05:35,440
+four cups with tea first so she was going
+to identify four and four.
+
+113
+00:05:35,440 --> 00:05:37,220
+She wasn't going to guess them all to be
+milk first.
+
+114
+00:05:37,220 --> 00:05:38,670
+That's was allowed in In the set up here.
+
+115
+00:05:38,670 --> 00:05:39,500
+So these are fixed.
+
+116
+00:05:39,500 --> 00:05:42,930
+There's four tea poured first and there's
+four milk poured first, and
+
+117
+00:05:42,930 --> 00:05:43,970
+she has to guess four and four.
+
+118
+00:05:44,990 --> 00:05:49,300
+When she guesses, what happens is that she
+correctly identifies three of
+
+119
+00:05:49,300 --> 00:05:51,250
+milk poured first, she gets one wrong.
+
+120
+00:05:52,270 --> 00:05:57,480
+And then, of course the she's going to get
+one of the tea poured first wrong.
+
+121
+00:05:57,480 --> 00:06:01,970
+And 3 of the tea poured first right by
+default, so this is a binary situation so
+
+122
+00:06:01,970 --> 00:06:04,850
+any that she doesn't that she guesses to
+be milk poured first can't be
+
+123
+00:06:04,850 --> 00:06:06,120
+tea poured first and vice versa.
+
+124
+00:06:07,640 --> 00:06:09,930
+So that's the outcome now we look at that
+and
+
+125
+00:06:09,930 --> 00:06:12,300
+we say well she did you know if we were.
+
+126
+00:06:12,300 --> 00:06:15,100
+If it was chance you'd probably only get
+about two right, but you know,
+
+127
+00:06:15,100 --> 00:06:19,740
+probably three right might also be in the
+realm of what we might expect of a chance.
+
+128
+00:06:19,740 --> 00:06:22,820
+We might, we might have been amazed has
+she gotten all four right.
+
+129
+00:06:22,820 --> 00:06:24,960
+So, Fisher wanted to calculate a P value
+here.
+
+130
+00:06:25,970 --> 00:06:27,130
+How we are going to calculate a P value
+here?
+
+131
+00:06:27,130 --> 00:06:29,700
+Notice, very sparse numbers, we got a lot
+of one cells.
+
+132
+00:06:29,700 --> 00:06:32,940
+Clearly we don't want to do anything, we
+don't want to do a chi-squared.
+
+133
+00:06:32,940 --> 00:06:35,330
+Which is approximating a normal [UNKNOWN]
+binomial.
+
+134
+00:06:35,330 --> 00:06:36,850
+We want to do an exact probability.
+
+135
+00:06:38,240 --> 00:06:38,900
+So how do we do this?
+
+136
+00:06:38,900 --> 00:06:43,330
+So step one of the Fisher's test is
+actually to identify the observe table and
+
+137
+00:06:43,330 --> 00:06:47,090
+all the tables that represent a more
+extreme outcome.
+
+138
+00:06:47,090 --> 00:06:48,820
+Okay, so what does that mean?
+
+139
+00:06:48,820 --> 00:06:53,820
+So this is the observe table, we just saw
+that on the previous slide.
+
+140
+00:06:53,820 --> 00:06:54,680
+That's what we observe but
+
+141
+00:06:54,680 --> 00:06:58,100
+remember that the P value is what we
+observe Everything more extreme.
+
+142
+00:06:58,100 --> 00:07:00,620
+Well what is, what would be more extreme
+in this case?
+
+143
+00:07:00,620 --> 00:07:05,020
+Well more extreme would have been she
+actually got all four cups right and
+
+144
+00:07:05,020 --> 00:07:05,770
+none wrong.
+
+145
+00:07:05,770 --> 00:07:08,610
+So that's what the second table I'm
+showing you here,
+
+146
+00:07:08,610 --> 00:07:09,950
+that's the more extreme table.
+
+147
+00:07:09,950 --> 00:07:12,189
+And there's nothing more extreme, that's
+as, that's as good as she could have done.
+
+148
+00:07:13,390 --> 00:07:18,980
+Now we can calculate the probabilities
+associated with each of these tables.
+
+149
+00:07:18,980 --> 00:07:23,070
+And this is going to get back to
+permutations and combinations from
+
+150
+00:07:23,070 --> 00:07:26,750
+last term, so if you didn't get enough of
+that before, we do it a little bit here.
+
+151
+00:07:26,750 --> 00:07:30,240
+So we can actually calculate the
+probability of each of these tables.
+
+152
+00:07:30,240 --> 00:07:32,390
+I'm going to show you how it's done.
+
+153
+00:07:32,390 --> 00:07:34,810
+So here's the probabilities calculated out
+and
+
+154
+00:07:34,810 --> 00:07:36,320
+I'm going to walk you through the logic
+here.
+
+155
+00:07:37,360 --> 00:07:41,620
+So what is the probability of guessing
+three right and one wrong?
+
+156
+00:07:41,620 --> 00:07:42,300
+Okay.
+
+157
+00:07:42,300 --> 00:07:45,140
+We have to do a We have to do an
+accounting problem here.
+
+158
+00:07:45,140 --> 00:07:48,220
+So what's the probability of getting
+exactly three right and one wrong?
+
+159
+00:07:49,290 --> 00:07:50,930
+Well what's our denominator here?
+
+160
+00:07:50,930 --> 00:07:56,420
+What are all the ways that she could guess
+four cups out of eight cups?
+
+161
+00:07:56,420 --> 00:07:59,640
+So imagine she's got eight cups and she's
+got four stickers with M on them, and
+
+162
+00:07:59,640 --> 00:08:02,540
+she has to paste the four M stickers on
+four of the cups.
+
+163
+00:08:02,540 --> 00:08:06,360
+And of course, the rest of them would be,
+she would be saying were Tea poured first.
+
+164
+00:08:06,360 --> 00:08:09,770
+So she has to pick out of the eight cups,
+any four of them.
+
+165
+00:08:09,770 --> 00:08:12,090
+As her choices for the milk poured first.
+
+166
+00:08:12,090 --> 00:08:13,310
+Her guesses.
+
+167
+00:08:13,310 --> 00:08:16,990
+That denominator, all the ways she can do
+that is an 8 choose 4.
+
+168
+00:08:16,990 --> 00:08:18,870
+There's 8 cups, she can choose any 4 of
+them.
+
+169
+00:08:18,870 --> 00:08:20,040
+That's an 8 choose 4.
+
+170
+00:08:20,040 --> 00:08:21,340
+So we could do out 8 choose 4,
+
+171
+00:08:21,340 --> 00:08:24,710
+that would give us the total number of
+possible ways she could guess here.
+
+172
+00:08:24,710 --> 00:08:26,475
+So that's our denominator.
+
+173
+00:08:26,475 --> 00:08:33,644
+Whi, which, what situations will fulfil
+her getting exactly 3 right.
+
+174
+00:08:33,644 --> 00:08:36,320
+How many different ways can she get
+exactly 3 right?
+
+175
+00:08:36,320 --> 00:08:38,373
+That's what goes in the numerator here.
+
+176
+00:08:38,373 --> 00:08:40,910
+So here is how she can get exactly 3
+right.
+
+177
+00:08:40,910 --> 00:08:43,440
+We have 4 milk poured first cups.
+
+178
+00:08:43,440 --> 00:08:46,380
+She has to guess any 3 of them correctly.
+
+179
+00:08:46,380 --> 00:08:48,260
+So that's a 4 choose 3.
+
+180
+00:08:48,260 --> 00:08:52,290
+She has to guess one of the tea poured
+first cups wrong.
+
+181
+00:08:52,290 --> 00:08:53,780
+So, that's a 4 choose 1.
+
+182
+00:08:53,780 --> 00:08:57,930
+So, she gets to choose any of the three
+milk cups, but then there were 4
+
+183
+00:08:57,930 --> 00:09:00,640
+tea cups that she's going to incorrectly
+put one of the m stickers on.
+
+184
+00:09:00,640 --> 00:09:01,950
+So, that's a 4 choose 1.
+
+185
+00:09:01,950 --> 00:09:04,870
+So, there's 4 choose 3, times 4 choose 1,
+
+186
+00:09:04,870 --> 00:09:08,260
+possible ways that she can get exactly 3
+right and 1 wrong.
+
+187
+00:09:08,260 --> 00:09:11,430
+So that's the probability of the observed
+table.
+
+188
+00:09:11,430 --> 00:09:15,780
+The probability of the more extreme table
+is actually only one way that she can get
+
+189
+00:09:15,780 --> 00:09:16,620
+them all right, right.
+
+190
+00:09:16,620 --> 00:09:17,410
+She has to get,
+
+191
+00:09:17,410 --> 00:09:21,650
+correctly put the m stickers on the
+exactly four milk poured first cups.
+
+192
+00:09:21,650 --> 00:09:25,010
+So the probability for the, for the more
+extreme tables is actually fairly easy.
+
+193
+00:09:25,010 --> 00:09:26,500
+It's the same denominator as e.
+
+194
+00:09:26,500 --> 00:09:30,200
+Chose four possible ways she could put
+those m stickers on the cups.
+
+195
+00:09:30,200 --> 00:09:33,690
+And she has to get all four milk cup
+poured first cups right.
+
+196
+00:09:33,690 --> 00:09:37,950
+And none of the t ones, you can't put the
+m labels on any of the t ones.
+
+197
+00:09:37,950 --> 00:09:40,600
+Four choose four times four choose 0 is of
+course just 1.
+
+198
+00:09:40,600 --> 00:09:42,010
+There's only one way she can get this
+right.
+
+199
+00:09:42,010 --> 00:09:44,680
+So notice that we would have been kind of
+amazed had she gotten all four right.
+
+200
+00:09:44,680 --> 00:09:46,620
+That p value is very small.
+
+201
+00:09:46,620 --> 00:09:50,550
+However, the probability of getting
+exactly three right is pretty high.
+
+202
+00:09:50,550 --> 00:09:51,710
+It's not that unlikely.
+
+203
+00:09:51,710 --> 00:09:53,190
+Somebody could do it just guessing.
+
+204
+00:09:55,140 --> 00:09:57,750
+So now we're going to calculate all the
+different p values that come out here.
+
+205
+00:09:57,750 --> 00:10:00,680
+And actually when you're first doing
+Fisher's exact test what I recommend that
+
+206
+00:10:00,680 --> 00:10:03,550
+you do Is not only calculate the
+probability for
+
+207
+00:10:03,550 --> 00:10:06,370
+the table that you have observed and the
+more extreme tables but
+
+208
+00:10:06,370 --> 00:10:09,730
+the best thing to do is, I will give you
+problems that are pretty small,
+
+209
+00:10:09,730 --> 00:10:14,630
+is to calculate all out the probabilities
+for all possible outcomes.
+
+210
+00:10:14,630 --> 00:10:16,320
+So here's the probability.
+
+211
+00:10:16,320 --> 00:10:20,578
+Complete probability distribution where X
+is the number of correct
+
+212
+00:10:20,578 --> 00:10:23,750
+identifications of milk-poured first cups.
+
+213
+00:10:23,750 --> 00:10:26,480
+She can get four right, which we already
+calculated.
+
+214
+00:10:26,480 --> 00:10:28,670
+She can get three right, which we already
+calculated.
+
+215
+00:10:28,670 --> 00:10:31,340
+She could have also gotten 2 right, 1
+right, or 0 right.
+
+216
+00:10:31,340 --> 00:10:34,270
+And that goes through all possible
+outcomes.
+
+217
+00:10:34,270 --> 00:10:37,330
+I can calculate the probability for each
+one of those tables.
+
+218
+00:10:37,330 --> 00:10:41,410
+This is a really good thing to do because
+it's a little bit of a check To make sure
+
+219
+00:10:41,410 --> 00:10:43,700
+that you've calculated the probabilities
+correctly, cause they better.
+
+220
+00:10:43,700 --> 00:10:46,320
+You've now accounted for all possible
+outcomes, they better add up to one.
+
+221
+00:10:46,320 --> 00:10:49,450
+And indeed, if you add those up, you'll
+notice they add up to one.
+
+222
+00:10:49,450 --> 00:10:52,760
+The distribution here turned out to be
+symmetrical.
+
+223
+00:10:52,760 --> 00:10:53,820
+I'll warn you.
+
+224
+00:10:53,820 --> 00:10:57,350
+That in Fischer's exact tests, the
+distributions are not always symmetrical.
+
+225
+00:10:57,350 --> 00:10:59,300
+So just keep that in the back of your
+mind.
+
+226
+00:10:59,300 --> 00:11:02,230
+The one tail test and the two tail test,
+
+227
+00:11:02,230 --> 00:11:04,560
+the two tail test is not always double the
+one tail test.
+
+228
+00:11:04,560 --> 00:11:05,880
+The tails don't always match.
+
+229
+00:11:07,340 --> 00:11:11,070
+Now we're going to get a number of p
+values out of Sass, or
+
+230
+00:11:11,070 --> 00:11:13,220
+whatever statistical program you're using.
+
+231
+00:11:13,220 --> 00:11:18,020
+So the right hand tail probability, that's
+literally what sas calls it, is you get,
+
+232
+00:11:18,020 --> 00:11:22,370
+you add up the 0.229, what you observed in
+everything more extreme to the right.
+
+233
+00:11:22,370 --> 00:11:24,196
+That is her, getting more right.
+
+234
+00:11:24,196 --> 00:11:27,520
+So 0.229 plus 0.014, that comes out to one
+tail p-value of 0.243.
+
+235
+00:11:27,520 --> 00:11:30,210
+That's our one tail p-value.
+
+236
+00:11:30,210 --> 00:11:33,340
+Of course we're at the end of the data
+that I want to
+
+237
+00:11:33,340 --> 00:11:35,710
+report a two tail p-value because it's
+equally likely that she.
+
+238
+00:11:35,710 --> 00:11:39,120
+She could have been wrong in the
+systematically wrong as I
+
+239
+00:11:39,120 --> 00:11:39,750
+mentioned before.
+
+240
+00:11:41,170 --> 00:11:43,010
+Now, sas always also gives you something
+else.
+
+241
+00:11:43,010 --> 00:11:45,620
+It gives you this left handed probability.
+
+242
+00:11:45,620 --> 00:11:48,240
+We never really use it for anything, but
+it's there in the output.
+
+243
+00:11:48,240 --> 00:11:49,880
+So I just want to let you know what it is.
+
+244
+00:11:49,880 --> 00:11:52,680
+This relates to that alternative
+hypothesis that I mentioned.
+
+245
+00:11:52,680 --> 00:11:54,110
+Where she's systematically wrong.
+
+246
+00:11:54,110 --> 00:11:57,320
+So you could also test the probability
+that she's systematically wrong.
+
+247
+00:11:57,320 --> 00:11:59,240
+You could calculate a p value for that.
+
+248
+00:11:59,240 --> 00:12:01,500
+You would, then, you would add up what you
+observed, and
+
+249
+00:12:01,500 --> 00:12:04,600
+everything more extreme in these being
+systematically wrong directions, so
+
+250
+00:12:04,600 --> 00:12:06,440
+every, the, the essentially the left tail.
+
+251
+00:12:06,440 --> 00:12:08,780
+So, 0.229 plus 0.514 plus 0.229 plus
+0.014.
+
+252
+00:12:08,780 --> 00:12:12,860
+Our p value here comes out to be 0986,
+
+253
+00:12:12,860 --> 00:12:15,920
+so clearly we don't have any evidence that
+she's systematically wrong.
+
+254
+00:12:17,460 --> 00:12:20,792
+We get the right hand tail probability the
+left hand probability.
+
+255
+00:12:20,792 --> 00:12:23,950
+And then we want is the 2 sided p value.
+
+256
+00:12:23,950 --> 00:12:28,100
+Now the 2 sided p value for fisher's exact
+test is calculated by adding up
+
+257
+00:12:28,100 --> 00:12:29,850
+all the probabilities in the distribution.
+
+258
+00:12:29,850 --> 00:12:32,460
+So here's all the probabilities that are
+less than or
+
+259
+00:12:32,460 --> 00:12:35,120
+equal to the probability of the observe
+table.
+
+260
+00:12:35,120 --> 00:12:39,390
+So that, in this case, is 0.229 plus 0.014
+is less than or equal to it.
+
+261
+00:12:39,390 --> 00:12:42,780
+Plus 0.229 is less than or equal, 0.014 is
+also less than or equal.
+
+262
+00:12:42,780 --> 00:12:44,590
+So we add up those four probabilities.
+
+263
+00:12:44,590 --> 00:12:47,950
+Here it comes out to a two-sided p-value
+of 0.4857.
+
+264
+00:12:47,950 --> 00:12:51,018
+Now notice that we also, in this case,
+could have simply just
+
+265
+00:12:51,018 --> 00:12:54,590
+doubled the one-tailed probability, the
+one tailed p value.
+
+266
+00:12:54,590 --> 00:12:56,889
+And gotten the two tailed p-value.
+
+267
+00:12:56,889 --> 00:13:00,360
+However, you're going to see some cases
+where the two tailed p-value is
+
+268
+00:13:00,360 --> 00:13:03,210
+not equal to double the one tailed p-value
+because there is,
+
+269
+00:13:03,210 --> 00:13:06,580
+sometimes, the Fishers exact test does not
+have a symmetric distribution.
+
+270
+00:13:06,580 --> 00:13:09,550
+And the area under one tail might be
+different than the area under
+
+271
+00:13:09,550 --> 00:13:10,520
+the other tail.
+
+272
+00:13:10,520 --> 00:13:14,460
+So the way to calculate the two-tailed is
+just to add up the p-value of
+
+273
+00:13:14,460 --> 00:13:19,780
+what you observed in all other observed
+tables that had equal or smaller P values.
+
+274
+00:13:20,890 --> 00:13:23,730
+That happens to work out to be double the
+one-sided P value here,
+
+275
+00:13:23,730 --> 00:13:27,100
+but, as you'll see in your homework that
+isn't always the case.
+
+276
+00:13:27,100 --> 00:13:28,510
+That's a hint on your homework, by the
+way.
+
+277
+00:13:30,210 --> 00:13:32,930
+So those are the P values you get out of
+SAS again,
+
+278
+00:13:32,930 --> 00:13:35,880
+you're going to want to report the
+two-sided P value at the end of the day.
+
+279
+00:13:37,400 --> 00:13:41,020
+And I just show you the output from SAS
+when I ran this fisher's exact test in
+
+280
+00:13:41,020 --> 00:13:45,500
+SAS indeed I get a number of P a P values
+here so here's that last cited P value I
+
+281
+00:13:45,500 --> 00:13:47,208
+was telling you about we're generally
+going to ignore that.
+
+282
+00:13:47,208 --> 00:13:49,560
+Here's that right-sided P value he was
+talking about.
+
+283
+00:13:49,560 --> 00:13:52,490
+That's the one-tailed probability we're
+also going to ignore that.
+
+284
+00:13:52,490 --> 00:13:57,310
+The table probability by the way is the
+probability of the observed table,
+
+285
+00:13:57,310 --> 00:13:59,010
+of that one observed table.
+
+286
+00:13:59,010 --> 00:14:01,400
+I get it we usually are going to ignore
+that too but
+
+287
+00:14:01,400 --> 00:14:04,390
+what we care about is the two-sided P
+value which happens to be at the very end
+
+288
+00:14:04,390 --> 00:14:08,350
+of our output in SAS at least, and that's
+the P value that we're going to report.
+
+289
+00:14:10,100 --> 00:14:15,290
+I want to just show you that I also asked
+SAS to run the chi square test for
+
+290
+00:14:15,290 --> 00:14:16,290
+that two by two table.
+
+291
+00:14:16,290 --> 00:14:20,330
+So my two by two table here again looked
+like this.
+
+292
+00:14:20,330 --> 00:14:23,560
+I have 3, 1, 1, 3.
+
+293
+00:14:23,560 --> 00:14:25,360
+I can ask SAS to run a chi square test on
+it.
+
+294
+00:14:25,360 --> 00:14:26,260
+And, and it will run it.
+
+295
+00:14:26,260 --> 00:14:30,690
+When it did that chi square test were
+clearly violating the assumption of not
+
+296
+00:14:30,690 --> 00:14:32,290
+having sparse data here.
+
+297
+00:14:32,290 --> 00:14:35,900
+It's probably a bad idea to approximate
+here with a,
+
+298
+00:14:35,900 --> 00:14:40,380
+a, discreet distribution with a continuous
+one we get a chi-Square value of 0.15.
+
+299
+00:14:40,380 --> 00:14:45,350
+You can see that two sided P value of 0.15
+is very different tan the two sided P
+
+300
+00:14:45,350 --> 00:14:47,314
+value we got from the Fisher's exact.
+
+301
+00:14:47,314 --> 00:14:50,440
+Which tells you that, you know, again When
+you have sparse data it can
+
+302
+00:14:50,440 --> 00:14:53,770
+really make a difference if you correctly
+chose the Fisher's exact or
+
+303
+00:14:53,770 --> 00:14:55,020
+try to apply the Chi-Squared.
+
+304
+00:14:55,020 --> 00:14:58,140
+Luckily SAS pretty nice, it gives you a
+little warning down here.
+
+305
+00:14:58,140 --> 00:15:00,660
+Says 100% of the cells have expected
+counts less than 5,
+
+306
+00:15:00,660 --> 00:15:02,550
+your Chi-Squared test may not be valid.
+
+307
+00:15:02,550 --> 00:15:05,490
+So it tries to warn you when you need to
+actually use the Fisher's exact.
+
+308
+00:15:06,750 --> 00:15:10,200
+Again, one could argue that you should use
+the Fisher's exact in all cases as long as
+
+309
+00:15:10,200 --> 00:15:12,560
+your computer can handle calculating it.
+
+310
+00:15:12,560 --> 00:15:14,750
+You can imagine for large tables.
+
+311
+00:15:14,750 --> 00:15:18,060
+It has to calculate the observed table and
+all more extreme tables.
+
+312
+00:15:18,060 --> 00:15:20,240
+That's a heck of a lot of probabilities to
+calculate, so
+
+313
+00:15:20,240 --> 00:15:22,240
+it can take a lot of computing power.
+
+314
+00:15:22,240 --> 00:15:25,160
+Although with modern computers, often
+times this isn't an issue.
+
+315
+00:15:27,190 --> 00:15:30,020
+Just for those of you who were interested
+in how to actually get SAS
+
+316
+00:15:30,020 --> 00:15:33,690
+to do this test for you, I'm showing you
+how I entered the data here, and
+
+317
+00:15:33,690 --> 00:15:35,260
+how I got the Fisher's exact test.
+
+318
+00:15:35,260 --> 00:15:38,120
+Just for those of you who are interested
+and want to try it on your own in SAS.

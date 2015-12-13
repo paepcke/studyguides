@@ -1,0 +1,140 @@
+1
+00:00:00,440 --> 00:00:04,310
+Sometimes, you may want to look at the
+distribution of a subset of the data.
+
+2
+00:00:04,310 --> 00:00:08,980
+We can do this with a where statement,
+just like we used to do with data steps.
+
+3
+00:00:08,980 --> 00:00:10,370
+Take a look at this code.
+
+4
+00:00:10,370 --> 00:00:13,810
+Similar to the example we just went over,
+we're interested it in the age variable.
+
+5
+00:00:13,810 --> 00:00:17,310
+We will use a where statement to restrict
+our analysis.
+
+6
+00:00:17,310 --> 00:00:21,210
+This will give us the distribution of age
+among subjects with a value of zero for
+
+7
+00:00:21,210 --> 00:00:22,060
+the variable CHF.
+
+8
+00:00:22,060 --> 00:00:26,460
+According to our data dictionary, a value
+of zero for
+
+9
+00:00:26,460 --> 00:00:31,980
+CHF indicates that the subject did not
+have heart failure complications.
+
+10
+00:00:31,980 --> 00:00:33,030
+Here, let's run the code.
+
+11
+00:00:35,390 --> 00:00:36,470
+As you can see,
+
+12
+00:00:36,470 --> 00:00:39,790
+you now get the distribution of age among
+subjects who did not have heart failure.
+
+13
+00:00:41,400 --> 00:00:44,375
+Let's use another piece of code to
+demonstrate that you can do all sorts of
+
+14
+00:00:44,375 --> 00:00:45,949
+logical conditions in a where statement.
+
+15
+00:00:48,010 --> 00:00:51,920
+This code gives us the distribution of age
+among subjects with no heart failure
+
+16
+00:00:51,920 --> 00:00:57,360
+complications, and were either males or in
+the hospital for less than ten days.
+
+17
+00:00:58,730 --> 00:01:00,790
+>> If you just want to write a statistical
+analysis for
+
+18
+00:01:00,790 --> 00:01:05,330
+multiple levels of a categorical variable,
+you can use a class statement.
+
+19
+00:01:05,330 --> 00:01:05,930
+Here's an example.
+
+20
+00:01:06,950 --> 00:01:08,410
+Class is female.
+
+21
+00:01:08,410 --> 00:01:11,680
+Tell Sass that the column called is female
+is a categorical variable.
+
+22
+00:01:12,910 --> 00:01:15,450
+Sass will run a separate univariate
+analysis for
+
+23
+00:01:15,450 --> 00:01:17,570
+each unique level of the is female
+variable.
+
+24
+00:01:18,730 --> 00:01:21,020
+This variable has two unique levels.
+
+25
+00:01:21,020 --> 00:01:24,850
+It can have a zero for male subjects or a
+one for female subjects.
+
+26
+00:01:24,850 --> 00:01:25,420
+Let's run the code.
+
+27
+00:01:27,400 --> 00:01:30,440
+We can see that Sass automatically
+provides one analysis that is
+
+28
+00:01:30,440 --> 00:01:33,990
+restricted to subjects with Is female
+equals zero, and
+
+29
+00:01:33,990 --> 00:01:37,820
+then a second analysis that is restricted
+as subjects with is female equals one.
+
+30
+00:01:38,880 --> 00:01:42,140
+Now, we can easily compare the
+distribution of age for men and women.

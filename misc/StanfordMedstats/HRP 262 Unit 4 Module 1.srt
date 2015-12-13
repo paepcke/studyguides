@@ -1,0 +1,1504 @@
+1
+00:00:00,000 --> 00:00:05,320
+[BLANK_AUDIO]
+
+2
+00:00:05,320 --> 00:00:09,190
+In this next module, I'm going to tell you
+how we can use age as the time scale for
+
+3
+00:00:09,190 --> 00:00:11,860
+Cox regression, rather than time in the
+study.
+
+4
+00:00:13,300 --> 00:00:16,030
+So, up until now,
+
+5
+00:00:16,030 --> 00:00:20,480
+we've been using time in the study as the
+time scale for Cox regression.
+
+6
+00:00:20,480 --> 00:00:25,840
+So, what I mean by that, is when a person
+joins the study, say subject one, joins
+
+7
+00:00:25,840 --> 00:00:30,080
+the study, the moment they join the study
+a baseline, that's counted as time zero.
+
+8
+00:00:30,080 --> 00:00:31,790
+And we start the clock ticking from there.
+
+9
+00:00:31,790 --> 00:00:36,810
+So, if that person has an event three
+years into the study, that's their time.
+
+10
+00:00:36,810 --> 00:00:38,100
+Another person joins the study,
+
+11
+00:00:38,100 --> 00:00:42,050
+maybe a year later we count from the time
+they joined the study.
+
+12
+00:00:42,050 --> 00:00:45,280
+That becomes their zero time point and so
+on and so forth.
+
+13
+00:00:45,280 --> 00:00:46,700
+That's the idea of time in this study.
+
+14
+00:00:47,780 --> 00:00:53,251
+However, there may be good reason to
+instead choose age as your time scale.
+
+15
+00:00:53,251 --> 00:00:57,033
+And the main reason is that age is a
+really important confounder in a lot of
+
+16
+00:00:57,033 --> 00:01:00,018
+the things that we want to look at in
+survival analysis.
+
+17
+00:01:00,018 --> 00:01:03,670
+So, for example, age is obviously strongly
+related to death.
+
+18
+00:01:03,670 --> 00:01:07,610
+It's strongly related to a lot of the
+diseases that we, we may want to look at.
+
+19
+00:01:07,610 --> 00:01:11,721
+It's such an important confounder that we
+want to treat it specially.
+
+20
+00:01:11,721 --> 00:01:16,803
+Now, if we're using time in the study as
+our time scale, we can control for age
+
+21
+00:01:16,803 --> 00:01:22,760
+simply by adding age as a co-variant, as a
+predictor in our Cox regression model.
+
+22
+00:01:22,760 --> 00:01:24,520
+So, we can add in baseline age.
+
+23
+00:01:24,520 --> 00:01:27,970
+So, somebody who's 30 years old at that
+start of the study,
+
+24
+00:01:27,970 --> 00:01:31,940
+is obviously younger than somebody who is
+60 years old at the start of the study.
+
+25
+00:01:31,940 --> 00:01:35,520
+And we can factor that in by controlling
+for it, adjusting for it.
+
+26
+00:01:37,280 --> 00:01:41,233
+However, sometimes it's a better strategy
+to actually choose age to
+
+27
+00:01:41,233 --> 00:01:42,316
+be the time scale.
+
+28
+00:01:42,316 --> 00:01:46,210
+When you choose age as the, as the time
+scale, that means you're only going to be
+
+29
+00:01:46,210 --> 00:01:50,535
+comparing, 30 year olds to other 30 year
+olds and 60 year olds to 60 years old.
+
+30
+00:01:50,535 --> 00:01:53,902
+So, somebody who has the event at age 60,
+
+31
+00:01:53,902 --> 00:01:58,925
+their only going to be compared to people
+who are at risk at age 60.
+
+32
+00:01:58,925 --> 00:02:03,524
+When you use age as the time scale, you
+may additionally need to control for
+
+33
+00:02:03,524 --> 00:02:05,750
+both birth cohort effects.
+
+34
+00:02:05,750 --> 00:02:10,790
+Because, obviously, somebody who could be
+in your study who, w, is 30 but
+
+35
+00:02:10,790 --> 00:02:13,560
+[INAUDIBLE] you know, was born in 1960.
+
+36
+00:02:13,560 --> 00:02:21,037
+And you could have somebody who is 30 in
+your study, who was born in, 1980.
+
+37
+00:02:21,037 --> 00:02:24,169
+You could have both in your study if you
+were covering a wide range of,
+
+38
+00:02:24,169 --> 00:02:27,240
+of ages in your study and you're following
+people for a long time.
+
+39
+00:02:27,240 --> 00:02:32,136
+Since people who were born in 1950 might
+be very different, have different risks
+
+40
+00:02:32,136 --> 00:02:36,905
+than people who are born in, say, 1980, we
+can adjust for both cohort.
+
+41
+00:02:36,905 --> 00:02:38,291
+One easy way to adjust for
+
+42
+00:02:38,291 --> 00:02:43,010
+it is to simply stratify on birth cohort,
+like stratify on, say, decade of birth.
+
+43
+00:02:45,160 --> 00:02:47,610
+So, how we actually use as a time-scale.
+
+44
+00:02:47,610 --> 00:02:48,550
+The idea is this.
+
+45
+00:02:48,550 --> 00:02:53,310
+The risk that becomes everyone who is at
+risk at a certain age rather than
+
+46
+00:02:53,310 --> 00:02:56,210
+everyone who was at risk at a certain time
+in the study.
+
+47
+00:02:57,960 --> 00:03:00,860
+The risk set contains everyone who was
+still event-free at
+
+48
+00:03:00,860 --> 00:03:02,480
+the age of the person who had the event.
+
+49
+00:03:02,480 --> 00:03:04,620
+So, the 60 year old has the event in your
+study,
+
+50
+00:03:04,620 --> 00:03:09,860
+they're going to be compared to other 60
+year olds who were at risk at age 60.
+
+51
+00:03:09,860 --> 00:03:14,560
+Obviously, this is going to require having
+a relatively large dataset where you've
+
+52
+00:03:14,560 --> 00:03:16,190
+got enough people aty different ages.
+
+53
+00:03:16,190 --> 00:03:19,830
+If you, if your sample is spread out over
+many different ages and you only have
+
+54
+00:03:19,830 --> 00:03:23,960
+one 60 year old in your study and nobody
+else crossed 60 during your study.
+
+55
+00:03:23,960 --> 00:03:25,170
+Obviously this is not going to work, so
+
+56
+00:03:25,170 --> 00:03:28,770
+you need to have a relatively large sample
+that ha, covers al,
+
+57
+00:03:28,770 --> 00:03:32,530
+has enough people at each of the different
+ages, covers enough different ages.
+
+58
+00:03:32,530 --> 00:03:34,400
+the, to understand age as a time-scale
+it's best for
+
+59
+00:03:34,400 --> 00:03:38,600
+me just to kind of draw some pictures out
+and also to go through the likelihood.
+
+60
+00:03:38,600 --> 00:03:41,200
+So, I'm going to use just a simple little
+data set for
+
+61
+00:03:41,200 --> 00:03:44,950
+illustration, it's just a made up data
+set, for the purposes of this module.
+
+62
+00:03:44,950 --> 00:03:47,950
+So, you see that data set here has five
+people in them.
+
+63
+00:03:47,950 --> 00:03:50,220
+I'd call them ID numbers, one, two, three,
+four and
+
+64
+00:03:50,220 --> 00:03:52,390
+five just to distinguish the subjects.
+
+65
+00:03:52,390 --> 00:03:55,250
+You can see that the, they have a time in
+the study.
+
+66
+00:03:55,250 --> 00:03:59,720
+So, for example person number one was in
+the study for let's call this years so.
+
+67
+00:03:59,720 --> 00:04:01,780
+For three years before they had the event.
+
+68
+00:04:01,780 --> 00:04:02,920
+Whatever that event might be.
+
+69
+00:04:03,980 --> 00:04:09,210
+They were 28 when they joined the study
+and 31 when they had the event.
+
+70
+00:04:09,210 --> 00:04:13,190
+And that's going to be, I'm going to be
+using age or time here as the time scale.
+
+71
+00:04:13,190 --> 00:04:14,920
+And I want to have one predictor of
+interest.
+
+72
+00:04:14,920 --> 00:04:18,210
+So, let's say the predictor of interest
+here is pack years of smoking it,
+
+73
+00:04:18,210 --> 00:04:19,630
+I have put that in the last column.
+
+74
+00:04:20,630 --> 00:04:23,490
+If we were to use time in the study as the
+time scale,
+
+75
+00:04:23,490 --> 00:04:26,300
+as we've been doing, here's what that
+would look like.
+
+76
+00:04:26,300 --> 00:04:28,680
+So, everybody starts at time 0,
+
+77
+00:04:28,680 --> 00:04:32,294
+the time they joined the study, and so let
+me put the ID numbers here, one, two,
+
+78
+00:04:32,294 --> 00:04:36,540
+three, four, five, and let me just draw a
+picture of what this looks like.
+
+79
+00:04:36,540 --> 00:04:40,180
+So, for example, person number one, ID
+number one, was in the study for
+
+80
+00:04:40,180 --> 00:04:41,160
+three years.
+
+81
+00:04:43,600 --> 00:04:45,000
+This is time in the study.
+
+82
+00:04:47,610 --> 00:04:50,580
+So, they were in the study for three years
+until they had the event, and
+
+83
+00:04:50,580 --> 00:04:53,270
+I'll designate having an event with an X.
+
+84
+00:04:53,270 --> 00:04:58,670
+The second person was in the study for
+five years before they had an event.
+
+85
+00:04:58,670 --> 00:05:02,960
+The third person was in the study for
+seven years before they were censored.
+
+86
+00:05:02,960 --> 00:05:05,610
+I'll designate the censoring with a little
+c.
+
+87
+00:05:05,610 --> 00:05:11,940
+And the fourth person was in the study for
+12 years before they had the event.
+
+88
+00:05:11,940 --> 00:05:16,150
+And then the final person was in the study
+for 13 years before being censored.
+
+89
+00:05:16,150 --> 00:05:19,800
+So, time is start in the study, we count
+time in this way.
+
+90
+00:05:19,800 --> 00:05:21,145
+What, how does that affect things?
+
+91
+00:05:21,145 --> 00:05:22,460
+Well that affects the likelihood?
+
+92
+00:05:22,460 --> 00:05:26,040
+So, let me just start to draw the
+likelihood a little bit for you.
+
+93
+00:05:26,040 --> 00:05:29,400
+You think about things in terms of the
+likelihood, it will all make sense.
+
+94
+00:05:29,400 --> 00:05:33,350
+So, we're going to be drawing out a lot
+likelihoods in this module.
+
+95
+00:05:33,350 --> 00:05:36,300
+So, if we're thinking about the likelihood
+remember there's going to be one term in
+
+96
+00:05:36,300 --> 00:05:38,360
+the likelihood for every event in the
+study.
+
+97
+00:05:38,360 --> 00:05:41,770
+There were three events here so there will
+be three terms in the likelihood.
+
+98
+00:05:41,770 --> 00:05:44,310
+The first event happens three years into
+the study, so
+
+99
+00:05:44,310 --> 00:05:48,710
+we can draw a little line down to see who
+was at risk three years into the study.
+
+100
+00:05:48,710 --> 00:05:52,600
+Well, all five people were at risk three
+years into the study, so I know
+
+101
+00:05:52,600 --> 00:05:57,310
+the denominator for this first term in the
+likelihood is going to contain everybody.
+
+102
+00:05:57,310 --> 00:06:00,440
+And let's say I've got B smoking in my
+model, so
+
+103
+00:06:00,440 --> 00:06:06,340
+I'm modelling the log hazard is equal to
+some, this is Cox regression,
+
+104
+00:06:06,340 --> 00:06:10,210
+so baseline has it that we're not going to
+be able to estimate, plus a beta for
+
+105
+00:06:10,210 --> 00:06:13,490
+smoking plus I'm also going to adjust for
+age.
+
+106
+00:06:13,490 --> 00:06:17,390
+I'm going to adjust for baseline age, so
+I'll throw in a beta for age.
+
+107
+00:06:17,390 --> 00:06:22,150
+So, the likelihood here would equal, well
+who's the person who had the event.
+
+108
+00:06:22,150 --> 00:06:24,528
+The person who had the event is ID number
+one.
+
+109
+00:06:24,528 --> 00:06:29,040
+They were 28 at baseline, and they had one
+pack-year of smoking.
+
+110
+00:06:29,040 --> 00:06:34,250
+So, in the numerator their hazard is
+going to be the beta for age times 28,
+
+111
+00:06:34,250 --> 00:06:38,910
+their baseline age, plus the beta for
+smoking which was one pack-years.
+
+112
+00:06:40,060 --> 00:06:41,220
+And then everybody else is at risk.
+
+113
+00:06:41,220 --> 00:06:43,760
+So, I'm going to put all the other hazards
+in the denominator.
+
+114
+00:06:43,760 --> 00:06:49,550
+So, that person who had the event, just
+like that.
+
+115
+00:06:49,550 --> 00:06:56,680
+The, the second person, subject ID number
+two, was 25 at baseline and
+
+116
+00:06:56,680 --> 00:07:03,873
+their 30 pack-years of smoking we're
+going to need more room here.
+
+117
+00:07:03,873 --> 00:07:09,889
+The third person was 40 at their baseline
+age and they were 0 pack
+
+118
+00:07:09,889 --> 00:07:16,766
+a year of smoking, the next person was 29
+at baseline, and was also a non-smoker.
+
+119
+00:07:16,766 --> 00:07:25,025
+And then the final person was 30, at
+baseline and 10 pack years of smoking.
+
+120
+00:07:25,025 --> 00:07:29,656
+[BLANK_AUDIO]
+
+121
+00:07:29,656 --> 00:07:31,462
+So, that would be first term in the
+likelihood and
+
+122
+00:07:31,462 --> 00:07:34,502
+we could write out the other three terms,
+I don't want to spend too much time on it.
+
+123
+00:07:34,502 --> 00:07:37,841
+I just want to show you what's going on
+here is that everybody,
+
+124
+00:07:37,841 --> 00:07:41,425
+the first term in the likelihood is going
+to include everybody.
+
+125
+00:07:41,425 --> 00:07:45,200
+The second term in the likelihood is
+going to to include four people,
+
+126
+00:07:45,200 --> 00:07:47,330
+not including the one who already had the
+event.
+
+127
+00:07:47,330 --> 00:07:49,240
+The last term in the likelihood will
+happen here,
+
+128
+00:07:49,240 --> 00:07:50,675
+when there's two people left at risk.
+
+129
+00:07:50,675 --> 00:07:54,800
+There' s two who were still around at 12
+years into the study.
+
+130
+00:07:54,800 --> 00:07:58,750
+We're going to make the likelihood a
+function of the baseline age.
+
+131
+00:07:58,750 --> 00:08:00,510
+And in that way, we're adjusting for age.
+
+132
+00:08:00,510 --> 00:08:04,290
+And so that, you know, somebody who's
+older, that's taken into account, or
+
+133
+00:08:04,290 --> 00:08:05,400
+somebody who is younger.
+
+134
+00:08:05,400 --> 00:08:07,200
+We also have a beta smoking in there.
+
+135
+00:08:07,200 --> 00:08:09,050
+We'll be estimating the beta for smoking.
+
+136
+00:08:09,050 --> 00:08:13,740
+And for the purposes of this example study
+we're interested in the effect of smoking.
+
+137
+00:08:13,740 --> 00:08:17,090
+So that's the idea when we have, when we
+want to look at time in the study.
+
+138
+00:08:17,090 --> 00:08:17,880
+Okay.
+
+139
+00:08:17,880 --> 00:08:20,618
+That's what we've been doing essentially
+up until now.
+
+140
+00:08:20,618 --> 00:08:22,202
+Now, switching over here,
+
+141
+00:08:22,202 --> 00:08:25,240
+what if we wanted to use age as the time
+scale instead?
+
+142
+00:08:25,240 --> 00:08:27,846
+How is that going to look different?
+
+143
+00:08:27,846 --> 00:08:29,603
+So, let me draw the little picture here.
+
+144
+00:08:29,603 --> 00:08:32,862
+[BLANK_AUDIO]
+
+145
+00:08:32,862 --> 00:08:36,168
+So, when we use age as the time-scale
+we're going to actually look at
+
+146
+00:08:36,168 --> 00:08:39,160
+a person's age rather than their time in
+the study.
+
+147
+00:08:39,160 --> 00:08:43,140
+The ages here start at 25 so, I'll just
+chart my age scale here at 25.
+
+148
+00:08:43,140 --> 00:08:52,380
+An excuse that this is not perfectly drawn
+to scale and so person number one.
+
+149
+00:08:52,380 --> 00:08:54,360
+I'm going to put the pack years up here
+cause that's going to help me to
+
+150
+00:08:54,360 --> 00:08:57,510
+remember when I'm writing the likelihood
+of pack years for everybody.
+
+151
+00:08:57,510 --> 00:09:00,370
+So, person number one had one pack years
+of smoking and they
+
+152
+00:09:00,370 --> 00:09:04,920
+joined the study at 28 years so that's
+right about here, again, I apologize,
+
+153
+00:09:04,920 --> 00:09:08,700
+this isn't perfectly to scale, and they
+were in the study until age 31,
+
+154
+00:09:08,700 --> 00:09:12,630
+and then had the event, so kind of a small
+amount of time.
+
+155
+00:09:12,630 --> 00:09:17,490
+The second person was in the study from
+ages 25, so let's say they had,
+
+156
+00:09:17,490 --> 00:09:21,690
+this person had 30 pack years of smoking,
+they were in the study from age 25 until
+
+157
+00:09:21,690 --> 00:09:26,940
+age 30 and they have the event, again an x
+designates the having the event here.
+
+158
+00:09:26,940 --> 00:09:29,740
+ID number three was at 0 pack years of
+smoking.
+
+159
+00:09:29,740 --> 00:09:33,670
+They were in the study from ages 40 to 47
+and
+
+160
+00:09:33,670 --> 00:09:36,720
+it was actually censored at the end of
+that time period.
+
+161
+00:09:36,720 --> 00:09:37,490
+So, from age 40 to 47 and
+
+162
+00:09:37,490 --> 00:09:43,010
+they were censored and representing the
+censored with a c here.
+
+163
+00:09:43,010 --> 00:09:48,310
+Notice that that person does not cross
+over at all in ages with subject one or
+
+164
+00:09:48,310 --> 00:09:49,200
+subject two.
+
+165
+00:09:49,200 --> 00:09:53,250
+Therefore, they're never going to be in
+the same term in the likelihood together.
+
+166
+00:09:53,250 --> 00:09:55,760
+ID number four was also a non-smoker.
+
+167
+00:09:55,760 --> 00:10:00,640
+They were in the study for a long time, so
+from age 29 all the way up until age 41,
+
+168
+00:10:00,640 --> 00:10:04,090
+at which point they did have the event.
+
+169
+00:10:04,090 --> 00:10:08,310
+And then finally the fifth subject, who
+had 10 pack-years of smoking,
+
+170
+00:10:08,310 --> 00:10:15,210
+was in the study from ages 30 all the way
+up until age 43.
+
+171
+00:10:15,210 --> 00:10:18,159
+And they were centered at age 43.
+
+172
+00:10:20,570 --> 00:10:24,950
+So, now how would we actually write out
+the likelihood for this little data set?
+
+173
+00:10:24,950 --> 00:10:28,740
+So, the likelihood here is going to be a
+function of beta smoking.
+
+174
+00:10:28,740 --> 00:10:31,480
+Age is no longer going to be in the
+likelihood because we're using age as
+
+175
+00:10:31,480 --> 00:10:32,890
+the time scale.
+
+176
+00:10:32,890 --> 00:10:36,240
+So, we're making the likelihood as a
+function of beta smoking.
+
+177
+00:10:36,240 --> 00:10:38,256
+What's the first term in the likelihood
+going to be?
+
+178
+00:10:38,256 --> 00:10:40,798
+Well, when does the, the first event
+occur, so
+
+179
+00:10:40,798 --> 00:10:44,892
+remember the first event occurred three
+years into the study for person one.
+
+180
+00:10:44,892 --> 00:10:46,392
+But if you use age as the time scale,
+
+181
+00:10:46,392 --> 00:10:48,770
+notice they're not the first person to
+have the event.
+
+182
+00:10:48,770 --> 00:10:52,979
+The first person to have the event is the
+second subject number two who had
+
+183
+00:10:52,979 --> 00:10:54,339
+the event at age 30.
+
+184
+00:10:54,339 --> 00:10:58,470
+So, she actually or he had the event
+first, and at age 30,
+
+185
+00:10:58,470 --> 00:11:03,724
+there were four people who are age 30
+during the time course of this study.
+
+186
+00:11:03,724 --> 00:11:06,150
+So, there's four people at risk at age 30.
+
+187
+00:11:06,150 --> 00:11:10,300
+The person who is in the study from 40 to
+47 was not at risk at age 30.
+
+188
+00:11:10,300 --> 00:11:14,270
+So, what are we going to put into the
+likelihood?
+
+189
+00:11:14,270 --> 00:11:17,140
+Well, the person who had the event is ID
+number two,
+
+190
+00:11:17,140 --> 00:11:20,280
+subject number two, who had 30 pack years
+of smoking.
+
+191
+00:11:20,280 --> 00:11:23,670
+So there, they go in the numerator, their
+hazard goes in the numerator.
+
+192
+00:11:23,670 --> 00:11:28,800
+So, we're going to raise e, beta here is
+beta smoking, e raised to beta times 30,
+
+193
+00:11:28,800 --> 00:11:35,192
+that's the hazard of having the event at
+this time point, for the 30 year old, this
+
+194
+00:11:35,192 --> 00:11:41,470
+person who's 30 when he or she has the
+event and has 30 pack years of smoking.
+
+195
+00:11:41,470 --> 00:11:45,670
+Now, I just realized that, that's well 30
+pack years of smoking could mean she's
+
+196
+00:11:45,670 --> 00:11:51,590
+smoking 3 packs a day for 10 years and
+then in the denominator, who is at risk?
+
+197
+00:11:51,590 --> 00:11:54,270
+So, ID subject number one is at risk,
+
+198
+00:11:54,270 --> 00:11:58,750
+they have a one, that person has one pack
+year of smoking.
+
+199
+00:11:58,750 --> 00:12:02,539
+Obviously the one who had the event, the
+30 pack year one is at risk, and
+
+200
+00:12:02,539 --> 00:12:04,710
+then subject number four is at risk, that
+was a non-smoker, and then subject number
+
+201
+00:12:08,250 --> 00:12:11,780
+five was also at risk, that one had ten
+pack years of smoking.
+
+202
+00:12:11,780 --> 00:12:14,440
+So, you notice right away that the
+likelihood is different than what we
+
+203
+00:12:14,440 --> 00:12:18,200
+would use to time in the study as the time
+scale.
+
+204
+00:12:18,200 --> 00:12:19,840
+What, when does the second event occur?
+
+205
+00:12:19,840 --> 00:12:23,510
+Well the second event occurs at age 31.
+
+206
+00:12:23,510 --> 00:12:26,820
+Subject one is age 31 when he or she has
+the event.
+
+207
+00:12:26,820 --> 00:12:29,980
+There are three people at risk at that
+time.
+
+208
+00:12:29,980 --> 00:12:33,100
+Subject two is already gone, they've
+already had the event before he's 31,
+
+209
+00:12:33,100 --> 00:12:38,010
+and again subject three, is, doesn't join
+the study until much later in, her life or
+
+210
+00:12:38,010 --> 00:12:38,950
+his life.
+
+211
+00:12:38,950 --> 00:12:44,300
+So the denominator here is going to be,
+well the numerator first of all
+
+212
+00:12:44,300 --> 00:12:48,370
+is going to be the one who had the event,
+that person has one pack year of smoking.
+
+213
+00:12:48,370 --> 00:12:50,720
+That person is also in the denominator.
+
+214
+00:12:50,720 --> 00:12:52,220
+Her or she is at risk.
+
+215
+00:12:52,220 --> 00:12:56,450
+Subject number four is also at risk,
+that's a non-smoker.
+
+216
+00:12:56,450 --> 00:13:00,630
+And subject number five was also at risk
+at that time.
+
+217
+00:13:02,610 --> 00:13:04,660
+So, that's the second term in the
+likelihood.
+
+218
+00:13:04,660 --> 00:13:07,720
+The last event occurs at age 41.
+
+219
+00:13:07,720 --> 00:13:10,440
+That is in subject number four.
+
+220
+00:13:10,440 --> 00:13:14,700
+At that time there are also three people
+at risk, because notice now subject number
+
+221
+00:13:14,700 --> 00:13:19,140
+three comes into play; because he or she
+was in the study at age 41.
+
+222
+00:13:19,140 --> 00:13:26,350
+So, there are three people at risk at age
+41, you have to squish this in here.
+
+223
+00:13:26,350 --> 00:13:29,480
+So, the person who had the event was a
+non-smoker at age 41.
+
+224
+00:13:29,480 --> 00:13:33,970
+And then we had a, another non smoker at
+risk.
+
+225
+00:13:33,970 --> 00:13:36,110
+So, the two non smokers at risk.
+
+226
+00:13:36,110 --> 00:13:38,810
+And that person who had ten pack years of
+smoking.
+
+227
+00:13:38,810 --> 00:13:41,980
+So, there's three people at risk in the
+risk set.
+
+228
+00:13:41,980 --> 00:13:45,230
+That would make up the entire likelihood,
+for,
+
+229
+00:13:45,230 --> 00:13:47,090
+if you were using age as a time scale
+here.
+
+230
+00:13:47,090 --> 00:13:50,860
+And then, of course, we would do maximum
+likelihood estimation to solve for
+
+231
+00:13:50,860 --> 00:13:52,890
+the beta for smoking that made the most
+sense.
+
+232
+00:13:52,890 --> 00:13:55,940
+But you can see that the likelihood comes
+out differently meaning that
+
+233
+00:13:55,940 --> 00:13:57,840
+the beta coefficient is going to come out
+differently for
+
+234
+00:13:57,840 --> 00:14:01,740
+smoking if we use age as the time scale
+rather than time in the study.
+
+235
+00:14:03,850 --> 00:14:08,520
+And I went ahead and just wrote out that
+likelihood again on a separate slide where
+
+236
+00:14:08,520 --> 00:14:11,410
+it's a little bit neater and I took a
+little bit more room in writing it.
+
+237
+00:14:11,410 --> 00:14:13,740
+But that's just repeating what I did in
+the last slide.
+
+238
+00:14:13,740 --> 00:14:16,270
+I've written out the entire likelihood for
+you to see it written out.
+
+239
+00:14:17,720 --> 00:14:22,450
+I also want to show you that there are
+slightly different ways that
+
+240
+00:14:22,450 --> 00:14:25,470
+you can model, that you can model age as
+the time scale.
+
+241
+00:14:25,470 --> 00:14:26,310
+So, so
+
+242
+00:14:26,310 --> 00:14:32,360
+far we've been just choosing to look at
+the ages in which a person was observed.
+
+243
+00:14:32,360 --> 00:14:38,150
+So, if we observe somebody from 28 to 31,
+they are only at risk during those ages.
+
+244
+00:14:38,150 --> 00:14:41,190
+You could also start with time since
+birth.
+
+245
+00:14:41,190 --> 00:14:43,720
+Their age since birth as the time stamp.
+
+246
+00:14:43,720 --> 00:14:47,740
+That makes a lot of sense if you're doing
+a study on longevity obviously because if
+
+247
+00:14:47,740 --> 00:14:52,630
+a person joins your study at 28, we know
+for sure that they didn't die before then.
+
+248
+00:14:52,630 --> 00:14:56,740
+So, there are cases where you'd rather use
+the time since birth,
+
+249
+00:14:56,740 --> 00:15:00,830
+the age since birth as your time scale,
+and then the people are at risk at
+
+250
+00:15:00,830 --> 00:15:04,790
+all ages up until the time that they had
+the event or were censored.
+
+251
+00:15:04,790 --> 00:15:07,650
+So, let me just write up the corresponding
+picture here,
+
+252
+00:15:07,650 --> 00:15:12,960
+and then I'll write out the likelihood, so
+one, two, three, four, five subjects.
+
+253
+00:15:12,960 --> 00:15:16,990
+Here are the pack years, just so they're
+handy when I'm writing out the likelihood.
+
+254
+00:15:16,990 --> 00:15:22,840
+So, the first person in the study, here's
+the ages,
+
+255
+00:15:26,560 --> 00:15:31,120
+the first person in the study, subject
+one, we know that they had the event,
+
+256
+00:15:31,120 --> 00:15:32,640
+let's say this, the outcome here is death.
+
+257
+00:15:32,640 --> 00:15:35,420
+They, they died at age 31.
+
+258
+00:15:35,420 --> 00:15:41,320
+So, they are at risk all the way, of
+dying, all the way up until age 31.
+
+259
+00:15:41,320 --> 00:15:43,720
+Even though we only saw them from ages 28
+to 31,
+
+260
+00:15:43,720 --> 00:15:47,050
+we're still going to count them at risk
+all the way up until 31.
+
+261
+00:15:47,050 --> 00:15:53,238
+Subject two, if the outcome again here is
+death, died at age 30, so, again,
+
+262
+00:15:53,238 --> 00:15:59,153
+at risk from birth though, subject three
+is, had, was censored all the,
+
+263
+00:15:59,153 --> 00:16:04,012
+at age 47, so that person is at risk all
+the way up to age 47.
+
+264
+00:16:04,012 --> 00:16:07,774
+Subject four died at age 41.
+
+265
+00:16:07,774 --> 00:16:10,022
+So, is at risk from birth until then.
+
+266
+00:16:10,022 --> 00:16:16,250
+And finally, subject five is censored at
+age 43.
+
+267
+00:16:16,250 --> 00:16:18,210
+So, the picture looks like that.
+
+268
+00:16:18,210 --> 00:16:20,670
+The corresponding likelihood, it's
+going to, again,
+
+269
+00:16:20,670 --> 00:16:22,440
+be a function of beta smoking.
+
+270
+00:16:22,440 --> 00:16:28,180
+Is now going to take everybody who's at
+risk at a given age.
+
+271
+00:16:28,180 --> 00:16:30,560
+But there's going to be more people at
+risk.
+
+272
+00:16:30,560 --> 00:16:35,956
+So, for example the event that happened at
+age 30, subject two dying at age 30,
+
+273
+00:16:35,956 --> 00:16:38,300
+at that time everybody was at risk.
+
+274
+00:16:38,300 --> 00:16:41,100
+Everybody is now at risk at age 30.
+
+275
+00:16:41,100 --> 00:16:44,820
+So, the numerator is going to be E Raised
+to beta three,
+
+276
+00:16:44,820 --> 00:16:46,950
+because that person at 30 pack years of
+smoking.
+
+277
+00:16:47,980 --> 00:16:50,930
+That person is also in the denominator
+there's their hazard.
+
+278
+00:16:50,930 --> 00:16:53,050
+He and everybody else is in that
+denominator as well.
+
+279
+00:16:53,050 --> 00:16:54,160
+Everybody else is at risk.
+
+280
+00:16:54,160 --> 00:16:56,310
+So, if you're subject number one.
+
+281
+00:16:56,310 --> 00:16:58,159
+Here's, subject number three.
+
+282
+00:16:59,490 --> 00:17:03,790
+Here's subject number four, and here is
+subject number five.
+
+283
+00:17:05,560 --> 00:17:08,868
+Everyone was at risk at that first event
+time at age 30.
+
+284
+00:17:08,868 --> 00:17:09,836
+At age 31,
+
+285
+00:17:09,836 --> 00:17:15,883
+everybody is at risk except subject number
+two who already died before age 31.
+
+286
+00:17:15,883 --> 00:17:21,081
+So, the likelihood would be the person who
+died had one
+
+287
+00:17:21,081 --> 00:17:27,183
+pack year of smoking, so that's subject
+one, this represents
+
+288
+00:17:27,183 --> 00:17:32,976
+subject three this is subject four and
+this is subject five.
+
+289
+00:17:32,976 --> 00:17:37,595
+And finally the last event occurs when
+there are still three people at risk.
+
+290
+00:17:37,595 --> 00:17:42,013
+Three people who crossed over age 41 and
+that person,
+
+291
+00:17:42,013 --> 00:17:47,465
+the person who died was a non-smoker
+that's subject number four but
+
+292
+00:17:47,465 --> 00:17:52,583
+also at risk was subject number three and
+subject number five.
+
+293
+00:17:52,583 --> 00:17:56,949
+So, you can again see that the likelihood
+looks slightly different if
+
+294
+00:17:56,949 --> 00:18:00,096
+we count the time since birth as the
+time-scale.
+
+295
+00:18:00,096 --> 00:18:03,736
+You're going to be writing a lot of
+likelihoods out this week and
+
+296
+00:18:03,736 --> 00:18:06,780
+so hopefully you'll get the hang of these.
+
+297
+00:18:06,780 --> 00:18:08,320
+Again, by looking at the likelihood,
+
+298
+00:18:08,320 --> 00:18:10,979
+you can really see what's going on in
+terms of the model.
+
+299
+00:18:12,180 --> 00:18:14,160
+Just to give a quick example.
+
+300
+00:18:14,160 --> 00:18:18,980
+We've already seen an example where the
+age was used as the time scale rather than
+
+301
+00:18:18,980 --> 00:18:23,020
+the time in the study and this was, they
+used the age since birth.
+
+302
+00:18:23,020 --> 00:18:26,590
+This was the study looking at Academy
+Award winners versus nominees.
+
+303
+00:18:26,590 --> 00:18:28,350
+They looked at actors and actresses.
+
+304
+00:18:28,350 --> 00:18:31,210
+As well as screen writers, I'm showing you
+the Kaplan-Meier curve for
+
+305
+00:18:31,210 --> 00:18:32,660
+the screen writers here.
+
+306
+00:18:32,660 --> 00:18:36,650
+So, again in red, for screen writers, the
+winners actually did worse than those
+
+307
+00:18:36,650 --> 00:18:41,810
+were only ever nominated, but you can see
+on the Kaplan-Meier curve that the time
+
+308
+00:18:41,810 --> 00:18:45,180
+scale here is age and we start counting
+from birth.
+
+309
+00:18:45,180 --> 00:18:50,295
+So, people are counted as at risk all the
+way up through all of their ages,
+
+310
+00:18:50,295 --> 00:18:53,581
+and when somebody has an event, when
+somebody dies here,
+
+311
+00:18:53,581 --> 00:18:59,500
+your counting a 50 year old; who might've
+been born in the you know, 1920s.
+
+312
+00:18:59,500 --> 00:19:05,270
+We might be counting them against a 50
+year old who was born in the 1940s,
+
+313
+00:19:05,270 --> 00:19:09,930
+in terms of the risk set, it's everybody
+who has gone through the age 50 here.
+
+314
+00:19:09,930 --> 00:19:13,090
+And so this actually used age at the time
+scale in
+
+315
+00:19:13,090 --> 00:19:16,580
+the Kaplan-Meier's here as well as in
+their Cox regression.
+
+316
+00:19:16,580 --> 00:19:20,980
+So, this is an example of the use of age
+as the time scale.

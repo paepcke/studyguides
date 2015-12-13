@@ -1,0 +1,1010 @@
+1
+00:00:00,630 --> 00:00:04,040
+Now let's go through a real example in
+more detail with some real data.
+
+2
+00:00:05,500 --> 00:00:09,380
+So this is an example that involves time
+to conception in women who want to
+
+3
+00:00:09,380 --> 00:00:09,990
+get pregnant.
+
+4
+00:00:09,990 --> 00:00:12,990
+So just to show you that we don't always
+have to have bad outcomes in
+
+5
+00:00:12,990 --> 00:00:14,050
+survival analysis.
+
+6
+00:00:14,050 --> 00:00:15,220
+Failure here.
+
+7
+00:00:15,220 --> 00:00:16,920
+Failing to survive is a good thing.
+
+8
+00:00:16,920 --> 00:00:19,970
+You, these women want to get pregnant.
+
+9
+00:00:19,970 --> 00:00:24,720
+So this was some data on 38 women who got,
+who all received the same treatment for
+
+10
+00:00:24,720 --> 00:00:25,590
+infer, infertility.
+
+11
+00:00:25,590 --> 00:00:26,750
+So there's only one group here.
+
+12
+00:00:28,320 --> 00:00:31,070
+And the researchers followed them for up
+to two years.
+
+13
+00:00:31,070 --> 00:00:33,018
+To mark the time to conception.
+
+14
+00:00:33,018 --> 00:00:36,220
+And, again, the event is conception.
+
+15
+00:00:36,220 --> 00:00:39,860
+I'm going to say that the women survived
+pregnancy free until they conceived.
+
+16
+00:00:39,860 --> 00:00:42,290
+But of course, again, they, they want to
+fail here.
+
+17
+00:00:42,290 --> 00:00:44,890
+They want to su, to, to get pregnant.
+
+18
+00:00:44,890 --> 00:00:48,020
+This, this data set is nice and easy to
+work with.
+
+19
+00:00:48,020 --> 00:00:50,720
+Because women can only get pregnant once a
+month.
+
+20
+00:00:50,720 --> 00:00:53,320
+So the time here is just in months.
+
+21
+00:00:53,320 --> 00:00:55,800
+And everybody has one opportunity to get
+pregnant one time per month.
+
+22
+00:00:55,800 --> 00:00:57,720
+So here's actually the raw data.
+
+23
+00:00:57,720 --> 00:00:58,870
+The reason I chose this example,
+
+24
+00:00:58,870 --> 00:01:00,460
+is somebody had actually published the raw
+data.
+
+25
+00:01:00,460 --> 00:01:01,250
+They're nice and simple.
+
+26
+00:01:01,250 --> 00:01:04,960
+We can look at the raw data and see how it
+translates to a Kaplan-Meier curve.
+
+27
+00:01:04,960 --> 00:01:10,070
+Let me just show you the full
+corresponding Kaplan-Meier curve for
+
+28
+00:01:10,070 --> 00:01:11,260
+these data.
+
+29
+00:01:11,260 --> 00:01:12,620
+So here is the Kaplan-Meier curve for
+
+30
+00:01:12,620 --> 00:01:14,760
+the data that I just showed you, already
+drawn out.
+
+31
+00:01:14,760 --> 00:01:17,380
+I'm going to walk you through where it
+comes from in a minute.
+
+32
+00:01:17,380 --> 00:01:21,240
+Just note that this is a step wise curve,
+that has nine steps to it.
+
+33
+00:01:21,240 --> 00:01:23,230
+There are nine unique event times.
+
+34
+00:01:23,230 --> 00:01:26,110
+Nine unique months in which women got
+pregnant.
+
+35
+00:01:26,110 --> 00:01:29,890
+So we're going to drop the curve nine
+times, for those nine event times.
+
+36
+00:01:29,890 --> 00:01:31,780
+If no pregnancies happened in a given
+month,
+
+37
+00:01:31,780 --> 00:01:33,000
+we don't drop the curve in that month.
+
+38
+00:01:34,700 --> 00:01:35,240
+Alright.
+
+39
+00:01:35,240 --> 00:01:37,920
+So how do we translate this into
+Kaplan-Meier estimates?
+
+40
+00:01:37,920 --> 00:01:40,690
+So, starting with what happens in month
+one.
+
+41
+00:01:40,690 --> 00:01:43,450
+So, in month one, six women conceived.
+
+42
+00:01:43,450 --> 00:01:47,740
+There were 38 women at risk of conceiving
+in month one, who were in the study.
+
+43
+00:01:47,740 --> 00:01:49,460
+Six of them conceived.
+
+44
+00:01:49,460 --> 00:01:51,420
+So 6 out of 38 get pregnant.
+
+45
+00:01:51,420 --> 00:01:56,930
+Which means that 32 out of 38 survive that
+first month pregnancy free.
+
+46
+00:01:56,930 --> 00:01:59,120
+And we can represent that on the curve
+here.
+
+47
+00:01:59,120 --> 00:02:01,110
+So, sorry, this is just what I just said.
+
+48
+00:02:01,110 --> 00:02:02,620
+Six women conceived in the first month,
+
+49
+00:02:02,620 --> 00:02:05,850
+32 out of 38 survived pregnancy free past
+the first month.
+
+50
+00:02:05,850 --> 00:02:08,740
+So we're going to drop the curve down to
+32 out of 38,
+
+51
+00:02:08,740 --> 00:02:10,710
+because this is the survival probability.
+
+52
+00:02:10,710 --> 00:02:15,320
+32 out of 38 made it past the first month
+pregnancy free.
+
+53
+00:02:15,320 --> 00:02:16,450
+Of course they, they don't want to.
+
+54
+00:02:17,730 --> 00:02:19,650
+The outcome here is something that they
+actually want to happen.
+
+55
+00:02:19,650 --> 00:02:24,290
+Now we can also say, well, what percent of
+women got pregnant in a, a given month?
+
+56
+00:02:24,290 --> 00:02:29,418
+So in month one, there were 6 out of 38
+who got pregnant, so 15.8% got pregnant.
+
+57
+00:02:29,418 --> 00:02:31,740
+We're going to call that something called
+a hazard rate,
+
+58
+00:02:31,740 --> 00:02:34,370
+which we're going to return to in some
+future modules.
+
+59
+00:02:34,370 --> 00:02:37,620
+So I'll just point out that the hazard
+rate for month one here was 15.8%.
+
+60
+00:02:37,620 --> 00:02:40,080
+The survival probability is about 84%.
+
+61
+00:02:40,080 --> 00:02:42,520
+Alright, what happened next?
+
+62
+00:02:42,520 --> 00:02:45,340
+So, the next thing that happened in our
+dataset,
+
+63
+00:02:45,340 --> 00:02:51,038
+is that at, in the second cycle, the
+second month, five women conceived.
+
+64
+00:02:51,038 --> 00:02:53,740
+And nobody is censored yet.
+
+65
+00:02:53,740 --> 00:02:56,970
+There's one woman in the censoring list
+who has a value of 2.
+
+66
+00:02:56,970 --> 00:02:59,910
+But just understand that the way these
+data were set up,
+
+67
+00:02:59,910 --> 00:03:01,570
+when we say she censored at two months.
+
+68
+00:03:01,570 --> 00:03:02,410
+What we mean by that,
+
+69
+00:03:02,410 --> 00:03:07,680
+is that she made it through two cycles,
+two months, pregnancy free.
+
+70
+00:03:07,680 --> 00:03:11,420
+And at the last time we saw her she, she
+was not pregnant.
+
+71
+00:03:11,420 --> 00:03:13,460
+But she's going to contribute two months
+to the study.
+
+72
+00:03:13,460 --> 00:03:16,470
+So the, we know that she didn't get
+pregnant in that second month.
+
+73
+00:03:16,470 --> 00:03:18,850
+That's just the way the data are coded
+here.
+
+74
+00:03:18,850 --> 00:03:22,220
+So that means we won't have, the censoring
+won't occur until after the pregnancies.
+
+75
+00:03:23,500 --> 00:03:25,620
+So now, what happened in the second month?
+
+76
+00:03:25,620 --> 00:03:27,090
+Five women conceived.
+
+77
+00:03:27,090 --> 00:03:30,080
+There were 32 women at risk.
+
+78
+00:03:30,080 --> 00:03:32,740
+Because we lost six in the first month who
+got pregnant.
+
+79
+00:03:32,740 --> 00:03:35,840
+So 27 out of 32 did not get pregnant.
+
+80
+00:03:35,840 --> 00:03:40,680
+So they survived the second interval, the
+second month, pregnancy free.
+
+81
+00:03:40,680 --> 00:03:44,040
+So the chances of surviving that second
+interval pregnancy free,
+
+82
+00:03:44,040 --> 00:03:46,400
+if you started the interval, were 84.4%.
+
+83
+00:03:46,400 --> 00:03:49,090
+To get the cumulative probability of
+surviving past two months.
+
+84
+00:03:49,090 --> 00:03:52,060
+We have to multiply, the probability from
+the first interval times
+
+85
+00:03:52,060 --> 00:03:53,720
+the probability from the second interval.
+
+86
+00:03:53,720 --> 00:03:57,522
+So now the curve is dropped down here to
+about 71%.
+
+87
+00:03:57,522 --> 00:04:01,272
+So 71% are going to be pregnancy free at
+the end of two months.
+
+88
+00:04:01,272 --> 00:04:04,230
+About 30% would, would conceive in the
+first two months.
+
+89
+00:04:05,690 --> 00:04:07,900
+Now the hazard rate for the second month.
+
+90
+00:04:07,900 --> 00:04:10,480
+If you make it to month two pregnancy
+free.
+
+91
+00:04:10,480 --> 00:04:11,945
+If you don't get pregnant in the first
+month,
+
+92
+00:04:11,945 --> 00:04:14,220
+what's your chance of getting pregnant in
+the next month?
+
+93
+00:04:14,220 --> 00:04:16,290
+Its actually pretty similar to the first
+month.
+
+94
+00:04:16,290 --> 00:04:19,120
+5 out of 32 got pregnant in month two.
+
+95
+00:04:19,120 --> 00:04:22,550
+And so the hazard rate here, what were
+going to call the hazard rate is 15.6%.
+
+96
+00:04:22,550 --> 00:04:25,370
+I'll just kind of kind of want to point
+out the hazard rates,
+
+97
+00:04:25,370 --> 00:04:28,690
+because were going to return to those up
+in a future module.
+
+98
+00:04:28,690 --> 00:04:31,510
+So, pretty constant rate of getting
+pregnant here.
+
+99
+00:04:33,020 --> 00:04:34,000
+Alright.
+What happens next?
+
+100
+00:04:34,000 --> 00:04:37,260
+So, in the third month, three women get
+pregnant.
+
+101
+00:04:37,260 --> 00:04:41,030
+One woman, this woman, gets censored right
+after the second month.
+
+102
+00:04:41,030 --> 00:04:42,540
+So she's gone out of the risk set.
+
+103
+00:04:42,540 --> 00:04:45,275
+She's no longer at risk of getting
+pregnant, we've lost her.
+
+104
+00:04:45,275 --> 00:04:48,700
+So the risk set, the the number of women
+who could get pregnant in,
+
+105
+00:04:48,700 --> 00:04:53,050
+in the third cycle at, in month three, is
+only 26 women.
+
+106
+00:04:53,050 --> 00:04:57,450
+Out of those 26 women, three get pregnant.
+
+107
+00:04:57,450 --> 00:04:58,640
+23 out of 26 don't get pregnant.
+
+108
+00:04:58,640 --> 00:05:01,740
+These, they're, they survive the third
+month pregnancy-free.
+
+109
+00:05:01,740 --> 00:05:05,660
+To get the cumulative probability of
+survive, surviving past three months,
+
+110
+00:05:05,660 --> 00:05:07,970
+we multiply the first three intervals
+together.
+
+111
+00:05:07,970 --> 00:05:10,586
+So now the curve is down to 62.8%.
+
+112
+00:05:10,586 --> 00:05:13,871
+So that's saying that your chances of
+surviving past
+
+113
+00:05:13,871 --> 00:05:18,236
+three months pregnancy-free, our estimate
+of that is 62.8%.
+
+114
+00:05:18,236 --> 00:05:22,179
+I'll just point out the hazard rate for
+the third month was 3 out of 26.
+
+115
+00:05:22,179 --> 00:05:25,030
+26 were at risk of getting pregnant, 3
+did.
+
+116
+00:05:25,030 --> 00:05:28,460
+So the hazard rate here is just slightly
+smaller than the,
+
+117
+00:05:28,460 --> 00:05:31,019
+the first two months, it's 11.5%.
+
+118
+00:05:31,019 --> 00:05:32,531
+And we can keep going.
+
+119
+00:05:32,531 --> 00:05:34,387
+So now if we go to the fourth month,
+
+120
+00:05:34,387 --> 00:05:36,979
+there's now two women who have been
+censored.
+
+121
+00:05:36,979 --> 00:05:37,954
+So they're dropped out, and
+
+122
+00:05:37,954 --> 00:05:39,956
+then of course all these other women have
+gotten pregnant.
+
+123
+00:05:39,956 --> 00:05:45,711
+So we're down to 22 women, 3 women out of
+those 22 get pregnant.
+
+124
+00:05:45,711 --> 00:05:47,721
+So 19 do not get pregnant.
+
+125
+00:05:47,721 --> 00:05:52,002
+So 19 out of 22 survive the fourth month
+pregnancy free.
+
+126
+00:05:52,002 --> 00:05:55,500
+So we add that to our cumulative
+probability here.
+
+127
+00:05:55,500 --> 00:05:57,020
+That means our curve is going to drop
+down.
+
+128
+00:05:57,020 --> 00:06:00,000
+If you multiply all of these together our
+curve drops down here to 54%,
+
+129
+00:06:00,000 --> 00:06:03,690
+you can see that on the Kaplan-Meier curve
+here.
+
+130
+00:06:03,690 --> 00:06:05,860
+The hazard rate for the fourth month.
+
+131
+00:06:05,860 --> 00:06:08,214
+For month four, turned out to be 13.6%.
+
+132
+00:06:08,214 --> 00:06:09,730
+3 out of 22 did get pregnant.
+
+133
+00:06:09,730 --> 00:06:12,320
+So that's the hazard rate for the fourth
+month.
+
+134
+00:06:12,320 --> 00:06:14,290
+And we can keep going here.
+
+135
+00:06:14,290 --> 00:06:17,680
+So at six months no, notice that nobody
+got pregnant in month five.
+
+136
+00:06:17,680 --> 00:06:21,370
+On the pregnancy side there's, there's
+nobody at month five.
+
+137
+00:06:21,370 --> 00:06:23,870
+So we're just going to draw the curve past
+month five.
+
+138
+00:06:23,870 --> 00:06:27,130
+We're not going to draw up the curve again
+until we get to month six.
+
+139
+00:06:27,130 --> 00:06:30,080
+At month six, how many woman are still at
+risk?
+
+140
+00:06:30,080 --> 00:06:31,750
+Well, now we've censored three women.
+
+141
+00:06:31,750 --> 00:06:35,210
+So we're down to 18 women who are at risk
+of getting pregnant.
+
+142
+00:06:35,210 --> 00:06:39,800
+In our study at month six, 2 got pregnant
+and 16 did not.
+
+143
+00:06:39,800 --> 00:06:43,450
+So the chances of surviving that interval,
+pregnancy free was 16 out of 18.
+
+144
+00:06:43,450 --> 00:06:48,390
+So we're going to add that and multiply
+that into our cumulative probability here.
+
+145
+00:06:48,390 --> 00:06:50,410
+Our cumulative probability at four months
+was 54.2%.
+
+146
+00:06:50,410 --> 00:06:54,580
+We can just multiply that to the
+probability for month six.
+
+147
+00:06:54,580 --> 00:06:58,280
+We get that our, now our total probability
+of surviving past six months
+
+148
+00:06:58,280 --> 00:07:00,256
+pregnancy free is about 42%.
+
+149
+00:07:00,256 --> 00:07:01,950
+So the way you could use these data,
+
+150
+00:07:01,950 --> 00:07:04,790
+is you could say to a woman who is getting
+this procedure.
+
+151
+00:07:04,790 --> 00:07:08,950
+Well, we expect about 60% of women to get
+pregnant in the first six
+
+152
+00:07:08,950 --> 00:07:12,690
+months after having this procedure, and
+about 40% to not get pregnant.
+
+153
+00:07:12,690 --> 00:07:16,540
+To, to survive six months pregnancy free,
+to use,
+
+154
+00:07:16,540 --> 00:07:18,410
+again, the language of survival analysis.
+
+155
+00:07:19,760 --> 00:07:21,370
+And we can keep going here.
+
+156
+00:07:21,370 --> 00:07:24,420
+I, I decided that I didn't need to go
+through ev, walk you through every step.
+
+157
+00:07:24,420 --> 00:07:25,880
+I think you get the idea.
+
+158
+00:07:25,880 --> 00:07:29,030
+By the way, the little stars here are
+indicating where women are censored.
+
+159
+00:07:29,030 --> 00:07:30,800
+That's what those stars are.
+
+160
+00:07:30,800 --> 00:07:33,530
+And, I'm just going to drop ahead, skip
+ahead a little bit here.
+
+161
+00:07:33,530 --> 00:07:34,730
+So we were at six months.
+
+162
+00:07:34,730 --> 00:07:36,312
+I'm going to skip ahead to 13 months.
+
+163
+00:07:36,312 --> 00:07:40,240
+Which is the second to last event time, in
+which pregnancies actually occurred.
+
+164
+00:07:40,240 --> 00:07:42,200
+By the time we get down to 13 months now,
+
+165
+00:07:42,200 --> 00:07:46,832
+there's only 22% of women who wouldn't be
+pregnant, or pregnant by then.
+
+166
+00:07:46,832 --> 00:07:49,830
+And, then let me just do the very last
+event time.
+
+167
+00:07:49,830 --> 00:07:52,930
+So, were're at 22% at 13 months.
+
+168
+00:07:52,930 --> 00:07:56,300
+The very last, after 13 months, there's
+one more pregnancy.
+
+169
+00:07:56,300 --> 00:07:59,720
+There's one woman who gets pregnant in the
+16th month of the study.
+
+170
+00:07:59,720 --> 00:08:01,900
+At 16 months, there's a lot of women
+who've been censored.
+
+171
+00:08:01,900 --> 00:08:03,480
+A lot of women whom are pregnant.
+
+172
+00:08:03,480 --> 00:08:06,450
+So there's actually only two remaining at
+16 months.
+
+173
+00:08:06,450 --> 00:08:10,920
+On this side, there's three total women
+who are at risk of getting pregnant.
+
+174
+00:08:10,920 --> 00:08:13,300
+At 16 months, one gets pregnant, two
+don't.
+
+175
+00:08:13,300 --> 00:08:14,270
+So that interval,
+
+176
+00:08:14,270 --> 00:08:17,700
+the probability of surviving that interval
+pregnancy free is 2 3rds.
+
+177
+00:08:17,700 --> 00:08:20,790
+We multiply that to the cumulative
+probability from before, 22%.
+
+178
+00:08:20,790 --> 00:08:23,270
+We drop our curve down to 15%.
+
+179
+00:08:23,270 --> 00:08:25,560
+And then the last two women are censored.
+
+180
+00:08:25,560 --> 00:08:28,720
+They never get pregnant during the time
+point of the, course of the study.
+
+181
+00:08:28,720 --> 00:08:30,350
+So we just draw the curve all the way
+over.
+
+182
+00:08:30,350 --> 00:08:31,950
+And that represented here.
+
+183
+00:08:31,950 --> 00:08:36,650
+So that is our Kaplan-Meier estimate of
+the survival curve.
+
+184
+00:08:36,650 --> 00:08:39,790
+I'll just point out to you, that if you
+look at the end of the curve.
+
+185
+00:08:39,790 --> 00:08:44,160
+Notice that by the end of the curve, we
+only have three women at risk.
+
+186
+00:08:44,160 --> 00:08:46,910
+And when you have three women at risk and
+one gets pregnant.
+
+187
+00:08:46,910 --> 00:08:50,780
+We're now multiplying this curve, this
+22%, by 2 3rds.
+
+188
+00:08:50,780 --> 00:08:52,790
+So the curve drops quite a bit here,
+
+189
+00:08:52,790 --> 00:08:56,040
+even though this represents only a single
+woman getting pregnant.
+
+190
+00:08:56,040 --> 00:08:58,510
+What you'll notice at the end of
+Kaplan-Meier curves is,
+
+191
+00:08:58,510 --> 00:09:02,610
+you end up, usually, with not too many
+women or people left.
+
+192
+00:09:02,610 --> 00:09:05,250
+And so the estimates can get very wiggly,
+right?
+
+193
+00:09:05,250 --> 00:09:08,740
+There's a lot of potential for variability
+when you have only a few people.
+
+194
+00:09:08,740 --> 00:09:12,780
+So just be cautious about interpreting the
+end of Kaplan-Meier curves.
+
+195
+00:09:12,780 --> 00:09:15,520
+Because often the sample size is pretty
+small by then.
+
+196
+00:09:15,520 --> 00:09:19,310
+And you know, things may jump around that
+don't represent anything real.
+
+197
+00:09:19,310 --> 00:09:20,670
+It just represents noise.
+
+198
+00:09:22,460 --> 00:09:25,505
+So what you get out of the computer is you
+get this picture of this
+
+199
+00:09:25,505 --> 00:09:26,550
+Kaplan-Meier curve.
+
+200
+00:09:26,550 --> 00:09:27,590
+You'll get the picture.
+
+201
+00:09:27,590 --> 00:09:31,880
+You will also get the estimates of the,
+the actual specific values of
+
+202
+00:09:31,880 --> 00:09:35,700
+these survival probabilities at every
+event time.
+
+203
+00:09:35,700 --> 00:09:37,500
+In SAS the output looks something like
+this.
+
+204
+00:09:37,500 --> 00:09:40,968
+So the estimate of probability of
+surviving pass month one,
+
+205
+00:09:40,968 --> 00:09:42,560
+that's equal to 84%.
+
+206
+00:09:42,560 --> 00:09:45,770
+You can get the, the actual specific value
+here.
+
+207
+00:09:45,770 --> 00:09:50,472
+Sometimes on the graphic it's hard to get
+the specific values.
+
+208
+00:09:50,472 --> 00:09:53,520
+And for two months the survival
+probability was 71%.
+
+209
+00:09:53,520 --> 00:09:55,600
+At three months it was 62% and so on.
+
+210
+00:09:55,600 --> 00:09:58,090
+It's also giving you the probability, the
+failure probability.
+
+211
+00:09:58,090 --> 00:10:00,375
+Which is just 1 minus the survival
+probability.
+
+212
+00:10:00,375 --> 00:10:03,730
+And survival curves do come with some
+standard errors.
+
+213
+00:10:03,730 --> 00:10:06,080
+So it is possible to put confidence
+intervals around them,
+
+214
+00:10:06,080 --> 00:10:09,500
+although that sometimes makes the graphic
+kind of messy.
+
+215
+00:10:09,500 --> 00:10:11,470
+SAS also tells you the number who have
+failed.
+
+216
+00:10:11,470 --> 00:10:13,690
+And the number remaining at risk, at each
+time point.
+
+217
+00:10:13,690 --> 00:10:17,410
+So you can get all of that output out of
+your computer program as well.

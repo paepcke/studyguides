@@ -1,0 +1,497 @@
+1
+00:00:01,610 --> 00:00:05,310
+All right, so turning now from the Vioxx
+story.
+
+2
+00:00:05,310 --> 00:00:07,460
+I went over rate ratios and risk ratios.
+
+3
+00:00:07,460 --> 00:00:12,056
+I now want to turn to hazard ratios which
+again are directly related to rate ratios.
+
+4
+00:00:12,056 --> 00:00:13,800
+We're going to see these later in the
+course, so
+
+5
+00:00:13,800 --> 00:00:15,530
+you don't have to worry about all the
+details now.
+
+6
+00:00:15,530 --> 00:00:19,220
+The hazard ratio can be interpreted just
+like a rate ratio.
+
+7
+00:00:19,220 --> 00:00:20,780
+I'm just going to walk you through it a
+little bit,
+
+8
+00:00:20,780 --> 00:00:23,750
+so that you'll be familiar with it if you
+see it in the literature.
+
+9
+00:00:23,750 --> 00:00:25,800
+Again we'll, we'll talk in more detail.
+
+10
+00:00:25,800 --> 00:00:27,539
+Later in the course.
+
+11
+00:00:27,539 --> 00:00:29,650
+So hazard ratios are calculated using,
+
+12
+00:00:29,650 --> 00:00:32,020
+a type of regression technique called Cox
+regression.
+
+13
+00:00:32,020 --> 00:00:34,160
+This is a complimentary regression.
+
+14
+00:00:34,160 --> 00:00:36,630
+They are usually multivariant adjusted.
+
+15
+00:00:36,630 --> 00:00:39,430
+And I'll just show you an example of a
+hazard ratio in the literature.
+
+16
+00:00:39,430 --> 00:00:43,760
+This was a study comparing a drug,
+Ranolazine to a placebo.
+
+17
+00:00:43,760 --> 00:00:46,440
+And they were looking at the outcome.
+
+18
+00:00:46,440 --> 00:00:47,840
+It was a composite outcome.
+
+19
+00:00:47,840 --> 00:00:51,130
+They were looking at death, myocardial
+infarction, heart attack, or
+
+20
+00:00:51,130 --> 00:00:52,540
+recurrent ischemia,
+
+21
+00:00:52,540 --> 00:00:57,030
+they wanted to know if they could reduce
+that composite outcome with this drug.
+
+22
+00:00:57,030 --> 00:01:00,640
+Here is the hazard ratio I have circled it
+for you for the primary endpoint, turned
+
+23
+00:01:00,640 --> 00:01:06,380
+out to be 0.92, so we would interpret that
+as an 8% reduction in the rate.
+
+24
+00:01:06,380 --> 00:01:08,270
+Of this primary end point.
+
+25
+00:01:08,270 --> 00:01:11,030
+In the drug and the active drug group
+compared with the placebo group.
+
+26
+00:01:11,030 --> 00:01:13,610
+Now that wasn't statistically significant.
+
+27
+00:01:13,610 --> 00:01:17,600
+You can see that the confidence interval
+ranges from 0.83 to 1.02.
+
+28
+00:01:17,600 --> 00:01:20,830
+So we're not completely sure that the true
+value isn't 1.0.
+
+29
+00:01:20,830 --> 00:01:23,510
+Right, that the null value falls within
+that window.
+
+30
+00:01:23,510 --> 00:01:24,870
+So it's not statistically significant.
+
+31
+00:01:24,870 --> 00:01:25,970
+It's a small reduction.
+
+32
+00:01:25,970 --> 00:01:28,430
+But that's how you would interpret the
+hazard ratio.
+
+33
+00:01:30,460 --> 00:01:33,260
+Now we're going to move to the odds ratio.
+
+34
+00:01:33,260 --> 00:01:36,130
+We're going to spend the rest of this
+module and all of next month.
+
+35
+00:01:36,130 --> 00:01:39,330
+The next module on the odds ratio.
+
+36
+00:01:39,330 --> 00:01:41,518
+Odds ratios are just another measure of
+relative risk.
+
+37
+00:01:41,518 --> 00:01:43,550
+You're going to see in a minute that
+they're kind of funny and
+
+38
+00:01:43,550 --> 00:01:45,757
+you're going to wonder why they even
+exist.
+
+39
+00:01:45,757 --> 00:01:48,560
+But there's two reasons that they exist.
+
+40
+00:01:48,560 --> 00:01:52,085
+First of all, they're they only valid
+measure of relative risk for
+
+41
+00:01:52,085 --> 00:01:53,624
+case-control studies, so why is that?
+
+42
+00:01:53,624 --> 00:01:56,520
+So remember, for a case-control study,
+
+43
+00:01:56,520 --> 00:02:00,185
+you cannot calculate the risk of disease
+or the rate of disease.
+
+44
+00:02:00,185 --> 00:02:04,810
+Because, at the investigator goes out and
+finds cases.
+
+45
+00:02:04,810 --> 00:02:09,400
+So the proportion of cases in the study
+just reflects the study design.
+
+46
+00:02:09,400 --> 00:02:13,410
+It does not say anything about the
+prevalence or
+
+47
+00:02:13,410 --> 00:02:15,479
+risk of disease in the general population.
+
+48
+00:02:16,510 --> 00:02:18,420
+Therefore we can't estimate the risk or
+
+49
+00:02:18,420 --> 00:02:20,490
+prevalence of disease in the general
+population.
+
+50
+00:02:20,490 --> 00:02:25,240
+Since we can't estimate disease frequency,
+we can't estimate risk ratios or
+
+51
+00:02:25,240 --> 00:02:25,770
+weight ratios.
+
+52
+00:02:25,770 --> 00:02:30,200
+It turns out that the odds ratio, for
+mathematical reasons, is valid though.
+
+53
+00:02:30,200 --> 00:02:33,270
+The more important reason that you're
+going to see odds ratios all over
+
+54
+00:02:33,270 --> 00:02:35,794
+the medical literature is because of
+logistic regression.
+
+55
+00:02:35,794 --> 00:02:39,070
+So even when you're doing cohort studies
+and cross-sectional studies.
+
+56
+00:02:39,070 --> 00:02:43,880
+Author's may choose to run a statistical
+technique called logistic regression.
+
+57
+00:02:43,880 --> 00:02:46,470
+When you have a binary outcome and you
+want to adjust for
+
+58
+00:02:46,470 --> 00:02:51,100
+confounders the typical statistical test
+that people use is logistic regression.
+
+59
+00:02:51,100 --> 00:02:54,640
+It happens that logistic regression gives
+you out odds ratios.
+
+60
+00:02:54,640 --> 00:02:56,640
+So that's what you get out of the logistic
+regression,
+
+61
+00:02:56,640 --> 00:02:59,240
+that's what people usually report.
+
+62
+00:02:59,240 --> 00:03:02,200
+And this means there's a lot of logistic
+regression is run in the literature,
+
+63
+00:03:02,200 --> 00:03:04,316
+there's a lot of odds ratios in the, in
+the literature.
+
+64
+00:03:04,316 --> 00:03:11,584
+To understand odds ratios, first of all
+you have to understand, what is an odds.
+
+65
+00:03:11,584 --> 00:03:16,150
+An odds is just the probability of an
+event happening divided by
+
+66
+00:03:16,150 --> 00:03:17,890
+the probability of it not happening.
+
+67
+00:03:17,890 --> 00:03:21,330
+And that's a really funny measure to get
+your head around unless you're a somebody
+
+68
+00:03:21,330 --> 00:03:23,260
+who does horse betting or gambling or
+
+69
+00:03:23,260 --> 00:03:25,780
+sports betting, you probably don't think
+in odds.
+
+70
+00:03:25,780 --> 00:03:27,210
+I certainly don't think in odds.
+
+71
+00:03:27,210 --> 00:03:28,390
+I think in probabilities.
+
+72
+00:03:28,390 --> 00:03:30,090
+What's the chance of something happening?
+
+73
+00:03:30,090 --> 00:03:30,850
+I don't think about,
+
+74
+00:03:30,850 --> 00:03:33,840
+what's the chance of it happening divided
+by the chance of it not happening.
+
+75
+00:03:33,840 --> 00:03:37,640
+But it turns out that odds have some nice
+mathematical properties, and
+
+76
+00:03:37,640 --> 00:03:39,440
+that's why they come up.
+
+77
+00:03:39,440 --> 00:03:41,870
+So let's just walk through a couple of
+examples.
+
+78
+00:03:41,870 --> 00:03:43,840
+So if the risk is 50%.
+
+79
+00:03:43,840 --> 00:03:46,370
+If the risk of something happening is 50%.
+
+80
+00:03:46,370 --> 00:03:49,370
+That means there is one chance that it'll
+happen, and one chance that it won't.
+
+81
+00:03:49,370 --> 00:03:51,470
+The, if the risk of it happening is 50%.
+
+82
+00:03:51,470 --> 00:03:53,640
+Then the risk of it not happening is 50%.
+
+83
+00:03:53,640 --> 00:04:03,400
+So that would make the rip, the odds 1 to
+1.
+
+84
+00:04:03,400 --> 00:04:08,400
+If the risk of something happening is 75%,
+reach it times of 4 it's going to happen.
+
+85
+00:04:08,400 --> 00:04:10,800
+So 1 times out of 4 it's not going to
+happen.
+
+86
+00:04:10,800 --> 00:04:12,840
+So the odds would be 3 to 1.
+
+87
+00:04:12,840 --> 00:04:17,500
+If the risk of something happening is 10%,
+1 out of 10, that means 1 out of 10 times
+
+88
+00:04:17,500 --> 00:04:22,180
+it will happen, and 9 out of the 10 times
+it won't, so the odds would be 1 to 9.
+
+89
+00:04:22,180 --> 00:04:26,980
+If the risk is 1%, 1 out of 100, the odds
+would be 1 to 99.
+
+90
+00:04:26,980 --> 00:04:32,300
+Now notice that if you think of an odds as
+a fraction, so we're, I could rewrite this
+
+91
+00:04:32,300 --> 00:04:38,310
+as 1 over 1, 3 over 1, 1 over 9, I could
+rewrite this as fractions.
+
+92
+00:04:38,310 --> 00:04:40,210
+If you think of the odds as fractions,
+
+93
+00:04:40,210 --> 00:04:45,350
+notice that the odds is always higher than
+the corresponding risk.
+
+94
+00:04:45,350 --> 00:04:49,550
+Alright, one is higher than a half, 1 out
+of 99 is higher than 1 out of 100.
+
+95
+00:04:49,550 --> 00:04:53,907
+So the odds is always higher than its
+corresponding probability.
+
+96
+00:04:53,907 --> 00:04:56,930
+But, if you're talking about small risks,
+so
+
+97
+00:04:56,930 --> 00:05:01,625
+like 1 out of 100, and 1 out of 10, the
+odds and the risk are very close in
+
+98
+00:05:01,625 --> 00:05:05,290
+magnitude; 1 out of 100 isn't that
+different from 1 out of 99.
+
+99
+00:05:05,290 --> 00:05:08,630
+So if you're talking about rare events,
+the odds and the risks are similar.
+
+100
+00:05:08,630 --> 00:05:13,790
+However, if you're talking about common
+events, like when the risk is 50% or 75%.
+
+101
+00:05:13,790 --> 00:05:16,150
+Then the odds and the risk look very
+different.
+
+102
+00:05:16,150 --> 00:05:17,110
+So keep that in mind.
+
+103
+00:05:17,110 --> 00:05:19,160
+Because that's going to be true of the
+odds ratio.
+
+104
+00:05:19,160 --> 00:05:21,740
+When you have a common event, the odds
+ratio and
+
+105
+00:05:21,740 --> 00:05:23,440
+the risks ratio are going to diverge.
+
+106
+00:05:23,440 --> 00:05:25,860
+When you have a very rare event, however,
+the risk ratio and
+
+107
+00:05:25,860 --> 00:05:27,210
+the odds ratio are going to look a lot
+alike.

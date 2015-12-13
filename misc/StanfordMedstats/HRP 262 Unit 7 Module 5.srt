@@ -1,0 +1,1767 @@
+1
+00:00:05,230 --> 00:00:06,470
+In this next module,
+
+2
+00:00:06,470 --> 00:00:09,420
+we're going to continue our discussion of
+repeated-measures ANOVA.
+
+3
+00:00:09,420 --> 00:00:13,600
+However, we're going to complicate the
+picture just slightly by now adding
+
+4
+00:00:13,600 --> 00:00:15,040
+a comparison of groups.
+
+5
+00:00:15,040 --> 00:00:20,834
+So, we're going to use the same, simple,
+example data set as in the last module.
+
+6
+00:00:20,834 --> 00:00:25,118
+But now we're going to distinguish between
+whether subjects are in group A or
+
+7
+00:00:25,118 --> 00:00:27,030
+whether they are in group B.
+
+8
+00:00:27,030 --> 00:00:30,620
+Again, these are depression scores
+measured at four time points.
+
+9
+00:00:30,620 --> 00:00:34,010
+So, we can add that distinction to the
+graphics.
+
+10
+00:00:34,010 --> 00:00:36,200
+So, here I've graphed people according to
+whether or
+
+11
+00:00:36,200 --> 00:00:38,000
+not they're in group B or in group A.
+
+12
+00:00:38,000 --> 00:00:40,320
+It's a little bit messy to see patterns
+here.
+
+13
+00:00:40,320 --> 00:00:43,290
+So, I'll then graph the mean plots.
+
+14
+00:00:43,290 --> 00:00:46,000
+So here is the mean for group B and the
+mean for group A.
+
+15
+00:00:46,000 --> 00:00:48,870
+And you notice that group B in general
+seems to be
+
+16
+00:00:48,870 --> 00:00:50,660
+a little bit higher than group A.
+
+17
+00:00:50,660 --> 00:00:53,870
+But they both follow the same general
+pattern over time.
+
+18
+00:00:53,870 --> 00:00:57,320
+The both start a little higher, kind of
+drop a little bit in time point three,
+
+19
+00:00:57,320 --> 00:00:58,680
+and then go back up in time point four.
+
+20
+00:00:58,680 --> 00:01:02,260
+And there's a number of questions that we
+can ask in terms of
+
+21
+00:01:02,260 --> 00:01:03,240
+statistical significance.
+
+22
+00:01:03,240 --> 00:01:05,170
+There's more than one question we can ask.
+
+23
+00:01:05,170 --> 00:01:08,370
+We can ask about what's called the time
+effect.
+
+24
+00:01:09,610 --> 00:01:12,660
+Is there anything significant changes, or
+differences over time?
+
+25
+00:01:12,660 --> 00:01:13,320
+So, for example,
+
+26
+00:01:13,320 --> 00:01:17,000
+is time point three significantly
+different than the other time points?
+
+27
+00:01:17,000 --> 00:01:20,760
+We can ask whether there's any change over
+time, overall kind of ignoring group.
+
+28
+00:01:20,760 --> 00:01:22,780
+That's called the time effect.
+
+29
+00:01:22,780 --> 00:01:28,320
+We can ask whether the groups differ at
+all, kind of ignoring time points.
+
+30
+00:01:28,320 --> 00:01:32,150
+So just overall, sort of
+cross-sectionally, is B higher than A?
+
+31
+00:01:32,150 --> 00:01:33,700
+Is that a significant difference?
+
+32
+00:01:33,700 --> 00:01:35,100
+That would be called the group effect.
+
+33
+00:01:35,100 --> 00:01:38,950
+And then, finally, the effect that we're
+going to comp, care most about is
+
+34
+00:01:38,950 --> 00:01:43,470
+actually the interaction between those
+two, the time by group effect.
+
+35
+00:01:43,470 --> 00:01:47,120
+And what that is telling us is whether or
+not there any, are any
+
+36
+00:01:47,120 --> 00:01:52,480
+significant differences in the changes
+over time between group B and group A.
+
+37
+00:01:52,480 --> 00:01:56,090
+So it's the pattern over time different in
+group B than in group A?
+
+38
+00:01:56,090 --> 00:01:58,110
+And that's what we really care about.
+
+39
+00:01:58,110 --> 00:01:59,000
+From this graphic,
+
+40
+00:01:59,000 --> 00:02:02,300
+just looking at this graphic, it does not
+look like the time by group effect would
+
+41
+00:02:02,300 --> 00:02:05,770
+be significant here because they seem to
+have basically the same pattern over time.
+
+42
+00:02:07,950 --> 00:02:11,434
+One thing that you need to kind of get
+clear in your mind before we
+
+43
+00:02:11,434 --> 00:02:16,325
+jump into the ANOVA here is the difference
+between a between-subjects effect and
+
+44
+00:02:16,325 --> 00:02:18,130
+a within-subjects effect.
+
+45
+00:02:18,130 --> 00:02:20,610
+So let me just clarify that a little bit.
+
+46
+00:02:20,610 --> 00:02:25,030
+So when I talk about a between-subjects
+effect,
+
+47
+00:02:25,030 --> 00:02:28,742
+this is anything where you're literally
+just comparing between subjects.
+
+48
+00:02:28,742 --> 00:02:33,320
+So when we calculated in the previous
+module, the sum of squares between,
+
+49
+00:02:33,320 --> 00:02:37,180
+that was comparing, say, subject one
+versus subject two.
+
+50
+00:02:37,180 --> 00:02:41,020
+That's between-subjects because it's
+comparing different subjects.
+
+51
+00:02:41,020 --> 00:02:45,200
+When we're going to be talking about
+groups, comparing group A, for
+
+52
+00:02:45,200 --> 00:02:47,850
+example, versus group B.
+
+53
+00:02:49,100 --> 00:02:50,530
+What I'm going to call the group effect.
+
+54
+00:02:50,530 --> 00:02:55,440
+When we compare the groups, that's
+going to be a between-subjects effect.
+
+55
+00:02:55,440 --> 00:02:59,460
+Because, there are three people in group A
+and three different people in group B.
+
+56
+00:02:59,460 --> 00:03:05,270
+So, any differences between the groups
+would be a between-subject effect.
+
+57
+00:03:05,270 --> 00:03:10,110
+Something where somebody in group A is
+different than somebody in group B.
+
+58
+00:03:10,110 --> 00:03:13,020
+When we talk about within-subjects
+effects, so
+
+59
+00:03:13,020 --> 00:03:16,451
+this is just sort of like the individual
+effect.
+
+60
+00:03:16,451 --> 00:03:20,585
+[SOUND] If we talk about within-subjects
+effects, well,
+
+61
+00:03:20,585 --> 00:03:24,505
+we're talking about things that are
+happening over time.
+
+62
+00:03:24,505 --> 00:03:26,148
+Because, what does it mean to be within a
+subject?
+
+63
+00:03:26,148 --> 00:03:29,004
+That means we've got the same subject at
+different time points and
+
+64
+00:03:29,004 --> 00:03:32,110
+we're comparing the same subject at
+different time points.
+
+65
+00:03:32,110 --> 00:03:36,810
+So, if I compare subject one at time point
+one
+
+66
+00:03:38,150 --> 00:03:42,194
+to subject one at time point two that
+would be a within-subject comparison.
+
+67
+00:03:46,880 --> 00:03:49,830
+And this is going to correspond roughly to
+what I'm going to call the time effect.
+
+68
+00:03:49,830 --> 00:03:52,100
+Over time our individual subject's
+changing.
+
+69
+00:03:52,100 --> 00:03:53,310
+So that's the time effect.
+
+70
+00:03:55,650 --> 00:04:05,610
+So we want to know whether or not the
+within-subjects changes in group A,
+
+71
+00:04:05,610 --> 00:04:10,960
+for example, are different than the
+within-subject changes over time
+
+72
+00:04:10,960 --> 00:04:17,200
+changes in group B.
+
+73
+00:04:17,200 --> 00:04:21,709
+And this would correspond to what I'm
+calling the time by group effect.
+
+74
+00:04:21,709 --> 00:04:24,889
+because it's actually asking to look at an
+individual subject over time and
+
+75
+00:04:24,889 --> 00:04:26,657
+say whether or not they're changing.
+
+76
+00:04:26,657 --> 00:04:30,230
+And is that change different in one group
+versus the other.
+
+77
+00:04:30,230 --> 00:04:33,236
+So in our output from repeated-measures
+ANOVA,
+
+78
+00:04:33,236 --> 00:04:36,450
+we're going to get things that correspond
+to between-subject effects,
+
+79
+00:04:36,450 --> 00:04:40,170
+that is just individual variability, as
+well as what group you're in.
+
+80
+00:04:40,170 --> 00:04:43,290
+And we're going to get things that
+correspond to within-subjects effects.
+
+81
+00:04:43,290 --> 00:04:46,450
+This is the time effect, and the time by
+group effect.
+
+82
+00:04:46,450 --> 00:04:50,219
+You'll get two pieces in your output.
+
+83
+00:04:50,219 --> 00:04:54,641
+I'm going to start just by analyzing the
+data with a regular two-way ANOVA here,
+
+84
+00:04:54,641 --> 00:04:58,686
+ignoring the fact that we have
+repeated-measures just to illustrate.
+
+85
+00:04:58,686 --> 00:05:02,557
+All of the variability, the sums of
+squares, add up in ANOVA.
+
+86
+00:05:02,557 --> 00:05:05,625
+So we're just going to break down all of
+the variability but we're going to
+
+87
+00:05:05,625 --> 00:05:09,720
+ignore for the moment the, the fact that
+we have the same subjects over time.
+
+88
+00:05:09,720 --> 00:05:12,760
+So I'm going to run an ANOVA, a two-way
+ANOVA,
+
+89
+00:05:12,760 --> 00:05:17,020
+on the long form of the data ignoring the
+correlations within subjects.
+
+90
+00:05:17,020 --> 00:05:21,020
+I have used the long form of the data here
+because I'm sort of pretending that I
+
+91
+00:05:21,020 --> 00:05:25,570
+just have 24 independent people, that's
+not the same people over time.
+
+92
+00:05:25,570 --> 00:05:29,700
+And my predictors are, what time period
+you're on, that's like one factor.
+
+93
+00:05:29,700 --> 00:05:31,440
+What group you're in, that's a second
+factor.
+
+94
+00:05:31,440 --> 00:05:32,345
+And then the interaction,
+
+95
+00:05:32,345 --> 00:05:34,600
+two-way ANOVAs usually have the
+interaction between those two.
+
+96
+00:05:35,680 --> 00:05:37,560
+So I, this is going to be the incorrect
+two-way ANOVA.
+
+97
+00:05:37,560 --> 00:05:40,450
+But let me just show you how it's
+calculated, because there's only going to
+
+98
+00:05:40,450 --> 00:05:43,810
+be one additional thing we have to do to
+do this correctly.
+
+99
+00:05:43,810 --> 00:05:46,860
+So now we've got the distinction of group
+and time.
+
+100
+00:05:46,860 --> 00:05:49,510
+So I can calculate the, mean for
+
+101
+00:05:49,510 --> 00:05:54,360
+each group at each time point, and I can
+calculate the mean for each group overall.
+
+102
+00:05:56,770 --> 00:05:58,580
+So now I'm going to calculate several
+things.
+
+103
+00:05:58,580 --> 00:06:01,290
+First of all, I can calculate a sum of
+squares between time.
+
+104
+00:06:01,290 --> 00:06:02,820
+We actually already did that.
+
+105
+00:06:02,820 --> 00:06:06,080
+So the overall mean for time one was 27.
+
+106
+00:06:06,080 --> 00:06:12,872
+We subtract the overall, the mean overall
+for all 24 measurements, that was also 27.
+
+107
+00:06:12,872 --> 00:06:15,932
+If you recall the mean for time two, time
+point two for
+
+108
+00:06:15,932 --> 00:06:20,150
+all six subjects was 28 minus the overall
+mean, and so on and so forth.
+
+109
+00:06:20,150 --> 00:06:22,530
+We already calculated this, so that stays
+the same.
+
+110
+00:06:22,530 --> 00:06:27,569
+The sum of squares between time is still
+224.79.
+
+111
+00:06:27,569 --> 00:06:30,469
+Now, we're going to add a sum of squares
+between groups, and
+
+112
+00:06:30,469 --> 00:06:31,800
+how do we calculate that?
+
+113
+00:06:31,800 --> 00:06:35,350
+Well, we look at the mean for each group
+overall, and
+
+114
+00:06:35,350 --> 00:06:38,220
+the mean for group A and the mean for
+group B.
+
+115
+00:06:38,220 --> 00:06:41,365
+So, ignoring time point, the mean for
+group A is 24.75.
+
+116
+00:06:41,365 --> 00:06:45,013
+We're going to compare that to the overall
+mean, ignoring time point, the,
+
+117
+00:06:45,013 --> 00:06:46,680
+the mean for group B is 29.3.
+
+118
+00:06:46,680 --> 00:06:47,794
+We're going to compare that to the overall
+mean.
+
+119
+00:06:47,794 --> 00:06:52,290
+So, 29.3 minus 27 squared, plus 24.75
+minus 27 squared.
+
+120
+00:06:52,290 --> 00:06:56,910
+We have to multiply by 12 because we need
+24 terms in the sum of squares,
+
+121
+00:06:56,910 --> 00:06:59,750
+24 sum of squares things, that comes out
+to be 126.
+
+122
+00:06:59,750 --> 00:07:03,320
+So that's the sum of squares between
+group.
+
+123
+00:07:05,850 --> 00:07:09,320
+Now when we calculate the sum of squares
+error the unexplained variability,
+
+124
+00:07:09,320 --> 00:07:13,360
+we're going to be taking the, each person.
+
+125
+00:07:13,360 --> 00:07:16,810
+And subtracting now from their group and
+time mean.
+
+126
+00:07:16,810 --> 00:07:21,640
+So, so person, subject one, at time point
+one, had a depression score of 31.
+
+127
+00:07:21,640 --> 00:07:26,400
+We're going to compare that to the mean
+for group A at time point one.
+
+128
+00:07:26,400 --> 00:07:27,760
+So we'll do a 31 minus 23,
+
+129
+00:07:27,760 --> 00:07:33,070
+and then we're going to do a 24 minus 23
+squared, 14 minus 23 squared.
+
+130
+00:07:33,070 --> 00:07:36,598
+So each subject is going to comp, be
+compared only to the current time point,
+
+131
+00:07:36,598 --> 00:07:40,290
+and to their, to their, their group's mean
+at that time point.
+
+132
+00:07:40,290 --> 00:07:42,080
+So we do that for all 24 subjects.
+
+133
+00:07:42,080 --> 00:07:44,240
+We get 24 sum squares.
+
+134
+00:07:44,240 --> 00:07:46,841
+That comes out to be 100, 523.
+
+135
+00:07:46,841 --> 00:07:49,110
+And then there's one additional thing we
+need to worry about.
+
+136
+00:07:49,110 --> 00:07:51,900
+So we've got now, two factors, time and
+group.
+
+137
+00:07:51,900 --> 00:07:55,170
+And we're going to need to calculate the
+sum of squares for their interaction.
+
+138
+00:07:55,170 --> 00:07:57,930
+And the easiest way to do that is just to
+remember that sum of
+
+139
+00:07:57,930 --> 00:07:59,500
+squares always sum up.
+
+140
+00:07:59,500 --> 00:08:02,256
+So we're going to take the sum of squares
+total, which we found,
+
+141
+00:08:02,256 --> 00:08:04,266
+we calculated before, was 900.96.
+
+142
+00:08:04,266 --> 00:08:07,590
+We're going to sat, subtract away the sum
+of squares for time, the sum of
+
+143
+00:08:07,590 --> 00:08:10,880
+squares for group, and the sum of squares
+error, the ones we've already calculated.
+
+144
+00:08:10,880 --> 00:08:14,620
+That will give us this, the, sum of
+squares for the group by time interaction.
+
+145
+00:08:14,620 --> 00:08:15,950
+That comes out to be 26.79.
+
+146
+00:08:15,950 --> 00:08:17,680
+So, not very big here.
+
+147
+00:08:19,460 --> 00:08:21,540
+That gives us, with our breakdown now.
+
+148
+00:08:21,540 --> 00:08:23,660
+We know, of course, we've ignored subject,
+at this point,
+
+149
+00:08:23,660 --> 00:08:26,000
+but this breaks down everything else.
+
+150
+00:08:26,000 --> 00:08:30,340
+We can then ask the computer, or put this
+together in a, in ANOVA table.
+
+151
+00:08:30,340 --> 00:08:33,892
+Again, so we then ended up with our
+explained variability.
+
+152
+00:08:33,892 --> 00:08:37,064
+That's due to which group you're in or
+which time period you're at, or
+
+153
+00:08:37,064 --> 00:08:38,472
+the interaction of those two.
+
+154
+00:08:38,472 --> 00:08:40,519
+Those summed up to 377.
+
+155
+00:08:40,519 --> 00:08:47,500
+So if you add up the 224, 126 and 26.79,
+that gives you a total of 377.
+
+156
+00:08:47,500 --> 00:08:51,810
+The unexplained variability is 523, the
+total is 900.
+
+157
+00:08:51,810 --> 00:08:53,833
+We can calculate our F statistic and our
+p-value.
+
+158
+00:08:53,833 --> 00:08:56,120
+It turns out to be not statistically
+significant.
+
+159
+00:08:56,120 --> 00:08:59,840
+And then, we can break it down to the
+source of the variability.
+
+160
+00:08:59,840 --> 00:09:03,232
+So, we have a time effect, a group effect,
+and a time by group effect.
+
+161
+00:09:03,232 --> 00:09:07,180
+We already calculated those, 224, 126 and
+26.
+
+162
+00:09:07,180 --> 00:09:10,706
+We can calculate corresponding F-values,
+and
+
+163
+00:09:10,706 --> 00:09:14,120
+then we get p-values that go with those.
+
+164
+00:09:14,120 --> 00:09:17,920
+So the p-value for time is 0.11, the
+p-value here for
+
+165
+00:09:17,920 --> 00:09:22,630
+group is 0.06, and the p-value for time by
+group is 0.84.
+
+166
+00:09:22,630 --> 00:09:24,960
+So now, of course, we have to correctly
+account for
+
+167
+00:09:24,960 --> 00:09:28,430
+the between-subjects variability, that's
+what's missing in this picture.
+
+168
+00:09:28,430 --> 00:09:29,620
+So let's do that now.
+
+169
+00:09:31,920 --> 00:09:35,913
+So to do this the correct way, remember
+the unexplained variability is 523.
+
+170
+00:09:35,913 --> 00:09:36,693
+Once I account for
+
+171
+00:09:36,693 --> 00:09:40,308
+which subject I'm talking about, I'm going
+to reduce some of the variability.
+
+172
+00:09:40,308 --> 00:09:44,408
+Because subject one, of course, you know,
+might be higher than subject two.
+
+173
+00:09:44,408 --> 00:09:45,394
+They're always going to be higher.
+
+174
+00:09:45,394 --> 00:09:48,477
+That explains some of the variability.
+
+175
+00:09:48,477 --> 00:09:49,517
+Same as before, so
+
+176
+00:09:49,517 --> 00:09:53,973
+I'm going to run a repeated-measures
+ANOVA, the correct analysis on this data.
+
+177
+00:09:53,973 --> 00:09:57,543
+And all that I'm going to additionally add
+now, we've already calculated the sum of
+
+178
+00:09:57,543 --> 00:09:59,809
+squares between groups, the sum of squares
+time.
+
+179
+00:09:59,809 --> 00:10:03,463
+We've already calculated the interaction
+between group and time,
+
+180
+00:10:03,463 --> 00:10:08,090
+now we additionally have to calculate the
+sum of squares between subjects.
+
+181
+00:10:08,090 --> 00:10:09,486
+So how do I do that?
+
+182
+00:10:09,486 --> 00:10:12,850
+So the sum of squares between subjects I
+calculate by taking the mean for
+
+183
+00:10:12,850 --> 00:10:15,480
+each subject, fro, for each subject.
+
+184
+00:10:15,480 --> 00:10:18,601
+And now I'm going to compare it to the
+group mean.
+
+185
+00:10:18,601 --> 00:10:24,529
+And so, 25.25 minus 24.75, 26 minus 24.75,
+23 minus 24.75,
+
+186
+00:10:24,529 --> 00:10:26,950
+all of these squared of course.
+
+187
+00:10:26,950 --> 00:10:30,800
+We're going to do this for all of the
+subjects, all six subjects and
+
+188
+00:10:30,800 --> 00:10:34,480
+then multiply by 4 to get a total of 24
+squared things.
+
+189
+00:10:34,480 --> 00:10:37,926
+This gives me a total value of 150.
+
+190
+00:10:37,926 --> 00:10:43,848
+If you remember, when we calculated the
+sum of squares between-subjects
+
+191
+00:10:43,848 --> 00:10:49,681
+when we didn't have a group factor in,
+that came out to be about 276.
+
+192
+00:10:49,681 --> 00:10:51,977
+When I calculate it now after I have
+accounted for
+
+193
+00:10:51,977 --> 00:10:53,625
+group, it comes out to be 150.
+
+194
+00:10:53,625 --> 00:10:56,583
+But remember, that the between,
+
+195
+00:10:56,583 --> 00:11:02,558
+the sum of squares between groups was
+actually equal to 126.
+
+196
+00:11:02,558 --> 00:11:08,226
+So, if you add those two up, the total
+variability between subject was 276.
+
+197
+00:11:08,226 --> 00:11:12,179
+But now some of the variability between
+some of the differences between subject
+
+198
+00:11:12,179 --> 00:11:16,278
+has, subjects has now been explained by
+which group you're in, 126 of that.
+
+199
+00:11:16,278 --> 00:11:19,788
+So 150 represents the remaining
+variability that
+
+200
+00:11:19,788 --> 00:11:23,100
+exists between subjects not explained by
+group.
+
+201
+00:11:25,360 --> 00:11:28,670
+The unexplained variability is therefore
+going to be reduced from 523,
+
+202
+00:11:28,670 --> 00:11:32,260
+we subtract away this 150 and it's reduced
+down to 373.
+
+203
+00:11:32,260 --> 00:11:35,450
+We've lowered our unexplained variability
+now.
+
+204
+00:11:35,450 --> 00:11:39,730
+In our output from repeated-measures
+ANOVA,
+
+205
+00:11:39,730 --> 00:11:41,750
+we're now going to get two elements.
+
+206
+00:11:41,750 --> 00:11:44,870
+We're going to get what are called
+between-subjects effects.
+
+207
+00:11:44,870 --> 00:11:46,820
+Usually, these are of less interest.
+
+208
+00:11:46,820 --> 00:11:48,500
+We actually care less about these.
+
+209
+00:11:48,500 --> 00:11:51,890
+This, these have to do with the
+differences between subjects.
+
+210
+00:11:51,890 --> 00:11:53,160
+And usually, that's not what we care
+about.
+
+211
+00:11:53,160 --> 00:11:55,240
+We don't care that subject one happens to
+be,
+
+212
+00:11:55,240 --> 00:11:57,410
+have higher depression than subject two.
+
+213
+00:11:57,410 --> 00:11:59,929
+We care about how things are changing over
+time, usually.
+
+214
+00:12:00,994 --> 00:12:02,932
+So so I tend to end up ignoring these, but
+
+215
+00:12:02,932 --> 00:12:04,911
+you have to understand where they come
+from.
+
+216
+00:12:04,911 --> 00:12:10,010
+So the between-group sum of squares we
+already calculated was 126.
+
+217
+00:12:10,010 --> 00:12:16,050
+The between-subject variability, the
+unexplained variability between subjects.
+
+218
+00:12:16,050 --> 00:12:18,880
+So the differences between subjects that
+aren't due to group but
+
+219
+00:12:18,880 --> 00:12:20,900
+what's left over is this 150.
+
+220
+00:12:20,900 --> 00:12:26,060
+This you can, you can compare what's
+explained and
+
+221
+00:12:26,060 --> 00:12:28,650
+what's unexplained here in the normal way
+we would for ANOVA.
+
+222
+00:12:28,650 --> 00:12:33,180
+And you can get a p-value, and this is
+what I've been calling the group effect.
+
+223
+00:12:34,340 --> 00:12:36,820
+So this is completely ignoring changes
+over time and
+
+224
+00:12:36,820 --> 00:12:40,965
+just seeing, out of all the differences
+between subject, the subject,
+
+225
+00:12:40,965 --> 00:12:43,967
+subject one versus two, two versus three,
+et cetera.
+
+226
+00:12:43,967 --> 00:12:45,850
+How much of the differences are explained
+by whether or
+
+227
+00:12:45,850 --> 00:12:47,240
+not you're in group A versus B?
+
+228
+00:12:47,240 --> 00:12:51,690
+And how much, many of the differences
+between subjects are left unexplained?
+
+229
+00:12:51,690 --> 00:12:55,300
+And so, it doesn't quite come out to be
+statistically significant here.
+
+230
+00:12:55,300 --> 00:12:59,200
+And the picture is, what you're really
+comparing is, is line, the blue line,
+
+231
+00:12:59,200 --> 00:13:01,420
+is it significantly higher than the red
+line?
+
+232
+00:13:01,420 --> 00:13:03,500
+That's what the group effect is asking
+about.
+
+233
+00:13:03,500 --> 00:13:07,500
+Now notice that the p-value comes out to
+be 0.14.
+
+234
+00:13:07,500 --> 00:13:12,080
+Here, if we go back to when I did the
+wrong analysis, the p-value was smaller,
+
+235
+00:13:12,080 --> 00:13:12,810
+it was 0.06.
+
+236
+00:13:12,810 --> 00:13:17,158
+Because remember, when you fail to account
+for correlation for between-subjects
+
+237
+00:13:17,158 --> 00:13:21,080
+comparisons or between-group comparisons,
+the p-values will end up too small.
+
+238
+00:13:21,080 --> 00:13:21,700
+We see that here.
+
+239
+00:13:21,700 --> 00:13:24,388
+The correct p-value was actually higher
+than what we got
+
+240
+00:13:24,388 --> 00:13:26,360
+with the incorrect analysis.
+
+241
+00:13:26,360 --> 00:13:27,450
+So that's the group effect.
+
+242
+00:13:27,450 --> 00:13:28,970
+Again, we don't usually care whether or
+
+243
+00:13:28,970 --> 00:13:32,210
+not group B happened to be a little
+higher, overall, than group A.
+
+244
+00:13:32,210 --> 00:13:36,330
+We usually care about comparing their chi,
+their differences over time.
+
+245
+00:13:36,330 --> 00:13:38,060
+But that's what the group effect is.
+
+246
+00:13:38,060 --> 00:13:42,830
+You also get, within-subjects effects, in
+a separate section of your output.
+
+247
+00:13:42,830 --> 00:13:46,070
+This is talking about the time effect and
+the time by group effect.
+
+248
+00:13:46,070 --> 00:13:48,350
+Which are usually the things that we care
+about.
+
+249
+00:13:48,350 --> 00:13:51,315
+The error, the unexplained variability in
+terms of
+
+250
+00:13:51,315 --> 00:13:52,880
+within-subjects effects, is now this 373.
+
+251
+00:13:52,880 --> 00:13:56,990
+We already calculated the sum of the
+squares between time and
+
+252
+00:13:56,990 --> 00:13:59,590
+the sum of squares for the interaction.
+
+253
+00:13:59,590 --> 00:14:00,700
+We take all of these.
+
+254
+00:14:00,700 --> 00:14:03,490
+We can calculate F statistics and
+p-values.
+
+255
+00:14:03,490 --> 00:14:08,340
+Notice that the p-values that come out
+here are smaller than the ones that we
+
+256
+00:14:08,340 --> 00:14:12,090
+got when we failed to account for the
+differences between subjects.
+
+257
+00:14:12,090 --> 00:14:16,220
+However, again, with this data set, we
+haven't met compound symmetry.
+
+258
+00:14:16,220 --> 00:14:19,430
+So, we would probably be more correct to
+report the a,
+
+259
+00:14:19,430 --> 00:14:24,850
+the corrected p-values that have corrected
+for that violation of compound symmetry.
+
+260
+00:14:26,230 --> 00:14:29,254
+And those are 0.17 and 0.69.
+
+261
+00:14:29,254 --> 00:14:32,120
+These are not significant, and well, that
+kind of matches the picture.
+
+262
+00:14:32,120 --> 00:14:35,660
+The time effect is getting towards
+significance.
+
+263
+00:14:35,660 --> 00:14:38,620
+And that would say that there's some
+differences over time.
+
+264
+00:14:38,620 --> 00:14:40,140
+And, indeed, if you look at time point
+three,
+
+265
+00:14:40,140 --> 00:14:42,400
+time point three looks a little bit
+different than the other time points.
+
+266
+00:14:42,400 --> 00:14:43,790
+That's what the time effect is asking.
+
+267
+00:14:43,790 --> 00:14:47,034
+Just is there any overall differences over
+time.
+
+268
+00:14:47,034 --> 00:14:48,762
+Something where there wasn't a time
+effect, you know,
+
+269
+00:14:48,762 --> 00:14:50,500
+would sort of look flat over time.
+
+270
+00:14:50,500 --> 00:14:52,680
+We have a little bit of a blip in time
+point three.
+
+271
+00:14:52,680 --> 00:14:56,080
+That's, you know, getting us towards the
+statistical significant.
+
+272
+00:14:56,080 --> 00:15:01,340
+The time by group effect is ask, asking
+whether the pattern of changes over time,
+
+273
+00:15:01,340 --> 00:15:05,700
+this is essentially whether the slopes of
+these two lines are equal.
+
+274
+00:15:05,700 --> 00:15:08,970
+And clearly, those lines are pretty
+parallel with one another.
+
+275
+00:15:08,970 --> 00:15:12,020
+So it doesn't look like there's much
+differences in the the trajectory over
+
+276
+00:15:12,020 --> 00:15:13,750
+time between the groups.
+
+277
+00:15:13,750 --> 00:15:16,350
+And that's reflected in this very non
+significant p-value for
+
+278
+00:15:16,350 --> 00:15:17,610
+the time by group effect.
+
+279
+00:15:17,610 --> 00:15:19,480
+And that's usually what we care most
+about.
+
+280
+00:15:20,520 --> 00:15:22,240
+So from this repeated-measures ANOVA
+analysis,
+
+281
+00:15:22,240 --> 00:15:23,584
+we can sort of answer three questions.
+
+282
+00:15:23,584 --> 00:15:27,610
+We can ask is there overall significant
+differences between time points.
+
+283
+00:15:27,610 --> 00:15:28,550
+That's the main effect for time.
+
+284
+00:15:28,550 --> 00:15:30,140
+We did not find a significant effect here.
+
+285
+00:15:30,140 --> 00:15:32,410
+I'm reporting the adjusted p-value here,
+
+286
+00:15:32,410 --> 00:15:34,440
+because of that violation of compound
+symmetry.
+
+287
+00:15:35,440 --> 00:15:37,880
+Do the two groups differ at any time
+points?
+
+288
+00:15:37,880 --> 00:15:39,530
+So this is ignoring time,
+
+289
+00:15:39,530 --> 00:15:42,940
+just as though a blue line higher than the
+red line overall.
+
+290
+00:15:42,940 --> 00:15:44,010
+And that did not come out to
+
+291
+00:15:44,010 --> 00:15:46,620
+be significant either in the correct
+analysis.
+
+292
+00:15:47,720 --> 00:15:49,960
+And then finally what we care most about,
+
+293
+00:15:49,960 --> 00:15:52,260
+do the two groups differ in their
+responses over time?
+
+294
+00:15:52,260 --> 00:15:56,080
+That's that time by group interaction and
+clearly that's totally not significant.
+
+295
+00:15:56,080 --> 00:15:57,990
+And again, that matches what we see in the
+picture, but
+
+296
+00:15:57,990 --> 00:15:59,652
+it's just adding some p-values to it.
+
+297
+00:16:02,020 --> 00:16:03,930
+Another thing that you can get easily,
+
+298
+00:16:03,930 --> 00:16:07,380
+at least in SASS, is something that you
+can use just for exploration.
+
+299
+00:16:07,380 --> 00:16:08,980
+I wouldn't use this as a formal test.
+
+300
+00:16:08,980 --> 00:16:12,940
+But, it's very easy in SASS to ask for
+what's called a polynomial.
+
+301
+00:16:12,940 --> 00:16:15,600
+You can test for the shape of the response
+profile.
+
+302
+00:16:15,600 --> 00:16:17,320
+I find this a useful tool,
+
+303
+00:16:17,320 --> 00:16:21,570
+because when we build to doing regression
+models like GE and mixed models.
+
+304
+00:16:21,570 --> 00:16:26,770
+We are going to be putting in time as a
+linear term, usually.
+
+305
+00:16:26,770 --> 00:16:29,700
+But what if there isn't actually a linear
+change over time?
+
+306
+00:16:29,700 --> 00:16:31,370
+What if there's a quadratic change?
+
+307
+00:16:31,370 --> 00:16:33,940
+You can kind of probe that with this
+little, asking for
+
+308
+00:16:33,940 --> 00:16:37,890
+this polynomial, which is one little
+additional piece of code,
+
+309
+00:16:37,890 --> 00:16:40,100
+when you're asking for repeated-measures
+ANOVA in SASS.
+
+310
+00:16:40,100 --> 00:16:42,260
+So it's fun just to ask for that.
+
+311
+00:16:42,260 --> 00:16:46,230
+Remember that the shape here for the two
+groups, it looks something like that.
+
+312
+00:16:46,230 --> 00:16:50,340
+So that's probably best modeled as, as a
+cubic, if anything.
+
+313
+00:16:50,340 --> 00:16:55,210
+And that's what comes out here, in fact,
+that, it gives you some output for
+
+314
+00:16:55,210 --> 00:16:56,690
+linear, quadratic, and cubic.
+
+315
+00:16:56,690 --> 00:16:59,950
+Since we have four time points, we can go
+up as high as cubic.
+
+316
+00:16:59,950 --> 00:17:01,720
+And, none of these come out significant.
+
+317
+00:17:01,720 --> 00:17:04,980
+The cubic one, however, is bordering on
+significant.
+
+318
+00:17:04,980 --> 00:17:10,830
+Indicating that this is probably best mea,
+estimated as a cubic if, if anything.
+
+319
+00:17:10,830 --> 00:17:17,770
+Now let me apply repeated-measures ANOVA
+back to that same bone density example.
+
+320
+00:17:17,770 --> 00:17:20,350
+So remember this is the picture for the
+bone density example.
+
+321
+00:17:20,350 --> 00:17:22,150
+I've got these three groups.
+
+322
+00:17:22,150 --> 00:17:24,450
+We're measuring their bone density over
+time.
+
+323
+00:17:24,450 --> 00:17:26,490
+And it did look like the red group and
+
+324
+00:17:26,490 --> 00:17:30,220
+the black group seemed to be doing better
+overall than the blue group.
+
+325
+00:17:30,220 --> 00:17:33,280
+So, I've now, I'm showing you the output
+just from
+
+326
+00:17:33,280 --> 00:17:38,790
+the within-subjects output from a
+repeated-measures ANOVA.
+
+327
+00:17:38,790 --> 00:17:41,300
+I'm not even bothering to show you the
+between-subjects output,
+
+328
+00:17:41,300 --> 00:17:42,922
+although I'll get that output.
+
+329
+00:17:42,922 --> 00:17:45,410
+The between-subject output would say
+whether or not,
+
+330
+00:17:45,410 --> 00:17:49,590
+overall, ignoring time point the groups
+differ, and that's not really of interest.
+
+331
+00:17:49,590 --> 00:17:52,240
+What I want to know is whether or not
+their, their changes in
+
+332
+00:17:52,240 --> 00:17:55,780
+bone density over time are different
+between the different groups.
+
+333
+00:17:55,780 --> 00:17:56,872
+So, I'm going to get two things of
+interest here.
+
+334
+00:17:56,872 --> 00:17:58,060
+I get a time effect and
+
+335
+00:17:58,060 --> 00:18:03,300
+a time by group effect when I put these
+data into repeated-measures ANOVA.
+
+336
+00:18:03,300 --> 00:18:06,380
+The time effect is highly significant, and
+by the way,
+
+337
+00:18:06,380 --> 00:18:08,730
+the epsilons here are very close to one.
+
+338
+00:18:08,730 --> 00:18:12,270
+These data actually very well meet
+compound symmetry.
+
+339
+00:18:12,270 --> 00:18:14,740
+So highly significant result for time.
+
+340
+00:18:14,740 --> 00:18:16,940
+What that's saying is that, ignoring
+group,
+
+341
+00:18:16,940 --> 00:18:20,570
+if you were to just kind of draw a line
+which didn't distinguish between blue,
+
+342
+00:18:20,570 --> 00:18:23,606
+red and black, sort of the overall changes
+across all groups.
+
+343
+00:18:23,606 --> 00:18:28,346
+You can imagine that it's going to be
+something like if this is zero,
+
+344
+00:18:28,346 --> 00:18:31,210
+they're definitely going up on average.
+
+345
+00:18:31,210 --> 00:18:34,370
+Even if you average in the blue group,
+it's going to be something like that.
+
+346
+00:18:34,370 --> 00:18:38,230
+So that's saying that there really is a
+significant change over time,
+
+347
+00:18:38,230 --> 00:18:39,130
+highly significant.
+
+348
+00:18:39,130 --> 00:18:42,388
+Their bone density, on average, is going
+up, ignoring group.
+
+349
+00:18:42,388 --> 00:18:46,150
+The time by group effect is going to
+answer the question of whether or
+
+350
+00:18:46,150 --> 00:18:50,600
+not the, there any differences in the
+changes over time between the groups.
+
+351
+00:18:50,600 --> 00:18:53,900
+It's not going to tell you where those
+differences lie because it's an ANOVA,
+
+352
+00:18:53,900 --> 00:18:55,310
+it's a global test.
+
+353
+00:18:55,310 --> 00:18:59,490
+But we're bordering, we didn't quite make
+statistical significance, but it's 0.06.
+
+354
+00:18:59,490 --> 00:19:03,240
+Saying that somewhere, some group is at
+least one group differs from
+
+355
+00:19:03,240 --> 00:19:06,530
+the other in terms of their changes in
+bone density over time.
+
+356
+00:19:06,530 --> 00:19:08,000
+And you can see that the blue group
+doesn't change,
+
+357
+00:19:08,000 --> 00:19:09,510
+whereas the other two go out.
+
+358
+00:19:09,510 --> 00:19:12,110
+Didn't quite reach statistical
+significance, but it's very close.
+
+359
+00:19:13,360 --> 00:19:17,210
+So that would be applying
+repeated-measures ANOVA to that example.
+
+360
+00:19:17,210 --> 00:19:21,480
+Just for fun, I also asked for that
+polynomial function, to see whether or
+
+361
+00:19:21,480 --> 00:19:25,070
+not the changes over time are more linear
+or more quadratic.
+
+362
+00:19:25,070 --> 00:19:28,670
+I only have three times points, so the
+most I can ask for is quadratic here.
+
+363
+00:19:28,670 --> 00:19:32,280
+This corresponds to the picture where I
+tried to plot things,
+
+364
+00:19:32,280 --> 00:19:33,680
+in fitting smoothing lines.
+
+365
+00:19:33,680 --> 00:19:36,300
+And you can see that it looks like there's
+a little curvature there,
+
+366
+00:19:36,300 --> 00:19:38,680
+but, basically those are pretty straight
+lines.
+
+367
+00:19:38,680 --> 00:19:40,970
+Or, that would probably be best modeled as
+straight lines.
+
+368
+00:19:40,970 --> 00:19:45,540
+The blue looks kind of flat, and then the
+other two are going up over time.
+
+369
+00:19:45,540 --> 00:19:49,710
+And, indeed, when I ask for linear versus
+quadratic, I get pretty significant for
+
+370
+00:19:49,710 --> 00:19:51,230
+linear and nothing for quadratic.
+
+371
+00:19:51,230 --> 00:19:55,030
+So that just gives me a sense of that
+matches the picture.
+
+372
+00:19:55,030 --> 00:19:58,490
+That probably if I'm going to be doing
+regression on these data,
+
+373
+00:19:58,490 --> 00:20:01,880
+it would be fine for me to model time as a
+linear component and
+
+374
+00:20:01,880 --> 00:20:03,881
+assume that the changes over time were
+linear.

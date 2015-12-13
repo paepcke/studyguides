@@ -1,0 +1,429 @@
+1
+00:00:00,440 --> 00:00:02,500
+In this module, we're going to tell you
+about PROC GPLOT,
+
+2
+00:00:02,500 --> 00:00:05,260
+which can be used to create scatter plots
+and line plots.
+
+3
+00:00:06,970 --> 00:00:10,740
+>> PROC GPLOT gives you a lot of control
+over the scatter plots and line plots.
+
+4
+00:00:10,740 --> 00:00:12,290
+Let's start with a basic scatter plot.
+
+5
+00:00:13,340 --> 00:00:14,930
+>> By now you should be used to the syntax
+for
+
+6
+00:00:14,930 --> 00:00:16,410
+the first line of your procedure in SAS.
+
+7
+00:00:17,510 --> 00:00:20,488
+We start out with PROC GPLOT, and then
+specify our data set.
+
+8
+00:00:21,680 --> 00:00:23,407
+In the next line, we have a plot
+statement.
+
+9
+00:00:23,407 --> 00:00:26,490
+Which tells SAS that we want to make a
+graph.
+
+10
+00:00:26,490 --> 00:00:30,610
+We type age asterisk weight, to specify
+the variables in this plot.
+
+11
+00:00:30,610 --> 00:00:32,360
+The order is important here.
+
+12
+00:00:32,360 --> 00:00:34,810
+By defaults, the first variable will be on
+the vertical axis, and
+
+13
+00:00:34,810 --> 00:00:36,930
+the second variable will be on the
+horizontal axis.
+
+14
+00:00:39,830 --> 00:00:40,400
+>> As you can see,
+
+15
+00:00:40,400 --> 00:00:44,090
+we have a simple scatter plot that graphs
+age versus weight.
+
+16
+00:00:44,090 --> 00:00:46,551
+Now suppose we want to add a title to this
+plot.
+
+17
+00:00:46,551 --> 00:00:51,539
+After the first line of code specifying
+PROC GPLOT and the data set of interest we
+
+18
+00:00:51,539 --> 00:00:56,350
+will write, title and age verses weight
+within apostrophes.
+
+19
+00:00:56,350 --> 00:00:59,120
+Remember, always include apostrophes
+around your titles.
+
+20
+00:01:03,800 --> 00:01:04,450
+>> As you can see,
+
+21
+00:01:04,450 --> 00:01:07,440
+by default, SAS will put the variable
+names next to the x and y axis.
+
+22
+00:01:08,550 --> 00:01:10,930
+It's good to have a descriptive axis label
+though.
+
+23
+00:01:10,930 --> 00:01:11,775
+We'll show you how to do that.
+
+24
+00:01:11,775 --> 00:01:18,920
+>> [NOISE] These label statements
+
+25
+00:01:18,920 --> 00:01:25,780
+are very similar to a title.
+
+26
+00:01:25,780 --> 00:01:29,920
+You start with label, specify the variable
+you want,
+
+27
+00:01:29,920 --> 00:01:32,600
+and then make sure to put the labels
+within apostrophes.
+
+28
+00:01:34,470 --> 00:01:36,660
+>> This way you can specify the units of
+your axis.
+
+29
+00:01:39,935 --> 00:01:42,010
+>> SAS automatically determines the range
+for
+
+30
+00:01:42,010 --> 00:01:46,050
+the x and y axis as well as the spacing of
+the little tick marks.
+
+31
+00:01:46,050 --> 00:01:48,810
+Let's manually set the size of the axis.
+
+32
+00:01:48,810 --> 00:01:51,280
+To accomplish this, we need to return to
+our code.
+
+33
+00:01:53,680 --> 00:01:56,870
+Underneath our, our label for age and
+years.
+
+34
+00:01:56,870 --> 00:02:03,954
+We put axis1 order equals parenthesis 100
+to 180 by 5.
+
+35
+00:02:06,650 --> 00:02:16,329
+And the next line we define axis2 with
+order equals 20 to 100 by 5.
+
+36
+00:02:16,329 --> 00:02:19,870
+Notice how we specify the range of values
+and the jumps between each value.
+
+37
+00:02:21,840 --> 00:02:25,402
+>> Next, we have to specify which axis is
+going to be axis1 and
+
+38
+00:02:25,402 --> 00:02:27,410
+which one's going to be axis2.
+
+39
+00:02:27,410 --> 00:02:28,680
+To do this,
+
+40
+00:02:28,680 --> 00:02:33,100
+we go into the PLOT statement, and include
+a forward slash to add some extra options.
+
+41
+00:02:34,270 --> 00:02:39,538
+We write vaxis which stands for vertical
+axis, equals axis2.
+
+42
+00:02:39,538 --> 00:02:46,270
+And haxis which stands for horizontal
+axis, equals axis1.
+
+43
+00:02:49,270 --> 00:02:53,380
+As you can see, we've now manually set the
+range for our x and y axis.
+
+44
+00:02:55,890 --> 00:02:58,100
+Say you want to specify the height of your
+axis labels.
+
+45
+00:02:58,100 --> 00:03:00,460
+You can do this in code as well.
+
+46
+00:03:00,460 --> 00:03:09,025
+After each axis statement, we would write,
+label equals parenthesis h equals 3.
+
+47
+00:03:09,025 --> 00:03:15,420
+[SOUND]
+
+48
+00:03:15,420 --> 00:03:20,230
+Here we have h, which is short for height,
+which controls the size of that label.
+
+49
+00:03:20,230 --> 00:03:22,750
+If you want a bigger label, you can use a
+larger number here,
+
+50
+00:03:22,750 --> 00:03:26,520
+and if you want a smaller label, well, you
+would use a smaller number.
+
+51
+00:03:29,900 --> 00:03:32,440
+We can also control the symbols that SAS
+uses for the data points.
+
+52
+00:03:33,710 --> 00:03:37,135
+We only have one type of symbol here,
+which SAS will refer to as symbol1.
+
+53
+00:03:38,800 --> 00:03:41,980
+So if you write a symbol1 statement, you
+can change the settings.
+
+54
+00:03:43,190 --> 00:03:45,290
+Let's say we want a red triangle with a
+smaller height.
+
+55
+00:03:46,340 --> 00:03:50,520
+We can specify this with v equals
+triangle, for the shape.
+
+56
+00:03:53,120 --> 00:03:54,700
+C equals red, for the color.
+
+57
+00:03:56,890 --> 00:03:59,580
+And height equals 0.5 for the size.
+
+58
+00:04:01,350 --> 00:04:02,580
+There are many options for shapes and
+
+59
+00:04:02,580 --> 00:04:05,590
+colors that you can use, and you can find
+these on the online documentation.
+
+60
+00:04:07,660 --> 00:04:09,130
+>> What if we want to add a line to our
+graph?
+
+61
+00:04:10,850 --> 00:04:16,926
+In the same line where we specified our
+symbol attributes,
+
+62
+00:04:16,926 --> 00:04:19,849
+we can add i equals sm70s.
+
+63
+00:04:21,100 --> 00:04:22,020
+And line equals one.
+
+64
+00:04:23,740 --> 00:04:29,140
+In SAS, i stands for interpolation line,
+and sm stands for smoothing.
+
+65
+00:04:29,140 --> 00:04:33,110
+The 70 tells SAS how smooth you want your
+interpolation line to be.
+
+66
+00:04:33,110 --> 00:04:35,090
+The larger the value, the smoother the
+line.
+
+67
+00:04:35,090 --> 00:04:40,520
+The lower the value, the closer your graph
+will follow the noise in your data set.
+
+68
+00:04:40,520 --> 00:04:44,516
+The s at the end of sm70s stands for sort.
+
+69
+00:04:44,516 --> 00:04:47,530
+In order for SAS to make an interpolation
+line,
+
+70
+00:04:47,530 --> 00:04:50,270
+it first has to sort the data behind the
+scenes.
+
+71
+00:04:50,270 --> 00:04:53,460
+If you leave off this s at the end, your
+line will look really weird.
+
+72
+00:04:55,000 --> 00:04:56,070
+By adding line equals 1,
+
+73
+00:04:56,070 --> 00:04:59,890
+you're just selecting the type of line we
+want SAS to draw.
+
+74
+00:04:59,890 --> 00:05:02,740
+Once again the online documentation will
+show you a bunch of different options.
+
+75
+00:05:02,740 --> 00:05:06,680
+>> [SOUND]
+
+76
+00:05:06,680 --> 00:05:08,520
+What if we want to show different
+subgroups of the data?
+
+77
+00:05:08,520 --> 00:05:11,752
+It might be nice to compare this plot for
+men versus women.
+
+78
+00:05:11,752 --> 00:05:17,170
+[SOUND] We can do this in the plot
+statement by adding in, equals gender.
+
+79
+00:05:21,500 --> 00:05:24,980
+When you do this, gender must be a
+categorical variable.
+
+80
+00:05:24,980 --> 00:05:26,590
+SAS will now distinguish between males and
+
+81
+00:05:26,590 --> 00:05:28,470
+females, and it will add a legend to the
+plot.
+
+82
+00:05:31,210 --> 00:05:33,280
+Now that we have two different subgroups
+in the data,
+
+83
+00:05:33,280 --> 00:05:34,840
+we can also use two different symbols.
+
+84
+00:05:38,340 --> 00:05:40,740
+I added in a line for symbol2 in the code.
+
+85
+00:05:40,740 --> 00:05:42,660
+And I made it a blue square instead of a
+red triangle.
+
+86
+00:05:47,220 --> 00:05:49,210
+As you can see, we now have different
+symbols for men and
+
+87
+00:05:49,210 --> 00:05:51,840
+women, as well as a legend that will tell
+us which one is which.
+
+88
+00:05:53,540 --> 00:05:56,920
+>> At this point, you can see we've added
+a ton of options to our plot.
+
+89
+00:05:56,920 --> 00:05:58,570
+Most of your plots won't be this
+complicated.
+
+90
+00:05:58,570 --> 00:06:00,240
+But if you want to add more options,
+
+91
+00:06:00,240 --> 00:06:02,860
+you can just look at this online SAS
+documentation.

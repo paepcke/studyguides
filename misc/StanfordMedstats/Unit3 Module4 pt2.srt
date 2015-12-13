@@ -1,0 +1,124 @@
+1
+00:00:01,500 --> 00:00:04,700
+Many procedures can use something called a
+buy statement.
+
+2
+00:00:04,700 --> 00:00:07,930
+This allows you to run a procedure on all
+the subsets of the data,
+
+3
+00:00:07,930 --> 00:00:09,620
+specified by some categorical variable.
+
+4
+00:00:11,090 --> 00:00:14,520
+For example, if you have a variable for
+gender, which can either have a variable
+
+5
+00:00:14,520 --> 00:00:20,070
+of m for male, or f for female, we can
+specify by gender, to run a procedure
+
+6
+00:00:20,070 --> 00:00:24,110
+on a subset restricted to males and then
+again on the subset restricted to females.
+
+7
+00:00:25,730 --> 00:00:29,510
+>> Now suppose you want to calculate the
+mean weight for men and for women.
+
+8
+00:00:29,510 --> 00:00:32,980
+We already showed you how to do this using
+the where statements in proc means.
+
+9
+00:00:32,980 --> 00:00:36,940
+But if you do it this way, you have to
+repeat all your code for
+
+10
+00:00:36,940 --> 00:00:39,740
+each subset you're interested in.
+
+11
+00:00:39,740 --> 00:00:42,880
+If you're looking at a variable with more
+than two levels,
+
+12
+00:00:42,880 --> 00:00:46,040
+it could extremely cumbersome to repeat
+your code multiple times.
+
+13
+00:00:47,110 --> 00:00:51,470
+Instead, if you specify by gender as we
+show you here,
+
+14
+00:00:51,470 --> 00:00:54,689
+you automatically run your procedure on
+all the levels of the gender variable.
+
+15
+00:00:56,330 --> 00:00:58,690
+>> But there's one catch before we're
+ready.
+
+16
+00:00:58,690 --> 00:01:00,710
+If you tried to run this code, you'll find
+that it doesn't work.
+
+17
+00:01:02,370 --> 00:01:05,970
+Before you can use a by statement, you
+need to sort your data set.
+
+18
+00:01:05,970 --> 00:01:07,860
+We need to sort it by the gender variable
+first.
+
+19
+00:01:10,160 --> 00:01:14,945
+In this code, I first sort by gender, and
+then use a proc means with a by statement.
+
+20
+00:01:14,945 --> 00:01:19,970
+Now, it will give us the output for
+
+21
+00:01:19,970 --> 00:01:24,210
+females, and for males all at once.
+
+22
+00:01:24,210 --> 00:01:28,250
+>> So just to summarize, Proc sort can be
+used to sort your data in ascending or
+
+23
+00:01:28,250 --> 00:01:32,260
+descending order, and you can use it to
+remove duplicates as well.
+
+24
+00:01:32,260 --> 00:01:35,390
+>> If you want to use a by statement to
+run a procedure on multiple subsets of
+
+25
+00:01:35,390 --> 00:01:38,890
+the data, you need to use proc sort to
+sort the data on your variable of
+
+26
+00:01:38,890 --> 00:01:39,650
+interest first.

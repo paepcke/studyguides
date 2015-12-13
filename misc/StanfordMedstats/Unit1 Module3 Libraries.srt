@@ -1,0 +1,239 @@
+1
+00:00:01,610 --> 00:00:02,620
+Welcome back.
+
+2
+00:00:02,620 --> 00:00:04,910
+In this module we're going to talk about
+SASS libraries.
+
+3
+00:00:06,330 --> 00:00:08,460
+SASS has a few default libraries that you
+can use.
+
+4
+00:00:09,710 --> 00:00:13,140
+On the bottom left of the page, you can
+see the server list and all the libraries.
+
+5
+00:00:14,590 --> 00:00:17,339
+SASS has permanent and temporary
+libraries.
+
+6
+00:00:17,339 --> 00:00:20,490
+By default, SASS will automatically store
+all of
+
+7
+00:00:20,490 --> 00:00:23,496
+your files in a temporary library called
+Work.
+
+8
+00:00:23,496 --> 00:00:27,482
+While this may be ideal for playing with
+data that does not need to be saved,
+
+9
+00:00:27,482 --> 00:00:31,105
+remember that these may not be available
+for future SASS sessions.
+
+10
+00:00:31,105 --> 00:00:35,050
+The temporary work library is cleared out
+when you close SASS.
+
+11
+00:00:35,050 --> 00:00:39,060
+>> A permanent SASS library is not deleted
+at the end of a SASS session.
+
+12
+00:00:39,060 --> 00:00:42,820
+These libraries remain on your computer
+and can be accessed at any time.
+
+13
+00:00:42,820 --> 00:00:44,770
+When it comes to permanent SASS libraries,
+
+14
+00:00:44,770 --> 00:00:47,564
+it is important that the user has
+specified a location so
+
+15
+00:00:47,564 --> 00:00:52,070
+that SASS knows where to store and
+eventually find the file.
+
+16
+00:00:52,070 --> 00:00:52,680
+>> For most cases,
+
+17
+00:00:52,680 --> 00:00:55,480
+we suggest that you save your data into
+the temporary work library.
+
+18
+00:00:56,680 --> 00:00:58,820
+You have a huge file, which you only want
+to import once.
+
+19
+00:00:58,820 --> 00:01:01,480
+A homework assignment you want to revisit,
+or
+
+20
+00:01:01,480 --> 00:01:04,070
+if you want to keep a permanent copy of a
+SASS data file,.
+
+21
+00:01:04,070 --> 00:01:05,410
+You want to set up a permanent library.
+
+22
+00:01:06,800 --> 00:01:10,090
+I'm going to show you how to use point and
+click to create a library.
+
+23
+00:01:10,090 --> 00:01:12,798
+Once we have done this, we will find the
+code and
+
+24
+00:01:12,798 --> 00:01:15,323
+then use this code in future SASS
+sessions.
+
+25
+00:01:15,323 --> 00:01:16,123
+Step one.
+
+26
+00:01:16,123 --> 00:01:18,451
+You're going to want to create a folder on
+your desktop, or
+
+27
+00:01:18,451 --> 00:01:20,594
+in your documents that you will want to
+use for SASS.
+
+28
+00:01:20,594 --> 00:01:25,522
+For this class, we've already created a
+folder on the desktop called hrp223.
+
+29
+00:01:25,522 --> 00:01:33,661
+We're going to return to SASS and then
+click on Tools, Assign Project library.
+
+30
+00:01:33,661 --> 00:01:38,560
+Here we're going to enter our name,
+hrp223, and then next.
+
+31
+00:01:40,400 --> 00:01:41,700
+Now we're going to click Browse.
+
+32
+00:01:42,920 --> 00:01:45,895
+Let's open up the C path and look for
+users.
+
+33
+00:01:45,895 --> 00:01:49,680
+[NOISE] Here we will find Rom three.
+
+34
+00:01:51,010 --> 00:01:53,440
+In your case, you will find your own user
+name.
+
+35
+00:01:53,440 --> 00:01:56,615
+And then look for desktop.
+
+36
+00:01:56,615 --> 00:01:59,229
+Here is the hrp223 folder.
+
+37
+00:01:59,229 --> 00:02:05,079
+We'll click OK and then click Next, Next,
+and Finish.
+
+38
+00:02:05,079 --> 00:02:12,699
+[BLANK_AUDIO]
+
+39
+00:02:12,699 --> 00:02:17,217
+Now, you will see that we have our
+assigned Project Library hrp223 in
+
+40
+00:02:17,217 --> 00:02:18,410
+our process flow.
+
+41
+00:02:19,555 --> 00:02:20,840
+>> SASS has a useful feature.
+
+42
+00:02:20,840 --> 00:02:24,370
+Whenever you use the point and click to
+create something in the process flow,
+
+43
+00:02:24,370 --> 00:02:26,320
+you can always see the code that it
+created in the background.
+
+44
+00:02:27,480 --> 00:02:30,210
+This is the syntax for creating your own
+library in code.
+
+45
+00:02:31,700 --> 00:02:33,480
+>> Please write down this code.
+
+46
+00:02:33,480 --> 00:02:37,560
+In the future, you can just open SASS and
+paste it into a new program.
+
+47
+00:02:37,560 --> 00:02:40,589
+This will point to the same folder you
+just specified on your computer.
+
+48
+00:02:41,700 --> 00:02:45,500
+It is important to remember that the
+library reference you created is only for
+
+49
+00:02:45,500 --> 00:02:47,200
+the current SASS session.
+
+50
+00:02:47,200 --> 00:02:49,110
+Every time you start a new SASS session,
+
+51
+00:02:49,110 --> 00:02:52,450
+you can use this code to re-assign the
+library reference.

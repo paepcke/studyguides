@@ -1,0 +1,365 @@
+1
+00:00:00,611 --> 00:00:08,309
+[BLANK_AUDIO]
+
+2
+00:00:08,309 --> 00:00:12,510
+Welcome to week three of Statistics in
+Medicine.
+
+3
+00:00:12,510 --> 00:00:15,630
+This week, I'm going to introduce you to
+probability theory,
+
+4
+00:00:15,630 --> 00:00:18,860
+including conditional probability, and
+Bayes' rule.
+
+5
+00:00:18,860 --> 00:00:21,940
+And we're going to apply these concepts in
+the clinical context of
+
+6
+00:00:21,940 --> 00:00:23,050
+diagnostic testing.
+
+7
+00:00:24,400 --> 00:00:27,510
+Now, I just want to warn you that
+probability is
+
+8
+00:00:27,510 --> 00:00:30,080
+an extremely challenging topic.
+
+9
+00:00:30,080 --> 00:00:34,740
+In fact, my Stanford students usually find
+the probability component of this course,
+
+10
+00:00:34,740 --> 00:00:36,939
+to be one of the most challenging parts of
+the course.
+
+11
+00:00:38,640 --> 00:00:44,180
+My goal here is just to familiarize you
+with some basic concepts in probability,
+
+12
+00:00:44,180 --> 00:00:48,410
+and to give you the tools to be able to
+calculate some simple probabilities.
+
+13
+00:00:48,410 --> 00:00:53,130
+I do not expect you to gain complete
+mastery in probability through a,
+
+14
+00:00:53,130 --> 00:00:55,620
+a one week set of modules.
+
+15
+00:00:55,620 --> 00:00:59,090
+Probability is the kind of thing that you
+would need to take an entire course and
+
+16
+00:00:59,090 --> 00:01:02,900
+do hundreds of practice problems before
+you could really gain complete mastery.
+
+17
+00:01:02,900 --> 00:01:04,880
+It's that challenging.
+
+18
+00:01:04,880 --> 00:01:08,500
+So don't get discouraged if you find that
+the material this week seems a little bit
+
+19
+00:01:08,500 --> 00:01:11,250
+more difficult than the previous weeks,
+and
+
+20
+00:01:11,250 --> 00:01:14,640
+also don't get discouraged if you don't
+end the week feeling like you've
+
+21
+00:01:14,640 --> 00:01:17,380
+got total mastery because that's really
+not expected.
+
+22
+00:01:18,780 --> 00:01:22,680
+Again, I'm just hoping that you'll have a
+basic familiarity with the concept of
+
+23
+00:01:22,680 --> 00:01:26,320
+probability and be able to calculate some
+very simple probability.
+
+24
+00:01:26,320 --> 00:01:29,890
+If you want to delve into some more
+advanced calculations, there
+
+25
+00:01:29,890 --> 00:01:34,790
+are a number of optional modules for you
+this week if you want to delve a little
+
+26
+00:01:34,790 --> 00:01:38,370
+bit deeper into probability theory and you
+find these kinds of calculations fun.
+
+27
+00:01:40,240 --> 00:01:42,680
+going to just start with two teasers for
+this week.
+
+28
+00:01:42,680 --> 00:01:45,340
+So the first one is a classic statistics
+problem.
+
+29
+00:01:45,340 --> 00:01:47,720
+So if you've taken a course in statistics
+before,
+
+30
+00:01:47,720 --> 00:01:50,870
+you may have encountered this problem
+previously.
+
+31
+00:01:50,870 --> 00:01:54,550
+But it's called the Monty Hall Problem and
+it goes like this.
+
+32
+00:01:54,550 --> 00:01:58,273
+You're on, a game show, the Monty Hall
+Gameshow, and
+
+33
+00:01:58,273 --> 00:02:02,872
+your host Monty Hall shows you three
+doors, and behind one of these doors is
+
+34
+00:02:02,872 --> 00:02:07,342
+some kind of fabulous prize like a new car
+or a trip around the world.
+
+35
+00:02:07,342 --> 00:02:11,192
+Behind the other two doors is nothing or
+some kind of booby prize.
+
+36
+00:02:11,192 --> 00:02:15,424
+So, you get to pick one of the doors, and
+lets say you pick door A to start with.
+
+37
+00:02:15,424 --> 00:02:18,616
+And you want to see what's behind door A,
+well then Monty Hall says,
+
+38
+00:02:18,616 --> 00:02:21,632
+well I'm going to show you that there's
+nothing behind door B.
+
+39
+00:02:21,632 --> 00:02:25,740
+So he shows you behind door B, so that's
+no longer an option.
+
+40
+00:02:25,740 --> 00:02:29,718
+Now, he gives you the option of either
+sticking with door A,
+
+41
+00:02:29,718 --> 00:02:33,534
+your sort of original gut feeling or
+switching to door C.
+
+42
+00:02:33,534 --> 00:02:34,965
+Do you want to stay with door A, or
+
+43
+00:02:34,965 --> 00:02:37,960
+do you want to switch to door C, you have
+that option.
+
+44
+00:02:37,960 --> 00:02:39,400
+And the question here is,
+
+45
+00:02:39,400 --> 00:02:45,360
+should you stick with A, or should you
+switch to C, or, does it not matter?
+
+46
+00:02:45,360 --> 00:02:48,360
+And in fact the answer to this one is a
+little bit counter intuitive.
+
+47
+00:02:48,360 --> 00:02:51,280
+We're going to come back to this in a
+couple of modules.
+
+48
+00:02:51,280 --> 00:02:56,490
+The second teaser for this week has to do
+with the Cellulite DX test.
+
+49
+00:02:56,490 --> 00:03:00,590
+And it's a genetic test for moderate to
+severe cellulite.
+
+50
+00:03:00,590 --> 00:03:05,280
+The idea is that a young woman would take
+this test, and if she finds out that
+
+51
+00:03:05,280 --> 00:03:09,430
+she's at increased risk of moderate to
+severe cellulite, she would, she could do
+
+52
+00:03:09,430 --> 00:03:14,870
+something to maybe prevent that cellulite
+from developing later in her life.
+
+53
+00:03:14,870 --> 00:03:18,430
+So this company has de, has identified a
+genetic variant that seems to
+
+54
+00:03:18,430 --> 00:03:21,410
+be linked to moderate to severe cellulite
+in women.
+
+55
+00:03:21,410 --> 00:03:23,240
+So you can take the test, and
+
+56
+00:03:23,240 --> 00:03:26,890
+find out if you carry this genetic
+variant, and here's the company's pitch in
+
+57
+00:03:26,890 --> 00:03:29,150
+terms of the information that this test is
+going to give you.
+
+58
+00:03:29,150 --> 00:03:33,340
+So a patient who tests positive has
+approximately a 70% chance of
+
+59
+00:03:33,340 --> 00:03:35,730
+developing moderate to severe cellulite.
+
+60
+00:03:35,730 --> 00:03:38,739
+So, so if a women tests positive that
+sounds like a high probability,
+
+61
+00:03:38,739 --> 00:03:41,920
+she might want to then intervene and do
+something about it.
+
+62
+00:03:41,920 --> 00:03:43,660
+Now, a patient who tests negative,
+
+63
+00:03:43,660 --> 00:03:48,190
+has approximately a 50% chance of not
+developing moderate to sever cellulite.
+
+64
+00:03:48,190 --> 00:03:50,329
+And I think that's supposed to be
+reassuring.
+
+65
+00:03:51,540 --> 00:03:55,650
+So, the question we're going to try to
+answer about this genetic test is,
+
+66
+00:03:55,650 --> 00:03:56,860
+is it useful?
+
+67
+00:03:56,860 --> 00:04:00,940
+Is this information, from a positive or a
+negative test, is it really useful?
+
+68
+00:04:00,940 --> 00:04:03,720
+And if you look carefully at the numbers
+I've already given you,
+
+69
+00:04:03,720 --> 00:04:07,180
+you can start to really answer that
+question.
+
+70
+00:04:07,180 --> 00:04:09,970
+But it turns out that it gets even a
+little more interesting than
+
+71
+00:04:09,970 --> 00:04:11,450
+what I'm showing you here.
+
+72
+00:04:11,450 --> 00:04:13,438
+It's a pretty amusing example.
+
+73
+00:04:13,438 --> 00:04:17,662
+So this is something we're going to return
+to in the last module for this week so,
+
+74
+00:04:17,662 --> 00:04:21,886
+stick with it, get through the hard
+probability stuff and the last module this
+
+75
+00:04:21,886 --> 00:04:26,202
+week has a pretty fun and amusing example
+that you have to look forward to.
+
+76
+00:04:26,202 --> 00:04:26,702
+[BLANK_AUDIO]
