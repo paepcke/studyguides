@@ -74,9 +74,9 @@ class Graph:
 ###########################################################
 
 vocabulary = list()
-#with open('../../data/word2vec/auto_index.txt') as src:
 with open(constants.INDEX_REL_PATH + constants.DRAGON_INDEX) as src:
   for line in src:
+    # handles the CSV format of the textbook index
     line = " ".join(line.split("-"))
     lines = line.split(",")
     for l in lines:
@@ -104,6 +104,7 @@ if args.verbose: print "josehdz: initialized word vectors"
 occurences = dict() # (one, two) => count
 for ii in range(len(vocabulary)):
   for jj in range(ii + 1, len(vocabulary)):
+    # handles original and reversed key types
     okey = (vocabulary[ii], vocabulary[jj])
     rkey = (vocabulary[jj], vocabulary[ii])
     _, count = ptf.get_occurences(okey[0], okey[1])
@@ -126,11 +127,12 @@ def cluster(graph, clusters):
           if coalesce:
             candidate = clusters[ii] | clusters[jj]
             coalesced = True
-            repeated = True
+            repeated = False
+            # check for repetitions
             for cluster in newClusters:
-              if candidate.issubset(cluster):
-                repeated = True
-                break
+              repeated |= \
+                (len(candidate) == len(cluster) and candidate.issubset(cluster))
+              if repeated: break
             if not repeated:
               newClusters.append(bestCluster)
       if not coalesced:

@@ -8,8 +8,10 @@ import random
 import word2vec
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--rand-seed', action='store', dest='rand_seed', default="0")
 parser.add_argument('--seed-word', action="store", dest="seed_word", default="parser")
-parser.add_argument('--threshold', action="store", dest="threshold", default="1.0")
+parser.add_argument('--threshold', action="store", dest="threshold", default="0")
+parser.add_argument('--max-cluster-size', action='store', dest='max_cluster_size', default="10")
 parser.add_argument('--verbose', action='store_true', dest='verbose', default=False)
 parser.add_argument('--maxdist', action='store_true', dest='maxdist', default=False)
 args = parser.parse_args()
@@ -19,7 +21,6 @@ args = parser.parse_args()
 ###############################################################################
 
 NUM_CLUSTERS = 2
-MAX_CLUSTER_SIZE = 8
 
 class ClusterTree(object):
   """
@@ -35,10 +36,16 @@ class ClusterTree(object):
     self.children = list()
     self.loss = 0
     clusters = dict() # dict(label, dict(term, vector))
-    if len(self.terms) >= NUM_CLUSTERS and (MAX_CLUSTER_SIZE < len(self.terms) or float(args.threshold) > 0.0):
+    if NUM_CLUSTERS <= len(self.terms) and \
+        (float(args.threshold) > 0.0 or \
+          int(args.max_cluster_size) < len(self.terms)):
       # identify clusters
       X = self.terms.values()
-      labels = KMeans(n_clusters=NUM_CLUSTERS, random_state=12345).fit_predict(X)
+      labels = KMeans(n_clusters=NUM_CLUSTERS).fit_predict(X)
+      if args.rand_seed != 0:
+        labels = KMeans( \
+          n_clusters=NUM_CLUSTERS, \
+          random_state=int(args.rand_seed)).fit_predict(X)
       # separate vectors based on labels
       for index, term in enumerate(self.terms):
         label = labels[index]
@@ -47,20 +54,16 @@ class ClusterTree(object):
         clusters[label][term] = self.terms[term]
       tempClusters = dict()
       tempClusters[0] = self.terms;
-      if args.maxdist:
-        self.loss = self.getMaxDistLoss(tempClusters)
-      else:
-        self.loss = self.getLoss(tempClusters)
+      self.loss = self.getLoss(tempClusters)
       # create child clusters based on labels
       for i, label in enumerate(clusters):
         childID = NUM_CLUSTERS * self.clusterID + i
         child = ClusterTree(childID, clusters[label], self)
         self.children.append(child)
-      # split criteria
-      if abs(self.loss - sum([c.loss for c in self.children])) < float(args.threshold):
+      if float(args.threshold) > 0.0 and \
+          abs(self.loss - sum([c.loss for c in self.children])) \
+            < float(args.threshold):
         self.children = list()
-
-#      print "Loss: ", str(self.getLoss(clusters))
     else:
       clusters[0] = self.terms
       self.loss = self.getLoss(clusters)
@@ -81,6 +84,12 @@ class ClusterTree(object):
     return centroids
 
   def getLoss(self, clusters):
+    if args.maxdist:
+      return self.getMaxDistLoss(clusters)
+    else:
+      return self.getSqErrorLoss(clusters)
+
+  def getSqErrorLoss(self, clusters):
     centroids = self.getCentroids(clusters)
     loss = 0.0
     for label in centroids:
@@ -277,16 +286,21 @@ def createKNNTree(term, nodeID, terms):
 ####                        CLUSTERING CODE                                ####
 ###############################################################################
 
-model = word2vec.load('../../data/word2vec/dragon/word-vectors-pruned.bin')
+model = word2vec.load(constants.W2V_UNIGRAM_REL_PATH + W2V_VOCAB_FILE)
 terms = dict()
 for term in model.vocab:
   terms[term] = model[term]
 
 def generateKMeansClusters():
-  suffix = "mediandist"
-  if args.maxdist:
-    suffix = "maxdist"
+  suffix = "_" + args.max_cluster_size + "maxsize"
+  if int(args.threshold) > 0:
+    suffix = "_" + args.threshold
+    if args.maxdist:
+      suffix = "maxdist"
+    else:
+      suffix = "meandist"
   outfilename = "kmeans-clusters_" + args.threshold + "_" + suffix + ".txt"
+  outfilename = constants.KMEANS_CLUSTERS_REL_PATH + outfilename
   os.system("rm -f " + outfilename)
   rootCluster = ClusterTree(1, terms, None, None)
   fout = open(outfilename, "w+")
@@ -297,5 +311,7 @@ def generateKNNTree(term, nodeID):
   tempTerms = dict(terms)
   root = createKNNTree(term, nodeID, tempTerms)
 
-generateKMeansClusters()
-#generateKNNTree(args.seed_word, 1)
+if args.run_kmeans:
+  generateKMeansClusters()
+elif args.run_knn:
+  generateKNNTree(args.seed_word, 1)
