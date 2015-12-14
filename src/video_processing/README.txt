@@ -1,3 +1,10 @@
+Script flow:
+  0) edit constants.py if needed
+  1) run frame_fetcher.py
+  2) run video_info_fetcher.py
+  3) run caption_fetcher.py
+  
+
 ============================================================
 file: edit_distance.py
 
