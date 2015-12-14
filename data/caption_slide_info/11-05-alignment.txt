@@ -1,0 +1,35 @@
+4.27
+slide
+Compilers 1 Alignment
+In this brief video we&#39;re going to talk about alignment. A very low level but very important detail of machine architecture that every compiler writer needs to be aware of. First, let&#39;s review a few properties of Contemporary machines. 
+
+23.02
+slide
+Alignment Most modern machines are 32 or bit 8 bits in a byte 4 or 8 bytes in a word Machines are either byte or word addressable Mex mm
+Currently, most modern machines are either 32 or 64 bit meaning you have the 32 or 64 
+
+30.32
+writing
+
+bits in a word and the word is actually subdivided into smaller units. We would say that there are eight bits in a bye and then four or eight byes in word depending whether it&#39;s a 32 or 64 bit machine. And other important property is that machines can be either byte or word addressable. Meaning that in the native language of the machine in machine code it may be possible to either name only entire words or it may be possible to reference memory at the granule area of individual bytes. They say that data is word aligned if it begins at a word boundary. So if we think about. 
+
+74.729
+slide
+Alignment Data is word aligned if it begins at a word boundary Most machines have some alignment restrictions Or performance penalties for poor alignment
+Data in memory or the organization in the memory and is laid out into bytes. And 
+
+81.389
+writing
+
+let&#39;s say. That this is a 32-bit machines so that four bytes make a word and one word begins here and the next word begins here and if data is allocated on a word boundary, say, it needs more bytes then that would be a word a line a piece of data. If a piece of data begins in the middle of the word, so let&#39;s say for example that begins here, and we have some data that&#39;s allocated here, this data is not word aligned, doesn&#39;t begin on a word boundary And the important property or the important issue is that most machines have some alignment restrictions. So these restrictions come in one of two forms. So, on some machines, if the data is not properly aligned, meaning that you tried to reference data that isn&#39;t aligned the way the machines requires, then the machine may just fail to execute that instruction. Your program may hang or even the machine may hang and it&#39;s, but, the important thing is that program will not execute correctly. So there&#39;s a, it&#39;s incorrect to not have the data aligned properly. Now, there are other machines that well, actually al low you to put the data anywhere you like but at a significantly cause And maybe that accessing data that is aligned in word boundaries is cheaper than accessing that&#39;s on non-word boundaries And these performance penalties Are often dramatic so it can easily be ten times lower to access missile line data than to access data that has the alignment favored by that particular machine. So let&#39;s take a look at an example where data alignment 
+
+193.4
+slide
+Alignment Example Astring Hello Takes 5 characters without a terminating 0 To word align next word add 3 characters to the string The padding is not part of the string just unused memory
+issue tend to come up. One of the most common situations where we have to worry 
+
+197.85
+writing
+
+about the alignment is in the allocation of strings. So let&#39;s say we have this string, the string Hello and then we want to put it in memory. So let me draw our memory as a linear sequence of bytes so I&#39;ll mark out some bytes here. And let&#39;s assume this is a 32-bit machine so let me make the word boundaries a little bit heavier boundaries. So, one, two, three, four. Okay. So, there are the, the word boundaries And now let&#39;s say there were we are trying to have aligned data, a word aligned data and so allocate this string beginning in the word boundary. So, the each character will go on the first byte when e, then l, then l, then o. And now, we may have terminating null depending on how strings are implemented. And let&#39;s assume that we do. And this is fine placement of the strings extremely begins in the word boundary and. That assess by presumably any alignment restrictions of the machine and now the question is where does the next data item go? So we could begin the next data item right in the next available byte and that would be good if we are very concerned about not wasting memory. But, I noticed that, that data item will then be were aligned. We may either run into correctness or performance problems if the machine has restrictions on the alignment. So, the simple solution here is to simply skip to the next word boundary and allocate the next data item whenever it is on the next word beginning at the next word boundary. And what happens to this two bytes here, well these bytes are just junks. T hey&#39;re not used at all, they never reference by the program. It doesn&#39;t matter what they&#39;re value is because the program should never refer to them. It&#39;s just unused memory. And note that if we didn&#39;t have the terminating zero then there would be the terminating, no character then and then would be three unused bytes after the string. So to summarize this is the general strategy for dealing with alignment when you have alignment restrictions. Data begins on the boundaries, typically word boundaries that are required and if the particular data that you&#39;re allocating has a none integral length. Meaning that it doesn&#39;t end directly on the next required boundary and you just skip over whenever bytes are in between to get the data, the next data that&#39;s going to be allocated on the correct boundary. 
+

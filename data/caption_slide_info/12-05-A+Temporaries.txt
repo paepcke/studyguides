@@ -1,0 +1,70 @@
+4.009
+slide
+Compilers 1 Temporaries
+In the last couple of videos we have talked about code generation for simple programming language and I mentioned at the end of the last video that realistic compilers do things a bit differently and in particular they do a better job of keeping values and registers and of managing the temporaries that have to be 
+
+21.26
+slide
+Temporaries Idea Keep temporaries in the AR The code generator must assign a location in the AR for each temporary ex Aiken
+stored in the activation record. We&#39;re actually going to talk about both of those problems. In this particular video, we&#39;re only going to talk about the second one and so we&#39;re going to be covering a better ways for compilers to manage temporary values. So the biggest idea which we&#39;ve already seen is to keep temporaries in the activation record. Now, this is not as efficient as keeping temporaries in 
+
+47.069
+slide
+def fib x if x 1 then 0 else if x 2 then 1 else fib x 1 fib x 2 Temporaries ex um
+registers but that&#39;s the subject of a future video, we&#39;re not going to talk 
+
+50.67
+writing
+
+about that today. What we&#39;re going to talk about is improving the language we manage temporaries that happened to be in the activation record for whatever reasons. So why, it doesn&#39;t matter why we want them to be into activation record, but given that it&#39;s there, that&#39;s the most efficient code that we can generate And, the improvement that we&#39;re going to make Is have the co-generator assign a fixed location In the activation record for each temporaries. We&#39;re going to pre-allocate memory or a spot in the activation record for each temporary and then we will be able to save and restore the temporary without having to do the stack pointer manipulations. So, let&#39;s take a look at the [inaudible] program for a simple programming language. Here is the Fibonacci function again and let me change colors to something that says more contrast and let&#39;s think about how many temporaries we need to evaluate this functions. So, this function body when it executes we&#39;ll need a certain number of temporaries and if we know how many temporaries that needs in advance then we could allocate the space for those in the activation record rather having to do push and pop, pushing and popping from the stack at runtime. So, let&#39;s take a look and if then else is going t o involve a temporary because it always do this predicate comparison here, we&#39;re going to 
+
+131.48
+slide
+Temporaries Let NT e of temps needed to evaluate e NT e 1 e2 Needs at least as many temporaries as NT el Needs at least as many temporaries as NT ez 1 Space used for temporaries in el can be reused for temporaries in e2
+have to evaluate the, the first argument to the predicate and then save the result 
+
+135.28
+writing
+
+of that while we evaluate the second argument to the predicate. So this one involve one temporary, we&#39;ll need one temporary for that predicate. Similarly for this predicate, to evaluate it since it&#39;s a two argument operation in comparison, we&#39;ll also need one temporary for that. 1010. There&#39;s this expression over here which is kind of complicated. How many temporaries will we need for these? Well, remember how this works. So, evaluate the first expression and then we save the results of that so this will require one temporary for the result of 
+
+167.73
+slide
+Temporaries NT e1 e2 2 max NT e1 1 NT eZ NT el e2 max NT e1 1 NT e2 NT if 91 92 then 93 else e4 max NT el 1 NT eZ NT es NT e4 NT id e1 en max NT e1 NT en NT int o NT id o
+the called fib going to have to be saved and only evaluate the plus And while we 
+
+172.29
+writing
+
+are evaluating the call, the fib though is actually, before we evaluate to call the fib, we have to evaluate the argument of fib and that involve the subtractions. We also need one temporary here for the subtraction. Okay And now we have about the second side of the, this edition here. Well this also involves a subtraction. Okay So, we got to have one temporary here to hold on to the value x while we&#39;re evaluating the minus to compute the value of the argument before we call [inaudible]. Okay? So how many temporaries do we need in total? While we need one here for the predicate, but notice that once the predicate is decided, once we know the answer to whether this predicate is true or false, we don&#39;t need that temporary anymore. So in fact, that temporary can be reclaimed; we don&#39;t need the space for that temporary anymore by the time we get to the false branch. And again, once this predicate is evaluated, we don&#39;t need the space for that temporary anymore, okay? So now we&#39;re down to the plus. The first thing that happens is we evaluate the argument to this first call the fib. Once that&#39;s evaluated, we don&#39;t need the temporary for it anymore. Now the results of fib has to be saved somewhere 
+
+252.09
+slide
+Temporaries def fib x if x 1 then 0 else if x 2 then 1 else fib x l fib x 2 ex um
+while we do the plus, okay? And then we&#39;r e going to have to evaluate the argument 
+
+256.949
+writing
+
+to the second call of fib and then notice that this happens while we still need this temporary here so in fact, we need both of these temporaries at the same time. Okay because while we&#39;re evaluating this argument, the second call of fib, we still need to be holding on to the first argument to the plus. And so in fact this particular function can be evaluated with just two temporaries. So all the space we need to compute the value of this function body. So in general, we can define a function nt of e that computes a number of temporaries  needed to evaluate e1 + e2. 
+
+304.4
+slide
+Temporaries o I D def fib x 4 then Qelse o I o Wifzagthenlelse 1L L 1 2
+
+
+304.4
+slide
+def fib x if 9 I o if 2 then l else r 1 I o 1 then Qelse 1 fi Temporaries b 2 ex um
+So, that&#39;s going to need at least as many temporaries as e1. Okay, so if we need a 
+
+309.1
+slide
+Temporaries For a function definition f x1 xn e the AR has 2 n NT e elements Return address Frame pointer n arguments NT e locations for intermediate results
+number of temporary&#39;s k to evaluate e1, let&#39;s have at least k temporaries to evaluate the whole expression And then, we&#39;ll also need at least as many temporaries as it&#39;s needed to evaluate the two+1 because we have to hold on to the value of e2 while we are evaluating so we have to hold on the value of e1 while 
+
+327.88
+slide
+Return Addr Temp NT e Temp 1 Temporaries Mex mm
+we&#39;re evaluating the two. Okay And it&#39;s going to be the maximum. Over these two so it&#39;ll be the maximum number with between the maximum number of temporaries need to evaluate a one and one + the number of temporaries to evaluate two. That would be the total number of temporaries, the minimum number of temporaries needed to evaluate e1 + e2 And the reason is a max instead of a sum. Is that once we&#39;ve evaluate e1 we don&#39;t need any of the space that was used to evaluate e1 anymore. All those temporaries are done. All we need is the answer. We don&#39;t need the immediate results and that means that the temporaries that were used to evaluate e1 can be reused to evaluate e2. So, generalizing from that one example, here is the system of equations that subscribes the number of temporaries needed to evaluate every kind of expression in our little language. So, let&#39;s take a look. So, we already talked about e1+e2 is just the max of over the number or temporaries to value of e1 and one + number of temporaries to value of e2. So, e1-e2 is exactly the same thing because the same structure is a different computational operation but is a binary operation and we have to save the value of e1 while evaluated e2. So, it&#39;s the same formula. [inaudible] Now for if and else well what do we need? We need one, I&#39;m sorry we need, it&#39;s going to max again. It&#39;s going to be max over some number of different quantities. How many temporaries might we need? Well, we might need as many temporaries or as needed to evaluate the value of e1 and we certainly need at least as many, alright. So, if you want to take a certain number of temporaries, the whole f and l is going to require at least as many temporaries. Now of course, once e1 is done evaluating, we don&#39;t need its temporaries anymore. And, and we can evaluate e2, okay. And while we are evaluating e2, we have to hold on. To the results of e1, that&#39;s where the one plus comes from. So, to that, while we&#39;re evaluating e2, we need one plus the number of temporaries to evaluating two to hold all the temporaries of the computation. And then once the predicate is done, we don&#39;t need any of those temporaries anymore at all ad we&#39;re going to evaluate either e3 or e4. And so then, we just need however many temporaries each of those requires and whatever the maximum is over these four quantities, that&#39;s the minimum number of temporaries we can get away with to evaluate the entire if then else. Let&#39;s take a look at a function call. So that the space needed for the function call is number of temporaries, the max over the number of temporaries to evaluate anyone of the arguments and this is actually an interesting case because notice. That we don&#39;t need, we don&#39;t have anywhere in this formula space for the results for the e1 through en Of course once we&#39;ve evaluated the e1 then we need to save it somewhere and so you would think that we might see some numbers in here representing the temporary space needed to hold on to the results of the evaluating these expressions. And the reason that we don&#39;t have that in here is that. Even though those values are saved, they are indeed saved; they&#39;re not saved in the current activation record The space where the results of e1 and the results of all, any of the arguments. Yeah, again, is saved in the new activation record that we&#39;re building And so, the space for the, the results of e1 through en is that those values are stored in new activation record and that storage of current activation record and we&#39;re trying to compute the number of temporaries needed to evaluate inside of the current activation And then for integer, that doesn&#39;t take any space at all to require any temporaries I mean. So there&#39;s zero temporaries required for that and also for a variable reference so it requires no temporaries. So now let&#39;s go through our example and work out systematically using the equations. How many temporaries we will need? Okay? So, here for this if then else, remember it was going to be the max over the number required to evaluate e1, well that zero. One + the number to evaluate e2 which is the second expression in the predicate so that would be one, because the number one requires zero temporaries and the one, the we have one hold on to x, all right? And then max over the branches. So, to evaluate zero requires Zero temporaries and now. We have to compute. The number required here. Okay so once again to evaluate the first expression if and else requires zero temporaries to evaluate the second one we require one. One + the number required, one + zero to evaluate that constant we got zero temporaries and now for the last expression how many will this one will require. Well this is going to require zero for this guy. One for the second argument so to evaluate fib is going to require one temporary, okay and then it&#39;s going to be one plus over here. We have to hold on to the results there. The value of x - two so how much that going to require? That is going to require the max of zero and one + zero okay so this would be one alright so we have over here we have one + one = two okay and now we&#39;re taking the max over two and one. So that&#39;s two, okay? And this is the last expression in the, our if and else. So clearly, this if then else here will require two temporaries okay? Because the max over the number required for either part of the predicate, the then branch and the else branch And now, this whole expression. Requires two temporaries and that&#39;ll be the max of the four components of the outer if then else And so then for, for the entire expression we get two temporaries. Once it computed the number of temporaries required to evaluate the function value, we can add that much space to the activation record. So, now our activation record is going to require two + n + nt (e) elements And so, the two of course are for the return address for the frame pointer. The n is for the n argument of the function And then, the rest of it is just the space required for the temporaries And now we can talk about how we&#39;re going to layout the activation record. We&#39;ll leave the first part of it the same, so everything up to the return address is laid out just before. First the color string pointer then the and arguments in reverse order, and then the return address. And then after the return address come the and locations or the nt(e), excuse me, locations for the temporaries. 
+

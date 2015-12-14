@@ -1,0 +1,70 @@
+4.509
+slide
+Compilers 1 Type Checking g
+In this video we&#39;re going to talk about type checking in cool. Thus far, we&#39;ve 
+
+12.16
+slide
+We have seen two examples of formal notation specifying parts of a compiler Regular expressions grammars The appropriate formalism for type checking is logical rules of inference Type Checking ex mm
+seen two examples of formal notation used to specify parts of a compiler. Regular expressions were used in lexical analysis, and context free grammars which we used in parsing. It turns out that there&#39;s another formalism which has gained widespread acceptance in type checking, and that&#39;s logical rules of inference. If-else rules 
+
+32.71
+slide
+Type Checking Inference rules have the form If Hypothesis is true then Conclusion is true Type checking computes via reasoning IfEl and E2 have certain types then E3 has a certain type Rules of inference are a compact notation for statements
+are logical statements that have the form; if some hypothesis is true then some conclusion is true. So, if-else rules are implication statements that some hypothesis implies some conclusion And in the particular case of type checking an example or typical kind of reasoning that we see in type checking is that if a couple of expressions have certain types then some other expression is guaranteed 
+
+55.12
+slide
+Type Checking The notation is easy to read with practice Start with a simplified system and gradually add features Building blocks Symbol is and Symbol 3 is if x T is x has type
+to have a certain type. And so clearly that the type checking statement here is an example of an inference rule. An inference rule notation is just a compact way of encoding these kinds of if then statements. Now if you haven&#39;t seen this notation before, it will be unfamiliar, but actually it&#39;s quite easy to read with practice And we&#39;ll start with a very simple system and gradually add features. 
+
+80.67
+slide
+If e1 has type Int and e2 has type Int has type Int Type Checking then e1 e2 ex Aiken
+So we&#39;ll use a logical conjunction for the English word and, and implication for the 
+
+86.0
+writing
+
+English word if and then. And now, one special thing, the string x colon t is read that x has type t. So this is logical assertion saying that x has a particular type. So now consider the following very simple type rule. If E one has type int, and E two has type int, then E one plus E two also has type int. And we could just 
+
+113.31
+slide
+Type Checking The statement L e1 Int e2 Int 3 e1 e2 Int is a special case of Hypothesis1 A Hypothesisn 3 Conclusion This is an inference rule ex Aiken
+take the definitions we gave on the previous slide and just gradually reduce this to a mathematical statement. So, for example, we can replace the if then with 
+
+123.17
+slide
+Type Checking By tradition inference rules are written I Hypothesis l Hypothesis l Conclusion Cool type rules have hypotheses and conclusions l e T h means is provable that
+an implication. And we can replace the word and with a conjunction. And now we 
+
+128.03
+writing
+
+just have these has type statements, alright? And we had a notation for that, and we wind up with this purely mathematical statement that, which says exactly the same thing. That if E1 has type int and E2 has type int, that implies that E1 + E2 has type int. And notice that, that statement that we just wrote out is a special case of an inference rule. It&#39;s a bunch of hypothesis conjoined together and implies some conclusion. The traditional notation for inference rules is given here. The hypotheses are written about the horizontal line, and the conclusion is written below. And it means exactly the same thing as what we had on the previous slide. Mainly that if all the things above the horizontal line are true. These are all the hypotheses, then the thing below. The horizontal line can be 
+
+176.65
+slide
+Type Checking i is an integer literal i nt I elz Int Int ezzlnt Add F e1 e22 Int ex um
+concluded to be true. And there&#39;s one piece of new notation here. This is the turnstiles that are used for the hypotheses and the conclusion. And the turnstile is read, it is provable that. And what this means is that we&#39;re just going to say explicitly. That something is provable in the system of rules that we&#39;re defining. So the way you would read this is that if it&#39;s provable that all these 
+
+200.159
+slide
+Type Checking These rules give templates describing how to type integers and expressions By filling in the templates we can produce complete typings for expressions
+hypotheses are true. So, if it&#39;s provable the first hypothesis is true, all the middle hypotheses, and if it&#39;s improvable, if it&#39;s provable the last hypothesis is true. Then it is provable that the conclusion is true And cool type rules are going to have. The following kinds of hypothesis and conclusions we&#39;re going to prove, within the system, that some expression has a particular type. So with 
+
+226.18
+slide
+Type Checking 1 is an int literal 2 is an int literal F 1 nt l 1 22 nt F 2 Int ex um
+those definitions out of the way we actually have enough to write at least a few simple type rules. So, if I integer literally if it&#39;s an integer class interfering in my program then this rules says it is provable that I has type ENT. So every integer constant has type ENT. And here&#39;s the rule for add written out now in the [inaudible] rule notation. If it&#39;s provable then that E1 has type int 
+
+249.739
+slide
+Type Checking A type system is sound if Whenever l e Then e evaluates to a value of type T We only want sound rules But some sound rules are better than others Alex mm
+and is provable that E2 has type ENT. Then it is provable that E1 plus E2 has type 
+
+255.529
+writing
+
+ENT. So notice that these rules give templates for describing how to type integers and expressions. The rule for integer constants just use a generic integer i. It didn&#39;t give a separate rule for every possible integer, and the rule for plus used expressions e one and e two. It didn&#39;t tell you what particular expressions they were. It just said give me any expression e one, any expressions e one and e two that have type int. And so we can plug any expressions we want in that satisfy the hypotheses, and then we can produce a complete typing for actual expressions. So as a concrete example, let&#39;s show that one plus two has type ent. So we want to type the expression one plus two, and since we know the rule for add that means we need to construct a proof of the type of the number one, and a proof of the type of the number two. And we have a rule for dealing with integer classes, mainly we can prove because one is an integer class that has type ent, and we can prove that two is type ent, and then now we have the two hypothesis we need for the sum expression and we can prove that one plus two has type ent. So, an important property of any reasonable type system is that it be sound. And sound is here is a correctness condition. What we want is whatever the type system can prove that some expression has the type systems has a particular type T. The if I actually run that program. If I take E and I execute it on the computer the value that it returns, the value that comes after running E in fact has the type predicted by the type system. So, if the type system It is able to give types of things that actually reflect what kind of value you get when you run the program then we say that the type system is sound. Now clearly we only want sound rules but some sound rules are actually quite a bit better than others, so for example. If I have an integer literal And I want to give it a type, while we, we, I showed you the best possible rule before where we said that [inaudible] has type [inaudible] But it would also be correct, just not very precise to say that has [inaudible] has type object. Certainly if I evaluate an integer I will get back an object because every integer in , is also an object But this isn&#39;t all that useful because now I can&#39;t do any of the integer operations And so there are lots of different sound rules, there&#39;s not just one unique rule for any given [inaudible] expression that will be sound, but some of them are better than others, and in the case of integer literals the one we really want. Literal has type it because that is the most specific type that we can give to that type of program. 
+

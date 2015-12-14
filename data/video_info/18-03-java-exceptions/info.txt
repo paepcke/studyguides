@@ -1,0 +1,51 @@
+00:00:00
+slide
+Compilers 1 Java Exceptions
+00:00:10
+slide
+Java Exceptions Deep in a section of code you encounter an unexpected error Out of memory A list that is supposed to be sorted is not etc What do you do ex mm
+00:00:15
+writing
+
+00:02:50
+slide
+dass Foo public static void main String args try X catch Exception e Systemout println public void X throws MyException throw new MyException Java Exceptions ex um
+00:02:55
+writing
+
+00:03:45
+slide
+Java Exceptions T v an exception that has been thrown with value v v an ordinaw value an object e1 v1 E r try e1 catch x e2 v1 E e1 T v1 E x e2 v2 E vtry e1 catch x e2 v2 Alex um
+00:03:50
+writing
+
+00:05:15
+slide
+Tiv an exception that has been thrown with value v Java Exceptions R x an value an object E e1 v1 E r try e1 catch x e2 v1 E e1 T v1 E X ev1 e2 v2 E vtry e1 x e2 v2
+00:05:20
+writing
+
+00:06:45
+slide
+Ebe v Java Exceptions Et throw e T v E T v1 EI e1 e2 T v1 ex um
+00:06:50
+slide
+Et EIV Java Exceptions Et throw 9 T v E T v1 EI e1 e2 T v1 ex um
+00:06:55
+writing
+
+00:10:30
+slide
+Java Exceptions What happens to an uncaught exception thrown during object
+00:10:35
+slide
+Java Exceptions What happens to an uncaught exception thrown during object
+00:10:40
+writing
+
+00:12:45
+slide
+Java Exceptions Methods must declare types of exceptions they may raise public void X throws MyException Checked at compile time Some exceptions need not be part of the method signature edge dereferencing null Other mundane type rules throw must be applied to an object of type Exception Alex mm
+00:12:50
+writing
+

@@ -1,0 +1,65 @@
+4.23
+slide
+Compilers 1 Subtyping
+In this video, we&#39;re going to talk about sub typing another important idea in cool and other object oriented languages. Let&#39;s begin by taking a look at the typing rule 
+
+17.06
+slide
+Subtyping Consider let with initialization O i eO T0 O T0 x F e1 T1 O F let x To e1 T1 ex Aiken
+for let with initialization. So last time we looked at the let rule, but didn&#39;t have 
+
+21.56
+writing
+
+the initializers. Let&#39;s just see how adding the initializer right here changes things. So what&#39;s going to happen here? Well first of all, notice that the body of the rule is almost the same. So We type check E1 in an environment where X has type T0. The type is declared to have in the let And all the other variables have whatever types O gives them And we can add some type T1, and that&#39;ll be the type of the whole thing. So this piece Right here is exactly the same as before. So what&#39;s new is this line of where we type check the initializer. And so how does that work? Well, first of all, under the assumptions o we type check e zero, we get some type t zero. And this is really an aside from the main point, but notice that we use the environment o, in particular x. The new definition of X is not available in E0, so if E0 uses the name X that means it uses the name of some other X that&#39;s defined outside Of the lead because we didn&#39;t include a, this definition of X in the environment for type checking E0. All right now, but the main point a, thing I want to point oh I&#39;m a sly, is that easier or here has type zero which is exactly same type as X, and that&#39;s a requirement of this rule, it says that E0 has to have the same type as X, and that&#39;s actually fairly weak of because it&#39;s really a, no problem if E0 has a type which is a subtype of T0, a. T zero can hold any sub-type of T zero, that would be absolutely fine. But here we&#39;ve limited ourselves to only allowing initializers that exactly match the type of X. So we can do better if we introduce the sub typing relation on classes. And the most 
+
+132.709
+slide
+Define a relation S on classes X S X X S Y ifX inherits from Y O F e0 T0 O T x F el T1 TOS T O F letsz e1 T1 Subtyping Let Init ex Nken
+obvious form of sub typing is that if X is a class and inherits directly from, from 
+
+137.379
+writing
+
+Y, meaning there&#39;s a line in the code that says X inherits from Y. Then x should be a sub type o f Y. And furthermore this relationship is transitive. So if x is a sub type of y, and y is a sub type of z, then x is a sub type of z. And finally as you might expect, it&#39;s also reflexive, so every class is a sub type of itself. And using sub typing, we can write out a better version of the let rule with initialization. So once again, the body, the, the part of the rule that deals with the body of the let is exactly the same as before, so let&#39;s not look at that, and. Now what we&#39;re going to do is we&#39;re gonna type check E0 and we get some type T0 out, and then T0 now is only required to be a sub-type of T, so this here is another hypothesis. And it just says that T zero has to be a sub type of T and what is T, well T is now the type that X is declared to be. So this allows E zero to have a type that&#39;s different from the type of X, and the only issue here is that more programs will type check with this rule in the previous one. The previous rule that we had was certainly correct, any program that compiled with that rule, would run correctly, but this is a more permissive and still correct rule. More programs will compile and type check correctly, using this rule. Sub-typing shows up in a number of places in the cool type system. Here&#39;s the rule for assignment, which is in many 
+
+221.01
+slide
+0 X To 0 F e1 T1 TJLSTO OI x T1 Subtyping Assign ex um
+ways similar to the rule for let. So, how does an assignment work, well on the left 
+
+225.779
+writing
+
+hand side is a variable and the right hand side is an expression, we&#39;re gonna evaluate the expression and assign whatever value we get back. To the variable on the left-hand side And so what how is this type-checked? Well, first of all, we have to look up the type of X in the environment, and we discovered it has some type T0 And then we type-check E1 in the same environment. So the set of variables here is not changing. And so we type-check E1 environment O, and we get some type T1. And now what has to be true for this assignment to be correct? Well it has to possible for X to hold the value of type T1. So X&#39;s type T0 has to be a super type, has to be bigger than the type of T1. So, if this [inaudible] Is satisfied, then the assignment is correct. Another example that uses sub-typing is the rule 
+
+274.48
+slide
+Subtyping Let Oc x T for all attributes x T in class C Oc x To OC F e1 T1 T1 S To Attr nit Oc x T0 e1 ex um
+for attribute initialization which except for the scope for identifiers is very, 
+
+278.32
+writing
+
+very similar to the rule for normal assignments. So recall what a class looks like, you can declare a class in Cool and it has at the top level some set of attributes and methods. And what does an attribute Definition look like. Well it looks like one of these things. It&#39;s, a variable declared to some type and you can have an initializer on the right hand side. And so in what environment then is this initializer type checked? Well, its type checked in this special environment O sub c which just consists of the types of all the attributes that are declared in class c. So this mean we have to make a pass over the class definition, pull out all the attribute definitions, all the names of the variables and their types, build an environment. That [inaudible] all that information, and then we can type check the initialize rs because remember the initializer for an attribute can refer to any of the initialize rs for the class. So, let&#39;s take a look at how this works. First we look up the type of X in the environment. That&#39;s sum type T O. Now we type check E1 in the same environment. That&#39;s sum type T1. And then just as with assignment T1 needs to be a subset or a subtype of the type T O. Now we come to 
+
+355.71
+slide
+Subtyping Consider if e0 then el else e2 fi The result can be either e1 or e2 The type is either type of type The best we can do is the smallest supertype larger than the type of e1 or e2 ex Aiken
+another interesting example how we type check If and Else. And the important thing 
+
+360.51
+writing
+
+about If and Else is that when we&#39;re doing type checking we don&#39;t know which branch is going to be taken, we don&#39;t know whether the program is going to execute E1 or E2, and in general actually this statement may or If this expression may execute multiple times doing a run of the program, in sometimes it may execute only one, other times it may execute it two. And so what that means that the resulting type of am If and Else is either the type of E1 or the type E2 and we don&#39;t. Know a compile time, which one is going to be . So the best we can do. Is to say the type of entire if then else is the smallest super type larger than either e1 or e2 The 
+
+399.38
+slide
+Subtyping ub X Y the least upper bound of X and Y is Z if X S 2 Y 5 Z Z is an upper bound YSZ ZSZ Z is least among upper bounds In COOL the least upper bound of two types is their least common ancestor in the inheritance tree ex AAan
+need to compute an upper bound over two or more types comes up often enough that 
+
+403.51
+writing
+
+we&#39;re going to give the operation a special name. We&#39;ll call it the LUB or least upper bound of X and Y. And the least upper bound of X and Y is going to be Z if Z is an upper bound, so meaning it&#39;s bigger than both X and Y, and also if it is the least among all possible upper bounds. So what this line here says, is that there is some other Z prime that&#39;s bigger than X and Y. Well then z has to be smaller than z prime. So z is the least, if z smallest of all the possible upper bounds of x and y. And in Cool, and in most object oriented languages, the least upper bound of two types is just their least common ancestor in the inheritance tree. So typically, the inheritance tree is rooted at object or some similarly named class that incorporates, that includes all possible classes of the program. And then there&#39;s some kind of a hierarchy which is a tree, That descends from object, and, and if I want to find the least upper bound of two types, say this type and this type, I just have to walk back through the tree until I find their least common ancestor. And so, in this case, if I pick these two types out of my tree, this would be the least upper bound of those two types. 
+

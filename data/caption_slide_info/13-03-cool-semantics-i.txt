@@ -1,0 +1,115 @@
+4.4
+slide
+Compilers 1 Cool Semantics l
+In the next couple of videos, we&#39;re going to be looking at the details of the Cool operational semantics going over the semantics of each individual kind of expression. We&#39;ll start with easy ones and work our way up to the more complicated ones. So the easiest rules are the rules for the constants in Cool. So the value 
+
+24.929
+slide
+so E S true Bool true S Cool Semantics ex mm
+true, the expression true I should say, evaluates to a Boolean with the value true 
+
+30.089
+writing
+
+And it doesn&#39;t modify the store so the store is unchanged because it doesn&#39;t do any updates obviously And there&#39;s a corresponding rule for false And integers are very, very similar so if a integer expression, integer literal i will evaluate to, and integer object with the value i and again the store is not modified by such evaluation. And finally, strings if a, if s is a string literal of length n, then it will be evaluated by the string object of which the properties n and the string constant s. The evaluation of identifiers is very straightforward, 
+
+77.11
+slide
+E id lid 5 V so E SHd v S Cool Semantics ex Aiken
+given that we have both in environment in the store. So to evaluate an identifier 
+
+81.82
+writing
+
+and this would be a variable lane y x or y or for What do we do? Well first we look up in the environment where that identifier is stored so now we give us back a memory location l. So by in this case And then we look up in the store what the value is at that memory locations, So, we use the same memory location here as an argument to the store to get back the value that, that, that variable currently has And notice I just have a reference, this is a read of memories so this is loading, I think it was loading the value of the variable. This does not affect the store so the store is the same before and after. This is just looking at the value of the variable not updating the variable. The expression self just evaluates to the self object. So, this is a place where we just make use of the fact that the self object is part of the environment so let&#39;s just copy them over here as the result of expression and that was again that the store is unaffected by evaluation of self. Now let&#39;s see of a more slightly more complicated evaluation is evaluated, in particular the assignment expression. So an assignment consists of two parts, an identifier that is being updated and an expression that is going to give us the new value. So for example, just to remind you we might have something like x gets one + one so one + one here would be the expression e and x would be the identifier All right? And so in order to evaluate the assignment, the first thing we have to do is we have to know what value we&#39;re going to be writing into the identifier. So what is the, what is the update we&#39;re going to perform? So the first thing to do is to evaluate e, okay? And notice here that e is evaluated in the same environment so it has the same three components here, and here, all right? So it just says the first thing we do is we run e. Okay. That will give us back a new value. We&#39;re going to get back on value b excuse and possibly an updated score so you can arbitrate a piece of code. You could yourself have assignment statements in it so the story that we get out might be different. Alright, so e produces the value of e and an update store s1 And now it&#39;s actually due to assignment, what do we do? Well we have to know what memory location was supposed to update so we look up the memory location for id and that would give us some location else of id. And then we modify the store with the new, we modify the store at that point with the new value so we replace the location l, i, d or we update the value of l, i, d to be the value of e, the value b and we do that in store s1 which gives us a new store s2. And I&#39;ve noticed. That s2 is the store that results from the evaluation of e, okay? So after we do the assignment, the assignment returns the value b which is of course the value of a, of running e. And, it returns the updated store s2. Next, let&#39;s talk about the operational rule for addition. So, to evaluate e1+e2, what we 
+
+273.889
+slide
+Cool Semantics I 50 E S F e1 v1 S1 50 E 51 e2 v2 52 so E S e1 e2 v1 v2 S2 Alex um
+are going to do? So, first we evaluate e1 And notice that is done in the same 
+
+279.68
+writing
+
+context as the context of the entire e xpression, okay? So the components the context here for evaluating one are exactly the same as the components for the overall expression e1 + e2. So when we evaluate e1 it&#39;s going to give us a value of e1 and it&#39;s also going to give us an updated store s1 And then we&#39;re going to evaluate e2 and notice here And I think context is different. The soft objects in the environment are the same; same but now we&#39;re running e2 in the new store s1. And what does its saying is that if e2 has, has assignments or variable references in it those assignments and variable references have to be done on the store that resulted from running e1, okay? So, it&#39;s very important that we get that any side effects would happen in running e1 are visible or that are seen by the expression e2. So we run e2 in this environment, we&#39;re going to get the value of e2 and the updated store s2 And then the result of the entire expression is going to be b1 + b2 and the results it store will be the store s2. And notice here how the stores tell you the order in which you have to evaluate the expressions. So because e1 is evaluated in the same store as the overall expression that tells you that e1 has to be evaluated first. And then because e2 is evaluated in the store that&#39;s produced by e1, that tells you that e1, e2 excuse me, has to be evaluated after you&#39;ve evaluated e1 and then the fact that. S2 is the result of the whole thing. It tells you that E2 is also the last thing that you evaluate during the execution of this particular expression. Okay, let&#39;s take a look at the statement block and just a variety here on the change my colors. How are we going to evaluate the, a statement block of statements e1 through en, okay, so, while this is semantics, this is that we should run, I mean order beginning of e1 and the results of the entire execution will be the, let&#39;s say the value of the entire block with the value of the last expression. And this, this rule just says that. So, first, we evaluate e1 and also it&#39;s done on the same store as the overall expressio n as it tells you it has to come first and that produces a new store s1 and the value b1. Okay And then e2 is evaluated in the store s1 and it produces the store s2 and so on And then expression en is evaluated in the store sn - one and it produces a value of bn and an updated store s (N). Okay? And then the result of the whole thing is the value of vn and also the updated store s (N) and this tells you, this would really tell you the order which had to evaluate the sub expressions. The dependencies here on the store of course you do evaluate e1 and then e2 and then e3 and so on so you have to do them to net order to get the side effects to get. You know the side effects in the correct order for all of these expressions And furthermore, it also tells you the only value that you&#39;re going to keep is the value vn. Notice that none of the other values that are produced here are used for anything. They don&#39;t appear anywhere else in the rules. Let&#39;s think what we&#39;ve learned so far and do a small example. So we want to know what happens 
+
+493.71
+slide
+Consider the expression X e 7 5 4 Cool Semantics ex Nken
+when we evaluate the block. X gets assigns seven + five, that&#39;s the first statement 
+
+500.62
+writing
+
+and the second and the last statement in the block, is just the expression four. And the first thing we have to do is to say what the context did and which we are going to evaluate this and the context consists of three parts. There&#39;ll be a self object and in this case it doesn&#39;t really matter what&#39;s in the self object because self is not referred to in the program and so it won&#39;t play any role in the evaluation. But we, we still need it so there still be, there&#39;ll be some self object out there just won&#39;t get used and Now, in the new environment which tells us the locations where all the free variables in the programs. So, we&#39;ll just need a place for x is going to be stored and so s will be stored in some location l And then we know our memory content is, where our store is and let&#39;s just say that at l we have initially the value zero, okay? So now we can use our rules to run this program or to evaluate thi s program. I&#39;m going to make this line here much longer And recall that, that evaluation of block consist of the evaluation of the, all the statements within the block. Okay, so the first one is going to be s gets seven+5 and that will be evaluated in the same environment as the overall expression. So, we have up here. So the same context excuse me and I should say I often slip and I realize and say environment for the entire left hand side of one of these judgments. I&#39;ll try to be consistent. And just use environment for the, for the second components of the context often in the literature people call the entire thing on the left hand side of the environment that&#39;s why they make this mistake but you know for this instead of notes I&#39;m trying to be consistent the entire, all the components on left hand side together are called the context and the environment is just the second component. The mapping from variables to their locations Anyway coming back to the example, The first statement in the block is s gets seven+5 alright. And then we&#39;re going to have the second statement as well. And we know that the self object and the environment won&#39;t change but we don&#39;t know what the store will be. The store might be different so I&#39;ll leave the store empty for now and we&#39;ll figure that out later and we&#39;re going to be evaluating the expression four. Okay, so this is the structure of the evaluation now in progress. We should look at, at this first statement trying to make some forward progress on that one. So, to evaluate the assignment, what do we have to do? Well, the very first thing we have to do is we have to evaluate the right hand side so we&#39;re going to have the context for that is going to be the same And the context we&#39;ve been looking at all on because it&#39;s the first thing that&#39;s actually going to happen is to evaluate Seven + five, okay? And now, I&#39;m leaving a little space down here for the rest of the assignment role which we&#39;re not going to fill in just yet. 
+
+695.12
+slide
+Cool Semantics Consider the expression X e 7 5 4 r Sal x l1 s 3 So x l Djp 4
+Now to evaluate the plus expression we have to evaluate the first express ion and the second expression, okay? And so, how do we do that? Well, we know, finally, I 
+
+706.22
+writing
+
+think how to do that because we&#39;re finally down and we&#39;re going to have a single integer there and that we already have a rule for, okay and so an integer literal evaluates to institute your object, okay And inside that object is just about the value, okay. And the store is unmodified All right? And then similarly for the other argument here, Okay. So the five will also evaluate to an integer object with the value of five and the store will be unmodified okay so that&#39;s the two sum expressions of this edition and so now we can fill in the results here so to take the contents of the two integers we&#39;ll add them. That will also be integer object so we&#39;re going to have the integer object twelve. And the store has not been changed, okay? So the, the store that we get out of here happens to be the same as the store that went in just because this expression had no assignments in it, okay? And now we&#39;re ready to do the assignment. Okay. So how do we do that? Well, we have to form a new store. Alright, so we&#39;re going to have a new store which will the L gets zero with the value of l. Number which way, my notation went here, I think it&#39;s the number comes first and we&#39;re going to put twelve in the location l and of course, that&#39;s store was just equal to the store where l has the value twelve, okay And so now, what happens down here and we do the assignment and we get out The new value. Okay so, the value of the right hand side is twelve and we have a new store where the location l has twelve, all right? So now we&#39;re going to evaluate the second statement in the block and that will be done in the store where l has the location twelve and of course this is just an integer And so that will evaluate to the integer constant of four, the integer value excuse me, 4or integer object containing, the integer object with the value four and our store. And it&#39;s just going to fit not quite, all right? And that&#39;s then the result of the entire evaluation . So, this block will produce the value four, an integer object with the value four and an updated store where location l has the value twelve. So, the next expression I would like to take a 
+
+885.45
+slide
+Cool Semantics I 50 E S E e1 Bool true 51 so E S1 e2 v S2 so E S if e1 then e2 else e3 v 52 ex um
+look at is the if, then, else expression and to evaluate if, then, else what do we 
+
+892.13
+writing
+
+do? Actually there should be if, then, else. See of course, so evaluating if, then, else as well. First we have to evaluate the, the predicate and it&#39;s done in the same store, the same context as the overall expression and if the result is true If the, if the Boolean predicate returns the value true. Then we want to evaluate just the true branch and not the false branch so that&#39;s why you only see here, evaluation of e2 and e3 isn&#39;t mentioned anywhere and just know here that the predicate may have side effects and so e2 is evaluated in whatever store that e1 produces And then the results of the entire expression is the value of e2. Okay, that&#39;s v and also just the final store is produced by running the then branch. And there is a symmetric rule for what happens if the predicate evaluates the false. In that case, you would evaluate e3 and not e2. Next we&#39;ll take a look with what happens with while loops and cool. So there are two cases. First if the predicate of the while loop evaluates the false, okay. Well, in this case the loop body is not going to execute, alright so the first thing we do is we evaluate the predicate and that&#39;s done in the same context as the evaluation of the overall expression and if the predicate is false then we exit the loop and so the results of the loop is void. The value void and just whatever store resulting from evaluating the predicate. The other possibility is that the predicate 
+
+985.19
+slide
+Cool Semantics 50 E S e1 Boolptrue S1 so E 51 e2 v S2 so E S E while eLloop e7 pool void S3 50 E S while e1 loop e2 pool void S3
+evaluates the true. So here we evaluate the predicate again in the same context as 
+
+990.71
+writing
+
+the overall loop. And if the predicate evaluates the true then we&#39;re going to run the loop audio once. Okay. So we&#39;ll evaluate the loop audio and also that&#39;s done in this, in whatever store results from evaluating the predicate. Evaluating the loop audio is g onna give us a value of v and a new store s2 and then what we need to do is we need to go back around and execute the loop again and how can we do that? Well, we&#39;re really just running the whole loop in the new context. So, the next thing we do is we evaluate the entire loop. Right in the new store So, after I execute the loop by, loop body one time, then we go around and just evaluate the loop again And when this may run for zero or more iterations, alright. And when I finally terminate, if it terminates, it will produce it will produce a new store s3 evaluated while because always produced the value of a void. And then what we&#39;ll produce for the entire loops, for the entire expression is the value void and the update and store s3. The next interesting expression to take a look at 
+
+1060.17
+slide
+Cool Semantics so E S v1 S1 SO v S so E SF etid Teeline2 vz s2 Alex um
+is the let expression. So recall how, what this looks like so let and cool has a 
+
+1066.47
+writing
+
+variable thing declared and it&#39;s type and an initializer which is optional so this is the value that the identifier will be initialized to and then the expression in which that new variable is available. And so how do we evaluate this? Well first, we&#39;re going to evaluate the initial value of the, of the new variables. So we evaluate e1 and as usual that&#39;s done in the initial store it produces possibly modified store. And now the question is, what are going to, what&#39;s going to be the context here for the evaluation of e2 for the body of the latter? And so it seems clear that it&#39;s going to involve s1 because it has all the updates from e2 but it also has to have this new identifier in it. And so how are we going to do that? So, what we want is to have a new environment e but with new binding of ID 
+
+1118.83
+slide
+Cool Semantics I so E v1 50 VS so E F etiq Te e1 in e2 v2 S2 In what context should e2 be evaluated Environment like E but with a new binding of id to a fresh location lnew Store like 51 but with new mapped to v1
+to refresh location. So, we&#39;re introducing a new variable. Remember that the 
+
+1123.24
+writing
+
+environment has tracked all the free variables so this is one situation where you should going to extend the environment e with the new binding, alright. And that location, the location for the new variable has to be a fresh location. We don&#39;t want to conflict with any other memory locations we are already using. Okay And so, we&#39;re going to allocate a new memory location for the variable And then the store, the new store will also will be like as one as we said we have to include all the, the values for s1 But also, we can have these new location for the variable and that&#39;s going to have the initial value of the variable e1. To 
+
+1160.62
+slide
+Cool Semantics is a location We write new newloc S to say that not already used in S new newloc is like the memory allocation function
+express that we need a new location, we&#39;re going to introduce a new operation on the store which gives us a new fresh location. So new lo applied to a store it&#39;s just 
+
+1170.47
+writing
+
+going to give us some location that isn&#39;t being used by the store. So, the store has a domain where it&#39;s a mapping from locations to values and we&#39;ll just pick some new location that isn&#39;t in the current list of locations within the store and that will be the one returned or that will be one, that will be the one returned by new lo. Okay, so new lo if you can think of As modeling the memory allocation function in the runtime system. So, then, here we can write out the rule. So, this is the most complicated rule we seen so far. So, I&#39;ll just take a moment to walk 
+
+1206.61
+slide
+Cool Semantics We write new newloclSl to say that lnew is a location not alreaay used in S newloc is like the memory allocation function so E S e1 v1 51 new newloc Sl so ELInew id S1lv1 lnpw e7 v7 S7 so E etid Tee1ine2 v2 S2
+through it All right? So, the first thing we do is we evaluate e1, the initializer 
+
+1213.77
+writing
+
+for the new variable, okay? So just like before, this is done in the same context as the overall expression and this is going to give us a value for e1 and an updated store, all right? Then in the updated store, using the updated store here we find an unused location, l new. Okay And then we&#39;re going to create a store where that new location has, has the value of e1. So we&#39;re going to store the value of e1 at that new location. We&#39;re going to update the store s1 to reflect that and further more we&#39;re going to extend our environment with the new identifier which will be stored at this new location and this is the context then. Okay, with this updated environment in store in which we evaluate the body of the lab which will produce the value b2 and possible update in store s2 and those are the results of the overall expression. 
+

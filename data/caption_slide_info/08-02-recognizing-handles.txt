@@ -1,0 +1,120 @@
+5.27
+slide
+Compilers 1 Recognizing Handles
+Welcome back, in this video we&#39;re gonna talk about the key ideas behind techniques for recognizing handles. There is good news and bad news when it comes to 
+
+17.9
+slide
+Recognizing Handles Bad News There are no known efficient algorithms to recognize handles Good News There are good heuristics for guessing handles On some CFGs the heuristics always guess correctly Alex Amen
+recognizing handles. The bad news is that there is no known efficient algorithm that recognizes handles in general. So for an arbitrary grammar, we don&#39;t have a fast way to find the handles when we&#39;re parsing. The good news is that there are heuristics for guessing handles, and for some context free grammars, for some fairly large classes of context free grammars, these heuristics always identify the handles correctly. We can illustrate the situation with a Venn diagram. If we 
+
+48.95
+slide
+Recognizing Handles Max Amen
+start with a set of all context free grammars, then the unambiguous context free grammars are a sub-set of those, and then an even smaller set are called the LR(k) grammars. And here, just to remind you, &#39;l&#39; stands for left to right scan, 
+
+63.51
+slide
+Recognizing Handles Unambiguous CFGs Alex um
+&#39;r&#39; stands for rightmost variation, and &#39;k&#39; stands for the number of tokens of 
+
+68.67
+writing
+
+look ahead. Now the LRK grammars are one of the most general deterministic families of deterministic grammars that we know of. But those aren&#39;t the ones that are actually used in practice. Most of the bottom up tools that are practical, use what are called the LALRK grammars, which are a subset of the LRK grammars. And then what we&#39;re gonna talk mostly about is a simplification of those called the simple LR grammars, or the SLRK context free grammars. And these containment relationships or [inaudible] that is, there are grammars that are [inaudible]. R k but not s l r k, for every k, and similarly there are grammars that are l r k for every k that are not l a l r k. As we&#39;ve already said, it&#39;s not obvious how 
+
+118.77
+slide
+Recognizing Handles It is not obvious how to detect handles At each step the parser sees only the stack not the entire input start with that 0c is a viable prefix if there is an 0 such that alm is a state of a shift reduce parser
+to detect handles. So, what does the parser know? Well, it sees the stack. At 
+
+123.619
+writing
+
+each step it knows the stack that it has already, constructed. And so let&#39;s see how much progress we can make just thinking about, what information we can get from the stack. So here&#39;s a definition. We&#39;re going to say that alpha is a viable prefix. If there is some omega, such that alpha bar omega is a configuration, a valid configuration of a shift reduce parse. Now keep in mind that the alpha here. This is the stack. And the omega here is the rest of the input. And what does that means? That means the parser knows this part. The parser knows alpha, it doesn&#39;t know much of omega. It can do some look-ahead, it can look at a small prefix of omega, usually just one token, but it certainly doesn&#39;t know the whole thing. So what does a viable prefix mean? Well, a viable prefix is a string that 
+
+178.63
+slide
+Recognizing Handles What does this mean A few things A viable prefix does not extend past the right end of the handle a viable prefix because it is a prefix of the handle As long as a parser has viable prefixes on the stack no parsing error has been detected Alex Aiken
+does not extend past the right end of the handle. And the reason we call it a viable 
+
+183.89
+writing
+
+prefix is because it is a prefix of the handle. So as long as the parser has viable prefixes on the stack, no parsing error has been detected. And really the definition is just giving a name to something, it&#39;s not anything very deep, the fact that alpha bar omega is, is viable, that&#39;s just saying we haven&#39;t encountered an error. That this is some state of a shift reduce parse. It hasn&#39;t said yet how we&#39;re going to identity it or anything like that; it&#39;s just saying that these are the valid states of shift reduced parse. Now the definition is 
+
+220.09
+slide
+Recognizing Handles Important Fact 3 about bottom up parsing
+useful in one way if it bring us to the last important fact, important fact number 
+
+225.01
+writing
+
+three about bottom up parsing. In this effort, any grammar, the set of viable prefixes is a regular language, and this is really an amazing fact, and one that&#39;s going to take us a little while to demonstrate, but this is the key to bottom up parsing. At least all the bottom up parsing tools are based on this fact, that the set of viable prefix can be recognized by a finite automaton. So, we&#39;re going to show how to compute this automaton that accepts the viable prefixes, but first 
+
+258.81
+slide
+Recognizing Handles Important Fact 3 is non obvious We show how to compute automata that accept viable prefixes
+we&#39;re going to need a number of additional definitions. The first definition we need 
+
+265.61
+slide
+Recognizing Handles u n An itern is a production with a somewhere on the rhs The items for T E are E E E T E
+is the idea of an item. Now an item is a production that just has a dot somewhere 
+
+270.509
+writing
+
+on the right hand side. So here&#39;s an example. Let&#39;s take the production, T goes to open paren, E closed paren. What we&#39;re going to do is we&#39;re just gonna put the dot in eve ry possible position on the right hand side. So we&#39;ll have one item where the dot is all the way at the left end. We&#39;ll have one where the dot is all the way at the right end. And then we&#39;ll have, items where the dot is between every pair of consecutive symbols. So in this case, there are four items for the production. One special case is, what do we do with epsilon productions? Well, for an epsilon production, there is no, there are no symbols on the right hand side. We&#39;ll just say there is one item, X goes to dot. And these items, you&#39;ll see them referred to, if you, if you look in help, pages and in the literature, as, the LR zero items. Now we&#39;re ready to discuss how we recognize viable prefixes. And the 
+
+323.669
+slide
+Recognizing Handles The problem in recognizing viable prefixes is that the stack has only bits and pieces of the rhs of productions If it had a complete rhs we could reduce These bits and pieces are always prefixes of rhs of productions
+problem is that the stack has only bits and pieces of the right hand side of productions. In general most of the time, we don&#39;t have a complete right hand side on top of the stack. Most of the time, we only have a part of the right hand side. And. It turns out that what is on the stack is actually not just random it&#39;s, it&#39;s it actually has a very special structure. In, in these bits and pieces are always prefixes of right hand sides of productions. That is in any successful parse what is on the stack always has to be a prefix of the right hand side of some production or productions. Let&#39;s take a look at an example. Let&#39;s consider the 
+
+365.389
+slide
+Recognizing Handles Consider the input int Ean E T Taint T int E Then E I is a state of a parse E is a prefix of the rhs ofT a E Will be reduced after the next shift Item T a E says that so far we have seen E of this production and hope to see Alex Allan
+input open paren, [inaudible] closed paren. And here&#39;s one of our favorite grammars. Now, this configurations, where I have open paren E, [inaudible], on the 
+
+376.83
+writing
+
+stack. Remember that this is our stack. And we have the close [inaudible] in the input. This is actually a state or a valid state of a shift [inaudible]. And you can see here that, open paren E is a prefix of the production. T goes to open paren E, close paren. And after we shift the remaining close paren onto the stack, then we&#39;ll have the complete right hand side, and it will be ready to reduce. So this is where the items come in. The item, T goes to open paren E. Dot, closed paren. This describes this state of affairs. I t says that so far, we have seen open paren E of this production. And we&#39;re hoping in the future to see the closed paren. So another way of thinking about it is that this item records the fact that we&#39;re working on this production. And then so far we&#39;ve seen this much. Everything to the left of the dot is what we&#39;ve already seen and is what is on the stack and. What is to the right of the dot is what we&#39;re waiting to see before we could possibly reduce. And we may or may not see that, remember, the parser doesn&#39;t know the input. In this case of course, it&#39;s the very next, next symbol and so it can see in the look-ahead, but you know at this point in time the parser doesn&#39;t know for sure what&#39;s coming up and, you know, and, and, if this dot were further to the left there might be many, many more symbols that we had to go, before we could perform the reduction. So anyway, what&#39;s to the left of that records what we&#39;ve already seen. And what is to the right of the dot, says that what we are waiting to see on the stack, before we can perform a reduction. And now we could talk about the structure 
+
+472.74
+slide
+Recognizing Handles The stack may have many prefixes of Prefix1 PrefixZ PrefianlPrefixn Let Prefixi be a prefix of rhs 0in ori Prefixi will eventually reduce to Xi The missing part of 1H starts with Xi i e there is a PrefixH Xi 3 for some 13 Recursively Prefikarl Prefi n eventually reduces to the missing part of ock
+of the stack. So you see it&#39;s not just arbitrary collections of symbols. In fact, 
+
+477.36
+writing
+
+it has this very particular structure. So the stack is actually a stack of prefixes of right hand sides. So the stack always has this organization where there&#39;s a bunch of prefixes, stacked up, literally stacked up on the stack. And what&#39;s going to happen is that the ice prefix, if you were to pick a prefix out of this stack of prefixes, While that must be the prefix of some production. Okay. The right hand side of sum production And what that means is that, that prefix, that [inaudible] prefix on the stack, will eventually reduce to the left hand side of that production. So it will eventually reduce to, XI in this case. And then that XI has to be Part of the missing suffix, of the prefix that is below it on the stack. So if I look at the previous prefix the one that&#39;s right below, prefix [inaudible] on the stack Then when I perform this reducti on that XI needs to extend that prefix to be closer to a complete right hand side of that particular reduction. Okay so in particular there&#39;s going to be some production. That is going to; already have a portion of its right hand side on the stack. So prefix of I minus one. And X I is going to extend that prefix, and then there&#39;s gonna be some more stuff possibly that we&#39;re waiting to see, even after the X I is put there. And recursively, all the prefixes above prefix K eventually have to reduce to the missing part of the right hand side of prefix K, the alpha K that goes on the right hand side. [inaudible] This image, you have a stack of prefixes we&#39;re always working on the top-most prefix on the stack, so you will be always working here on the right and shifting and reducing, but every time we perform a reduction. That has to extend the prefix immediately below it on the stack. And when these, when a bunch of prefixes have been removed from the stack through reductions, then we, when we get to work on the prefixes that are lower in the stack. So let&#39;s illustrate this idea with 
+
+601.63
+slide
+Recognizing Handles Consider the string int int int lint is a state of a shift reduce parse is a prefix of the rhs of T E e is a prefix of the rhs of E T is a prefix of the rhs of T int T
+an example. So here is another input string, and we&#39;re gonna use the same 
+
+606.5
+writing
+
+grammar. You can, you can rewind if you want to see the grammar again. But let&#39;s consider this state where we have open paren, [inaudible] star on the stack. And we have int, close paren remaining in the input, &#39;kay? And so what items would record, what is the, what is the stack structure here and how do the items record it? Well let&#39;s start here at the bottom, let&#39;s actually work from the bottom up. So we have in start the top of our stack, so we this is the right hand side that we&#39;re currently working on, and that would be a prefix to this production T goes to int star T. Okay? So what this says is that we&#39;re looking you know, we, we&#39;ve seen in stars so far, and we&#39;re waiting to see [inaudible]. I&#39;m not showing the items, but I&#39;m just showing the productions that this is eventually going to use. Now, the one that&#39;s below it here, the, the prefix that&#39;s below it o n the stack is right here in between the open paren and the int. This one&#39;s an interesting case. It&#39;s actually epsilon. So there&#39;s nothing there now on the stack. But eventually once the int star has reduced to T. Okay? Then that T is going to reduce to E. And currently, of course, there&#39;s not a T there at all. So we&#39;ve only seen epsilon. We&#39;ve seen none of the prefix of this production on the stack. And then for the last production, the one deepest in the stack, we&#39;re currently, we&#39;ve currently seen an open paren. And, we&#39;re w-, and we think we&#39;re working on this production. T goes to open paren, E closed paren, alright? So when this E is produced, that will extend this right hand side. And now we can record all of this with the stack of 
+
+718.31
+slide
+Recognizing Handles The stack of items T E E T T 4 int T Says seen of T a E seen 3 of E T seen int ofT int T
+items, T goes to open paren dot E, E goes to dot T, and T goes to N star dot T. 
+
+724.88
+writing
+
+Okay, and we just record what we said on the previous slide, that so far, we see the open paren of this production. We&#39;ve seen nothing out of the right hand side of this production, and we&#39;ve seen N star so far of this production. And just notice how the left hand side of each of these productions is going to eventually become part of the right hand side of the. Of the right, part of the right hand side of the production we are working on just below it in the stack. So when we&#39;ve reduced this instar T to T that will extend this production, when it reaches E that will extend this production To summarize this video, we can say a little more precisely 
+
+770.09
+slide
+Recognizing Handles Idea To recognize viable prefixes we must Recognize a sequence of partial of productions where Each partial rhs can eventually reduce to part of the missing suffix of its predecessor rm mm
+how we go about recognizing viable prefixes. The crux of the problem is going to be to recognize a sequence of partial right had sides of production. Where each of those partial right hand sides can eventually reduce to part of the missing suffix of its predecessor Next time, in the next video we&#39;re going to actually give the algorithm for implementing this idea. 
+

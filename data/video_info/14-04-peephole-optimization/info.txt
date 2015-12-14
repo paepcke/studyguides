@@ -1,0 +1,27 @@
+00:00:00
+slide
+Compilers 1 Peephole Optimization
+00:00:15
+slide
+Peephole Optimization Optimizations can be directly applied to assembly code
+00:00:20
+writing
+
+00:01:25
+slide
+Peephole Optimization Write peephoie optimizations as replacement rules i1 my in J 1 J m where the rhs is the improved version of the lhs Alex mm
+00:01:30
+writing
+
+00:02:35
+slide
+Peephole Optimization Many but not all of the basic block optimizations can be cast as peephole optimizations Example addiu a Sb 0 a move Sa Sb Example move 5a 53 two together eliminate addiu a Sa 0
+00:02:40
+writing
+
+00:03:35
+slide
+Peephole Optimization Many simple optimizations can still be applied on assembly language optimization is grossly misnamed Code produced by optimizers is not optimal in any reasonable sense improvement is a more appropriate term Alex mm
+00:03:40
+writing
+

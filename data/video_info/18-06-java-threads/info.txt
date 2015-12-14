@@ -1,0 +1,33 @@
+00:00:00
+slide
+Compilers 1 Java Threads
+00:00:15
+slide
+Java Threads Java has concurrency built in through threads Each thread has its own program counter stack Thread objects have class Thread Start and stop methods Synchronization obtains a lock on the object synchronized x e In synchronized methods this is locked
+00:00:20
+slide
+Java has concurrency built in through threads Each thread has its own program counter stack Thread objects have class Thread Start and stop methods Synchronization obtains a lock on the object synchronized x e In synchronized methods this is locked Java Threads
+00:00:25
+writing
+
+00:05:20
+slide
+Java Threads class Simpie int a 1 b 2 voidto a 3 b 4 void fro print n a b b Two threads call to and fro What is printed ex Aiken
+00:05:25
+writing
+
+00:08:40
+slide
+Java Threads class Simp e int a 1 b 2 void synchronized to a 3 b 4 void fro print n a b b Two threads call to and fro What is printed ex Aiken
+00:08:45
+writing
+
+00:13:25
+slide
+Java Threads Even without synchronization a variable should only hold values written by some thread Writes of values are atomic Violated for doubles though Java concurrency semantics are difficult to understand in detail particularly as to how they might be implemented on certain machines
+00:13:30
+slide
+Java Threads Even without synchronization a variable should only hold values written by some thread Writes of values are atomic Violated for doubles though Java concurrency semantics are difficult to understand in detail particularly as to how they might be implemented on certain machines
+00:13:35
+writing
+

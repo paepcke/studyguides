@@ -1,0 +1,33 @@
+00:00:00
+slide
+Compilers 1 Stack Machines
+00:00:30
+slide
+Stack Machines m
+00:00:35
+writing
+
+00:06:05
+slide
+Stack Machines There is an intermediate point between a pure stack machine and a pure register machine An n register stack machine Conceptually keep the top H locations of the pure stack stack in registers Consider a stack machine The register is called the accumulator
+00:06:10
+slide
+Stack Machines There is an intermediate point between a pure stack machine and a pure register machine An n register stack machine Conceptually keep the top n locations of the pure stack stack in registers Consider a l register stack machine The register is called the accumulator
+00:07:15
+slide
+Stack Machines Max m
+00:07:20
+writing
+
+00:08:30
+slide
+Stack Machines Consider an expression op e1 en Note e1 en are subexpressions For each ei O i n Compute ei Push result on the stack Pop values from the stack compute op Store result in the accumulator Alex Nken
+00:08:35
+writing
+
+00:10:40
+slide
+Stack Machines Max m
+00:11:00
+writing
+

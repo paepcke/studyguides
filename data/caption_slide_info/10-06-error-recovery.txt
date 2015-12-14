@@ -1,0 +1,45 @@
+4.059
+slide
+Compilers 1 Error Recovery
+In this video we&#39;re going to wrap up our series on type checking with a discussion of how to recover from type errors. So as with all the other front end phases, like 
+
+17.199
+slide
+Error Recovery As with parsing it is important to recover from type errors Alex Nken
+flexing and parsing, it&#39;s important to recover from errors that happen during 
+
+20.55
+writing
+
+type checking But unlike parsing, it&#39;s much, much easier to recover from errors in the type checker because we already have the up stacks and text tree and so there&#39;s no need to skip over portions of the code as we did in parsing before we even knew what the structure of the program was. The problem though, is what type should we assign to an expression that has no legitimate type? The type checker works by structural induction, and it can&#39;t just get stuck. So if we find some sub expression that has no type that we can meaningfully give it, we still have to do something with it so that we can type check all the expressions that surround it. One possibility is to simply assign the type object as the type of any 
+
+63.01
+slide
+Error Recovery Assign type Object to expressions ex mm
+ill typed expression. And the intuition here is that even if we couldn&#39;t figure 
+
+66.9
+writing
+
+out what the type or the expression was supposed to be, certainly it was something that was a sub type of object. So it is certainly safe to assign any expression the type object. So let&#39;s consider what happens with this strategy in a simple piece of code. So here we have a little code fragment and we just assume here that X is undefined, that actually there&#39;s a bug in this code and that&#39;s at X has no binding. So there&#39;s no type anywhere for X. So what happens when we type check this? Well, we&#39;re going to recursively walk down the abstract syntax tree, eventually we&#39;ll get to the leaves, and we&#39;ll try to type check X. And then we&#39;ll discover that there is no type for X anywhere and that will result in an error message Saying that X is undefined And then in order to proceed with type checking, in order to recover, we&#39;ll have to assign X a type And so, we&#39;ll just assume that X has type object, because that&#39;s our recovery strategy And now we&#39;ll continue to type check as we walk up the abstr act syntax tree, and the next thing we&#39;ll try to do is to type check this plus operation. We&#39;ll see that we&#39;re adding something of type object to, an integer. And of course plus doesn&#39;t work on things of type object, so we&#39;ll get an error. Something like plus applied to an object. And then we&#39;ll have to decide, now that we couldn&#39;t type check this plus, what the type is of X+2, so this whole sub-expression and of course our recovery strategy is to say, well that also has type object And now the next thing up in the abstract syntax tree is this initialization assignment. Here we&#39;re assigning Y the result of this expression But we couldn&#39;t type check this expression so it has type object And now the type checker sees that we&#39;re assigning something of type object to something of type int and we get yet a third error Saying that we have a bad assignment, of some kind. So The nut of the, the problem here is that this simple recovery strategy works. If we do recover we continue type checking. But a single error leads potentially to, lots of other errors. So this is a workable solution. It, it, it achieves the goal of recovering But in general it will lead, to cascading errors. Once you have on one type error that type error will just cause many more because not very many things can be done with something of type object And probably the code was written assuming some more specific type And these errors will just propagate up the abstract syntax tree until some point just result in multiple errors Another possibility is to introduce 
+
+231.51
+slide
+Error Recovery Introduce a new type No type for use with ill typed expressions Alex Nken
+a new type, a No type that is specifically for use with ill typed expressions And No 
+
+237.209
+writing
+
+type is very special. It&#39;s not a type that is available to the programmer. It&#39;s only available to the compiler and it&#39;s just there for error recovery and type checking. And the special property of No type is that it&#39;s going to be a sub type of every other type. So if you remember object was the opposite. Object is a super type of every type and that had the bad property that there are very few methods that defined on object and so if you plug in type object. Where you expected some other type probably it&#39;s not going to type check. So we can fix that problem by introducing no type. And no type will have this special property that every operation, every operation is defined for no type And furthermore we&#39;ll say that it produces no type as a result. So any operation in the language that takes an argument of type no type it will produce a result of type no type. So the no types will propagate. And now let&#39;s take a look at our same code fragment and let&#39;s work through what happens if we use no type. So, again we walk down the abstract syntax tree we get to this leaf X, we see that X is undefined, we produce an error saying X is undefined. And then we have to assign a type to X so we say well X has type no type and now we consider the plus operation And now plus is taking an augmentative type no type integer And this is fine. We&#39;re not gonna produce any errors that&#39;s consider to be well type and the results is also of type no type. And now we&#39;re doing an assignment And no type is compatible with N. No type is a subtype of N. So this assignment is also type correct And we don&#39;t produce any type of error in that stage either And so, you can see what happens here is that no types propagate up the abstract syntax tree just like the object types did before But since no type is a special type it&#39;s used only for error recovery. We can distinguish it from all the other regular types And we know that we shouldn&#39;t print out an error message after the first one is produced. So a real compiler, a production compiler would use something like no type, for error recovery But there 
+
+373.86
+slide
+Error Recovery A compiler would use something like No type However there are some implementation issues The class hierarchy is not a tree anymore The Object solution is fine in the course project
+is an implementation issue with no type. And in particular, the fact that no type 
+
+378.43
+writing
+
+is a subtype of every other class means that the class hierarchy is no longer a tree. If you think about it, you have object at the top and then you have this tree structure branching out. But then no type is a subtype of everything. So no type becomes a bottom ele ment And This is now a DAG and not a tree, and that makes it just slightly harder to implement. Instead of being able to just have tree algorithms now you have to have either have a special case for no type or just do something more general. And this is just enough extra hassle that I personally don&#39;t think it&#39;s worth doing for the course project and I recommend that you use the object solution and we just live with the propagating, or compounding, errors that, that produces. 
+

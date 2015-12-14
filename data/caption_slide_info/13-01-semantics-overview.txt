@@ -1,0 +1,55 @@
+4.089
+slide
+Compilers 1 Semantics Overview
+This is the first of the series of videos on programming language semantics and in particular on the semantics of cool, Before we dive into technical details though I want to spend a few minutes talking about what programming language semantics are and why we need them. The problem we have to address is that we need some way to say what behavior we expect when we run a Kuhl program. So, for every 
+
+30.68
+slide
+Semantics Overview We must specify for every Cool eXpression what happens when it is evaluated
+kind of Kuhl expression, for everyone we have to say what happens when it&#39;s 
+
+35.51
+writing
+
+evaluated and we can regard this as the meaning of the expression. Somehow, give rules to specify what a particular, what kind of computation of a particular expression does. And I think it&#39;s useful to look back and see how we dealt with this with similar problems in defining other parts of cool, okay the earlier things that we looked at in this course. So for example For Lexical Analysis we defined a family of family of tokens using regular expressions And for the, the syntax of the language we used Context Free Grammars to specify the, the structure of the, how words could be strong together to form valid sentences in Kuhl And then for the semantic analysis we gave formal typing rules And now we&#39;re to the point that we have to talk about how the programs actually running so we have to give some evaluation rules and these are going to guide how we do code generation of optimization or you going to determine what the program should do and what kind of transformations we can do on programs to make them run faster or use a space or what other, what any other kind of optimization that we would like to perform. So far we&#39;ve been specifying the evaluation rules somewhat indirectly. 
+
+119.34
+slide
+Semantics Overview We have specified evaluation rules indirectly The compilation of Cool to a stack machine The evaluation rules of the stack machine This is a complete description Why it good enough Alex mm
+We&#39;ve been doing it by giving a complete compilation strategy down to stack machine code and then we&#39;ve been talking about the evaluation rules for the stack machine or actually translation the stack machine into assembly code And that is certainly a complete description. You can take the generated assembly code and get it right out of the machine, and see what the program do es and that would be a, a legitimate description of the behavior of the program And the question then is, you know, why isn&#39;t that good enough. Why isn&#39;t just having a code generator for the language. Why is that already a good enough transcription of what how the code is supposed to be executed And The answer to that is maybe a little hard to 
+
+165.719
+slide
+Semantics Overview descriptions of language implementation have irrelevant detail Whether to use a stack machine or not Which way the stack grows How integers are represented The particular instruction set of the architecture Alex mm
+appreciate without having a written a few compilers But in a nutshell, people have 
+
+171.48
+writing
+
+learned through hard experience that assembly language descriptions of language implementations, language implementations, have a lot of irrelevant detail. There&#39;s a lot of things that you have to say when you get such a complete executable description that was not necessary to say about how the program executes. So for example the fact that we use a stack machine, that&#39;s not intrinsic to the implementation of any particular programming language. There are other co-generation strategies that we could have used so you know you don&#39;t have to do the stack machine to implement the language which way the stack grows. Whether it grows towards high addresses or low addresses you could implement it either way. How it, it, yeah, exact representation of integers in a particular instructions actually used to execute or to implement certain language constructs. All of these things are, are a, are one way or, or one particular way to implement the language but we don&#39;t want them to, to be taken as the only way that the language could be implemented. So, what we really want than it has a complete description but one that is not overly restrictive One that will allow a variety of different implementations. And when people have not done this when people have not tried to find some relatively high level way of describing the behavior of languages, they&#39;ve been inevitably gotten into the situation where they a, where people would just have to go and run the program on a reference implementation or to decide what it does. And so this is not a very satisfying a situation because of the reference implementation is not completely correct itself. It will have bugs and there will be artifacts of the particular way it was implemented that you didn&#39;t mean to be part of a language but because there was no better definition wind up becoming fixed and have sort of accidents of the way the language was implemented the first time. So there are many ways to actually specify semantics that would be 
+
+300.759
+slide
+Semantics Overview Many ways to specify semantics All equally powerful Some more suitable to various tasks than others Alex Mk
+suitable for our task and it turns out that these are all equally powerful but some of them are more suited to various tasks than others so the one that we&#39;re 
+
+311.12
+slide
+Semantics Overview Many ways to specify semantics All equally powerful Some more suitable to various tasks than others Operational semantics Describes program evaluation via execution rules on an abstract machine Most useful for specifying implementations This is what we use for Cool rm mm
+going to be using is called operational semantics. So operational semantics describes program evaluation via execution roles on an abstract machine we just gave a bunch of rules that say you know from particular expression how it should be executed. You can think of this as a very, very high level kind of co-generation And this is most useful for specifying implementations and it is what we&#39;re going to use to describe the semantics of Kuhl. I want to mention two other ways of. Of 
+
+341.9
+slide
+Semantics Overview Denotationalsemantics meaning is a mathematical function Max Mk2
+specifying programming language semantics because they&#39;re, they&#39;re important and you may come across them at some point outside of this class. One is the notational semantics and here the programs meaning is actually given as a mathematical function. So the program text is mapped to a function that goes from input and outputs and this, this is, this function is an actual function that exist in the mathematical sense And this is a very elegant approach but it uses complexities into finding an appropriate class of functions and we don&#39;t really need to consider for the purposes of just describing an implementation. And another 
+
+387.039
+slide
+Semantics Overview Denotationalsemantics meaning is a mathematical function Axiomatic semantics Program behavior described via logical formulae 0 If execution begins in state satisfying X then it ends in state satisfying Y X Y formulas Foundation of many program verification systems Alex Aiken
+important approach is axiom semantics and here program behaviors described in some 
+
+392.43
+writing
+
+kind of logic And the basic kinds of statements that you write in this language or in this, in this in the axiomatic semantics is that if execution begins in a state satisfying x, then it ends in the state satisfying y where x and y are formulas in some logic And this is a very common foundation for syst ems that analyze programs automatically that tries to prove facts about programs either to prove they&#39;re correct or to discover bugs in programs. 
+

@@ -1,0 +1,145 @@
+4.14
+slide
+Compilers 1 SLR Parsing
+In this video, we&#39;re finally going to give an actual bottom up parsing algorithm. In particular, we&#39;ll talk about SLR, or simple LR parsing, which will build on the ideas of valid items, and viable prefixes that we&#39;ve been discussing in our recent videos. The first thing we&#39;re going to do is to define a very weak bottom up parsing 
+
+26.589
+slide
+SLR Parsing LR O Parsing Assume stack contains 1 next input ist DFA on input a terminates in state 5 Reduce by X a B if 5 contains item X a B Shift if 5 contains item X 3 tm equivalent to saying 5 has a transition labeled t Max Mk2
+algorithm called LR0 parsing. And the basic idea here is that we&#39;re going to assume a stack contains a contents alpha, and that the next input is token T And 
+
+38.23
+writing
+
+that the DFA, this is the DFA that recognizes, the viable prefixes. On input alpha, that is, when it reads the stack contents, it terminates in some state S. [sound] And There&#39;s only gonna be two things that this that this parsing algorithm needs to do. So if S, if the final state of the DFA contains the item X goes to beta dot. Well, what does that say? That says we&#39;ve seen the complete right hand side, of X goes to beta on the top of the stack, and that furthermore, everything that&#39;s below the stack still says that x goes to beta dot is a valid, or a viable, sorry, is a valid item for this state. Meaning its okay to reduce by X goes to beta. So if we see a complete production dot all the way in the right hand side in the final state of the DFA, then we&#39;re just going to reduce by that production. The other possible move is a shift. If we wind up in a state, where, X goes to beta .t, and then some other stuff is a valid item, what does that say? That says that it would be okay at this point to add a T to the stack. And if T is our input, well, then we should do a shift move [sound]. Now, when does LR0 parsing 
+
+115.289
+slide
+SLR Parsing LR O has a reduce reduce conflict if Any state has two reduce items B c0 LR O has a shift reduce conflict if Any state has a reduce item and a shift item B w t8
+get into trouble? Well, there are two possible problems it could have. It might not be able to decide. Between two possible reduced moves. So, if any state of DFA has two possible reductions, meaning it seem two complete productions 
+
+129.13
+writing
+
+and it could reduce by either one then there&#39;s not enough information to decide which reduction to perform and the parts won&#39;t be completely deterministic, and this is called a reduced, reduced co nflict. So again, this happens if a particular state has two separate items indicating two separate reductions. The other possibility is that the final state of the DFA, after reading the stack contents, might have An item that says to reduce and another item that says to shift. And this is called a shift-reduce conflict. So in this case, there would only be a conflict in a state where T was the next item in the input. But in that situation, we wouldn&#39;t know whether to shift T onto the stack, or to reduce by X goes to beta [sound]. Let&#39;s take a look at the DFA for recognizing viable prefixes 
+
+180.239
+slide
+T E E T E E T T E El T E T E T E Ta inTt T E TaianT T 1 T SQ E In T E T E A EQ T m1 in1 E E T E T t T Ta l nT T in1 T T inT T T E m int Ala um
+
+
+180.239
+slide
+E T E Ear r E EaT E E T E
+that we&#39;ve been using for the last couple of ideas, and in fact this particular DFA does have some conflicts. So, let&#39;s take a look at this state right here, here we could either reduced by E goes to T you are in this state or if the next input is a plus we could do a shift and. In, so in this particular situation, if the next 
+
+200.97
+slide
+
+input is plus, we could either shift and use this item or we can reduce and use 
+
+205.67
+writing
+
+that item. So this particular state has a shift reduced conflict. Now, that&#39;s not the only conflict in this in this grammar, though. In this state here, we have a very similar problem. Here we could shift if the next input is a times. Or we could reduce by T goes to [inaudible]. And so this state also has a shift reduce conflict. It turns out that it&#39;s not difficult to improve on LR0 parsing, and, 
+
+240.62
+slide
+SLR Parsing SLR Simple LR SLR improves on LR O shift reduce heuristics Fewer states have conflicts ex m
+we&#39;ll present one such improvement in this video called SLR or simple LR parsing. And this is going to improve on LR0 by adding some heuristics that will refine when we shift and when we reduce, so that fewer states have conflicts. The modification to 
+
+260.279
+slide
+SLR Parsing Idea Assume stack contains 1 next input is t DFA on input 0L terminates in state s Reduce by X a 3 if 5 contains item X B t E Follow X Shift if 5 contains item X Btw Alex mm
+LR0 parsing that gives us SLR parsing is really quite small. We just add one new condition to the reduction case. So before, if we saw it, X goes to beta dot, 
+
+272.31
+writing
+
+in the final state of our DFA, recall what that means. That means beta is on the top of the stack, and it is viable And so it&#39;s fine to reduce. Now, We do have a little bit more information. So, so notice that the automaton her e doesn&#39;t take any advantage of what&#39;s coming up in the input. This is based entirely, this decision here is based entirely on the stack contents. But it might be that it doesn&#39;t make sense to reduce based on what the next input symbol is. And how can we take advantage of that? Well, if you think about it, what&#39;s going to happen? We have our stack contents. And, it ends in a beta, and now we&#39;re going to make a move where we&#39;re going to replace that by X. Okay. And if the next input symbol is t, so remember we have a vertical bar here and a t following, what does that mean? Well, that means that x has to come before t in the derivation. Or in another words, t is gonna follow x. And if t can&#39;t follow x, if t is a terminal symbol that can&#39;t come after the non-terminal x than it makes no sense to do this reduction. So we only do the reduction if t is in the follow of x. We just add that restriction and that is the only change to the parsing algorithm. So if there are any conflicts under these rules either shift reduce or reduce, reduce, then the grammar is not an 
+
+353.62
+slide
+SLR Parsing Ifthere are conflicts under these rules the grammar is not SLR The rules amount to a heuristic for detecting handles The SLR grammars are those where the heuristics detect exactly the handles
+slr grammar. Just notice that these rules amount to a heuristic, for detecting the handles. So, we take into account two pieces of information. The contents of the stack, that&#39;s that the DFA, does for us, and it tells us what items are possible when we get to the top of the stack, and also what&#39;s coming up in input, and we can use that to define our reduction decisions. And for those grammars where there are no conflicts, meaning there is a, there is a unique move, in every possible state, under those rules. Then this heuristic is exact, you know, for, for those grammars. And we just define those grammars to be the SLR grammars. Let&#39;s consider how things have changed for our running example. The deterministic 
+
+395.68
+slide
+E T E Ear r E EaT E E T E
+automaton for recognizing the viable prefixes of the grammar we&#39;ve been looking at for several videos now. Recall that we had shift reduced conflicts under LR zero rules in two states. So now let&#39;s look at this state first, the upper state. So here, we &#39;re going to shift if there&#39;s a plus in the input. That&#39;s what this item 
+
+412.41
+slide
+E S E T Ea T E E in1 T Ta EAT T T E E T Ta E E61715 m Ta inT T 1 In m1 Tainf T T9 E E JnT T 05 inf E E Tat E T E Ta E inf T Alex um
+tells us to do. It tells us there&#39;s if there&#39;s a plus, then the right move is to shift. And so Now the question is, when are we going to reduce? Well we&#39;re only going to reduce if the input is in the follow of E. And what is the follow of E? We computed that a long time ago, but just to remind you remember that E here is the 
+
+431.08
+slide
+VE9T E T inf Er
+original start symbol of the grammar so certainly dollar sign will wind up in the 
+
+435.97
+slide
+S E l E T Ea T E T L E in1 T Ta EAT T T E Tam 1E m Ta inT T T 9in1 In m1 Tainf T Ta E E Tajan inf VE9T E Tat E T E Ta E inf T inf
+follow of E. And the other possibility for the follow of E is close paren, because here at this point in the grammar close paren comes after E. And that&#39;s the only 
+
+446.03
+slide
+GAMES 1 E T E 7ZE T E Ta T Tam C ET
+two possibilities. So what that says now, what that means is that, in this 
+
+451.11
+slide
+VE9T E Ta E inf T in int T E Ta T inf ET
+particular state, we are going to reduce, if either we&#39;re out of input. Or if the next I, the next, token in the input is a closed paren, and will shift if the next token in the input is a plus. And in any other situation, we will report a parsing error. And so there&#39;s no longer any shift reduced conflict in this state, and 
+
+471.57
+slide
+s 01 E T E Jarsing T 5 T T E
+there&#39;s always a unique move for every possible input. The situation is 
+
+476.26
+writing
+
+similarly, similarly improved, for the other state. So here, we&#39;re going to shift in there&#39;s a times in the input, and we&#39;re going to reduce if the input is in the follow of T. And what is the follow of T? [sound]. Recall, We computed this again a long time ago and I just happen to know what it is. And so I&#39;ll just tell you. Well it included everything in the follow of e. So a dollar sign in close paren are in the follow of T. But also, a plus is in the follow of T because of this usage over here in the grammar where plus appears really after T. But those are the only things in the follow of T. And so now we&#39;re going to reduce, only if we&#39;re out 
+
+517.659
+slide
+
+of input or if the next input item is a close paren or a plus and there&#39;s also a no shift reduce, no longer any shift reduce conflict in this state. And so this grammar, is an SLR1 grammar. Now many grammars are not SLR. To emphasize that 
+
+536.65
+slide
+SLR Parsing Lots of grammars SLR including all ambiguous grammars We can parse more grammars by using precedence declarations Instructions for resolving conflicts
+SLR is an improvement on LR0 but it &#39;s still, not a really very general class of grammars. So All ambiguous grammars for example are not SLR. We can improve a little bit on the SLR situation. We can make SLR parsers even more grammarous, by using precedence declarations to tell it how to resolve conflicts. So let&#39;s revert to the most natural and also most ambiguous grammar for plus and times over 
+
+563.17
+slide
+SLR Parsing Consider our favorite ambiguous grammar E E E E E lint The DFA for this grammar contains a state with the following items E E E E shift reduce conflict Declaring has higher precedence than resolves this conflict in favor of reducing
+the integers, and we&#39;ve looked at this grammar before. If you build the DFA for 
+
+567.86
+writing
+
+this grammar, if you go through and build the DFA for the viable prefix of this grammar, you will discover that there is a state. That has the following two items in it, one says that if we see E times E that we have seen E times E on a stack, and that we can now reduce by ecos E times E. The other one will say that if there&#39;s a plus coming up in the input we should shift. And notice that this is exactly the question. Of whether, times has higher precedence than plus. When you&#39;re in this situation, should you. Reduce, thereby grouping the two E&#39;s together here, Grouping the multiplication operation first. Or should you shift the plus, in which case you&#39;ll be working on that for a sentence at the top of the stack. So, in this situation, the declaration times has higher precedence than plus resolves the conflict in favor of the reduction. So we would not do the shift, and we would wind up with no shift-reduce conflict. Note that the term precedence declaration is actually quite misleading. These declarations don&#39;t define precedence. They 
+
+638.99
+slide
+SLR Parsing The term is misleading These declarations do not define precedence they define conflict resolutions Not quite the same thing ex Aiken
+don&#39;t. Do that directly at all. What they really define are conflict resolution. They say, make this move instead of that move. It happens that in this particular case. Because we&#39;re dealing with a national grammar, simple grammar for plus and times that the conflict resolution has exactly the effect of enforcing the precedence declaration that we want. But in more complicated grammars where there are more interactions between various pieces of the grammar, these declarations might not do what you expect in terms of enforcing precedence, fortuna tely, you can always print out the automaton. The tools provide, Usually a way for you to inspect the parsing automaton. And then you can see exactly how, the conflicts are being resolved, and whether those are the resolutions that you had intended. And I recommend when you&#39;re building parsers, especially if it&#39;s a, a fairly complex parser, that you do examine the parsing automaton to make sure that it&#39;s doing what you expect. So now we&#39;re ready to give the algorithm for SLR parsing. So 
+
+702.4
+slide
+SLR Parsing 1 Let M be DFA for viable prefixes of G 2 Let x1 xn be initial configuration 3 Repeat until configuration is SIS Let a o be current configuration 0 Run M on current stack on o If M rejects x report parsing error Stack u is not a viable prefix If M accepts x with items I let a be next input el Reduce ifX 4 Be 6 I and a e Follow X Report parsing error if neither applies Alex mm
+[inaudible] automaton, our parsing automaton that recognizes viable prefixes. 
+
+707.82
+writing
+
+The initial configuration is going to be with the vertical bar all the way to the left so the stack is empty. This is our full input and we [inaudible] dollar to indicate the end of the input. And now we&#39;re going to repeat until the configuration has just the start symbol on the stack, and dollar in the input. Meaning all the input is gone and we&#39;ve reduced the entire input to the start symbol. So. An [inaudible] configuration will be written as alpha-omega; where alpha is the contents of the stack and omega is the remaining input, and what we&#39;re going to do is we&#39;re going to run M, run the machine on the current stack alpha and if M rejects alpha, if M says that alpha is not a viable prefix, then we&#39;re going to report a parsing error. We&#39;re gonna stop right there. Now, if M accepts alpha, and it accepts it in a state, if it ends in a state with items I, then we&#39;re gonna look at the next input, call that A, and what are we going to do? Well, we&#39;re going to shift. Yes, there&#39;s an item. In I that says, it would be okay to see the terminal A. Next. Okay? So that&#39;s just our shift move. And then we&#39;re going to reduce if there&#39;s a reduction item, in the in the set of valid items. And the next input can follow the non-terminal on the left hand side. So these are just the two rules that we discussed before. And then we&#39;ll report a parsing error if neither of these applies. Okay, now one interesting thing about this algorithm, if you read it carefully and you th ink about it for awhile. You&#39;ll realize that this step is actually not needed, that we don&#39;t need to check here For whether M accepts the stack, or not. Because this staff down here, where we report a parsing error, if neither of these steps applies, this already implies that we will never form an invalid stack, That our, their stacks will always be viable. The parsing errors will be caught at this line, and we won&#39;t pollute the stack with symbols that can&#39;t possibly result in viable prefixes. So in fact, this error check here, is not needed, M is always going to accept the stack. If there are any conflicts in the last step, meaning, it&#39;s not clear whether to shift or reduce in some state for some, 
+
+843.87
+slide
+SLR Parsing Ifthere is a conflict in the last step grammar is not SLR k k is the amount of lookahead In practice k 1 ex Aiken
+input symbol, then the grammar is not, SLRK. And K, again, is the amount of look ahead. In practice, we just use one token of look ahead, So typically, just looking at the next token in the input stream. 
+

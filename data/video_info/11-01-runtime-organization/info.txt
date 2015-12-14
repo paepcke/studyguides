@@ -1,0 +1,42 @@
+00:00:00
+slide
+Compilers 1 Runtime Organization
+00:00:15
+slide
+Runtime Organization We have covered the front end phases Lexical analysis Parsing Semantic analysis Next are the back end phases Optimization Code generation Alex mm
+00:00:20
+writing
+
+00:01:50
+slide
+Runtime Organization Before discussing code generation we need to understand what we are trying to generate There are a number of standard techniques for structuring executable code that are widely used
+00:02:25
+slide
+Runtime Organization Management of run time resources Correspondence between static compile time and dynamic run time structures Storage organization
+00:02:30
+writing
+
+00:03:30
+slide
+Runtime Organization Execution of a program is initially under the control of the operating system When a program is invoked The OS allocates space for the program The code is loaded into part of the space The OS jumps to the entry point i e main Alex mm
+00:04:05
+slide
+Runtime Organization Max tum
+00:04:30
+slide
+Runtime Organization Low Address Code Memory High Address If Am
+00:04:55
+slide
+Runtime Organization By tradition pictures of machine organization have Low address at the top High address at the bottom Lines delimiting areas for different kinds of data These pictures are simplifications E g not all memory need be contiguous Alex mm
+00:05:00
+slide
+Runtime Organization By tradition pictures of machine organization have Low address at the top High address at the bottom Lines delimiting areas for different kinds of data These pictures are simplifications E g not all memory need be contiguous Alex mm
+00:05:05
+writing
+
+00:06:00
+slide
+Runtime Organization Other Space Data Space Compiler is responsible for Generating code Orchestrating use of the data area Mex mm
+00:06:05
+writing
+

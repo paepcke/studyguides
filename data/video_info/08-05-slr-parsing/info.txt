@@ -1,0 +1,75 @@
+00:00:00
+slide
+Compilers 1 SLR Parsing
+00:00:25
+slide
+SLR Parsing LR O Parsing Assume stack contains 1 next input ist DFA on input a terminates in state 5 Reduce by X a B if 5 contains item X a B Shift if 5 contains item X 3 tm equivalent to saying 5 has a transition labeled t Mex mm
+00:00:45
+writing
+
+00:02:00
+slide
+SLR Parsing LR O has a reduce reduce conflict if Any state has two reduce items B w LR O has a shift reduce conflict if Any state has a reduce item and a shift item B andY w t8
+00:02:10
+writing
+
+00:03:10
+slide
+E T E
+00:03:20
+writing
+
+00:04:15
+slide
+SLR Parsing SLR Simple LR SLR improves on LR O shift reduce heuristics Fewer states have conflicts ex mm
+00:04:35
+writing
+
+00:06:15
+slide
+SLR Parsing Ifthere are conflicts under these rules the grammar is not SLR The rules amount to a heuristic for detecting handles The SLR grammars are those where the heuristics detect exactly the handles
+00:07:00
+slide
+E T E
+00:07:05
+writing
+
+00:07:45
+slide
+T E EQIT E EEaT E T E
+00:07:55
+slide
+E T E EQIT VE9T E
+00:08:00
+slide
+T E EQIT E E T E
+00:08:05
+writing
+
+00:09:30
+slide
+SLR Parsing Lots of grammars SLR including all ambiguous grammars We can parse more grammars by using precedence declarations Instructions for resolving conflicts
+00:10:00
+slide
+SLR Parsing Consider our favorite ambiguous grammar E E E E E lint The DFA for this grammar contains a state with the following items E E E E shift reduce conflict Declaring has higher precedence than resolves this conflict in favor of reducing
+00:10:05
+slide
+SLR Parsing Consider our favorite ambiguous grammar E E E E E lint The DFA for this grammar contains a state with the following items E E E E shift reduce conflict Declaring has higher precedence than resolves this conflict in favor of reducing
+00:10:10
+writing
+
+00:11:20
+slide
+SLR Parsing The term is misleading These declarations do not define precedence they define conflict resolutions Not quite the same thing ex Aiken
+00:12:30
+slide
+SLR Parsing 1 Let M be DFA for viable prefixes of G 2 Let le xn be initial configuration 3 Repeat until configuration is S Let a o be current configuration 0 Run M on current stack on o If M rejects x report parsing error Stack u is not a viable prefix If M accepts x with items I let a be next input Reduce if X a 6 land a e Follow X Report parsing error if neither applies Alex mm
+00:12:35
+slide
+SLR Parsing 1 LetM be DFA for viable prefixes of G 2 Let lxl xn be initial configuration 3 Repeat until configuration is S Let or o be current configuration 0 Run M on current stack x o If M rejects a report parsing error Stack 1 is not a viable prefix If M accepts x with items I let a be next input ShiftifXaiiayel Reduce ifX a 6 land a e Follow X Report parsing error if neither applies Alex mm
+00:12:40
+writing
+
+00:15:00
+slide
+SLR Parsing Ifthere is a conflict in the last step grammar is not SLR k k is the amount of lookahead In practice k 1 ex Aiken

@@ -1,0 +1,45 @@
+00:00:00
+slide
+Compilers 1 Dataflow Analysis
+00:00:20
+slide
+Dataflow Analysis Recall the simple optimizations Constant propagation Dead code elimination Alex mm
+00:00:25
+writing
+
+00:01:05
+slide
+Dataflow Analysis These optimizations can be extended to an entire control flow graph A 2 X ex Nken
+00:01:10
+writing
+
+00:02:15
+slide
+Dataflow Analysis A 2 X Alex mm
+00:02:20
+writing
+
+00:03:25
+slide
+Dataflow Analysis To replace a use of x by a constant k we must know On every path to the use of x the last assignment to x is x k
+00:03:30
+writing
+
+00:04:40
+slide
+Dataflow Analysis Max mm
+00:05:00
+slide
+Dataflow Analysis The correctness condition is not trivial to check u Nken
+00:05:05
+slide
+Dataflow Analysis The correctness condition is not trivial to check ex Nken
+00:05:40
+slide
+Dataflow Analysis Global optimization tasks share several traits The optimization depends on knowing a property X at a particular point in program execution Proving X at any point requires knowledge of the entire program it is OK to be conservative If the optimization requires X to be true then want to know either X is definitely true know if X is true It is always safe to say know Alex Aiken
+00:06:05
+writing
+
+00:08:10
+slide
+Dataflow Analysis Global dataflow analysis is a standard technique for solving problems with these characteristics Global constant propagation is one example of an optimization that requires global dataflow analysis

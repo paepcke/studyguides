@@ -1,0 +1,39 @@
+00:00:00
+slide
+Compilers 1 Lexical Specification
+00:00:20
+slide
+Lexical Specification At least one A 2 AA Union A B E A B Option A a A a Range b 2 M Excluded range complementofla z E a z
+00:00:25
+writing
+
+00:03:35
+slide
+Lexical Specification 2 Construct R matching all lexemes for all tokens R 2 Keyword Identifier Number R1 R2
+00:03:40
+slide
+Lexical Specification 2 Construct R matching all lexemes for all tokens R Keyword Identifier Number R1 R2
+00:03:50
+writing
+
+00:05:35
+slide
+Lexical Specification How much input is used
+00:05:40
+slide
+Lexical Specification How much input is used
+00:05:50
+writing
+
+00:11:10
+slide
+Lexical Specification What if no rule matches
+00:11:15
+writing
+
+00:13:25
+slide
+Lexical Specification Regular expressions are a concise notation for string patterns Use smallextensions To resolve ambiguities To handle errors Good algorithms known Require only single pass over the input Few operations per character table lookup Alex Nken
+00:13:30
+writing
+

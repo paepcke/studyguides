@@ -1,0 +1,55 @@
+3.939
+slide
+Compilers 1 Globals Heap
+In this video, we are going to continue or discussion of run time organization by talking about how compilers handle global variables and heap data structures. Let&#39;s start by talking about global variables. The basic properties of the global 
+
+20.97
+slide
+Globals Heap All references to a global variable point to the same object store a global in an activation record Globals are assigned a fixed address once Variables with fixed address are allocated Depending on the language there may be other statically allocated values
+variables that all the references point to the same object. That what it means to be global And for this reason, we can&#39;t store all the variables in the activation record because the activation record if, of course, is the allocated. When the activation completes and that would be the allocated global variable. So. The way that little variables are implemented is that all global are signed the fix address once And these variables with fixed addresses are said to be statically 
+
+48.35
+writing
+
+allocated because they&#39;re allocated essentially at compiled times. So the compiler decides where they going to live and then they will live there in all executions of the program And depending on the language, there may be other statically allocated values and we&#39;ll actually see some later on but they behave just the same as global variables. So I think global variables changes our run time organization picture a little bit. First we have the code as before, and 
+
+78.13
+slide
+Globals Heap Low Address Memory High Address Max Amen
+then, immediately after the code is typically all of the static data. So these are the global variables and other static object, things that have fixed addresses for the duration of the execution of the program and then the stack comes after that. So the stack will start at the end of the static data area and grow towards the end of the program&#39;s allocated memory. Trying out to the heat, any value that, 
+
+102.92
+slide
+Globals Heap A value that outlives the procedure that creates it cannot be kept in the AR method foo new Bar The Bar value must survive deallocation of AR Languages with dynamically allocated data use a heap to store dynamic data
+that outlives the procedure that creates it also cannot be stored in the activation record. Let&#39;s take a look at this example. So here we have a procedure foo 
+
+110.89
+writing
+
+and let&#39;s take a look at the activation record or frame for foo. Now let&#39;s say that a foo allocates a bar object and that we&#39;re going to store that object in foo activation And now when this method returns, of course the activation record would be de-allocated so the bar obj ect will also go away but that won&#39;t work here because notice that the dynamically allocated object - the object we allocated during the execution of foo - is also the results of foo so this has to be, this has to be accessible to foo&#39;s caller. After [inaudible] exits And so what that means is that this borrow object and all dynamically allocated data has to be stored some place other than the activation record and language is what dynamically allocated data generally use a heap for that purpose. At this 
+
+165.16
+slide
+Globals Heap The code area contains object code For most languages fixed size and read only The static area containsxdata not code with fixed addresses e g global data Fixed size may be readable or writable The stack contains an AR for each currently active procedure Each AR usually fixed size contains locals Heap contains all other data In C heap is managed by malloc and free
+point, we can summarize the different kinds of data that the language of implementation has to deal with. First there is the code and in many languages, I shouldn&#39;t say most. In many languages. The code is fixed size and read only. I mean 
+
+181.88
+writing
+
+that the compiler creates all the code that will be used in the execution of the program and that could be allocated once. It should say that there are many languages also were this is not true and code can be dynamically created at one time. The static area. Would contain data with six addresses and this would be things like global variables and this is also typically fixed size and it was maybe readable and writable as opposed to the code which I generally don&#39;t want to be able to write. And then a stack is used to contain an activation record for each currently active procedure and the activation record is generally fixed size so each activation record for each particular kind of procedure has a fixed size and this will contain all the local information, the local variables contemporaries that needed to execute a particular activation. And finally, the heap is for everything else. So the heap is just for all the data that doesn&#39;t fit into other categories. This includes all of the dynamically allocated data And if you are familiar with C, then the heap in C is managed by the programmer using [inaudible] in Java, you have new. For dynamically allocating data and then garbage collection actually takes care of reclaiming data from the heap that is no longer used. Now many lang uage implementations use both the heap and the 
+
+271.59
+slide
+Globals Heap Both the heap and the stack grow Must take care that they grow into each other Solution start heap and stack at opposite ends of memory and let them grow towards each other
+stack and there is a little bit of an issue here because both the heap and the stack grow. And so we have to take care that they don&#39;t grow into each and step on each other&#39;s data And there is a very nice and simple solution to this and as a start to heap and the stack at opposite ends of memory and let them grow towards each other. So, let&#39;s take another look at our Runtime Organization picture And just for 
+
+299.08
+slide
+Globals Heap Low Address Memory High Address Max Amen
+review, first we have the code and then we have the static data. And then we have the 
+
+304.37
+writing
+
+stack which grows towards in this case the high address allocated to the program And, notice that the stack doesn&#39;t necessarily just grow as procedure three terms, stack will also shrink. So as the program runs the stack will get bigger or smaller depending on how many procedures are currently running. And the heap will start at the other end of memory and grow towards the lower address and so we allocate objects we&#39;ll be allocating from the back memory or the end of the memory allocated the program up towards the top of stack And If these two points have ever become equal and whether the two pointers. So, we have a stack allocation pointer which says where we are going to allocate the next stack frame. And we have a heap allocation point where it says where will allocate the next object if we have another dynamically allocated object. As long as one of these two pointers don&#39;t cross, as long as it never become equal then the program has memory to either add another stack frame or another dynamically allocated object and the program can continue away. If these programs ever become equal then the program is in fact out of memory and at that point the run time system will abort the program or try to get more memory from the operating or take some other course of action to deal with the fact. If there is no there is no more memory But as long as these two pointers don&#39;t cross, notice that this design Allows the heap and the stack to share this, this data area in whatever way suits the program best. So, this same design without any changes will work for programs that needed a lot of heap and only a little stack and for programs that need a lot of stack and only a little heap and things will have a rough balance between stack and heap as long as they don&#39;t exceed the total memory allocated to the program. 
+

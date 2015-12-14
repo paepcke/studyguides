@@ -1,0 +1,40 @@
+3.47
+slide
+Compilers 1 Static vs Dynamic Typing
+In this video, we&#39;re gonna talk about static typing versus dynamic typing. One 
+
+10.54
+slide
+Static vs Dynamic Static type systems detect common errors 4 comp
+way to think about the purpose of static types system is to prevent common 
+
+13.95
+slide
+Static vs Dynamic Static type systems detect common errors But some correct programs are disallowed Some argue for dynamic type checking instead Others want more expressive static type checking Mex mm
+programming errors and they do this at compile times. So they do this when the program is compiled. And in particular they do it without knowing any input to the program. So the only thing that is available is the program text, and that&#39;s why we call them static Because they don&#39;t involve any of the dynamic behavior, the actual execution behavior of the program. Now any type system that is correct, any static type system that actually does the right thing, is going to have to disallow some correct programs. It can&#39;t reason completely precisely at compile time about 
+
+45.69
+slide
+Static vs Dynamic The dynamic tyge of an object is the class C that is used in the new expression that created it A run time notion Even languages that are not statically typed have the notion of dynamic type Alex mm
+everything that could happen as the program runs. Now what this means is that 
+
+49.03
+slide
+Static vs Dynamic Tf an object is the class C that is used In e new expression that created it A run time notion Even languages that are not statically typed have the notion of dynamic type The static type bf an expression captures all dynamic types the expression could have A compile time notion
+some correct programs, by that I mean some programs that would actually run correctly 
+
+53.47
+slide
+Static vs Dynamic Soundness theorem for all expressions E dynamic type E static type E In all executions E evaluates to values of the type inferred by the compiler
+if you executed them, are going to have to be disallowed by the type checker. And so for this reason some people argue for a dynamic type checking instead, and this is type checking that&#39;s done solely when the program runs. So at run time we check whether the actual operations were executing are appropriate for the actual data that arises when the program executes. Other people say well the 
+
+77.31
+slide
+Static vs Dynamic class A 3 class B inherits A class Main sz 6 new A x B Alex Aiken
+problem is really just that the type systems just aren&#39;t expressive enough and we should work on fancier static type checking systems. And. Over time, there&#39;s been a considerable development in both camps. We see a lot of new dynamically type checked languages, coming out, so a lot of the modern scripting like languages and domain specific languages have some form of dynamic type checking. Other people have been working on fancier and fancier type systems and actually there&#39;s 
+
+106.59
+slide
+Static vs Dynamic classA 35A class B inherits A cla Main c A X A newA Away u 1 4 0 x u newJ 3 40mm 3 of x A B
+been a lot of progress, in static checking The disadvantage of the more expressive text. Time checking systems they do tend to get more complicated though, and not all of these features that these people have develop have actually found their way yet into main stream languages. Now , one important idea that this discussion suggests is that there are two different notions of type. There is the dynamic type. That is the type that the object or the value that we&#39;re talking about actually has at run time And then there is the static type, which is the compile time notion, what the type checker knows about the object. And there is some relationship that has to exist between the static type and the dynamic type if the static type checker is to be correct. In this relationship can be formalized by some kind of a theorem that proves something like the following, what we&#39;d like to know is that for every expression E, for every program expression E that you can write in the programming language, the static type that the compiler says that the, the expression is going to have is equal to the dynamic type of that expression. Another way is saying that if you actually run the program. Then you get something that is consistent with what you expected to get from the static type checker. That the static type checker is actually able to correctly predict what values will hap, will, will arise at run time. And in fact in the early days of programming languages these were exactly the kinds of terms we had for the very simple type systems in the languages at that time. Now the situations a little more complicated for a language like COOL. So let&#39;s take a look at the execution of a, a typical COOL program. So here&#39;s a couple of classes, class A and a class B that inherits from A. So B is going to be a subtype of A which we&#39;ll write like that. And now we have a declaration here of X having type A and this is the static type of X. So the static type of X is A. And that&#39;s what the compiler knows about X&#39;s value. And then here, when we execute this line of code, we can see that we assign a new A object to X. And the fact that it&#39;s new is not important. All that&#39;s important is the fact that it&#39;s an A object. And so, at this point, the dynamic type of X is also A. Okay. So if this line of code when it actually execu tes A, which was declared to have static type A, actually holds an object of class A. But a little bit later on, down at this line of code, the dynamic type is actually different. The dynamic type here of X Is going to be B. K line of code executes x holds a b object even though it&#39;s declared Have a different type. And this is a very, very important distinction to keep in mind. So there&#39;s a static type, there&#39;s a type that the compiler knows about, and that&#39;s invariant. X has type A It always has type a All the uses of x for the entire scope of our typed with class A by the compiler. But at run time, because we have assignments and we can assign different objects to x, x can actually take on objects of different types, different run time types. Type b, that&#39;s assigned x when the program executes. 
+

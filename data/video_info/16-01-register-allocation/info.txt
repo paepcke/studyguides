@@ -1,0 +1,51 @@
+00:00:00
+slide
+Compilers 1 Register Allocation
+00:00:20
+slide
+Register Allocation Intermediate code uses unlimited temporaries Simplifies code generation and optimization Complicates final translation to assembly Alex mm
+00:00:55
+slide
+Register Allocation The problem Rewrite the intermediate code to use no more temporaries than there are machine registers Method Assign multiple temporaries to each register But without changing the program behavior Alex Amen
+00:01:00
+writing
+
+00:01:55
+slide
+Register Allocation Considerthe program c d a b e a e f 71 my mm
+00:02:10
+writing
+
+00:03:30
+slide
+Register Allocation Register allocation is as old as compilers Register allocation was used in the original FORTRAN compiler in the Very crude algorithms Alex mm
+00:04:30
+slide
+Register Allocation Temporaries t1 and t2 can share the same register ifa t my point in the program at most one of t1 or t2 is live Or If t1 and t2 are live at the same time they cannot share a register Max Aim
+00:04:50
+writing
+
+00:05:25
+slide
+Register Allocation Compute live variables for each point Alex Aiken
+00:05:30
+slide
+Register Allocation Compute live variables for each point Alex Aiken
+00:05:45
+writing
+
+00:07:35
+slide
+Register Allocation Construct an undirected graph A node for each temporary An edge between t1 and t2 are live simultaneously at some point in the program rm Aiken
+00:08:00
+slide
+Register Allocation Compute live variables for each point I b c fl
+00:08:15
+slide
+Register Allocation Construct an undirected graph A Lode for each temporary An edge between t1 and t2 if they are live simultaneously at some point in the program h rm Aiken
+00:08:40
+slide
+Register Allocation For our example f d 0 E g b and c cannot be in the same register E g b and d could be in the same register Alex Amen
+00:09:00
+writing
+

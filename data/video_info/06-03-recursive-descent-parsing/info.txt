@@ -1,0 +1,15 @@
+00:00:00
+slide
+Compilers Recursive Descent Parsing ex Nken
+00:00:15
+slide
+Recursive Descent The parse tree is constructed From the top 1 From left to right M t2 3 ts 4 7 Terminals are seen In order of I appearance in the token stream t5 tb t8 t2 t5 t6 t8 t9
+00:00:20
+writing
+
+00:01:35
+slide
+Considerthe grammar T T E int int T E Recursive Descent
+00:01:40
+writing
+

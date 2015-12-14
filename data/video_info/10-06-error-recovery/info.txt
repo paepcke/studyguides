@@ -1,0 +1,15 @@
+00:00:00
+slide
+Compilers 1 Error Recovery
+00:00:15
+slide
+Error Recovery As with parsing it is important to recover from type errors Alex Nken
+00:00:20
+writing
+
+00:06:35
+slide
+Error Recovery A compiler would use something like No type However there are some implementation issues The class hierarchy is not a tree anymore The Object solution is fine in the course project
+00:06:40
+writing
+

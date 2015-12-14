@@ -1,0 +1,80 @@
+4.04
+slide
+Compilers 1 Java Exceptions
+In this video, we&#39;re going to talk about programmer defined exceptions. So, think 
+
+11.52
+slide
+Java Exceptions Deep in a section of code you encounter an unexpected error Out of memory A list that is supposed to be sorted is not etc What do you do Ex mm
+about the following typical programming scenario. You&#39;re deep into some fairly complex section of code and you come to a place where you could experience an unexpected error. That there could be something that could happen that would violate some important property of your program. So, for example, maybe you&#39;re going to discover there&#39;s a place where you could be out of memory or there&#39;s some data structure that doesn&#39;t satisfy some variant. So, a list that&#39;s supposed to be sorted, that is not, or something like that. And the question is, how do you handle these errors? How do you write code that will handle the error gracefully and not make your program really, really ugly? So, a popular solution to this problem in 
+
+50.51
+slide
+Java Exceptions Add a new type class of exceptions Add new forms try something catch x cleanup throw exception u Aiken
+many languages including Java is add a new kind of value to the language called an 
+
+55.45
+writing
+
+exception. And we&#39;ll have a couple of control constructs for dealing with exceptions. Here is the two that are probably the most popular. And these are, as they appear in Java. So, we can throw exceptions and what this does is it causes an exception to be created at this point wherever the throw occurs. And, that exception will simply propagate out of the program. It will basically halt the execution of the program at that point and any containing constructs will also throw the exception. So, the exception will, you know, simply propagate up out of the code that, that&#39;s currently executing, until it hits a try catch. So, how does this work? Well, we can try something. We can execute some expression here and this will be some expression. And if this expression throws an exception, if the throw occurs somewhere inside this expression, then we will catch that exception and there can be a binding here to say what we are going to call the exception value. So, this is like a let, we will grab the exception that comes out of here. We&#39;ll call it X and then we can execute this piece of cleanup code to how, to handle the exception in some way. And so, the basic idea behind this thi design for handling exceptions, is that the place where you have the exception, the place where you actually detect the exception, might be somewhere deep inside the code and not a very good place for actually dealing with the exception. So, what you want to do is get out of that part of the code, get back to some higher level point where you can clean things up deal with the exception, and then retry, perhaps, some larger block of code. Here&#39;s a little example of using exceptions. So, here we have our main 
+
+162.15
+slide
+dass Foo public static void main String args try X catch Exception e System out println public void X throws MyException throw new MyException Java Exceptions ex um
+method. And what are we going to do? We&#39;re going to have a try-block that just calls 
+
+165.68
+writing
+
+a function X. And if that raises a, an exception, then we will catch the exception. In this case we don&#39;t do anything with the exception, we just print out a message saying there was an error and we terminate the program. So, we don&#39;t do anything very smart but we do catch the exception and at least print out an error rather than just terminating. So, what does x do? Well, X simply throws an exception. So this function X allocates an exception object. This is just a value, it&#39;s just a class like everything else. But it has a special property that it can be thrown. So, when we throw it, that&#39;s when X terminates abnormally and we end up in the catch block of the try-catch expression back in the main method. Now, in the last couple of slides, I gave you a very informal description of how 
+
+213.109
+slide
+Java Exceptions T1v an exception that has been thrown with value v v an ordinaw value an object EI e1 v1 E r try e1 catch x e2 v1 E e1 T v1 E x e2 v2 E vtry e1 x e2 v2 ex um
+exceptions work and it, it might not have been very clear and in fact it&#39;s hard I 
+
+217.959
+writing
+
+think to give a very clear description without some kind of formal description of how exceptions are supposed to behave. But fortunately, we&#39;ve looked at operational semantics in this class and so now you&#39;re familiar with those kinds of descriptions of language behavior and I can actually describe you pretty succinctly how try-catch actually really works, alright. So, we&#39;re going to give operational rules here for Try-Catch expressions. And I just noticed, I just poin t out here that I had some kind of font problem and so I had to write in the turnstiles by hand in this slide. So those handwritten characters are all supposed to be the turnstile character. Now, to more important things there&#39;s a distinction with exceptions. Okay, there are two kinds of states that an exception object could be in. It could just be an ordinary value. So, when I say new exception object in Java, so, when I say something new, something exception class is just an ordinary value. At that point, it just behaves like any other object. But then, there is a distinction when the object is thrown. So, when the exception is actually thrown, it becomes a special kind of value and it gets treated differently, alright. So, we&#39;re going to distinguish between an ordinary object V, okay. And objects that have been thrown, okay, which are then active exceptions. Alright? So, let&#39;s take a look at some of the operational rules for the exception constructs. So, here&#39;s one rule for its try-catch-block. And what this rule says is that if an expression evaluates to an ordinary value. If it doesn&#39;t throw an exception, then the results of the try-catch-block is just that value. So, the way the try-catch-block works is you evaluate the expression in the try-block. If that terminates normally with a value, then the results of the whole expression is just that value, alright? Now, the other possibility is that you&#39;ll evaluate a try catch block and when you go to evaluate the expression of the try-block E1, it will throw an exception. So, it could result in a thrown exception. And so, in this case. Okay, that is that, excuse me, that is this case where E1 evaluates to one of these special values has been marked as a thrown exception. What do we do in that case? Well, like unwrap the exception, we pull out value that is in the thrown exception, alright. We bind it to some local name, alright, that&#39;s named in the catch expression and then we evaluate the cleanup code. So, with the ex ception value available, we evaluate E2 and whatever the result is of E2, that is the result of the try-catch-block. How does throw work? It&#39;s very simple. So, throw just takes an 
+
+382.7
+slide
+v Java Exceptions Et throw e T v E T v1 EI e2 T v1 ex um
+expression, it evaluates that expression against some value V. And then, it marks 
+
+387.55
+writing
+
+that value as a thrown exception, as a thrown exception so it wraps the value in this T thing and that indicate that this exception now has been thrown. Now, the only other thing we need to talk about is how the rest of the language, all the other constructs in the language deal with these thrown exceptions. And that&#39;s very simple. We want those thrown exceptions to simply propagate out of any other kind of expression. So, for example, we&#39;ll just do one example here because the idea is the same for every other language construct. Let&#39;s say, that we&#39;re evaluating E1 + E2, alright. So, the first thing we have to do of course is to evaluate E1 and if that happens the thrown exception. So, if something goes wrong in the evaluation of E1 and E1 evaluates to the thrown in exception, well then we stop the evaluation of the plus right there. We don&#39;t even evaluate E2, notice that E2 is not mentioned here above the line of one of the things to be evaluated so that E1 terminates normally with an exception, then the results of the entire addition is that exception. And similarly, for all the other constructs if, if there&#39;s, one of their sub-expressions results in an exception. In fact, if the, if, as soon as one of their sub-expressions results in an exception, they stop evaluating and propagate that exception up. The only thing that will stop the exception from propagating all the way out to become the result of the whole program is if it is caught in a try-catch-block. There are many ways to implement exceptions and here 
+
+482.889
+slide
+Java Exceptions When we encounter a try Mark current location in the stack When we throw an exception Unwind the stack to the first try Execute corresponding catch More complex techniques reduce the cost of try and throw
+is one simple way to do it. So, we encounter a try expression, we will mark 
+
+488.01
+writing
+
+the current location in the stack. So, we will mark the position in the stack where we encountered the try. So, for example, here, say, is our s tack. Let&#39;s say that, you know, the stack is going this way. We encounter a try expression here so we put some kind of marker in the stack to indicate that there&#39;s a try that was encountered there. And then you go on, you know, evaluating things inside of the try which might add more stuff to the stack. Now, when we throw an exception, if down here, all of a sudden a throw occurs and we&#39;re at this point in the execution, what&#39;s going to happen is we&#39;re going to unwind the stacks. We&#39;re going to knock everything off the stack. We&#39;re going to pop all of this stuff of the stack, so it&#39;s all gone, back to the first try. And then we&#39;ll execute the corresponding catch. So, here we marked, you know, the place and the code where there was a try and we can use that to find the expression the piece of the code that has the corresponding catch-block and we&#39;ll unwind the stack to that point and then begin evaluation of the catch. So at this particular design it has the disadvantage that try actually cost something. So, even if you don&#39;t throw an, even if you don&#39;t throw an exception, you still pay something to execute a try-catch-block. You have to at least mark the stack and, and remember to unmark it of course, when you pop things off the stack when you leave the try-block. So, more complex techniques tries to reduce the cost of try and throw and also trade off between them. And generally the thing you want to do is because exceptions are probably relatively rare in, in most programs is to make the cost of try as low as possible, possibly at the expense of making throws slightly more expensive. Now, here&#39;s a little 
+
+592.059
+slide
+Java Exceptions What happens to an uncaught exception thrown during object
+trivia question about Java. So, what happens to an uncaught exception as thrown 
+
+596.85
+writing
+
+during object finalization? So, if you don&#39;t know what object finalization is, well, when an object is collected, when an object is garbage collected, it is possible to run a method on that object to clean it up before the garbage collector actually deallocates it and this is called the finali zation method. So, objects have finalization methods in, in Java and those methods are essentially invoked by the garbage collector. Some garbage collector discovers that some objects, this garbage is going to be clean it up, it will first invoke the finalization method. And why would you wanted to do this unless, say, we have an object and it might have, say, a file handle. It might have a pointer to an open file or something like that. And now, when this object becomes unreachable, it will be collected by the garbage collector. But if you don&#39;t close the file, well, that&#39;s gonna cause problems. Having lots of open files that are hanging around without the program using them it can cause problems later on, especially if you run out of file handles. Usually, there&#39;s a fixed number of file handles available from the operating system. So, the right thing to do is when this is garbage collected is to first close the file and essentially get rid of this pointer, okay, and then, deallocate the object, and that it was object finalization is for. So, again, you can define the method in Java that will be run by the garbage collector to kinda clean up any resources the object has before it&#39;s actually deallocated. And now the question is, if that finalization method raises an exception, who catches it? Because it was invoked by the garbage collector, it&#39;s unpredictable when it&#39;s going to be invoked and it&#39;s not clear where that exception should be handled. And the answer to the question is no one handles that method or nothing handles that method. The exception is simply dropped. And so, any exceptions that happen during object finalization that are not handled within the finalization method itself are simply thrown away. One of the nice innovations in Java is that exceptions are 
+
+716.559
+slide
+Java Exceptions Methods must declare types of exceptions they may raise public void X throws MyException Checked at compile time Some exceptions need not be part of the method signature dereferencing null Other mundane type rules throw must be applied to an object of type Exception Alex mm
+actually part of the method interface and they are checked by the compiler. So, in, 
+
+722.619
+writing
+
+in the example that I gave at the beginning of this lecture, we had a method X that could raise an exception, my exception, and notice that the declaration of X actually declares that X can throw that exception. So, it&#39;s part of the interfaced X, part of the checked interfaced X that it can raise a particular exception. And why would you want to check this at compile time? Well, the observation that was made, actually in the original Java project was that there were many exceptions that could be raised by Java programs and people easily lost rack of what possible exceptions could be raised, they didn&#39;t know what exceptions they had to handle. And in fact, when they added this to the language the compiler would actually enforce now that a method declared every exception it could raise. They discovered lots of places in the, in the compiler where there were exceptions being raised but not properly handled. So, this led to better air handling in, in the Java compiler itself, and, and I think people generally agree that this is een a good idea because it helps programmers to write more robust code because they can see exactly which exceptions they have to handle. Now, there are some exceptions to this rule. In particular there&#39;s, there&#39;s some kinds of runtime errors that don&#39;t have to be part of the method signature simply because it&#39;s very hard to check statistically that the method would never raise them. So, things like dereferencing null or interprocedural overflow don&#39;t have to be handled and declared in the interface. But for the most part any exception that a, a method can raise has to be declared as part of its interface in Java. And then there are other mundane-type rules about the particular design for exceptions in Java. So, for example, throw has to be applied to an object of type exception, it can&#39;t be applied to an object of an arbitrary type. But overall exceptions are rather nicely done in Java and that this particular idea of, of declaring the types of exceptions that a method can raise was a new idea in Java. 
+

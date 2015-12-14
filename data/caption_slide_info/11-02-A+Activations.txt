@@ -1,0 +1,70 @@
+3.84
+slide
+Compilers Activations
+In this video, we&#39;re going to being our discussions of run time structures with the notion of procedure activations. Before we begin the discussion of 
+
+15.07
+slide
+Activations Two goals Correctness Speed Complications in code generation come from trying to be fast as well as correct ex Aiken
+activations, it&#39;s worth being explicit that we have two overall goals in code 
+
+19.869
+writing
+
+generation. One needs to be correct to generate code that actually faithfully implements the programmer&#39;s program And the second is to be efficient that, that code should made good use of resources and in particular we often care that it run quickly And is very easy to solve These problems in isolation. If all we care about is correctness, it&#39;s not a hard problem to generate Code that is very simple but also very slow and correctly implements the program. If all we care about is speed, we don&#39;t care about getting the right answer, the problem is even easier. I can generate extremely fast programs that generate the wrong answer for any problem that you carry to me And so really all the complications in code generation arise from trying to solve These two problems simultaneously And, what has grown up over time is fairly elaborate framework for how a code generator and the run, and the corresponding run time structures should be done to achieve both of these goals, okay? And the first step in talking about that is to talk about activations. We&#39;re going to make two assumptions about the 
+
+90.279
+slide
+Activations Two assumptions 1 Execution is sequential control moves from one point in a program to another in a well defined order 2 When a procedure is called control always returns to the point immediately after the call
+kinds of programming languages for which we&#39;re generating code. The first 
+
+94.52
+writing
+
+assumption is that execution is sequential. Given that we execute the statement, the next statement that will be executed is easy to predict. In fact, it&#39;s just a function of the statement that we just executed. So, controls is going to move from one point in a program to another in some well defined order. The second assumption is the one that procedure is called controllable always return to the point immediately after the call. That is if I execute a procedure f, once f is done executing, control will always return to the statement that followed Point where f was call And there are certainly programming languages and programming lan guage features that violate this assumption. So the most important class of programming language is it violate assumption one are ones that have concurrency. So the concurring program just because I execute one statement there is no easy way to predict what the next statement is to execute it because it might be in a completely different thread. And for assumption too Advanced control constructs things like exceptions And Calls [cough]. If you happen to know what call cc is, it&#39;s not important if you don&#39;t. These kinds of constructs that affect the flow of control in fairly dramatic ways can violate assumption to. So in particular, if you&#39;re familiar with catch and throw style exceptions in Java and C++, when we throw an exception that exception might escape from multiple procedures before it is caught and so there&#39;s no guarantee when you call a procedure if that procedure can throw an exception that, that it control whatever return to the point immediately after the procedure call. Now, we&#39;re gonna keep these assumptions for the rest of the class. We may later on in future videos briefly discuss how we would accommodate some of these more advanced features if the, the material that we&#39;re going to cover. Is basic to all implementation and even languages have concurrency and exception build upon the ideas that we&#39;re going to discuss here. So first the definition When we invoke the procedure p. 
+
+234.34
+slide
+Activations An invocation of procedure P is an activation of P The lifetime of an activation of P is All the steps to execute P Including all the steps in procedures P calls
+We&#39;re going to say that is an activation of the procedure p and the life time of an 
+
+240.969
+writing
+
+activation of p is gonna be all the steps are involved executing the procedure p and including all the steps in the procedures that p calls so it&#39;s going to be all the steps in the procedures that p calls. So it&#39;s going to be all the statements that are executed between the moment that p is called and the moment that p returns including all the functions and procedures that p itself calls. We could define an analogous notion of the lifetime of a variable. So the lifetime of a variable x 
+
+272.699
+slide
+Activations The lifetime of a variable x is the portion of execution in which x is defined Note that Lifetime is a dynamic run time concept Scope is a static concept
+is gonna be the portion of the execution in which x is defined, That means that 
+
+277.31
+writing
+
+it&#39;s all the step of execution from the time that x is first created until the time when x is destroyed or deal located and just note here that life time is a dynamic concept so this is that implies to the executing program. We&#39;re talking about the time when the variable first comes into existence until the moment in time when it goes out of existence And scope on the other hand is a static concept that go prefers to that portion of the program text in which the variable is visible. Okay, so this is a very different idea from the life time of the variable and again. It&#39;s very important to keep these two times, what happens at runtime and what happens in compiler time or what is associated with the static properties of the program distinct in your mind. From the assumptions that we gave a couple of 
+
+328.849
+slide
+Activations Observation When P calls Q then Q returns before P returns Lifetimes of procedure activations are properly nested Activation lifetimes can be depicted as a tree
+slides ago we can make a simple observation and that is when a procedure P calls the procedure Q. Then Q is going to return before P returns. And what that means is that the lifetime of procedures are going to be properly nested and furthermore, that means that we can illustrate or represent activation lifetimes as a tree. Let&#39;s illustrate activation with a simple example. So 
+
+358.53
+slide
+Activations Class Main g0 Int 1 f nt g main Int g f H
+here&#39;s a little cool program and as usual, it will begin running by executing the main method in the main class. So the first activation and the root for our 
+
+367.71
+writing
+
+activation tree for this program is the method main. And. Main is going to call the method g and so g&#39;s lifetime, the set of instructions were g exist where a period of time of the execution where g existed is gonna be properly contain within the execution of this call to main. And so we can illustrate that by making g a child of main. So this indicates that effect of g is a direct child of main indicates that main calls g and also the g&#39;s lifetime is properly contained within the lifetime of main. After g returns main will call f and so f will also. The, a child of, of main And then F as itself is going to call G again And so, it&#39;s gonna have another activation of G And so G Will also be a child of f. And this tree that is actually the complete tree for this particular example illustrates the number of things. First of all as we already said it shows the containment of life time. So again for example g&#39;s life time is contained with a name but it also shows some other interesting lifetime relationships. For example, the life time of this activation of g and the life time of that activation of f are completely distinct because their siblings in the tree, their lifetimes do no overlap at all. And another thing to notice here is that there can be multiple occurrences of the same method in the activation tree. So every time the method is called that is a separate activation so in this particular activation tree there are two activations of g. So, here&#39;s a somewhat more complicated example the involves a 
+
+475.389
+slide
+Activations Class Main g0 nt 1 f x Int if x 0 then g else f x A 1 fi main Int f 3
+recursive function. Let&#39;s begin here at the, at the first call. So The call to 
+
+480.59
+writing
+
+main And all main does is call F with the argument three. So, there is an activation of F from Main. And then what does f do, well f asks if it&#39;s argument is zero, and if it is that calls g, while the initial argument is three so that&#39;s not going to be true on the first call to f. In otherwise, it calls f with the argument minus one. So, I was making note over here on the side about what the argument is because we need to keep track of that. So f is called with three clearly that is not zero, and so then f is going to be called again with the argument two, that will results in f being called yet another time with the argument one and finally, f will be called. With the argument zero, Which will then result in a call to G, And so this is the activation tree for this particular program, And again notice that there is gonna be multiple activation of the procedure on the same run of the program. It just indicates that the same procedure can be called multiple times and also note that the recursive procedure will result in nesting of activations of the same function within itself, And so when f calls i tself and so the life time say of the second call to f is properly contained within the life time with the fist call to f. 
+

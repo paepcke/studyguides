@@ -1,0 +1,78 @@
+00:00:00
+slide
+Compilers 1 Constant Propagation
+00:00:15
+slide
+Compilers 1 Constant Propagation
+00:00:20
+slide
+Constant Propagation To replace a use of x by a constant k we must know On every path to the use of x the last assignment to x is X k
+00:00:25
+writing
+
+00:01:20
+slide
+Constant Propagation To make the problem precise we associate one of the following values with X at every program point value interpretation L This statementnever executes c X constant c T X is not a constant Alex Nken
+00:01:25
+writing
+
+00:03:35
+slide
+Constant Propagation A 2 X my Am
+00:03:40
+slide
+Constant Propagation A 2 X Alex Am
+00:03:55
+writing
+
+00:07:40
+slide
+Constant Propagation Given global constant information it is easy to perform the optimization Simply inspect the x associated with a statement using x If x is constant at that point replace that use of x by the constant Alex mm
+00:08:25
+slide
+Costant Propagation The analysis of a complicated program can be expressed as a combination of simple rules relating the change in information between adjacent statements
+00:08:30
+slide
+Costa nt Propagation The analysis of a complicated program can be expressed as a combination of simple rules relating the change in information between adjacent statements
+00:09:00
+slide
+Constant Propagation The idea is to push or transfer information from one statement to the next For each statements we compute information about the value of x immediately before and after 5 C x s in value of x before 5 C x s out value of x after 5
+00:09:05
+slide
+Constant Propagation The idea is to push or information from one statement to the next For each statements we compute information about the value of x immediately before and after 5 C x s in value of x before 5 C x s out value of x after 5
+00:09:45
+slide
+Constant Propagation Define a transfer function that transfers information one statement to another In the following rules let statement 5 have immediate predecessor statements p1 pn
+00:09:50
+slide
+Constant Propagation Define a Won that transfers information one statement to another In the following rules let statement 5 have immediate predecessor statements p1 pn
+00:10:15
+slide
+Constant Propagation y S if C pi x out T for any i then C s x in T Rule 1
+00:10:20
+writing
+
+00:14:20
+slide
+Constant Propagation Rules 1 4 relate the out of one statement to the in of the next statement Now we need rules relating the in of a statement to the out of the same statement
+00:14:40
+slide
+Constant Propagation Rules 1 s f C s x out J if C s x in J Mex mm
+00:14:45
+writing
+
+00:17:50
+slide
+Constant Propagation 1 For every entry 5 to the program set C s x in T 2 Set C s x in C s x out J everywhere else 3 Repeat until all points satisfy 1 8 Pick 5 not satisfying 1 8 and update using the appropriate rule
+00:17:55
+writing
+
+00:19:10
+slide
+Constant Propagation A 2 X Alex Am
+00:19:15
+slide
+Constant Propagation A 2 X Alex Am
+00:19:20
+writing
+

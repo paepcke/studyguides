@@ -1,0 +1,120 @@
+4.27
+slide
+Compilers 1 Operational Semantics
+In this video we&#39;re going to begin our discussion of formal operational semantics. Just as we did with lexical analysis, parsing and type-checking. The first step 
+
+18.039
+slide
+Operational Semantics Once again we introduce a formal notation Logical rules of inference as in type checking Alex Aiken
+in defining what we mean by a formal operational semantics is introduced the notation and it turns out that the notation we want to use for operational semantics is the same or very similar in the notation we use in type-checking. We are going to be using logical rule of inference. So, in the case of type-checking, the kinds of inference rules we, we presented, proofing&#39;s of the 
+
+42.85
+slide
+Operational Semantics Recall the typing judgment Context e C In the given context expression e has type C We use something similar for evaluation Context F e v In the given context expression e evaluates to value v
+forms that in some context. We could show that some expression had a particular type 
+
+47.61
+writing
+
+in this case to type c. And for evaluation we&#39;re going to be doing something quite similar. We will show that in some contacts now that this is going to be a different kind of context that we had in typing so this is going to be an evaluation context as oppose to a type context and so what goes in the context will actually be different. But for the moment all that really matters is there is some kind of a context and in that context we&#39;re going to be able to show some expression evaluates to a particular value b. So as an example, let&#39;s take a look at 
+
+83.99
+slide
+Operational Semantics Context 131 5 Context F 62 7 Context e e1 e2 12 Alex Nken
+this simple expression, e1 + e2 and let&#39;s say that using our rules which we, I 
+
+89.359
+writing
+
+haven&#39;t shown you yet, but let&#39;s say we had a bunch of rules and we could show in the initial context. That e1 in that same context, okay? So these context are going to be the same, that e1 evaluated to the a value of five and e2 also in that same context evaluated to the value of, of seven then we could prove that e1 + e2 evaluated to the value of twelve. If you think about it what this rule was saying is that if e1 evaluates to five and e2 evaluates to seven, then if you evaluated the expression e1 + e2, you&#39;re going to get the value twelve. And what&#39;s the context doing, well it doesn&#39;t do a whole lot in this particular rule. But remember what the context was for in type checking. The context was for giving values to the free variables of the expression. And so, we need for an expres sion like e1 + e2 to say something about what the values are, the variable that might appear in e1 and in e2 in order to say what they evaluate to and, and therefore, to say what the entire expression e1 + e2 will evaluated to. Now, let&#39;s be a little more precise 
+
+160.73
+slide
+Operational Semantics Consider the evaluation of y e x 1
+about what&#39;s going to go in the context. So, let&#39;s consider the evaluation of a, a expression or statement like y gets x+1. Okay, so we are going to assign y the value x+1 and there are two things that we have to know in order to evaluate this 
+
+179.12
+slide
+Operational Semantics Consider the evaluation of y e x J 1 We track variables and their values with An environment where in memory a variable is A store what is in the memory
+expression. First of all, we have to know where In memory of valuable start. So, for 
+
+186.56
+writing
+
+example, the variable x here, we&#39;re going to have to go and look up excess value and then add one to it And then that value is going to be stored in whatever memory location holds the value for y okay so there is a mapping from variables, Two memory locations. Okay and that is called, In operational semantics the environment and this is a little confusing maybe because it use environment for other things. Okay, so now let&#39;s forget about, as all we uses of the word environment. We were talking about the operational semantics, what the environment means is the mapping, the association in between variables and where that variable store in memory. And then in addition, we&#39;re going to need a store and that&#39;s going to tell us what is in the memory. So just knowing the location for a variable isn&#39;t quite enough. When we, if we know the value of x if we know the location for x, for example or as, as important because we&#39;re going to get the value of x but we also have to know exactly when value is stored there and so store. Is going to be a mapping for memory locations Values. These are the values that are actually stored in the memory so it&#39;s two levels of mapping. We associate with each variable and memory location And then each memory location will have a value in it. So let&#39;s talk about the notation that we&#39;re going to use for writing down the environment and the 
+
+282.189
+slide
+Operational Semantics A variable environment maps variables to locations Keeps track of which variables are in scope Tells us where those variables are E a l b 2 Alex mm
+store. So as we said, the variable environments have variables to locations and we&#39;re going to w rite that out. In the following way, we&#39;re going to just have 
+
+291.169
+writing
+
+this as a list of variables and location pairs separated by columns and this environment for examples of variable a, is it location l1 And variable b is in location l2. And another aspect of the environment is that it&#39;s going to keep track of the variables that are in scalps and the only variables that will be mentioned in the environment are those currently in sculpted in the expression that is being evaluated. Now as we said, stores map memory location to values and 
+
+322.539
+slide
+Operational Semantics A store maps memory locations to values S 5 7 S S 12 I1 defines a store such that I1 12 and S l S l if I i ll
+we&#39;ll also write out stores as lists of pairs. So in this case, the memory 
+
+327.479
+writing
+
+location l1 in the store contains the value five and the memory location l2 contains the value seven And we will also separate these pairs by an arrow. And just to make the stores look a little bit different from the environment so that we won&#39;t confuse the two. There&#39;s an operation on stores which is to replace of value or update of value. So, in this case, we&#39;re taking the store s and we&#39;re updating the value at location l1 to b12 And this defines a new store s prime. So, keep in mind here that the stores are just functions list in our model and so we can define a new store by taking the old function or the old store has and modifying it at one point. So this defines a new store as prime such if I apply s prime to the location l1, I get off the new value twelve and if I apply s prime to any other location, any location different from l1 I get out the value that the store held in s, sorry the value of the location in store s. Now in Cool we have more 
+
+401.529
+slide
+Operational Semantics Cool values are objects All objects are instances of some class Alex mm
+complicated values and integers. In particular we have objects and all the objects of course are instances of some class and we&#39;re going to need a notation for representing objects in our operational semantics. So we&#39;ll use the following way of writing down an object. An object will begin with its class name. 
+
+420.33
+slide
+Operational Semantics Cool values are objects All objects are instances of some class X a1 I1 an 2 In is a Cool object where X is the class of the object ai are the attributes including inherited ones i is the location where the value of ai is stored Alex Amen
+
+
+420.33
+writing
+
+In this case the class name x and it would be followed by a list of the attributes. In this case the class x has n attributes, a1 through an And associated with each attribute will be the memory location whether an attribute stored so attribute a1 is stored location l1 up through attribute and which is stored at location ln. And this would be a complete description of the object because we know where in memory the object the object is stored. We can use the store to look up the value of each of those attributes. There are few special classes in Kuhl that 
+
+462.219
+slide
+Operational Semantics Special cases classes without attributes nt 5 the integer 5 Bool true the boolean true String 4 the string Cool of length 4
+don&#39;t have attribute names and we&#39;ll have special way overriding them. So integers only have a value and, and that will be written as int with a single value in parens, the value of the integer similarly for brilliance. They have a single value true of false and strings have two properties, the length of the string and the sting constant. There&#39;s also a special value void typed object and we&#39;ll use the 
+
+489.689
+slide
+Operational Semantics Special cases classes without attributes nt the integer 5 Bool e the boolean true StringE oo the string Cool of length 4 There is a special value void of type Object No operations can be performed on it Except for the test isvoid Concrete implementations might use NULL here Alex mm
+term void in our operational semantics to representative and briefly here, so void 
+
+494.86
+writing
+
+is a, a special and that there are no operations that can be before and on void except for the test is void. So, in particular, you can&#39;t dispatch the void even though it has typed objects that will generate runtime error. The only thing you can do is to test whether the value is void or not. And concrete implementation we typically use a null pointer which represent void. Now we&#39;re ready to talk about in more detail what the judgments will look like in our operational 
+
+523.24
+slide
+Operational Semantics The evaluation judgment is so E Ske v Given so the current value of self And E the current variable environment And 5 the current store If the evaluation of e terminates then The value of e is v And the new store is Alex Amen
+semantics so the context will consist of three pieces. The first piece is a current 
+
+528.58
+writing
+
+self object. The second piece is the environment which is again the mapping from variables to the locations where those variables are stored and the third piece is the memory, the store. The mapping from memory locations to the values held at those locations, All right? So in some context, an expression e will evaluate to two things. First of all, e will produce a value so for example we saw before that the expressions seven + five would produce the value twelve, that&#39;s one result to the evaluation. But the second thing is that we&#39;ll produce a modified store. So the expression e maybe a complicated piece of code Maybe a whole program is on the right and it might have a slight statements that update the contents of the memory And so, after e is evaluated, there will be a new memory state that we have to represent and so s prime here represents the state of memory after evaluation And now, those are couple of things here. First of all the current self object and the environment don&#39;t change. They are not changed by evaluation so which object is the self parameter to the current method and. Well, the mapping between variables and memory locations that is not modified by running a, running an expression and that makes sense, I mean, you can&#39;t update the self object in Kuhl and we don&#39;t have access in, in any form to re-locations or variables stored and so those two things are in variant. They don&#39;t they are variant under evaluation. They don&#39;t change when you run a piece of code. However, the story does change so the contents in the memory may be modified so that&#39;s why we need a store for both before evaluation and after evaluation. And one more detail these judgments of this form always has a qualification. That judgment only holds if the evaluation of e terminates. So, if e goes in to infinite loop, then you&#39;re not going to get a value and you&#39;re not going to get a new store. So, this kind of the judgment must always be read as saying that if e terminates, then e produces a value v and a new store s prime. Summarize the results of evaluation is a value and a 
+
+672.13
+slide
+Operational Semantics of evaluation is a value and a store New store models the side effects
+new store. And where the new store models, the side effects of the expression And once again there are something don&#39;t change as a result of evaluation. And this 
+
+682.81
+slide
+Operational Semantics Result of evaluation IS a value and a store New store models the side effects Some things change The variable environment The value of self The operational semantics allows for non terminating evaluations Alex mm
+is actually important for compilation because we&#39;ll be able to take advantage of 
+
+686.31
+writing
+
+the fact that they don&#39;t change to generate efficient code so the variable environment doesn&#39;t change, the value itself which object we&#39;re talking about doesn&#39;t change and notice here as another detail. That the contents of the self objects, the attributes inside the self object might change, they might get updated but t he locations where the attributes are stored do not change. So, the layout of the object where the object stored doesn&#39;t change and that&#39;s all we&#39;re saying here, the actual contents of the object which of course is a part of the mapping of the store, those might get updated by evaluation. And also the operational semantics allows for non-terminating evaluations. That&#39;s the last point here and so the meaning that the judgments only holds on the assumption that the, that the expression actually completes. 
+

@@ -1,0 +1,125 @@
+3.58
+slide
+Compilers 1 Liveness Analysis
+In this video, we&#39;re going to look at another global analysis called liveness analysis. So, in the past several videos we&#39;ve looked at a procedure for globally 
+
+14.78
+slide
+Liveness Analysis Once constants have been globally propagated we would like to eliminate dead code Xz 3 B 0 v z w Y O l l A 2 x After constant propagation X 3 is dead assuming X not used elsewhere Alex men
+propagating constants through a control flow graph And let&#39;s, here&#39;s, here&#39;s one 
+
+19.259
+writing
+
+of the control flow graphs we&#39;ve been looking at and recall that this algorithm that we discussed would be sufficient to show that we could replace this use of x here by the constant three. And once we do that. This assignment x might no longer be useful. It might not be used anywhere And so we could potentially delete this statement from the program And that would be a real optimization, an important optimization to do. However, we can only do that if x is not used elsewhere in the program. So let&#39;s be a little more careful about what we mean by saying that x is not 
+
+55.01
+slide
+The first value of x is dead never used 0 The second value ofx is live may be used Liveness is an important concept Liveness Analysis ex Aiken
+used. So down here is a use of x, a reference to x, in a statement. And, 
+
+60.35
+writing
+
+clearly this particular reference to x, is, use, picking up the value that&#39;s defined by this right x here. So, we say that the right of x here, is live. This one is live. Okay, And what that means is that the value may be used in the future. So, live, equals, may be used. In the future, Okay? So the value written to x at this line of code maybe used by some subsequent instruction And here it&#39;s not just that it may be used. It&#39;s actually guaranteed to be used because there&#39;s only one path. And that one path has a reference to x on it before there&#39;s another assignment to x. Okay? So this particular value of x as written here is guaranteed to be used. But in general we don&#39;t require that. We just mean there has to be a possibility that it will be used. Now in contrast let&#39;s take a look at this. Other statement in this example, Here, we assign x a value three but this assignment x, this value of x is never used. This one, is dead. Alright? Because the value three here is overwritten by the value four before there&#39;s any use of, the variable x, Okay? So this particular right to x will never see the light of day. It&#39;ll never get used by any part of the program. And we say that it is dead. So, to summarize a variable x is live as a statement S if, there exist some statement 
+
+150.94
+slide
+Liveness Analysis A variable x is live at statements if There exists a that uses x There is a path from s to That path has no intervening assignment to x Alex Aiken
+that uses x. Okay. So, some other statement S prime that uses x, and there 
+
+155.31
+writing
+
+is some path from S to S prime and there is no intervening assignments on that path to x. Alright? So, there needs to be an assignment to x, at some statement S there is some path through the program that reaches a read of x. Add sum statement to S prime, and along that path, there is no right to x, Okay? And if this situation arises, then we say that this value written in this first statement s is live. Now if a value is not live, then it is dead. And a statement that assigns to x is 
+
+195.849
+slide
+Liveness Analysis A statement x is dead code ifx is dead afterthe assignment Dead statements can be deleted from the program But we need liveness information first
+going to be dead code if x is dead after the assignment. So, if we know that 
+
+200.599
+writing
+
+immediately after the assignment, immediately after this assignment to x, there is no possibility that a value of x will be used in the future. Well then the assignment was useless, and the entire statement can be removed. Alright, So dead assignments can be deleted from the program, But notice that in order to do that we have to have the liveness information. We need to know whether x is dead at this point. So, once again, what we want to do is to have global information about the control flow graph. In this case, the property is whether x 
+
+230.94
+slide
+Liveness Analysis We can express Iiveness in terms of information transferred between adjacent statements just as in copy propagation Liveness is simpler than constant propagation since it is a boolean property true or false
+will be used in the future. We want to make that information local to a specific 
+
+234.58
+writing
+
+point in the program, so we can make a local optimization decision. Alright, And just like for constant propagation, we&#39;re going to define in a, an algorithm for performing liveness analysis And it&#39;s going to follow the same framework. If we&#39;re going to express liveness in terms of information transferred between adjacent statements, just as we did for copy of constant propagation And it&#39;s gonna turn out that liveness is actually quite, If it&#39;s simpler, or somewhat simpler, than constant propagation, since it&#39;s just a Boolean property. Eh, you know, it&#39;s either true of false. Alright So let&#39;s take a look at some of the rules 
+
+269.3
+slide
+Liveness Analysis L p x out v L s x in l s a successor of p Rule 1 Max Am
+for liveness. So here, we&#39;re defining what it means for x to be live at this point 
+
+276.62
+writing
+
+here. So we&#39;re immediately after p is x live And it&#39;s going to be live. Remember what the intuition is. The intuition is that a, the variable x is live right after p if the value of x is used on some path. On one of the paths that begin at p. Alright, And so, in order to know whether it&#39;s live, we&#39;re going to take the liveness information at each of the input points. So that would be here, here, here, and here. So each of the successor statements after p And we&#39;re gonna ask, is x live at any of those points? So it&#39;s just a big or over the liveness of x and all of the successors of p And that&#39;s the liveness of x at the out of p. Next, let&#39;s 
+
+319.18
+slide
+Liveness Analysis Ru e2 l 4 f x f L s x in true ifs refers to x on the rhs
+consider the effect of individual statements on the liveness of x. So, the 
+
+323.639
+writing
+
+first rule is, that if we have a statement, and it reads the value of x, Okay? So here, we have an assignment statement, and on the right hand side, it refers to x, so its reading x Then, x is live Before that statement. Clearly, x is just about to be used on the end of this statement, and so x is live at that point. Alright? So if a statement, or if, if a statement reads the value of x, then the in of that statement, x, is true. Sorry, the liveness of x is true. A second case is when a statement writes the value of x So here we have an 
+
+357.499
+slide
+Rule3 Liveness Analysis L x e x in false if e does not referto x ex mm
+assignment to x And the rest of the statement does not refer x Does not read 
+
+362.129
+writing
+
+the value of x. So there&#39;s no x in E. Okay So in this situation x is not live before the statement. X is not live or we can say that x is dead Before the statement And why is that? Well, we&#39;re overriding the value of x, so whatever value, x had before this statement is never gonna be read. Okay, Because the ee here, the right-hand side of the assignment, doesn&#39;t refer to x And, so, immediately before the statement, the current value of x is never gonna be used in the future. And so x is dead at that point. And finally, the last case is what if we have a statement that does not refer to x? Okay, So it neither reads no r writes x. Well, then whatever the line this is of x after the statement, it has the same liveness, before this statement. So if x is live here. Then x will be live here. Okay, and similarly, if x is dead After the statement. Then x must be dead before the statement. And that&#39;s because x if x is not use in the future after the statement S then it still want be use in the future before the statement S. Since the statement S neither reads nor write x. So those are the only four rules and now I can give the algorithm. So 
+
+446.309
+slide
+Liveness Analysis 1 Let all L false initially 2 Repeat until all s satisfy rules Pick 5 where one of 1 4 does not hold and update using the appropriate rule
+initially we left the liveness information for x be false at all program points And then we repeat the following until all the statements satisfy the rules one through four, and just has it&#39;s the same algorithm that we used for constant propagation. We pick some statement where the information is inconsistent and then up, update the information at that statement with the appropriate rule. So let&#39;s do a simple example, something with a loop. So let&#39;s begin, say by initializing x to zero, and 
+
+478.33
+slide
+Liveness Analysis Mex Men
+
+
+478.33
+writing
+
+then what should our loop body do? Well, we can check whether x is equal to ten, and if it is, we&#39;ll, we&#39;ll exit, the loop And let&#39;s assume that x is dead on exit. So x is not refer to outside of the loop. In other wise if x is not ten Then we will increment x and we&#39;ll branch back to the top of the loop. So this is a very, very silly little program. It just counts to ten and then exits. Well let&#39;s do the lightness now to see where x is life. So since x is dead here on exit it&#39;s clearly gonna be dead on the out Of, of this, conditional on this branch, Okay? So I should say that x is not live. So we&#39;re using booleans here, so that&#39;s x&#39;s, liveness would be false And we&#39;re assuming And x is also, not live everyplace else, initially. Okay And so, there&#39;s a program point in there, also Where the liveness of x is false. Okay, So now, let&#39;s propagate the information. Well, so here we have read of x. And let me switch colors here. So here we have a read of x. So in fact the information&#39;s inconsistent here because ri ght before this statement since we have a read of x, x must be live. So in fact, x is live at this point. Now notice that this statement both reads and writes x. Okay? But the rule that says x is live before, when we do a read, takes priority here Because, the read happens before the write. So we&#39;ll read the old value of x, before we write the new value of x, Okay. So the old value of x does get used, and that&#39;s why x is live immediately before this statement. Okay, so then here&#39;s another, read of x. Okay, so on the, so the point immediately before this when I left out one program point here, x is also Y. Okay, And then following edges backwards, well, that means x is gonna be live on the back edge of the loop And it&#39;s also gonna be live by going into the initialization block. Alright? Now we come back around here and we see that we&#39;re 
+
+616.0
+slide
+Liveness Analysis 1 0 33b 1 ARIEL V N L Mex mm
+done &#39;cause x is already known to be, live within the loop body. And now, live, x is also live here And then the question is, you know, what about this point on, the entrance, at the entrance to the control flow graph? Well, there&#39;s a right of x And 
+
+630.15
+slide
+Liveness Analysis
+with no read of x on the right-hand side. So, in fact, x, is not live on entry to this control flow graph. So in fact, x is dead at this point. So whatever value x has when we enter the control flow graph, it will never be used in the future. Alright, and so that is the correct liveness information for every program point in this example. Now another thing you can see from our little example 
+
+656.31
+slide
+Liveness Analysis 43415 355 V N Mex Am
+
+
+656.31
+slide
+Liveness Analysis A value can change from false to true but not the other way around Each value can change only once so termination is guaranteed Once the analysis is computed it is simple to eliminate dead code
+is that values change from false to true, but not the other way around. So every 
+
+661.32
+writing
+
+value starts at false, and it can change at most once. To say that the value is actually live, the property becomes true, and then it won&#39;t ever change back to false again. So, going back to orderings, We only have two values in this analysis, false and true And the ordering is that false is less than true. Okay, And we know, so everything starts at the lowest possible element of the ordering and they only move up, and so they can be promoted to true, but no t vice versa And so since each value can only change once, termination is guaranteed. That eventually we&#39;re guaranteed to have consistent information throughout the control flow graph, and the analysis will terminate. 
+

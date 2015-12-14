@@ -1,0 +1,180 @@
+3.439
+slide
+Compilers 1 SLR Parsing Example
+Welcome back, In this video, we&#39;re going to do an extended example of SLR parsing. 
+
+10.37
+slide
+Example EaT E anne M T T E 7 S E T E E T I Ta inTt T Ta m L T r E T E 3 1 1T T 7 In T E T E E T in 3 4 T T E E T E T T TQFEtT E T E E 5 9 I n in1 T T inT T T E Inf im int 10 Alex um
+To review, here is the parsing automaton for the grammar that we&#39;ve been looking at in the last couple of videos. And this is just the deterministic version of the, non 
+
+19.95
+slide
+Example E EaWWE TanaW jnT T inf Ale n um
+deterministic automaton we built last time. And I&#39;ve just gone through and numbered all of the states. So let&#39;s take a look at what happens when we parse the input [inaudible] times [inaudible]. And just to review, we&#39;ve appended dollar sign 
+
+32.93
+slide
+SLR Parsing Example Configuration DFA Halt State Action lint int
+here to the end, to indicate where the end of the input occurs. That&#39;s just an end of input marker. And because this is the beginning of the parse we haven&#39;t seen any input yet. And so the vertical bar is all the way at the left hand side of the input. So the machine begins in state one, and there&#39;s nothing on the stack. The 
+
+53.899
+slide
+E T E Example gaff E gEaT E E 7 T Eri 5 5 THE E T m irIVT TALE T w E T E 1T i m T E T E m1 f 4 Ta E T E T if T a In Ta E E M 9 im inT T E T a int 10 m um
+vertical bar is all the way to the left again, so the stack is empty. So it just 
+
+56.719
+slide
+E T E Example EQIT VE9T E TanaW T inf Ale n um
+terminates in state one. And these are the possible items, that are valid for the 
+
+62.819
+writing
+
+initial state of the parser. So among those items, we see that there are two that tell us that it&#39;s okay to shift an integer in this state. And, of course, the first input is an integer, and so there are no reduced moves. All the other items in here also have their jobs all the way at the left side of the item, so there&#39;s no possible reduced move in this state. The only thing we could possibly do is shift, and it&#39;s okay to shift an integer. So to summarize, on the initial 
+
+92.99
+slide
+SLR Parsing Example DFA Halt State Action lint int 1 shift int intS
+configuration of the parser, the DFA halts in state one, it never even gets out of state one, so it starts there and ends there without even reading any input because the stack is empty and the action that, that state tells us to do is to shift. So that leads us in the following state, there&#39;s an int on the stack and we have a times coming up on the input. So, what happens in that situation? Well, we 
+
+117.9
+slide
+E T E Example gaff E gEaT E E 7 T E T E Tang E T r T w M E in i m T E T E in f 4 inT T T305 Taint T T E T HT 4 ln T 11 M 9 inT T E Taint 10 m um
+begin. The automaton is going to read the stack. So, starting from the bottom of the 
+
+121.12
+slide
+E T E Example EQIT VE9T E TanaW T inf Ale n um
+stack, we&#39;re in the start state. And then we read an int, there&#39;s an int on the 
+
+126.21
+slide
+Tainf T Tamg T Ta inf Example E Ale n um
+stack, and we win d up in this state. And what does this state tell us we can do? 
+
+130.598
+slide
+E T EQIT E EE T E T T E 7 2 S E l jg i5 E 1 T E T E Tainf T T T T WW E 11 KT 9 jnT T inf m um
+Well, it tells us one possibility is to reduce by T goes to int. But again, we will only do that, if the following input is in the follow of T, And times, which is 
+
+142.73
+slide
+f E T E Example EQIT E EE T E T T E 7 2 s E E914 Tam el E m E E T 1 ISA E lint m T T T inf 4 in1 T T E E T E Tainf T T T TAFLT T a E m a W T T jnT T 9 T inf m um
+the next input item, is not in the follow of T. So times is not in the follow. Of T and so reducing here is not a possibility. That leaves only the other item to consider and here we see that this item says we can the time. So if the times the next thing in input, which it is, it&#39;s okay to shift. So the DFA halts in state 
+
+165.7
+slide
+SLR Parsing Example DFA Halt State Action lint int 1 shift int I intS 3 notin Fo 0w T Shift int int
+three and because there&#39;s a times in the input the move is to shift. And that puts us into this configuration where we have int and times on the stack. Times is at the top of the stack, int is below it and we have an int coming up in the input. So what happens now, again, the DFA is going to read the entire stack. So beginning at 
+
+186.59
+slide
+E T E Example EQIT VE9T E TanaW T inf Ale n um
+the bottom of the stack, the first thing it sees is an int, and it moves to that state. And then it sees a times, and so it moves to this state. And now, in this 
+
+195.72
+slide
+Tainf T Tamg T Ta inf Example E Ale n um
+
+
+195.72
+slide
+E T E Example EQIT VE9T E
+particular state, what are the possibilities? Well, we can see, first of all, that there are no reduced moves. There are no items with the dot all the way at the right end. So the only possibility is a, is a shift. And we could shift if the upcoming input&#39;s a open paren, which it&#39;s not. More usefully, we could shift if the upcoming input is an [inaudible], which is exactly what we see. So, the DFA terminates in state eleven, and the move in that state is to shift. 
+
+226.01
+slide
+SLR Parsing Example DFA Halt State Action lint int 1 shift int I int 3 notin Follow T Shift int int 11 shift int int
+And that puts us into this state, where we have int times int on the stack, and we are out of input. We are at the end of the input. So let&#39;s see what happens on the 
+
+237.02
+slide
+E T E Example gaff E gEaT E E 7 T E T E Tang E T Ta inTt T H w M E in i m T E T E in f 4 T305 Taint T T E T HT 4 ln T 11 M 9 inT T E Taint 10 m um
+stack int times int. The automaton reads it int times int and it winds up back in 
+
+243.959
+slide
+E T E Example EQIT VE9T E TanaW T inf Ale n um
+state three. Sa3 tells us that we can shift if the, next input item is a times 
+
+250.45
+slide
+E T E Example EQIT VE9T E 2 S E I i5 E 1 T E T E 19 th T T E W T Int T inT T Ale n um
+and which it is not. Or we can reduce, if whatever the next. Is in the next input is in the follow of T. And in fact dollar is in, the follow of T. So, in, the end of the input come after a T on the stack. And that means it&#39;s fine to reduce by T goes to int. So, once we do that, once we do the reduction T goes to int, we wind up in 
+
+276.06
+slide
+SLR Parsing Example DFA Halt State Action lint int 1 shift int I intS 3 notin Fo 0w T Shift int int 11 shift int int 3 s e Follow T red int int T
+the state times T. That&#39;s our stack contents and of course we&#39;re still at the end of the input. So once again the DFA is going to read the entire stack contents 
+
+285.79
+slide
+E T E Example EQIT VE9T E TanaW T inf m um
+from the bottom to the top. First it reads the int at the bottom of the stack, then it sees the times. And then it finally reads the t at the top of the stack. And it winds up in a new state, state four. And the interesting thing about this 
+
+298.669
+slide
+E T E Example EQIT VE9T E 2 S E I i5 E 1 T Ea T E TamW inT T m um
+particular step is that the DFA took a different path through the state graph 
+
+303.75
+writing
+
+than it did the previous time. And that&#39;s because the stack contents changed. We didn&#39;t just add stuff to the stack, and so we didn&#39;t extend the previous path. We actually replaced some symbols or a symbol on the stack with a new symbol, in this case, the non-terminal T and that caused the DFA to take a different path. Now what does this item in state four tell us to do? Well it says that we can reduce by T goes to N times T if whatever. Follows in the input is in the follow of T. And, once again, dollar is in the follow of T. And so we&#39;ll do that reduction, and now we&#39;re 
+
+337.0
+slide
+SLR Parsing Example DFA Halt State Action lint int 1 shift int I intS 3 notin Follow T Shift int int 11 shift int int 3 5 e FolloW T red int int T IS 4 5 Follow T red int T T
+left with the static contents just consisting of T. And, of course we&#39;re 
+
+341.02
+slide
+Configuration lint int int int int int int int int T IS I IS DFA Halt State 1 3 not in Follow T 11 3 6 Fo 0w T 4 6 Fo 0w T Action shift shift shift red int red int T
+still at the end of the input. And let&#39;s see what happens now. So now of course the 
+
+345.21
+slide
+E T E Example gaff E gEaT E E 7 T E T E Tang E T Ta inTt T mm H w M E in i m T E T E in f 4 T305 TainT T T E T VT 9 In T 11 M 9 inT T E Taint 10 m um
+contents of the stack have changed even more radically and so the DFA just goes off in a completely different direction. It reads T winds up in this state and this 
+
+353.37
+slide
+Example E T Tainf T Ale n um
+state says we can either shift a plus if there&#39;s a plus in the input. And again, 
+
+357.59
+slide
+Example E EaWWE LABW jnT T inf Ale n um
+there&#39;s no more input. Or we can reduce by E goes to T if dollar, if the end of the input is in the follow of E, Which it is. And so the reduction will be the one that 
+
+367.979
+slide
+f E T E Example EQIT E EE T E T T E 7 2 5 5 E E T T I T m VTA mVT TMBB i glm i T I T E 5 5 1 m i m T E T E T in f 4 in1 T T E E T E Tainf T T T TAFLT T a E m a W T T jnT T Z 9 T inf m um
+we do. And now we have, this stack contents, consisting only of E. Let&#39;s see 
+
+374.11
+slide
+SLR Parsing Example DFA Halt State Action lint int 1 shift int I intS 3 notin Follow T Shift int int 11 shift int int Is 3 5 e Follow T red int int T IS 4 6 Follow T red int T T IS 5 S e Follow E red T E
+what happens in that situation. Now we make a transition to this state, state 
+
+377.99
+slide
+E T E Example gaff E gEaT E E 7 5 5 THE inT T TALE T w E T E 1 i m T E T E m1 3 4 in1 T Ta E TaintrT T T E T f T a In Ta E E KT 9 T m inT T E T a int 10 m um
+two. And we only have one item, S prime goes to E dot. And so this is a reduced 
+
+384.12
+slide
+E T EQIT E EE T E T T E 7 2 E T i5 E 1 T Ea T E E ll jnT T inf Ale n um
+move. And again, dollar is in the follow of S prime, &#39; cause that is the start symbol. And since that is the start symbol, we accept at this point. So once 
+
+392.57
+slide
+Configuration lint int int int int int int int int T T E IS DFA Halt State 1 3 not in Follow T 11 3 5 e Follow T 4 6 Follow T 5 S e Follow T Action shift shift shift red int red int T red T accept
+we get to that item as our, reduce move, we know that the input has been successfully parsed. 
+
+-1
+slide
+E T E Example E9 T E EaT E I T T E 7 s E E914 E T Ta inTt T 8 SIQ E T It T E 1 mt m T T E m1 4 in1 TA E T E Taint T T Tim Tam BE HE in1 T T inT T T r 9 inT im int 10 Alex um
+
+

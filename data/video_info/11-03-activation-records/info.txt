@@ -1,0 +1,66 @@
+00:00:00
+slide
+Compilers 1 Activation Records
+00:00:20
+slide
+Activation Records The information needed to manage one procedure activation is called an activation record AR orframe If procedure F calls G then activation record contains a mix of info about F and G
+00:00:25
+writing
+
+00:01:10
+slide
+Activation Records F is suspended until G completes at which point F resumes AR contains information needed to Complete execution of G Resume execution of F
+00:01:15
+writing
+
+00:02:40
+slide
+Activation Records Class Main e I nt 1 f x lnt nt i x 0 then g else f l fi main nt f 3 resu f argument can fra link A R fo r f re rum address
+00:02:45
+slide
+Activation Records Class Main 30 I M 1 f x nt nt i x 0 then g else f l fi main nt f 3 resu f argument can fra link A R fo r f re Turn address
+00:02:55
+writing
+
+00:06:55
+slide
+Activation Records Amen
+00:07:05
+writing
+
+00:08:00
+slide
+Activation Records Main has no argument or local variables and its result is never used its AR is uninteresting and are return addresses of the invocations off The return address is where execution resumes after a procedure call finishes This is only one of many possible AR designs Would also work for C Pascal FORTRAN etc
+00:08:05
+writing
+
+00:10:05
+slide
+Activation Records The picture shows the state after the call to the 2nd invocation off returns
+00:10:10
+writing
+
+00:11:35
+slide
+Activation Records The advantage of placing the return value lst in a frame is that the caller can find it at a fixed offset from its own frame There is nothing magic about this organization Can rearrange order of frame elements Can divide caller callee responsibilities differently An organization is better if it improves execution speed or simplifies code generation Alex mm
+00:11:40
+slide
+Activation Records The advantage of placing the return value lst in a frame is that the caller can find it at a fixed offset from its own frame There is nothing magic about this organization Can rearrange order of frame elements Can divide caller callee responsibilities differently An organization is better if it improves execution speed or simplifies code generation Alex mm
+00:11:45
+slide
+Activation Records The picture shows the state after the call to the 2nd invocation off returns
+00:11:50
+writing
+
+00:12:40
+slide
+Activation Records The advantage of placing the return value lst in a frame is that the caller can find it at a fixed offset from its own frame There is nothing magic about this organization Can rearrange order of frame elements Can divide caller callee responsibilities differently An organization is better if it improves execution speed or simplifies code generation
+00:12:45
+slide
+Activation Records The advantage of placing the return value lst in a frame is that the caller can find it at a fixed offset from its own frame There is nothing magic about this organization Can rearrange order of frame elements Can divide caller callee responsibilities differently An organization is better if it improves execution speed or simplifies code generation Alex mm
+00:13:10
+slide
+Activation Records Real compilers hold as much of the frame as possible in registers Especially the method result and arguments
+00:13:25
+writing
+

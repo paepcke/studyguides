@@ -1,0 +1,70 @@
+3.399
+slide
+Compilers 1 Self Type
+In the last video we talked about the difference between static and dynamic typing, and how one trend in static typing is towards increasingly expressive type systems. In this lecture we&#39;re gonna talk about self type, which will give you a taste or what those more expressive type systems can look like. To begin with, let&#39;s motivate the problem that self types solves, by looking at a simple class 
+
+25.4
+slide
+ctass CounH i int e 0 inc Count i e i 1 self Self Type ex mm
+definition, so here we have class counts, and it has a single field I, which is an 
+
+30.089
+writing
+
+integer initialized to zero, and it has one method increment. And essentially, the class count just increments a counter. So you, initially when you allocate a new count object, the counter is zero, and then every time you call ink, the counter&#39;s value is increased by one. And notice that this can be thought of as a base class that provides counter functionality, so whenever I wanted a counter for some specific purpose, I get to find a new sub-class and that, of count, and that sub-class would automatically inherit the inc-method, thereby allowing me to have counter without having to re-implement the code. In this case the code is very, very small, but in general you can imagine having a class that implements something tricky, or requiring a lot of code, and it&#39;s useful to be able to reuse that in sub-classes. Now consider a sub class account that we 
+
+81.52
+slide
+Self Type Consider a subclass Stock of Count CiaSS Stock inherits Count name String name of item 0 And the following use of Stock ciass Main Stock 3 e new Stockyinc 0 avname Alex Nken
+might want to define called stock. Say we&#39;re implementing a warehouse accounting, 
+
+87.65
+writing
+
+program and we want to keep track of the number of items that are in stock of certain different kinds. So we define a new class stock that inherits from count, and now we&#39;ll have a new field in here to make this, Object that&#39;s classed different from its parent will just have a name that, corresponds to the name of the, the item that&#39;s in stock. And now, down here, we can actually use this. We can decla-, allocate a new stock object, we create a new object. We increment it To indicate that we have one thing in stock And then we assign it to some variable that we&#39;ve declared of typed stock And then later on we can use this A object as we like. Now, the problem is that this code actually will not type-check. There is a type error in this code. And why is that? Well, let&#39;s think about it for a minute. So, what is the signature of inc? So inc, remember, was declared to return things of type count. Right, and when the inc method is inherited by the stock class this signature doesn&#39;t change, it still returns things of type count. So here we have a new stock object we call the increment method But the type of this whole thing is a count and then we try to assign that to a stock, but that doesn&#39;t work because count. Is not a subtype of stock, a variable of type stock can&#39;t hold a value of type count and so the type system will report an error right here at the assignment statement. And you can see that this is actually a serious problem, because it has made the inheritance of the increment method pretty useless. I can define new sub-classes of stock, but I can never use the increment method on them, at least not without getting back something of the parent type. And so it&#39;s not as, the inheritance of the incremental method is not as useful as one might have hoped. 
+
+210.9
+slide
+Self Type new Stock mcl has dynamic type Stock Mex mm
+So just to review, new stock, the, the incremented new stock, will have dynamic 
+
+217.609
+writing
+
+type stock. That&#39;ll actually be a stock object that is returned, okay. So don&#39;t get confused here. This is the dynamic type I&#39;m talking about. So when we, allocate the new stock object, and then we call the increment method, remember the increment method returns self so the increment method was implemented something like this. Leave out the types but it was I gets I + one and it returned the self object alright, so it&#39;s definitely returning whatever object is passed in here at the dispatch point so it&#39;s returning something of dynamic type stock. And, so this program will actually run if we didn&#39;t have type-checking. If we actually run this and it would work just fine. This would produce a dynamic stock object and would store it into the stock variable. But it&#39;s not well typed because the ty pe checker loses track of the fact that this is a stock object. All it knows is that increment is declared to have return type count, and, which is certainly correct because every stock object is also a count object, it&#39;s just not useful in the context of this piece of code. And so the type checker loses information. Which make it not very pleasant to try to put the increment method in the count class to begin with. So to solve this problem, we&#39;re going to look at extending the type 
+
+299.889
+slide
+Self Type Max m
+system. The insight is going to be that the increment method returns self. In this 
+
+306.039
+writing
+
+case, the increment method actually returns the self object, and therefore the return value is going to have the same type as self. Whatever self happens to be, which could be count or it could be any sub-type of count. So the self object only has to be dynamically something that holds a value that&#39;s a sub-type of the declared type of the self parameter, and so it could be any one of the sub-types in this case of the count class. And to do this we&#39;re actually gonna have to introduce a new key word called self type, that is gonna be used as the return of the type of 
+
+341.86
+slide
+Self Type We will extend the type system Insight inc Therefore the return value has same type as Which could be Count or any subtype of Count Introduce the keyword SELF TYPE to use for the return value i V of such functions We will also need to modify the typing rules to handle SELFATYPE Alex m
+the return value of such functions. And we&#39;re gonna have to modify our typing rules to handle this new kind of type. So the idea behind self type is it&#39;s going to 
+
+352.75
+slide
+Self Type SELF TYPE allows the return type of inc to change when inc is inherited Modify the declaration of inc to read inc SELF TYPE m The type checker can now prove O M C F new Count inc Count O M C F new Stock inc Stock The program from before is now Alex um
+allow the type to change, when inc is inherited, or allow us to reason about how 
+
+358.009
+writing
+
+the actual return type dynamically of increment method changes when the increment method is inherited. So we change the declaration of inc to read as follows. We&#39;ve declared the return type now to be self type, meaning the return value Of the increment method has whatever type. Is the type of the original self parameter? And when we do that now we can see. That it&#39;s possible. We don&#39;t, we haven&#39;t said how we do it, but you should be able to see that it intuitively makes sense that we could prove facts of the following forms. So when the self parameter has the type count, remember that the thing we dispatch to, the thing we call inc on, is the self para meter. So when we dispatch to account object, we get something back of type count. And we call, when we, when we dispatch on a stock object, when we call increment on a stock object, well, what&#39;s the type of self? The type is stock, and we get back something of type stock. And now the program that we had before with this one change is well typed and would be accepted by the Cool type system. Now it&#39;s very important to remember that self type is not a dynamic 
+
+422.639
+slide
+Self Type SELF TYPE is not a dynamic type It is a static type It helps the type checker to keep better track of types It enables the type checker to accept more correct programs rm mm
+type it is very much a static type and part of the static type system. It&#39;s also 
+
+428.189
+writing
+
+important to realize that self type is not a class name. So unlike all the other static types in cool, it is not a name of a class, it&#39;s its own special thing and we&#39;ll say more about exactly what it is in future videos, but the purpose of self type as we&#39;ve seen is to enable to type checker to accept more correct programs and effectively. What self type does is to increase the expressive power of the type system. 
+

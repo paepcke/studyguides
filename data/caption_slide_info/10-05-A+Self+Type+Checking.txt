@@ -1,0 +1,60 @@
+3.919
+slide
+Compilers 1 Self Type Checking AAAAAA an
+In this video we are going to use what we have learned so far about self-type to incorporate the self-type into the type checking rules for Cool. First let&#39;s 
+
+13.97
+slide
+SELF meaning depends on the enclosing class O M C i e T An expression e occurring in the body of C has static type T given a variable type environment 0 and method signatures M Self Type Checking
+remind ourselves what the type checking rules for Cool actually prove. So the sentences in the type logic look like this, and they prove things are the form that some expression has some type, and they do that under the assumption that object identifiers have some types given by O, methods have signatures given by M, and the enclosing class, the current class in which E sits, in, in which we are doing our type checking, is class C. And the whole reason for this additional piece 
+
+43.889
+slide
+The next step is to design type rules using SELF TVPE Most of the rules remain the same But use the new S and Iub O Id TD O M Ci el T0 T1 T0 W Self Type Checking
+here we haven&#39;t actually discussed this before why we needed this C. It is because self-types meaning depends on the enclosing class. So if you recall we. Introduce this notation, self type sub C to record and what class a particular occurrence of self-type sits. And this C in the environment is exactly that 
+
+66.49
+slide
+Self Type Checking Recall the old rule for dispatch O M C k e0 T0 O M C F e Tn M To f T1l1 rTnern ll Tn t SELFiTYPE Ti g 1 s i g n O MIC h eo f e1l Ien 5Tn 1l Alex Aiken
+subscript, it is tracking what class we are in. So when we see occurrences, an occurrence of self-type we know what kind of self-type. We&#39;re talking about so now I&#39;m ready to actually give the type rules that use self-type. And for the most part, 
+
+81.64
+slide
+If the return type of the method is SELF TYPE then the type of the dispatch is the type of the dispatch expression 0 M C r eo T0 O M C P en M To f Tl T SELFiTYPE 5 1 s i s n O M C F e0 f e1 en T0 Self Type Checking
+this is really easy, because the rules just remain the same. That is, they look 
+
+86.859
+writing
+
+the same, but they&#39;re actually a little bit different, because they use the new sub typing and least upper bound operations that we defined before. So for example, here is the rule for assignment, and this looks identical to the rule for assignment that we discussed several videos ago. But notice that this use of sub-typing here is now the extended definition of sub-typing to incorporate self-type. So now this rule works with self-type as well as with the normal class names. Now there are some rules that have change in the presents of self-type. And 
+
+122.319
+slide
+Self Type Checking Formal parameters cannot be SELF TYPE Actual arguments can be SELF TYPE The extended S relation handles this case The type T0 of the dispatch expression could be SELF TYPE Which class is used to find the declaration of f Answer it is safe to use the class where the dispatch appears Alex mm
+in particular the dispatch rules need to be updated. So here is the old rule for 
+
+127.63
+writing
+
+dynamic dispatch. And this rule, this part of the rule, actually doesn&#39;t change. It stays the same. But, I just wanna point out the essential restriction in this rule, is that the return type of the method could not be self-type. And that&#39;s actually the place where self-type buys us something. So the whole purpose of having self-type is to have methods who&#39;s return type is self-type. Because that&#39;s were we actually get the extra expressive power. And know we have to consider the case, now that we have self typing we done all this work, what if the methods return type is 
+
+159.629
+slide
+Self Type Checking Recall the original rule for static dispatch O M C eo To O M C 7 en Tn To S T M T f Tl I at SELF TYPE Ti 1 S i s n O M C L eD T f e1 en Alex Aiken
+self type. How are we going to type check that? Well here&#39;s the rule. So as usual, we type check the. The expression that we&#39;re dispatching to that&#39;s E zero and all 
+
+170.14
+slide
+If the return type of the method is SELF TYPE we have O M Cr e0 TG O M C L en T To 3 T M T f SELF TYPE g T 1 g i g n 0 M C T f el en 1T0 Self Type Checking
+of the argument and we just get their type. And their just type checked in the same environmental as the entire expression. And now just like before we look up in class T0 the type of E0, the method F and we get its signature. Okay. And then we have to check that the arguments conform. That every actual argument, E1 through En, has a type that&#39;s compatible with the corresponding formal 
+
+195.06
+slide
+Why is this rule correct If we dispatch a method returning SELF TYPE in class T we get back a T No SELF TYPE is the type of the self parameter which may be a subtype of the class in which the method appears Self Type Checking
+parameter in the method signature. And if all of that works out, then we can say that this dispatch is going to have type, oh look, T0. So where did that come from? Well, the return type is self-type. And so the result of this entire dispatch is going to be the type of whatever e zero was. E zero is the self-parameter. 
+
+216.93
+slide
+Self Type Checking There are two new rules using SELF TYPE O M C self SELFiTYPEC O M C new SELF TYPE 2 SELF TYPEC Alex Aiken
+Whatever type we got for e zero, that is a sound static type for the result of the entire expression. So we simply use the type of e zero as the type of the entire, static, the entire dynamic dispatch. Now recall the full parameters of a function cannot have type self type, but the actual arguments can have type self type, and the extended sub typing relationship will handle that case just fine. One interesting detail is that the dispatch expression itself could have a type, self-type. And, so what do I mean by that, well, let&#39;s think about E zero. Dispatching to method F, and then what happens if E zero has type self type? What if we can prove that E zero has type self type. And the problem here is that we need to lo okay up, in the, in the M environment, in the method environment, in some class. The definition of or the signature of method F/, we have to get back that type signature so we can do the rest of that type checking. And if E0 has type soft type normally we use the type of E0 to do that, to do that look up. What type do we use here? Well, if this whole thing is occurring in class C. If we have, if we&#39;re type checking in class C. &gt;&gt; You just put the line there. &gt;&gt; And it&#39;s safe and this is a soft type sub c and as always it&#39;s safe to replace soft type sub c by c. So, we&#39;ll just use the class c there. The correct class that we are type checking in to look up the method name test. We have to make similar changes to the rules for static dispatch. So, here is the original rule for the static dispatch and... And again, this part of the rule will not change. Uh... This... This handles the case, where the return type of the method is not the self-type. But if the return type of the method is self-typed, then the rule looks a little bit different. So, we, once again we type check, the, expression that we&#39;re dispatching to and all the arguments in the same environment as that of the entire expression. We have to check that the class we&#39;re dispatching to, the type t zero, is a sub type of the class, named in the static dispatch. We have to look up the method. It has to exist in that class that we&#39;re statically dispatching to. So we have to look up in class T, the method F and get its signature. And then we have to check that the actual arguments conform to the formal parameters of their types. If the types of the arguments match the types, the declared types of the formal parameters. And then, the only thing that&#39;s kind of curious about this rule, is that the result type here is, again, T zero. And, why is that right? It could have been a, a T. It could have been the type to which we statically dispatched. And it&#39;s not because self-type is the type of the self-parameter. And even though we&#39;re dispatching to a method in class T , the self-parameter still has type T0. And recall that T0 is a subtype of T. So we use the static dispatch to reach a method definition that&#39;s hidden potentially by overwrite, overwritten methods, in the subclasses. But that doesn&#39;t change the type of the self-parameter. The self-parameter still has type T0 even though we&#39;re running a method. Of the, in a superclass of G,0. There two new rules for self- type. One involves the self-object. So, the self-object has type self-type sub-C. And notice this is one of those places where we need to know the enclosing class. So, we know what kind of self-type we&#39;re referring to. And similarly there&#39;s a rule for allocating something of type self-type. So, a, the expression new self-type also produces something of type self-type sub-C. 
+

@@ -1,0 +1,75 @@
+3.53
+slide
+Compilers 1 Symbol Tables
+In this video we&#39;re going to talk about simple tables an important data structure in many filers before we talk about what a simple table is I want to talk about a 
+
+16.209
+slide
+Symbol Tables Much of semantic analysis can be expressed as a recursive descent of an AST Before Process an AST node n Recurse Process the children of n After Finish processing the AST node n When performing semantic analysis on a portion of the the AST we need to know which identifiers are defined
+generic algorithm that we&#39;re going to be seeing instances of over and over again for the rest of the course. So, a lot of semantic analysis and in fact, a lot of 
+
+25.09
+writing
+
+code generation can be expressed as a recursive descent of an abstract syntax tree. And the basic idea is that in each step we do the following three things: we&#39;re always processing a particular node in the tree, so if I draw a picture of the abstract syntax tree it might have a node and some sub-trees hanging off of it. And we may do some processing of the node before we do anything else. We arrive at the node say from the parents, we come to here for the parent, we do some processing in the node and I&#39;m just indicating that by coloring it blue to indicate that we did something here. And then we go off and we process the children. Okay. And after we process the children, after we come back to the node, we do something else. We may do some post processing of the node, and then we return. And of course, at the same time, when we&#39;ve gone off and processed the children, then we&#39;re processing all their nodes in the same pre imposed fashion, so they&#39;re getting the same treatment, with some stuff being done before each node is touched, and some stuff being done after all their children have been processed. Okay. And. There are many, many examples of this kind of an algorithm. This is called a recursive descent traversal of a tree. There are some instances in which we&#39;ll only process each note before we process the children. Some where we only process each note after we process all the children. Some where we do both as illustrated here in this little diagram And returning to the main topic of this particular video. When we&#39;re performing semantic analysis on a portion of the abstract syntax tree, we&#39;re going to know, need to know which identifiers are defined. Which identifiers are in scope? An exam ple of this kind of recursive descent strategy is how we can 
+
+130.59
+slide
+Symbol Tables Example the scope of let bindings is one subtree of the AST let x lnt e x is defined in subtree e ex Aiken
+process let bindings to track the set of variables that are in the scope. So we have our let node in the fx syntax tree and in one sub tree we have the 
+
+141.29
+writing
+
+initialization, and in the other sub tree we have e, the body of the let, and then this is a let for some particular variable, and let&#39;s just write that variable inside the parent node here. And so, when we begin processing of this O, just imagine that we&#39;re coming from above. So we&#39;re doing this. We&#39;re processing the abstract syntax tree recursively. And so we reach this point from some parent and. There&#39;s going to be a set of symbols that are currently in scope. That, that&#39;s some data structure that lives off to the side, And in fact, that&#39;s going to be our symbol table And what is going to happen here? Well, the first we&#39;re going to have to do is we&#39;re going to have to process, the initializer. We&#39;re going to need to know whether that&#39;s, what, whatever function we&#39;re doing on this, like type checking or whatever. We might get on and process that first And we&#39;ll pass the symbol table in. Okay. And then we&#39;re going to process the body of the let But when we do that we&#39;re going to pass in a set of symbols that are in scope. But now also X is now going to be in scope. So X is going to be added before we process E to the set of symbols. And then when we return from some expression E it&#39;s going to be removed. So, it&#39;ll restore the symbol table to its previous state. So that after we leave this sub tree of the abstract syntax tree, we only have the same set of symbols to find that we had before we entered it, So in the terminology of the three part 
+
+233.099
+slide
+Symbol Tables Recall let x Int 0 in e Idea Before processing e add definition of x to current definitions overriding any other definition of x Recurse After processing e remove definition of x and restore old definition of x A symbol table is a data structure that tracks the current bindings of identifiers Alex mm
+algorithm For recursive descent that we had on the first slide. What are we doing 
+
+238.049
+writing
+
+here? Well, before we process E we are going to add the definition of X to our list of current definitions. Already any other definition of X that might have been visible outside of that expression. Then we are going to recurse we going to process all. Of the abstract syntax tree no des in the body of the [inaudible], inside of E, and after we finish processing E, we are gonna remove the definition of X and restore whatever old definition of X we had. And a symbol table is just a data structure that accomplishes these things. It tracks the current bindings of identifiers at each point in the abstract syntax tree. For a very simple, simple table, we could just use a stack, and it would have just say the 
+
+277.58
+slide
+Symbol Tables For a simple symbol table we can use a stack Operations add symbol x push x and associated info such as type on the stack find symbol x search stack starting from top for x Return first x found or NULL if none found remove symbol pop the stack Alex mm
+following three operations, we could add a symbol. To the symbol table and that will 
+
+283.139
+writing
+
+just push the symbol, push the variable onto the stack and whatever other information we want, like its type. We&#39;ll have a find symbol operation that will look up the current definition for a symbol. And that can be done by simply searching the, the stack. Starting from the top for the first occurrence of the variable name, And this will automatically take care of the hiding of all definitions. So, for example, If we have a stack, let&#39;s say has X, Y and Z on it and then we come into a scope that introduces a new Y. Y on top and now if we search the stack we find this y first effectively hiding the old definition of y and then. When we leave a scope we can remove a symbol simple popping a stack. We&#39;ll just pop the current variable off of this stack. That will get rid of the most recent definition. And, and leave the stack, leave the set of definitions in the same state it was before we entered the node at all. So, this example, if we left the scope where the Y is defined and that was popped off the stack, So that was gone. Now, when we search for Y we&#39;ll find the outer definition. The one that was defined outside of that inner scope, So this simple symbol table works well for let, because the symbols rate at one at a time, and because declarations are 
+
+362.94
+slide
+Symbol Tables The simple symbol table works for let Symbols added one at a time Declarations are perfectly nested Alex mm
+perfectly nested. And in fact, the fact that declarations were perfectly nested is 
+
+368.24
+writing
+
+really the whole reason that we can use a stack/ So, take a look at this little example, let&#39;s say we have three nested lets, and here I&#39;m not showing the initializers in the less sub trees, and they, they don&#39;t matter, for what I want to illustrate. So if you think about it as we walk from the root here down to the inner bindings, we&#39;re pushing things on the stack, we&#39;ll push things on the stack in the order X, Y, and then Z. And then as we leave, after we&#39;ve processed this sub tree, and we&#39;re leaving it, walking back out, we&#39;re going to encounter these left scopes in exactly the reverse order. And popping them off the stack is exactly the order in which we want to remove them, and that&#39;s why a stack works well. So Structure works fine for lets, but for some other constructs it&#39;s not quite as good as it could be so for example consider the following piece of code. Illegal piece of code I should add. Let&#39;s say we&#39;re declaring a method, and it has two arguments named X. Now, that&#39;s not legal but in order to detect that it&#39;s not legal you. Why is it not legal? It&#39;s not legal cause they&#39;re both defined in the same scope. So, Functions, or methods, have the property that they introduce multiple names at once into the same scope. And it&#39;s not quite so easy, to use a stack, where we only add one thing at a time, or one name at a time, to model simultaneous definition in a scope. So this problem is easily solved with just a 
+
+465.389
+slide
+Symbol Tables enter scope start a new nested scope find symbol x finds current x or null add symbol x add a symbol x to the table check scope x true if x defined in current scope exit scope exit current scope A symbol table manageris supplied with the project
+slightly fancier simple table. Here is the revised interface now with five methods 
+
+470.319
+writing
+
+instead of three. The biggest change is that now we have explicit enter and exit scope functions, and so these functions start in the nested scope and exit the current scope. And the way you think about this is that our new structure is a stack of scopes, so [inaudible] is the entire scope and the inner scope. Is, are all the variables that are defined at the same level, within that single scope. So just like before, we have a find symbol operation that will look up a variable name, and it will return the current definition, or null if there is no definition in any scope that&#39;s currently available. We&#39;ll have an add symbol Operation that adds a new symbol to the table, and adds it in the curren t scope, so whatever, scope is at the top of our scope stack. And then one more new operation, check scope. Will return true if X is already defined in the current scope, So this, just to be clear what this does, this returns true if X is defined in exactly the top scope. It doesn&#39;t return true unless, X is defined in the scope at the very, very top of the stack. And this allows you to check for double definitions, So, for example, in the, code that I had before on the previous slide, if we had two declarations of X. How would we check this? Well, we would add X to the symbol table, in the current scope. And then we would ask, well, is X already defined in this scope for the second one? And this interface would be return true, and we would know to raise an error saying that X, had been multiply defined. Finally, let me just add that this is the simple table interface or something very close to this is the simple table interface that is supplied with the cool project. And there&#39;s already implementation of this interface provided if you don&#39;t want to write your own. So let&#39;s wrap up this video by talking a 
+
+581.6
+slide
+Symbol Tables Class names can be used before being defined We check class names using a symbol table or even in one pass Solution Pass 1 Gather all class names Pass 2 Do the checking Semantic analysis requires multiple passes Probably more than two Alex mm
+little bit about class names, which behave quite differently from the variables 
+
+585.64
+writing
+
+introduced in let bindings and in function parameters. In particular class names can be used before they are defined, as we discussed a few videos ago. And what that means is that we can&#39;t check class names, in a single pass. We can&#39;t just walk over the program once. And check that every class that is used is defined because we don&#39;t know that we&#39;ve seen all the definitions of the classes until we reach the very end of the program. And so there is a solution to this we have to make two passes over the program. In the first pass we gather all the class definitions, we go through and we find every place where a class is defined, record all of those names. And in the second pass we go through and look at the bodies of the classes and make sure they only use classes that were defined. And the lesson here, this is actually not complicated to implement I think it&#39;s quite clear. Should be quite clear how this will work. But the message here is that semantic analysis is going to require multiple passes, and probably more than two. And, in fact, you should not be afraid when structuring your compiler to add lots and lots of simple passes if that makes your life easier, so it&#39;s better to break something up into three or four simple passes rather than to have one very, very complicated pass where all the code is entangled. I think you&#39;ll find it much easier to debug your compilers if you&#39;re willing to make multiple passes over the input. 
+

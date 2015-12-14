@@ -1,0 +1,54 @@
+00:00:00
+slide
+Compilers 1 Optimization Overview
+00:00:25
+slide
+Optimization Overview Optimization is our last compiler phase Most complexity in modern compilers is in the optimizer Also by far the largest phase
+00:00:35
+writing
+
+00:03:15
+slide
+Optimization Overview P P 5 are register names Id dop d I id 2 0p id Constantscan replace id 5 I id 2 id Typical operators push id id 2 pop I if id relop id goto L L I jump L
+00:03:25
+writing
+
+00:04:15
+slide
+Optimization Overview A basic block is a maximal sequence of instructions with no labels except at the first instruction and no jumps except in the last instruction Alex mm
+00:04:20
+writing
+
+00:05:55
+slide
+Optimization Overview Consider the basic block 1 L 2 t 2 x 3 w t x 4 ifw 0goto L
+00:06:00
+writing
+
+00:07:20
+slide
+Optimization Overview A control flow graph is a directed graph with Basic blocks as nodes An edge from block A to block B if the execution can pass from the last instruction in A to the first instruction in B E g the last instructionin Aisjump LB E g execution can fall through from blockA to block B rm Amen
+00:08:10
+slide
+x x x i i 1 ifi 10gotoL Optimization Overview rm Amen
+00:08:30
+writing
+
+00:09:15
+slide
+Optimization Overview Optimization seeks to improve a resource utilization Execution time most often Code size Network messages sent etc Mex mm
+00:09:30
+writing
+
+00:10:45
+slide
+Optimization Overview For languages like C and Cool there are three granularities of optimizations
+00:10:55
+writing
+
+00:12:20
+slide
+Optimization Overview In practice often a conscious decision is made not to implement the fanciest optimization known Alex Aiken
+00:12:25
+writing
+

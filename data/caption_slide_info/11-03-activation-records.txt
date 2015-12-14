@@ -1,0 +1,95 @@
+3.81
+slide
+Compilers 1 Activation Records
+In the previous video, we talked about activation but we never said what information we actually need to keep for an activation. That&#39;s the topic of this video. An activation record is all the information that&#39;s needed to manage the 
+
+20.359
+slide
+Activation Records The information needed to manage one procedure activation is called an activation record AR orframe If procedure F calls G then activation record contains a mix of info about F and G
+execution of one procedure activation And often, this is also called a frame that 
+
+27.289
+writing
+
+means exactly the same thing as activation record. These are just two names for the same thing. Now one interesting fact about procedure activations is that they have more information in them than you might expect. So in particular, when a procedure f calls a procedure g, the activation record for g will actually have information not only about g but very frequently also about the calling function f. So typically the activation record for a procedure will contain a mixture of information both about that procedure and about the procedure that called it. Now, 
+
+66.21
+slide
+Activation Records F is until G completes at which point F resumes AR contains information needed to Complete execution of G Resume execution of F
+up this point, we haven&#39;t said why we need to keep information about activations at 
+
+70.81
+writing
+
+all And the reason is that there is some state associated with this procedure activation that is needed on order to properly execute the procedure and we have to track that somewhere and that&#39;s the activation record is gonna be forced. It&#39;s gonna be the whole, the information needed to properly execute the procedure. So, let&#39;s look at that in a little bit more detail. Let&#39;s consider this situation where a procedure F calls procedure G And what is going to happen so conceptually what happens when f calls g is that f is suspended. F is going to stop Executing while g is running. So g is going to be using the processor and all the resources of the machine. But when g completes, we wanna start executing f again, f is going to resume. And so in between, while g is running, we have to save the state of the procedure activation of f somewhere so that we can resume it properly and that&#39;s again what the activation record is for, And so g&#39;s activation record Is going to have to have information in it that will help us to complete the execution of g, so there will be some inform ation about g that we just need in order to run g, But also, g&#39;s activation record is going to have to store whatever we need to be able to resume the execution of procedure f. So let&#39;s work through an example. Here&#39;s one 
+
+152.14
+slide
+Class Main 50 I M 1 f x lnt nt 1 main nt AR for f x 0 then g else f l fi f 3 resu f can fra re fur 1 address Activation Records ex um
+of the programs that we looked at in the last video, and here is a design for a 
+
+158.14
+writing
+
+concrete activation record for the procedure f. So we&#39;ll have one position for the results of f that will hold the return value after we finished execution of f. There will be a position here for the argument to f so is it, so fy takes one parameter so I only need one word here to hold the, the argument to the function. There will be a control link so a pointer to the previous or the caller&#39;s activation and we&#39;ll also have a slot for the return address so the address in memory or the address of the instruction that we are supposed to jump to after the execution of f completes. So now let&#39;s just execute this program by hand and work out what the activation records will look like down the stack. So when the front program is first invoked, it will call main. There will be an activation record for main And we were not gonna worry about that. We&#39;re just gonna focus on that. So there&#39;s some stuff for main but we&#39;re not going to do to, to, to talk about that And then main is going to call f, all right And so, when main calls f, an activation record will be pushed onto the stack and we&#39;ll have four slots and or four fields for values. And what we&#39;re going now while the first lines for the result well is just starting to run if it&#39;s just beginning execution so there is nothing to put there at the moment. That gets filled in when f returns. The second position will hold the argument to f so that would be the number three. The third slot will hold the controlling so that&#39;s gonna point back. To the activation for main and the fourth position will hold the return address and this is actually not completely trivial because f is called in multiple places. So if you look at the program, there&#39;s a called f in main and there&#39;s a call to f inside of f itself. And so Depending on where the function is called from after that function completes with one or return to a different address. In the case of the main, when this called F completes we wanna return to the. Whatever instructions comes after the called f which is just gonna be something that wraps up the execution program since it&#39;s the only exit point of main inside of f. It&#39;s going to be the conclusion of the conditionals. So, this point double star here is going to be at whatever is left on the conditional then the return from F. And so depending on what F is called from, we wanna return to one of two different places, okay? So, in this case F is being called from main and so we&#39;ll put the single star address in that position of the activation record, All right? So then f is called the second time, the body of f executes and the argument three is not zero that&#39;s way we wined up calling f again but that means that another activation record will be pushed on to the stack that will also help for slots as an activation record for f (I probably should label these) so that&#39;s an activation of f, so it&#39;s also an activation of f. And what goes in this one well again the result doesn&#39;t have anything initially in it. The argument in this case would be two. The controlling in this case will point back to the previous activation of f and the return address in this case will be the point double star. So after two calls to f, this is what the stack will look like with this particular activation record design. So, here is the same picture, just running a bit more 
+
+388.12
+slide
+Activation Records Max tum
+neatly, and there&#39;s one additional we want point out which is at this stack of 
+
+393.039
+writing
+
+activation records and let me. Delineate the activation records here Is not as extract as the kinds of stacks who were probably taught about in a data structures class if you&#39;ve had such a class. So here, there are distinct activation records on the stack and we treat them as such, in the Runtime system we&#39;ll treat them as such But this is also like one gigantic array. All o f this Data is just laid out in contiguous memory. These were all contiguous addresses and one is activation record here just follows on with the next address merely after the previous activation record. And compiler is, compiler writer will often play tricks to exploit the facts that these activations are adjacent to each other in memory and we&#39;ll see one such potential trick in just a moment. To summarize some of the highlights of these examples so far, I wanna repeat the main is not very 
+
+453.08
+slide
+Activation Records Main has no argument or local variables and its result is never used its AR is uninteresting and are return addresses of the invocations off The return address is where execution resumes after a procedure call finishes This is only one of many possible AR designs Would also work for C Pascal FORTRAN etc
+interesting. So it has no argument or local variables and if results is never 
+
+456.629
+writing
+
+used And so while it does have an activation record, we&#39;re just not focusing on that and we&#39;re not concerning ourselves with what goes in at activation record. We&#39;re just focusing on the activation record for f. Just be true this clear, the start and double star that I use in the example, these are addresses in memory. These are actual memory addresses and they refer to addresses of code. Those are the addresses of the instructions that come after they call f because that&#39;s the place where f would return to. And finally, I want to stress that this really is only one of many possible activation record designs. You can design a different activation record for f that has had different information that would work just fine depending on the structure of the rest of the cogenerator in the runtime system. So, in particular many compilers don&#39;t use the controlling because they don&#39;t need inexpensive link to be able to find the calling or the activation record of the calling procedure and in fact, in your class project, the Khul compiler you won&#39;t be using a control link Most. Activation records won&#39;t have the return value on the activation record because it&#39;d be more efficient and convenient to return it in the register. All right, this is just one possible design and with and you could just design other activation records that will work just fine. The important thing about the activation record is that it just have to have sufficient information in it to e nable the generated code to properly execute the procedure that&#39;s being called And also to resume execution of the calling procedure. 
+
+565.269
+slide
+Activation Records The picture shows the state after the call to the 2nd invocation off returns
+So far, we&#39;ve only looked at the procedure call for this activation record. We haven&#39;t talked about what happens when activations return. So let&#39;s consider what 
+
+574.49
+writing
+
+happens in our example after the second called f that this one this activation down here returns. So what&#39;s going to happen is we&#39;re going to make the caller, the current activation so it&#39;ll actually become the top of the stack so I&#39;ll have this big fat green error here indicated that this is now the current activation this one up here. Okay? So, this is the call, this is the what was the caller and is now going to resume executing. And the interesting thing here is to note that, like I said before, this isn&#39;t as abstract as a stack in a data structures course. So while we have restored this as the active procedure, this data down here, this, this activation that was running is still there in memory. And in fact we can go and look at it if we want to. And the way I set this example up in fact we need to because the results of the procedure that we called is now stored here. In the first word of this activation, All right, So when f begins executing again, is going to have to look up that result in order to know what the result was of the procedure levels called. So the advantage of placing the return value in the first position in 
+
+651.69
+slide
+Activation Records The advantage of placing the return value lst in a frame is that the caller can find it at a fixed offset from its own frame There is nothing magic about this organization Can rearrange order of frame elements Can divide caller callee responsibilities differently An organization is better if it improves execution speed or simplifies code generation Alex mm
+the frame that the call can find it at a fix offset from its own frame. Let&#39;s back up and just see that so here when the second call to f has returned and the, the 
+
+663.68
+slide
+Activation Records The picture shows the state after the call to the 2nd invocation off returns
+first call here has resumed executing this call, the code for this call will know 
+
+671.149
+writing
+
+that the science of this activation record is four. There are four words in this activation record and so they can find the result to the procedure that it called in the four + one position and five words passed the top of the frame. So in particular, they&#39;ll be able to find this where in memory and even though this has been popped out of the stack as I said before, that data is still there at least until another procedure is called. And so, if we immediately read the result of the function call after we return from the function, we&#39;ll be able to pick up that result and then use it in the continuation of the execution of the call in procedure. 
+
+710.389
+slide
+Activation Records The advantage of placing the return value lst in a frame is that the caller can find it at a fixed offset from its own frame There is nothing magic about this organization Can rearrange order of frame elements Can divide caller callee responsibilities differently An organization is better if it improves execution speed or simplifies code generation
+And once again, I just wanna stress, I know this is a couple of times, but it&#39;s very important that there&#39;s absolutely nothing magic about this organization. We could rearrange the order of elements in the frame. We could divide the responsibility between the caller and the calling differently And really the only metric here is that one organization is better than another if it results and faster code or in a simpler code generator And I know I also mentioned this before but 
+
+735.67
+slide
+Activation Records Real compilers hold as much of the frame as possible in registers Especially the method result and arguments
+it&#39;s also an important point in a production compiler we would produce much of the frame contents as possible in registers And in particular, there would be a effort to pass the method results and the method arguments in registers because those are excess so frequently. Finally to some up our discussion of activations and activation records, the issue is that the compiler has to determine at compile time, 
+
+760.279
+slide
+Activation Records The compiler must determine at compile time the layout of activation records and generate code that correctly accesses locations in the activation record
+okay so this happens statically. The layout of the activation record and also has to generate code that correctly accesses the locations in that activation record. And what does this mean, this mean that the activation record layout and the code generator have to be designed together. Okay. So, you can&#39;t just assign your code generator and then figure out later what your activation record layout is gonna be or vice versa, This two things needs to designed together because they depend on each other. 
+

@@ -1,0 +1,33 @@
+00:00:00
+slide
+Compilers 1 Java Arrays
+00:00:10
+slide
+Assume B A What happens in the following B b new B 10 Al 8 b a 0 new A b 0 aMethodNotDeclaredlnAO Java Arrays ex Aiken
+00:00:15
+writing
+
+00:02:00
+slide
+B A if B inherits from A Java Arrays as in Cool ex Nken
+00:02:10
+writing
+
+00:03:05
+slide
+B b new B 10 All a b a O new A b 0 aMethodNotDeclaredlnA Java Arrays ex um
+00:03:15
+writing
+
+00:06:15
+slide
+Standard solution Disallow subtyping through arrays B A ifBinherits fromA C A ifC BandB A B A ifB A Java Arrays ex mm
+00:06:20
+writing
+
+00:07:25
+slide
+Java Arrays Java fixes the problem by checking each array assignment at runtime for type correctness Is the type of the object being assigned compatible with the type of the array
+00:07:40
+writing
+

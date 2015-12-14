@@ -1,0 +1,27 @@
+00:00:00
+slide
+Compilers 1 Analysis of Loops
+00:00:20
+slide
+Analysis of Loops To understand why we need J ook at a loop X 3 B 0 Y Z W
+00:00:25
+writing
+
+00:02:50
+slide
+Analysis of Loops Consider the statement Y O To compute whether X is constant at this point we need to know whether X is constant at the two predecessors 3 2 X ex Aiken
+00:03:15
+slide
+Analysis of Loops Because of cycles all points must have values at all times Intuitively assigning some initial value allows the analysis to break cycles The initial value J means So far as we know control never Alex um
+00:03:20
+slide
+Analysis of Loops Because of cycles all points must have values at all times Intuitively assigning some initial value allows the analysis to break cycles The initial value L means So far as we know control never Alex um
+00:03:25
+writing
+
+00:04:15
+slide
+Analysis of Loops X B 0 Alex mm
+00:04:35
+writing
+
