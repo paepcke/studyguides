@@ -1,0 +1,380 @@
+01_01_Introduction.txt,application developer,True,0
+01_01_Introduction.txt,concurrency control,True,0
+01_01_Introduction.txt,data definition language,False,0
+01_01_Introduction.txt,data manipulation language,False,3
+01_01_Introduction.txt,data model,True,0
+01_01_Introduction.txt,database administrator,True,0
+01_01_Introduction.txt,database designer,True,0
+01_01_Introduction.txt,database implementer,True,0
+01_01_Introduction.txt,database management system,True,1
+01_01_Introduction.txt,database systems,True,0
+01_01_Introduction.txt,databases,False,5
+01_01_Introduction.txt,declarative,True,0
+01_01_Introduction.txt,framework,False,0
+01_01_Introduction.txt,graph data model,True,0
+01_01_Introduction.txt,hierarchical structure,False,4
+01_01_Introduction.txt,middle-ware,True,0
+01_01_Introduction.txt,physical data independence,True,0
+01_01_Introduction.txt,relational data model,True,2
+01_01_Introduction.txt,schema,True,0
+02_01_The_Relational_Model.txt,attributes,True,5
+02_01_The_Relational_Model.txt,domain,True,0
+02_01_The_Relational_Model.txt,enumerated domain,True,0
+02_01_The_Relational_Model.txt,high level languages,True,0
+02_01_The_Relational_Model.txt,key,True,0
+02_01_The_Relational_Model.txt,null,True,0
+02_01_The_Relational_Model.txt,queried,True,0
+02_01_The_Relational_Model.txt,query languages,True,2
+02_01_The_Relational_Model.txt,relation,True,0
+02_01_The_Relational_Model.txt,relational model,True,1
+02_01_The_Relational_Model.txt,schema,True,4
+02_01_The_Relational_Model.txt,tuples,True,3
+02_02_Querying_Relational_Databases.txt,ad hoc queries,True,1
+02_02_Querying_Relational_Databases.txt,closure,True,5
+02_02_Querying_Relational_Databases.txt,compositionality,True,0
+02_02_Querying_Relational_Databases.txt,data definition language,False,0
+02_02_Querying_Relational_Databases.txt,data manipulation language,True,0
+02_02_Querying_Relational_Databases.txt,query language,False,0
+02_02_Querying_Relational_Databases.txt,querying,True,0
+02_02_Querying_Relational_Databases.txt,relation,True,4
+02_02_Querying_Relational_Databases.txt,relational algebra,True,3
+02_02_Querying_Relational_Databases.txt,schema,True,0
+02_02_Querying_Relational_Databases.txt,sql,True,2
+03_01_Well_Formed_XML_Part_1.txt,attributes,False,5
+03_01_Well_Formed_XML_Part_1.txt,data model,True,0
+03_01_Well_Formed_XML_Part_1.txt,document model,True,0
+03_01_Well_Formed_XML_Part_1.txt,hierarchy,True,0
+03_01_Well_Formed_XML_Part_1.txt,implied ordering,True,4
+03_01_Well_Formed_XML_Part_1.txt,nesting development,False,3
+03_01_Well_Formed_XML_Part_1.txt,streaming format,True,1
+03_01_Well_Formed_XML_Part_1.txt,strengths,True,0
+03_01_Well_Formed_XML_Part_1.txt,tagged element,False,2
+03_01_Well_Formed_XML_Part_1.txt,xml,True,0
+03_01_Well_Formed_XML_Part_2.txt,document object model,True,2
+03_01_Well_Formed_XML_Part_2.txt,extensible style sheet language,True,4
+03_01_Well_Formed_XML_Part_2.txt,parsed xml,False,1
+03_01_Well_Formed_XML_Part_2.txt,sax,True,3
+03_02_DTDs_IDs_and_IDREFs.txt,document type descriptors,True,1
+03_02_DTDs_IDs_and_IDREFs.txt,kleene,False,3
+03_02_DTDs_IDs_and_IDREFs.txt,plural id refs,False,5
+03_02_DTDs_IDs_and_IDREFs.txt,singular id ref,False,4
+03_02_DTDs_IDs_and_IDREFs.txt,xml schema,False,0
+03_02_DTDs_IDs_and_IDREFs.txt,xml schema descriptions,False,2
+03_02_XML_Schema.txt,key declarations,False,4
+03_02_XML_Schema.txt,references,True,5
+03_02_XML_Schema.txt,typed values,False,3
+03_02_XML_Schema.txt,xml schema,True,1
+03_02_XML_Schema.txt,xml schema descriptor,False,2
+04_01_Introduction_to_JSON_Data_Part_1.txt,arrays,True,3
+04_01_Introduction_to_JSON_Data_Part_1.txt,json,True,1
+04_01_Introduction_to_JSON_Data_Part_1.txt,objects,True,2
+04_01_Introduction_to_JSON_Data_Part_1.txt,property,True,4
+04_01_Introduction_to_JSON_Data_Part_2.txt,impedance mismatch,True,2
+04_01_Introduction_to_JSON_Data_Part_2.txt,json query,False,3
+04_01_Introduction_to_JSON_Data_Part_2.txt,validity,True,1
+04_02_JSON_Demo.txt,array,True,2
+04_02_JSON_Demo.txt,json schema,True,5
+04_02_JSON_Demo.txt,object,True,1
+04_02_JSON_Demo.txt,reserved word,True,3
+04_02_JSON_Demo.txt,syntactic correctness,True,4
+05_01_Select_Project_Join_Part_1.txt,key,True,3
+05_01_Select_Project_Join_Part_1.txt,project operator,True,5
+05_01_Select_Project_Join_Part_1.txt,relational algebra,True,1
+05_01_Select_Project_Join_Part_1.txt,relational algebra query language,False,2
+05_01_Select_Project_Join_Part_1.txt,select operator,True,4
+05_01_Select_Project_Join_Part_2.txt,cartesian product,True,2
+05_01_Select_Project_Join_Part_2.txt,duplicates,True,1
+05_01_Select_Project_Join_Part_3.txt,natural join,True,1
+05_01_Select_Project_Join_Part_4.txt,relational algebra,True,3
+05_01_Select_Project_Join_Part_4.txt,theta,True,2
+05_01_Select_Project_Join_Part_4.txt,theta join,True,1
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,difference operator,True,2
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,intersection operator,False,4
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,join back,True,3
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,union operator,True,1
+05_02_Set_Operators_Renaming_Notation_Part_2.txt,rename operator,True,1
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,assignment statements,True,1
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,cross-product,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,expression trees,True,2
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,intersect,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,minus,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,natural join,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,project operator,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,relation name,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,relational algebra,True,3
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,rename operator,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,select operator,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,theta join,True,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,union,True,0
+06_01_Introduction_to_SQL.txt,data definition language,True,2
+06_01_Introduction_to_SQL.txt,data manipulation language,True,3
+06_01_Introduction_to_SQL.txt,select statement,True,4
+06_01_Introduction_to_SQL.txt,sql,True,1
+06_02_Basic_SELECT_Statement.txt,distinct,True,2
+06_02_Basic_SELECT_Statement.txt,join,True,0
+06_02_Basic_SELECT_Statement.txt,like predicate,True,5
+06_02_Basic_SELECT_Statement.txt,order by clause,True,4
+06_02_Basic_SELECT_Statement.txt,select from where structure,True,0
+06_02_Basic_SELECT_Statement.txt,select star,True,0
+06_02_Basic_SELECT_Statement.txt,select statement,True,1
+06_02_Basic_SELECT_Statement.txt,unordered model,True,3
+06_03_Table_Variables_and_Set_Operators.txt,except,True,3
+06_03_Table_Variables_and_Set_Operators.txt,set operators,True,2
+06_03_Table_Variables_and_Set_Operators.txt,table variables,True,1
+06_04_Subqueries_in_FROM_and_SELECT.txt,sub queries,False,1
+06_04_Subqueries_in_WHERE_Clause.txt,all,True,4
+06_04_Subqueries_in_WHERE_Clause.txt,correlated reference,False,3
+06_04_Subqueries_in_WHERE_Clause.txt,disambiguating attributes,True,1
+06_04_Subqueries_in_WHERE_Clause.txt,not in,True,2
+06_05_Aggregation.txt,aggregation,False,1
+06_05_Aggregation.txt,aggregation functions,True,0
+06_05_Aggregation.txt,average aggregate function,True,0
+06_05_Aggregation.txt,count function,True,4
+06_05_Aggregation.txt,group by clause,False,0
+06_05_Aggregation.txt,grouping,True,5
+06_05_Aggregation.txt,having clause,True,0
+06_05_Aggregation.txt,having condition,True,2
+06_05_Aggregation.txt,where condition,True,3
+06_06_NULL_Values.txt,null,True,1
+06_06_NULL_Values.txt,tautology,True,2
+06_07_Data_Modification_Statements.txt,delete data,True,2
+06_07_Data_Modification_Statements.txt,inserting data,True,1
+06_07_Data_Modification_Statements.txt,updating existing data,True,3
+06_08_The_JOIN_Family_of_Operators.txt,inner join,True,1
+06_08_The_JOIN_Family_of_Operators.txt,interjoin,True,3
+06_08_The_JOIN_Family_of_Operators.txt,joined family of operators,False,0
+06_08_The_JOIN_Family_of_Operators.txt,natural join,True,2
+06_08_The_JOIN_Family_of_Operators.txt,outer join,True,4
+07_01_Functional_Dependencies_Part_5.txt,armstrong's axioms,True,1
+07_01_Functional_Dependencies_Part_5.txt,functional dependencies,False,2
+07_01_Relational_Design_Overview_Part_1.txt,anomoly,True,2
+07_01_Relational_Design_Overview_Part_1.txt,designing schemas,False,1
+07_01_Relational_Design_Overview_Part_2.txt,automatic decomposition,True,0
+07_01_Relational_Design_Overview_Part_2.txt,boyce codd normal form,True,2
+07_01_Relational_Design_Overview_Part_2.txt,boyse codd normal form,True,0
+07_01_Relational_Design_Overview_Part_2.txt,decomposition,True,1
+07_01_Relational_Design_Overview_Part_2.txt,first normal form,True,0
+07_01_Relational_Design_Overview_Part_2.txt,fourth normal form,True,3
+07_01_Relational_Design_Overview_Part_2.txt,second normal form,True,0
+07_01_Relational_Design_Overview_Part_2.txt,third normal form,True,4
+07_01_Relational_Design_Overview_Part_3.txt,multi-value dependencies,False,0
+07_01_Relational_Design_Overview_Part_3.txt,multi-value dependency,True,1
+07_02_Functional_Dependencies_Part_1.txt,functional dependencies,False,1
+07_02_Functional_Dependencies_Part_1.txt,functional dependency,True,3
+07_02_Functional_Dependencies_Part_1.txt,normal form,True,2
+07_02_Functional_Dependencies_Part_3.txt,closure,True,2
+07_02_Functional_Dependencies_Part_3.txt,combining rule,True,5
+07_02_Functional_Dependencies_Part_3.txt,keys,True,1
+07_02_Functional_Dependencies_Part_3.txt,nontrivial functional dependency,False,0
+07_02_Functional_Dependencies_Part_3.txt,splitting rule,True,4
+07_02_Functional_Dependencies_Part_3.txt,trivial functional dependency,False,3
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,boyce codd normal form,True,2
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,decomposition,False,1
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,key,False,4
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,violation,True,3
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,fourth normal form,False,1
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,mega relations,False,2
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,forth normal form,True,5
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,intersection rule,True,3
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multi-valued dependency,True,2
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,splitting rule,True,4
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,trivial multi valued dependency,True,1
+08_01_XPath_Introduction.txt,double slash construct,True,4
+08_01_XPath_Introduction.txt,xpath,True,1
+08_01_XPath_Introduction.txt,xquery,True,3
+08_01_XPath_Introduction.txt,xslt,True,2
+08_02_XPath_Demo.txt,double slash operator,False,0
+08_02_XPath_Demo.txt,following sibling,True,3
+08_02_XPath_Demo.txt,implicitly existentially quantified,True,1
+08_02_XPath_Demo.txt,navigation axis,False,2
+08_02_XPath_Demo.txt,single slash operator,True,0
+08_02_XPath_Demo.txt,universal quantification,True,4
+08_03_XQuery_Introduction.txt,flwor expression,False,2
+08_03_XQuery_Introduction.txt,for clause,True,3
+08_03_XQuery_Introduction.txt,let clause,True,4
+08_03_XQuery_Introduction.txt,order by,True,6
+08_03_XQuery_Introduction.txt,return clause,True,7
+08_03_XQuery_Introduction.txt,where clause,True,5
+08_03_XQuery_Introduction.txt,xquery,True,1
+08_04_XQuery_Demo.txt,distinct values,True,2
+08_04_XQuery_Demo.txt,flwor expression,True,1
+08_04_XQuery_Demo.txt,self join,True,3
+08_05_XSLT.txt,recursively applying templates,True,5
+08_05_XSLT.txt,template,False,3
+08_05_XSLT.txt,template matching,True,4
+08_05_XSLT.txt,xsl,False,2
+08_05_XSLT.txt,xslt,False,1
+08_05_XSLT.txt,xslt language,True,0
+09_01_UML_Data_Modeling.txt,aggregation,True,7
+09_01_UML_Data_Modeling.txt,association classes,True,5
+09_01_UML_Data_Modeling.txt,associations,True,0
+09_01_UML_Data_Modeling.txt,composition,True,6
+09_01_UML_Data_Modeling.txt,data modeling,False,1
+09_01_UML_Data_Modeling.txt,entity relationship model,True,2
+09_01_UML_Data_Modeling.txt,many-to-one,False,0
+09_01_UML_Data_Modeling.txt,multiplicity,False,4
+09_01_UML_Data_Modeling.txt,one-to-one,False,0
+09_01_UML_Data_Modeling.txt,primary key,False,0
+09_01_UML_Data_Modeling.txt,sub class,True,0
+09_01_UML_Data_Modeling.txt,super class,False,0
+09_01_UML_Data_Modeling.txt,unified modeling language,True,3
+09_02_UML_to_Relations_Part_1.txt,applied,True,2
+09_02_UML_to_Relations_Part_1.txt,translating designs,False,1
+09_02_UML_to_Relations_Part_2.txt,applied relation,False,2
+09_02_UML_to_Relations_Part_2.txt,association classes,True,1
+09_02_UML_to_Relations_Part_2.txt,self associations,False,3
+09_02_UML_to_Relations_Part_3.txt,aggregation,False,2
+09_02_UML_to_Relations_Part_3.txt,composition,False,1
+10_01_Indexes_Part_1.txt,balance trees,True,2
+10_01_Indexes_Part_1.txt,hash tables,True,3
+10_01_Indexes_Part_1.txt,index,True,1
+10_01_Indexes_Part_1.txt,indexes,True,0
+10_01_Indexes_Part_2.txt,physical design advisor,True,1
+11_01_Introduction_to_Transactions.txt,transactions,False,0
+11_02_Transactions_Properties_Part_1.txt,acid properties,False,2
+11_02_Transactions_Properties_Part_1.txt,isolation,True,3
+11_02_Transactions_Properties_Part_1.txt,serializability,True,4
+11_02_Transactions_Properties_Part_1.txt,transaction,True,0
+11_02_Transactions_Properties_Part_1.txt,transactions,False,1
+11_02_Transactions_Properties_Part_2.txt,atomicity,True,2
+11_02_Transactions_Properties_Part_2.txt,durability,True,1
+11_02_Transactions_Properties_Part_3.txt,consistency,True,2
+11_02_Transactions_Properties_Part_3.txt,transaction rollback,False,1
+11_03_Isolation_Levels_Part_1.txt,dirty read,True,0
+11_03_Isolation_Levels_Part_1.txt,dirty reads,True,4
+11_03_Isolation_Levels_Part_1.txt,isolation level,True,0
+11_03_Isolation_Levels_Part_1.txt,isolation levels,True,1
+11_03_Isolation_Levels_Part_1.txt,read uncommitted,True,5
+11_03_Isolation_Levels_Part_1.txt,serializability,True,3
+11_03_Isolation_Levels_Part_1.txt,transaction,True,0
+11_03_Isolation_Levels_Part_1.txt,transactions,True,2
+11_03_Isolation_Levels_Part_2.txt,global serializability,False,2
+11_03_Isolation_Levels_Part_2.txt,read committed,True,1
+11_03_Isolation_Levels_Part_3.txt,global serializability,False,3
+11_03_Isolation_Levels_Part_3.txt,phantom tuples,True,4
+11_03_Isolation_Levels_Part_3.txt,repeatable read,True,1
+11_03_Isolation_Levels_Part_3.txt,serializable,False,2
+11_03_Isolation_Levels_Part_4.txt,isolation levels,False,2
+11_03_Isolation_Levels_Part_4.txt,phantom tuples,False,6
+11_03_Isolation_Levels_Part_4.txt,read committed,False,4
+11_03_Isolation_Levels_Part_4.txt,read only transaction,True,1
+11_03_Isolation_Levels_Part_4.txt,read uncommitted,False,3
+11_03_Isolation_Levels_Part_4.txt,repeatable reads,False,5
+12_01_Motivation_and_Overview.txt,consistency,False,0
+12_01_Motivation_and_Overview.txt,constraints,True,1
+12_01_Motivation_and_Overview.txt,correctness criteria,False,0
+12_01_Motivation_and_Overview.txt,data entry errors,False,0
+12_01_Motivation_and_Overview.txt,deferred constraint checking,True,0
+12_01_Motivation_and_Overview.txt,expressiveness,False,0
+12_01_Motivation_and_Overview.txt,foreign key constraints,False,6
+12_01_Motivation_and_Overview.txt,general assertions,True,0
+12_01_Motivation_and_Overview.txt,integrity constraints,True,3
+12_01_Motivation_and_Overview.txt,non-null constraint,False,4
+12_01_Motivation_and_Overview.txt,referential integrity,False,5
+12_01_Motivation_and_Overview.txt,triggers,True,2
+12_01_Motivation_and_Overview.txt,tuple-based constraint,False,7
+12_01_Motivation_and_Overview.txt,unconditional action rules,False,0
+12_02_Constraints_of_Several_Types_Part_1.txt,assertion,True,0
+12_02_Constraints_of_Several_Types_Part_1.txt,attribute based constraint,True,6
+12_02_Constraints_of_Several_Types_Part_1.txt,check constraints,False,8
+12_02_Constraints_of_Several_Types_Part_1.txt,constraints,False,1
+12_02_Constraints_of_Several_Types_Part_1.txt,foreign key constraints,False,2
+12_02_Constraints_of_Several_Types_Part_1.txt,general assertions,False,9
+12_02_Constraints_of_Several_Types_Part_1.txt,key constraint,True,0
+12_02_Constraints_of_Several_Types_Part_1.txt,key constraints,False,3
+12_02_Constraints_of_Several_Types_Part_1.txt,multi-attribute keys,False,5
+12_02_Constraints_of_Several_Types_Part_1.txt,primary key,True,4
+12_02_Constraints_of_Several_Types_Part_1.txt,referential integrity constraint,True,10
+12_02_Constraints_of_Several_Types_Part_1.txt,tuple based constraints,True,7
+12_02_Constraints_of_Several_Types_Part_2.txt,referential integrity,False,1
+12_03_Referential_Integrity_Part_1.txt,integrity constraints,True,2
+12_03_Referential_Integrity_Part_1.txt,referential integrity,True,1
+12_03_Referential_Integrity_Part_2.txt,foreign key,False,2
+12_03_Referential_Integrity_Part_2.txt,foreign key constraints,False,3
+12_03_Referential_Integrity_Part_2.txt,referential integrity constraints,False,1
+12_03_Referential_Integrity_Part_3.txt,cascade,True,3
+12_03_Referential_Integrity_Part_3.txt,referential integrity,False,1
+12_03_Referential_Integrity_Part_3.txt,referential integrity violations,False,4
+12_03_Referential_Integrity_Part_3.txt,set null,True,2
+12_04_Triggers_Introduction.txt,cycle,False,3
+12_04_Triggers_Introduction.txt,referencing variables,True,2
+12_04_Triggers_Introduction.txt,trigger,True,0
+12_04_Triggers_Introduction.txt,triggers,True,1
+12_05_Triggers_Demo_Part_1.txt,mysql,False,3
+12_05_Triggers_Demo_Part_1.txt,postgres,False,1
+12_05_Triggers_Demo_Part_1.txt,referencing clause,False,5
+12_05_Triggers_Demo_Part_1.txt,sqlite,False,2
+12_05_Triggers_Demo_Part_1.txt,triggering event,False,4
+12_05_Triggers_Demo_Part_2.txt,nested invocation,False,2
+12_05_Triggers_Demo_Part_2.txt,recursive triggers,True,1
+13_01_Defining_and_Using_Views.txt,conceptual layer,True,3
+13_01_Defining_and_Using_Views.txt,disk pages,True,2
+13_01_Defining_and_Using_Views.txt,logical layer,True,4
+13_01_Defining_and_Using_Views.txt,temporary table,False,5
+13_01_Defining_and_Using_Views.txt,views,True,1
+13_02_View_Modifications_Introduction_Part_1.txt,modifying views,False,1
+13_02_View_Modifications_Introduction_Part_2.txt,rewriting process,False,1
+13_03_View_Modifications_Using_Triggers.txt,modifying views through triggers,False,1
+13_04_Automatic_View_Modifications.txt,automatic view modifications,False,1
+13_04_Automatic_View_Modifications.txt,updatable views,False,2
+13_05_Materialized_Views_Part_1.txt,materialized views,True,1
+13_05_Materialized_Views_Part_1.txt,virtual view,True,0
+13_05_Materialized_Views_Part_1.txt,virtual views,False,2
+14_01_Authorization_Part_1.txt,authorization,True,2
+14_01_Authorization_Part_1.txt,database authorization,False,1
+14_01_Authorization_Part_1.txt,privileges,False,3
+14_01_Authorization_Part_2.txt,grant privileges on the view,True,1
+14_01_Authorization_Part_3.txt,cascade option,False,4
+14_01_Authorization_Part_3.txt,grant option,True,2
+14_01_Authorization_Part_3.txt,grant statement,False,1
+14_01_Authorization_Part_3.txt,revoke privileges,True,3
+15_01_Basic_Recursive_WITH_Statement_Introduction.txt,recursion,False,1
+15_01_Basic_Recursive_WITH_Statement_Introduction.txt,recursive queries,False,4
+15_01_Basic_Recursive_WITH_Statement_Introduction.txt,turing completeness,True,3
+15_01_Basic_Recursive_WITH_Statement_Introduction.txt,union operator,False,5
+15_01_Basic_Recursive_WITH_Statement_Introduction.txt,with statement,True,2
+15_02_Basic_Recursive_WITH_Statement_Demo.txt,recursion,False,2
+15_02_Basic_Recursive_WITH_Statement_Demo.txt,recursive constructs,False,1
+15_02_Basic_Recursive_WITH_Statement_Demo.txt,recursively defined relation,False,4
+15_02_Basic_Recursive_WITH_Statement_Demo.txt,recursively defined union,False,5
+15_02_Basic_Recursive_WITH_Statement_Demo.txt,transitive closure,False,3
+15_03_Nonlinear_and_Mutual_Recursion_Part_1.txt,linear recursion,False,2
+15_03_Nonlinear_and_Mutual_Recursion_Part_1.txt,nonlinear recursion,False,1
+15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,mutual recursion,True,1
+15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,negative dependence,False,2
+15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,negative subqueries,False,3
+16_01_Introduction_to_OLAP_Part_1.txt,data warehousing,True,3
+16_01_Introduction_to_OLAP_Part_1.txt,decision support systems,True,4
+16_01_Introduction_to_OLAP_Part_1.txt,materialized views,False,0
+16_01_Introduction_to_OLAP_Part_1.txt,multidimensional olap,True,0
+16_01_Introduction_to_OLAP_Part_1.txt,olap,True,0
+16_01_Introduction_to_OLAP_Part_1.txt,olap queries,False,6
+16_01_Introduction_to_OLAP_Part_1.txt,online analytical processing,False,1
+16_01_Introduction_to_OLAP_Part_1.txt,online transaction processing,True,2
+16_01_Introduction_to_OLAP_Part_1.txt,star schema,True,5
+16_01_Introduction_to_OLAP_Part_2.txt,drill down,True,1
+16_01_Introduction_to_OLAP_Part_2.txt,rollup,True,2
+16_01_Introduction_to_OLAP_Part_2.txt,with cube,True,3
+16_01_Introduction_to_OLAP_Part_2.txt,with rollup,False,4
+16_02_OLAP_Demo.txt,cube query,False,5
+16_02_OLAP_Demo.txt,dicing,True,3
+16_02_OLAP_Demo.txt,roll-up operation,False,4
+16_02_OLAP_Demo.txt,slicing,True,2
+16_02_OLAP_Demo.txt,slicing and dicing,False,1
+17_01_NoSQLMotivation.txt,convenience,True,2
+17_01_NoSQLMotivation.txt,nosql,True,1
+17_01_NoSQLMotivation.txt,reliability,True,4
+17_01_NoSQLMotivation.txt,safety,True,3
+17_01_NoSQLOverview.txt,column stores,True,0
+17_01_NoSQLOverview.txt,driad,True,8
+17_01_NoSQLOverview.txt,driadlink,True,9
+17_01_NoSQLOverview.txt,graph database system,True,11
+17_01_NoSQLOverview.txt,hadoop,False,3
+17_01_NoSQLOverview.txt,hive,True,6
+17_01_NoSQLOverview.txt,key value stores,False,10
+17_01_NoSQLOverview.txt,map function,True,4
+17_01_NoSQLOverview.txt,mapreduce,False,2
+17_01_NoSQLOverview.txt,nosql,True,1
+17_01_NoSQLOverview.txt,pig,True,7
+17_01_NoSQLOverview.txt,reduce function,True,5
+17_01_NoSQLOverview.txt,resource description framework,False,12
