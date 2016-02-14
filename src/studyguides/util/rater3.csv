@@ -1,0 +1,120 @@
+02_01_The_Relational_Model.txt,relational model,,1
+02_01_The_Relational_Model.txt,relation,,2
+02_01_The_Relational_Model.txt,table,,3
+02_01_The_Relational_Model.txt,tuple,,4
+02_01_The_Relational_Model.txt,row,,5
+02_01_The_Relational_Model.txt,key,,6
+02_01_The_Relational_Model.txt,schema,,7
+02_02_Querying_Relational_Databases.txt,relational database,,1
+02_02_Querying_Relational_Databases.txt,DML,,2
+02_02_Querying_Relational_Databases.txt,DDL,,3
+02_02_Querying_Relational_Databases.txt,query language,,4
+02_02_Querying_Relational_Databases.txt,compositionality,,5
+03_01_Well_Formed_XML_Part_1.txt,XML,,1
+03_01_Well_Formed_XML_Part_1.txt,XML document,,2
+03_01_Well_Formed_XML_Part_1.txt,ordering,,3
+03_01_Well_Formed_XML_Part_1.txt,tagged element,,4
+03_01_Well_Formed_XML_Part_1.txt,nested element,,5
+03_01_Well_Formed_XML_Part_2.txt,well-formed XML,,1
+03_01_Well_Formed_XML_Part_2.txt,XML parser,,2
+03_01_Well_Formed_XML_Part_2.txt,XML document,,3
+03_01_Well_Formed_XML_Part_2.txt,DOM,,4
+03_01_Well_Formed_XML_Part_2.txt,SAX,,5
+03_02_DTDs_IDs_and_IDREFs.txt,valid XML,,1
+03_02_DTDs_IDs_and_IDREFs.txt,DTD,,2
+03_02_DTDs_IDs_and_IDREFs.txt,ID,,3
+03_02_DTDs_IDs_and_IDREFs.txt,IDREF,,4
+03_02_DTDs_IDs_and_IDREFs.txt,PCDATA,,5
+03_02_XML_Schema.txt,XML Schema,,1
+03_02_XML_Schema.txt,XSD,,2
+03_02_XML_Schema.txt,key,,3
+03_02_XML_Schema.txt,keyref,,4
+03_02_XML_Schema.txt,minOccurs,,5
+04_01_Introduction_to_JSON_Data_Part_1.txt,JSON,,1
+04_01_Introduction_to_JSON_Data_Part_1.txt,relational model,,2
+04_01_Introduction_to_JSON_Data_Part_1.txt,ordering,,3
+04_01_Introduction_to_JSON_Data_Part_1.txt,JSON property,,4
+04_01_Introduction_to_JSON_Data_Part_1.txt,JSON object,,5
+04_01_Introduction_to_JSON_Data_Part_2.txt,JSON schema,,1
+04_01_Introduction_to_JSON_Data_Part_2.txt,impedance mismatch,,2
+04_01_Introduction_to_JSON_Data_Part_2.txt,data interchange,,3
+04_01_Introduction_to_JSON_Data_Part_2.txt,schema,,4
+04_01_Introduction_to_JSON_Data_Part_2.txt,XML,,5
+04_02_JSON_Demo.txt,JSON property,,1
+04_02_JSON_Demo.txt,JSON object,,2
+04_02_JSON_Demo.txt,JSON array,,3
+04_02_JSON_Demo.txt,JSON schema,,4
+04_02_JSON_Demo.txt,null,,5
+05_01_Select_Project_Join_Part_1.txt,relational algebra,,1
+05_01_Select_Project_Join_Part_1.txt,operator,,2
+05_01_Select_Project_Join_Part_1.txt,select operator,,3
+05_01_Select_Project_Join_Part_1.txt,project operator,,4
+05_01_Select_Project_Join_Part_2.txt,cross-product operator,,1
+05_01_Select_Project_Join_Part_2.txt,relational algebra,,2
+05_01_Select_Project_Join_Part_2.txt,select operator,,3
+05_01_Select_Project_Join_Part_3.txt,natural join,,1
+05_01_Select_Project_Join_Part_3.txt,cross-product operator,,2
+05_01_Select_Project_Join_Part_3.txt,relational algebra,,3
+05_01_Select_Project_Join_Part_4.txt,theta join,,1
+05_01_Select_Project_Join_Part_4.txt,natural join,,2
+05_01_Select_Project_Join_Part_4.txt,cross-product operator,,3
+05_01_Select_Project_Join_Part_4.txt,select operator,,4
+05_01_Select_Project_Join_Part_4.txt,project operator,,5
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,set operator,,1
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,union operator,,2
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,difference operator,,3
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,intersection operator,,4
+05_02_Set_Operators_Renaming_Notation_Part_1.txt,natural join,,5
+05_02_Set_Operators_Renaming_Notation_Part_2.txt,rename operator,,1
+05_02_Set_Operators_Renaming_Notation_Part_2.txt,set operator,,2
+05_02_Set_Operators_Renaming_Notation_Part_2.txt,relational algebra,,3
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,assignment statement,,1
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,expression tree,,2
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,relational algebra,,3
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,operator,,4
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,SQL,,5
+06_01_Introduction_to_SQL.txt,SQL,,1
+06_01_Introduction_to_SQL.txt,DDL,,2
+06_01_Introduction_to_SQL.txt,DML,,3
+06_01_Introduction_to_SQL.txt,SELECT,,4
+06_01_Introduction_to_SQL.txt,query optimizer,,5
+06_02_Basic_SELECT_Statement.txt,SELECT,,1
+06_02_Basic_SELECT_Statement.txt,JOIN,,2
+06_02_Basic_SELECT_Statement.txt,duplicates,,3
+06_02_Basic_SELECT_Statement.txt,ORDER BY,,4
+06_02_Basic_SELECT_Statement.txt,LIKE,,5
+06_03_Table_Variables_and_Set_Operators.txt,table variable,,1
+06_03_Table_Variables_and_Set_Operators.txt,UNION,,2
+06_03_Table_Variables_and_Set_Operators.txt,INTERSECT,,3
+06_03_Table_Variables_and_Set_Operators.txt,EXCEPT,,4
+06_03_Table_Variables_and_Set_Operators.txt,DISTINCT,,5
+06_04_Subqueries_in_FROM_and_SELECT.txt,subquery,,1
+06_04_Subqueries_in_FROM_and_SELECT.txt,ABS,,2
+06_04_Subqueries_in_FROM_and_SELECT.txt,SELECT,,3
+06_04_Subqueries_in_FROM_and_SELECT.txt,FROM,,4
+06_04_Subqueries_in_FROM_and_SELECT.txt,duplicates,,5
+06_04_Subqueries_in_WHERE_Clause.txt,subquery,,1
+06_04_Subqueries_in_WHERE_Clause.txt,EXISTS,,2
+06_04_Subqueries_in_WHERE_Clause.txt,NOT EXISTS,,3
+06_04_Subqueries_in_WHERE_Clause.txt,ALL,,4
+06_04_Subqueries_in_WHERE_Clause.txt,ANY,,5
+06_05_Aggregation.txt,aggregate functions,,1
+06_05_Aggregation.txt,GROUP BY,,2
+06_05_Aggregation.txt,HAVING,,3
+06_05_Aggregation.txt,AVG,,4
+06_05_Aggregation.txt,COUNT,,5
+06_06_NULL_Values.txt,null,,1
+06_06_NULL_Values.txt,IS NULL,,2
+06_06_NULL_Values.txt,subquery,,3
+06_06_NULL_Values.txt,WHERE,,4
+06_06_NULL_Values.txt,aggregate functions,,5
+06_07_Data_Modification_Statements.txt,DML,,1
+06_07_Data_Modification_Statements.txt,INSERT,,2
+06_07_Data_Modification_Statements.txt,SELECT,,3
+06_07_Data_Modification_Statements.txt,DELETE,,4
+06_07_Data_Modification_Statements.txt,UPDATE,,5
+06_08_The_JOIN_Family_of_Operators.txt,INNER JOIN,,1
+06_08_The_JOIN_Family_of_Operators.txt,ON,,2
+06_08_The_JOIN_Family_of_Operators.txt,JOIN,,3
+06_08_The_JOIN_Family_of_Operators.txt,USING,,4
+06_08_The_JOIN_Family_of_Operators.txt,relational algebra,,5
