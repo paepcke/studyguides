@@ -1,0 +1,154 @@
+In this demo we're going to run a number of queries in the XQuery language. | 
+We'll be using the same XML data we've used for previous demos. | 
+Here we can see the book store database, with a number of books, four books, and a few magazines. | 
+XQuery language is quite complex. | 
+Certainly more complex than SQL. | 
+We'll be covering a number of the constructs, but we won't be able to cover everything, and even the ones we cover will take a little getting used to. | 
+I highly suggest that you take time to pause the video to take a look at the queries, or even better, download the data and the queries and try them for yourself. | 
+Our first query is a fairly simple one, demonstrating a FLWOR, or F-L-W-O-R, expression. | 
+That's the basic expression of the XQuery language. | 
+Here we only have the F, W and R part, "for" "where" and "return". | 
+This query is going to return the titles of books that cost less than ninety dollars where Ullman is an author. | 
+Let's go ahead and take a look at the constructs of the query. | 
+The four construct, as we described, has an expression in this case it's an XPath expression that returns the books in our document. | 
+It binds the variable dollar B to each book one at a time and run the rest of the query for that finding, the next thing it does is check whether the price of the book is less than ninety, and whether there exists an author slash author the last name under the book element where the value of that is Ullman. | 
+In the case where both of these conditions are true, it will return the title of the book. | 
+Let's run the query. | 
+When we run the query, we see that we get a result that's formatted as XML with two titles of the books that cost less than ninety and Ullman is an author. | 
+Our next query is a bit more complicated. | 
+It still consists of a for, where, and return clause, but in the where clause we have existential quantification and then in the return clause we're constructing our result in XML. | 
+What this query looks for is books where the title of the book contains one of the author's first names. | 
+For each of those books it returns the book title, and the first name of the author. | 
+So we again in our for clause, bind dollar B to each each book in the database. | 
+Then in our where condition, what we look for is a first name subelement of the book which gets bound to FN, such that, that the title of the book contains that first name. | 
+So these as a existential quantified expression some in and satisfies our keywords. | 
+So some binds to a variable which we bind in the set, and then we check if any of those bindings satisfy this condition. | 
+Again, I urge you to take a close look at this. | 
+You may want to pause the video. | 
+Once we've determined that our book satisfies the condition, then in return clause, we're constructing an XML element where the opening and closing tags are book. | 
+And then within that, we return the title of the book and we return the first name of all authors of the book. | 
+Whew. | 
+So let's run the query. | 
+We find that there are two books satisfying the conditions where there is a first name in the title, Hector and Jeff's Database Hints and Jennifer's Economical Database Hints. | 
+Now there is tricky thing here which is that in Hector and Jeff's Database Hints that title does in fact contain a first name contains Hector, but it does not contain Jeffrey. | 
+Our query returned the title of books satisfying the condition with every first name of an author of that book. | 
+What we're going to do next is restrict the result of the query to only return the first names that are actually part of the book title. | 
+What we're going to do is modify the second portion of our return statement to be a little more complicated. | 
+In fact, we're gonna put an entire for return a query right inside the braces here. | 
+In XQuery we can mix and match queries and expressions as we wish. | 
+So what I've done now, is I'm again returning the title but in the second clause, instead of returning all the first names, I'm going to find the first names that are within the book and when the title contains the first name then I'll return that one. | 
+So effectively I'm restricting the first names returned to just be the ones that appear in the title. | 
+Let's run the query and we can see that correctly Jeffrey disappeared from the first book element returned. | 
+Our next query again demonstrates a few new constructs. | 
+First of all, we'll be using the let clause in this query rather than the for clause. | 
+Second of all, we'll be showing some aggregation. | 
+And finally, we've embedded the full query inside XML. | 
+So we've put averages, opening and closing tags for our result and within that, we're putting our entire query. | 
+Our query says that we're going to assign the variable key list to the result of this expression. | 
+So remember the for clause is an iterator, while the let clause is an assignment. | 
+So this expression is going to find all of the price attributes in the database, assign it the P-List as a list, and then it will return the average of the elements in that list. | 
+Let's go ahead and run the query, and we see that our average book price is sixty five. | 
+We can actually run this query in an even more compact fashion, we can assign variable 'A' to be the average of this entire expression here, and then we can just return 'A'. | 
+Not much more compact, but perhaps a little bit more intuitive. | 
+Let's do that, let's erase the answer to run the query again, and again we get the same result. | 
+Now let's see a query where we use both the "let" and the "for" expressions. | 
+In this query, we're going to start by assigning dollar A to the average book price, just like we did in the previous query, and then we're going to find all books where the price of the book is below average. | 
+So we'll, again, as in previous queries, assign dollar B one at a time to the books in our database, and then for each one we'll check if the price is less than the average price that we had from our "let" clause. | 
+If it is, we'll return the book element, and we'll return the title of the book and we'll put, as a subelement in this book element, the price. | 
+And here we can see where we're taking an attribute and we're turning it into an element. | 
+So we have our attribute the price, we obtain the data, as we saw we needed to do in the X demo, and we place it inside the price element. | 
+Let's run the query, and we see indeed that we have two prices whose books are below average, and here we've converted the price from an attribute to a sub element. | 
+As a reminder, the FLWOR expression in XQuery has a For, Let, Wear, Order by, and Return. | 
+We see in all of the clauses except the "order by". | 
+So let's see the "order by" in this example. | 
+We're going to find the title and prices of books, just as we found before. | 
+We'll convert the price to a sub element. | 
+But in this case we want to order the result by the price of the book. | 
+So we do so by adding this clause here between the for and return saying we want to order by the price easy enough. | 
+We run the query and we see out result. | 
+Actually it doesn't look quite right does it? | 
+We have one hundred before 2550 and eighty five. | 
+Well, that's because price is actually a string, and so it was doing a lexical graphic ordering of the string. | 
+We can fix that easily by calling a built-in function called XS:INT that converts that value to an integer. | 
+When we run the query now, we get the correct ordering based on the values of the price. | 
+Now that we've seen ordering, let's take a look at duplicate elimination. | 
+Let's a query that finds all the last names in our database. | 
+So we write a simple query that says for all names in the XPath expression that finds the last names and, just as a reminder, here we use the double slash that looks at any depth in the XML tree and picks out the last names, will return those last names, and we know that these are our last names, and we've got many repeats of them because these last names appear several times in the database. | 
+So let's see about getting rid of those repeats. | 
+There is a built-in function in XQuery called "distinct values". | 
+So what we can do is add distinct values here in our for clause. | 
+We can apply it to the last name, and now our dollar N will be bound to each value only once and then we'll return the result. | 
+We run the query, and we find that we have our three last names appearing only once, but it's probably not quite what we wanted. | 
+This time when we run distinct values it just turns these three values into three separate strings and the returns one at a time rather than embedding them with the last name tag, which was what we got when we didn't use distinct values. | 
+So if we want the last name tag, then we can add the last name here to our return clause, let's just put in the opening tag and the closing tag was put in for us. | 
+So let's put dollar N here. | 
+So now we've added opening and closing tags to our previous query, we run it and whoops what do we get, we got dollar N. This is a reminder that when we write a return clause if we want actually have an expression evaluated in the curly brackets. | 
+So by putting dollar N in curly brackets here, now the execution engine will actually evaluate this query and put the result within the opening and closing tags, we run the query and now finally we got exactly what we were looking for. | 
+The three last names that appear in the database with the duplicates eliminated. | 
+In a previous query we saw existential quantification in the where clause. | 
+We were using the some keyword. | 
+S-O-M-E. Now we're going to see universal quantification in the where clause. | 
+So for all, and for that we use the every keyword. | 
+What this query finds is books where every author's first name includes the letter J. | 
+Once again, we use the for clause to bind $B to every book in the database, and then for each book, we check our where clause. | 
+Our where clause requires that every first name that's a sub-element in that book satisfies the condition where the first name contains the letter "J". | 
+If we have such a book, then we return it as a result of the query. | 
+So now we can see that our result is "A First Course in Database Systems" and "Jennifer's Economical Database Hints", because for both of those, all of the first names include the letter "J". | 
+This query demonstrates what I like to call a self join, because it's combining two copies of the book data. | 
+Specifically, what the query is looking for are titles of books that share a common author, and we'll assume we're just looking for common last names. | 
+This is also the first query we're seeing where we have two copies of the FOR clause. | 
+So we're setting up two iterator variables, essentially, one called B1 and one called B2, that are both iterating over the books in the database. | 
+If you'd like to think of this in relational terms, it would be similar to having two copies of the book table--one of them bound to variable B1 and one to variable B2. | 
+Then what we look for in the WHERE clause is whether B1 and B2 have an author last name in common. | 
+And we do that by checking these two XPath expressions and seeing if they're equal. | 
+Now we saw this behavior in XPath and we're seeing it again here, where the WHERE clause has effectively an existential quantification occurring automatically. | 
+What it's looking for is if there is some last name under B1 that is equal to some last name under "B2", even if "B1" or "B2" have many last names. | 
+In the case where that equality is satisfied, then we will construct a book pair, where we return the first title and the second title. | 
+And here, we're taking the titles which were originally attributes. | 
+Oh no, I'm sorry, those were originally sub-elements. | 
+We're taking those sub-element titles and we're calling them title 1 and title 2. | 
+So let's go ahead and run the query, and we did get a bunch of book pairs, probably more than we expected. | 
+Now all these books do in fact have a common common last name in their authors, but what we forgot to do was eliminate books with themselves. | 
+Because of course every book has in common, a last name with itself. | 
+So let's modify our query so that we return only books where they are two different books, and we can do that fairly easily by just saying $b1/title is not equal to $b2/title. | 
+Okay, here we we go. | 
+We run the query and we got an error because I typed BT instead of B2. | 
+Let's run that again. | 
+Alright. | 
+And now we see that we now are not getting the pairs of books with themselves. | 
+We're still, perhaps, getting more than we expected, however. | 
+What's going on? | 
+Well, one thing we're seeing is that we're getting every pair twice in both orders, if you take a look at the data. | 
+So this is a same old trick that you may remember back from the relational query examples, instead of doing not equals, let's try doing less than. | 
+In other words, we're going to return each pair once, and we're going to have the lexical graphically lesser book listed first. | 
+Now we've run the query again, and now we see we actually got what we were expecting. | 
+As our grand finale, we're going to invert our bookstore database. | 
+The way we set up our XML data, we had our books, and then underneath our books we had the authors of the books. | 
+What if we want to instead our data constructed where we have the authors as the outer elements, and within each author we list the books that they've written. | 
+Now to understand this query, you're absolutely going to need to pause the video. | 
+Let me just briefly show what's going on. | 
+But again it would take quite some time to go through every detail. | 
+The way we are going to construct our inverted bookstore is to find the authors by last name as the outermost portion of our query. | 
+For each author's last name, we're going to get their first names, and then we're going to return the author with the first name, the last name, and next find all of the books that were written by that author, return the book with their ISBN price title. | 
+Okay? | 
+Again, I urge you to pause the video and look very closely at what's going on. | 
+Or even better, download the data in the query, run it yourself, and play with it until you understand it. | 
+Let's of the query and we'll see our result. | 
+Just scroll up a little bit here. | 
+And we'll see how the query did effectively invert the bookstore. | 
+Now we have our authors as the outermost elements. | 
+Within each author, the first one Jeffrey Ullman, we have the books that were written by that author, including their ISBN and price as attributes and the title as a sub-element. | 
+Now in my original version of the query, I didn't include the edition or the remark since those didn't appear in every book. | 
+But in fact, it doesn't cause any problem at all to add those in. | 
+So let me just add right here the edition. | 
+So we're using dollar B as our variable for the book and the edition is an attribute. | 
+Again, not every book has an edition, but we'll see that it's not going to cause a problem when it doesn't. | 
+And similarly, down here we'll include the remark, again, for those books that include them. | 
+Let's run the query and let's take a look at our results and see what happened. | 
+So for Jeffrey Ullman's first book, we got the edition, for the second book we got the remark, and everything just worked out just fine. | 
+So, again, there is our inverted bookstore. | 
+That concludes our demonstration of the XQuery language. | 
+I'll again emphasize that it's a very large language, very powerful. | 
+We've seen a number of different constructs. | 
+We've written some pretty interesting queries. | 
+But to fully understand the language, you'll need to run a bunch of queries for yourself, and experiment with how it works. | 

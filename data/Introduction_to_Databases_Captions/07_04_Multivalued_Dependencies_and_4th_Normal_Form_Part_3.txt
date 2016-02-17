@@ -1,0 +1,94 @@
+Like with functional dependencies we have a notion of trivial dependency those that always hold we also have some rule for multi valued dependencies. | 
+The definition for a trivial multi valued dependency A multi determines B is in this case, that either B is a subset of A, or A union B are all attributes, a multi-value dependency is non-trivial if that's not the case. | 
+So let's take the look at why these multi-value dependencies are trivial. | 
+So let's start with the first case where we have our attributes A and the rest and then attributes B are a subset of A so lets say that these are attributes B. | 
+So what are definition of multi-valued dependencies says that when we have the same values for A in two tuples, so here A and A, then we have every combination of the B values and the rest, well obviously we do since the B's are subsets of the A's here, the B values are going to be the same as well and we clearly have every combination. | 
+For the other case of trivial multi-value dependencies. | 
+We have A and B together being all attributes of the relation, so in that case, there's no rest, so clearly we have every combination of values of A and B and rest, because there's no rest to combine with. | 
+Like with functional dependencies there are a whole bunch of rules that hold for multi-valued dependencies. | 
+We will just talk about three of them, and the first one is the most important and interesting, and that's the rule that says if we have a functional dependency from A to B then we also have a multi-valued dependency from A to B. | 
+And I'm gonna go ahead and prove that rule for you again because this is an important one. | 
+I'm going do this proof using a template for the relation similar to the what I did with rules for functional dependencies. | 
+So let's say we have our A attributes, our B attributes, and our rest, and what we need to prove, to prove the multi-value dependencies, is when there are tuples T and U with a certain form, there exists a tuple V of another form. | 
+So let's fill in some values first for the tuples. | 
+So Let's say that we have A and A here, that's what we need for the equality of the A values. | 
+Then we have B1 and R1, and we have B2 and R2, and in order to prove this multi-value dependency, I need to prove that there exists a tuple V that has the same A value that it has B1 from tuple T and R2 from Tuple U, and what I have in order to prove that is the fact that we have a functional dependency from A to B. | 
+Because we have the functional dependencies and because T and U have the same A value. | 
+What that tells us is that B1 equals B2 here. | 
+And so if B1 equals B2 then we know that this value B1 here is equivalent to B2 and in order to prove the existence of this tuple well we have that tuple here already and we're done. | 
+So you might check that again, but what that says is using the knowledge of a functional dependency we can prove that we always have a corresponding multivalued dependency there are a couple more rules for multivalued dependencies that you can prove for yourself if you're so inclined. | 
+The first one is the intersection rule, it says that if we have A multi determines B and A multi determines C, then we have A multi determines B intersects C. The transitive rule is slightly different than from exact transitivity. | 
+What it says is if we have A multi determine B, and we have B multi determines C then we have A multi determined not C exactly but C minus B. | 
+And you might work some examples because it yourself why we don't have just A multi determines B and to subtract the attributes for B, although it's fairly complicated. | 
+So again these rules can be proven and there are many other rules of multivalued dependencies that you can read about in any of the readings provided on our website. | 
+By the way, regarding rules, let's come back to the fact that every functional dependency is a multivalued dependency. | 
+So we can use another Venn diagram. | 
+This is different than our previous one. | 
+We can list all of our multivalued dependencies here and the functional dependencies are a subset of those, so what that tells us is if we ever have a rule that applies for multivalued dependencies here, that will cover the entire Ven diagram and so that rule will apply for functional dependencies as well. | 
+So every rule for MVDs is also a rule for functional dependencies. | 
+On the other hand if we have a rule that applies for functional dependencies that rule does not necessarily have to apply all multivalued dependencies because it might be specialized just for this portion of the Venn diagram. | 
+So an example of such a rule is the splitting rule. | 
+The splitting rule is a rule that applies to functional dependencies, but does not always apply to multivalued dependencies. | 
+And again you could work an example to convince yourself of that fact. | 
+Woo. | 
+So after all that set up of multivalue dependencies, we're finally ready to talk about fourth normal form. | 
+The definition of fourth normal form looks very similar to the one for Boyce-Codd normal form. | 
+Says we take a relation and we take now a set of multivalued dependencies for that relation and the relation is in fourth normal form if every non-trivial multivalued dependency has on it's left hand side a key. | 
+Remember for functional dependencies it looks exactly the same except we have the functional dependency all here instead of multivalued dependencies. | 
+So, let's see exactly what fourth normal form telling us and why it's a good thing. | 
+So we have A, B, and rest as usual and let's suppose that we have a non trivial multivalued dependency. | 
+So that's telling us that if we have 2 tuples, T and U and we'll put in some values for B and the rest, then we're going to have the combination of those, as well. | 
+So, that's kind of the proliferation of tuples we get when we squish independent facts in the same relation. | 
+But, if the left side is a key, so if the A attributes are a key here then we won't have those 2 tuples and will never have to worry about the proliferation. | 
+Now, remember that I said fourth normal form implies Boyce-Codd Normal Form. | 
+Or if you prefer it in Venn diagram format, Fourth Normal Form is stronger than Boyce-Codd Normal Form and let's see why that's the case. | 
+If we have a fourth normal form and we want to show that we're in Boyce-Codd normal form, then we have to show that if we have a functional dependency then the left hand side A is a key. | 
+That would tell us we're in Boyce-Codd normal form. | 
+Well, if we have a functional dependency, we had a rule that tells us we also have the multivalued dependency and then since we're in fourth normal form, we get that A as a key. | 
+So again, fourth normal form implies Boyce-Codd normal form. | 
+Now let's take a look at the decomposition of algorithm into fourth normal form. | 
+It's extremely similar to the BCNF decomposition algorithm. | 
+The input is a relation. | 
+A set of functional dependencies and multi value dependencies and we need to separate them because we use the functional dependencies to find keys. | 
+The output is a decomposition of R into good relations, in this case fourth normal form, and it's a good decomposition in the sense that reassembling the relations gives you back the original. | 
+As with Boyce-Codd normal form we start by computing keys using the functional dependencies, and then we repeat the decomposition process until all of our relations are in fourth normal form. | 
+Just as with functional dependencies in BCNF, we pick a relation that has a violating dependency, in this case a multi-value dependency, and we split the relation based on that dependency. | 
+So we create one relation that has the attributes of the dependency and another relation that has the left-hand side of the dependency and the rest of the attributes. | 
+After that, we need to compute the functional dependencies for the decomposed relation and the multi-value dependencies for it, and then we can compute the keys. | 
+Now finding these multi-value dependencies is actually a fairly complex process. | 
+Usually it's very intuitive, but I'm going to refer you to the readings to read about the algorithm itself. | 
+And in fact, it can be so complicated in the general case that some of the readings don't even provide the algorithm. | 
+But again, in general, it's very intuitive. | 
+Our first example is going to be very fast to do. | 
+As you remember, this example has one multi-value dependency - social security number determines college name, multi determines college name - and it has no keys other than all of the attributes. | 
+So obviously, this is a violating multi value dependency, and so we decompose into two relations, we'll call them A1 and A2. | 
+The first one has the attributes of the multivalue dependency, the social security number and the college name, and the second one has the left hand side multivalued dependency as well as all the remaining attributes, which in this case is the hobby. | 
+These two decomposed relations actually have no FDs and no MVDs so in that case we're definitely in 4th normal form and we're done with the decomposition and I think we can agree that this looks like a good schema for the data at hand. | 
+Our second example is quite a bit more complicated. | 
+Remember in this example we have that the social security number and college name functionally determine date. | 
+That means we have each student applies to each college on a specific date. | 
+And secondly, we assume that majors that were being applied for were independent of hobbies. | 
+So we have social security number, college name and date multi determines the major. | 
+And incidentally that would mean it multi determines the hobby too. | 
+Once again, we have no keys for the relation, except for all attributes. | 
+So we have both a violating functional dependency in this case and we have a violating multivalue dependency. | 
+Let's use the multivalue dependency for our first decomposition step. | 
+So we'll create A1 and A2. | 
+A1 will contain all the attributes of our multivalued dependency. | 
+And then A2 will contain all the remaining attributes along with the left hand side of our multivalue dependency. | 
+And that turns out to be all of the attributes except the major. | 
+Now let's look at our decomposed relations and see what we have in terms of functional dependencies and multi-value dependencies for them. | 
+So after the decomposition, we don't have any more multivalued dependency but our functional dependency actually applies to both of the decomposed relations and we still don't have a key on the left hand side. | 
+So we need to decompose further based on the first functional dependency. | 
+So let's start by decomposing A1. | 
+We'll turn A1 into A3 and A4, and A3 will have the functional dependency, all three attributes. | 
+And then A4 will have the left side of the functional dependency and the remaining attributes, which in this case is the major. | 
+So now we're finished with A1 and we have a similar problem with A2. | 
+And so we decompose A2 similarly, although we'll discover that A3 is the same relation in the decomposition of A2 as we got with A1. | 
+So we actually only add one more relation now, which is A5. | 
+That contains the social security number and the college name from the left side of the functional dependency and the hobby, which is the remaining attribute. | 
+And then we cross out A2. | 
+Now the only functional dependencies are multi-value dependencies we have left do have a key on the left-hand side. | 
+I'll let you verify that for yourself. | 
+And these three relations are our final decomposition into 4th normal form. | 
+And I think you will agree that this is a good design again for the data at hand. | 

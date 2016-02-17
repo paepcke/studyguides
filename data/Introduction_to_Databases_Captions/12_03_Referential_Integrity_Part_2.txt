@@ -1,0 +1,20 @@
+Now just a few more details of referential integrity constraints. | 
+The referencing attribute, in this case, the referencing attribute is A, is often called the foreign key. | 
+And in fact, referential integrity is often referred to as foreign key constraints. | 
+And even in the SQL syntax, we'll see that the term foreign key is used. | 
+Second, when we have a referenced attribute, in this case now we're talking about attribute B, so we have R.A to S.B, the referenced attribute is usually required to be the primary key for the table, for it's table, or at least specified as unique. | 
+And that's more about efficient implementation than anything else. | 
+But it is a requirement in the SQL standard, and in most systems. | 
+Third, it is possible to have foreign keys that consist of multiple attributes, just like keys themselves can be multiple attributes. | 
+Let's say for example that in our college relation, the college name together with the state, form a key, not the college name individually. | 
+If that were the case then our apply table would presumably have one more column that specified the state so we knew which college a student was applying to. | 
+And in this case we would have these two attributes together as the foreign key referencing the college name and state together in the college table. | 
+And we'll see an example of multikey, multiattribute foreign key constraints in our demo. | 
+Now let's talk about the enforcement of referential integrity constraints. | 
+First, let's think about what operations can occur to the database to violate a constraint. | 
+It's not every possible modification. | 
+So again, let's suppose we have R.A referencing S.B. | 
+So, for example, here we have apply referencing students and we have apply referencing college. | 
+So certainly if we insert a tuple into the referencing relation, so if we inserted a tuple into the apply relation that could potentially violate the referential integrity if the value, say an SID or C name, didn't have matching values in the reference relations. | 
+Sort of conversely, if we delete from a reference relation, say we delete a student, then that could cause a violation because say we have the 123 value here and the app apply tuple that was referring to 123 after this is gone would then have effectively a dangling pointer. | 
+And of course, if we updated the referencing value either of these columns that could cause a violation if the new value didn't exist in the reference table, or if we update the referenced values that could also cause a violation. | 

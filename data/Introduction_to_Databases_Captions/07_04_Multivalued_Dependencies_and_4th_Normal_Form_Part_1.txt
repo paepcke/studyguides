@@ -1,0 +1,61 @@
+This video continues the topic of relational design, talking specifically about multivalued dependencies and Fourth Normal Form. | 
+I know I've reminded you many times about relational designed by decomposition, so let me do it very quickly. | 
+The designer specifies mega relations with all the information they want to store and properties of the data. | 
+The system decomposes the mega relations into smaller relations that have good properties -- no anomalies and no lost information. | 
+When we have functional dependencies, as are properties of the data, we get Boyce-Codd Normal form, and then when we add to the functional dependencies multi-value dependencies we get fourth normal form. | 
+And the specification of multi- value dependencies and decomposition into Fourth Normal Form is the topic of this video. | 
+As a reminder from earlier, Fourth Normal Form is stronger than Boyce-Codd Normal Form so if we have here all of the relations that are in Boyce- Codd normal form, some subset of those are also in fourth normal form. | 
+When we have functional dependencies, we can guarantee Boyce Codd normal form and then when we add multi-value dependencies that's what allows us to narrow down to the stronger property of fourth normal form. | 
+So let's start with an example. | 
+We have information about students applying to colleges. | 
+The student is identified by their social security number. | 
+They may apply to several colleges and in this video we're not going to have college states, just college names. | 
+We'll assume they're unique. | 
+And then the student may have hobbies. | 
+And they may apply, as I've said, to several colleges and have several hobbies, but let's assume for now those are independent. | 
+So do we have any functional dependencies for this relation? | 
+Actually we don't have any all. | 
+The social security number does not determine the college name or the hobby or anything in the other direction. | 
+With no functional dependencies, the only key for the relation then is all attributes of the relation. | 
+So is this relation in Boyce-Codd Normal Form? | 
+As you might remember from the previous video, Boyce-Codd Normal Form says all functional dependencies have a key on the left hand side. | 
+Well, since we have no functional dependencies then the answer is yes. | 
+It is in Boyce-Codd normal form. | 
+On the other hand do we think this is a good design? | 
+I'm going to say no this is not a good design Why not? | 
+Well, let's suppose that somebody applies to five colleges and they have, say, six hobbies. | 
+Then to have all combinations of colleges and hobbies that would yield 30 tuples in the relation and clearly that's not a good idea. | 
+We'd rather separate the college and hobbies if they are independent. | 
+So the separation of independent facts is what fourth normal form is about. | 
+And now let's get a little bit more formal. | 
+Like functional dependencies, multivalued dependencies are specified based on knowledge of the real world constraints on the data being captured and all instances of a relation with a multivalued dependency must adhere to the dependency. | 
+Now let's define exactly what a multi value dependency is. | 
+For relation R we write a multi value dependency using a double headed arrow and we say 'A' multi determines 'B'. | 
+In this case, again, with 'A' and 'B' possibly being sets of attributes, so that would be A one through A N and B one through B M, which I'm abbreviating with A bar and B bar. | 
+So let me write the formal definition of A multi determines B. | 
+Again using first order logic similarly to what we did with functional dependencies but this one's a bit more complicated. | 
+It says for all tuples T and U that are in relation R, if T with the attributes A of T equal U for the attributes A of U. | 
+Again these are lists of attributes. | 
+So if the two tuples agree on their A values then, and remember for functional dependencies it was simple we just said they agreed on their B values. | 
+But now it gets more complicated. | 
+We're going to say that there exists a third tuple V in R that has the following properties. | 
+V has the same A values as T and U. | 
+So V sub A equals T sub A, furthermore V has its B value, okay, drawn from T so it's equal there. | 
+And finally it has its rest, so those are all the attributes other than A and B equal to U rest. | 
+Okay, so that's a mouthful but let's look at that pictorially. | 
+So here's our relation R and we'll have the set of attributes A, the set of attributes B and the rest of the attributes. | 
+And now let's make some tuples. | 
+So let's say that this is tuple T and this is tuple U. | 
+And we said that T and U agree on their A values. | 
+So they have the same A values and then they don't have to have the same B values. | 
+So we'll call the first one B-1 and the second one B-2 and then for the rest we'll call this R-1 and R-2. | 
+So what the multi -value dependency says is that we have a third tuple, V and V again has the same A and it has its B value from tuple T. So it has B-1, but it has its rest value from tuple U, so then it has R-2 here. | 
+So again what we're saying is that if we have these first two tuples T and U, then we also have tuple V. Now let me do something a little tricky. | 
+Let me swap the roles of T and U and show that we also with this definition, are guaranteed to have a fourth tuple and we'll call that fourth tuple W. By swapping the roles of T and U, W has again the same A value. | 
+Now it will take its B value from U and that will give us B2, and we'll take its rest value from T and that gives us R1. | 
+So what we can see here is that when we have the first two tuples that have this particular combination of B values and rest values, it tells us we must have the other combinations as well. | 
+We must have B1 with R2, and B2 with R1. | 
+What it's really saying is those B values and the rest values are independent of each other and we'll have all combinations. | 
+So that might get you thinking back to our colleges and hobbies. | 
+Incidentally, sometimes multi-value dependencies are called tuple generating dependencies. | 
+And that's because the definition is is about having additional tuples when you have some existing tuples, unlike functional dependencies which just talk about the relationships among existing tuples. | 

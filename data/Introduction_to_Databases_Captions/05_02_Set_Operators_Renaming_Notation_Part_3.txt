@@ -1,0 +1,57 @@
+Now we've seen all the operators of relational algebra. | 
+Before we wrap up the video I did want to mention that there are some other notations that can be used for relational algebra expressions. | 
+So far we've just been writing our expressions in a standard form with relation names and operators between those names and applying to those names. | 
+But sometimes people prefer to write using a more linear notation of assignment statements and sometimes people like to write the expressions as trees. | 
+So I'm just gonna briefly show a couple of examples of those and then we'll wrap up. | 
+So assignment statements are a way to break down relational algebra expressions into their parts. | 
+Let's do the same query we just finished as a big expression which is the pairs of colleges that are on the same state. | 
+We'll start by writing two assignment statements that do the rename of the two instances of the college relation. | 
+So we'll start with C1 colon equals and we'll use a rename operator and now we use the abbreviated form that just lists attribute names. | 
+So we'll see say C one, S, E one of college and we'll similarly say that C2 gets the rename, and we'll call it C2SE2 of college, and remember we use the same S here so that we can do the natural join. | 
+So, now we'll say that college pairs gets C1 natural join C2, and then finally we'll do our selection condition. | 
+So our final answer will be the selection where N1 is less than N2 of CP. | 
+And again, this is equivalent to the expression that we saw on the earlier slide. | 
+It's just a notation that sometimes people prefer to modularize their expressions. | 
+The second alternate notation I'm going to show is expression trees. | 
+And expression trees are actually commonly used in relational algebra. | 
+They allow you to visualize the structure of the expression a little bit better. | 
+And as it turns out when SQL is compiled in database systems, it's often compiled into an expression tree that looks very much like what I'm gonna show you right now. | 
+So for this example let's suppose that we want to find the GPAs of students who are applying to CS in California. | 
+So that's going to involve all three relations because we're looking at the state is in California, and we're looking at the student GPA's and we're looking at them applying to CS. | 
+So what we're going to do is we're going to make a little tree notation here where we're going to first do the natural join of these three relations. | 
+So technically the expression I'm going to show you is going to stop down here. | 
+It's not going to actually have the tables. | 
+So the leaves of the expression are going to be the three relations: college, students, and apply. | 
+And in relational algebra trees, the leaves are always relation names. | 
+And we're going to do the natural join of those three which as a reminder enforces equality of the college name against the college name here against the college name here, and the student ID here and the student ID here. | 
+That enforcement means that we get triples that are talking about a student applying to a particular college. | 
+And then we're going to apply to that, and so that's going to be written as a new note above this one in the tree. | 
+The selection condition that says that the state equals California and the major equals CS. | 
+And finally, we'll put on top of that the projection that gets the GPA. | 
+okay? | 
+Now actually this expression is exactly equivalent to if we wrote it linearly, project the GPA, select etc. | 
+of the three college join student, join apply. | 
+I'm just abbreviating here. | 
+That would be an equivalent expression. | 
+But again, people often like to use the tree notation because it does allow you to visualize the structure of the expression, and it is used inside implementations of the SQL language. | 
+Let me finish up by summarizing relational algebra. | 
+Let's start with the core constructs of the language. | 
+So a relation name is a query in relational algebra, and then we use operators that combine relations and filter relations. | 
+So we have the select operator that applies a condition to the result of an expression. | 
+We have the project operator that gives us a set of attributes that we take from the result of an expression. | 
+We have the expression one cross-product expression two. | 
+And again those can be any expressions. | 
+Then we have expression one union expression two. | 
+And we have expression one minus expression two. | 
+And finally we have the rename operator that takes an expression and renames the result of that, the schema in the result of that expression. | 
+Now, you probably noticed that I skipped a few of our favorite operators, but this is the core of the language and all the other operators are actually abbreviations that don't increase the expressive power of the language but they can be very useful performing queries. | 
+And the abbreviations that we learned were expression one natural join expression two. | 
+They were expression one theta join expression two. | 
+And, finally, expression one intersect expression two. | 
+All of those where we had a method of rewriting them using the core operators. | 
+Just a small aside about parentheses. | 
+A parentheses are used in relational expressions for, relational algebraic expressions, for disambiguation, similarly to arithmetic expressions. | 
+I was a little cavalier about whether I included parentheses or not, but as you write your relational algebra expressions you will see that it's pretty straightforward to figure out when disambiguation is needed. | 
+So to conclude relational algebra, entirely it's a formal language. | 
+It's based on sets, set operators and other operators that combine data from multiple relations. | 
+It takes relations as input, it produces relations as answers and it does form the formal foundation of implemented relational database management. | 

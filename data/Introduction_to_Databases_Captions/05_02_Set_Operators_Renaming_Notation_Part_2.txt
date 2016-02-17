@@ -1,0 +1,71 @@
+Our last operator is the rename operator. | 
+The rename operator is necessary to express certain queries in relational algebra. | 
+Let me first show the form of the operator and then we'll see it in use. | 
+The rename operator uses the Greek symbol rho. | 
+And like all of our other operators, it applies to the result of any expression of relational algebra. | 
+And what the rename operator does is it reassigns the schema in the result of E. So we compute E, we get a relation as a result, and it says that I'm going to call the result of that, relation R with attributes A1 through An and then when this expression itself is embedded in more complex expression, we can use this schema to describe the result of the E. Again we'll see shortly why that's useful. | 
+There are a couple of the abbreviations that are used in the rename operator, this form is the general form here. | 
+One abbreviation is if we just want to use the same attribute names that came out of E, but change the relation name, we write row sub R applied to E, and similarly, if we want to use just the attribute names, if we want to change, I'm sorry, just the attribute names then we write attribute list here and it would keep the same relation name. | 
+This form of course has to have a list of attributes or we would not be able to distinguish it from the previous form. | 
+But again these are just abbreviations and the general form is the one up here. | 
+Okay, so now let's see the rename operator in use. | 
+The first use of the rename operator is something I alluded to earlier in this video which is the fact that when we do the set operators, the union, difference, and intersect operators, we do expect the schemas on the two the sides of the operator to match, and in a couple of our examples they didn't match, and the rename operator will allow us to fix that. | 
+So, for example, if we're doing the list of college and student names, and let me just remind you how we wrote that query. | 
+We took the C name from college and we took the s name from students and we did the big union of those. | 
+Now, to make this technically correct, these two attribute names would have to be the same. | 
+So we're just going to apply the rename operator. | 
+Let's say that we're gonna rename the result of this first expression to say the relation name C with attribute name. | 
+And let's make the result of the second expression similarly be the relation C with attribute name. | 
+And now we have two matching schemas and then we can properly perform the union operator. | 
+Again, this is just a syntactic necessity to have well-formed relational algebra expressions. | 
+Now, the second use of the rename operator is a little more complicated and quite a bit more important actually which is disambiguation in self joins and you probably have no idea what I'm talking about when I say that, but let me give an example. | 
+Let's suppose that we wanted to have a query that finds pairs of colleges in the same state. | 
+Now, think about that. | 
+So we want to have, for example, Stanford and Berkeley and Berkeley and UCLA and so on. | 
+So that, as you can see, unlike the union operator, we're looking for this horizontal joining here. | 
+So we're going to have to combine essentially two instances of the college relation. | 
+And that's exactly what we're going to do. | 
+We're effectively going to do college join college making the state equal. | 
+So, let's work on that a little bit. | 
+So, what we wanna do is we wanna have college and we want to, let's just start with, say, the cross-product of college. | 
+And then we want to somehow say, "Well, the state equals the state." | 
+But that's not gonna work. | 
+Which state are these? | 
+And how do we describe the two instances of college? | 
+So what we're going to do and let me just erase this, is we're going to rename those two instances of colleges so they have different names. | 
+So we're going to take the first instance of college here and we're going to apply a rename operator to that. | 
+And we'll call it C1 and we'll say that that has name1, state1, and enrollment1. | 
+And then we'll take the second instance here. | 
+We'll call it C2, so N2, S2, E2 of college and now we have two different relations. | 
+So what we can do is we can take the cross-product of those two like that, and then we can select where S1 equals S2, okay? | 
+And that gives us pairs of college in the same state. | 
+Actually, let me show you an even trickier, simpler way of doing this. | 
+Let's take away the selection operator here, okay? | 
+And let's take away this. | 
+And let's make this into a natural join. | 
+Now that's not gonna work quite yet because the natural join requires attribute names to be the same, and we don't have any attribute names that are the same. | 
+So the last little trick we're gonna do is we're gonna make those two attribute names, S, be the same. | 
+And now when we do the natural join, it's gonna require equality on those two S's and everything is gonna be great. | 
+Okay? | 
+Now, things are still a little bit more complicated. | 
+One problem with this query is that we are going to get colleges paired with themselves. | 
+So we're going to get from this, for example, Stanford Stanford. | 
+If you think about it, right? | 
+Berkeley Berkeley, as well as Stanford Berkeley. | 
+Now, that's not really what we want presumably. | 
+Presumably we actually want different colleges. | 
+but that's pretty easy to handle, actually. | 
+Let's put a selection condition here so that the name one is not equal to name two. | 
+Great. | 
+We took care of that. | 
+So in that case we will no longer get Stanford Standford and Berkeley Berkeley. | 
+Ah, but there's still one more problem. | 
+We'll get Stanford Berkeley but we'll also get Berkeley Stanford. | 
+Now, let me pause for a moment and see if you can think of a simple way to solve this problem. | 
+Actually, there's a surprisingly simple way, kind of clever. | 
+We're gonna take away this not equals and we're going replace it with a less than. | 
+And now we'll only get pairs where the first one is less than the second. | 
+So Stanford and Berkeley goes away and we get Berkeley Stanford. | 
+And this is our final query for what we wanted to do here. | 
+Now what I really wanted to show, aside from some of the uses of relational algebra, is the fact that the rename operator was for this query absolutely necessary. | 
+We could not have done this query without the rename operator. | 

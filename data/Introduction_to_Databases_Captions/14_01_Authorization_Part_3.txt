@@ -1,0 +1,38 @@
+Now let's look how privileges are obtained. | 
+When a relation is created, the creator of that relation becomes the owner of the relation. | 
+And the owner of the relation has all privileges, and furthermore, may grant privileges to other users. | 
+So there's a grant statement in the SQL standard and it looks like this. | 
+We grant privileges on a particular relation to one or more users and we have the option of allowing those users to further grant privileges to others. | 
+Specifically, the privileges themselves are the ones that we defined earlier. | 
+And we can have a comma-separated list of them. | 
+So for example, we could say here something like "select student ID, comma, delete," and that would give those two privileges. | 
+The users are a list of actual user names on the data base. | 
+There's also the user, pre-defined user, called "public" and that would grant the authorization to any user of the database. | 
+And finally, the grant option allows the users who are getting the privileges to grant the same or lesser privileges to other users. | 
+Now what do I mean by lesser? | 
+Well it's pretty simple. | 
+If we have, say select and attributes ABC. | 
+then a lesser privilege would be something like select A and B. | 
+Now, how about the revoking of privileges. | 
+This gets a little more interesting. | 
+So the command is "revoke privileges." | 
+Again, it would be a list of privileges on a particular relation from users, and again that would be a list of user names with the possibility of the special name public and then there are two option for revoking privileges, called cascade and restrict. | 
+And they may have to do with what happens when privileges are being revoked from a user who was granted the ability to grant privileges to others. | 
+So, let's take a look pictorially at what can happen. | 
+Let's suppose that we have a user who has a privilege to say select on a particular relation, R, and we'll draw that is the root of a graph. | 
+And let's suppose that's say user U1. | 
+And let's suppose that user grants to user U2 the same privileges, select on 'R' and let's suppose that's with the grant option and this is user 'U2.' | 
+So user U2 is allowed to further grant privileges to other users. | 
+And those may further grant privileges to others. | 
+And we may get a big sub-tree here. | 
+Now let's suppose user U1 decides to revoke the privilege that was granted to user U2. | 
+So what cast it says, is if there is revocation of that form then it will cascade down the tree. | 
+So if you too further granted privileges, then those would be revoked and so would any privileges down below, so this entire sub tree is effectively removed all of those privileges, however, we have to be a little bit careful, because it's possible that say U2 was granted the select privilege by a separate user, I guess we'll call this one U3, who also granted exactly the same privilege, and in that case, if U1 does the revoke, we don't want to revoke U2's privilege, because U2 got it from another source. | 
+So technically what cascade says is that, when we revoke a privilege, we revoke any privileges transitively when they weren't also granted by another source. | 
+So, what your seeing here is actually called a grant diagram and I'm not giving you all the details of grant diagrams, but, you can see basically, what they do. | 
+And, their used is to properly cascade the revoking of privileges. | 
+So again, the cascade option and the revoke command says to also revoke any privileges that were granted from the ones being revoked transitively, unless they were also granted form another source. | 
+What the restrict option says is that the revoke command is not allowed to execute if cascade would revoke any other privileges. | 
+So if we have any of those transitive cases, so if we do have the transitive cases and we want to use restrict and we have to manually revoke those privileges effectively bottom-up through that graph that we say. | 
+Incidentally restrict is the default in the revoke command. | 
+So, if neither of these options are specified, then, restrict is the one that will be enforced. | 

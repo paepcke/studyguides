@@ -1,0 +1,54 @@
+So here we are again, talking about our decomposition process, so now we know what good relations are. | 
+They are in BCNF. | 
+And we saw earlier what good decompositions are, so now we're going to give an algorithm that's going to perform good decompositions and those decompositions are going to yield decomposed relations that are in Boyce Codd normal form. | 
+So here's the algorithm. | 
+The input is a relation r and the set of functional dependencies for that relation, and the output is going to be our good decomposition into good relations. | 
+So let's just go through it step by step. | 
+The first thing we're going to do is compute keys from r and were going to do that using functional dependencies as we have seen, and we saw in the actual algorithm for doing that in a previous video. | 
+Then we are going to start doing the decomposition process and we're going to repeat the decomposition until all of the relations are in BCNF. | 
+though we're going to take r and break it up into smaller relations and we might further break those into smaller relations, and so on, until every relation is good. | 
+So the breaking down process says pick a relation that's bad. | 
+So we're going to pick a relation, r prime in our current set, and again, we're starting with only r in our set. | 
+And we're going define a situation where that relation has a functional dependency and I guess, technically speaking, this would be with lines on top, that violates Boyce-Codd Normal Form and that violation is what's going to guide us to do the decomposition into better relations. | 
+So our decomposition then,in the second step, is going take our prime and and it's going to put the attributes involved in the functional dependency into one relation, and then it's going to keep the left-hand side of the functional dependency and put the rest of the attributes along with that left-hand side into a separate relation. | 
+So let's draw this as a picture. | 
+So here's our relation, r prime and of course the first time through our loop, that relation would have to be r self, and then because we have a functional dependency from A to B and A is not a key - that means it's BCNF violation - we're going to decompose this into R1 and R2. | 
+So R1 will contain the attributes in the functional dependency. | 
+R2 will contain the left-hand side of the functional dependency and the rest. | 
+We can see clearly that this is a decomposition that keeps all attributes, and what we'll see soon is that this is also a good one in that logically the join of these two relations is guaranteed to give us back what we had originally. | 
+Now the remaining two lines of the algorithm compute after the decomposition the set of functional dependencies for the decomposed relations and then the keys for those. | 
+I'm going to come back to this particular line here after doing an example. | 
+This is our same example, although squished to give me more space to write. | 
+And, as a reminder, in this example, we've computed a couple of the times that the key, given the functional dependencies, is the combination of the social security number and the high school code. | 
+So our goal is to take the student relation and iteratively break it down into smaller relations until all of the relations are in Boyce-Codd normal form. | 
+So let's start the iterative process. | 
+We pick some functional dependency that violates Boyce-Codd normal form and we use it guide our decomposition. | 
+So all three of these functional dependencies actually violate Boyce-Codd normal form because none of them have a key on the left-hand side. | 
+So let's start with the high school code one. | 
+So, to do the decomposition, based on this violating functional dependency, we're going to create two relations. | 
+The first one is going to contain just the three attributes that are in the functional dependency itself, so it's high school code, high school name and high school city. | 
+And the second one is going to have all remaining attributes in the relation, plus the left hand side, so we'll have the social security number, the name, the address. | 
+We will have the high school code because it's on the left-hand side of the functional dependency we're using, but we won't have the name and city from the right side hand side and I'll have a GPA and the priority. | 
+Now at this point our algorithm computes the functional dependencies for the decomposed those relations. | 
+For this particular example, we can just see what they are, they're the same functional dependencies that we had for the non-decomposed relation. | 
+Sometimes there's a little bit of computation you have to do and I'm going to talk about that in a bit. | 
+But, in this case, we can see, for example, for our relation S1, the only functional dependency is this functional dependency here. | 
+That tells us that high school code here is a key for S1. | 
+So our only functional dependency has a key on the left-hand side and that tells us that this relation is in Boyce-Codd normal form. | 
+So we're done with that one, but we're not done with S2. | 
+So for S2 the key is still the social security number and high school code together, so we still have these two functional dependencies that are Boyce-Codd normal form violations. | 
+So let's take the GPA priority one and let's guide that to decompose S3 further. | 
+We'll decompose S2 into S3 and S4. | 
+S3 will contain the GPA and priority from the functional dependency we're using, and then S4 will take the remaining attributes in S-2 together with the left hand side of the GPA. | 
+So, we'll keep our social security number, name, address, high school code and GPA, but we don't keep the priority. | 
+So at this point, S-2 is completely gone and let's take a look at the remaining relations. | 
+S-3 now just has one functional dependency that applies and the left-hand side is now a key. | 
+And so now we're done with S-2. | 
+It's in Boyce Codd Normal Form, but we're not done, I'm sorry, we're done with S-3, but we're not done yet with S-4. | 
+S-4 still has social security and high school code as its key, and so we still have a violating functional dependency, so let's decompose S-4 further. | 
+We decompose into S-5 and S-6. | 
+S-5 contains the attributes in the functional dependency that we're using now, so it's the social security number, name, address and GPA and then as 6 contains the remaining attributes plus the left hand side, so that's the social security number and the high school code. | 
+And I will just tell you right now because you might be getting bored with this example, we're done with S-4 S5 and S6 are now both in Boyce Codd normal form. | 
+So this is our final schema. | 
+It contains 4 relations, S1, with the information about high schools, S3 with the information about GPA's and priorities, S5 has student with their name, address and GPA and S6, a student with the high school they went to. | 
+And, if you think about it, this really is a good schema design and it's what's produced automatically by the BCNF decomposition algorithm, using our functional dependencies. | 

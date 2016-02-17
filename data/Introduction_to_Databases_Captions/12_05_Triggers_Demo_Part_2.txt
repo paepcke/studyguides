@@ -1,0 +1,128 @@
+If you made it through that long first part of the demo of triggers, here we are in part two. | 
+As a reminder, our introduction video about triggers used the SQL standard, but no database system actually implements the standard and most systems deviate considerably. | 
+Postgres is the closest and is the most expressive with triggers. | 
+However, it has a kind of cumbersome syntax so we're not using it for our demos. | 
+SQLite follows posts risks, and is also quite expressive. | 
+MySQL is considerably less expressive. | 
+Mostly with some limitations it has and how triggers can interact so again we are using SQLite for our demo and just a few of the differences from the standard. | 
+It has role level triggers only no statement level triggers and an immediate activation semantics. | 
+For each row, can be specified in triggers, but if it's not there, it's still a row level trigger. | 
+It doesn't have old tables or new tables since it has immediate activation semantics only. | 
+And it doesn't have a referencing clause, the variables old and new are automatically bound in every trigger to what would be old row and new row if it had a referencing clause. | 
+And finally, the action part of SQLite triggers are SQL statements embedded in begin and end blocks. | 
+Overall, here's the long list of features that are covered in our two-part demo. | 
+We covered the first five features in part one, so in part two, we'll be talking about self-triggering triggers; we'll be talking about triggers that have cyclic behavior, conflicts--that means when we have multiple triggers triggered at the same time--and finally, nested trigger invocations when the action part of a trigger triggers additional triggers. | 
+And, finally we'll also add to the a demo, a demonstration of SQLite row-level immediate activation. | 
+And again, that doesn't follow the standard. | 
+Its a bit subtle, but let me review it. | 
+In the SQL standard all triggers are activated at the end of the commands, even if they modify multiple rows. | 
+Whereas in SQLite and also in MySQL, triggers are activated immediately after each row-level modification. | 
+The tables that we use for this demo are very simple because we want to focus specifically on trigger behavior, so we'll just be using four tables, each with a single attribute. | 
+Let's go to the demo. | 
+Our first trigger is a simple one that demonstrates triggers triggering themselves. | 
+It's activated when we have an insertion on T1. | 
+It has no condition and after that insertion it inserts an additional row into T1 that contains the value that was inserted plus one. | 
+So let's go ahead and insert a row and see what happened. | 
+The first tuple in T-1, the one, is the tuple that we inserted with our command. | 
+The second tuple, the two was inserted automatically by the trigger. | 
+However, we expected additional trigger activations to insert additional tuples. | 
+It turns out that SQLite, as a default, doesn't allow a trigger to be activated more than once in a trigger processing session, presumably to prevent infinite behavior. | 
+But if we'd like, we can toggle a variable in the SQLite session called recursive triggers. | 
+If we turn recursive triggers on, then that checking is turned off and triggers can be activated arbitrarily many times during a trigger processing session. | 
+Now with recursive triggers on, this trigger would in fact activate itself indefinitely inserting more and more tuples into T-1. | 
+Actually what would happen is eventually an error. | 
+is generated. | 
+But we can modify the trigger in order to put in a limit. | 
+Specifically, we'll add a condition to the trigger that says we'll only perform the action when the number of tuples in T1 is less than ten. | 
+So what we expect now is when we start by inserting a tuple, we'll insert one, two, three, four, five, and so on, but when the size reaches ten, the condition will not be satisfied. | 
+The action won't be executed and trigger processing stops. | 
+I deleted the two tuples from T1, so now let's once again start by inserting a single tuple with a value one and let's see what happened. | 
+We take a look at table T1 we refresh and we see that indeed ten tuples were inserted the first one we inserted, all the rest by self triggering of our single trigger and when it got to the size of ten, triggering terminated because the condition part of the trigger was not satisfied. | 
+Now let's generalize the idea to three triggers that trigger each other in a cycle. | 
+The first trigger is going to be activated by inserts on T1 and when there is an insert on T1 it will insert into table T2 the same tuple except incremented by one. | 
+That will activate trigger R2, which is triggered by insertions on T2. | 
+When T2 is, when R2 is activated, it will likewise insert into table T3. | 
+Again the value that was inserted into T2 incremented by 1 Then trigger T3 will be activated by those insertions onto T3 and it will go back and insert back into table T1, again incrementing value. | 
+So let's start as usual by inserting into the first table, the value one and let's see what happened. | 
+Now let me mention that before I started this example I turned the recursive triggers flag off. | 
+So, here is our original Tuple1. | 
+That activated a trigger and it inserted two into Table T2. | 
+We can go ahead and see that. | 
+That, in turn, activated a trigger that inserted a three into Table T3, and then we go back to Table T1 and the four was inserted. | 
+But because SQLite has as a default, the limitation that each trigger is activated only once in a trigger-processing session, at that point trigger processing terminated. | 
+Now we're going to do the same thing that we did last time. | 
+We're going to turn recursive triggers on, again using this command for our SQLite session and then we're going to modify our triggers to put in a termination condition. | 
+So we only need to put the termination condition in one trigger and we'll put it in the third trigger and this time we'll allow it go a little farther, so the third trigger will add a condition that when the size of the first table, T1 is less than 100, then the trigger will go ahead and execute its action, but when the size of T1 exceeds 100, then it won't and that will break the cycle and trigger processing will terminate. | 
+As always lets start things off by inserting the tuple 1 into table T1. | 
+So when we look at table T1, we see our original insertion. | 
+This 1 inserted a 2 into table T2, which then caused a 3 to be inserted in table T3, and then back to a four being inserted into Table T-1. | 
+And that triggered a five being inserted into T-2 and so on. | 
+So we can see the trigger behavior. | 
+Now we did put in a limitation so when we go look at the size of T1, we'll see that it got to exactly 100 and then when the size of T1 exceeded 100, the third trigger's condition was not satisfied and that caused the action not to be executed which brought everything to a halt. | 
+Okay, that's enough of cycles. | 
+Now let's take a look at a situation where. | 
+We have two triggers activated at exactly the same time and they perform updates to exactly the same portion of the database. | 
+Both of our triggers are activated by insertions into table T1. | 
+And we're gonna again start trigger processing by inserting one tuple with the value 1. | 
+The first trigger has no condition. | 
+It updates the contents of T1 to set all the values to 2. | 
+The second trigger checks to see if there exists a 2 in table T1, and if so it sets the values to 3. | 
+So, these two triggers are designed specifically so we can see which one goes first. | 
+If trigger R1 goes first it will set the value to 2. | 
+The condition part of our 2 will be true and it will then, in turn, then set the value to 3. | 
+However, if trigger R2 goes first, it will not find a 2 in table T1, so it's actually will not be executed and will then our trigger R1 will go next and we will set the value to 2. | 
+Okay so let's go ahead and do our insertion with these two triggers defined and see what happens. | 
+We insert the value, we take a look at T1, and we discover that we have the value of 2. | 
+So what does that tell us? | 
+That actually tells us that trigger R2 went first. | 
+We performed our insertion. | 
+It looked to see if there was a two in the table. | 
+There wasn't because there was just a one. | 
+It didn't execute its action. | 
+Then trigger R1 went and it modified the value to be two. | 
+So that's interesting: the second trigger went first. | 
+So as an experiment, let's try reversing the order in which the triggers are defined. | 
+We'll create trigger R2 first and R1 second. | 
+I've deleted the tuple that was in T1, so once again we'll insert a T1 to get things started, we go take a look and now we see indeed that we have the value three. | 
+Going back to look at our triggers, a value three means that trigger R1 went first, it set the value to two, that made trigger R2's condition true and then it set the value to three. | 
+So interestingly, in SQLite, when you have triggers that are activated at the same time, it appears that the trigger that was created second is the one that is going to go first. | 
+Now let's experiment with nested invocation of triggers. | 
+To make things exciting, this time I'm going start by inserting a zero into table T1 instead of a one. | 
+And we're gonna be using all four of our tables, T1 through T4 with three triggers. | 
+The first trigger is going to be activated by the insertion into T1. | 
+And it will simply insert a tuple1 into table T2 and a tuple1 into table T3. | 
+What we're going to see, and what we're specifically experimenting with, is that the first insertion will, in fact, activate triggers before the second insertion is performed. | 
+The first insertion into T2 will activate our second trigger inserts on T2 and this trigger will in turn insert into tables T3 and T4, and it will insert the values too. | 
+So this will occur in a somewhat nested fashion, and in fact in this action, we'll see the first command will be executed and it will, in a nested fashion, activate our trigger R3, which will insert simply into table T4 the value three. | 
+So let's get started and, again, as I mentioned, for excitement we'll be inserting a zero this time and let's go see what happened to our tables. | 
+So table T1 has just the zero that we inserted, as expected. | 
+Table T2 has just a single tuple with the value one which is exactly what we expected, this trigger is only activated once. | 
+Now let's take a look at table T3. | 
+Table T3 has a 2 and a 1 and they're in that order And what that tells us is that this insertion here activated by trigger r2 happened before this insertion here from trigger r1 and that this is what demonstrates the nested invocation of the triggers and just to look at the last table we will see something similar in T4. | 
+We again can see nested invocation because the two occurs after the first insertion of three and then we have the final insertion of three. | 
+So this is a bit complicated. | 
+You might want to look at the video again or or even better yet, download the triggers and try them yourself. | 
+Our last example is designed specifically to demonstrate the immediate activation of the low level triggers implemented in SQLite specifically I've populated table T1 already with four tuples with the value one and what my trigger is going to do when I insert additional values into T1 is this insert into table T2 the average value in T1. | 
+What I'm going to do is insert a batch of tuples into T1, in fact I'm going to insert four tuples with a value of two. | 
+So when I'm done, I'll have four 1s and four 2s in table T1. | 
+If triggers followed the SQL semantics of being activated the very end of the entire statement. | 
+So the entire batch of inserts, then the average values that we insert into T2, would reflect the average of the four 1s and the four 2s, so it would be the value 1.5. | 
+However, what SQLite does is activates the trigger after each tuple-level insertion. | 
+So, as we insert the 2s, one at a time an average will be inserted into table T-two, and the first average will reflect have one 2 in table T1, the second will reflect having two 2s in table T1, and so on. | 
+I think you'll get the idea when I show what happens. | 
+So here is the command I'm going to use to insert the four 2s into table T1. | 
+I'm going to insert into T1, the result of this subquery which takes every value and adds 1. | 
+So let's go ahead and do it. | 
+And let's take a look at table T1. | 
+And we see now that indeed we have the four ones and the four twos. | 
+So the real story is told when we look at table T2. | 
+And here we see indeed that we do not get four averages that are 1.5, which is what we would have gotten with the SQL standard semantics. | 
+Instead we saw that for each two that was inserted, we inserted the average into table T2, reflecting the number of twos that were in the table so far. | 
+Again, fairly complicated, you might want to watch this example a second time or download it and try it at home. | 
+So that concludes our rather long coverage of triggers. | 
+We've seen that it can actually be quite complicated when triggers interact with updates on the database, when they perform updates, and especially when they interact with each other. | 
+Now the reality is that a lot of times that triggers are used in applications is for very simple purposes. | 
+We might have a couple of triggers that are enforcing simple constraints. | 
+They don't interact with each other and they don't interact with the database in complicated ways. | 
+And I've shown a few of those triggers early on. | 
+However, I did want to make a point that when triggers are used for more complicated purposes, when they interact with each other and with the database in complicated ways, it is important to be very careful to fully understand how they behave. | 

@@ -1,0 +1,90 @@
+Now that we've learned about functional dependencies, let's talk about how they're used to create relations that are in Boyce Codd Normal Form. | 
+Very quick reminder about relational design by decomposition. | 
+The database designer creates mega relations that contain all the information to be captured and specifies properties of the data to be captured. | 
+The system uses the properties to decompose the relations into smaller ones and those final decomposed relations satisfy what is known as a Normal Form. | 
+They don't have anomalies and they don't lose information. | 
+Functional dependencies are used to create relations in Boys Codd Normal Form and multi-doubt value dependencies are used to create relations in Fourth Normal Form. | 
+This video talks about the process of using functional dependencies to create relations in Boyce Codd Normal Form. | 
+Let's start by defining what it means to do a decomposition of a relational schema. | 
+Let's suppose we have a relation R with a set of attributes A-1 through A-N. We can decompose R into two relations. | 
+We'll call them R-1 and R-2 such that R-1 has... | 
+I'll just label them B-1 through B-K and C-1 through C and let's say, let me use the notation for the list of attributes A, B and C that I've been using in other videos. | 
+So R1 and R2 are a decomposition of R. First of all if the attributes that capture B union C are equal to the set of attributes we started with A. | 
+In other words recovering all of the attributes, and furthermore, this is the tricky part, R1 natural join R2 equals R. So, let me draw this pictorially. | 
+So here's our relation R and all of our attributes together are the A attributes. | 
+And then we're going to decompose R into R1 and R2. | 
+So, let's say this first set of attributes here are the B attributes and the second bunch of attributes here with some overlap are the C attributes. | 
+So, now R-1 consists of this portion of R and the purple part here now is R2. | 
+So, clearly the B and C attributes are equal to the original attributes and then is the join of R-1 and R-2 giving us R. Now remember, all of this is logical. | 
+We don't have R itself and we don't have the data and we don't have R-1 and R-2, so everything is being done at the schema level. | 
+And we will explore later how we can guarantee that this join does return R and not something else. | 
+Now just using a little bit more relational algebra here, let me mention that R-1 can be defined as the projection on the B attributes of R and then in purple, R-2 is the projection of the C attributes of R. So again all of this is logical, but the idea is that when we do the projection, if there are duplicates that are present simply because we have say, different values in the remaining attributes, those duplicates don't have to be retained in the projection. | 
+We saw in some of our examples in other videos where we had redundancy because we were capturing information multiple times that we didn't need to. | 
+And we're going to see that what Boyce Codd Normal Form really does is separate the relations so that we capture each piece of information exactly once. | 
+I know that's very abstract now, but when we see examples, we'll see how that works. | 
+So let's look at two possible decompositions of the student relation and see which ones are correct. | 
+So let's start with a decomposition where we take... we're gonna decompose student into S-1 and S-2, and in S-1 we'll put the social security number, name, address, let me abbreviate a little bit here and the high school code but no more high school information, the GPA and the priority. | 
+And then in relation 2, we'll put the high school code and we'll put the high school name and the high school city. | 
+So you can see what I've done done here is I've separated out the high school information into a separate relation. | 
+So first of all, is this a correct decomposition in the sense that A union B equals C. Certainly all of the attributes are still present and furthermore, if you think about it and we'll formalize this concept later S1 join S2 and that's going to occur by the way based on this highest school code value. | 
+S1 join S2 in this case will, for the data that you would expect, equal student. | 
+Again, we'll formalize that momentarily. | 
+Now let's look at a second possible decomposition of the student relation again into two relations S1 and S2. | 
+In the first one we'll put the first bunch of attributes. | 
+So we'll put the social security number, the student's name, their address, their high school code. | 
+Let's say high school name and high school city. | 
+And then in the second relation, we'll put again the student name. | 
+We'll put the high school name and we'll put, say the GPA and lastly the priority. | 
+So again, is this a decomposition? | 
+Well, certainly again we have the case that the A union B equals C, in other words we've captured all of the attributes of the student relation in our decomposed relation and do we think it's the case that if we join S1 and S2 then we'll get the student relation back and I'll put a question mark here and you know, of course, the answer is going to be no. | 
+When we join back we'll be joining in this case on the student name here and the high school name and likely these are not unique values so when we join back, we may be getting information together that doesn't really belong together. | 
+And, again, we'll be formalizing that and seeing additional examples momentarily. | 
+So now let's dig a little further into the actual process of decomposition. | 
+So, first of all we definitely want good decomposition. | 
+So, as we saw a good decomposition must capture all of the attributes of course. | 
+But the more important property is that this reassembly by the join produces the original relation. | 
+Sometimes that's called, by the way, a lossless join property. | 
+But the second thing that we want is not only that we have a good decomposition but that the relations that we decompose into are good relations. | 
+And those relations are going to be the ones that are in Boyce-Codd Normal Form. | 
+So let me first define formally Boyce-Codd Normal Form and then we'll go back to figure out an algorithm for automatically decomposing relations using good decompositions into decomposed relations that are in Boyce-Codd Normal Form. | 
+So here's the formal definition of when a relation is in Boyce-Codd Normal Form, usually abbreviated B, C and F. A relation R with functional dependencies is in Boyce-Codd Normal Form if every functional dependencies is such that it's left-hand side is a key, ok. Let's see what happens when it's not the case that the left hand side of a functional dependency is not the key and we'll see why that's a bad design. | 
+So here's our relation R and here's a set attributes A on the left side of the functional dependency, attribute B and the rest. | 
+And let's just put in some values. | 
+So let's suppose that we have two tuples here with the same A value. | 
+Then by our functional dependency, we're going to have the same B value and the rest can be anything. | 
+What has happened here is that we've captured the piece of information the connection between A and B twice. | 
+And the reason that's allowed to happen is because A is not a key. | 
+if A were a key, we would not be allowed to have the situation where we have these two tuples both present in the relation. | 
+So this relation is not in voice cod normal form. | 
+And this functional dependency here is what we would call a B C and F violation. | 
+That violation is causing us to have redundancy in our relation and that also give us as we've seen the update anomalies and deletion anomalies. | 
+Let me clarify a little bit the requirement that the left-hand side of functional dependencies have to be key, so that's what tells us we're in Boyce-Codd normal form. | 
+Now I'm not saying that the left-hand side of every functional dependency has to be declared as the primary key for a relation, only that it is, in fact, a key. | 
+And, as you might recall, the definition of a key is an attribute that determines all other attributes, if you're thinking about functional dependencies, or if you don't have any duplicates in your relation, then a key is a value that is never duplicated across tacets. | 
+So if you think about it for a second, you'll realize that whenever a set of attributes is a key, so is any superset of those attributes. | 
+So if "A" is a key, then so is ac and so is a,c,d and so on. | 
+So sometimes you'll see in the definition of Boyce Codd normal form this wording not is a key but will be contains a key which in fact is exactly the same thing or sometimes it will even say is a super key, and a super key is a key or a super set of a key. | 
+Again, all of those are saying exactly the same thing, but I just wanted to clarify because different wording and sometimes different notation is used for that concept. | 
+So far, things have been pretty abstract. | 
+Let's try to get a bit more concrete here. | 
+Let's look at two examples and determine if those examples are in "B", "C", and "F". | 
+Remember to determine is something is in B, C, and F we need the relational schema and a set of functional dependencies. | 
+So here we have our student relation and this is a set of functional dependencies we had in earlier examples, where the social security number is determining the name, address, and GPA. | 
+That means that if there's two tuples with the same social security number they will have the same name, address, and GPA. | 
+That's the same student and they only live in one place. | 
+The GPA determines the priority, so any two students with the same GPA will have the same priority and, finally, the high school code determines the high school name and city. | 
+So the high school is a unique identifier for a particular high school in a city. | 
+So those are our three functional dependencies in order to test whether this is relation is in normal form with respect to the functional dependencies we need to know what the key of the relation is or the set of keys of the relation and we worked on this in an earlier video using the closure idea, so I'll just remind you now, that for this relation, this set of functional dependencies, there's one key or one minimal key and that's the social security number together with the high school code, those two attributes do functionally determine all other attributes in the relation and, therefore, they are together, forming a key. | 
+So now, to check if we're in Boyce-Codd Normal Form, we have to ask the question, "Does every functional dependency have a key on its left-hand side?" | 
+and the answer, of course, is no, not all. | 
+In fact, the reality is that no functional dependency, in this case, has the key on the left hand side. | 
+We have three left hand sides and no of them have or contain our one key. | 
+If you've given any thought at all to this database design, you will see that it's not a good one. | 
+It's combining too much information in one place, which is our basic idea, that we start with a mega relation and break it down. | 
+And so what we're going to do is use these functional dependencies, and specifically the fact that those are BCNF or Boyce Codd Normal Form violations, to break this relation down into one that is a better design. | 
+Now let's look at a second example, our apply relation to see if this one is in Boyce Codd Normal Form. | 
+So in this case as a reminder, we have social security number, college, state, date and major. | 
+So the date is the date of application; the major is major the student is applying for at that particular college and we'll have one functional dependency which effectively says in English that each student may apply to each college only once and for one major. | 
+Now let's compute the key for this relation, or keys for this relation based on the functional dependency. | 
+Well, it's pretty straightforward that these three attributes form a key because they determine the other attributes in the relation and therefore they determine all the attributes of the relation. | 
+Furthermore, we can see that our one and only functional dependency obviously has a key on its left hand side and so so this relation is in fact already in Boyce-Codd normal form and we'll see there's no way to decompose this relation further into a better design. | 

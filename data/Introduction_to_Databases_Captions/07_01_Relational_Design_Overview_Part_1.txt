@@ -1,0 +1,59 @@
+In this sequence of videos, we'll learn about designing good schemas for relational databases. | 
+So let's suppose we're building a database for an application or set of applications and we have to figure out what schema we want to store our data. | 
+Usually there are many different possible schema designs for a database, and databases do tend to get quite complicated. | 
+And some designs are much better than others. | 
+So how do we choose what design to use? | 
+Now the reality is that people often use higher level tools to design relational databases and don't design the schemas directly themselves. | 
+But some designers do go straight to relations, and furthermore, it's useful to understand why the relations that are produced by design tools are what they are. | 
+Furthermore, from an academic point of view, it turns out there's a very nice theory for relational data base design. | 
+So let's consider the process of designing the schema for our database about students applying to colleges. | 
+Specifically, for a given student, let's suppose we have their social security number and their name, the colleges that student is applying to, the high schools they attended and what city those high schools were in, and the student's hobbies. | 
+So if that's what we want we can create a single relation called apply, that has one attribute for each of those pieces of information. | 
+Now let's take a look at how that database would be populated. | 
+Let's suppose that we have a student, Anne, with Social Security number 123, she went to 2 different high schools in Palo Alto, she plays tennis and the trumpet, and she's applying to Stanford, Berkeley, and MIT. | 
+So let's look at some of the tuples that we would be having in the apply relation to represent this information about Anne. | 
+So we'll have 1,2,3, Anne, her name, she's applying to Stanford, she went to Palo Alto High School, and that's in Palo Alto, and one of her hobbies is tennis. | 
+And then we also have 1 2 3 and she applied to Berkeley and went to Palo Alto High School in Palo Alto and tennis there as well. | 
+Of course she also has a tuple representing the fact that she's applying to Berkeley and and we'll stick with Palo Alto High School, and she played the trumpet. | 
+And as you can see we'll have more tuples, we'll have various Stanford and Berkeleys, we'll have some for her other high schools called Gunn High School also in Palo Alto, and so on. | 
+So if we think about it we will need a total of 12 tuples to represent this information about Ann. | 
+Now do we think that's a good design? | 
+I'm going to argue no, it's not a good design. | 
+There are several types of anomalies in that design. | 
+First of all, we capture information multiple times in that design, and I'll give some examples of that. | 
+For example how many times do we capture the fact that 1 2 3 the Social Security number is associated with a student named Ann? | 
+We capture that twelve times in our twelve tuples. | 
+How many times do we capture that Anne went to Palo Alto High School? | 
+We're going to capture that six times. | 
+And we're going to capture the fact that she plays tennis six times. | 
+And we're going to capture the fact that she went to apply to MIT four times, so for each piece of information, in fact, we're capturing it many, many times. | 
+So that doesn't seem like a good feature of the design. | 
+The second type is an update anomaly, and that's really a direct effect of redundancy. | 
+What update anomalies say is that you can update facts in some places but not all all or differently in different places. | 
+So let's take the fact for example that Ann plays the trumpet. | 
+I might decide to call that the coronet instead but I can go ahead and I can modify, say, three of the incidences where we captured the fact about her playing the trumpet and not the fourth one and then we end up with what's effectively an inconsistent database. | 
+And the third type of anomaly is called a deletion anomaly, and there's a case where we could inadvertently completely do a complete deletion of somebody in the database. | 
+Let's say for example that we decide that surfing is an unacceptable hobby for our college applicants, and we go ahead and we delete the tuples about surfing. | 
+If we have students who have surfing as their only hobby, then those students will be deleted completely. | 
+Now you may argue that's the right thing to do, but probably that isn't what was intended. | 
+So now let's take a look at a very different design for the same data. | 
+Here we have five different relations, one with the information about students and their names, one where they've applied to colleges, one where they went to high school, where their high schools are located and what hobbies the students has. | 
+In this case we have no anomalies. | 
+If we go back and look at the three different types, they don't occur in this design. | 
+We don't have redundant information, we don't have the update anomaly or the deletion anomaly. | 
+Furthermore, we can reconstruct all of the original data from our first design, so we haven't lost any information by breaking it up this way. | 
+So in fact this looks like a much better design. | 
+Now let me mention a couple of modifications to this design that might occur. | 
+Let's suppose, for example, that the high school name alone is not a key. | 
+So when we break up the high school name and high school city, we no longer can identify the high school. | 
+In that case, the preferred design would be to move the high school up here so we'll have that together with the high school name and then we don't need this relation here. | 
+And actually that's a fine design. | 
+It does not introduce any anomalies, that's just based on the fact that we need the name of the high school together with the city to identify it. | 
+As another example, suppose a student doesn't want all of their hobbies revealed to all of the colleges that they are applying to. | 
+For example, maybe they don't want Stanford to know about their surfing. | 
+If that's the case then we can modify the design again, and in that case we would put the hobby up here with where they're applying to college. | 
+And so that would include the hobbies that they want to reveal to those particular colleges, and we'll take away this one. | 
+So it looked like we were taking our nice, small relations, and moving back to a design that had bigger relations. | 
+But in this case it was very well motivated. | 
+We needed these attributes together to identify the high school and we want it to have our hobbies specific to the colleges. | 
+So what that shows is that the best design, for an application for relational databases depend not only on constructing the relations well, but also in what the data is representing in the real world. | 

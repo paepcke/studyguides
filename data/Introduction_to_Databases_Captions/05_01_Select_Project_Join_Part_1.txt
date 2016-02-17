@@ -1,0 +1,62 @@
+This is the first of two videos where we learn about relational algebra. | 
+Relational Algebra is a formal language. | 
+It's an algebra that forms the underpinnings of implemented languages like SQL. | 
+In this video we're going to learn the basics of the Relational Algebra Query Language and a few of the most popular operators. | 
+In the second video we'll learn some additional operators and some alternate notations for relational algebra. | 
+Now, let's just review first from our previous video on relational querying that queries over relational databases operate on relations and they also produce relations as a result. | 
+So if we write a query that operates say on the three relations depicted here, the result of that query is going to be a new relation. | 
+And, in fact, we can post queries on that new relation or combine that new relation with our previous relations. | 
+So let's start out with Relational Algebra. | 
+For the examples in this video we're going to be using a simple college admission relations database with three relations. | 
+The first relation, the college relation, contains information about the college name, state, and enrollment of the college. | 
+The second relation, the student relation, contains an ID for each student, the student's name, GPA and the size of the high school they attended. | 
+And, finally, the third relation contains information about students applying to colleges. | 
+Specifically, the student's ID, the college name where they're applying, the major they're applying for and the decision of that application. | 
+I've underlined the keys for these three relations. | 
+As a reminder, a key is an attribute or a set of attributes whose value is guaranteed to be unique. | 
+So, for example, we're going to assume the college names are unique, student IDs are unique and that students will only apply to each college for a particular major one time. | 
+So, we're going to have a picture of these three relations at the bottom of the slides throughout the video. | 
+The simplest query in relational algebra is a query that is simply the name of a relation. | 
+So, for example, we can write a query, "student" and that's a valid expression in relational algebra. | 
+If we run that query on our database we'll get as a result a copy of the student relation. | 
+Pretty straightforward . | 
+Now what happens next is that we're going to use operators of the relational algebra to filter relations, slice relations, and combine relations. | 
+So, let's through those operators. | 
+The first operator is the select operator. | 
+So, the select operator is used to pick certain rows out of a relation. | 
+The select operator is denoted by a Sigma with a subscript--that's the condition that's used to filter the rows that we extract from the relations. | 
+So, we're just going through three examples here. | 
+The first example says that we want to find the students whose GPA is greater than 3.7. | 
+So to write that expression in relational algebra, we write the sigma which is the selection operator as a subscript the condition that we're filtering for--GPA greater than 3.7--and the relation over which we're finding that selection predicate. | 
+So, this expression will return a subset of the student table containing those rows where the GPA is greater 3.7. | 
+If we want to filter for two conditions, we just do an "and" of the conditions in the subscript of the sigma. | 
+So if we want, say, students whose GPA is greater than 3.7 and whose high school size is less than a thousand, we'll write select GPA greater than 3.7. | 
+We used a logical and operator--a caret, high school size is less than a thousand, and again we'll apply that to the student relation. | 
+And once again, the result of that will be a subset of the student relation containing the rows that satisfy the condition. | 
+If we want to find the applications to Stanford for a CS major, then we'll be applying a selection condition to the apply relation. | 
+Again, we write the sigma and now the subscript is going to say that the college name is Stanford and the major is CS. | 
+Again, the and operator, and that will be applied to the apply relation and it will return as a result, a subset of the apply relation. | 
+So the general case of the select operator is that we have the sigma. | 
+We have a condition as a subscript and then we have a relation name. | 
+And we return as a result the subset of the relation. | 
+Our next operator is the Project Operator. | 
+So the select operator picks certain rows, and the project operator picks certain columns. | 
+So let's say we're interested in the applications, but all we wanted to know was the list of ID's and the decisions for those applications. | 
+The project operator is written using the Greek pi symbol, and now the subscript is a list of the column names that we would like to extract. | 
+So we write ID, sorry, student ID and decision, and we apply that to the apply relation again. | 
+And now what we'll get back is a relation that has just two rows. | 
+It's going to have all the tuples of apply, but it's only going to have the student ID and the decision columns. | 
+So the general case of a project operator is the projection, and then a list of attributes, can be any number, and then a relation name. | 
+Now, what if we're interested in picking both rows and columns at the same time. | 
+So we want only some of the rows, and we want only some of the columns. | 
+Now we're going to compose operators. | 
+Remember that relational queries produce relations . | 
+So we can write a query, say, with the select operator of the students whose GPA is greater than 3.7. | 
+And this is how we do that. | 
+And now, we can take that whole expression which produces a relation, and we can apply the project operator to that, and we can get out the student ID and the student name. | 
+Okay. | 
+So, what we actually see now is that the general case of the selection and projection operators weren't quite what I told you at first. | 
+I was deceiving you slightly. | 
+When we write the select operator, it's a select with the condition on any expression of the relational algebra, and if it's a big one we might want to put parenthesis on it, and similarly the project operator is a list of attributes from any expression of the relational algebra. | 
+And we can compose these as much as we want. | 
+We can have select over project, over select, select, project, and so on. | 

@@ -1,0 +1,20 @@
+Let's go one step up to the next isolation level which is called "read committed". | 
+As you can probably guess this one specifies that transactions may not perform dirty reads. | 
+They may only read data values whose updates by other transactions have been committed to the database. | 
+Now this isolation level is stronger but it still doesn't guarantee global serializability. | 
+Let's take a look through an example. | 
+Our first transaction, T1, is the same one, modifying the GPA for students from large high schools. | 
+Our second transaction is the one where we are going reset the isolation level. | 
+In this case to read committed. | 
+And it is going to perform two statements. | 
+One of them is going to read the average GPA from the student table, and the other is going to read the maximum GPA from the student table. | 
+So let's look at one behavior that's consistent with isolation level, but we will see is not serializable. | 
+Let's suppose that this average GPA is read before transaction T1, but the max GPA is computed after transaction T1. | 
+So the average will take, will not take into account the increases but the max will take account, will take into account the increases. | 
+So, let's see if this is equivalent to any serial order. | 
+Is it equivalent to T1 followed by T2? | 
+Well it's certainly not because T2's first statement is reading the state of the table before T1 and not the state of the table afterward, although C2 second statement is reading the state of the table afterward. | 
+Similarly it's not equivalent to T2 followed by T1 because T2 is reading in its second statement the state of the database after T1. | 
+So there's no equivalent serial order. | 
+But again, perhaps that's not needed for the particular application. | 
+And by using Read Committed we do get somewhat more performance then we would have if we were serializable. | 

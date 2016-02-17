@@ -1,0 +1,24 @@
+This video introduces a very important type of constraint known as referential integrity. | 
+As a reminder, integrity constraints in a database restrict the allowable data beyond what's already restricted by the structure and types of the database. | 
+Now the term referential integrity refers to integrity of references that appear in the database. | 
+In a relational database, a reference from one couple to another occurs through specifying values, and integrity, referential integrity says that those values are valid. | 
+It's sort of equivalent to having no dangling pointers if we used pointers in the database; we'll see a number of examples. | 
+So let's look at our simple example database with the students, colleges and students applying to colleges, that we've been using for all our demos. | 
+Let's suppose for example, that we had a student, 123, who had applied to Stanford, for some major, let's say CS, with a decision of yes. | 
+When we have this tuple, the value in the SID field here of 123 presumably refers to a value here of an actual student. | 
+So maybe 123 is student Mary with some GPA in some high school. | 
+And furthermore, the Stanford value in the C name or college name attribute is presumably referring to the college name in the college table. | 
+So we would expect to have a Stanford value here. | 
+Referential integrity talks about these values here, referencing the corresponding values in the other tables. | 
+Specifically if we have referential integrity from a attribute A say of a relation R to an attribute B of another relation S. What that's saying is that every value that appears in the A column of relation R must have some corresponding value in the B column of relation S. So if we take a look at our example, we would say then that we would have referential integrity from the SID column of apply, to the SID column of students. | 
+We would expect every value that appears in this column to also have a value in the other column, and similarly we all have referential integrity from the college name attribute been applied to the college name attribute, in college. | 
+Again we want every value that appears in this column, to also appear in this column. | 
+Now we might have a violation, for example, if we had a, say, 555 applying to Stanford for some major and some decision. | 
+If we have no 555 over in the student table, then this here would be considered a referential integrity violation. | 
+Similarly we might have 1 2 3, which is valid because we have a 1 2 3 student here, but if 1 2 3 is applying to Yale and we don't have Yale over here, then again we have a referential integrity violation. | 
+Now let me mention that referential integrity is directional, so we talk about, this SID here, referencing the SID in the student table. | 
+We could have referential integrity in the other direction, but that's saying something different. | 
+That would be saying that every student must apply somewhere, every value of her student ID must appear in the apply table. | 
+And this particular example, we probably would not have that be the case, we would probably be able to have students who hadn't yet applied anywhere, or colleges where no one had applied yet. | 
+And the most sensible direction for this referential integrity in this case is from the apply to the student and the apply to the college. | 
+But again, we could have it in both directions if we so wished. | 

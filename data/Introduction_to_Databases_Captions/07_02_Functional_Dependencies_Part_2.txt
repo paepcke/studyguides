@@ -1,0 +1,38 @@
+Finally, let's come back to our example. | 
+And I think when we start writing functional dependencies for our actual relations it'll give you a good idea of what they're really capturing. | 
+So let's write a few functional dependencies for our student relation based on what we expect to be true in the real world in the data that we're capturing in the relation. | 
+So here's a first example, Social Security number functionally determines S-name, the student's name. | 
+So what we say, we have multiple tuples about a particular student and they have the same social security number, say two tuples about student 123, we're expecting them to have the same name in fact, we're requiring them to have the same name. | 
+And presumably because 1 to 3 is sort of identifying the student that would be a natural functional dependency that would hold in this case and similarly we would expect social security number to determine address, although we're already making an assumption about the real world here, if we have this particular functional dependency, then we're saying a student doesn't move. | 
+They don't have multiple addresses. | 
+Every tuple that describes that student by their social security number will have the same address. | 
+Let's go to the high school and see what might be going on there. | 
+So I mentioned that the high school code, what I'm trying to capture there is a unique code for each high school that might be filled in college application then we would expect the high school code to determine the high school name. | 
+Every time we have the particular high school code, maybe for different students, it would have the same name and also it would have the same city. | 
+So that's an example of a functional dependency with two attributes on the right hand side. | 
+Now, let's look at one that's a little more complicated, which is one that has two attributes on the left hand side instead. | 
+That actually turns out to be a more interesting case. | 
+In fact, in this particular case, we can probably reverse the arrow and have a functional dependency in the other direction. | 
+If we have a combination of high school name and high school city, I'm going to assume that's unique, that there aren't, there's never two high schools with the same name in the same city. | 
+And if that's the case, if that's unique, then we would expect a functional dependency to the high school code. | 
+Any time we have the same name and city, we're talking about the same high school so we should have the same code. | 
+What other examples do we have? | 
+If we assume that there's one GPA for each student then we'd have the social security number determines the GPA and we already talked about GPA determines priority and another example, actually if we put these two together we should see well if we have the same social security number twice we should have the same priority. | 
+And you may be thinking well, that's kind of a transitive rule if it takes these two and produces that one. | 
+And indeed it is. | 
+And we'll talk about rules for functional dependencies later. | 
+And there may be more in this case. | 
+Now let's take a look at functional dependencies for our apply relation. | 
+Actually, this one is a little trickier, it's even possible there are no functional dependencies at all. | 
+It really depends on the real world data, the real world constraints. | 
+One possibility for example is that every college has a particular single date on which it receives its application. | 
+So if that were the case, then we'd have the college name determines the date. | 
+In other words, every application for a particular college must have the same date. | 
+Another constraint might be that students are only allowed to apply to a single major at each college they apply to. | 
+So if that were the case, this is another one with two attributes on the left hand sid, we'd say that the social security number, together with the college, implies the major. | 
+In other words, we cannot have a student and college combination with two different majors and that captured that constraint. | 
+Maybe we have a constraint that students are only allowed to apply to colleges in one state. | 
+That seems rather unlikely, but I was struggling to find functional dependencies for this case. | 
+In that case, we'd have this function dependency, again, saying a student could only apply to colleges in a single state. | 
+For the apply relation specifically, again, it's really the real world constraints that drive which functional dependencies hold for the relation. | 
+But it's important to understand those constraints so they can be translated to functional dependencies, which then can drive a good relational design. | 

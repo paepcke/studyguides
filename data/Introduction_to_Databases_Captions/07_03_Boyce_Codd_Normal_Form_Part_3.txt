@@ -1,0 +1,51 @@
+Let me mention a few more things about the algorithm. | 
+First of all, I left this step kind of mysterious, which is how we compute the functional dependencies for the decomposed relations. | 
+We can't just take the functional dependencies we already have for the bigger relation, and throw away the ones that don't apply exclusively to one or the other of the decomposed, we actually have to compute the functional dependencies that are implied and that apply to these relations. | 
+So in the video on functional dependencies, we learned all of implied functional dependencies, and we would use the closure as we did in that video to determine the implied functional dependencies. | 
+Now the reality is, for many examples, it's pretty obvious, we saw in the previous example it is. | 
+And, the other thing is, that this is being done by a computer so, we don't actually have to worry about it except when we're doing exercises for our class. | 
+Second, let me mention that there is little nondeterminism in this algorithm. | 
+It says "pick any of our relations with a violating functional dependency and use that to guide the next decomposition step". | 
+So, the fact is, that you can get a different answer, depending on which one you choose at this point in time. | 
+All of the results will be BCNF decomposition but they might not be the same one. | 
+And, in fact, if you go back to the example that I did, and you pick the functional dependencies in a different order, you might get a different final schema. | 
+But, again, it will be in BCNF. | 
+And lastly, some presentations of the BCNF decomposition algorithm actually have another step here, which is to extend the functional dependency that is used for the decomposition. | 
+So we're using A to B but if we have A to B we also have A to B and we can add more attributes, those in the closure of A. | 
+If you remember the closure and that's also a correct functional dependency. | 
+By doing this extension, we will still get a correct BCNF answer, but we'll tend to get relations that are larger than the ones we get if we don't do the extension first. | 
+In some cases, larger relations are better because you don't need to join them back when you're doing queries, but that can depend on the query load on the data base. | 
+So to conclude, does BCNF guarantee a good decomposition? | 
+Well of course the answer is yes or I wouldn't have spent all this time teaching you about it. | 
+Does it remove the anomalies that we looked at in our first example in another video of bad relational design? | 
+Yes, it does remove anomalies. | 
+When we have multiple instances of the same piece of information being captured, that's what's squeezed out by the decomposition into BCNF, and that's fairly easy to see through the examples that we've done already. | 
+It's a little less obvious seeing why BCNF composition does allow us to have a breakdown of a relation that logically reconstructs the original relation. | 
+So let's look at that a little bit more. | 
+So we're taking a relation in R, we're producing R1 and R2, and we want to guarantee that when we join R1 and R2, we get R back. | 
+We don't get too few tuples and we don't get too many tuples. | 
+Too few is pretty easy to see. | 
+If we break R into R1 and R2 and their projections of R then when we join them back, certainly all the data is still present. | 
+If they're too many tuples, that's a little bit more complicated to see. | 
+Let's just use a simple abstract example. | 
+So here's a relation R with three attributes. | 
+Let's have two tuples: 1, 2, 3 and 4, 2, 5. | 
+Let's suppose that we decompose R into R1 and R2. | 
+R1 is going to contain AB, and R2 is going to contain BC. | 
+So let's fill in the data: in R1 we have 1, 2, 4, 2. | 
+And in R2 we have 2, 3, 2, 5. | 
+Now let's see what happens when we join R1 and R2 back together. | 
+When we do that, you might see what's going to happen. | 
+We're actually going to get four tuples. | 
+We're going to get "1,2,3", "1,2,5", "4,2,3" and "4,2,5". | 
+That is not same as our original relation, so what happened? | 
+Well, what happened is we didn't decompose based on a functional dependency. | 
+The only way we would decompose with "B" as the shared attribute were if have a functional dependency from B to A or B to C. And we don't. | 
+In both cases, there's two values of B that are the same where here the A values are not the same and here the C values are not the same. | 
+So neither of these functional dependencies hold N, B, C, and F would not perform this decompostion. | 
+So in fact B, C, and F only performs decompositions when we will get the property that they're joined back. | 
+Again that's called a lossless join. | 
+So, B, C, and F seems great, we just list all our attributes a few functional dependencies and the systems churns on and out comes a wonderful schema. | 
+And in general that actually is what happens. | 
+In our student example, that worked very well. | 
+There are, however, shortcomings of B C and F and we will discuss those in a later video | 

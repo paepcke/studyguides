@@ -1,0 +1,11 @@
+The second way to check is based on a set of axioms, a set of rules called Armstrong's axioms. | 
+We saw some rules for functional dependencies earlier, but Armstrong's Axioms are a specific set of rules that are what's called complete. | 
+It's guaranteed that if one thing about functional dependencies can be proved from another, then it can be proved using the Armstrong's Axioms. | 
+I'm not going to cover Armstrong's Axioms in the videos, but you can look at any of the recommended readings and find them there. | 
+So you might wonder why did I introduce this notion of one set of functional dependencies following from another and for that matter, why did I introduce trivial and non-trivial functional dependencies. | 
+Well, I'm going to sum up in one sentence what we're looking for when we specify the set of functional dependencies for a relation. | 
+So we have a notion of the real world data, we have our attributes but we need to specify the functional dependencies in order to get a good designer for some of the reasons that I mentioned. | 
+What we would like to find is a minimal set of completely non-trivial functional dependencies such that all functional dependencies that hold on the relation follow from using the technical definition I gave, the dependencies in this set. | 
+Wow, that seems like some very complicated thing, but the fact is when you start specifying functional dependencies, you'll discover that you will actually get this definition pretty naturally. | 
+So to conclude, functional dependencies are a generally useful concept in database systems. | 
+They 're a key ingredient of doing relational design by decomposition, because we use the functional dependencies to get Boyce-Codd Normal Form which is what we'll cover in the next video, but they're also useful for the system to determine how to store data, to compress data and also to reason about query processing. | 

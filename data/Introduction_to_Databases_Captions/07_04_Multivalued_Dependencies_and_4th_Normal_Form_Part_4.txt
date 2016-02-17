@@ -1,0 +1,7 @@
+So let's wrap up this long unit on on dependencies and normal forms with a quick summary. | 
+If we have a relation RABC, a functional dependency from A to B tells us that when we have the same A values, we have the same B values, and the Boyce-Codd normal form tells us to factor that...those attributes into their own relation so that we don't repeat that relationship over and over. | 
+For multi-value dependencies, let's say we have the relation RABCD, and if we have the multi-value dependency A multi determines B, what that tells us is that we have every combination for a given A of B values and CD values - we called those rest earlier - and when we have that multiplicative effect of combinations, again, we take the A and B attributes and we put them in a separate relation so that we can separate out those facts from the independent fact of A and its CD values. | 
+Finally, in the design process, multi-value dependencies are something we add to functional dependencies, only they're stronger. | 
+So fourth normal form is a stronger property than Boyce-Codd normal form. | 
+Now usually this design process works very well and is very intuitive for many schemas, I hope for the examples that I gave here. | 
+But there are actually a few shortcomings to using Boyce-Codd Normal Form or Fourth Normal Form and we'll cover those in the next video. | 

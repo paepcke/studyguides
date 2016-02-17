@@ -1,0 +1,144 @@
+This sequence of videos introduces the very importance concept called views. | 
+In this video, we'll talk about defining and using views. | 
+And then, we'll give a demonstration. | 
+The next sequence of videos, we'll talk about modifying views, and then, we'll also talk about materialized views. | 
+Views are based on a three level vision of databases, which are known as the physical layer, the conceptual layer, and the logical layer. | 
+At the bottom level, we have the actual data stored on a disk. | 
+So, here's my picture of a disk, and then, we have disk pages. | 
+And on those pages is stored the actual data. | 
+So, that's the physical layer. | 
+The next layer up, known as the conceptual layer, is the abstraction of the data on these disk into relations. | 
+And that's what we have been talking about for a lot of our videos. | 
+What we are introducing now is what's known as the logical layer. | 
+And that's a further abstraction above relations into what are known as views. | 
+As we'll see, a view is defined as a query over relation. | 
+So, it's still in the relational data model. | 
+So, we showed one view that is query over two relations here, we could have a view that's query over views and maybe views together with relations. | 
+It's a quite general concept. | 
+So, until now, we've seen applications and users of those applications operating on the relations at the conceptual level. | 
+But users and applications can also operate on views at the logical level. | 
+So, why do we introduce this additional level on top of this conceptual layer which is the layer of relation? | 
+Certainly we understand why we want to use relations and not talk about pages like this but what's the benefit of adding views on top of relations. | 
+Well one benefit is that it allows us to hide some data from some users when the granularity of which we want to hide data doesn't correspond exactly to relations. | 
+Another is that it might make certain queries easier and more natural when we query over the views rather than directly over the relations. | 
+And the third reason is modularity of data base access because we can think of these views as modules giving us access to portions of the database. | 
+Again, when that granularity that we want doesn't correspond precisely to relations. | 
+One thing that I should mention is that real applications do tend to use lots of views, lots and lots of views, so the bigger the application is, the more need there might be for modularity, for ease of certain queries or for hiding data and views are the mechanism to achieve those goals. | 
+So let's talk about how views are defined and used. | 
+It's actually a pretty simple concept. | 
+To define a view, which we'll call V, we specify a query of, we'll just say, "View query," in a query language, typically in SQL over a set of existing tables. | 
+As we'll see those could even be used. | 
+The schema of the view then, we can think of it like a table, is the schema of the result of that query. | 
+Now let's say we want to run a query Q Over our database. | 
+This is not the view query. | 
+This is just some ad hoc query over our database and we want to reference V in that query. | 
+So, we can once V is define , reference it just like it's a table and conceptually what we can think of is V being, say a temporary table that is assigned to the result of running the query over the current instances of R1 through RN, so we've now populated V like it is a table and then we evaluate Q and we can simply refer to V as we evaluate Q. | 
+So that's what happens conceptually. | 
+Now, in reality what happens is the query Q that references V is actually rewritten to use the tables R1 through N that are in the definition of V. Instead of referencing V and we'll see that in our demo and as I mentioned, the RIs, these tables that are referenced in the view definition can themselves be views as we saw in our diagram earlier with those purple squares. | 
+The syntax for. | 
+Creating a view in sql is very simple. | 
+We use the keywords create view, we give the view a name, and then we specify the query for that view, and that query would be in standard sql. | 
+Now as I said, the schema for the viewed that will become known as the name, is the schema of the result of this query. | 
+If we want to actually name the schema so rename the attributes in the results of the query, then there is an alternative syntax that actually lists the attribute names for the view. | 
+Once this command has been executed from this point on, we can use new name as it's a regular table in the database. | 
+So let's move ahead now to the demo. | 
+In the demo, we will be using our standard, simple college admissions database. | 
+As a reminder in case it's been a while or you're new to our videos, it's a database with three tables. | 
+One with information about colleges that have a college name statement enrollment. | 
+One with information about students and finally records showing that students have applied to colleges. | 
+As usual, we have our four colleges; Stanford, Berkeley, MIT and Cornell. | 
+We have a bunch of students with their name, GPA, and the size of their high school, and finally we have students who have applied to colleges for a specific major and there's a decision of their application. | 
+So let's create our first view. | 
+Our view is called CS Accept and it contains the IDs and college names of students who have applied to major in CS, and the decision was yes. | 
+So it's the IDs and names of students who have been accepted to a CS major. | 
+We execute the command that creates the view, and now we can take a look at the view. | 
+We go to our view manager, and we see CS Accept, and we double-click, and here are the contents of the view. | 
+Now even though it looks like it, this view is actually not stored. | 
+When we ask to see the contents of the view, or as we see momentarily, run a query that uses the view, that command or query is rewritten based on the view definition that we gave. | 
+So now let's run a query that uses the view as if it's a table. | 
+Our query is going to find students who were accepted to computer science at Stan ford and have a GPA less than 3.8. | 
+So here's our query written in SQL, and we can see here in the From clause, we are referring to CS Accept as if it's a table. | 
+So we'll join the student relation with the CS Accept relation. | 
+We'll make sure that the college is Stanford and the GPA is less than three point eight. | 
+We run the query and we see that Helen is the only student who satisfies the criteria. | 
+So what actually happens when we run this query that refers to a view? | 
+First now I'm going to talk about what happens conceptually, and then I'm going to talk about what the system actually does. | 
+So conceptually we can think of the query referencing the view as triggering a process where we create an actual table with the contents of the view, and then we run our query over that table. | 
+So, I've demonstrated that here. | 
+We created temporary table T, and that query contains exactly our view definition. | 
+So this was the definition of our view CS Accept. | 
+Then we take the query that we want to run, this was our query, and we replace the reference to the view with the reference to the temporary table T otherwise everything is exactly the same. | 
+We'll run that query and then we'll drop our temporary table. | 
+So, if we execute all of this, again we will see our result is Helen. | 
+what happens underneath in most systems is that the query that we write is actually rewritten not to reference a view or to reference a temporary table, but actually to reference the what are known as base tables, the ones that are used in the view definition. | 
+So let's take a look at that process. | 
+So here we've taken our reference to the view CS Accept and we've created a sub-query in the from clause. | 
+I hope you remember that from the SQL videos. | 
+So we've just taken the definition of the view. | 
+It's right here. | 
+We've put it into a sub-query, we've named it CS Accept, and then the rest of the query can remain the same. | 
+So this is actually convenient, a very useful feature where we use the sub-queries in the from clause. | 
+So we'll run the query, and once again we see Helen. | 
+Well, believe it or not, this is not exactly what the system tends to do either. | 
+This is a very easy and convenient rewrite, but unfortunately , underlying database systems don't always execute queries that have sub-queries in the from clause in the most efficient way. | 
+So a sophisticated system will actually do a rewrite into a simpler query. | 
+The rewriting process is more complicated. | 
+The query ends up being simpler. | 
+And here's that query. | 
+It's actually a simple query over the student and the apply relations based on the definition of our view, where we're finding here from the first part of our wear comes from the view definition the major has to be CS and the decision is yes. | 
+Then we have the joint condition that comes from the query and the last two conditions are also from our query. | 
+So you might want to look back and think about it but this is exactly what we were asking for when we were defining the view and then running a query over that view. | 
+So when we run this, we should once again get Helen, and we do. | 
+Of course is that as a user you don't have to worry about any of this. | 
+You just define the views and you use them, and it's up to the system to have an efficient and correct implementation. | 
+As I mentioned in the introduction we can define views that reference other views and that's what I've done in this example. | 
+This example finds students who are accepted to computer science at Berkeley, and they come from a high school that's greater than 500. | 
+So I'm calling the view CS-Berk, and the view is a join of the student relation with our CS accept view. | 
+It's going to join based on the IDs. | 
+So, the accept view is already going to be finding students who are accepted out of college for computer science and then we're going to constrain it to those who are accepted to Berkeley and from a high school size greater than 500. | 
+So, we run this command, but this doesn't show us the result, it just creates the view. | 
+Now we go to our view manager and we see that we have two views, and the Berkeley view finds that there were two students who were accepted to Berkeley. | 
+They come from a large high school, or high school greater than 500, although we're still returning their GPA in the view. | 
+So now that the view CS-Berk has been defined, we can run a query on CS-Berk. | 
+So let's find those students who have been accepted to Berkeley. | 
+Or computer science with a high school size greater than five hundred and that have a GPA greater than three point eight, and we see that that's Amy. | 
+So this is a beautifully simple query. | 
+But what's happening underneath is a little bit complicated because this is defined over one view, which itself is defined over other tables. | 
+So the rewrite process in this case is a kind of recursive process of expansion. | 
+Let's take a look at what the query would look like rewritten. | 
+So now that simple reference to the view CS Burke has. | 
+It's been replaced by this whole section here, lines 2 through 5. | 
+And you can see sort of the 2 layer process. | 
+At the outer layer we have. | 
+The definition of CS Burke which itself referred to CS accept. | 
+So, we had in of CS Burke, not this expansion here but just CS accept. | 
+And then we had the additional joint condition and the reference to it being Berkeley and the size High School and then this CS accepted self is expanded to its view definition. | 
+So now when we run the query we should still get the same result and we do. | 
+I'm not going to show it here but this query could similarly have a flattened rewrite into a join as we saw when we saw the expansion of CS accept. | 
+So now we have the view CS berk that's defined over the view CS accept. | 
+What happens if we try to drop the view CS accept? | 
+We get an error here. | 
+We can't drop the view because other objects depend on it. | 
+So that's a nice error. | 
+That's from the Post Grist system. | 
+Unfortunately, if we used one of the other two systems, SQL Light or My SQL, what would actually happen is it would allow us to drop the view and then when we attempted to refer to CS berk, at that point we would get an error. | 
+Because when it did the rewriting process it would discover that CS accept no longer exists. | 
+Now let's create what happens to be one of my favorite types of views. | 
+We're going to take our three tables in the database and we're going to join them together so that we have all of our information together in one table. | 
+So we're going to apply our join conditions to get the colleges coordinated with the applications and the students, and then we're going to take all of the attributes involved. | 
+So let's run that view. | 
+We'll call it mega and let's take a look at what we have in mega. | 
+Here it is. | 
+So this is all of the information in our three tables joined together and we'll see that makes queries quite convenient. | 
+Now, let me remind you that this information, the view contents, are not actually stored. | 
+So, this is a toy database; it wouldn't be a big deal to store it here. | 
+But if we have a very large database, where it's crazy to think about actually storing the join of everything together, that doesn't mean we cannot create the view, because the view is just a logical concept, and again can ease querying, as we'll see now. | 
+Once we have our mega view we don't need to think about joins. | 
+We simply state the conditions that we want in the data in our query results. | 
+So, for example, if we want to find high GPA applications to a CS major at large colleges. | 
+We just use mega in our clause and give our conditions, high GPA, CS major, high enrollment and we run the query and here's our result. | 
+And incidentally if you're worried about the rewrite of that query, it's actually no big deal. | 
+That one's going to rewrite in its flattened version to adjoin of the three tables with the join conditions and then the conditions that we specified. | 
+And again, if we run this query, we'll get the same result. | 
+So that completes our demonstration of defining views and using views in queries. | 
+As you can can see it's a pretty straight forward and convenient concept for the application developer and are used very commonly for modularizing applications for making queries easier to, to formulate and for authorization purposes. | 

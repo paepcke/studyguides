@@ -1,0 +1,96 @@
+In this video, we'll learn about the Relational Model. | 
+The Relational Model is more than 35 years old, and it's really the foundation of database management systems. | 
+It's spawned a many billion dollar industry. | 
+The relational model underlies all commercial database systems at this point in time. | 
+It's actually an extremely simple model and that's one of its benefits. | 
+Furthermore, it can be queried. | 
+By that I mean we can ask questions of databases in the model using High Level Languages. | 
+High Level Languages are simple, yet extremely expressive for asking questions over the database. | 
+And finally, very importantly there are extremely efficient implementations of the relational model and of the query languages on that model. | 
+So let's move ahead and understand the basic constructs in the relational model. | 
+So, the primary construct is in fact, the relation. | 
+A database consists of a set of relations or sometimes referred to as "tables", each of which has a name. | 
+So, we're gonna use two relations in our example. | 
+Our example is gonna be a fictitious database about students applying to colleges. | 
+For now we're just gonna look at the students and colleges themselves. | 
+So we're gonna have two tables, and let's call those tables the Student table and the College table. | 
+Now, as an aside, there's a healthy debate in the database world about whether tables relations ought to be named using the singular or the plural. | 
+I personally don't have a stake in that debate. | 
+I'm going to use the singular. | 
+Next, we have the concept of attributes. | 
+So every relation and relational database has a predefined set of columns or attributes each of which has a name. | 
+So, for our student table, let's say that each student is gonna have an ID, a name, a GPA and a photo. | 
+And for our college table, let's say that every college is going to have a name, a state, and an enrollment. | 
+We'll just abbreviate that ENR. | 
+So those are the labeled columns. | 
+Now the actual data itself is stored in what are called the tuples (or the rows) in the tables. | 
+So let's put a couple of the data tables, data tuples in our tables. | 
+So let's start with the students and lets say that our first student has ID 123. | 
+Name is Amy - GPA 3.9, and she's happy with that. | 
+So she has a smiley photo. | 
+And our second student is 234, Bob - his GPA is 3.4. | 
+He's not quite as happy. | 
+And typically of course a table will have thousands, maybe millions, even sometimes billions of rows, each row containing a value for each attribute. | 
+In our college table, let's suppose we have .... well of course we're going to start with Stanford in the state of California and Stanford's enrollment is 15,000. | 
+We'll include our cross-bay rival Berkeley again, in the state of California. | 
+Berkeley's enrollment is a whopping 36,000. | 
+And last of all, we are going to not be West Coast biased. | 
+We'll include MIT in the state of Massachusetts with an enrollment of 10,000. | 
+Now of course there's gonna be again many more tuples in the college table, and many more tuples in the student table. | 
+Okay, next, let me mention that in a relational database, typically each attribute or column has a type sometimes referred to as a domain. | 
+For example, the ID might be an integer, the name might be a string, GPA might be a float, photo might be a jpeg file. | 
+We do also in most relational databases have a concept of enumerated domain. | 
+So for example, the state might be an enumerated domain for the 50 abbreviations for states. | 
+Now, it's typical for relational databases to have just atomic types in their attributes as we have here, but many database systems do also support structured types inside attributes. | 
+Okay, a little bit more terminology. | 
+The schema of a database is the structure of the relation. | 
+So the schema includes the name of the relation and the attributes of the relation and the types of those attributes. | 
+Where the instance is the actual contents of the table at a given point in time. | 
+So, typically you set up a schema in advance, then the instances of the data will change over time. | 
+Now, I mentioned that most columns have types. | 
+But, there's also a special value that's in any type of any column and that's a special value known as null, and nulls are actually quite important in relational databases. | 
+Null values are used to denote that a particular value is maybe unknown or undefined. | 
+And, so let's suppose, let's add another tuple to our database. | 
+Let's say 345, another student named Craig, and for, whatever reason Craig doesn't have a GPA. | 
+Maybe Craig is home schooled, maybe Craig doesn't want to reveal his GPA. | 
+So then the database would contain a null value for Craig and we'll just put a neutral face there. | 
+Or, for example, maybe Bob doesn't want to have his photo in the database, so then Bob would have a null value for his photo, again nulls can go anywhere. | 
+Now null values are useful but one has to be very careful in a database system when you run queries over relations that have null values. | 
+In a later video we'll go into this in more detail, but I just wanted to give a just sort of example of what can happen. | 
+So, let's suppose we're asking a query over our student table of all students whose GPA is greater than 3.5. | 
+So when we run that query on our database obviously we'll get Amy out, obviously we won't get Bob out, but should we get Craig? | 
+The answer is No. | 
+We don't know for a fact that Craig's GPA is greater than 3.5, so we'll only get one student out from that query. | 
+Now let's suppose we had another query, where we were gonna ask for the GPA less than or equal to 3.5. | 
+So, similarly where we would not have Amy in result and we would certainly have Bob in the result and similarly would not have Craig in the result because we don't know that his GPA is less than or equal to 3.5. | 
+So far so good, but it gets a little weird is when we add an or here in our query, we say I want everyone who's GPA is greater than 3.5 or who's GPA is less than or equal to 3.5. | 
+And even though it looks like every tuple should satisfy this condition, that it's always true, that's not the case when we have null values. | 
+So, that's why one has to be careful when one uses null values in relational databases. | 
+Let me erase this now and let's move on to our next concept which is the concept of Key. | 
+Key is again another important concept in relational databases. | 
+And, a key is an attribute in of a relation where every value for that attribute is unique. | 
+So if we look at the student relation, we can feel pretty confident that the ID is going to be a key. | 
+In other words, every tuple is going to have a unique for ID. | 
+Thinking about the college relation, it's a little less clear. | 
+We might be tempted to say that the name of the college is an ID, that actually college names probably are not unique across the country. | 
+There's probably a lot of or several colleges named Washington college for example. | 
+You know what, we're allowed to have sets of attributes that are unique and that makes sense in the college relation. | 
+Most likely the combination of the name and state of a college is unique, and that's what we would identify as the key for the college relation. | 
+Now, you might wonder why it's even important to have attributes that are identified as keys. | 
+There's actually several uses for them. | 
+One of them is just to identify specific tuples. | 
+So if you want to run a query to get a specific tuple out of the database you would do that by asking for that tuple by its key. | 
+And related to that database systems for efficiency tend to build special index structures or store the database in a particular way. | 
+So it's very fast to find a tuple based on its key. | 
+And lastly, if one relation in a relational database wants to refer to tuples of another, there 's no concept of pointer in relational databases. | 
+Therefore, the first relation will typically refer to a tuple in the second relation by its unique key. | 
+As our videos develop we'll see the importance of keys. | 
+Okay, just to wrap up, I'll mention how one creates relations or tables in the SQL language. | 
+It's very simple, you just say "create table," give the name of the relation and a list of the attributes. | 
+And if you want to give types for the attributes. | 
+It's similar except you follow each attribute name with its type. | 
+So to wrap up, the relational model has been around a long time. | 
+Has started a huge industry. | 
+It's used by all database systems. | 
+As you've seen it's a very simple model and will shortly see that it can be queried with very nice languages. | 
+And, finally, it's been implemented very efficiently. | 

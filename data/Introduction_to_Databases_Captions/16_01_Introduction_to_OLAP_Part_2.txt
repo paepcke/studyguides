@@ -1,0 +1,42 @@
+So as we saw in the cube, we have one cell in the cube for each combination of store ID, item ID, and customer ID. | 
+So if those three together form a key, then it's very straight forward. | 
+If the dimension attributes together don't form a key then we might be pre-aggregating already inside the data cube. | 
+So, we might decide to already have say the sum of quantity times price for each combination of store item and customer. | 
+Another possibility and it's done quite commonly is to add to the fact table the attribute date, or even the time. | 
+And that can be used to create a key. | 
+Typically, we won't have two transactions at exactly the same time. | 
+Now if we do have an attribute here called date, one might wonder is that a dimension attribute or a dependent attribute. | 
+Actually, it's pretty much a dimension attribute because we're gonna use it as another dimension in our data cube, but the difference being that we would not have an actual dimension table listing the dates. | 
+Now let's move on to a couple other concepts in the olap world called drill down and roll up. | 
+The idea of drill down, is that we may be examining summary data and then we want to get more information. | 
+Drill down into the details of that data. | 
+And, actually, we can think of that very specifically in a SQL context as follows. | 
+Let's suppose that we have this query and SQL which follows by the way the description of the query I had earlier where we'll do a join and then a selection and then it grouped by, and finally we have an aggregation here. | 
+So this query specifically is looking at our total sales broken out by state and brand. | 
+Maybe we'll look at that and we'll just say that's not enough detail. | 
+I need more information. | 
+So, to drill down what we do is add a grouping attribute. | 
+So if we added, for example, category, when we add another grouping attribute, that gets us more data in the answer - more detail in our data. | 
+Rollup is exactly the opposite. | 
+Rollup says we're looking at data and we decide we have too much detail and we want to summarize. | 
+And summarize is simply a matter of removing a group by attributes. | 
+So if we took out state, then now we'll only see our data summarized by brand rather than broken out into state and brand. | 
+And lastly, I want to add introduce some SQL constructs. | 
+These are constructs that have been added, fairly recently, to the SQL standard in order to perform OLAP queries. | 
+And we'll be seeing these in our demo. | 
+The constructs are called with cube and with roll up and they're added to the group by clause. | 
+When we add with cube to a query with a group by what happens is that, basically, we're adding to the result of our query, the faces, edges, and corner of the cube. | 
+Using no values for the attributes that we're not constraining. | 
+We'll see this clearly in the demo. | 
+With Rollup is similar to With Cube, except it's smaller. | 
+It actually is a portion of the data cube, and that makes sense when we have dimensions that are inherently hierarchical. | 
+And again we'll see that in the demo as well. | 
+So, we can conclude there are two broad types of data base activity, online transaction processing. | 
+Short, simple transactions touching small portions of the data, lots of updating and OLAP, or online analytical processing, where we have complex queries, long transactions, might touch a large portion of the data and might not update the data at all. | 
+For online analytical processing OLAP we saw that star schemas are frequently used. | 
+We saw how to view the data as a data cube. | 
+Of course, that can be in any number of dimensions. | 
+We just use three for visualization. | 
+There are two new constructs in SQL: With Cube and With Rollup. | 
+And finally this type of query can be very stressful on a database system when we have very large databases. | 
+So special techniques have been introduced into systems to help perform these queries efficiently. | 

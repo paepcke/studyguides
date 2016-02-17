@@ -1,0 +1,37 @@
+Now you might have noticed that the name of this video is "Well-formed-XML". | 
+So well-formed XML is actually the most flexible XML. | 
+An XML document or an XML stream is considered well formed if it adheres to the basic structural requirements of XML. | 
+And there aren't many. | 
+Just that we have a single root element, as we discussed before, a single bookstore in this case; that all of our tags are matching, we don't have open tags without closed tags; and our tags are properly nested, so we don't have interweaving of elements. | 
+And finally, within each element if we have attribute names, they're unique. | 
+And that's about it. | 
+That's all we require for a XML document, or a set of XML data to be considered well-formed. | 
+And for many applications, that's all we're concerned about. | 
+In order to test whether a document is well-formed, and specifically to access the components of the document in a program, we have what's called an XML parser. | 
+So, we'll take an XML document here, and we'll feed it to an XML parser, and the parser will check the basic structure of the document, just to make sure that everything is okay. | 
+If the document doesn't appear to these three requirements up here, the parser will just send an error saying it's not well-formed. | 
+If the document does adhere to the structure, then what comes out is parsed XML. | 
+And, there's various standards for how we show parsed XML. | 
+One is called the document object model, or DOM; it's a programmatic interface for sort of traversing the tree that's implied by XML. | 
+Another popular one is SAX. | 
+That's a more of a stream model for XML. | 
+So these are the ways in which a program would access the parsed XML when it comes out of the parser. | 
+So one issue that comes up, because the XML data is used frequently on the internet, is how we display XML. | 
+So one way to display XML is just as we see it here, but very often we want to format the data that's in an XML document or an XML string in a more intuitive way. | 
+And actually there's a nice setup for doing that. | 
+What we can do is use a rule-based language to take the XML and translate it automatically to HTML, which we can then render in a browser. | 
+A couple of popular languages are cascading style sheets known as CSS or the extensible style sheet language known as XSL. | 
+We're going to look a little bit with XSL on a later video in the context of query in XML. | 
+We won't be covering CSS in this course. | 
+But let's just understand how these languages are used, what the basic structure is. | 
+So the idea is that we have an XML document and then we send it to an interpreter of CSS or XSL, but we also have to have the rules that we're going to use on that particular document. | 
+And the rules are going to do things like match patterns or add extra commands and once we send an XML document thorugh the interpreter we'll get an HTML document out and then we can render that document in the browser. | 
+Now, one thing I should mention is that we'll also check with the parser to make sure that the document is well formed as well before we translate it to HTML. | 
+To conclude, XML is a standard for data representation and exchange. | 
+It can also be thought of as a data model. | 
+Sort of a competitor to the relational model for structuring the data in one's application. | 
+It generally has a lot more flexibility than the relational model, which can be a plus and a minus, actually. | 
+In this video we covered the well formed XML, so, XML that adheres to basic structural requirements, in the next video we will cover valid XML, where we actually do introduce a kind of schema for XML. | 
+The last thing I want to mention, is that the formal specification for XML is quite enormous. | 
+There are a lot of bells and whistles. | 
+We're going to cover, in these videos, the most important components for understanding anything XML. | 

@@ -1,0 +1,15 @@
+The last operator that I'm going to cover in this video is the theta join operator. | 
+Like natural join, theta join is actually an abbreviation that doesn't add expressive power to the language. | 
+Let me just write it. | 
+The theta join operator takes two expressions and combines them with the bow tie looking operator, but with a subscript theta. | 
+That theta is a condition. | 
+It's a condition in the style of the condition in the selection operator. | 
+And what this actually says - it's pretty simple - is it's equivalent to applying the theta condition to the cross-product of the two expressions. | 
+So you might wonder why I even mention the theta join operator, and the reason I mention it is that most database management systems implement the theta join as their basic operation for combining relations. | 
+So the basic operation is take two relations, combine all tuples, but then only keep the combinations that pass the theta condition. | 
+Often when you talk to people who build database systems or use databases, when they use the word join, they really mean the theta join. | 
+So, in conclusion, relational algebra is a formal language. | 
+It operates on sets of relations and produces relations as a result. | 
+The simplest query is just the name of a relation and then operators are used to filter relations, slice them, and combine them. | 
+So far, we've learned the select operator for selecting rows; the project operator for selecting columns; the cross-product operator for combining every possible pair of tuples from two relations; and then two abbreviations, the natural join, which a very useful way to combine relations by enforcing a equality on certain columns; and the theta join operator. | 
+In the next video, we'll learn some additional operators of relational algebra and also some alternative notations for relational algebra expressions. | 

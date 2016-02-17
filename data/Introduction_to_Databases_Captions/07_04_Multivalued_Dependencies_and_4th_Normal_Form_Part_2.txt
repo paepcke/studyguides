@@ -1,0 +1,36 @@
+So let's go back to our example. | 
+Now we have students applying to colleges and having hobbies. | 
+Those are independent facts about the student. | 
+We'll write our multi-value dependency as 'social security number multi determine C name' and now lets use some example data to see our definition and how it works here. | 
+Here's our apply relation with the social security number, the college name and the hobby. | 
+Let's suppose that we have a student, 123 who's applied to Stanford and plays the trumpet. | 
+Now, let's suppose that same student, 123, has applied to Berkeley and plays tennis. | 
+So what our multivalued dependency says, and let's make this tuple T and tuple U, is that there's a further tuple V. V takes the same social security number and it takes the first value for the college name and the second for the hobby. | 
+It says if we have a 123 playing trumpet at Stanford and tennis at Berkeley, then that same person will be playing tennis at Stanford. | 
+Furthermore, I show that the same definition will generate automatically. | 
+A fourth tuple with the other combination which would be Berkeley and Trumpet. | 
+By the way one thing you might notice here is that we also have the multivalued dependency, social security number multi determines hobby. | 
+This is actually one of the rules for multivalued dependency saying that when you have A determines B, then you, A multidetermines B, then you also have A multi determines rest and we'll see some rules for multivalued dependencies later. | 
+Let's look quickly at a modification of our example where the real world assumptions about the data are different. | 
+So we still have exactly the same relation with the same attributes. | 
+But let's suppose that we don't want to reveal every hobby to every college. | 
+Maybe we'll decide that we don't want Stanford to know that we're a surfer or Berkeley to know that we're on the speech and debate team. | 
+So if that's the case, then what multivalued dependencies do we have in this relation? | 
+We actually have none. | 
+And we don't have any functional dependencies either by the way. | 
+And is this a good design? | 
+Well, actually I would argue yes. | 
+In this case, this design is a good one because we're not going to have that multiplicative effect of information. | 
+Every tuple that we have in the applied relation will be an independent piece of important information. | 
+Let's look at one more example before we go on to talk about properties of multivalued dependencies. | 
+I've extended the apply relation now to not only include colleges and hobbies but also the date of application to a college, and the major or majors that are being applied for. | 
+Let's continue to assume that hobbies are revealed to college selectively. | 
+We don't need to have same hobbies for each college that a student applies to. | 
+Secondly, lets assume that we restrict students to apply only once to each college, but what I what we mean by that is just on one day. | 
+A student can still apply to multiple majors at a single college and to different majors at different colleges. | 
+Let's also assume that majors are independent of hobbies, which seems to make sense. | 
+It takes some thinking to come up with the right functional and multivalued dependencies to capture these constraints, but here they are. | 
+The first one when we say that we reveal hobbies to college selectively is actually the absence of a multivalued dependency on hobbies and colleges. | 
+The second one says as we apply once to each college, or on one particular day to each college, so that would say that when we have a particular student and a particular college that always going to have the same date, so any two tuples for a student and college combination will be on the same date. | 
+The last dependency that we will have involves the independence of the majors that are being applied for and the hobbies that a student has, so we'll write that as the multivalue dependency social security number, plus college name, plus date, multidetermines major, and remember what that's saying is that major, for a given student, college, and date the majors that they apply for are independent of what we call the rest, which in this case is the hobbies. | 
+So, you might take some time to look at the formal definitions of functional dependencies, multivalue dependencies, and maybe write out some sample data to convince yourself that these are the dependencies that are capturing the assumptions that we make about the real world. | 

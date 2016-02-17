@@ -1,0 +1,208 @@
+in this video, we'll be giving a demo of constraint of several types, as a reminder constraints also known as integrity constraints impose restrictions on the allowable states of a database, beyond those that are imposed by the schema that's been defined and the types of the attributes. | 
+We have a number of different types of constraints, we have non null constraints which specified that a particular attribute cannot have no values, we have key constraints that talk about uniqueness in columns or sets of columns, we have attribute base and tuple base constraints which specify, a restrictions on the values and attributes or the values across attributes in particular tuples and finally we have general insertions which are quite powerful, they allow you to specify constraints across an entire database. | 
+As we'll see in the demo, not all of these constraint types are fully implemented. | 
+There are some limits on the attribute base and tuple base constraints in systems as compared to the SQL standard and general assertions have not been implemented yet in any database system, but we will give examples what they look like, had they been implemented. | 
+A very important type of constraint, is referential integrity or foreign key constraints and those will be covered in the next video. | 
+For a demonstration of constraints we'll be returning to the same simple college admissions database that we use for our SQL demos, we have three tables one with a few colleges, one with a number of students and finally a table that has information about students applying to colleges. | 
+Let's start by creating a table with a non-null constraint. | 
+So non-null is a pretty simple type of constraint. | 
+If we decide that our GPA values in our database must not take on the null value when we create the table we just add the key words not null in the declaration with that attribute. | 
+Let's run the creation of the table, let me mention right up front we're going to be seeing a lot of this word affected, this misspelling here which gets on my nerve but I'm not going to mention it again. | 
+Okay, so let's do some insertions and updates just to experiment with a not null constraint. | 
+We'll start by asserting three tuples, the first one has no null values at all, the second one has a null value for the high school size which should be allowed, and the third one has a null value for the GPA which should not be allowed. | 
+Let's run these three insert commands together and we see in fact the first two succeeded where the third one generated an error. | 
+If we go and look at the table, we'll see that indeed we got our first two tuples including the null for the high school size but there was no third tuple inserted. | 
+Now we'll try a couple of update commands. | 
+Both of them are going to set the GPA to null, the first one for the student with ID 123 and the second for the student with ID 456. | 
+If we look at our data, we see that we do have a student with ID 123, so when we try to update that GPA to null, we should get an error. | 
+But we don't have a student whose ID is 456, so even though we're going to run a command that tries to set GPAs to null, because there's no matching data, no data will attempt to be updated and we won't get an error. | 
+Let's run the query, the two updates, and we see indeed that the first one caused the constraint violation and the second one did not. | 
+Now let's take a look at key constraints. | 
+I've dropped the previous version of the student table and now we will create a new one where we're declaring the student ID to be what's called a primary key. | 
+As you may remember, a key constraint specifies that the values in the column that's declared as a key must be unique. | 
+So let's go ahead and create the table and now let's experiment with inserting and updating some data. | 
+We'll attempt to insert three students: first one, 123 Amy; second, 234 Bob and third one, 123 Craig. | 
+Since the third insert will generate a key violation because there will be two copies of 123 in the ID column, that one should generate an error. | 
+We run the queries, the inserts, and indeed the first two are fine and the third one has a key error. | 
+If we go and look at the data itself, we'll see that the first two are inserted and the third one wasn't. | 
+Now let's take a look at updates. | 
+The first update is very simple. | 
+It tries to set Bob's ID to 123. | 
+Since Amy already has ID 12 three that should generate and error and when we run the update command indeed it does. | 
+Now we're going to do something a little bit trickier. | 
+We're gonna run an update command that subtracts 111 from each student ID, now you might wonder why did I choose 111, let's take a look, if we subtract 111 from Bob's ID; two, three, four will turn into one, two, three and will have a key violation, on the other hand if the command first updates Amy's student ID to 12, then we won't have a key violation when Bob's in turned into two three, into one two three. | 
+So whether we get a key violation in this case could depend on what order the system chooses to execute the update. | 
+So let's just run it and let's see what happens. | 
+Well, things look good. | 
+We didn't get an error. | 
+Let's go look back and refresh the table and we see indeed that both of the update succeeded without a violation, so now let's set the as the student ID back to what they were by adding 111, let's run it see what happens, well this time we got an error. | 
+So we got a constraint violation error, a key violation, and nothing was updated. | 
+That's presumably because the system again updated Amy's ID first and that generated an error with the one two three for Amy. | 
+So this sort of demonstrates it one it can be pretty tricky when key violations or other types of constraint violations are detected and when they aren't, now we did mention earlier that there's a notion of for constraint checking so if an application have knowledge that it would rather have constraints checked after a bunch of changes rather than in the middle, the for constraint checking can be use for that purpose and this demo we're doing immediate constraint checking. | 
+You might have noticed in the previous example that I use the term primary key when I declared the student ID as a key. | 
+In the SQL standard and in every database system only one primary key is allowed per table, that's why it's called primary, and often the table will be organized based on that key, making it efficient to do look ups on that, for values for that particular key. | 
+So if we decided we wanted to declare two primary keys in our table, the student ID and the student name, we would get an error, now that's not to say we're not allow to have multiple keys in a table, in fact we can have as many as we want, only one of them can be declared as primary but we can declare any number of attributes or sets of attributes to be unique and that's again declaring a key constraint, it says we can only have one, we must have unique values in that column, so let's create our table with the student name now also a key along with the student ID and we'll do a few updates just to check that. | 
+So we'll attempt to insert five students, 1-2-3 Amy, 2-3-4 Bob, so far so good. | 
+When we try 3,4,5 Amy we should get an error because we have now declared that the name must be a key as well as the student ID so we won't be allowed to have 2 Amy. | 
+4,5,6 door should be good. | 
+5,6,7 Amy should again generate an error, we ran the query and indeed we get two errors. | 
+So far we seen only keys that are one attribute but as you know we can have keys that spans several attributes, that's not to say that each attribute is the key individually but rather the combination of values for all of the attributes must be unique in each tuple. | 
+So let's suppose that our college name is not unique on its own but college name and state together are expected to be unique, now syntactically we can't put the primary key statement with the attribute anymore because it involves multiple attributes, so the syntax is to list the attributes first in the Create Table command, then use the keywords primary key and put the list of attributes constituting the key in parentheses. | 
+So let's create the table. | 
+Now let's insert some data. | 
+I've tried to pick a college name that's kind of generic Mason, I don't know if I've succeeded but we'll try to answer the Mason college in California, a Mason college in New York those should succeed because the two columns together need to be unique but not the individual column and then we should get an error when we try to generate a third tuple with Mason California. | 
+We run the query, we run the inserts and indeed we do. | 
+Now lets use multi-attribute keys to declare some interesting constraints. | 
+We're going to create our apply table and we're going to have two key constraints. | 
+The first one says that the combination of student ID and college name must be unique in each tuple. | 
+What that's really saying is that each student can apply to each college only one time. | 
+We're also going to say that the combination of student ID and major must be unique in each tuple. | 
+That means that each student can apply to each major only once. | 
+Now, a student can still apply to several colleges and several majors, but only one time for each. | 
+So let's create the table and then let's try inserting some data. | 
+We'll insert quite a number of tuples and lets take a look at what we expect to happen. | 
+Our first tuple says 123 applies to Stanford and CS and then 123 also applies to Berkeley and EE, no problem. | 
+123 tries to apply again to Stanford and that should be an error because that's the second instance of the combination of 123 Stanford. | 
+On the other hand, 234 should be able to apply to Stanford. | 
+123 comes back and wants to go to MIT but tries once again to major in EE. | 
+That should generate an error because the combination of 123 and EE already appears in our second tuple. | 
+And finally 123 applies to MIT but in biology and that should work just fine. | 
+So we'll run the query and we'll find indeed the first two tuples and the fourth and the sixth were fine but the third tuple generated an error because of the second application to Stanford and the fifth because of the second application to EE. | 
+Let's go take a look at the data. | 
+And here we see in the apply relation that we did indeed insert the four tuples, but not the two tuples that generated the key error. | 
+Now we'll try a sneaky update command. | 
+We'll try to take our fourth tuple, and we'll identify it by having the college name equal to MIT, and we'll try to be sneaky and change the the biology major to CS. | 
+That will then violate the constraint of the uniqueness of 123 CS so if all goes well that update will be disallow, here is the update command, setting the major to CS with the college name is MIT, rerun the command and indeed it generates an error. | 
+The last thing we'll show in this example is how NULL values work with keys, so we'll try to insert two tuples again using 1,2,3, where both the college name and the major are null. | 
+So, as a reminder, the first and second attributes need to be unique in the first and third attributes need to be unique, so if NULLs counts for keys so it will generate an error, what we'll see is that we actually don't get an error and we in fact do have the data in the table with the NULL values, so the SQL standard and most database systems do allow repeated NULL values even in column that are declared as unique, for primary key declared columns most systems though not all, do not permit repeated NULL values in them. | 
+That completes our demonstration of key constraints, now let's look at attribute base check constraints. | 
+Lets create our table again with four students and this time we'll add two constraints to two of the attributes. | 
+For the GPA we're going to add the keyword check and a condition that looks kinda like the where clause in the SQL query. | 
+This condition specifies that GPAs must be less than or equal to 4.0 and greater than zero. | 
+We'll also put a check constraint on the high school size, saying that the size of the high school must be less than five thousand. | 
+So these are examples of, sort of, sanity checks, that are mostly use for catching data entry errors, saying that the attribute values must be within the expected range. | 
+Lets create the table and now we'll take a look at some data. | 
+This time we'll insert two tuples. | 
+It will be pretty easy to see how these constraints work. | 
+The first one inserts Amy with a reasonable GPA and a reasonable high school size; the second one inserts Bob with a reasonable high school size but his GPA looks a little out of whack. | 
+We run the query and the first row is inserted but the second one isn't. | 
+We take a look at the data and we see that Amy has been inserted. | 
+Now to test the constraints on the size of high school, we'll try to run an update command that multiplies all high school sizes by six. | 
+Here's the command, and when we run it, we get an error. | 
+So attribute based constraints allow us to associate a condition with a specific attribute and that condition is checked whenever we insert a tuple or update a tuple to make sure that all of the values in that attribute satisfy the constraint. | 
+A slightly more general notion is tuple based constraints. | 
+Tuple based constraints are also checked when ever a tuple is inserted or updated, but they're allowed to talk about relationships between different values in each tuple. | 
+And because we don't associate them with a specific attribute, the check itself is put at the end of the declaration of of the table. | 
+So, we start by declaring all of the attributes and then afterwards we put the keyword check again, and then the condition inside parentheses. | 
+Now this condition may look at first a little bit odd to you. | 
+It says that for each apply tuple either the decision is null or the college name is not Stanford or the major is not CS. | 
+Why don't you think about that for a second and think about what it might be saying. | 
+Now if you're good in Boolean Logic, you might have written this down using logical expressions and use some of De Morgan's laws and turned your or's and not's into implications. | 
+If not, I'll just tell you that what this is saying is that there are no people who have applied to Stanford and been admitted to CS at Stanford. | 
+Specifically, either they haven't been admitted or the college is not Stanford or the major is not CS. | 
+We'll create the table and then we'll experiment with some data. | 
+First we'll try to insert three tuples. | 
+The first one has a student applying to Stanford CS but not being admitted, second they apply to CS but it says MIT and they are admitted and then finally will generate a constraint violation by having the student apply to Stanford CS and be admitted. | 
+We run the query and, as expected the first two tuples are inserted and the third generates a violation. | 
+Now let's try some update statements. | 
+So we have a student who applied to Stanford CS and was not admitted. | 
+And with a student who applied to MITCS and was admitted. | 
+So first we'll try to take that Standford student and change the decision to yes, that's not going to work. | 
+So then we'll try taking the students admission to MIT and converting that to be an admission to Stanford and that shouldn't work either. | 
+We try all of those and neither of them succeed and both cases are tuple based constraintless check and the check condition was violated. | 
+Before I do my last set of examples, I did want to explain one thing in case you're trying these constraints at home. | 
+The constraints that I've shown so far were perfectly well in SQLite and in post risks. | 
+In my SQL as of the time of this video the check constraints both the attribute based and tuple based check constraints are accepted syntactically[sp?] | 
+by the MySQL system, but they're not enforced. | 
+So it can be a bit deceptive because you may create the tables exactly as I've done in my SQL, but then you will be allowed to insert enough data and violate the constraints. | 
+So again I recommend for trying check constraints for now SQLite or Postgres. | 
+If you've been a shrewd observer of what we've done so far, it might have occurred to you that we had some redundancy. | 
+Specifically, the attribute base check constraints that we' ve showed can be used to enforce some other types of constraints. | 
+Very specifically if we want to have a not null constraint we can just write not null. | 
+That's a built in type of constraint. | 
+But that's equivalent to adding an attribute based check constraint that for the GPA for example checks that the GPA is not null. | 
+As a reminder is not null is a key word in the SQL language. | 
+Let's create this table and let's try to insert a tuple with a null value. | 
+We have student Amy again with a null GPA and that generates an error. | 
+A little more challenging and interesting is to try to implement key constraints using attribute based check constraints. | 
+So here's an attempt at doing so. | 
+Let's just consider a very simple table. | 
+We'll call it T and it will have one attribute A. | 
+And we'll try to write a check constraint that specifies that A is a key for T. So, here is my attempt at doing so. | 
+I declare the attribute and then in at my check I say that the value of A is not in select A from T. In other words the value of that or say attempting to insert or update is unique in table T. Well first I'm gonna tell you that I'm not allowed to execute that, there's various reasons that I can't execute it. | 
+One simple one is that I'm trying to declare a table T and refer to it before it has been declared. | 
+Another issue with declaring it is the sub query in the check constraint, we'll talk about that in a moment. | 
+There's actually a third problem with this constraint, which is we need to think about when it's being checked. | 
+If we say first attempt to insert the value A and then check the constraint, then the constraint will be violated based on the existence of itself. | 
+So this is clearly not going to work. | 
+There is in fact a different expression that might work if it weren't for a couple of other obstacles. | 
+Here's an expression that doesn't have the problem of whether we check it before or after we insert A. | 
+This is an expression of a key Constraint in a way you might not have thought of. | 
+What this says is that the number of distinct values for an attribute A must be equal to the number of tuples in the table. | 
+In other words every tuple has a distinct value for A. | 
+Now there was one small issue here which is null values because, as we mentioned, unique key constraints allow multiple instances of null. | 
+But, if we don't worry about nulls then this is expression really is a different way of saying that A is a key. | 
+We run the query and it doesn't allow it. | 
+Again we have the same problem that we're referring to table T within the check constraint that we're putting in the definition of table T. By the way, that can be overcome. | 
+Some systems do allow constraints to be declared or added to tables after the table has been specified. | 
+So that would go away. | 
+But no systems that I know of allow sub queries and especially not aggregation within check constraints. | 
+Let's pursue a little further the question of subqueries and check constraints. | 
+The key example's a little bit contrived because of course we can declare key constraints directly. | 
+But in some cases are very natural constraint that we might want to express a check constraint using sub query. | 
+And I've set up a situation right here. | 
+We create our student table as usual but when we create our apply table we want to have a constraint that says that any student ID that appears in the apply table is a valid student. | 
+In other words, there is a student coupled with that student ID. | 
+Now, we can write that as a check constraint. | 
+This is syntactically valid in the SQL standard. | 
+We specify that the student ID here in the apply table is in the set of student IDs in the student table but currently no SQL system actually supports sub queries and check constraints. | 
+Now for this, the civic type of constraint it happens to fall into a class that is known as referential integrity where we say that this student ID is referencing a student in the other, is referencing the student id in the student table and therefore any student id and apply must also exist in the student and in another video we will referential integrity in some detail. | 
+But, not every check constraint with a subquery falls in the class of referential integrity constraints. | 
+The example I gave for keys doesn't and neither does the one here. | 
+Now, this is admittedly a little contrived. | 
+But what this says is that every college's enrollment must be bigger than any high school and so we write that by writing the check constraint in the college table that the enrollment is greater than the maximum high school size from the student table. | 
+Now, again, no system currently will support this. | 
+However, it is in the SQL standard. | 
+Now one thing I want to mention about check constraints with subqueries is that they can be kind of deceptive. | 
+And we can take a look at the apply table again. | 
+Supposing this was in fact supported by a system. | 
+It would check whenever we inserted a tuple into apply or it updated a student ID in apply that the constraint holds. | 
+But what it will not check is when things change in student. | 
+So we could write this constraint and every time we do an insert or update and apply it could be verified but somebody could go and change the student table and delete a student ID and then what we feel as the constraint here is no longer actually holding. | 
+So it can be tricky to use those subqueries. | 
+Again, when we do referential integrity as in this example, the referential integrity system will take care of making sure the constraint holds. | 
+But when we have an example like the one with the enrollments, if we say change the high school size in the student table, it would not activate this constraint checking that's specified with the college table. | 
+The last type of constraint I am going to show are general assertions. | 
+General assertions are very powerful and they are in the SQL standard, but unfortunately they currently are not supported by any database system. | 
+The first assertion I'm going to write is coming back to the issue of trying to declare or trying to enforce a key constraint without using the built-in facilities. | 
+Let me just write the command here. | 
+It says we're going to create a assertion called key. | 
+Notice that this assertion is not associated with a specific table. | 
+Although this assertion only talks about table T Assertions can refer to any number of tables in the database. | 
+The way an assertion works is we create an assertion and we give it a name, and the reason for this is so we can delete it later if we wish. | 
+Then the keyword check appears. | 
+And then we write a condition. | 
+And the conditions can be quite complicated. | 
+The assertion is saying that this condition, written in SQL-like language must always be true on the database. | 
+So the particular condition that I've put in this first example is a condition we use to check whether attribute A is a key in table T. It says that the number of distinct values in attribute A must be equal to the number tuples in T. Now I can try to run this, but I guarantee you that it's not supported. | 
+Let's look at some other example assertions we might write if they were supported. | 
+Here's an example that implements this referential integrity that I was describing earlier. | 
+This referential integrity constraint is saying that the student IDs in the apply table must also exist in the student table. | 
+Now when we write an assertion of that form, we tend to often write it in the negative form, specifically we say that it's not the case that something bad happens. | 
+It's not the case that there's some tuple in apply where the student ID is not in the student table. | 
+You can try on your own to write this in a more positive fashion, but you'll actually find that using SQL constructs it's not possible. | 
+It's actually very common for assertions to specify the bad thing in a subquery and then write not exists. | 
+As a final example, let's suppose that we require that the average GPA of students who are accepted to college is greater than 3. | 
+0. | 
+We can write that as an assertion pretty much exactly as I just described it. | 
+We take the average GPA of students where their ID is among the IDs in the apply relation where the decision was yes, and our assertion states that that average must be greater than 3.0 So so far I've described how assertions are created. | 
+Let me just briefly mention how they are checked or how they would be checked if they were implemented. | 
+Any system that implements this very general form of assertion must determine every possible change to the database that could violate the assertion. | 
+In this case, modifying a GPA, modifying a student ID, inserting or deleting from students or apply could all potentially violate the constraint. | 
+And in that case, after each of those types of modifications to the database, the system would need to check the constraint, make sure that it's still satisfied, and if not, generate an error and disallow the database change. | 
+So I've only talked about creating assertions. | 
+Let me just talk very briefly about how a system would enforce general assertions of this form if it supported them. | 
+What the system needs to do, is monitor every possible change to the database that could cause the assertion to become violated. | 
+So we take a look at this particular assertion, it could become violated if we changed the student GPA. | 
+If we inserted a student, even if we deleted a student, or if we inserted an application that was now having a decision of yes, or updated the application status. | 
+So all of those changes have to be monitored by the system, the constraint has to be checked after the change, and if the constraint is no longer satisfied, an error is generated, and the change is undone. | 

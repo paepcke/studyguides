@@ -1,0 +1,52 @@
+this video covers the topic of materialized views. | 
+As a reminder the reason that we use views in database systems is to hide data from users to make some queries easier or more natural to express. | 
+And to modularize our access to the database. | 
+And real applications do tend to use lots, and lots, and lots of views. | 
+So those views are for virtual views. | 
+Virtual views are what we've been talking about in our previous videos, I'm not actually sure I used that terminology. | 
+A virtual view is the usual type of view where we define it as a query of the database. | 
+We don't actually create a table for the view. | 
+Queries and modifications are rewritten based on the view definition. | 
+Now there's also a notion of a materialized view obviously for this video and materialized views give us the same advantages of virtual views but one additional advantage which is perhaps the most important one, which is to improve query performance over the database. | 
+So again as a quick reminder about virtual views, we define a view "V" say, by giving a query to specify the view over some relations or even other views. | 
+The schema of the view is the schema of the result of the query. | 
+When we have a query queue, so this is a user query, that references the view V then conceptually, not actually, we can imagine that there is a table called V. We run the view query over the current state of the relations. | 
+We put the result in V. And then we can evaluate the user query queue which refers to V. Now in reality what happens, as we already mentioned, is that the user query queue is rewritten based on the view definition, to just use the base tables. | 
+Now let's talk about what happens to materialized views. | 
+Again, exactly the same, we define a view. | 
+We give it a name, say V. And we define it as a query over a set of table or other views, then the system actually creates a physical table V with the schema of the query result. | 
+Next, the view query is executed over the current state of the database and the results are put physically in that table V. Now queries can refer to V as if its a table table because it actually is a table stored in a database. | 
+This all sounds great; of course, there are some down sides. | 
+The first down side is that V could be very large. | 
+When we talked about virtual views. | 
+We showed some examples where we could create a view that was just enormous - much larger than could ever be stored in the database but because the view was only a logical concept, it wasn't a problem. | 
+When users ran queries over the view, they'd typically have selection conditions so you'd never be materializing that very large view. | 
+In materialized views, obviously you're creating the view and so it is a problem if the view is extremely large. | 
+So, that's one of the downsides. | 
+The other downside is that we need to worry if the view is stored. | 
+What happens when we have modifications to those tables, over which V is defined. | 
+We need to actually modify the stored table V, either makes changes to it based on the changes to the base tables or completely recompute the view. | 
+Let's move now to an example. | 
+And we'll use our usual sample database shown here at the bottom of the slide. | 
+Let's create a materialized view. | 
+We'll give it the name CACS. | 
+It's for CS applicants to California colleges, so this is a three way join over all of our relations and it's going to select the college name and student name when the student has applied to the college, the college is in California, and the student is applying to major in CS. | 
+So once this command is issued the system will actually create a table called CACS and now the good news we can CACS in any query we want as if it's a table, because it is. | 
+Now the down side is that the base data over which the view is defined is modified we have to worry that our view is invalid that it's become out of sync with with the base data. | 
+So let's think about what modifications could occur to the database that would cause the view to become invalid. | 
+Well we have to worry about the three relations that are referenced in the view, that is the college relation, the student relation, and the apply relation, and for the college relation, well inserts could change the results of the view. | 
+We could have a new college. | 
+It seems unlikely, we could have a new college that the student will have already applied to in California, for C.S. | 
+certainly deletes can affect the view, and then updates to any of the attributes that are mentioned in the view, and for the college, that would be the college name and the state. | 
+For the student table, again inserts to student could affect the view if we already have an applied tuple and a college tuple that it matches. | 
+Deletes would certainly affect the view, and again, updates, and in this case, the attributes that are referenced from the student table are the student name and the student ID. | 
+And finally apply, again, that is the most likely one that would have modification that would affect the view, inserts, deletes and again updates and here the set of attributes that are relevant are the the college name, the student id, and the major. | 
+Now, if there is certain constraints on the database, referential integrity constraints for example, it might be that some of these operations couldn't affect the view. | 
+For example, we might not be able to insert a college where there's already an application for that college or insert a student likewise. | 
+We might not be able to delete a college if there's applications referencing it. | 
+So if there are additional constraints that the system is aware of, it might be able to eliminate some of these modifications. | 
+But regardless, many modifications will have to be monitored to make sure that the view is modified to stay in sync with the base data. | 
+By the way, if this feels a little bit familiar to you, when we talked about general assertions over the database, that was one of the types of constraints that we could specify. | 
+We went through a similar exercise where if assertions were defined as clearly as over the database and we looked at what operations could occur, what modifications to the database needed to be monitored to see if an assertion might be invalidated. | 
+Really an assertion can almost be thought of as a materialized view over the database. | 
+And if you look back at that video, I think you'll see there really is a correspondence between those two concepts. | 

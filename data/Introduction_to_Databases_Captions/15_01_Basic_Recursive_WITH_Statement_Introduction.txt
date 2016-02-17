@@ -1,0 +1,99 @@
+In this video, we'll show how recursion has been added to the SQL language. | 
+We'll show the WITH statement which is a regular part of SQL. | 
+And then we'll show how WITH can be used to write recursive queries. | 
+We'll describe a few examples that can't be written without recursion in SQL, and then in a follow-up video, we'll give a demo that will show the examples in action. | 
+So SQL is not what is known as a turing complete language. | 
+For those of you who are familiar with the idea of turing completeness, it says that pretty much any computation can be performed by a language, and that's simply not true in SQL. | 
+So SQL has some nice features, it's simple, convenient, declarative--meaning we don't have to say how to execute queries, just what we want out of the queries. | 
+We've talked about that many times throughout these videos. | 
+We find that SQL is expressive enough for most all database queries we want to do, except for one type. | 
+And that's the type that involves unbounded computations. | 
+The basic SQL language does not have features that allow us to do those. | 
+And, I'll motivate those with a few examples. | 
+I'll just say up front, that when unbounded computations need to be performed, use a database. | 
+Typically, there's some programming in a programming language, that will be accessing the database over and over, to do those computations. | 
+But we're also going to see that SQL has added a notion of recursion that allows us to perform unbounded computations. | 
+So, in each of my examples I'm going to give a relational schema and then a query we'd like to write over that schema but we will see that we can't. | 
+The first is a simple ancestors computation. | 
+So, for example, we might have that Sue is a parent of Mary and maybe Bob is also a parent of Mary. | 
+And maybe Fred is a parent of Bob and Jane is also a parent of Bob, and so on. | 
+So we're just listing the parent-child relationships in our relation called parent of. | 
+And then our goal is to use that relation to compute, say, all of Mary's ancestors. | 
+So we can certainly write a SQL query that finds Mary's parents. | 
+I'll let you do that as an exercise. | 
+It's very straight forward. | 
+We can even write a query to find Mary's grandparents. | 
+A query to do that, and again I'm not gonna write it here, would involve two instances of parent of, so you'd be joining parent of with itself. | 
+We wrote queries of that form when we were working with basic SQL in our videos. | 
+And you know we could even find the great grandparents by using say, three instances in joining them. | 
+The problem is that we might not know in advance how many steps there are to get all of Mary's ancestors. | 
+And each one of those steps does involve an instance of parent of and adjoin, so this query can not be executed using standard SQL. | 
+Here's our second example. | 
+A little more complicated. | 
+It involves three relations. | 
+And they represent a company hierarchy. | 
+We're going to have manager-employee relationships. | 
+We're going to have projects and we're going to have salaries. | 
+So, our first relation, employee, just gives us the salary of each employee. | 
+Our second one gives us the manager relationship and what this is saying is say, that the employee with ID 123 is a manager. | 
+I'll draw it like a tree here of two, three, four, who, himself, might manage a few other employees and, so on. | 
+So, we have a hierarchical structure of the management in the company. | 
+And you'll see, you can already probably recognize that this is similar to the parent relationship that we had in our previous example. | 
+And finally we have a set of projects that gives the name of the project, and the manager of that project. | 
+And the query that we would like to run over this database is to find the total salary cost of a given project. | 
+Let's say project X. | 
+So for example if 123 happens to be the manager of project X, then the total salary class would be 123's salary plus 234's and so on down the hierarchy. | 
+So I'm not even going to try to write a SQL query here. | 
+Again you can do that as an exercise, if we knew precisely how deep the tree was below the manager of project X. | 
+Then we could again use these self joins, that would be on the manager relation this time, to find all the employees that are in that sub-tree of project X and add up their salaries. | 
+But if we don't know the depth of that hierarchy, then it's impossible for us to write a SQL query that goes to arbitrary depth to add up the costs. | 
+By the way, let me mention that one of the reasons I'm not bothering to write the exact SQL right now as I motivate these examples is that we are going to see the SQLs shortly when we do the live demo. | 
+And the third example and my personal favorite is finding airline flights from a starting point to an ending point at the cheapest cost. | 
+So let's say we have a relation here that lists all flights, the start of the flight, the end of the flight, the airline and the cost of the flight, and we're interested in flying from point A to point B. | 
+Now if I happen to be a very conservative traveler, and I don't want to change planes more than twice then I'm in good shape and I could still write this using SQL, because I'd be only willing to take 3 flights, and I could just join three instances of the flight relation, matching the destination of a flight with the origin of the next one, and then adding up the costs, and finding the cheapest one. | 
+It's not a trivial SQL query to write. | 
+Again, I'll leave you that as an exercise. | 
+And by the way, I often give that very query as an exercise in my class. | 
+But when we don't know the number of flights we want to take, so if we are a very frugal traveler whose willing to spend arbitrary amounts of time to get the cheapest flight, then we can't with regular SQL write a query that explores arbitrary numbers of flights to finds the cheapest way to get from point A to point B. | 
+So as you've probably surmised, all three of these examples are going to be expressible once we have recursion in the SQL language. | 
+So next I'll introduce the with construct in SQL. | 
+The with construct is actually present even without recursion, but it is the construct that was used to add recursion to the language. | 
+So here is the width statement in SQL. | 
+We give the keyword "with", and then we list one or more new relation names. | 
+So, R1-RN would be relations that don't exist in the database and each one of those is tied to a query. | 
+So what we're effectively saying is that R1 is going to contain the results of query one or two of the results of query two and so on. | 
+Once we've set that up, then the final part of the with is a final query that can involve any tables in a database and can also involve these new tables R1 through RN. | 
+In some ways, you can think of the with statement as setting up temporary views. | 
+So it sets up a view for each one of these R's then runs a query involving the views, and then the views go away. | 
+Or if you want to think of them as materialized views, you could think of these as assignment statements where we have the as. | 
+So we create the table R1, we put the data in, and then we run the query. | 
+In reality most systems implement the with statement like for generalized virtual views and they'll rewrite the query down here to be expressed over the tables that are used in these queries. | 
+We'll be seeing examples of the with statement when we get to our demo, it will of course be the recursive with statement. | 
+Just one more notational point, just like as with views, what normally happens is the schema of one of these Rs is inherited as the schema that's the result of the query that's associated with the R. But if the user, I mean the designer, the one writing the "with" statement, wishes to have a different schema, different names for the attributes, those can be specified explicitly, and then those would be used in this query when R1 is referenced. | 
+So now here's the fun part. | 
+We can specify recursive as a key word after "with" and that let's us write recursive queries in this first portion of the "with" statement. | 
+Very specifically, in query one here, we an actually reference relation R1 which is the relation we're defining with Query 1, in a recursive fashion. | 
+In Query 2, we can reference R2. | 
+We can actually also have a mutual recursion, which I'm going to focus on in a separate video. | 
+But, that would be saying, not this exactly. | 
+That would be saying Query 2 could reference R1 and Query 1 would reference R2, but again, we'll be talking about that in a separate video. | 
+For now, we'll just talk about recursion within each specification of one of these Rs. | 
+By the way, one thing that I wanted to mention is a sort of syntactic inconsistency. | 
+The SQL standard actually says that this recursive modifier here goes with the relation specification. | 
+So if R1 is recursive we would say recursive R1, if RN was recursive we'd say recursive RN. | 
+The implementation that we're going to be using which is the postgres implementation, actually says that recursive modifies the with. | 
+So when you say with recursive then any of the RI's are allowed to be recursive. | 
+Now let me show what the typical form is of one of these recursive specifications in the with statement. | 
+So this example I'm giving has just one R specified in the with statement and then the query at the bottom. | 
+Again, this is the final result of the recursive with statement, involves R and possibly other tables of the database. | 
+The typical way to define a recursive query is to have a base query and that would be over non, over tables other than R so not R in this base query. | 
+Sort of to get the recursion started, and then R will be the result of that base query together with the recursive query. | 
+So here we will reference R. And the idea is that the result of R, the R that's seen when we run the query down here, is what's known as the fixed point of running this union over and over again until we add no additional tuples to R. One other thing that I wanted to mention is that this form of the recursion, this idea here that we have the base query and a union with the recursive query is not enforced in the SQL standard. | 
+The SQL standard merely says that we can specify R here and then any query inside the parenthesis that reference R. Although, there are a number of restrictions, this division into a base query and recursive query isn't required. | 
+We'll be talking about some of those restrictions late on, actually in a separate video. | 
+In the implementation that we're using, the implementation, it actually does require this form where you have a base query, union, and recursive query, but that's not really a problem because all natural recursive queries, at least the ones I've seen and for the examples we're going to look at, do take this form. | 
+And one last thing I want to mention is about the UNION operator. | 
+First a reminder that in SQL when we say UNION, as opposed to UNION ALL, we're talking about duplicate eliminating union, that means that when we add a tuple to our union that's already there, we don't actually add a tuple. | 
+And that's really key to this notion of reaching a fixed point or with the recursion terminating, because we might be running the recursive query that over and over gives us additional tuples, but if those are all tuples that we already have in R, then we won't actually be adding anything new, because the union eliminates duplicates, and that will tell us our recursion is done. | 
+As you can imagine, if I wrote UNION ALL instead, then, I'm continuously adding new tuples and my recursion will typically not terminate, so it's not common, maybe never, to see UNION ALL used in recursion, but rather the duplicate eliminating UNION operator. | 
+So now that we've seen a number of examples that need recursion, and we've seen how recursion has been introduced into SQL, the next video will give a demo of these queries in action. | 

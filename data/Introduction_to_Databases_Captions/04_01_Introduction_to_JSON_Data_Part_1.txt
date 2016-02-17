@@ -1,0 +1,72 @@
+This video introduces JSON. | 
+Let's start by talking about its pronunciation. | 
+Some people call it Jason, and some call it J-sahn. | 
+I'll do a little bit of investigation and discovered that the original developer of JSON calls it JSON so, I'll do that too. | 
+Like XML, JSON can be thought of as a data model. | 
+An alternative to the relational data model that is more appropriate for semi-structured data. | 
+In this video I'll introduce the basics of JSON and I'll actually compare JSON to the relational data model and I'll compare it to XML. | 
+But it's not crucial to have watched those videos to get something out of this one. | 
+Now among the three models - the relational model, XML, and JSON - JSON is by a large margin the newest, and it does show there aren't as many tools for JSON as we have for XML and certainly not as we have for relational. | 
+JSON stands for Javascript object notation. | 
+Although it's evolved to become pretty much independent of Javascript at this point. | 
+The little snippet of JSON in the corner right now mostly for decoration. | 
+We'll talk about the details in just a minute. | 
+Now JSON was designed originally for what's called serializing data objects. | 
+That is taking the objects that are in a program and sort of writing them down in a serial fashion, typically in files. | 
+one thing about JSON is that it is human readable, similar to the way xml is human readable and is often use for data interchange. | 
+So, for writing out, say the objects program so that they can be exchanged with another program and read into that one. | 
+Also, just more generally, because JSON is not as rigid as the relational model, it's generally useful for representing and for storing data that doesn't have rigid structure that we've been calling semi-structured data. | 
+As I mentioned JSON is no longer closely tied to Many different programming languages do have parsers for reading JSON data into the program and for writing out JSON data as well. | 
+Now, let's talk about the basic constructs in JSON, and as we will see this constructs are recursively defined. | 
+We'll use the example JSON data shown on the screen and that data is also available in a file for download from the website. | 
+The basic atomic values in JSON are fairly typical. | 
+We have numbers, we have strings. | 
+We also have Boolean Values although there are none of those in this example, that's true and false, and no values. | 
+There are two types of composite values in JSON: objects and arrays. | 
+Objects are enclosed in curly braces and they consist of sets of label-value pairs. | 
+For example, we have an object here that has a first name and a last name. | 
+We have a more - bigger, let's say, object here that has ISBN, price, edition, and so on. | 
+When we do our JSON demo, we'll go into these constructs in more detail. | 
+At this point, we're just introducing them. | 
+the second type of composite value in JSON is arrays, and arrays are enclosed in square brackets with commas between the array elements. | 
+Actually we have commas in the objects as and arrays are list of values. | 
+For example, we can see here that authors is a list of author objects. | 
+Now I mentioned that the constructs are recursive, specifically the values inside arrays can be anything, they can be other arrays or objects, space values and the values are making up the label value pairs and objects can also be any composite value or a base value. | 
+And I did want to mention, by the way, that sometime this word label here for label value pairs is called a "property". | 
+So, just like XML, JSON has some basic structural requirements in its format but it doesn't have a lot of requirements in terms of uniformity. | 
+We have a couple of examples of heterogeneity in here, for example, this book has an edition and the other one doesn't this book has a remark and the other one doesn't. | 
+But we'll see many more examples of heterogeneity when we do the demo and look into JSON data in more detail. | 
+Now let's compare JSON and the relational model. | 
+We will see that many of the comparisons are fairly similar to when we compared XML to the relational model. | 
+Let's start with the basic structures underling the data model. | 
+So, the relational model is based on tables. | 
+We set up structure of table, a set of columns, and then the data becomes rows in those tables. | 
+JSON is based instead on sets, the sets of label pairs and arrays and as we saw, they can be nested. | 
+One of the big differences between the two models, of course, is the scheme. | 
+So the Relational model has a Schema fixed in advance, you set it up before you have any data loaded and then all data needs to confirm to that Schema. | 
+JSON on the other other hand typically does not require a schema in advance. | 
+In fact, the schema and the data are kinda mix together just like an xml, and this is often referred to as self-describing data, where the schema elements are within the data itself. | 
+And this is of course typically more flexible than the to a model. | 
+But there are advantages to having schema [sp?] | 
+as well, definitely. | 
+As far as queries go, one of the nice features of the relational model is that there are simple, expressive languages for clearing the database. | 
+In terms of JSON, although a few New things have been proposed; at this point there's nothing widely used for querying JSON data. | 
+Typically JSON data is read into a program and it's manipulated programatically. | 
+Now let me interject that this video is being made in February 2012. | 
+So it is possible that some JSON query languages will emerge and become widely used there is just nothing used at this point. | 
+There are some proposals. | 
+There's a JSON path language, JSON Query, a language called jaql. | 
+It may be that just like XML, the query language are gonna follow the prevalent use of the data format or the data model. | 
+But that does not happened yet, as of February 2012. | 
+How about ordering? | 
+One aspect of the relational model is that it's an unordered model. | 
+It's based on sets and if we want to see relational data in sorted order then we put that inside a query. | 
+In JSON, we have arrays as one of the basic data structures, and arrays are ordered. | 
+Of course, there's also the fact like XML that JSON data is often is usually written files and files themselves are naturally ordered, but the ordering of the data in files usually isn't relevant, sometimes it is, but typically not finally in terms of implementation, for the relational model, there are systems that implement the relational model natively. | 
+They're very generally quite efficient and powerful systems. | 
+For JSON, we haven't yet seen stand alone database systems that use JSON their data model instead JSON is more typically coupled with programming languages. | 
+One thing I should add however JSON is used in NoSQL systems. | 
+We do have videos about NoSQL systems you may or may not have, have watched those yet. | 
+There's a couple of different ways that JSON is used used in those systems. | 
+One of them is just as a format for reading data into the systems and writing data out from the systems. | 
+The other way that it is used is that some of the note systems are what are called "Document Management Systems" where the documents themselves may contain JSON data and then the systems will have special features for manipulating the JSON in the document is better stored by the system. | 

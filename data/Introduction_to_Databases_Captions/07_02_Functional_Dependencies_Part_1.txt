@@ -1,0 +1,56 @@
+This video covers functional dependencies. | 
+First a quick recap of relational design by decomposition. | 
+The idea is that the application designer writes mega relations that contain all the information that we want to have and properties of the data that we're storing. | 
+And then the system will automatically decompose those based on the properties that are specified. | 
+The final set of decomposed relations will satisfy what's called the normal form, and normal forms are good relations in the sense that they have no anomalies and they don't lose information from what was specified in the original mega relations. | 
+Now the properties themselves are defined either as functional dependencies in which case the system will generate Boyce-Codd Normal Form relations or multi-value dependencies, which will then yield fourth normal form relations. | 
+So this video, as you can tell, is about functional dependencies themselves. | 
+And let me say that functional dependencies are actually a generally useful concept in databases not only for relational design. | 
+So for functional dependencies, as we'll see soon, are a generalization of the notion of keys and they allow the system to, for example, store the data more efficiently when the system knows about functional dependencies. | 
+Compression schemes can be used based on functional dependencies for storage, and also functional dependencies, as a generalization of keys, can be used to reason about queries and for query optimization. | 
+Which is a reminder of a very important aspect of database systems. | 
+Which allows declarative queries to be executed by the system efficiently. | 
+By the way a third use of functional dependencies is for exam questions in database courses because there is a very nice theory functional dependencies as you'll see. | 
+It's quite easy to write questions about them. | 
+The remainder of the video will cover functional dependencies in general as a general concept and not specifically to relational design and then later videos will tie functional dependencies back to design by decomposition. | 
+As always we'll be using as a sample a college application database and this case I've expanded the information that we're including quite a bit. | 
+We'll be using these same two relations as examples throughout this video and subsequent videos on relational design. | 
+In this case we're gonna look at two relations, one with information about students and then a separate one with information about where they're applying. | 
+The student information will have social security number, the student's name, their address and then three attributes about their high school. | 
+We'll assume there are unique codes for high schools, but they also have a name and are in a city, finally the student's GPA, and a priority field for admissions that we'll see in a moment. | 
+For applications, we'll have the student's social security number, the college name they're applying to, the state of the college, the date of application and the major. | 
+Not all of these attributes will even be used in this video, but like I said, this will permeate several videos as our running example. | 
+To motivate functional dependencies, let's focus on the student relation and specifically on the GPA and priority attributes. | 
+Let's suppose that a student's priority is determined by their GPA. | 
+For example, we might have a rule that says if GPA is 3.8, greater than 3.8 then priority is 1. | 
+If the GPA is say, in between, let's say, 3.3 and 3.8. | 
+Then we'll set priority to be equal 2, and let's say if the GPA, then, is less than 3.3, then the priority value is three. | 
+So, if this relationship is guaranteed in our data then what we can say is that any two tuples that have the same priority are guaranteed to have the same GPA. | 
+And let's formalize that concept. | 
+So I'm going to write a little logical statement here to formalize the concept. | 
+I'm going to use the for all symbol from predicate logic and I'm going to say if we have any pair of tuples. | 
+So for all T or U, those are tuples in the student relation, then if the student, if the T and U have the same priorities I'm sorry the same, let me fix that, they have the the same GPA. | 
+So if T.GPA equals U.GPA, then and this is the logical implication symbol, then T.priority will equal U.priority. | 
+So this logical statement is in fact a definition of a functional dependency, and we would write that functional dependency as GPA arrow priority, so that says the GPA determines the priority, any 2 tuples with the same GPA must have the same priority. | 
+So that was a specific example. | 
+Now let's generalize our definition. | 
+So, let me replace GPA and priority here with just two attributes A and B E of say a relation R. And then we'll also need to modify our definition. | 
+So you can see, I've erased the specific attributes and relation. | 
+And I'll just say for every. | 
+T and U in our relation, R. If T dot A equals U dot A then T dot B equals U dot B and that's the definition of the functional dependency A determines B for a relation R. Actually I'm gonna generalize this definition even further because functional dependencies don't always have to have one attribute on each side, they can actually have a set of attributes. | 
+So now I write A1 A2 dot dot dot AN on the left hand side, these will all be attributes of relation R. And on the right hand side, B1 B2 comma BM, again, attributes of R. Modifying the formal definition in red, now I can't use the dot notation anymore, so I'll use a square bracket and I'll write A1 through An equals U square bracket A1 through AN, so what I'm saying here in this case is that the two tuples T and U have the same values for all of the attributes A-1 through A-N, and if they do, then they will also though have the same values for B-1 through B-M. We'll be getting to some concrete examples soon. | 
+Just one last bit of notation before we move on. | 
+For simplicity I'm going to often in the video abbreviate a list of attributes or set of attributes by using a bar. | 
+So I'll write A bar to indicate a set of attributes A and B bar to indicate a set of attributes B. | 
+And again, this is just for convenience. | 
+So we've seen the motivation for a functional dependency in a relation. | 
+A functional dependency for a relation is based on knowledge of the real world data that's being captured. | 
+And when we specify one, just like specifying keys, all instances of the relation must adhere to the functional dependency. | 
+So just to summarize functional dependencies, we say that attribute, a set of attributes A functionally determines a set of attributes B, if again any time tuples agree in their A values, they also agree in their B values. | 
+And let's say that our relation here R has the tuples A the tuples and B and also a few more attributes we'll call those C. So, let me draw a picture of a relation now here that has those attributes in it. | 
+So, we'll have here.. lets just three columns, but again these are multiple attributes. | 
+And these are the attributes A, these are the attributes B, and these are the attributes C And if we put in a couple of tuples, then what we'll say is, if we have two tuples here, that have and I'm gonna use a bar even for the values in the tuples. | 
+If we have two tuples whose A values are the same then their B values must also be the same. | 
+And we're going to be using this type of template for some reasoning later on. | 
+But we're not saying their C values have to be the same so we could have C1 and and different C values here as well. | 
+But again, if we specify this functional dependency, we are saying that every instance of our relation must satisfy the condition that if the A values are the same, then the B values are also the same. | 

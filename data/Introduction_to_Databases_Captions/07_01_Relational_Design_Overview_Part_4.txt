@@ -1,0 +1,5 @@
+To summarize, we're going to do relational design by decomposition. | 
+We're going to start by specifying mega relations that contain all the information that we want to capture, as well as specifying properties of the data usually reflecting the real world in some fashion. | 
+The system can automatically decompose the mega-relations into smaller relations based on the properties we specify, and guarantee that the final set of relations have certain good properties captured in a normal form. | 
+They will have no anomalies, and they'll be guaranteed not to lose information. | 
+We'll start by specifying properties as functional dependencies and from there the system will guarantee Boyce-Codd Normal Form and then we'll add to that properties specified as multi-value dependencies, and from there the system will guarantee fourth normal form, which is even stronger than Boyce-Codd Normal Form and is generally thought to be good relational design. | 

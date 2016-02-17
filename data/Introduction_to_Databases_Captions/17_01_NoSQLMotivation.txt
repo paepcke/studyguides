@@ -1,0 +1,167 @@
+This pair of videos covers NoSQL systems. | 
+The first video is going to give a history and motivation for the topic, and the second video will give an overview of some specific NoSQL solutions. | 
+But let me warn you right away, that the area of NoSQL systems is changing rapidly, so I'm going to avoid giving too many details so that the videos don't get out of date too quickly. | 
+Let's start by talking about the NoSQL name itself. | 
+It's actually a little bit confusing and misleading, has a bit of a history to it already, which we'll go through, and those who invented it might be regretting it a bit. | 
+But let's pull it apart, and let's first look at SQL. | 
+In the term NoSQL, SQL is actually not talking about the SQL language. | 
+What it's talking about more generally is traditional relational data base management systems, which do have the SQL language, but have a whole bunch of other aspects to them as well. | 
+Over the past decade or so, there have been a number of new data management and analysis problems that have cropped up, and we'll talk about some of those. | 
+Where a traditional relational database management system might not be the best solution for those problems, and again we'll talk about that as well. | 
+So, NoSQL termed when you take it apart to mean NoSQL, is saying that for some problems, we might not want to use a traditional relational database system. | 
+It's not talking about this Sequel language itself, not picking on that but again Talking about the whole trappings of the traditional system. | 
+Now while pretty much everyone agrees that for some problems, a traditional relational database management system isn't the best solution, there are still a whole lot of problems for which it is, and so people now like to say, well Problems aren't exclusively solved by traditional relational database systems. | 
+They might be solved by traditional database systems for some portion of them. | 
+And by some other solution for other portions of the problem. | 
+And for that reason, NoSQL has actually come to mean, and this is now the accepted definition, not only SQL, but again, with SQL itself actually referring to traditional relational database management systems. | 
+So what's wrong with a traditional relational database system? | 
+Well, the primary issue is that it's a big package with all kinds of features. | 
+And in many cases, though having all those features in one place is a great thing, but sometimes we don't need all of the features and it can actually be advantageous to drop some of those. | 
+Now, what are those features? | 
+I'm going to wind all the way back to the introductory video to these materials, where we talked about database management systems and all the great things they provide. | 
+And actually I've copied this directly from my very first set of slides. | 
+That tells us that a database management system provides great things, efficiency, reliability, convenience, a safety multi-user, access to massive amounts of persistent data. | 
+So let's analyze these adjectives a little bit more. | 
+Let's start by talking about convenience, and let me give 3 aspects of a traditional database system that lead to its convenience to use for an application. | 
+So here they are. | 
+A simple data model, declarative query language and transaction guarantees. | 
+And these 3 components of a database system are one of the reasons that they are really good for certain applications. | 
+Because you can put your data in an understandable way, you can query it using a language that's easy to write yet very powerful. | 
+And you get guarantees about what happens if the system crashes or if multiple users are using it at the same time. | 
+So the relational data model is great because the data is organized into tables. | 
+We have an understandable algebra over relations, and that algebra forms the basis of the query language, and everything fits neatly into a package. | 
+The problem comes when our data doesn't fit so neatly into that package. | 
+And if we insist on using the relational model, and our data isn't very relational, then there has to be some process of organizing the data before we can say, load it into the tables of our system. | 
+The SQL language is great because it's very powerful. | 
+It includes selections, projections, joins aggregation, all kinds of set operators. | 
+useful predicates and so on, but what if that query language is much more than what we need? | 
+Maybe we only need to do simple fetches of records based on, key values, for example. | 
+In that case, using a system that supports the complicated language, may be, again, more than we actually need. | 
+And similarly, transaction guarantees are, terrific when we have lots of users hitting a system at the same time. | 
+And we have very strict requirements on consistency, but if our requirements are a lot less, even the weakest guarantees, that are made by the traditional database systems might not be appropriate for application. | 
+And we're going to see examples of all of these things. | 
+So the next attribute, multi-user, ties right into our discussion of transaction guarantees. | 
+Again, for some applications, we might not need to maintain the level of consistency when multiple users are operating on the database at the same time, that traditional systems are designed for. | 
+Next attribute, safety. | 
+safety is both from a, an authorization standpoint and from an attacker's standpoint. | 
+And you know safety is not that different a concern in these NoSQL type applications than in traditional applications. | 
+Although in some cases, the NoSQL solutions we're going to discuss are used more to process data offline and in a batch mode, in which case safety in terms of authorization or even attack is much less of an issue than say, a database system that's sitting behind a deployed website. | 
+Persistence is something that's provided by database systems, and persistence is certainly something important in NoSQL type applications as well. | 
+Although, for NoSQL, we'll see that files are often okay, as a storage mechanism rather than specialized structures that are typically implemented in a database system. | 
+Reliability, again is something we're certainly going to want in any data management application, but again the considerations are a little different in certain types of applications, say the batch data analysis applications. | 
+Or it might be just okay to completely redo the entire, say, processing of the data, where that wouldn't be the case if you had an operational database sitting behind a website. | 
+Now the last two adjectives, on the other hand, are on the other end of spectrum. | 
+One of the reasons for NoSQL solutions is that the data being handled these days is much, much more massive than the amount of data that the traditional relational database systems were designed for. | 
+part of the reason is that the cost of hardware's gone down and so people are just saving much more data. | 
+and then again another reason of course are websites such as Facebook and tweeter and so on that are just collecting data from enormous numbers of users at enormous rates. | 
+And those same websites, by the way, have efficiency requirements that are much, much higher than we've seen in the past. | 
+So we have these millions billions of, of records, and we expect a response time of under a second for fairly complex operations overloads. | 
+So again, these are areas where NoSQL systems want to increase the adjectives where the, earlier ones, we want to sort of decrease what they're offering. | 
+So, in some sense, you can almost think of NoSQL systems as compromising on some of these earlier ones, in order to boost some of the later ones. | 
+So with that motivation, now let's talk about the NoSQL systems. | 
+So they are, as I've said, an alternative to a traditional relational database system for managing and analyzing large amounts of data. | 
+At the highest level, here are the attributes that are provided in NoSQL systems. | 
+So first of all, a more flexible schema than the rigid relational model. | 
+Second of all, and I really hesitate to say this, but they tend to be a bit quicker and a bit cheaper to set up for a particular application. | 
+Now that may change over time, but that's the word on the street as of this moment. | 
+Third, as I already motivated, they are designed for massive scalability and that means massive both in the amount of data and also with the efficiency of the operations on that data. | 
+And lastly, they don't necessarily have transactional guarentees. | 
+In general what they do is relax the consistency that's offered by the system And, in turn, gain higher performance and higher availability of the system. | 
+So these systems do tend to be used for applications that have strict requirements, both in how fast they can do things and in being up all the time. | 
+Now, of course, there's a downside, and again this is just at the very highest level. | 
+Different, NoSQL systems address things in different ways. | 
+On the downside, they tend not to have a dec, declarative query language. | 
+So one of the benefits of a traditional system is being able to write. | 
+Add hot queries in a very nice high level language, change your mind about what you want to write and make changes easily, explore the database in lots of different ways just with these simple queries, so in those SQL systems, the lack of declarative query language does mean that there's more direct programmig Involved in manipulating the data and another downside is the relaxed consistency does mean there are fewer guarantees, so for applications that have very strict that need very strict guarantees about the consistency of the data or say the serialized ability of operations on the data, no sequal systems are probably not a good idea. | 
+So the remainder of the video is just going to go through a set of examples to motivate, the cases where we might want to use a NoSQL system and the reasons that it might be difficult to use a traditional system. | 
+They're all sort of simplified made-up examples, but I do think they give the overall idea. | 
+So the first example is an application where we have a large number of logs of web activity and we want to analyze those logs in various ways. | 
+Let's assume that when a web log is written there's a set of records for each access, and that record is going to report that a particular user with a given user ID accessed a particular URL at a particular time. | 
+And then we might have some additional information associated with that access, maybe something about the user or whether it was converted into a purchase or where the user went next. | 
+All kinds of possible things we might want to include in there, and actually, that additional info might change over time. | 
+So let's suppose that we're going to work with our web log data in a traditional database system. | 
+The first test then would be to get the data loaded into the system. | 
+And this is one of the first problems with relational systems is that there might be quite a bit of work involved in taking data like this that might not be perfectly organized and getting it into a relational system. | 
+For example, we might want to do some amount of data cleaning. | 
+data cleaning refers to finding say errors, or is, inconsistencies in the data, and resolving those. | 
+For example, maybe our time stamps are in multiple formats and we need to resolve them. | 
+Maybe some of our URLs are invalid. | 
+So, we go through a data cleaning process. | 
+The next thing we might want to do is some amount of data extraction. | 
+So let's take a look at this additional information. | 
+So this might be in a structured, semi-structured, or free text format, but if we're going to load into a database system then we're probably going to need to extract the relevant fields from that information and get that formatted so we can load it into a table. | 
+We might also do some amount of verification, maybe checking that all the URLs are valid,. | 
+And then finally we have to devise, design some kind of schema, or specify a schema, and then get the data loaded in. | 
+Now proponents of NoSQL systems will tell you "Hey, you don't have to do any of that. | 
+You can just do nothing and immediately start operating on the data directly out of say the file where it's stored. | 
+And that sort of comes back to the idea that you can get up and running more quickly on a NoSQL system. | 
+Now of course, there's no free lunch or pay me now pay me later. | 
+The reality is of course when you actually start processing the data, you are going to have to embed somewhere in there these same basic operations to get the data cleaned up and usable. | 
+But those would occur during the processing of the data. | 
+And if there's some portions of the data that you're not operating on, you can just leave those in place without doing the clean up of that portion of the data. | 
+Now, let's look at the type of operations we might want to preform over this data. | 
+It might be very simple things. | 
+We might say just want to find all records that correspond to a given user. | 
+Or maybe we want to find all accesses of a given URL, or everything that happened at a particular point in time. | 
+Now, none of these things require SQL, ooh, NoSQL, but of course, that's not what NoSQL stands for. | 
+But these all just require finding you know, a set of records based on a single value. | 
+Or we might want to look for some special construct that appears inside the additional information, which the SQL language, again, is not particularly designed to do. | 
+The other thing to notice about all of these operations is that they are highly parallelizable. | 
+Each one of them, in fact, is just looking at the individual records. | 
+We could do everything in parallel. | 
+And exploiting parallelism when you have simple operations is one of the, important aspects of most NoSQL solutions. | 
+Here's an operation I came up with because it does look like it requires a relational joint. | 
+Let's say that we want to find all pairs of users that have acessed the same URL. | 
+In fact, back in the SQL videos, I gave several examples like this. | 
+This is essentially a self-join over two instances of a table or, two instances of the web logs. | 
+So this looks like maybe we actually do need a SQL-like solution, but I'm going to argue that this is actually kind of a weird query, and it's fairly unlikely that we would be doing this one on a regular basis. | 
+Now, let's make our data scenario slightly more complicated. | 
+In addition to the web log, let's suppose that we have separate records with information about users. | 
+So we have the user ID, maybe the name, age, gender, and some other attributes of the users. | 
+And now, suppose our task is to take a given URL and determine the average age of the users who have accessed that URL. | 
+Okay, well this is a very, I would argue, SQL-like query. | 
+So it's nice in this case to have a language somewhat like SQL. | 
+But I'll still say that some aspects of NoSQL solutions may be relevant to this task, and in particular, it's the question of consistency. | 
+If we're using, if we're analyzing a huge amount of data and we're just looking for some type of average, some type of statistical information over that data it might not be required that we have absolute consistency. | 
+In fact it might even be okay if we count some accesses to URL's that were at a certain time, and we completely missed some from an earlier time just because the database might be fragmented and, and inconsistent. | 
+And, that's, that's again probably okay for this application, so to summarize the weblog application, it might be somewhat difficult to get web access records into a relational database system. | 
+It might be easier to use them in their filed format and extract the information when we need it. | 
+many of the operations that we perform, maybe extremely simply, just fetching a set of records based on a value, and also highly parallelizable. | 
+And even for the more complicated analyses that we might do, we may not need strict consistency accessing say, a very specific snapshot of the data. | 
+Now let's take a look at another application, let's say the friends relationship in a social network, which generates a graph when a user is represented by nodes, and say the friend relation is represented by edges. | 
+So each record is going to have 2 user ID's. | 
+That says that one user is friends with another, and then we'll have separate records with information about users, the user ID, maybe again their name, age and gender and so forth. | 
+And let's imagine this is an extremely large social graph. | 
+What kind of operations might we want to perform? | 
+Well, one of them is to find all the friends of the given user, and so that's pretty straightforward. | 
+Again, we are just fetching the set of user 2's that are associated with a given user 1. | 
+So not an operation that requires a complicated query language. | 
+On the other hand what if we are looking for all friends of friends of a given user. | 
+Actually now, we do require a joint operation in order to do that. | 
+And furthermore, what if we want to find all women friends of men friends of a given user? | 
+In that case, we're going to need a couple instances of the friend relationship, and we're going to need to join that with a couple instances actually of the user information as well. | 
+So, this is starting to look more, a little bit more SQL-like. | 
+But, maybe we don't need the full power of the language, because we can see that there's a certain sort of pattern to the types of operations we're doing. | 
+And of course, the problem comes when we want friends, of friends, of friends, of a given user. | 
+In that case, we're doing large number of joins, and large numbers of joins tend not to be not that efficient in relational data base systems, even when you use recursive SQL. | 
+So, in addition to this type of operation being not necessarily suitable for SQL, a second attribute that we probably don't need again in this environment is consistency. | 
+because we probably don't care that much whether we get an exact snapshot of the database, if things are changing. | 
+Typically, for these types of analyses, approximate solutions are acceptable. | 
+So these types of operations suggest that we might want to have a special type of database system that's suitable for graph operations on very large scale, and in fact graph databases are one type of NoSQL solution that we will talk about in the next video. | 
+And finally, my last example is Wikipedia pages. | 
+If you think of Wikipedia, it's a large collection of documents, extremely large. | 
+And inside each document, there's typically a combination of some structured data inside boxes that has say, key valued pairs. | 
+And then on the structured data, which might be fairly large volumes of text, a type of task we might want to do is say retrieve the first paragraph, the text paragraph, in all pages where we look in the structure data and find out that the page is about a United States president, say before 1900. clearly this is not very suitable for loading into a relational database and querying in that fashion, again because of the mix of structured and unstructured information. | 
+And once more, consistency is probably not critical in this environment as well. | 
+As we'll see, another type of NoSQL solution is called the document database system which can be more appropriate for this type of application. | 
+So to summarize, NoSQL systems provide an alternative to using a traditional database management system for certain types of applications. | 
+NoSQL systems provide a flexible schema which can be useful when its not easy to get the data into a structured table format. | 
+They can be quicker and cheaper to set up. | 
+So you might be able to get going faster on actually analyzing your data and maybe for less cost. | 
+a bit debatable, but that's the word on the street right now. | 
+They do provide massive scalability. | 
+So they're generally used for very, very large applications. | 
+Often applications that don't require the amount of consistency that a traditional system provides, and by relaxing the amount of consistency, they'll give you better performance, higher availability. | 
+The downsides of the this system tend to be the lack of a declarative query language. | 
+That means more programming is generally involved when using the systems, and fewer guarantees are provided about consistency. | 
+In the next video we'll specific NoSQL solutions and how they embody the adjectives that I've included here. | 

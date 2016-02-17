@@ -1,0 +1,37 @@
+Our next isolation level is called Repeatable Read. | 
+And it's our strongest one before we get to Serializable. | 
+In Repeatable Read, a transaction may not perform dirty reads just like in read committed. | 
+And furthermore, there is an additional constraint that if an item is read multiple times, it can't change value. | 
+You might remember in our previous example, we read the GPA multiple times, and it did change value. | 
+So if we were using Repeatable Read for the consistency level there, then the behavior that I described couldn't occur. | 
+So, even with this stronger condition, we still don't have a guarantee of global serializability, and we'll again see that through an example. | 
+Our examples are getting a little more complicated, here. | 
+So we have our two transactions T1, T2, our first transaction is still modifying the GPA (I took away the condition about the high school size, just to keep things simple) and our second statement in our first transaction is modifying the high school size of the student with ID 123. | 
+So we first modified GPA's and then a high school size. | 
+In our second transaction, and that's the one we're setting as Repeatable read, we are going to read the average GPA, as we usually do, and this time we are going to read the average of the high school sizes. | 
+Incidentally, our first transaction is serializable, as they always are by default. | 
+Let's look at a behavior where the first statement reading the average GPA is executed before transaction T1, or sees the values before T1, while our second statement, the high school size, sees the values after transaction T1. | 
+So let's check our conditions. | 
+We are not performing dirty reads, because the first read here is of the committed value before T1 and the second read is the committed value after T1 and furthermore, any items that are read multiple times have not had their value changed because we are actually not reading any values multiple times. | 
+So the execution of the first statement here, before T1 and the second one after is legal in the repeatable read isolation level. | 
+Yet we're still not serializable. | 
+We're not equivalent to T1 before T2 because again this Statement of T2 is going - sorry - the first statement of T2 is going before T1 or seeing the state before T1 and we're not equivalent to T2 followed by T1 because the second statement of T2 is seeing the state after T1. | 
+Now there is another situation with repeatable read that's quite important to understand. | 
+We said that a transaction can't perform dirty reads, and it can't. | 
+We also said that when an item that's read multiple times can't change value. | 
+But the fact is that Repeatable Read does allow a relation to change value if it's read multiple times through what's known as phantom tuples. | 
+Let me explain through an example. | 
+Let's suppose our first transaction inserts a hundred new students into the database. | 
+And that's run concurrently with our second transaction, which is right at the repeatable read isolation level and now we're just going to read the average GPA and we're going to follow that with the max GPA similar to one of our earlier examples. | 
+Now, repeatable read actually does allow behavior where this average is computed before T1 and this max is computed at after T1. | 
+So the justification behind that is pretty much that when we do the second read of the GPA, the tuples that we're reading for a second time do still have the same value. | 
+So we are reading those some new tuples that were inserted and in fact if this max were an average instead of max we might get 2 different answers for the average, even with Repeatable Read at the isolation level. | 
+But that's what it allows and these hundred tuples here are what are know as the phantom tuples. | 
+They sort of emerged during execution out of nowhere. | 
+Now, I would have to say that my opinion is that this behavior within the repeatable read isolation level, although it's part of the standard, is really in effect of the way repeatable read is implemented using Locks. | 
+When a value is read once, it's locked and can't be modified, but when we insert new tuples, they aren't inserted with locks so they can read in a second read of the same relation. | 
+Don't worry about the implementation details, but do worry about phantom tuples because if you're using the repeatable read isolation level, you do need to know that insertions can be made by another transaction, even between two entire readings of a table. | 
+Now on the other hand, if what we do in our first transaction is delete the hundred tuples instead of insert them, in that case we actually can not get the behavior where the first statement is before and the second statement is after. | 
+Because once these, the average value has been read of this GPA, this deletion will not be allowed because, again kind of an implementation, but those values are locked. | 
+And so in this case, the second read of that same relation wouldn't be allowed. | 
+So in summary we may have phantom tuples up here between two reads of the same relation in a repeatable read transaction, but we won't have tuples disappear from the relation in between two reads of it. | 

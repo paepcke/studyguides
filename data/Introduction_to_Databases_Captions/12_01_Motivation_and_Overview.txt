@@ -1,0 +1,102 @@
+In this video, we'll be introducing the concepts of constraints and triggers. | 
+Later videos will have demos. | 
+We're considering constraints and triggers in the context of relational databases. | 
+The SQL standard does include standardized constructs for constraints and triggers, although, this is an area where deployed systems, do very considerably in how much they cover and how they cover it. | 
+Constraints are also known as an integrity constraints, and they constrain the allowable states of the database. | 
+Triggers are a little different. | 
+Triggers monitor changes to the database and when they're activated they check conditions over the data and possibly automatically initiate actions. | 
+So we can think of constraints as a sort of static concept over the allowable states where triggers are more dynamic. | 
+Let's talk a little more about integrity constraints and then we'll move to triggers. | 
+So, the idea of integrity constraints is that we want to impose restrictions on the allowed data of the data base. | 
+Now, when we create a schema, we say the types of the attributes, we're already imposing structural and type restrictions. | 
+But, integrity constraints tend to be more semantic--they capture restrictions that have to do with the application. | 
+So, let's look at a bunch of examples. | 
+And these are in the context of our students and college database. | 
+So a simple example might say that when we have a GPA value, the GPA must be, say, greater than zero and less than or equal to 4.0. | 
+Another example might say that when we have the enrollment, for our colleges, the enrollment must be less than, say, fifty thousand. | 
+Well, actually for some universities it might be more like 75,000. | 
+We might have the decision attribute in our application table is either the value yes or Y for yes or the value N for no or maybe null is allowed, that could be a constraint. | 
+Again, each of these are constraining the data that could be in the database beyond the type structure that's already been defined. | 
+Here's a little more complicated one. | 
+Maybe we'll want a constraint that says "No decisions have been made on CS applications." | 
+So if our major equals CS, then, this is a sort of logical implication, then our decision is still equal to null. | 
+Or here's an even more complicated one. | 
+Let's say that we want to enforce that students who come from small high schools are not admitted to super large colleges because it just wouldn't be a good idea for them. | 
+We might say if the size of the high school is less than two hundred then if they're admitted, well, let's say they're not admitted to a college where the enrollment is greater than 30,000, let's say. | 
+Of course we wouldn't do that in reality but, this just gives you an idea of the fairly complicated expressions we can write as constraints to limit what the allowable data is in the database. | 
+So, why do we want to use constraints? | 
+Well, there's several reasons. | 
+Actually, one very practical reason is just to catch data entry errors. | 
+So, if we have constraints that just say that the values of the data are in the reasonable range, for example, our GPA's or our enrollments, then if somebody tries to enter data that violates the constraints they probably were just making a mistake, it was probably an error and that can be caught automatically by the constraint enforcement system in the database system. | 
+So, a similar example is correctness criteria. | 
+So, data entry errors would be typically for inserts, where correctness criteria might be for updates. | 
+So, if we're modifying the database, for example, we updated GPA or an enrollment, if we're checking our constraints, that will make sure that our updates are correct - they don't have errors. | 
+Another use of constraints is to enforce consistency. | 
+So we might have copies of data in the database in different places or some data that relies on other data and so when we have of that situation, consistency we could have constraints that specify the consistency requirements and are checked automatically and finally a very different use of constraint, is to tell the system about the data. | 
+So, specifically, we might have key constraints that say values are unique or we might again have consistency restraints that the system can use to both store the data in a certain fashion that made it more efficient and also for how it processes queries, query processing. | 
+So let me give a broad classification of the types of integrity constraints that are supported in database systems. | 
+And this roughly from sort of simplest to the most complicated. | 
+So, a common type of constraint is simply a non-null constraint. | 
+The values cannot take on null, that values cannot take on null. | 
+A second type is key constraints, we've seen those already. | 
+So, a column or set of columns must have unique values in each tuple. | 
+A very important type of constraint is called referential integrity and, we're actually going to treat that in it's own video. | 
+It's often some times known as foreign key constraints, because it is a very frequently used and important type. | 
+Next we have what are known as attribute-based constraints, and these are constraints that are specified along with an attribute constraining the value of the particular attribute. | 
+A similar type of constraint is a tuple-based constraint, but it's associated with each tuple, so it can constrain how the values in a tuple--but in different attributes--relate to each other. | 
+And, finally, there's a notion called general assertions, where we pretty much use the entire SQL query language to specify constraints over the database across tables and within tables. | 
+Now let's talk about how constraints are declared and enforced. | 
+There's two different times that we can declare constraints. | 
+One is with the original schema. | 
+So, at the time we create tables, we can associate constraints with those tables or with the entire database. | 
+If we do it this way, then the constraints are typically checked after bulk loading. | 
+So, as we discussed in previous videos the way a database is often set up is the scheme as declared and the initial set of data may be enough file and then it's both loaded in the database so we did clear constraints then after the data is loaded the system will check the constraints and if they don't hold an error will be raised. | 
+Now another possibility is that we decided once a database is already in operation that we have some constraints we'd like to enforce. | 
+Maybe the application is change or maybe we just realize that there is certain constraints on the data, in that case what happens is the constraint is checked on the current state of the database at the time it's declared. | 
+Now this talks about checking constraints on a single state of the database but of course if the database is modified we have to continue to check constraints. | 
+So, the idea is that once a constraint is in place and if the holds on the database then every time the database is modified the constraints to be checked. | 
+Now of course what we really only want to check is dangerous modifications, so we have a constraint on the GPA we don't need to check changes to the enrollments. | 
+If we have constraints on one table we certainly don't need to check updates on another table or modifications. | 
+So, part of a good constraint checking system will only check constraints after those modifications that can possibly cause the constraint to become violated. | 
+On the other hand, the system does have to insure that after every modification, the constraint holds. | 
+There's also another concept known as deferred constraint checking. | 
+And deferred constraint checking says that and we might want to do a whole bunch of modifications that during the modifications violate the constraint, but once we are done with all of them, then the constraints will hold again. | 
+And, in that case, instead of checking after every modification, what we actually check is after every transaction. | 
+So, we'll talk about transactions in a separate video. | 
+But, the concept of transactions is that, you can group a bunch of modifications together and they'll be executed as a unit. | 
+And that unit is used for other purposes as well: for managing concurrency and for recovery, but, in terms of constraints, it can also be the unit of modification that's used for constraints. | 
+Check it. | 
+Again, if we perform a modification that violates the constraint, typically the system will raise an error and will undo the modification that violated the constraint, so that the data base stays in a state that's consistent with respect to its constraints. | 
+Now, let's introduce triggers. | 
+As I mentioned earlier, triggers are a more dynamic concept than constraints. | 
+Constraints talk about each state of the database, where triggers talk about how the database evolves. | 
+And they can in fact themselves trigger action that cause the database to further evolve. | 
+Triggers are sometimes known as event condition action roles, because the basic structure of a trigger says when some event occurs--and that's typically a modification to the database of some type--check a condition over the database. | 
+Sometimes this condition will be checking the violation of a constraint, but it can be more general than that. | 
+And if the condition if the condition is true then perform an action. | 
+So let's look at some examples of what we might use triggers for in our college application. | 
+So we might have a trigger that says, if the enrollment is modified to exceed say thirty five thousand then let's initiate an action and now this is not a logical implication but a triggering of an action that rejects all applications. | 
+So, we can code that in a trigger and it's a little different and a constraint. | 
+We might write another trigger that says if we insert an application that has a, with a GPA, say, greater than 3.95, then, again, this is not implication, but, triggering an action, we might accept automatically that applicant. | 
+As another example, let's say that we insert a or let's say we update the size high school to be greater than, say, seven thousand, seems pretty unlikely, then that's probably an error and we could change the value, say, to 'Wrong'. | 
+Actually one thing that trigger can often doing this action is simply raise an error and we can see this last one is effectively enforcing a constraint that the size school should be less than or equal to 7000. | 
+We saw a number of reasons that we might want to use constraints, now let's talk about why we might want to use triggers. | 
+Actually the original motivation for triggers was to move logic that was appearing in applications into the database system itself. | 
+For example, if our application is doing all of the work to monitor each change to the database, and that make additional changes based on that monitoring, why not put that functionality inside the database system in the form of triggers? | 
+That makes it more modular and it insures that all the monitoring automatically occurs no matter which application is running on the database. | 
+In addition to moving monitoring logic inside the database system, a very common use of triggers is simply to enforce constraints. | 
+Now you might wonder why would people not simply use the constraint system instead of writing triggers. | 
+The reality is that even though the SQL standard is very expressive in terms of constraints, especially when you consider the general assertion feature, no database system implements the entire standard. | 
+Most of the constraint checking features are somewhat limited. | 
+On the other hand, the trigger features are quite expressive. | 
+So, there's a number of constraints, a large class of constraints, that can't be expressed using the constraint feature, but can be expressed using triggers. | 
+So expressiveness is one of the reasons. | 
+The other is that using triggers you can not only monitor constraints, but you can actually have constraint repair logic. | 
+So when you use constraint systems, except for one specific case having to do with referential integrity that we'll see. | 
+When you use constraint systems typically if the constraint is violated an error is raised on the other hand if you use a trigger, trigger can detect the constraint is violated and it can launch an action that fixes the constraint, so that's a good use of triggers. | 
+Here's a quick preview of what triggers look like in SQL, we'll go into much more detail in a later video as well as have demonstrations of triggers in a running system. | 
+Again triggers are known as unconditional action rules and we can see here the specification of events, which are modifications to the database. | 
+We can see here the condition, that's written in a SQL like language and finally if the condition is true the action is executed. | 
+To conclude constraints and triggers are about monitoring the state of the database. | 
+Constraints specify allowable database states, while triggers can check conditions and automatically initiate actions. | 
+In later videos, we'll go into substantially more detail, and we'll have some demonstrations of the constraint and trigger features in deployed database systems. | 

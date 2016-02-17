@@ -1,0 +1,43 @@
+Now let's talk about duplicate values in the results of relational algebra queries. | 
+Let's suppose we ask for a list of the majors that people have applied for and the decision for those majors. | 
+So we write that as the project of the major and the decision on the applied relation. | 
+You might think that when we get the results of this query, we're going to have a lot of duplicate values. | 
+So we'll have CS yes, CS yes, CS no, EE yes, EE no, and so on. | 
+You can imagine in a large realistic database of applications, there's going to be hundreds of people applying for majors and having a yes or a no decision. | 
+The semantics of relational algebra says that duplicates are always eliminated. | 
+So if you run a query that would logically have a lot of duplicate values, you just get one value for each result. | 
+That's actually a bit of a difference with the SQL language. | 
+So, SQL is based on what's known as multi-sets or bags and that means that we don't eliminate duplicates, whereas relational algebra is based on sets themselves and duplicates are eliminated. | 
+There is a multi-set or bad relational algebra defined as well but we'll be fine by just considering the set relational algebra in these videos. | 
+Our first operator that combines two relations is the cross-product operator, also known as the Cartesian product. | 
+What this operator does, is it takes two relations and kinda glues them together so that their schema of the result is the union of the schemas of the two relations and the contents of the result are every combination of tuples from those relations. | 
+This is in fact the normal set cross product that you might have learned way back in the elementary school. | 
+So let's talk about, say, doing the cross products of students and apply. | 
+So if we do this cross products, just to save drawing, I'm just gonna glue these two relations together here. | 
+So if we do the cross product we'll get at the result a big relation, here, which is going to have eight attributes. | 
+The eight attributes across the student and apply now the only small little trick is that when we glue two relations together sometimes they'll have the same attribute and we can see we have SID on both sides. | 
+So just as a notational convention, when cross-product is done and there's two attributes that are named, they're prefaced with the name of the relation they came from. | 
+So this one would be referred to in the cross-product as the student dot SID where this one over here would be referred to as the apply dot SID. | 
+So, again, we glue together in the Cartesian product the two relations with four attributes each, we get a result with eight attributes. | 
+Now let's talk about the contents of these. | 
+So let's suppose that the student relation had s-tuples in it and that's how many tuples, while the apply had 8 tuples in it, the result of the Cartesian products is gonna have S times A tuples, is going to have one tuple for every combination of tuples from the student relation and the apply relation. | 
+Now, the cross-product seems like it might not be that helpful, but what is interesting is when we use the cross-product together with other operators. | 
+And let's see a big example of that. | 
+Let's suppose that we want to get the names and GPAs of students with a high school size greater than a thousand who applied to CS and were rejected. | 
+Okay, so let's take a look. | 
+We're going to have to access the students and the apply records in order to run this query. | 
+So what we'll do is we'll take student cross apply as our starting point. | 
+So now we have a big relation that contains eight attributes and all of those tuples that we described previously. | 
+But now we're going to start making things more interesting, because what we're going to do is a big selection over this relation. | 
+And that selection is first of all going to make sure that it only combines student and apply tuples that are referring to the same student. | 
+So to do that, we write student dot SID equals apply dot SID. | 
+So now we've filtered the result of that cross-product to only include combinations of student and apply by couples that make sets. | 
+Now we have to do a little bit of additional filtering. | 
+We said that we want the high school size to be greater than a thousand, so we do an "and" operator in the high school. | 
+We want them to have applied to CS so that's and major equals CS. | 
+We're getting a nice big query here. | 
+And finally we want them to have been rejected, so "and decision" equals, we'll just be using R for reject. | 
+So now, we've got that gigantic query. | 
+But that gets us exactly what we want except for one more thing, which is, as I said, all we want is their names and GPAs. | 
+So finally we take a big parentheses around here and we apply to that the projection operator, getting the student name and the GPA. | 
+And that is the relational algebra expression that produces the query that we have written in English. | 

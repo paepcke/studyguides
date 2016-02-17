@@ -6,8 +6,8 @@
 01_01_Introduction.txt,manag system,0
 01_01_Introduction.txt,applic,0
 01_01_Introduction.txt,databas manag system,0
-01_01_Introduction.txt,databas manag,0
 01_01_Introduction.txt,program oper,0
+01_01_Introduction.txt,databas manag,0
 02_01_The_Relational_Model.txt,relat,1
 02_01_The_Relational_Model.txt,databas,2
 02_01_The_Relational_Model.txt,tabl,3
@@ -45,8 +45,8 @@
 03_01_Well_Formed_XML_Part_2.txt,basic structur,5
 03_01_Well_Formed_XML_Part_2.txt,form,0
 03_01_Well_Formed_XML_Part_2.txt,css,0
-03_01_Well_Formed_XML_Part_2.txt,form xml,0
 03_01_Well_Formed_XML_Part_2.txt,pars xml,0
+03_01_Well_Formed_XML_Part_2.txt,form xml,0
 03_01_Well_Formed_XML_Part_2.txt,structur,0
 03_02_DTDs_IDs_and_IDREFs.txt,dtd,1
 03_02_DTDs_IDs_and_IDREFs.txt,book,2
@@ -76,8 +76,8 @@
 04_01_Introduction_to_JSON_Data_Part_1.txt,object,0
 04_01_Introduction_to_JSON_Data_Part_1.txt,relat model,0
 04_01_Introduction_to_JSON_Data_Part_1.txt,xml,0
-04_01_Introduction_to_JSON_Data_Part_1.txt,valu,0
 04_01_Introduction_to_JSON_Data_Part_1.txt,program,0
+04_01_Introduction_to_JSON_Data_Part_1.txt,xml json,0
 04_01_Introduction_to_JSON_Data_Part_2.txt,json,1
 04_01_Introduction_to_JSON_Data_Part_2.txt,xml,2
 04_01_Introduction_to_JSON_Data_Part_2.txt,schema,3
@@ -92,12 +92,12 @@
 04_02_JSON_Demo.txt,array,2
 04_02_JSON_Demo.txt,object,3
 04_02_JSON_Demo.txt,valid,4
-04_02_JSON_Demo.txt,valu,5
-04_02_JSON_Demo.txt,label valu,0
-04_02_JSON_Demo.txt,label,0
+04_02_JSON_Demo.txt,label,5
 04_02_JSON_Demo.txt,json schema,0
-04_02_JSON_Demo.txt,label valu pair,0
+04_02_JSON_Demo.txt,label pair,0
 04_02_JSON_Demo.txt,schema,0
+04_02_JSON_Demo.txt,string,0
+04_02_JSON_Demo.txt,file,0
 05_01_Select_Project_Join_Part_1.txt,relat,1
 05_01_Select_Project_Join_Part_1.txt,oper,2
 05_01_Select_Project_Join_Part_1.txt,select,3
@@ -116,8 +116,8 @@
 05_01_Select_Project_Join_Part_2.txt,student,0
 05_01_Select_Project_Join_Part_2.txt,glue,0
 05_01_Select_Project_Join_Part_2.txt,dot sid,0
-05_01_Select_Project_Join_Part_2.txt,duplic,0
 05_01_Select_Project_Join_Part_2.txt,cs,0
+05_01_Select_Project_Join_Part_2.txt,duplic,0
 05_01_Select_Project_Join_Part_3.txt,natur join,1
 05_01_Select_Project_Join_Part_3.txt,join,2
 05_01_Select_Project_Join_Part_3.txt,natur,3
@@ -126,8 +126,8 @@
 05_01_Select_Project_Join_Part_3.txt,express,0
 05_01_Select_Project_Join_Part_3.txt,colleg,0
 05_01_Select_Project_Join_Part_3.txt,equal,0
-05_01_Select_Project_Join_Part_3.txt,combin tupl,0
 05_01_Select_Project_Join_Part_3.txt,cross,0
+05_01_Select_Project_Join_Part_3.txt,combin tupl,0
 05_01_Select_Project_Join_Part_4.txt,theta,1
 05_01_Select_Project_Join_Part_4.txt,theta join,2
 05_01_Select_Project_Join_Part_4.txt,oper,3
@@ -137,7 +137,7 @@
 05_01_Select_Project_Join_Part_4.txt,theta condit,0
 05_01_Select_Project_Join_Part_4.txt,combin,0
 05_01_Select_Project_Join_Part_4.txt,relat,0
-05_01_Select_Project_Join_Part_4.txt,condit,0
+05_01_Select_Project_Join_Part_4.txt,join theta join,0
 05_02_Set_Operators_Renaming_Notation_Part_1.txt,e1,1
 05_02_Set_Operators_Renaming_Notation_Part_1.txt,intersect,2
 05_02_Set_Operators_Renaming_Notation_Part_1.txt,student,3
@@ -154,7 +154,7 @@
 05_02_Set_Operators_Renaming_Notation_Part_2.txt,berkeley,4
 05_02_Set_Operators_Renaming_Notation_Part_2.txt,colleg,5
 05_02_Set_Operators_Renaming_Notation_Part_2.txt,stanford,0
-05_02_Set_Operators_Renaming_Notation_Part_2.txt,thi,0
+05_02_Set_Operators_Renaming_Notation_Part_2.txt,berkeley berkeley,0
 05_02_Set_Operators_Renaming_Notation_Part_2.txt,instanc colleg,0
 05_02_Set_Operators_Renaming_Notation_Part_2.txt,na,0
 05_02_Set_Operators_Renaming_Notation_Part_2.txt,stanford berkeley,0
@@ -164,10 +164,10 @@
 05_02_Set_Operators_Renaming_Notation_Part_3.txt,relat algebra,4
 05_02_Set_Operators_Renaming_Notation_Part_3.txt,tree,5
 05_02_Set_Operators_Renaming_Notation_Part_3.txt,oper,0
+05_02_Set_Operators_Renaming_Notation_Part_3.txt,express express,0
 05_02_Set_Operators_Renaming_Notation_Part_3.txt,express tree,0
 05_02_Set_Operators_Renaming_Notation_Part_3.txt,colleg,0
 05_02_Set_Operators_Renaming_Notation_Part_3.txt,renam,0
-05_02_Set_Operators_Renaming_Notation_Part_3.txt,notat,0
 06_01_Introduction_to_SQL.txt,languag,1
 06_01_Introduction_to_SQL.txt,sql,2
 06_01_Introduction_to_SQL.txt,select,3
@@ -189,8 +189,8 @@
 06_02_Basic_SELECT_Statement.txt,attribut,0
 06_02_Basic_SELECT_Statement.txt,relat,0
 06_03_Table_Variables_and_Set_Operators.txt,ee,1
-06_03_Table_Variables_and_Set_Operators.txt,student,2
-06_03_Table_Variables_and_Set_Operators.txt,queri,3
+06_03_Table_Variables_and_Set_Operators.txt,queri,2
+06_03_Table_Variables_and_Set_Operators.txt,student,3
 06_03_Table_Variables_and_Set_Operators.txt,cs,4
 06_03_Table_Variables_and_Set_Operators.txt,appli,5
 06_03_Table_Variables_and_Set_Operators.txt,pair,0
@@ -214,10 +214,10 @@
 06_04_Subqueries_in_WHERE_Clause.txt,cs,4
 06_04_Subqueries_in_WHERE_Clause.txt,appli,5
 06_04_Subqueries_in_WHERE_Clause.txt,colleg,0
-06_04_Subqueries_in_WHERE_Clause.txt,thi,0
 06_04_Subqueries_in_WHERE_Clause.txt,result,0
 06_04_Subqueries_in_WHERE_Clause.txt,major cs,0
 06_04_Subqueries_in_WHERE_Clause.txt,appli major,0
+06_04_Subqueries_in_WHERE_Clause.txt,appli major cs,0
 06_05_Aggregation.txt,group,1
 06_05_Aggregation.txt,student,2
 06_05_Aggregation.txt,queri,3
@@ -229,15 +229,15 @@
 06_05_Aggregation.txt,gpa,0
 06_05_Aggregation.txt,cs,0
 06_06_NULL_Values.txt,null,1
-06_06_NULL_Values.txt,null valu,2
-06_06_NULL_Values.txt,queri,3
-06_06_NULL_Values.txt,gpa,4
-06_06_NULL_Values.txt,valu,5
-06_06_NULL_Values.txt,kevin,0
-06_06_NULL_Values.txt,student,0
+06_06_NULL_Values.txt,queri,2
+06_06_NULL_Values.txt,gpa,3
+06_06_NULL_Values.txt,kevin,4
+06_06_NULL_Values.txt,student,5
+06_06_NULL_Values.txt,run queri,0
 06_06_NULL_Values.txt,count,0
 06_06_NULL_Values.txt,lauri,0
 06_06_NULL_Values.txt,kevin lauri,0
+06_06_NULL_Values.txt,distinct gpa,0
 06_07_Data_Modification_Statements.txt,appli,1
 06_07_Data_Modification_Statements.txt,student,2
 06_07_Data_Modification_Statements.txt,delet,3
@@ -262,52 +262,52 @@
 07_01_Functional_Dependencies_Part_5.txt,depend,2
 07_01_Functional_Dependencies_Part_5.txt,function,3
 07_01_Functional_Dependencies_Part_5.txt,axiom,4
-07_01_Functional_Dependencies_Part_5.txt,armstrong,5
-07_01_Functional_Dependencies_Part_5.txt,armstrong axiom,0
+07_01_Functional_Dependencies_Part_5.txt,armstrong axiom,5
+07_01_Functional_Dependencies_Part_5.txt,armstrong,0
 07_01_Functional_Dependencies_Part_5.txt,trivial,0
-07_01_Functional_Dependencies_Part_5.txt,rule call,0
-07_01_Functional_Dependencies_Part_5.txt,set rule call,0
 07_01_Functional_Dependencies_Part_5.txt,set rule,0
+07_01_Functional_Dependencies_Part_5.txt,set rule call,0
+07_01_Functional_Dependencies_Part_5.txt,rule call,0
 07_01_Relational_Design_Overview_Part_1.txt,design,1
 07_01_Relational_Design_Overview_Part_1.txt,high school,2
 07_01_Relational_Design_Overview_Part_1.txt,school,3
 07_01_Relational_Design_Overview_Part_1.txt,high,4
 07_01_Relational_Design_Overview_Part_1.txt,hobbi,5
+07_01_Relational_Design_Overview_Part_1.txt,palo,0
 07_01_Relational_Design_Overview_Part_1.txt,alto,0
 07_01_Relational_Design_Overview_Part_1.txt,palo alto,0
-07_01_Relational_Design_Overview_Part_1.txt,palo,0
 07_01_Relational_Design_Overview_Part_1.txt,ann,0
 07_01_Relational_Design_Overview_Part_1.txt,anomali,0
-07_01_Relational_Design_Overview_Part_2.txt,normal form,1
-07_01_Relational_Design_Overview_Part_2.txt,normal,2
-07_01_Relational_Design_Overview_Part_2.txt,form,3
-07_01_Relational_Design_Overview_Part_2.txt,function depend,4
-07_01_Relational_Design_Overview_Part_2.txt,function,5
-07_01_Relational_Design_Overview_Part_2.txt,depend,0
-07_01_Relational_Design_Overview_Part_2.txt,codd,0
-07_01_Relational_Design_Overview_Part_2.txt,codd normal form,0
-07_01_Relational_Design_Overview_Part_2.txt,codd normal,0
+07_01_Relational_Design_Overview_Part_2.txt,form,1
+07_01_Relational_Design_Overview_Part_2.txt,function depend,2
+07_01_Relational_Design_Overview_Part_2.txt,function,3
+07_01_Relational_Design_Overview_Part_2.txt,depend,4
+07_01_Relational_Design_Overview_Part_2.txt,codd,5
+07_01_Relational_Design_Overview_Part_2.txt,codd form,0
+07_01_Relational_Design_Overview_Part_2.txt,social secur,0
 07_01_Relational_Design_Overview_Part_2.txt,secur number,0
-07_01_Relational_Design_Overview_Part_3.txt,normal form,1
-07_01_Relational_Design_Overview_Part_3.txt,normal,2
-07_01_Relational_Design_Overview_Part_3.txt,multi valu depend,3
-07_01_Relational_Design_Overview_Part_3.txt,multi valu,4
-07_01_Relational_Design_Overview_Part_3.txt,valu depend,5
-07_01_Relational_Design_Overview_Part_3.txt,depend,0
-07_01_Relational_Design_Overview_Part_3.txt,multi,0
-07_01_Relational_Design_Overview_Part_3.txt,form,0
-07_01_Relational_Design_Overview_Part_3.txt,high school,0
-07_01_Relational_Design_Overview_Part_3.txt,fourth normal form,0
+07_01_Relational_Design_Overview_Part_2.txt,social secur number,0
+07_01_Relational_Design_Overview_Part_2.txt,secur,0
+07_01_Relational_Design_Overview_Part_3.txt,multi depend,1
+07_01_Relational_Design_Overview_Part_3.txt,depend,2
+07_01_Relational_Design_Overview_Part_3.txt,multi,3
+07_01_Relational_Design_Overview_Part_3.txt,form,4
+07_01_Relational_Design_Overview_Part_3.txt,high school,5
+07_01_Relational_Design_Overview_Part_3.txt,fourth form,0
+07_01_Relational_Design_Overview_Part_3.txt,school,0
+07_01_Relational_Design_Overview_Part_3.txt,high,0
+07_01_Relational_Design_Overview_Part_3.txt,fourth,0
+07_01_Relational_Design_Overview_Part_3.txt,social secur,0
 07_01_Relational_Design_Overview_Part_4.txt,properti,1
-07_01_Relational_Design_Overview_Part_4.txt,normal form,2
-07_01_Relational_Design_Overview_Part_4.txt,normal,3
-07_01_Relational_Design_Overview_Part_4.txt,depend system guarante,4
-07_01_Relational_Design_Overview_Part_4.txt,guarante,5
-07_01_Relational_Design_Overview_Part_4.txt,start specifi,0
-07_01_Relational_Design_Overview_Part_4.txt,specifi properti,0
-07_01_Relational_Design_Overview_Part_4.txt,specifi,0
-07_01_Relational_Design_Overview_Part_4.txt,properti specifi,0
-07_01_Relational_Design_Overview_Part_4.txt,depend system,0
+07_01_Relational_Design_Overview_Part_4.txt,depend system guarante,2
+07_01_Relational_Design_Overview_Part_4.txt,guarante,3
+07_01_Relational_Design_Overview_Part_4.txt,depend system,4
+07_01_Relational_Design_Overview_Part_4.txt,form,5
+07_01_Relational_Design_Overview_Part_4.txt,mega relat,0
+07_01_Relational_Design_Overview_Part_4.txt,system guarante,0
+07_01_Relational_Design_Overview_Part_4.txt,relat,0
+07_01_Relational_Design_Overview_Part_4.txt,mega,0
+07_01_Relational_Design_Overview_Part_4.txt,boyc codd,0
 07_02_Functional_Dependencies_Part_1.txt,function depend,1
 07_02_Functional_Dependencies_Part_1.txt,function,2
 07_02_Functional_Dependencies_Part_1.txt,depend,3
@@ -327,7 +327,7 @@
 07_02_Functional_Dependencies_Part_2.txt,student,0
 07_02_Functional_Dependencies_Part_2.txt,high school code,0
 07_02_Functional_Dependencies_Part_2.txt,school code,0
-07_02_Functional_Dependencies_Part_2.txt,secur number,0
+07_02_Functional_Dependencies_Part_2.txt,social secur number,0
 07_02_Functional_Dependencies_Part_3.txt,determin,1
 07_02_Functional_Dependencies_Part_3.txt,function,2
 07_02_Functional_Dependencies_Part_3.txt,function depend,3
@@ -335,39 +335,39 @@
 07_02_Functional_Dependencies_Part_3.txt,depend,5
 07_02_Functional_Dependencies_Part_3.txt,bar,0
 07_02_Functional_Dependencies_Part_3.txt,closur,0
+07_02_Functional_Dependencies_Part_3.txt,determin determin,0
 07_02_Functional_Dependencies_Part_3.txt,high school,0
 07_02_Functional_Dependencies_Part_3.txt,school,0
-07_02_Functional_Dependencies_Part_3.txt,determin determin,0
 07_02_Functional_Dependencies_Part_4.txt,function depend,1
 07_02_Functional_Dependencies_Part_4.txt,function,2
 07_02_Functional_Dependencies_Part_4.txt,depend,3
 07_02_Functional_Dependencies_Part_4.txt,determin,4
-07_02_Functional_Dependencies_Part_4.txt,function depend follow,5
-07_02_Functional_Dependencies_Part_4.txt,depend follow,0
-07_02_Functional_Dependencies_Part_4.txt,follow,0
-07_02_Functional_Dependencies_Part_4.txt,determin prioriti,0
+07_02_Functional_Dependencies_Part_4.txt,determin prioriti,5
+07_02_Functional_Dependencies_Part_4.txt,set function depend,0
+07_02_Functional_Dependencies_Part_4.txt,set function,0
 07_02_Functional_Dependencies_Part_4.txt,social secur number determin,0
 07_02_Functional_Dependencies_Part_4.txt,number determin,0
+07_02_Functional_Dependencies_Part_4.txt,secur number determin,0
 07_03_Boyce_Codd_Normal_Form_Part_1.txt,function depend,1
 07_03_Boyce_Codd_Normal_Form_Part_1.txt,relat,2
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,normal form,3
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,key,4
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,function,5
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,depend,0
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,normal,0
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,key,3
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,function,4
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,depend,5
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,codd form,0
 07_03_Boyce_Codd_Normal_Form_Part_1.txt,codd,0
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,codd normal,0
-07_03_Boyce_Codd_Normal_Form_Part_1.txt,codd normal form,0
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,boyc codd,0
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,boyc codd form,0
+07_03_Boyce_Codd_Normal_Form_Part_1.txt,boyc,0
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,function depend,1
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,function,2
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,depend,3
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,decomposit,4
-07_03_Boyce_Codd_Normal_Form_Part_2.txt,school code,5
-07_03_Boyce_Codd_Normal_Form_Part_2.txt,high school code,0
+07_03_Boyce_Codd_Normal_Form_Part_2.txt,high school code,5
+07_03_Boyce_Codd_Normal_Form_Part_2.txt,school code,0
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,relat,0
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,hand side,0
-07_03_Boyce_Codd_Normal_Form_Part_2.txt,left hand side,0
 07_03_Boyce_Codd_Normal_Form_Part_2.txt,left hand,0
+07_03_Boyce_Codd_Normal_Form_Part_2.txt,left hand side,0
 07_03_Boyce_Codd_Normal_Form_Part_3.txt,function depend,1
 07_03_Boyce_Codd_Normal_Form_Part_3.txt,depend,2
 07_03_Boyce_Codd_Normal_Form_Part_3.txt,function,3
@@ -379,55 +379,55 @@
 07_03_Boyce_Codd_Normal_Form_Part_3.txt,decompos,0
 07_03_Boyce_Codd_Normal_Form_Part_3.txt,relat,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,depend,1
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,normal form,2
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,normal,3
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,valu,4
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,function depend,5
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,tupl,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,hobbi,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,function depend,2
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,tupl,3
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,hobbi,4
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,colleg hobbi,5
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,form,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,fourth,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,function,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,multi,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_1.txt,multi depend,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,hobbi,1
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,multivalu,2
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,multivalu depend,3
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,multivalu depend,2
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,multivalu,3
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,colleg,4
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,depend,5
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,appli,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,major,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,hobbi colleg,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,colleg hobbi,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,student,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_2.txt,independ,0
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,depend,1
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,function depend,2
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multivalu,3
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multivalu depend,4
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multi,5
 07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,function,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,normal form,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multi valu depend,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multi valu,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,valu depend,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,normal form,1
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,normal,2
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,depend,3
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,valu,4
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,form,5
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,multi,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,multi valu depend,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,multi valu,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,cd,0
-07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,design process,0
-07_05_Shortcomings_of_BCNF_and_4NF.txt,normal form,1
-07_05_Shortcomings_of_BCNF_and_4NF.txt,normal,2
-07_05_Shortcomings_of_BCNF_and_4NF.txt,depend,3
-07_05_Shortcomings_of_BCNF_and_4NF.txt,form,4
-07_05_Shortcomings_of_BCNF_and_4NF.txt,social secur number,5
-07_05_Shortcomings_of_BCNF_and_4NF.txt,secur number,0
-07_05_Shortcomings_of_BCNF_and_4NF.txt,social secur,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multi depend,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,rule,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,multi determin,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_3.txt,form,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,depend,1
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,form,2
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,multi,3
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,multi depend,4
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,cd,5
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,codd form,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,codd,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,boyc,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,boyc codd,0
+07_04_Multivalued_Dependencies_and_4th_Normal_Form_Part_4.txt,boyc codd form,0
+07_05_Shortcomings_of_BCNF_and_4NF.txt,depend,1
+07_05_Shortcomings_of_BCNF_and_4NF.txt,form,2
+07_05_Shortcomings_of_BCNF_and_4NF.txt,social secur number,3
+07_05_Shortcomings_of_BCNF_and_4NF.txt,social secur,4
+07_05_Shortcomings_of_BCNF_and_4NF.txt,secur number,5
 07_05_Shortcomings_of_BCNF_and_4NF.txt,secur,0
 07_05_Shortcomings_of_BCNF_and_4NF.txt,social,0
 07_05_Shortcomings_of_BCNF_and_4NF.txt,function depend,0
+07_05_Shortcomings_of_BCNF_and_4NF.txt,relat,0
+07_05_Shortcomings_of_BCNF_and_4NF.txt,boyc codd form,0
 08_01_XPath_Introduction.txt,xpath,1
 08_01_XPath_Introduction.txt,element,2
 08_01_XPath_Introduction.txt,navig,3
@@ -435,9 +435,9 @@
 08_01_XPath_Introduction.txt,tree,5
 08_01_XPath_Introduction.txt,path,0
 08_01_XPath_Introduction.txt,book,0
-08_01_XPath_Introduction.txt,current element,0
 08_01_XPath_Introduction.txt,xml,0
 08_01_XPath_Introduction.txt,match,0
+08_01_XPath_Introduction.txt,write,0
 08_02_XPath_Demo.txt,book,1
 08_02_XPath_Demo.txt,element,2
 08_02_XPath_Demo.txt,author,3
@@ -446,8 +446,8 @@
 08_02_XPath_Demo.txt,queri,0
 08_02_XPath_Demo.txt,ullman,0
 08_02_XPath_Demo.txt,slash,0
-08_02_XPath_Demo.txt,widom,0
 08_02_XPath_Demo.txt,book magazin,0
+08_02_XPath_Demo.txt,widom,0
 08_03_XQuery_Introduction.txt,xqueri,1
 08_03_XQuery_Introduction.txt,queri,2
 08_03_XQuery_Introduction.txt,express,3
@@ -479,53 +479,53 @@
 08_05_XSLT.txt,titl,0
 08_05_XSLT.txt,widom,0
 09_01_UML_Data_Modeling.txt,class,1
-09_01_UML_Data_Modeling.txt,associ,2
-09_01_UML_Data_Modeling.txt,object,3
-09_01_UML_Data_Modeling.txt,student,4
-09_01_UML_Data_Modeling.txt,dot,5
-09_01_UML_Data_Modeling.txt,colleg,0
+09_01_UML_Data_Modeling.txt,object,2
+09_01_UML_Data_Modeling.txt,student,3
+09_01_UML_Data_Modeling.txt,dot,4
+09_01_UML_Data_Modeling.txt,colleg,5
 09_01_UML_Data_Modeling.txt,ap,0
 09_01_UML_Data_Modeling.txt,relationship,0
 09_01_UML_Data_Modeling.txt,uml,0
 09_01_UML_Data_Modeling.txt,model,0
+09_01_UML_Data_Modeling.txt,ap student,0
 09_02_UML_to_Relations_Part_1.txt,dot,1
 09_02_UML_to_Relations_Part_1.txt,dot dot,2
 09_02_UML_to_Relations_Part_1.txt,key,3
-09_02_UML_to_Relations_Part_1.txt,associ,4
-09_02_UML_to_Relations_Part_1.txt,relat,5
-09_02_UML_to_Relations_Part_1.txt,side,0
+09_02_UML_to_Relations_Part_1.txt,relat,4
+09_02_UML_to_Relations_Part_1.txt,side,5
 09_02_UML_to_Relations_Part_1.txt,class,0
 09_02_UML_to_Relations_Part_1.txt,dot dot dot,0
 09_02_UML_to_Relations_Part_1.txt,colleg,0
 09_02_UML_to_Relations_Part_1.txt,student,0
+09_02_UML_to_Relations_Part_1.txt,c2,0
 09_02_UML_to_Relations_Part_2.txt,class,1
-09_02_UML_to_Relations_Part_2.txt,associ,2
-09_02_UML_to_Relations_Part_2.txt,super class,3
-09_02_UML_to_Relations_Part_2.txt,key,4
-09_02_UML_to_Relations_Part_2.txt,super,5
-09_02_UML_to_Relations_Part_2.txt,student,0
+09_02_UML_to_Relations_Part_2.txt,super class,2
+09_02_UML_to_Relations_Part_2.txt,key,3
+09_02_UML_to_Relations_Part_2.txt,super,4
+09_02_UML_to_Relations_Part_2.txt,student,5
 09_02_UML_to_Relations_Part_2.txt,translat,0
-09_02_UML_to_Relations_Part_2.txt,associ class,0
 09_02_UML_to_Relations_Part_2.txt,relat,0
 09_02_UML_to_Relations_Part_2.txt,ap,0
+09_02_UML_to_Relations_Part_2.txt,attribut,0
+09_02_UML_to_Relations_Part_2.txt,class class,0
 09_02_UML_to_Relations_Part_3.txt,class,1
 09_02_UML_to_Relations_Part_3.txt,dot,2
 09_02_UML_to_Relations_Part_3.txt,composit,3
-09_02_UML_to_Relations_Part_3.txt,translat,4
-09_02_UML_to_Relations_Part_3.txt,hand side,5
+09_02_UML_to_Relations_Part_3.txt,hand side,4
+09_02_UML_to_Relations_Part_3.txt,translat,5
 09_02_UML_to_Relations_Part_3.txt,side,0
 09_02_UML_to_Relations_Part_3.txt,dot dot,0
-09_02_UML_to_Relations_Part_3.txt,associ,0
 09_02_UML_to_Relations_Part_3.txt,hand,0
 09_02_UML_to_Relations_Part_3.txt,depart,0
+09_02_UML_to_Relations_Part_3.txt,regular,0
 10_01_Indexes_Part_1.txt,index,1
 10_01_Indexes_Part_1.txt,student,2
 10_01_Indexes_Part_1.txt,column,3
 10_01_Indexes_Part_1.txt,tupl,4
 10_01_Indexes_Part_1.txt,condit,5
 10_01_Indexes_Part_1.txt,scan,0
-10_01_Indexes_Part_1.txt,hash,0
 10_01_Indexes_Part_1.txt,build index,0
+10_01_Indexes_Part_1.txt,hash,0
 10_01_Indexes_Part_1.txt,queri,0
 10_01_Indexes_Part_1.txt,hash tabl,0
 10_01_Indexes_Part_2.txt,index,1
@@ -541,41 +541,41 @@
 11_01_Introduction_to_Transactions.txt,concept transact,1
 11_01_Introduction_to_Transactions.txt,transact,2
 11_01_Introduction_to_Transactions.txt,concept,3
-11_01_Introduction_to_Transactions.txt,ha concurr access databas,4
-11_01_Introduction_to_Transactions.txt,ha concurr,5
-11_01_Introduction_to_Transactions.txt,concern ha concurr access,0
-11_01_Introduction_to_Transactions.txt,concern ha concurr,0
-11_01_Introduction_to_Transactions.txt,concern ha,0
-11_01_Introduction_to_Transactions.txt,independ concern ha concurr,0
-11_01_Introduction_to_Transactions.txt,actual motiv complet independ,0
+11_01_Introduction_to_Transactions.txt,access databas multipl client,4
+11_01_Introduction_to_Transactions.txt,access databas multipl,5
+11_01_Introduction_to_Transactions.txt,databas system transact import,0
+11_01_Introduction_to_Transactions.txt,introduc concept transact,0
+11_01_Introduction_to_Transactions.txt,introduc concept transact interact,0
+11_01_Introduction_to_Transactions.txt,action databas system transact,0
+11_01_Introduction_to_Transactions.txt,action databas system,0
 11_02_Transactions_Properties_Part_1.txt,transact,1
 11_02_Transactions_Properties_Part_1.txt,client,2
 11_02_Transactions_Properties_Part_1.txt,isol,3
-11_02_Transactions_Properties_Part_1.txt,statement,4
-11_02_Transactions_Properties_Part_1.txt,sequenc,5
-11_02_Transactions_Properties_Part_1.txt,statement statement,0
+11_02_Transactions_Properties_Part_1.txt,statement statement,4
+11_02_Transactions_Properties_Part_1.txt,statement statement statement,5
+11_02_Transactions_Properties_Part_1.txt,statement,0
+11_02_Transactions_Properties_Part_1.txt,sequenc,0
 11_02_Transactions_Properties_Part_1.txt,stand,0
 11_02_Transactions_Properties_Part_1.txt,failur,0
 11_02_Transactions_Properties_Part_1.txt,oper,0
-11_02_Transactions_Properties_Part_1.txt,properti,0
 11_02_Transactions_Properties_Part_2.txt,transact,1
 11_02_Transactions_Properties_Part_2.txt,t2,2
 11_02_Transactions_Properties_Part_2.txt,client,3
 11_02_Transactions_Properties_Part_2.txt,t1,4
 11_02_Transactions_Properties_Part_2.txt,crash,5
 11_02_Transactions_Properties_Part_2.txt,guarante,0
+11_02_Transactions_Properties_Part_2.txt,t1 t2,0
+11_02_Transactions_Properties_Part_2.txt,effect transact,0
 11_02_Transactions_Properties_Part_2.txt,databas,0
 11_02_Transactions_Properties_Part_2.txt,transact databas,0
-11_02_Transactions_Properties_Part_2.txt,case,0
-11_02_Transactions_Properties_Part_2.txt,system,0
 11_02_Transactions_Properties_Part_3.txt,transact,1
 11_02_Transactions_Properties_Part_3.txt,client,2
 11_02_Transactions_Properties_Part_3.txt,hold,3
-11_02_Transactions_Properties_Part_3.txt,undo,4
-11_02_Transactions_Properties_Part_3.txt,constraint,5
+11_02_Transactions_Properties_Part_3.txt,constraint hold,4
+11_02_Transactions_Properties_Part_3.txt,undo,5
+11_02_Transactions_Properties_Part_3.txt,constraint,0
 11_02_Transactions_Properties_Part_3.txt,rollback,0
 11_02_Transactions_Properties_Part_3.txt,user,0
-11_02_Transactions_Properties_Part_3.txt,constraint hold,0
 11_02_Transactions_Properties_Part_3.txt,databas,0
 11_02_Transactions_Properties_Part_3.txt,code,0
 11_03_Isolation_Levels_Part_1.txt,transact,1
@@ -601,13 +601,13 @@
 11_03_Isolation_Levels_Part_3.txt,read,1
 11_03_Isolation_Levels_Part_3.txt,repeat read,2
 11_03_Isolation_Levels_Part_3.txt,t1,3
-11_03_Isolation_Levels_Part_3.txt,repeat,4
-11_03_Isolation_Levels_Part_3.txt,transact,5
-11_03_Isolation_Levels_Part_3.txt,befor t1,0
+11_03_Isolation_Levels_Part_3.txt,transact,4
+11_03_Isolation_Levels_Part_3.txt,repeat,5
+11_03_Isolation_Levels_Part_3.txt,read multipl,0
+11_03_Isolation_Levels_Part_3.txt,read multipl time,0
 11_03_Isolation_Levels_Part_3.txt,isol level,0
-11_03_Isolation_Levels_Part_3.txt,read isol level,0
-11_03_Isolation_Levels_Part_3.txt,repeat read isol level,0
 11_03_Isolation_Levels_Part_3.txt,repeat read isol,0
+11_03_Isolation_Levels_Part_3.txt,repeat read isol level,0
 11_03_Isolation_Levels_Part_4.txt,read,1
 11_03_Isolation_Levels_Part_4.txt,transact,2
 11_03_Isolation_Levels_Part_4.txt,isol level,3
@@ -616,8 +616,8 @@
 11_03_Isolation_Levels_Part_4.txt,repeat,0
 11_03_Isolation_Levels_Part_4.txt,phantom,0
 11_03_Isolation_Levels_Part_4.txt,level,0
-11_03_Isolation_Levels_Part_4.txt,dirti read,0
 11_03_Isolation_Levels_Part_4.txt,dirti,0
+11_03_Isolation_Levels_Part_4.txt,dirti read,0
 12_01_Motivation_and_Overview.txt,constraint,1
 12_01_Motivation_and_Overview.txt,trigger,2
 12_01_Motivation_and_Overview.txt,check,3
@@ -632,32 +632,32 @@
 12_02_Constraints_of_Several_Types_Part_1.txt,student,2
 12_02_Constraints_of_Several_Types_Part_1.txt,check,3
 12_02_Constraints_of_Several_Types_Part_1.txt,assert,4
-12_02_Constraints_of_Several_Types_Part_1.txt,key,5
-12_02_Constraints_of_Several_Types_Part_1.txt,check constraint,0
+12_02_Constraints_of_Several_Types_Part_1.txt,check constraint,5
+12_02_Constraints_of_Several_Types_Part_1.txt,key,0
 12_02_Constraints_of_Several_Types_Part_1.txt,tabl,0
 12_02_Constraints_of_Several_Types_Part_1.txt,insert,0
 12_02_Constraints_of_Several_Types_Part_1.txt,null,0
-12_02_Constraints_of_Several_Types_Part_1.txt,tri,0
-12_02_Constraints_of_Several_Types_Part_2.txt,cover separ video,1
-12_02_Constraints_of_Several_Types_Part_2.txt,cover separ,2
+12_02_Constraints_of_Several_Types_Part_1.txt,id,0
+12_02_Constraints_of_Several_Types_Part_2.txt,cover separ,1
+12_02_Constraints_of_Several_Types_Part_2.txt,cover separ video,2
 12_02_Constraints_of_Several_Types_Part_2.txt,separ video,3
-12_02_Constraints_of_Several_Types_Part_2.txt,relat topic trigger cover,4
-12_02_Constraints_of_Several_Types_Part_2.txt,constraint referenti integr cover,5
-12_02_Constraints_of_Several_Types_Part_2.txt,referenti integr cover,0
-12_02_Constraints_of_Several_Types_Part_2.txt,referenti integr cover separ,0
-12_02_Constraints_of_Several_Types_Part_2.txt,cover separ video relat,0
-12_02_Constraints_of_Several_Types_Part_2.txt,relat topic,0
+12_02_Constraints_of_Several_Types_Part_2.txt,topic trigger cover,4
+12_02_Constraints_of_Several_Types_Part_2.txt,separ video relat topic,5
+12_02_Constraints_of_Several_Types_Part_2.txt,relat topic trigger cover,0
 12_02_Constraints_of_Several_Types_Part_2.txt,relat topic trigger,0
+12_02_Constraints_of_Several_Types_Part_2.txt,relat topic,0
+12_02_Constraints_of_Several_Types_Part_2.txt,cover separ video relat,0
+12_02_Constraints_of_Several_Types_Part_2.txt,topic trigger,0
 12_03_Referential_Integrity_Part_1.txt,integr,1
-12_03_Referential_Integrity_Part_1.txt,referenti integr,2
-12_03_Referential_Integrity_Part_1.txt,referenti,3
+12_03_Referential_Integrity_Part_1.txt,referenti,2
+12_03_Referential_Integrity_Part_1.txt,referenti integr,3
 12_03_Referential_Integrity_Part_1.txt,student,4
-12_03_Referential_Integrity_Part_1.txt,valu,5
-12_03_Referential_Integrity_Part_1.txt,column,0
+12_03_Referential_Integrity_Part_1.txt,column,5
 12_03_Referential_Integrity_Part_1.txt,appli,0
 12_03_Referential_Integrity_Part_1.txt,colleg,0
-12_03_Referential_Integrity_Part_1.txt,everi valu,0
 12_03_Referential_Integrity_Part_1.txt,sid,0
+12_03_Referential_Integrity_Part_1.txt,direct,0
+12_03_Referential_Integrity_Part_1.txt,colleg attribut,0
 12_03_Referential_Integrity_Part_2.txt,referenc,1
 12_03_Referential_Integrity_Part_2.txt,foreign key,2
 12_03_Referential_Integrity_Part_2.txt,foreign,3
@@ -666,11 +666,11 @@
 12_03_Referential_Integrity_Part_2.txt,violat,0
 12_03_Referential_Integrity_Part_2.txt,referenti integr,0
 12_03_Referential_Integrity_Part_2.txt,referenti,0
-12_03_Referential_Integrity_Part_2.txt,caus violat,0
 12_03_Referential_Integrity_Part_2.txt,integr,0
+12_03_Referential_Integrity_Part_2.txt,colleg,0
 12_03_Referential_Integrity_Part_3.txt,tabl,1
-12_03_Referential_Integrity_Part_3.txt,referenti integr,2
-12_03_Referential_Integrity_Part_3.txt,referenti,3
+12_03_Referential_Integrity_Part_3.txt,referenti,2
+12_03_Referential_Integrity_Part_3.txt,referenti integr,3
 12_03_Referential_Integrity_Part_3.txt,integr,4
 12_03_Referential_Integrity_Part_3.txt,delet,5
 12_03_Referential_Integrity_Part_3.txt,referenti integr constraint,0
@@ -697,7 +697,7 @@
 12_05_Triggers_Demo_Part_1.txt,stanford,0
 12_05_Triggers_Demo_Part_1.txt,tabl,0
 12_05_Triggers_Demo_Part_1.txt,colleg,0
-12_05_Triggers_Demo_Part_1.txt,row,0
+12_05_Triggers_Demo_Part_1.txt,trigger activ,0
 12_05_Triggers_Demo_Part_2.txt,trigger,1
 12_05_Triggers_Demo_Part_2.txt,insert,2
 12_05_Triggers_Demo_Part_2.txt,t1,3
@@ -705,16 +705,16 @@
 12_05_Triggers_Demo_Part_2.txt,tabl t1,5
 12_05_Triggers_Demo_Part_2.txt,tabl,0
 12_05_Triggers_Demo_Part_2.txt,insert tabl,0
-12_05_Triggers_Demo_Part_2.txt,t2,0
 12_05_Triggers_Demo_Part_2.txt,trigger activ,0
-12_05_Triggers_Demo_Part_2.txt,valu,0
+12_05_Triggers_Demo_Part_2.txt,t2,0
+12_05_Triggers_Demo_Part_2.txt,activ trigger,0
 13_01_Defining_and_Using_Views.txt,view,1
 13_01_Defining_and_Using_Views.txt,queri,2
 13_01_Defining_and_Using_Views.txt,cs,3
 13_01_Defining_and_Using_Views.txt,accept,4
 13_01_Defining_and_Using_Views.txt,cs accept,5
+13_01_Defining_and_Using_Views.txt,view view,0
 13_01_Defining_and_Using_Views.txt,layer,0
-13_01_Defining_and_Using_Views.txt,thi,0
 13_01_Defining_and_Using_Views.txt,tabl,0
 13_01_Defining_and_Using_Views.txt,refer,0
 13_01_Defining_and_Using_Views.txt,conceptu,0
@@ -737,7 +737,7 @@
 13_02_View_Modifications_Introduction_Part_2.txt,meaning,0
 13_02_View_Modifications_Introduction_Part_2.txt,correct,0
 13_02_View_Modifications_Introduction_Part_2.txt,correct meaning,0
-13_02_View_Modifications_Introduction_Part_2.txt,approach actual,0
+13_02_View_Modifications_Introduction_Part_2.txt,trigger,0
 13_03_View_Modifications_Using_Triggers.txt,view,1
 13_03_View_Modifications_Using_Triggers.txt,trigger,2
 13_03_View_Modifications_Using_Triggers.txt,insert,3
@@ -763,11 +763,11 @@
 13_05_Materialized_Views_Part_1.txt,tabl,3
 13_05_Materialized_Views_Part_1.txt,colleg,4
 13_05_Materialized_Views_Part_1.txt,materi,5
-13_05_Materialized_Views_Part_1.txt,virtual,0
 13_05_Materialized_Views_Part_1.txt,virtual view,0
+13_05_Materialized_Views_Part_1.txt,virtual,0
 13_05_Materialized_Views_Part_1.txt,materi view,0
 13_05_Materialized_Views_Part_1.txt,affect view,0
-13_05_Materialized_Views_Part_1.txt,student,0
+13_05_Materialized_Views_Part_1.txt,view defin,0
 13_05_Materialized_Views_Part_2.txt,view,1
 13_05_Materialized_Views_Part_2.txt,materi view,2
 13_05_Materialized_Views_Part_2.txt,materi,3
@@ -777,17 +777,17 @@
 13_05_Materialized_Views_Part_2.txt,user,0
 13_05_Materialized_Views_Part_2.txt,base,0
 13_05_Materialized_Views_Part_2.txt,databas,0
-13_05_Materialized_Views_Part_2.txt,virtual,0
+13_05_Materialized_Views_Part_2.txt,virtual view,0
 13_05_Materialized_Views_Part_3.txt,view,1
 13_05_Materialized_Views_Part_3.txt,challeng,2
 13_05_Materialized_Views_Part_3.txt,virtual,3
 13_05_Materialized_Views_Part_3.txt,virtual view,4
 13_05_Materialized_Views_Part_3.txt,improv,5
-13_05_Materialized_Views_Part_3.txt,modular applic addit,0
-13_05_Materialized_Views_Part_3.txt,virtual view applic,0
+13_05_Materialized_Views_Part_3.txt,applic challeng,0
+13_05_Materialized_Views_Part_3.txt,applic challeng process,0
+13_05_Materialized_Views_Part_3.txt,applic challeng process challeng,0
 13_05_Materialized_Views_Part_3.txt,virtual view applic challeng,0
-13_05_Materialized_Views_Part_3.txt,featur improv queri perform,0
-13_05_Materialized_Views_Part_3.txt,featur improv queri,0
+13_05_Materialized_Views_Part_3.txt,virtual view applic,0
 14_01_Authorization_Part_1.txt,privileg,1
 14_01_Authorization_Part_1.txt,student,2
 14_01_Authorization_Part_1.txt,user,3
@@ -797,7 +797,7 @@
 14_01_Authorization_Part_1.txt,read,0
 14_01_Authorization_Part_1.txt,id,0
 14_01_Authorization_Part_1.txt,select privileg,0
-14_01_Authorization_Part_1.txt,appli,0
+14_01_Authorization_Part_1.txt,attribut read,0
 14_01_Authorization_Part_2.txt,view,1
 14_01_Authorization_Part_2.txt,student,2
 14_01_Authorization_Part_2.txt,user,3
@@ -805,19 +805,19 @@
 14_01_Authorization_Part_2.txt,privileg,5
 14_01_Authorization_Part_2.txt,student appli stanford,0
 14_01_Authorization_Part_2.txt,author,0
-14_01_Authorization_Part_2.txt,applic onli,0
-14_01_Authorization_Part_2.txt,ss,0
 14_01_Authorization_Part_2.txt,privileg view,0
+14_01_Authorization_Part_2.txt,ss,0
+14_01_Authorization_Part_2.txt,appli stanford,0
 14_01_Authorization_Part_3.txt,privileg,1
 14_01_Authorization_Part_3.txt,grant,2
 14_01_Authorization_Part_3.txt,revok,3
 14_01_Authorization_Part_3.txt,user,4
-14_01_Authorization_Part_3.txt,u2,5
+14_01_Authorization_Part_3.txt,revok privileg,5
 14_01_Authorization_Part_3.txt,grant privileg,0
-14_01_Authorization_Part_3.txt,revok privileg,0
+14_01_Authorization_Part_3.txt,u2,0
+14_01_Authorization_Part_3.txt,user grant,0
 14_01_Authorization_Part_3.txt,option,0
 14_01_Authorization_Part_3.txt,cascad,0
-14_01_Authorization_Part_3.txt,revok ani,0
 14_01_Authorization_Part_4.txt,privileg,1
 14_01_Authorization_Part_4.txt,softwar,2
 14_01_Authorization_Part_4.txt,end user,3
@@ -866,8 +866,8 @@
 15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,mutual,0
 15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,mutual recurs,0
 15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,defin relat,0
+15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,node hub,0
 15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,recurs defin relat,0
-15_03_Nonlinear_and_Mutual_Recursion_Part_2.txt,recurs defin,0
 16_01_Introduction_to_OLAP_Part_1.txt,dimens,1
 16_01_Introduction_to_OLAP_Part_1.txt,cube,2
 16_01_Introduction_to_OLAP_Part_1.txt,custom,3
@@ -882,12 +882,12 @@
 16_01_Introduction_to_OLAP_Part_2.txt,dimens,2
 16_01_Introduction_to_OLAP_Part_2.txt,data,3
 16_01_Introduction_to_OLAP_Part_2.txt,group,4
-16_01_Introduction_to_OLAP_Part_2.txt,rollup,5
-16_01_Introduction_to_OLAP_Part_2.txt,drill,0
+16_01_Introduction_to_OLAP_Part_2.txt,drill,5
+16_01_Introduction_to_OLAP_Part_2.txt,rollup,0
 16_01_Introduction_to_OLAP_Part_2.txt,data cube,0
 16_01_Introduction_to_OLAP_Part_2.txt,olap,0
 16_01_Introduction_to_OLAP_Part_2.txt,queri,0
-16_01_Introduction_to_OLAP_Part_2.txt,group attribut,0
+16_01_Introduction_to_OLAP_Part_2.txt,brand,0
 16_02_OLAP_Demo.txt,cube,1
 16_02_OLAP_Demo.txt,sale,2
 16_02_OLAP_Demo.txt,custom,3
@@ -916,5 +916,5 @@
 17_01_NoSQLOverview.txt,node,0
 17_01_NoSQLOverview.txt,key,0
 17_01_NoSQLOverview.txt,reduc function,0
-17_01_NoSQLOverview.txt,key valu,0
 17_01_NoSQLOverview.txt,domain,0
+17_01_NoSQLOverview.txt,map function,0

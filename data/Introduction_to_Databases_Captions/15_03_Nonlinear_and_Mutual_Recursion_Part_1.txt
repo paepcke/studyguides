@@ -1,0 +1,79 @@
+In this video we'll be exploring some further issues involved in recursion in the SQL language. | 
+First a reminder of how SQL implements recursion. | 
+There's a with statement in SQL that can be specified to have recursively defined relations in it. | 
+We say with recursive, and then we define a set of relations, where the query to find relation could involve the relation itself, so that's where recursion pops in. | 
+And then, at the end the final result is a query that might involve those recursively defined relations as well as other tables in the database. | 
+As we saw in the previous video and demo, it's very common for recursively defined relations in the with statement to take the structure of having a base query that doesn't involve R, the recursively define relation, unioned with the recursive query and we saw many examples of that form. | 
+The first thing I want to talk about in this video is what's called linear recursion. | 
+Linear recursion specifies that in the recursive definition of R, and again let's assume it takes this form of the base query union and the recursive query. | 
+In the recursive query, There is only one reference to the recursively defined relation R. So let's take a look at an example to understand linear recursion and nonlinear recursion. | 
+the first example we used when we introduced recursion was finding ancestor relationships from a base table that just has parent child relationships so a basic transit of closure operation and the query we wanted to run was to find all of Mary's ancestors. | 
+And here's the query that we wrote. | 
+It does take the form of having a base query here. | 
+Which says if we have a parent relationship that's also an ancestor relationship. | 
+And then the recursion occurs in the second part of the union where we join the recursively defined ancestor relationship, ancestor relation, with parents so that we extend the ancestors with one more generation. | 
+Now this query does have linear recursion because we only have one instance here of the recursively defined relation, ancestor. | 
+So let's take a look at what happens underneath when this query is executed. | 
+We start with our parent table. | 
+And here it is with a parent and child and let's suppose we have say, Sue and John, and John and Mary for example, in our parent table. | 
+Then in what's effectively the first iteration, the base query here is run that copies the parent table to the ancestor table. | 
+So now we have Sue and John, and John and Mary, and anything else that we had in the parent table in the ancestor table. | 
+As the iteration continues we're effectively joining the parent table and the ancestor table to get additional tuples in the ancestor table. | 
+For example, we see that Sue and John, the Sue and John tuple here, would join with the John and Mary tuple, and that would give us Sue and Mary in the ancestor table. | 
+The iteration continues until there are no new tuples to add to the ancestor table. | 
+And then we're done with our recursively defined relation, and we can go ahead and execute the final query in the with statement. | 
+And again, often when I say we, I really mean we the system. | 
+All of this, is of course, being performed by the system as it executes the recursively defined with statement. | 
+Now, let's take a look at a non-linear expression of the same query. | 
+And here it is. | 
+What we see here is that the primary change is right in here. | 
+Instead of joining the parent with the ancestor in the recursive half, we're going to join two instances of the ancestor relation. | 
+And let's see what happens during execution when this is how we express our recursion. | 
+So we again start by copying the contents of the parent table into the ancestor table as part of the base query. | 
+And I've already shown that here. | 
+But, now, instead of during iteration joining the parent table with the ancestor table. | 
+We're actually going to join the ancestor table with itself to generate new tuples. | 
+For example, we will join the first two tuples in ancestor with each other, Sue-John and John-Mary, in order to obtain what was the same tuple we obtained with the linear recursion, which would be the tuple with Sue and Mary. | 
+Just a quick reminder, I intended to say this earlier, but it's the fact that we have these two references to ancestor in the recursion here, that makes it non-linear. | 
+OK so what's the deal with these two queries? | 
+Why might we prefer one form of the query over the other? | 
+And take my word for it, by the way, we do get equivalent results to the query in its linear and non-linear versions. | 
+Well, here's some pros and cons to non-linear versus linear. | 
+For this particular query and actually in general, when we can express a query both ways. | 
+First of all there's some pluses to the non-linear so the query looks cleaner. | 
+If you go back and look at the 2 queries the non-linear version is sort of more symmetric, a little shorter even to express, than the linear version. | 
+Second of all, the nonlinear version actually converges faster to the fixed point, to the final state, than the linear version. | 
+And I'm going to show that a little bit abstractly because it is actually fairly important. | 
+So I'm going to create this abstract example, parent-child relation, which is going to be completely linear, just for illustrative purposes. | 
+So we have this person here who's the parent of the person here, who's the parent of a person here, and so on. | 
+We're going to make it eight levels deep. | 
+So this is an abstraction of our "a parent" table, and now let's see how ancestors are computed. | 
+So in the first step we'll add one ancestor tuple for each tuple in the parent relation, so the purple are the tuples that are added to ancestor. | 
+Then in the second iteration we're going to join those with themselves. | 
+I'm sorry, we're going to join the ancestor tuples with parent tuples so each ancestor tuple could be extended by one. | 
+So that's going to give us all pairs of tuples. | 
+I'm sorry, it's already getting a bit crowded here, but I think that you will get the idea. | 
+On the next iteration we're going to again take our ancestor tuple and extend them by one, by joining them with parent. | 
+So after the second we'll have all triples here, so all great-grandparent relationships. | 
+OK, and that's a big mess. | 
+But you can really see what's going on. | 
+Each time we iterate, we get one more generation added into the ancestors. | 
+And now let's think about what happens when we use the non-linear version. | 
+Where after the first step, we join ancestor with itself instead of ancestor with parent. | 
+So as before on the first step, and now I'm going to make these red, the ancestor relation will contain exactly the same as the parents. | 
+And the second step is the same as well, we're going to join ancestor with itself but, since each one of ancestor is only the parent relationship, we're again, going to get all pairs in the second step of the iteration. | 
+The difference begins in the third step. | 
+Now we're joining ancestor with itself. | 
+So we will be joining these two-step ancestors with the single ones, just like before, to get all the threes. | 
+But we will also be joining twos with twos. | 
+In other words we will joining grandparent relationships with grandparent relationships. | 
+And we will be getting in that same iteration the fours. | 
+So as you can see, the nonlinear version does converge faster. | 
+Now this example is very small so it's not as blatantly obvious. | 
+But the linear version is going to take a linear number of iterations in order to converge to the final recursively defined relation contents. | 
+Whereas when we use the non-linear version, it's actually logarithmic. | 
+So for a large database it can be considerably faster. | 
+So what about the downsides of non-linear recursion? | 
+Well, the major downside is that it's harder to implement or certainly harder to implement efficiently. | 
+And as a result of that actually the SQL standard only requires linear recursion. | 
+And the postgres system that we've been using also only supports linear recursion. | 

@@ -1,0 +1,26 @@
+So, that completes our three isolations levels, in addition to serializable we had at the weakest read-uncommitted, then read-committed, and then repeatable read. | 
+I did want to mention that we can also set transactions to be read-only. | 
+That's sort of orthogonal to setting the isolation level, what it does is it helps the system optimize performance. | 
+So, for example, in our transaction, where we were just reading the average GPA and the max GPA, we can set an isolation level, and then we can also tell the system that it's going to be a read only transaction. | 
+That means that we are not going to perform any modifications to the database within the transaction. | 
+The system can use that as a hint to figure out his protocols to guarantee the right isolation level, but it might not have as much overhead as if the transaction had the possibility of performing modifications as well as performing reads. | 
+OK, so the behavior of transactions can be rather confusing and it's very important to get it right or surprising things might happen. | 
+But I think we can summarize it pretty well with this table here. | 
+We're going here from the weakest to the strongest and we can classify the behavior of transactions based on again what happens with reading. | 
+Can they read uncommitted values? | 
+Can they have non-repeatable reads, where we read a value and then read a different one later in the same transaction, and can there be phantom tuples inserted during the transaction? | 
+If we set our isolation level to serializable, then we cannot have dirty reads, we cannot have non-repeatable reads and we cannot have phantoms. | 
+If we go one step weaker for a little more performance, and use repeatable read, then we still won't have dirty reads, we still won't have non-repeatable reads, but we might have phantom tuples. | 
+Moving up with Read Committed, we still won't have dirty reads but we might have non-repeatable reads. | 
+So we might read a value that's committed both times we read it however a transaction wrote the value in between those two reads so it's different each time and we may have phantoms as well. | 
+Finally read uncommitted is the absolute weakest, not many guarantees at all. | 
+We might have dirty reads, we might have not repeatable reads, and we might have phantoms. | 
+So to wrap up transactions completely the standard default is serializable behavior, and we specified exactly what that means. | 
+Weaker isolation levels allow us to increase concurrency, decrease overhead so overhaul will get an increased performance, but we have weaker consistency guarantees. | 
+I should mention that some prominent database systems have actually chosen to have repeatable read as their default. | 
+Oracle and MySQL are examples of that. | 
+So, in those systems it's assumed that most applications will be willing to sacrifice a little bit inconsistency in order to get higher performance. | 
+And, finally, the isolation level is set for each transaction and is in the eye of the beholder, meaning that that transaction's reads must conform to its own isolation level but won't affect any concurrent transaction's isolation level. | 
+I hope I've gotten the point across that transactions are one of the most important concepts in database systems. | 
+They are what allow multiple clients, maybe thousands, tens of thousands of clients, to operate on a data base, all at the same time without concern that the actions they perform on the data will affect each other in unpredictable ways. | 
+And furthermore, transactions are what allow database systems to recover when there's an unexpected crash into a consistent space. | 

@@ -1,0 +1,57 @@
+This series of videos covers the topic of modifying views. | 
+Now, I have to admit that the amount of coverage is a bit disproportionate compared to defining and using views. | 
+Commonly, people only define views and use them and don't try to modify them in applications, but when views are modified the issues become a bit tricky. | 
+So, it is important to cover the topic. | 
+First, a reminder of why people use views. | 
+They use them to hide data from some users, so for authorization purposes they make some queries easier, they help you modularize your database applications, and, as I've said several times, our real applications do use lots and lots of views. | 
+Now, querying views is relatively straight forward, as we've seen. | 
+Once a view has been defined and given a name, say V, then, in our queries over the database, we can reference V as if it were a regular table. | 
+What happens underneath is that when we reference V in a query, it's rewritten to use the tables over which V was defined, and we'll call those the base tables. | 
+Those can actually be regular tables or they can be other views. | 
+Now, what about modifying views? | 
+Once a view has been defined, can we modify it just like it's any table in the database? | 
+Well, in one way that doesn't make sense because V isn't stored, so it's not a table that we can go in and update, insert tupples, modify tupples, or delete tupples. | 
+But, in another way, it absolutely has to make sense, because the idea of views is that some users or application developers are seeing those views as their only view of the database. | 
+We saw that three-level idea of databases. | 
+We have the physical layer, the disc, the conceptual layer, the relation, and then the logical layer which again, some applications see as their access to the database. | 
+Well, our solution is actually parallel to what we do with queries. | 
+When we have a modification command that involves a view V, we'll rewrite that modification command to modify instead the base tables over which V is defined. | 
+If those base tables happen to be views themselves that we have a recursive process of rewriting those modifications to further go down to, until we get to the base tables that are actually the tables stored in the database. | 
+So maybe this is no big deal. | 
+We saw in our demo that modifying queries that reference views into queries that reference the base tables is a relatively straight-forward process. | 
+Well, I am going to say right up front, it's not quite as straight-forward when we are talking about modifications. | 
+So let's draw a picture to see what's going on. | 
+Let's say we have our view V here, and V is defined based on a query over its base tables. | 
+And for now, let's just assume that those are stored actual relations. | 
+So it's defined over relations R1 to RN. | 
+Now someone comes along and they want to modify V. Now V is just a logical concept but, the user thinks of V as a table, so they write a modification command so that would be say, insert, delete, or update command using SQL language. | 
+And they're imagining that V is a stored table, so they're imagining that the result of that modification command is going to be a new table V prime. | 
+What needs to happen is down here at the bottom, that modification, that imaginary modification to V, has to be translated to actual modifications on the base tables R1 through RN. | 
+So now, we modify one or more of the base tables to R1 prime through RN prime. | 
+And now the idea is that our imaginary V prime then is the same query. | 
+It's the result of this same query, V's definition over the new value, the new R1 prime through RN prime, the updated base tables. | 
+So, if we can always figure out how to translate this modification up here into the modifications down here so that the square diagram holds so that the resulting modifications here give us the effect we wanted upstairs, then, we're in good shape. | 
+So, the question is can we always perform this translation, the modifications, so the square diagram holds. | 
+And the answer is, actually usually, yes. | 
+Usually there is a translation that works for us, and we'll see some examples of that in our demos. | 
+The problem actually is that there's often many such translations, and so we don't know actually which one the user intended. | 
+So let me give an extremely simple example. | 
+Let's suppose that our relation, R, has two attributes, A and B, and our view, V, is defined as the projection on A of R. Let's say that our current contents of relation are just one tuple to tuple 1-2. | 
+In that case, the current contents of view V are just the tuple 1. | 
+Now let's say the user comes along, it's a user who is operating on the database through view V, and they say insert into view V please the tuple three. | 
+So we need to translate that insertion, which is up here, into insertion or some modification on the base tables so that the view will, when we're done, contain the tuples one and three. | 
+Well, we can certainly do that. | 
+The problem is, what exactly do we insert? | 
+We could insert for example 3-1. | 
+We could insert 3-2 and so on. | 
+So there's actually an infinite number of translations that will create the tuple three in the view. | 
+Here's an even more extreme example. | 
+Let's suppose we have a relation with one attribute and our view be the average value of that. | 
+So if, for example, our relation has the values 135, then the average at this point would be three. | 
+Now let's say that the user comes along and says let me update that average. | 
+I'm gonna set that average to be seven. | 
+Well how do we update the base data so that its average is now seven. | 
+Well, as you can imagine, there are many, many, many, actually an infinite number, of ways to update the base data so that the view average would now be seven. | 
+So that's the crux of the problem. | 
+How do we decide which modifications to make to the base tables so that we get the desired modification to the view? | 
+Correctness is not so hard to achieve but resolving ambiguity can be. | 

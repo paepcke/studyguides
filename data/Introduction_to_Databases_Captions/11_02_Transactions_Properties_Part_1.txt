@@ -1,0 +1,21 @@
+In this video we'll delve into more detail about the properties of transactions. | 
+As a reminder, transactions are a concept that's been introduced as a solution to both the concurrency control problem and the system failure problem in databases. | 
+Specifically a transaction is a sequence of operations that are treated as a unit. | 
+Transactions appear to run in isolation, even if many clients are operating on a database at the same time. | 
+And further more if there is a system failure in unexpected software, hardware, or power failure every transactions changes that were issued to the database are either reflected entirely or not at all. | 
+Every database connoisseur knows that transaction support, what are known as the ACID properties. | 
+Although not everybody always remembers what A stands for atomicity; C stands for consistency; I stands for isolation; and D stands for for durability. | 
+And we're going to talk about each of these four properties in turn. | 
+We're going to talk about isolation first. | 
+We're going to talk about durability second,then we'll next talk about atomicity and we'll conclude talking about consistency. | 
+So here's the deal with isolation. | 
+We'll have a whole bunch of clients operating on our database, and we'd kind of like each client to imagine that they're operating on their own. | 
+So as we discussed in the previous video, each client issues to the database system a sequence of transactions. | 
+So this first client might be issuing first transaction T1, then T2, T3, and so on. | 
+Over here we have T9, T10, T11 and as a reminder, each transaction itself can be a sequence of statements. | 
+So, this might be statement one, statement two, statement three and so on, and then those statements will be treated as a unit. | 
+So the isolation property is implemented by a very specific formal notion called serializability. | 
+What serializability says is that the operations within transactions may be interleaved across clients, but the execution of those operations must be equivalent to some sequential serial orderOf all the transactions. | 
+So for our example over here, the system itself may execute all of the statements within each transaction and over here concurrently but it has to guarantee that the behavior against the database is equivalent to some sequence in order again. | 
+So perhaps the equivalent sequential order will be as if the system first did transaction T1, then may T2, T9 and T10, maybe back to T3 and So on. | 
+And again the system has to guarantee that the state of the database, at this point in time, even if its internally the statements within any of these transactions looks as if these transactions executed in order. | 

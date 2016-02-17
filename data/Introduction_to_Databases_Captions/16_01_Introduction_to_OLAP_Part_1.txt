@@ -1,0 +1,144 @@
+This video introduces online analytical processing or OLAP. | 
+A subsequent video will have a demo of OLAP queries in action. | 
+Overall, database activity can be divided into two broad classes. | 
+One of them, the traditional one, is known as OLTP, or online transaction processing. | 
+The other one, the subject of this video, came about more recently, and it's known as OLAP, or online analytical processing. | 
+Online transaction processing is typically characterized by short transactions, both queries and updates. | 
+Things like updating an account balance in a bank database or logging a page view in a web application. | 
+Queries in OLTP data bases are generally fairly simple. | 
+Find an account balance or find the GPA of a student. | 
+They typically touch small portions of the data. | 
+And updates in this environment can be frequent. | 
+We might be making airline seat reservations or updating a online shopping cart. | 
+OLAP is pretty much the opposite in all respects. | 
+In OLAP, we have long transactions, often complex analysis of the data or data mining type operations. | 
+The queries as I said, can be complex and especially they often touch large portions of the data rather than small portions as in OLTP. | 
+And updates in the OLAP environment tend to be infrequent, in fact, sometimes in the OLAP environment there are no updates to the data at all. | 
+Now, these two are extremes and really there is a spectrum between those two extremes. | 
+We might have a sort of, moderate amount of update and queries that touch a moderate portion of the data. | 
+But the fact is that database systems traditionally were designed for the first extreme. | 
+And then special techniques were developed for the other extreme. | 
+So the systems are tuned for the two extremes. | 
+And depending on ones work load one might choose to use different options in a database system just a little bit more terminology in the OLAP world. | 
+There's a concept called data warehousing. | 
+It's really a software architecture. | 
+The idea is that often in enter prizes or other operation, there are lots of operational sources. | 
+So you can think of a point of sale, for example, might have many, many OLTP database pieces related to an enterprise, and data warehousing is the process of bringing the data from all of those distributed OLTP sources into a single, gigantic warehouse where the point then is to do analyses of the data, and that would fall under the OLAP camp. | 
+Another term you might encounter is decision support systems also known as DSS. | 
+This isn't really an exact term. | 
+It's generally used to talk about infrastructure for again large scale data analyses. | 
+So, if you think of a data warehouse, where we're bringing in a lot of data from operational sources, and that warehouse is tuned for OLAP queries that would be thought of as a decision support system. | 
+And, of course, this system is designed to support decisions that are made, again, based on data analysis. | 
+Now, let's get into some technical details of OLAP. | 
+Frequently applications that are doing online analytical processing are designed based around a star schema, so it's a certain type of relational schema. | 
+In a star schema, there's usually one fact table. | 
+That will be a typically very large table, it will be updated frequently. | 
+Often it's actually append only, so there are only inserts into the fact table. | 
+And then there are maybe many dimension tables. | 
+Those are updated infrequently and don't tend to be as large. | 
+So examples of a fact table might be sales transactions in a sales database or in a university database, maybe students enrolling in courses or in a web application logging the page views. | 
+In all of these cases we can see that the fact table can be very large and can be append only, so inserts only. | 
+Examples of dimension tables might be in a sales database store's items and customers in a college enrollment database. | 
+Maybe students and courses in a web application. | 
+Maybe web pages his users and advertisers. | 
+So, you can see, that these are generally smaller tables, they're more stable, they're not updated as frequently. | 
+You can sort of think of dimension tables as things in the real world and then fact tables as logging things that happened. | 
+It's not always divided this way but, it's not a bad approximation. | 
+Now, you might be wondering why is it called a star schema and it's called that because we have the fact table sort of, centrally referencing dimension tables around it. | 
+So, I'll draw the picture. | 
+Let's take a particular example and let's look at the sales domain. | 
+So, we'll have our fact table here, which will be the sales table and that will log sales transactions actions. | 
+It will include the store where the sale was made, the item that was sold, the customer, how many were sold, and the price that was paid. | 
+And then the other three tables are the dimension tables. | 
+So those those are giving us information about the stores and the items and the customers. | 
+So, I've drawn a picture of our schema here. | 
+We have our central fact table, the sales table. | 
+And we can see that the sales table contains these three columns I've abbreviated them in the picture: the Store ID, Item ID, and the Customer ID. | 
+The store ID values in this column will be foreign key attributes to the primary key of the store table if you remember our constraints video. | 
+So we can think of these as pointers into the store table, least specifically matching store IDs over here. | 
+And we'll have similarly our item IDs will be foreign keys to the item table. | 
+I won't actually point to the values here. | 
+And then our costumer IDs over here will be pointing to the customer table. | 
+So if you look at this squinting, you will see that it is kind of a star schema with the central fact table pointing to the dimension tables around it, and that's where the name comes from. | 
+Just a little more terminology. | 
+The first three attributes here in the fact fact table. | 
+These three are what are known as dimension attributes. | 
+So those are the attributes that are foreign keys into the dimension tables. | 
+Then the remaining attributes in this case the quantity and the price are called dependent attributes. | 
+So they're I guess dependent on the values for the dimension attributes and typically, queries will tend to aggregate on the dependent attributes. | 
+We'll see examples of that in a moment. | 
+So, now that we known what a star schema looks like, let's look at the type of queries that are generally issued over this schema, and they're called OLAP queries. | 
+Typically a query over a star schema will first join some or all of the relations. | 
+And when you're joining the sale as the fact table with the dimension tables, you can almost think of it as expanding the facts in the sales table to include more information about the sales. | 
+Since we have the foreign keys we'll be adding, for example, to the information about a sale. | 
+More about the store. | 
+The city and state of the store. | 
+For a sale item will be adding the category brand and so on. | 
+So that's the join process and the query will join as much as it needs in order to do the rest of it's work. | 
+It might then filter the data. | 
+For example we might decide that in our query we only care about stores in California or customers in California, we're only interested in shirts and so on. | 
+So they can filter on the dimension attributes after joining, or could filter on the price or quantity as well. | 
+After filtering there's often a group by an aggregation. | 
+So we might decide that we're interested in figuring out our total sales divided by customer or by item or by state or all of those. | 
+And then the aggregation might sum up the sales or it might determine the average price that's sold. | 
+We'll be doing a number of this type of query in our demo later on. | 
+So if you think about executing queries of this type, they can be quite complex and they can touch large portions of the database. | 
+Sowe 're worried about performance, and our data is large, we do have a worry. | 
+Running this type of query on a gigantic database over a standard database system can be very slow, but over the past decade or so, special indexing techniques have been introduced and special query processing techniques specifically to handle this type of query on star schemas on large databases. | 
+And again, by large, just think about the number of sales, for example, in a large retail chain, or a number of web views, or even shopping cart additions in a large online vendor. | 
+So, in all of those applications, people are interested in doing OLAP queries and they tend to use a system that supports these special techniques. | 
+Another component of getting good performance in these systems is the use of materialized views. | 
+You might remember that materialized views are useful when we have a workload that consists of lots of queries and not so many updates. | 
+And that's exactly the type of workload we have in OLAP. | 
+furthermore, we have many queries that take roughly the same structure so material wise we use are useful in that setting as well. | 
+Now let me switch gears and introduce a different way of looking at the data in these OLAP applications with star schemas, and it's what's known as a data cube. | 
+Sometimes this is also called multidimensional OLAP and the basic idea is that when we have data with dimensions, we can think of those dimensions as forming the axis of a cube. | 
+It's kind of like an N dimensional spreadsheet. | 
+Now we can have any number of dimensions, but for the examples I'm gonna give, the best I can draw is up to three dimensions, and that's why people call acute. | 
+Because they know how to draw three dimensions. | 
+But again, any number of dimensions are possible in this view of the data. | 
+So we have our dimensions forming the axis of our cube. | 
+And then the cells of the cube, again, you can think of it sort of like cells of a spreadsheet. | 
+Are the fact of data. | 
+Or the dependent data. | 
+It's like in the previous example that would be our quantity and price. | 
+And finally we have aggregated data on the sides, edges and corners of corner of the cube. | 
+Again similar to how you might aggregate columns in a spreadsheet. | 
+So let's go ahead and I'll do my best to draw a picture to explain what's going on. | 
+So here's my cube with these three axes that I've drawn in black. | 
+And I've drawn these dash lines as well to sort of give you a visual idea of the cube. | 
+But I'm going to actually get rid of these dash lines right now just so we don't have too much clutter. | 
+So for our sales example, we're sticking with the same example, we have 3 dimensions. | 
+And those will label the three the three axises of are cube and in one dimension we will have the stores and another dimension we will have the customers here, and in another dimension we have the items. | 
+Then we can think of the points along these axes as being the different elements in each of those domains, or the different tuples in each of those dimension tables. | 
+So for example, in the store domain, we'll have, you know, store 1 store 2, store 3 and so on. | 
+I'm not giving them any fancy names here. | 
+And so, each of those is a point on that dimension and similarly for the items will have item 1 item 2 item 3 and so on. | 
+And for the customers along the bottom, we'll have customer 1 customer number 2, customer 3 and so on. | 
+Now here comes the tricky part, especially for drawing. | 
+The idea is Is that every cell in the cube, so every combination of item costumer in store has a cell in the cube, so this would be sort of a free floating cell here. | 
+And This will have for our schema the quantity and the price for that item, that customer, and that store. | 
+So this might be the floating thing here that's, you know, Item I32, Costumer 4, and Store 17, something like that. | 
+And then floating in there is this cell with the quantity and the price. | 
+Now we are assuming that there's just one quantity and price for the combination of those three attributes. | 
+And I'll come back to that in a moment, but let's assume that for now. | 
+So that's what we have in the whole central area of the cube. | 
+So now on the faces, edges, and corner of the cube are going to have aggregated data. | 
+And there does need to be with each data cube a predefined aggregate. | 
+So for this one let's say that what we want as our aggregate is the sum of the quantity times the price so we're going to figure out the total amount that we're making for different combinations of stores, items, and customers. | 
+So now let's consider a cell on the face of the cube. | 
+So again, I'm not drawing this very well. | 
+But let's assume this is on the bottom face of the cube. | 
+So, this is for a particular customer. | 
+Say customer 10, in a particular store, say store 7, and then, since it's on the bottom of the cube, so we didn't go up this dimension here, it considers all items for customer 10 and store 7. | 
+So this will be the aggregate over all items for that particular store and customer. | 
+And we'd have similar values on the other faces of the cube. | 
+So this face over here, for example, would be for a particular item and customer overall stores. | 
+And then on the front face of the cube, if you could imagine that, would be for a particular item and store over all customers. | 
+Now let's talk about what's on the edge of the cube. | 
+So here we have, say for store 3, we'll have the aggregate value over all customers and items in this point for store 3. | 
+So that will be the total sales that we conducted at store S3. | 
+Over here on this edge we'd have the total for a specific costumer and over here for specific items. | 
+And then finally, we have at the corner of the cube the full aggregation. | 
+So that's going to be in this case the sum of the quantity times price for every store, customer and item. | 
+So, I'm not a great artist, but I hope this gives you some understanding of how the data cube works. | 

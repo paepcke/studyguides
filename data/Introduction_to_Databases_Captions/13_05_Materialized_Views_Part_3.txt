@@ -1,0 +1,3 @@
+So in summary, materialized views provide the same advantages as virtual views in terms of their use for authorization, for modularity of applications. | 
+They have the additional feature that they improve query performance as long as the workload is appropriate and doesn't impose too much of a burden when the underlying base data is modified. | 
+Designing the right virtual views for an application is a challenging process, it's also challenging for systems to use the views properly, but when they do there can be really dramatic performance improvements. | 

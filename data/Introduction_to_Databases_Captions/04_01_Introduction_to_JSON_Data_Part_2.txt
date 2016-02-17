@@ -1,0 +1,60 @@
+Now let's compared JSON and XML. | 
+This is actually a hotly debated comparison right now. | 
+There are signification overlap in the usage of JSON and XML. | 
+Both of them are very good for putting semi-structured data into a file format and using it for data interchange. | 
+And so because there's so much overlap in what they're used for, it's not surprising that there's significant debate. | 
+I'm not gonna take sides. | 
+I'm just going to try to give you a comparison. | 
+Let's start by looking at the verbosity of expressing data in the two languages. | 
+So it is the case that XML is in general, a little more verbose than JSON. | 
+So the same data expressed in the 2 formats will tend to have more characters in XML than JSON and you can see that in our examples because our big Json example was actually pretty much the same data that we used when we showed XML. | 
+And the reason for XML being a bit more verbose largely has to do actually with closing tags, and some other features. | 
+But I'll let you judge for yourself whether the somewhat longer expression of XML is a problem. | 
+Second is complexity, and here, too, most people would say that XML is a bit more complex than JSON. | 
+I'm not sure I entirely agree with that comparison. | 
+If you look at the subset of XML that people really use, you've got attributes, sub elements and text, and that's more or less it. | 
+If you look at Json, you got your basic values and you've got your objects and your arrays. | 
+I think the issue is that XML has a lot of extra stuff that goes along with it. | 
+So if you read the entire XML specification. | 
+It will take you a long time. | 
+JSON, you can grasp the entire specification a little bit more quickly. | 
+Now let's turn to validity. | 
+And by validity, I mean the ability to specify constraints or restriction or schema on the structure of data in one of these models, and have it enforced by tools or by a system. | 
+Specifically in XML we have the notion of document type descriptors, or DTDs, we also have XML Schema which gives us XSD's, XML Schema Descriptors. | 
+And these are schema like things that we can specify, and we can have our data checked to make sure it conforms to the schema, and these are, I would say, fairly widely used at this point for XML. | 
+For JSON, there's something called JSON Schema. | 
+And, you know, similar to XML Schema, it's a way to specify the structure and then we can check that JSON conforms that and we will see some of that in our demo. | 
+The current status, February 2012 is that this is not widely used this point. | 
+But again, it could really just be evolution. | 
+If we look back at XML, as it was originally proposed, probably we didn't see a whole of lot of use of DTDs, and in fact not as XSDs for sure until later on. | 
+So we'll just have to see whether JSON evolves in a similar way. | 
+Now the programming interface is where JSON really shines. | 
+The programming interface for XML can be fairly clunky. | 
+The XML model, the attributes and sub-elements and so on, don't typically match the model of data inside a programming language. | 
+In fact, that's something called the impedance mismatch. | 
+The impedance miss match has been discussed in database systems actually, for decades because one of the original criticisms of relational database systems is that the data structures used in the database, specifically tables, didn't match directly with the data structures and programming languages. | 
+So there had to be some manipulation at the interface between programming languages and the database system and that's the mismatch. | 
+So that same impedance mismatch is pretty much present in XML wherein JSON is really a more direct mapping between many programming languages and the structures of JSON. | 
+Finally, let's talk about querying. | 
+I've already touched on this a bit, but JSON does not have any mature, widely used query languages at this point. | 
+for XML we do have XPath, we have XQuery, we have XSLT. | 
+Maybe not all of them are widely used but there's no question that XPath at least and XSL are used quiet a bit. | 
+As far as Json goes there is a proposal called Json path. | 
+It looks actually quiet a lot like XPath maybe he'll catch on. | 
+There's something called JSON Query. | 
+Doesn't look so much like XML Query, I mean, XQuery. | 
+and finally, there has been a proposal called JAQL for the JSON query language, but again as of February 2012 all of these are still very early, so we just don't know what's going to catch on. | 
+So now let's talk about the validity of JSON data. | 
+So do JSON data that's syntactically valid, simply needs to adhere to the basic structural requirements. | 
+As a reminder, that would be that we have sets of label value pairs, we have arrays of values and our values are from predefined types. | 
+And again, these values here are defined recursively. | 
+So we start with a JSON file and we send it to a the parser may determine that the file has syntactic errors or if the file is syntactically correct then it can parsed into objects in a programming language. | 
+Now if we're interested in semantically valid JSON; that is JSON that conforms to some constraints or a schema, then in addition to checking the basics structural requirements, we check whether JSON conforms to the specified schema. | 
+If we use a language like JSON schema for example, we put a specification in as a separate file, and in fact JSON schema is expressed in JSON itself, as we'll see in our demo, we send it to a validator and that validator might find that there are some syntactic errors or it may find that there are some symantic errors so the data could to be correct syntactically but not conform to the schema. | 
+If it's both syntactically and semantically correct then it can move on to the parser where will be parsed again into objects in a programming language. | 
+So to summarize, JSON stands for Java Script Object Notation. | 
+It's a standard for taking data objects and serializing them into a format that's human readable. | 
+It's also very useful for exchanging data between programs, and for representing and storing semi-structured data in a flexible fashion. | 
+In the next video we'll go live with a demonstration of JSON. | 
+We'll use a couple of JSON editors, we'll take a look at the structure of JSON data, when it's syntactically correct. | 
+We'll demonstrate how it's very flexible when our data might irregular, and we'll also demonstrate schema checking using an example of JSON's schema. | 

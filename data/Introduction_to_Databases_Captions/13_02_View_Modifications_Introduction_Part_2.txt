@@ -1,0 +1,16 @@
+Existing systems have actually taken a fairly different approach as to this problem. | 
+Again, to specify the problem we have modifications specified on a view V. We need to rewrite those to modify the base tables so that when we have our view of over new base tables that reflects the desired new state of the view. | 
+One approach is that the view creator actually specifies that rewriting process. | 
+So they will say, you know, when somebody tries to insert into the view, here's what we need to do on the base tables, if they try to delete here's what we do, and update here's what we do. | 
+So the positive of this approach is that all modifications can be handled, because the view creator is going to specify exactly what happens in the case of those modifications. | 
+The downside is that there's no guarantee of correctness, meaning there's no guarantee that that square diagram is adhered to, and we'll see examples in our demo of where it's not, or even that the translations are meaningful. | 
+So we're relying on the view creator to create correct and meaningful translations explicitly. | 
+The second approach is to restrict the views and modifications that are allowed so that the system can automatically perform the translation into modifications on the base tables that are correct, meaningful and and unambiguous. | 
+So the plus now, of course, is there's no user intervention and the result is going to be correct. | 
+The downside is that the restrictions on the view and the modification combinations are fairly significant, as we'll see. | 
+So, the first approach is actually enabled by a type of trigger that's known as, "instead of." | 
+I alluded to those triggers briefly in the trigger video but here is where we are actually going to see them in action. | 
+In postgres, there's a concept called "Rules," that's very similar. | 
+The second approach is actually the one that's adopted by the SQL Standard, and the SQL Standard gives a very rigorous limitations on what views can be modified. | 
+Systems vary in what they implement. | 
+Most of them are actually a little bit more flexible than the standard, and we'll see that in upcoming demos as well. | 

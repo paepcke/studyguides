@@ -1,0 +1,46 @@
+Now we have seen how the cross product allows us to combine tuples and then apply selection conditions to get meaningful combinations of tuples. | 
+It turns out that relational algebra includes an operator called the natural join that is used pretty much for the exact purpose. | 
+What the natural join does is it performs a cross-product but then it enforces equality on all of the attributes with the same name. | 
+So if we set up our schema properly, for example, we have student ID and student ID here, meaning the same thing, and when the cross product is created, it's only going to combine tuples where the student ID is the same. | 
+And furthermore, if we add college in, we can see that we have the college name here and the college name here. | 
+If we combine college and apply tuples, we'll only combine tuples that are talking about the same college. | 
+Now in addition, one more thing that it does is it gets rid of these pesky attributes that have the same names. | 
+So since when we combine, for example, student and apply with the natural join, we're only combining tuples where the student SID is the same as the apply SID. | 
+Then we don't need to keep two copies of that column because the values are always going to be equal. | 
+So the natural join operator is written using a bow tie, that's just the convention. | 
+You will find that in your text editing programs if you look carefully. | 
+So let's do some examples now. | 
+Let's go back to our same query where we were finding the names and GPAs of students from large high schools who applied to CS and were rejected. | 
+So now, instead of using the cross-product we're gonna use the natural join, which, as I said, was written with a bow tie. | 
+What that allows us to do, once we do that natural join, is we don't have to write that condition, that enforced equality on those two attributes, because it's going to do it itself. | 
+And once we have done that then all we need to do is apply the rest of our conditions, which were that the high school is greater than a thousand and the major is CS and the decision is reject, again we'll call that R. And then, since we're only getting the names and GPAs, we write the student name and the GPA. | 
+Okay. | 
+And that's the result of the query using a natural join. | 
+So, as you can see that's a little bit simpler than the original with the cross-product and by setting up schemas correctly, natural join can be very useful. | 
+Now let's add one more complication to our query. | 
+Let's suppose that we're only interested in applications to colleges where the enrollment is greater than 20,000. | 
+So, so far in our expression we refer to the student relation and the apply relation, but we haven't used the college relation. | 
+But if we want to have a filter on enrollment, we're going to have to bring the college relation into the picture. | 
+This turns out to perhaps be easier than you think. | 
+Let's just erase a couple of our parentheses here, and what we're going to do is we're going to join in the college relation, with the two relations we have already. | 
+Now, technically, the natural join is the binary operator, people often use it without parentheses because it's associative, but if we get pedantic about it we could add that and then we're in good shape. | 
+Now we've joined all three relations together. | 
+And remember, automatically the natural join enforces equality on the shared attributes. | 
+Very specifically, the college name here is going to be set equal to the apply college name as well. | 
+Now once we've done that, we've got all the information we need. | 
+We just need to add one more filtering condition, which is that the college enrollment is greater than 20,000. | 
+And with that, we've solved our query. | 
+So to summarize the natural join, the natural join combines relations. | 
+It automatically sets values equal when attribute names are the same and then it removes the duplicate columns. | 
+The natural join actually does not add any expressive power to relational algebra. | 
+We can rewrite the natural join without it using the cross-product. | 
+So let me just show that rewrite here. | 
+If we have, and now I'm going to use the general case of two expressions. | 
+One expression, natural join with another expression, that is actually equivalent to doing a projection on the schema of the first expression - I'll just call it E1 now - union the schema of the second expression. | 
+That's a real union, so that means if we have two copies we just keep one of them. | 
+Over the selection of. | 
+Now we're going to set all the shared attributes of the first expression to be equal to the shared attributes of the second. | 
+So I'll just write E1, A1 equals E2, A1 and E1, A2 equals E2 dot A2. | 
+Now these are the cases where, again, the attributes have the same names, and so on. | 
+So we're setting all those equal, and that is applied over expression one cross-product expression two. | 
+So again, the natural join is not giving us additional expressive power, but it is very convenient notationally. | 

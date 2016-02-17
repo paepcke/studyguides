@@ -1,0 +1,190 @@
+In the previous video, we learned the basics of XML. | 
+In this video, we're going to learn about Document Type Descriptors, also known as DTDs, and also ID and ID ref attributes. | 
+We learned that well-formed XML is XML that adheres to basic structural requirements: a single root element, matched tags with proper nesting, and unique attributes within each element. | 
+Now we're going to learn about what's known as valid XML. | 
+Valid XML has to adhere to the same basic structural requirements as well-formed XML, but it also adheres to content specific specifications. | 
+And we're going to learn two languages for those specifications. | 
+One of them is Document Type Descriptors or DTDs, and the other, a more powerful language, is XML schema. | 
+Specifications in XML schema are known as XSDs, for XML Schema Descriptions. | 
+So as a reminder, here's how things worked with well-formed XML documents. | 
+We sent the document to a parser and the parser would either return that the document was not well-formed or it would return parsed XML. | 
+Now let's consider what happens with valid XML. | 
+Now we use a validating XML parser, and we have an additional input to the process, which is a specification, either a DTD or an XSD. | 
+So that's also fed to the parser, along with the document. | 
+The parser can again say the document is not well formed if it doesn't meet the basic structural requirements. | 
+It could also say that the document is not valid, meaning the structure of the document doesn't match the content specific specification. | 
+If everything is good, then once again "parsed XML" is returned. | 
+Now let's talk about the document-type descriptors, or DTDs. | 
+We see a DTD in the lower-left corner of the video, but we won't look at it in any detail, because we'll be doing demos of DTDs a little later on. | 
+A DTD is a language that's kind of like a grammar, and what you can specify in that language is for a particular document what elements you want that document to contain, the tags of the elements, what attributes can be in the elements, how the different types of elements can be nested. | 
+Sometimes the ordering of the elements might want to be specified, and sometimes the number of occurrences of different elements. | 
+DTDs also allow the introduction of special types of attributes, called id and idrefs. | 
+And, effectively, what these allow you to do is specify pointers within a document, although these pointers are untyped. | 
+Before moving to the demo, let's talk a little bit about the positives and negatives about choosing to use a DTD or and XSD for one's XML data. | 
+After all, if you're building an application that encodes its data in XML, you'll have to decide whether you want the XML to just be well formed or whether you want to have specifications and require the XML to be valid to satisfy those specifications. | 
+So, let's put a few positives of choosing a later of requiring a DTD or an XSD. | 
+First of all, one of them is that when you write your program, you can assume that the data adheres to a specific structure. | 
+So programs can assume a structure and so the programs themselves are simpler because they don't have to be doing a lot of error checking on the data. | 
+They'll know that before the data reaches the program, it's been run through a validator and it does satisfy a particular structure. | 
+Second of all, we talked at some time ago about the cascading style sheet language and the extensible style sheet languages. | 
+These are languages that take XML and they run rules on it to process it into a different form, often HTML. | 
+When you write those rules, if you note that the data has a certain structure, then those rules can be simpler, so like the programs they also can assume particular structure and it makes them simpler. | 
+Now, another use for DTDs or XSDs is as a specification language for conveying what XML might need to look like. | 
+So, as an example if you're performing data exchange using XML, maybe a company is going to receive purchase orders in XML, the company can actually use the DTD as a specification for what the XML needs to look like when it arrives at the program it's going to operate on it. | 
+Also documentation, it can be useful to use one of the specifications to just document what the data itself looks like. | 
+In general, really what we have here is the benefits of typing. | 
+We're talking about strongly typed data versus loosely-typed data, if you want to think of it that way. | 
+Now let's look at when we might prefer not to use a DTD. | 
+So what I'm going describe down here is the benefits of not using a DTD. | 
+So the biggest benefit is flexibility. | 
+So a DTD makes your XML data have to conform to a specification. | 
+If you want more flexibility or you want ease of change in the way that the data is formatted without running into a lot of errors, then, if that's what you want, then the DTD can be constraining. | 
+Another fact is that DTDs can be fairly messy and this is not going to be obvious to you yet until we get into the demo, but if the data is irregular, very irregular, then specifying its structure can be hard, especially for irregular documents. | 
+Actually, when we see the schema language, we'll discover that XSDs can be, I would say, really messy, so they can actually get very large. | 
+It's possible to have a document where the specification of the structure of the document is much, much larger than the document itself, which seems not entirely intuitive, but when we get to learn about XSDs, I think you'll see how that can happen. | 
+So, overall, this is the benefits of nil typing. | 
+It' s really quite similar to the analogy in programming languages. | 
+The remainder of this video will teach about the DTDs themselves through a set of examples. | 
+We'll have a separate video for learning about XML schema and XSDs. | 
+So, here we are with our first document that we're going to look at with a document type descriptor. | 
+We have on the left the document itself. | 
+We have on the right the document-type descriptor, and then we have in the lower right a command line shell that we're going to use to validate the document. | 
+So this is similar data to what we saw on the last video, but let's go through it just to see what we have. | 
+We have an outermost element called bookstore, and we have two books in our bookstore. | 
+The first book has an ISBN number, price and editions. | 
+As attributes and then it has a sub-element called title, another sub-element called authors with two authors underneath; first names and last names. | 
+The second book element is similar, except it doesn't have a edition. | 
+It also has, as we see, a remark. | 
+Now let's take a look at the DTD and I'm just going to walk through DTD, not too slowly, not too fast, and explain exactly what it's doing. | 
+So the start of the DTD says this a DTD named bookstore and the root element is called bookstore, and now we have the first grammar-like construct. | 
+So these constructs, in fact, are a little bit like regular expressions if you know them. | 
+What this says is that a bookstore element has as its sub-element any number of elements that are called book or magazine. | 
+We have book or magazine. | 
+We don't have any magazines yet but we'll add one. | 
+And then this star says, zero or more instances. | 
+It's the Kleene for those of you familiar with regular expression. | 
+Now let's talk about what the book element has, so that's our next specification. | 
+The book element has a title followed by authors, followed by an optional remark. | 
+So now we don't have an "or", we have a comma, and that says that these are going to be in that order - title, authors, and remark and the question mark says that the remark is optional. | 
+Next we have the attributes of our book elements. | 
+So this bang attribute list says we're going to describe the attributes and we're going to have three of them: the ISBN, the price, and the edition. | 
+C data is the type of the attribute. | 
+It's just a string. | 
+And then required says that the attribute must be present, whereas implied says it doesn't have to be present. | 
+As you may remember, we have one book that doesn't have an edition. | 
+Our magazines are simply going to have titles and they're going to have attributes that are month and year. | 
+Again, we don't have any magazines yet. | 
+A title is going to consist of string data. | 
+So here we see our title of first course and database system. | 
+You can think of that as the leaf data in the XML tree. | 
+And when you have a leaf that consists of text data, this is what you put in the DTD - just take my word for it: hash PC data in parentheses. | 
+Now our authors are an element that still has structure . | 
+Our authors have a sub-element, author sub-elements or elements, and we're going to specify here that the author's element must have one or more author subelements. | 
+So that's what the plus is saying here, again taken from regular expressions. | 
+"Plus" means one or more instances. | 
+We have the remark, which is just going to be pc data or string data. | 
+We have our authors which consist of a first name sub-element and a last-name sub-element, and in that order. | 
+And then finally, our first names and last names are also strengths. | 
+So, this is the entire DTD and it describes in detail the structure of our document. | 
+Now we have a command, we're using something called xmllint, that will check to see if the document meets the structure. | 
+We'll just run that command here with a couple of options, and it doesn't give us any output which actually means that our document is correct. | 
+Well be making some edits and seeing when our document is not correct what happens when we run the command. | 
+So let's make our first edit, let's say that we decide that we want the additional attribute of our books to be "required" rather than "applied". | 
+So we'll change the DTD. | 
+We'll save the file and now when we run our command. | 
+So as expected we got an error, and the error said that one of our book elements does not have attribute addition. | 
+Now that addition is required, every book element ought to have it. | 
+So let's add an addition to our second book. | 
+Let 's say that it's the second edition, save the file, we'll validate our document again, and now everything is good. | 
+Let's do an edit to the document this time to see what happens when we change the order of the first name and the last name. | 
+So we've swapped Jeffrey Ullman to be Ullman Jeffery. | 
+We validate our document, and now we see we got an error because the elements are not in the correct order. | 
+In this case, let's undo that change, rather than change our DTD. | 
+Let's try another edit to our document. | 
+Let's add a remark to our first book. | 
+But what we'll do is we'll leave the remark empty, so we'll add a opening and then directly a closing tag, and let's see if that validates. | 
+So, it did validate. | 
+And in fact when we have PC data as the type of an element it's perfectly acceptable to have a empty element. | 
+As a final change, let's add a magazine to our database. | 
+You'll have to bear with me as I type. | 
+I'm always a little bit slow. | 
+So we see over here that when we have a magazine there are two required attributes, the month and the year. | 
+So, let's say the month is January and the year, let's make that 2011, and then we have a title for our magazine. | 
+Here. | 
+We'll go down here. | 
+Our title, let's make it National Geographic. | 
+We'll close the tag, title tag. | 
+And then, sorry again about my typing. | 
+Let's go ahead and validate the document. | 
+we saw premature end of something or other. | 
+We forgot our closing tag for magazine, let's put that in. | 
+My terrible typing, and here we go. | 
+Let's validate, and we're done. | 
+Now we're gonna learn about and id rep attributes. | 
+The document on the left side contains the same data as our previous document but completely restructured. | 
+Instead of having authors as subelements of book elements, we're going to have our authors listed separately, and then effectively point from the books to the authors of the book. | 
+We'll take a look at the data first, and then we'll look at the DTD that describes the data. | 
+Let's actually start with the author, so our bookstore element here has two subelements that are books and three that are authors. | 
+So, looking at the authors, we have the first name and last name as sub-elements as usual, but we've added what we call the ident attribute. | 
+That's not a keyword; we've just called the attribute ident, and then for each of the three authors, we've given a string value to that attribute that we're going to use effectively for the pointers in the book. | 
+So we have our three authors, now let's take a look at the books. | 
+Our book has the ISBN number and price. | 
+I've taken the addition out for now. | 
+special attribute called authors. | 
+Authors is an ID reps attribute, and it's value can refer to one or more strings that are ID attributes. | 
+attributes in another element. | 
+So that's what we're doing here. | 
+We're referring to the two author elements here. | 
+And in our second book we're referring to the three author elements. | 
+We still have the title subelement and we still have the remarks subelement. | 
+And furthermore, we have one other cute thing here, which is, instead of referring to the book by name within the remark when we're talking about the other book, we have another type of pointer. | 
+So we'll specify that the ISBN is an ID for books and then this is an id reps attribute that's referring to the id of the other book. | 
+The DTD on the right that describes the structure of this document. | 
+This time our bookstore is going to contain zero or more books followed by zero or more authors. | 
+Our books contain a title and an optional remark is subelements and now they contain three attributes, the IDBN which is now a special type of attribute called and ID, the price,which is the string value as usual and the authors which is the special type called id reps. Let's keep going, our title is just string Value as usual. | 
+A remark, here this is a actually interesting construct. | 
+A remark consist of the PC data which is string, or a book reference and then zero more instances of those. | 
+This is the type of construct that can be used to mix strings and sub elements within an element. | 
+So anytime you want an element that might have some strings and then another element and then more string value. | 
+That's how it's done. | 
+PC data or the element type zero or more. | 
+Then we have our book reference which is actually an empty element it's only interesting because is has an attribute so let's go back here we see our book wrap here it actually doesn't have any data or sub elements, but it has an attribute called book and that is an ID ref. | 
+That means it refers to an ID attribute of another, another element. | 
+Now we have our authors the first name and the last name and our author attributes have again an ID and we're calling it the ident. | 
+And finally the first name and last name are string values. | 
+This may seem overwhelming but the key points in this DTD are the ID the attributes. | 
+So the ID attributes, the ISBN attributes in the book, and the ident, wherever it went, ident attribute in the author are special attributes, and by the way, they do need to be unique values for those attributes, and they're special in that ID refs attributes can refer to them, and that will be checked as well. | 
+Now, I did want to point out that the book reference here says ID ref singular. | 
+When you have a singular ID ref then the string has to be exactly one ID value. | 
+When you have the plural ID refs. | 
+Then the string of the attribute is one or more ID ref value, I'm sorry one or more ID values separated by spaces. | 
+So it's a little bit clunky, but it does seem to work. | 
+Now let's go to our command line, and let's validate the document. | 
+So the document is in fact valid. | 
+That's what it means when we get nothing back, and let's make some changes, as we did before, to explore what structure is imposed and what's checked with this DTD in the presence. | 
+IDs and ID refs. | 
+As a first change, let's change this ID, this identifier HG to JU. | 
+That should actually cause a couple of problems when we do that let's validate the document and see what happens. | 
+And we do in fact get two different errors. | 
+The first error says that we have two instances of "JU". | 
+As you can see here, we now have JU twice where ID values do have to be unique. | 
+They have to be globally unique throughout the document. | 
+The second error that occurred when we changed HG to JU is we effectively have a dangling pointer. | 
+We refer to HG here in this ID refs attribute but there's no longer an element whose value is HG. | 
+So that's an error as well. | 
+So let's change it back to HG just so our document is valid again. | 
+Now let's make another change, let's take our book reference. | 
+We can see that our book reference is referring to the other book. | 
+We're in the complete book here and the comment, the remark is referring to the first course through the ISBN number, but let's change this string instead to refer to HG. | 
+So now we're actually referring to an author rather than another book. | 
+Let's check if the document validates. | 
+In fact it does. | 
+And that shows that the pointers when you have a DTD are untyped. | 
+So it does check to make sure that this is an id of another element, but we weren't able to specify that it should be a book element in our DTD, and since we're not able to specify it, of course it's not possible to check it. | 
+We will see that in XML schema, we can have typed pointers but it's not possible to have them in DTDs. | 
+The last change I'm going to show is to add a second book reference within our remark. | 
+So as I pointed out over here, when we write PC data or in an element type Kleene, the zero or more star, that means we can freely mix text and sub-elements. | 
+So just right in the middle here, let's put a book reference. | 
+and we can put, let's say book equals JU, and that will be the end of our reference there and now we see that we have text followed by a subelement followed by more text then so on. | 
+That should validate fine, and in fact it does. | 
+That completes our demonstration of XML documents with DTDs. | 

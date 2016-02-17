@@ -1,0 +1,68 @@
+This is the second of two videos about the relational algebra. | 
+In the first video, we learned about the select and project operators in various types of joins. | 
+This video will cover set operators, union difference and intersection, the renaming operator, and different notations for expressions of relational algebra. | 
+Just as a reminder, we apply a relational algebra query or expression to a set of relations and we get as a result of that expression a relation as our answer. | 
+For our examples, we're using an imaginary database about college admissions. | 
+We have a relation of colleges, a relation of students, and a relation with information about students applying to colleges. | 
+We'll keep at the bottom of the video these three depictions of those relations with a few abbreviations used so that names aren't too long. | 
+Let's move ahead to our first operator. | 
+The first of three set operators is the union operator, and it's a standard set union that you learned about in elementary school. | 
+Let's suppose, for example, that we want a list of the college and student names in our database. | 
+So we just want those as list. | 
+For example, we might want Stanford and Susan and Cornell and Mary and John and so on. | 
+Now you might think we can generate this list by using one of the operators we've already learned for combining information from multiple relations, such as the cross-product operator or the natural join operator. | 
+The problem with those operators is that they kind of combine information from multiple relations horizontally. | 
+They might take a tuple T1 from one relation and tuple T2 from the other and kind of match them. | 
+But that's not what we want to do here. | 
+We want to combine the information vertically to create our list. | 
+And to do that we're going to use is the union operator. | 
+So in order to get a list of the college names and the student names, we'll project the college name from the college relation. | 
+That gives us a list of college names. | 
+We'll similarly project the student name from the student relation, and we've got those two lists and we'll just apply the union operator between them and that will give us our result. | 
+Now, technically, in relational algebra in order to union two lists they have to have the same schema, that means that same attribute name and these don't, but we'll correct that later. | 
+For now, you get the basic idea of the union operator. | 
+Our next set operator is the difference operator, and this one can be extremely useful. | 
+As an example, let's suppose we want to find the IDs of students who didn't apply to any colleges. | 
+It sounds like a complicated query, but we'll actually write it in a very simple fashion. | 
+We'll start by projecting the student ID from the student relation itself and that will give us all of this student IDs. | 
+Then lets project the student ID from the apply relation and that gives us the IDs of all students who have applied somewhere. | 
+All we need to do is take the difference operator, written with the minus sign, and that gives us the result of our query. | 
+It will take all IDs of the students and then subtract the ones who have applied somewhere. | 
+Suppose instead that we wanted the names of the students who didn't apply anywhere, not just their IDs. | 
+So that's a little bit more complicated. | 
+You might think, "Oh, just add student name to the projection list here," but if we do that, then we're trying to subtract a set that has just IDs from a set that has the pair of ID names. | 
+And we can't have the student name here because the student name isn't part of the apply relation. | 
+So there is a nice trick, however, that's going to do what we want. | 
+Let me erase these here. | 
+What we're going to do is we're going to take this whole expression here which gives us the student IDs who didn't apply anywhere and watch this. | 
+Pretty clever. | 
+We're gonna do a natural join with the student relation. | 
+And now, that's called a join back. | 
+So we've taken the IDs, a certain select set of IDs and we've joined them back to the student relation. | 
+That's going to give us a schema that's the student relation itself, and then we're just going to add to that a projection of the student name. | 
+And that will give us our desired answer. | 
+The last of the three set operators is the intersection operator. | 
+So let's suppose we want to find names that are both a college name and a student name. | 
+So perhaps, Washington is the name of a student and a college. | 
+To find those, we're going to do something similar to what we've done in the previous examples. | 
+Let's start by getting the college names. | 
+Then let's get the student names, and then what we're going to do is just perform an intersection of those two expressions and that will give us the result that we want. | 
+Now like our previous example, technically speaking, the two expressions on the two sides of the intersection ought to have the same schema and again, I'll show you just a little bit later, how we take care of that. | 
+Now, it turns out that intersection actually doesn't add any expressive power to our language and I'm going to show that actually in two different ways. | 
+The first way is that if we have two expressions, let's say E1 and E2 and we perform their intersection, that is exactly equivalent to writing E1 minus, using the difference operator, E1 minus E2. | 
+Now if you're not convinced of that immediately, let's go back to Venn diagrams, again a concept you probably learned early in your schooling. | 
+So let's make a picture of two circles. | 
+And let's say that the first circle Circle represents the result of expression E1 and the second rear circle represents the result of expression E2. | 
+Now if we take the entire circle E1. | 
+Let's shade that in purple. | 
+And then we take the result, so that's E1 here, and then we take E1, the result of the expression E1 minus E2 here, we'll write that in green, so that's everything in E1 that's not in E2, that's this. | 
+Okay? | 
+And if we take the purple minus the green you will see that we actually do get the intersection here. | 
+So that's a simple property of set Operations but what that's telling us is that this intersection operator here isn't giving us more expressive power because any expression that we can write in this fashion, we can equivalently right with the difference operator in this fashion. | 
+Let me show you a completely different way in which intersection doesn't add any expressive power. | 
+So, let's go back to E1 intersect E2 and as a reminder for this to be completely correct these have to have the same schema as equal between the two. | 
+E1 intersect E2 turns out to be exactly the same as E1 natural join E2 in this particular case because the schema is the same. | 
+Remember what natural join does. | 
+Natural join says that you match up all columns that are equal and you eliminate duplicate values of columns. | 
+So I'll just let you work out for yourself that this is indeed an equivalence and a second reason that the intersection doesn't add any expressive power. | 
+Nevertheless, the intersection can be very useful to use in queries. | 

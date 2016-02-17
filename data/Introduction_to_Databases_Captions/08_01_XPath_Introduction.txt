@@ -1,0 +1,99 @@
+Now let's turn to the subject of querying XML. | 
+First of all, let me say right up front that querying XML is not nearly as mature as querying relational data bases. | 
+And there is a couple of reasons for that. | 
+First of all it's just much, much newer. | 
+Second of all it's not quite as clean, there's no underlying algebra for XML that's similar to the relational algebra for querying relational data bases. | 
+Let's talk about the sequence of development of query languages for XML up until the present time. | 
+The first language to be developed was XPath. | 
+XPath consists of path expressions and conditions and that's what we'll be covering in this video once we finish the introductory material. | 
+The next thing to be developed was XSLT. | 
+XSLT has XPath as a component but it also has transformations, and that's what the T stands for, and it also has constructs for output formatting. | 
+As I've mentioned before, XSLT is often used to translate XML into HTML for rendering. | 
+And finally, the latest language and the most expressive language is XQuery. | 
+So that also has XPath as a component, plus what I would call a full featured query language. | 
+So it's most similar to SQL in a way, as we'll be seeing. | 
+The order that we're going to cover them in is first XPath and then actually second XQuery and finally XSLT. | 
+There are a couple of other languages, XLink and XPointer. | 
+Those languages are for specifying, as you can see, links and pointers. | 
+They also use the XPath language as a component. | 
+We won't be covering those in this video. | 
+Now we'll be covering XPath, XQuery, and XSLT in moderate detail. | 
+We're not going to cover every single construct of the languages, but we will be covering enough to write a wide variety of queries using those languages. | 
+To understand how XPath works, it's good to think of the XML as a tree. | 
+So I'd like you to bear with me for a moment while I write a little bit of a tree that would be the tree encoding of the book store data that we've been working with. | 
+So we would write as our root the book store element, and then we'll have sub-elements that would contain the books that are the sub elements of our bookstore. | 
+We might have another book. | 
+We might have over here a magazine and within the books then we had, as you might remember some attributes and some sub elements. | 
+We had for example the ISBN number I'll write as an attribute here. | 
+We had a price and we also had of course the title of the book and we had the author, excuse me, over here, I'm obviously not going to be filling in the subelement structure here we are just going to look at one book as an example. | 
+The ISBN number we now are at the leaf of the tree so we could have a string value here to denote the leaf maybe, 100 for the price, for the title: "A First Course in Database Systems", then our authors had further sub-elements. | 
+We had maybe two authors' sub elements here, I'm abbreviating a bit, below here, a first name and a last name, again abbreviating so that might have been Jeff Ullman, and so on. | 
+I think you get the idea of how we render our X and L as a tree. | 
+And the reason we're doing that is so that we can think of the expressions we have in XPath as navigations down the tree. | 
+Specifically, what XML consists of is path expressions that describe navigation down and sometimes across and up a tree. | 
+And then we also have conditions that we evaluate to pick out the components of the XML that we're interested in. | 
+So let me just go through a few of the basic constructs that we have in XPath. | 
+Let me just erase a few of these things here that got in my way. | 
+Okay. | 
+I'm gonna use this little box and I'm gonna put the construct in and then sort of explain how it works. | 
+So the first construct is simply a slash, and the slash is for designating the root element. | 
+So we'll put the slash at the beginning of an XPath query to say we want to start at the root. | 
+A slash is also used as a separator. | 
+So we're going to write paths that are going to navigate down the tree and we're going to put a '/' between the elements of the path. | 
+All of this will become much clearer in the demo. | 
+So I'll try to go fairly quickly now so we can move to the demo itself. | 
+The next construct is simply writing the name of an element. | 
+I put 'x' here but we might for example write 'book'. | 
+When we write 'book' in an XPath expression, we're saying that we want to navigate say we're up here at the bookstore down to the book sub-element as part of our path expression. | 
+We can also write the special element symbol '<i>' and '<i>' matches anything.</i></i> So if we write '/<i>' then</i> we'll match any sub-element of our current element. | 
+When we execute XPath, there's sort of a notion as we're writing the path expressions of being at a particular place. | 
+So we might have navigated from bookstore to book and then we would navigate say further down to title or if we put a '<i>' then we navigate to any sub-element.</i> If we want to match an attribute, we write '@' and then the attribute name. | 
+So for example, if we're at the book and we want to match down to the ISBN number, we'll write ISBN in our query, our path expression. | 
+We saw the single slash for navigating one step down. | 
+There's also a double slash construct. | 
+The double slash matches any descendant of our current element. | 
+So, for example, if we're here at the book and we write double slash, we'll match the title, the authors, the off, the first name and the last name, every descendant, and actually we'll also match ourselves. | 
+So this symbol here means any descendant, including the element where we currently are. | 
+So now I've given a flavor of how we write path expressions. | 
+Again, we'll see lots of them in our demo. | 
+What about conditions? | 
+If we want to evaluate a condition at the current point in the path, we put it in a square bracket and we write the condition here. | 
+So, for example, if we wanted our price to be less than 50, that would be a condition we could put in square brackets if we were (actually, better be the attribute) at this point in the navigation. | 
+Now we shouldn't confuse putting a condition in a square bracket with putting a number in a square bracket. | 
+If we put a number in a square bracket, N, for example, if I write three, that is not a condition but rather it matches the Nth sub element of the current element. | 
+For example, if we were here at authors and we put off square bracket two, then we would match the second off sub element of the authors. | 
+There are many, many other constructs. | 
+This just gives the basic flavor of the constructs for creating path expressions and evaluating conditions. | 
+XPath also has lots of built in functions. | 
+I'll just mention two of them as somewhat random examples. | 
+There's a function that you can use in XPath called contains. | 
+If you write contains and then you write two expressions, each of which has a string value - this is actually a predicate - will return true, if the first string contains the second string. | 
+As a second example of a function, there's a function called name. | 
+If we write name in a path, that returns the tag of the current element in the path. | 
+We'll see the use of functions in our demo. | 
+The last concept that I want to talk about is what's known as navigation axes, and there's 13 axes in XPath. | 
+And what an axis is, it's sort of a key word that allows us to navigate around the XML tree. | 
+So, for example, one axis is called parent. | 
+You might have noticed that when we talked about the basic constructs, most of them were about going down a tree. | 
+If you want to navigate up the tree, then you can use the parent access that tells you to go up to the parent. | 
+There's an access called following sibling. | 
+And the colon colon - you'll see how that works when we get to the demo. | 
+The following sibling says match actually all of the following siblings of the current element. | 
+So if we have a tree and we're sitting at this point in the tree, then we...the following sibling axis will match all of the siblings that are after the current one in the tree. | 
+There's an axis called descendants descendants, as you might guess, matches all the descendants of the current element. | 
+Now it's not quite the same as slash, slash, because as a reminder, slash, slash also matches the current element as well as the descendants. | 
+Actually as it happens, there is a navigation access called descendants and self that' s equivalent to slash, slash. | 
+And by the way, there's also one called self that will match the current element. | 
+And that may not seem to be useful, but well see uses for that, for example, in conjunction with the name function that we talked about up here, that would give us the tag of the current element. | 
+Just a few details to wrap up. | 
+XPath queries technically operate on and return a sequence of elements. | 
+That's their formal semantics. | 
+There is a specification for how XML documents and XML streams map to sequences of elements and you'll see that it's quite natural. | 
+When we run an XPath query, sometimes the result can be expressed as XML, but not always. | 
+But as we'll see again, that's fairly natural as well. | 
+So this video has given an introduction to XPath. | 
+We've shown how to think of XML data as a tree and then XPath as expressions that navigate around the tree and also evaluate conditions. | 
+We've seen a few of the constructs for path expressions or conditions. | 
+We've seen a couple of built-in functions and I've introduced the concept of navigation axes. | 
+But the real way to learn and understand XPath is to run some queries. | 
+So I urge you to watch the next video which is a demo of XPath queries over our bookstore data and then try some queries yourself. | 

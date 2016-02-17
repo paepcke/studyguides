@@ -1,0 +1,207 @@
+In this video, we'll see a demonstration of JSON data. | 
+As a reminder, JSON stands for Java Script Object Notation, and it's a standard for writing data objects into human readable format, typically in a file. | 
+It's useful for exchanging data between programs, and generally because it's quite flexible, it's useful for representing and for storing data that's semi-structured. | 
+A reminder of the basic constructs in JSON, we have the atomic value, such as integers and strings and so on. | 
+And then we have two types of composite things; we have objects that are sets of label-value pairs and then we have arrays that are lists of values. | 
+In the demonstration, we'll go through in more detail the basic constructs of JSON and we'll look at some tactic correctness, we'll demonstrate the flexibility of the data model and then we'll look briefly at JSON's schema, not widely used yet but still fairly interesting to look at and we'll look at some validation of JSON data against a particular schema. | 
+So, here's the JSON data that we're gonna be working with during this demo. | 
+It's the same data that appeared in the slides, in the introduction to JSON, but now we're going to look into the components of the data. | 
+It's also by the way, the same example pretty much that we used for XML, it's reformatted of course to meet the JSON data model, but you can compare the two directly. | 
+Lastly, we do have the file for the data on the website, and I do suggest that you download the file so that you can take a look at it closely on your own computer. | 
+All right. | 
+So, let's see what we have, right now we're in an editor for JSON data. | 
+It happens to be the Eclipse editor and we're going to make make some edits to the file after we look through the constructs of the file. | 
+So, this is JSON data representing books and magazines, and we have a little more information about our books and our magazines. | 
+So, at the outermost, the curly brace indicates that this is a JSON object. | 
+And as a reminder, an object is a set of label-value pairs, separated by commas. | 
+So, our first value is the label "books". | 
+And then our first element in the object is the label books and this big value and the second, so there's only two label-value pairs here, is the label magazines and this big value here. | 
+And let's take a look first at magazines. | 
+So magazines, again, is the label and the value we can see with the square brackets here is an array. | 
+An array is a list of values and here we have two values in our array. | 
+They're still composite values. | 
+So, we have two values, each of which is an object, a set of label-value pairs. | 
+Let me mention, sometimes people call these labels 'properties', by the way. | 
+Okay. | 
+So, now we are inside our 2 objects that are the 2 elements in the array that's the value of magazines. | 
+And each one of those has 3 labels and 3 values. | 
+And now we're finally down to the base values. | 
+So, we have the title being "National Geographic", a string, the month being January, a string and the year 2009, where 2009 is an integer. | 
+And again, we have another object here that's a different magazine with a different name, month and happens to be the same year. | 
+Now, these two have exactly the same structure but they don't have to and we will see that as we start editing the file. | 
+But before we edit the file, let's go and look at our books here. | 
+The value of our other label-value pair inside the outermost object, "books" is also an array, and the array in this case also has just two elements, so we've represented two books here. | 
+It's a little more complicated than the magazines, but those elements are still objects that are label-value pairs. | 
+So, we have now the ISBN, the price, the addition, the title, all either integers or strings, and then we have one nested composite object which is the authors and that's an array again. | 
+So, the array again, is indicated by the square brackets. | 
+And inside this array, we have two authors and each of the authors has a first name and a last name, but again, that uniformity is not required by the model itself, as we'll see. | 
+So, as I mentioned, this is actually an editor for JSON data and we're going to come back to this editor in a moment. | 
+But what I wanted to do is show the same data in a browser because browsers actually offer some nice features for navigating in JSON. | 
+So here we are in the Chrome browser, which has nice features for navigating JSON, and other browsers do as well. | 
+We can see here again that we have an object in our JSON data, that consists of two label-value pairs; books and magazines, which are currently closed and and then this plus allows us to open them up, and see the structure. | 
+For example, we open magazines and we see that magazines is an array containing two objects. | 
+We can open one of those objects, and see that the three label-value pairs. | 
+Now we're at the lowest levels and similarly for the other object. | 
+We can see here that Books is also an array, and we go ahead and open it up. | 
+It's an array of two objects. | 
+We open one of those objects and we see again the set of label-value pairs, where one of the values is a further nesting. | 
+It's an array and we open that array, and we see two objects, and we open them and finally see the data at the lowest levels. | 
+So again, the browser here gives us a nice way to navigate the JSON data and see its structure. | 
+So now we're back to our JSON editor. | 
+By the way, this editor, Eclipse, does also have some features for opening and closing the structure of the data, but it's not quite as nice as the browser that we use. | 
+So we decided to use the browser instead. | 
+What we are going to use the editor for is to make some changes to the JSON data and see which changes are legal and which aren't. | 
+So, let's take a look at the first change, a very simple one. | 
+What if we forgot a comma. | 
+Well, when we try to save that file, we get a little notice that we have an error, we expected an N value, so that's a pretty straightforward mistake, let's put that comma back. | 
+Let's say insert an extra brace somewhere here, for whatever reason. | 
+We accidentally put in an extra brace. | 
+Again we see that that's marked as an error. | 
+So an error that can be fairly common to make is to forget to put quotes around strings. | 
+So, for example, this ISBN number here, if we don't quote it, we're gonna get an error. | 
+As we'll see the only things that can be unquoted are numbers and the values null, true and false. | 
+So, let's put our quotes back there. | 
+Now, actually, even more common is to forget to put quotes around the labels in label-value pairs. | 
+But if we forget to quote that, that's going to be an error as well. | 
+You might have noticed, by the way, when we use the browser that the browser didn't even show us the quotes in the labels. | 
+But you do when you make the raw JSON data, you do need to include those quotes. | 
+Speaking of quotes, what if we quoted our price here. | 
+Well that's actually not an error, because now we've simply turned price into a string, and string values are perfectly well allowed anywhere. | 
+Now we'll see when we use JSON's schema that we can make restrictions that don't allow strings in certain places, but just for syntactic correctness of JSON data any of our values can be strings. | 
+Now, as I mentioned, there are a few values that are sort of reserved words in JSON. | 
+For example, true is a reserved word for a bullion value. | 
+That means we don't need to quote it because it's actually its own special type of value. | 
+And so is false. | 
+And the third one is null, so there's a built-in concept of null. | 
+Now, if we wanted to use nil for whatever reason instead of null, well, now we're going to get an error because nil is not a reserved word, and if we really wanted nil then we would need to actually make it a quoted string. | 
+Now, let's take a look inside our author list. | 
+And I'm going to show you that arrays do not have to have the same type of value for every element in the array. | 
+So here we have a homogeneous list of authors. | 
+Both of them are objects with a first name and a last name as separate label-value pairs, but if I change that first one, the entire value to be, instead of a composite one, simply the string, Jefferey Ullman. | 
+Oops, sorry about my typing there, and that is not an error, it is allowed to have a string, and then a composite object. | 
+And we could even have an array, and anything we want. | 
+In an array, when you have a list of values, all you need is for each one to be syntactically a correct value in JSON. | 
+Now let's go visit our magazines for a moment here and let me show that empty objects are okay. | 
+So a list of label value pairs, comprising an object, can be the empty list. | 
+And so now I've turned this magazine into having no information about it, but that is legal in JSON. | 
+And similarly, arrays are allowed to be of zero length. | 
+So I can take these authors here and I can just take out all of the authors, and make that an empty list, but that's still valid JSON. | 
+Now, what if I took this array out altogether? | 
+In that case, now we have an error because this is an object where we have label-value pairs and every label-value pair has to have both a label and a value. | 
+So let's put our array back and we can have anything in there so let's just make it "fu" and that corrects the error. | 
+What if we didn't want an array here instead and we tried to make it, say, an object,? | 
+Well, we're going to see an error there, because an object as a reminder and this is an easy mistake to make. | 
+Objects are always label-value pairs. | 
+So if you want just a value, that should be an array if you want an object, then we're talking about a label-value pair, so we can just add "fu" as our value, and then we're all set. | 
+So what we've seen so far is syntactic correctness. | 
+Again, there's no required uniformity across values in arrays or in the label-value pairs in objects we just need to ensure that all of our values, our basic values, are of the right types, and things like our commas and curly braces are all in place. | 
+What we're gonna do next is look at JSON's schema where we have a mechanism for enforcing certain constraints beyond simple syntactic correctness. | 
+If you've been very observant, you might even have noticed that we have a second tab up here in our editor for a second JSON file, and this file is going to be the schema for our bookstore data. | 
+We're using JSON schema, and JSON schema, like, XML schema is expressed in the data model itself. | 
+So, our schema description for this JSON data is itself JSON data, and here it is. | 
+And it's going to take a bit of time to explain. | 
+Now the first thing that you might notice is wow, the schema looks more complicated and in fact longer than the data itself. | 
+Well, that is true, but that's mostly because our data file is tiny. | 
+So, if we had thousands, you know, tens of thousands of books and magazines, our schema file wouldn't change, but our data file would be much longer and that's the typical case, in reality. | 
+Now, this video is not a complete tutorial about JSON's schema. | 
+There's many constructs in JSON's schema that weren't needed to describe the bookstore data, for example. | 
+And even this file here, I'm not gonna go through every detail of it right here. | 
+You can download the file and take a look, read a little more about JSON schema. | 
+I'm just going to give the flavor of the schema specification and then we're going to work with validating the data itself to see how the schema and data work together. | 
+But to give you the flavor here, let's go through at least some portions of the schema. | 
+So, in some sense, the structure of the schema file reflects the structure of the data file that it's describing. | 
+So, the outermost constructs in the schema file are the outermost in the data file and as we nest it parallels the nesting. | 
+Let me just show a little bit here, we'll probably look at most of it in the context of validation. | 
+So, we see here that our outermost construct in our data file is an object. | 
+And that's told to us, because we have "type" as one of our built-in labels for the schema. | 
+So we we have an object with two properties, as we can see here, the book's property and the magazine's property. | 
+And I use the word "labels" frequently for label-value pairs, that's synonymous with property value pairs. | 
+Then inside the books property for example, we see that the type of that is array, so we've got a label-value pair where the value is an array. | 
+And then we follow the nesting and see that it's an array of objects. | 
+And we go further down and we see the different label-value pairs of the object that make up the books and nesting further into the authors and so on. | 
+We see similarly for magazines that the value of the a label-value pair for magazines is an array, and that array consists of objects with further nesting. | 
+So what we're looking at here is an online JSON schema validator. | 
+We have two windows. | 
+On the left we have our schema and on the right we have our data, and this is exactly the same data file and schema file that we were looking at earlier. | 
+If we hit the validate button, hopefully everything should work and it does. | 
+This tells us that the JSON data is valid with respect to the schema. | 
+Now, this system will of course find basic syntactic errors so I can take away a comma just like I did before and when I validate I'll get a parsing error that really has nothing to do with the schema. | 
+What I'm going to focus on now is actually validating semantic correctness of the JSON with respect back to the constructs that we've specified in this schema. | 
+Let me first put that comma back so we start with a valid file. | 
+So, the first thing I'll show is the ability to constrain basic types, and then the ability to constrain the range of values of those basic types. | 
+And let's focus on price. | 
+So here we're talking about the price property inside books and we specify in our schema that the type of the price must be an integer. | 
+So, for example, if our price were instead a string and we went ahead and try to validate that we would get an error. | 
+Let's make it back into an integer but let's make it into the integer 300 now instead of 100. | 
+And why am I doing that? | 
+Because the JSON schema also lets me constrain the range of values that are allowed if we have a numeric value. | 
+So, not only in price did I say that it's an integer but I also said that it has a minimum and maximum value, the integer of prices must be between 0 and 200. | 
+So, if I try to make the price of 300, and I validate, I'm again getting an error. | 
+Now it's not a type error, but it's an error that my integer was outside of the allowed range. | 
+I've put the price back to a hundred, and now let's look at constraints on string values. | 
+JSON schema actually has a little pattern matching language that can be used to constrain the allowable strings for a specific type of value. | 
+We'll look at ISBN number here as an example of that. | 
+We've said that ISBN is of type string, and then we've further constrained in the schema that the string values for ISBN must satisfy a certain pattern. | 
+I'm not gonna go into the details of this pattern-matching language. | 
+I'm just gonna give an example. | 
+And in fact, this entire demo is really just an example lots of things in JSON's schema that we're not seeing. | 
+What this pattern here says is that the string value for ISBN must start with the four characters ISBN and then can be followed by anything else. | 
+So, if we go over to our data and we look at the ISBN number here and say we have a typo, we forgot the "I" and we try to validate. | 
+Then we'll see that our data no longer matches our schema specification. | 
+Now let's look at some other constraints we can specify in JSON's schema. | 
+We can constrain the number of elements in an array. | 
+We can give a minimum or maximum or both. | 
+And I've done that here in the context of the authors array. | 
+Remember the authors are an array that's a list of objects and here I've said that we have a minimum number of items of 1 and a maximum number items of 10. | 
+In other words, every book has to have between one and ten authors. | 
+So let's try, for example, taking out all of our authors here in our first book. | 
+We actually looked at this before in terms of syntactic validity, and it was perfectly valid to have an empty array. | 
+But when we try to validate now we do get an error, and the reason is that we said that we needed between one and ten array elements in the case of authors. | 
+Now let's fix that, not by putting our authors back but let's say we actually decide we would like to be able to have books that have no authors. | 
+So, we can simply fix that by changing that minimum item to zero and that makes our data valid again and in fact, we could actually take that minimum constraint out all together, and if we do that our data is still going to be valid. | 
+Now let's see what happens when we add something to our data that isn't mentioned in the schema. | 
+If you look carefully you'll see that everything that we have in the data so far has been specified in the schema. | 
+Let's say we come along and decide were gonna also have ratings for our books. | 
+So let's add here a rating label property with the value 5. | 
+We go ahead and validate, you probaly think it's not going to validate properly but actually it did. | 
+The definition of JSON schema that it can constrain things by describing them but you can also have components in the data that aren't present in this schema. | 
+If we want to insist that every property that is present in the data is also described in this schema, then we can actually add a constraint to the schema that tells us that. | 
+Specifically, under the object here, we can put in a special flag which itself is specified as a label called additional properties. | 
+And this flag if we set it to false and remember false can is actually a keyword in JSON's schema, tells us that in our data we're not allowed to have any properties beyond those that are specified in the schema. | 
+So now we validate and we get an error, because the property rating hasn't been defined in the schema. | 
+If additional properties is missing, or have the default value of "true", then the validation goes through. | 
+Now lets take a look at our authors that are still here. | 
+Let's suppose that we don't have a first name for our middle author here. | 
+If we take that away and we try to validate, we do get an error, because we specified in our schema and it's right down here--that author-objects must have both a first name and a last name. | 
+It turns out that we can specify for every property that the property is optional. | 
+So, we can add to the description of the first name, not only that the type is a string but that that property is optional so we say optional, true. | 
+Now let's validate, and now we're in good shape. | 
+Now, let's take a look at what happens when we have object that has more than one instance of the same label or same property. | 
+So let's suppose, for example, in our magazine, the magazine has two different years, 2009 and 2011. | 
+This is syntactically valid, JSON, it meets the structure of having a list of label-value pairs. | 
+When we validate it, we see that we can't add a second property, year. | 
+So this validator doesn't permit two copies of the same property, and it's actually kind of a parsing thing and not so much related to JSON's schema. | 
+Many parsers actually do enforce that labels or properties need to be unique within objects, even though technically syntactically correct JSON does allow multiple copies. | 
+So that's just something to remember, the typical use of objects is to have unique labels, sometimes are even called keys of which evokes a concept of them unique. | 
+So typically they are unique. | 
+They don't have to be for syntactic validity. | 
+Usually when you wanna have repeated values, it actually makes more sense to create an array. | 
+I've taken away the second year in order to make the JSON valid again. | 
+Now let's take a look at months. | 
+I've used months to illustrate the enumeration constraint so we saw that we could constrain the values of integers, and we saw that we can constrain strings using a pattern, but we can also constrain any type by enumerating the values that are allowed. | 
+So, for the month, we've set it a string type which it is but we've further constrained it by saying that string must be either January or February. | 
+So, if we try to say put in the string March, we validate and we get the obvious error here. | 
+We can fix that by changing the month back, but maybe it makes more sense that March would be part of our enumeration type, so we'll add March to the possible values for months, and now we're good. | 
+As a next example, let's take a look at something that we saw was syntactically correct but isn't going to be semantically correct, which is when we have the author list be a mixture of objects and strings. | 
+So, let's put Jeffrey Ullman here just as a string. | 
+We saw that that was still valid JSON, but when we try to validate now, we're gonna get an error because we expected to see an object, we have specified that the authors are objects, and instead we got a string. | 
+Now JSON schema does allow us to specify that we can have different types of data in the same context, and I'm going to show that with a little bit of a simpler example here. | 
+So, let's first take away our author there so that we're back with a valid file. | 
+And what I am going to look at is simply the year values. | 
+So, let suppose for whatever reason that in our magazines, one of the years was a string and the other year was an integer. | 
+So that's not gonna work out right now because we have specified clearly that the year must be an integer. | 
+In JSON schema specifications, when we want to allow multiple types for values that are used in the same context, we actually make the type be an array. | 
+So instead of just saying integer, if we put an array here that has both integer and string that's telling us that our year value can be either an integer or a string and now when we validate, we get a correct JSON file. | 
+That concludes our demo of JSON schema validation. | 
+Again, we've just seen one example with a number of the constructs that are available in JSON schema, but it's not nearly exhaustive, there are many others, and I encourage you to read a bit more about it. | 
+You can download this data and this schema as a starting point, and start adding things playing around and I think you'll get a good feel for how JSON schema can be used to constrain the allowable data in a JSON file. | 

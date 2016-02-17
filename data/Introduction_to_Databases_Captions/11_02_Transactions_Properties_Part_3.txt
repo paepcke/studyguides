@@ -1,0 +1,41 @@
+Now let's come back to the fact that the system will undo partial effects of a transaction to guarantee the atomicity property, that each transaction is executed in an all or nothing fashion. | 
+So, this concept of undoing partial Full effects of the transaction is known as transaction roll back or transaction abort. | 
+And the reason I'm mentioning it here is that although it is the implementation mechanisms for Atima City, it's also an operation that's exposed by the database in an application would like to use it. | 
+Specifically, a transaction rollback can be initiated by the system, in the case of an error, or a crash recovery. | 
+But it also can be client initiated. | 
+And let me give a little example where a client might write code that takes advantage of the operation. | 
+So here is some toy application code. | 
+In this code, the client begins a transaction, it asks the Database user for some input. | 
+It performs some SQL commands. | 
+Maybe some modifications to the database based on the input from the user. | 
+It confirms that the user likes the results of those modifications. | 
+And if the user says okay, then the transaction is committed, and we get an atomic execution of this behavior. | 
+But if the user doesn't say okay, then the transaction is rolled back and, automatically, these SQL commands that were executed are undone, and that frees the application from writing the code that undoes those commands explicitly So it can actually be quite a useful feature for clients to use. | 
+But clients do need to be very careful, because this rollback command only undoes effects on the data itself in the database. | 
+So if perhaps in this code, the system was also modifying some variables or even worse, say delivering cash out of an ATM machine, the rollback command is not going to undo those. | 
+It's not gonna modify variables and it's certainly not going to pull that cash back into the ATM. | 
+So, there actually is another issue with this particular client interaction that I am going to put a "frownie" face here. | 
+It was a nice, simple example of how rollback can be helpful. | 
+But one thing that happens in this example is that we begin a transaction and then we wait for the user to do something. | 
+And we actually wait for the user back here. | 
+So experienced database application developers will tell you to never hold open a transaction and then wait for arbitrary amounts of time. | 
+The reason is that transactions do use this locking mechanism I alluded to earlier, so when a transaction is running, it may be blocking other portions, blocking other clients from portions of the database. | 
+If the user happened to go out for a cup of coffee or is going to come back in a week, we certainly don't want to leave the database locked up for an entire week. | 
+So, again and a general rule of thumb is that transactions should be constructed in a fashion that we know they are going to run to completion fairly quickly. | 
+Finally, let's talk about consistency. | 
+The consistency property talks about how transactions interact with the integrity constraints that may hold on a database. | 
+As a reminder and integrity constraint is a specification of which database states are legal. | 
+Transactions are actually very helpful in the management of constraints. | 
+Specifically, when we have multiple clients interacting with the database in an interleaved fashion, we can have a setup where each client can assume that when it begins it operates on a database that satisfies all integrity constraints. | 
+Then each transaction, then sorry, each client, must guarantee that all constraints hold when the transaction ends and that's typically guaranteed by the constraint enforcement sub system. | 
+Now with that guarantee, since we have serialized ability of transactions. | 
+that guaranteesthat constraints always hold. | 
+Specifically the behavior of the database is some sequential order of the transactions. | 
+We know and we can assume at the start of the transaction the constraints hold. | 
+And then we guarantee they hold at the end. | 
+And since the behaviors equivalent to a sequential order then the next transaction can assume the constraints hold and so on. | 
+In conclusion transaction are a very powerful concept. | 
+They give a solution for both concurrency control and system failure management and databases. | 
+They provide formally understood properties of atomicity, consistency, isolation and durability. | 
+In the next video we are going to focus more on the isolation property. | 
+We're going to see that in some cases we may want to relax the notion of isolation while still providing properties that are sufficient for applications in certain circumstances. | 

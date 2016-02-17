@@ -1,0 +1,129 @@
+So I've alluded a few times to the fact that functional dependencies generalize the notion of keys. | 
+And let's make that connection explicit now. | 
+Let's suppose we have a relation R and R has no duplicate tuples. | 
+R has some attributes A and it has some other attributes. | 
+Let's call those B. | 
+And let's suppose that we have a functional dependency that A determines all of the attributes in the relation. | 
+Now let me draw a picture of that. | 
+So here's our relation R with attributes A and attributes B. | 
+And now let's suppose that we have two tuples with the same values for A. | 
+Now we'll just write those as little a bar. | 
+And now let's see what happens with the B values. | 
+We'll make them B1 bar and B2 bar. | 
+Because we have the functional dependency, the equal values here for A say that B1 and B2 have to be equal. | 
+So B1 equals B2. | 
+Let's just erase the little one and two. | 
+But now we've generated duplicate tuples. | 
+So what the functional dependency tells us in that case is that these two tuples are actually the same, or rather we cannot have two separate tuples with the same A values. | 
+So we cannot have two separate tuples with the same A values is exactly what it means for A to be a key. | 
+Now again, this is only the case when we have no duplicates in R. But if we have no duplicates, if a set of attributes determines all the other attributes, then those attributes are a key. | 
+So here are a few other definitions related to functional dependencies. | 
+We have a notion of a trivial functional dependency. | 
+A functional dependency is trivial A to B if B is a subset of A. | 
+And let's draw a little picture of what that means. | 
+So here we have our attributes A, and then we're saying and that's all of the attributes here, and what we're saying is that B is a subset of A. | 
+So in other words, some portion of these attributes here, we'll just mark that in purple here are attributes B. | 
+Well, it's pretty obvious that if two tuples have the same values across their entire expanse here for A's, then obviously they're also going to have the same values for just this portion here, the B portion. | 
+So that's why it's called the trivial functional dependency. | 
+So a nontrivial functional dependency is a functional dependency that's not a trivial one. | 
+By the way, FD is a common abbreviation for functional dependency. | 
+So if we have A determines B, then that is non-trivial if it's not the case that B is a subset of A. | 
+Going to our picture, let's have here our attributes A. | 
+And now we're saying there are some attributes in B that are not part of A. | 
+So we can say, well maybe B is partially part of A, but there's some portion that is not part of A. | 
+So let's say that these are our B attributes here. | 
+So now our functional dependency is actually saying something. | 
+It's saying we have two attributes that agree in these values, then they're also going to agree in these values over here. | 
+And the last definition is a completely nontrivial functional dependency, and that's A determines B where A and B have no intersection at all. | 
+So in that case, again, going back to our picture, we'll have our A attributes here and then our B attributes are going to be some portion of the remaining attributes. | 
+And here we're saying a lot. | 
+We're saying if these two have the same value, then these two have the same value as well. | 
+And the reality is that completely nontrivial functional dependencies are the ones that we're most interested in specifying. | 
+I mentioned that there are some rules that apply to all functional dependencies and I'll give a couple of those right now. | 
+The first one is the splitting rule. | 
+The splitting rules says that if we have a set of attributes that determine another set of attributes - and this time I'm going to write it out instead of using the bar notation - then we also have...this implies that we have A determines B-1 and A determines B-2 and so on. | 
+In other words, we can split the right side of the functional dependency. | 
+And if you think about it, this is pretty If we say that the when the A value are the same all of the B values have to be the same then certainly when the A values are the same the B values have to be the same independently. | 
+Now you might wonder if the splitting rule also goes the other way. | 
+So let's say we have, I'll put the left hand side, I'll write out the attributes explicitly so let's say we have A-1 through A-N determines B then is it from that the case that A-1 determines B and A-2 determines B on its own, and so on. | 
+Well, the answer to that is no. | 
+And I'll give a simple example from our college application database. | 
+So let's say that we have the functional dependency high school name and high school city determines high school code. | 
+We talked about that one before. | 
+Oops, here, that's an arrow there. | 
+So that says that when we have a particular name and city combination for a high school, that's identifying a single high school, and so it will always have the same code. | 
+So that makes a lot of sense but it is not the case, I'll put a big X here, necessarily, that if we split the left hand side that high school name alone will determine a high school code. | 
+So for example, I would venture to guess that there are a lot of Jefferson High Schools all over the country and they won't all will be the same high school. | 
+So it's really the combination of attributes on the left that together functionally determine the right hand side and so we do not then have the splitting rule as a general principle. | 
+The combining rule is the inverse of the splitting rule. | 
+It says if we have A determines B-1 and we have A determines B-2 and so on up to A determines B-N, then we also have A determines B-1 through B-N together. | 
+Next, we have two trivial dependency rules. | 
+Let me remind remind you what a trivial dependency is. | 
+It's A determines B where B is a subset of A. | 
+So in other words, every left hand side determines itself or any subset of itself, and that's what drives the two trivial dependency rules. | 
+One of them says that if we have A determines B, then we also have A determines A union B, so in other words we can add to the right hand side of every dependency what's already on the left hand side. | 
+Sort of as a converse, we can also say that if A determines B then A determines A intersect B. | 
+Actually this one is also implied by the splitting rule. | 
+So we have two different rules in this case that are doing the same thing. | 
+And finally the transitive rule, which is the one we alluded to earlier. | 
+It says if we have A determines B and and we have B determines C, then we have A determines C. Now all of these rules can actually be proven formally and I'm going to go through a sketch of this particular one. | 
+So here's my relation R and I'll have attributes A, B, C and then let's let D be the left of our attributes. | 
+And my goal is to prove that A determines C. And the information I have to prove that is these two functional dependencies here. | 
+So to prove that A determines C, I have to prove that if two tupples have the same A values--we'll put little bars there--then they also have the same C values. | 
+So I need to show that these two C values here are going to be the same. | 
+So you can see what's going to happen. | 
+Using the first functional dependency, because these two A values are the same, I know their B values must be the same. | 
+And then I just use the second functional dependency and because the two B values are the same, I then know that the two C values are the same, and that has shown that this functional dependency holds. | 
+And you can do a similar thing to prove the other rules to yourself. | 
+Now, I'm going to introduce the concept of closure of attributes. | 
+Let's suppose we're given a relation, a set of functional dependencies for that relation, and then a set of attributes A bar that are part of that relation. | 
+I'm interested in finding all attributes B of the relation such that A bar functionally determines B. | 
+And this is what's called the closure, and I'll show in a bit why we might want to compute that. | 
+Notationally the closure is written using the + sign. | 
+So the closure of A bar is A bar +. | 
+Let me be a little more explicit, let me write out A bar, because remember whenever we write bar, we're actually talking about a list of attributes. | 
+So we're going to write it as A-1 through A-N, and I'm interested in computing the closure of that set of attributes. | 
+In other words, the entire set of attributes that are functionally determined by the attributes A-1 through A-N. And I'm going to give an algorithm for doing that. | 
+My algorithm says start with the set itself. | 
+So I'm going to start with A1 through AN, except I'm not going to close that. | 
+I'm going to leave a little space there. | 
+And then I'm going to repeat until there's no change. | 
+I'm going to add attributes to that set until I get to the closure. | 
+So I'm going to repeat. | 
+If A determines B - and now we'll put bars in here - and all of A are in the set, then add B to the set. | 
+So I might have my attributes here, A1 through AN, and it might be the case that A, you know, 4 determines attributes C and D, so I'll add C and D to the set. | 
+I repeat. | 
+Maybe there's a C goes to E and I'll add E to the set, and so on. | 
+And when there's no more change, then I've computed the complete closure. | 
+Now if you happen to be someone who likes to think in terms of rules instead, what we're effectively doing is applying the combining and transitive rules to the attributes in the set until there's no change. | 
+So let's run an example of the closure algorithm. | 
+Let's go to our complete student table and let's add three functional dependencies. | 
+One that says that student's social security number determines their name, address and GPA and that would be a normal... GPA determines priority, and high school code determines high school name and high school city. | 
+Again, these are all examples we gave earlier that would be natural functional dependencies for this particular relation. | 
+Let's suppose that we're interested in computing the closure of the two attributes - social security number and high school code. | 
+So in other words, we want to find all attributes in the student relation that are functionally determined by these two attributes. | 
+So the algorithm says start with the two attributes themselves, social security number and high school code, and then add attributes that are functionally determined by ones in the set. | 
+So if we start with our first functional dependency here, because we have social security number, that allows us to add the student name, the address, the GPA... and that's it for that one. | 
+Now let's repeat again. | 
+Because we have the GPA, our second functional dependency tells us we can add the priorityAnd that's it for that one. | 
+And then since we have the high school code in this set, our third one tells us that we can add the high school name and the high school city and at that point we certainly know we're done because we've actually got the entire relation at this point. | 
+Now I didn't pick this particular example at random. | 
+We took two attributes, social security number and high school code, we computed their closure, and we discovered that they together functionally determine all attributes of the student relation. | 
+Now remember just a few slides ago, when a set of attributes functionally determine all the attributes, then those attributes together form a key for the relation. | 
+And in fact if you think about it, social security number and high school code together are a natural key for the relation. | 
+A student might go to multiple high schools, but there's no reason to have more than one tupple with the combination of a particular student and the high school they attended. | 
+So let's formalize a bit this relationship between the notion of closure and keys. | 
+Let's suppose we're interested in answering the question... is a particular set of attributes a key for a relation we can use closure to do that. | 
+Remember, we have the relation, and we have a set of functional dependencies for the relation, so what we do is we compute the closure of A that's going to give us a set of attributes and if that equals all attributes, then A is the key. | 
+As a more general question, let's suppose we're given a set of functional dependencies for a relation, how can we use it to find all of the keys for the relation? | 
+So use the same basic idea of computing closure, but this time we have to do it for every subset of the attributes. | 
+So let's call each subset A bar and we just check if the closure of A bar determines all attributes. | 
+And if it does, then it's a key. | 
+And by considering every subset of the attributes in R, then we're considering every possible key and we'll just check for each one whether it's actually a key. | 
+Now that seems fairly inefficient and actually we can be a little more efficient than that. | 
+We can consider these subsets in increasing size order. | 
+So for example, if we determine that A and B together determine all attributes functionally determine all attributes in the relation. | 
+That tells us AB is a key, and that actually also tells us that every superset of AB is also a key. | 
+And if you think about it, that fills out naturally. | 
+So the real algorithm would say let's start with single attributes and determine if they are key. | 
+If a single attribute say C, is a key then so is every super set of C, and then we go to pairs of attributes and so on. | 
